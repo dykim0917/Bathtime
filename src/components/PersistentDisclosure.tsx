@@ -5,6 +5,9 @@ import {
   CARD_GLASS,
   TEXT_MUTED,
   TYPE_CAPTION,
+  V2_BORDER,
+  V2_SURFACE,
+  V2_TEXT_MUTED,
 } from '@/src/data/colors';
 import { copy } from '@/src/content/copy';
 
@@ -13,6 +16,7 @@ interface PersistentDisclosureProps {
   showColdWarning?: boolean;
   title?: string;
   lines?: string[];
+  variant?: 'default' | 'v2';
 }
 
 export function PersistentDisclosure({
@@ -20,6 +24,7 @@ export function PersistentDisclosure({
   showColdWarning = false,
   title = copy.disclosure.title,
   lines,
+  variant = 'default',
 }: PersistentDisclosureProps) {
   const baseLines = [...copy.disclosure.baseLines];
 
@@ -28,11 +33,13 @@ export function PersistentDisclosure({
     ...(showColdWarning ? [copy.disclosure.coldWarning] : []),
   ];
 
+  const isV2 = variant === 'v2';
+
   return (
-    <View style={[styles.container, style]}>
-      <Text style={styles.title}>{title}</Text>
+    <View style={[styles.container, isV2 && styles.containerV2, style]}>
+      <Text style={[styles.title, isV2 && styles.titleV2]}>{title}</Text>
       {renderedLines.map((line) => (
-        <Text key={line} style={styles.line}>
+        <Text key={line} style={[styles.line, isV2 && styles.lineV2]}>
           {line}
         </Text>
       ))}
@@ -50,15 +57,31 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     gap: 2,
   },
+  containerV2: {
+    borderColor: V2_BORDER,
+    backgroundColor: V2_SURFACE,
+    borderRadius: 16,
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+  },
   title: {
     fontSize: TYPE_CAPTION,
     fontWeight: '700',
     color: TEXT_MUTED,
     marginBottom: 2,
   },
+  titleV2: {
+    color: V2_TEXT_MUTED,
+    letterSpacing: 0.6,
+    textTransform: 'uppercase',
+  },
   line: {
     fontSize: TYPE_CAPTION,
     color: TEXT_MUTED,
     lineHeight: 16,
+  },
+  lineV2: {
+    color: V2_TEXT_MUTED,
+    lineHeight: 17,
   },
 });

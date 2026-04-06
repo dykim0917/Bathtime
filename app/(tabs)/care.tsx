@@ -2,15 +2,15 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { View, Text, Pressable, ScrollView, StyleSheet, useWindowDimensions } from 'react-native';
 import { router } from 'expo-router';
 import Constants from 'expo-constants';
+import { LinearGradient } from 'expo-linear-gradient';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import {
   BathEnvironment,
-  BathRecommendation,
   DailyTag,
   FallbackStrategy,
   HomeSuggestionRank,
   IntentCard,
   SubProtocolOption,
-  ThemeId,
   TimeContext,
   UserProfile,
 } from '@/src/engine/types';
@@ -22,17 +22,18 @@ import { upsertSessionRecord } from '@/src/storage/sessionLog';
 import { loadLastEnvironment, saveLastEnvironment } from '@/src/storage/environment';
 import { SafetyWarning } from '@/src/components/SafetyWarning';
 import {
-  ACCENT,
-  APP_BG_BASE,
-  CARD_BORDER,
-  CARD_SHADOW,
-  CARD_SURFACE,
-  CATEGORY_CARD_COLORS,
   CATEGORY_CARD_EMOJI,
-  TEXT_MUTED,
-  TEXT_PRIMARY,
-  TEXT_SECONDARY,
   TYPE_SCALE,
+  V2_ACCENT,
+  V2_ACCENT_SOFT,
+  V2_BG_BASE,
+  V2_BG_BOTTOM,
+  V2_BG_TOP,
+  V2_BORDER,
+  V2_TEXT_MUTED,
+  V2_TEXT_PRIMARY,
+  V2_TEXT_SECONDARY,
+  V2_WARNING,
 } from '@/src/data/colors';
 import { CategoryCard } from '@/src/components/CategoryCard';
 import {
@@ -56,6 +57,7 @@ import {
 import { applySubProtocolOverrides } from '@/src/engine/subprotocol';
 import { inferFeelingBefore } from '@/src/engine/feeling';
 import { copy } from '@/src/content/copy';
+import { ui } from '@/src/theme/ui';
 
 const ENV_OPTIONS: { id: BathEnvironment; emoji: string; label: string }[] = [
   { id: 'bathtub', emoji: '🛁', label: '욕조' },
@@ -142,10 +144,25 @@ function hasSafetyPriorityFallback(fallback: FallbackStrategy): boolean {
   return fallback === 'SAFE_ROUTINE_ONLY' || fallback === 'RESET_WITHOUT_COLD';
 }
 
+function getIntentTint(intentId: string): string {
+  switch (intentId) {
+    case 'muscle_relief': return '#7FB7C9';
+    case 'sleep_ready': return '#8B7FD0';
+    case 'hangover_relief': return '#C98C64';
+    case 'edema_relief': return '#5E97B1';
+    case 'cold_relief': return '#6B9EBC';
+    case 'menstrual_relief': return '#C07E90';
+    case 'stress_relief': return '#759B78';
+    case 'mood_lift': return '#B49A4F';
+    default: return '#7D94BA';
+  }
+}
+
 export default function CareScreen() {
   const { profile } = useUserProfile();
   const haptic = useHaptic();
   const { width: screenWidth } = useWindowDimensions();
+  const insets = useSafeAreaInsets();
 
   const [environment, setEnvironment] = useState<BathEnvironment>('bathtub');
   const [warningVisible, setWarningVisible] = useState(false);
@@ -172,7 +189,6 @@ export default function CareScreen() {
   }, [profile]);
 
   const normalizedEnvironment = normalizeEnvironmentInput(environment);
-
   const intentCardWidth = Math.max(220, screenWidth - SCREEN_HORIZONTAL_PADDING * 2);
 
   useEffect(() => {
@@ -329,30 +345,35 @@ export default function CareScreen() {
     : [];
 
   return (
-    <View style={styles.container}>
+    <View style={[ui.screenShellV2, { paddingTop: insets.top }]}> 
+      <LinearGradient colors={[V2_BG_TOP, V2_BG_BASE, V2_BG_BOTTOM]} style={StyleSheet.absoluteFillObject} />
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
-        <View style={styles.header}>
-          <Text style={styles.title}>케어 루틴</Text>
-          <Text style={styles.subtitle}>증상과 컨디션에 맞춰 루틴을 골라보세요.</Text>
-        </View>
-
-        <View style={styles.environmentRow}>
-          {ENV_OPTIONS.map((option) => (
-            <Pressable
-              key={option.id}
-              style={[styles.envChip, environment === option.id && styles.envChipActive]}
-              onPress={() => handleSelectEnvironment(option.id)}
-            >
-              <Text style={[styles.envText, environment === option.id && styles.envTextActive]} numberOfLines={1}>
-                {option.emoji} {option.label}
-              </Text>
-            </Pressable>
-          ))}
+        <View style={[ui.glassCardV2, styles.heroCard]}>
+          <Text style={styles.eyebrow}>CARE ROUTINE</Text>
+          <Text style={ui.titleHeroV2}>케어 루틴</Text>
+          <Text style={styles.subtitle}>증상과 컨디션에 맞춰 안전한 루틴을 바로 골라보세요.</Text>
         </View>
 
         <View>
-          <Text style={styles.sectionTitle}>케어 루틴</Text>
-          <View style={[styles.gridWrap, { rowGap: CARD_GAP }]}>
+          <Text style={styles.sectionTitle}>입욕 환경</Text>
+          <View style={styles.environmentRow}>
+            {ENV_OPTIONS.map((option) => (
+              <Pressable
+                key={option.id}
+                style={[ui.pillButtonV2, styles.envChip, environment === option.id && ui.pillButtonV2Active]}
+                onPress={() => handleSelectEnvironment(option.id)}
+              >
+                <Text style={[styles.envText, environment === option.id && styles.envTextActive]} numberOfLines={1}>
+                  {option.emoji} {option.label}
+                </Text>
+              </Pressable>
+            ))}
+          </View>
+        </View>
+
+        <View>
+          <Text style={styles.sectionTitle}>추천 루틴</Text>
+          <View style={[styles.gridWrap, { rowGap: CARD_GAP }]}> 
             {ALL_CARE_CARDS.map((intent) => {
               const isPlaceholder = intent.allowed_environments.length === 0;
               const disabled = isPlaceholder || !intent.allowed_environments.includes(normalizedEnvironment);
@@ -366,7 +387,7 @@ export default function CareScreen() {
                   title={intent.copy_title}
                   subtitle={isPlaceholder ? '곧 추가될 예정이에요' : getEnvironmentSubtitle(intent, normalizedEnvironment)}
                   emoji={CATEGORY_CARD_EMOJI[intent.intent_id] ?? '🛁'}
-                  bgColor={CATEGORY_CARD_COLORS[intent.intent_id] ?? '#C5D9FC'}
+                  bgColor={getIntentTint(intent.intent_id)}
                   fitLabel={isPlaceholder ? undefined : getEnvironmentFitLabel(intent, normalizedEnvironment)}
                   safetyBadge={safetyBadge}
                   disabled={disabled}
@@ -374,19 +395,21 @@ export default function CareScreen() {
                   onPress={() => handleOpenSubProtocol(intent)}
                   width={intentCardWidth}
                   minHeight={CARD_MIN_HEIGHT_REGULAR}
+                  variant="v2"
                 />
               );
             })}
           </View>
         </View>
 
-        <PersistentDisclosure style={styles.disclosureInline} lines={disclosureLines} />
+        <PersistentDisclosure style={styles.disclosureInline} lines={disclosureLines} variant="v2" />
       </ScrollView>
 
       <SafetyWarning
         visible={warningVisible}
         warnings={pendingWarnings}
         onDismiss={handleWarningDismiss}
+        variant="v2"
       />
 
       <SubProtocolPickerModal
@@ -400,37 +423,39 @@ export default function CareScreen() {
           setSelectedIntentPayload(null);
         }}
         onSelect={handleSelectSubProtocol}
+        variant="v2"
       />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: APP_BG_BASE,
-  },
   content: {
     paddingHorizontal: SCREEN_HORIZONTAL_PADDING,
     paddingTop: 16,
-    paddingBottom: 32,
+    paddingBottom: 36,
     gap: SECTION_GAP,
   },
-  header: {
-    paddingTop: 8,
-    paddingBottom: 4,
+  heroCard: {
+    padding: 18,
+    gap: 8,
   },
-  title: {
-    fontSize: TYPE_SCALE.headingMd,
-    fontWeight: '800',
-    color: TEXT_PRIMARY,
-    lineHeight: 32,
+  eyebrow: {
+    fontSize: TYPE_SCALE.caption - 1,
+    fontWeight: '700',
+    color: V2_ACCENT,
+    letterSpacing: 1.2,
   },
   subtitle: {
-    marginTop: 6,
     fontSize: TYPE_SCALE.body,
-    color: TEXT_MUTED,
+    color: V2_TEXT_SECONDARY,
     lineHeight: 21,
+  },
+  sectionTitle: {
+    color: V2_TEXT_PRIMARY,
+    fontWeight: '700',
+    fontSize: TYPE_SCALE.title,
+    marginBottom: 12,
   },
   environmentRow: {
     flexDirection: 'row',
@@ -439,27 +464,15 @@ const styles = StyleSheet.create({
     rowGap: 8,
   },
   envChip: {
-    borderRadius: 999,
-    paddingVertical: 8,
-    paddingHorizontal: 16,
-    backgroundColor: '#EAEEF5',
-  },
-  envChipActive: {
-    backgroundColor: ACCENT,
+    minHeight: 44,
   },
   envText: {
-    color: TEXT_SECONDARY,
+    color: V2_TEXT_SECONDARY,
     fontSize: TYPE_SCALE.body,
     fontWeight: '600',
   },
   envTextActive: {
-    color: '#FFFFFF',
-  },
-  sectionTitle: {
-    color: TEXT_PRIMARY,
-    fontWeight: '800',
-    fontSize: TYPE_SCALE.title,
-    marginBottom: 12,
+    color: V2_ACCENT,
   },
   gridWrap: {
     flexDirection: 'row',

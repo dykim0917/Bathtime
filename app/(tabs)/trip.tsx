@@ -2,6 +2,8 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { View, Text, Pressable, ScrollView, StyleSheet, useWindowDimensions } from 'react-native';
 import { router } from 'expo-router';
 import Constants from 'expo-constants';
+import { LinearGradient } from 'expo-linear-gradient';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import {
   BathEnvironment,
   FallbackStrategy,
@@ -20,12 +22,13 @@ import { upsertSessionRecord } from '@/src/storage/sessionLog';
 import { loadLastEnvironment, saveLastEnvironment } from '@/src/storage/environment';
 import { SafetyWarning } from '@/src/components/SafetyWarning';
 import {
-  ACCENT,
-  APP_BG_BASE,
-  TEXT_MUTED,
-  TEXT_PRIMARY,
-  TEXT_SECONDARY,
   TYPE_SCALE,
+  V2_ACCENT,
+  V2_BG_BASE,
+  V2_BG_BOTTOM,
+  V2_BG_TOP,
+  V2_TEXT_PRIMARY,
+  V2_TEXT_SECONDARY,
 } from '@/src/data/colors';
 import { TripThemeCard } from '@/src/components/TripThemeCard';
 import {
@@ -49,8 +52,8 @@ import {
 import { applySubProtocolOverrides } from '@/src/engine/subprotocol';
 import { inferFeelingBefore } from '@/src/engine/feeling';
 import { copy } from '@/src/content/copy';
+import { ui } from '@/src/theme/ui';
 
-// Trip 탭: 욕조/샤워만 허용 (부분입욕 미지원)
 const TRIP_ENV_OPTIONS: { id: BathEnvironment; emoji: string; label: string }[] = [
   { id: 'bathtub', emoji: '🛁', label: '욕조 (Deep)' },
   { id: 'shower', emoji: '🚿', label: '샤워 (Lite)' },
@@ -128,6 +131,7 @@ export default function TripScreen() {
   const { profile } = useUserProfile();
   const haptic = useHaptic();
   const { width: screenWidth } = useWindowDimensions();
+  const insets = useSafeAreaInsets();
 
   const [environment, setEnvironment] = useState<BathEnvironment>('bathtub');
   const [warningVisible, setWarningVisible] = useState(false);
@@ -143,7 +147,6 @@ export default function TripScreen() {
 
   useEffect(() => {
     loadLastEnvironment().then((saved) => {
-      // Trip 탭: bathtub/shower만 허용. 다른 환경이면 bathtub으로 fallback
       if (saved && (saved === 'bathtub' || saved === 'shower')) {
         setEnvironment(saved);
         return;
@@ -155,7 +158,6 @@ export default function TripScreen() {
   }, [profile]);
 
   const normalizedEnvironment = normalizeEnvironmentInput(environment);
-
   const useSingleColumn = screenWidth < 340;
   const gridColumns = useSingleColumn ? 1 : 2;
   const sectionInnerWidth = Math.max(220, screenWidth - SCREEN_HORIZONTAL_PADDING * 2);
@@ -315,25 +317,30 @@ export default function TripScreen() {
     : [];
 
   return (
-    <View style={styles.container}>
+    <View style={[ui.screenShellV2, { paddingTop: insets.top }]}> 
+      <LinearGradient colors={[V2_BG_TOP, V2_BG_BASE, V2_BG_BOTTOM]} style={StyleSheet.absoluteFillObject} />
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
-        <View style={styles.header}>
-          <Text style={styles.title}>트립 루틴</Text>
-          <Text style={styles.subtitle}>어디로 떠나볼까요? 테마별 여행 같은 루틴이에요.</Text>
+        <View style={[ui.glassCardV2, styles.heroCard]}>
+          <Text style={styles.eyebrow}>TRIP ROUTINE</Text>
+          <Text style={ui.titleHeroV2}>트립 루틴</Text>
+          <Text style={styles.subtitle}>여행처럼 몰입하는 테마 목욕을 환경에 맞게 골라보세요.</Text>
         </View>
 
-        <View style={styles.environmentRow}>
-          {TRIP_ENV_OPTIONS.map((option) => (
-            <Pressable
-              key={option.id}
-              style={[styles.envChip, environment === option.id && styles.envChipActive]}
-              onPress={() => handleSelectEnvironment(option.id)}
-            >
-              <Text style={[styles.envText, environment === option.id && styles.envTextActive]} numberOfLines={1}>
-                {option.emoji} {option.label}
-              </Text>
-            </Pressable>
-          ))}
+        <View>
+          <Text style={styles.sectionTitle}>입욕 환경</Text>
+          <View style={styles.environmentRow}>
+            {TRIP_ENV_OPTIONS.map((option) => (
+              <Pressable
+                key={option.id}
+                style={[ui.pillButtonV2, styles.envChip, environment === option.id && ui.pillButtonV2Active]}
+                onPress={() => handleSelectEnvironment(option.id)}
+              >
+                <Text style={[styles.envText, environment === option.id && styles.envTextActive]} numberOfLines={1}>
+                  {option.emoji} {option.label}
+                </Text>
+              </Pressable>
+            ))}
+          </View>
         </View>
 
         <View>
@@ -358,19 +365,21 @@ export default function TripScreen() {
                   onPress={() => handleOpenSubProtocol(intent)}
                   width={intentCardWidth}
                   minHeight={CARD_MIN_HEIGHT_REGULAR}
+                  variant="v2"
                 />
               );
             })}
           </View>
         </View>
 
-        <PersistentDisclosure style={styles.disclosureInline} lines={disclosureLines} />
+        <PersistentDisclosure style={styles.disclosureInline} lines={disclosureLines} variant="v2" />
       </ScrollView>
 
       <SafetyWarning
         visible={warningVisible}
         warnings={pendingWarnings}
         onDismiss={handleWarningDismiss}
+        variant="v2"
       />
 
       <SubProtocolPickerModal
@@ -384,37 +393,40 @@ export default function TripScreen() {
           setSelectedIntentPayload(null);
         }}
         onSelect={handleSelectSubProtocol}
+        variant="v2"
       />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: APP_BG_BASE,
-  },
   content: {
     paddingHorizontal: SCREEN_HORIZONTAL_PADDING,
     paddingTop: 16,
-    paddingBottom: 32,
+    paddingBottom: 36,
     gap: SECTION_GAP,
   },
-  header: {
-    paddingTop: 8,
-    paddingBottom: 4,
+  heroCard: {
+    padding: 18,
+    gap: 8,
   },
-  title: {
-    fontSize: TYPE_SCALE.headingMd,
-    fontWeight: '800',
-    color: TEXT_PRIMARY,
-    lineHeight: 32,
+  eyebrow: {
+    fontSize: TYPE_SCALE.caption - 1,
+    fontWeight: '700',
+    color: V2_ACCENT,
+    letterSpacing: 1.2,
   },
   subtitle: {
-    marginTop: 6,
+    marginTop: 2,
     fontSize: TYPE_SCALE.body,
-    color: TEXT_MUTED,
+    color: V2_TEXT_SECONDARY,
     lineHeight: 21,
+  },
+  sectionTitle: {
+    color: V2_TEXT_PRIMARY,
+    fontWeight: '700',
+    fontSize: TYPE_SCALE.title,
+    marginBottom: 12,
   },
   environmentRow: {
     flexDirection: 'row',
@@ -423,27 +435,15 @@ const styles = StyleSheet.create({
     rowGap: 8,
   },
   envChip: {
-    borderRadius: 999,
-    paddingVertical: 8,
-    paddingHorizontal: 16,
-    backgroundColor: '#EAEEF5',
-  },
-  envChipActive: {
-    backgroundColor: ACCENT,
+    minHeight: 44,
   },
   envText: {
-    color: TEXT_SECONDARY,
+    color: V2_TEXT_SECONDARY,
     fontSize: TYPE_SCALE.body,
     fontWeight: '600',
   },
   envTextActive: {
-    color: '#FFFFFF',
-  },
-  sectionTitle: {
-    color: TEXT_PRIMARY,
-    fontWeight: '800',
-    fontSize: TYPE_SCALE.title,
-    marginBottom: 12,
+    color: V2_ACCENT,
   },
   gridWrap: {
     flexDirection: 'row',

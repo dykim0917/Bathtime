@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Redirect } from 'expo-router';
 import { View, ActivityIndicator, StyleSheet } from 'react-native';
 import { loadProfile } from '@/src/storage/profile';
-import { DARK_BG } from '@/src/data/colors';
+import { V2_ACCENT, V2_BG_BASE } from '@/src/data/colors';
 
 export default function Index() {
   const [ready, setReady] = useState(false);
@@ -18,23 +18,15 @@ export default function Index() {
   if (!ready) {
     return (
       <View style={styles.container} pointerEvents="none">
-        <ActivityIndicator size="large" color="#7C3AED" />
+        <ActivityIndicator size="large" color={V2_ACCENT} />
       </View>
     );
   }
 
-  if (hasProfile) {
-    return <Redirect href="/(tabs)" />;
-  }
-
+  if (hasProfile) return <Redirect href="/(tabs)" />;
   return <Redirect href="/onboarding" />;
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: DARK_BG,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+  container: { flex: 1, backgroundColor: V2_BG_BASE, justifyContent: 'center', alignItems: 'center' },
 });

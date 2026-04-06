@@ -51,6 +51,29 @@ export const ACCENT_LIGHT = '#ECF1FC';
 export const WARNING_COLOR = '#F0A55C';
 export const DANGER_COLOR = '#E96F7F';
 
+// === Figma Style Guide v2 (Deep Navy / Gold / Glass) ===
+export const V2_BG_BASE = '#081636';
+export const V2_BG_TOP = '#0B1B44';
+export const V2_BG_BOTTOM = '#07122D';
+export const V2_BG_OVERLAY = 'rgba(7, 17, 40, 0.56)';
+
+export const V2_SURFACE = 'rgba(19, 37, 68, 0.88)';
+export const V2_SURFACE_SOFT = 'rgba(15, 31, 58, 0.74)';
+export const V2_BORDER = 'rgba(170, 190, 225, 0.18)';
+export const V2_BORDER_STRONG = 'rgba(201, 164, 91, 0.34)';
+export const V2_SHADOW = 'rgba(2, 8, 24, 0.42)';
+export const V2_MODAL_SURFACE = '#102242';
+
+export const V2_TEXT_PRIMARY = '#EEF3FF';
+export const V2_TEXT_SECONDARY = '#AAB7D2';
+export const V2_TEXT_MUTED = '#8392B1';
+
+export const V2_ACCENT = '#C9A45B';
+export const V2_ACCENT_SOFT = 'rgba(201, 164, 91, 0.16)';
+export const V2_ACCENT_TEXT = '#11213D';
+export const V2_WARNING = '#D7A85E';
+export const V2_DANGER = '#E2A46C';
+
 // === Persona Colors (Pastel compatible) ===
 export const PERSONA_COLORS: Record<PersonaCode, string> = {
   P1_SAFETY: '#8CB59C',

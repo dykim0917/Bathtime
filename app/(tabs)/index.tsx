@@ -1,13 +1,14 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { View, Text, Pressable, ScrollView, StyleSheet, useWindowDimensions } from 'react-native';
+import { View, Text, Pressable, ScrollView, StyleSheet, useWindowDimensions, Image } from 'react-native';
 import { router } from 'expo-router';
 import Constants from 'expo-constants';
+import { LinearGradient } from 'expo-linear-gradient';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import {
   BathEnvironment,
   BathRecommendation,
   DailyTag,
   FallbackStrategy,
-  HomeModeType,
   HomeSuggestionRank,
   IntentCard,
   SubProtocolOption,
@@ -24,20 +25,18 @@ import { loadLastEnvironment, saveLastEnvironment } from '@/src/storage/environm
 import { loadTripMemoryHistory } from '@/src/storage/memory';
 import { SafetyWarning } from '@/src/components/SafetyWarning';
 import {
-  ACCENT,
-  APP_BG_BASE,
-  CARD_BORDER,
-  CARD_SHADOW,
-  CARD_SURFACE,
-  TEXT_MUTED,
-  TEXT_PRIMARY,
-  TEXT_SECONDARY,
+  CATEGORY_CARD_EMOJI,
   TYPE_SCALE,
-  WARNING_COLOR,
+  V2_ACCENT,
+  V2_BG_BASE,
+  V2_BG_BOTTOM,
+  V2_BG_TOP,
+  V2_BORDER,
+  V2_SURFACE,
+  V2_TEXT_MUTED,
+  V2_TEXT_PRIMARY,
+  V2_TEXT_SECONDARY,
 } from '@/src/data/colors';
-import { CategoryCard } from '@/src/components/CategoryCard';
-import { TripThemeCard } from '@/src/components/TripThemeCard';
-import { CATEGORY_CARD_COLORS, CATEGORY_CARD_EMOJI } from '@/src/data/colors';
 import {
   RecommendationCardEventPayload,
   trackIntentCardClick,
@@ -55,7 +54,6 @@ import {
   CARE_SUBPROTOCOL_OPTIONS,
   getEnvironmentFitLabel,
   getEnvironmentSubtitle,
-  getSectionOrderByContext,
   TRIP_INTENT_CARDS,
   TRIP_SUBPROTOCOL_OPTIONS,
 } from '@/src/data/intents';
@@ -63,6 +61,9 @@ import { applySubProtocolOverrides } from '@/src/engine/subprotocol';
 import { inferFeelingBefore } from '@/src/engine/feeling';
 import { buildHomeStreakSummary, HomeStreakSummary } from '@/src/engine/streaks';
 import { copy } from '@/src/content/copy';
+import { ui } from '@/src/theme/ui';
+import { HomeCarePreviewCard } from '@/src/components/HomeCarePreviewCard';
+import { HomeTripEditorialCard } from '@/src/components/HomeTripEditorialCard';
 
 const ENV_OPTIONS: { id: BathEnvironment; emoji: string; label: string }[] = [
   { id: 'bathtub', emoji: '🛁', label: '욕조' },
@@ -76,12 +77,18 @@ const ENV_LABEL: Record<string, string> = {
   shower: '샤워',
 };
 
+const TRIP_EDITORIAL_META: Record<string, { destination: string; accent: [string, string] }> = {
+  kyoto_forest: { destination: 'JAPAN', accent: ['#274539', '#5E846F'] },
+  nordic_sauna: { destination: 'FINLAND', accent: ['#4B3421', '#8B6540'] },
+  rainy_camping: { destination: 'PACIFIC', accent: ['#19334A', '#4F7DA1'] },
+  snow_cabin: { destination: 'ICELAND', accent: ['#22354E', '#7590AA'] },
+};
+
 const SCREEN_HORIZONTAL_PADDING = 22;
-const SECTION_GAP = 18;
+const SECTION_GAP = 22;
 const CARD_GAP = 12;
-const CARD_MIN_HEIGHT_COMPACT = 126;
-const CARD_MIN_HEIGHT_REGULAR = 142;
 const HOME_PREVIEW_CARD_LIMIT = 4;
+const HOME_SECTION_ORDER: RecommendationCardEventPayload['section_order'] = 'care_first';
 
 function getTimeContext(date = new Date()): TimeContext {
   const h = date.getHours();
@@ -101,18 +108,9 @@ function toEngineEnvironment(environment: BathEnvironment): BathEnvironment {
   return environment;
 }
 
-function buildRuntimeProfile(
-  profile: UserProfile | null,
-  environment: BathEnvironment
-): UserProfile {
+function buildRuntimeProfile(profile: UserProfile | null, environment: BathEnvironment): UserProfile {
   const now = new Date().toISOString();
-  if (profile) {
-    return {
-      ...profile,
-      bathEnvironment: toEngineEnvironment(environment),
-    };
-  }
-
+  if (profile) return { ...profile, bathEnvironment: toEngineEnvironment(environment) };
   return {
     bathEnvironment: toEngineEnvironment(environment),
     healthConditions: ['none'],
@@ -124,16 +122,11 @@ function buildRuntimeProfile(
 
 function mapIntentToTags(intentId: string): DailyTag[] {
   switch (intentId) {
-    case 'muscle_relief':
-      return ['muscle_pain'];
-    case 'sleep_ready':
-      return ['insomnia'];
-    case 'hangover_relief':
-      return ['hangover'];
-    case 'edema_relief':
-      return ['swelling'];
-    default:
-      return ['stress'];
+    case 'muscle_relief': return ['muscle_pain'];
+    case 'sleep_ready': return ['insomnia'];
+    case 'hangover_relief': return ['hangover'];
+    case 'edema_relief': return ['swelling'];
+    default: return ['stress'];
   }
 }
 
@@ -151,10 +144,8 @@ function mapIntentToTheme(intentId: string): ThemeId {
 
 function mapIntentToActiveState(intentId: string): RecommendationCardEventPayload['active_state'] {
   switch (intentId) {
-    case 'sleep_ready':
-      return 'cant_sleep';
-    case 'hangover_relief':
-      return 'want_reset';
+    case 'sleep_ready': return 'cant_sleep';
+    case 'hangover_relief': return 'want_reset';
     case 'muscle_relief':
     case 'edema_relief':
       return 'heavy';
@@ -186,20 +177,11 @@ function resolveFallback(intent: IntentCard, healthConditions: UserProfile['heal
 }
 
 function buildHeadlineMessage(timeContext: TimeContext, recent: BathRecommendation[]): string {
-  if (timeContext === 'late_night') {
-    return '지금은 잠들기 준비 시간이네요.';
-  }
-
+  if (timeContext === 'late_night') return 'Good Evening';
   const latest = recent[0];
-  if (latest?.mode === 'trip') {
-    return '오늘은 분위기 전환 루틴부터 시작해볼까요?';
-  }
-
-  if (timeContext === 'day' || timeContext === 'evening') {
-    return '지금 컨디션에 맞는 루틴을 바로 시작해볼까요?';
-  }
-
-  return '오늘 아침, 가볍게 몸을 깨워볼까요?';
+  if (latest?.mode === 'trip') return '오늘은 무드 전환이 먼저예요';
+  if (timeContext === 'day' || timeContext === 'evening') return '지금 컨디션에 맞는 루틴';
+  return '오늘 아침, 가볍게 시작해요';
 }
 
 function modeFromIntent(intent: IntentCard): RecommendationCardEventPayload['mode_type'] {
@@ -211,30 +193,48 @@ function hasSafetyPriorityFallback(fallback: FallbackStrategy): boolean {
   return fallback === 'SAFE_ROUTINE_ONLY' || fallback === 'RESET_WITHOUT_COLD';
 }
 
+function getIntentTint(intentId: string): string {
+  switch (intentId) {
+    case 'muscle_relief': return '#7FB7C9';
+    case 'sleep_ready': return '#8B7FD0';
+    case 'hangover_relief': return '#C98C64';
+    case 'edema_relief': return '#5E97B1';
+    default: return '#7D94BA';
+  }
+}
+
+function getWeekdayMarker(label: HomeStreakSummary['dailyCheck'][number]['weekdayLabel']): string {
+  switch (label) {
+    case 'Mon': return '월';
+    case 'Tue': return '화';
+    case 'Wed': return '수';
+    case 'Thu': return '목';
+    case 'Fri': return '금';
+    case 'Sat': return '토';
+    case 'Sun': return '일';
+  }
+}
+
 export default function HomeIntentScreen() {
   const { profile } = useUserProfile();
   const haptic = useHaptic();
   const { width: screenWidth } = useWindowDimensions();
+  const insets = useSafeAreaInsets();
 
   const [environment, setEnvironment] = useState<BathEnvironment>('bathtub');
   const [recentRoutines, setRecentRoutines] = useState<BathRecommendation[]>([]);
   const [isHistoryLoaded, setIsHistoryLoaded] = useState(false);
-  const [streakSummary, setStreakSummary] = useState<HomeStreakSummary>(
-    buildHomeStreakSummary([])
-  );
-
+  const [streakSummary, setStreakSummary] = useState<HomeStreakSummary>(buildHomeStreakSummary([]));
   const [warningVisible, setWarningVisible] = useState(false);
   const [pendingWarnings, setPendingWarnings] = useState<string[]>([]);
   const [pendingRecId, setPendingRecId] = useState<string | null>(null);
-  const [pendingStartPayload, setPendingStartPayload] =
-    useState<RecommendationCardEventPayload | null>(null);
-
+  const [pendingStartPayload, setPendingStartPayload] = useState<RecommendationCardEventPayload | null>(null);
   const [subModalVisible, setSubModalVisible] = useState(false);
   const [selectedIntent, setSelectedIntent] = useState<IntentCard | null>(null);
-  const [selectedIntentPayload, setSelectedIntentPayload] =
-    useState<RecommendationCardEventPayload | null>(null);
+  const [selectedIntentPayload, setSelectedIntentPayload] = useState<RecommendationCardEventPayload | null>(null);
 
   const sessionIdRef = useRef(`session_${Date.now()}`);
+  const timeContext = useMemo(() => getTimeContext(), []);
 
   useEffect(() => {
     loadLastEnvironment().then((saved) => {
@@ -252,60 +252,20 @@ export default function HomeIntentScreen() {
       .then(([history, memories]) => {
         setRecentRoutines(history.slice(0, 8));
         setStreakSummary(
-          buildHomeStreakSummary(
-            memories.map((memory) => memory.completionSnapshot.completedAt)
-          )
+          buildHomeStreakSummary(memories.map((memory) => memory.completionSnapshot.completedAt))
         );
       })
-      .finally(() => {
-        setIsHistoryLoaded(true);
-      });
+      .finally(() => setIsHistoryLoaded(true));
   }, [profile]);
-
-  const timeContext = useMemo(() => getTimeContext(), []);
-  const sectionOrder = useMemo(() => getSectionOrderByContext(timeContext), [timeContext]);
 
   const headlineMessage = useMemo(
     () => buildHeadlineMessage(timeContext, recentRoutines),
     [recentRoutines, timeContext]
   );
-
   const normalizedEnvironment = normalizeEnvironmentInput(environment);
-  const careCards = CARE_INTENT_CARDS;
-  const tripCards = TRIP_INTENT_CARDS;
-  const previewCareCards = useMemo(
-    () => careCards.slice(0, HOME_PREVIEW_CARD_LIMIT),
-    [careCards]
-  );
-  const previewTripCards = useMemo(
-    () => tripCards.slice(0, HOME_PREVIEW_CARD_LIMIT),
-    [tripCards]
-  );
-
-  const sortedSections = useMemo(() => {
-    const care = {
-      key: 'care' as const,
-      title: '케어 루틴',
-      cards: previewCareCards,
-      route: '/(tabs)/care' as const,
-    };
-    const trip = {
-      key: 'trip' as const,
-      title: '트립 루틴',
-      cards: previewTripCards,
-      route: '/(tabs)/trip' as const,
-    };
-    return sectionOrder === 'care_first' ? [care, trip] : [trip, care];
-  }, [previewCareCards, previewTripCards, sectionOrder]);
-
-  const useSingleColumn = screenWidth < 340;
-  const gridColumns = useSingleColumn ? 1 : 2;
-  const sectionInnerWidth = Math.max(220, screenWidth - SCREEN_HORIZONTAL_PADDING * 2);
-  const intentCardWidth =
-    gridColumns === 2 ? (sectionInnerWidth - CARD_GAP) / 2 : sectionInnerWidth;
-  const intentCardMinHeight = useSingleColumn
-    ? CARD_MIN_HEIGHT_COMPACT
-    : CARD_MIN_HEIGHT_REGULAR;
+  const careCards = CARE_INTENT_CARDS.slice(0, HOME_PREVIEW_CARD_LIMIT);
+  const tripCards = TRIP_INTENT_CARDS.slice(0, HOME_PREVIEW_CARD_LIMIT);
+  const careCardWidth = (screenWidth - SCREEN_HORIZONTAL_PADDING * 2 - CARD_GAP) / 2;
 
   useEffect(() => {
     const appVersion = Constants.expoConfig?.version ?? 'unknown';
@@ -332,18 +292,16 @@ export default function HomeIntentScreen() {
         engine_source: intent.domain,
         intent_id: intent.intent_id,
         intent_domain: intent.domain,
-        section_order: sectionOrder,
+        section_order: HOME_SECTION_ORDER,
         card_position: intent.card_position,
       };
       trackIntentCardImpression(payload);
     });
-  }, [careCards, environment, profile?.createdAt, profile?.healthConditions, sectionOrder, timeContext, tripCards]);
+  }, [careCards, environment, profile?.createdAt, profile?.healthConditions, timeContext, tripCards]);
 
   const disclosureLines = useMemo(() => {
     const healthConditions = profile?.healthConditions ?? ['none'];
-    const fallback = hasHighRiskCondition(healthConditions)
-      ? 'SAFE_ROUTINE_ONLY' as const
-      : 'none' as const;
+    const fallback = hasHighRiskCondition(healthConditions) ? 'SAFE_ROUTINE_ONLY' as const : 'none' as const;
     const hasResetIntent = careCards.some((c) => c.mapped_mode === 'reset');
     return buildDisclosureLines({
       fallbackStrategy: fallback,
@@ -382,7 +340,7 @@ export default function HomeIntentScreen() {
       engine_source: intent.domain,
       intent_id: intent.intent_id,
       intent_domain: intent.domain,
-      section_order: sectionOrder,
+      section_order: HOME_SECTION_ORDER,
       card_position: intent.card_position,
     };
 
@@ -395,9 +353,7 @@ export default function HomeIntentScreen() {
 
   const resolveSubOptions = (intent: IntentCard | null): SubProtocolOption[] => {
     if (!intent) return [];
-    if (intent.domain === 'trip') {
-      return TRIP_SUBPROTOCOL_OPTIONS[intent.intent_id] ?? [];
-    }
+    if (intent.domain === 'trip') return TRIP_SUBPROTOCOL_OPTIONS[intent.intent_id] ?? [];
     return CARE_SUBPROTOCOL_OPTIONS[intent.intent_id] ?? [];
   };
 
@@ -423,19 +379,17 @@ export default function HomeIntentScreen() {
 
     haptic.medium();
     const runtimeProfile = buildRuntimeProfile(profile, environment);
-
-    const baseRecommendation =
-      selectedIntent.domain === 'trip'
-        ? generateTripRecommendation(
-            runtimeProfile,
-            mapIntentToTheme(selectedIntent.intent_id),
-            toEngineEnvironment(environment)
-          )
-        : generateCareRecommendation(
-            runtimeProfile,
-            mapIntentToTags(selectedIntent.intent_id),
-            toEngineEnvironment(environment)
-          );
+    const baseRecommendation = selectedIntent.domain === 'trip'
+      ? generateTripRecommendation(
+          runtimeProfile,
+          mapIntentToTheme(selectedIntent.intent_id),
+          toEngineEnvironment(environment)
+        )
+      : generateCareRecommendation(
+          runtimeProfile,
+          mapIntentToTags(selectedIntent.intent_id),
+          toEngineEnvironment(environment)
+        );
 
     const recommendation = applySubProtocolOverrides(
       baseRecommendation,
@@ -455,6 +409,7 @@ export default function HomeIntentScreen() {
       user_feeling_before: inferFeelingBefore(recommendation.intentId, recommendation.mode),
       user_feeling_after: 3,
     });
+
     setSubModalVisible(false);
     setSelectedIntent(null);
     setSelectedIntentPayload(null);
@@ -482,151 +437,189 @@ export default function HomeIntentScreen() {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[ui.screenShellV2, { paddingTop: insets.top }]}> 
+      <LinearGradient colors={[V2_BG_TOP, V2_BG_BASE, V2_BG_BOTTOM]} style={StyleSheet.absoluteFillObject} />
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
-        {/* ── Header ─────────────────────────────────────────────────── */}
-        <View style={styles.header}>
-          <Text style={styles.title}>{headlineMessage}</Text>
-          <Text style={styles.subtitle}>지금 환경에 맞춰 루틴을 준비했어요.</Text>
-          {isHistoryLoaded && recentRoutines.length === 0 ? (
-            <Text style={styles.beginnerGuide}>{copy.home.beginnerGuide}</Text>
-          ) : null}
-        </View>
-
-        <View style={styles.streakCard}>
-          <Text style={styles.streakTitle}>{copy.home.streakTitle}</Text>
-          <Text style={styles.streakTodayText}>
-            {streakSummary.todayDone ? copy.home.todayDone : copy.home.todayPending}
-          </Text>
-          <View style={styles.streakWeekRow}>
-            {streakSummary.dailyCheck.map((item) => (
-              <View key={item.dateKey} style={styles.streakDayItem}>
-                <Text style={[styles.streakDayLabel, item.isToday && styles.streakTodayLabel]}>
-                  {item.weekdayLabel}
-                </Text>
-                <Text style={[styles.streakDayMark, item.done && styles.streakDayMarkDone]}>
-                  {item.done ? '✔' : '-'}
-                </Text>
-              </View>
-            ))}
+        <View style={styles.headerBlock}>
+          <View style={styles.brandRow}>
+            <Image source={require('../../assets/images/brand/bath-symbol.png')} style={styles.brandIcon} />
+            <Text style={styles.brandText}>BATH SOMMELIER</Text>
           </View>
-          <Text style={styles.streakCountText}>
-            {copy.home.weeklyCount(streakSummary.weeklyBathCount, streakSummary.weeklyGoal)}
-          </Text>
-          <Text style={styles.streakMetaText}>
-            {copy.home.dailyStreak(streakSummary.dailyStreakDays)} {'\u00b7'}{' '}
-            {copy.home.weeklyStreak(streakSummary.weeklyStreakWeeks)}
-          </Text>
+          <Text style={styles.greeting}>{headlineMessage}</Text>
+          <Text style={styles.subtitle}>Time to unwind with your personalized bath ritual.</Text>
+          {!isHistoryLoaded || recentRoutines.length > 0 ? null : (
+            <Text style={styles.beginnerGuide}>{copy.home.beginnerGuide}</Text>
+          )}
         </View>
 
-        {/* ── Environment selector ───────────────────────────────────── */}
-        <View style={styles.environmentRow}>
-          {ENV_OPTIONS.map((option) => (
-            <Pressable
-              key={option.id}
-              style={[styles.envChip, environment === option.id && styles.envChipActive]}
-              onPress={() => handleSelectEnvironment(option.id)}
-            >
-              <Text style={[styles.envText, environment === option.id && styles.envTextActive]} numberOfLines={1}>
-                {option.emoji} {option.label}
-              </Text>
-            </Pressable>
-          ))}
-        </View>
+        <View style={styles.weeklyCard}>
+          <LinearGradient
+            colors={['#54402D', '#433021', '#352416']}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 1 }}
+            style={styles.weeklyGradient}
+          >
+            <View style={styles.weeklyGlowPrimary} />
+            <View style={styles.weeklyGlowSecondary} />
 
-        {/* ── Intent sections ────────────────────────────────────────── */}
-        {sortedSections.map((section) => (
-          <View key={section.key}>
-            <View style={styles.sectionHeaderRow}>
-              <Text style={styles.sectionTitle}>{section.title}</Text>
-              <Pressable onPress={() => router.push(section.route)}>
-                <Text style={styles.moreText}>더보기</Text>
+            <View style={styles.weeklyTopRow}>
+              <View>
+                <Text style={styles.weeklyLabel}>이번주 루틴</Text>
+                <View style={styles.weeklyStatusRow}>
+                  <View style={[styles.weeklyStatusDot, streakSummary.todayDone && styles.weeklyStatusDotDone]} />
+                  <Text style={styles.weeklyStatus}>{streakSummary.todayDone ? copy.home.todayDone : copy.home.todayPending}</Text>
+                </View>
+                <Text style={styles.weeklySummaryText}>이번주 {streakSummary.weeklyBathCount}회 Bath</Text>
+              </View>
+              <Pressable style={styles.weeklyDetailButton} onPress={() => router.push('/(tabs)/history')}>
+                <Text style={styles.weeklyDetailText}>VIEW DETAILS</Text>
               </Pressable>
             </View>
 
-            <View style={[styles.gridWrap, { columnGap: CARD_GAP, rowGap: CARD_GAP }]}>
-              {section.cards.map((intent) => {
-                const disabled = !intent.allowed_environments.includes(normalizedEnvironment);
-                const fallback = resolveFallback(intent, profile?.healthConditions ?? ['none']);
-                const safetyBadge = hasSafetyPriorityFallback(fallback)
-                  ? copy.home.safetyPriorityBadge
-                  : undefined;
-                if (section.key === 'trip') {
-                  return (
-                    <TripThemeCard
-                      key={intent.id}
-                      intentId={intent.intent_id}
-                      title={intent.copy_title}
-                      subtitle={getEnvironmentSubtitle(intent, normalizedEnvironment)}
-                      fitLabel={getEnvironmentFitLabel(intent, normalizedEnvironment)}
-                      safetyBadge={safetyBadge}
-                      disabled={disabled}
-                      disabledText="현재 환경에선 제한적으로 추천돼요"
-                      onPress={() => handleOpenSubProtocol(intent)}
-                      width={intentCardWidth}
-                      minHeight={intentCardMinHeight}
-                    />
-                  );
-                }
-                return (
-                  <CategoryCard
-                    key={intent.id}
-                    title={intent.copy_title}
-                    subtitle={getEnvironmentSubtitle(intent, normalizedEnvironment)}
-                    emoji={CATEGORY_CARD_EMOJI[intent.intent_id] ?? '🛁'}
-                    bgColor={CATEGORY_CARD_COLORS[intent.intent_id] ?? '#C5D9FC'}
-                    fitLabel={getEnvironmentFitLabel(intent, normalizedEnvironment)}
-                    safetyBadge={safetyBadge}
-                    disabled={disabled}
-                    disabledText="현재 환경에선 제한적으로 추천돼요"
-                    onPress={() => handleOpenSubProtocol(intent)}
-                    width={intentCardWidth}
-                    minHeight={intentCardMinHeight}
-                  />
-                );
-              })}
+            <View style={styles.weekDotsRow}>
+              {streakSummary.dailyCheck.map((item) => (
+                <View key={item.dateKey} style={styles.weekDotItem}>
+                  <View style={[styles.weekDot, item.done && styles.weekDotDone, item.isToday && styles.weekDotToday]}>
+                    <Text style={[styles.weekDotText, item.done && styles.weekDotTextDone, item.isToday && styles.weekDotTextToday]}>
+                      {getWeekdayMarker(item.weekdayLabel)}
+                    </Text>
+                  </View>
+                </View>
+              ))}
             </View>
+
+            <View style={styles.weekMetricsRow}>
+              <View style={styles.weekMetricBlock}>
+                <Text style={styles.weekMetricEyebrow}>Weekly Baths</Text>
+                <Text style={styles.weekMetricValue}>{streakSummary.weeklyBathCount}/{streakSummary.weeklyGoal} baths this week</Text>
+              </View>
+              <View style={styles.weekMetricDivider} />
+              <View style={styles.weekMetricBlock}>
+                <Text style={styles.weekMetricEyebrow}>Active Streak</Text>
+                <Text style={styles.weekMetricValue}>{streakSummary.dailyStreakDays} days streak · {streakSummary.weeklyStreakWeeks} weeks active</Text>
+              </View>
+            </View>
+          </LinearGradient>
+        </View>
+
+        <View>
+          <Text style={styles.sectionLabel}>타입 선택</Text>
+          <View style={styles.environmentRow}>
+            {ENV_OPTIONS.map((option) => (
+              <Pressable
+                key={option.id}
+                style={[styles.envChip, environment === option.id && styles.envChipActive]}
+                onPress={() => handleSelectEnvironment(option.id)}
+              >
+                <Text style={[styles.envText, environment === option.id && styles.envTextActive]} numberOfLines={1}>
+                  {option.label}
+                </Text>
+              </Pressable>
+            ))}
           </View>
-        ))}
+        </View>
 
         <View>
           <View style={styles.sectionHeaderRow}>
-            <Text style={styles.sectionTitle}>최근 루틴</Text>
+            <Text style={styles.sectionTitle}>케어 루틴</Text>
+            <Pressable onPress={() => router.push('/(tabs)/care')}>
+              <Text style={styles.moreText}>더보기</Text>
+            </Pressable>
+          </View>
+          <View style={styles.careGrid}>
+            {careCards.map((intent) => {
+              const disabled = !intent.allowed_environments.includes(normalizedEnvironment);
+              const fallback = resolveFallback(intent, profile?.healthConditions ?? ['none']);
+              const safetyBadge = hasSafetyPriorityFallback(fallback) ? copy.home.safetyPriorityBadge : undefined;
+              return (
+                <HomeCarePreviewCard
+                  key={intent.id}
+                  title={intent.copy_title}
+                  subtitle={getEnvironmentSubtitle(intent, normalizedEnvironment)}
+                  emoji={CATEGORY_CARD_EMOJI[intent.intent_id] ?? '🛁'}
+                  tint={getIntentTint(intent.intent_id)}
+                  fitLabel={getEnvironmentFitLabel(intent, normalizedEnvironment)}
+                  safetyBadge={safetyBadge}
+                  disabled={disabled}
+                  disabledText="현재 환경에선 제한적으로 추천돼요"
+                  onPress={() => handleOpenSubProtocol(intent)}
+                  width={careCardWidth}
+                />
+              );
+            })}
+          </View>
+        </View>
+
+        <View>
+          <View style={styles.sectionHeaderRow}>
+            <Text style={styles.sectionTitle}>트립 루틴</Text>
+            <Pressable onPress={() => router.push('/(tabs)/trip')}>
+              <Text style={styles.moreText}>더보기</Text>
+            </Pressable>
+          </View>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.tripRow}>
+            {tripCards.map((intent) => {
+              const disabled = !intent.allowed_environments.includes(normalizedEnvironment);
+              const fallback = resolveFallback(intent, profile?.healthConditions ?? ['none']);
+              const safetyBadge = hasSafetyPriorityFallback(fallback) ? copy.home.safetyPriorityBadge : undefined;
+              const meta = TRIP_EDITORIAL_META[intent.intent_id] ?? TRIP_EDITORIAL_META.kyoto_forest;
+              return (
+                <HomeTripEditorialCard
+                  key={intent.id}
+                  title={intent.copy_title}
+                  subtitle={getEnvironmentSubtitle(intent, normalizedEnvironment)}
+                  destination={meta.destination}
+                  accent={meta.accent}
+                  fitLabel={getEnvironmentFitLabel(intent, normalizedEnvironment)}
+                  safetyBadge={safetyBadge}
+                  disabled={disabled}
+                  disabledText="현재 환경에선 제한적으로 추천돼요"
+                  onPress={() => handleOpenSubProtocol(intent)}
+                />
+              );
+            })}
+          </ScrollView>
+        </View>
+
+        <View>
+          <View style={styles.sectionHeaderRow}>
+            <Text style={styles.sectionTitle}>최근 완료한 루틴</Text>
             <Pressable onPress={() => router.push('/(tabs)/history')}>
               <Text style={styles.moreText}>더보기</Text>
             </Pressable>
           </View>
-
           <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.recentRow}>
             {recentRoutines.length === 0 ? (
-              <View style={styles.recentEmptyCard}>
+              <View style={[ui.glassCardV2, styles.recentEmptyCard]}>
                 <Text style={styles.recentEmptyText}>최근 기록이 아직 없어요</Text>
               </View>
-            ) : (
-              recentRoutines.slice(0, 8).map((routine) => (
-                <Pressable
-                  key={routine.id}
-                  style={styles.recentCard}
-                  onPress={() => router.push(`/result/recipe/${routine.id}`)}
-                >
+            ) : recentRoutines.slice(0, 8).map((routine) => (
+              <Pressable
+                key={routine.id}
+                style={[ui.glassCardV2, styles.recentCard]}
+                onPress={() => router.push(`/result/recipe/${routine.id}`)}
+              >
+                <View style={styles.recentCardHeader}>
                   <View style={[styles.recentColorDot, { backgroundColor: routine.colorHex }]} />
-                  <Text style={styles.recentTitle} numberOfLines={1}>{routine.themeTitle ?? '맞춤 케어'}</Text>
-                  <Text style={styles.recentSub} numberOfLines={2}>
-                    {routine.temperature.recommended}°C · {routine.durationMinutes ?? 10}분 · {ENV_LABEL[normalizeEnvironmentInput(routine.environmentUsed)] ?? '욕조'}
-                  </Text>
-                </Pressable>
-              ))
-            )}
+                  <Text style={styles.recentMeta}>{routine.mode === 'trip' ? 'TRIP' : 'CARE'}</Text>
+                </View>
+                <Text style={styles.recentTitle} numberOfLines={1}>{routine.themeTitle ?? '맞춤 케어'}</Text>
+                <Text style={styles.recentSub} numberOfLines={2}>
+                  {routine.temperature.recommended}°C · {routine.durationMinutes ?? 10}분 · {ENV_LABEL[normalizeEnvironmentInput(routine.environmentUsed)] ?? '욕조'}
+                </Text>
+              </Pressable>
+            ))}
           </ScrollView>
         </View>
 
-        <PersistentDisclosure style={styles.disclosureInline} lines={disclosureLines} />
+        <PersistentDisclosure style={styles.disclosureInline} lines={disclosureLines} variant="v2" />
       </ScrollView>
 
       <SafetyWarning
         visible={warningVisible}
         warnings={pendingWarnings}
         onDismiss={handleWarningDismiss}
+        variant="v2"
       />
 
       <SubProtocolPickerModal
@@ -640,220 +633,324 @@ export default function HomeIntentScreen() {
           setSelectedIntentPayload(null);
         }}
         onSelect={handleSelectSubProtocol}
+        variant="v2"
       />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: APP_BG_BASE,
-  },
   content: {
     paddingHorizontal: SCREEN_HORIZONTAL_PADDING,
-    paddingTop: 16,
+    paddingTop: 14,
     paddingBottom: 32,
     gap: SECTION_GAP,
   },
-
-  // ── Header ──────────────────────────────────────────────────────────
-  header: {
-    paddingTop: 8,
-    paddingBottom: 4,
+  headerBlock: {
+    gap: 6,
+    paddingTop: 4,
   },
-  title: {
+  brandRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    marginBottom: 2,
+  },
+  brandIcon: {
+    width: 18,
+    height: 20,
+    resizeMode: 'contain',
+  },
+  brandText: {
+    color: V2_ACCENT,
+    fontSize: TYPE_SCALE.caption,
+    fontWeight: '700',
+    letterSpacing: 1.2,
+  },
+  greeting: {
     fontSize: TYPE_SCALE.headingMd,
     fontWeight: '800',
-    color: TEXT_PRIMARY,
-    lineHeight: 32,
+    color: V2_TEXT_PRIMARY,
+    lineHeight: 30,
   },
   subtitle: {
-    marginTop: 6,
+    color: V2_TEXT_SECONDARY,
     fontSize: TYPE_SCALE.body,
-    color: TEXT_MUTED,
-    lineHeight: 21,
+    lineHeight: 20,
   },
   beginnerGuide: {
-    marginTop: 8,
+    marginTop: 2,
+    color: V2_TEXT_MUTED,
     fontSize: TYPE_SCALE.caption,
-    color: TEXT_SECONDARY,
     lineHeight: 18,
-    fontWeight: '600',
   },
-  streakCard: {
+  weeklyCard: {
     borderRadius: 16,
-    backgroundColor: CARD_SURFACE,
+    overflow: 'hidden',
     borderWidth: 1,
-    borderColor: CARD_BORDER,
-    paddingHorizontal: 16,
-    paddingVertical: 14,
-    gap: 8,
-    shadowColor: CARD_SHADOW,
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 1,
-    shadowRadius: 7,
-    elevation: 2,
+    borderColor: 'rgba(224, 186, 122, 0.16)',
+    shadowColor: '#120B06',
+    shadowOpacity: 0.18,
+    shadowRadius: 14,
+    shadowOffset: { width: 0, height: 8 },
+    elevation: 6,
   },
-  streakTitle: {
-    color: TEXT_PRIMARY,
-    fontWeight: '800',
-    fontSize: TYPE_SCALE.body,
-    lineHeight: 21,
+  weeklyGradient: {
+    paddingHorizontal: 14,
+    paddingTop: 14,
+    paddingBottom: 13,
+    gap: 12,
   },
-  streakTodayText: {
-    color: TEXT_SECONDARY,
-    fontWeight: '600',
-    fontSize: TYPE_SCALE.caption,
-    lineHeight: 18,
+  weeklyGlowPrimary: {
+    position: 'absolute',
+    top: -24,
+    left: -6,
+    width: 142,
+    height: 96,
+    borderRadius: 48,
+    backgroundColor: 'rgba(255, 210, 140, 0.12)',
   },
-  streakWeekRow: {
+  weeklyGlowSecondary: {
+    position: 'absolute',
+    right: -28,
+    bottom: -18,
+    width: 136,
+    height: 88,
+    borderRadius: 44,
+    backgroundColor: 'rgba(120, 77, 40, 0.18)',
+  },
+  weeklyTopRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    columnGap: 6,
+    alignItems: 'flex-start',
+    gap: 12,
   },
-  streakDayItem: {
+  weeklyLabel: {
+    color: '#D79F55',
+    fontSize: TYPE_SCALE.caption - 2,
+    fontWeight: '700',
+    letterSpacing: 0.2,
+  },
+  weeklyStatusRow: {
+    marginTop: 6,
+    flexDirection: 'row',
     alignItems: 'center',
-    gap: 2,
-    minWidth: 36,
+    gap: 6,
   },
-  streakDayLabel: {
-    color: TEXT_SECONDARY,
-    fontSize: 11,
+  weeklyStatusDot: {
+    width: 7,
+    height: 7,
+    borderRadius: 3.5,
+    backgroundColor: 'rgba(255, 243, 225, 0.36)',
+  },
+  weeklyStatusDotDone: {
+    backgroundColor: '#E1B968',
+  },
+  weeklyStatus: {
+    color: '#FFF3E1',
+    fontSize: TYPE_SCALE.caption - 1,
+    fontWeight: '700',
+    lineHeight: 16,
+  },
+  weeklySummaryText: {
+    marginTop: 4,
+    color: 'rgba(255, 236, 208, 0.56)',
+    fontSize: TYPE_SCALE.caption - 2,
     fontWeight: '600',
     lineHeight: 14,
   },
-  streakTodayLabel: {
-    color: ACCENT,
+  weeklyDetailButton: {
+    minHeight: 24,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 999,
+    backgroundColor: '#D8B05D',
+    borderWidth: 1,
+    borderColor: 'rgba(255, 241, 205, 0.08)',
+  },
+  weeklyDetailText: {
+    color: '#4C3316',
+    fontSize: TYPE_SCALE.caption - 2,
+    fontWeight: '800',
+    letterSpacing: 0.4,
+  },
+  weekDotsRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  weekDotItem: {
+    alignItems: 'center',
+    minWidth: 24,
+  },
+  weekDot: {
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: 'rgba(255, 236, 206, 0.18)',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(255, 247, 232, 0.04)',
+  },
+  weekDotDone: {
+    borderColor: '#E0B15E',
+    backgroundColor: '#D8B05D',
+  },
+  weekDotToday: {
+    borderColor: '#F3D7A4',
+    transform: [{ scale: 1.04 }],
+  },
+  weekDotText: {
+    color: 'rgba(255, 241, 218, 0.58)',
+    fontSize: 10,
     fontWeight: '700',
   },
-  streakDayMark: {
-    color: TEXT_SECONDARY,
-    fontSize: TYPE_SCALE.caption,
+  weekDotTextDone: {
+    color: '#4A3118',
+  },
+  weekDotTextToday: {
+    color: '#FFF7EA',
+  },
+  weekMetricsRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+  },
+  weekMetricBlock: {
+    flex: 1,
+    gap: 3,
+  },
+  weekMetricDivider: {
+    width: 1,
+    alignSelf: 'stretch',
+    marginHorizontal: 10,
+    backgroundColor: 'rgba(255, 235, 203, 0.14)',
+  },
+  weekMetricEyebrow: {
+    color: 'rgba(245, 224, 187, 0.44)',
+    fontSize: TYPE_SCALE.caption - 2,
     fontWeight: '700',
-    lineHeight: 18,
+    lineHeight: 13,
+    textTransform: 'uppercase',
+    letterSpacing: 0.3,
   },
-  streakDayMarkDone: {
-    color: ACCENT,
-  },
-  streakCountText: {
-    color: TEXT_PRIMARY,
-    fontSize: TYPE_SCALE.body,
+  weekMetricValue: {
+    color: '#FFF7EA',
+    fontSize: TYPE_SCALE.caption - 1,
     fontWeight: '700',
-    lineHeight: 21,
+    lineHeight: 16,
   },
-  streakMetaText: {
-    color: TEXT_SECONDARY,
-    fontSize: TYPE_SCALE.caption,
-    fontWeight: '600',
-    lineHeight: 18,
+  sectionLabel: {
+    color: V2_TEXT_PRIMARY,
+    fontSize: TYPE_SCALE.title,
+    fontWeight: '800',
+    marginBottom: 12,
   },
-
-  // ── Environment selector ────────────────────────────────────────────
   environmentRow: {
     flexDirection: 'row',
-    flexWrap: 'wrap',
-    columnGap: 8,
-    rowGap: 8,
+    gap: 8,
   },
   envChip: {
+    flex: 1,
+    minHeight: 40,
     borderRadius: 999,
-    paddingVertical: 8,
-    paddingHorizontal: 16,
-    backgroundColor: '#EAEEF5',
+    backgroundColor: V2_SURFACE,
+    borderWidth: 1,
+    borderColor: V2_BORDER,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 8,
+    paddingVertical: 9,
   },
   envChipActive: {
-    backgroundColor: ACCENT,
+    backgroundColor: 'rgba(201, 164, 91, 0.18)',
+    borderColor: V2_ACCENT,
   },
   envText: {
-    color: TEXT_SECONDARY,
-    fontSize: TYPE_SCALE.body,
-    fontWeight: '600',
+    color: V2_TEXT_SECONDARY,
+    fontSize: TYPE_SCALE.caption,
+    fontWeight: '700',
   },
   envTextActive: {
-    color: '#FFFFFF',
-  },
-
-  // ── Section title ───────────────────────────────────────────────────
-  sectionTitle: {
-    color: TEXT_PRIMARY,
-    fontWeight: '800',
-    fontSize: TYPE_SCALE.title,
+    color: V2_ACCENT,
   },
   sectionHeaderRow: {
     flexDirection: 'row',
-    alignItems: 'center',
     justifyContent: 'space-between',
+    alignItems: 'center',
     marginBottom: 12,
   },
+  sectionTitle: {
+    color: V2_TEXT_PRIMARY,
+    fontSize: TYPE_SCALE.title,
+    fontWeight: '800',
+  },
   moreText: {
-    color: ACCENT,
+    color: V2_ACCENT,
     fontSize: TYPE_SCALE.caption,
     fontWeight: '700',
   },
-
-  // ── Category card grid ──────────────────────────────────────────────
-  gridWrap: {
+  careGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'flex-start',
+    columnGap: CARD_GAP,
+    rowGap: CARD_GAP,
   },
-
-  // ── Recent routines ─────────────────────────────────────────────────
+  tripRow: {
+    gap: 12,
+    paddingRight: 8,
+  },
   recentRow: {
     gap: 12,
     paddingRight: 8,
-    paddingVertical: 2,
   },
   recentCard: {
-    width: 180,
-    borderRadius: 16,
-    backgroundColor: CARD_SURFACE,
-    borderWidth: 1,
-    borderColor: CARD_BORDER,
+    width: 172,
     paddingHorizontal: 14,
     paddingVertical: 14,
-    gap: 6,
-    minHeight: 100,
-    shadowColor: CARD_SHADOW,
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 1,
-    shadowRadius: 8,
-    elevation: 2,
+    gap: 8,
+    minHeight: 112,
+  },
+  recentCardHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
   },
   recentColorDot: {
     width: 8,
     height: 8,
     borderRadius: 4,
   },
+  recentMeta: {
+    color: V2_TEXT_MUTED,
+    fontSize: TYPE_SCALE.caption - 1,
+    fontWeight: '800',
+    letterSpacing: 0.8,
+  },
   recentTitle: {
-    color: TEXT_PRIMARY,
+    color: V2_TEXT_PRIMARY,
     fontSize: TYPE_SCALE.body,
     fontWeight: '700',
-    lineHeight: 21,
+    lineHeight: 20,
   },
   recentSub: {
-    color: TEXT_SECONDARY,
+    color: V2_TEXT_SECONDARY,
     fontSize: TYPE_SCALE.caption,
-    lineHeight: 18,
+    lineHeight: 17,
   },
   recentEmptyCard: {
-    width: 240,
-    borderRadius: 16,
-    backgroundColor: CARD_SURFACE,
-    borderWidth: 1,
-    borderColor: CARD_BORDER,
+    width: 220,
     paddingHorizontal: 16,
     paddingVertical: 18,
-    minHeight: 100,
+    minHeight: 112,
     justifyContent: 'center',
   },
   recentEmptyText: {
-    color: TEXT_SECONDARY,
+    color: V2_TEXT_SECONDARY,
     fontSize: TYPE_SCALE.body,
     lineHeight: 20,
   },
   disclosureInline: {
-    marginTop: 4,
+    marginTop: -2,
   },
 });

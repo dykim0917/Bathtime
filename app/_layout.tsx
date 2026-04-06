@@ -6,25 +6,21 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import 'react-native-reanimated';
-import { APP_BG_BASE, CARD_BORDER, CARD_SURFACE, TEXT_PRIMARY, ACCENT } from '@/src/data/colors';
+import { V2_ACCENT, V2_BG_BASE, V2_BORDER, V2_SURFACE, V2_TEXT_PRIMARY } from '@/src/data/colors';
 
 export { ErrorBoundary } from 'expo-router';
-
-export const unstable_settings = {
-  initialRouteName: '(tabs)',
-};
-
+export const unstable_settings = { initialRouteName: '(tabs)' };
 SplashScreen.preventAutoHideAsync();
 
-const LiquidGlassTheme = {
+const AppTheme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    background: APP_BG_BASE,
-    card: CARD_SURFACE,
-    text: TEXT_PRIMARY,
-    border: CARD_BORDER,
-    primary: ACCENT,
+    background: V2_BG_BASE,
+    card: V2_SURFACE,
+    text: V2_TEXT_PRIMARY,
+    border: V2_BORDER,
+    primary: V2_ACCENT,
   },
 };
 
@@ -34,53 +30,19 @@ export default function RootLayout() {
     ...FontAwesome.font,
   });
 
-  useEffect(() => {
-    if (error) throw error;
-  }, [error]);
-
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
-
-  if (!loaded) {
-    return null;
-  }
+  useEffect(() => { if (error) throw error; }, [error]);
+  useEffect(() => { if (loaded) SplashScreen.hideAsync(); }, [loaded]);
+  if (!loaded) return null;
 
   return (
-    <ThemeProvider value={LiquidGlassTheme}>
-      <StatusBar style="dark" />
+    <ThemeProvider value={AppTheme}>
+      <StatusBar style="light" />
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen
-          name="onboarding"
-          options={{ headerShown: false, gestureEnabled: false }}
-        />
-        <Stack.Screen
-          name="result/recipe/[id]"
-          options={{
-            headerShown: false,
-            presentation: 'modal',
-            gestureEnabled: true,
-          }}
-        />
-        <Stack.Screen
-          name="result/timer/[id]"
-          options={{
-            headerShown: false,
-            presentation: 'modal',
-            gestureEnabled: false,
-          }}
-        />
-        <Stack.Screen
-          name="result/completion/[id]"
-          options={{
-            headerShown: false,
-            presentation: 'modal',
-            gestureEnabled: false,
-          }}
-        />
+        <Stack.Screen name="onboarding" options={{ headerShown: false, gestureEnabled: false }} />
+        <Stack.Screen name="result/recipe/[id]" options={{ headerShown: false, presentation: 'modal', gestureEnabled: true }} />
+        <Stack.Screen name="result/timer/[id]" options={{ headerShown: false, presentation: 'modal', gestureEnabled: false }} />
+        <Stack.Screen name="result/completion/[id]" options={{ headerShown: false, presentation: 'modal', gestureEnabled: false }} />
       </Stack>
     </ThemeProvider>
   );

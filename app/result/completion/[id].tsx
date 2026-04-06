@@ -7,6 +7,7 @@ import {
   SafeAreaView,
 } from 'react-native';
 import { useLocalSearchParams, router } from 'expo-router';
+import { LinearGradient } from 'expo-linear-gradient';
 import Animated, { FadeIn, BounceIn } from 'react-native-reanimated';
 import { BathRecommendation, BathFeedback } from '@/src/engine/types';
 import { getRecommendationById, getMonthlyCount, updateRecommendationFeedback } from '@/src/storage/history';
@@ -15,19 +16,24 @@ import { patchSessionRecord } from '@/src/storage/sessionLog';
 import { applyFeedbackToThemePreference, saveCompletionMemory } from '@/src/storage/memory';
 import { mapFeedbackToFeelingAfter } from '@/src/engine/feeling';
 import { getTimeBasedMessage } from '@/src/utils/messages';
-import { GradientBackground } from '@/src/components/GradientBackground';
 import { copy } from '@/src/content/copy';
 import {
-  BG,
-  CARD_BORDER_SOFT,
-  CARD_GLASS,
-  CARD_SHADOW_SOFT,
-  PASTEL_BG_BOTTOM,
-  PASTEL_BG_TOP,
-  TEXT_PRIMARY,
-  TEXT_SECONDARY,
-  ACCENT,
+  TYPE_SCALE,
+  V2_ACCENT,
+  V2_ACCENT_SOFT,
+  V2_ACCENT_TEXT,
+  V2_BG_BASE,
+  V2_BG_BOTTOM,
+  V2_BG_OVERLAY,
+  V2_BG_TOP,
+  V2_BORDER,
+  V2_SHADOW,
+  V2_SURFACE,
+  V2_TEXT_MUTED,
+  V2_TEXT_PRIMARY,
+  V2_TEXT_SECONDARY,
 } from '@/src/data/colors';
+import { ui } from '@/src/theme/ui';
 
 function toEnvironmentLabel(environment: string): string {
   switch (environment) {
@@ -45,8 +51,7 @@ function toEnvironmentLabel(environment: string): string {
 
 export default function CompletionScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
-  const [recommendation, setRecommendation] =
-    useState<BathRecommendation | null>(null);
+  const [recommendation, setRecommendation] = useState<BathRecommendation | null>(null);
   const [monthlyCount, setMonthlyCount] = useState(0);
   const [feedback, setFeedback] = useState<BathFeedback>(null);
   const [memoryNarrative, setMemoryNarrative] = useState<string | null>(null);
@@ -124,8 +129,8 @@ export default function CompletionScreen() {
 
   if (!recommendation) {
     return (
-      <View style={[styles.container, styles.centered]}>
-        <Text style={{ color: TEXT_SECONDARY }}>{copy.completion.loading}</Text>
+      <View style={[ui.screenShellV2, styles.centered]}>
+        <Text style={{ color: V2_TEXT_SECONDARY }}>{copy.completion.loading}</Text>
       </View>
     );
   }
@@ -137,130 +142,107 @@ export default function CompletionScreen() {
 
   return (
     <View style={styles.container}>
-      <GradientBackground
-        colorHex={PASTEL_BG_TOP}
-        style={StyleSheet.absoluteFillObject}
-      >
-        <View style={styles.softOverlay} />
-        <SafeAreaView style={styles.safeArea}>
-          <View style={styles.content}>
-            <Animated.Text
-              entering={BounceIn.duration(800)}
-              style={styles.celebrationEmoji}
-            >
-              🎉
-            </Animated.Text>
+      <LinearGradient colors={[V2_BG_TOP, V2_BG_BASE, V2_BG_BOTTOM]} style={StyleSheet.absoluteFillObject} />
+      <View style={styles.softOverlay} />
+      <SafeAreaView style={styles.safeArea}>
+        <View style={styles.content}>
+          <Animated.Text entering={BounceIn.duration(800)} style={styles.celebrationEmoji}>
+            🎉
+          </Animated.Text>
 
-            <Animated.View entering={FadeIn.duration(600).delay(400)}>
-              <View style={styles.stepBadge}>
-                <Text style={styles.stepBadgeText}>{copy.routine.stepFinish}</Text>
-              </View>
-              <Text style={styles.mainMessage}>{timeMessage}</Text>
-            </Animated.View>
+          <Animated.View entering={FadeIn.duration(600).delay(200)} style={styles.headerBlock}>
+            <View style={styles.stepBadge}>
+              <Text style={styles.stepBadgeText}>{copy.routine.stepFinish}</Text>
+            </View>
+            <Text style={styles.mainMessage}>{timeMessage}</Text>
+          </Animated.View>
 
-            <Animated.View
-              entering={FadeIn.duration(600).delay(600)}
-              style={styles.statsCard}
-            >
-              <Text style={styles.statsEmoji}>📊</Text>
-              <Text style={styles.statsText}>
-                {copy.completion.monthlyPrefix}{' '}
-                <Text style={[styles.statsHighlight, { color: recommendation.colorHex }]}>
-                  {monthlyCount}
-                </Text>
-                {copy.completion.monthlySuffix}
-              </Text>
-            </Animated.View>
+          <Animated.View entering={FadeIn.duration(600).delay(350)} style={[ui.glassCardV2, styles.statsCard]}>
+            <Text style={styles.statsLabel}>MONTHLY COUNT</Text>
+            <Text style={styles.statsText}>
+              {copy.completion.monthlyPrefix}{' '}
+              <Text style={styles.statsHighlight}>{monthlyCount}</Text>
+              {copy.completion.monthlySuffix}
+            </Text>
+          </Animated.View>
 
-            <Animated.View
-              entering={FadeIn.duration(600).delay(800)}
-              style={styles.feedbackSection}
-            >
-              <Text style={styles.feedbackTitle}>{feedbackTitle}</Text>
-              <View style={styles.feedbackButtons}>
-                <TouchableOpacity
-                  style={[
-                    styles.feedbackButton,
-                    feedback === 'good' && {
-                      backgroundColor: recommendation.colorHex + '20',
-                      borderColor: recommendation.colorHex,
-                    },
-                  ]}
-                  onPress={() => handleFeedback('good')}
-                  activeOpacity={0.7}
-                  disabled={feedback !== null}
-                >
-                  <Text style={styles.feedbackEmoji}>👍</Text>
-                  <Text style={styles.feedbackLabel}>{copy.completion.feedback.good}</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                  style={[
-                    styles.feedbackButton,
-                    feedback === 'bad' && {
-                      backgroundColor: '#FEE2E2',
-                      borderColor: '#EF4444',
-                    },
-                  ]}
-                  onPress={() => handleFeedback('bad')}
-                  activeOpacity={0.7}
-                  disabled={feedback !== null}
-                >
-                  <Text style={styles.feedbackEmoji}>👎</Text>
-                  <Text style={styles.feedbackLabel}>{copy.completion.feedback.bad}</Text>
-                </TouchableOpacity>
-              </View>
-              {feedback && (
-                <Animated.Text
-                  entering={FadeIn.duration(300)}
-                  style={styles.feedbackThanks}
-                >
-                  {copy.completion.feedback.thanks}
-                </Animated.Text>
-              )}
-            </Animated.View>
-
-            {(memoryNarrative || themeWeight !== null) && (
-              <Animated.View
-                entering={FadeIn.duration(600).delay(900)}
-                style={styles.memoryCard}
+          <Animated.View entering={FadeIn.duration(600).delay(500)} style={[ui.glassCardV2, styles.feedbackSection]}>
+            <Text style={styles.feedbackTitle}>{feedbackTitle}</Text>
+            <View style={styles.feedbackButtons}>
+              <TouchableOpacity
+                style={[
+                  styles.feedbackButton,
+                  feedback === 'good' && styles.feedbackButtonActive,
+                ]}
+                onPress={() => handleFeedback('good')}
+                activeOpacity={0.8}
+                disabled={feedback !== null}
               >
-                <Text style={styles.memoryTitle}>{copy.completion.memoryTitle}</Text>
-                <Text style={styles.memoryLine}>
-                  {copy.completion.memoryLabels.snapshot}: {snapshotLine ?? `${recommendation.temperature.recommended}°C · ${recommendation.durationMinutes ?? '자유'}분 · ${toEnvironmentLabel(recommendation.environmentUsed)}`}
+                <Text style={styles.feedbackEmoji}>👍</Text>
+                <Text style={[styles.feedbackLabel, feedback === 'good' && styles.feedbackLabelActive]}>
+                  {copy.completion.feedback.good}
                 </Text>
-                {themeWeight !== null && recommendation.themeTitle ? (
-                  <Text style={styles.memoryLine}>
-                    {copy.completion.memoryLabels.weight}: {recommendation.themeTitle} {themeWeight}
-                  </Text>
-                ) : null}
-                {memoryNarrative ? (
-                  <Text style={styles.memoryLine}>
-                    {copy.completion.memoryLabels.recall}: {memoryNarrative}
-                  </Text>
-                ) : null}
-              </Animated.View>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                style={[
+                  styles.feedbackButton,
+                  feedback === 'bad' && styles.feedbackButtonActive,
+                ]}
+                onPress={() => handleFeedback('bad')}
+                activeOpacity={0.8}
+                disabled={feedback !== null}
+              >
+                <Text style={styles.feedbackEmoji}>👎</Text>
+                <Text style={[styles.feedbackLabel, feedback === 'bad' && styles.feedbackLabelActive]}>
+                  {copy.completion.feedback.bad}
+                </Text>
+              </TouchableOpacity>
+            </View>
+            {feedback && (
+              <Animated.Text entering={FadeIn.duration(300)} style={styles.feedbackThanks}>
+                {copy.completion.feedback.thanks}
+              </Animated.Text>
             )}
+          </Animated.View>
 
-            <Animated.View entering={FadeIn.duration(500).delay(1000)} style={styles.actionRow}>
-              <TouchableOpacity
-                style={[styles.homeButton, styles.secondaryButton]}
-                onPress={handleGoHistory}
-                activeOpacity={0.8}
-              >
-                <Text style={[styles.homeButtonText, styles.secondaryButtonText]}>기록 보기</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.homeButton}
-                onPress={handleGoHome}
-                activeOpacity={0.8}
-              >
-                <Text style={styles.homeButtonText}>{copy.completion.homeCta}</Text>
-              </TouchableOpacity>
+          {(memoryNarrative || themeWeight !== null) && (
+            <Animated.View entering={FadeIn.duration(600).delay(650)} style={[ui.glassCardV2, styles.memoryCard]}>
+              <Text style={styles.memoryTitle}>{copy.completion.memoryTitle}</Text>
+              <Text style={styles.memoryLine}>
+                {copy.completion.memoryLabels.snapshot}: {snapshotLine ?? `${recommendation.temperature.recommended}°C · ${recommendation.durationMinutes ?? '자유'}분 · ${toEnvironmentLabel(recommendation.environmentUsed)}`}
+              </Text>
+              {themeWeight !== null && recommendation.themeTitle ? (
+                <Text style={styles.memoryLine}>
+                  {copy.completion.memoryLabels.weight}: {recommendation.themeTitle} {themeWeight}
+                </Text>
+              ) : null}
+              {memoryNarrative ? (
+                <Text style={styles.memoryLine}>
+                  {copy.completion.memoryLabels.recall}: {memoryNarrative}
+                </Text>
+              ) : null}
             </Animated.View>
-          </View>
-        </SafeAreaView>
-      </GradientBackground>
+          )}
+
+          <Animated.View entering={FadeIn.duration(500).delay(800)} style={styles.actionRow}>
+            <TouchableOpacity
+              style={[ui.secondaryButtonV2, styles.actionButton]}
+              onPress={handleGoHistory}
+              activeOpacity={0.85}
+            >
+              <Text style={ui.secondaryButtonTextV2}>기록 보기</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[ui.primaryButtonV2, styles.actionButton]}
+              onPress={handleGoHome}
+              activeOpacity={0.85}
+            >
+              <Text style={ui.primaryButtonTextV2}>{copy.completion.homeCta}</Text>
+            </TouchableOpacity>
+          </Animated.View>
+        </View>
+      </SafeAreaView>
     </View>
   );
 }
@@ -268,7 +250,7 @@ export default function CompletionScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: BG,
+    backgroundColor: V2_BG_BASE,
   },
   centered: {
     justifyContent: 'center',
@@ -279,97 +261,94 @@ const styles = StyleSheet.create({
   },
   softOverlay: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: PASTEL_BG_BOTTOM + '88',
+    backgroundColor: V2_BG_OVERLAY,
   },
   content: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
-    paddingHorizontal: 30,
+    paddingHorizontal: 22,
+    paddingVertical: 24,
+    gap: 18,
   },
   celebrationEmoji: {
     fontSize: 72,
-    marginBottom: 16,
+    textAlign: 'center',
+  },
+  headerBlock: {
+    alignItems: 'center',
+    gap: 10,
   },
   mainMessage: {
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: '700',
-    color: TEXT_PRIMARY,
+    color: V2_TEXT_PRIMARY,
     textAlign: 'center',
-    lineHeight: 28,
-    marginBottom: 24,
+    lineHeight: 30,
   },
   stepBadge: {
     alignSelf: 'center',
     borderRadius: 999,
     borderWidth: 1,
-    borderColor: CARD_BORDER_SOFT,
-    paddingHorizontal: 10,
-    paddingVertical: 4,
-    backgroundColor: 'rgba(255,255,255,0.9)',
-    marginBottom: 10,
+    borderColor: V2_BORDER,
+    paddingHorizontal: 12,
+    paddingVertical: 5,
+    backgroundColor: V2_ACCENT_SOFT,
   },
   stepBadgeText: {
-    fontSize: 11,
+    fontSize: TYPE_SCALE.caption - 1,
     fontWeight: '700',
-    color: TEXT_SECONDARY,
+    color: V2_ACCENT,
+    letterSpacing: 1,
   },
   statsCard: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: CARD_GLASS,
-    borderRadius: 18,
-    paddingVertical: 16,
-    paddingHorizontal: 24,
-    marginBottom: 28,
-    borderWidth: 1,
-    borderColor: CARD_BORDER_SOFT,
-    shadowColor: CARD_SHADOW_SOFT,
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 1,
-    shadowRadius: 12,
-    elevation: 3,
+    paddingVertical: 18,
+    paddingHorizontal: 18,
+    gap: 6,
   },
-  statsEmoji: {
-    fontSize: 24,
-    marginRight: 12,
+  statsLabel: {
+    fontSize: TYPE_SCALE.caption - 1,
+    fontWeight: '700',
+    color: V2_TEXT_MUTED,
+    letterSpacing: 1,
   },
   statsText: {
-    fontSize: 16,
-    color: TEXT_PRIMARY,
+    fontSize: 18,
+    color: V2_TEXT_PRIMARY,
+    lineHeight: 24,
   },
   statsHighlight: {
     fontWeight: '800',
-    fontSize: 18,
+    fontSize: 28,
+    color: V2_ACCENT,
   },
   feedbackSection: {
-    width: '100%',
-    alignItems: 'center',
-    marginBottom: 28,
+    padding: 18,
+    gap: 14,
   },
   feedbackTitle: {
     fontSize: 16,
-    fontWeight: '600',
-    color: TEXT_PRIMARY,
-    marginBottom: 12,
+    fontWeight: '700',
+    color: V2_TEXT_PRIMARY,
+    textAlign: 'center',
+    lineHeight: 22,
   },
   feedbackButtons: {
     flexDirection: 'row',
-    gap: 16,
+    gap: 12,
   },
   feedbackButton: {
+    flex: 1,
     alignItems: 'center',
-    backgroundColor: CARD_GLASS,
-    borderRadius: 18,
+    backgroundColor: 'rgba(255,255,255,0.04)',
+    borderRadius: 16,
     paddingVertical: 14,
-    paddingHorizontal: 28,
+    paddingHorizontal: 12,
     borderWidth: 1,
-    borderColor: CARD_BORDER_SOFT,
-    shadowColor: CARD_SHADOW_SOFT,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 1,
-    shadowRadius: 8,
-    elevation: 2,
+    borderColor: V2_BORDER,
+  },
+  feedbackButtonActive: {
+    backgroundColor: V2_ACCENT,
+    borderColor: V2_ACCENT,
   },
   feedbackEmoji: {
     fontSize: 28,
@@ -377,60 +356,44 @@ const styles = StyleSheet.create({
   },
   feedbackLabel: {
     fontSize: 13,
-    color: TEXT_SECONDARY,
+    color: V2_TEXT_SECONDARY,
+    fontWeight: '700',
+  },
+  feedbackLabelActive: {
+    color: V2_ACCENT_TEXT,
   },
   feedbackThanks: {
-    marginTop: 12,
     fontSize: 14,
-    color: TEXT_SECONDARY,
+    color: V2_TEXT_MUTED,
+    textAlign: 'center',
   },
   memoryCard: {
-    width: '100%',
-    backgroundColor: CARD_GLASS,
-    borderRadius: 14,
-    borderWidth: 1,
-    borderColor: CARD_BORDER_SOFT,
-    paddingVertical: 10,
-    paddingHorizontal: 12,
-    marginBottom: 18,
-    gap: 4,
+    paddingVertical: 14,
+    paddingHorizontal: 16,
+    gap: 6,
   },
   memoryTitle: {
     fontSize: 12,
     fontWeight: '700',
-    color: TEXT_PRIMARY,
+    color: V2_TEXT_PRIMARY,
+    letterSpacing: 0.6,
+    textTransform: 'uppercase',
   },
   memoryLine: {
     fontSize: 12,
-    color: TEXT_SECONDARY,
-    lineHeight: 16,
-  },
-  disclosureInline: {
-    width: '100%',
-    marginBottom: 14,
+    color: V2_TEXT_SECONDARY,
+    lineHeight: 17,
   },
   actionRow: {
     width: '100%',
     gap: 10,
   },
-  homeButton: {
-    backgroundColor: ACCENT,
-    borderRadius: 18,
-    paddingVertical: 13,
-    paddingHorizontal: 20,
-    alignItems: 'center',
-  },
-  homeButtonText: {
-    fontSize: 15,
-    fontWeight: '700',
-    color: '#fff',
-  },
-  secondaryButton: {
-    backgroundColor: CARD_GLASS,
-    borderWidth: 1,
-    borderColor: CARD_BORDER_SOFT,
-  },
-  secondaryButtonText: {
-    color: TEXT_PRIMARY,
+  actionButton: {
+    width: '100%',
+    shadowColor: V2_SHADOW,
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 1,
+    shadowRadius: 16,
+    elevation: 4,
   },
 });

@@ -1,37 +1,15 @@
 import React, { useState } from 'react';
-import {
-  View,
-  Text,
-  Pressable,
-  TouchableOpacity,
-  StyleSheet,
-  SafeAreaView,
-} from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
+import { View, Text, Image, TouchableOpacity, StyleSheet, SafeAreaView, Pressable } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { router, useLocalSearchParams } from 'expo-router';
 import { BathEnvironment, HealthCondition, UserProfile } from '@/src/engine/types';
-import { TagChip } from '@/src/components/TagChip';
 import { useHaptic } from '@/src/hooks/useHaptic';
 import { useUserProfile } from '@/src/hooks/useUserProfile';
-import {
-  APP_BG_BASE,
-  BTN_DISABLED,
-  BTN_PRIMARY,
-  BTN_PRIMARY_TEXT,
-  TEXT_MUTED,
-  TEXT_PRIMARY,
-  TEXT_SECONDARY,
-  TYPE_BODY,
-  TYPE_CAPTION,
-  TYPE_HEADING_LG,
-} from '@/src/data/colors';
+import { TYPE_CAPTION, TYPE_BODY, TYPE_HEADING_LG, TYPE_TITLE, V2_ACCENT, V2_ACCENT_SOFT, V2_ACCENT_TEXT, V2_BG_BASE, V2_BG_BOTTOM, V2_BG_TOP, V2_BORDER, V2_TEXT_MUTED, V2_TEXT_PRIMARY, V2_TEXT_SECONDARY } from '@/src/data/colors';
+import { ui } from '@/src/theme/ui';
 
-interface ConditionOption {
-  id: HealthCondition;
-  labelKo: string;
-  emoji: string;
-}
-
+interface ConditionOption { id: HealthCondition; labelKo: string; emoji: string; }
 const CONDITIONS: ConditionOption[] = [
   { id: 'hypertension_heart', labelKo: '고혈압/심장', emoji: '⚠️' },
   { id: 'pregnant', labelKo: '임신 중', emoji: '🤰' },
@@ -50,18 +28,10 @@ export default function OnboardingHealth() {
     haptic.light();
     setSelectedConditions((prev) => {
       const next = new Set(prev);
-      if (condition === 'none') {
-        return new Set(['none'] as HealthCondition[]);
-      }
+      if (condition === 'none') return new Set(['none'] as HealthCondition[]);
       next.delete('none');
-      if (next.has(condition)) {
-        next.delete(condition);
-      } else {
-        next.add(condition);
-      }
-      if (next.size === 0) {
-        next.add('none');
-      }
+      if (next.has(condition)) next.delete(condition); else next.add(condition);
+      if (next.size === 0) next.add('none');
       return next;
     });
   };
@@ -82,129 +52,82 @@ export default function OnboardingHealth() {
   const hasSelection = selectedConditions.size > 0;
 
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <View style={styles.container}>
-        <View style={styles.headerRow}>
-          <TouchableOpacity
-            style={styles.backButton}
-            activeOpacity={0.7}
-            onPress={() => {
-              if (router.canGoBack()) {
-                router.back();
-                return;
-              }
-              router.replace('/onboarding');
-            }}
-          >
-            <FontAwesome name="angle-left" size={28} color={TEXT_PRIMARY} />
-          </TouchableOpacity>
-          <View style={styles.header}>
-            <Text style={styles.title}>건강 상태를{'\n'}선택해주세요</Text>
-            <Text style={styles.subtitle}>안전한 입욕법을 위해 해당 사항을 모두 선택해주세요</Text>
+    <View style={styles.root}>
+      <LinearGradient colors={[V2_BG_TOP, V2_BG_BASE, V2_BG_BOTTOM]} style={StyleSheet.absoluteFillObject} />
+      <SafeAreaView style={styles.safeArea}>
+        <View style={styles.container}>
+          <View style={styles.topRow}>
+            <TouchableOpacity style={styles.backButton} activeOpacity={0.7} onPress={() => router.canGoBack() ? router.back() : router.replace('/onboarding')}>
+              <FontAwesome name="angle-left" size={26} color={V2_TEXT_PRIMARY} />
+            </TouchableOpacity>
+            <View style={styles.brandLockup}>
+              <Image source={require('../../assets/images/brand/bath-symbol.png')} style={styles.brandIcon} />
+              <Text style={styles.stepTitle}>STEP 02</Text>
+            </View>
+            <View style={styles.backButton} />
           </View>
+
+          <View style={styles.header}>
+            <Text style={styles.title}>건강 상태를{`\n`}선택해주세요</Text>
+            <Text style={styles.subtitle}>안전한 입욕 처방을 위해 현재의 신체 상태를 체크해주세요.</Text>
+          </View>
+
+          <View style={styles.conditions}>
+            {CONDITIONS.map((cond) => {
+              const selected = selectedConditions.has(cond.id);
+              return (
+                <Pressable key={cond.id} style={[ui.glassCardV2, styles.conditionCard, selected && styles.conditionCardSelected]} onPress={() => handleToggle(cond.id)}>
+                  <View style={[styles.conditionIcon, selected && styles.conditionIconSelected]}><Text style={styles.conditionEmoji}>{cond.emoji}</Text></View>
+                  <Text style={[styles.conditionLabel, selected && styles.conditionLabelSelected]}>{cond.labelKo}</Text>
+                  <View style={[styles.radio, selected && styles.radioSelected]}>{selected ? <FontAwesome name="check" size={11} color={V2_ACCENT_TEXT} /> : null}</View>
+                </Pressable>
+              );
+            })}
+          </View>
+
+          <View style={styles.spacer} />
+
+          <View style={styles.progressWrap}>
+            <View style={styles.progressTrack}><View style={styles.progressFill} /></View>
+            <Text style={styles.stepText}>02 / 02</Text>
+          </View>
+
+          <Pressable style={[ui.primaryButtonV2, styles.completeButton, !hasSelection && styles.completeButtonDisabled]} onPress={handleComplete} disabled={!hasSelection}>
+            <Text style={ui.primaryButtonTextV2}>진단 완료</Text>
+          </Pressable>
         </View>
-
-        <View style={styles.conditions}>
-          {CONDITIONS.map((cond) => (
-            <TagChip
-              key={cond.id}
-              label={cond.labelKo}
-              emoji={cond.emoji}
-              selected={selectedConditions.has(cond.id)}
-              accentColor={cond.id === 'none' ? '#7AAE89' : '#D39A6F'}
-              onPress={() => handleToggle(cond.id)}
-            />
-          ))}
-        </View>
-
-        <View style={styles.spacer} />
-
-        <View style={styles.stepIndicator}>
-          <Text style={styles.stepText}>02 / 02</Text>
-        </View>
-
-        <Pressable
-          style={[styles.completeButton, !hasSelection && styles.completeButtonDisabled]}
-          onPress={handleComplete}
-          disabled={!hasSelection}
-        >
-          <Text style={styles.completeText}>완료</Text>
-        </Pressable>
-      </View>
-    </SafeAreaView>
+      </SafeAreaView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-    backgroundColor: APP_BG_BASE,
-  },
-  headerRow: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    gap: 8,
-    marginTop: 8,
-    marginBottom: 24,
-  },
-  backButton: {
-    width: 44,
-    height: 44,
-    borderRadius: 22,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 2,
-  },
-  container: {
-    flex: 1,
-    paddingHorizontal: 24,
-  },
-  header: {
-    flex: 1,
-  },
-  title: {
-    fontSize: TYPE_HEADING_LG,
-    fontWeight: '800',
-    color: TEXT_PRIMARY,
-    lineHeight: 40,
-    marginBottom: 12,
-  },
-  subtitle: {
-    fontSize: TYPE_BODY,
-    color: TEXT_MUTED,
-    lineHeight: 20,
-  },
-  conditions: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-  },
-  spacer: {
-    flex: 1,
-  },
-  stepIndicator: {
-    alignItems: 'center',
-    marginBottom: 12,
-  },
-  stepText: {
-    fontSize: TYPE_CAPTION,
-    color: TEXT_MUTED,
-    fontWeight: '600',
-  },
-  completeButton: {
-    backgroundColor: BTN_PRIMARY,
-    borderRadius: 38,
-    height: 56,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 14,
-  },
-  completeButtonDisabled: {
-    backgroundColor: BTN_DISABLED,
-  },
-  completeText: {
-    fontSize: 16,
-    fontWeight: '700',
-    color: BTN_PRIMARY_TEXT,
-    letterSpacing: 0.5,
-  },
+  root: { flex: 1, backgroundColor: V2_BG_BASE },
+  safeArea: { flex: 1 },
+  container: { flex: 1, paddingHorizontal: 24 },
+  topRow: { marginTop: 8, marginBottom: 18, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
+  backButton: { width: 28, height: 28, justifyContent: 'center', alignItems: 'center' },
+  stepTitle: { fontSize: TYPE_CAPTION, letterSpacing: 1.6, fontWeight: '700', color: V2_ACCENT },
+  brandLockup: { flexDirection: 'row', alignItems: 'center', gap: 8 },
+  brandIcon: { width: 18, height: 20, resizeMode: 'contain' },
+  header: { marginBottom: 18 },
+  title: { fontSize: TYPE_HEADING_LG, fontWeight: '700', color: V2_TEXT_PRIMARY, lineHeight: 38, marginBottom: 12 },
+  subtitle: { fontSize: TYPE_BODY, color: V2_TEXT_SECONDARY, lineHeight: 22 },
+  conditions: { gap: 12 },
+  conditionCard: { minHeight: 64, paddingHorizontal: 14, flexDirection: 'row', alignItems: 'center' },
+  conditionCardSelected: { borderColor: V2_ACCENT, backgroundColor: 'rgba(201, 164, 91, 0.08)' },
+  conditionIcon: { width: 34, height: 34, borderRadius: 10, backgroundColor: 'rgba(255,255,255,0.06)', justifyContent: 'center', alignItems: 'center', marginRight: 12 },
+  conditionIconSelected: { backgroundColor: V2_ACCENT_SOFT },
+  conditionEmoji: { fontSize: 16 },
+  conditionLabel: { flex: 1, fontSize: TYPE_TITLE, color: V2_TEXT_PRIMARY, fontWeight: '500' },
+  conditionLabelSelected: { color: V2_ACCENT, fontWeight: '600' },
+  radio: { width: 24, height: 24, borderRadius: 12, borderWidth: 1.5, borderColor: V2_BORDER, justifyContent: 'center', alignItems: 'center' },
+  radioSelected: { borderColor: V2_ACCENT, backgroundColor: V2_ACCENT },
+  spacer: { flex: 1 },
+  progressWrap: { marginBottom: 14, alignItems: 'center' },
+  progressTrack: { height: 6, width: 110, borderRadius: 999, backgroundColor: 'rgba(90, 110, 145, 0.34)', overflow: 'hidden', marginBottom: 8 },
+  progressFill: { height: '100%', width: '100%', backgroundColor: V2_ACCENT },
+  stepText: { fontSize: TYPE_CAPTION, color: V2_TEXT_MUTED, fontWeight: '600' },
+  completeButton: { marginBottom: 14 },
+  completeButtonDisabled: { opacity: 0.45 },
 });
