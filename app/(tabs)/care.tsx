@@ -373,8 +373,10 @@ export default function CareScreen() {
 
         <View>
           <Text style={styles.sectionTitle}>추천 루틴</Text>
+          <Text style={styles.sectionIntro}>지금 컨디션에 맞는 대표 루틴부터 보이고, 나머지는 같은 리듬 안에서 비교할 수 있게 정리했어요.</Text>
           <View style={[styles.gridWrap, { rowGap: CARD_GAP }]}> 
             {ALL_CARE_CARDS.map((intent) => {
+              const isFeaturedCard = intent.card_position === 1;
               const isPlaceholder = intent.allowed_environments.length === 0;
               const disabled = isPlaceholder || !intent.allowed_environments.includes(normalizedEnvironment);
               const fallback = resolveFallback(intent, profile?.healthConditions ?? ['none']);
@@ -388,13 +390,16 @@ export default function CareScreen() {
                   subtitle={isPlaceholder ? '곧 추가될 예정이에요' : getEnvironmentSubtitle(intent, normalizedEnvironment)}
                   emoji={CATEGORY_CARD_EMOJI[intent.intent_id] ?? '🛁'}
                   bgColor={getIntentTint(intent.intent_id)}
+                  eyebrow={isFeaturedCard ? 'EDITOR PICK' : 'QUICK ROUTINE'}
+                  footerHint={disabled ? '환경 제약 확인하기' : '세부 루틴 고르기'}
                   fitLabel={isPlaceholder ? undefined : getEnvironmentFitLabel(intent, normalizedEnvironment)}
                   safetyBadge={safetyBadge}
                   disabled={disabled}
                   disabledText={isPlaceholder ? '준비 중이에요' : '현재 환경에선 제한적으로 추천돼요'}
                   onPress={() => handleOpenSubProtocol(intent)}
                   width={intentCardWidth}
-                  minHeight={CARD_MIN_HEIGHT_REGULAR}
+                  minHeight={isFeaturedCard ? CARD_MIN_HEIGHT_REGULAR + 24 : CARD_MIN_HEIGHT_REGULAR}
+                  emphasis={isFeaturedCard ? 'featured' : 'default'}
                   variant="v2"
                 />
               );
@@ -455,6 +460,13 @@ const styles = StyleSheet.create({
     color: V2_TEXT_PRIMARY,
     fontWeight: '700',
     fontSize: TYPE_SCALE.title,
+    marginBottom: 12,
+  },
+  sectionIntro: {
+    color: V2_TEXT_MUTED,
+    fontSize: TYPE_SCALE.caption,
+    lineHeight: 18,
+    marginTop: -4,
     marginBottom: 12,
   },
   environmentRow: {

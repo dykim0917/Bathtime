@@ -8,13 +8,14 @@ import {
   TEXT_PRIMARY,
   TEXT_SECONDARY,
   TYPE_SCALE,
+  V2_ACCENT,
   V2_BORDER,
   V2_SURFACE,
   V2_TEXT_MUTED,
   V2_TEXT_PRIMARY,
   V2_TEXT_SECONDARY,
 } from '@/src/data/colors';
-import { ProductItem } from '@/src/data/products';
+import { ProductCategory, ProductItem } from '@/src/data/products';
 
 interface ProductCardProps {
   item: ProductItem;
@@ -23,10 +24,18 @@ interface ProductCardProps {
 
 export function ProductCard({ item, variant = 'default' }: ProductCardProps) {
   const isV2 = variant === 'v2';
+  const categoryLabel = getCategoryLabel(item.category);
 
   return (
     <View style={[ui.glassCard, styles.card, isV2 && styles.cardV2]}>
       {isV2 ? <View style={[styles.glow, { backgroundColor: `${item.bgColor}24` }]} /> : null}
+      {isV2 ? (
+        <View style={styles.metaRow}>
+          <Text style={styles.metaEyebrow}>{categoryLabel}</Text>
+          <Text style={styles.metaDivider}>•</Text>
+          <Text style={styles.metaBrand}>Bath Edit</Text>
+        </View>
+      ) : null}
       <View style={styles.header}>
         <View style={[styles.emojiWrap, { backgroundColor: item.bgColor }, isV2 && styles.emojiWrapV2]}>
           <Text style={styles.emoji}>{item.emoji}</Text>
@@ -44,8 +53,27 @@ export function ProductCard({ item, variant = 'default' }: ProductCardProps) {
           </View>
         ))}
       </View>
+      {isV2 ? (
+        <View style={styles.footerRow}>
+          <Text style={styles.footerText}>루틴에 바로 연결하기 좋은 조합</Text>
+          <Text style={styles.footerArrow}>›</Text>
+        </View>
+      ) : null}
     </View>
   );
+}
+
+function getCategoryLabel(category: ProductCategory): string {
+  switch (category) {
+    case 'essential_oil':
+      return 'ESSENTIAL OIL';
+    case 'bath_salt':
+      return 'BATH SALT';
+    case 'herb':
+      return 'HERBAL PICK';
+    default:
+      return 'CURATED PRODUCT';
+  }
 }
 
 const styles = StyleSheet.create({
@@ -66,6 +94,25 @@ const styles = StyleSheet.create({
     width: 120,
     height: 120,
     borderRadius: 60,
+  },
+  metaRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+  },
+  metaEyebrow: {
+    fontSize: TYPE_SCALE.caption - 1,
+    fontWeight: '700',
+    letterSpacing: 1.1,
+    color: V2_TEXT_MUTED,
+  },
+  metaDivider: {
+    fontSize: TYPE_SCALE.caption,
+    color: V2_TEXT_MUTED,
+  },
+  metaBrand: {
+    fontSize: TYPE_SCALE.caption,
+    color: V2_TEXT_SECONDARY,
   },
   header: {
     flexDirection: 'row',
@@ -137,5 +184,24 @@ const styles = StyleSheet.create({
   },
   tagTextV2: {
     color: V2_TEXT_SECONDARY,
+  },
+  footerRow: {
+    marginTop: 2,
+    paddingTop: 10,
+    borderTopWidth: 1,
+    borderTopColor: 'rgba(255,255,255,0.06)',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  footerText: {
+    fontSize: TYPE_SCALE.caption,
+    color: V2_TEXT_MUTED,
+    fontWeight: '600',
+  },
+  footerArrow: {
+    fontSize: TYPE_SCALE.body + 2,
+    color: V2_ACCENT,
+    fontWeight: '700',
   },
 });

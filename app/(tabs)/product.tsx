@@ -74,7 +74,7 @@ export default function ProductScreen() {
 
         <View style={styles.listSection}>
           <Text style={styles.sectionTitle}>에디터 픽</Text>
-          <Text style={styles.listMeta}>{filtered.length}개 제품</Text>
+          <Text style={styles.listMeta}>{filtered.length}개 제품 · 루틴에 바로 붙이기 쉬운 조합만 모았어요</Text>
           <View>
             {filtered.map((item) => (
               <ProductCard key={item.id} item={item} variant="v2" />

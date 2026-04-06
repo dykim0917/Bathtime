@@ -20,6 +20,8 @@ interface CategoryCardProps {
   subtitle: string;
   emoji: string;
   bgColor: string;
+  eyebrow?: string;
+  footerHint?: string;
   fitLabel?: string;
   safetyBadge?: string;
   disabled?: boolean;
@@ -27,6 +29,7 @@ interface CategoryCardProps {
   onPress: () => void;
   width: number;
   minHeight?: number;
+  emphasis?: 'default' | 'featured';
   variant?: 'default' | 'v2';
 }
 
@@ -35,6 +38,8 @@ export function CategoryCard({
   subtitle,
   emoji,
   bgColor,
+  eyebrow,
+  footerHint,
   fitLabel,
   safetyBadge,
   disabled = false,
@@ -42,9 +47,11 @@ export function CategoryCard({
   onPress,
   width,
   minHeight = 140,
+  emphasis = 'default',
   variant = 'default',
 }: CategoryCardProps) {
   const isV2 = variant === 'v2';
+  const isFeatured = emphasis === 'featured';
 
   return (
     <Pressable
@@ -54,10 +61,11 @@ export function CategoryCard({
         styles.card,
         isV2 ? styles.cardV2 : { backgroundColor: disabled ? '#E8E8E8' : bgColor },
         isV2 && disabled && styles.cardV2Disabled,
+        isV2 && isFeatured && styles.cardV2Featured,
         { width, minHeight },
       ]}
     >
-      {isV2 ? <View style={[styles.tintOrb, { backgroundColor: `${bgColor}28` }]} /> : null}
+      {isV2 ? <View style={[styles.tintOrb, isFeatured && styles.tintOrbFeatured, { backgroundColor: `${bgColor}28` }]} /> : null}
       {(fitLabel || safetyBadge) ? (
         <View style={styles.badgeRow}>
           {fitLabel ? <Text style={[styles.fitBadge, isV2 && styles.fitBadgeV2]}>{fitLabel}</Text> : null}
@@ -65,6 +73,7 @@ export function CategoryCard({
         </View>
       ) : null}
       <View style={styles.body}>
+        {eyebrow ? <Text style={[styles.eyebrow, isV2 && styles.eyebrowV2]}>{eyebrow}</Text> : null}
         <Text style={styles.emoji}>{emoji}</Text>
         <Text style={[styles.title, disabled && styles.titleDisabled, isV2 && styles.titleV2]} numberOfLines={2}>
           {title}
@@ -72,6 +81,14 @@ export function CategoryCard({
         <Text style={[styles.subtitle, disabled && styles.subtitleDisabled, isV2 && styles.subtitleV2]} numberOfLines={2}>
           {subtitle}
         </Text>
+        {footerHint ? (
+          <View style={[styles.footerRow, isV2 && styles.footerRowV2]}>
+            <Text style={[styles.footerHint, isV2 && styles.footerHintV2]} numberOfLines={1}>
+              {footerHint}
+            </Text>
+            <Text style={[styles.footerArrow, isV2 && styles.footerArrowV2]}>›</Text>
+          </View>
+        ) : null}
         {disabled && disabledText ? (
           <Text style={[styles.warning, isV2 && styles.warningV2]} numberOfLines={2}>
             {disabledText}
@@ -98,6 +115,10 @@ const styles = StyleSheet.create({
   cardV2Disabled: {
     opacity: 0.76,
   },
+  cardV2Featured: {
+    backgroundColor: 'rgba(21, 42, 76, 0.94)',
+    borderColor: 'rgba(201, 164, 91, 0.28)',
+  },
   tintOrb: {
     position: 'absolute',
     top: -24,
@@ -105,6 +126,13 @@ const styles = StyleSheet.create({
     width: 110,
     height: 110,
     borderRadius: 55,
+  },
+  tintOrbFeatured: {
+    top: -12,
+    right: -6,
+    width: 134,
+    height: 134,
+    borderRadius: 67,
   },
   badgeRow: {
     flexDirection: 'row',
@@ -147,6 +175,16 @@ const styles = StyleSheet.create({
   body: {
     gap: 6,
   },
+  eyebrow: {
+    fontSize: TYPE_CAPTION - 1,
+    fontWeight: '700',
+    letterSpacing: 1.1,
+    color: '#35517E',
+    marginBottom: 2,
+  },
+  eyebrowV2: {
+    color: V2_ACCENT,
+  },
   emoji: {
     fontSize: 32,
     marginBottom: 4,
@@ -173,6 +211,33 @@ const styles = StyleSheet.create({
   },
   subtitleDisabled: {
     color: '#ABABAB',
+  },
+  footerRow: {
+    marginTop: 4,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  footerRowV2: {
+    borderTopWidth: 1,
+    borderTopColor: 'rgba(255,255,255,0.06)',
+    paddingTop: 10,
+  },
+  footerHint: {
+    fontSize: TYPE_CAPTION,
+    color: TEXT_PRIMARY,
+    fontWeight: '600',
+  },
+  footerHintV2: {
+    color: V2_TEXT_MUTED,
+  },
+  footerArrow: {
+    fontSize: TYPE_BODY + 2,
+    color: TEXT_PRIMARY,
+    fontWeight: '700',
+  },
+  footerArrowV2: {
+    color: V2_ACCENT,
   },
   warning: {
     marginTop: 2,
