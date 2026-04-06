@@ -10,6 +10,7 @@ import {
   Alert,
   Modal,
   useWindowDimensions,
+  Platform,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
@@ -700,11 +701,18 @@ const styles = StyleSheet.create({
     marginBottom: COL_GAP,
     borderWidth: 1,
     borderColor: V2_BORDER,
-    shadowColor: V2_SHADOW,
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 1,
-    shadowRadius: 10,
-    elevation: 3,
+    ...Platform.select({
+      web: {
+        boxShadow: `0px 4px 10px ${V2_SHADOW}`,
+      },
+      default: {
+        shadowColor: V2_SHADOW,
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 1,
+        shadowRadius: 10,
+        elevation: 3,
+      },
+    }),
     overflow: 'hidden',
   },
   gridCardHeader: {
@@ -940,11 +948,18 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: V2_BORDER,
     padding: 18,
-    shadowColor: V2_SHADOW,
-    shadowOffset: { width: 0, height: 8 },
-    shadowOpacity: 1,
-    shadowRadius: 16,
-    elevation: 4,
+    ...Platform.select({
+      web: {
+        boxShadow: `0px 8px 16px ${V2_SHADOW}`,
+      },
+      default: {
+        shadowColor: V2_SHADOW,
+        shadowOffset: { width: 0, height: 8 },
+        shadowOpacity: 1,
+        shadowRadius: 16,
+        elevation: 4,
+      },
+    }),
   },
   modalTitle: {
     fontSize: TYPE_TITLE,

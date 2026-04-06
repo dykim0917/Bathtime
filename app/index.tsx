@@ -17,7 +17,7 @@ export default function Index() {
 
   if (!ready) {
     return (
-      <View style={styles.container} pointerEvents="none">
+      <View style={styles.container}>
         <ActivityIndicator size="large" color={V2_ACCENT} />
       </View>
     );

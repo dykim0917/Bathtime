@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { View, Text, Pressable, ScrollView, StyleSheet, useWindowDimensions, Image } from 'react-native';
+import { View, Text, Pressable, ScrollView, StyleSheet, useWindowDimensions, Image, Platform } from 'react-native';
 import { router } from 'expo-router';
 import Constants from 'expo-constants';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -444,7 +444,7 @@ export default function HomeIntentScreen() {
           <View style={styles.heroGlow} />
           <View style={styles.brandRow}>
             <View style={styles.brandBadge}>
-              <Image source={require('../../assets/images/brand/bath-symbol.png')} style={styles.brandIcon} />
+              <Image source={require('../../assets/images/brand/bath-symbol.png')} style={styles.brandIcon} resizeMode="contain" />
               <Text style={styles.brandText}>BATH SOMMELIER</Text>
             </View>
             <Text style={styles.brandKicker}>Editorial bath rituals for tonight</Text>
@@ -686,7 +686,6 @@ const styles = StyleSheet.create({
   brandIcon: {
     width: 18,
     height: 20,
-    resizeMode: 'contain',
   },
   brandText: {
     color: V2_ACCENT,
@@ -721,11 +720,18 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     borderWidth: 1,
     borderColor: 'rgba(224, 186, 122, 0.16)',
-    shadowColor: '#120B06',
-    shadowOpacity: 0.18,
-    shadowRadius: 14,
-    shadowOffset: { width: 0, height: 8 },
-    elevation: 6,
+    ...Platform.select({
+      web: {
+        boxShadow: '0px 8px 14px rgba(18, 11, 6, 0.18)',
+      },
+      default: {
+        shadowColor: '#120B06',
+        shadowOpacity: 0.18,
+        shadowRadius: 14,
+        shadowOffset: { width: 0, height: 8 },
+        elevation: 6,
+      },
+    }),
   },
   weeklyGradient: {
     paddingHorizontal: 14,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Pressable, Linking, StyleSheet } from 'react-native';
+import { View, Text, Pressable, Linking, StyleSheet, Platform } from 'react-native';
 import { Ingredient } from '@/src/engine/types';
 import { SURFACE, GLASS_BORDER, GLASS_SHADOW, TEXT_PRIMARY, TEXT_SECONDARY } from '@/src/data/colors';
 
@@ -57,11 +57,18 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     borderWidth: 1,
     borderColor: GLASS_BORDER,
-    shadowColor: GLASS_SHADOW,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 1,
-    shadowRadius: 8,
-    elevation: 2,
+    ...Platform.select({
+      web: {
+        boxShadow: `0px 2px 8px ${GLASS_SHADOW}`,
+      },
+      default: {
+        shadowColor: GLASS_SHADOW,
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 1,
+        shadowRadius: 8,
+        elevation: 2,
+      },
+    }),
   },
   dot: {
     width: 8,

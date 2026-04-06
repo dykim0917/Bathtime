@@ -61,7 +61,7 @@ export default function OnboardingHealth() {
               <FontAwesome name="angle-left" size={26} color={V2_TEXT_PRIMARY} />
             </TouchableOpacity>
             <View style={styles.brandLockup}>
-              <Image source={require('../../assets/images/brand/bath-symbol.png')} style={styles.brandIcon} />
+              <Image source={require('../../assets/images/brand/bath-symbol.png')} style={styles.brandIcon} resizeMode="contain" />
               <Text style={styles.stepTitle}>STEP 02</Text>
             </View>
             <View style={styles.backButton} />
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
   backButton: { width: 28, height: 28, justifyContent: 'center', alignItems: 'center' },
   stepTitle: { fontSize: TYPE_CAPTION, letterSpacing: 1.6, fontWeight: '700', color: V2_ACCENT },
   brandLockup: { flexDirection: 'row', alignItems: 'center', gap: 8 },
-  brandIcon: { width: 18, height: 20, resizeMode: 'contain' },
+  brandIcon: { width: 18, height: 20 },
   header: { marginBottom: 18 },
   title: { fontSize: TYPE_HEADING_LG, fontWeight: '700', color: V2_TEXT_PRIMARY, lineHeight: 38, marginBottom: 12 },
   subtitle: { fontSize: TYPE_BODY, color: V2_TEXT_SECONDARY, lineHeight: 22 },

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Platform } from 'react-native';
 import { BathRecommendation } from '@/src/engine/types';
 import { PERSONA_DEFINITIONS } from '@/src/engine/personas';
 import { formatTemperature, formatTemperatureRange } from '@/src/utils/temperature';
@@ -89,11 +89,18 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     borderWidth: 1,
     borderColor: CARD_BORDER,
-    shadowColor: CARD_SHADOW,
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 1,
-    shadowRadius: 12,
-    elevation: 3,
+    ...Platform.select({
+      web: {
+        boxShadow: `0px 4px 12px ${CARD_SHADOW}`,
+      },
+      default: {
+        shadowColor: CARD_SHADOW,
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 1,
+        shadowRadius: 12,
+        elevation: 3,
+      },
+    }),
   },
   stat: {
     flex: 1,
@@ -128,11 +135,18 @@ const styles = StyleSheet.create({
     padding: 12,
     borderWidth: 1,
     borderColor: CARD_BORDER,
-    shadowColor: CARD_SHADOW,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 1,
-    shadowRadius: 8,
-    elevation: 2,
+    ...Platform.select({
+      web: {
+        boxShadow: `0px 2px 8px ${CARD_SHADOW}`,
+      },
+      default: {
+        shadowColor: CARD_SHADOW,
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 1,
+        shadowRadius: 8,
+        elevation: 2,
+      },
+    }),
   },
   lightingLabel: {
     fontSize: 14,

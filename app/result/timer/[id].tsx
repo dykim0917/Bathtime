@@ -170,7 +170,26 @@ const styles = StyleSheet.create({
   pausedLabel: { fontSize: 14, color: V2_TEXT_SECONDARY, marginTop: 10, letterSpacing: 2 },
   controlsArea: { paddingHorizontal: 24, paddingBottom: 8 },
   playRow: { alignItems: 'center', marginBottom: 28 },
-  playButton: { width: 76, height: 76, borderRadius: 38, backgroundColor: V2_TEXT_PRIMARY, justifyContent: 'center', alignItems: 'center', shadowColor: V2_TEXT_PRIMARY, shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.18, shadowRadius: 12, elevation: 6 },
+  playButton: {
+    width: 76,
+    height: 76,
+    borderRadius: 38,
+    backgroundColor: V2_TEXT_PRIMARY,
+    justifyContent: 'center',
+    alignItems: 'center',
+    ...Platform.select({
+      web: {
+        boxShadow: '0px 4px 12px rgba(238, 243, 255, 0.18)',
+      },
+      default: {
+        shadowColor: V2_TEXT_PRIMARY,
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.18,
+        shadowRadius: 12,
+        elevation: 6,
+      },
+    }),
+  },
   progressSection: { marginBottom: 20, padding: 14 },
   progressTrack: { height: 4, backgroundColor: V2_BORDER, borderRadius: 2, position: 'relative', marginBottom: 8 },
   progressFill: { position: 'absolute', left: 0, top: 0, height: 4, borderRadius: 2 },

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Platform } from 'react-native';
 import Slider from '@react-native-community/slider';
 import { MusicTrack, AmbienceTrack } from '@/src/engine/types';
 import {
@@ -86,11 +86,18 @@ const styles = StyleSheet.create({
     padding: 16,
     borderWidth: 1,
     borderColor: CARD_BORDER_SOFT,
-    shadowColor: CARD_SHADOW_SOFT,
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 1,
-    shadowRadius: 12,
-    elevation: 3,
+    ...Platform.select({
+      web: {
+        boxShadow: `0px 4px 12px ${CARD_SHADOW_SOFT}`,
+      },
+      default: {
+        shadowColor: CARD_SHADOW_SOFT,
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 1,
+        shadowRadius: 12,
+        elevation: 3,
+      },
+    }),
   },
   row: {
     flexDirection: 'row',

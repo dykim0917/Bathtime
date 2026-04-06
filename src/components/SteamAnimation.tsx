@@ -52,7 +52,7 @@ function SteamLayer({ delay, colorHex }: { delay: number; colorHex: string }) {
 
 export function SteamAnimation({ colorHex }: SteamAnimationProps) {
   return (
-    <View style={styles.root} pointerEvents="none">
+    <View style={styles.root}>
       <View style={styles.fog} />
       <SteamLayer delay={16} colorHex={colorHex} />
       <SteamLayer delay={42} colorHex={colorHex} />
@@ -65,6 +65,7 @@ const styles = StyleSheet.create({
   root: {
     ...StyleSheet.absoluteFillObject,
     overflow: 'hidden',
+    pointerEvents: 'none',
   },
   fog: {
     ...StyleSheet.absoluteFillObject,

@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import {
   APP_BG_BASE,
   CARD_BORDER,
@@ -33,11 +33,18 @@ export const ui = StyleSheet.create({
     borderWidth: 1,
     borderColor: CARD_BORDER,
     borderRadius: 18,
-    shadowColor: CARD_SHADOW,
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 1,
-    shadowRadius: 12,
-    elevation: 3,
+    ...Platform.select({
+      web: {
+        boxShadow: `0px 4px 12px ${CARD_SHADOW}`,
+      },
+      default: {
+        shadowColor: CARD_SHADOW,
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 1,
+        shadowRadius: 12,
+        elevation: 3,
+      },
+    }),
   },
   sectionTitle: {
     fontSize: TYPE_TITLE,
@@ -83,11 +90,18 @@ export const ui = StyleSheet.create({
     borderWidth: 1,
     borderColor: V2_BORDER,
     borderRadius: 18,
-    shadowColor: V2_SHADOW,
-    shadowOffset: { width: 0, height: 6 },
-    shadowOpacity: 1,
-    shadowRadius: 18,
-    elevation: 4,
+    ...Platform.select({
+      web: {
+        boxShadow: `0px 6px 18px ${V2_SHADOW}`,
+      },
+      default: {
+        shadowColor: V2_SHADOW,
+        shadowOffset: { width: 0, height: 6 },
+        shadowOpacity: 1,
+        shadowRadius: 18,
+        elevation: 4,
+      },
+    }),
   },
   titleHeroV2: {
     fontSize: TYPE_HEADING_MD,

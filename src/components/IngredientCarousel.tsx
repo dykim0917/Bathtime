@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   StyleSheet,
   Dimensions,
+  Platform,
 } from 'react-native';
 import { Ingredient } from '@/src/engine/types';
 import {
@@ -143,11 +144,18 @@ const styles = StyleSheet.create({
     padding: 13,
     borderWidth: 1,
     borderColor: CARD_BORDER,
-    shadowColor: CARD_SHADOW,
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 1,
-    shadowRadius: 12,
-    elevation: 3,
+    ...Platform.select({
+      web: {
+        boxShadow: `0px 4px 12px ${CARD_SHADOW}`,
+      },
+      default: {
+        shadowColor: CARD_SHADOW,
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 1,
+        shadowRadius: 12,
+        elevation: 3,
+      },
+    }),
   },
   iconArea: {
     width: 56,

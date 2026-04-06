@@ -48,7 +48,7 @@ export default function OnboardingGreeting() {
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.container}>
           <View style={styles.topBar}>
-            <Image source={require('../../assets/images/brand/bath-symbol.png')} style={styles.brandIcon} />
+          <Image source={require('../../assets/images/brand/bath-symbol.png')} style={styles.brandIcon} resizeMode="contain" />
             <Text style={styles.brand}>BATH SOMMELIER</Text>
           </View>
 
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
   container: { flex: 1, paddingHorizontal: 24, paddingBottom: 28 },
   topBar: { marginTop: 10, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8 },
   brand: { fontSize: TYPE_CAPTION + 1, color: V2_ACCENT, fontWeight: '700', letterSpacing: 1.8 },
-  brandIcon: { width: 18, height: 20, resizeMode: 'contain' },
+  brandIcon: { width: 18, height: 20 },
   centerContent: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   heroWrap: { alignItems: 'center', paddingHorizontal: 8 },
   heroCircle: { width: 126, height: 126, borderRadius: 63, marginBottom: 18, backgroundColor: V2_ACCENT_SOFT, borderWidth: 1, borderColor: V2_BORDER, justifyContent: 'center', alignItems: 'center' },

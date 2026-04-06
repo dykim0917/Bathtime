@@ -29,7 +29,7 @@ export default function WelcomeScreen() {
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.container}>
           <View style={styles.logoRow}>
-            <Image source={require('../../assets/images/brand/bath-symbol.png')} style={styles.logoIcon} />
+            <Image source={require('../../assets/images/brand/bath-symbol.png')} style={styles.logoIcon} resizeMode="contain" />
             <Text style={styles.logoText}>BATH SOMMELIER</Text>
           </View>
 
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(115, 150, 196, 0.12)',
   },
   logoRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8 },
-  logoIcon: { width: 18, height: 20, resizeMode: 'contain' },
+  logoIcon: { width: 18, height: 20 },
   logoText: { color: V2_ACCENT, fontSize: TYPE_CAPTION + 1, fontWeight: '700', letterSpacing: 1.8 },
   hero: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: 12 },
   heroOrb: {

@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   StyleSheet,
   SafeAreaView,
+  Platform,
 } from 'react-native';
 import { useLocalSearchParams, router } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -390,10 +391,17 @@ const styles = StyleSheet.create({
   },
   actionButton: {
     width: '100%',
-    shadowColor: V2_SHADOW,
-    shadowOffset: { width: 0, height: 6 },
-    shadowOpacity: 1,
-    shadowRadius: 16,
-    elevation: 4,
+    ...Platform.select({
+      web: {
+        boxShadow: `0px 6px 16px ${V2_SHADOW}`,
+      },
+      default: {
+        shadowColor: V2_SHADOW,
+        shadowOffset: { width: 0, height: 6 },
+        shadowOpacity: 1,
+        shadowRadius: 16,
+        elevation: 4,
+      },
+    }),
   },
 });

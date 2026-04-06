@@ -19,7 +19,7 @@ export function WaterAnimation({ progress, colorHex }: WaterAnimationProps) {
   const waterHeight = H * progress;
 
   return (
-    <View style={StyleSheet.absoluteFill} pointerEvents="none">
+    <View style={styles.root}>
       {/* Back layer — lighter */}
       <View
         style={[
@@ -45,6 +45,10 @@ export function WaterAnimation({ progress, colorHex }: WaterAnimationProps) {
 }
 
 const styles = StyleSheet.create({
+  root: {
+    ...StyleSheet.absoluteFillObject,
+    pointerEvents: 'none',
+  },
   water: {
     position: 'absolute',
     bottom: 0,

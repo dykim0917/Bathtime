@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Platform } from 'react-native';
 import { TagChip } from './TagChip';
 import { TagDefinition } from '@/src/data/tags';
 import { useHaptic } from '@/src/hooks/useHaptic';
@@ -54,11 +54,18 @@ const styles = StyleSheet.create({
     borderColor: CARD_BORDER,
     borderRadius: 18,
     padding: 14,
-    shadowColor: CARD_SHADOW,
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 1,
-    shadowRadius: 9,
-    elevation: 2,
+    ...Platform.select({
+      web: {
+        boxShadow: `0px 3px 9px ${CARD_SHADOW}`,
+      },
+      default: {
+        shadowColor: CARD_SHADOW,
+        shadowOffset: { width: 0, height: 3 },
+        shadowOpacity: 1,
+        shadowRadius: 9,
+        elevation: 2,
+      },
+    }),
   },
   title: {
     fontSize: 15,

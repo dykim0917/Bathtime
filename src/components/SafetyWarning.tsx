@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Platform,
 } from 'react-native';
 import {
   GLASS_SHADOW,
@@ -95,16 +96,22 @@ const styles = StyleSheet.create({
     padding: 24,
     width: '100%',
     maxWidth: 340,
-    shadowColor: GLASS_SHADOW,
-    shadowOffset: { width: 0, height: 8 },
-    shadowOpacity: 1,
-    shadowRadius: 24,
-    elevation: 5,
+    ...Platform.select({
+      web: {
+        boxShadow: `0px 8px 24px ${GLASS_SHADOW}`,
+      },
+      default: {
+        shadowColor: GLASS_SHADOW,
+        shadowOffset: { width: 0, height: 8 },
+        shadowOpacity: 1,
+        shadowRadius: 24,
+        elevation: 5,
+      },
+    }),
   },
   cardV2: {
     backgroundColor: V2_MODAL_SURFACE,
     borderColor: V2_WARNING,
-    shadowColor: V2_SHADOW,
   },
   title: {
     fontSize: 20,

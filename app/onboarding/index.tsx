@@ -35,7 +35,7 @@ export default function OnboardingEnvironment() {
               <FontAwesome name="angle-left" size={26} color={V2_TEXT_PRIMARY} />
             </TouchableOpacity>
             <View style={styles.brandLockup}>
-              <Image source={require('../../assets/images/brand/bath-symbol.png')} style={styles.brandIcon} />
+              <Image source={require('../../assets/images/brand/bath-symbol.png')} style={styles.brandIcon} resizeMode="contain" />
               <Text style={styles.brand}>BATH SOMMELIER</Text>
             </View>
             <View style={styles.backButton} />
@@ -104,13 +104,13 @@ const styles = StyleSheet.create({
   backButton: { width: 28, height: 28, justifyContent: 'center', alignItems: 'center' },
   brand: { fontSize: TYPE_CAPTION + 2, color: V2_ACCENT, fontWeight: '700', letterSpacing: 1.8 },
   brandLockup: { flexDirection: 'row', alignItems: 'center', gap: 8 },
-  brandIcon: { width: 18, height: 20, resizeMode: 'contain' },
+  brandIcon: { width: 18, height: 20 },
   header: { marginBottom: 22 },
   title: { fontSize: TYPE_HEADING_LG, fontWeight: '700', color: V2_TEXT_PRIMARY, lineHeight: 38, marginBottom: 12 },
   subtitle: { fontSize: TYPE_BODY, color: V2_TEXT_SECONDARY, lineHeight: 20 },
   cards: { gap: 14 },
   card: { flexDirection: 'row', alignItems: 'center', paddingVertical: 18, paddingHorizontal: 16 },
-  cardSelected: { borderColor: V2_ACCENT, backgroundColor: 'rgba(201, 164, 91, 0.1)', shadowColor: 'rgba(201, 164, 91, 0.18)' },
+  cardSelected: { borderColor: V2_ACCENT, backgroundColor: 'rgba(201, 164, 91, 0.1)' },
   iconWrap: { width: 46, height: 46, borderRadius: 11, backgroundColor: 'rgba(255,255,255,0.06)', justifyContent: 'center', alignItems: 'center', marginRight: 14 },
   iconWrapSelected: { backgroundColor: V2_ACCENT_SOFT },
   emoji: { fontSize: 25 },
