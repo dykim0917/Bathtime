@@ -279,10 +279,17 @@ function HistorySection() {
       {filteredHistory.length === 0 && history.length === 0 ? (
         <>
           <ListHeader />
-          <View style={styles.emptyContainer}>
-            <Text style={styles.emptyEmoji}>📋</Text>
+          <View style={[ui.glassCardV2, styles.emptyContainer]}>
+            <View style={styles.emptyBadge}>
+              <Text style={styles.emptyBadgeText}>FIRST BATH AWAITS</Text>
+            </View>
+            <Text style={styles.emptyEmoji}>🛁</Text>
             <Text style={styles.emptyText}>{copy.history.empty.title}</Text>
             <Text style={styles.emptySubtext}>{copy.history.empty.subtitle}</Text>
+            <Text style={styles.emptyGuide}>첫 추천을 저장하면 이 공간이 나만의 배스 아카이브로 바뀝니다.</Text>
+            <Pressable style={styles.emptyAction} onPress={() => router.push('/(tabs)/care')}>
+              <Text style={styles.emptyActionText}>케어 루틴 보러가기</Text>
+            </Pressable>
           </View>
         </>
       ) : (
@@ -760,26 +767,67 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   emptyContainer: {
-    flex: 1,
-    justifyContent: 'center',
+    marginHorizontal: SIDE_PAD,
+    marginTop: 8,
     alignItems: 'center',
-    paddingHorizontal: SIDE_PAD,
-    paddingBottom: 80,
+    paddingHorizontal: 20,
+    paddingVertical: 28,
+    borderColor: 'rgba(201, 164, 91, 0.18)',
+  },
+  emptyBadge: {
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    borderRadius: 999,
+    backgroundColor: 'rgba(201, 164, 91, 0.12)',
+    borderWidth: 1,
+    borderColor: 'rgba(201, 164, 91, 0.22)',
+    marginBottom: 14,
+  },
+  emptyBadgeText: {
+    color: V2_ACCENT,
+    fontSize: TYPE_CAPTION - 1,
+    fontWeight: '800',
+    letterSpacing: 1.1,
   },
   emptyEmoji: {
-    fontSize: 52,
-    marginBottom: 16,
+    fontSize: 48,
+    marginBottom: 14,
   },
   emptyText: {
     fontSize: TYPE_TITLE,
     fontWeight: '700',
     color: V2_TEXT_PRIMARY,
-    marginBottom: 6,
+    marginBottom: 8,
+    textAlign: 'center',
   },
   emptySubtext: {
     fontSize: TYPE_BODY,
     color: V2_TEXT_SECONDARY,
     textAlign: 'center',
+    lineHeight: 20,
+  },
+  emptyGuide: {
+    marginTop: 10,
+    fontSize: TYPE_CAPTION,
+    color: V2_TEXT_MUTED,
+    textAlign: 'center',
+    lineHeight: 18,
+  },
+  emptyAction: {
+    marginTop: 18,
+    minHeight: 44,
+    minWidth: 180,
+    paddingHorizontal: 18,
+    paddingVertical: 11,
+    borderRadius: 999,
+    backgroundColor: V2_ACCENT,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  emptyActionText: {
+    color: V2_ACCENT_TEXT,
+    fontSize: TYPE_BODY,
+    fontWeight: '800',
   },
   filterEmptyContainer: {
     paddingVertical: 40,

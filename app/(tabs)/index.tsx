@@ -440,13 +440,17 @@ export default function HomeIntentScreen() {
     <View style={[ui.screenShellV2, { paddingTop: insets.top }]}> 
       <LinearGradient colors={[V2_BG_TOP, V2_BG_BASE, V2_BG_BOTTOM]} style={StyleSheet.absoluteFillObject} />
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
-        <View style={styles.headerBlock}>
+        <View style={[ui.glassCardV2, styles.headerBlock]}>
+          <View style={styles.heroGlow} />
           <View style={styles.brandRow}>
-            <Image source={require('../../assets/images/brand/bath-symbol.png')} style={styles.brandIcon} />
-            <Text style={styles.brandText}>BATH SOMMELIER</Text>
+            <View style={styles.brandBadge}>
+              <Image source={require('../../assets/images/brand/bath-symbol.png')} style={styles.brandIcon} />
+              <Text style={styles.brandText}>BATH SOMMELIER</Text>
+            </View>
+            <Text style={styles.brandKicker}>Editorial bath rituals for tonight</Text>
           </View>
           <Text style={styles.greeting}>{headlineMessage}</Text>
-          <Text style={styles.subtitle}>Time to unwind with your personalized bath ritual.</Text>
+          <Text style={styles.subtitle}>오늘의 컨디션과 환경을 고르면, 집에서도 호텔 스파처럼 정제된 루틴을 바로 시작할 수 있어요.</Text>
           {!isHistoryLoaded || recentRoutines.length > 0 ? null : (
             <Text style={styles.beginnerGuide}>{copy.home.beginnerGuide}</Text>
           )}
@@ -647,14 +651,37 @@ const styles = StyleSheet.create({
     gap: SECTION_GAP,
   },
   headerBlock: {
-    gap: 6,
-    paddingTop: 4,
+    gap: 10,
+    paddingTop: 18,
+    paddingHorizontal: 18,
+    paddingBottom: 18,
+    overflow: 'hidden',
+    borderColor: 'rgba(201, 164, 91, 0.2)',
+  },
+  heroGlow: {
+    position: 'absolute',
+    top: -28,
+    right: -22,
+    width: 150,
+    height: 150,
+    borderRadius: 75,
+    backgroundColor: 'rgba(201, 164, 91, 0.12)',
   },
   brandRow: {
+    gap: 10,
+    marginBottom: 4,
+  },
+  brandBadge: {
     flexDirection: 'row',
     alignItems: 'center',
+    alignSelf: 'flex-start',
     gap: 8,
-    marginBottom: 2,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+    borderRadius: 999,
+    backgroundColor: 'rgba(255,255,255,0.04)',
+    borderWidth: 1,
+    borderColor: 'rgba(201, 164, 91, 0.18)',
   },
   brandIcon: {
     width: 18,
@@ -664,19 +691,24 @@ const styles = StyleSheet.create({
   brandText: {
     color: V2_ACCENT,
     fontSize: TYPE_SCALE.caption,
-    fontWeight: '700',
-    letterSpacing: 1.2,
+    fontWeight: '800',
+    letterSpacing: 1.4,
+  },
+  brandKicker: {
+    color: V2_TEXT_MUTED,
+    fontSize: TYPE_SCALE.caption,
+    lineHeight: 18,
   },
   greeting: {
     fontSize: TYPE_SCALE.headingMd,
     fontWeight: '800',
     color: V2_TEXT_PRIMARY,
-    lineHeight: 30,
+    lineHeight: 31,
   },
   subtitle: {
     color: V2_TEXT_SECONDARY,
     fontSize: TYPE_SCALE.body,
-    lineHeight: 20,
+    lineHeight: 21,
   },
   beginnerGuide: {
     marginTop: 2,
