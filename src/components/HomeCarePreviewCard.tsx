@@ -53,7 +53,6 @@ export function HomeCarePreviewCard({
       >
         <View style={[styles.visualGlow, { backgroundColor: `${tint}22` }]} />
         <Text style={styles.visualEmoji}>{emoji}</Text>
-        <Text style={styles.visualLabel}>IMAGE TBD</Text>
       </LinearGradient>
 
       <View style={styles.content}>
@@ -100,12 +99,6 @@ const styles = StyleSheet.create({
   },
   visualEmoji: {
     fontSize: 28,
-  },
-  visualLabel: {
-    color: V2_TEXT_MUTED,
-    fontSize: TYPE_CAPTION - 1,
-    fontWeight: '700',
-    letterSpacing: 1,
   },
   content: {
     paddingHorizontal: 12,
