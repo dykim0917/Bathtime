@@ -1,6 +1,6 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { View, Text, Pressable, ScrollView, StyleSheet, useWindowDimensions } from 'react-native';
-import { router } from 'expo-router';
+import { router, useFocusEffect } from 'expo-router';
 import Constants from 'expo-constants';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -191,7 +191,8 @@ export default function CareScreen() {
   const normalizedEnvironment = normalizeEnvironmentInput(environment);
   const intentCardWidth = Math.max(220, screenWidth - SCREEN_HORIZONTAL_PADDING * 2);
 
-  useEffect(() => {
+  useFocusEffect(
+    useCallback(() => {
     const appVersion = Constants.expoConfig?.version ?? 'unknown';
     const locale = Intl.DateTimeFormat().resolvedOptions().locale;
     const healthConditions = profile?.healthConditions ?? ['none'];
@@ -221,7 +222,8 @@ export default function CareScreen() {
       };
       trackIntentCardImpression(payload);
     });
-  }, [environment, profile?.createdAt, profile?.healthConditions, timeContext]);
+    }, [environment, profile?.createdAt, profile?.healthConditions, timeContext])
+  );
 
   const disclosureLines = useMemo(() => {
     const healthConditions = profile?.healthConditions ?? ['none'];
