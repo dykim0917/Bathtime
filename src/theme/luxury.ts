@@ -2,6 +2,7 @@ import { Platform } from 'react-native';
 
 export const luxuryFonts = {
   display: Platform.select({
+    web: '"Nanum Myeongjo", Georgia, "Times New Roman", serif',
     ios: 'Georgia',
     android: 'serif',
     default: 'Georgia, Times New Roman, serif',
