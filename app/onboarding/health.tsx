@@ -7,6 +7,7 @@ import { BathEnvironment, HealthCondition, UserProfile } from '@/src/engine/type
 import { useHaptic } from '@/src/hooks/useHaptic';
 import { useUserProfile } from '@/src/hooks/useUserProfile';
 import { TYPE_CAPTION, TYPE_BODY, TYPE_HEADING_LG, TYPE_TITLE, V2_ACCENT, V2_ACCENT_SOFT, V2_ACCENT_TEXT, V2_BG_BASE, V2_BG_BOTTOM, V2_BG_TOP, V2_BORDER, V2_TEXT_MUTED, V2_TEXT_PRIMARY, V2_TEXT_SECONDARY } from '@/src/data/colors';
+import { luxuryFonts, luxuryRadii, luxuryTracking } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
 
 interface ConditionOption { id: HealthCondition; labelKo: string; emoji: string; }
@@ -107,27 +108,27 @@ const styles = StyleSheet.create({
   container: { flex: 1, paddingHorizontal: 24 },
   topRow: { marginTop: 8, marginBottom: 18, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   backButton: { width: 28, height: 28, justifyContent: 'center', alignItems: 'center' },
-  stepTitle: { fontSize: TYPE_CAPTION, letterSpacing: 1.6, fontWeight: '700', color: V2_ACCENT },
+  stepTitle: { fontSize: TYPE_CAPTION, letterSpacing: luxuryTracking.eyebrow, fontWeight: '700', color: V2_ACCENT, fontFamily: luxuryFonts.sans },
   brandLockup: { flexDirection: 'row', alignItems: 'center', gap: 8 },
   brandIcon: { width: 18, height: 20 },
-  header: { marginBottom: 18 },
-  title: { fontSize: TYPE_HEADING_LG, fontWeight: '700', color: V2_TEXT_PRIMARY, lineHeight: 38, marginBottom: 12 },
-  subtitle: { fontSize: TYPE_BODY, color: V2_TEXT_SECONDARY, lineHeight: 22 },
+  header: { marginBottom: 20 },
+  title: { fontSize: TYPE_HEADING_LG + 4, color: V2_TEXT_PRIMARY, lineHeight: 42, marginBottom: 12, fontFamily: luxuryFonts.display },
+  subtitle: { fontSize: TYPE_BODY, color: V2_TEXT_SECONDARY, lineHeight: 22, fontFamily: luxuryFonts.sans },
   conditions: { gap: 12 },
-  conditionCard: { minHeight: 64, paddingHorizontal: 14, flexDirection: 'row', alignItems: 'center' },
-  conditionCardSelected: { borderColor: V2_ACCENT, backgroundColor: 'rgba(201, 164, 91, 0.08)' },
-  conditionIcon: { width: 34, height: 34, borderRadius: 10, backgroundColor: 'rgba(255,255,255,0.06)', justifyContent: 'center', alignItems: 'center', marginRight: 12 },
+  conditionCard: { minHeight: 68, paddingHorizontal: 16, flexDirection: 'row', alignItems: 'center' },
+  conditionCardSelected: { borderColor: V2_ACCENT, backgroundColor: 'rgba(176, 141, 87, 0.08)' },
+  conditionIcon: { width: 38, height: 38, borderRadius: luxuryRadii.button, backgroundColor: 'rgba(255,255,255,0.06)', justifyContent: 'center', alignItems: 'center', marginRight: 12 },
   conditionIconSelected: { backgroundColor: V2_ACCENT_SOFT },
   conditionEmoji: { fontSize: 16 },
-  conditionLabel: { flex: 1, fontSize: TYPE_TITLE, color: V2_TEXT_PRIMARY, fontWeight: '500' },
-  conditionLabelSelected: { color: V2_ACCENT, fontWeight: '600' },
+  conditionLabel: { flex: 1, fontSize: TYPE_TITLE, color: V2_TEXT_PRIMARY, fontFamily: luxuryFonts.display },
+  conditionLabelSelected: { color: V2_ACCENT },
   radio: { width: 24, height: 24, borderRadius: 12, borderWidth: 1.5, borderColor: V2_BORDER, justifyContent: 'center', alignItems: 'center' },
   radioSelected: { borderColor: V2_ACCENT, backgroundColor: V2_ACCENT },
   spacer: { flex: 1 },
   progressWrap: { marginBottom: 14, alignItems: 'center' },
   progressTrack: { height: 6, width: 110, borderRadius: 999, backgroundColor: 'rgba(90, 110, 145, 0.34)', overflow: 'hidden', marginBottom: 8 },
   progressFill: { height: '100%', width: '100%', backgroundColor: V2_ACCENT },
-  stepText: { fontSize: TYPE_CAPTION, color: V2_TEXT_MUTED, fontWeight: '600' },
+  stepText: { fontSize: TYPE_CAPTION, color: V2_TEXT_MUTED, fontWeight: '600', fontFamily: luxuryFonts.sans },
   completeButton: { marginBottom: 14 },
   completeButtonDisabled: { opacity: 0.45 },
 });

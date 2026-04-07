@@ -5,14 +5,15 @@ import { PERSONA_DEFINITIONS } from '@/src/engine/personas';
 import { formatTemperature, formatTemperatureRange } from '@/src/utils/temperature';
 import { formatDuration } from '@/src/utils/time';
 import {
-  CARD_BORDER,
-  CARD_SHADOW,
-  CARD_SURFACE,
-  TEXT_PRIMARY,
-  TEXT_SECONDARY,
   TYPE_CAPTION,
   TYPE_TITLE,
+  V2_BORDER,
+  V2_SHADOW,
+  V2_SURFACE,
+  V2_TEXT_PRIMARY,
+  V2_TEXT_SECONDARY,
 } from '@/src/data/colors';
+import { luxuryFonts, luxuryRadii } from '@/src/theme/luxury';
 
 interface PersonaCardProps {
   recommendation: BathRecommendation;
@@ -74,31 +75,31 @@ const styles = StyleSheet.create({
   },
   personaName: {
     fontSize: 24,
-    fontWeight: '800',
     textAlign: 'center',
     marginBottom: 16,
     letterSpacing: 0.8,
+    fontFamily: luxuryFonts.display,
   },
   statsRow: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: CARD_SURFACE,
-    borderRadius: 18,
+    backgroundColor: V2_SURFACE,
+    borderRadius: luxuryRadii.card,
     paddingVertical: 16,
     paddingHorizontal: 10,
     borderWidth: 1,
-    borderColor: CARD_BORDER,
+    borderColor: V2_BORDER,
     ...Platform.select({
       web: {
-        boxShadow: `0px 4px 12px ${CARD_SHADOW}`,
+        boxShadow: `0px 12px 24px ${V2_SHADOW}`,
       },
       default: {
-        shadowColor: CARD_SHADOW,
-        shadowOffset: { width: 0, height: 4 },
+        shadowColor: V2_SHADOW,
+        shadowOffset: { width: 0, height: 10 },
         shadowOpacity: 1,
-        shadowRadius: 12,
-        elevation: 3,
+        shadowRadius: 20,
+        elevation: 6,
       },
     }),
   },
@@ -108,19 +109,21 @@ const styles = StyleSheet.create({
   },
   statValue: {
     fontSize: TYPE_TITLE,
-    fontWeight: '700',
-    color: TEXT_PRIMARY,
+    color: V2_TEXT_PRIMARY,
     marginBottom: 2,
     textAlign: 'center',
+    fontFamily: luxuryFonts.display,
   },
   statLabel: {
     fontSize: TYPE_CAPTION,
-    color: TEXT_SECONDARY,
+    color: V2_TEXT_SECONDARY,
+    fontFamily: luxuryFonts.sans,
   },
   statSub: {
     fontSize: 10,
-    color: TEXT_SECONDARY,
+    color: V2_TEXT_SECONDARY,
     marginTop: 2,
+    fontFamily: luxuryFonts.sans,
   },
   divider: {
     width: 1,
@@ -130,33 +133,35 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginTop: 16,
-    backgroundColor: CARD_SURFACE,
-    borderRadius: 14,
+    backgroundColor: V2_SURFACE,
+    borderRadius: luxuryRadii.button,
     padding: 12,
     borderWidth: 1,
-    borderColor: CARD_BORDER,
+    borderColor: V2_BORDER,
     ...Platform.select({
       web: {
-        boxShadow: `0px 2px 8px ${CARD_SHADOW}`,
+        boxShadow: `0px 8px 16px ${V2_SHADOW}`,
       },
       default: {
-        shadowColor: CARD_SHADOW,
-        shadowOffset: { width: 0, height: 2 },
+        shadowColor: V2_SHADOW,
+        shadowOffset: { width: 0, height: 6 },
         shadowOpacity: 1,
-        shadowRadius: 8,
-        elevation: 2,
+        shadowRadius: 14,
+        elevation: 4,
       },
     }),
   },
   lightingLabel: {
     fontSize: 14,
     fontWeight: '600',
-    color: TEXT_SECONDARY,
+    color: V2_TEXT_SECONDARY,
     marginRight: 8,
+    fontFamily: luxuryFonts.sans,
   },
   lightingValue: {
     fontSize: 14,
-    color: TEXT_PRIMARY,
+    color: V2_TEXT_PRIMARY,
     flex: 1,
+    fontFamily: luxuryFonts.sans,
   },
 });
