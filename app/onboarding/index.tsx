@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
+import { View, Text, Image, Pressable, StyleSheet, SafeAreaView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { router } from 'expo-router';
@@ -31,9 +31,9 @@ export default function OnboardingEnvironment() {
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.container}>
           <View style={styles.topBar}>
-            <TouchableOpacity style={styles.backButton} activeOpacity={0.7} onPress={() => router.canGoBack() && router.back()}>
+            <Pressable style={styles.backButton} onPress={() => router.canGoBack() && router.back()}>
               <FontAwesome name="angle-left" size={26} color={V2_TEXT_PRIMARY} />
-            </TouchableOpacity>
+            </Pressable>
             <View style={styles.brandLockup}>
               <Image source={require('../../assets/images/brand/bath-symbol.png')} style={styles.brandIcon} resizeMode="contain" />
               <Text style={styles.brand}>BATH SOMMELIER</Text>
@@ -51,7 +51,7 @@ export default function OnboardingEnvironment() {
               {ENVIRONMENTS.map((env) => {
                 const isSelected = selected === env.id;
                 return (
-                  <TouchableOpacity key={env.id} activeOpacity={0.85} onPress={() => handleSelect(env.id)} style={[ui.glassCardV2, styles.card, isSelected && styles.cardSelected]}>
+                  <Pressable key={env.id} onPress={() => handleSelect(env.id)} style={[ui.glassCardV2, styles.card, isSelected && styles.cardSelected]}>
                     <View style={[styles.iconWrap, isSelected && styles.iconWrapSelected]}><Text style={styles.emoji}>{env.emoji}</Text></View>
                     <View style={styles.cardText}>
                       <View style={styles.cardLabelRow}>
@@ -65,7 +65,7 @@ export default function OnboardingEnvironment() {
                       <Text style={styles.cardDesc}>{env.desc}</Text>
                     </View>
                     <View style={[styles.radio, isSelected && styles.radioSelected]}>{isSelected ? <FontAwesome name="check" size={12} color={V2_ACCENT_TEXT} /> : null}</View>
-                  </TouchableOpacity>
+                  </Pressable>
                 );
               })}
             </View>
@@ -85,9 +85,9 @@ export default function OnboardingEnvironment() {
               <View style={styles.progressTrack}><View style={styles.progressFill} /></View>
             </View>
 
-            <TouchableOpacity activeOpacity={0.85} onPress={handleNext} disabled={!selected} style={[ui.primaryButtonV2, styles.nextButton, !selected && styles.nextButtonDisabled]}>
+            <Pressable onPress={handleNext} disabled={!selected} style={[ui.primaryButtonV2, styles.nextButton, !selected && styles.nextButtonDisabled]}>
               <Text style={[ui.primaryButtonTextV2, !selected && styles.nextButtonTextDisabled]}>다음</Text>
-            </TouchableOpacity>
+            </Pressable>
           </View>
         </View>
       </SafeAreaView>

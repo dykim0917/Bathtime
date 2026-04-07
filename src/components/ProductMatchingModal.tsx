@@ -40,7 +40,7 @@ export function ProductMatchingModal({
 
           <ScrollView style={styles.body} contentContainerStyle={styles.bodyContent}>
             {items.map((item) => (
-              <View key={`${item.slot}_${item.ingredient.id}`} style={styles.slotCard}>
+              <View key={`${item.slot}_${item.product.id}`} style={styles.slotCard}>
                 <View style={styles.rowBetween}>
                   <Text style={styles.slotTitle}>{copy.product.slotTitle[item.slot]}</Text>
                   {item.sommelierPick ? (
@@ -50,10 +50,11 @@ export function ProductMatchingModal({
                   ) : null}
                 </View>
 
-                <Text style={styles.productName}>{item.ingredient.nameKo}</Text>
+                <Text style={styles.productName}>{item.product.name}</Text>
+                <Text style={styles.metaText}>{item.product.brand}</Text>
                 <Text style={styles.metaText}>{copy.product.labels.mechanism}: {item.reason}</Text>
                 <Text style={styles.metaText}>{copy.product.labels.priceTier}: {item.priceTier}</Text>
-                <Text style={styles.reasonText}>{item.ingredient.description}</Text>
+                <Text style={styles.reasonText}>{item.product.description}</Text>
 
                 <View style={styles.buttonRow}>
                   <Pressable style={styles.ghostButton} onPress={() => onProductPress(item)}>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Alert, View, Text, TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
+import { Alert, Linking, View, Text, Pressable, StyleSheet, SafeAreaView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { useLocalSearchParams, router } from 'expo-router';
@@ -9,6 +9,11 @@ import { PERSONA_DEFINITIONS } from '@/src/engine/personas';
 import { getRecommendationById } from '@/src/storage/history';
 import { PersistentDisclosure } from '@/src/components/PersistentDisclosure';
 import { copy } from '@/src/content/copy';
+import { ProductMatchingModal } from '@/src/components/ProductMatchingModal';
+import { ProductDetailModal } from '@/src/components/ProductDetailModal';
+import { ProductMatchItem, buildProductMatchingSlots } from '@/src/engine/productMatching';
+import { CatalogProduct } from '@/src/data/catalog';
+import { useCatalogHydration } from '@/src/data/catalogRuntime';
 import { formatTemperature } from '@/src/utils/temperature';
 import { formatDuration } from '@/src/utils/time';
 import { buildRecipeEvidenceLines } from '@/src/engine/explainability';
@@ -22,6 +27,9 @@ const HERO_HEIGHT = 180;
 export default function RecipeScreen() {
   const { id, source } = useLocalSearchParams<{ id: string; source?: string }>();
   const [recommendation, setRecommendation] = useState<BathRecommendation | null>(null);
+  const [showProductModal, setShowProductModal] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<CatalogProduct | null>(null);
+  useCatalogHydration();
 
   useEffect(() => { if (!id) return; getRecommendationById(id).then((rec) => { if (rec) setRecommendation(rec); }); }, [id]);
   if (!recommendation) return <View style={[ui.screenShellV2, styles.centered]}><Text style={{ color: V2_TEXT_SECONDARY }}>{copy.completion.loading}</Text></View>;
@@ -40,6 +48,51 @@ export default function RecipeScreen() {
   const modeLabel = recommendation.mode === 'trip' ? '트립 · 분위기 전환 루틴' : '케어 · 몸 상태에 맞춘 루틴';
   const heroGradient: [string, string] = [recommendation.colorHex, `${recommendation.colorHex}99`];
   const evidence = buildRecipeEvidenceLines(recommendation);
+  const productSlots = buildProductMatchingSlots(recommendation, recommendation.environmentUsed);
+
+  const handleProductDetail = (item: ProductMatchItem) => {
+    setShowProductModal(false);
+    setSelectedProduct(item.product);
+  };
+
+  const handleProductPurchase = async (item: ProductMatchItem) => {
+    const purchaseUrl = item.product.purchaseUrl ?? item.ingredient.purchaseUrl;
+    if (!purchaseUrl) {
+      Alert.alert('구매 링크 없음', '아직 연결된 구매 링크가 없어요.');
+      return;
+    }
+
+    const supported = await Linking.canOpenURL(purchaseUrl);
+    if (!supported) {
+      Alert.alert('링크 열기 실패', '지금은 구매 링크를 열 수 없어요.');
+      return;
+    }
+
+    await Linking.openURL(purchaseUrl);
+  };
+
+  const handleDetailPurchase = async (product: CatalogProduct) => {
+    if (!product.purchaseUrl) {
+      Alert.alert('구매 링크 없음', '아직 연결된 구매 링크가 없어요.');
+      return;
+    }
+
+    const supported = await Linking.canOpenURL(product.purchaseUrl);
+    if (!supported) {
+      Alert.alert('링크 열기 실패', '지금은 구매 링크를 열 수 없어요.');
+      return;
+    }
+
+    await Linking.openURL(product.purchaseUrl);
+  };
+
+  const handleOpenCatalogFromDetail = (product: CatalogProduct) => {
+    setSelectedProduct(null);
+    router.push({
+      pathname: '/(tabs)/product',
+      params: { highlight: product.id },
+    });
+  };
 
   return (
     <View style={styles.container}>
@@ -48,7 +101,7 @@ export default function RecipeScreen() {
         <LinearGradient colors={heroGradient} start={{ x: 0.2, y: 0 }} end={{ x: 0.8, y: 1 }} style={styles.hero}>
           <SafeAreaView style={styles.heroSafeArea}>
             <View style={styles.heroNavRow}>
-              <TouchableOpacity style={styles.navButton} onPress={() => router.back()} activeOpacity={0.7}><FontAwesome name="angle-left" size={22} color={V2_TEXT_PRIMARY} /></TouchableOpacity>
+              <Pressable style={styles.navButton} onPress={() => router.back()}><FontAwesome name="angle-left" size={22} color={V2_TEXT_PRIMARY} /></Pressable>
               <Text style={styles.navCenterTitle} numberOfLines={1}>{recipeTitle}</Text>
               <View style={styles.modeChip}><Text style={styles.modeChipText}>{copy.routine.stepPrep}</Text></View>
             </View>
@@ -97,6 +150,22 @@ export default function RecipeScreen() {
           </View>
         </Animated.View>
 
+        {productSlots.length > 0 ? (
+          <Animated.View entering={FadeInDown.duration(400).delay(210)} style={[ui.glassCardV2, styles.productBridgeCard]}>
+            <Text style={styles.productBridgeEyebrow}>PRODUCT PAIRING</Text>
+            <Text style={styles.productBridgeTitle}>이 루틴에 맞는 제품 추천이 준비돼 있어요</Text>
+            <Text style={styles.productBridgeBody}>
+              현재 환경에 맞는 추천만 추려서 바로 볼 수 있어요.
+            </Text>
+            <Pressable
+              style={[ui.secondaryButtonV2, styles.productBridgeButton]}
+              onPress={() => setShowProductModal(true)}
+            >
+              <Text style={ui.secondaryButtonTextV2}>추천 제품 보기</Text>
+            </Pressable>
+          </Animated.View>
+        ) : null}
+
         <Animated.View entering={FadeInDown.duration(400).delay(240)} style={[ui.glassCardV2, styles.safetyBlock]}>
           <Text style={styles.safetyTitle}>⚠️ {copy.routine.safetyTitle}</Text>
           {copy.routine.safetyLines.map((line) => <Text key={line} style={styles.safetyText}>• {line}</Text>)}
@@ -106,7 +175,22 @@ export default function RecipeScreen() {
         <View style={styles.bottomSpacer} />
       </Animated.ScrollView>
 
-      <View style={styles.bottomCTA}><TouchableOpacity style={[ui.primaryButtonV2, styles.startButton]} onPress={handleStartBath} activeOpacity={0.8}><Text style={ui.primaryButtonTextV2}>{source === 'history' ? '다시 시작하기' : copy.routine.startCta}</Text></TouchableOpacity></View>
+      <View style={styles.bottomCTA}><Pressable style={[ui.primaryButtonV2, styles.startButton]} onPress={handleStartBath}><Text style={ui.primaryButtonTextV2}>{source === 'history' ? '다시 시작하기' : copy.routine.startCta}</Text></Pressable></View>
+      <ProductMatchingModal
+        visible={showProductModal}
+        items={productSlots}
+        onClose={() => setShowProductModal(false)}
+        onContinue={() => setShowProductModal(false)}
+        onProductPress={handleProductDetail}
+        onPurchasePress={handleProductPurchase}
+      />
+      <ProductDetailModal
+        visible={selectedProduct !== null}
+        product={selectedProduct}
+        onClose={() => setSelectedProduct(null)}
+        onOpenCatalog={handleOpenCatalogFromDetail}
+        onPurchasePress={handleDetailPurchase}
+      />
     </View>
   );
 }
@@ -146,6 +230,16 @@ const styles = StyleSheet.create({
   sectionTitle: { fontSize: TYPE_TITLE, fontWeight: '700', color: V2_TEXT_PRIMARY, marginBottom: 4 },
   sectionSubtitle: { fontSize: TYPE_CAPTION, color: V2_TEXT_MUTED, marginBottom: 14 },
   ingredientsCard: { paddingHorizontal: 14, paddingVertical: 4 },
+  productBridgeCard: { marginTop: 18, padding: 16, gap: 8 },
+  productBridgeEyebrow: {
+    fontSize: TYPE_CAPTION - 1,
+    fontWeight: '800',
+    color: V2_ACCENT,
+    letterSpacing: 1,
+  },
+  productBridgeTitle: { fontSize: TYPE_BODY, fontWeight: '700', color: V2_TEXT_PRIMARY },
+  productBridgeBody: { fontSize: TYPE_CAPTION, lineHeight: 18, color: V2_TEXT_SECONDARY },
+  productBridgeButton: { marginTop: 4 },
   trackRow: { flexDirection: 'row', alignItems: 'center', paddingVertical: 12, borderBottomWidth: 1, borderBottomColor: V2_BORDER, gap: 14 },
   trackRowLast: { borderBottomWidth: 0 },
   trackCircle: { width: 44, height: 44, borderRadius: 22, borderWidth: 1, justifyContent: 'center', alignItems: 'center' },

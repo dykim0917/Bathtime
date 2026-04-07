@@ -15,10 +15,10 @@ import {
   V2_TEXT_PRIMARY,
   V2_TEXT_SECONDARY,
 } from '@/src/data/colors';
-import { ProductCategory, ProductItem } from '@/src/data/products';
+import { CatalogProduct, ProductCategory } from '@/src/data/catalog';
 
 interface ProductCardProps {
-  item: ProductItem;
+  item: CatalogProduct;
   variant?: 'default' | 'v2';
 }
 
@@ -31,9 +31,9 @@ export function ProductCard({ item, variant = 'default' }: ProductCardProps) {
       {isV2 ? <View style={[styles.glow, { backgroundColor: `${item.bgColor}24` }]} /> : null}
       {isV2 ? (
         <View style={styles.metaRow}>
-          <Text style={styles.metaEyebrow}>{categoryLabel}</Text>
+          <Text style={styles.metaEyebrow}>{item.editorial.eyebrow}</Text>
           <Text style={styles.metaDivider}>•</Text>
-          <Text style={styles.metaBrand}>Bath Edit</Text>
+          <Text style={styles.metaBrand}>{categoryLabel}</Text>
         </View>
       ) : null}
       <View style={styles.header}>
@@ -55,7 +55,7 @@ export function ProductCard({ item, variant = 'default' }: ProductCardProps) {
       </View>
       {isV2 ? (
         <View style={styles.footerRow}>
-          <Text style={styles.footerText}>루틴에 바로 연결하기 좋은 조합</Text>
+          <Text style={styles.footerText}>{item.editorial.footerHint}</Text>
           <Text style={styles.footerArrow}>›</Text>
         </View>
       ) : null}
@@ -71,6 +71,10 @@ function getCategoryLabel(category: ProductCategory): string {
       return 'BATH SALT';
     case 'herb':
       return 'HERBAL PICK';
+    case 'bath_item':
+      return 'BATH ITEM';
+    case 'body_wash':
+      return 'BODY WASH';
     default:
       return 'CURATED PRODUCT';
   }

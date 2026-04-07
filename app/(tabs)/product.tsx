@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, Pressable, ScrollView, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useLocalSearchParams } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { ProductCard } from '@/src/components/ProductCard';
 import {
   PRODUCT_CATEGORIES,
   PRODUCT_CATEGORY_LABELS,
-  PRODUCTS,
   ProductCategory,
-} from '@/src/data/products';
+} from '@/src/data/catalog';
+import { useCatalogHydration } from '@/src/data/catalogRuntime';
 import {
   TYPE_SCALE,
   V2_ACCENT,
@@ -24,13 +25,31 @@ import { ui } from '@/src/theme/ui';
 const SCREEN_HORIZONTAL_PADDING = 22;
 
 export default function ProductScreen() {
-  const [activeCategory, setActiveCategory] = useState<ProductCategory>('all');
+  const { highlight } = useLocalSearchParams<{ highlight?: string }>();
+  const { products, status } = useCatalogHydration();
+  const highlightedProduct = highlight
+    ? products.find((item) => item.id === highlight)
+    : undefined;
+  const initialCategory = highlightedProduct?.category ?? 'all';
+  const [activeCategory, setActiveCategory] = useState<ProductCategory>(initialCategory);
   const insets = useSafeAreaInsets();
-
-  const filtered =
+  const categoryItems =
     activeCategory === 'all'
-      ? PRODUCTS
-      : PRODUCTS.filter((p) => p.category === activeCategory);
+      ? products
+      : products.filter((item) => item.category === activeCategory);
+
+  useEffect(() => {
+    if (highlightedProduct?.category) {
+      setActiveCategory(highlightedProduct.category);
+    }
+  }, [highlightedProduct?.category]);
+  const filtered =
+    highlight && categoryItems.some((item) => item.id === highlight)
+      ? [
+          ...categoryItems.filter((item) => item.id === highlight),
+          ...categoryItems.filter((item) => item.id !== highlight),
+        ]
+      : categoryItems;
 
   return (
     <View style={[ui.screenShellV2, { paddingTop: insets.top }]}> 
@@ -42,7 +61,13 @@ export default function ProductScreen() {
         <View style={[ui.glassCardV2, styles.heroCard]}>
           <Text style={styles.eyebrow}>CURATED PRODUCTS</Text>
           <Text style={ui.titleHeroV2}>오늘의 제품</Text>
-          <Text style={styles.subtitle}>루틴에 어울리는 오일, 솔트, 허브를 감도 있게 골라보세요.</Text>
+          <Text style={styles.subtitle}>
+            {highlightedProduct
+              ? `${highlightedProduct.name}부터 이어서 볼 수 있어요.`
+              : status === 'loading'
+                ? '실제 카탈로그를 불러오는 중이에요.'
+                : '루틴에 어울리는 오일, 솔트, 허브를 감도 있게 골라보세요.'}
+          </Text>
         </View>
 
         <View>

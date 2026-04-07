@@ -8,6 +8,9 @@
     "ios": "expo run:ios",
     "web": "expo start --web",
     "export:web": "expo export --platform web",
+    "catalog:seed:export": "node scripts/export_catalog_research_seed.mjs",
+    "catalog:seed:export:postgres": "node scripts/export_catalog_research_seed_postgres.mjs",
+    "catalog:api:mock": "node scripts/mock_catalog_api.mjs",
     "test": "jest",
     "test:scenario:print": "jest src/engine/__tests__/scenario_output.test.ts --runInBand",
     "typecheck": "tsc --noEmit"

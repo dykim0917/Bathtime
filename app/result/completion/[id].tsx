@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
-  TouchableOpacity,
+  Pressable,
   StyleSheet,
   SafeAreaView,
   Platform,
@@ -170,35 +170,33 @@ export default function CompletionScreen() {
           <Animated.View entering={FadeIn.duration(600).delay(500)} style={[ui.glassCardV2, styles.feedbackSection]}>
             <Text style={styles.feedbackTitle}>{feedbackTitle}</Text>
             <View style={styles.feedbackButtons}>
-              <TouchableOpacity
+              <Pressable
                 style={[
                   styles.feedbackButton,
                   feedback === 'good' && styles.feedbackButtonActive,
                 ]}
                 onPress={() => handleFeedback('good')}
-                activeOpacity={0.8}
                 disabled={feedback !== null}
               >
                 <Text style={styles.feedbackEmoji}>👍</Text>
                 <Text style={[styles.feedbackLabel, feedback === 'good' && styles.feedbackLabelActive]}>
                   {copy.completion.feedback.good}
                 </Text>
-              </TouchableOpacity>
+              </Pressable>
 
-              <TouchableOpacity
+              <Pressable
                 style={[
                   styles.feedbackButton,
                   feedback === 'bad' && styles.feedbackButtonActive,
                 ]}
                 onPress={() => handleFeedback('bad')}
-                activeOpacity={0.8}
                 disabled={feedback !== null}
               >
                 <Text style={styles.feedbackEmoji}>👎</Text>
                 <Text style={[styles.feedbackLabel, feedback === 'bad' && styles.feedbackLabelActive]}>
                   {copy.completion.feedback.bad}
                 </Text>
-              </TouchableOpacity>
+              </Pressable>
             </View>
             {feedback && (
               <Animated.Text entering={FadeIn.duration(300)} style={styles.feedbackThanks}>
@@ -227,20 +225,18 @@ export default function CompletionScreen() {
           )}
 
           <Animated.View entering={FadeIn.duration(500).delay(800)} style={styles.actionRow}>
-            <TouchableOpacity
+            <Pressable
               style={[ui.secondaryButtonV2, styles.actionButton]}
               onPress={handleGoHistory}
-              activeOpacity={0.85}
             >
               <Text style={ui.secondaryButtonTextV2}>기록 보기</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
+            </Pressable>
+            <Pressable
               style={[ui.primaryButtonV2, styles.actionButton]}
               onPress={handleGoHome}
-              activeOpacity={0.85}
             >
               <Text style={ui.primaryButtonTextV2}>{copy.completion.homeCta}</Text>
-            </TouchableOpacity>
+            </Pressable>
           </Animated.View>
         </View>
       </SafeAreaView>

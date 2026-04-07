@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView, Image } from 'react-native';
+import { View, Text, Pressable, StyleSheet, SafeAreaView, Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 import Animated, { Easing, useAnimatedStyle, useSharedValue, withDelay, withTiming } from 'react-native-reanimated';
@@ -64,9 +64,9 @@ export default function OnboardingGreeting() {
 
           <View style={styles.footer}>
             <Animated.View style={buttonAnim}>
-              <TouchableOpacity style={[ui.primaryButtonV2, styles.ctaButton]} activeOpacity={0.85} onPress={handleStart}>
+              <Pressable style={[ui.primaryButtonV2, styles.ctaButton]} onPress={handleStart}>
                 <Text style={ui.primaryButtonTextV2}>홈으로 이동</Text>
-              </TouchableOpacity>
+              </Pressable>
             </Animated.View>
             <Text style={styles.premiumLine}>PREMIUM WELLNESS CURATION SERVICE</Text>
           </View>
