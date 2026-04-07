@@ -3,7 +3,8 @@ import { View, Text, StyleSheet, Platform } from 'react-native';
 import { TagChip } from './TagChip';
 import { TagDefinition } from '@/src/data/tags';
 import { useHaptic } from '@/src/hooks/useHaptic';
-import { CARD_BORDER, CARD_SHADOW, CARD_SURFACE, TEXT_PRIMARY, TEXT_SECONDARY } from '@/src/data/colors';
+import { V2_BORDER, V2_SHADOW, V2_SURFACE, V2_TEXT_PRIMARY } from '@/src/data/colors';
+import { luxuryFonts, luxuryRadii } from '@/src/theme/luxury';
 
 interface TagSelectorProps {
   title: string;
@@ -49,30 +50,30 @@ export function TagSelector({
 const styles = StyleSheet.create({
   container: {
     marginBottom: 16,
-    backgroundColor: CARD_SURFACE,
+    backgroundColor: V2_SURFACE,
     borderWidth: 1,
-    borderColor: CARD_BORDER,
-    borderRadius: 18,
+    borderColor: V2_BORDER,
+    borderRadius: luxuryRadii.card,
     padding: 14,
     ...Platform.select({
       web: {
-        boxShadow: `0px 3px 9px ${CARD_SHADOW}`,
+        boxShadow: `0px 10px 20px ${V2_SHADOW}`,
       },
       default: {
-        shadowColor: CARD_SHADOW,
-        shadowOffset: { width: 0, height: 3 },
+        shadowColor: V2_SHADOW,
+        shadowOffset: { width: 0, height: 8 },
         shadowOpacity: 1,
-        shadowRadius: 9,
-        elevation: 2,
+        shadowRadius: 16,
+        elevation: 4,
       },
     }),
   },
   title: {
     fontSize: 15,
-    fontWeight: '700',
-    color: TEXT_PRIMARY,
+    color: V2_TEXT_PRIMARY,
     marginBottom: 10,
     letterSpacing: 0.2,
+    fontFamily: luxuryFonts.display,
   },
   tagsRow: {
     flexDirection: 'row',

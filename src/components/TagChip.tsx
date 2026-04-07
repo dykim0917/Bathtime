@@ -1,15 +1,13 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 import {
-  CARD_BORDER,
-  CARD_SHADOW,
-  CARD_SURFACE,
-  TEXT_PRIMARY,
-  TEXT_SECONDARY,
-  ACCENT,
-  ACCENT_LIGHT,
-  PILL_ACTIVE_BG,
+  V2_ACCENT,
+  V2_ACCENT_SOFT,
+  V2_BORDER,
+  V2_TEXT_PRIMARY,
+  V2_TEXT_SECONDARY,
 } from '@/src/data/colors';
+import { luxuryFonts } from '@/src/theme/luxury';
 
 interface TagChipProps {
   label: string;
@@ -23,7 +21,7 @@ export function TagChip({
   label,
   emoji,
   selected,
-  accentColor = ACCENT,
+  accentColor = V2_ACCENT,
   onPress,
 }: TagChipProps) {
   return (
@@ -33,7 +31,7 @@ export function TagChip({
       style={[
         styles.chip,
         selected && {
-          backgroundColor: ACCENT_LIGHT,
+          backgroundColor: V2_ACCENT_SOFT,
           borderColor: accentColor,
         },
       ]}
@@ -54,8 +52,8 @@ const styles = StyleSheet.create({
     paddingVertical: 14,
     borderRadius: 999,
     borderWidth: 1.5,
-    borderColor: 'transparent',
-    backgroundColor: '#F2F3F7',
+    borderColor: V2_BORDER,
+    backgroundColor: 'rgba(255,255,255,0.04)',
     marginRight: 8,
     marginBottom: 10,
     gap: 8,
@@ -65,11 +63,12 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 14,
-    color: TEXT_SECONDARY,
+    color: V2_TEXT_SECONDARY,
     fontWeight: '500',
+    fontFamily: luxuryFonts.sans,
   },
   labelSelected: {
-    color: TEXT_PRIMARY,
+    color: V2_TEXT_PRIMARY,
     fontWeight: '600',
   },
 });

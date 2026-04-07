@@ -18,6 +18,7 @@ import {
   V2_TEXT_PRIMARY,
   V2_TEXT_SECONDARY,
 } from '@/src/data/colors';
+import { luxuryFonts, luxuryTracking } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
 
 export default function OnboardingGreeting() {
@@ -81,17 +82,17 @@ const styles = StyleSheet.create({
   safeArea: { flex: 1 },
   container: { flex: 1, paddingHorizontal: 24, paddingBottom: 28 },
   topBar: { marginTop: 10, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8 },
-  brand: { fontSize: TYPE_CAPTION + 1, color: V2_ACCENT, fontWeight: '700', letterSpacing: 1.8 },
+  brand: { fontSize: TYPE_CAPTION + 1, color: V2_ACCENT, fontWeight: '700', letterSpacing: 2, fontFamily: luxuryFonts.sans },
   brandIcon: { width: 18, height: 20 },
   centerContent: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   heroWrap: { alignItems: 'center', paddingHorizontal: 8 },
   heroCircle: { width: 126, height: 126, borderRadius: 63, marginBottom: 18, backgroundColor: V2_ACCENT_SOFT, borderWidth: 1, borderColor: V2_BORDER, justifyContent: 'center', alignItems: 'center' },
   heroIcon: { fontSize: 56 },
-  welcome: { fontSize: TYPE_CAPTION + 1, color: V2_ACCENT, letterSpacing: 2, fontWeight: '700', marginBottom: 8 },
-  title: { fontSize: TYPE_HEADING_LG + 4, color: V2_TEXT_PRIMARY, fontWeight: '700', marginBottom: 14 },
-  subtitle: { fontSize: 21, color: V2_TEXT_PRIMARY, textAlign: 'center', lineHeight: 32, fontWeight: '500', marginBottom: 16 },
-  description: { fontSize: TYPE_BODY + 1, color: V2_TEXT_SECONDARY, textAlign: 'center', lineHeight: 24, paddingHorizontal: 12 },
+  welcome: { fontSize: TYPE_CAPTION + 1, color: V2_ACCENT, letterSpacing: luxuryTracking.eyebrow, fontWeight: '700', marginBottom: 8, fontFamily: luxuryFonts.sans },
+  title: { fontSize: TYPE_HEADING_LG + 6, color: V2_TEXT_PRIMARY, marginBottom: 14, fontFamily: luxuryFonts.display, lineHeight: 44 },
+  subtitle: { fontSize: 21, color: V2_TEXT_PRIMARY, textAlign: 'center', lineHeight: 32, marginBottom: 16, fontFamily: luxuryFonts.display },
+  description: { fontSize: TYPE_BODY + 1, color: V2_TEXT_SECONDARY, textAlign: 'center', lineHeight: 24, paddingHorizontal: 12, fontFamily: luxuryFonts.sans },
   footer: { gap: 16 },
   ctaButton: { width: '100%' },
-  premiumLine: { fontSize: 11, color: V2_TEXT_MUTED, textAlign: 'center', letterSpacing: 0.3 },
+  premiumLine: { fontSize: 11, color: V2_TEXT_MUTED, textAlign: 'center', letterSpacing: 0.3, fontFamily: luxuryFonts.sans },
 });
