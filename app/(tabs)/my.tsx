@@ -84,6 +84,8 @@ const ENV_LABELS_SETTINGS: Record<BathEnvironment, string> = {
   shower: '🚿 샤워',
 };
 
+const SETTINGS_ENV_OPTIONS: BathEnvironment[] = ['bathtub', 'partial_bath', 'shower'];
+
 const CONDITION_LABELS: Record<HealthCondition, string> = {
   hypertension_heart: '⚠️ 고혈압/심장',
   pregnant: '🤰 임신 중',
@@ -95,6 +97,11 @@ const CONDITION_LABELS: Record<HealthCondition, string> = {
 const SIDE_PAD = 18;
 const COL_GAP = 10;
 const CARD_HEADER_HEIGHT = 100;
+
+function normalizeSettingsEnvironment(environment: BathEnvironment): BathEnvironment {
+  if (environment === 'footbath') return 'partial_bath';
+  return environment;
+}
 
 function HistorySection() {
   const { width } = useWindowDimensions();
@@ -329,7 +336,7 @@ function SettingsSection() {
 
   const handleEnvironmentChange = async (environment: BathEnvironment) => {
     if (!profile) return;
-    if (profile.bathEnvironment === environment) return;
+    if (normalizeSettingsEnvironment(profile.bathEnvironment) === environment) return;
     haptic.light();
     await update({ bathEnvironment: environment });
   };
@@ -396,21 +403,29 @@ function SettingsSection() {
           <Text style={styles.settingsSectionTitle}>{copy.settings.sectionProfile}</Text>
           <View style={[ui.glassCardV2, styles.infoCard]}>
             <Text style={styles.infoLabel}>{copy.settings.environmentLabel}</Text>
-            <Text style={styles.infoValue}>{ENV_LABELS_SETTINGS[profile.bathEnvironment]}</Text>
+            <Text style={styles.infoValue}>
+              {ENV_LABELS_SETTINGS[normalizeSettingsEnvironment(profile.bathEnvironment)]}
+            </Text>
           </View>
           <View style={styles.environmentList}>
-            {(Object.keys(ENV_LABELS_SETTINGS) as BathEnvironment[]).map((env) => (
+            {SETTINGS_ENV_OPTIONS.map((env) => (
               <TouchableOpacity
                 key={env}
                 style={[
                   ui.pillButtonV2,
                   styles.conditionTagButton,
-                  profile.bathEnvironment === env && ui.pillButtonV2Active,
+                  normalizeSettingsEnvironment(profile.bathEnvironment) === env && ui.pillButtonV2Active,
                 ]}
                 onPress={() => handleEnvironmentChange(env)}
                 activeOpacity={0.78}
               >
-                <Text style={[styles.conditionTag, profile.bathEnvironment === env && styles.conditionTagActiveText]}>
+                <Text
+                  style={[
+                    styles.conditionTag,
+                    normalizeSettingsEnvironment(profile.bathEnvironment) === env &&
+                      styles.conditionTagActiveText,
+                  ]}
+                >
                   {ENV_LABELS_SETTINGS[env]}
                 </Text>
               </TouchableOpacity>
