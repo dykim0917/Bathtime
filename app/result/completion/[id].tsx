@@ -34,6 +34,7 @@ import {
   V2_TEXT_PRIMARY,
   V2_TEXT_SECONDARY,
 } from '@/src/data/colors';
+import { luxuryFonts, luxuryTracking } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
 
 function toEnvironmentLabel(environment: string): string {
@@ -276,11 +277,12 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   mainMessage: {
-    fontSize: 22,
-    fontWeight: '700',
+    fontSize: 28,
     color: V2_TEXT_PRIMARY,
     textAlign: 'center',
-    lineHeight: 30,
+    lineHeight: 36,
+    fontFamily: luxuryFonts.display,
+    letterSpacing: luxuryTracking.hero,
   },
   stepBadge: {
     alignSelf: 'center',
@@ -296,6 +298,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: V2_ACCENT,
     letterSpacing: 1,
+    fontFamily: luxuryFonts.sans,
   },
   statsCard: {
     paddingVertical: 18,
@@ -307,27 +310,29 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: V2_TEXT_MUTED,
     letterSpacing: 1,
+    fontFamily: luxuryFonts.sans,
   },
   statsText: {
     fontSize: 18,
     color: V2_TEXT_PRIMARY,
     lineHeight: 24,
+    fontFamily: luxuryFonts.sans,
   },
   statsHighlight: {
-    fontWeight: '800',
     fontSize: 28,
     color: V2_ACCENT,
+    fontFamily: luxuryFonts.display,
   },
   feedbackSection: {
     padding: 18,
     gap: 14,
   },
   feedbackTitle: {
-    fontSize: 16,
-    fontWeight: '700',
+    fontSize: 20,
     color: V2_TEXT_PRIMARY,
     textAlign: 'center',
-    lineHeight: 22,
+    lineHeight: 26,
+    fontFamily: luxuryFonts.display,
   },
   feedbackButtons: {
     flexDirection: 'row',
@@ -355,6 +360,7 @@ const styles = StyleSheet.create({
     fontSize: 13,
     color: V2_TEXT_SECONDARY,
     fontWeight: '700',
+    fontFamily: luxuryFonts.sans,
   },
   feedbackLabelActive: {
     color: V2_ACCENT_TEXT,
@@ -363,6 +369,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: V2_TEXT_MUTED,
     textAlign: 'center',
+    fontFamily: luxuryFonts.sans,
   },
   memoryCard: {
     paddingVertical: 14,
@@ -370,16 +377,17 @@ const styles = StyleSheet.create({
     gap: 6,
   },
   memoryTitle: {
-    fontSize: 12,
-    fontWeight: '700',
+    fontSize: TYPE_SCALE.title - 2,
     color: V2_TEXT_PRIMARY,
     letterSpacing: 0.6,
     textTransform: 'uppercase',
+    fontFamily: luxuryFonts.sans,
   },
   memoryLine: {
     fontSize: 12,
     color: V2_TEXT_SECONDARY,
     lineHeight: 17,
+    fontFamily: luxuryFonts.sans,
   },
   actionRow: {
     width: '100%',

@@ -61,6 +61,7 @@ import { applySubProtocolOverrides } from '@/src/engine/subprotocol';
 import { inferFeelingBefore } from '@/src/engine/feeling';
 import { buildHomeStreakSummary, HomeStreakSummary } from '@/src/engine/streaks';
 import { copy } from '@/src/content/copy';
+import { luxuryFonts, luxuryRadii, luxuryTracking } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
 import { HomeCarePreviewCard } from '@/src/components/HomeCarePreviewCard';
 import { HomeTripEditorialCard } from '@/src/components/HomeTripEditorialCard';
@@ -449,10 +450,10 @@ export default function HomeIntentScreen() {
               <Image source={require('../../assets/images/brand/bath-symbol.png')} style={styles.brandIcon} resizeMode="contain" />
               <Text style={styles.brandText}>BATH SOMMELIER</Text>
             </View>
-            <Text style={styles.brandKicker}>Editorial bath rituals for tonight</Text>
+            <Text style={styles.brandKicker}>Quiet luxury guidance for the bath you can actually do tonight.</Text>
           </View>
           <Text style={styles.greeting}>{headlineMessage}</Text>
-          <Text style={styles.subtitle}>오늘의 컨디션과 환경을 고르면, 집에서도 호텔 스파처럼 정제된 루틴을 바로 시작할 수 있어요.</Text>
+          <Text style={styles.subtitle}>오늘의 컨디션과 환경을 고르면, 집에서도 조용한 스파처럼 정제된 루틴을 바로 시작할 수 있어요.</Text>
           {!isHistoryLoaded || recentRoutines.length > 0 ? null : (
             <Text style={styles.beginnerGuide}>{copy.home.beginnerGuide}</Text>
           )}
@@ -653,12 +654,12 @@ const styles = StyleSheet.create({
     gap: SECTION_GAP,
   },
   headerBlock: {
-    gap: 10,
-    paddingTop: 18,
-    paddingHorizontal: 18,
-    paddingBottom: 18,
+    gap: 12,
+    paddingTop: 22,
+    paddingHorizontal: 20,
+    paddingBottom: 22,
     overflow: 'hidden',
-    borderColor: 'rgba(201, 164, 91, 0.2)',
+    borderColor: 'rgba(176, 141, 87, 0.24)',
   },
   heroGlow: {
     position: 'absolute',
@@ -667,23 +668,23 @@ const styles = StyleSheet.create({
     width: 150,
     height: 150,
     borderRadius: 75,
-    backgroundColor: 'rgba(201, 164, 91, 0.12)',
+    backgroundColor: 'rgba(176, 141, 87, 0.12)',
   },
   brandRow: {
-    gap: 10,
-    marginBottom: 4,
+    gap: 12,
+    marginBottom: 2,
   },
   brandBadge: {
     flexDirection: 'row',
     alignItems: 'center',
     alignSelf: 'flex-start',
     gap: 8,
-    paddingHorizontal: 10,
+    paddingHorizontal: 12,
     paddingVertical: 8,
     borderRadius: 999,
-    backgroundColor: 'rgba(255,255,255,0.04)',
+    backgroundColor: 'rgba(245,240,232,0.04)',
     borderWidth: 1,
-    borderColor: 'rgba(201, 164, 91, 0.18)',
+    borderColor: 'rgba(176, 141, 87, 0.18)',
   },
   brandIcon: {
     width: 18,
@@ -693,35 +694,40 @@ const styles = StyleSheet.create({
     color: V2_ACCENT,
     fontSize: TYPE_SCALE.caption,
     fontWeight: '800',
-    letterSpacing: 1.4,
+    letterSpacing: luxuryTracking.eyebrow,
+    fontFamily: luxuryFonts.sans,
   },
   brandKicker: {
     color: V2_TEXT_MUTED,
     fontSize: TYPE_SCALE.caption,
     lineHeight: 18,
+    fontFamily: luxuryFonts.sans,
   },
   greeting: {
-    fontSize: TYPE_SCALE.headingMd,
-    fontWeight: '800',
+    fontSize: TYPE_SCALE.headingLg + 4,
     color: V2_TEXT_PRIMARY,
-    lineHeight: 31,
+    lineHeight: 40,
+    fontFamily: luxuryFonts.display,
+    letterSpacing: luxuryTracking.hero,
   },
   subtitle: {
     color: V2_TEXT_SECONDARY,
-    fontSize: TYPE_SCALE.body,
-    lineHeight: 21,
+    fontSize: TYPE_SCALE.body + 1,
+    lineHeight: 23,
+    fontFamily: luxuryFonts.sans,
   },
   beginnerGuide: {
     marginTop: 2,
     color: V2_TEXT_MUTED,
     fontSize: TYPE_SCALE.caption,
     lineHeight: 18,
+    fontFamily: luxuryFonts.sans,
   },
   weeklyCard: {
-    borderRadius: 16,
+    borderRadius: luxuryRadii.card,
     overflow: 'hidden',
     borderWidth: 1,
-    borderColor: 'rgba(224, 186, 122, 0.16)',
+    borderColor: 'rgba(176, 141, 87, 0.18)',
     ...Platform.select({
       web: {
         boxShadow: '0px 8px 14px rgba(18, 11, 6, 0.18)',
@@ -736,10 +742,10 @@ const styles = StyleSheet.create({
     }),
   },
   weeklyGradient: {
-    paddingHorizontal: 14,
-    paddingTop: 14,
-    paddingBottom: 13,
-    gap: 12,
+    paddingHorizontal: 18,
+    paddingTop: 18,
+    paddingBottom: 18,
+    gap: 14,
   },
   weeklyGlowPrimary: {
     position: 'absolute',
@@ -766,10 +772,11 @@ const styles = StyleSheet.create({
     gap: 12,
   },
   weeklyLabel: {
-    color: '#D79F55',
+    color: '#D4B17A',
     fontSize: TYPE_SCALE.caption - 2,
     fontWeight: '700',
-    letterSpacing: 0.2,
+    letterSpacing: 0.5,
+    fontFamily: luxuryFonts.sans,
   },
   weeklyStatusRow: {
     marginTop: 6,
@@ -791,6 +798,7 @@ const styles = StyleSheet.create({
     fontSize: TYPE_SCALE.caption - 1,
     fontWeight: '700',
     lineHeight: 16,
+    fontFamily: luxuryFonts.sans,
   },
   weeklySummaryText: {
     marginTop: 4,
@@ -798,6 +806,7 @@ const styles = StyleSheet.create({
     fontSize: TYPE_SCALE.caption - 2,
     fontWeight: '600',
     lineHeight: 14,
+    fontFamily: luxuryFonts.sans,
   },
   weeklyDetailButton: {
     minHeight: 24,
@@ -813,6 +822,7 @@ const styles = StyleSheet.create({
     fontSize: TYPE_SCALE.caption - 2,
     fontWeight: '800',
     letterSpacing: 0.4,
+    fontFamily: luxuryFonts.sans,
   },
   weekDotsRow: {
     flexDirection: 'row',
@@ -845,6 +855,7 @@ const styles = StyleSheet.create({
     color: 'rgba(255, 241, 218, 0.58)',
     fontSize: 10,
     fontWeight: '700',
+    fontFamily: luxuryFonts.sans,
   },
   weekDotTextDone: {
     color: '#4A3118',
@@ -873,17 +884,19 @@ const styles = StyleSheet.create({
     lineHeight: 13,
     textTransform: 'uppercase',
     letterSpacing: 0.3,
+    fontFamily: luxuryFonts.sans,
   },
   weekMetricValue: {
     color: '#FFF7EA',
     fontSize: TYPE_SCALE.caption - 1,
     fontWeight: '700',
     lineHeight: 16,
+    fontFamily: luxuryFonts.sans,
   },
   sectionLabel: {
     color: V2_TEXT_PRIMARY,
     fontSize: TYPE_SCALE.title,
-    fontWeight: '800',
+    fontFamily: luxuryFonts.display,
     marginBottom: 12,
   },
   environmentRow: {
@@ -910,6 +923,7 @@ const styles = StyleSheet.create({
     color: V2_TEXT_SECONDARY,
     fontSize: TYPE_SCALE.caption,
     fontWeight: '700',
+    fontFamily: luxuryFonts.sans,
   },
   envTextActive: {
     color: V2_ACCENT,
@@ -923,12 +937,13 @@ const styles = StyleSheet.create({
   sectionTitle: {
     color: V2_TEXT_PRIMARY,
     fontSize: TYPE_SCALE.title,
-    fontWeight: '800',
+    fontFamily: luxuryFonts.display,
   },
   moreText: {
     color: V2_ACCENT,
     fontSize: TYPE_SCALE.caption,
     fontWeight: '700',
+    fontFamily: luxuryFonts.sans,
   },
   careGrid: {
     flexDirection: 'row',
@@ -966,17 +981,19 @@ const styles = StyleSheet.create({
     fontSize: TYPE_SCALE.caption - 1,
     fontWeight: '800',
     letterSpacing: 0.8,
+    fontFamily: luxuryFonts.sans,
   },
   recentTitle: {
     color: V2_TEXT_PRIMARY,
-    fontSize: TYPE_SCALE.body,
-    fontWeight: '700',
-    lineHeight: 20,
+    fontSize: TYPE_SCALE.title - 1,
+    lineHeight: 22,
+    fontFamily: luxuryFonts.display,
   },
   recentSub: {
     color: V2_TEXT_SECONDARY,
     fontSize: TYPE_SCALE.caption,
     lineHeight: 17,
+    fontFamily: luxuryFonts.sans,
   },
   recentEmptyCard: {
     width: 220,
@@ -989,6 +1006,7 @@ const styles = StyleSheet.create({
     color: V2_TEXT_SECONDARY,
     fontSize: TYPE_SCALE.body,
     lineHeight: 20,
+    fontFamily: luxuryFonts.sans,
   },
   disclosureInline: {
     marginTop: -2,

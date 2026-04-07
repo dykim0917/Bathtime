@@ -16,12 +16,14 @@ import {
   V2_ACCENT_TEXT,
   V2_BG_BASE,
   V2_BORDER,
+  V2_BORDER_STRONG,
   V2_SHADOW,
   V2_SURFACE,
   V2_TEXT_MUTED,
   V2_TEXT_PRIMARY,
   V2_TEXT_SECONDARY,
 } from '@/src/data/colors';
+import { luxuryFonts, luxuryRadii } from '@/src/theme/luxury';
 
 export const ui = StyleSheet.create({
   screenShell: {
@@ -74,12 +76,12 @@ export const ui = StyleSheet.create({
     borderColor: PILL_BORDER,
   },
   tabBarStyle: {
-    backgroundColor: 'rgba(10, 24, 55, 0.98)',
-    borderTopColor: 'rgba(132, 152, 188, 0.24)',
+    backgroundColor: 'rgba(12, 19, 25, 0.98)',
+    borderTopColor: V2_BORDER,
     borderTopWidth: 1,
-    height: 76,
-    paddingTop: 8,
-    paddingBottom: 8,
+    height: 82,
+    paddingTop: 10,
+    paddingBottom: 10,
   },
   screenShellV2: {
     flex: 1,
@@ -89,38 +91,40 @@ export const ui = StyleSheet.create({
     backgroundColor: V2_SURFACE,
     borderWidth: 1,
     borderColor: V2_BORDER,
-    borderRadius: 18,
+    borderRadius: luxuryRadii.card,
     ...Platform.select({
       web: {
-        boxShadow: `0px 6px 18px ${V2_SHADOW}`,
+        boxShadow: `0px 18px 36px ${V2_SHADOW}`,
       },
       default: {
         shadowColor: V2_SHADOW,
-        shadowOffset: { width: 0, height: 6 },
+        shadowOffset: { width: 0, height: 14 },
         shadowOpacity: 1,
-        shadowRadius: 18,
-        elevation: 4,
+        shadowRadius: 28,
+        elevation: 8,
       },
     }),
   },
   titleHeroV2: {
     fontSize: TYPE_HEADING_MD,
-    fontWeight: '800',
+    fontFamily: luxuryFonts.display,
     color: V2_TEXT_PRIMARY,
     letterSpacing: 0.2,
   },
   sectionTitleV2: {
     fontSize: TYPE_TITLE,
-    fontWeight: '700',
+    fontFamily: luxuryFonts.display,
     color: V2_TEXT_PRIMARY,
   },
   bodyTextV2: {
     fontSize: TYPE_BODY,
     color: V2_TEXT_SECONDARY,
+    fontFamily: luxuryFonts.sans,
   },
   captionTextV2: {
     fontSize: TYPE_BODY - 2,
     color: V2_TEXT_MUTED,
+    fontFamily: luxuryFonts.sans,
   },
   pillButtonV2: {
     backgroundColor: V2_SURFACE,
@@ -136,22 +140,26 @@ export const ui = StyleSheet.create({
   },
   primaryButtonV2: {
     backgroundColor: V2_ACCENT,
-    borderRadius: 16,
-    minHeight: 54,
-    paddingHorizontal: 18,
+    borderRadius: luxuryRadii.button,
+    minHeight: 56,
+    paddingHorizontal: 20,
     alignItems: 'center',
     justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: V2_BORDER_STRONG,
   },
   primaryButtonTextV2: {
     color: V2_ACCENT_TEXT,
     fontSize: TYPE_BODY,
     fontWeight: '800',
+    fontFamily: luxuryFonts.sans,
+    letterSpacing: 0.2,
   },
   secondaryButtonV2: {
     backgroundColor: V2_SURFACE,
-    borderRadius: 16,
-    minHeight: 54,
-    paddingHorizontal: 18,
+    borderRadius: luxuryRadii.button,
+    minHeight: 56,
+    paddingHorizontal: 20,
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 1,
@@ -161,5 +169,7 @@ export const ui = StyleSheet.create({
     color: V2_TEXT_PRIMARY,
     fontSize: TYPE_BODY,
     fontWeight: '700',
+    fontFamily: luxuryFonts.sans,
+    letterSpacing: 0.2,
   },
 });

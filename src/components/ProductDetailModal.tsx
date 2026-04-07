@@ -2,23 +2,28 @@ import React from 'react';
 import { Modal, Pressable, StyleSheet, Text, View } from 'react-native';
 import { CatalogProduct, PRODUCT_CATEGORY_LABELS } from '@/src/data/catalog';
 import {
-  BTN_PRIMARY,
-  BTN_PRIMARY_TEXT,
-  CARD_BORDER,
-  MODAL_ACCENT_SURFACE,
-  MODAL_SUB_SURFACE,
-  MODAL_SURFACE,
-  TEXT_PRIMARY,
-  TEXT_SECONDARY,
+  V2_ACCENT,
   TYPE_SCALE,
+  V2_ACCENT_TEXT,
+  V2_BG_OVERLAY,
+  V2_BORDER,
+  V2_MODAL_SURFACE,
+  V2_SURFACE_SOFT,
+  V2_TEXT_MUTED,
+  V2_TEXT_PRIMARY,
+  V2_TEXT_SECONDARY,
 } from '@/src/data/colors';
+import { luxuryFonts, luxuryRadii, luxuryTracking } from '@/src/theme/luxury';
+import { ui } from '@/src/theme/ui';
 
 interface ProductDetailModalProps {
   visible: boolean;
   product: CatalogProduct | null;
   onClose: () => void;
-  onOpenCatalog: (product: CatalogProduct) => void;
+  onOpenCatalog?: (product: CatalogProduct) => void;
   onPurchasePress: (product: CatalogProduct) => void;
+  secondaryActionLabel?: string;
+  closeActionLabel?: string;
 }
 
 export function ProductDetailModal({
@@ -27,6 +32,8 @@ export function ProductDetailModal({
   onClose,
   onOpenCatalog,
   onPurchasePress,
+  secondaryActionLabel = 'Product 탭에서 전체 보기',
+  closeActionLabel = '루틴으로 돌아가기',
 }: ProductDetailModalProps) {
   if (!product) return null;
 
@@ -48,6 +55,14 @@ export function ProductDetailModal({
           </View>
 
           <View style={styles.bodyCard}>
+            <View style={styles.detailMetaRow}>
+              <View style={styles.detailMetaPill}>
+                <Text style={styles.detailMetaText}>{PRODUCT_CATEGORY_LABELS[product.category]}</Text>
+              </View>
+              <View style={styles.detailMetaPill}>
+                <Text style={styles.detailMetaText}>{product.priceTier.toUpperCase()}</Text>
+              </View>
+            </View>
             <Text style={styles.description}>{product.description}</Text>
             <View style={styles.tagRow}>
               {product.tags.map((tag) => (
@@ -60,14 +75,16 @@ export function ProductDetailModal({
           </View>
 
           <View style={styles.buttonStack}>
-            <Pressable style={styles.primaryButton} onPress={() => onPurchasePress(product)}>
+            <Pressable style={ui.primaryButtonV2} onPress={() => onPurchasePress(product)}>
               <Text style={styles.primaryButtonText}>구매 링크 열기</Text>
             </Pressable>
-            <Pressable style={styles.secondaryButton} onPress={() => onOpenCatalog(product)}>
-              <Text style={styles.secondaryButtonText}>Product 탭에서 전체 보기</Text>
-            </Pressable>
+            {onOpenCatalog ? (
+              <Pressable style={ui.secondaryButtonV2} onPress={() => onOpenCatalog(product)}>
+                <Text style={styles.secondaryButtonText}>{secondaryActionLabel}</Text>
+              </Pressable>
+            ) : null}
             <Pressable style={styles.closeButton} onPress={onClose}>
-              <Text style={styles.closeButtonText}>루틴으로 돌아가기</Text>
+              <Text style={styles.closeButtonText}>{closeActionLabel}</Text>
             </Pressable>
           </View>
         </View>
@@ -80,18 +97,18 @@ const styles = StyleSheet.create({
   overlay: {
     flex: 1,
     justifyContent: 'flex-end',
-    backgroundColor: 'rgba(17,29,48,0.36)',
+    backgroundColor: V2_BG_OVERLAY,
   },
   card: {
-    backgroundColor: MODAL_SURFACE,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
+    backgroundColor: V2_MODAL_SURFACE,
+    borderTopLeftRadius: luxuryRadii.cardLg,
+    borderTopRightRadius: luxuryRadii.cardLg,
     borderWidth: 1,
-    borderColor: CARD_BORDER,
-    paddingHorizontal: 16,
-    paddingTop: 18,
-    paddingBottom: 24,
-    gap: 14,
+    borderColor: V2_BORDER,
+    paddingHorizontal: 18,
+    paddingTop: 20,
+    paddingBottom: 26,
+    gap: 16,
   },
   header: {
     flexDirection: 'row',
@@ -101,9 +118,11 @@ const styles = StyleSheet.create({
   iconWrap: {
     width: 56,
     height: 56,
-    borderRadius: 18,
+    borderRadius: luxuryRadii.button,
     justifyContent: 'center',
     alignItems: 'center',
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.12)',
   },
   icon: {
     fontSize: 28,
@@ -113,31 +132,55 @@ const styles = StyleSheet.create({
     gap: 2,
   },
   brand: {
-    color: TEXT_SECONDARY,
+    color: V2_TEXT_MUTED,
     fontSize: TYPE_SCALE.caption,
     fontWeight: '700',
+    letterSpacing: luxuryTracking.label,
+    fontFamily: luxuryFonts.sans,
   },
   name: {
-    color: TEXT_PRIMARY,
-    fontSize: TYPE_SCALE.title,
-    fontWeight: '800',
+    color: V2_TEXT_PRIMARY,
+    fontSize: TYPE_SCALE.title + 2,
+    fontFamily: luxuryFonts.display,
   },
   meta: {
-    color: TEXT_SECONDARY,
+    color: V2_TEXT_SECONDARY,
     fontSize: TYPE_SCALE.caption,
+    fontFamily: luxuryFonts.sans,
   },
   bodyCard: {
-    borderRadius: 14,
+    borderRadius: luxuryRadii.card,
     borderWidth: 1,
-    borderColor: CARD_BORDER,
-    backgroundColor: MODAL_SUB_SURFACE,
-    padding: 14,
+    borderColor: V2_BORDER,
+    backgroundColor: V2_SURFACE_SOFT,
+    padding: 16,
     gap: 12,
   },
+  detailMetaRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+  },
+  detailMetaPill: {
+    borderRadius: 999,
+    borderWidth: 1,
+    borderColor: V2_BORDER,
+    backgroundColor: 'rgba(255,255,255,0.05)',
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+  },
+  detailMetaText: {
+    color: V2_ACCENT,
+    fontSize: TYPE_SCALE.caption,
+    fontWeight: '800',
+    letterSpacing: 0.3,
+    fontFamily: luxuryFonts.sans,
+  },
   description: {
-    color: TEXT_PRIMARY,
+    color: V2_TEXT_PRIMARY,
     fontSize: TYPE_SCALE.body,
     lineHeight: 21,
+    fontFamily: luxuryFonts.sans,
   },
   tagRow: {
     flexDirection: 'row',
@@ -147,58 +190,50 @@ const styles = StyleSheet.create({
   tagPill: {
     borderRadius: 999,
     borderWidth: 1,
-    borderColor: CARD_BORDER,
-    backgroundColor: '#FFFFFF',
+    borderColor: V2_BORDER,
+    backgroundColor: 'rgba(255,255,255,0.04)',
     paddingHorizontal: 10,
     paddingVertical: 4,
   },
   tagText: {
-    color: TEXT_SECONDARY,
+    color: V2_TEXT_SECONDARY,
     fontSize: TYPE_SCALE.caption,
     fontWeight: '600',
+    fontFamily: luxuryFonts.sans,
   },
   footerHint: {
-    color: TEXT_SECONDARY,
+    color: V2_TEXT_MUTED,
     fontSize: TYPE_SCALE.caption,
     lineHeight: 18,
+    fontFamily: luxuryFonts.sans,
   },
   buttonStack: {
-    gap: 8,
-  },
-  primaryButton: {
-    borderRadius: 12,
-    backgroundColor: BTN_PRIMARY,
-    alignItems: 'center',
-    paddingVertical: 12,
-  },
-  primaryButtonText: {
-    color: BTN_PRIMARY_TEXT,
-    fontSize: TYPE_SCALE.body,
-    fontWeight: '700',
-  },
-  secondaryButton: {
-    borderRadius: 12,
-    backgroundColor: MODAL_ACCENT_SURFACE,
-    borderWidth: 1,
-    borderColor: CARD_BORDER,
-    alignItems: 'center',
-    paddingVertical: 12,
-  },
-  secondaryButtonText: {
-    color: TEXT_PRIMARY,
-    fontSize: TYPE_SCALE.body,
-    fontWeight: '700',
+    gap: 10,
   },
   closeButton: {
-    borderRadius: 12,
+    borderRadius: luxuryRadii.button,
     borderWidth: 1,
-    borderColor: CARD_BORDER,
+    borderColor: V2_BORDER,
     alignItems: 'center',
-    paddingVertical: 12,
+    paddingVertical: 15,
+    backgroundColor: 'rgba(255,255,255,0.02)',
   },
   closeButtonText: {
-    color: TEXT_PRIMARY,
+    color: V2_TEXT_PRIMARY,
     fontSize: TYPE_SCALE.body,
     fontWeight: '600',
+    fontFamily: luxuryFonts.sans,
+  },
+  primaryButtonText: {
+    color: V2_ACCENT_TEXT,
+    fontSize: TYPE_SCALE.body,
+    fontWeight: '700',
+    fontFamily: luxuryFonts.sans,
+  },
+  secondaryButtonText: {
+    color: V2_TEXT_PRIMARY,
+    fontSize: TYPE_SCALE.body,
+    fontWeight: '700',
+    fontFamily: luxuryFonts.sans,
   },
 });

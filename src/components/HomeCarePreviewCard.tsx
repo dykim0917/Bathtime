@@ -13,6 +13,7 @@ import {
   V2_TEXT_SECONDARY,
   V2_WARNING,
 } from '@/src/data/colors';
+import { luxuryFonts, luxuryRadii } from '@/src/theme/luxury';
 
 interface HomeCarePreviewCardProps {
   title: string;
@@ -77,15 +78,15 @@ const styles = StyleSheet.create({
     backgroundColor: V2_SURFACE,
     borderWidth: 1,
     borderColor: V2_BORDER,
-    borderRadius: 18,
+    borderRadius: luxuryRadii.card,
     overflow: 'hidden',
   },
   cardDisabled: {
     opacity: 0.74,
   },
   visual: {
-    height: 118,
-    padding: 14,
+    height: 126,
+    padding: 16,
     justifyContent: 'space-between',
     overflow: 'hidden',
   },
@@ -101,9 +102,9 @@ const styles = StyleSheet.create({
     fontSize: 28,
   },
   content: {
-    paddingHorizontal: 12,
-    paddingVertical: 12,
-    gap: 6,
+    paddingHorizontal: 14,
+    paddingVertical: 14,
+    gap: 8,
   },
   badgeRow: {
     flexDirection: 'row',
@@ -121,6 +122,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: V2_BORDER,
     fontWeight: '700',
+    fontFamily: luxuryFonts.sans,
   },
   safetyBadge: {
     fontSize: TYPE_CAPTION - 1,
@@ -133,22 +135,25 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'rgba(215, 168, 94, 0.3)',
     fontWeight: '800',
+    fontFamily: luxuryFonts.sans,
   },
   title: {
     color: V2_TEXT_PRIMARY,
-    fontSize: TYPE_SCALE.body,
-    fontWeight: '700',
-    lineHeight: 20,
+    fontSize: TYPE_SCALE.title - 1,
+    lineHeight: 23,
+    fontFamily: luxuryFonts.display,
   },
   subtitle: {
     color: V2_TEXT_SECONDARY,
     fontSize: TYPE_CAPTION,
     lineHeight: 17,
+    fontFamily: luxuryFonts.sans,
   },
   disabledText: {
     color: V2_ACCENT,
     fontSize: TYPE_CAPTION - 1,
     fontWeight: '700',
     lineHeight: 16,
+    fontFamily: luxuryFonts.sans,
   },
 });

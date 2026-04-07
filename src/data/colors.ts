@@ -52,27 +52,36 @@ export const WARNING_COLOR = '#F0A55C';
 export const DANGER_COLOR = '#E96F7F';
 
 // === Figma Style Guide v2 (Deep Navy / Gold / Glass) ===
-export const V2_BG_BASE = '#081636';
-export const V2_BG_TOP = '#0B1B44';
-export const V2_BG_BOTTOM = '#07122D';
-export const V2_BG_OVERLAY = 'rgba(7, 17, 40, 0.56)';
+export const SPA_IVORY = '#F5F0E8';
+export const SPA_IVORY_SOFT = '#EDE5D8';
+export const SPA_STONE = '#CFC4B3';
+export const SPA_STONE_MUTED = '#9F9486';
+export const SPA_NAVY = '#1A2430';
+export const SPA_NAVY_DEEP = '#0E171F';
+export const SPA_NAVY_MID = '#24323E';
+export const SPA_MIST = '#D8DDE0';
 
-export const V2_SURFACE = 'rgba(19, 37, 68, 0.88)';
-export const V2_SURFACE_SOFT = 'rgba(15, 31, 58, 0.74)';
-export const V2_BORDER = 'rgba(170, 190, 225, 0.18)';
-export const V2_BORDER_STRONG = 'rgba(201, 164, 91, 0.34)';
-export const V2_SHADOW = 'rgba(2, 8, 24, 0.42)';
-export const V2_MODAL_SURFACE = '#102242';
+export const V2_BG_BASE = '#101920';
+export const V2_BG_TOP = '#1A252E';
+export const V2_BG_BOTTOM = '#0A1117';
+export const V2_BG_OVERLAY = 'rgba(8, 11, 14, 0.42)';
 
-export const V2_TEXT_PRIMARY = '#EEF3FF';
-export const V2_TEXT_SECONDARY = '#AAB7D2';
-export const V2_TEXT_MUTED = '#8392B1';
+export const V2_SURFACE = 'rgba(23, 33, 42, 0.88)';
+export const V2_SURFACE_SOFT = 'rgba(19, 28, 36, 0.76)';
+export const V2_BORDER = 'rgba(245, 240, 232, 0.12)';
+export const V2_BORDER_STRONG = 'rgba(176, 141, 87, 0.38)';
+export const V2_SHADOW = 'rgba(3, 5, 8, 0.42)';
+export const V2_MODAL_SURFACE = '#17212B';
 
-export const V2_ACCENT = '#C9A45B';
-export const V2_ACCENT_SOFT = 'rgba(201, 164, 91, 0.16)';
-export const V2_ACCENT_TEXT = '#11213D';
-export const V2_WARNING = '#D7A85E';
-export const V2_DANGER = '#E2A46C';
+export const V2_TEXT_PRIMARY = '#F5F0E8';
+export const V2_TEXT_SECONDARY = '#D7CCBC';
+export const V2_TEXT_MUTED = '#9E9488';
+
+export const V2_ACCENT = '#B08D57';
+export const V2_ACCENT_SOFT = 'rgba(176, 141, 87, 0.14)';
+export const V2_ACCENT_TEXT = '#1A2430';
+export const V2_WARNING = '#CAA071';
+export const V2_DANGER = '#C28676';
 
 // === Persona Colors (Pastel compatible) ===
 export const PERSONA_COLORS: Record<PersonaCode, string> = {

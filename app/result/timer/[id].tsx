@@ -16,6 +16,7 @@ import { buildDisclosureLines } from '@/src/engine/disclosures';
 import { useDualAudioPlayer } from '@/src/hooks/useDualAudioPlayer';
 import { copy } from '@/src/content/copy';
 import { TYPE_CAPTION, V2_ACCENT, V2_BG_BASE, V2_BG_BOTTOM, V2_BG_OVERLAY, V2_BG_TOP, V2_BORDER, V2_SURFACE, V2_TEXT_MUTED, V2_TEXT_PRIMARY, V2_TEXT_SECONDARY } from '@/src/data/colors';
+import { luxuryFonts } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
 
 export default function TimerScreen() {
@@ -163,11 +164,11 @@ const styles = StyleSheet.create({
   safeArea: { flex: 1 },
   topBar: { flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', paddingHorizontal: 20, paddingTop: 8, paddingBottom: 4 },
   finishPill: { borderRadius: 999, paddingHorizontal: 18, paddingVertical: 10, backgroundColor: V2_SURFACE, borderWidth: 1, borderColor: V2_BORDER },
-  finishPillText: { fontSize: 14, fontWeight: '700', color: V2_TEXT_PRIMARY },
+  finishPillText: { fontSize: 14, fontWeight: '700', color: V2_TEXT_PRIMARY, fontFamily: luxuryFonts.sans },
   centerSection: { flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 24 },
-  recipeName: { fontSize: 18, fontWeight: '700', color: V2_TEXT_PRIMARY, marginBottom: 16, textAlign: 'center' },
-  timerText: { fontSize: 72, fontWeight: '200', color: V2_TEXT_PRIMARY, letterSpacing: 4, fontVariant: ['tabular-nums'] },
-  pausedLabel: { fontSize: 14, color: V2_TEXT_SECONDARY, marginTop: 10, letterSpacing: 2 },
+  recipeName: { fontSize: 24, color: V2_TEXT_PRIMARY, marginBottom: 18, textAlign: 'center', fontFamily: luxuryFonts.display },
+  timerText: { fontSize: 72, fontWeight: '200', color: V2_TEXT_PRIMARY, letterSpacing: 4, fontVariant: ['tabular-nums'], fontFamily: luxuryFonts.mono },
+  pausedLabel: { fontSize: 14, color: V2_TEXT_SECONDARY, marginTop: 10, letterSpacing: 2, fontFamily: luxuryFonts.sans },
   controlsArea: { paddingHorizontal: 24, paddingBottom: 8 },
   playRow: { alignItems: 'center', marginBottom: 28 },
   playButton: {
@@ -195,7 +196,7 @@ const styles = StyleSheet.create({
   progressFill: { position: 'absolute', left: 0, top: 0, height: 4, borderRadius: 2 },
   progressThumb: { position: 'absolute', top: -5, width: 14, height: 14, borderRadius: 7, marginLeft: -7 },
   progressLabels: { flexDirection: 'row', justifyContent: 'space-between' },
-  progressTime: { fontSize: TYPE_CAPTION, color: V2_TEXT_MUTED, fontVariant: ['tabular-nums'] },
+  progressTime: { fontSize: TYPE_CAPTION, color: V2_TEXT_MUTED, fontVariant: ['tabular-nums'], fontFamily: luxuryFonts.mono },
   mixerContainer: { marginBottom: 8 },
   disclosureWrap: { paddingHorizontal: 14, paddingBottom: 8 },
 });

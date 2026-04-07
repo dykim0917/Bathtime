@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Pressable, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, Pressable, ScrollView, StyleSheet, Alert, Linking } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useLocalSearchParams } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { ProductCard } from '@/src/components/ProductCard';
+import { ProductDetailModal } from '@/src/components/ProductDetailModal';
 import {
   PRODUCT_CATEGORIES,
   PRODUCT_CATEGORY_LABELS,
+  CatalogProduct,
   ProductCategory,
 } from '@/src/data/catalog';
 import { useCatalogHydration } from '@/src/data/catalogRuntime';
@@ -20,6 +22,7 @@ import {
   V2_TEXT_PRIMARY,
   V2_TEXT_SECONDARY,
 } from '@/src/data/colors';
+import { luxuryFonts, luxuryTracking } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
 
 const SCREEN_HORIZONTAL_PADDING = 22;
@@ -32,6 +35,7 @@ export default function ProductScreen() {
     : undefined;
   const initialCategory = highlightedProduct?.category ?? 'all';
   const [activeCategory, setActiveCategory] = useState<ProductCategory>(initialCategory);
+  const [selectedProduct, setSelectedProduct] = useState<CatalogProduct | null>(null);
   const insets = useSafeAreaInsets();
   const categoryItems =
     activeCategory === 'all'
@@ -51,6 +55,21 @@ export default function ProductScreen() {
         ]
       : categoryItems;
 
+  const handleProductPurchase = async (product: CatalogProduct) => {
+    if (!product.purchaseUrl) {
+      Alert.alert('구매 링크 없음', '아직 연결된 구매 링크가 없어요.');
+      return;
+    }
+
+    const supported = await Linking.canOpenURL(product.purchaseUrl);
+    if (!supported) {
+      Alert.alert('링크 열기 실패', '지금은 구매 링크를 열 수 없어요.');
+      return;
+    }
+
+    await Linking.openURL(product.purchaseUrl);
+  };
+
   return (
     <View style={[ui.screenShellV2, { paddingTop: insets.top }]}> 
       <LinearGradient colors={[V2_BG_TOP, V2_BG_BASE, V2_BG_BOTTOM]} style={StyleSheet.absoluteFillObject} />
@@ -60,7 +79,7 @@ export default function ProductScreen() {
       >
         <View style={[ui.glassCardV2, styles.heroCard]}>
           <Text style={styles.eyebrow}>CURATED PRODUCTS</Text>
-          <Text style={ui.titleHeroV2}>오늘의 제품</Text>
+          <Text style={styles.heroTitle}>오늘의 제품</Text>
           <Text style={styles.subtitle}>
             {highlightedProduct
               ? `${highlightedProduct.name}부터 이어서 볼 수 있어요.`
@@ -102,11 +121,23 @@ export default function ProductScreen() {
           <Text style={styles.listMeta}>{filtered.length}개 제품 · 루틴에 바로 붙이기 쉬운 조합만 모았어요</Text>
           <View>
             {filtered.map((item) => (
-              <ProductCard key={item.id} item={item} variant="v2" />
+              <ProductCard
+                key={item.id}
+                item={item}
+                variant="v2"
+                onPress={() => setSelectedProduct(item)}
+              />
             ))}
           </View>
         </View>
       </ScrollView>
+      <ProductDetailModal
+        visible={selectedProduct !== null}
+        product={selectedProduct}
+        onClose={() => setSelectedProduct(null)}
+        onPurchasePress={handleProductPurchase}
+        closeActionLabel="제품 목록으로 돌아가기"
+      />
     </View>
   );
 }
@@ -118,24 +149,32 @@ const styles = StyleSheet.create({
     gap: 18,
   },
   heroCard: {
-    padding: 18,
-    gap: 8,
+    padding: 20,
+    gap: 10,
   },
   eyebrow: {
     fontSize: TYPE_SCALE.caption - 1,
     fontWeight: '700',
     color: V2_ACCENT,
-    letterSpacing: 1.2,
+    letterSpacing: luxuryTracking.eyebrow,
+    fontFamily: luxuryFonts.sans,
+  },
+  heroTitle: {
+    color: V2_TEXT_PRIMARY,
+    fontSize: TYPE_SCALE.headingLg,
+    lineHeight: 38,
+    fontFamily: luxuryFonts.display,
   },
   subtitle: {
-    fontSize: TYPE_SCALE.body,
+    fontSize: TYPE_SCALE.body + 1,
     color: V2_TEXT_SECONDARY,
-    lineHeight: 21,
+    lineHeight: 23,
+    fontFamily: luxuryFonts.sans,
   },
   sectionTitle: {
     color: V2_TEXT_PRIMARY,
-    fontWeight: '700',
     fontSize: TYPE_SCALE.title,
+    fontFamily: luxuryFonts.display,
     marginBottom: 12,
   },
   categoryRow: {
@@ -151,6 +190,7 @@ const styles = StyleSheet.create({
     color: V2_TEXT_SECONDARY,
     fontSize: TYPE_SCALE.body,
     fontWeight: '600',
+    fontFamily: luxuryFonts.sans,
   },
   categoryTextActive: {
     color: V2_ACCENT,
@@ -162,5 +202,6 @@ const styles = StyleSheet.create({
     fontSize: TYPE_SCALE.caption,
     color: V2_TEXT_MUTED,
     marginBottom: 10,
+    fontFamily: luxuryFonts.sans,
   },
 });

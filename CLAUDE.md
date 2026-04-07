@@ -208,6 +208,13 @@ The `@/` alias resolves to the project root. Always use it for imports:
 - Do not hardcode font sizes (use `TYPE_*` tokens)
 - Do not install new icon packages
 - Do not create default exports for components
-- Do not add dark mode styles (app is light mode only)
+- Do not invent a separate light-mode redesign, the app now uses a quiet-luxury dark baseline
 - Do not use `console.log` in production components
 - Do not add TypeScript `any` types (strict mode enforced)
+
+## Design System
+Always read `DESIGN.md` before making any visual or UI decisions.
+All font roles, colors, spacing, tone, and component rules are defined there.
+Use serif only for branded editorial moments, sans for interaction, and monospace for timer/data moments.
+Do not revert to pastel tokens, generic wellness gradients, or glass-heavy cards without explicit user approval.
+In QA or review mode, flag any screen that drifts away from `DESIGN.md`.

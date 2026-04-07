@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { ui } from '@/src/theme/ui';
 import {
   PILL_BG,
@@ -10,24 +10,37 @@ import {
   TYPE_SCALE,
   V2_ACCENT,
   V2_BORDER,
+  V2_BORDER_STRONG,
   V2_SURFACE,
   V2_TEXT_MUTED,
   V2_TEXT_PRIMARY,
   V2_TEXT_SECONDARY,
 } from '@/src/data/colors';
 import { CatalogProduct, ProductCategory } from '@/src/data/catalog';
+import { luxuryFonts, luxuryRadii, luxuryTracking } from '@/src/theme/luxury';
 
 interface ProductCardProps {
   item: CatalogProduct;
   variant?: 'default' | 'v2';
+  onPress?: () => void;
 }
 
-export function ProductCard({ item, variant = 'default' }: ProductCardProps) {
+export function ProductCard({ item, variant = 'default', onPress }: ProductCardProps) {
   const isV2 = variant === 'v2';
   const categoryLabel = getCategoryLabel(item.category);
 
   return (
-    <View style={[ui.glassCard, styles.card, isV2 && styles.cardV2]}>
+    <Pressable
+      disabled={!onPress}
+      onPress={onPress}
+      style={({ pressed }) => [
+        isV2 ? ui.glassCardV2 : ui.glassCard,
+        styles.card,
+        isV2 && styles.cardV2,
+        onPress && styles.cardInteractive,
+        pressed && onPress && styles.cardPressed,
+      ]}
+    >
       {isV2 ? <View style={[styles.glow, { backgroundColor: `${item.bgColor}24` }]} /> : null}
       {isV2 ? (
         <View style={styles.metaRow}>
@@ -59,7 +72,7 @@ export function ProductCard({ item, variant = 'default' }: ProductCardProps) {
           <Text style={styles.footerArrow}>›</Text>
         </View>
       ) : null}
-    </View>
+    </Pressable>
   );
 }
 
@@ -82,14 +95,21 @@ function getCategoryLabel(category: ProductCategory): string {
 
 const styles = StyleSheet.create({
   card: {
-    padding: 16,
-    marginBottom: 12,
-    gap: 10,
+    padding: 18,
+    marginBottom: 14,
+    gap: 12,
     overflow: 'hidden',
   },
   cardV2: {
     backgroundColor: V2_SURFACE,
     borderColor: V2_BORDER,
+  },
+  cardInteractive: {
+    borderColor: V2_BORDER_STRONG,
+  },
+  cardPressed: {
+    transform: [{ translateY: 1 }],
+    backgroundColor: 'rgba(27, 38, 48, 0.96)',
   },
   glow: {
     position: 'absolute',
@@ -107,16 +127,19 @@ const styles = StyleSheet.create({
   metaEyebrow: {
     fontSize: TYPE_SCALE.caption - 1,
     fontWeight: '700',
-    letterSpacing: 1.1,
+    letterSpacing: luxuryTracking.label,
     color: V2_TEXT_MUTED,
+    fontFamily: luxuryFonts.sans,
   },
   metaDivider: {
     fontSize: TYPE_SCALE.caption,
     color: V2_TEXT_MUTED,
+    fontFamily: luxuryFonts.sans,
   },
   metaBrand: {
     fontSize: TYPE_SCALE.caption,
     color: V2_TEXT_SECONDARY,
+    fontFamily: luxuryFonts.sans,
   },
   header: {
     flexDirection: 'row',
@@ -124,9 +147,9 @@ const styles = StyleSheet.create({
     gap: 12,
   },
   emojiWrap: {
-    width: 48,
-    height: 48,
-    borderRadius: 14,
+    width: 52,
+    height: 52,
+    borderRadius: luxuryRadii.button,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -143,8 +166,8 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: TYPE_SCALE.title,
-    fontWeight: '700',
     color: TEXT_PRIMARY,
+    fontFamily: luxuryFonts.display,
   },
   nameV2: {
     color: V2_TEXT_PRIMARY,
@@ -152,6 +175,7 @@ const styles = StyleSheet.create({
   brand: {
     fontSize: TYPE_SCALE.caption,
     color: TEXT_MUTED,
+    fontFamily: luxuryFonts.sans,
   },
   brandV2: {
     color: V2_TEXT_MUTED,
@@ -160,6 +184,7 @@ const styles = StyleSheet.create({
     fontSize: TYPE_SCALE.body,
     color: TEXT_SECONDARY,
     lineHeight: 20,
+    fontFamily: luxuryFonts.sans,
   },
   descriptionV2: {
     color: V2_TEXT_SECONDARY,
@@ -185,6 +210,7 @@ const styles = StyleSheet.create({
     fontSize: TYPE_SCALE.caption,
     color: TEXT_SECONDARY,
     fontWeight: '500',
+    fontFamily: luxuryFonts.sans,
   },
   tagTextV2: {
     color: V2_TEXT_SECONDARY,
@@ -202,10 +228,12 @@ const styles = StyleSheet.create({
     fontSize: TYPE_SCALE.caption,
     color: V2_TEXT_MUTED,
     fontWeight: '600',
+    fontFamily: luxuryFonts.sans,
   },
   footerArrow: {
     fontSize: TYPE_SCALE.body + 2,
     color: V2_ACCENT,
     fontWeight: '700',
+    fontFamily: luxuryFonts.sans,
   },
 });

@@ -12,6 +12,7 @@ import {
   V2_TEXT_SECONDARY,
   V2_WARNING,
 } from '@/src/data/colors';
+import { luxuryFonts, luxuryRadii } from '@/src/theme/luxury';
 
 interface HomeTripEditorialCardProps {
   title: string;
@@ -78,7 +79,7 @@ export function HomeTripEditorialCard({
 
 const styles = StyleSheet.create({
   card: {
-    borderRadius: 22,
+    borderRadius: luxuryRadii.card,
     overflow: 'hidden',
     borderWidth: 1,
     borderColor: V2_BORDER,
@@ -90,7 +91,7 @@ const styles = StyleSheet.create({
   imageArea: {
     height: 210,
     justifyContent: 'space-between',
-    padding: 14,
+    padding: 16,
   },
   imageScrim: {
     ...StyleSheet.absoluteFillObject,
@@ -107,6 +108,7 @@ const styles = StyleSheet.create({
     fontSize: TYPE_CAPTION - 1,
     fontWeight: '800',
     letterSpacing: 1.2,
+    fontFamily: luxuryFonts.sans,
   },
   fitBadge: {
     color: '#F3F6FF',
@@ -118,20 +120,22 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(255,255,255,0.12)',
     borderWidth: 1,
     borderColor: 'rgba(255,255,255,0.14)',
+    fontFamily: luxuryFonts.sans,
   },
   imageBottom: {
     gap: 4,
   },
   imageTitle: {
     color: '#FFFFFF',
-    fontSize: TYPE_SCALE.title,
-    fontWeight: '800',
-    lineHeight: 22,
+    fontSize: TYPE_SCALE.title + 2,
+    lineHeight: 24,
+    fontFamily: luxuryFonts.display,
   },
   imageSubtitle: {
     color: 'rgba(255,255,255,0.82)',
     fontSize: TYPE_CAPTION,
     lineHeight: 16,
+    fontFamily: luxuryFonts.sans,
   },
   footer: {
     paddingHorizontal: 14,
@@ -150,6 +154,7 @@ const styles = StyleSheet.create({
     fontSize: TYPE_CAPTION - 1,
     fontWeight: '800',
     letterSpacing: 1,
+    fontFamily: luxuryFonts.sans,
   },
   safetyBadge: {
     color: V2_WARNING,
@@ -159,15 +164,18 @@ const styles = StyleSheet.create({
     paddingVertical: 3,
     borderRadius: 999,
     backgroundColor: V2_ACCENT_SOFT,
+    fontFamily: luxuryFonts.sans,
   },
   footerText: {
     color: V2_TEXT_SECONDARY,
     fontSize: TYPE_CAPTION,
     lineHeight: 17,
+    fontFamily: luxuryFonts.sans,
   },
   disabledText: {
     color: V2_TEXT_MUTED,
     fontSize: TYPE_CAPTION,
     lineHeight: 17,
+    fontFamily: luxuryFonts.sans,
   },
 });
