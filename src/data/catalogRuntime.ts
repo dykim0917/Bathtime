@@ -13,8 +13,6 @@ import {
 
 type CatalogHydrationStatus = 'fallback' | 'loading' | 'remote';
 
-const DEFAULT_DEV_WEB_CATALOG_API_URL = 'http://127.0.0.1:4010/api/catalog';
-
 let hasRemoteCatalog = false;
 let remoteCatalogAttempted = false;
 let remoteCatalogPromise: Promise<CatalogProduct[]> | null = null;
@@ -22,7 +20,6 @@ let remoteCatalogPromise: Promise<CatalogProduct[]> | null = null;
 function getCatalogApiUrl(): string | undefined {
   const configuredUrl = process.env.EXPO_PUBLIC_CATALOG_API_URL?.trim();
   if (configuredUrl) return configuredUrl;
-  if (__DEV__ && Platform.OS === 'web') return DEFAULT_DEV_WEB_CATALOG_API_URL;
   return undefined;
 }
 
