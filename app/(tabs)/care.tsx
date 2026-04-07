@@ -57,6 +57,7 @@ import {
 import { applySubProtocolOverrides } from '@/src/engine/subprotocol';
 import { inferFeelingBefore } from '@/src/engine/feeling';
 import { copy } from '@/src/content/copy';
+import { luxuryFonts, luxuryTracking } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
 
 const ENV_OPTIONS: { id: BathEnvironment; emoji: string; label: string }[] = [
@@ -352,7 +353,7 @@ export default function CareScreen() {
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <View style={[ui.glassCardV2, styles.heroCard]}>
           <Text style={styles.eyebrow}>CARE ROUTINE</Text>
-          <Text style={ui.titleHeroV2}>케어 루틴</Text>
+          <Text style={styles.heroTitle}>케어 루틴</Text>
           <Text style={styles.subtitle}>증상과 컨디션에 맞춰 안전한 루틴을 바로 골라보세요.</Text>
         </View>
 
@@ -444,25 +445,33 @@ const styles = StyleSheet.create({
     gap: SECTION_GAP,
   },
   heroCard: {
-    padding: 18,
-    gap: 8,
+    padding: 20,
+    gap: 10,
   },
   eyebrow: {
     fontSize: TYPE_SCALE.caption - 1,
     fontWeight: '700',
     color: V2_ACCENT,
-    letterSpacing: 1.2,
+    letterSpacing: luxuryTracking.eyebrow,
+    fontFamily: luxuryFonts.sans,
+  },
+  heroTitle: {
+    color: V2_TEXT_PRIMARY,
+    fontSize: TYPE_SCALE.headingLg,
+    lineHeight: 38,
+    fontFamily: luxuryFonts.display,
   },
   subtitle: {
-    fontSize: TYPE_SCALE.body,
+    fontSize: TYPE_SCALE.body + 1,
     color: V2_TEXT_SECONDARY,
-    lineHeight: 21,
+    lineHeight: 23,
+    fontFamily: luxuryFonts.sans,
   },
   sectionTitle: {
     color: V2_TEXT_PRIMARY,
-    fontWeight: '700',
     fontSize: TYPE_SCALE.title,
     marginBottom: 12,
+    fontFamily: luxuryFonts.display,
   },
   sectionIntro: {
     color: V2_TEXT_MUTED,
@@ -470,6 +479,7 @@ const styles = StyleSheet.create({
     lineHeight: 18,
     marginTop: -4,
     marginBottom: 12,
+    fontFamily: luxuryFonts.sans,
   },
   environmentRow: {
     flexDirection: 'row',
@@ -484,6 +494,7 @@ const styles = StyleSheet.create({
     color: V2_TEXT_SECONDARY,
     fontSize: TYPE_SCALE.body,
     fontWeight: '600',
+    fontFamily: luxuryFonts.sans,
   },
   envTextActive: {
     color: V2_ACCENT,

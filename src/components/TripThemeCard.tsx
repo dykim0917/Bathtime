@@ -9,8 +9,10 @@ import {
   V2_ACCENT_SOFT,
   V2_BORDER,
   V2_TEXT_PRIMARY,
+  V2_TEXT_SECONDARY,
   V2_WARNING,
 } from '@/src/data/colors';
+import { luxuryFonts, luxuryRadii } from '@/src/theme/luxury';
 
 interface TripThemeCardProps {
   intentId: string;
@@ -92,7 +94,7 @@ export function TripThemeCard({
 
 const styles = StyleSheet.create({
   card: {
-    borderRadius: 20,
+    borderRadius: luxuryRadii.card,
     overflow: 'hidden',
     borderWidth: 1,
     borderColor: CARD_BORDER,
@@ -125,9 +127,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(4, 9, 23, 0.28)',
   },
   content: {
-    paddingHorizontal: 16,
-    paddingVertical: 14,
-    gap: 5,
+    paddingHorizontal: 18,
+    paddingVertical: 16,
+    gap: 6,
   },
   badgeRow: {
     flexDirection: 'row',
@@ -140,10 +142,11 @@ const styles = StyleSheet.create({
     lineHeight: 16,
     paddingHorizontal: 7,
     paddingVertical: 3,
-    borderRadius: 7,
+    borderRadius: 999,
     color: '#F2F7FF',
     backgroundColor: 'rgba(15, 31, 53, 0.4)',
     fontWeight: '700',
+    fontFamily: luxuryFonts.sans,
   },
   fitBadgeV2: {
     color: V2_TEXT_PRIMARY,
@@ -156,10 +159,11 @@ const styles = StyleSheet.create({
     lineHeight: 16,
     paddingHorizontal: 7,
     paddingVertical: 3,
-    borderRadius: 7,
+    borderRadius: 999,
     color: '#3B2000',
     backgroundColor: 'rgba(255, 226, 191, 0.95)',
     fontWeight: '800',
+    fontFamily: luxuryFonts.sans,
   },
   safetyBadgeV2: {
     color: V2_WARNING,
@@ -169,9 +173,9 @@ const styles = StyleSheet.create({
   },
   title: {
     color: '#FFFFFF',
-    fontWeight: '800',
-    fontSize: 15,
-    lineHeight: 20,
+    fontSize: 19,
+    lineHeight: 24,
+    fontFamily: luxuryFonts.display,
   },
   titleV2: {
     color: V2_TEXT_PRIMARY,
@@ -183,9 +187,10 @@ const styles = StyleSheet.create({
     color: 'rgba(255,255,255,0.9)',
     fontSize: 12,
     lineHeight: 18,
+    fontFamily: luxuryFonts.sans,
   },
   subtitleV2: {
-    color: 'rgba(238, 243, 255, 0.8)',
+    color: V2_TEXT_SECONDARY,
   },
   subtitleDisabled: {
     color: '#D1D5DB',
@@ -196,6 +201,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     fontSize: TYPE_CAPTION,
     lineHeight: 16,
+    fontFamily: luxuryFonts.sans,
   },
   disabledTextV2: {
     color: V2_ACCENT,

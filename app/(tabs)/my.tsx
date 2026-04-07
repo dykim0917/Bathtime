@@ -47,6 +47,7 @@ import {
   V2_TEXT_PRIMARY,
   V2_TEXT_SECONDARY,
 } from '@/src/data/colors';
+import { luxuryFonts, luxuryTracking } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
 
 type MyTab = 'history' | 'settings';
@@ -556,6 +557,7 @@ const styles = StyleSheet.create({
     fontSize: TYPE_BODY,
     fontWeight: '600',
     color: V2_TEXT_SECONDARY,
+    fontFamily: luxuryFonts.sans,
   },
   subTabTextActive: {
     color: V2_ACCENT,
@@ -585,17 +587,19 @@ const styles = StyleSheet.create({
     fontSize: TYPE_CAPTION - 1,
     fontWeight: '700',
     color: V2_ACCENT,
-    letterSpacing: 1.2,
+    letterSpacing: luxuryTracking.eyebrow,
+    fontFamily: luxuryFonts.sans,
   },
   pageTitle: {
-    fontSize: TYPE_HEADING_MD,
-    fontWeight: '800',
+    fontSize: TYPE_HEADING_MD + 4,
     color: V2_TEXT_PRIMARY,
     marginBottom: 2,
+    fontFamily: luxuryFonts.display,
   },
   pageSubtitle: {
     fontSize: TYPE_BODY,
     color: V2_TEXT_SECONDARY,
+    fontFamily: luxuryFonts.sans,
   },
   streakCard: {
     paddingHorizontal: 14,
@@ -700,6 +704,7 @@ const styles = StyleSheet.create({
     fontSize: TYPE_BODY,
     fontWeight: '600',
     color: V2_TEXT_SECONDARY,
+    fontFamily: luxuryFonts.sans,
   },
   filterPillTextActive: {
     color: V2_ACCENT,
