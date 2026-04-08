@@ -40,7 +40,9 @@ export function ProductDetailModal({
   return (
     <Modal visible={visible} animationType="slide" transparent onRequestClose={onClose}>
       <View style={styles.overlay}>
+        <Pressable style={StyleSheet.absoluteFillObject} onPress={onClose} />
         <View style={styles.card}>
+          <View style={styles.handle} />
           <View style={styles.header}>
             <View style={[styles.iconWrap, { backgroundColor: product.bgColor }]}>
               <Text style={styles.icon}>{product.emoji}</Text>
@@ -98,6 +100,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     backgroundColor: V2_BG_OVERLAY,
+    paddingTop: 48,
   },
   card: {
     backgroundColor: V2_MODAL_SURFACE,
@@ -105,10 +108,18 @@ const styles = StyleSheet.create({
     borderTopRightRadius: luxuryRadii.cardLg,
     borderWidth: 1,
     borderColor: V2_BORDER,
-    paddingHorizontal: 18,
+    paddingHorizontal: 20,
     paddingTop: 20,
-    paddingBottom: 26,
-    gap: 16,
+    paddingBottom: 28,
+    gap: 18,
+  },
+  handle: {
+    alignSelf: 'center',
+    width: 44,
+    height: 4,
+    borderRadius: 999,
+    backgroundColor: 'rgba(245,240,232,0.28)',
+    marginBottom: 4,
   },
   header: {
     flexDirection: 'row',
@@ -154,7 +165,7 @@ const styles = StyleSheet.create({
     borderColor: V2_BORDER,
     backgroundColor: V2_SURFACE_SOFT,
     padding: 16,
-    gap: 12,
+    gap: 14,
   },
   detailMetaRow: {
     flexDirection: 'row',
@@ -208,18 +219,14 @@ const styles = StyleSheet.create({
     fontFamily: luxuryFonts.sans,
   },
   buttonStack: {
-    gap: 10,
+    gap: 12,
   },
   closeButton: {
-    borderRadius: luxuryRadii.button,
-    borderWidth: 1,
-    borderColor: V2_BORDER,
     alignItems: 'center',
-    paddingVertical: 15,
-    backgroundColor: 'rgba(255,255,255,0.02)',
+    paddingVertical: 4,
   },
   closeButtonText: {
-    color: V2_TEXT_PRIMARY,
+    color: V2_TEXT_MUTED,
     fontSize: TYPE_SCALE.body,
     fontWeight: '600',
     fontFamily: luxuryFonts.sans,

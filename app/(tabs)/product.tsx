@@ -10,6 +10,7 @@ import {
   PRODUCT_CATEGORY_LABELS,
   CatalogProduct,
   ProductCategory,
+  getBeginnerFriendlyProductCatalog,
 } from '@/src/data/catalog';
 import { useCatalogHydration } from '@/src/data/catalogRuntime';
 import {
@@ -30,8 +31,11 @@ const SCREEN_HORIZONTAL_PADDING = 22;
 export default function ProductScreen() {
   const { highlight } = useLocalSearchParams<{ highlight?: string }>();
   const { products, status } = useCatalogHydration();
+  const beginnerProducts = getBeginnerFriendlyProductCatalog().filter((item) =>
+    products.some((product) => product.id === item.id)
+  );
   const highlightedProduct = highlight
-    ? products.find((item) => item.id === highlight)
+    ? beginnerProducts.find((item) => item.id === highlight)
     : undefined;
   const initialCategory = highlightedProduct?.category ?? 'all';
   const [activeCategory, setActiveCategory] = useState<ProductCategory>(initialCategory);
@@ -39,8 +43,8 @@ export default function ProductScreen() {
   const insets = useSafeAreaInsets();
   const categoryItems =
     activeCategory === 'all'
-      ? products
-      : products.filter((item) => item.category === activeCategory);
+      ? beginnerProducts
+      : beginnerProducts.filter((item) => item.category === activeCategory);
 
   useEffect(() => {
     if (highlightedProduct?.category) {
@@ -85,7 +89,7 @@ export default function ProductScreen() {
               ? `${highlightedProduct.name}부터 이어서 볼 수 있어요.`
               : status === 'loading'
                 ? '실제 카탈로그를 불러오는 중이에요.'
-                : '루틴에 어울리는 오일, 솔트, 허브를 감도 있게 골라보세요.'}
+                : '지금 바로 쓰기 쉬운 입욕제, 샤워 아이템, 바디워시만 먼저 골라봤어요.'}
           </Text>
         </View>
 
@@ -118,7 +122,7 @@ export default function ProductScreen() {
 
         <View style={styles.listSection}>
           <Text style={styles.sectionTitle}>에디터 픽</Text>
-          <Text style={styles.listMeta}>{filtered.length}개 제품 · 루틴에 바로 붙이기 쉬운 조합만 모았어요</Text>
+          <Text style={styles.listMeta}>{filtered.length}개 제품 · 입문자가 바로 써보기 쉬운 완제품만 모았어요</Text>
           <View>
             {filtered.map((item) => (
               <ProductCard

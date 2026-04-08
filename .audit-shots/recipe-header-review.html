@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Recipe Header Review</title>
+    <style>
+      :root {
+        --bg-top: #152232;
+        --bg-base: #0f1a25;
+        --bg-bottom: #0b141d;
+        --surface: #182330;
+        --border: rgba(255, 248, 238, 0.11);
+        --text-primary: #f5f0e8;
+        --text-secondary: rgba(245, 240, 232, 0.78);
+        --text-muted: rgba(245, 240, 232, 0.58);
+        --accent: #b08d57;
+        --hero-a: #8f7657;
+        --hero-b: rgba(143, 118, 87, 0.6);
+      }
+
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background:
+          linear-gradient(180deg, var(--bg-top), var(--bg-base) 45%, var(--bg-bottom));
+        color: var(--text-primary);
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      .phone {
+        width: 430px;
+        min-height: 932px;
+        padding: 14px 18px 32px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
+      }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        height: 268px;
+        border-radius: 30px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background:
+          radial-gradient(circle at 92% 8%, rgba(245,240,232,0.08), transparent 32%),
+          radial-gradient(circle at 8% 86%, rgba(8,22,54,0.16), transparent 24%),
+          linear-gradient(135deg, var(--hero-a), var(--hero-b));
+        box-shadow: 0 24px 48px rgba(0,0,0,0.24);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .nav-button {
+        width: 42px;
+        height: 42px;
+        border-radius: 21px;
+        border: 1px solid rgba(255,255,255,0.18);
+        background: rgba(8,22,54,0.24);
+        display: grid;
+        place-items: center;
+        font-size: 22px;
+      }
+
+      .chip {
+        border-radius: 999px;
+        padding: 6px 12px;
+        border: 1px solid rgba(255,255,255,0.18);
+        background: rgba(8,22,54,0.26);
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .content {
+        display: grid;
+        gap: 10px;
+      }
+
+      .badges {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+      }
+
+      .badge {
+        border-radius: 999px;
+        padding: 4px 9px;
+        border: 1px solid rgba(255,255,255,0.18);
+        background: rgba(8,22,54,0.26);
+        font-size: 11px;
+        font-weight: 700;
+      }
+
+      .badge.safe {
+        background: rgba(201,164,91,0.22);
+        border-color: rgba(201,164,91,0.36);
+      }
+
+      .eyebrow {
+        font-size: 11px;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        color: var(--text-secondary);
+        font-weight: 700;
+      }
+
+      .title {
+        max-width: 90%;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 38px;
+        line-height: 1.05;
+      }
+
+      .lead {
+        max-width: 92%;
+        font-size: 17px;
+        line-height: 1.35;
+        color: rgba(255,255,255,0.88);
+      }
+
+      .plaque {
+        margin-top: 4px;
+        display: flex;
+        align-items: center;
+        padding: 14px;
+        border-radius: 24px;
+        border: 1px solid rgba(255,255,255,0.14);
+        background: rgba(8,22,54,0.22);
+      }
+
+      .metric {
+        flex: 1;
+        display: grid;
+        gap: 3px;
+      }
+
+      .metric-label {
+        font-size: 11px;
+        color: var(--text-muted);
+      }
+
+      .metric-value {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 18px;
+      }
+
+      .divider {
+        width: 1px;
+        height: 32px;
+        background: rgba(255,255,255,0.12);
+        margin: 0 10px;
+      }
+
+      .summary {
+        margin-top: 18px;
+        padding: 16px;
+        border-radius: 24px;
+        border: 1px solid var(--border);
+        background: var(--surface);
+      }
+
+      .summary h2 {
+        margin: 0 0 8px;
+        font: 700 13px/1 system-ui, sans-serif;
+        letter-spacing: 1px;
+        color: var(--accent);
+      }
+
+      .summary p {
+        margin: 0;
+        font-size: 17px;
+        line-height: 1.35;
+        color: var(--text-secondary);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="phone">
+      <section class="hero">
+        <div class="nav">
+          <div class="nav-button">‹</div>
+          <div class="chip">준비</div>
+        </div>
+
+        <div class="content">
+          <div class="badges">
+            <div class="badge">환경 적합: 욕조</div>
+            <div class="badge safe">안전 우선 적용</div>
+          </div>
+          <div class="eyebrow">케어 · 몸 상태에 맞춘 루틴</div>
+          <div class="title">수면 준비</div>
+          <div class="lead">수면 준비 기준으로 현재 상태에 맞췄어요.</div>
+
+          <div class="plaque">
+            <div class="metric">
+              <div class="metric-label">입욕</div>
+              <div class="metric-value">반신욕</div>
+            </div>
+            <div class="divider"></div>
+            <div class="metric">
+              <div class="metric-label">수온</div>
+              <div class="metric-value">39°C</div>
+            </div>
+            <div class="divider"></div>
+            <div class="metric">
+              <div class="metric-label">시간</div>
+              <div class="metric-value">15분</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="summary">
+        <h2>ROUTINE SUMMARY</h2>
+        <p>이번 루틴은 이렇게 진행돼요.</p>
+      </section>
+    </main>
+  </body>
+</html>

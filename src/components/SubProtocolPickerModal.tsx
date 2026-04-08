@@ -43,7 +43,9 @@ export function SubProtocolPickerModal({
   return (
     <Modal visible={visible} animationType="slide" transparent onRequestClose={onClose}>
       <View style={[styles.overlay, isV2 && styles.overlayV2]}>
+        <Pressable style={StyleSheet.absoluteFillObject} onPress={onClose} />
         <View style={styles.card}>
+          <View style={styles.handle} />
           <Text style={[styles.title, isV2 && styles.titleV2]}>{heading}</Text>
           <Text style={styles.subTitle}>{title}</Text>
 
@@ -69,7 +71,7 @@ export function SubProtocolPickerModal({
             ))}
           </View>
 
-          <Pressable style={[ui.primaryButtonV2, styles.closeButton]} onPress={onClose}>
+          <Pressable style={styles.closeButton} onPress={onClose}>
             <Text style={styles.closeText}>닫기</Text>
           </Pressable>
         </View>
@@ -83,6 +85,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     backgroundColor: V2_BG_OVERLAY,
+    paddingTop: 48,
   },
   overlayV2: {
     backgroundColor: 'rgba(3, 8, 21, 0.64)',
@@ -97,6 +100,14 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     paddingBottom: 28,
     gap: 14,
+  },
+  handle: {
+    alignSelf: 'center',
+    width: 44,
+    height: 4,
+    borderRadius: 999,
+    backgroundColor: 'rgba(245,240,232,0.28)',
+    marginBottom: 2,
   },
   title: {
     fontSize: TYPE_SCALE.caption,
@@ -170,12 +181,14 @@ const styles = StyleSheet.create({
     fontFamily: luxuryFonts.sans,
   },
   closeButton: {
-    marginTop: 10,
+    marginTop: 14,
+    alignItems: 'center',
+    paddingVertical: 4,
   },
   closeText: {
-    color: V2_ACCENT_TEXT,
+    color: V2_TEXT_MUTED,
     fontSize: TYPE_SCALE.body,
-    fontWeight: '700',
+    fontWeight: '600',
     fontFamily: luxuryFonts.sans,
   },
 });

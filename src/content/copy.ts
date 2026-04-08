@@ -55,12 +55,12 @@ export const copy = {
     },
   },
   product: {
-    title: '루틴에 맞는 준비물',
-    subtitle: '지금 환경에 맞는 추천이에요',
+    title: '준비물로 볼 제품',
+    subtitle: '이번 루틴 준비물 카테고리 안에서 고르기 쉬운 제품이에요',
     slotTitle: {
-      A: '핵심 추천',
-      B: '분위기 추천',
-      C: '가성비 추천',
+      A: '대표 준비물',
+      B: '비슷한 대안',
+      C: '다른 선택지',
     },
     pickBadge: '추천 픽',
     labels: {

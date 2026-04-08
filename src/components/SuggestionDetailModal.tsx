@@ -19,6 +19,8 @@ import {
   TYPE_SCALE,
 } from '@/src/data/colors';
 import { copy } from '@/src/content/copy';
+import { luxuryFonts, luxuryRadii, luxuryTracking } from '@/src/theme/luxury';
+import { ui } from '@/src/theme/ui';
 
 interface SuggestionDetailModalProps {
   visible: boolean;
@@ -41,7 +43,9 @@ export function SuggestionDetailModal({
   return (
     <Modal visible={visible} animationType="slide" transparent onRequestClose={onClose}>
       <View style={styles.overlay}>
+        <Pressable style={StyleSheet.absoluteFillObject} onPress={onClose} />
         <View style={styles.card}>
+          <View style={styles.handle} />
           <Text style={styles.title}>
             {isTrip ? copy.suggestion.titleTrip : copy.suggestion.titleCare}
           </Text>
@@ -82,12 +86,12 @@ export function SuggestionDetailModal({
             <Text style={styles.value}>{explanation.alternativeRoutine}</Text>
           </ScrollView>
 
-          <View style={styles.buttonRow}>
-            <Pressable style={styles.ghostButton} onPress={onClose}>
-              <Text style={styles.ghostText}>{copy.suggestion.cta.close}</Text>
-            </Pressable>
-            <Pressable style={styles.startButton} onPress={onStart}>
+          <View style={styles.buttonStack}>
+            <Pressable style={ui.primaryButtonV2} onPress={onStart}>
               <Text style={styles.startText}>{copy.suggestion.cta.start}</Text>
+            </Pressable>
+            <Pressable style={styles.closeButton} onPress={onClose}>
+              <Text style={styles.closeText}>{copy.suggestion.cta.close}</Text>
             </Pressable>
           </View>
         </View>
@@ -101,34 +105,45 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     backgroundColor: 'rgba(17,29,48,0.3)',
+    paddingTop: 48,
   },
   card: {
     maxHeight: '82%',
     backgroundColor: MODAL_SURFACE,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
+    borderTopLeftRadius: luxuryRadii.cardLg,
+    borderTopRightRadius: luxuryRadii.cardLg,
     borderWidth: 1,
     borderColor: CARD_BORDER,
-    paddingHorizontal: 16,
-    paddingTop: 16,
-    paddingBottom: 20,
+    paddingHorizontal: 18,
+    paddingTop: 14,
+    paddingBottom: 24,
+  },
+  handle: {
+    alignSelf: 'center',
+    width: 44,
+    height: 4,
+    borderRadius: 999,
+    backgroundColor: 'rgba(245,240,232,0.28)',
+    marginBottom: 14,
   },
   title: {
     fontSize: TYPE_SCALE.caption,
     fontWeight: '700',
     color: TEXT_SECONDARY,
+    fontFamily: luxuryFonts.sans,
+    letterSpacing: luxuryTracking.label,
   },
   subTitle: {
     marginTop: 4,
-    fontSize: TYPE_SCALE.title,
-    fontWeight: '700',
+    fontSize: TYPE_SCALE.title + 1,
     color: TEXT_PRIMARY,
+    fontFamily: luxuryFonts.display,
   },
   body: {
-    marginTop: 12,
+    marginTop: 14,
   },
   bodyContent: {
-    gap: 6,
+    gap: 7,
     paddingBottom: 8,
   },
   chipsRow: {
@@ -148,48 +163,39 @@ const styles = StyleSheet.create({
     color: TEXT_SECONDARY,
     fontSize: TYPE_SCALE.caption,
     fontWeight: '600',
+    fontFamily: luxuryFonts.sans,
   },
   label: {
     marginTop: 8,
     fontSize: TYPE_SCALE.caption,
     fontWeight: '700',
     color: TEXT_SECONDARY,
+    fontFamily: luxuryFonts.sans,
   },
   value: {
     fontSize: TYPE_SCALE.body,
     color: TEXT_PRIMARY,
     lineHeight: 20,
+    fontFamily: luxuryFonts.sans,
   },
-  buttonRow: {
-    marginTop: 14,
-    flexDirection: 'row',
-    gap: 10,
-  },
-  ghostButton: {
-    flex: 1,
-    borderRadius: 12,
-    borderWidth: 1,
-    borderColor: CARD_BORDER,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 12,
-  },
-  ghostText: {
-    color: TEXT_PRIMARY,
-    fontSize: TYPE_SCALE.body,
-    fontWeight: '700',
-  },
-  startButton: {
-    flex: 1.5,
-    borderRadius: 12,
-    backgroundColor: BTN_PRIMARY,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 12,
+  buttonStack: {
+    marginTop: 16,
+    gap: 12,
   },
   startText: {
     color: BTN_PRIMARY_TEXT,
     fontSize: TYPE_SCALE.body,
     fontWeight: '700',
+    fontFamily: luxuryFonts.sans,
+  },
+  closeButton: {
+    alignItems: 'center',
+    paddingVertical: 4,
+  },
+  closeText: {
+    color: TEXT_SECONDARY,
+    fontSize: TYPE_SCALE.body,
+    fontWeight: '600',
+    fontFamily: luxuryFonts.sans,
   },
 });

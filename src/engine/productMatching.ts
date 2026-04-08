@@ -4,6 +4,7 @@ import {
   ProductMechanism,
   ProductPriceTier,
   getCatalogProductForIngredient,
+  isBeginnerFriendlyProduct,
 } from '@/src/data/catalog';
 
 export type ProductSlot = 'A' | 'B' | 'C';
@@ -62,7 +63,7 @@ export function buildProductMatchingSlots(
     recommendation.ingredients
       .map((ingredient) => {
         const product = getCatalogProductForIngredient(ingredient.id, environment);
-        if (!product) return null;
+        if (!product || !isBeginnerFriendlyProduct(product)) return null;
 
         return {
           ingredient,

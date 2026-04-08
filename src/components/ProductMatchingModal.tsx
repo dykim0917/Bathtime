@@ -21,7 +21,6 @@ interface ProductMatchingModalProps {
   visible: boolean;
   items: ProductMatchItem[];
   onClose: () => void;
-  onContinue: () => void;
   onProductPress: (item: ProductMatchItem) => void;
   onPurchasePress: (item: ProductMatchItem) => void;
 }
@@ -30,14 +29,15 @@ export function ProductMatchingModal({
   visible,
   items,
   onClose,
-  onContinue,
   onProductPress,
   onPurchasePress,
 }: ProductMatchingModalProps) {
   return (
     <Modal visible={visible} animationType="slide" transparent onRequestClose={onClose}>
       <View style={styles.overlay}>
+        <Pressable style={StyleSheet.absoluteFillObject} onPress={onClose} />
         <View style={styles.card}>
+          <View style={styles.handle} />
           <Text style={styles.title}>{copy.product.title}</Text>
           <Text style={styles.subTitle}>{copy.product.subtitle}</Text>
 
@@ -71,14 +71,9 @@ export function ProductMatchingModal({
             ))}
           </ScrollView>
 
-          <View style={styles.footerRow}>
-            <Pressable style={styles.closeButton} onPress={onClose}>
-              <Text style={styles.closeText}>{copy.product.cta.close}</Text>
-            </Pressable>
-            <Pressable style={styles.continueButton} onPress={onContinue}>
-              <Text style={styles.continueText}>{copy.product.cta.continue}</Text>
-            </Pressable>
-          </View>
+          <Pressable style={styles.closeButton} onPress={onClose}>
+            <Text style={styles.closeText}>{copy.product.cta.close}</Text>
+          </Pressable>
         </View>
       </View>
     </Modal>
@@ -90,6 +85,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     backgroundColor: V2_BG_OVERLAY,
+    paddingTop: 48,
   },
   card: {
     maxHeight: '84%',
@@ -98,9 +94,17 @@ const styles = StyleSheet.create({
     borderTopRightRadius: luxuryRadii.cardLg,
     borderWidth: 1,
     borderColor: V2_BORDER,
-    paddingHorizontal: 16,
-    paddingTop: 16,
-    paddingBottom: 20,
+    paddingHorizontal: 18,
+    paddingTop: 14,
+    paddingBottom: 24,
+  },
+  handle: {
+    alignSelf: 'center',
+    width: 44,
+    height: 4,
+    borderRadius: 999,
+    backgroundColor: 'rgba(245,240,232,0.28)',
+    marginBottom: 14,
   },
   title: {
     fontSize: TYPE_SCALE.caption,
@@ -111,12 +115,12 @@ const styles = StyleSheet.create({
   },
   subTitle: {
     marginTop: 4,
-    fontSize: TYPE_SCALE.title,
+    fontSize: TYPE_SCALE.title + 1,
     color: V2_TEXT_PRIMARY,
     fontFamily: luxuryFonts.display,
   },
   body: {
-    marginTop: 12,
+    marginTop: 14,
   },
   bodyContent: {
     gap: 10,
@@ -127,8 +131,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: V2_BORDER,
     backgroundColor: V2_SURFACE_SOFT,
-    padding: 12,
-    gap: 6,
+    padding: 14,
+    gap: 7,
   },
   rowBetween: {
     flexDirection: 'row',
@@ -171,7 +175,7 @@ const styles = StyleSheet.create({
     fontFamily: luxuryFonts.sans,
   },
   buttonRow: {
-    marginTop: 4,
+    marginTop: 6,
     flexDirection: 'row',
     gap: 8,
   },
@@ -180,7 +184,7 @@ const styles = StyleSheet.create({
     borderRadius: luxuryRadii.button,
     borderWidth: 1,
     borderColor: V2_BORDER,
-    paddingVertical: 10,
+    paddingVertical: 12,
     alignItems: 'center',
   },
   ghostText: {
@@ -195,7 +199,7 @@ const styles = StyleSheet.create({
     backgroundColor: V2_ACCENT,
     borderWidth: 1,
     borderColor: V2_BORDER,
-    paddingVertical: 10,
+    paddingVertical: 12,
     alignItems: 'center',
   },
   linkText: {
@@ -204,36 +208,15 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     fontFamily: luxuryFonts.sans,
   },
-  footerRow: {
-    marginTop: 14,
-    flexDirection: 'row',
-    gap: 10,
-  },
   closeButton: {
-    flex: 1,
-    borderRadius: luxuryRadii.button,
-    borderWidth: 1,
-    borderColor: V2_BORDER,
-    paddingVertical: 12,
+    marginTop: 16,
     alignItems: 'center',
+    paddingVertical: 4,
   },
   closeText: {
-    color: V2_TEXT_PRIMARY,
+    color: V2_TEXT_MUTED,
     fontSize: TYPE_SCALE.body,
-    fontWeight: '700',
-    fontFamily: luxuryFonts.sans,
-  },
-  continueButton: {
-    flex: 1.5,
-    borderRadius: luxuryRadii.button,
-    backgroundColor: V2_ACCENT,
-    paddingVertical: 12,
-    alignItems: 'center',
-  },
-  continueText: {
-    color: V2_ACCENT_TEXT,
-    fontSize: TYPE_SCALE.body,
-    fontWeight: '700',
+    fontWeight: '600',
     fontFamily: luxuryFonts.sans,
   },
 });

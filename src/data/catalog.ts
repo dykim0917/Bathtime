@@ -47,6 +47,12 @@ export interface CatalogProduct {
   listing?: ProductMarketListingRecord;
 }
 
+const BEGINNER_VISIBLE_CATEGORIES: ProductCategory[] = [
+  'bath_salt',
+  'bath_item',
+  'body_wash',
+];
+
 interface CatalogPresentationMetadata {
   tags: string[];
   emoji: string;
@@ -232,14 +238,13 @@ export const PRODUCT_CATEGORY_LABELS: Record<ProductCategory, string> = {
   all: '전체',
   essential_oil: '에센셜 오일',
   bath_salt: '입욕제',
-  bath_item: '배스 아이템',
+  bath_item: '샤워 아이템',
   body_wash: '바디워시',
   herb: '허브 케어',
 };
 
 export const PRODUCT_CATEGORIES: ProductCategory[] = [
   'all',
-  'essential_oil',
   'bath_salt',
   'bath_item',
   'body_wash',
@@ -264,6 +269,14 @@ export function getProductById(productId: string): CatalogProduct | undefined {
 export function getProductsByCategory(category: ProductCategory): CatalogProduct[] {
   if (category === 'all') return getProductCatalog();
   return getProductCatalog().filter((item) => item.category === category);
+}
+
+export function isBeginnerFriendlyProduct(product: CatalogProduct): boolean {
+  return BEGINNER_VISIBLE_CATEGORIES.includes(product.category);
+}
+
+export function getBeginnerFriendlyProductCatalog(): CatalogProduct[] {
+  return getProductCatalog().filter(isBeginnerFriendlyProduct);
 }
 
 export function getCatalogProductForIngredient(
