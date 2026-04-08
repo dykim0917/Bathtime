@@ -450,10 +450,10 @@ export default function HomeIntentScreen() {
               <Image source={require('../../assets/images/brand/bath-symbol.png')} style={styles.brandIcon} resizeMode="contain" />
               <Text style={styles.brandText}>BATH SOMMELIER</Text>
             </View>
-            <Text style={styles.brandKicker}>Quiet luxury guidance for the bath you can actually do tonight.</Text>
+            <Text style={styles.brandKicker}>오늘 바로 해볼 수 있는 조용한 목욕 가이드를 전해드려요.</Text>
           </View>
           <Text style={styles.greeting}>{headlineMessage}</Text>
-          <Text style={styles.subtitle}>오늘의 컨디션과 환경을 고르면, 집에서도 조용한 스파처럼 정제된 루틴을 바로 시작할 수 있어요.</Text>
+          <Text style={styles.subtitle}>오늘의 컨디션과 환경을 고르면, 집에서도 부담 없이 바로 시작할 수 있는 루틴을 보여드려요.</Text>
           {!isHistoryLoaded || recentRoutines.length > 0 ? null : (
             <Text style={styles.beginnerGuide}>{copy.home.beginnerGuide}</Text>
           )}
@@ -476,10 +476,10 @@ export default function HomeIntentScreen() {
                   <View style={[styles.weeklyStatusDot, streakSummary.todayDone && styles.weeklyStatusDotDone]} />
                   <Text style={styles.weeklyStatus}>{streakSummary.todayDone ? copy.home.todayDone : copy.home.todayPending}</Text>
                 </View>
-                <Text style={styles.weeklySummaryText}>이번주 {streakSummary.weeklyBathCount}회 Bath</Text>
+                <Text style={styles.weeklySummaryText}>이번주 {streakSummary.weeklyBathCount}회 진행</Text>
               </View>
               <Pressable style={styles.weeklyDetailButton} onPress={() => router.push('/(tabs)/history')}>
-                <Text style={styles.weeklyDetailText}>VIEW DETAILS</Text>
+                <Text style={styles.weeklyDetailText}>기록 보기</Text>
               </Pressable>
             </View>
 
@@ -497,13 +497,13 @@ export default function HomeIntentScreen() {
 
             <View style={styles.weekMetricsRow}>
               <View style={styles.weekMetricBlock}>
-                <Text style={styles.weekMetricEyebrow}>Weekly Baths</Text>
-                <Text style={styles.weekMetricValue}>{streakSummary.weeklyBathCount}/{streakSummary.weeklyGoal} baths this week</Text>
+                <Text style={styles.weekMetricEyebrow}>이번주 진행</Text>
+                <Text style={styles.weekMetricValue}>{copy.home.weeklyCount(streakSummary.weeklyBathCount, streakSummary.weeklyGoal)}</Text>
               </View>
               <View style={styles.weekMetricDivider} />
               <View style={styles.weekMetricBlock}>
-                <Text style={styles.weekMetricEyebrow}>Active Streak</Text>
-                <Text style={styles.weekMetricValue}>{streakSummary.dailyStreakDays} days streak · {streakSummary.weeklyStreakWeeks} weeks active</Text>
+                <Text style={styles.weekMetricEyebrow}>연속 기록</Text>
+                <Text style={styles.weekMetricValue}>{copy.home.dailyStreak(streakSummary.dailyStreakDays)} · {copy.home.weeklyStreak(streakSummary.weeklyStreakWeeks)}</Text>
               </View>
             </View>
           </LinearGradient>

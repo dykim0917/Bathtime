@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Pressable, Linking, StyleSheet, Platform } from 'react-native';
 import { Ingredient } from '@/src/engine/types';
-import { SURFACE, GLASS_BORDER, GLASS_SHADOW, TEXT_PRIMARY, TEXT_SECONDARY } from '@/src/data/colors';
+import { TYPE_SCALE, V2_BORDER, V2_SHADOW, V2_SURFACE, V2_TEXT_PRIMARY, V2_TEXT_SECONDARY } from '@/src/data/colors';
 
 interface PreparationListProps {
   ingredients: Ingredient[];
@@ -43,26 +43,26 @@ const styles = StyleSheet.create({
     marginVertical: 16,
   },
   title: {
-    fontSize: 18,
+    fontSize: TYPE_SCALE.title,
     fontWeight: '700',
-    color: TEXT_PRIMARY,
+    color: V2_TEXT_PRIMARY,
     marginBottom: 12,
   },
   row: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: SURFACE,
+    backgroundColor: V2_SURFACE,
     borderRadius: 12,
     padding: 14,
     marginBottom: 8,
     borderWidth: 1,
-    borderColor: GLASS_BORDER,
+    borderColor: V2_BORDER,
     ...Platform.select({
       web: {
-        boxShadow: `0px 2px 8px ${GLASS_SHADOW}`,
+        boxShadow: `0px 2px 8px ${V2_SHADOW}`,
       },
       default: {
-        shadowColor: GLASS_SHADOW,
+        shadowColor: V2_SHADOW,
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 1,
         shadowRadius: 8,
@@ -80,14 +80,14 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   name: {
-    fontSize: 15,
+    fontSize: TYPE_SCALE.body + 1,
     fontWeight: '600',
-    color: TEXT_PRIMARY,
+    color: V2_TEXT_PRIMARY,
     marginBottom: 2,
   },
   desc: {
-    fontSize: 12,
-    color: TEXT_SECONDARY,
+    fontSize: TYPE_SCALE.caption,
+    color: V2_TEXT_SECONDARY,
     lineHeight: 16,
   },
   linkButton: {
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     marginLeft: 8,
   },
   linkText: {
-    fontSize: 12,
+    fontSize: TYPE_SCALE.caption,
     fontWeight: '600',
   },
 });

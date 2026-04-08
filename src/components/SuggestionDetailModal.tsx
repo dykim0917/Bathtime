@@ -9,14 +9,14 @@ import {
 } from 'react-native';
 import { HomeSuggestion, SuggestionExplanation } from '@/src/engine/types';
 import {
-  BTN_PRIMARY,
-  BTN_PRIMARY_TEXT,
-  CARD_BORDER,
-  MODAL_SUB_SURFACE,
-  MODAL_SURFACE,
-  TEXT_PRIMARY,
-  TEXT_SECONDARY,
   TYPE_SCALE,
+  V2_BG_OVERLAY,
+  V2_BORDER,
+  V2_MODAL_SURFACE,
+  V2_MODAL_SURFACE_SUBTLE,
+  V2_TEXT_MUTED,
+  V2_TEXT_PRIMARY,
+  V2_TEXT_SECONDARY,
 } from '@/src/data/colors';
 import { copy } from '@/src/content/copy';
 import { luxuryFonts, luxuryRadii, luxuryTracking } from '@/src/theme/luxury';
@@ -104,16 +104,16 @@ const styles = StyleSheet.create({
   overlay: {
     flex: 1,
     justifyContent: 'flex-end',
-    backgroundColor: 'rgba(17,29,48,0.3)',
+    backgroundColor: V2_BG_OVERLAY,
     paddingTop: 48,
   },
   card: {
     maxHeight: '82%',
-    backgroundColor: MODAL_SURFACE,
+    backgroundColor: V2_MODAL_SURFACE,
     borderTopLeftRadius: luxuryRadii.cardLg,
     borderTopRightRadius: luxuryRadii.cardLg,
     borderWidth: 1,
-    borderColor: CARD_BORDER,
+    borderColor: V2_BORDER,
     paddingHorizontal: 18,
     paddingTop: 14,
     paddingBottom: 24,
@@ -129,14 +129,14 @@ const styles = StyleSheet.create({
   title: {
     fontSize: TYPE_SCALE.caption,
     fontWeight: '700',
-    color: TEXT_SECONDARY,
+    color: V2_TEXT_MUTED,
     fontFamily: luxuryFonts.sans,
     letterSpacing: luxuryTracking.label,
   },
   subTitle: {
     marginTop: 4,
     fontSize: TYPE_SCALE.title + 1,
-    color: TEXT_PRIMARY,
+    color: V2_TEXT_PRIMARY,
     fontFamily: luxuryFonts.display,
   },
   body: {
@@ -154,13 +154,13 @@ const styles = StyleSheet.create({
   chip: {
     borderRadius: 999,
     borderWidth: 1,
-    borderColor: CARD_BORDER,
+    borderColor: V2_BORDER,
     paddingVertical: 6,
     paddingHorizontal: 10,
-    backgroundColor: MODAL_SUB_SURFACE,
+    backgroundColor: V2_MODAL_SURFACE_SUBTLE,
   },
   chipText: {
-    color: TEXT_SECONDARY,
+    color: V2_TEXT_SECONDARY,
     fontSize: TYPE_SCALE.caption,
     fontWeight: '600',
     fontFamily: luxuryFonts.sans,
@@ -169,12 +169,12 @@ const styles = StyleSheet.create({
     marginTop: 8,
     fontSize: TYPE_SCALE.caption,
     fontWeight: '700',
-    color: TEXT_SECONDARY,
+    color: V2_TEXT_SECONDARY,
     fontFamily: luxuryFonts.sans,
   },
   value: {
     fontSize: TYPE_SCALE.body,
-    color: TEXT_PRIMARY,
+    color: V2_TEXT_PRIMARY,
     lineHeight: 20,
     fontFamily: luxuryFonts.sans,
   },
@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
     gap: 12,
   },
   startText: {
-    color: BTN_PRIMARY_TEXT,
+    color: V2_TEXT_PRIMARY,
     fontSize: TYPE_SCALE.body,
     fontWeight: '700',
     fontFamily: luxuryFonts.sans,
@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
   },
   closeText: {
-    color: TEXT_SECONDARY,
+    color: V2_TEXT_SECONDARY,
     fontSize: TYPE_SCALE.body,
     fontWeight: '600',
     fontFamily: luxuryFonts.sans,

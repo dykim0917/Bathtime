@@ -2,21 +2,18 @@ import React from 'react';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { ui } from '@/src/theme/ui';
 import {
-  PILL_BG,
-  PILL_BORDER,
-  TEXT_MUTED,
-  TEXT_PRIMARY,
-  TEXT_SECONDARY,
   TYPE_SCALE,
   V2_ACCENT,
   V2_BORDER,
   V2_BORDER_STRONG,
+  V2_PILL_BG,
+  V2_PILL_BORDER,
   V2_SURFACE,
-  V2_TEXT_MUTED,
   V2_TEXT_PRIMARY,
   V2_TEXT_SECONDARY,
+  V2_TEXT_MUTED,
 } from '@/src/data/colors';
-import { CatalogProduct, ProductCategory } from '@/src/data/catalog';
+import { CatalogProduct, PRODUCT_CATEGORY_LABELS } from '@/src/data/catalog';
 import { luxuryFonts, luxuryRadii, luxuryTracking } from '@/src/theme/luxury';
 
 interface ProductCardProps {
@@ -27,7 +24,7 @@ interface ProductCardProps {
 
 export function ProductCard({ item, variant = 'default', onPress }: ProductCardProps) {
   const isV2 = variant === 'v2';
-  const categoryLabel = getCategoryLabel(item.category);
+  const categoryLabel = PRODUCT_CATEGORY_LABELS[item.category];
 
   return (
     <Pressable
@@ -74,23 +71,6 @@ export function ProductCard({ item, variant = 'default', onPress }: ProductCardP
       ) : null}
     </Pressable>
   );
-}
-
-function getCategoryLabel(category: ProductCategory): string {
-  switch (category) {
-    case 'essential_oil':
-      return 'ESSENTIAL OIL';
-    case 'bath_salt':
-      return 'BATH SALT';
-    case 'herb':
-      return 'HERBAL PICK';
-    case 'bath_item':
-      return 'BATH ITEM';
-    case 'body_wash':
-      return 'BODY WASH';
-    default:
-      return 'CURATED PRODUCT';
-  }
 }
 
 const styles = StyleSheet.create({
@@ -166,7 +146,7 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: TYPE_SCALE.title,
-    color: TEXT_PRIMARY,
+    color: V2_TEXT_PRIMARY,
     fontFamily: luxuryFonts.display,
   },
   nameV2: {
@@ -174,7 +154,7 @@ const styles = StyleSheet.create({
   },
   brand: {
     fontSize: TYPE_SCALE.caption,
-    color: TEXT_MUTED,
+    color: V2_TEXT_MUTED,
     fontFamily: luxuryFonts.sans,
   },
   brandV2: {
@@ -182,7 +162,7 @@ const styles = StyleSheet.create({
   },
   description: {
     fontSize: TYPE_SCALE.body,
-    color: TEXT_SECONDARY,
+    color: V2_TEXT_SECONDARY,
     lineHeight: 20,
     fontFamily: luxuryFonts.sans,
   },
@@ -195,9 +175,9 @@ const styles = StyleSheet.create({
     gap: 6,
   },
   tagPill: {
-    backgroundColor: PILL_BG,
+    backgroundColor: V2_PILL_BG,
     borderWidth: 1,
-    borderColor: PILL_BORDER,
+    borderColor: V2_PILL_BORDER,
     borderRadius: 999,
     paddingHorizontal: 10,
     paddingVertical: 3,
@@ -208,7 +188,7 @@ const styles = StyleSheet.create({
   },
   tagText: {
     fontSize: TYPE_SCALE.caption,
-    color: TEXT_SECONDARY,
+    color: V2_TEXT_SECONDARY,
     fontWeight: '500',
     fontFamily: luxuryFonts.sans,
   },

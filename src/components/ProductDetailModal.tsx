@@ -32,7 +32,7 @@ export function ProductDetailModal({
   onClose,
   onOpenCatalog,
   onPurchasePress,
-  secondaryActionLabel = 'Product 탭에서 전체 보기',
+  secondaryActionLabel = '제품 탭에서 전체 보기',
   closeActionLabel = '루틴으로 돌아가기',
 }: ProductDetailModalProps) {
   if (!product) return null;

@@ -1,17 +1,14 @@
 import React from 'react';
 import { View, Text, Pressable, StyleSheet } from 'react-native';
 import {
-  TEXT_PRIMARY,
-  TYPE_BODY,
-  TYPE_CAPTION,
-  WARNING_COLOR,
+  TYPE_SCALE,
   V2_ACCENT,
   V2_ACCENT_SOFT,
   V2_BORDER,
   V2_SURFACE,
-  V2_TEXT_MUTED,
   V2_TEXT_PRIMARY,
   V2_TEXT_SECONDARY,
+  V2_TEXT_MUTED,
   V2_WARNING,
 } from '@/src/data/colors';
 import { luxuryFonts, luxuryRadii, luxuryTracking } from '@/src/theme/luxury';
@@ -142,7 +139,7 @@ const styles = StyleSheet.create({
     marginBottom: 2,
   },
   fitBadge: {
-    fontSize: TYPE_CAPTION - 1,
+    fontSize: TYPE_SCALE.caption - 1,
     lineHeight: 16,
     paddingHorizontal: 7,
     paddingVertical: 3,
@@ -159,7 +156,7 @@ const styles = StyleSheet.create({
     borderColor: V2_BORDER,
   },
   safetyBadge: {
-    fontSize: TYPE_CAPTION - 1,
+    fontSize: TYPE_SCALE.caption - 1,
     lineHeight: 16,
     paddingHorizontal: 7,
     paddingVertical: 3,
@@ -179,7 +176,7 @@ const styles = StyleSheet.create({
     gap: 6,
   },
   eyebrow: {
-    fontSize: TYPE_CAPTION - 1,
+    fontSize: TYPE_SCALE.caption - 1,
     fontWeight: '700',
     letterSpacing: luxuryTracking.label,
     color: '#35517E',
@@ -194,8 +191,8 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
   title: {
-    fontSize: TYPE_BODY + 2,
-    color: TEXT_PRIMARY,
+    fontSize: TYPE_SCALE.title,
+    color: V2_TEXT_PRIMARY,
     lineHeight: 23,
     fontFamily: luxuryFonts.display,
   },
@@ -206,8 +203,8 @@ const styles = StyleSheet.create({
     color: '#9A9A9A',
   },
   subtitle: {
-    fontSize: TYPE_CAPTION,
-    color: 'rgba(42, 62, 100, 0.65)',
+    fontSize: TYPE_SCALE.caption,
+    color: V2_TEXT_SECONDARY,
     lineHeight: 18,
     fontFamily: luxuryFonts.sans,
   },
@@ -229,8 +226,8 @@ const styles = StyleSheet.create({
     paddingTop: 10,
   },
   footerHint: {
-    fontSize: TYPE_CAPTION,
-    color: TEXT_PRIMARY,
+    fontSize: TYPE_SCALE.caption,
+    color: V2_TEXT_MUTED,
     fontWeight: '600',
     fontFamily: luxuryFonts.sans,
   },
@@ -238,8 +235,8 @@ const styles = StyleSheet.create({
     color: V2_TEXT_MUTED,
   },
   footerArrow: {
-    fontSize: TYPE_BODY + 2,
-    color: TEXT_PRIMARY,
+    fontSize: TYPE_SCALE.body + 2,
+    color: V2_ACCENT,
     fontWeight: '700',
     fontFamily: luxuryFonts.sans,
   },
@@ -248,8 +245,8 @@ const styles = StyleSheet.create({
   },
   warning: {
     marginTop: 2,
-    fontSize: TYPE_CAPTION - 1,
-    color: WARNING_COLOR,
+    fontSize: TYPE_SCALE.caption - 1,
+    color: V2_WARNING,
     fontWeight: '600',
     lineHeight: 16,
     fontFamily: luxuryFonts.sans,

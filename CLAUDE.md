@@ -27,6 +27,7 @@
 
 ```
 src/
+  analytics/    ← Event tracking and analytics payload helpers
   components/   ← All reusable UI components (16 files)
   data/         ← Design tokens and static data
   engine/       ← Pure algorithm logic (no UI)
@@ -69,12 +70,14 @@ const styles = StyleSheet.create({
 
 ```typescript
 import {
-  APP_BG_BASE, CARD_SURFACE, CARD_BORDER, CARD_SHADOW,
-  TEXT_PRIMARY, TEXT_SECONDARY, TEXT_MUTED,
-  ACCENT, BTN_PRIMARY, BTN_DISABLED,
-  PILL_BG, PILL_ACTIVE_BG, PILL_BORDER,
-  WARNING_COLOR, DANGER_COLOR,
+  TYPE_SCALE,
   TYPE_HEADING_LG, TYPE_HEADING_MD, TYPE_TITLE, TYPE_BODY, TYPE_CAPTION,
+  V2_BG_BASE, V2_BG_TOP, V2_BG_BOTTOM, V2_BG_OVERLAY,
+  V2_SURFACE, V2_SURFACE_SOFT, V2_BORDER, V2_BORDER_STRONG, V2_SHADOW,
+  V2_MODAL_SURFACE, V2_MODAL_SURFACE_SUBTLE,
+  V2_TEXT_PRIMARY, V2_TEXT_SECONDARY, V2_TEXT_MUTED,
+  V2_ACCENT, V2_ACCENT_SOFT, V2_ACCENT_TEXT, V2_WARNING, V2_DANGER,
+  V2_PILL_BG, V2_PILL_ACTIVE_BG, V2_PILL_BORDER,
   PERSONA_COLORS, PERSONA_GRADIENTS,
 } from '@/src/data/colors';
 ```
@@ -82,11 +85,13 @@ import {
 **Typography scale:**
 | Token | Value | Use |
 |---|---|---|
-| `TYPE_HEADING_LG` | 30 | Hero headings |
-| `TYPE_HEADING_MD` | 22 | Section headings |
+| `TYPE_HEADING_LG` | 34 | Hero headings |
+| `TYPE_HEADING_MD` | 20 | Section headings |
 | `TYPE_TITLE` | 18 | Card titles |
 | `TYPE_BODY` | 14 | Body text |
 | `TYPE_CAPTION` | 12 | Labels, captions |
+
+`TYPE_SCALE` is the single source of truth. Prefer `TYPE_SCALE.*` in new code, and use `luxuryFonts` / `luxuryTracking` from `src/theme/luxury.ts` for typography roles and tracking.
 
 **Persona-keyed theming:** Components that vary by health persona must use `PERSONA_COLORS[personaCode]` and `PERSONA_GRADIENTS[personaCode]` — accept `accentColor: string` as a prop when persona-driven.
 
@@ -106,16 +111,16 @@ IMPORTANT: Reuse `ui.*` entries for common patterns before creating new styles.
 - **No NativeWind, no Tailwind, no CSS-in-JS** — use `StyleSheet.create()` only
 - **Glass-morphism surface pattern:**
   ```typescript
-  { backgroundColor: CARD_SURFACE, borderRadius: 18, borderWidth: 1, borderColor: CARD_BORDER }
+  { backgroundColor: V2_SURFACE, borderRadius: 24, borderWidth: 1, borderColor: V2_BORDER }
   ```
 - **Pill buttons:** `borderRadius: 999`
 - **Shadows (iOS + Android):**
   ```typescript
-  { shadowColor: CARD_SHADOW, shadowOpacity: 1, shadowRadius: 8, elevation: 4 }
+  { shadowColor: V2_SHADOW, shadowOpacity: 1, shadowRadius: 28, elevation: 8 }
   ```
-- **Conditional styles:** `[styles.base, selected && { backgroundColor: PILL_ACTIVE_BG }]`
+- **Conditional styles:** `[styles.base, selected && { backgroundColor: V2_PILL_ACTIVE_BG }]`
 - **Dynamic sizing:** Use `Dimensions.get('window')` only when truly needed; prefer flex layout
-- **Light mode only** — no dark mode variants required
+- **Quiet-luxury dark baseline only** — do not reintroduce light/pastel UI tokens unless explicitly requested
 
 ---
 
@@ -124,7 +129,7 @@ IMPORTANT: Reuse `ui.*` entries for common patterns before creating new styles.
 - **IMPORTANT: Do not install new icon libraries.** Use only `@expo/vector-icons` (FontAwesome subset).
   ```typescript
   import { FontAwesome } from '@expo/vector-icons';
-  <FontAwesome name="music" size={20} color={ACCENT} />
+  <FontAwesome name="music" size={20} color={V2_ACCENT} />
   ```
 - For assets from Figma MCP localhost sources, use them directly with `<Image source={{ uri: '...' }} />`
 
@@ -141,6 +146,7 @@ IMPORTANT: Reuse `ui.*` entries for common patterns before creating new styles.
   import { LinearGradient } from 'expo-linear-gradient';
   ```
 - **Skia graphics** (water fill): `@shopify/react-native-skia` — provide `.web.tsx` fallback for web
+- **Reanimated visuals** such as steam should also provide `.web.tsx` fallback when native-only behavior is involved
 
 ---
 
@@ -204,8 +210,8 @@ The `@/` alias resolves to the project root. Always use it for imports:
 ## What Not to Do
 
 - Do not add NativeWind, Tailwind, or any new styling library
-- Do not hardcode colors (`'#7895CF'` → use `ACCENT`)
-- Do not hardcode font sizes (use `TYPE_*` tokens)
+- Do not hardcode colors (`'#B08D57'` → use `V2_ACCENT`)
+- Do not hardcode font sizes (prefer `TYPE_SCALE.*`; legacy `TYPE_*` aliases are acceptable when needed)
 - Do not install new icon packages
 - Do not create default exports for components
 - Do not invent a separate light-mode redesign, the app now uses a quiet-luxury dark baseline

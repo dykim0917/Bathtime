@@ -2,9 +2,7 @@ import React from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import {
-  CARD_BORDER,
-  TEXT_PRIMARY,
-  TYPE_CAPTION,
+  TYPE_SCALE,
   V2_ACCENT,
   V2_ACCENT_SOFT,
   V2_BORDER,
@@ -97,7 +95,7 @@ const styles = StyleSheet.create({
     borderRadius: luxuryRadii.card,
     overflow: 'hidden',
     borderWidth: 1,
-    borderColor: CARD_BORDER,
+    borderColor: V2_BORDER,
     justifyContent: 'flex-end',
   },
   cardV2: {
@@ -138,7 +136,7 @@ const styles = StyleSheet.create({
     marginBottom: 2,
   },
   fitBadge: {
-    fontSize: TYPE_CAPTION - 1,
+    fontSize: TYPE_SCALE.caption - 1,
     lineHeight: 16,
     paddingHorizontal: 7,
     paddingVertical: 3,
@@ -155,7 +153,7 @@ const styles = StyleSheet.create({
     borderColor: V2_BORDER,
   },
   safetyBadge: {
-    fontSize: TYPE_CAPTION - 1,
+    fontSize: TYPE_SCALE.caption - 1,
     lineHeight: 16,
     paddingHorizontal: 7,
     paddingVertical: 3,
@@ -172,8 +170,8 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(215, 168, 94, 0.3)',
   },
   title: {
-    color: '#FFFFFF',
-    fontSize: 19,
+    color: V2_TEXT_PRIMARY,
+    fontSize: TYPE_SCALE.title + 1,
     lineHeight: 24,
     fontFamily: luxuryFonts.display,
   },
@@ -184,8 +182,8 @@ const styles = StyleSheet.create({
     color: '#E5E7EB',
   },
   subtitle: {
-    color: 'rgba(255,255,255,0.9)',
-    fontSize: 12,
+    color: V2_TEXT_SECONDARY,
+    fontSize: TYPE_SCALE.caption,
     lineHeight: 18,
     fontFamily: luxuryFonts.sans,
   },
@@ -197,9 +195,9 @@ const styles = StyleSheet.create({
   },
   disabledText: {
     marginTop: 1,
-    color: '#FEE2E2',
+    color: V2_ACCENT,
     fontWeight: '700',
-    fontSize: TYPE_CAPTION,
+    fontSize: TYPE_SCALE.caption,
     lineHeight: 16,
     fontFamily: luxuryFonts.sans,
   },

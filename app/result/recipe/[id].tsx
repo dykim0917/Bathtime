@@ -212,7 +212,7 @@ export default function RecipeScreen() {
         </View>
 
         <Animated.View entering={FadeInDown.duration(380).delay(40)} style={[ui.glassCardV2, styles.summaryCard]}>
-          <Text style={styles.summaryEyebrow}>ROUTINE SUMMARY</Text>
+          <Text style={styles.summaryEyebrow}>루틴 요약</Text>
           <Text style={styles.summaryTitle}>이번 루틴은 이렇게 진행돼요</Text>
           <Text style={styles.summaryBody}>{evidence.reasonLines[0]}</Text>
           <View style={styles.summaryPillRow}>
@@ -263,7 +263,7 @@ export default function RecipeScreen() {
             {productSlots.length > 0 ? (
               <View style={styles.ingredientsPairingWrap}>
                 <View style={styles.ingredientsPairingDivider} />
-                <Text style={styles.productBridgeEyebrow}>PREPARATION PRODUCTS</Text>
+                <Text style={styles.productBridgeEyebrow}>준비물 제품</Text>
                 <Text style={styles.productBridgeTitle}>준비물로 볼 제품</Text>
                 <Text style={styles.productBridgeBody}>
                   이번 루틴 준비물로 보기 좋은 같은 카테고리 제품만 따로 골라봤어요.
@@ -272,7 +272,7 @@ export default function RecipeScreen() {
                   style={[ui.secondaryButtonV2, styles.productBridgeButton]}
                   onPress={() => setShowProductModal(true)}
                 >
-                  <Text style={ui.secondaryButtonTextV2}>준비물 제품 보기</Text>
+                  <Text style={ui.secondaryButtonTextV2}>준비물 보기</Text>
                 </Pressable>
               </View>
             ) : null}
@@ -280,7 +280,7 @@ export default function RecipeScreen() {
         </Animated.View>
 
         <Animated.View entering={FadeInDown.duration(400).delay(240)} style={[ui.glassCardV2, styles.safetyBlock]}>
-          <Text style={styles.safetyEyebrow}>SAFETY FIRST</Text>
+          <Text style={styles.safetyEyebrow}>안전 먼저</Text>
           <Text style={styles.safetyTitle}>{copy.routine.safetyTitle}</Text>
           <Text style={styles.safetyLead}>{primarySafetyLine}</Text>
           {copy.routine.safetyLines.map((line) => <Text key={line} style={styles.safetyText}>• {line}</Text>)}

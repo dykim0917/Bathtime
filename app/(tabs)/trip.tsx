@@ -56,8 +56,8 @@ import { luxuryFonts, luxuryTracking } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
 
 const TRIP_ENV_OPTIONS: { id: BathEnvironment; emoji: string; label: string }[] = [
-  { id: 'bathtub', emoji: '🛁', label: '욕조 (Deep)' },
-  { id: 'shower', emoji: '🚿', label: '샤워 (Lite)' },
+  { id: 'bathtub', emoji: '🛁', label: '욕조' },
+  { id: 'shower', emoji: '🚿', label: '샤워' },
 ];
 
 const SCREEN_HORIZONTAL_PADDING = 22;
