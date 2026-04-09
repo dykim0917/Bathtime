@@ -32,7 +32,7 @@ export function PersonaCard({ recommendation }: PersonaCardProps) {
   );
 
   const title = recommendation.mode === 'trip'
-    ? recommendation.themeTitle ?? 'Trip 테마'
+    ? recommendation.themeTitle ?? '트립 테마'
     : persona?.nameKo ?? '맞춤 케어';
 
   return (

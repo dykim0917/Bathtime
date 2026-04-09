@@ -94,11 +94,11 @@ export default function TimerScreen() {
   };
   const confirmFinish = () => {
     if (Platform.OS === 'web') {
-      const confirmed = typeof window !== 'undefined' && window.confirm('지금 끝내면 현재 진행 상태로 루틴이 종료됩니다. 계속할까요?');
+      const confirmed = typeof window !== 'undefined' && window.confirm(copy.alerts.finishRoutineBody);
       if (confirmed) handleComplete();
       return;
     }
-    Alert.alert('루틴 종료', '지금 끝내면 현재 진행 상태로 루틴이 종료됩니다. 계속할까요?', [{ text: '취소', style: 'cancel' }, { text: '종료', style: 'destructive', onPress: () => handleComplete() }]);
+    Alert.alert(copy.alerts.finishRoutineTitle, copy.alerts.finishRoutineBody, [{ text: copy.alerts.cancel, style: 'cancel' }, { text: copy.alerts.finish, style: 'destructive', onPress: () => handleComplete() }]);
   };
 
   if (!recommendation) return <View style={[ui.screenShellV2, styles.centered]}><Text style={{ color: V2_TEXT_SECONDARY }}>{copy.completion.loading}</Text></View>;
@@ -129,7 +129,7 @@ export default function TimerScreen() {
           </View>
 
           <View style={styles.centerSection}>
-            <Text style={styles.recipeName}>{recommendation.mode === 'trip' ? (recommendation.themeTitle ?? 'Trip 테마') : copy.routine.stepRun}</Text>
+            <Text style={styles.recipeName}>{recommendation.mode === 'trip' ? (recommendation.themeTitle ?? '트립 테마') : copy.routine.stepRun}</Text>
             <Text style={styles.timerText}>{timeStr}</Text>
             {isPaused && <Animated.Text entering={FadeIn.duration(300)} exiting={FadeOut.duration(200)} style={styles.pausedLabel}>{copy.routine.timerPaused}</Animated.Text>}
           </View>

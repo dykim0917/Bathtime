@@ -352,7 +352,7 @@ export default function CareScreen() {
       <LinearGradient colors={[V2_BG_TOP, V2_BG_BASE, V2_BG_BOTTOM]} style={StyleSheet.absoluteFillObject} />
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <View style={[ui.glassCardV2, styles.heroCard]}>
-          <Text style={styles.eyebrow}>CARE ROUTINE</Text>
+          <Text style={styles.eyebrow}>케어 가이드</Text>
           <Text style={styles.heroTitle}>케어 루틴</Text>
           <Text style={styles.subtitle}>증상과 컨디션에 맞춰 안전한 루틴을 바로 골라보세요.</Text>
         </View>
@@ -390,15 +390,15 @@ export default function CareScreen() {
                 <CategoryCard
                   key={intent.id}
                   title={intent.copy_title}
-                  subtitle={isPlaceholder ? '곧 추가될 예정이에요' : getEnvironmentSubtitle(intent, normalizedEnvironment)}
+                  subtitle={isPlaceholder ? copy.careCards.placeholderSubtitle : getEnvironmentSubtitle(intent, normalizedEnvironment)}
                   emoji={CATEGORY_CARD_EMOJI[intent.intent_id] ?? '🛁'}
                   bgColor={getIntentTint(intent.intent_id)}
-                  eyebrow={isFeaturedCard ? 'EDITOR PICK' : 'QUICK ROUTINE'}
-                  footerHint={disabled ? '환경 제약 확인하기' : '세부 루틴 고르기'}
+                  eyebrow={isFeaturedCard ? copy.careCards.featuredEyebrow : copy.careCards.quickEyebrow}
+                  footerHint={disabled ? copy.careCards.disabledFooter : copy.careCards.defaultFooter}
                   fitLabel={isPlaceholder ? undefined : getEnvironmentFitLabel(intent, normalizedEnvironment)}
                   safetyBadge={safetyBadge}
                   disabled={disabled}
-                  disabledText={isPlaceholder ? '준비 중이에요' : '현재 환경에선 제한적으로 추천돼요'}
+                  disabledText={isPlaceholder ? copy.careCards.placeholderDisabled : copy.careCards.restrictedDisabled}
                   onPress={() => handleOpenSubProtocol(intent)}
                   width={intentCardWidth}
                   minHeight={isFeaturedCard ? CARD_MIN_HEIGHT_REGULAR + 24 : CARD_MIN_HEIGHT_REGULAR}

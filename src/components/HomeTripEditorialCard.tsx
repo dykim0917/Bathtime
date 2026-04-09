@@ -64,7 +64,7 @@ export function HomeTripEditorialCard({
 
       <View style={styles.footer}>
         <View style={styles.footerMeta}>
-          <Text style={styles.footerLabel}>TRIP ROUTINE</Text>
+          <Text style={styles.footerLabel}>트립 루틴</Text>
           {safetyBadge ? <Text style={styles.safetyBadge}>{safetyBadge}</Text> : null}
         </View>
         {disabled && disabledText ? (

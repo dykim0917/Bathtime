@@ -324,7 +324,7 @@ export default function TripScreen() {
       <LinearGradient colors={[V2_BG_TOP, V2_BG_BASE, V2_BG_BOTTOM]} style={StyleSheet.absoluteFillObject} />
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <View style={[ui.glassCardV2, styles.heroCard]}>
-          <Text style={styles.eyebrow}>TRIP ROUTINE</Text>
+          <Text style={styles.eyebrow}>트립 가이드</Text>
           <Text style={styles.heroTitle}>트립 루틴</Text>
           <Text style={styles.subtitle}>여행처럼 몰입하는 테마 목욕을 환경에 맞게 골라보세요.</Text>
         </View>
@@ -364,7 +364,7 @@ export default function TripScreen() {
                   fitLabel={getEnvironmentFitLabel(intent, normalizedEnvironment)}
                   safetyBadge={safetyBadge}
                   disabled={disabled}
-                  disabledText="현재 환경에선 제한적으로 추천돼요"
+                  disabledText={copy.careCards.restrictedDisabled}
                   onPress={() => handleOpenSubProtocol(intent)}
                   width={intentCardWidth}
                   minHeight={CARD_MIN_HEIGHT_REGULAR}

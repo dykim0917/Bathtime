@@ -45,7 +45,7 @@ export default function OnboardingEnvironment() {
           <View style={styles.contentColumn}>
             <View style={styles.header}>
               <Text style={styles.title}>나의 목욕 환경을 알려주세요</Text>
-              <Text style={styles.subtitle}>환경에 맞는 최적의 레시피를 추천해드립니다</Text>
+              <Text style={styles.subtitle}>지금 집에서 할 수 있는 환경에 맞춰 루틴을 추천해드려요</Text>
             </View>
 
             <View style={styles.cards}>
@@ -72,7 +72,7 @@ export default function OnboardingEnvironment() {
             </View>
 
             <View style={[ui.glassCardV2, styles.selectionPanel, selected && styles.selectionPanelActive]}>
-              <Text style={styles.selectionEyebrow}>{selected ? 'SELECTED ENVIRONMENT' : 'STEP GUIDE'}</Text>
+              <Text style={styles.selectionEyebrow}>{selected ? '선택한 환경' : '다음 단계 안내'}</Text>
               <Text style={styles.selectionTitle}>
                 {selected ? `${ENVIRONMENTS.find((env) => env.id === selected)?.labelKo} 기준으로 다음 단계를 준비했어요` : '먼저 입욕 환경 하나를 고르면 다음 단계가 더 쉬워집니다'}
               </Text>
@@ -82,7 +82,7 @@ export default function OnboardingEnvironment() {
             </View>
 
             <View style={styles.footer}>
-              <View style={styles.progressRow}><Text style={styles.progressLabel}>PROGRESS</Text><Text style={styles.progressStep}>01 / 02</Text></View>
+              <View style={styles.progressRow}><Text style={styles.progressLabel}>진행 단계</Text><Text style={styles.progressStep}>01 / 02</Text></View>
               <View style={styles.progressTrack}><View style={styles.progressFill} /></View>
             </View>
 

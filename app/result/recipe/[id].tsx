@@ -42,15 +42,18 @@ export default function RecipeScreen() {
   const handleStartBath = () => {
     const navigateToTimer = () => router.replace(`/result/timer/${id}`);
     if (source === 'history') {
-      Alert.alert('루틴 다시 시작', '이 루틴을 다시 시작하면 새 기록이 추가됩니다. 진행할까요?', [{ text: '취소', style: 'cancel' }, { text: '진행', style: 'default', onPress: navigateToTimer }]);
+      Alert.alert(copy.alerts.restartRoutineTitle, copy.alerts.restartRoutineBody, [{ text: copy.alerts.cancel, style: 'cancel' }, { text: copy.alerts.proceed, style: 'default', onPress: navigateToTimer }]);
       return;
     }
     navigateToTimer();
   };
 
   const persona = PERSONA_DEFINITIONS.find((p) => p.code === recommendation.persona);
-  const recipeTitle = recommendation.mode === 'trip' ? (recommendation.themeTitle ?? 'Trip 테마') : (persona?.nameKo ?? '맞춤 케어');
-  const modeLabel = recommendation.mode === 'trip' ? '트립 · 분위기 전환 루틴' : '케어 · 몸 상태에 맞춘 루틴';
+  const recipeTitle = recommendation.mode === 'trip' ? (recommendation.themeTitle ?? '트립 테마') : (persona?.nameKo ?? '맞춤 케어');
+  const modeLabel =
+    recommendation.mode === 'trip'
+      ? copy.routine.recipe.tripModeLabel
+      : copy.routine.recipe.careModeLabel;
   const bathTypeLabel = BATH_TYPE_LABELS[recommendation.bathType];
   const environmentLabel = ENV_LABELS[recommendation.environmentUsed] ?? '욕조';
   const durationLabel = formatDuration(recommendation.durationMinutes);
@@ -70,28 +73,28 @@ export default function RecipeScreen() {
   const preparationRows = [
     {
       id: 'required',
-      label: '필수 준비물',
-      title: requiredPreparation ? requiredPreparation.name : '없음',
+      label: copy.routine.recipe.requiredLabel,
+      title: requiredPreparation ? requiredPreparation.name : copy.routine.recipe.noneTitle,
       body: requiredPreparation
-        ? `${requiredPreparation.name} 하나만 있으면 충분해요.`
+        ? copy.routine.recipe.requiredBody(requiredPreparation.name)
         : recommendation.environmentUsed === 'shower'
-          ? '새로 사지 않아도 괜찮아요. 집에 있는 바디워시나 샤워타월 정도면 시작할 수 있어요.'
-          : '새로 준비물을 사지 않아도 지금 바로 시작할 수 있어요.',
+          ? copy.routine.recipe.showerNoRequiredBody
+          : copy.routine.recipe.noRequiredBody,
       emoji: requiredPreparation?.emoji ?? '🫧',
     },
     {
       id: 'optional',
-      label: '있으면 좋아요',
+      label: copy.routine.recipe.optionalLabel,
       title: optionalPreparation
         ? optionalPreparation.name
         : recommendation.environmentUsed === 'shower'
-          ? '바디워시 또는 샤워타월'
-          : '추가 준비물 없음',
+          ? copy.routine.recipe.showerOptionalTitle
+          : copy.routine.recipe.noOptionalTitle,
       body: optionalPreparation
-        ? `${requiredPreparation?.name ?? '기본 준비물'} 대신 고르거나 함께 보기 좋은 완제품이에요.`
+        ? copy.routine.recipe.optionalBody(requiredPreparation?.name ?? '기본 준비물')
         : recommendation.environmentUsed === 'shower'
-          ? '향이 있는 바디워시나 샤워타월 정도만 더해도 충분해요.'
-          : '이번 루틴은 추가 준비물 없이도 충분해요.',
+          ? copy.routine.recipe.showerOptionalBody
+          : copy.routine.recipe.noOptionalBody,
       emoji: optionalPreparation?.emoji ?? '🧴',
     },
   ].filter((item) => item.id !== 'optional' || optionalPreparation) as Array<{
@@ -104,19 +107,19 @@ export default function RecipeScreen() {
   const routineSteps = [
     {
       id: 'bath',
-      label: '물 준비',
+      label: copy.routine.recipe.waterStepLabel,
       body: `${temperatureLabel}로 맞추고 ${recommendation.environmentHints[0] ?? `${environmentLabel} 환경에 맞게 편안한 높이로 물을 준비해주세요.`}`,
     },
     {
       id: 'ingredient',
-      label: '재료 넣기',
+      label: copy.routine.recipe.ingredientStepLabel,
       body: requiredPreparation
-        ? `${requiredPreparation.name} 하나만 준비하면 바로 시작할 수 있어요.`
-        : '필수 준비물 없이도 괜찮아요. 집에 있는 것만으로 먼저 시작해보세요.',
+        ? copy.routine.recipe.ingredientStepBody(requiredPreparation.name)
+        : copy.routine.recipe.noIngredientStepBody,
     },
     {
       id: 'mood',
-      label: '분위기 정리',
+      label: copy.routine.recipe.moodStepLabel,
       body: recommendation.lighting,
     },
   ] as const;
@@ -129,13 +132,13 @@ export default function RecipeScreen() {
   const handleProductPurchase = async (item: ProductMatchItem) => {
     const purchaseUrl = item.product.purchaseUrl ?? item.ingredient.purchaseUrl;
     if (!purchaseUrl) {
-      Alert.alert('구매 링크 없음', '아직 연결된 구매 링크가 없어요.');
+      Alert.alert(copy.alerts.purchaseUnavailableTitle, copy.alerts.purchaseUnavailableBody);
       return;
     }
 
     const supported = await Linking.canOpenURL(purchaseUrl);
     if (!supported) {
-      Alert.alert('링크 열기 실패', '지금은 구매 링크를 열 수 없어요.');
+      Alert.alert(copy.alerts.openLinkFailedTitle, copy.alerts.openLinkFailedBody);
       return;
     }
 
@@ -144,13 +147,13 @@ export default function RecipeScreen() {
 
   const handleDetailPurchase = async (product: CatalogProduct) => {
     if (!product.purchaseUrl) {
-      Alert.alert('구매 링크 없음', '아직 연결된 구매 링크가 없어요.');
+      Alert.alert(copy.alerts.purchaseUnavailableTitle, copy.alerts.purchaseUnavailableBody);
       return;
     }
 
     const supported = await Linking.canOpenURL(product.purchaseUrl);
     if (!supported) {
-      Alert.alert('링크 열기 실패', '지금은 구매 링크를 열 수 없어요.');
+      Alert.alert(copy.alerts.openLinkFailedTitle, copy.alerts.openLinkFailedBody);
       return;
     }
 
@@ -183,7 +186,7 @@ export default function RecipeScreen() {
             </View>
             <Animated.View entering={FadeIn.duration(450)} style={styles.heroContent}>
               <View style={styles.heroBadgeRow}>
-                <View style={styles.heroInfoBadge}><Text style={styles.heroInfoBadgeText}>환경 적합: {environmentLabel}</Text></View>
+                <View style={styles.heroInfoBadge}><Text style={styles.heroInfoBadgeText}>{copy.routine.recipe.environmentLabel}: {environmentLabel}</Text></View>
                 {recommendation.safetyWarnings.length > 0 ? <View style={styles.heroSafetyBadge}><Text style={styles.heroSafetyBadgeText}>{copy.home.safetyPriorityBadge}</Text></View> : null}
               </View>
               <View style={styles.heroTitleBlock}>
@@ -193,17 +196,17 @@ export default function RecipeScreen() {
               </View>
               <View style={styles.heroPlaque}>
                 <View style={styles.heroMetric}>
-                  <Text style={styles.heroMetricLabel}>입욕</Text>
+                  <Text style={styles.heroMetricLabel}>{copy.routine.recipe.bathLabel}</Text>
                   <Text style={styles.heroMetricValue}>{bathTypeLabel}</Text>
                 </View>
                 <View style={styles.heroMetricDivider} />
                 <View style={styles.heroMetric}>
-                  <Text style={styles.heroMetricLabel}>수온</Text>
+                  <Text style={styles.heroMetricLabel}>{copy.routine.recipe.temperatureLabel}</Text>
                   <Text style={styles.heroMetricValue}>{temperatureLabel}</Text>
                 </View>
                 <View style={styles.heroMetricDivider} />
                 <View style={styles.heroMetric}>
-                  <Text style={styles.heroMetricLabel}>시간</Text>
+                  <Text style={styles.heroMetricLabel}>{copy.routine.recipe.durationLabel}</Text>
                   <Text style={styles.heroMetricValue}>{durationLabel}</Text>
                 </View>
               </View>
@@ -212,28 +215,28 @@ export default function RecipeScreen() {
         </View>
 
         <Animated.View entering={FadeInDown.duration(380).delay(40)} style={[ui.glassCardV2, styles.summaryCard]}>
-          <Text style={styles.summaryEyebrow}>루틴 요약</Text>
-          <Text style={styles.summaryTitle}>이번 루틴은 이렇게 진행돼요</Text>
+          <Text style={styles.summaryEyebrow}>{copy.routine.recipe.summaryEyebrow}</Text>
+          <Text style={styles.summaryTitle}>{copy.routine.recipe.summaryTitle}</Text>
           <Text style={styles.summaryBody}>{evidence.reasonLines[0]}</Text>
           <View style={styles.summaryPillRow}>
             <View style={styles.summaryPill}>
-              <Text style={styles.summaryPillLabel}>환경</Text>
+              <Text style={styles.summaryPillLabel}>{copy.routine.recipe.environmentLabel}</Text>
               <Text style={styles.summaryPillValue}>{environmentLabel}</Text>
             </View>
             <View style={styles.summaryPill}>
-              <Text style={styles.summaryPillLabel}>입욕</Text>
+              <Text style={styles.summaryPillLabel}>{copy.routine.recipe.bathLabel}</Text>
               <Text style={styles.summaryPillValue}>{bathTypeLabel}</Text>
             </View>
             <View style={styles.summaryPill}>
-              <Text style={styles.summaryPillLabel}>시간</Text>
+              <Text style={styles.summaryPillLabel}>{copy.routine.recipe.durationLabel}</Text>
               <Text style={styles.summaryPillValue}>{durationLabel}</Text>
             </View>
           </View>
         </Animated.View>
 
         <Animated.View entering={FadeInDown.duration(400).delay(80)} style={[ui.glassCardV2, styles.stepsCard]}>
-          <Text style={styles.sectionTitle}>시작 전에 이렇게 준비하세요</Text>
-          <Text style={styles.sectionSubtitle}>루틴의 핵심만 먼저 읽고 바로 시작할 수 있게 정리했어요</Text>
+          <Text style={styles.sectionTitle}>{copy.routine.recipe.prepTitle}</Text>
+          <Text style={styles.sectionSubtitle}>{copy.routine.recipe.prepSubtitle}</Text>
           <View style={styles.stepList}>
             {routineSteps.map((step, index) => (
               <View key={step.id} style={[styles.stepRow, index === routineSteps.length - 1 && styles.stepRowLast]}>
@@ -250,8 +253,8 @@ export default function RecipeScreen() {
         </Animated.View>
 
         <Animated.View entering={FadeInDown.duration(400).delay(180)}>
-          <Text style={styles.sectionTitle}>준비물 가이드</Text>
-          <Text style={styles.sectionSubtitle}>없음 또는 완제품 한 개만 준비하면 되도록 정리했어요</Text>
+          <Text style={styles.sectionTitle}>{copy.routine.recipe.guideTitle}</Text>
+          <Text style={styles.sectionSubtitle}>{copy.routine.recipe.guideSubtitle}</Text>
           <View style={[ui.glassCardV2, styles.ingredientsCard]}>
             {preparationRows.map((item, index) => (
               <View key={item.id} style={[styles.trackRow, index === preparationRows.length - 1 && styles.trackRowLast]}>
@@ -263,16 +266,14 @@ export default function RecipeScreen() {
             {productSlots.length > 0 ? (
               <View style={styles.ingredientsPairingWrap}>
                 <View style={styles.ingredientsPairingDivider} />
-                <Text style={styles.productBridgeEyebrow}>준비물 제품</Text>
-                <Text style={styles.productBridgeTitle}>준비물로 볼 제품</Text>
-                <Text style={styles.productBridgeBody}>
-                  이번 루틴 준비물로 보기 좋은 같은 카테고리 제품만 따로 골라봤어요.
-                </Text>
+                <Text style={styles.productBridgeEyebrow}>{copy.routine.recipe.bridgeEyebrow}</Text>
+                <Text style={styles.productBridgeTitle}>{copy.routine.recipe.bridgeTitle}</Text>
+                <Text style={styles.productBridgeBody}>{copy.routine.recipe.bridgeBody}</Text>
                 <Pressable
                   style={[ui.secondaryButtonV2, styles.productBridgeButton]}
                   onPress={() => setShowProductModal(true)}
                 >
-                  <Text style={ui.secondaryButtonTextV2}>준비물 보기</Text>
+                  <Text style={ui.secondaryButtonTextV2}>{copy.routine.recipe.bridgeButton}</Text>
                 </Pressable>
               </View>
             ) : null}
@@ -280,7 +281,7 @@ export default function RecipeScreen() {
         </Animated.View>
 
         <Animated.View entering={FadeInDown.duration(400).delay(240)} style={[ui.glassCardV2, styles.safetyBlock]}>
-          <Text style={styles.safetyEyebrow}>안전 먼저</Text>
+          <Text style={styles.safetyEyebrow}>{copy.routine.recipe.safetyEyebrow}</Text>
           <Text style={styles.safetyTitle}>{copy.routine.safetyTitle}</Text>
           <Text style={styles.safetyLead}>{primarySafetyLine}</Text>
           {copy.routine.safetyLines.map((line) => <Text key={line} style={styles.safetyText}>• {line}</Text>)}

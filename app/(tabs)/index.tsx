@@ -178,7 +178,7 @@ function resolveFallback(intent: IntentCard, healthConditions: UserProfile['heal
 }
 
 function buildHeadlineMessage(timeContext: TimeContext, recent: BathRecommendation[]): string {
-  if (timeContext === 'late_night') return 'Good Evening';
+  if (timeContext === 'late_night') return '오늘은 편안하게 마무리해보세요';
   const latest = recent[0];
   if (latest?.mode === 'trip') return '오늘은 무드 전환이 먼저예요';
   if (timeContext === 'day' || timeContext === 'evening') return '지금 컨디션에 맞는 루틴';
@@ -548,7 +548,7 @@ export default function HomeIntentScreen() {
                   fitLabel={getEnvironmentFitLabel(intent, normalizedEnvironment)}
                   safetyBadge={safetyBadge}
                   disabled={disabled}
-                  disabledText="현재 환경에선 제한적으로 추천돼요"
+                  disabledText={copy.careCards.restrictedDisabled}
                   onPress={() => handleOpenSubProtocol(intent)}
                   width={careCardWidth}
                 />
@@ -580,7 +580,7 @@ export default function HomeIntentScreen() {
                   fitLabel={getEnvironmentFitLabel(intent, normalizedEnvironment)}
                   safetyBadge={safetyBadge}
                   disabled={disabled}
-                  disabledText="현재 환경에선 제한적으로 추천돼요"
+                  disabledText={copy.careCards.restrictedDisabled}
                   onPress={() => handleOpenSubProtocol(intent)}
                 />
               );
@@ -608,7 +608,7 @@ export default function HomeIntentScreen() {
               >
                 <View style={styles.recentCardHeader}>
                   <View style={[styles.recentColorDot, { backgroundColor: routine.colorHex }]} />
-                  <Text style={styles.recentMeta}>{routine.mode === 'trip' ? 'TRIP' : 'CARE'}</Text>
+                  <Text style={styles.recentMeta}>{routine.mode === 'trip' ? '트립' : '케어'}</Text>
                 </View>
                 <Text style={styles.recentTitle} numberOfLines={1}>{routine.themeTitle ?? '맞춤 케어'}</Text>
                 <Text style={styles.recentSub} numberOfLines={2}>

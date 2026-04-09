@@ -200,7 +200,7 @@ function HistorySection() {
   const ListHeader = () => (
     <View style={styles.listHeader}>
       <View style={[ui.glassCardV2, styles.heroCard]}>
-        <Text style={styles.eyebrow}>MY ARCHIVE</Text>
+        <Text style={styles.eyebrow}>나의 기록</Text>
         <Text style={styles.pageTitle}>기록</Text>
         <Text style={styles.pageSubtitle}>
           {history.length > 0
@@ -238,7 +238,7 @@ function HistorySection() {
       {history.length > 0 && (
         <View style={[ui.glassCardV2, styles.insightBanner]}>
           <View style={styles.insightBannerLeft}>
-            <Text style={styles.insightBannerLabel}>MONTHLY SUMMARY</Text>
+            <Text style={styles.insightBannerLabel}>이번 달 요약</Text>
             <Text style={styles.insightBannerMain}>{insights.totalSessions}회 완료</Text>
             {insights.avgDurationMinutes > 0 && (
               <Text style={styles.insightBannerSub}>
@@ -290,12 +290,12 @@ function HistorySection() {
           <ListHeader />
           <View style={[ui.glassCardV2, styles.emptyContainer]}>
             <View style={styles.emptyBadge}>
-              <Text style={styles.emptyBadgeText}>FIRST BATH AWAITS</Text>
+              <Text style={styles.emptyBadgeText}>첫 루틴을 시작해보세요</Text>
             </View>
             <Text style={styles.emptyEmoji}>🛁</Text>
             <Text style={styles.emptyText}>{copy.history.empty.title}</Text>
             <Text style={styles.emptySubtext}>{copy.history.empty.subtitle}</Text>
-            <Text style={styles.emptyGuide}>첫 추천을 저장하면 이 공간이 나만의 배스 아카이브로 바뀝니다.</Text>
+            <Text style={styles.emptyGuide}>첫 추천을 저장하면 이 공간이 나만의 루틴 기록으로 채워져요.</Text>
             <Pressable style={styles.emptyAction} onPress={() => router.push('/(tabs)/care')}>
               <Text style={styles.emptyActionText}>케어 루틴 보러가기</Text>
             </Pressable>
@@ -372,7 +372,7 @@ function SettingsSection() {
       setResetModalVisible(false);
       router.replace('/onboarding');
     } catch {
-      Alert.alert('오류', '프로필 초기화 중 문제가 발생했어요. 다시 시도해주세요.');
+      Alert.alert(copy.settings.resetErrorTitle, copy.settings.resetErrorBody);
     } finally {
       setIsResetting(false);
     }

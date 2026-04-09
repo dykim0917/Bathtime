@@ -63,14 +63,14 @@ export default function OnboardingHealth() {
             </TouchableOpacity>
             <View style={styles.brandLockup}>
               <Image source={require('../../assets/images/brand/bath-symbol.png')} style={styles.brandIcon} resizeMode="contain" />
-              <Text style={styles.stepTitle}>STEP 02</Text>
+              <Text style={styles.stepTitle}>2단계</Text>
             </View>
             <View style={styles.backButton} />
           </View>
 
           <View style={styles.header}>
             <Text style={styles.title}>건강 상태를{`\n`}선택해주세요</Text>
-            <Text style={styles.subtitle}>안전한 입욕 처방을 위해 현재의 신체 상태를 체크해주세요.</Text>
+            <Text style={styles.subtitle}>무리 없는 루틴을 추천할 수 있게 현재 건강 상태를 확인해주세요.</Text>
           </View>
 
           <View style={styles.conditions}>
@@ -94,7 +94,7 @@ export default function OnboardingHealth() {
           </View>
 
           <Pressable style={[ui.primaryButtonV2, styles.completeButton, !hasSelection && styles.completeButtonDisabled]} onPress={handleComplete} disabled={!hasSelection}>
-            <Text style={ui.primaryButtonTextV2}>진단 완료</Text>
+            <Text style={ui.primaryButtonTextV2}>설정 완료</Text>
           </Pressable>
         </View>
       </SafeAreaView>

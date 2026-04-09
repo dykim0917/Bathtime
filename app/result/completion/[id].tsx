@@ -160,7 +160,7 @@ export default function CompletionScreen() {
           </Animated.View>
 
           <Animated.View entering={FadeIn.duration(600).delay(350)} style={[ui.glassCardV2, styles.statsCard]}>
-            <Text style={styles.statsLabel}>MONTHLY COUNT</Text>
+            <Text style={styles.statsLabel}>이번 달 기록</Text>
             <Text style={styles.statsText}>
               {copy.completion.monthlyPrefix}{' '}
               <Text style={styles.statsHighlight}>{monthlyCount}</Text>

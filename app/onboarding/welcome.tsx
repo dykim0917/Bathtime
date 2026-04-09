@@ -39,9 +39,9 @@ export default function WelcomeScreen() {
             <View style={styles.heroOrb}>
               <Text style={styles.heroEmoji}>🛁</Text>
             </View>
-            <Text style={styles.kicker}>PRIVATE BATH CURATION</Text>
+            <Text style={styles.kicker}>오늘을 위한 목욕 가이드</Text>
             <Text style={styles.title}>나만의 목욕 루틴</Text>
-            <Text style={styles.subtitle}>지금 상태에 맞는 입욕 레시피를 차분한 프리미엄 무드로 추천합니다.</Text>
+            <Text style={styles.subtitle}>지금 상태에 맞는 입욕 루틴을 부담 없이 시작할 수 있게 추천해드려요.</Text>
           </View>
 
           <View style={[ui.glassCardV2, styles.featureCard]}>

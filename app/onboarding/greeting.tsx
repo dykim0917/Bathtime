@@ -56,9 +56,9 @@ export default function OnboardingGreeting() {
           <View style={styles.centerContent}>
             <Animated.View style={[styles.heroWrap, textAnim]}>
               <View style={styles.heroCircle}><Text style={styles.heroIcon}>✨</Text></View>
-              <Text style={styles.welcome}>WELCOME</Text>
+              <Text style={styles.welcome}>준비 완료</Text>
               <Text style={styles.title}>환영합니다</Text>
-              <Text style={styles.subtitle}>{'당신만의 입욕 리추얼이\n준비됐어요'}</Text>
+              <Text style={styles.subtitle}>{'당신만의 입욕 루틴을\n시작할 준비가 됐어요'}</Text>
               <Text style={styles.description}>이제 홈에서 케어 루틴과 트립 루틴을 바로 시작할 수 있습니다.</Text>
             </Animated.View>
           </View>
@@ -69,7 +69,7 @@ export default function OnboardingGreeting() {
                 <Text style={ui.primaryButtonTextV2}>홈으로 이동</Text>
               </Pressable>
             </Animated.View>
-            <Text style={styles.premiumLine}>PREMIUM WELLNESS CURATION SERVICE</Text>
+            <Text style={styles.premiumLine}>오늘 상태에 맞는 루틴을 차분하게 안내해드릴게요</Text>
           </View>
         </View>
       </SafeAreaView>

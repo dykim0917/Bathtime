@@ -23,6 +23,7 @@ import {
   V2_TEXT_PRIMARY,
   V2_TEXT_SECONDARY,
 } from '@/src/data/colors';
+import { copy } from '@/src/content/copy';
 import { luxuryFonts, luxuryTracking } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
 
@@ -61,13 +62,13 @@ export default function ProductScreen() {
 
   const handleProductPurchase = async (product: CatalogProduct) => {
     if (!product.purchaseUrl) {
-      Alert.alert('구매 링크 없음', '아직 연결된 구매 링크가 없어요.');
+      Alert.alert(copy.alerts.purchaseUnavailableTitle, copy.alerts.purchaseUnavailableBody);
       return;
     }
 
     const supported = await Linking.canOpenURL(product.purchaseUrl);
     if (!supported) {
-      Alert.alert('링크 열기 실패', '지금은 구매 링크를 열 수 없어요.');
+      Alert.alert(copy.alerts.openLinkFailedTitle, copy.alerts.openLinkFailedBody);
       return;
     }
 
