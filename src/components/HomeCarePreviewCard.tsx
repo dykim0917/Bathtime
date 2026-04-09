@@ -99,7 +99,12 @@ const styles = StyleSheet.create({
     borderRadius: 44,
   },
   visualEmoji: {
-    fontSize: 28,
+    fontSize: TYPE_CAPTION,
+    color: V2_TEXT_PRIMARY,
+    fontWeight: '700',
+    letterSpacing: 1.2,
+    fontVariant: ['tabular-nums'],
+    fontFamily: luxuryFonts.mono,
   },
   content: {
     paddingHorizontal: 14,

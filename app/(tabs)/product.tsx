@@ -24,7 +24,8 @@ import {
   V2_TEXT_SECONDARY,
 } from '@/src/data/colors';
 import { copy } from '@/src/content/copy';
-import { luxuryFonts, luxuryTracking } from '@/src/theme/luxury';
+import { OpenTabHeader } from '@/src/components/OpenTabHeader';
+import { luxuryFonts } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
 
 const SCREEN_HORIZONTAL_PADDING = 22;
@@ -82,17 +83,17 @@ export default function ProductScreen() {
         contentContainerStyle={[styles.content, { paddingBottom: insets.bottom + 32 }]}
         showsVerticalScrollIndicator={false}
       >
-        <View style={[ui.glassCardV2, styles.heroCard]}>
-          <Text style={styles.eyebrow}>입문자 추천</Text>
-          <Text style={styles.heroTitle}>오늘의 제품</Text>
-          <Text style={styles.subtitle}>
-            {highlightedProduct
+        <OpenTabHeader
+          eyebrow="입문자 추천"
+          title="오늘의 제품"
+          subtitle={
+            highlightedProduct
               ? `${highlightedProduct.name}부터 이어서 볼 수 있어요.`
               : status === 'loading'
                 ? '실제 카탈로그를 불러오는 중이에요.'
-                : '지금 바로 쓰기 쉬운 입욕제, 샤워 아이템, 바디워시만 먼저 골라봤어요.'}
-          </Text>
-        </View>
+                : '지금 바로 쓰기 쉬운 입욕제, 샤워 아이템, 바디워시만 먼저 골라봤어요.'
+          }
+        />
 
         <View>
           <Text style={styles.sectionTitle}>카테고리</Text>
@@ -152,29 +153,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: SCREEN_HORIZONTAL_PADDING,
     paddingTop: 16,
     gap: 18,
-  },
-  heroCard: {
-    padding: 20,
-    gap: 10,
-  },
-  eyebrow: {
-    fontSize: TYPE_SCALE.caption - 1,
-    fontWeight: '700',
-    color: V2_ACCENT,
-    letterSpacing: luxuryTracking.eyebrow,
-    fontFamily: luxuryFonts.sans,
-  },
-  heroTitle: {
-    color: V2_TEXT_PRIMARY,
-    fontSize: TYPE_SCALE.headingLg,
-    lineHeight: 38,
-    fontFamily: luxuryFonts.display,
-  },
-  subtitle: {
-    fontSize: TYPE_SCALE.body + 1,
-    color: V2_TEXT_SECONDARY,
-    lineHeight: 23,
-    fontFamily: luxuryFonts.sans,
   },
   sectionTitle: {
     color: V2_TEXT_PRIMARY,

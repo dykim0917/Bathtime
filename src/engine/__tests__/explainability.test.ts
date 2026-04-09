@@ -36,7 +36,7 @@ describe('buildRecipeEvidenceLines', () => {
       mode: 'trip',
       bathType: 'shower',
       themeTitle: '교토 포레스트',
-      safetyWarnings: ['⚠️ 고혈압/심장 질환이 있으시므로 수온이 38°C로 제한됩니다.'],
+      safetyWarnings: ['고혈압/심장 질환이 있으시므로 수온이 38°C로 제한됩니다.'],
     };
     const result = buildRecipeEvidenceLines(tripRecommendation);
     expect(result.reasonLines[0]).toContain('교토 포레스트');

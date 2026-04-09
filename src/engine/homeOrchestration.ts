@@ -279,14 +279,14 @@ export function buildSuggestionExplanation(
       narrativeHeadline: `오늘은 ${themeTitle} 분위기로 쉬어가요.`,
       atmosphereChips: [
         theme ? `향: ${theme.recScent}` : '향: 테마 추천',
-        theme ? `조명: ${theme.lighting}` : '조명: 분위기 전환',
+        theme ? `톤: ${themeTitle} 무드` : '톤: 차분한 무드',
         '사운드: 차분한 배경음',
       ],
     };
   }
 
   const paramsByMode: Record<typeof selectedMode, string> = {
-    sleep: '38~41°C, 10~15분, 저자극 향/조명',
+    sleep: '38~41°C, 10~15분, 저자극 중심',
     recovery: '40~42°C(고위험군 <=40°C), 10~15분',
     reset: '기본 non-cold activation, 짧은 전환 루틴',
   };

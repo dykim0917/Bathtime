@@ -9,10 +9,10 @@ import { TYPE_CAPTION, TYPE_BODY, TYPE_HEADING_LG, TYPE_TITLE, V2_ACCENT, V2_ACC
 import { luxuryFonts, luxuryRadii, luxuryTracking } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
 
-const ENVIRONMENTS: { id: BathEnvironment; emoji: string; labelKo: string; desc: string }[] = [
-  { id: 'bathtub', emoji: '🛁', labelKo: '욕조', desc: '전신욕, 반신욕 가능' },
-  { id: 'footbath', emoji: '🦶', labelKo: '족욕 (대야)', desc: '족욕 전용' },
-  { id: 'shower', emoji: '🚿', labelKo: '샤워부스', desc: '샤워 스티머 활용' },
+const ENVIRONMENTS: { id: BathEnvironment; badge: string; labelKo: string; desc: string }[] = [
+  { id: 'bathtub', badge: '01', labelKo: '욕조', desc: '전신욕, 반신욕 가능' },
+  { id: 'footbath', badge: '02', labelKo: '족욕 (대야)', desc: '족욕 전용' },
+  { id: 'shower', badge: '03', labelKo: '샤워부스', desc: '샤워 스티머 활용' },
 ];
 
 export default function OnboardingEnvironment() {
@@ -53,7 +53,7 @@ export default function OnboardingEnvironment() {
                 const isSelected = selected === env.id;
                 return (
                   <Pressable key={env.id} onPress={() => handleSelect(env.id)} style={[ui.glassCardV2, styles.card, isSelected && styles.cardSelected]}>
-                    <View style={[styles.iconWrap, isSelected && styles.iconWrapSelected]}><Text style={styles.emoji}>{env.emoji}</Text></View>
+                    <View style={[styles.iconWrap, isSelected && styles.iconWrapSelected]}><Text style={styles.emoji}>{env.badge}</Text></View>
                     <View style={styles.cardText}>
                       <View style={styles.cardLabelRow}>
                         <Text style={[styles.cardLabel, isSelected && styles.cardLabelSelected]}>{env.labelKo}</Text>
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
   cardSelected: { borderColor: V2_ACCENT, backgroundColor: 'rgba(176, 141, 87, 0.1)' },
   iconWrap: { width: 50, height: 50, borderRadius: luxuryRadii.button, backgroundColor: 'rgba(255,255,255,0.05)', justifyContent: 'center', alignItems: 'center', marginRight: 16 },
   iconWrapSelected: { backgroundColor: V2_ACCENT_SOFT },
-  emoji: { fontSize: 25 },
+  emoji: { fontSize: TYPE_CAPTION, color: V2_TEXT_PRIMARY, fontWeight: '700', letterSpacing: 1, fontVariant: ['tabular-nums'], fontFamily: luxuryFonts.mono },
   cardText: { flex: 1 },
   cardLabelRow: { flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 4 },
   cardLabel: { fontSize: TYPE_TITLE + 1, color: V2_TEXT_PRIMARY, marginBottom: 4, fontFamily: luxuryFonts.display, lineHeight: 24 },

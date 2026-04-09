@@ -148,9 +148,9 @@ export default function CompletionScreen() {
       <View style={styles.softOverlay} />
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.content}>
-          <Animated.Text entering={BounceIn.duration(800)} style={styles.celebrationEmoji}>
-            🎉
-          </Animated.Text>
+          <Animated.View entering={BounceIn.duration(800)} style={styles.celebrationBadge}>
+            <Text style={styles.celebrationBadgeText}>DONE</Text>
+          </Animated.View>
 
           <Animated.View entering={FadeIn.duration(600).delay(200)} style={styles.headerBlock}>
             <View style={styles.stepBadge}>
@@ -179,7 +179,6 @@ export default function CompletionScreen() {
                 onPress={() => handleFeedback('good')}
                 disabled={feedback !== null}
               >
-                <Text style={styles.feedbackEmoji}>👍</Text>
                 <Text style={[styles.feedbackLabel, feedback === 'good' && styles.feedbackLabelActive]}>
                   {copy.completion.feedback.good}
                 </Text>
@@ -193,7 +192,6 @@ export default function CompletionScreen() {
                 onPress={() => handleFeedback('bad')}
                 disabled={feedback !== null}
               >
-                <Text style={styles.feedbackEmoji}>👎</Text>
                 <Text style={[styles.feedbackLabel, feedback === 'bad' && styles.feedbackLabelActive]}>
                   {copy.completion.feedback.bad}
                 </Text>
@@ -268,9 +266,24 @@ const styles = StyleSheet.create({
     paddingVertical: 24,
     gap: 18,
   },
-  celebrationEmoji: {
-    fontSize: 72,
-    textAlign: 'center',
+  celebrationBadge: {
+    alignSelf: 'center',
+    minWidth: 96,
+    borderRadius: 999,
+    paddingHorizontal: 18,
+    paddingVertical: 10,
+    borderWidth: 1,
+    borderColor: V2_BORDER,
+    backgroundColor: V2_ACCENT_SOFT,
+    alignItems: 'center',
+  },
+  celebrationBadgeText: {
+    fontSize: TYPE_SCALE.caption,
+    color: V2_ACCENT,
+    fontWeight: '800',
+    letterSpacing: 1.4,
+    fontVariant: ['tabular-nums'],
+    fontFamily: luxuryFonts.mono,
   },
   headerBlock: {
     alignItems: 'center',
@@ -351,10 +364,6 @@ const styles = StyleSheet.create({
   feedbackButtonActive: {
     backgroundColor: V2_ACCENT,
     borderColor: V2_ACCENT,
-  },
-  feedbackEmoji: {
-    fontSize: 28,
-    marginBottom: 4,
   },
   feedbackLabel: {
     fontSize: 13,

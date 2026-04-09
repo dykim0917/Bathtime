@@ -36,7 +36,6 @@ export function TagSelector({
           <TagChip
             key={tag.id}
             label={tag.labelKo}
-            emoji={tag.emoji}
             selected={selectedIds.has(tag.id)}
             accentColor={accentColor}
             onPress={() => handleToggle(tag.id)}

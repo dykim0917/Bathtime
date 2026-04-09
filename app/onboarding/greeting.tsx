@@ -55,7 +55,9 @@ export default function OnboardingGreeting() {
 
           <View style={styles.centerContent}>
             <Animated.View style={[styles.heroWrap, textAnim]}>
-              <View style={styles.heroCircle}><Text style={styles.heroIcon}>✨</Text></View>
+              <View style={styles.heroCircle}>
+                <Image source={require('../../assets/images/brand/bath-symbol.png')} style={styles.heroIcon} resizeMode="contain" />
+              </View>
               <Text style={styles.welcome}>준비 완료</Text>
               <Text style={styles.title}>환영합니다</Text>
               <Text style={styles.subtitle}>{'당신만의 입욕 루틴을\n시작할 준비가 됐어요'}</Text>
@@ -87,7 +89,7 @@ const styles = StyleSheet.create({
   centerContent: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   heroWrap: { alignItems: 'center', paddingHorizontal: 8 },
   heroCircle: { width: 126, height: 126, borderRadius: 63, marginBottom: 18, backgroundColor: V2_ACCENT_SOFT, borderWidth: 1, borderColor: V2_BORDER, justifyContent: 'center', alignItems: 'center' },
-  heroIcon: { fontSize: 56 },
+  heroIcon: { width: 46, height: 52 },
   welcome: { fontSize: TYPE_CAPTION + 1, color: V2_ACCENT, letterSpacing: luxuryTracking.eyebrow, fontWeight: '700', marginBottom: 8, fontFamily: luxuryFonts.sans },
   title: { fontSize: TYPE_HEADING_LG + 6, color: V2_TEXT_PRIMARY, marginBottom: 14, fontFamily: luxuryFonts.display, lineHeight: 44 },
   subtitle: { fontSize: 21, color: V2_TEXT_PRIMARY, textAlign: 'center', lineHeight: 32, marginBottom: 16, fontFamily: luxuryFonts.display },

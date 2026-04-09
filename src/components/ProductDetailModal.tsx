@@ -136,7 +136,12 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(255,255,255,0.12)',
   },
   icon: {
-    fontSize: 28,
+    fontSize: TYPE_SCALE.caption,
+    color: V2_TEXT_PRIMARY,
+    fontWeight: '700',
+    letterSpacing: 1,
+    fontVariant: ['tabular-nums'],
+    fontFamily: luxuryFonts.mono,
   },
   headerCopy: {
     flex: 1,

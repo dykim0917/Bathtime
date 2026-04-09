@@ -26,12 +26,12 @@ import { THEME_BY_ID } from '@/src/data/themes';
 import { copy } from '@/src/content/copy';
 import { useUserProfile } from '@/src/hooks/useUserProfile';
 import { useHaptic } from '@/src/hooks/useHaptic';
+import { OpenTabHeader } from '@/src/components/OpenTabHeader';
 import { PersistentDisclosure } from '@/src/components/PersistentDisclosure';
 import {
   CATEGORY_CARD_EMOJI,
   TYPE_BODY,
   TYPE_CAPTION,
-  TYPE_HEADING_MD,
   TYPE_TITLE,
   V2_ACCENT,
   V2_ACCENT_SOFT,
@@ -47,7 +47,7 @@ import {
   V2_TEXT_PRIMARY,
   V2_TEXT_SECONDARY,
 } from '@/src/data/colors';
-import { luxuryFonts, luxuryTracking } from '@/src/theme/luxury';
+import { luxuryFonts } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
 
 type MyTab = 'history' | 'settings';
@@ -79,20 +79,20 @@ const ENV_LABELS_HISTORY = {
 } as const;
 
 const ENV_LABELS_SETTINGS: Record<BathEnvironment, string> = {
-  bathtub: '🛁 욕조',
-  partial_bath: '🦶 부분입욕',
-  footbath: '🦶 족욕',
-  shower: '🚿 샤워',
+  bathtub: '욕조',
+  partial_bath: '부분입욕',
+  footbath: '족욕',
+  shower: '샤워',
 };
 
 const SETTINGS_ENV_OPTIONS: BathEnvironment[] = ['bathtub', 'partial_bath', 'shower'];
 
 const CONDITION_LABELS: Record<HealthCondition, string> = {
-  hypertension_heart: '⚠️ 고혈압/심장',
-  pregnant: '🤰 임신 중',
-  diabetes: '🩸 당뇨',
-  sensitive_skin: '🌵 민감성 피부',
-  none: '✅ 해당 없음',
+  hypertension_heart: '고혈압/심장',
+  pregnant: '임신 중',
+  diabetes: '당뇨',
+  sensitive_skin: '민감성 피부',
+  none: '해당 없음',
 };
 
 const SIDE_PAD = 18;
@@ -158,7 +158,7 @@ function HistorySection() {
   const renderCard = ({ item, index }: { item: BathRecommendation; index: number }) => {
     const persona = PERSONA_DEFINITIONS.find((p) => p.code === item.persona);
     const title = item.themeTitle ?? persona?.nameKo ?? copy.history.cardLabels.defaultTitle;
-    const emoji = CATEGORY_CARD_EMOJI[item.intentId ?? ''] ?? '🛁';
+    const emoji = CATEGORY_CARD_EMOJI[item.intentId ?? ''] ?? 'BS';
     const date = new Date(item.createdAt);
     const dateStr = `${date.getMonth() + 1}/${date.getDate()}`;
     const memory = memoryByRecommendation[item.id];
@@ -199,15 +199,15 @@ function HistorySection() {
 
   const ListHeader = () => (
     <View style={styles.listHeader}>
-      <View style={[ui.glassCardV2, styles.heroCard]}>
-        <Text style={styles.eyebrow}>나의 기록</Text>
-        <Text style={styles.pageTitle}>기록</Text>
-        <Text style={styles.pageSubtitle}>
-          {history.length > 0
+      <OpenTabHeader
+        eyebrow="나의 기록"
+        title="기록"
+        subtitle={
+          history.length > 0
             ? `총 ${history.length}개의 루틴을 완료했어요`
-            : '첫 루틴을 시작해보세요'}
-        </Text>
-      </View>
+            : '첫 루틴을 시작해보세요'
+        }
+      />
 
       <View style={[ui.glassCardV2, styles.streakCard]}>
         <Text style={styles.streakTitle}>{copy.home.streakTitle}</Text>
@@ -253,7 +253,7 @@ function HistorySection() {
             )}
           </View>
           <View style={styles.insightBannerIcon}>
-            <Text style={styles.insightBannerEmoji}>🛁</Text>
+            <Text style={styles.insightBannerEmoji}>BS</Text>
           </View>
         </View>
       )}
@@ -292,7 +292,7 @@ function HistorySection() {
             <View style={styles.emptyBadge}>
               <Text style={styles.emptyBadgeText}>첫 루틴을 시작해보세요</Text>
             </View>
-            <Text style={styles.emptyEmoji}>🛁</Text>
+            <Text style={styles.emptyEmoji}>BS</Text>
             <Text style={styles.emptyText}>{copy.history.empty.title}</Text>
             <Text style={styles.emptySubtext}>{copy.history.empty.subtitle}</Text>
             <Text style={styles.emptyGuide}>첫 추천을 저장하면 이 공간이 나만의 루틴 기록으로 채워져요.</Text>
@@ -394,11 +394,12 @@ function SettingsSection() {
   return (
     <View style={styles.settingsContainer}>
       <ScrollView contentContainerStyle={styles.settingsContent} showsVerticalScrollIndicator={false}>
-        <View style={[ui.glassCardV2, styles.settingsHeroCard]}>
-          <Text style={styles.eyebrow}>PROFILE SETTINGS</Text>
-          <Text style={styles.pageTitle}>설정</Text>
-          <Text style={styles.pageSubtitle}>환경과 건강 상태를 현재 기준에 맞게 바로 저장합니다.</Text>
-        </View>
+        <OpenTabHeader
+          eyebrow="PROFILE SETTINGS"
+          title="설정"
+          subtitle="환경과 건강 상태를 현재 기준에 맞게 바로 저장합니다."
+          style={styles.settingsHeader}
+        />
 
         <View style={styles.settingsSection}>
           <Text style={styles.settingsSectionTitle}>{copy.settings.sectionProfile}</Text>
@@ -574,32 +575,8 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     gap: 14,
   },
-  heroCard: {
-    padding: 18,
-    gap: 6,
-  },
-  settingsHeroCard: {
-    padding: 18,
-    gap: 6,
+  settingsHeader: {
     marginBottom: 18,
-  },
-  eyebrow: {
-    fontSize: TYPE_CAPTION - 1,
-    fontWeight: '700',
-    color: V2_ACCENT,
-    letterSpacing: luxuryTracking.eyebrow,
-    fontFamily: luxuryFonts.sans,
-  },
-  pageTitle: {
-    fontSize: TYPE_HEADING_MD + 4,
-    color: V2_TEXT_PRIMARY,
-    marginBottom: 2,
-    fontFamily: luxuryFonts.display,
-  },
-  pageSubtitle: {
-    fontSize: TYPE_BODY,
-    color: V2_TEXT_SECONDARY,
-    fontFamily: luxuryFonts.sans,
   },
   streakCard: {
     paddingHorizontal: 14,
@@ -688,7 +665,12 @@ const styles = StyleSheet.create({
     marginLeft: 16,
   },
   insightBannerEmoji: {
-    fontSize: 40,
+    fontSize: TYPE_CAPTION + 1,
+    color: V2_TEXT_PRIMARY,
+    fontWeight: '700',
+    letterSpacing: 1.2,
+    fontVariant: ['tabular-nums'],
+    fontFamily: luxuryFonts.mono,
   },
   filterScroll: {
     marginBottom: 4,
@@ -752,7 +734,12 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(255,255,255,0.06)',
   },
   gridCardEmoji: {
-    fontSize: 36,
+    fontSize: TYPE_CAPTION + 1,
+    color: V2_TEXT_PRIMARY,
+    fontWeight: '700',
+    letterSpacing: 1.2,
+    fontVariant: ['tabular-nums'],
+    fontFamily: luxuryFonts.mono,
   },
   modePill: {
     position: 'absolute',
@@ -818,7 +805,12 @@ const styles = StyleSheet.create({
     letterSpacing: 1.1,
   },
   emptyEmoji: {
-    fontSize: 48,
+    fontSize: TYPE_CAPTION + 2,
+    color: V2_TEXT_PRIMARY,
+    fontWeight: '700',
+    letterSpacing: 1.2,
+    fontVariant: ['tabular-nums'],
+    fontFamily: luxuryFonts.mono,
     marginBottom: 14,
   },
   emptyText: {

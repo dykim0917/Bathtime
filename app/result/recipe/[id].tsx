@@ -80,7 +80,6 @@ export default function RecipeScreen() {
         : recommendation.environmentUsed === 'shower'
           ? copy.routine.recipe.showerNoRequiredBody
           : copy.routine.recipe.noRequiredBody,
-      emoji: requiredPreparation?.emoji ?? '🫧',
     },
     {
       id: 'optional',
@@ -95,14 +94,12 @@ export default function RecipeScreen() {
         : recommendation.environmentUsed === 'shower'
           ? copy.routine.recipe.showerOptionalBody
           : copy.routine.recipe.noOptionalBody,
-      emoji: optionalPreparation?.emoji ?? '🧴',
     },
   ].filter((item) => item.id !== 'optional' || optionalPreparation) as Array<{
     id: string;
     label: string;
     title: string;
     body: string;
-    emoji: string;
   }>;
   const routineSteps = [
     {
@@ -116,11 +113,6 @@ export default function RecipeScreen() {
       body: requiredPreparation
         ? copy.routine.recipe.ingredientStepBody(requiredPreparation.name)
         : copy.routine.recipe.noIngredientStepBody,
-    },
-    {
-      id: 'mood',
-      label: copy.routine.recipe.moodStepLabel,
-      body: recommendation.lighting,
     },
   ] as const;
 
@@ -258,7 +250,9 @@ export default function RecipeScreen() {
           <View style={[ui.glassCardV2, styles.ingredientsCard]}>
             {preparationRows.map((item, index) => (
               <View key={item.id} style={[styles.trackRow, index === preparationRows.length - 1 && styles.trackRowLast]}>
-                <View style={[styles.trackCircle, { backgroundColor: `${recommendation.colorHex}20`, borderColor: `${recommendation.colorHex}55` }]}><Text style={styles.trackEmoji}>{item.emoji}</Text></View>
+                <View style={[styles.trackCircle, { backgroundColor: `${recommendation.colorHex}20`, borderColor: `${recommendation.colorHex}55` }]}>
+                  <Text style={styles.trackBadgeText}>{String(index + 1).padStart(2, '0')}</Text>
+                </View>
                 <View style={styles.trackInfo}><Text style={styles.trackName}>{item.title}</Text><Text style={styles.trackDesc}>{item.body}</Text></View>
                 <Text style={styles.trackIndex}>{item.label}</Text>
               </View>
@@ -372,7 +366,7 @@ const styles = StyleSheet.create({
   trackRow: { flexDirection: 'row', alignItems: 'center', paddingVertical: 12, borderBottomWidth: 1, borderBottomColor: V2_BORDER, gap: 14 },
   trackRowLast: { borderBottomWidth: 0 },
   trackCircle: { width: 44, height: 44, borderRadius: 22, borderWidth: 1, justifyContent: 'center', alignItems: 'center' },
-  trackEmoji: { fontSize: 20 },
+  trackBadgeText: { fontSize: TYPE_CAPTION, color: V2_TEXT_PRIMARY, fontWeight: '700', letterSpacing: 0.8, fontVariant: ['tabular-nums'], fontFamily: luxuryFonts.mono },
   trackInfo: { flex: 1 },
   trackName: { fontSize: TYPE_BODY + 1, color: V2_TEXT_PRIMARY, marginBottom: 2, fontFamily: luxuryFonts.display },
   trackDesc: { fontSize: TYPE_CAPTION, color: V2_TEXT_MUTED, fontFamily: luxuryFonts.sans },

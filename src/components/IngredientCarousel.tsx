@@ -59,7 +59,7 @@ export function IngredientCarousel({
   const renderItem = ({ item }: { item: Ingredient }) => (
     <View style={[styles.card, { width: CARD_WIDTH }]}> 
       <View style={[styles.iconArea, { backgroundColor: accentColor + '15' }]}> 
-        <Text style={styles.iconEmoji}>🧴</Text>
+        <Text style={styles.iconEmoji}>ITEM</Text>
       </View>
 
       <View style={styles.cardContent}>

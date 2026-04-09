@@ -11,7 +11,6 @@ import { luxuryFonts } from '@/src/theme/luxury';
 
 interface TagChipProps {
   label: string;
-  emoji: string;
   selected: boolean;
   accentColor?: string;
   onPress: () => void;
@@ -19,7 +18,6 @@ interface TagChipProps {
 
 export function TagChip({
   label,
-  emoji,
   selected,
   accentColor = V2_ACCENT,
   onPress,
@@ -36,7 +34,6 @@ export function TagChip({
         },
       ]}
     >
-      <Text style={styles.emoji}>{emoji}</Text>
       <Text style={[styles.label, selected && styles.labelSelected]}>
         {label}
       </Text>
@@ -56,10 +53,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(255,255,255,0.04)',
     marginRight: 8,
     marginBottom: 10,
-    gap: 8,
-  },
-  emoji: {
-    fontSize: 18,
+    gap: 4,
   },
   label: {
     fontSize: 14,

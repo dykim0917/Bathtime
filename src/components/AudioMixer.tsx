@@ -42,7 +42,7 @@ export function AudioMixer({
     <View style={styles.container}>
       {/* Music row */}
       <View style={styles.row}>
-        <Text style={styles.emoji}>🎵</Text>
+        <Text style={styles.badge}>MUSIC</Text>
         <View style={styles.sliderContainer}>
           <Text style={styles.label}>{music.title}</Text>
           <Slider
@@ -60,7 +60,7 @@ export function AudioMixer({
 
       {/* Ambience row */}
       <View style={styles.row}>
-        <Text style={styles.emoji}>🌲</Text>
+        <Text style={styles.badge}>AMBI</Text>
         <View style={styles.sliderContainer}>
           <Text style={styles.label}>{ambience.title}</Text>
           <Slider
@@ -104,8 +104,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 8,
   },
-  emoji: {
-    fontSize: 20,
+  badge: {
+    width: 46,
+    fontSize: 11,
+    color: V2_TEXT_SECONDARY,
+    fontWeight: '700',
+    letterSpacing: 0.8,
+    fontVariant: ['tabular-nums'],
+    fontFamily: luxuryFonts.mono,
     marginRight: 10,
   },
   sliderContainer: {

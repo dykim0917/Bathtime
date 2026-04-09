@@ -57,13 +57,14 @@ import {
 import { applySubProtocolOverrides } from '@/src/engine/subprotocol';
 import { inferFeelingBefore } from '@/src/engine/feeling';
 import { copy } from '@/src/content/copy';
-import { luxuryFonts, luxuryTracking } from '@/src/theme/luxury';
+import { OpenTabHeader } from '@/src/components/OpenTabHeader';
+import { luxuryFonts } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
 
-const ENV_OPTIONS: { id: BathEnvironment; emoji: string; label: string }[] = [
-  { id: 'bathtub', emoji: '🛁', label: '욕조' },
-  { id: 'partial_bath', emoji: '🦶', label: '부분입욕' },
-  { id: 'shower', emoji: '🚿', label: '샤워' },
+const ENV_OPTIONS: { id: BathEnvironment; label: string }[] = [
+  { id: 'bathtub', label: '욕조' },
+  { id: 'partial_bath', label: '부분입욕' },
+  { id: 'shower', label: '샤워' },
 ];
 
 const ALL_CARE_CARDS = CARE_INTENT_CARDS;
@@ -351,11 +352,11 @@ export default function CareScreen() {
     <View style={[ui.screenShellV2, { paddingTop: insets.top }]}> 
       <LinearGradient colors={[V2_BG_TOP, V2_BG_BASE, V2_BG_BOTTOM]} style={StyleSheet.absoluteFillObject} />
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
-        <View style={[ui.glassCardV2, styles.heroCard]}>
-          <Text style={styles.eyebrow}>케어 가이드</Text>
-          <Text style={styles.heroTitle}>케어 루틴</Text>
-          <Text style={styles.subtitle}>증상과 컨디션에 맞춰 안전한 루틴을 바로 골라보세요.</Text>
-        </View>
+        <OpenTabHeader
+          eyebrow="케어 가이드"
+          title="케어 루틴"
+          subtitle="증상과 컨디션에 맞춰 안전한 루틴을 바로 골라보세요."
+        />
 
         <View>
           <Text style={styles.sectionTitle}>입욕 환경</Text>
@@ -367,7 +368,7 @@ export default function CareScreen() {
                 onPress={() => handleSelectEnvironment(option.id)}
               >
                 <Text style={[styles.envText, environment === option.id && styles.envTextActive]} numberOfLines={1}>
-                  {option.emoji} {option.label}
+                  {option.label}
                 </Text>
               </Pressable>
             ))}
@@ -391,7 +392,7 @@ export default function CareScreen() {
                   key={intent.id}
                   title={intent.copy_title}
                   subtitle={isPlaceholder ? copy.careCards.placeholderSubtitle : getEnvironmentSubtitle(intent, normalizedEnvironment)}
-                  emoji={CATEGORY_CARD_EMOJI[intent.intent_id] ?? '🛁'}
+                  emoji={CATEGORY_CARD_EMOJI[intent.intent_id] ?? 'BS'}
                   bgColor={getIntentTint(intent.intent_id)}
                   eyebrow={isFeaturedCard ? copy.careCards.featuredEyebrow : copy.careCards.quickEyebrow}
                   footerHint={disabled ? copy.careCards.disabledFooter : copy.careCards.defaultFooter}
@@ -443,29 +444,6 @@ const styles = StyleSheet.create({
     paddingTop: 16,
     paddingBottom: 36,
     gap: SECTION_GAP,
-  },
-  heroCard: {
-    padding: 20,
-    gap: 10,
-  },
-  eyebrow: {
-    fontSize: TYPE_SCALE.caption - 1,
-    fontWeight: '700',
-    color: V2_ACCENT,
-    letterSpacing: luxuryTracking.eyebrow,
-    fontFamily: luxuryFonts.sans,
-  },
-  heroTitle: {
-    color: V2_TEXT_PRIMARY,
-    fontSize: TYPE_SCALE.headingLg,
-    lineHeight: 38,
-    fontFamily: luxuryFonts.display,
-  },
-  subtitle: {
-    fontSize: TYPE_SCALE.body + 1,
-    color: V2_TEXT_SECONDARY,
-    lineHeight: 23,
-    fontFamily: luxuryFonts.sans,
   },
   sectionTitle: {
     color: V2_TEXT_PRIMARY,

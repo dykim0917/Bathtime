@@ -187,8 +187,13 @@ const styles = StyleSheet.create({
     color: V2_ACCENT,
   },
   emoji: {
-    fontSize: 32,
+    fontSize: TYPE_SCALE.caption,
     marginBottom: 4,
+    color: V2_TEXT_PRIMARY,
+    fontWeight: '700',
+    letterSpacing: 1.2,
+    fontVariant: ['tabular-nums'],
+    fontFamily: luxuryFonts.mono,
   },
   title: {
     fontSize: TYPE_SCALE.title,

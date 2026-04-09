@@ -37,7 +37,7 @@ export default function WelcomeScreen() {
 
           <View style={styles.hero}>
             <View style={styles.heroOrb}>
-              <Text style={styles.heroEmoji}>🛁</Text>
+              <Image source={require('../../assets/images/brand/bath-symbol.png')} style={styles.heroSymbol} resizeMode="contain" />
             </View>
             <Text style={styles.kicker}>오늘을 위한 목욕 가이드</Text>
             <Text style={styles.title}>나만의 목욕 루틴</Text>
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     width: 132, height: 132, borderRadius: 66, alignItems: 'center', justifyContent: 'center',
     backgroundColor: V2_ACCENT_SOFT, borderWidth: 1, borderColor: V2_BORDER,
   },
-  heroEmoji: { fontSize: 58 },
+  heroSymbol: { width: 48, height: 54 },
   kicker: { color: V2_ACCENT, fontSize: TYPE_CAPTION, fontWeight: '700', letterSpacing: luxuryTracking.eyebrow, fontFamily: luxuryFonts.sans },
   title: { color: V2_TEXT_PRIMARY, fontSize: TYPE_HEADING_LG + 6, textAlign: 'center', lineHeight: 44, fontFamily: luxuryFonts.display },
   subtitle: { color: V2_TEXT_SECONDARY, fontSize: TYPE_BODY + 1, lineHeight: 24, textAlign: 'center', paddingHorizontal: 10, fontFamily: luxuryFonts.sans },

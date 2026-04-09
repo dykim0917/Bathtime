@@ -80,16 +80,16 @@ export const CATEGORY_CARD_COLORS: Record<string, string> = {
 } as const;
 
 export const CATEGORY_CARD_EMOJI: Record<string, string> = {
-  muscle_relief: '💪',
-  sleep_ready: '🌙',
-  hangover_relief: '✨',
-  edema_relief: '💧',
-  cold_relief: '🤧',
-  menstrual_relief: '🌸',
-  stress_relief: '🍃',
-  mood_lift: '☀️',
-  kyoto_forest: '🌿',
-  nordic_sauna: '🔥',
-  rainy_camping: '🌧️',
-  snow_cabin: '❄️',
+  muscle_relief: 'MU',
+  sleep_ready: 'SL',
+  hangover_relief: 'HG',
+  edema_relief: 'ED',
+  cold_relief: 'CL',
+  menstrual_relief: 'MN',
+  stress_relief: 'ST',
+  mood_lift: 'ML',
+  kyoto_forest: 'KY',
+  nordic_sauna: 'ND',
+  rainy_camping: 'RN',
+  snow_cabin: 'SN',
 };

@@ -60,11 +60,6 @@ export function PersonaCard({ recommendation }: PersonaCardProps) {
           <Text style={styles.statLabel}>입욕 방법</Text>
         </View>
       </View>
-
-      <View style={styles.lightingRow}>
-        <Text style={styles.lightingLabel}>조명</Text>
-        <Text style={styles.lightingValue}>{recommendation.lighting}</Text>
-      </View>
     </View>
   );
 }
@@ -128,40 +123,5 @@ const styles = StyleSheet.create({
   divider: {
     width: 1,
     height: 38,
-  },
-  lightingRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: 16,
-    backgroundColor: V2_SURFACE,
-    borderRadius: luxuryRadii.button,
-    padding: 12,
-    borderWidth: 1,
-    borderColor: V2_BORDER,
-    ...Platform.select({
-      web: {
-        boxShadow: `0px 8px 16px ${V2_SHADOW}`,
-      },
-      default: {
-        shadowColor: V2_SHADOW,
-        shadowOffset: { width: 0, height: 6 },
-        shadowOpacity: 1,
-        shadowRadius: 14,
-        elevation: 4,
-      },
-    }),
-  },
-  lightingLabel: {
-    fontSize: 14,
-    fontWeight: '600',
-    color: V2_TEXT_SECONDARY,
-    marginRight: 8,
-    fontFamily: luxuryFonts.sans,
-  },
-  lightingValue: {
-    fontSize: 14,
-    color: V2_TEXT_PRIMARY,
-    flex: 1,
-    fontFamily: luxuryFonts.sans,
   },
 });

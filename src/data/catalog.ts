@@ -62,67 +62,67 @@ interface CatalogPresentationMetadata {
 const PRESENTATION_METADATA: Record<string, CatalogPresentationMetadata> = {
   p_lavender_eo: {
     tags: ['수면', '이완', '스트레스'],
-    emoji: '🌿',
+    emoji: 'LV',
     bgColor: '#E8E1F9',
   },
   p_marjoram_eo: {
     tags: ['이완', '혈압안정', '근육'],
-    emoji: '🌱',
+    emoji: 'MJ',
     bgColor: '#DDE7CF',
   },
   p_carbonated_bath: {
     tags: ['순환', '리셋', '탄산'],
-    emoji: '🫧',
+    emoji: 'CB',
     bgColor: '#C9D9F7',
   },
   p_grapefruit_eo: {
     tags: ['부종', '순환', '기분전환'],
-    emoji: '🍊',
+    emoji: 'GF',
     bgColor: '#F7D7A4',
   },
   p_epsom_salt: {
     tags: ['근육통', '회복', '마그네슘'],
-    emoji: '💪',
+    emoji: 'EP',
     bgColor: '#B5D5C0',
   },
   p_peppermint_eo: {
     tags: ['두통', '피로', '집중'],
-    emoji: '✨',
+    emoji: 'PM',
     bgColor: '#D8ECDE',
   },
   p_hinoki_eo: {
     tags: ['삼림욕', '안정', '수면'],
-    emoji: '🌲',
+    emoji: 'HK',
     bgColor: '#D7E1C3',
   },
   p_rosemary_eo: {
     tags: ['순환', '근육', '활력'],
-    emoji: '🌱',
+    emoji: 'RS',
     bgColor: '#DCE6F8',
   },
   p_clary_sage_eo: {
     tags: ['생리통', '안정', '밸런스'],
-    emoji: '🌾',
+    emoji: 'CS',
     bgColor: '#E7D8D0',
   },
   p_eucalyptus_eo: {
     tags: ['호흡', '감기', '집중'],
-    emoji: '🍃',
+    emoji: 'EU',
     bgColor: '#D8ECDE',
   },
   p_chamomile_oil: {
     tags: ['진정', '민감피부', '수면'],
-    emoji: '🌼',
+    emoji: 'CM',
     bgColor: '#F5E5A3',
   },
   p_shower_steamer: {
     tags: ['샤워', '아로마', '리프레시'],
-    emoji: '🚿',
+    emoji: 'SH',
     bgColor: '#CFE2F3',
   },
   p_relaxing_body_wash: {
     tags: ['샤워', '바디케어', '릴랙스'],
-    emoji: '🧴',
+    emoji: 'BW',
     bgColor: '#DCCFEB',
   },
 };
