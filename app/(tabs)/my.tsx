@@ -238,7 +238,11 @@ function HistorySection({
 
   const ListHeader = () => (
     <View style={styles.listHeader}>
-      <MyTabHeaderBlock activeTab={activeTab} onTabChange={onTabChange} />
+      <MyTabHeaderBlock
+        activeTab={activeTab}
+        onTabChange={onTabChange}
+        style={styles.historyHeaderBlock}
+      />
 
       <View style={[ui.glassCardV2, styles.streakCard]}>
         <Text style={styles.streakTitle}>{copy.home.streakTitle}</Text>
@@ -316,40 +320,37 @@ function HistorySection({
 
   return (
     <View style={styles.historyContainer}>
-      {filteredHistory.length === 0 && history.length === 0 ? (
-        <>
-          <ListHeader />
-          <View style={[ui.glassCardV2, styles.emptyContainer]}>
-            <View style={styles.emptyBadge}>
-              <Text style={styles.emptyBadgeText}>첫 루틴을 시작해보세요</Text>
+      <FlatList
+        data={filteredHistory}
+        keyExtractor={(item) => item.id}
+        renderItem={renderCard}
+        numColumns={2}
+        ListHeaderComponent={<ListHeader />}
+        ListEmptyComponent={
+          history.length === 0 ? (
+            <View style={[ui.glassCardV2, styles.emptyContainer]}>
+              <View style={styles.emptyBadge}>
+                <Text style={styles.emptyBadgeText}>첫 루틴을 시작해보세요</Text>
+              </View>
+              <Text style={styles.emptyEmoji}>BS</Text>
+              <Text style={styles.emptyText}>{copy.history.empty.title}</Text>
+              <Text style={styles.emptySubtext}>{copy.history.empty.subtitle}</Text>
+              <Text style={styles.emptyGuide}>첫 추천을 저장하면 이 공간이 나만의 루틴 기록으로 채워져요.</Text>
+              <Pressable style={styles.emptyAction} onPress={() => router.push('/(tabs)/care')}>
+                <Text style={styles.emptyActionText}>케어 루틴 보러가기</Text>
+              </Pressable>
             </View>
-            <Text style={styles.emptyEmoji}>BS</Text>
-            <Text style={styles.emptyText}>{copy.history.empty.title}</Text>
-            <Text style={styles.emptySubtext}>{copy.history.empty.subtitle}</Text>
-            <Text style={styles.emptyGuide}>첫 추천을 저장하면 이 공간이 나만의 루틴 기록으로 채워져요.</Text>
-            <Pressable style={styles.emptyAction} onPress={() => router.push('/(tabs)/care')}>
-              <Text style={styles.emptyActionText}>케어 루틴 보러가기</Text>
-            </Pressable>
-          </View>
-        </>
-      ) : (
-        <FlatList
-          data={filteredHistory}
-          keyExtractor={(item) => item.id}
-          renderItem={renderCard}
-          numColumns={2}
-          ListHeaderComponent={<ListHeader />}
-          ListEmptyComponent={
+          ) : (
             <View style={styles.filterEmptyContainer}>
               <Text style={styles.filterEmptyText}>
                 {filterMode === 'care' ? '케어' : '트립'} 루틴 기록이 없어요
               </Text>
             </View>
-          }
-          contentContainerStyle={styles.list}
-          showsVerticalScrollIndicator={false}
-        />
-      )}
+          )
+        }
+        contentContainerStyle={styles.list}
+        showsVerticalScrollIndicator={false}
+      />
     </View>
   );
 }
@@ -606,6 +607,9 @@ const styles = StyleSheet.create({
     paddingTop: 12,
     marginBottom: 16,
     gap: 14,
+  },
+  historyHeaderBlock: {
+    marginBottom: 22,
   },
   settingsHeaderBlock: {
     marginBottom: 22,
