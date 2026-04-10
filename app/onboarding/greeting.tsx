@@ -61,14 +61,14 @@ export default function OnboardingGreeting() {
               <Text style={styles.welcome}>준비 완료</Text>
               <Text style={styles.title}>환영합니다</Text>
               <Text style={styles.subtitle}>{'당신만의 입욕 루틴을\n시작할 준비가 됐어요'}</Text>
-              <Text style={styles.description}>이제 홈에서 케어 루틴과 트립 루틴을 바로 시작할 수 있습니다.</Text>
+              <Text style={styles.description}>이제 지금의 컨디션에 맞는 루틴을 바로 시작할 수 있어요.</Text>
             </Animated.View>
           </View>
 
           <View style={styles.footer}>
             <Animated.View style={buttonAnim}>
               <Pressable style={[ui.primaryButtonV2, styles.ctaButton]} onPress={handleStart}>
-                <Text style={ui.primaryButtonTextV2}>홈으로 이동</Text>
+                <Text style={ui.primaryButtonTextV2}>시작하기</Text>
               </Pressable>
             </Animated.View>
             <Text style={styles.premiumLine}>오늘 상태에 맞는 루틴을 차분하게 안내해드릴게요</Text>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet, SafeAreaView, Pressable } from 'react-native';
+import { View, Text, Image, TouchableOpacity, StyleSheet, SafeAreaView, Pressable, ScrollView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { router, useLocalSearchParams } from 'expo-router';
@@ -63,39 +63,42 @@ export default function OnboardingHealth() {
             </TouchableOpacity>
             <View style={styles.brandLockup}>
               <Image source={require('../../assets/images/brand/bath-symbol.png')} style={styles.brandIcon} resizeMode="contain" />
-              <Text style={styles.stepTitle}>2단계</Text>
+              <Text style={styles.brand}>BATH SOMMELIER</Text>
             </View>
             <View style={styles.backButton} />
           </View>
 
           <View style={styles.header}>
+            <View style={styles.progressTrack}><View style={[styles.progressFill, styles.progressFillFull]} /></View>
             <Text style={styles.title}>건강 상태를{`\n`}선택해주세요</Text>
             <Text style={styles.subtitle}>무리 없는 루틴을 추천할 수 있게 현재 건강 상태를 확인해주세요.</Text>
           </View>
 
-          <View style={styles.conditions}>
-            {CONDITIONS.map((cond) => {
-              const selected = selectedConditions.has(cond.id);
-              return (
-                <Pressable key={cond.id} style={[ui.glassCardV2, styles.conditionCard, selected && styles.conditionCardSelected]} onPress={() => handleToggle(cond.id)}>
-                  <View style={[styles.conditionIcon, selected && styles.conditionIconSelected]}><Text style={styles.conditionEmoji}>{cond.badge}</Text></View>
-                  <Text style={[styles.conditionLabel, selected && styles.conditionLabelSelected]}>{cond.labelKo}</Text>
-                  <View style={[styles.radio, selected && styles.radioSelected]}>{selected ? <FontAwesome name="check" size={11} color={V2_ACCENT_TEXT} /> : null}</View>
-                </Pressable>
-              );
-            })}
+          <ScrollView
+            style={styles.scrollView}
+            contentContainerStyle={styles.scrollContent}
+            showsVerticalScrollIndicator={false}
+          >
+            <View style={styles.conditions}>
+              {CONDITIONS.map((cond) => {
+                const selected = selectedConditions.has(cond.id);
+                return (
+                  <Pressable key={cond.id} style={[ui.glassCardV2, styles.conditionCard, selected && styles.conditionCardSelected]} onPress={() => handleToggle(cond.id)}>
+                    <View style={[styles.conditionIcon, selected && styles.conditionIconSelected]}><Text style={styles.conditionEmoji}>{cond.badge}</Text></View>
+                    <Text style={[styles.conditionLabel, selected && styles.conditionLabelSelected]}>{cond.labelKo}</Text>
+                    <View style={[styles.radio, selected && styles.radioSelected]}>{selected ? <FontAwesome name="check" size={11} color={V2_ACCENT_TEXT} /> : null}</View>
+                  </Pressable>
+                );
+              })}
+            </View>
+
+          </ScrollView>
+
+          <View style={styles.footerCta}>
+            <Pressable style={[ui.primaryButtonV2, styles.completeButton, !hasSelection && styles.completeButtonDisabled]} onPress={handleComplete} disabled={!hasSelection}>
+              <Text style={ui.primaryButtonTextV2}>설정 완료</Text>
+            </Pressable>
           </View>
-
-          <View style={styles.spacer} />
-
-          <View style={styles.progressWrap}>
-            <View style={styles.progressTrack}><View style={styles.progressFill} /></View>
-            <Text style={styles.stepText}>02 / 02</Text>
-          </View>
-
-          <Pressable style={[ui.primaryButtonV2, styles.completeButton, !hasSelection && styles.completeButtonDisabled]} onPress={handleComplete} disabled={!hasSelection}>
-            <Text style={ui.primaryButtonTextV2}>설정 완료</Text>
-          </Pressable>
         </View>
       </SafeAreaView>
     </View>
@@ -108,12 +111,17 @@ const styles = StyleSheet.create({
   container: { flex: 1, paddingHorizontal: 24 },
   topRow: { marginTop: 8, marginBottom: 18, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   backButton: { width: 28, height: 28, justifyContent: 'center', alignItems: 'center' },
-  stepTitle: { fontSize: TYPE_CAPTION, letterSpacing: luxuryTracking.eyebrow, fontWeight: '700', color: V2_ACCENT, fontFamily: luxuryFonts.sans },
+  brand: { fontSize: TYPE_CAPTION + 1, color: V2_ACCENT, fontWeight: '700', letterSpacing: 2, fontFamily: luxuryFonts.sans },
   brandLockup: { flexDirection: 'row', alignItems: 'center', gap: 8 },
   brandIcon: { width: 18, height: 20 },
   header: { marginBottom: 20 },
+  progressTrack: { height: 5, backgroundColor: 'rgba(90, 110, 145, 0.28)', borderRadius: 999, overflow: 'hidden', marginBottom: 22 },
+  progressFill: { height: '100%', backgroundColor: V2_ACCENT },
+  progressFillFull: { width: '100%' },
   title: { fontSize: TYPE_HEADING_LG + 4, color: V2_TEXT_PRIMARY, lineHeight: 42, marginBottom: 12, fontFamily: luxuryFonts.display },
   subtitle: { fontSize: TYPE_BODY, color: V2_TEXT_SECONDARY, lineHeight: 22, fontFamily: luxuryFonts.sans },
+  scrollView: { flex: 1 },
+  scrollContent: { paddingBottom: 132 },
   conditions: { gap: 12 },
   conditionCard: { minHeight: 68, paddingHorizontal: 16, flexDirection: 'row', alignItems: 'center' },
   conditionCardSelected: { borderColor: V2_ACCENT, backgroundColor: 'rgba(176, 141, 87, 0.08)' },
@@ -124,11 +132,11 @@ const styles = StyleSheet.create({
   conditionLabelSelected: { color: V2_ACCENT },
   radio: { width: 24, height: 24, borderRadius: 12, borderWidth: 1.5, borderColor: V2_BORDER, justifyContent: 'center', alignItems: 'center' },
   radioSelected: { borderColor: V2_ACCENT, backgroundColor: V2_ACCENT },
-  spacer: { flex: 1 },
-  progressWrap: { marginBottom: 14, alignItems: 'center' },
-  progressTrack: { height: 6, width: 110, borderRadius: 999, backgroundColor: 'rgba(90, 110, 145, 0.34)', overflow: 'hidden', marginBottom: 8 },
-  progressFill: { height: '100%', width: '100%', backgroundColor: V2_ACCENT },
-  stepText: { fontSize: TYPE_CAPTION, color: V2_TEXT_MUTED, fontWeight: '600', fontFamily: luxuryFonts.sans },
-  completeButton: { marginBottom: 14 },
+  footerCta: {
+    paddingTop: 12,
+    paddingBottom: 10,
+    backgroundColor: V2_BG_BOTTOM,
+  },
+  completeButton: { minHeight: 50, marginTop: 18 },
   completeButtonDisabled: { opacity: 0.45 },
 });

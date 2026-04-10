@@ -125,6 +125,8 @@ export const ui = StyleSheet.create({
     borderWidth: 1,
     borderColor: V2_PILL_BORDER,
     borderRadius: 999,
+    alignItems: 'center',
+    justifyContent: 'center',
     paddingHorizontal: 14,
     paddingVertical: 8,
   },

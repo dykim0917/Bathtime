@@ -14,7 +14,7 @@ import {
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { router, useFocusEffect } from 'expo-router';
+import { router, useFocusEffect, useLocalSearchParams } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { BathEnvironment, BathRecommendation, HealthCondition, TripMemoryRecord } from '@/src/engine/types';
 import { loadHistory } from '@/src/storage/history';
@@ -104,7 +104,46 @@ function normalizeSettingsEnvironment(environment: BathEnvironment): BathEnviron
   return environment;
 }
 
-function HistorySection() {
+function MyTabHeaderBlock({
+  activeTab,
+  onTabChange,
+  style,
+}: {
+  activeTab: MyTab;
+  onTabChange: (tab: MyTab) => void;
+  style?: object;
+}) {
+  return (
+    <OpenTabHeader
+      title="프로필"
+      subtitle="기록을 돌아보고, 내 환경과 상태를 한곳에서 차분히 관리하세요."
+      style={style}
+      footerSlot={
+        <View style={styles.subTabRow}>
+          {(['history', 'settings'] as MyTab[]).map((tab) => (
+            <Pressable
+              key={tab}
+              style={[ui.pillButtonV2, styles.subTabPill, activeTab === tab && ui.pillButtonV2Active]}
+              onPress={() => onTabChange(tab)}
+            >
+              <Text style={[styles.subTabText, activeTab === tab && styles.subTabTextActive]}>
+                {tab === 'history' ? '기록' : '설정'}
+              </Text>
+            </Pressable>
+          ))}
+        </View>
+      }
+    />
+  );
+}
+
+function HistorySection({
+  activeTab,
+  onTabChange,
+}: {
+  activeTab: MyTab;
+  onTabChange: (tab: MyTab) => void;
+}) {
   const { width } = useWindowDimensions();
   const cardWidth = (width - SIDE_PAD * 2 - COL_GAP) / 2;
 
@@ -199,15 +238,7 @@ function HistorySection() {
 
   const ListHeader = () => (
     <View style={styles.listHeader}>
-      <OpenTabHeader
-        eyebrow="나의 기록"
-        title="기록"
-        subtitle={
-          history.length > 0
-            ? `총 ${history.length}개의 루틴을 완료했어요`
-            : '첫 루틴을 시작해보세요'
-        }
-      />
+      <MyTabHeaderBlock activeTab={activeTab} onTabChange={onTabChange} />
 
       <View style={[ui.glassCardV2, styles.streakCard]}>
         <Text style={styles.streakTitle}>{copy.home.streakTitle}</Text>
@@ -323,11 +354,18 @@ function HistorySection() {
   );
 }
 
-function SettingsSection() {
+function SettingsSection({
+  activeTab,
+  onTabChange,
+}: {
+  activeTab: MyTab;
+  onTabChange: (tab: MyTab) => void;
+}) {
   const { profile, loading, update, clear } = useUserProfile();
   const haptic = useHaptic();
   const [resetModalVisible, setResetModalVisible] = useState(false);
   const [isResetting, setIsResetting] = useState(false);
+  const showResetSection = false;
 
   useEffect(() => {
     if (!loading && !profile) {
@@ -370,7 +408,7 @@ function SettingsSection() {
       haptic.warning();
       await clear();
       setResetModalVisible(false);
-      router.replace('/onboarding');
+      router.replace({ pathname: '/onboarding', params: { allowBack: '1' } });
     } catch {
       Alert.alert(copy.settings.resetErrorTitle, copy.settings.resetErrorBody);
     } finally {
@@ -394,48 +432,45 @@ function SettingsSection() {
   return (
     <View style={styles.settingsContainer}>
       <ScrollView contentContainerStyle={styles.settingsContent} showsVerticalScrollIndicator={false}>
-        <OpenTabHeader
-          eyebrow="PROFILE SETTINGS"
-          title="설정"
-          subtitle="환경과 건강 상태를 현재 기준에 맞게 바로 저장합니다."
-          style={styles.settingsHeader}
+        <MyTabHeaderBlock
+          activeTab={activeTab}
+          onTabChange={onTabChange}
+          style={styles.settingsHeaderBlock}
         />
 
         <View style={styles.settingsSection}>
           <Text style={styles.settingsSectionTitle}>{copy.settings.sectionProfile}</Text>
-          <View style={[ui.glassCardV2, styles.infoCard]}>
-            <Text style={styles.infoLabel}>{copy.settings.environmentLabel}</Text>
-            <Text style={styles.infoValue}>
-              {ENV_LABELS_SETTINGS[normalizeSettingsEnvironment(profile.bathEnvironment)]}
-            </Text>
-          </View>
-          <View style={styles.environmentList}>
-            {SETTINGS_ENV_OPTIONS.map((env) => (
-              <TouchableOpacity
-                key={env}
-                style={[
-                  ui.pillButtonV2,
-                  styles.conditionTagButton,
-                  normalizeSettingsEnvironment(profile.bathEnvironment) === env && ui.pillButtonV2Active,
-                ]}
-                onPress={() => handleEnvironmentChange(env)}
-                activeOpacity={0.78}
-              >
-                <Text
+          <View style={[ui.glassCardV2, styles.settingChoiceCard]}>
+            <Text style={styles.settingChoiceLabel}>{copy.settings.environmentLabel}</Text>
+            <View style={styles.settingChoiceList}>
+              {SETTINGS_ENV_OPTIONS.map((env) => (
+                <TouchableOpacity
+                  key={env}
                   style={[
-                    styles.conditionTag,
-                    normalizeSettingsEnvironment(profile.bathEnvironment) === env &&
-                      styles.conditionTagActiveText,
+                    ui.pillButtonV2,
+                    styles.conditionTagButton,
+                    normalizeSettingsEnvironment(profile.bathEnvironment) === env && ui.pillButtonV2Active,
                   ]}
+                  onPress={() => handleEnvironmentChange(env)}
+                  activeOpacity={0.78}
                 >
-                  {ENV_LABELS_SETTINGS[env]}
-                </Text>
-              </TouchableOpacity>
-            ))}
+                  <Text
+                    style={[
+                      styles.conditionTag,
+                      normalizeSettingsEnvironment(profile.bathEnvironment) === env &&
+                        styles.conditionTagActiveText,
+                    ]}
+                  >
+                    {ENV_LABELS_SETTINGS[env]}
+                  </Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+            <Text style={styles.helperText}>항목을 탭하면 바로 저장됩니다.</Text>
           </View>
-          <View style={[ui.glassCardV2, styles.infoCardColumn]}>
-            <Text style={styles.infoLabel}>{copy.settings.healthLabel}</Text>
-            <View style={styles.conditionsList}>
+          <View style={[ui.glassCardV2, styles.settingChoiceCard]}>
+            <Text style={styles.settingChoiceLabel}>{copy.settings.healthLabel}</Text>
+            <View style={styles.settingChoiceList}>
               {(Object.keys(CONDITION_LABELS) as HealthCondition[]).map((c) => (
                 <TouchableOpacity
                   key={c}
@@ -457,87 +492,87 @@ function SettingsSection() {
           </View>
         </View>
 
-        <View style={styles.settingsSection}>
-          <Text style={styles.settingsSectionTitle}>{copy.settings.sectionActions}</Text>
-          <TouchableOpacity style={[ui.glassCardV2, styles.actionCard]} onPress={handleResetOnboarding} activeOpacity={0.78}>
-            <Text style={styles.actionText}>{copy.settings.resetProfile}</Text>
-            <Text style={styles.actionArrow}>→</Text>
-          </TouchableOpacity>
-        </View>
+        {showResetSection ? (
+          <View style={styles.settingsSection}>
+            <Text style={styles.settingsSectionTitle}>{copy.settings.sectionActions}</Text>
+            <TouchableOpacity style={[ui.glassCardV2, styles.actionCard]} onPress={handleResetOnboarding} activeOpacity={0.78}>
+              <Text style={styles.actionText}>{copy.settings.resetProfile}</Text>
+              <Text style={styles.actionArrow}>→</Text>
+            </TouchableOpacity>
+          </View>
+        ) : null}
 
         <View style={styles.settingsSection}>
           <Text style={styles.settingsSectionTitle}>{copy.settings.sectionApp}</Text>
           <View style={[ui.glassCardV2, styles.infoCard]}>
-            <Text style={styles.infoLabel}>{copy.settings.versionLabel}</Text>
+            <Text style={styles.infoLabelRow}>{copy.settings.versionLabel}</Text>
             <Text style={styles.infoValue}>3.12.0</Text>
           </View>
           <View style={[ui.glassCardV2, styles.infoCard]}>
-            <Text style={styles.infoLabel}>{copy.settings.nameLabel}</Text>
+            <Text style={styles.infoLabelRow}>{copy.settings.nameLabel}</Text>
             <Text style={styles.infoValue}>Bath Sommelier</Text>
           </View>
           <PersistentDisclosure style={styles.disclosureInline} showColdWarning variant="v2" />
         </View>
       </ScrollView>
 
-      <Modal
-        transparent
-        animationType="fade"
-        visible={resetModalVisible}
-        onRequestClose={() => setResetModalVisible(false)}
-      >
-        <View style={styles.modalBackdrop}>
-          <View style={styles.modalCard}>
-            <Text style={styles.modalTitle}>{copy.settings.resetDialogTitle}</Text>
-            <Text style={styles.modalBody}>{copy.settings.resetDialogBody}</Text>
-            <View style={styles.modalActions}>
-              <Pressable
-                style={[styles.modalButton, styles.modalCancelButton]}
-                onPress={() => setResetModalVisible(false)}
-                disabled={isResetting}
-              >
-                <Text style={styles.modalCancelText}>{copy.settings.resetCancel}</Text>
-              </Pressable>
-              <Pressable
-                style={[styles.modalButton, styles.modalConfirmButton, isResetting && styles.modalButtonDisabled]}
-                onPress={() => {
-                  void runReset();
-                }}
-                disabled={isResetting}
-              >
-                <Text style={styles.modalConfirmText}>
-                  {isResetting ? '초기화 중...' : copy.settings.resetConfirm}
-                </Text>
-              </Pressable>
+      {showResetSection ? (
+        <Modal
+          transparent
+          animationType="fade"
+          visible={resetModalVisible}
+          onRequestClose={() => setResetModalVisible(false)}
+        >
+          <View style={styles.modalBackdrop}>
+            <View style={styles.modalCard}>
+              <Text style={styles.modalTitle}>{copy.settings.resetDialogTitle}</Text>
+              <Text style={styles.modalBody}>{copy.settings.resetDialogBody}</Text>
+              <View style={styles.modalActions}>
+                <Pressable
+                  style={[styles.modalButton, styles.modalCancelButton]}
+                  onPress={() => setResetModalVisible(false)}
+                  disabled={isResetting}
+                >
+                  <Text style={styles.modalCancelText}>{copy.settings.resetCancel}</Text>
+                </Pressable>
+                <Pressable
+                  style={[styles.modalButton, styles.modalConfirmButton, isResetting && styles.modalButtonDisabled]}
+                  onPress={() => {
+                    void runReset();
+                  }}
+                  disabled={isResetting}
+                >
+                  <Text style={styles.modalConfirmText}>
+                    {isResetting ? '초기화 중...' : copy.settings.resetConfirm}
+                  </Text>
+                </Pressable>
+              </View>
             </View>
           </View>
-        </View>
-      </Modal>
+        </Modal>
+      ) : null}
     </View>
   );
 }
 
 export default function MyScreen() {
-  const [activeTab, setActiveTab] = useState<MyTab>('history');
+  const { tab } = useLocalSearchParams<{ tab?: string }>();
+  const initialTab: MyTab = tab === 'settings' ? 'settings' : 'history';
+  const [activeTab, setActiveTab] = useState<MyTab>(initialTab);
   const insets = useSafeAreaInsets();
+
+  useEffect(() => {
+    setActiveTab(tab === 'settings' ? 'settings' : 'history');
+  }, [tab]);
 
   return (
     <View style={[ui.screenShellV2, { paddingTop: insets.top }]}> 
       <LinearGradient colors={[V2_BG_TOP, V2_BG_BASE, V2_BG_BOTTOM]} style={StyleSheet.absoluteFillObject} />
-      <View style={styles.subTabRow}>
-        {(['history', 'settings'] as MyTab[]).map((tab) => (
-          <Pressable
-            key={tab}
-            style={[ui.pillButtonV2, styles.subTabPill, activeTab === tab && ui.pillButtonV2Active]}
-            onPress={() => setActiveTab(tab)}
-          >
-            <Text style={[styles.subTabText, activeTab === tab && styles.subTabTextActive]}>
-              {tab === 'history' ? '기록' : '설정'}
-            </Text>
-          </Pressable>
-        ))}
-      </View>
-
-      {activeTab === 'history' ? <HistorySection /> : <SettingsSection />}
+      {activeTab === 'history' ? (
+        <HistorySection activeTab={activeTab} onTabChange={setActiveTab} />
+      ) : (
+        <SettingsSection activeTab={activeTab} onTabChange={setActiveTab} />
+      )}
     </View>
   );
 }
@@ -545,11 +580,8 @@ export default function MyScreen() {
 const styles = StyleSheet.create({
   subTabRow: {
     flexDirection: 'row',
-    paddingHorizontal: SIDE_PAD,
-    paddingVertical: 10,
     gap: 8,
-    borderBottomWidth: 1,
-    borderBottomColor: V2_BORDER,
+    marginTop: 6,
   },
   subTabPill: {
     minHeight: 42,
@@ -575,8 +607,8 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     gap: 14,
   },
-  settingsHeader: {
-    marginBottom: 18,
+  settingsHeaderBlock: {
+    marginBottom: 22,
   },
   streakCard: {
     paddingHorizontal: 14,
@@ -885,27 +917,25 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginBottom: 8,
   },
-  infoCardColumn: {
-    padding: 15,
-    marginBottom: 8,
-  },
-  infoLabel: {
+  infoLabelRow: {
     fontSize: TYPE_BODY,
     color: V2_TEXT_SECONDARY,
-    marginBottom: 10,
   },
   infoValue: {
     fontSize: TYPE_BODY,
     fontWeight: '600',
     color: V2_TEXT_PRIMARY,
   },
-  environmentList: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 8,
+  settingChoiceCard: {
+    padding: 15,
     marginBottom: 10,
   },
-  conditionsList: {
+  settingChoiceLabel: {
+    fontSize: TYPE_BODY,
+    color: V2_TEXT_SECONDARY,
+    marginBottom: 10,
+  },
+  settingChoiceList: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     gap: 8,

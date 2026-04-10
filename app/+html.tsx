@@ -18,6 +18,21 @@ export default function Root({ children }: PropsWithChildren) {
           href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap"
           rel="stylesheet"
         />
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+              html, body {
+                word-break: keep-all;
+                overflow-wrap: normal;
+              }
+
+              body * {
+                word-break: inherit;
+                overflow-wrap: inherit;
+              }
+            `,
+          }}
+        />
       </head>
       <body>{children}</body>
     </html>
