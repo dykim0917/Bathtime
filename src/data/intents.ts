@@ -495,6 +495,22 @@ export const TRIP_SUBPROTOCOL_OPTIONS: Record<string, SubProtocolOption[]> = {
   ],
 };
 
+export function pickAutoTripSubProtocol(
+  intentId: string,
+  environment: CanonicalBathEnvironment
+): SubProtocolOption | null {
+  const options = TRIP_SUBPROTOCOL_OPTIONS[intentId] ?? [];
+  if (options.length === 0) return null;
+
+  const defaultOption = options.find((option) => option.is_default) ?? options[0];
+
+  if (environment === 'shower') {
+    return options.find((option) => (option.partialOverrides.duration_delta ?? 0) < 0) ?? defaultOption;
+  }
+
+  return options.find((option) => (option.partialOverrides.duration_delta ?? 0) > 0) ?? defaultOption;
+}
+
 export function getSectionOrderByContext(
   timeContext: TimeContext
 ): 'care_first' | 'trip_first' {

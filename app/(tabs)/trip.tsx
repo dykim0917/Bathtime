@@ -9,7 +9,6 @@ import {
   FallbackStrategy,
   HomeSuggestionRank,
   IntentCard,
-  SubProtocolOption,
   ThemeId,
   TimeContext,
   UserProfile,
@@ -37,17 +36,14 @@ import {
   trackIntentCardImpression,
   trackRoutineStart,
   trackRoutineStartAfterSubprotocol,
-  trackSubprotocolModalOpen,
   trackSubprotocolSelected,
 } from '@/src/analytics/events';
 import { PersistentDisclosure } from '@/src/components/PersistentDisclosure';
 import { buildDisclosureLines } from '@/src/engine/disclosures';
-import { SubProtocolPickerModal } from '@/src/components/SubProtocolPickerModal';
 import {
-  getEnvironmentFitLabel,
   getEnvironmentSubtitle,
+  pickAutoTripSubProtocol,
   TRIP_INTENT_CARDS,
-  TRIP_SUBPROTOCOL_OPTIONS,
 } from '@/src/data/intents';
 import { applySubProtocolOverrides } from '@/src/engine/subprotocol';
 import { inferFeelingBefore } from '@/src/engine/feeling';
@@ -140,9 +136,6 @@ export default function TripScreen() {
   const [pendingWarnings, setPendingWarnings] = useState<string[]>([]);
   const [pendingRecId, setPendingRecId] = useState<string | null>(null);
   const [pendingStartPayload, setPendingStartPayload] = useState<RecommendationCardEventPayload | null>(null);
-  const [subModalVisible, setSubModalVisible] = useState(false);
-  const [selectedIntent, setSelectedIntent] = useState<IntentCard | null>(null);
-  const [selectedIntentPayload, setSelectedIntentPayload] = useState<RecommendationCardEventPayload | null>(null);
 
   const sessionIdRef = useRef(`session_${Date.now()}`);
   const timeContext = useMemo(() => getTimeContext(), []);
@@ -215,7 +208,7 @@ export default function TripScreen() {
     saveLastEnvironment(next);
   };
 
-  const handleOpenSubProtocol = (intent: IntentCard) => {
+  const handleOpenSubProtocol = async (intent: IntentCard) => {
     const appVersion = Constants.expoConfig?.version ?? 'unknown';
     const locale = Intl.DateTimeFormat().resolvedOptions().locale;
     const healthConditions = profile?.healthConditions ?? ['none'];
@@ -244,29 +237,13 @@ export default function TripScreen() {
     };
 
     trackIntentCardClick(payload);
-    trackSubprotocolModalOpen(payload);
-    setSelectedIntent(intent);
-    setSelectedIntentPayload(payload);
-    setSubModalVisible(true);
-  };
-
-  const handleSelectSubProtocol = async (option: SubProtocolOption) => {
-    if (!selectedIntent || !selectedIntentPayload) return;
-
     haptic.medium();
     const runtimeProfile = buildRuntimeProfile(profile, environment);
-    const baseRecommendation = generateTripRecommendation(
-      runtimeProfile,
-      mapIntentToTheme(selectedIntent.intent_id),
-      toEngineEnvironment(environment)
-    );
-
-    const recommendation = applySubProtocolOverrides(
-      baseRecommendation,
-      option,
-      environment,
-      selectedIntent.intent_id
-    );
+    const baseRecommendation = generateTripRecommendation(runtimeProfile, mapIntentToTheme(intent.intent_id), toEngineEnvironment(environment));
+    const option = pickAutoTripSubProtocol(intent.intent_id, normalizedEnvironment);
+    const recommendation = option
+      ? applySubProtocolOverrides(baseRecommendation, option, environment, intent.intent_id)
+      : baseRecommendation;
 
     await saveRecommendation(recommendation);
     await upsertSessionRecord({
@@ -279,13 +256,10 @@ export default function TripScreen() {
       user_feeling_before: inferFeelingBefore(recommendation.intentId, recommendation.mode),
       user_feeling_after: 3,
     });
-    setSubModalVisible(false);
-    setSelectedIntent(null);
-    setSelectedIntentPayload(null);
 
     const payloadWithSub: RecommendationCardEventPayload = {
-      ...selectedIntentPayload,
-      subprotocol_id: option.id,
+      ...payload,
+      subprotocol_id: option?.id,
     };
 
     trackSubprotocolSelected(payloadWithSub);
@@ -315,10 +289,6 @@ export default function TripScreen() {
       setPendingRecId(null);
     }
   };
-
-  const subOptions = selectedIntent
-    ? (TRIP_SUBPROTOCOL_OPTIONS[selectedIntent.intent_id] ?? [])
-    : [];
 
   return (
     <View style={[ui.screenShellV2, { paddingTop: insets.top }]}> 
@@ -362,7 +332,6 @@ export default function TripScreen() {
                   intentId={intent.intent_id}
                   title={intent.copy_title}
                   subtitle={getEnvironmentSubtitle(intent, normalizedEnvironment)}
-                  fitLabel={getEnvironmentFitLabel(intent, normalizedEnvironment)}
                   safetyBadge={safetyBadge}
                   disabled={disabled}
                   disabledText={copy.careCards.restrictedDisabled}
@@ -383,20 +352,6 @@ export default function TripScreen() {
         visible={warningVisible}
         warnings={pendingWarnings}
         onDismiss={handleWarningDismiss}
-        variant="v2"
-      />
-
-      <SubProtocolPickerModal
-        visible={subModalVisible}
-        title={selectedIntent?.copy_title ?? ''}
-        domain={selectedIntent?.domain}
-        options={subOptions}
-        onClose={() => {
-          setSubModalVisible(false);
-          setSelectedIntent(null);
-          setSelectedIntentPayload(null);
-        }}
-        onSelect={handleSelectSubProtocol}
         variant="v2"
       />
     </View>
