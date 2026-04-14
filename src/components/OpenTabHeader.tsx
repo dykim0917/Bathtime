@@ -16,6 +16,7 @@ interface OpenTabHeaderProps {
   topSlot?: ReactNode;
   footerSlot?: ReactNode;
   style?: StyleProp<ViewStyle>;
+  centered?: boolean;
 }
 
 export function OpenTabHeader({
@@ -25,14 +26,15 @@ export function OpenTabHeader({
   topSlot,
   footerSlot,
   style,
+  centered = false,
 }: OpenTabHeaderProps) {
   return (
-    <View style={[styles.container, style]}>
-      {topSlot ? <View style={styles.topSlot}>{topSlot}</View> : null}
-      {eyebrow ? <Text style={styles.eyebrow}>{eyebrow}</Text> : null}
-      <Text style={styles.title}>{title}</Text>
-      <Text style={styles.subtitle}>{subtitle}</Text>
-      {footerSlot ? <View style={styles.footerSlot}>{footerSlot}</View> : null}
+    <View style={[styles.container, centered && styles.containerCentered, style]}>
+      {topSlot ? <View style={[styles.topSlot, centered && styles.slotCentered]}>{topSlot}</View> : null}
+      {eyebrow ? <Text style={[styles.eyebrow, centered && styles.textCentered]}>{eyebrow}</Text> : null}
+      <Text style={[styles.title, centered && styles.textCentered]}>{title}</Text>
+      <Text style={[styles.subtitle, centered && styles.textCentered]}>{subtitle}</Text>
+      {footerSlot ? <View style={[styles.footerSlot, centered && styles.slotCentered]}>{footerSlot}</View> : null}
     </View>
   );
 }
@@ -41,8 +43,14 @@ const styles = StyleSheet.create({
   container: {
     gap: 8,
   },
+  containerCentered: {
+    alignItems: 'center',
+  },
   topSlot: {
     marginBottom: 2,
+  },
+  slotCentered: {
+    alignItems: 'center',
   },
   eyebrow: {
     fontSize: TYPE_SCALE.caption - 1,
@@ -65,5 +73,8 @@ const styles = StyleSheet.create({
   },
   footerSlot: {
     marginTop: 2,
+  },
+  textCentered: {
+    textAlign: 'center',
   },
 });

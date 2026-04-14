@@ -1,20 +1,16 @@
 import React from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+import { ImageBackground, Pressable, StyleSheet, Text, View } from 'react-native';
 import {
   TYPE_CAPTION,
   TYPE_SCALE,
   V2_ACCENT,
-  V2_ACCENT_SOFT,
-  V2_BORDER,
-  V2_TEXT_MUTED,
-  V2_TEXT_PRIMARY,
-  V2_TEXT_SECONDARY,
   V2_WARNING,
 } from '@/src/data/colors';
 import { luxuryFonts, luxuryRadii } from '@/src/theme/luxury';
+import { getTripCardImage, TripImageVariant } from '@/src/data/tripImages';
 
 interface HomeTripEditorialCardProps {
+  intentId: string;
   title: string;
   subtitle: string;
   destination: string;
@@ -25,9 +21,11 @@ interface HomeTripEditorialCardProps {
   disabledText?: string;
   onPress: () => void;
   width?: number;
+  imageVariant?: TripImageVariant;
 }
 
 export function HomeTripEditorialCard({
+  intentId,
   title,
   subtitle,
   destination,
@@ -37,20 +35,23 @@ export function HomeTripEditorialCard({
   disabled = false,
   disabledText,
   onPress,
-  width = 228,
+  width = 274,
+  imageVariant = 'deep',
 }: HomeTripEditorialCardProps) {
+  const imageSource = getTripCardImage(intentId, imageVariant);
+
   return (
     <Pressable
       onPress={onPress}
       disabled={disabled}
       style={[styles.card, disabled && styles.cardDisabled, { width }]}
     >
-      <LinearGradient
-        colors={accent}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
-        style={styles.imageArea}
-      >
+      <View style={[styles.imageArea, { backgroundColor: accent[0] }]}>
+        {imageSource ? (
+          <ImageBackground source={imageSource} style={StyleSheet.absoluteFillObject} imageStyle={styles.image}>
+            <View style={styles.imagePhotoOverlay} />
+          </ImageBackground>
+        ) : null}
         <View style={styles.imageScrim} />
         <View style={styles.imageTopRow}>
           <Text style={styles.destination}>{destination}</Text>
@@ -58,20 +59,12 @@ export function HomeTripEditorialCard({
         </View>
         <View style={styles.imageBottom}>
           <Text style={styles.imageTitle} numberOfLines={2}>{title}</Text>
-          <Text style={styles.imageSubtitle} numberOfLines={1}>{subtitle}</Text>
-        </View>
-      </LinearGradient>
-
-      <View style={styles.footer}>
-        <View style={styles.footerMeta}>
-          <Text style={styles.footerLabel}>트립 루틴</Text>
+          <Text style={styles.imageSubtitle} numberOfLines={2}>{subtitle}</Text>
           {safetyBadge ? <Text style={styles.safetyBadge}>{safetyBadge}</Text> : null}
+          {disabled && disabledText ? (
+            <Text style={styles.disabledText} numberOfLines={2}>{disabledText}</Text>
+          ) : null}
         </View>
-        {disabled && disabledText ? (
-          <Text style={styles.disabledText} numberOfLines={2}>{disabledText}</Text>
-        ) : (
-          <Text style={styles.footerText}>무드에 맞는 디테일을 확인해보세요</Text>
-        )}
       </View>
     </Pressable>
   );
@@ -81,21 +74,34 @@ const styles = StyleSheet.create({
   card: {
     borderRadius: luxuryRadii.card,
     overflow: 'hidden',
-    borderWidth: 1,
-    borderColor: V2_BORDER,
-    backgroundColor: 'rgba(13, 25, 49, 0.94)',
+    backgroundColor: 'rgba(10, 17, 30, 0.96)',
   },
   cardDisabled: {
     opacity: 0.76,
   },
   imageArea: {
-    height: 210,
+    height: 228,
     justifyContent: 'space-between',
-    padding: 16,
+    padding: 18,
+  },
+  image: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    width: '100%',
+    height: '122%',
+    borderTopLeftRadius: luxuryRadii.card,
+    borderTopRightRadius: luxuryRadii.card,
+    resizeMode: 'cover',
+  },
+  imagePhotoOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(4, 9, 23, 0.06)',
   },
   imageScrim: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(5, 10, 24, 0.24)',
+    backgroundColor: 'rgba(5, 10, 24, 0.18)',
   },
   imageTopRow: {
     flexDirection: 'row',
@@ -106,9 +112,10 @@ const styles = StyleSheet.create({
   destination: {
     color: '#F3F6FF',
     fontSize: TYPE_CAPTION - 1,
-    fontWeight: '800',
+    fontWeight: '700',
     letterSpacing: 1.2,
     fontFamily: luxuryFonts.sans,
+    textTransform: 'uppercase',
   },
   fitBadge: {
     color: '#F3F6FF',
@@ -123,57 +130,35 @@ const styles = StyleSheet.create({
     fontFamily: luxuryFonts.sans,
   },
   imageBottom: {
-    gap: 4,
+    gap: 7,
+    marginTop: 'auto',
+    paddingTop: 56,
   },
   imageTitle: {
     color: '#FFFFFF',
-    fontSize: TYPE_SCALE.title + 2,
-    lineHeight: 24,
+    fontSize: TYPE_SCALE.title + 5,
+    lineHeight: 28,
     fontFamily: luxuryFonts.display,
   },
   imageSubtitle: {
-    color: 'rgba(255,255,255,0.82)',
+    color: 'rgba(255,255,255,0.84)',
     fontSize: TYPE_CAPTION,
-    lineHeight: 16,
-    fontFamily: luxuryFonts.sans,
-  },
-  footer: {
-    paddingHorizontal: 14,
-    paddingVertical: 12,
-    gap: 6,
-    backgroundColor: 'rgba(12, 23, 45, 0.96)',
-  },
-  footerMeta: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-    flexWrap: 'wrap',
-  },
-  footerLabel: {
-    color: V2_ACCENT,
-    fontSize: TYPE_CAPTION - 1,
-    fontWeight: '800',
-    letterSpacing: 1,
+    lineHeight: 18,
     fontFamily: luxuryFonts.sans,
   },
   safetyBadge: {
     color: V2_WARNING,
     fontSize: TYPE_CAPTION - 1,
     fontWeight: '700',
+    alignSelf: 'flex-start',
     paddingHorizontal: 8,
     paddingVertical: 3,
     borderRadius: 999,
-    backgroundColor: V2_ACCENT_SOFT,
-    fontFamily: luxuryFonts.sans,
-  },
-  footerText: {
-    color: V2_TEXT_SECONDARY,
-    fontSize: TYPE_CAPTION,
-    lineHeight: 17,
+    backgroundColor: 'rgba(0, 0, 0, 0.28)',
     fontFamily: luxuryFonts.sans,
   },
   disabledText: {
-    color: V2_TEXT_MUTED,
+    color: '#E5E7EB',
     fontSize: TYPE_CAPTION,
     lineHeight: 17,
     fontFamily: luxuryFonts.sans,
