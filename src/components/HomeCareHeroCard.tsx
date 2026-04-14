@@ -1,13 +1,10 @@
 import React from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { ImageBackground, ImageSourcePropType, Pressable, StyleSheet, Text, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import {
   TYPE_CAPTION,
   TYPE_SCALE,
   V2_ACCENT,
-  V2_ACCENT_SOFT,
-  V2_BORDER,
-  V2_SURFACE,
   V2_TEXT_MUTED,
   V2_TEXT_PRIMARY,
   V2_TEXT_SECONDARY,
@@ -16,13 +13,14 @@ import {
 import { luxuryFonts, luxuryRadii, luxuryTracking } from '@/src/theme/luxury';
 
 interface HomeCareHeroCardProps {
-  badge: string;
+  badge?: string;
   eyebrow: string;
   title: string;
   description: string;
   visualLabel: string;
   metaChips: string[];
   accent: [string, string];
+  backgroundSource?: ImageSourcePropType | null;
   fitLabel?: string;
   safetyBadge?: string;
   disabled?: boolean;
@@ -38,6 +36,7 @@ export function HomeCareHeroCard({
   visualLabel,
   metaChips,
   accent,
+  backgroundSource,
   fitLabel,
   safetyBadge,
   disabled = false,
@@ -50,57 +49,80 @@ export function HomeCareHeroCard({
       disabled={disabled}
       style={[styles.container, disabled && styles.cardDisabled]}
     >
-      <View style={styles.badgeRow}>
-        <Text style={styles.heroBadge}>{badge}</Text>
-        {fitLabel ? <Text style={styles.fitBadge}>{fitLabel}</Text> : null}
-        {safetyBadge ? <Text style={styles.safetyBadge}>{safetyBadge}</Text> : null}
-      </View>
-
       <LinearGradient
         colors={[`${accent[0]}D9`, `${accent[1]}A6`, 'rgba(8, 11, 18, 0.96)']}
         start={{ x: 0.08, y: 0.08 }}
         end={{ x: 1, y: 1 }}
         style={styles.visualStage}
       >
+        {backgroundSource ? (
+          <ImageBackground source={backgroundSource} style={StyleSheet.absoluteFillObject} imageStyle={styles.backgroundImage}>
+            <View style={styles.imagePhotoOverlay} />
+          </ImageBackground>
+        ) : null}
         <View style={[styles.visualGlowLarge, { backgroundColor: `${accent[1]}30` }]} />
         <View style={[styles.visualGlowSmall, { backgroundColor: `${accent[0]}22` }]} />
         <View style={styles.visualScrim} />
-        <View style={styles.visualLabelWrap}>
-          <Text style={styles.visualLabel}>{visualLabel}</Text>
+
+        <View style={styles.heroTopRow}>
+          {visualLabel ? (
+            <View style={styles.visualLabelWrap}>
+              <Text style={styles.visualLabel}>{visualLabel}</Text>
+            </View>
+          ) : null}
+          <View style={styles.topBadgeStack}>
+            {fitLabel ? <Text style={styles.fitBadge}>{fitLabel}</Text> : null}
+            {safetyBadge ? <Text style={styles.safetyBadge}>{safetyBadge}</Text> : null}
+          </View>
+        </View>
+
+        <View style={styles.copyBlock}>
+          {badge ? <Text style={styles.heroBadge}>{badge}</Text> : null}
+          <Text style={styles.eyebrow}>{eyebrow}</Text>
+          <Text style={styles.title}>{title}</Text>
+          <Text style={styles.description}>{description}</Text>
+          <View style={styles.metaRow}>
+            {metaChips.map((chip) => (
+              <View key={chip} style={styles.metaChip}>
+                <Text style={styles.metaChipText}>{chip}</Text>
+              </View>
+            ))}
+          </View>
+          {disabled && disabledText ? (
+            <Text style={styles.disabledText}>{disabledText}</Text>
+          ) : null}
         </View>
       </LinearGradient>
-
-      <View style={styles.copyBlock}>
-        <Text style={styles.eyebrow}>{eyebrow}</Text>
-        <Text style={styles.title}>{title}</Text>
-        <Text style={styles.description}>{description}</Text>
-        <View style={styles.metaRow}>
-          {metaChips.map((chip) => (
-            <View key={chip} style={styles.metaChip}>
-              <Text style={styles.metaChipText}>{chip}</Text>
-            </View>
-          ))}
-        </View>
-        {disabled && disabledText ? (
-          <Text style={styles.disabledText}>{disabledText}</Text>
-        ) : null}
-      </View>
     </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    gap: 14,
+    minHeight: 336,
   },
   cardDisabled: {
     opacity: 0.76,
   },
-  badgeRow: {
+  backgroundImage: {
+    width: '100%',
+    height: '118%',
+    resizeMode: 'cover',
+  },
+  imagePhotoOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(4, 7, 16, 0.18)',
+  },
+  heroTopRow: {
     flexDirection: 'row',
-    alignItems: 'center',
-    flexWrap: 'wrap',
+    alignItems: 'flex-start',
+    justifyContent: 'space-between',
     gap: 8,
+  },
+  topBadgeStack: {
+    alignItems: 'flex-end',
+    gap: 8,
+    flexShrink: 1,
   },
   heroBadge: {
     color: V2_ACCENT,
@@ -116,7 +138,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     paddingVertical: 4,
     borderRadius: 999,
-    backgroundColor: 'rgba(255,255,255,0.08)',
+    backgroundColor: 'rgba(255,255,255,0.1)',
     fontFamily: luxuryFonts.sans,
   },
   safetyBadge: {
@@ -126,42 +148,42 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     paddingVertical: 4,
     borderRadius: 999,
-    backgroundColor: V2_ACCENT_SOFT,
+    backgroundColor: 'rgba(14, 16, 24, 0.42)',
     fontFamily: luxuryFonts.sans,
   },
   visualStage: {
-    minHeight: 212,
+    minHeight: 336,
     borderRadius: luxuryRadii.card,
     overflow: 'hidden',
-    justifyContent: 'flex-end',
-    padding: 18,
+    justifyContent: 'space-between',
+    padding: 20,
   },
   visualGlowLarge: {
     position: 'absolute',
-    width: 210,
-    height: 210,
-    borderRadius: 105,
-    top: -36,
+    width: 240,
+    height: 240,
+    borderRadius: 120,
+    top: -48,
     right: -18,
   },
   visualGlowSmall: {
     position: 'absolute',
-    width: 132,
-    height: 132,
-    borderRadius: 66,
-    left: -12,
-    bottom: 18,
+    width: 148,
+    height: 148,
+    borderRadius: 74,
+    left: -10,
+    bottom: 22,
   },
   visualScrim: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(4, 6, 12, 0.36)',
+    backgroundColor: 'rgba(4, 6, 12, 0.34)',
   },
   visualLabelWrap: {
     alignSelf: 'flex-start',
     borderRadius: 999,
     paddingHorizontal: 10,
     paddingVertical: 5,
-    backgroundColor: 'rgba(12, 16, 26, 0.42)',
+    backgroundColor: 'rgba(12, 16, 26, 0.46)',
   },
   visualLabel: {
     color: '#F7F2EA',
@@ -171,7 +193,9 @@ const styles = StyleSheet.create({
     fontFamily: luxuryFonts.sans,
   },
   copyBlock: {
-    gap: 7,
+    gap: 8,
+    marginTop: 'auto',
+    paddingTop: 76,
   },
   eyebrow: {
     color: V2_ACCENT,
@@ -183,13 +207,13 @@ const styles = StyleSheet.create({
   title: {
     color: V2_TEXT_PRIMARY,
     fontSize: TYPE_SCALE.headingMd,
-    lineHeight: 34,
+    lineHeight: 32,
     fontFamily: luxuryFonts.display,
   },
   description: {
     color: V2_TEXT_SECONDARY,
     fontSize: TYPE_SCALE.body,
-    lineHeight: 22,
+    lineHeight: 21,
     fontFamily: luxuryFonts.sans,
   },
   metaRow: {
@@ -202,7 +226,9 @@ const styles = StyleSheet.create({
     borderRadius: 999,
     paddingHorizontal: 10,
     paddingVertical: 6,
-    backgroundColor: 'rgba(255,255,255,0.06)',
+    backgroundColor: 'rgba(7, 10, 18, 0.34)',
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.08)',
   },
   metaChipText: {
     color: V2_TEXT_PRIMARY,

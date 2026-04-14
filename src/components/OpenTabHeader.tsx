@@ -14,6 +14,7 @@ interface OpenTabHeaderProps {
   subtitle: string;
   eyebrow?: string;
   topSlot?: ReactNode;
+  mediaSlot?: ReactNode;
   footerSlot?: ReactNode;
   style?: StyleProp<ViewStyle>;
   centered?: boolean;
@@ -24,6 +25,7 @@ export function OpenTabHeader({
   subtitle,
   eyebrow,
   topSlot,
+  mediaSlot,
   footerSlot,
   style,
   centered = false,
@@ -31,6 +33,7 @@ export function OpenTabHeader({
   return (
     <View style={[styles.container, centered && styles.containerCentered, style]}>
       {topSlot ? <View style={[styles.topSlot, centered && styles.slotCentered]}>{topSlot}</View> : null}
+      {mediaSlot ? <View style={[styles.mediaSlot, centered && styles.slotCentered]}>{mediaSlot}</View> : null}
       {eyebrow ? <Text style={[styles.eyebrow, centered && styles.textCentered]}>{eyebrow}</Text> : null}
       <Text style={[styles.title, centered && styles.textCentered]}>{title}</Text>
       <Text style={[styles.subtitle, centered && styles.textCentered]}>{subtitle}</Text>
@@ -48,6 +51,10 @@ const styles = StyleSheet.create({
   },
   topSlot: {
     marginBottom: 2,
+  },
+  mediaSlot: {
+    marginTop: 6,
+    marginBottom: 4,
   },
   slotCentered: {
     alignItems: 'center',

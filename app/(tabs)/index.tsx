@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { View, Text, Pressable, ScrollView, StyleSheet, useWindowDimensions, Platform, Image } from 'react-native';
 import { Href, router, useFocusEffect } from 'expo-router';
 import Constants from 'expo-constants';
+import { FontAwesome } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import {
@@ -66,6 +67,7 @@ import { HomeCareHeroCard } from '@/src/components/HomeCareHeroCard';
 import { HomeCareListCard } from '@/src/components/HomeCareListCard';
 import { HomeTripEditorialCard } from '@/src/components/HomeTripEditorialCard';
 import { OpenTabHeader } from '@/src/components/OpenTabHeader';
+import { HOME_CARE_HERO_IMAGE, HOME_HEADER_ILLUSTRATION } from '@/src/data/homeVisuals';
 
 const ENV_OPTIONS: { id: BathEnvironment; label: string }[] = [
   { id: 'bathtub', label: '욕조' },
@@ -87,7 +89,7 @@ const TRIP_EDITORIAL_META: Record<string, { destination: string; accent: [string
 };
 
 const SCREEN_HORIZONTAL_PADDING = 22;
-const SECTION_GAP = 22;
+const SECTION_GAP = 30;
 const HOME_PREVIEW_CARD_LIMIT = 4;
 const HOME_SECTION_ORDER: RecommendationCardEventPayload['section_order'] = 'care_first';
 
@@ -620,6 +622,23 @@ export default function HomeIntentScreen() {
               <Text style={styles.headerBadge}>BATH SOMMELIER</Text>
             </View>
           }
+          mediaSlot={
+            <View style={styles.headerIllustrationFrame}>
+              {HOME_HEADER_ILLUSTRATION ? (
+                <Image
+                  source={HOME_HEADER_ILLUSTRATION}
+                  style={styles.headerIllustrationImage}
+                  resizeMode="cover"
+                />
+              ) : (
+                <>
+                  <View style={styles.headerIllustrationMistLarge} />
+                  <View style={styles.headerIllustrationMistSmall} />
+                  <View style={styles.headerIllustrationOrb} />
+                </>
+              )}
+            </View>
+          }
           centered
           footerSlot={
             !isHistoryLoaded || recentRoutines.length > 0 ? null : (
@@ -638,34 +657,43 @@ export default function HomeIntentScreen() {
             <View style={styles.weeklyGlowPrimary} />
             <View style={styles.weeklyGlowSecondary} />
 
-            <View style={styles.weeklyMainRow}>
-              <View style={styles.weeklySummaryBlock}>
-                <Text style={styles.weeklyCountTitle}>
-                  주간 루틴 {streakSummary.weeklyBathCount}/{streakSummary.weeklyGoal}일
-                </Text>
-                <View style={styles.weeklyProgressTrack}>
-                  <View style={[styles.weeklyProgressFill, { width: `${weeklyProgressRatio * 100}%` }]} />
-                </View>
-                <Text style={styles.weeklyStatus}>
-                  {streakSummary.todayDone ? copy.home.todayDone : copy.home.todayPending}
-                </Text>
-                <Pressable onPress={() => router.push('/(tabs)/history')}>
-                  <Text style={styles.weeklyDetailText}>전체 기록 보기 &gt;</Text>
+            <View style={styles.weeklyTopGroup}>
+              <View style={styles.weeklyMainRow}>
+                <Text style={styles.weeklyCountTitle}>주간 루틴 {streakSummary.weeklyBathCount}/{streakSummary.weeklyGoal}일</Text>
+                <Pressable onPress={() => router.push('/(tabs)/history')} style={styles.inlineLinkButton}>
+                  <Text style={styles.inlineLinkText}>전체 기록 보기</Text>
+                  <FontAwesome name="angle-right" size={14} color={V2_ACCENT} />
                 </Pressable>
               </View>
 
-              <View style={styles.weekDotsRow}>
-              {streakSummary.dailyCheck.map((item) => (
-                <View key={item.dateKey} style={styles.weekDotItem}>
-                  <View style={[styles.weekDot, item.done && styles.weekDotDone, item.isToday && styles.weekDotToday]}>
-                    <View style={[styles.weekDotCenter, item.done && styles.weekDotCenterDone, item.isToday && styles.weekDotCenterToday]} />
-                  </View>
-                  <Text style={[styles.weekDotLabel, item.done && styles.weekDotLabelDone, item.isToday && styles.weekDotLabelToday]}>
-                    {getWeekdayMarker(item.weekdayLabel)}
-                  </Text>
-                </View>
-              ))}
+              <View style={styles.weeklyProgressTrack}>
+                <View style={[styles.weeklyProgressFill, { width: `${weeklyProgressRatio * 100}%` }]} />
+              </View>
             </View>
+
+            <View style={styles.weeklyBottomGroup}>
+              <Text style={styles.weeklyStatus}>
+                {streakSummary.todayDone ? copy.home.todayDone : copy.home.todayPending}
+              </Text>
+
+              <View style={styles.weekDotsRow}>
+                {streakSummary.dailyCheck.map((item) => (
+                  <View key={item.dateKey} style={styles.weekDotItem}>
+                    <View style={[styles.weekDot, item.done && styles.weekDotDone, item.isToday && styles.weekDotToday]}>
+                      <View
+                        style={[
+                          styles.weekDotCenter,
+                          item.done && styles.weekDotCenterDone,
+                          item.done && item.isToday && styles.weekDotCenterTodayDone,
+                        ]}
+                      />
+                    </View>
+                    <Text style={[styles.weekDotLabel, item.done && styles.weekDotLabelDone, item.isToday && styles.weekDotLabelToday]}>
+                      {getWeekdayMarker(item.weekdayLabel)}
+                    </Text>
+                  </View>
+                ))}
+              </View>
             </View>
           </LinearGradient>
         </View>
@@ -690,14 +718,14 @@ export default function HomeIntentScreen() {
         <View>
           <View style={styles.sectionHeaderRow}>
             <Text style={styles.sectionTitle}>케어 루틴</Text>
-            <Pressable onPress={() => router.push('/(tabs)/care')}>
-              <Text style={styles.moreText}>전체 보기</Text>
+            <Pressable onPress={() => router.push('/(tabs)/care')} style={styles.inlineLinkButton}>
+              <Text style={styles.inlineLinkText}>전체 보기</Text>
+              <FontAwesome name="angle-right" size={14} color={V2_ACCENT} />
             </Pressable>
           </View>
           {heroCard ? (
             <>
               <HomeCareHeroCard
-                badge="오늘의 소믈리에 추천"
                 eyebrow={heroEditorial.heroEyebrow}
                 title={heroEditorial.heroTitle}
                 description={heroEditorial.heroDescription}
@@ -707,6 +735,7 @@ export default function HomeIntentScreen() {
                   `⏳ ${heroPreviewRecommendation?.durationMinutes ?? 10}분`,
                 ]}
                 accent={heroEditorial.accent}
+                backgroundSource={HOME_CARE_HERO_IMAGE}
                 fitLabel={getEnvironmentFitLabel(heroCard, normalizedEnvironment)}
                 safetyBadge={
                   hasSafetyPriorityFallback(resolveFallback(heroCard, profile?.healthConditions ?? ['none']))
@@ -748,8 +777,9 @@ export default function HomeIntentScreen() {
         <View>
           <View style={styles.sectionHeaderRow}>
             <Text style={styles.sectionTitle}>트립 루틴</Text>
-            <Pressable onPress={() => router.push('/(tabs)/trip')}>
-              <Text style={styles.moreText}>전체 보기</Text>
+            <Pressable onPress={() => router.push('/(tabs)/trip')} style={styles.inlineLinkButton}>
+              <Text style={styles.inlineLinkText}>전체 보기</Text>
+              <FontAwesome name="angle-right" size={14} color={V2_ACCENT} />
             </Pressable>
           </View>
           <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.tripRow}>
@@ -782,8 +812,9 @@ export default function HomeIntentScreen() {
         <View>
           <View style={styles.sectionHeaderRow}>
             <Text style={styles.sectionTitle}>최근 완료한 루틴</Text>
-            <Pressable onPress={() => router.push('/(tabs)/history')}>
-              <Text style={styles.moreText}>더보기</Text>
+            <Pressable onPress={() => router.push('/(tabs)/history')} style={styles.inlineLinkButton}>
+              <Text style={styles.inlineLinkText}>전체 보기</Text>
+              <FontAwesome name="angle-right" size={14} color={V2_ACCENT} />
             </Pressable>
           </View>
           <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.recentRow}>
@@ -840,8 +871,8 @@ export default function HomeIntentScreen() {
 const styles = StyleSheet.create({
   content: {
     paddingHorizontal: SCREEN_HORIZONTAL_PADDING,
-    paddingTop: 14,
-    paddingBottom: 32,
+    paddingTop: 18,
+    paddingBottom: 40,
     gap: SECTION_GAP,
   },
   headerBrand: {
@@ -859,6 +890,47 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     letterSpacing: luxuryTracking.eyebrow,
     fontFamily: luxuryFonts.sans,
+  },
+  headerIllustrationFrame: {
+    width: '100%',
+    maxWidth: 320,
+    height: 144,
+    borderRadius: luxuryRadii.card,
+    overflow: 'hidden',
+    borderWidth: 1,
+    borderColor: 'rgba(245, 240, 232, 0.08)',
+    backgroundColor: 'rgba(255, 255, 255, 0.03)',
+  },
+  headerIllustrationImage: {
+    width: '100%',
+    height: '100%',
+  },
+  headerIllustrationMistLarge: {
+    position: 'absolute',
+    width: 196,
+    height: 196,
+    borderRadius: 98,
+    top: -82,
+    right: -22,
+    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+  },
+  headerIllustrationMistSmall: {
+    position: 'absolute',
+    width: 116,
+    height: 116,
+    borderRadius: 58,
+    left: -20,
+    bottom: -28,
+    backgroundColor: 'rgba(176, 141, 87, 0.1)',
+  },
+  headerIllustrationOrb: {
+    position: 'absolute',
+    width: 58,
+    height: 58,
+    borderRadius: 29,
+    right: 42,
+    bottom: 26,
+    backgroundColor: 'rgba(245, 240, 232, 0.07)',
   },
   beginnerGuide: {
     color: V2_TEXT_MUTED,
@@ -885,10 +957,10 @@ const styles = StyleSheet.create({
     }),
   },
   weeklyGradient: {
-    paddingHorizontal: 20,
-    paddingTop: 18,
-    paddingBottom: 18,
-    gap: 12,
+    paddingHorizontal: 18,
+    paddingTop: 15,
+    paddingBottom: 15,
+    gap: 8,
   },
   weeklyGlowPrimary: {
     position: 'absolute',
@@ -908,24 +980,25 @@ const styles = StyleSheet.create({
     borderRadius: 55,
     backgroundColor: 'rgba(255, 205, 104, 0.06)',
   },
+  weeklyTopGroup: {
+    gap: 6,
+  },
   weeklyMainRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    gap: 18,
-  },
-  weeklySummaryBlock: {
-    width: 132,
-    gap: 9,
+    gap: 10,
   },
   weeklyCountTitle: {
     color: '#F5EFE6',
-    fontSize: TYPE_SCALE.title,
-    lineHeight: 24,
+    fontSize: TYPE_SCALE.title - 1,
+    lineHeight: 22,
     fontFamily: luxuryFonts.display,
+    flex: 1,
+    paddingRight: 8,
   },
   weeklyProgressTrack: {
-    height: 12,
+    height: 5,
     borderRadius: 999,
     overflow: 'hidden',
     backgroundColor: 'rgba(255, 255, 255, 0.12)',
@@ -939,32 +1012,40 @@ const styles = StyleSheet.create({
     color: 'rgba(255, 243, 225, 0.82)',
     fontSize: TYPE_SCALE.caption - 1,
     fontWeight: '600',
-    lineHeight: 16,
+    lineHeight: 15,
     fontFamily: luxuryFonts.sans,
   },
-  weeklyDetailText: {
+  weeklyBottomGroup: {
+    gap: 7,
+  },
+  inlineLinkButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+  },
+  inlineLinkText: {
     color: '#D9BB70',
     fontSize: TYPE_SCALE.caption - 1,
     fontWeight: '700',
-    letterSpacing: 0.4,
     fontFamily: luxuryFonts.sans,
   },
   weekDotsRow: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-    gap: 10,
-    flex: 1,
+    justifyContent: 'space-between',
+    width: '100%',
   },
   weekDotItem: {
     alignItems: 'center',
-    gap: 6,
-    minWidth: 26,
+    gap: 4,
+    flex: 1,
+    minWidth: 0,
   },
   weekDot: {
-    width: 28,
-    height: 28,
-    borderRadius: 14,
-    borderWidth: 1.5,
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+    borderWidth: 1.25,
     borderColor: 'rgba(255, 236, 206, 0.2)',
     alignItems: 'center',
     justifyContent: 'center',
@@ -978,21 +1059,22 @@ const styles = StyleSheet.create({
     transform: [{ scale: 1.04 }],
   },
   weekDotCenter: {
-    width: 12,
-    height: 12,
-    borderRadius: 6,
+    width: 10,
+    height: 10,
+    borderRadius: 5,
     backgroundColor: 'transparent',
   },
   weekDotCenterDone: {
     backgroundColor: '#D8B05D',
   },
-  weekDotCenterToday: {
+  weekDotCenterTodayDone: {
     backgroundColor: '#E9C97E',
   },
   weekDotLabel: {
     color: 'rgba(255, 241, 218, 0.58)',
-    fontSize: 10,
+    fontSize: 9,
     fontWeight: '700',
+    lineHeight: 11,
     fontFamily: luxuryFonts.sans,
   },
   weekDotLabelDone: {
@@ -1005,7 +1087,7 @@ const styles = StyleSheet.create({
     color: V2_TEXT_PRIMARY,
     fontSize: TYPE_SCALE.title,
     fontFamily: luxuryFonts.display,
-    marginBottom: 12,
+    marginBottom: 14,
   },
   environmentRow: {
     flexDirection: 'row',
@@ -1040,33 +1122,27 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 12,
+    marginBottom: 16,
   },
   sectionTitle: {
     color: V2_TEXT_PRIMARY,
     fontSize: TYPE_SCALE.title,
     fontFamily: luxuryFonts.display,
   },
-  moreText: {
-    color: V2_ACCENT,
-    fontSize: TYPE_SCALE.caption,
-    fontWeight: '700',
-    fontFamily: luxuryFonts.sans,
-  },
   careListLabel: {
     color: V2_TEXT_MUTED,
     fontSize: TYPE_SCALE.caption,
     lineHeight: 18,
     fontFamily: luxuryFonts.sans,
-    marginTop: 14,
-    marginBottom: 10,
+    marginTop: 18,
+    marginBottom: 14,
   },
   careList: {
-    gap: 10,
+    gap: 12,
   },
   tripRow: {
-    gap: 14,
-    paddingRight: 8,
+    gap: 16,
+    paddingRight: 12,
   },
   recentRow: {
     gap: 12,

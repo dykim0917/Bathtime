@@ -42,8 +42,11 @@ export function ProductMatchingModal({
           <Text style={styles.subTitle}>{copy.product.subtitle}</Text>
 
           <ScrollView style={styles.body} contentContainerStyle={styles.bodyContent}>
-            {items.map((item) => (
-              <View key={`${item.slot}_${item.product.id}`} style={styles.slotCard}>
+            {items.map((item, index) => (
+              <View
+                key={`${item.slot}_${item.product.id}`}
+                style={[styles.slotCard, index < items.length - 1 && styles.slotCardSpacing]}
+              >
                 <View style={styles.rowBetween}>
                   <Text style={styles.slotTitle}>{copy.product.slotTitle[item.slot]}</Text>
                   {item.sommelierPick ? (
@@ -123,7 +126,6 @@ const styles = StyleSheet.create({
     marginTop: 14,
   },
   bodyContent: {
-    gap: 10,
     paddingBottom: 8,
   },
   slotCard: {
@@ -133,6 +135,9 @@ const styles = StyleSheet.create({
     backgroundColor: V2_SURFACE_SOFT,
     padding: 14,
     gap: 7,
+  },
+  slotCardSpacing: {
+    marginBottom: 10,
   },
   rowBetween: {
     flexDirection: 'row',

@@ -73,9 +73,9 @@ export const ui = StyleSheet.create({
     backgroundColor: 'rgba(12, 19, 25, 0.98)',
     borderTopColor: V2_BORDER,
     borderTopWidth: 1,
-    height: 82,
-    paddingTop: 10,
-    paddingBottom: 10,
+    height: 72,
+    paddingTop: 7,
+    paddingBottom: 7,
   },
   screenShellV2: {
     flex: 1,
