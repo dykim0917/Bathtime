@@ -7,12 +7,16 @@ const rootDir = path.resolve(new URL('..', import.meta.url).pathname);
 const inputDir = path.join(rootDir, 'input');
 const outputDir = path.join(rootDir, 'output');
 const themesSourcePath = path.join(rootDir, 'src', 'data', 'themes.ts');
+const DEFAULT_MODEL = 'gpt-5-mini';
+const MAX_OPENAI_RETRIES = 2;
 
 function parseArgs(argv) {
   const args = {
     brief: path.join(inputDir, 'trip_theme_brief.json'),
     outputDir,
     count: undefined,
+    model: DEFAULT_MODEL,
+    offline: false,
   };
 
   for (let index = 0; index < argv.length; index += 1) {
@@ -34,6 +38,15 @@ function parseArgs(argv) {
         args.count = parsed;
       }
       index += 1;
+      continue;
+    }
+    if (token === '--model' && next) {
+      args.model = next;
+      index += 1;
+      continue;
+    }
+    if (token === '--offline') {
+      args.offline = true;
     }
   }
 
@@ -42,7 +55,7 @@ function parseArgs(argv) {
 
 async function loadThemesModule() {
   const source = await readFile(themesSourcePath, 'utf8');
-  const sanitized = source.replace(/import\s+\{[^}]+\}\s+from\s+['"][^'"]+['"];?\n/g, '');
+  const sanitized = `const GENERATED_THEME_PRESETS = [];\n${source.replace(/import\s+\{[^}]+\}\s+from\s+['"][^'"]+['"];?\n/g, '')}`;
   const transpiled = ts.transpileModule(sanitized, {
     compilerOptions: {
       module: ts.ModuleKind.CommonJS,
@@ -80,6 +93,217 @@ function uniqueBy(array, keyFn) {
   }
 
   return result;
+}
+
+function isAllowedEnvironment(environment, brief) {
+  return (brief.environments ?? []).includes(environment);
+}
+
+function normalizeGeneratedSpec(spec, brief, existingIds) {
+  const title = String(spec.title ?? '').trim();
+  const destination = String(spec.destination ?? title).trim();
+  const category = String(spec.category ?? '').trim();
+  const subtitle = String(spec.subtitle ?? '').trim();
+  const environment = String(spec.environment ?? 'bathtub').trim();
+  const imagePromptSeed = String(spec.imagePromptSeed ?? '').trim();
+  const scent = String(spec.scent ?? '우디 머스크').trim();
+  const lighting = String(spec.lighting ?? '차분한 확산 조명').trim();
+  const colorHex = /^#[0-9a-fA-F]{6}$/.test(String(spec.colorHex ?? '').trim())
+    ? String(spec.colorHex).trim()
+    : '#5E6B7A';
+  const rationale = String(spec.rationale ?? '').trim();
+
+  if (!title || !category || !subtitle || !imagePromptSeed || !rationale) {
+    return null;
+  }
+  if (!(brief.categories ?? []).includes(category)) {
+    return null;
+  }
+  if (!isAllowedEnvironment(environment, brief)) {
+    return null;
+  }
+
+  return buildCandidate(
+    {
+      title,
+      destination,
+      subtitle,
+      environment,
+      imagePromptSeed,
+      scent,
+      lighting,
+      colorHex,
+      rationale,
+    },
+    category,
+    existingIds,
+    brief
+  );
+}
+
+function extractJsonBlock(text) {
+  const start = text.indexOf('{');
+  const altStart = text.indexOf('[');
+  const jsonStart =
+    start === -1 ? altStart : altStart === -1 ? start : Math.min(start, altStart);
+
+  if (jsonStart === -1) {
+    throw new Error('No JSON block found in OpenAI response.');
+  }
+
+  const jsonText = text.slice(jsonStart).trim();
+  return JSON.parse(jsonText);
+}
+
+function responseToText(payload) {
+  if (typeof payload.output_text === 'string' && payload.output_text.trim()) {
+    return payload.output_text.trim();
+  }
+
+  const chunks = [];
+  for (const outputItem of payload.output ?? []) {
+    for (const contentItem of outputItem.content ?? []) {
+      if (typeof contentItem.text === 'string') {
+        chunks.push(contentItem.text);
+      }
+    }
+  }
+
+  return chunks.join('\n').trim();
+}
+
+function buildThemeGenerationPrompts(brief, existingThemes, requestedCount) {
+  const system = [
+    'You are a premium wellness creative director for Bath Sommelier.',
+    'Generate original trip routine themes for a bath ritual app.',
+    'Return only valid JSON.',
+    'Avoid medical framing, treatment framing, hype, party energy, and generic travel brochure language.',
+    'Each theme must feel quiet, premium, immersive, and usable as a mobile app routine theme.',
+  ].join(' ');
+
+  const user = {
+    task: 'Create new trip theme candidates.',
+    requestedCount,
+    allowedCategories: brief.categories,
+    allowedEnvironments: brief.environments,
+    requiredMoodWords: brief.mustIncludeMoodWords,
+    forbiddenWords: brief.avoidWords,
+    existingThemeIds: existingThemes.map((theme) => theme.id),
+    existingThemeTitles: existingThemes.map((theme) => theme.title),
+    outputShape: {
+      candidates: [
+        {
+          title: 'string',
+          destination: 'string',
+          subtitle: 'string',
+          category: 'one of allowedCategories',
+          environment: 'one of allowedEnvironments',
+          imagePromptSeed: 'short comma-separated visual seed phrase in English',
+          scent: 'short scent label in Korean',
+          lighting: 'short lighting label in Korean',
+          colorHex: '#RRGGBB',
+          rationale: 'short Korean explanation of why this theme is distinct',
+        },
+      ],
+    },
+    constraints: [
+      'Themes must be distinct from existing themes and from each other.',
+      'Prefer evocative but product-usable names.',
+      'Subtitles should read like a premium card subtitle in Korean.',
+      'Image prompt seeds should be visual, concrete, and people-free.',
+      'No duplicate destinations or duplicate titles.',
+      'Keep the candidate list exactly requestedCount items when possible.',
+    ],
+  };
+
+  return { system, user: JSON.stringify(user, null, 2) };
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function readErrorBody(response) {
+  try {
+    const text = await response.text();
+    if (!text.trim()) return null;
+    try {
+      const parsed = JSON.parse(text);
+      return parsed.error?.message ?? text;
+    } catch {
+      return text;
+    }
+  } catch {
+    return null;
+  }
+}
+
+async function generateCandidatesViaOpenAI(args, brief, existingThemes, existingIds, requestedCount) {
+  const apiKey = process.env.OPENAI_API_KEY;
+  if (!apiKey) {
+    throw new Error('OPENAI_API_KEY is not set.');
+  }
+
+  const { system, user } = buildThemeGenerationPrompts(brief, existingThemes, requestedCount);
+  let lastError = null;
+  for (let attempt = 0; attempt <= MAX_OPENAI_RETRIES; attempt += 1) {
+    const response = await fetch('https://api.openai.com/v1/responses', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({
+        model: args.model,
+        reasoning: { effort: 'low' },
+        input: [
+          {
+            role: 'system',
+            content: [{ type: 'input_text', text: system }],
+          },
+          {
+            role: 'user',
+            content: [{ type: 'input_text', text: user }],
+          },
+        ],
+      }),
+    });
+
+    if (response.ok) {
+      const payload = await response.json();
+      const text = responseToText(payload);
+      const parsed = extractJsonBlock(text);
+      const rawCandidates = Array.isArray(parsed) ? parsed : parsed.candidates;
+
+      if (!Array.isArray(rawCandidates) || rawCandidates.length === 0) {
+        throw new Error('OpenAI API returned no candidates.');
+      }
+
+      const normalized = rawCandidates
+        .map((candidate) => normalizeGeneratedSpec(candidate, brief, existingIds))
+        .filter(Boolean);
+
+      if (normalized.length === 0) {
+        throw new Error('OpenAI API returned candidates, but none passed local validation.');
+      }
+
+      return uniqueBy(normalized, (candidate) => candidate.themeId).slice(0, requestedCount);
+    }
+
+    const errorBody = await readErrorBody(response);
+    lastError =
+      response.status === 429
+        ? `OpenAI API rate limit or quota issue (429). ${errorBody ?? 'Check billing, credits, or retry later.'}`
+        : `OpenAI API request failed with status ${response.status}.${errorBody ? ` ${errorBody}` : ''}`;
+
+    if (response.status === 429 && attempt < MAX_OPENAI_RETRIES) {
+      await sleep(1500 * (attempt + 1));
+      continue;
+    }
+
+    throw new Error(lastError);
+  }
+  throw new Error(lastError ?? 'OpenAI API request failed.');
 }
 
 const CATEGORY_LIBRARY = {
@@ -325,20 +549,36 @@ async function main() {
   const requestedCount = args.count ?? brief.count ?? 8;
 
   const existingIds = new Set(themesModule.THEMES.map((theme) => theme.id));
-  const categories = (brief.categories ?? Object.keys(CATEGORY_LIBRARY)).filter(
-    (category) => CATEGORY_LIBRARY[category]
-  );
-
-  const picked = [];
+  const categories = (brief.categories ?? Object.keys(CATEGORY_LIBRARY)).filter((category) => CATEGORY_LIBRARY[category]);
+  const fallbackCandidates = [];
   for (const category of categories) {
     for (const spec of CATEGORY_LIBRARY[category]) {
-      picked.push(buildCandidate(spec, category, existingIds, brief));
-      if (picked.length >= requestedCount) break;
+      fallbackCandidates.push(buildCandidate(spec, category, existingIds, brief));
+      if (fallbackCandidates.length >= requestedCount) break;
     }
-    if (picked.length >= requestedCount) break;
+    if (fallbackCandidates.length >= requestedCount) break;
   }
 
-  const candidates = picked.filter((candidate) => {
+  let candidates = fallbackCandidates;
+  let generationSource = 'fallback_library';
+  let generationError = null;
+
+  if (!args.offline) {
+    try {
+      candidates = await generateCandidatesViaOpenAI(
+        args,
+        brief,
+        themesModule.THEMES,
+        existingIds,
+        requestedCount
+      );
+      generationSource = 'openai';
+    } catch (error) {
+      generationError = error instanceof Error ? error.message : String(error);
+    }
+  }
+
+  candidates = candidates.filter((candidate) => {
     const haystack = `${candidate.title} ${candidate.subtitle} ${candidate.rationale}`.toLowerCase();
     return !(brief.avoidWords ?? []).some((word) => haystack.includes(String(word).toLowerCase()));
   });
@@ -356,6 +596,8 @@ async function main() {
           generatedAt: new Date().toISOString(),
           requestedCount,
           candidateCount: candidates.length,
+          generationSource,
+          generationError,
           candidates,
         },
         null,
@@ -375,6 +617,8 @@ async function main() {
       {
         candidatesPath,
         generatedThemeListPath,
+        generationSource,
+        generationError,
         candidateIds: candidates.map((candidate) => candidate.themeId),
       },
       null,

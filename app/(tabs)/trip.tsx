@@ -95,15 +95,7 @@ function buildRuntimeProfile(profile: UserProfile | null, environment: BathEnvir
 }
 
 function mapIntentToTheme(intentId: string): ThemeId {
-  switch (intentId) {
-    case 'kyoto_forest':
-    case 'nordic_sauna':
-    case 'rainy_camping':
-    case 'snow_cabin':
-      return intentId;
-    default:
-      return 'kyoto_forest';
-  }
+  return intentId;
 }
 
 function mapCardPositionToRank(position: number): HomeSuggestionRank {
@@ -339,6 +331,7 @@ export default function TripScreen() {
                   width={intentCardWidth}
                   minHeight={CARD_MIN_HEIGHT_REGULAR}
                   variant="v2"
+                  imageVariant="deep"
                 />
               );
             })}

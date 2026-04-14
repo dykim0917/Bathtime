@@ -1,6 +1,5 @@
 import React from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+import { ImageBackground, Pressable, StyleSheet, Text, View } from 'react-native';
 import {
   TYPE_SCALE,
   V2_ACCENT,
@@ -11,6 +10,7 @@ import {
   V2_WARNING,
 } from '@/src/data/colors';
 import { luxuryFonts, luxuryRadii } from '@/src/theme/luxury';
+import { getTripCardImage, TripImageVariant } from '@/src/data/tripImages';
 
 interface TripThemeCardProps {
   intentId: string;
@@ -24,6 +24,7 @@ interface TripThemeCardProps {
   width: number;
   minHeight?: number;
   variant?: 'default' | 'v2';
+  imageVariant?: TripImageVariant;
 }
 
 const TRIP_VISUALS: Record<string, { gradient: [string, string]; bloom: string }> = {
@@ -52,9 +53,11 @@ export function TripThemeCard({
   width,
   minHeight = 148,
   variant = 'default',
+  imageVariant = 'deep',
 }: TripThemeCardProps) {
   const isV2 = variant === 'v2';
   const visual = (isV2 ? TRIP_VISUALS_V2 : TRIP_VISUALS)[intentId] ?? (isV2 ? TRIP_VISUALS_V2.kyoto_forest : TRIP_VISUALS.kyoto_forest);
+  const imageSource = getTripCardImage(intentId, imageVariant);
 
   return (
     <Pressable
@@ -62,9 +65,13 @@ export function TripThemeCard({
       disabled={disabled}
       style={[styles.card, isV2 && styles.cardV2, { width, minHeight }]}
     >
-      <LinearGradient colors={visual.gradient} style={StyleSheet.absoluteFillObject} />
-      <View style={[styles.bloom, { backgroundColor: visual.bloom }]} />
-      <View style={[styles.bloomSmall, { backgroundColor: visual.bloom }]} />
+      {imageSource ? (
+        <ImageBackground source={imageSource} style={StyleSheet.absoluteFillObject} imageStyle={styles.image}>
+          <View style={styles.imageOverlay} />
+        </ImageBackground>
+      ) : (
+        <View style={[StyleSheet.absoluteFillObject, { backgroundColor: visual.gradient[0] }]} />
+      )}
       <View style={[styles.scrim, isV2 && styles.scrimV2]} />
 
       <View style={styles.content}>
@@ -116,6 +123,20 @@ const styles = StyleSheet.create({
     width: 74,
     height: 74,
     borderRadius: 37,
+  },
+  image: {
+    borderRadius: luxuryRadii.card,
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    width: '100%',
+    height: '118%',
+    resizeMode: 'cover',
+  },
+  imageOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(7, 11, 22, 0.12)',
   },
   scrim: {
     ...StyleSheet.absoluteFillObject,

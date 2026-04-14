@@ -4,6 +4,10 @@ import {
   SubProtocolOption,
   TimeContext,
 } from '@/src/engine/types';
+import {
+  GENERATED_TRIP_INTENT_CARDS,
+  GENERATED_TRIP_SUBPROTOCOL_OPTIONS,
+} from '@/src/data/generatedTripCatalog';
 
 export const CARE_INTENT_CARDS: IntentCard[] = [
   {
@@ -128,7 +132,7 @@ export const CARE_INTENT_CARDS: IntentCard[] = [
   },
 ];
 
-export const TRIP_INTENT_CARDS: IntentCard[] = [
+const BASE_TRIP_INTENT_CARDS: IntentCard[] = [
   {
     id: 'trip_kyoto',
     domain: 'trip',
@@ -189,6 +193,11 @@ export const TRIP_INTENT_CARDS: IntentCard[] = [
     default_subprotocol_id: 'trip_snow_balanced',
     card_position: 4,
   },
+];
+
+export const TRIP_INTENT_CARDS: IntentCard[] = [
+  ...BASE_TRIP_INTENT_CARDS,
+  ...GENERATED_TRIP_INTENT_CARDS,
 ];
 
 export const CARE_SUBPROTOCOL_OPTIONS: Record<string, SubProtocolOption[]> = {
@@ -400,7 +409,7 @@ export const CARE_SUBPROTOCOL_OPTIONS: Record<string, SubProtocolOption[]> = {
   ],
 };
 
-export const TRIP_SUBPROTOCOL_OPTIONS: Record<string, SubProtocolOption[]> = {
+const BASE_TRIP_SUBPROTOCOL_OPTIONS: Record<string, SubProtocolOption[]> = {
   kyoto_forest: [
     {
       id: 'trip_kyoto_balanced',
@@ -493,6 +502,11 @@ export const TRIP_SUBPROTOCOL_OPTIONS: Record<string, SubProtocolOption[]> = {
       },
     },
   ],
+};
+
+export const TRIP_SUBPROTOCOL_OPTIONS: Record<string, SubProtocolOption[]> = {
+  ...BASE_TRIP_SUBPROTOCOL_OPTIONS,
+  ...GENERATED_TRIP_SUBPROTOCOL_OPTIONS,
 };
 
 export function pickAutoTripSubProtocol(

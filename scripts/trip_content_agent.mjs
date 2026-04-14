@@ -51,7 +51,8 @@ function parseArgs(argv) {
 
 async function loadThemesModule() {
   const source = await readFile(themesSourcePath, 'utf8');
-  const transpiled = ts.transpileModule(source, {
+  const sanitized = `const GENERATED_THEME_PRESETS = [];\n${source.replace(/import\s+\{[^}]+\}\s+from\s+['"][^'"]+['"];?\n/g, '')}`;
+  const transpiled = ts.transpileModule(sanitized, {
     compilerOptions: {
       module: ts.ModuleKind.CommonJS,
       target: ts.ScriptTarget.ES2020,

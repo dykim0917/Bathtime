@@ -286,7 +286,8 @@ export default function CareScreen() {
     const baseRecommendation = generateCareRecommendation(
       runtimeProfile,
       mapIntentToTags(selectedIntent.intent_id),
-      toEngineEnvironment(environment)
+      toEngineEnvironment(environment),
+      selectedIntent.intent_id
     );
 
     const recommendation = applySubProtocolOverrides(

@@ -14,6 +14,7 @@ function parseArgs(argv) {
     batchFile: path.join(tempImageDir, 'trip-card-batch.jsonl'),
     outputDir: imageOutputDir,
     themeId: undefined,
+    themeListFile: undefined,
     generate: false,
     force: false,
   };
@@ -41,6 +42,11 @@ function parseArgs(argv) {
       index += 1;
       continue;
     }
+    if ((token === '--theme-list-file' || token === '--input-file') && next) {
+      args.themeListFile = path.isAbsolute(next) ? next : path.join(rootDir, next);
+      index += 1;
+      continue;
+    }
     if (token === '--generate') {
       args.generate = true;
       continue;
@@ -57,10 +63,21 @@ function sanitizeThemeId(value) {
   return value.replace(/[^a-z0-9_-]+/gi, '-').toLowerCase();
 }
 
-async function loadContentPacks(inputDir, themeId) {
+async function loadContentPacks(inputDir, themeId, themeListFile) {
+  let allowedThemeIds = null;
+  if (themeListFile) {
+    const raw = await readFile(themeListFile, 'utf8');
+    allowedThemeIds = new Set(JSON.parse(raw).map((item) => item.themeId));
+  }
+
   const files = (await readdir(inputDir))
     .filter((file) => file.startsWith('trip_content_pack_') && file.endsWith('.json'))
     .filter((file) => (themeId ? file === `trip_content_pack_${themeId}.json` : true))
+    .filter((file) => {
+      if (!allowedThemeIds) return true;
+      const themeKey = file.replace(/^trip_content_pack_/, '').replace(/\.json$/, '');
+      return allowedThemeIds.has(themeKey);
+    })
     .map((file) => path.join(inputDir, file));
 
   const payloads = [];
@@ -152,7 +169,7 @@ function checkPythonDependency(moduleName) {
 
 async function main() {
   const args = parseArgs(process.argv.slice(2));
-  const packs = await loadContentPacks(args.inputDir, args.themeId);
+  const packs = await loadContentPacks(args.inputDir, args.themeId, args.themeListFile);
 
   if (packs.length === 0) {
     throw new Error(`No generated trip content packs found in ${args.inputDir}`);
