@@ -22,7 +22,6 @@ import { upsertSessionRecord } from '@/src/storage/sessionLog';
 import { loadLastEnvironment, saveLastEnvironment } from '@/src/storage/environment';
 import { SafetyWarning } from '@/src/components/SafetyWarning';
 import {
-  CATEGORY_CARD_EMOJI,
   TYPE_SCALE,
   V2_ACCENT,
   V2_ACCENT_SOFT,
@@ -36,6 +35,7 @@ import {
   V2_WARNING,
 } from '@/src/data/colors';
 import { CategoryCard } from '@/src/components/CategoryCard';
+import { getIntentIconName } from '@/src/components/CustomIcon';
 import {
   RecommendationCardEventPayload,
   trackIntentCardClick,
@@ -393,7 +393,7 @@ export default function CareScreen() {
                   key={intent.id}
                   title={intent.copy_title}
                   subtitle={isPlaceholder ? copy.careCards.placeholderSubtitle : getEnvironmentSubtitle(intent, normalizedEnvironment)}
-                  emoji={CATEGORY_CARD_EMOJI[intent.intent_id] ?? 'BS'}
+                  iconName={getIntentIconName(intent.intent_id)}
                   bgColor={getIntentTint(intent.intent_id)}
                   eyebrow={isFeaturedCard ? copy.careCards.featuredEyebrow : copy.careCards.quickEyebrow}
                   footerHint={disabled ? copy.careCards.disabledFooter : copy.careCards.defaultFooter}

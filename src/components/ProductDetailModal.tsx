@@ -15,6 +15,7 @@ import {
 } from '@/src/data/colors';
 import { luxuryFonts, luxuryRadii, luxuryTracking } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
+import { CustomIcon, getProductCategoryIconName } from '@/src/components/CustomIcon';
 
 interface ProductDetailModalProps {
   visible: boolean;
@@ -45,7 +46,13 @@ export function ProductDetailModal({
           <View style={styles.handle} />
           <View style={styles.header}>
             <View style={[styles.iconWrap, { backgroundColor: product.bgColor }]}>
-              <Text style={styles.icon}>{product.emoji}</Text>
+              <CustomIcon
+                name={getProductCategoryIconName(product.category)}
+                size={26}
+                color="#23303B"
+                fillColor="#23303B"
+                strokeColor="#23303B"
+              />
             </View>
             <View style={styles.headerCopy}>
               <Text style={styles.brand}>{product.brand}</Text>
@@ -134,14 +141,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderWidth: 1,
     borderColor: 'rgba(255,255,255,0.12)',
-  },
-  icon: {
-    fontSize: TYPE_SCALE.caption,
-    color: V2_TEXT_PRIMARY,
-    fontWeight: '700',
-    letterSpacing: 1,
-    fontVariant: ['tabular-nums'],
-    fontFamily: luxuryFonts.mono,
   },
   headerCopy: {
     flex: 1,

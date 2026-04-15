@@ -11,12 +11,14 @@ import {
   V2_TEXT_MUTED,
   V2_WARNING,
 } from '@/src/data/colors';
+import { CustomIcon, CustomIconName } from '@/src/components/CustomIcon';
 import { luxuryFonts, luxuryRadii, luxuryTracking } from '@/src/theme/luxury';
 
 interface CategoryCardProps {
   title: string;
   subtitle: string;
-  emoji: string;
+  emoji?: string;
+  iconName?: CustomIconName | null;
   bgColor: string;
   eyebrow?: string;
   footerHint?: string;
@@ -35,6 +37,7 @@ export function CategoryCard({
   title,
   subtitle,
   emoji,
+  iconName,
   bgColor,
   eyebrow,
   footerHint,
@@ -72,7 +75,25 @@ export function CategoryCard({
       ) : null}
       <View style={styles.body}>
         {eyebrow ? <Text style={[styles.eyebrow, isV2 && styles.eyebrowV2]}>{eyebrow}</Text> : null}
-        <Text style={styles.emoji}>{emoji}</Text>
+        {iconName ? (
+          <View
+            style={[
+              styles.iconWrap,
+              isV2 && styles.iconWrapV2,
+              { backgroundColor: isV2 ? `${bgColor}1F` : 'rgba(255,255,255,0.16)', borderColor: isV2 ? `${bgColor}4A` : 'transparent' },
+            ]}
+          >
+            <CustomIcon
+              name={iconName}
+              size={22}
+              color={isV2 ? V2_TEXT_PRIMARY : bgColor}
+              fillColor={isV2 ? V2_TEXT_PRIMARY : bgColor}
+              strokeColor={isV2 ? V2_TEXT_PRIMARY : bgColor}
+            />
+          </View>
+        ) : emoji ? (
+          <Text style={styles.emoji}>{emoji}</Text>
+        ) : null}
         <Text style={[styles.title, disabled && styles.titleDisabled, isV2 && styles.titleV2]} numberOfLines={2}>
           {title}
         </Text>
@@ -194,6 +215,17 @@ const styles = StyleSheet.create({
     letterSpacing: 1.2,
     fontVariant: ['tabular-nums'],
     fontFamily: luxuryFonts.mono,
+  },
+  iconWrap: {
+    width: 36,
+    height: 36,
+    marginBottom: 4,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 12,
+  },
+  iconWrapV2: {
+    borderWidth: 1,
   },
   title: {
     fontSize: TYPE_SCALE.title,

@@ -10,7 +10,13 @@ import {
   V2_TEXT_SECONDARY,
   V2_WARNING,
 } from '@/src/data/colors';
+import { CustomIcon, CustomIconName } from '@/src/components/CustomIcon';
 import { luxuryFonts, luxuryRadii, luxuryTracking } from '@/src/theme/luxury';
+
+interface MetaChip {
+  iconName: CustomIconName;
+  label: string;
+}
 
 interface HomeCareHeroCardProps {
   badge?: string;
@@ -18,7 +24,7 @@ interface HomeCareHeroCardProps {
   title: string;
   description: string;
   visualLabel: string;
-  metaChips: string[];
+  metaChips: MetaChip[];
   accent: [string, string];
   backgroundSource?: ImageSourcePropType | null;
   fitLabel?: string;
@@ -83,8 +89,9 @@ export function HomeCareHeroCard({
           <Text style={styles.description}>{description}</Text>
           <View style={styles.metaRow}>
             {metaChips.map((chip) => (
-              <View key={chip} style={styles.metaChip}>
-                <Text style={styles.metaChipText}>{chip}</Text>
+              <View key={`${chip.iconName}-${chip.label}`} style={styles.metaChip}>
+                <CustomIcon name={chip.iconName} size={13} color={V2_ACCENT} fillColor={V2_ACCENT} strokeColor={V2_ACCENT} />
+                <Text style={styles.metaChipText}>{chip.label}</Text>
               </View>
             ))}
           </View>
@@ -223,6 +230,9 @@ const styles = StyleSheet.create({
     marginTop: 2,
   },
   metaChip: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
     borderRadius: 999,
     paddingHorizontal: 10,
     paddingVertical: 6,

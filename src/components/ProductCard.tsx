@@ -15,6 +15,7 @@ import {
 } from '@/src/data/colors';
 import { CatalogProduct, PRODUCT_CATEGORY_LABELS } from '@/src/data/catalog';
 import { luxuryFonts, luxuryRadii, luxuryTracking } from '@/src/theme/luxury';
+import { CustomIcon, getProductCategoryIconName } from '@/src/components/CustomIcon';
 
 interface ProductCardProps {
   item: CatalogProduct;
@@ -48,7 +49,13 @@ export function ProductCard({ item, variant = 'default', onPress }: ProductCardP
       ) : null}
       <View style={styles.header}>
         <View style={[styles.emojiWrap, { backgroundColor: item.bgColor }, isV2 && styles.emojiWrapV2]}>
-          <Text style={styles.emoji}>{item.emoji}</Text>
+          <CustomIcon
+            name={getProductCategoryIconName(item.category)}
+            size={24}
+            color={isV2 ? V2_TEXT_PRIMARY : '#23303B'}
+            fillColor={isV2 ? V2_TEXT_PRIMARY : '#23303B'}
+            strokeColor={isV2 ? V2_TEXT_PRIMARY : '#23303B'}
+          />
         </View>
         <View style={styles.nameWrap}>
           <Text style={[styles.name, isV2 && styles.nameV2]} numberOfLines={1}>{item.name}</Text>
@@ -136,14 +143,6 @@ const styles = StyleSheet.create({
   emojiWrapV2: {
     borderWidth: 1,
     borderColor: 'rgba(255,255,255,0.12)',
-  },
-  emoji: {
-    fontSize: TYPE_SCALE.caption,
-    color: V2_TEXT_PRIMARY,
-    fontWeight: '700',
-    letterSpacing: 1,
-    fontVariant: ['tabular-nums'],
-    fontFamily: luxuryFonts.mono,
   },
   nameWrap: {
     flex: 1,

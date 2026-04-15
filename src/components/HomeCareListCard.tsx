@@ -9,13 +9,20 @@ import {
   V2_TEXT_PRIMARY,
   V2_TEXT_SECONDARY,
 } from '@/src/data/colors';
+import { CustomIcon, CustomIconName } from '@/src/components/CustomIcon';
 import { luxuryFonts, luxuryRadii } from '@/src/theme/luxury';
+
+interface MetaChip {
+  iconName: CustomIconName;
+  label: string;
+}
 
 interface HomeCareListCardProps {
   title: string;
   description: string;
   visualLabel: string;
   accent: [string, string];
+  metaChips?: MetaChip[];
   disabled?: boolean;
   disabledText?: string;
   onPress: () => void;
@@ -26,6 +33,7 @@ export function HomeCareListCard({
   description,
   visualLabel,
   accent,
+  metaChips = [],
   disabled = false,
   disabledText,
   onPress,
@@ -47,11 +55,25 @@ export function HomeCareListCard({
       </LinearGradient>
 
       <View style={styles.copyWrap}>
-        <Text style={styles.title} numberOfLines={2}>{title}</Text>
-        <Text style={styles.description} numberOfLines={2}>{description}</Text>
-        {disabled && disabledText ? (
-          <Text style={styles.disabledText} numberOfLines={2}>{disabledText}</Text>
-        ) : null}
+        <View style={styles.copyTop}>
+          <Text style={styles.title} numberOfLines={1}>{title}</Text>
+          <Text style={styles.description} numberOfLines={2}>{description}</Text>
+        </View>
+        <View style={styles.copyBottom}>
+          {metaChips.length > 0 ? (
+            <View style={styles.metaRow}>
+              {metaChips.map((chip) => (
+                <View key={`${chip.iconName}-${chip.label}`} style={styles.metaChip}>
+                  <CustomIcon name={chip.iconName} size={11} color={V2_ACCENT} fillColor={V2_ACCENT} strokeColor={V2_ACCENT} />
+                  <Text style={styles.metaChipText}>{chip.label}</Text>
+                </View>
+              ))}
+            </View>
+          ) : null}
+          {disabled && disabledText ? (
+            <Text style={styles.disabledText} numberOfLines={2}>{disabledText}</Text>
+          ) : null}
+        </View>
       </View>
     </Pressable>
   );
@@ -60,28 +82,28 @@ export function HomeCareListCard({
 const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
-    alignItems: 'flex-start',
-    gap: 14,
+    alignItems: 'stretch',
+    gap: 12,
     paddingVertical: 4,
   },
   cardDisabled: {
     opacity: 0.76,
   },
   visual: {
-    width: 84,
-    height: 84,
-    borderRadius: 18,
+    width: 72,
+    height: 72,
+    borderRadius: 16,
     overflow: 'hidden',
     justifyContent: 'flex-end',
-    padding: 10,
+    padding: 8,
   },
   visualGlow: {
     position: 'absolute',
-    width: 84,
-    height: 84,
-    borderRadius: 42,
-    right: -18,
-    top: -10,
+    width: 72,
+    height: 72,
+    borderRadius: 36,
+    right: -16,
+    top: -8,
   },
   visualLabel: {
     color: '#F6F2EA',
@@ -93,19 +115,48 @@ const styles = StyleSheet.create({
   },
   copyWrap: {
     flex: 1,
-    gap: 5,
-    paddingTop: 4,
+    minHeight: 72,
+    justifyContent: 'space-between',
+    gap: 8,
+    paddingTop: 2,
+  },
+  copyTop: {
+    gap: 4,
+  },
+  copyBottom: {
+    gap: 6,
   },
   title: {
     color: V2_TEXT_PRIMARY,
-    fontSize: TYPE_SCALE.body + 1,
-    lineHeight: 22,
+    fontSize: 14,
     fontFamily: luxuryFonts.display,
   },
   description: {
     color: V2_TEXT_SECONDARY,
     fontSize: TYPE_CAPTION,
     lineHeight: 18,
+    fontFamily: luxuryFonts.sans,
+  },
+  metaRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 6,
+  },
+  metaChip: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+    borderRadius: 999,
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    backgroundColor: 'rgba(7, 10, 18, 0.28)',
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.08)',
+  },
+  metaChipText: {
+    color: V2_TEXT_PRIMARY,
+    fontSize: TYPE_CAPTION - 1,
+    fontWeight: '700',
     fontFamily: luxuryFonts.sans,
   },
   disabledText: {

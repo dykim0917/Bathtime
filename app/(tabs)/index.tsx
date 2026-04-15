@@ -68,6 +68,7 @@ import { HomeCareListCard } from '@/src/components/HomeCareListCard';
 import { HomeTripEditorialCard } from '@/src/components/HomeTripEditorialCard';
 import { OpenTabHeader } from '@/src/components/OpenTabHeader';
 import { HOME_CARE_HERO_IMAGE, HOME_HEADER_ILLUSTRATION } from '@/src/data/homeVisuals';
+import { CustomIconName } from '@/src/components/CustomIcon';
 
 const ENV_OPTIONS: { id: BathEnvironment; label: string }[] = [
   { id: 'bathtub', label: '욕조' },
@@ -93,12 +94,7 @@ const SECTION_GAP = 30;
 const HOME_PREVIEW_CARD_LIMIT = 4;
 const HOME_SECTION_ORDER: RecommendationCardEventPayload['section_order'] = 'care_first';
 
-interface CareEditorialMeta {
-  heroEyebrow: string;
-  heroTitle: string;
-  heroDescription: string;
-  listTitle: string;
-  listDescription: string;
+interface CareVisualMeta {
   visualLabel: string;
   accent: [string, string];
 }
@@ -189,76 +185,36 @@ function resolveFallback(intent: IntentCard, healthConditions: UserProfile['heal
   return 'none';
 }
 
-const HOME_CARE_EDITORIAL_META: Record<string, CareEditorialMeta> = {
+const HOME_CARE_VISUAL_META: Record<string, CareVisualMeta> = {
   muscle_relief: {
-    heroEyebrow: '묵직한 피로를 풀어내는 레시피',
-    heroTitle: '딥 릴렉싱 루틴',
-    heroDescription: '따뜻한 온기로 어깨와 전신의 긴장을 부드럽게 풀어내고, 하루의 피로를 조용히 정리합니다.',
-    listTitle: '무거워진 몸을 위한 딥 릴렉싱',
-    listDescription: '온기와 느린 호흡으로 몸의 힘을 천천히 내려놓는 회복 루틴.',
     visualLabel: 'DEEP REST',
     accent: ['#7D6656', '#C6AB96'],
   },
   sleep_ready: {
-    heroEyebrow: '밤의 고요를 부르는 레시피',
-    heroTitle: '수면 준비 루틴',
-    heroDescription: '따뜻한 온기로 교감신경을 안정시키고, 깊은 서파 수면으로 이어질 수 있도록 몸의 리듬을 차분히 낮춥니다.',
-    listTitle: '깊은 잠을 위한 나이트 스팀',
-    listDescription: '자극을 줄이고 천천히 가라앉으며 잠들기 전 긴장을 덜어내는 루틴.',
     visualLabel: 'NIGHT STEAM',
     accent: ['#193259', '#6178B9'],
   },
   hangover_relief: {
-    heroEyebrow: '무거운 하루 뒤를 정리하는 레시피',
-    heroTitle: '앰버 리셋 루틴',
-    heroDescription: '과한 자극 없이 흐트러진 리듬을 다시 정돈하고, 몸의 둔한 피로를 짧고 따뜻하게 풀어냅니다.',
-    listTitle: '속을 달래는 앰버 리셋',
-    listDescription: '무리하지 않는 온열 중심 루틴으로 몸의 리듬을 천천히 회복합니다.',
     visualLabel: 'AMBER RESET',
     accent: ['#84501D', '#D7A052'],
   },
   edema_relief: {
-    heroEyebrow: '가벼운 순환을 깨우는 레시피',
-    heroTitle: '미네랄 플로우 루틴',
-    heroDescription: '하체와 전신의 답답한 무게를 덜어내며, 부드러운 순환감으로 몸의 컨디션을 가볍게 회복합니다.',
-    listTitle: '내일의 가벼움을 위한 순환',
-    listDescription: '무거운 붓기를 덜어내고 가벼운 리듬을 되찾는 순환 루틴.',
     visualLabel: 'MINERAL FLOW',
     accent: ['#526D87', '#B7CBDD'],
   },
   cold_relief: {
-    heroEyebrow: '체온을 부드럽게 끌어올리는 레시피',
-    heroTitle: '웜 브레스 루틴',
-    heroDescription: '몸을 천천히 덥히고 긴장을 낮추며, 으슬한 컨디션을 포근하게 정리합니다.',
-    listTitle: '편안한 호흡을 위한 증기욕',
-    listDescription: '따뜻한 수증기와 천천한 호흡으로 코와 목의 긴장을 덜어내는 루틴.',
     visualLabel: 'WARM BREATH',
     accent: ['#4E6B79', '#9FC4CF'],
   },
   menstrual_relief: {
-    heroEyebrow: '아랫배의 긴장을 덜어내는 레시피',
-    heroTitle: '소프트 웜스 루틴',
-    heroDescription: '온열 중심의 편안한 흐름으로 몸 전체의 무거움을 풀고, 하루의 리듬을 조용히 정돈합니다.',
-    listTitle: '따뜻한 이완을 위한 소프트 웜스',
-    listDescription: '온기를 오래 유지하며 몸의 묵직함을 부드럽게 내려놓는 루틴.',
     visualLabel: 'SOFT WARMS',
     accent: ['#7C5968', '#C89DAF'],
   },
   stress_relief: {
-    heroEyebrow: '복잡한 생각을 가라앉히는 레시피',
-    heroTitle: '사일런트 리셋 루틴',
-    heroDescription: '호흡과 온기를 중심으로 마음의 속도를 천천히 낮추고, 하루의 긴장을 조용히 정리합니다.',
-    listTitle: '숨을 고르는 사일런트 리셋',
-    listDescription: '과열된 리듬을 낮추고 차분한 감각으로 되돌아오는 전환 루틴.',
     visualLabel: 'SILENT RESET',
     accent: ['#4B6651', '#89AF8C'],
   },
   mood_lift: {
-    heroEyebrow: '가벼운 기분 전환을 위한 레시피',
-    heroTitle: '소프트 글로우 루틴',
-    heroDescription: '과하지 않은 온기와 밝은 무드로 굳은 기분을 풀어내고, 몸과 마음의 결을 부드럽게 바꿉니다.',
-    listTitle: '기분을 띄우는 소프트 글로우',
-    listDescription: '무거운 기분을 천천히 들어올리는 따뜻한 기분 전환 루틴.',
     visualLabel: 'SOFT GLOW',
     accent: ['#715F35', '#D0B36B'],
   },
@@ -310,13 +266,34 @@ function selectHomeCareCards(
   return { heroCard, listCards };
 }
 
-function getCareEditorialMeta(intentId: string, fallbackTitle: string, fallbackDescription: string): CareEditorialMeta {
-  return HOME_CARE_EDITORIAL_META[intentId] ?? {
-    heroEyebrow: '오늘의 케어 루틴',
-    heroTitle: fallbackTitle,
-    heroDescription: fallbackDescription,
-    listTitle: fallbackTitle,
-    listDescription: fallbackDescription,
+function buildCarePreviewRecommendation(
+  intent: IntentCard,
+  profile: UserProfile | null,
+  environment: BathEnvironment
+): BathRecommendation {
+  const runtimeProfile = buildRuntimeProfile(profile, environment);
+  const baseRecommendation = generateCareRecommendation(
+    runtimeProfile,
+    mapIntentToTags(intent.intent_id),
+    toEngineEnvironment(environment),
+    intent.intent_id
+  );
+  const defaultOption = (CARE_SUBPROTOCOL_OPTIONS[intent.intent_id] ?? []).find(
+    (option) => option.id === intent.default_subprotocol_id || option.is_default
+  );
+
+  if (!defaultOption) return baseRecommendation;
+
+  return applySubProtocolOverrides(
+    baseRecommendation,
+    defaultOption,
+    environment,
+    intent.intent_id
+  );
+}
+
+function getCareVisualMeta(intentId: string): CareVisualMeta {
+  return HOME_CARE_VISUAL_META[intentId] ?? {
     visualLabel: 'CARE ROUTINE',
     accent: ['#5D708A', '#99AEC5'],
   };
@@ -380,36 +357,24 @@ export default function HomeIntentScreen() {
     [careCards, normalizedEnvironment, timeContext]
   );
 
-  const heroFallbackTitle = heroCard?.copy_title ?? '오늘의 케어 루틴';
-  const heroFallbackDescription = heroCard
+  const heroTitle = heroCard?.copy_title ?? '오늘의 케어 루틴';
+  const heroDescription = heroCard
     ? getEnvironmentSubtitle(heroCard, normalizedEnvironment)
     : '오늘의 환경에 맞는 케어 루틴을 보여드려요.';
-  const heroEditorial = useMemo(
-    () => getCareEditorialMeta(heroCard?.intent_id ?? '', heroFallbackTitle, heroFallbackDescription),
-    [heroCard?.intent_id, heroFallbackDescription, heroFallbackTitle]
+  const heroVisual = useMemo(
+    () => getCareVisualMeta(heroCard?.intent_id ?? ''),
+    [heroCard?.intent_id]
   );
   const heroPreviewRecommendation = useMemo(() => {
     if (!heroCard) return null;
-
-    const runtimeProfile = buildRuntimeProfile(profile, environment);
-    const baseRecommendation = generateCareRecommendation(
-      runtimeProfile,
-      mapIntentToTags(heroCard.intent_id),
-      toEngineEnvironment(environment)
-    );
-    const defaultOption = (CARE_SUBPROTOCOL_OPTIONS[heroCard.intent_id] ?? []).find(
-      (option) => option.id === heroCard.default_subprotocol_id || option.is_default
-    );
-
-    if (!defaultOption) return baseRecommendation;
-
-    return applySubProtocolOverrides(
-      baseRecommendation,
-      defaultOption,
-      environment,
-      heroCard.intent_id
-    );
+    return buildCarePreviewRecommendation(heroCard, profile, environment);
   }, [environment, heroCard, profile]);
+  const listPreviewById = useMemo(
+    () => Object.fromEntries(
+      listCards.map((intent) => [intent.id, buildCarePreviewRecommendation(intent, profile, environment)])
+    ),
+    [environment, listCards, profile]
+  );
 
   const buildIntentPayload = useCallback((intent: IntentCard): RecommendationCardEventPayload => {
     const appVersion = Constants.expoConfig?.version ?? 'unknown';
@@ -726,15 +691,21 @@ export default function HomeIntentScreen() {
           {heroCard ? (
             <>
               <HomeCareHeroCard
-                eyebrow={heroEditorial.heroEyebrow}
-                title={heroEditorial.heroTitle}
-                description={heroEditorial.heroDescription}
-                visualLabel={heroEditorial.visualLabel}
+                eyebrow={copy.careCards.featuredEyebrow}
+                title={heroTitle}
+                description={heroDescription}
+                visualLabel={heroVisual.visualLabel}
                 metaChips={[
-                  `🌡️ ${heroPreviewRecommendation?.temperature.recommended ?? 38}도`,
-                  `⏳ ${heroPreviewRecommendation?.durationMinutes ?? 10}분`,
+                  {
+                    iconName: 'temperature' as CustomIconName,
+                    label: `${heroPreviewRecommendation?.temperature.recommended ?? 38}도`,
+                  },
+                  {
+                    iconName: 'hourglass' as CustomIconName,
+                    label: `${heroPreviewRecommendation?.durationMinutes ?? 10}분`,
+                  },
                 ]}
-                accent={heroEditorial.accent}
+                accent={heroVisual.accent}
                 backgroundSource={HOME_CARE_HERO_IMAGE}
                 fitLabel={getEnvironmentFitLabel(heroCard, normalizedEnvironment)}
                 safetyBadge={
@@ -753,18 +724,25 @@ export default function HomeIntentScreen() {
           <View style={styles.careList}>
             {listCards.map((intent) => {
               const disabled = !intent.allowed_environments.includes(normalizedEnvironment);
-              const editorial = getCareEditorialMeta(
-                intent.intent_id,
-                intent.copy_title,
-                getEnvironmentSubtitle(intent, normalizedEnvironment)
-              );
+              const visual = getCareVisualMeta(intent.intent_id);
+              const previewRecommendation = listPreviewById[intent.id];
               return (
                 <HomeCareListCard
                   key={intent.id}
-                  title={editorial.listTitle}
-                  description={editorial.listDescription}
-                  visualLabel={editorial.visualLabel}
-                  accent={editorial.accent}
+                  title={intent.copy_title}
+                  description={getEnvironmentSubtitle(intent, normalizedEnvironment)}
+                  visualLabel={visual.visualLabel}
+                  accent={visual.accent}
+                  metaChips={[
+                    {
+                      iconName: 'temperature' as CustomIconName,
+                      label: `${previewRecommendation?.temperature.recommended ?? 38}도`,
+                    },
+                    {
+                      iconName: 'hourglass' as CustomIconName,
+                      label: `${previewRecommendation?.durationMinutes ?? 10}분`,
+                    },
+                  ]}
                   disabled={disabled}
                   disabledText={copy.careCards.restrictedDisabled}
                   onPress={() => handleOpenCareSubProtocol(intent)}

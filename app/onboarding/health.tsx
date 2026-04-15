@@ -9,14 +9,15 @@ import { useUserProfile } from '@/src/hooks/useUserProfile';
 import { TYPE_CAPTION, TYPE_BODY, TYPE_HEADING_LG, TYPE_TITLE, V2_ACCENT, V2_ACCENT_SOFT, V2_ACCENT_TEXT, V2_BG_BASE, V2_BG_BOTTOM, V2_BG_TOP, V2_BORDER, V2_TEXT_MUTED, V2_TEXT_PRIMARY, V2_TEXT_SECONDARY } from '@/src/data/colors';
 import { luxuryFonts, luxuryRadii, luxuryTracking } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
+import { CustomIcon } from '@/src/components/CustomIcon';
 
-interface ConditionOption { id: HealthCondition; badge: string; labelKo: string; }
+interface ConditionOption { id: HealthCondition; labelKo: string; }
 const CONDITIONS: ConditionOption[] = [
-  { id: 'hypertension_heart', badge: '01', labelKo: '고혈압/심장' },
-  { id: 'pregnant', badge: '02', labelKo: '임신 중' },
-  { id: 'diabetes', badge: '03', labelKo: '당뇨' },
-  { id: 'sensitive_skin', badge: '04', labelKo: '민감성 피부' },
-  { id: 'none', badge: '05', labelKo: '해당 없음' },
+  { id: 'hypertension_heart', labelKo: '고혈압/심장' },
+  { id: 'pregnant', labelKo: '임신 중' },
+  { id: 'diabetes', labelKo: '당뇨' },
+  { id: 'sensitive_skin', labelKo: '민감성 피부' },
+  { id: 'none', labelKo: '해당 없음' },
 ];
 
 export default function OnboardingHealth() {
@@ -84,7 +85,15 @@ export default function OnboardingHealth() {
                 const selected = selectedConditions.has(cond.id);
                 return (
                   <Pressable key={cond.id} style={[ui.glassCardV2, styles.conditionCard, selected && styles.conditionCardSelected]} onPress={() => handleToggle(cond.id)}>
-                    <View style={[styles.conditionIcon, selected && styles.conditionIconSelected]}><Text style={styles.conditionEmoji}>{cond.badge}</Text></View>
+                    <View style={[styles.conditionIcon, selected && styles.conditionIconSelected]}>
+                      <CustomIcon
+                        name="care"
+                        size={18}
+                        color={selected ? V2_ACCENT : V2_TEXT_SECONDARY}
+                        fillColor={selected ? V2_ACCENT : V2_TEXT_SECONDARY}
+                        strokeColor={selected ? V2_ACCENT : V2_TEXT_SECONDARY}
+                      />
+                    </View>
                     <Text style={[styles.conditionLabel, selected && styles.conditionLabelSelected]}>{cond.labelKo}</Text>
                     <View style={[styles.radio, selected && styles.radioSelected]}>{selected ? <FontAwesome name="check" size={11} color={V2_ACCENT_TEXT} /> : null}</View>
                   </Pressable>
@@ -125,9 +134,8 @@ const styles = StyleSheet.create({
   conditions: { gap: 12 },
   conditionCard: { minHeight: 68, paddingHorizontal: 16, flexDirection: 'row', alignItems: 'center' },
   conditionCardSelected: { borderColor: V2_ACCENT, backgroundColor: 'rgba(176, 141, 87, 0.08)' },
-  conditionIcon: { width: 38, height: 38, borderRadius: luxuryRadii.button, backgroundColor: 'rgba(255,255,255,0.06)', justifyContent: 'center', alignItems: 'center', marginRight: 12 },
-  conditionIconSelected: { backgroundColor: V2_ACCENT_SOFT },
-  conditionEmoji: { fontSize: TYPE_CAPTION, color: V2_TEXT_PRIMARY, fontWeight: '700', letterSpacing: 1, fontVariant: ['tabular-nums'], fontFamily: luxuryFonts.mono },
+  conditionIcon: { width: 38, height: 38, borderRadius: luxuryRadii.button, backgroundColor: 'rgba(255,255,255,0.06)', borderWidth: 1, borderColor: V2_BORDER, justifyContent: 'center', alignItems: 'center', marginRight: 12 },
+  conditionIconSelected: { backgroundColor: V2_ACCENT_SOFT, borderColor: 'rgba(176, 141, 87, 0.32)' },
   conditionLabel: { flex: 1, fontSize: TYPE_TITLE, color: V2_TEXT_PRIMARY, fontFamily: luxuryFonts.display },
   conditionLabelSelected: { color: V2_ACCENT },
   radio: { width: 24, height: 24, borderRadius: 12, borderWidth: 1.5, borderColor: V2_BORDER, justifyContent: 'center', alignItems: 'center' },

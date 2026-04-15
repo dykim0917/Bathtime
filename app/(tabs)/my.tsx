@@ -29,7 +29,6 @@ import { useHaptic } from '@/src/hooks/useHaptic';
 import { OpenTabHeader } from '@/src/components/OpenTabHeader';
 import { PersistentDisclosure } from '@/src/components/PersistentDisclosure';
 import {
-  CATEGORY_CARD_EMOJI,
   TYPE_BODY,
   TYPE_CAPTION,
   TYPE_TITLE,
@@ -47,6 +46,7 @@ import {
   V2_TEXT_PRIMARY,
   V2_TEXT_SECONDARY,
 } from '@/src/data/colors';
+import { CustomIcon, getIntentIconName } from '@/src/components/CustomIcon';
 import { luxuryFonts } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
 
@@ -197,7 +197,7 @@ function HistorySection({
   const renderCard = ({ item, index }: { item: BathRecommendation; index: number }) => {
     const persona = PERSONA_DEFINITIONS.find((p) => p.code === item.persona);
     const title = item.themeTitle ?? persona?.nameKo ?? copy.history.cardLabels.defaultTitle;
-    const emoji = CATEGORY_CARD_EMOJI[item.intentId ?? ''] ?? 'BS';
+    const intentIconName = getIntentIconName(item.intentId);
     const date = new Date(item.createdAt);
     const dateStr = `${date.getMonth() + 1}/${date.getDate()}`;
     const memory = memoryByRecommendation[item.id];
@@ -215,7 +215,15 @@ function HistorySection({
       >
         <View style={[styles.gridCardHeader, { backgroundColor: `${item.colorHex}22` }]}> 
           <View style={styles.gridCardGlow} />
-          <Text style={styles.gridCardEmoji}>{emoji}</Text>
+          <View style={[styles.gridCardIconWrap, { backgroundColor: `${item.colorHex}20`, borderColor: `${item.colorHex}42` }]}>
+            <CustomIcon
+              name={intentIconName ?? 'care'}
+              size={24}
+              color={V2_TEXT_PRIMARY}
+              fillColor={V2_TEXT_PRIMARY}
+              strokeColor={V2_TEXT_PRIMARY}
+            />
+          </View>
           <View style={[styles.modePill, { backgroundColor: `${item.colorHex}33` }]}> 
             <Text style={styles.modePillText}>{MODE_LABELS[item.mode]}</Text>
           </View>
@@ -288,7 +296,9 @@ function HistorySection({
             )}
           </View>
           <View style={styles.insightBannerIcon}>
-            <Text style={styles.insightBannerEmoji}>BS</Text>
+            <View style={styles.insightBannerIconBadge}>
+              <CustomIcon name="care" size={20} color={V2_ACCENT} fillColor={V2_ACCENT} strokeColor={V2_ACCENT} />
+            </View>
           </View>
         </View>
       )}
@@ -332,7 +342,9 @@ function HistorySection({
               <View style={styles.emptyBadge}>
                 <Text style={styles.emptyBadgeText}>첫 루틴을 시작해보세요</Text>
               </View>
-              <Text style={styles.emptyEmoji}>BS</Text>
+              <View style={styles.emptyIconWrap}>
+                <CustomIcon name="care" size={24} color={V2_ACCENT} fillColor={V2_ACCENT} strokeColor={V2_ACCENT} />
+              </View>
               <Text style={styles.emptyText}>{copy.history.empty.title}</Text>
               <Text style={styles.emptySubtext}>{copy.history.empty.subtitle}</Text>
               <Text style={styles.emptyGuide}>첫 추천을 저장하면 이 공간이 나만의 루틴 기록으로 채워져요.</Text>
@@ -699,14 +711,20 @@ const styles = StyleSheet.create({
   },
   insightBannerIcon: {
     marginLeft: 16,
+    width: 34,
+    height: 34,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  insightBannerEmoji: {
-    fontSize: TYPE_CAPTION + 1,
-    color: V2_TEXT_PRIMARY,
-    fontWeight: '700',
-    letterSpacing: 1.2,
-    fontVariant: ['tabular-nums'],
-    fontFamily: luxuryFonts.mono,
+  insightBannerIconBadge: {
+    width: 34,
+    height: 34,
+    borderRadius: 17,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: V2_ACCENT_SOFT,
+    borderWidth: 1,
+    borderColor: 'rgba(176, 141, 87, 0.28)',
   },
   filterScroll: {
     marginBottom: 4,
@@ -769,13 +787,13 @@ const styles = StyleSheet.create({
     borderRadius: 44,
     backgroundColor: 'rgba(255,255,255,0.06)',
   },
-  gridCardEmoji: {
-    fontSize: TYPE_CAPTION + 1,
-    color: V2_TEXT_PRIMARY,
-    fontWeight: '700',
-    letterSpacing: 1.2,
-    fontVariant: ['tabular-nums'],
-    fontFamily: luxuryFonts.mono,
+  gridCardIconWrap: {
+    width: 34,
+    height: 34,
+    borderRadius: 17,
+    borderWidth: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   modePill: {
     position: 'absolute',
@@ -840,14 +858,16 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     letterSpacing: 1.1,
   },
-  emptyEmoji: {
-    fontSize: TYPE_CAPTION + 2,
-    color: V2_TEXT_PRIMARY,
-    fontWeight: '700',
-    letterSpacing: 1.2,
-    fontVariant: ['tabular-nums'],
-    fontFamily: luxuryFonts.mono,
+  emptyIconWrap: {
+    width: 40,
+    height: 40,
     marginBottom: 14,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 20,
+    backgroundColor: V2_ACCENT_SOFT,
+    borderWidth: 1,
+    borderColor: 'rgba(176, 141, 87, 0.28)',
   },
   emptyText: {
     fontSize: TYPE_TITLE,
