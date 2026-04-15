@@ -1,6 +1,6 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { View, Text, Pressable, ScrollView, StyleSheet, useWindowDimensions } from 'react-native';
-import { router } from 'expo-router';
+import { router, useFocusEffect } from 'expo-router';
 import Constants from 'expo-constants';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -22,7 +22,6 @@ import { upsertSessionRecord } from '@/src/storage/sessionLog';
 import { loadLastEnvironment, saveLastEnvironment } from '@/src/storage/environment';
 import { SafetyWarning } from '@/src/components/SafetyWarning';
 import {
-  CATEGORY_CARD_EMOJI,
   TYPE_SCALE,
   V2_ACCENT,
   V2_ACCENT_SOFT,
@@ -36,6 +35,7 @@ import {
   V2_WARNING,
 } from '@/src/data/colors';
 import { CategoryCard } from '@/src/components/CategoryCard';
+import { getIntentIconName } from '@/src/components/CustomIcon';
 import {
   RecommendationCardEventPayload,
   trackIntentCardClick,
@@ -57,12 +57,14 @@ import {
 import { applySubProtocolOverrides } from '@/src/engine/subprotocol';
 import { inferFeelingBefore } from '@/src/engine/feeling';
 import { copy } from '@/src/content/copy';
+import { OpenTabHeader } from '@/src/components/OpenTabHeader';
+import { luxuryFonts } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
 
-const ENV_OPTIONS: { id: BathEnvironment; emoji: string; label: string }[] = [
-  { id: 'bathtub', emoji: '🛁', label: '욕조' },
-  { id: 'partial_bath', emoji: '🦶', label: '부분입욕' },
-  { id: 'shower', emoji: '🚿', label: '샤워' },
+const ENV_OPTIONS: { id: BathEnvironment; label: string }[] = [
+  { id: 'bathtub', label: '욕조' },
+  { id: 'partial_bath', label: '부분입욕' },
+  { id: 'shower', label: '샤워' },
 ];
 
 const ALL_CARE_CARDS = CARE_INTENT_CARDS;
@@ -191,7 +193,8 @@ export default function CareScreen() {
   const normalizedEnvironment = normalizeEnvironmentInput(environment);
   const intentCardWidth = Math.max(220, screenWidth - SCREEN_HORIZONTAL_PADDING * 2);
 
-  useEffect(() => {
+  useFocusEffect(
+    useCallback(() => {
     const appVersion = Constants.expoConfig?.version ?? 'unknown';
     const locale = Intl.DateTimeFormat().resolvedOptions().locale;
     const healthConditions = profile?.healthConditions ?? ['none'];
@@ -221,7 +224,8 @@ export default function CareScreen() {
       };
       trackIntentCardImpression(payload);
     });
-  }, [environment, profile?.createdAt, profile?.healthConditions, timeContext]);
+    }, [environment, profile?.createdAt, profile?.healthConditions, timeContext])
+  );
 
   const disclosureLines = useMemo(() => {
     const healthConditions = profile?.healthConditions ?? ['none'];
@@ -282,7 +286,8 @@ export default function CareScreen() {
     const baseRecommendation = generateCareRecommendation(
       runtimeProfile,
       mapIntentToTags(selectedIntent.intent_id),
-      toEngineEnvironment(environment)
+      toEngineEnvironment(environment),
+      selectedIntent.intent_id
     );
 
     const recommendation = applySubProtocolOverrides(
@@ -348,11 +353,11 @@ export default function CareScreen() {
     <View style={[ui.screenShellV2, { paddingTop: insets.top }]}> 
       <LinearGradient colors={[V2_BG_TOP, V2_BG_BASE, V2_BG_BOTTOM]} style={StyleSheet.absoluteFillObject} />
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
-        <View style={[ui.glassCardV2, styles.heroCard]}>
-          <Text style={styles.eyebrow}>CARE ROUTINE</Text>
-          <Text style={ui.titleHeroV2}>케어 루틴</Text>
-          <Text style={styles.subtitle}>증상과 컨디션에 맞춰 안전한 루틴을 바로 골라보세요.</Text>
-        </View>
+        <OpenTabHeader
+          eyebrow="케어 가이드"
+          title="케어 루틴"
+          subtitle="증상과 컨디션에 맞춰 안전한 루틴을 바로 골라보세요."
+        />
 
         <View>
           <Text style={styles.sectionTitle}>입욕 환경</Text>
@@ -364,7 +369,7 @@ export default function CareScreen() {
                 onPress={() => handleSelectEnvironment(option.id)}
               >
                 <Text style={[styles.envText, environment === option.id && styles.envTextActive]} numberOfLines={1}>
-                  {option.emoji} {option.label}
+                  {option.label}
                 </Text>
               </Pressable>
             ))}
@@ -387,15 +392,15 @@ export default function CareScreen() {
                 <CategoryCard
                   key={intent.id}
                   title={intent.copy_title}
-                  subtitle={isPlaceholder ? '곧 추가될 예정이에요' : getEnvironmentSubtitle(intent, normalizedEnvironment)}
-                  emoji={CATEGORY_CARD_EMOJI[intent.intent_id] ?? '🛁'}
+                  subtitle={isPlaceholder ? copy.careCards.placeholderSubtitle : getEnvironmentSubtitle(intent, normalizedEnvironment)}
+                  iconName={getIntentIconName(intent.intent_id)}
                   bgColor={getIntentTint(intent.intent_id)}
-                  eyebrow={isFeaturedCard ? 'EDITOR PICK' : 'QUICK ROUTINE'}
-                  footerHint={disabled ? '환경 제약 확인하기' : '세부 루틴 고르기'}
+                  eyebrow={isFeaturedCard ? copy.careCards.featuredEyebrow : copy.careCards.quickEyebrow}
+                  footerHint={disabled ? copy.careCards.disabledFooter : copy.careCards.defaultFooter}
                   fitLabel={isPlaceholder ? undefined : getEnvironmentFitLabel(intent, normalizedEnvironment)}
                   safetyBadge={safetyBadge}
                   disabled={disabled}
-                  disabledText={isPlaceholder ? '준비 중이에요' : '현재 환경에선 제한적으로 추천돼요'}
+                  disabledText={isPlaceholder ? copy.careCards.placeholderDisabled : copy.careCards.restrictedDisabled}
                   onPress={() => handleOpenSubProtocol(intent)}
                   width={intentCardWidth}
                   minHeight={isFeaturedCard ? CARD_MIN_HEIGHT_REGULAR + 24 : CARD_MIN_HEIGHT_REGULAR}
@@ -441,26 +446,11 @@ const styles = StyleSheet.create({
     paddingBottom: 36,
     gap: SECTION_GAP,
   },
-  heroCard: {
-    padding: 18,
-    gap: 8,
-  },
-  eyebrow: {
-    fontSize: TYPE_SCALE.caption - 1,
-    fontWeight: '700',
-    color: V2_ACCENT,
-    letterSpacing: 1.2,
-  },
-  subtitle: {
-    fontSize: TYPE_SCALE.body,
-    color: V2_TEXT_SECONDARY,
-    lineHeight: 21,
-  },
   sectionTitle: {
     color: V2_TEXT_PRIMARY,
-    fontWeight: '700',
     fontSize: TYPE_SCALE.title,
     marginBottom: 12,
+    fontFamily: luxuryFonts.display,
   },
   sectionIntro: {
     color: V2_TEXT_MUTED,
@@ -468,6 +458,7 @@ const styles = StyleSheet.create({
     lineHeight: 18,
     marginTop: -4,
     marginBottom: 12,
+    fontFamily: luxuryFonts.sans,
   },
   environmentRow: {
     flexDirection: 'row',
@@ -482,6 +473,7 @@ const styles = StyleSheet.create({
     color: V2_TEXT_SECONDARY,
     fontSize: TYPE_SCALE.body,
     fontWeight: '600',
+    fontFamily: luxuryFonts.sans,
   },
   envTextActive: {
     color: V2_ACCENT,

@@ -11,7 +11,7 @@ const SAFETY_RULES: SafetyRule[] = [
     condition: 'hypertension_heart',
     maxTemp: 38,
     warningMessage:
-      '⚠️ 고혈압/심장 질환이 있으시므로 수온이 38°C로 제한됩니다.',
+      '고혈압/심장 질환이 있으시므로 수온이 38°C로 제한됩니다.',
     severity: 'block',
   },
   {
@@ -23,7 +23,7 @@ const SAFETY_RULES: SafetyRule[] = [
     ],
     maxTemp: 38,
     warningMessage:
-      '🤰 임신 중에는 특정 아로마 오일이 제외되고 수온이 38°C로 제한됩니다.',
+      '임신 중에는 특정 아로마 오일이 제외되고 수온이 38°C로 제한됩니다.',
     severity: 'block',
   },
   {
@@ -31,20 +31,20 @@ const SAFETY_RULES: SafetyRule[] = [
     maxTemp: 38,
     forcedBathType: 'foot',
     warningMessage:
-      '🍺 음주 후 입욕은 위험합니다. 미온수 족욕만 가능합니다.',
+      '음주 후 입욕은 위험합니다. 미온수 족욕만 가능합니다.',
     severity: 'block',
   },
   {
     condition: 'diabetes',
     maxTemp: 40,
     warningMessage:
-      '🩸 당뇨가 있으시므로 족욕 시 수온을 자주 확인해주세요. 화상에 유의하세요.',
+      '당뇨가 있으시므로 족욕 시 수온을 자주 확인해주세요. 화상에 유의하세요.',
     severity: 'warn',
   },
   {
     condition: 'sensitive_skin',
     warningMessage:
-      '🌵 민감성 피부이시므로 자극적인 성분은 제외됩니다.',
+      '민감성 피부이시므로 자극적인 성분은 제외됩니다.',
     severity: 'warn',
   },
 ];

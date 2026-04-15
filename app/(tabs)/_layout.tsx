@@ -2,6 +2,7 @@ import React from 'react';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Tabs } from 'expo-router';
 import { V2_ACCENT, V2_TEXT_MUTED } from '@/src/data/colors';
+import { luxuryFonts } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
 
 function TabBarIcon(props: { name: React.ComponentProps<typeof FontAwesome>['name']; color: string; }) {
@@ -16,7 +17,7 @@ export default function TabLayout() {
         tabBarActiveTintColor: V2_ACCENT,
         tabBarInactiveTintColor: V2_TEXT_MUTED,
         tabBarStyle: ui.tabBarStyle,
-        tabBarLabelStyle: { fontSize: 11, fontWeight: '700', letterSpacing: 0.1 },
+        tabBarLabelStyle: { fontSize: 11, fontWeight: '700', letterSpacing: 0.2, fontFamily: luxuryFonts.sans },
         tabBarItemStyle: { borderRadius: 10, marginHorizontal: 0 },
         tabBarBackground: () => null,
       }}

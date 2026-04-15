@@ -6,6 +6,7 @@ import {
   TYPE_BODY,
   TYPE_CAPTION,
   TYPE_HEADING_LG,
+  TYPE_TITLE,
   V2_ACCENT,
   V2_ACCENT_SOFT,
   V2_ACCENT_TEXT,
@@ -17,6 +18,7 @@ import {
   V2_TEXT_PRIMARY,
   V2_TEXT_SECONDARY,
 } from '@/src/data/colors';
+import { luxuryFonts, luxuryRadii, luxuryTracking } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
 
 export default function WelcomeScreen() {
@@ -35,11 +37,11 @@ export default function WelcomeScreen() {
 
           <View style={styles.hero}>
             <View style={styles.heroOrb}>
-              <Text style={styles.heroEmoji}>🛁</Text>
+              <Image source={require('../../assets/images/brand/bath-symbol.png')} style={styles.heroSymbol} resizeMode="contain" />
             </View>
-            <Text style={styles.kicker}>PRIVATE BATH CURATION</Text>
+            <Text style={styles.kicker}>오늘을 위한 목욕 가이드</Text>
             <Text style={styles.title}>나만의 목욕 루틴</Text>
-            <Text style={styles.subtitle}>지금 상태에 맞는 입욕 레시피를 차분한 프리미엄 무드로 추천합니다.</Text>
+            <Text style={styles.subtitle}>지금 상태에 맞는 입욕 루틴을 부담 없이 시작할 수 있게 추천해드려요.</Text>
           </View>
 
           <View style={[ui.glassCardV2, styles.featureCard]}>
@@ -77,21 +79,21 @@ const styles = StyleSheet.create({
   },
   logoRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8 },
   logoIcon: { width: 18, height: 20 },
-  logoText: { color: V2_ACCENT, fontSize: TYPE_CAPTION + 1, fontWeight: '700', letterSpacing: 1.8 },
-  hero: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: 12 },
+  logoText: { color: V2_ACCENT, fontSize: TYPE_CAPTION + 1, fontWeight: '700', letterSpacing: 2, fontFamily: luxuryFonts.sans },
+  hero: { flex: 1, alignItems: 'center', justifyContent: 'center', gap: 14 },
   heroOrb: {
     width: 132, height: 132, borderRadius: 66, alignItems: 'center', justifyContent: 'center',
     backgroundColor: V2_ACCENT_SOFT, borderWidth: 1, borderColor: V2_BORDER,
   },
-  heroEmoji: { fontSize: 58 },
-  kicker: { color: V2_ACCENT, fontSize: TYPE_CAPTION, fontWeight: '700', letterSpacing: 1.8 },
-  title: { color: V2_TEXT_PRIMARY, fontSize: TYPE_HEADING_LG + 2, fontWeight: '800', textAlign: 'center' },
-  subtitle: { color: V2_TEXT_SECONDARY, fontSize: TYPE_BODY + 1, lineHeight: 24, textAlign: 'center', paddingHorizontal: 10 },
-  featureCard: { padding: 18, gap: 8, marginBottom: 18 },
-  featureTitle: { color: V2_TEXT_PRIMARY, fontSize: TYPE_BODY + 1, fontWeight: '700', marginBottom: 2 },
-  featureLine: { color: V2_TEXT_MUTED, fontSize: TYPE_BODY, lineHeight: 20 },
+  heroSymbol: { width: 48, height: 54 },
+  kicker: { color: V2_ACCENT, fontSize: TYPE_CAPTION, fontWeight: '700', letterSpacing: luxuryTracking.eyebrow, fontFamily: luxuryFonts.sans },
+  title: { color: V2_TEXT_PRIMARY, fontSize: TYPE_HEADING_LG + 6, textAlign: 'center', lineHeight: 44, fontFamily: luxuryFonts.display },
+  subtitle: { color: V2_TEXT_SECONDARY, fontSize: TYPE_BODY + 1, lineHeight: 24, textAlign: 'center', paddingHorizontal: 10, fontFamily: luxuryFonts.sans },
+  featureCard: { padding: 20, gap: 8, marginBottom: 18 },
+  featureTitle: { color: V2_TEXT_PRIMARY, fontSize: TYPE_TITLE, marginBottom: 4, fontFamily: luxuryFonts.display },
+  featureLine: { color: V2_TEXT_MUTED, fontSize: TYPE_BODY, lineHeight: 20, fontFamily: luxuryFonts.sans },
   footer: { gap: 14 },
   primaryCta: { width: '100%' },
   secondaryLink: { alignItems: 'center', justifyContent: 'center', paddingVertical: 8 },
-  secondaryText: { color: V2_TEXT_MUTED, fontSize: TYPE_BODY },
+  secondaryText: { color: V2_TEXT_MUTED, fontSize: TYPE_BODY, fontFamily: luxuryFonts.sans },
 });

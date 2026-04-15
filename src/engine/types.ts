@@ -95,25 +95,9 @@ export interface HomeOrchestrationContract {
 export type RecommendationMode = 'care' | 'trip';
 
 // --- Theme Catalog (Trip mode) ---
-export type ThemeId =
-  | 'kyoto_forest'
-  | 'rainy_camping'
-  | 'midnight_paris'
-  | 'nordic_sauna'
-  | 'desert_onsen'
-  | 'ocean_dawn'
-  | 'tea_house'
-  | 'snow_cabin';
+export type ThemeId = string;
 
-export type ThemeCoverStyleId =
-  | 'kyoto'
-  | 'rain'
-  | 'paris'
-  | 'nordic'
-  | 'desert'
-  | 'ocean'
-  | 'tea'
-  | 'snow';
+export type ThemeCoverStyleId = string;
 
 // --- Health Conditions (Fixed Profile) ---
 export type HealthCondition =

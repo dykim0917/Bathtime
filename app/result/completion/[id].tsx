@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
-  TouchableOpacity,
+  Pressable,
   StyleSheet,
   SafeAreaView,
   Platform,
@@ -34,6 +34,7 @@ import {
   V2_TEXT_PRIMARY,
   V2_TEXT_SECONDARY,
 } from '@/src/data/colors';
+import { luxuryFonts, luxuryTracking } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
 
 function toEnvironmentLabel(environment: string): string {
@@ -147,9 +148,9 @@ export default function CompletionScreen() {
       <View style={styles.softOverlay} />
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.content}>
-          <Animated.Text entering={BounceIn.duration(800)} style={styles.celebrationEmoji}>
-            🎉
-          </Animated.Text>
+          <Animated.View entering={BounceIn.duration(800)} style={styles.celebrationBadge}>
+            <Text style={styles.celebrationBadgeText}>DONE</Text>
+          </Animated.View>
 
           <Animated.View entering={FadeIn.duration(600).delay(200)} style={styles.headerBlock}>
             <View style={styles.stepBadge}>
@@ -159,7 +160,7 @@ export default function CompletionScreen() {
           </Animated.View>
 
           <Animated.View entering={FadeIn.duration(600).delay(350)} style={[ui.glassCardV2, styles.statsCard]}>
-            <Text style={styles.statsLabel}>MONTHLY COUNT</Text>
+            <Text style={styles.statsLabel}>이번 달 기록</Text>
             <Text style={styles.statsText}>
               {copy.completion.monthlyPrefix}{' '}
               <Text style={styles.statsHighlight}>{monthlyCount}</Text>
@@ -170,35 +171,31 @@ export default function CompletionScreen() {
           <Animated.View entering={FadeIn.duration(600).delay(500)} style={[ui.glassCardV2, styles.feedbackSection]}>
             <Text style={styles.feedbackTitle}>{feedbackTitle}</Text>
             <View style={styles.feedbackButtons}>
-              <TouchableOpacity
+              <Pressable
                 style={[
                   styles.feedbackButton,
                   feedback === 'good' && styles.feedbackButtonActive,
                 ]}
                 onPress={() => handleFeedback('good')}
-                activeOpacity={0.8}
                 disabled={feedback !== null}
               >
-                <Text style={styles.feedbackEmoji}>👍</Text>
                 <Text style={[styles.feedbackLabel, feedback === 'good' && styles.feedbackLabelActive]}>
                   {copy.completion.feedback.good}
                 </Text>
-              </TouchableOpacity>
+              </Pressable>
 
-              <TouchableOpacity
+              <Pressable
                 style={[
                   styles.feedbackButton,
                   feedback === 'bad' && styles.feedbackButtonActive,
                 ]}
                 onPress={() => handleFeedback('bad')}
-                activeOpacity={0.8}
                 disabled={feedback !== null}
               >
-                <Text style={styles.feedbackEmoji}>👎</Text>
                 <Text style={[styles.feedbackLabel, feedback === 'bad' && styles.feedbackLabelActive]}>
                   {copy.completion.feedback.bad}
                 </Text>
-              </TouchableOpacity>
+              </Pressable>
             </View>
             {feedback && (
               <Animated.Text entering={FadeIn.duration(300)} style={styles.feedbackThanks}>
@@ -227,20 +224,18 @@ export default function CompletionScreen() {
           )}
 
           <Animated.View entering={FadeIn.duration(500).delay(800)} style={styles.actionRow}>
-            <TouchableOpacity
+            <Pressable
               style={[ui.secondaryButtonV2, styles.actionButton]}
               onPress={handleGoHistory}
-              activeOpacity={0.85}
             >
               <Text style={ui.secondaryButtonTextV2}>기록 보기</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
+            </Pressable>
+            <Pressable
               style={[ui.primaryButtonV2, styles.actionButton]}
               onPress={handleGoHome}
-              activeOpacity={0.85}
             >
               <Text style={ui.primaryButtonTextV2}>{copy.completion.homeCta}</Text>
-            </TouchableOpacity>
+            </Pressable>
           </Animated.View>
         </View>
       </SafeAreaView>
@@ -271,20 +266,36 @@ const styles = StyleSheet.create({
     paddingVertical: 24,
     gap: 18,
   },
-  celebrationEmoji: {
-    fontSize: 72,
-    textAlign: 'center',
+  celebrationBadge: {
+    alignSelf: 'center',
+    minWidth: 96,
+    borderRadius: 999,
+    paddingHorizontal: 18,
+    paddingVertical: 10,
+    borderWidth: 1,
+    borderColor: V2_BORDER,
+    backgroundColor: V2_ACCENT_SOFT,
+    alignItems: 'center',
+  },
+  celebrationBadgeText: {
+    fontSize: TYPE_SCALE.caption,
+    color: V2_ACCENT,
+    fontWeight: '800',
+    letterSpacing: 1.4,
+    fontVariant: ['tabular-nums'],
+    fontFamily: luxuryFonts.mono,
   },
   headerBlock: {
     alignItems: 'center',
     gap: 10,
   },
   mainMessage: {
-    fontSize: 22,
-    fontWeight: '700',
+    fontSize: 28,
     color: V2_TEXT_PRIMARY,
     textAlign: 'center',
-    lineHeight: 30,
+    lineHeight: 36,
+    fontFamily: luxuryFonts.display,
+    letterSpacing: luxuryTracking.hero,
   },
   stepBadge: {
     alignSelf: 'center',
@@ -300,6 +311,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: V2_ACCENT,
     letterSpacing: 1,
+    fontFamily: luxuryFonts.sans,
   },
   statsCard: {
     paddingVertical: 18,
@@ -311,27 +323,29 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: V2_TEXT_MUTED,
     letterSpacing: 1,
+    fontFamily: luxuryFonts.sans,
   },
   statsText: {
     fontSize: 18,
     color: V2_TEXT_PRIMARY,
     lineHeight: 24,
+    fontFamily: luxuryFonts.sans,
   },
   statsHighlight: {
-    fontWeight: '800',
     fontSize: 28,
     color: V2_ACCENT,
+    fontFamily: luxuryFonts.display,
   },
   feedbackSection: {
     padding: 18,
     gap: 14,
   },
   feedbackTitle: {
-    fontSize: 16,
-    fontWeight: '700',
+    fontSize: 20,
     color: V2_TEXT_PRIMARY,
     textAlign: 'center',
-    lineHeight: 22,
+    lineHeight: 26,
+    fontFamily: luxuryFonts.display,
   },
   feedbackButtons: {
     flexDirection: 'row',
@@ -351,14 +365,11 @@ const styles = StyleSheet.create({
     backgroundColor: V2_ACCENT,
     borderColor: V2_ACCENT,
   },
-  feedbackEmoji: {
-    fontSize: 28,
-    marginBottom: 4,
-  },
   feedbackLabel: {
     fontSize: 13,
     color: V2_TEXT_SECONDARY,
     fontWeight: '700',
+    fontFamily: luxuryFonts.sans,
   },
   feedbackLabelActive: {
     color: V2_ACCENT_TEXT,
@@ -367,6 +378,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: V2_TEXT_MUTED,
     textAlign: 'center',
+    fontFamily: luxuryFonts.sans,
   },
   memoryCard: {
     paddingVertical: 14,
@@ -374,16 +386,17 @@ const styles = StyleSheet.create({
     gap: 6,
   },
   memoryTitle: {
-    fontSize: 12,
-    fontWeight: '700',
+    fontSize: TYPE_SCALE.title - 2,
     color: V2_TEXT_PRIMARY,
     letterSpacing: 0.6,
     textTransform: 'uppercase',
+    fontFamily: luxuryFonts.sans,
   },
   memoryLine: {
     fontSize: 12,
     color: V2_TEXT_SECONDARY,
     lineHeight: 17,
+    fontFamily: luxuryFonts.sans,
   },
   actionRow: {
     width: '100%',

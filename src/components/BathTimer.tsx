@@ -8,7 +8,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import { useHaptic } from '@/src/hooks/useHaptic';
 import { formatTimer } from '@/src/utils/time';
-import { SURFACE, GLASS_SHADOW, TEXT_PRIMARY, TEXT_SECONDARY } from '@/src/data/colors';
+import { TYPE_SCALE, V2_BORDER, V2_SURFACE, V2_TEXT_PRIMARY, V2_TEXT_SECONDARY } from '@/src/data/colors';
 
 interface BathTimerProps {
   durationMinutes: number | null;
@@ -137,7 +137,7 @@ export function BathTimer({
           </Pressable>
         )}
         <Pressable style={[styles.button, styles.resetButton]} onPress={handleReset}>
-          <Text style={[styles.buttonText, { color: TEXT_SECONDARY }]}>
+          <Text style={[styles.buttonText, { color: V2_TEXT_SECONDARY }]}>
             초기화
           </Text>
         </Pressable>
@@ -152,8 +152,8 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
   },
   label: {
-    fontSize: 14,
-    color: TEXT_SECONDARY,
+    fontSize: TYPE_SCALE.body,
+    color: V2_TEXT_SECONDARY,
     marginBottom: 4,
   },
   time: {
@@ -187,16 +187,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   pauseButton: {
-    backgroundColor: '#A1A1AA',
+    backgroundColor: V2_SURFACE,
+    borderWidth: 1,
+    borderColor: V2_BORDER,
   },
   resetButton: {
     backgroundColor: 'transparent',
     borderWidth: 1,
-    borderColor: 'rgba(0,0,0,0.12)',
+    borderColor: V2_BORDER,
   },
   buttonText: {
-    fontSize: 15,
+    fontSize: TYPE_SCALE.body + 1,
     fontWeight: '600',
-    color: '#fff',
+    color: V2_TEXT_PRIMARY,
   },
 });

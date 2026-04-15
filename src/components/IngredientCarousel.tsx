@@ -11,12 +11,14 @@ import {
 } from 'react-native';
 import { Ingredient } from '@/src/engine/types';
 import {
-  CARD_BORDER,
-  CARD_SHADOW,
-  CARD_SURFACE,
-  TEXT_PRIMARY,
-  TEXT_SECONDARY,
+  V2_BORDER,
+  V2_SHADOW,
+  V2_SURFACE,
+  V2_TEXT_MUTED,
+  V2_TEXT_PRIMARY,
+  V2_TEXT_SECONDARY,
 } from '@/src/data/colors';
+import { luxuryFonts, luxuryRadii } from '@/src/theme/luxury';
 
 interface IngredientCarouselProps {
   ingredients: Ingredient[];
@@ -57,7 +59,7 @@ export function IngredientCarousel({
   const renderItem = ({ item }: { item: Ingredient }) => (
     <View style={[styles.card, { width: CARD_WIDTH }]}> 
       <View style={[styles.iconArea, { backgroundColor: accentColor + '15' }]}> 
-        <Text style={styles.iconEmoji}>🧴</Text>
+        <Text style={styles.iconEmoji}>ITEM</Text>
       </View>
 
       <View style={styles.cardContent}>
@@ -123,37 +125,38 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 18,
-    fontWeight: '700',
-    color: TEXT_PRIMARY,
+    color: V2_TEXT_PRIMARY,
     marginTop: 10,
     marginBottom: 6,
     paddingHorizontal: 20,
+    fontFamily: luxuryFonts.display,
   },
   subtitle: {
     fontSize: 12,
-    color: TEXT_SECONDARY,
+    color: V2_TEXT_SECONDARY,
     marginBottom: 14,
     paddingHorizontal: 20,
+    fontFamily: luxuryFonts.sans,
   },
   listContent: {
     paddingHorizontal: 20,
   },
   card: {
-    backgroundColor: CARD_SURFACE,
-    borderRadius: 18,
+    backgroundColor: V2_SURFACE,
+    borderRadius: luxuryRadii.card,
     padding: 13,
     borderWidth: 1,
-    borderColor: CARD_BORDER,
+    borderColor: V2_BORDER,
     ...Platform.select({
       web: {
-        boxShadow: `0px 4px 12px ${CARD_SHADOW}`,
+        boxShadow: `0px 12px 24px ${V2_SHADOW}`,
       },
       default: {
-        shadowColor: CARD_SHADOW,
-        shadowOffset: { width: 0, height: 4 },
+        shadowColor: V2_SHADOW,
+        shadowOffset: { width: 0, height: 10 },
         shadowOpacity: 1,
-        shadowRadius: 12,
-        elevation: 3,
+        shadowRadius: 20,
+        elevation: 6,
       },
     }),
   },
@@ -173,23 +176,25 @@ const styles = StyleSheet.create({
   },
   nameKo: {
     fontSize: 14,
-    fontWeight: '700',
-    color: TEXT_PRIMARY,
+    color: V2_TEXT_PRIMARY,
     marginBottom: 1,
+    fontFamily: luxuryFonts.display,
   },
   nameEn: {
     fontSize: 10,
-    color: TEXT_SECONDARY,
+    color: V2_TEXT_MUTED,
     marginBottom: 6,
+    fontFamily: luxuryFonts.sans,
   },
   description: {
     fontSize: 12,
-    color: TEXT_SECONDARY,
+    color: V2_TEXT_SECONDARY,
     lineHeight: 16,
+    fontFamily: luxuryFonts.sans,
   },
   purchaseButton: {
     marginTop: 10,
-    borderRadius: 12,
+    borderRadius: luxuryRadii.button,
     paddingVertical: 8,
     alignItems: 'center',
   },
@@ -197,6 +202,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: '600',
     color: '#fff',
+    fontFamily: luxuryFonts.sans,
   },
   dots: {
     flexDirection: 'row',

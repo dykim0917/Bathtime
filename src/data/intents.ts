@@ -4,6 +4,10 @@ import {
   SubProtocolOption,
   TimeContext,
 } from '@/src/engine/types';
+import {
+  GENERATED_TRIP_INTENT_CARDS,
+  GENERATED_TRIP_SUBPROTOCOL_OPTIONS,
+} from '@/src/data/generatedTripCatalog';
 
 export const CARE_INTENT_CARDS: IntentCard[] = [
   {
@@ -12,7 +16,7 @@ export const CARE_INTENT_CARDS: IntentCard[] = [
     intent_id: 'muscle_relief',
     mapped_mode: 'recovery',
     allowed_environments: ['bathtub', 'partial_bath', 'shower'],
-    copy_title: '운동 후 근육을 풀어볼까요?',
+    copy_title: '운동 후 뻐근함을 풀어볼까요?',
     copy_subtitle_by_environment: {
       shower: '샤워 5분으로 가볍게 이완해요.',
       bathtub: '욕조 12분으로 깊게 풀어줘요.',
@@ -27,7 +31,7 @@ export const CARE_INTENT_CARDS: IntentCard[] = [
     intent_id: 'sleep_ready',
     mapped_mode: 'sleep',
     allowed_environments: ['bathtub', 'partial_bath', 'shower'],
-    copy_title: '잠이 오지 않는 당신을 위한 루틴',
+    copy_title: '잠들기 어려울 때 좋은 루틴',
     copy_subtitle_by_environment: {
       shower: '샤워 6분으로 잠들기 전 긴장을 낮춰요.',
       bathtub: '욕조 15분으로 수면 준비를 도와요.',
@@ -42,7 +46,7 @@ export const CARE_INTENT_CARDS: IntentCard[] = [
     intent_id: 'hangover_relief',
     mapped_mode: 'reset',
     allowed_environments: ['shower', 'bathtub'],
-    copy_title: '술 드셨다면 지금 이 조합이 좋아요',
+    copy_title: '술 마신 다음엔 이렇게 시작해보세요',
     copy_subtitle_by_environment: {
       shower: '샤워 5분으로 부담 없이 정리해요.',
       bathtub: '욕조 8분으로 몸을 부드럽게 풀어줘요.',
@@ -57,7 +61,7 @@ export const CARE_INTENT_CARDS: IntentCard[] = [
     intent_id: 'edema_relief',
     mapped_mode: 'recovery',
     allowed_environments: ['partial_bath', 'bathtub', 'shower'],
-    copy_title: '붓기 완화에 집중해볼까요?',
+    copy_title: '붓기가 느껴질 때 해보세요',
     copy_subtitle_by_environment: {
       shower: '샤워 6분으로 가볍게 순환 리듬을 만들어요.',
       bathtub: '욕조 10분으로 전신을 편안하게 풀어줘요.',
@@ -75,8 +79,8 @@ export const CARE_INTENT_CARDS: IntentCard[] = [
     copy_title: '감기 기운이 느껴질 때',
     copy_subtitle_by_environment: {
       shower: '샤워보다 욕조나 부분입욕을 권장해요.',
-      bathtub: '욕조 10분으로 따뜻하게 체온을 높여요.',
-      partial_bath: '부분입욕 12분으로 면역 리듬을 만들어요.',
+      bathtub: '욕조 10분으로 몸을 따뜻하게 풀어요.',
+      partial_bath: '부분입욕 12분으로 몸을 천천히 덥혀요.',
     },
     default_subprotocol_id: 'cold_warm',
     card_position: 5,
@@ -89,7 +93,7 @@ export const CARE_INTENT_CARDS: IntentCard[] = [
     allowed_environments: ['bathtub', 'partial_bath'],
     copy_title: '생리통이 있을 때',
     copy_subtitle_by_environment: {
-      shower: '욕조 또는 부분입욕이 더 효과적이에요.',
+      shower: '샤워보다 욕조나 부분입욕이 더 잘 맞아요.',
       bathtub: '욕조 12분으로 아랫배를 따뜻하게 풀어요.',
       partial_bath: '부분입욕 15분으로 하체를 집중적으로 덥혀요.',
     },
@@ -104,8 +108,8 @@ export const CARE_INTENT_CARDS: IntentCard[] = [
     allowed_environments: ['bathtub', 'shower', 'partial_bath'],
     copy_title: '스트레스를 풀고 싶을 때',
     copy_subtitle_by_environment: {
-      shower: '샤워 6분으로 긴장을 빠르게 해소해요.',
-      bathtub: '욕조 12분으로 완전히 내려놓는 시간이에요.',
+      shower: '샤워 6분으로 긴장을 빠르게 덜어내요.',
+      bathtub: '욕조 12분으로 조금 더 천천히 내려놓아요.',
       partial_bath: '부분입욕 10분으로 차분하게 전환해요.',
     },
     default_subprotocol_id: 'stress_deep',
@@ -121,14 +125,14 @@ export const CARE_INTENT_CARDS: IntentCard[] = [
     copy_subtitle_by_environment: {
       shower: '샤워 5분으로 기분 리셋을 시작해요.',
       bathtub: '욕조 10분으로 기분을 부드럽게 들어올려요.',
-      partial_bath: '부분입욕 10분으로 감각을 깨워요.',
+      partial_bath: '부분입욕 10분으로 기분 전환을 시작해요.',
     },
     default_subprotocol_id: 'mood_warm',
     card_position: 8,
   },
 ];
 
-export const TRIP_INTENT_CARDS: IntentCard[] = [
+const BASE_TRIP_INTENT_CARDS: IntentCard[] = [
   {
     id: 'trip_kyoto',
     domain: 'trip',
@@ -138,8 +142,8 @@ export const TRIP_INTENT_CARDS: IntentCard[] = [
     copy_title: '교토 숲으로 잠깐 떠나볼까요?',
     copy_subtitle_by_environment: {
       shower: '샤워 5분, 숲 분위기로 전환해요.',
-      bathtub: '욕조 12분, 교토 숲 몰입 루틴이에요.',
-      partial_bath: '부분입욕 10분, 잔잔하게 몰입해요.',
+      bathtub: '욕조 12분, 숲 분위기에 천천히 잠겨요.',
+      partial_bath: '부분입욕 10분, 잔잔하게 쉬어가요.',
     },
     default_subprotocol_id: 'trip_kyoto_balanced',
     card_position: 1,
@@ -152,9 +156,9 @@ export const TRIP_INTENT_CARDS: IntentCard[] = [
     allowed_environments: ['shower', 'bathtub', 'partial_bath'],
     copy_title: '노르딕 무드로 리셋해볼까요?',
     copy_subtitle_by_environment: {
-      shower: '샤워 6분, 사우나 감성을 간단히.',
-      bathtub: '욕조 12분, 따뜻한 몰입 루틴.',
-      partial_bath: '부분입욕 10분, 차분한 전환.',
+      shower: '샤워 6분, 사우나 무드를 가볍게 느껴요.',
+      bathtub: '욕조 12분, 따뜻하게 몰입해요.',
+      partial_bath: '부분입욕 10분, 차분하게 전환해요.',
     },
     default_subprotocol_id: 'trip_nordic_balanced',
     card_position: 2,
@@ -168,7 +172,7 @@ export const TRIP_INTENT_CARDS: IntentCard[] = [
     copy_title: '비 오는 캠핑 감성으로 쉬어가요',
     copy_subtitle_by_environment: {
       shower: '샤워 5분, 빗소리 무드로 정리해요.',
-      bathtub: '욕조 12분, 캠핑 몰입 루틴.',
+      bathtub: '욕조 12분, 비 오는 캠핑 무드로 쉬어요.',
       partial_bath: '부분입욕 10분, 차분하게 쉬어요.',
     },
     default_subprotocol_id: 'trip_rainy_balanced',
@@ -184,11 +188,16 @@ export const TRIP_INTENT_CARDS: IntentCard[] = [
     copy_subtitle_by_environment: {
       shower: '샤워 5분, 부드럽게 마무리해요.',
       bathtub: '욕조 12분, 포근하게 정리해요.',
-      partial_bath: '부분입욕 10분, 잔잔하게 내려와요.',
+      partial_bath: '부분입욕 10분, 잔잔하게 하루를 마무리해요.',
     },
     default_subprotocol_id: 'trip_snow_balanced',
     card_position: 4,
   },
+];
+
+export const TRIP_INTENT_CARDS: IntentCard[] = [
+  ...BASE_TRIP_INTENT_CARDS,
+  ...GENERATED_TRIP_INTENT_CARDS,
 ];
 
 export const CARE_SUBPROTOCOL_OPTIONS: Record<string, SubProtocolOption[]> = {
@@ -305,7 +314,7 @@ export const CARE_SUBPROTOCOL_OPTIONS: Record<string, SubProtocolOption[]> = {
       id: 'cold_warm',
       intent_id: 'cold_relief',
       label: '몸이 으슬으슬해요',
-      hint: '체온을 천천히 높여 면역 리듬을 만들어요.',
+      hint: '몸을 천천히 덥혀 컨디션을 정리해요.',
       is_default: true,
       partialOverrides: {
         behavior_blocks: ['체온 유지 구간 1회'],
@@ -400,7 +409,7 @@ export const CARE_SUBPROTOCOL_OPTIONS: Record<string, SubProtocolOption[]> = {
   ],
 };
 
-export const TRIP_SUBPROTOCOL_OPTIONS: Record<string, SubProtocolOption[]> = {
+const BASE_TRIP_SUBPROTOCOL_OPTIONS: Record<string, SubProtocolOption[]> = {
   kyoto_forest: [
     {
       id: 'trip_kyoto_balanced',
@@ -494,6 +503,27 @@ export const TRIP_SUBPROTOCOL_OPTIONS: Record<string, SubProtocolOption[]> = {
     },
   ],
 };
+
+export const TRIP_SUBPROTOCOL_OPTIONS: Record<string, SubProtocolOption[]> = {
+  ...BASE_TRIP_SUBPROTOCOL_OPTIONS,
+  ...GENERATED_TRIP_SUBPROTOCOL_OPTIONS,
+};
+
+export function pickAutoTripSubProtocol(
+  intentId: string,
+  environment: CanonicalBathEnvironment
+): SubProtocolOption | null {
+  const options = TRIP_SUBPROTOCOL_OPTIONS[intentId] ?? [];
+  if (options.length === 0) return null;
+
+  const defaultOption = options.find((option) => option.is_default) ?? options[0];
+
+  if (environment === 'shower') {
+    return options.find((option) => (option.partialOverrides.duration_delta ?? 0) < 0) ?? defaultOption;
+  }
+
+  return options.find((option) => (option.partialOverrides.duration_delta ?? 0) > 0) ?? defaultOption;
+}
 
 export function getSectionOrderByContext(
   timeContext: TimeContext

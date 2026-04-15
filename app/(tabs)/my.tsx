@@ -14,7 +14,7 @@ import {
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { router, useFocusEffect } from 'expo-router';
+import { router, useFocusEffect, useLocalSearchParams } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { BathEnvironment, BathRecommendation, HealthCondition, TripMemoryRecord } from '@/src/engine/types';
 import { loadHistory } from '@/src/storage/history';
@@ -26,12 +26,11 @@ import { THEME_BY_ID } from '@/src/data/themes';
 import { copy } from '@/src/content/copy';
 import { useUserProfile } from '@/src/hooks/useUserProfile';
 import { useHaptic } from '@/src/hooks/useHaptic';
+import { OpenTabHeader } from '@/src/components/OpenTabHeader';
 import { PersistentDisclosure } from '@/src/components/PersistentDisclosure';
 import {
-  CATEGORY_CARD_EMOJI,
   TYPE_BODY,
   TYPE_CAPTION,
-  TYPE_HEADING_MD,
   TYPE_TITLE,
   V2_ACCENT,
   V2_ACCENT_SOFT,
@@ -47,6 +46,8 @@ import {
   V2_TEXT_PRIMARY,
   V2_TEXT_SECONDARY,
 } from '@/src/data/colors';
+import { CustomIcon, getIntentIconName } from '@/src/components/CustomIcon';
+import { luxuryFonts } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
 
 type MyTab = 'history' | 'settings';
@@ -78,25 +79,71 @@ const ENV_LABELS_HISTORY = {
 } as const;
 
 const ENV_LABELS_SETTINGS: Record<BathEnvironment, string> = {
-  bathtub: '🛁 욕조',
-  partial_bath: '🦶 부분입욕',
-  footbath: '🦶 족욕',
-  shower: '🚿 샤워',
+  bathtub: '욕조',
+  partial_bath: '부분입욕',
+  footbath: '족욕',
+  shower: '샤워',
 };
 
+const SETTINGS_ENV_OPTIONS: BathEnvironment[] = ['bathtub', 'partial_bath', 'shower'];
+
 const CONDITION_LABELS: Record<HealthCondition, string> = {
-  hypertension_heart: '⚠️ 고혈압/심장',
-  pregnant: '🤰 임신 중',
-  diabetes: '🩸 당뇨',
-  sensitive_skin: '🌵 민감성 피부',
-  none: '✅ 해당 없음',
+  hypertension_heart: '고혈압/심장',
+  pregnant: '임신 중',
+  diabetes: '당뇨',
+  sensitive_skin: '민감성 피부',
+  none: '해당 없음',
 };
 
 const SIDE_PAD = 18;
 const COL_GAP = 10;
 const CARD_HEADER_HEIGHT = 100;
 
-function HistorySection() {
+function normalizeSettingsEnvironment(environment: BathEnvironment): BathEnvironment {
+  if (environment === 'footbath') return 'partial_bath';
+  return environment;
+}
+
+function MyTabHeaderBlock({
+  activeTab,
+  onTabChange,
+  style,
+}: {
+  activeTab: MyTab;
+  onTabChange: (tab: MyTab) => void;
+  style?: object;
+}) {
+  return (
+    <OpenTabHeader
+      title="프로필"
+      subtitle="기록을 돌아보고, 내 환경과 상태를 한곳에서 차분히 관리하세요."
+      style={style}
+      footerSlot={
+        <View style={styles.subTabRow}>
+          {(['history', 'settings'] as MyTab[]).map((tab) => (
+            <Pressable
+              key={tab}
+              style={[ui.pillButtonV2, styles.subTabPill, activeTab === tab && ui.pillButtonV2Active]}
+              onPress={() => onTabChange(tab)}
+            >
+              <Text style={[styles.subTabText, activeTab === tab && styles.subTabTextActive]}>
+                {tab === 'history' ? '기록' : '설정'}
+              </Text>
+            </Pressable>
+          ))}
+        </View>
+      }
+    />
+  );
+}
+
+function HistorySection({
+  activeTab,
+  onTabChange,
+}: {
+  activeTab: MyTab;
+  onTabChange: (tab: MyTab) => void;
+}) {
   const { width } = useWindowDimensions();
   const cardWidth = (width - SIDE_PAD * 2 - COL_GAP) / 2;
 
@@ -150,7 +197,7 @@ function HistorySection() {
   const renderCard = ({ item, index }: { item: BathRecommendation; index: number }) => {
     const persona = PERSONA_DEFINITIONS.find((p) => p.code === item.persona);
     const title = item.themeTitle ?? persona?.nameKo ?? copy.history.cardLabels.defaultTitle;
-    const emoji = CATEGORY_CARD_EMOJI[item.intentId ?? ''] ?? '🛁';
+    const intentIconName = getIntentIconName(item.intentId);
     const date = new Date(item.createdAt);
     const dateStr = `${date.getMonth() + 1}/${date.getDate()}`;
     const memory = memoryByRecommendation[item.id];
@@ -168,7 +215,15 @@ function HistorySection() {
       >
         <View style={[styles.gridCardHeader, { backgroundColor: `${item.colorHex}22` }]}> 
           <View style={styles.gridCardGlow} />
-          <Text style={styles.gridCardEmoji}>{emoji}</Text>
+          <View style={[styles.gridCardIconWrap, { backgroundColor: `${item.colorHex}20`, borderColor: `${item.colorHex}42` }]}>
+            <CustomIcon
+              name={intentIconName ?? 'care'}
+              size={24}
+              color={V2_TEXT_PRIMARY}
+              fillColor={V2_TEXT_PRIMARY}
+              strokeColor={V2_TEXT_PRIMARY}
+            />
+          </View>
           <View style={[styles.modePill, { backgroundColor: `${item.colorHex}33` }]}> 
             <Text style={styles.modePillText}>{MODE_LABELS[item.mode]}</Text>
           </View>
@@ -191,15 +246,11 @@ function HistorySection() {
 
   const ListHeader = () => (
     <View style={styles.listHeader}>
-      <View style={[ui.glassCardV2, styles.heroCard]}>
-        <Text style={styles.eyebrow}>MY ARCHIVE</Text>
-        <Text style={styles.pageTitle}>기록</Text>
-        <Text style={styles.pageSubtitle}>
-          {history.length > 0
-            ? `총 ${history.length}개의 루틴을 완료했어요`
-            : '첫 루틴을 시작해보세요'}
-        </Text>
-      </View>
+      <MyTabHeaderBlock
+        activeTab={activeTab}
+        onTabChange={onTabChange}
+        style={styles.historyHeaderBlock}
+      />
 
       <View style={[ui.glassCardV2, styles.streakCard]}>
         <Text style={styles.streakTitle}>{copy.home.streakTitle}</Text>
@@ -230,7 +281,7 @@ function HistorySection() {
       {history.length > 0 && (
         <View style={[ui.glassCardV2, styles.insightBanner]}>
           <View style={styles.insightBannerLeft}>
-            <Text style={styles.insightBannerLabel}>MONTHLY SUMMARY</Text>
+            <Text style={styles.insightBannerLabel}>이번 달 요약</Text>
             <Text style={styles.insightBannerMain}>{insights.totalSessions}회 완료</Text>
             {insights.avgDurationMinutes > 0 && (
               <Text style={styles.insightBannerSub}>
@@ -245,7 +296,9 @@ function HistorySection() {
             )}
           </View>
           <View style={styles.insightBannerIcon}>
-            <Text style={styles.insightBannerEmoji}>🛁</Text>
+            <View style={styles.insightBannerIconBadge}>
+              <CustomIcon name="care" size={20} color={V2_ACCENT} fillColor={V2_ACCENT} strokeColor={V2_ACCENT} />
+            </View>
           </View>
         </View>
       )}
@@ -277,49 +330,55 @@ function HistorySection() {
 
   return (
     <View style={styles.historyContainer}>
-      {filteredHistory.length === 0 && history.length === 0 ? (
-        <>
-          <ListHeader />
-          <View style={[ui.glassCardV2, styles.emptyContainer]}>
-            <View style={styles.emptyBadge}>
-              <Text style={styles.emptyBadgeText}>FIRST BATH AWAITS</Text>
+      <FlatList
+        data={filteredHistory}
+        keyExtractor={(item) => item.id}
+        renderItem={renderCard}
+        numColumns={2}
+        ListHeaderComponent={<ListHeader />}
+        ListEmptyComponent={
+          history.length === 0 ? (
+            <View style={[ui.glassCardV2, styles.emptyContainer]}>
+              <View style={styles.emptyBadge}>
+                <Text style={styles.emptyBadgeText}>첫 루틴을 시작해보세요</Text>
+              </View>
+              <View style={styles.emptyIconWrap}>
+                <CustomIcon name="care" size={24} color={V2_ACCENT} fillColor={V2_ACCENT} strokeColor={V2_ACCENT} />
+              </View>
+              <Text style={styles.emptyText}>{copy.history.empty.title}</Text>
+              <Text style={styles.emptySubtext}>{copy.history.empty.subtitle}</Text>
+              <Text style={styles.emptyGuide}>첫 추천을 저장하면 이 공간이 나만의 루틴 기록으로 채워져요.</Text>
+              <Pressable style={styles.emptyAction} onPress={() => router.push('/(tabs)/care')}>
+                <Text style={styles.emptyActionText}>케어 루틴 보러가기</Text>
+              </Pressable>
             </View>
-            <Text style={styles.emptyEmoji}>🛁</Text>
-            <Text style={styles.emptyText}>{copy.history.empty.title}</Text>
-            <Text style={styles.emptySubtext}>{copy.history.empty.subtitle}</Text>
-            <Text style={styles.emptyGuide}>첫 추천을 저장하면 이 공간이 나만의 배스 아카이브로 바뀝니다.</Text>
-            <Pressable style={styles.emptyAction} onPress={() => router.push('/(tabs)/care')}>
-              <Text style={styles.emptyActionText}>케어 루틴 보러가기</Text>
-            </Pressable>
-          </View>
-        </>
-      ) : (
-        <FlatList
-          data={filteredHistory}
-          keyExtractor={(item) => item.id}
-          renderItem={renderCard}
-          numColumns={2}
-          ListHeaderComponent={<ListHeader />}
-          ListEmptyComponent={
+          ) : (
             <View style={styles.filterEmptyContainer}>
               <Text style={styles.filterEmptyText}>
                 {filterMode === 'care' ? '케어' : '트립'} 루틴 기록이 없어요
               </Text>
             </View>
-          }
-          contentContainerStyle={styles.list}
-          showsVerticalScrollIndicator={false}
-        />
-      )}
+          )
+        }
+        contentContainerStyle={styles.list}
+        showsVerticalScrollIndicator={false}
+      />
     </View>
   );
 }
 
-function SettingsSection() {
+function SettingsSection({
+  activeTab,
+  onTabChange,
+}: {
+  activeTab: MyTab;
+  onTabChange: (tab: MyTab) => void;
+}) {
   const { profile, loading, update, clear } = useUserProfile();
   const haptic = useHaptic();
   const [resetModalVisible, setResetModalVisible] = useState(false);
   const [isResetting, setIsResetting] = useState(false);
+  const showResetSection = false;
 
   useEffect(() => {
     if (!loading && !profile) {
@@ -329,7 +388,7 @@ function SettingsSection() {
 
   const handleEnvironmentChange = async (environment: BathEnvironment) => {
     if (!profile) return;
-    if (profile.bathEnvironment === environment) return;
+    if (normalizeSettingsEnvironment(profile.bathEnvironment) === environment) return;
     haptic.light();
     await update({ bathEnvironment: environment });
   };
@@ -362,9 +421,9 @@ function SettingsSection() {
       haptic.warning();
       await clear();
       setResetModalVisible(false);
-      router.replace('/onboarding');
+      router.replace({ pathname: '/onboarding', params: { allowBack: '1' } });
     } catch {
-      Alert.alert('오류', '프로필 초기화 중 문제가 발생했어요. 다시 시도해주세요.');
+      Alert.alert(copy.settings.resetErrorTitle, copy.settings.resetErrorBody);
     } finally {
       setIsResetting(false);
     }
@@ -386,39 +445,45 @@ function SettingsSection() {
   return (
     <View style={styles.settingsContainer}>
       <ScrollView contentContainerStyle={styles.settingsContent} showsVerticalScrollIndicator={false}>
-        <View style={[ui.glassCardV2, styles.settingsHeroCard]}>
-          <Text style={styles.eyebrow}>PROFILE SETTINGS</Text>
-          <Text style={styles.pageTitle}>설정</Text>
-          <Text style={styles.pageSubtitle}>환경과 건강 상태를 현재 기준에 맞게 바로 저장합니다.</Text>
-        </View>
+        <MyTabHeaderBlock
+          activeTab={activeTab}
+          onTabChange={onTabChange}
+          style={styles.settingsHeaderBlock}
+        />
 
         <View style={styles.settingsSection}>
           <Text style={styles.settingsSectionTitle}>{copy.settings.sectionProfile}</Text>
-          <View style={[ui.glassCardV2, styles.infoCard]}>
-            <Text style={styles.infoLabel}>{copy.settings.environmentLabel}</Text>
-            <Text style={styles.infoValue}>{ENV_LABELS_SETTINGS[profile.bathEnvironment]}</Text>
+          <View style={[ui.glassCardV2, styles.settingChoiceCard]}>
+            <Text style={styles.settingChoiceLabel}>{copy.settings.environmentLabel}</Text>
+            <View style={styles.settingChoiceList}>
+              {SETTINGS_ENV_OPTIONS.map((env) => (
+                <TouchableOpacity
+                  key={env}
+                  style={[
+                    ui.pillButtonV2,
+                    styles.conditionTagButton,
+                    normalizeSettingsEnvironment(profile.bathEnvironment) === env && ui.pillButtonV2Active,
+                  ]}
+                  onPress={() => handleEnvironmentChange(env)}
+                  activeOpacity={0.78}
+                >
+                  <Text
+                    style={[
+                      styles.conditionTag,
+                      normalizeSettingsEnvironment(profile.bathEnvironment) === env &&
+                        styles.conditionTagActiveText,
+                    ]}
+                  >
+                    {ENV_LABELS_SETTINGS[env]}
+                  </Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+            <Text style={styles.helperText}>항목을 탭하면 바로 저장됩니다.</Text>
           </View>
-          <View style={styles.environmentList}>
-            {(Object.keys(ENV_LABELS_SETTINGS) as BathEnvironment[]).map((env) => (
-              <TouchableOpacity
-                key={env}
-                style={[
-                  ui.pillButtonV2,
-                  styles.conditionTagButton,
-                  profile.bathEnvironment === env && ui.pillButtonV2Active,
-                ]}
-                onPress={() => handleEnvironmentChange(env)}
-                activeOpacity={0.78}
-              >
-                <Text style={[styles.conditionTag, profile.bathEnvironment === env && styles.conditionTagActiveText]}>
-                  {ENV_LABELS_SETTINGS[env]}
-                </Text>
-              </TouchableOpacity>
-            ))}
-          </View>
-          <View style={[ui.glassCardV2, styles.infoCardColumn]}>
-            <Text style={styles.infoLabel}>{copy.settings.healthLabel}</Text>
-            <View style={styles.conditionsList}>
+          <View style={[ui.glassCardV2, styles.settingChoiceCard]}>
+            <Text style={styles.settingChoiceLabel}>{copy.settings.healthLabel}</Text>
+            <View style={styles.settingChoiceList}>
               {(Object.keys(CONDITION_LABELS) as HealthCondition[]).map((c) => (
                 <TouchableOpacity
                   key={c}
@@ -440,87 +505,87 @@ function SettingsSection() {
           </View>
         </View>
 
-        <View style={styles.settingsSection}>
-          <Text style={styles.settingsSectionTitle}>{copy.settings.sectionActions}</Text>
-          <TouchableOpacity style={[ui.glassCardV2, styles.actionCard]} onPress={handleResetOnboarding} activeOpacity={0.78}>
-            <Text style={styles.actionText}>{copy.settings.resetProfile}</Text>
-            <Text style={styles.actionArrow}>→</Text>
-          </TouchableOpacity>
-        </View>
+        {showResetSection ? (
+          <View style={styles.settingsSection}>
+            <Text style={styles.settingsSectionTitle}>{copy.settings.sectionActions}</Text>
+            <TouchableOpacity style={[ui.glassCardV2, styles.actionCard]} onPress={handleResetOnboarding} activeOpacity={0.78}>
+              <Text style={styles.actionText}>{copy.settings.resetProfile}</Text>
+              <Text style={styles.actionArrow}>→</Text>
+            </TouchableOpacity>
+          </View>
+        ) : null}
 
         <View style={styles.settingsSection}>
           <Text style={styles.settingsSectionTitle}>{copy.settings.sectionApp}</Text>
           <View style={[ui.glassCardV2, styles.infoCard]}>
-            <Text style={styles.infoLabel}>{copy.settings.versionLabel}</Text>
+            <Text style={styles.infoLabelRow}>{copy.settings.versionLabel}</Text>
             <Text style={styles.infoValue}>3.12.0</Text>
           </View>
           <View style={[ui.glassCardV2, styles.infoCard]}>
-            <Text style={styles.infoLabel}>{copy.settings.nameLabel}</Text>
+            <Text style={styles.infoLabelRow}>{copy.settings.nameLabel}</Text>
             <Text style={styles.infoValue}>Bath Sommelier</Text>
           </View>
           <PersistentDisclosure style={styles.disclosureInline} showColdWarning variant="v2" />
         </View>
       </ScrollView>
 
-      <Modal
-        transparent
-        animationType="fade"
-        visible={resetModalVisible}
-        onRequestClose={() => setResetModalVisible(false)}
-      >
-        <View style={styles.modalBackdrop}>
-          <View style={styles.modalCard}>
-            <Text style={styles.modalTitle}>{copy.settings.resetDialogTitle}</Text>
-            <Text style={styles.modalBody}>{copy.settings.resetDialogBody}</Text>
-            <View style={styles.modalActions}>
-              <Pressable
-                style={[styles.modalButton, styles.modalCancelButton]}
-                onPress={() => setResetModalVisible(false)}
-                disabled={isResetting}
-              >
-                <Text style={styles.modalCancelText}>{copy.settings.resetCancel}</Text>
-              </Pressable>
-              <Pressable
-                style={[styles.modalButton, styles.modalConfirmButton, isResetting && styles.modalButtonDisabled]}
-                onPress={() => {
-                  void runReset();
-                }}
-                disabled={isResetting}
-              >
-                <Text style={styles.modalConfirmText}>
-                  {isResetting ? '초기화 중...' : copy.settings.resetConfirm}
-                </Text>
-              </Pressable>
+      {showResetSection ? (
+        <Modal
+          transparent
+          animationType="fade"
+          visible={resetModalVisible}
+          onRequestClose={() => setResetModalVisible(false)}
+        >
+          <View style={styles.modalBackdrop}>
+            <View style={styles.modalCard}>
+              <Text style={styles.modalTitle}>{copy.settings.resetDialogTitle}</Text>
+              <Text style={styles.modalBody}>{copy.settings.resetDialogBody}</Text>
+              <View style={styles.modalActions}>
+                <Pressable
+                  style={[styles.modalButton, styles.modalCancelButton]}
+                  onPress={() => setResetModalVisible(false)}
+                  disabled={isResetting}
+                >
+                  <Text style={styles.modalCancelText}>{copy.settings.resetCancel}</Text>
+                </Pressable>
+                <Pressable
+                  style={[styles.modalButton, styles.modalConfirmButton, isResetting && styles.modalButtonDisabled]}
+                  onPress={() => {
+                    void runReset();
+                  }}
+                  disabled={isResetting}
+                >
+                  <Text style={styles.modalConfirmText}>
+                    {isResetting ? '초기화 중...' : copy.settings.resetConfirm}
+                  </Text>
+                </Pressable>
+              </View>
             </View>
           </View>
-        </View>
-      </Modal>
+        </Modal>
+      ) : null}
     </View>
   );
 }
 
 export default function MyScreen() {
-  const [activeTab, setActiveTab] = useState<MyTab>('history');
+  const { tab } = useLocalSearchParams<{ tab?: string }>();
+  const initialTab: MyTab = tab === 'settings' ? 'settings' : 'history';
+  const [activeTab, setActiveTab] = useState<MyTab>(initialTab);
   const insets = useSafeAreaInsets();
+
+  useEffect(() => {
+    setActiveTab(tab === 'settings' ? 'settings' : 'history');
+  }, [tab]);
 
   return (
     <View style={[ui.screenShellV2, { paddingTop: insets.top }]}> 
       <LinearGradient colors={[V2_BG_TOP, V2_BG_BASE, V2_BG_BOTTOM]} style={StyleSheet.absoluteFillObject} />
-      <View style={styles.subTabRow}>
-        {(['history', 'settings'] as MyTab[]).map((tab) => (
-          <Pressable
-            key={tab}
-            style={[ui.pillButtonV2, styles.subTabPill, activeTab === tab && ui.pillButtonV2Active]}
-            onPress={() => setActiveTab(tab)}
-          >
-            <Text style={[styles.subTabText, activeTab === tab && styles.subTabTextActive]}>
-              {tab === 'history' ? '기록' : '설정'}
-            </Text>
-          </Pressable>
-        ))}
-      </View>
-
-      {activeTab === 'history' ? <HistorySection /> : <SettingsSection />}
+      {activeTab === 'history' ? (
+        <HistorySection activeTab={activeTab} onTabChange={setActiveTab} />
+      ) : (
+        <SettingsSection activeTab={activeTab} onTabChange={setActiveTab} />
+      )}
     </View>
   );
 }
@@ -528,11 +593,8 @@ export default function MyScreen() {
 const styles = StyleSheet.create({
   subTabRow: {
     flexDirection: 'row',
-    paddingHorizontal: SIDE_PAD,
-    paddingVertical: 10,
     gap: 8,
-    borderBottomWidth: 1,
-    borderBottomColor: V2_BORDER,
+    marginTop: 6,
   },
   subTabPill: {
     minHeight: 42,
@@ -541,6 +603,7 @@ const styles = StyleSheet.create({
     fontSize: TYPE_BODY,
     fontWeight: '600',
     color: V2_TEXT_SECONDARY,
+    fontFamily: luxuryFonts.sans,
   },
   subTabTextActive: {
     color: V2_ACCENT,
@@ -557,30 +620,11 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     gap: 14,
   },
-  heroCard: {
-    padding: 18,
-    gap: 6,
+  historyHeaderBlock: {
+    marginBottom: 22,
   },
-  settingsHeroCard: {
-    padding: 18,
-    gap: 6,
-    marginBottom: 18,
-  },
-  eyebrow: {
-    fontSize: TYPE_CAPTION - 1,
-    fontWeight: '700',
-    color: V2_ACCENT,
-    letterSpacing: 1.2,
-  },
-  pageTitle: {
-    fontSize: TYPE_HEADING_MD,
-    fontWeight: '800',
-    color: V2_TEXT_PRIMARY,
-    marginBottom: 2,
-  },
-  pageSubtitle: {
-    fontSize: TYPE_BODY,
-    color: V2_TEXT_SECONDARY,
+  settingsHeaderBlock: {
+    marginBottom: 22,
   },
   streakCard: {
     paddingHorizontal: 14,
@@ -667,9 +711,20 @@ const styles = StyleSheet.create({
   },
   insightBannerIcon: {
     marginLeft: 16,
+    width: 34,
+    height: 34,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  insightBannerEmoji: {
-    fontSize: 40,
+  insightBannerIconBadge: {
+    width: 34,
+    height: 34,
+    borderRadius: 17,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: V2_ACCENT_SOFT,
+    borderWidth: 1,
+    borderColor: 'rgba(176, 141, 87, 0.28)',
   },
   filterScroll: {
     marginBottom: 4,
@@ -685,6 +740,7 @@ const styles = StyleSheet.create({
     fontSize: TYPE_BODY,
     fontWeight: '600',
     color: V2_TEXT_SECONDARY,
+    fontFamily: luxuryFonts.sans,
   },
   filterPillTextActive: {
     color: V2_ACCENT,
@@ -731,8 +787,13 @@ const styles = StyleSheet.create({
     borderRadius: 44,
     backgroundColor: 'rgba(255,255,255,0.06)',
   },
-  gridCardEmoji: {
-    fontSize: 36,
+  gridCardIconWrap: {
+    width: 34,
+    height: 34,
+    borderRadius: 17,
+    borderWidth: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   modePill: {
     position: 'absolute',
@@ -797,9 +858,16 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     letterSpacing: 1.1,
   },
-  emptyEmoji: {
-    fontSize: 48,
+  emptyIconWrap: {
+    width: 40,
+    height: 40,
     marginBottom: 14,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 20,
+    backgroundColor: V2_ACCENT_SOFT,
+    borderWidth: 1,
+    borderColor: 'rgba(176, 141, 87, 0.28)',
   },
   emptyText: {
     fontSize: TYPE_TITLE,
@@ -873,27 +941,25 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginBottom: 8,
   },
-  infoCardColumn: {
-    padding: 15,
-    marginBottom: 8,
-  },
-  infoLabel: {
+  infoLabelRow: {
     fontSize: TYPE_BODY,
     color: V2_TEXT_SECONDARY,
-    marginBottom: 10,
   },
   infoValue: {
     fontSize: TYPE_BODY,
     fontWeight: '600',
     color: V2_TEXT_PRIMARY,
   },
-  environmentList: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 8,
+  settingChoiceCard: {
+    padding: 15,
     marginBottom: 10,
   },
-  conditionsList: {
+  settingChoiceLabel: {
+    fontSize: TYPE_BODY,
+    color: V2_TEXT_SECONDARY,
+    marginBottom: 10,
+  },
+  settingChoiceList: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     gap: 8,

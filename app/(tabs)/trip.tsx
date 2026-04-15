@@ -1,6 +1,6 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { View, Text, Pressable, ScrollView, StyleSheet, useWindowDimensions } from 'react-native';
-import { router } from 'expo-router';
+import { router, useFocusEffect } from 'expo-router';
 import Constants from 'expo-constants';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -9,7 +9,6 @@ import {
   FallbackStrategy,
   HomeSuggestionRank,
   IntentCard,
-  SubProtocolOption,
   ThemeId,
   TimeContext,
   UserProfile,
@@ -37,26 +36,25 @@ import {
   trackIntentCardImpression,
   trackRoutineStart,
   trackRoutineStartAfterSubprotocol,
-  trackSubprotocolModalOpen,
   trackSubprotocolSelected,
 } from '@/src/analytics/events';
 import { PersistentDisclosure } from '@/src/components/PersistentDisclosure';
 import { buildDisclosureLines } from '@/src/engine/disclosures';
-import { SubProtocolPickerModal } from '@/src/components/SubProtocolPickerModal';
 import {
-  getEnvironmentFitLabel,
   getEnvironmentSubtitle,
+  pickAutoTripSubProtocol,
   TRIP_INTENT_CARDS,
-  TRIP_SUBPROTOCOL_OPTIONS,
 } from '@/src/data/intents';
 import { applySubProtocolOverrides } from '@/src/engine/subprotocol';
 import { inferFeelingBefore } from '@/src/engine/feeling';
 import { copy } from '@/src/content/copy';
+import { OpenTabHeader } from '@/src/components/OpenTabHeader';
+import { luxuryFonts } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
 
-const TRIP_ENV_OPTIONS: { id: BathEnvironment; emoji: string; label: string }[] = [
-  { id: 'bathtub', emoji: '🛁', label: '욕조 (Deep)' },
-  { id: 'shower', emoji: '🚿', label: '샤워 (Lite)' },
+const TRIP_ENV_OPTIONS: { id: BathEnvironment; label: string }[] = [
+  { id: 'bathtub', label: '욕조' },
+  { id: 'shower', label: '샤워' },
 ];
 
 const SCREEN_HORIZONTAL_PADDING = 22;
@@ -97,15 +95,7 @@ function buildRuntimeProfile(profile: UserProfile | null, environment: BathEnvir
 }
 
 function mapIntentToTheme(intentId: string): ThemeId {
-  switch (intentId) {
-    case 'kyoto_forest':
-    case 'nordic_sauna':
-    case 'rainy_camping':
-    case 'snow_cabin':
-      return intentId;
-    default:
-      return 'kyoto_forest';
-  }
+  return intentId;
 }
 
 function mapCardPositionToRank(position: number): HomeSuggestionRank {
@@ -138,9 +128,6 @@ export default function TripScreen() {
   const [pendingWarnings, setPendingWarnings] = useState<string[]>([]);
   const [pendingRecId, setPendingRecId] = useState<string | null>(null);
   const [pendingStartPayload, setPendingStartPayload] = useState<RecommendationCardEventPayload | null>(null);
-  const [subModalVisible, setSubModalVisible] = useState(false);
-  const [selectedIntent, setSelectedIntent] = useState<IntentCard | null>(null);
-  const [selectedIntentPayload, setSelectedIntentPayload] = useState<RecommendationCardEventPayload | null>(null);
 
   const sessionIdRef = useRef(`session_${Date.now()}`);
   const timeContext = useMemo(() => getTimeContext(), []);
@@ -163,7 +150,8 @@ export default function TripScreen() {
   const sectionInnerWidth = Math.max(220, screenWidth - SCREEN_HORIZONTAL_PADDING * 2);
   const intentCardWidth = gridColumns === 2 ? (sectionInnerWidth - CARD_GAP) / 2 : sectionInnerWidth;
 
-  useEffect(() => {
+  useFocusEffect(
+    useCallback(() => {
     const appVersion = Constants.expoConfig?.version ?? 'unknown';
     const locale = Intl.DateTimeFormat().resolvedOptions().locale;
     const healthConditions = profile?.healthConditions ?? ['none'];
@@ -193,7 +181,8 @@ export default function TripScreen() {
       };
       trackIntentCardImpression(payload);
     });
-  }, [environment, profile?.createdAt, profile?.healthConditions, timeContext]);
+    }, [environment, profile?.createdAt, profile?.healthConditions, timeContext])
+  );
 
   const disclosureLines = useMemo(() => {
     const healthConditions = profile?.healthConditions ?? ['none'];
@@ -211,7 +200,7 @@ export default function TripScreen() {
     saveLastEnvironment(next);
   };
 
-  const handleOpenSubProtocol = (intent: IntentCard) => {
+  const handleOpenSubProtocol = async (intent: IntentCard) => {
     const appVersion = Constants.expoConfig?.version ?? 'unknown';
     const locale = Intl.DateTimeFormat().resolvedOptions().locale;
     const healthConditions = profile?.healthConditions ?? ['none'];
@@ -240,29 +229,13 @@ export default function TripScreen() {
     };
 
     trackIntentCardClick(payload);
-    trackSubprotocolModalOpen(payload);
-    setSelectedIntent(intent);
-    setSelectedIntentPayload(payload);
-    setSubModalVisible(true);
-  };
-
-  const handleSelectSubProtocol = async (option: SubProtocolOption) => {
-    if (!selectedIntent || !selectedIntentPayload) return;
-
     haptic.medium();
     const runtimeProfile = buildRuntimeProfile(profile, environment);
-    const baseRecommendation = generateTripRecommendation(
-      runtimeProfile,
-      mapIntentToTheme(selectedIntent.intent_id),
-      toEngineEnvironment(environment)
-    );
-
-    const recommendation = applySubProtocolOverrides(
-      baseRecommendation,
-      option,
-      environment,
-      selectedIntent.intent_id
-    );
+    const baseRecommendation = generateTripRecommendation(runtimeProfile, mapIntentToTheme(intent.intent_id), toEngineEnvironment(environment));
+    const option = pickAutoTripSubProtocol(intent.intent_id, normalizedEnvironment);
+    const recommendation = option
+      ? applySubProtocolOverrides(baseRecommendation, option, environment, intent.intent_id)
+      : baseRecommendation;
 
     await saveRecommendation(recommendation);
     await upsertSessionRecord({
@@ -275,13 +248,10 @@ export default function TripScreen() {
       user_feeling_before: inferFeelingBefore(recommendation.intentId, recommendation.mode),
       user_feeling_after: 3,
     });
-    setSubModalVisible(false);
-    setSelectedIntent(null);
-    setSelectedIntentPayload(null);
 
     const payloadWithSub: RecommendationCardEventPayload = {
-      ...selectedIntentPayload,
-      subprotocol_id: option.id,
+      ...payload,
+      subprotocol_id: option?.id,
     };
 
     trackSubprotocolSelected(payloadWithSub);
@@ -312,19 +282,15 @@ export default function TripScreen() {
     }
   };
 
-  const subOptions = selectedIntent
-    ? (TRIP_SUBPROTOCOL_OPTIONS[selectedIntent.intent_id] ?? [])
-    : [];
-
   return (
     <View style={[ui.screenShellV2, { paddingTop: insets.top }]}> 
       <LinearGradient colors={[V2_BG_TOP, V2_BG_BASE, V2_BG_BOTTOM]} style={StyleSheet.absoluteFillObject} />
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
-        <View style={[ui.glassCardV2, styles.heroCard]}>
-          <Text style={styles.eyebrow}>TRIP ROUTINE</Text>
-          <Text style={ui.titleHeroV2}>트립 루틴</Text>
-          <Text style={styles.subtitle}>여행처럼 몰입하는 테마 목욕을 환경에 맞게 골라보세요.</Text>
-        </View>
+        <OpenTabHeader
+          eyebrow="트립 가이드"
+          title="트립 루틴"
+          subtitle="여행처럼 몰입하는 테마 목욕을 환경에 맞게 골라보세요."
+        />
 
         <View>
           <Text style={styles.sectionTitle}>입욕 환경</Text>
@@ -336,7 +302,7 @@ export default function TripScreen() {
                 onPress={() => handleSelectEnvironment(option.id)}
               >
                 <Text style={[styles.envText, environment === option.id && styles.envTextActive]} numberOfLines={1}>
-                  {option.emoji} {option.label}
+                  {option.label}
                 </Text>
               </Pressable>
             ))}
@@ -358,14 +324,14 @@ export default function TripScreen() {
                   intentId={intent.intent_id}
                   title={intent.copy_title}
                   subtitle={getEnvironmentSubtitle(intent, normalizedEnvironment)}
-                  fitLabel={getEnvironmentFitLabel(intent, normalizedEnvironment)}
                   safetyBadge={safetyBadge}
                   disabled={disabled}
-                  disabledText="현재 환경에선 제한적으로 추천돼요"
+                  disabledText={copy.careCards.restrictedDisabled}
                   onPress={() => handleOpenSubProtocol(intent)}
                   width={intentCardWidth}
                   minHeight={CARD_MIN_HEIGHT_REGULAR}
                   variant="v2"
+                  imageVariant="deep"
                 />
               );
             })}
@@ -381,20 +347,6 @@ export default function TripScreen() {
         onDismiss={handleWarningDismiss}
         variant="v2"
       />
-
-      <SubProtocolPickerModal
-        visible={subModalVisible}
-        title={selectedIntent?.copy_title ?? ''}
-        domain={selectedIntent?.domain}
-        options={subOptions}
-        onClose={() => {
-          setSubModalVisible(false);
-          setSelectedIntent(null);
-          setSelectedIntentPayload(null);
-        }}
-        onSelect={handleSelectSubProtocol}
-        variant="v2"
-      />
     </View>
   );
 }
@@ -406,27 +358,11 @@ const styles = StyleSheet.create({
     paddingBottom: 36,
     gap: SECTION_GAP,
   },
-  heroCard: {
-    padding: 18,
-    gap: 8,
-  },
-  eyebrow: {
-    fontSize: TYPE_SCALE.caption - 1,
-    fontWeight: '700',
-    color: V2_ACCENT,
-    letterSpacing: 1.2,
-  },
-  subtitle: {
-    marginTop: 2,
-    fontSize: TYPE_SCALE.body,
-    color: V2_TEXT_SECONDARY,
-    lineHeight: 21,
-  },
   sectionTitle: {
     color: V2_TEXT_PRIMARY,
-    fontWeight: '700',
     fontSize: TYPE_SCALE.title,
     marginBottom: 12,
+    fontFamily: luxuryFonts.display,
   },
   environmentRow: {
     flexDirection: 'row',
@@ -441,6 +377,7 @@ const styles = StyleSheet.create({
     color: V2_TEXT_SECONDARY,
     fontSize: TYPE_SCALE.body,
     fontWeight: '600',
+    fontFamily: luxuryFonts.sans,
   },
   envTextActive: {
     color: V2_ACCENT,

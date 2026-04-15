@@ -4,7 +4,7 @@ import { FallbackStrategy, HomeModeType, HomeSuggestionRank } from './types';
 export function toUserFacingFallbackLabel(fallback: FallbackStrategy): string {
   switch (fallback) {
     case 'DEFAULT_STARTER_RITUAL':
-      return '처음이라 기본 루틴을 먼저 추천해요.';
+      return '처음이라 무난한 기본 루틴을 먼저 추천해요.';
     case 'SAFE_ROUTINE_ONLY':
       return '안전을 위해 보수적인 루틴만 보여드려요.';
     case 'RESET_WITHOUT_COLD':

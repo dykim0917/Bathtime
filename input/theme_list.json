@@ -1,0 +1,58 @@
+[
+  {
+    "themeId": "kyoto_forest",
+    "category": "nature",
+    "destination": "Kyoto",
+    "environment": "bathtub",
+    "imagePromptSeed": "wet stone path, bamboo texture, soft green mist, quiet ryokan atmosphere"
+  },
+  {
+    "themeId": "rainy_camping",
+    "category": "outdoor",
+    "destination": "Rain Camp",
+    "environment": "footbath",
+    "imagePromptSeed": "wet tent canvas, soft lantern glow, rain streaks, cool blue outdoor air"
+  },
+  {
+    "themeId": "midnight_paris",
+    "category": "urban",
+    "destination": "Paris",
+    "environment": "bathtub",
+    "imagePromptSeed": "midnight boulevard reflections, jazz lounge glow, quiet city lights, velvet night air"
+  },
+  {
+    "themeId": "nordic_sauna",
+    "category": "cozy",
+    "destination": "Nordic",
+    "environment": "shower",
+    "imagePromptSeed": "warm wood interior, soft steam, golden ambient light, dry clean Scandinavian atmosphere"
+  },
+  {
+    "themeId": "desert_onsen",
+    "category": "warm",
+    "destination": "Desert Onsen",
+    "environment": "bathtub",
+    "imagePromptSeed": "sunset mineral stone, desert breeze, amber afterglow, quiet open horizon"
+  },
+  {
+    "themeId": "ocean_dawn",
+    "category": "coastal",
+    "destination": "Ocean Dawn",
+    "environment": "bathtub",
+    "imagePromptSeed": "soft dawn waves, sea breeze, pale horizon light, calm shoreline atmosphere"
+  },
+  {
+    "themeId": "tea_house",
+    "category": "ritual",
+    "destination": "Tea House",
+    "environment": "bathtub",
+    "imagePromptSeed": "wooden tea room, steeping citrus tea, paper light, quiet ritual atmosphere"
+  },
+  {
+    "themeId": "snow_cabin",
+    "category": "winter",
+    "destination": "Snow Cabin",
+    "environment": "bathtub",
+    "imagePromptSeed": "frosted window, snowy forest outside, gentle indoor warmth, blue-gray winter calm"
+  }
+]

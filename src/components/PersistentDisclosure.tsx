@@ -1,10 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, ViewStyle } from 'react-native';
 import {
-  CARD_BORDER_SOFT,
-  CARD_GLASS,
-  TEXT_MUTED,
-  TYPE_CAPTION,
+  TYPE_SCALE,
   V2_BORDER,
   V2_SURFACE,
   V2_TEXT_MUTED,
@@ -50,9 +47,9 @@ export function PersistentDisclosure({
 const styles = StyleSheet.create({
   container: {
     borderWidth: 1,
-    borderColor: CARD_BORDER_SOFT,
+    borderColor: V2_BORDER,
     borderRadius: 12,
-    backgroundColor: CARD_GLASS,
+    backgroundColor: V2_SURFACE,
     paddingHorizontal: 10,
     paddingVertical: 8,
     gap: 2,
@@ -65,9 +62,9 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   title: {
-    fontSize: TYPE_CAPTION,
+    fontSize: TYPE_SCALE.caption,
     fontWeight: '700',
-    color: TEXT_MUTED,
+    color: V2_TEXT_MUTED,
     marginBottom: 2,
   },
   titleV2: {
@@ -76,8 +73,8 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
   },
   line: {
-    fontSize: TYPE_CAPTION,
-    color: TEXT_MUTED,
+    fontSize: TYPE_SCALE.caption,
+    color: V2_TEXT_MUTED,
     lineHeight: 16,
   },
   lineV2: {

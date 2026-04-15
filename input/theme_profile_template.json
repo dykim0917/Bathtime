@@ -1,0 +1,60 @@
+{
+  "themeId": "",
+  "themeTitle": "",
+  "destination": "",
+  "category": "",
+  "environment": "",
+  "themeColorHex": "",
+  "sourceTheme": {
+    "subtitle": "",
+    "recommendedScent": "",
+    "lighting": "",
+    "durationMinutes": 0
+  },
+  "lite": {
+    "narrativeDescription": "",
+    "lightingProfile": "",
+    "scentProfile": [],
+    "temperatureMood": "",
+    "waterBehaviorStyle": "",
+    "visualMotionStyle": "",
+    "ambientSoundLayer": [],
+    "tripCtaCopy": "",
+    "timeExpectationMinutes": {
+      "min": 0,
+      "max": 0
+    },
+    "interactionDensity": "low",
+    "imageDirection": {
+      "primaryPrompt": "",
+      "scene": "",
+      "style": "",
+      "lightingMood": "",
+      "palette": "",
+      "materials": ""
+    }
+  },
+  "deep": {
+    "narrativeDescription": "",
+    "lightingProfile": "",
+    "scentProfile": [],
+    "temperatureMood": "",
+    "waterBehaviorStyle": "",
+    "visualMotionStyle": "",
+    "ambientSoundLayer": [],
+    "tripCtaCopy": "",
+    "timeExpectationMinutes": {
+      "min": 0,
+      "max": 0
+    },
+    "interactionDensity": "high",
+    "imageDirection": {
+      "primaryPrompt": "",
+      "scene": "",
+      "style": "",
+      "lightingMood": "",
+      "palette": "",
+      "materials": ""
+    }
+  }
+}

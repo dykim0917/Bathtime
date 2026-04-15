@@ -1,16 +1,16 @@
 import React from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+import { ImageBackground, Pressable, StyleSheet, Text, View } from 'react-native';
 import {
-  CARD_BORDER,
-  TEXT_PRIMARY,
-  TYPE_CAPTION,
+  TYPE_SCALE,
   V2_ACCENT,
   V2_ACCENT_SOFT,
   V2_BORDER,
   V2_TEXT_PRIMARY,
+  V2_TEXT_SECONDARY,
   V2_WARNING,
 } from '@/src/data/colors';
+import { luxuryFonts, luxuryRadii } from '@/src/theme/luxury';
+import { getTripCardImage, TripImageVariant } from '@/src/data/tripImages';
 
 interface TripThemeCardProps {
   intentId: string;
@@ -24,6 +24,7 @@ interface TripThemeCardProps {
   width: number;
   minHeight?: number;
   variant?: 'default' | 'v2';
+  imageVariant?: TripImageVariant;
 }
 
 const TRIP_VISUALS: Record<string, { gradient: [string, string]; bloom: string }> = {
@@ -52,9 +53,11 @@ export function TripThemeCard({
   width,
   minHeight = 148,
   variant = 'default',
+  imageVariant = 'deep',
 }: TripThemeCardProps) {
   const isV2 = variant === 'v2';
   const visual = (isV2 ? TRIP_VISUALS_V2 : TRIP_VISUALS)[intentId] ?? (isV2 ? TRIP_VISUALS_V2.kyoto_forest : TRIP_VISUALS.kyoto_forest);
+  const imageSource = getTripCardImage(intentId, imageVariant);
 
   return (
     <Pressable
@@ -62,9 +65,13 @@ export function TripThemeCard({
       disabled={disabled}
       style={[styles.card, isV2 && styles.cardV2, { width, minHeight }]}
     >
-      <LinearGradient colors={visual.gradient} style={StyleSheet.absoluteFillObject} />
-      <View style={[styles.bloom, { backgroundColor: visual.bloom }]} />
-      <View style={[styles.bloomSmall, { backgroundColor: visual.bloom }]} />
+      {imageSource ? (
+        <ImageBackground source={imageSource} style={StyleSheet.absoluteFillObject} imageStyle={styles.image}>
+          <View style={styles.imageOverlay} />
+        </ImageBackground>
+      ) : (
+        <View style={[StyleSheet.absoluteFillObject, { backgroundColor: visual.gradient[0] }]} />
+      )}
       <View style={[styles.scrim, isV2 && styles.scrimV2]} />
 
       <View style={styles.content}>
@@ -92,10 +99,10 @@ export function TripThemeCard({
 
 const styles = StyleSheet.create({
   card: {
-    borderRadius: 20,
+    borderRadius: luxuryRadii.card,
     overflow: 'hidden',
     borderWidth: 1,
-    borderColor: CARD_BORDER,
+    borderColor: V2_BORDER,
     justifyContent: 'flex-end',
   },
   cardV2: {
@@ -117,6 +124,20 @@ const styles = StyleSheet.create({
     height: 74,
     borderRadius: 37,
   },
+  image: {
+    borderRadius: luxuryRadii.card,
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    width: '100%',
+    height: '118%',
+    resizeMode: 'cover',
+  },
+  imageOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(7, 11, 22, 0.12)',
+  },
   scrim: {
     ...StyleSheet.absoluteFillObject,
     backgroundColor: 'rgba(10, 20, 36, 0.18)',
@@ -125,9 +146,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(4, 9, 23, 0.28)',
   },
   content: {
-    paddingHorizontal: 16,
-    paddingVertical: 14,
-    gap: 5,
+    paddingHorizontal: 18,
+    paddingVertical: 16,
+    gap: 6,
   },
   badgeRow: {
     flexDirection: 'row',
@@ -136,14 +157,15 @@ const styles = StyleSheet.create({
     marginBottom: 2,
   },
   fitBadge: {
-    fontSize: TYPE_CAPTION - 1,
+    fontSize: TYPE_SCALE.caption - 1,
     lineHeight: 16,
     paddingHorizontal: 7,
     paddingVertical: 3,
-    borderRadius: 7,
+    borderRadius: 999,
     color: '#F2F7FF',
     backgroundColor: 'rgba(15, 31, 53, 0.4)',
     fontWeight: '700',
+    fontFamily: luxuryFonts.sans,
   },
   fitBadgeV2: {
     color: V2_TEXT_PRIMARY,
@@ -152,14 +174,15 @@ const styles = StyleSheet.create({
     borderColor: V2_BORDER,
   },
   safetyBadge: {
-    fontSize: TYPE_CAPTION - 1,
+    fontSize: TYPE_SCALE.caption - 1,
     lineHeight: 16,
     paddingHorizontal: 7,
     paddingVertical: 3,
-    borderRadius: 7,
+    borderRadius: 999,
     color: '#3B2000',
     backgroundColor: 'rgba(255, 226, 191, 0.95)',
     fontWeight: '800',
+    fontFamily: luxuryFonts.sans,
   },
   safetyBadgeV2: {
     color: V2_WARNING,
@@ -168,10 +191,10 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(215, 168, 94, 0.3)',
   },
   title: {
-    color: '#FFFFFF',
-    fontWeight: '800',
-    fontSize: 15,
-    lineHeight: 20,
+    color: V2_TEXT_PRIMARY,
+    fontSize: TYPE_SCALE.title + 1,
+    lineHeight: 24,
+    fontFamily: luxuryFonts.display,
   },
   titleV2: {
     color: V2_TEXT_PRIMARY,
@@ -180,22 +203,24 @@ const styles = StyleSheet.create({
     color: '#E5E7EB',
   },
   subtitle: {
-    color: 'rgba(255,255,255,0.9)',
-    fontSize: 12,
+    color: V2_TEXT_SECONDARY,
+    fontSize: TYPE_SCALE.caption,
     lineHeight: 18,
+    fontFamily: luxuryFonts.sans,
   },
   subtitleV2: {
-    color: 'rgba(238, 243, 255, 0.8)',
+    color: V2_TEXT_SECONDARY,
   },
   subtitleDisabled: {
     color: '#D1D5DB',
   },
   disabledText: {
     marginTop: 1,
-    color: '#FEE2E2',
+    color: V2_ACCENT,
     fontWeight: '700',
-    fontSize: TYPE_CAPTION,
+    fontSize: TYPE_SCALE.caption,
     lineHeight: 16,
+    fontFamily: luxuryFonts.sans,
   },
   disabledTextV2: {
     color: V2_ACCENT,

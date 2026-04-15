@@ -3,12 +3,12 @@ import { View, Text, StyleSheet, Platform } from 'react-native';
 import Slider from '@react-native-community/slider';
 import { MusicTrack, AmbienceTrack } from '@/src/engine/types';
 import {
-  CARD_BORDER_SOFT,
-  CARD_GLASS,
-  CARD_SHADOW_SOFT,
-  TEXT_PRIMARY,
-  TEXT_SECONDARY,
+  V2_BORDER,
+  V2_SHADOW,
+  V2_SURFACE,
+  V2_TEXT_SECONDARY,
 } from '@/src/data/colors';
+import { luxuryFonts, luxuryRadii } from '@/src/theme/luxury';
 
 interface AudioMixerProps {
   music: MusicTrack;
@@ -42,7 +42,7 @@ export function AudioMixer({
     <View style={styles.container}>
       {/* Music row */}
       <View style={styles.row}>
-        <Text style={styles.emoji}>🎵</Text>
+        <Text style={styles.badge}>MUSIC</Text>
         <View style={styles.sliderContainer}>
           <Text style={styles.label}>{music.title}</Text>
           <Slider
@@ -60,7 +60,7 @@ export function AudioMixer({
 
       {/* Ambience row */}
       <View style={styles.row}>
-        <Text style={styles.emoji}>🌲</Text>
+        <Text style={styles.badge}>AMBI</Text>
         <View style={styles.sliderContainer}>
           <Text style={styles.label}>{ambience.title}</Text>
           <Slider
@@ -81,21 +81,21 @@ export function AudioMixer({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: CARD_GLASS,
-    borderRadius: 18,
+    backgroundColor: V2_SURFACE,
+    borderRadius: luxuryRadii.card,
     padding: 16,
     borderWidth: 1,
-    borderColor: CARD_BORDER_SOFT,
+    borderColor: V2_BORDER,
     ...Platform.select({
       web: {
-        boxShadow: `0px 4px 12px ${CARD_SHADOW_SOFT}`,
+        boxShadow: `0px 12px 24px ${V2_SHADOW}`,
       },
       default: {
-        shadowColor: CARD_SHADOW_SOFT,
-        shadowOffset: { width: 0, height: 4 },
+        shadowColor: V2_SHADOW,
+        shadowOffset: { width: 0, height: 10 },
         shadowOpacity: 1,
-        shadowRadius: 12,
-        elevation: 3,
+        shadowRadius: 20,
+        elevation: 6,
       },
     }),
   },
@@ -104,8 +104,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 8,
   },
-  emoji: {
-    fontSize: 20,
+  badge: {
+    width: 46,
+    fontSize: 11,
+    color: V2_TEXT_SECONDARY,
+    fontWeight: '700',
+    letterSpacing: 0.8,
+    fontVariant: ['tabular-nums'],
+    fontFamily: luxuryFonts.mono,
     marginRight: 10,
   },
   sliderContainer: {
@@ -113,8 +119,9 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 13,
-    color: TEXT_SECONDARY,
+    color: V2_TEXT_SECONDARY,
     marginBottom: 2,
+    fontFamily: luxuryFonts.sans,
   },
   slider: {
     width: '100%',

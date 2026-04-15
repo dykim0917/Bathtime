@@ -272,21 +272,21 @@ export function buildSuggestionExplanation(
     const themeTitle = theme?.title ?? '오늘의 테마';
     return {
       stateLabel: stateLabelMap[activeState],
-      whySummary: '현재 상태에서 감정 전환이 필요한 신호가 확인되어 Trip 보조 루틴을 제안합니다.',
-      routineParams: '테마 중심 몰입 루틴, 환경에 따라 Lite/Deep 분기',
-      expectedGoal: '짧은 시간 안에 분위기 전환과 집중 리셋을 돕는 것을 목표로 합니다.',
-      alternativeRoutine: 'Care 대안 루틴으로 전환해 보다 보수적인 진행도 가능합니다.',
-      narrativeHeadline: `오늘 당신은 ${themeTitle}에 머무릅니다.`,
+      whySummary: '현재 상태에서 분위기 전환이 도움이 될 것 같아 트립 루틴을 함께 제안해요.',
+      routineParams: '테마 중심 루틴으로, 환경에 맞춰 강도와 길이를 조절해요.',
+      expectedGoal: '짧은 시간 안에 분위기를 바꾸고 감각을 다시 정리하는 데 도움을 줘요.',
+      alternativeRoutine: '원하면 케어 루틴으로 바꿔 더 무난하게 시작할 수도 있어요.',
+      narrativeHeadline: `오늘은 ${themeTitle} 분위기로 쉬어가요.`,
       atmosphereChips: [
         theme ? `향: ${theme.recScent}` : '향: 테마 추천',
-        theme ? `조명: ${theme.lighting}` : '조명: 분위기 전환',
-        '사운드: 몰입 앰비언스',
+        theme ? `톤: ${themeTitle} 무드` : '톤: 차분한 무드',
+        '사운드: 차분한 배경음',
       ],
     };
   }
 
   const paramsByMode: Record<typeof selectedMode, string> = {
-    sleep: '38~41°C, 10~15분, 저자극 향/조명',
+    sleep: '38~41°C, 10~15분, 저자극 중심',
     recovery: '40~42°C(고위험군 <=40°C), 10~15분',
     reset: '기본 non-cold activation, 짧은 전환 루틴',
   };

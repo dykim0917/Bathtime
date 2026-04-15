@@ -1,24 +1,24 @@
 import React from 'react';
 import { View, Text, Pressable, StyleSheet } from 'react-native';
 import {
-  TEXT_PRIMARY,
-  TYPE_BODY,
-  TYPE_CAPTION,
-  WARNING_COLOR,
+  TYPE_SCALE,
   V2_ACCENT,
   V2_ACCENT_SOFT,
   V2_BORDER,
   V2_SURFACE,
-  V2_TEXT_MUTED,
   V2_TEXT_PRIMARY,
   V2_TEXT_SECONDARY,
+  V2_TEXT_MUTED,
   V2_WARNING,
 } from '@/src/data/colors';
+import { CustomIcon, CustomIconName } from '@/src/components/CustomIcon';
+import { luxuryFonts, luxuryRadii, luxuryTracking } from '@/src/theme/luxury';
 
 interface CategoryCardProps {
   title: string;
   subtitle: string;
-  emoji: string;
+  emoji?: string;
+  iconName?: CustomIconName | null;
   bgColor: string;
   eyebrow?: string;
   footerHint?: string;
@@ -37,6 +37,7 @@ export function CategoryCard({
   title,
   subtitle,
   emoji,
+  iconName,
   bgColor,
   eyebrow,
   footerHint,
@@ -74,7 +75,25 @@ export function CategoryCard({
       ) : null}
       <View style={styles.body}>
         {eyebrow ? <Text style={[styles.eyebrow, isV2 && styles.eyebrowV2]}>{eyebrow}</Text> : null}
-        <Text style={styles.emoji}>{emoji}</Text>
+        {iconName ? (
+          <View
+            style={[
+              styles.iconWrap,
+              isV2 && styles.iconWrapV2,
+              { backgroundColor: isV2 ? `${bgColor}1F` : 'rgba(255,255,255,0.16)', borderColor: isV2 ? `${bgColor}4A` : 'transparent' },
+            ]}
+          >
+            <CustomIcon
+              name={iconName}
+              size={22}
+              color={isV2 ? V2_TEXT_PRIMARY : bgColor}
+              fillColor={isV2 ? V2_TEXT_PRIMARY : bgColor}
+              strokeColor={isV2 ? V2_TEXT_PRIMARY : bgColor}
+            />
+          </View>
+        ) : emoji ? (
+          <Text style={styles.emoji}>{emoji}</Text>
+        ) : null}
         <Text style={[styles.title, disabled && styles.titleDisabled, isV2 && styles.titleV2]} numberOfLines={2}>
           {title}
         </Text>
@@ -101,9 +120,9 @@ export function CategoryCard({
 
 const styles = StyleSheet.create({
   card: {
-    borderRadius: 20,
-    padding: 16,
-    gap: 6,
+    borderRadius: luxuryRadii.card,
+    padding: 18,
+    gap: 8,
     justifyContent: 'flex-end',
     overflow: 'hidden',
   },
@@ -116,8 +135,8 @@ const styles = StyleSheet.create({
     opacity: 0.76,
   },
   cardV2Featured: {
-    backgroundColor: 'rgba(21, 42, 76, 0.94)',
-    borderColor: 'rgba(201, 164, 91, 0.28)',
+    backgroundColor: 'rgba(28, 39, 49, 0.94)',
+    borderColor: 'rgba(176, 141, 87, 0.28)',
   },
   tintOrb: {
     position: 'absolute',
@@ -141,14 +160,15 @@ const styles = StyleSheet.create({
     marginBottom: 2,
   },
   fitBadge: {
-    fontSize: TYPE_CAPTION - 1,
+    fontSize: TYPE_SCALE.caption - 1,
     lineHeight: 16,
     paddingHorizontal: 7,
     paddingVertical: 3,
-    borderRadius: 7,
+    borderRadius: 999,
     color: '#35517E',
     backgroundColor: 'rgba(255,255,255,0.68)',
     fontWeight: '700',
+    fontFamily: luxuryFonts.sans,
   },
   fitBadgeV2: {
     color: V2_TEXT_PRIMARY,
@@ -157,14 +177,15 @@ const styles = StyleSheet.create({
     borderColor: V2_BORDER,
   },
   safetyBadge: {
-    fontSize: TYPE_CAPTION - 1,
+    fontSize: TYPE_SCALE.caption - 1,
     lineHeight: 16,
     paddingHorizontal: 7,
     paddingVertical: 3,
-    borderRadius: 7,
+    borderRadius: 999,
     color: '#7A3D00',
     backgroundColor: 'rgba(255, 239, 222, 0.95)',
     fontWeight: '800',
+    fontFamily: luxuryFonts.sans,
   },
   safetyBadgeV2: {
     color: V2_WARNING,
@@ -176,24 +197,41 @@ const styles = StyleSheet.create({
     gap: 6,
   },
   eyebrow: {
-    fontSize: TYPE_CAPTION - 1,
+    fontSize: TYPE_SCALE.caption - 1,
     fontWeight: '700',
-    letterSpacing: 1.1,
+    letterSpacing: luxuryTracking.label,
     color: '#35517E',
     marginBottom: 2,
+    fontFamily: luxuryFonts.sans,
   },
   eyebrowV2: {
     color: V2_ACCENT,
   },
   emoji: {
-    fontSize: 32,
+    fontSize: TYPE_SCALE.caption,
     marginBottom: 4,
+    color: V2_TEXT_PRIMARY,
+    fontWeight: '700',
+    letterSpacing: 1.2,
+    fontVariant: ['tabular-nums'],
+    fontFamily: luxuryFonts.mono,
+  },
+  iconWrap: {
+    width: 36,
+    height: 36,
+    marginBottom: 4,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 12,
+  },
+  iconWrapV2: {
+    borderWidth: 1,
   },
   title: {
-    fontSize: TYPE_BODY,
-    fontWeight: '700',
-    color: TEXT_PRIMARY,
-    lineHeight: 21,
+    fontSize: TYPE_SCALE.title,
+    color: V2_TEXT_PRIMARY,
+    lineHeight: 23,
+    fontFamily: luxuryFonts.display,
   },
   titleV2: {
     color: V2_TEXT_PRIMARY,
@@ -202,9 +240,10 @@ const styles = StyleSheet.create({
     color: '#9A9A9A',
   },
   subtitle: {
-    fontSize: TYPE_CAPTION,
-    color: 'rgba(42, 62, 100, 0.65)',
+    fontSize: TYPE_SCALE.caption,
+    color: V2_TEXT_SECONDARY,
     lineHeight: 18,
+    fontFamily: luxuryFonts.sans,
   },
   subtitleV2: {
     color: V2_TEXT_SECONDARY,
@@ -224,27 +263,30 @@ const styles = StyleSheet.create({
     paddingTop: 10,
   },
   footerHint: {
-    fontSize: TYPE_CAPTION,
-    color: TEXT_PRIMARY,
+    fontSize: TYPE_SCALE.caption,
+    color: V2_TEXT_MUTED,
     fontWeight: '600',
+    fontFamily: luxuryFonts.sans,
   },
   footerHintV2: {
     color: V2_TEXT_MUTED,
   },
   footerArrow: {
-    fontSize: TYPE_BODY + 2,
-    color: TEXT_PRIMARY,
+    fontSize: TYPE_SCALE.body + 2,
+    color: V2_ACCENT,
     fontWeight: '700',
+    fontFamily: luxuryFonts.sans,
   },
   footerArrowV2: {
     color: V2_ACCENT,
   },
   warning: {
     marginTop: 2,
-    fontSize: TYPE_CAPTION - 1,
-    color: WARNING_COLOR,
+    fontSize: TYPE_SCALE.caption - 1,
+    color: V2_WARNING,
     fontWeight: '600',
     lineHeight: 16,
+    fontFamily: luxuryFonts.sans,
   },
   warningV2: {
     color: V2_WARNING,

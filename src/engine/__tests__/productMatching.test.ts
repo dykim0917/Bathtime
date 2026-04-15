@@ -71,17 +71,24 @@ describe('productMatching', () => {
     expect(slots).toHaveLength(3);
     expect(slots[0].slot).toBe('A');
     expect(slots[0].sommelierPick).toBe(true);
+    expect(slots[0].product.id).toBe('p_epsom_salt');
     expect(slots[1].slot).toBe('B');
     expect(slots[2].slot).toBe('C');
+    expect(slots.every((slot) => slot.product.ingredientKeys.includes(slot.ingredient.id))).toBe(true);
   });
 
   test('filters incompatible shower products for bathtub', () => {
     const slots = buildProductMatchingSlots(baseRecommendation, 'bathtub');
-    expect(slots.some((slot) => slot.ingredient.id === 'shower_steamer')).toBe(false);
+    expect(slots.some((slot) => slot.product.id === 'p_shower_steamer')).toBe(false);
   });
 
   test('uses shower-compatible products in shower environment', () => {
     const slots = buildProductMatchingSlots(baseRecommendation, 'shower');
-    expect(slots.every((slot) => ['shower_steamer', 'carbonated_bath'].includes(slot.ingredient.id))).toBe(true);
+    expect(
+      slots.every((slot) =>
+        ['p_shower_steamer', 'p_carbonated_bath'].includes(slot.product.id)
+      )
+    ).toBe(true);
+    expect(slots.every((slot) => slot.product.environments.includes('shower'))).toBe(true);
   });
 });

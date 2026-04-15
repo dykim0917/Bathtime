@@ -3,7 +3,7 @@
 ## Project Architecture
 - React Native / Expo SDK 54 / TypeScript strict mode
 - File-based routing via Expo Router (`app/` directory)
-- `src/components/`, `src/data/`, `src/engine/`, `src/hooks/`, `src/storage/`, `src/theme/`
+- `src/analytics/`, `src/components/`, `src/data/`, `src/engine/`, `src/hooks/`, `src/storage/`, `src/theme/`
 - Design tokens: `src/data/colors.ts`, shared styles: `src/theme/ui.ts`
 
 ## Key Design Decisions (Confirmed)
@@ -23,8 +23,9 @@
 - `ui.*` from `src/theme/ui.ts` for common patterns (screenShell, glassCard, pillButton)
 
 ## Tokens (Never Hardcode)
-- Colors: ACCENT (#7895CF), TEXT_PRIMARY (#2A3E64), APP_BG_BASE (#F6FAFF)
-- Font sizes: TYPE_HEADING_MD (22), TYPE_TITLE (18), TYPE_BODY (14), TYPE_CAPTION (12)
+- Colors: V2_ACCENT (#B08D57), V2_TEXT_PRIMARY (#F5F0E8), V2_BG_BASE (#101920), V2_SURFACE (rgba(23, 33, 42, 0.88))
+- Typography source of truth: TYPE_SCALE { headingLg: 34, headingMd: 20, title: 18, body: 14, caption: 12 }
+- Font roles: `luxuryFonts.display` for editorial headings, `luxuryFonts.sans` for interaction/body, `luxuryFonts.mono` for timer/data moments
 - Icons: FontAwesome only (@expo/vector-icons) — no new icon libraries
 
 ## Docs Structure

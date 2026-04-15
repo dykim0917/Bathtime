@@ -16,6 +16,7 @@ import { buildDisclosureLines } from '@/src/engine/disclosures';
 import { useDualAudioPlayer } from '@/src/hooks/useDualAudioPlayer';
 import { copy } from '@/src/content/copy';
 import { TYPE_CAPTION, V2_ACCENT, V2_BG_BASE, V2_BG_BOTTOM, V2_BG_OVERLAY, V2_BG_TOP, V2_BORDER, V2_SURFACE, V2_TEXT_MUTED, V2_TEXT_PRIMARY, V2_TEXT_SECONDARY } from '@/src/data/colors';
+import { luxuryFonts } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
 
 export default function TimerScreen() {
@@ -93,11 +94,11 @@ export default function TimerScreen() {
   };
   const confirmFinish = () => {
     if (Platform.OS === 'web') {
-      const confirmed = typeof window !== 'undefined' && window.confirm('지금 끝내면 현재 진행 상태로 루틴이 종료됩니다. 계속할까요?');
+      const confirmed = typeof window !== 'undefined' && window.confirm(copy.alerts.finishRoutineBody);
       if (confirmed) handleComplete();
       return;
     }
-    Alert.alert('루틴 종료', '지금 끝내면 현재 진행 상태로 루틴이 종료됩니다. 계속할까요?', [{ text: '취소', style: 'cancel' }, { text: '종료', style: 'destructive', onPress: () => handleComplete() }]);
+    Alert.alert(copy.alerts.finishRoutineTitle, copy.alerts.finishRoutineBody, [{ text: copy.alerts.cancel, style: 'cancel' }, { text: copy.alerts.finish, style: 'destructive', onPress: () => handleComplete() }]);
   };
 
   if (!recommendation) return <View style={[ui.screenShellV2, styles.centered]}><Text style={{ color: V2_TEXT_SECONDARY }}>{copy.completion.loading}</Text></View>;
@@ -128,7 +129,7 @@ export default function TimerScreen() {
           </View>
 
           <View style={styles.centerSection}>
-            <Text style={styles.recipeName}>{recommendation.mode === 'trip' ? (recommendation.themeTitle ?? 'Trip 테마') : copy.routine.stepRun}</Text>
+            <Text style={styles.recipeName}>{recommendation.mode === 'trip' ? (recommendation.themeTitle ?? '트립 테마') : copy.routine.stepRun}</Text>
             <Text style={styles.timerText}>{timeStr}</Text>
             {isPaused && <Animated.Text entering={FadeIn.duration(300)} exiting={FadeOut.duration(200)} style={styles.pausedLabel}>{copy.routine.timerPaused}</Animated.Text>}
           </View>
@@ -163,11 +164,11 @@ const styles = StyleSheet.create({
   safeArea: { flex: 1 },
   topBar: { flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', paddingHorizontal: 20, paddingTop: 8, paddingBottom: 4 },
   finishPill: { borderRadius: 999, paddingHorizontal: 18, paddingVertical: 10, backgroundColor: V2_SURFACE, borderWidth: 1, borderColor: V2_BORDER },
-  finishPillText: { fontSize: 14, fontWeight: '700', color: V2_TEXT_PRIMARY },
+  finishPillText: { fontSize: 14, fontWeight: '700', color: V2_TEXT_PRIMARY, fontFamily: luxuryFonts.sans },
   centerSection: { flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 24 },
-  recipeName: { fontSize: 18, fontWeight: '700', color: V2_TEXT_PRIMARY, marginBottom: 16, textAlign: 'center' },
-  timerText: { fontSize: 72, fontWeight: '200', color: V2_TEXT_PRIMARY, letterSpacing: 4, fontVariant: ['tabular-nums'] },
-  pausedLabel: { fontSize: 14, color: V2_TEXT_SECONDARY, marginTop: 10, letterSpacing: 2 },
+  recipeName: { fontSize: 24, color: V2_TEXT_PRIMARY, marginBottom: 18, textAlign: 'center', fontFamily: luxuryFonts.display },
+  timerText: { fontSize: 72, fontWeight: '200', color: V2_TEXT_PRIMARY, letterSpacing: 4, fontVariant: ['tabular-nums'], fontFamily: luxuryFonts.mono },
+  pausedLabel: { fontSize: 14, color: V2_TEXT_SECONDARY, marginTop: 10, letterSpacing: 2, fontFamily: luxuryFonts.sans },
   controlsArea: { paddingHorizontal: 24, paddingBottom: 8 },
   playRow: { alignItems: 'center', marginBottom: 28 },
   playButton: {
@@ -195,7 +196,7 @@ const styles = StyleSheet.create({
   progressFill: { position: 'absolute', left: 0, top: 0, height: 4, borderRadius: 2 },
   progressThumb: { position: 'absolute', top: -5, width: 14, height: 14, borderRadius: 7, marginLeft: -7 },
   progressLabels: { flexDirection: 'row', justifyContent: 'space-between' },
-  progressTime: { fontSize: TYPE_CAPTION, color: V2_TEXT_MUTED, fontVariant: ['tabular-nums'] },
+  progressTime: { fontSize: TYPE_CAPTION, color: V2_TEXT_MUTED, fontVariant: ['tabular-nums'], fontFamily: luxuryFonts.mono },
   mixerContainer: { marginBottom: 8 },
   disclosureWrap: { paddingHorizontal: 14, paddingBottom: 8 },
 });

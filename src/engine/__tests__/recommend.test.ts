@@ -1,4 +1,4 @@
-import { generateRecommendation } from '../recommend';
+import { generateCareRecommendation, generateRecommendation, generateTripRecommendation } from '../recommend';
 import { UserProfile, DailyTag } from '../types';
 
 function makeProfile(overrides: Partial<UserProfile> = {}): UserProfile {
@@ -136,6 +136,7 @@ describe('Full Recommendation Pipeline', () => {
 
     expect(result.music).toBeTruthy();
     expect(result.music.id).toBeTruthy();
+    expect(result.music.id).toBe('care_sleep_ready');
   });
 
   test('recommendation has ambience track', () => {
@@ -153,6 +154,33 @@ describe('Full Recommendation Pipeline', () => {
     const result = generateRecommendation(profile, ['muscle_pain']);
 
     expect(result.ambience.persona).toContain(result.persona);
+  });
+
+  test('care routines use dedicated music per intent id', () => {
+    const profile = makeProfile();
+
+    const sleep = generateCareRecommendation(profile, ['insomnia'], 'bathtub', 'sleep_ready');
+    const muscle = generateCareRecommendation(profile, ['muscle_pain'], 'bathtub', 'muscle_relief');
+    const stress = generateCareRecommendation(profile, ['stress'], 'bathtub', 'stress_relief');
+    const mood = generateCareRecommendation(profile, ['depression'], 'bathtub', 'mood_lift');
+
+    expect(sleep.music.id).toBe('care_sleep_ready');
+    expect(muscle.music.id).toBe('care_muscle_relief');
+    expect(stress.music.id).toBe('care_stress_relief');
+    expect(mood.music.id).toBe('care_mood_lift');
+    expect(stress.music.id).not.toBe(sleep.music.id);
+    expect(mood.music.id).not.toBe(sleep.music.id);
+  });
+
+  test('trip themes use dedicated music per theme', () => {
+    const profile = makeProfile();
+
+    const kyoto = generateTripRecommendation(profile, 'kyoto_forest', 'bathtub');
+    const paris = generateTripRecommendation(profile, 'midnight_paris', 'bathtub');
+
+    expect(kyoto.music.id).toBe('trip_kyoto_forest');
+    expect(paris.music.id).toBe('trip_midnight_paris');
+    expect(kyoto.music.id).not.toBe(paris.music.id);
   });
 
   test('recommendation has lighting suggestion', () => {

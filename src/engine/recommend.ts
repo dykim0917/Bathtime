@@ -12,9 +12,19 @@ import { applySafetyFilter, SafetyFilterResult } from './safety';
 import { resolveConflicts } from './conflicts';
 import { applyContextBranch, applyEnvironmentOverrides } from './context';
 import { INGREDIENTS } from '@/src/data/ingredients';
-import { MUSIC_TRACKS, AMBIENCE_TRACKS } from '@/src/data/music';
+import {
+  MUSIC_TRACKS,
+  AMBIENCE_TRACKS,
+  CARE_MUSIC_BY_INTENT_ID,
+  CARE_MUSIC_BY_PERSONA,
+  TRIP_MUSIC_BY_THEME_ID,
+} from '@/src/data/music';
 import { PERSONA_COLORS } from '@/src/data/colors';
 import { THEME_BY_ID } from '@/src/data/themes';
+import {
+  GENERATED_TRIP_INGREDIENT_MAP,
+  GENERATED_TRIP_PERSONA_MAP,
+} from '@/src/data/generatedTripCatalog';
 
 export function generateRecommendation(
   profile: UserProfile,
@@ -30,7 +40,8 @@ function generateRecommendationId(): string {
 export function generateCareRecommendation(
   profile: UserProfile,
   dailyTags: DailyTag[],
-  environment: BathEnvironment
+  environment: BathEnvironment,
+  intentId?: string
 ): BathRecommendation {
   const safety = applySafetyFilter(profile, dailyTags);
 
@@ -70,9 +81,9 @@ export function generateCareRecommendation(
 
   const ingredients = resolveIngredients(profile, ingredientIds);
 
-  const music =
-    MUSIC_TRACKS.find((t) => t.persona.includes(resolved.primaryPersona.code)) ??
-    MUSIC_TRACKS[0];
+  const music = (intentId ? CARE_MUSIC_BY_INTENT_ID[intentId] : undefined)
+    ?? CARE_MUSIC_BY_PERSONA[resolved.primaryPersona.code]
+    ?? MUSIC_TRACKS[0];
 
   const ambience =
     AMBIENCE_TRACKS.find((t) => t.persona.includes(resolved.primaryPersona.code)) ??
@@ -81,6 +92,7 @@ export function generateCareRecommendation(
   return {
     id: generateRecommendationId(),
     mode: 'care',
+    intentId,
     persona: resolved.primaryPersona.code,
     environmentUsed: environment,
     bathType: context.bathType,
@@ -130,7 +142,9 @@ export function generateTripRecommendation(
   const ingredientIds = buildTripIngredientIds(theme.id, context);
   const ingredients = resolveIngredients(profile, ingredientIds);
 
-  const music = MUSIC_TRACKS.find((track) => track.id === theme.musicId) ?? MUSIC_TRACKS[0];
+  const music = TRIP_MUSIC_BY_THEME_ID[theme.id] ??
+    MUSIC_TRACKS.find((track) => track.id === theme.musicId) ??
+    MUSIC_TRACKS[0];
   const ambience =
     AMBIENCE_TRACKS.find((track) => track.id === theme.ambienceId) ?? AMBIENCE_TRACKS[0];
 
@@ -186,7 +200,7 @@ function buildTripIngredientIds(
   themeId: ThemeId,
   context: ReturnType<typeof applyEnvironmentOverrides>
 ): string[] {
-  const themeIngredientMap: Record<ThemeId, string> = {
+  const themeIngredientMap: Record<string, string> = {
     kyoto_forest: 'hinoki_oil',
     rainy_camping: 'lavender_oil',
     midnight_paris: 'lavender_oil',
@@ -195,10 +209,11 @@ function buildTripIngredientIds(
     ocean_dawn: 'grapefruit_oil',
     tea_house: 'chamomile_oil',
     snow_cabin: 'hinoki_oil',
+    ...GENERATED_TRIP_INGREDIENT_MAP,
   };
 
   return buildIngredientIds(
-    [themeIngredientMap[themeId]],
+    [themeIngredientMap[themeId] ?? 'lavender_oil'],
     context.additionalIngredientIds,
     context.removedIngredientIds,
     []
@@ -236,6 +251,9 @@ function shouldForceSafetyPersona(
 }
 
 function mapThemeToPersona(themeId: ThemeId): PersonaCode {
+  const generatedPersona = GENERATED_TRIP_PERSONA_MAP[themeId];
+  if (generatedPersona) return generatedPersona;
+
   switch (themeId) {
     case 'kyoto_forest':
       return 'P1_SAFETY';
@@ -251,5 +269,7 @@ function mapThemeToPersona(themeId: ThemeId): PersonaCode {
       return 'P2_CIRCULATION';
     case 'snow_cabin':
       return 'P1_SAFETY';
+    default:
+      return 'P4_SLEEP';
   }
 }

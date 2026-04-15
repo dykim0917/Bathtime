@@ -1,6 +1,7 @@
 import { ThemePreset } from '@/src/engine/types';
+import { GENERATED_THEME_PRESETS } from '@/src/data/generatedTripCatalog';
 
-export const THEMES: ThemePreset[] = [
+const BASE_THEMES: ThemePreset[] = [
   {
     id: 'kyoto_forest',
     coverStyleId: 'kyoto',
@@ -9,7 +10,7 @@ export const THEMES: ThemePreset[] = [
     baseTemp: 39,
     colorHex: '#2E8B57',
     recScent: '히노끼',
-    musicId: 'ambient_synth',
+    musicId: 'trip_kyoto_forest',
     ambienceId: 'forest',
     defaultBathType: 'half',
     recommendedEnvironment: 'bathtub',
@@ -24,7 +25,7 @@ export const THEMES: ThemePreset[] = [
     baseTemp: 40,
     colorHex: '#3B82F6',
     recScent: '유칼립투스',
-    musicId: 'acoustic_guitar',
+    musicId: 'trip_rainy_camping',
     ambienceId: 'rain',
     defaultBathType: 'foot',
     recommendedEnvironment: 'footbath',
@@ -39,7 +40,7 @@ export const THEMES: ThemePreset[] = [
     baseTemp: 38,
     colorHex: '#7C3AED',
     recScent: '로즈',
-    musicId: 'piano',
+    musicId: 'trip_midnight_paris',
     ambienceId: 'ocean',
     defaultBathType: 'full',
     recommendedEnvironment: 'bathtub',
@@ -54,7 +55,7 @@ export const THEMES: ThemePreset[] = [
     baseTemp: 40,
     colorHex: '#64748B',
     recScent: '자작나무',
-    musicId: 'cello',
+    musicId: 'trip_nordic_sauna',
     ambienceId: 'fireplace',
     defaultBathType: 'shower',
     recommendedEnvironment: 'shower',
@@ -69,7 +70,7 @@ export const THEMES: ThemePreset[] = [
     baseTemp: 39,
     colorHex: '#D97706',
     recScent: '샌달우드',
-    musicId: 'ambient_synth',
+    musicId: 'trip_desert_onsen',
     ambienceId: 'fireplace',
     defaultBathType: 'half',
     recommendedEnvironment: 'bathtub',
@@ -84,7 +85,7 @@ export const THEMES: ThemePreset[] = [
     baseTemp: 38,
     colorHex: '#0EA5E9',
     recScent: '시트러스',
-    musicId: 'piano',
+    musicId: 'trip_ocean_dawn',
     ambienceId: 'ocean',
     defaultBathType: 'full',
     recommendedEnvironment: 'bathtub',
@@ -99,7 +100,7 @@ export const THEMES: ThemePreset[] = [
     baseTemp: 38,
     colorHex: '#8B5E3C',
     recScent: '베르가못',
-    musicId: 'acoustic_guitar',
+    musicId: 'trip_tea_house',
     ambienceId: 'forest',
     defaultBathType: 'half',
     recommendedEnvironment: 'bathtub',
@@ -114,7 +115,7 @@ export const THEMES: ThemePreset[] = [
     baseTemp: 39,
     colorHex: '#94A3B8',
     recScent: '시더우드',
-    musicId: 'cello',
+    musicId: 'trip_snow_cabin',
     ambienceId: 'fireplace',
     defaultBathType: 'full',
     recommendedEnvironment: 'bathtub',
@@ -122,6 +123,8 @@ export const THEMES: ThemePreset[] = [
     lighting: '차가운 화이트와 웜 포인트',
   },
 ];
+
+export const THEMES: ThemePreset[] = [...BASE_THEMES, ...GENERATED_THEME_PRESETS];
 
 export const THEME_BY_ID = Object.fromEntries(
   THEMES.map((theme) => [theme.id, theme])

@@ -1,0 +1,29 @@
+{
+  "count": 8,
+  "categories": [
+    "nature",
+    "urban",
+    "cozy",
+    "coastal",
+    "winter",
+    "ritual",
+    "outdoor",
+    "warm"
+  ],
+  "environments": [
+    "bathtub",
+    "shower",
+    "partial_bath",
+    "footbath"
+  ],
+  "mustIncludeMoodWords": [
+    "quiet",
+    "premium",
+    "immersive"
+  ],
+  "avoidWords": [
+    "party",
+    "extreme",
+    "medical"
+  ]
+}
