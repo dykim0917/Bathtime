@@ -4,7 +4,6 @@ import { LinearGradient } from 'expo-linear-gradient';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { useLocalSearchParams, router } from 'expo-router';
 import Animated, { FadeIn, FadeOut, useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
-import * as Haptics from 'expo-haptics';
 import { BathRecommendation } from '@/src/engine/types';
 import { getRecommendationById } from '@/src/storage/history';
 import { saveSession, updateSessionCompletion } from '@/src/storage/session';
@@ -14,40 +13,52 @@ import { AudioMixer } from '@/src/components/AudioMixer';
 import { PersistentDisclosure } from '@/src/components/PersistentDisclosure';
 import { buildDisclosureLines } from '@/src/engine/disclosures';
 import { useDualAudioPlayer } from '@/src/hooks/useDualAudioPlayer';
+import { useHaptic } from '@/src/hooks/useHaptic';
 import { copy } from '@/src/content/copy';
-import { TYPE_CAPTION, V2_ACCENT, V2_BG_BASE, V2_BG_BOTTOM, V2_BG_OVERLAY, V2_BG_TOP, V2_BORDER, V2_SURFACE, V2_TEXT_MUTED, V2_TEXT_PRIMARY, V2_TEXT_SECONDARY } from '@/src/data/colors';
-import { luxuryFonts } from '@/src/theme/luxury';
+import { TYPE_BODY, TYPE_CAPTION, V2_ACCENT, V2_BG_BASE, V2_BG_BOTTOM, V2_BG_OVERLAY, V2_BG_TOP, V2_BORDER, V2_SURFACE, V2_TEXT_MUTED, V2_TEXT_PRIMARY, V2_TEXT_SECONDARY } from '@/src/data/colors';
+import { luxuryFonts, luxuryTracking } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
+import { buildRoutineIntroDetail, getRoutineFillLevel, INTRO_DURATION_MS, RoutineTimerPhase } from '@/src/utils/routineTimer';
 
 export default function TimerScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const [recommendation, setRecommendation] = useState<BathRecommendation | null>(null);
+  const [phase, setPhase] = useState<RoutineTimerPhase>('intro');
+  const [introRemainingMs, setIntroRemainingMs] = useState(INTRO_DURATION_MS);
   const [remainingSeconds, setRemainingSeconds] = useState(0);
   const [totalSeconds, setTotalSeconds] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [showControls, setShowControls] = useState(true);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const introTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const startedAtRef = useRef<string>(new Date().toISOString());
-  const hasSessionStartedRef = useRef(false);
+  const hasRoutineStartedRef = useRef(false);
   const isCompletingRef = useRef(false);
   const targetEndAtMsRef = useRef<number | null>(null);
   const pausedAtMsRef = useRef<number | null>(null);
   const accumulatedPausedMsRef = useRef(0);
   const isPausedRef = useRef(false);
+  const haptic = useHaptic();
 
   const audio = useDualAudioPlayer(recommendation?.music ?? null, recommendation?.ambience ?? null);
   const { play: playAudio, pause: pauseAudio, stop: stopAudio, setMusicVolume, setAmbienceVolume } = audio;
   const controlsOpacity = useSharedValue(1);
   const controlsStyle = useAnimatedStyle(() => ({ opacity: controlsOpacity.value }));
 
-  useEffect(() => {
-    if (!id) return;
-    hasSessionStartedRef.current = false; isCompletingRef.current = false; targetEndAtMsRef.current = null; pausedAtMsRef.current = null; accumulatedPausedMsRef.current = 0; isPausedRef.current = false;
-    setIsPaused(false); setRemainingSeconds(0); setTotalSeconds(0);
-    getRecommendationById(id).then((rec) => { if (rec) { setRecommendation(rec); const secs = (rec.durationMinutes ?? 15) * 60; setRemainingSeconds(secs); setTotalSeconds(secs); } });
-  }, [id]);
+  const clearTimer = useCallback(() => {
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+      timerRef.current = null;
+    }
+  }, []);
 
-  const clearTimer = useCallback(() => { if (timerRef.current) { clearInterval(timerRef.current); timerRef.current = null; } }, []);
+  const clearIntroTimer = useCallback(() => {
+    if (introTimerRef.current) {
+      clearInterval(introTimerRef.current);
+      introTimerRef.current = null;
+    }
+  }, []);
+
   const computeRemainingSeconds = useCallback(() => {
     if (!targetEndAtMsRef.current) return remainingSeconds;
     const now = Date.now();
@@ -55,61 +66,194 @@ export default function TimerScreen() {
     const msLeft = targetEndAtMsRef.current - effectiveNow - accumulatedPausedMsRef.current;
     return Math.max(0, Math.ceil(msLeft / 1000));
   }, [remainingSeconds]);
+
   const handleComplete = useCallback(async (remainingAtComplete?: number) => {
     if (!id || isCompletingRef.current) return;
-    isCompletingRef.current = true; clearTimer(); stopAudio();
+    isCompletingRef.current = true;
+    clearIntroTimer();
+    clearTimer();
+    stopAudio();
     const completedAt = new Date().toISOString();
     const derivedRemaining = remainingAtComplete ?? computeRemainingSeconds();
     const actualDurationSeconds = Math.max(0, totalSeconds - derivedRemaining);
     await updateSessionCompletion(id, completedAt, actualDurationSeconds);
     router.replace(`/result/completion/${id}`);
-  }, [id, clearTimer, stopAudio, totalSeconds, computeRemainingSeconds]);
+  }, [id, clearIntroTimer, clearTimer, stopAudio, totalSeconds, computeRemainingSeconds]);
+
   const startTicking = useCallback(() => {
     clearTimer();
     timerRef.current = setInterval(() => {
       const nextRemaining = computeRemainingSeconds();
       setRemainingSeconds(nextRemaining);
-      if (nextRemaining <= 0) { Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success); handleComplete(0); }
+      if (nextRemaining <= 0) {
+        haptic.success();
+        void handleComplete(0);
+      }
     }, 250);
-  }, [clearTimer, computeRemainingSeconds, handleComplete]);
+  }, [clearTimer, computeRemainingSeconds, haptic, handleComplete]);
+
+  const startRoutine = useCallback(() => {
+    if (!id || !recommendation || totalSeconds <= 0 || hasRoutineStartedRef.current) return;
+
+    clearIntroTimer();
+    const now = Date.now();
+    targetEndAtMsRef.current = now + totalSeconds * 1000;
+    accumulatedPausedMsRef.current = 0;
+    pausedAtMsRef.current = null;
+    isPausedRef.current = false;
+    hasRoutineStartedRef.current = true;
+    startedAtRef.current = new Date(now).toISOString();
+
+    setPhase('active');
+    setIntroRemainingMs(0);
+    setIsPaused(false);
+    setRemainingSeconds(totalSeconds);
+
+    haptic.light();
+    void saveSession({ recommendationId: id, startedAt: startedAtRef.current });
+    playAudio();
+    startTicking();
+  }, [id, recommendation, totalSeconds, clearIntroTimer, haptic, playAudio, startTicking]);
 
   useEffect(() => {
-    if (!id || !recommendation || totalSeconds <= 0 || hasSessionStartedRef.current) return;
-    const now = Date.now();
-    targetEndAtMsRef.current = now + totalSeconds * 1000; accumulatedPausedMsRef.current = 0; pausedAtMsRef.current = null; isPausedRef.current = false; hasSessionStartedRef.current = true; startedAtRef.current = new Date(now).toISOString();
-    setRemainingSeconds(totalSeconds); saveSession({ recommendationId: id, startedAt: startedAtRef.current }); playAudio(); startTicking();
-  }, [id, recommendation, totalSeconds, playAudio, startTicking]);
+    if (!id) return;
 
-  useEffect(() => () => { clearTimer(); stopAudio(); }, [clearTimer, stopAudio]);
+    clearIntroTimer();
+    clearTimer();
+    stopAudio();
 
-  const toggleControls = () => { const newVal = !showControls; setShowControls(newVal); controlsOpacity.value = withTiming(newVal ? 1 : 0, { duration: 300 }); };
-  const togglePause = () => {
-    if (isPausedRef.current) {
-      const now = Date.now(); if (pausedAtMsRef.current) accumulatedPausedMsRef.current += now - pausedAtMsRef.current;
-      pausedAtMsRef.current = null; isPausedRef.current = false; setIsPaused(false); playAudio(); startTicking();
-    } else {
-      pausedAtMsRef.current = Date.now(); isPausedRef.current = true; setIsPaused(true); setRemainingSeconds(computeRemainingSeconds()); clearTimer(); pauseAudio();
+    hasRoutineStartedRef.current = false;
+    isCompletingRef.current = false;
+    targetEndAtMsRef.current = null;
+    pausedAtMsRef.current = null;
+    accumulatedPausedMsRef.current = 0;
+    isPausedRef.current = false;
+
+    setRecommendation(null);
+    setPhase('intro');
+    setIntroRemainingMs(INTRO_DURATION_MS);
+    setIsPaused(false);
+    setShowControls(true);
+    controlsOpacity.value = 1;
+    setRemainingSeconds(0);
+    setTotalSeconds(0);
+
+    getRecommendationById(id).then((rec) => {
+      if (!rec) return;
+      setRecommendation(rec);
+      const secs = (rec.durationMinutes ?? 15) * 60;
+      setRemainingSeconds(secs);
+      setTotalSeconds(secs);
+    });
+  }, [id, clearIntroTimer, clearTimer, stopAudio, controlsOpacity]);
+
+  useEffect(() => {
+    if (!recommendation || totalSeconds <= 0 || phase !== 'intro' || hasRoutineStartedRef.current) return;
+
+    const introStartedAt = Date.now();
+    clearIntroTimer();
+    setIntroRemainingMs(INTRO_DURATION_MS);
+
+    introTimerRef.current = setInterval(() => {
+      const elapsed = Date.now() - introStartedAt;
+      const nextRemainingMs = Math.max(0, INTRO_DURATION_MS - elapsed);
+      setIntroRemainingMs(nextRemainingMs);
+
+      if (nextRemainingMs <= 0) {
+        startRoutine();
+      }
+    }, 50);
+
+    return clearIntroTimer;
+  }, [recommendation, totalSeconds, phase, clearIntroTimer, startRoutine]);
+
+  useEffect(() => () => {
+    clearIntroTimer();
+    clearTimer();
+    stopAudio();
+  }, [clearIntroTimer, clearTimer, stopAudio]);
+
+  const handleScreenPress = () => {
+    if (phase === 'intro') {
+      startRoutine();
+      return;
     }
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+
+    const newVal = !showControls;
+    setShowControls(newVal);
+    controlsOpacity.value = withTiming(newVal ? 1 : 0, { duration: 300 });
   };
+
+  const togglePause = () => {
+    if (phase !== 'active') return;
+
+    if (isPausedRef.current) {
+      const now = Date.now();
+      if (pausedAtMsRef.current) accumulatedPausedMsRef.current += now - pausedAtMsRef.current;
+      pausedAtMsRef.current = null;
+      isPausedRef.current = false;
+      setIsPaused(false);
+      playAudio();
+      startTicking();
+    } else {
+      pausedAtMsRef.current = Date.now();
+      isPausedRef.current = true;
+      setIsPaused(true);
+      setRemainingSeconds(computeRemainingSeconds());
+      clearTimer();
+      pauseAudio();
+    }
+
+    haptic.light();
+  };
+
   const confirmFinish = () => {
     if (Platform.OS === 'web') {
       const confirmed = typeof window !== 'undefined' && window.confirm(copy.alerts.finishRoutineBody);
-      if (confirmed) handleComplete();
+      if (confirmed) void handleComplete();
       return;
     }
-    Alert.alert(copy.alerts.finishRoutineTitle, copy.alerts.finishRoutineBody, [{ text: copy.alerts.cancel, style: 'cancel' }, { text: copy.alerts.finish, style: 'destructive', onPress: () => handleComplete() }]);
+
+    Alert.alert(copy.alerts.finishRoutineTitle, copy.alerts.finishRoutineBody, [
+      { text: copy.alerts.cancel, style: 'cancel' },
+      { text: copy.alerts.finish, style: 'destructive', onPress: () => void handleComplete() },
+    ]);
   };
 
-  if (!recommendation) return <View style={[ui.screenShellV2, styles.centered]}><Text style={{ color: V2_TEXT_SECONDARY }}>{copy.completion.loading}</Text></View>;
+  if (!recommendation) {
+    return (
+      <View style={[ui.screenShellV2, styles.centered]}>
+        <Text style={{ color: V2_TEXT_SECONDARY }}>{copy.completion.loading}</Text>
+      </View>
+    );
+  }
 
   const minutes = Math.floor(remainingSeconds / 60);
   const seconds = remainingSeconds % 60;
   const timeStr = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-  const elapsedStr = (() => { const elapsed = totalSeconds - remainingSeconds; const m = Math.floor(elapsed / 60); const s = elapsed % 60; return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`; })();
-  const totalStr = (() => { const m = Math.floor(totalSeconds / 60); const s = totalSeconds % 60; return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`; })();
-  const progress = totalSeconds > 0 ? 1 - remainingSeconds / totalSeconds : 0;
+  const elapsedStr = (() => {
+    const elapsed = totalSeconds - remainingSeconds;
+    const m = Math.floor(elapsed / 60);
+    const s = elapsed % 60;
+    return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+  })();
+  const totalStr = (() => {
+    const m = Math.floor(totalSeconds / 60);
+    const s = totalSeconds % 60;
+    return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+  })();
+  const progressPercent = totalSeconds > 0 ? 1 - remainingSeconds / totalSeconds : 0;
   const isShowerImmersive = recommendation.environmentUsed === 'shower' || recommendation.bathType === 'shower';
+  const routineName = recommendation.mode === 'trip'
+    ? (recommendation.themeTitle ?? '트립 테마')
+    : '맞춤 루틴';
+  const introDetail = buildRoutineIntroDetail(routineName);
+  const fillLevel = getRoutineFillLevel({
+    phase,
+    introRemainingMs,
+    remainingSeconds,
+    totalSeconds,
+  });
   const timerDisclosureLines = buildDisclosureLines({
     fallbackStrategy: 'none',
     selectedMode: recommendation.mode === 'trip' ? 'recovery' : recommendation.persona === 'P4_SLEEP' ? 'sleep' : 'recovery',
@@ -120,37 +264,97 @@ export default function TimerScreen() {
     <View style={styles.container}>
       <LinearGradient colors={[V2_BG_TOP, V2_BG_BASE, V2_BG_BOTTOM]} style={StyleSheet.absoluteFillObject} />
       <View style={styles.overlay} />
-      {isShowerImmersive ? <SteamAnimation colorHex={recommendation.colorHex} /> : <WaterAnimation progress={progress} colorHex={recommendation.colorHex} />}
+      {isShowerImmersive ? (
+        <SteamAnimation colorHex={recommendation.colorHex} />
+      ) : (
+        <WaterAnimation fillLevel={fillLevel} colorHex={recommendation.colorHex} />
+      )}
 
-      <Pressable style={StyleSheet.absoluteFill} onPress={toggleControls}>
+      <Pressable style={StyleSheet.absoluteFill} onPress={handleScreenPress}>
         <SafeAreaView style={styles.safeArea}>
           <View style={styles.topBar}>
-            <TouchableOpacity style={styles.finishPill} onPress={confirmFinish} activeOpacity={0.85}><Text style={styles.finishPillText}>{copy.routine.timerFinish}</Text></TouchableOpacity>
+            {phase === 'active' ? (
+              <TouchableOpacity style={styles.finishPill} onPress={confirmFinish} activeOpacity={0.85}>
+                <Text style={styles.finishPillText}>{copy.routine.timerFinish}</Text>
+              </TouchableOpacity>
+            ) : null}
           </View>
 
           <View style={styles.centerSection}>
-            <Text style={styles.recipeName}>{recommendation.mode === 'trip' ? (recommendation.themeTitle ?? '트립 테마') : copy.routine.stepRun}</Text>
-            <Text style={styles.timerText}>{timeStr}</Text>
-            {isPaused && <Animated.Text entering={FadeIn.duration(300)} exiting={FadeOut.duration(200)} style={styles.pausedLabel}>{copy.routine.timerPaused}</Animated.Text>}
-          </View>
-
-          <Animated.View style={[styles.controlsArea, controlsStyle]}>
-            {showControls && (
+            {phase === 'intro' ? (
+              <Animated.View entering={FadeIn.duration(500)} style={styles.introBlock}>
+                <Text style={styles.introLead}>{copy.routine.introLead}</Text>
+                <Text style={styles.introDetail}>{introDetail}</Text>
+              </Animated.View>
+            ) : (
               <>
-                <View style={styles.playRow}><TouchableOpacity style={styles.playButton} onPress={togglePause} activeOpacity={0.85}><FontAwesome name={isPaused ? 'play' : 'pause'} size={28} color={V2_ACCENT} /></TouchableOpacity></View>
-                <View style={[ui.glassCardV2, styles.progressSection]}>
-                  <View style={styles.progressTrack}>
-                    <View style={[styles.progressFill, { width: `${Math.min(100, progress * 100)}%` as `${number}%`, backgroundColor: recommendation.colorHex }]} />
-                    <View style={[styles.progressThumb, { left: `${Math.min(100, progress * 100)}%` as `${number}%`, backgroundColor: recommendation.colorHex }]} />
-                  </View>
-                  <View style={styles.progressLabels}><Text style={styles.progressTime}>{elapsedStr}</Text><Text style={styles.progressTime}>{totalStr}</Text></View>
-                </View>
-                <View style={styles.mixerContainer}><AudioMixer music={recommendation.music} ambience={recommendation.ambience} accentColor={recommendation.colorHex} onMusicVolumeChange={setMusicVolume} onAmbienceVolumeChange={setAmbienceVolume} /></View>
+                <Text style={styles.recipeName}>{recommendation.mode === 'trip' ? (recommendation.themeTitle ?? '트립 테마') : copy.routine.stepRun}</Text>
+                <Text style={styles.timerText}>{timeStr}</Text>
+                {isPaused ? (
+                  <Animated.Text entering={FadeIn.duration(300)} exiting={FadeOut.duration(200)} style={styles.pausedLabel}>
+                    {copy.routine.timerPaused}
+                  </Animated.Text>
+                ) : null}
               </>
             )}
-          </Animated.View>
+          </View>
 
-          <View style={styles.disclosureWrap}><PersistentDisclosure lines={timerDisclosureLines} variant="v2" /></View>
+          {phase === 'intro' ? (
+            <View style={styles.introFooter}>
+              <Text style={styles.introHint}>{copy.routine.introHint}</Text>
+            </View>
+          ) : (
+            <Animated.View style={[styles.controlsArea, controlsStyle]}>
+              {showControls ? (
+                <>
+                  <View style={styles.playRow}>
+                    <TouchableOpacity style={styles.playButton} onPress={togglePause} activeOpacity={0.85}>
+                      <FontAwesome name={isPaused ? 'play' : 'pause'} size={28} color={V2_ACCENT} />
+                    </TouchableOpacity>
+                  </View>
+                  <View style={[ui.glassCardV2, styles.progressSection]}>
+                    <View style={styles.progressTrack}>
+                      <View
+                        style={[
+                          styles.progressFill,
+                          {
+                            width: `${Math.min(100, progressPercent * 100)}%` as `${number}%`,
+                            backgroundColor: recommendation.colorHex,
+                          },
+                        ]}
+                      />
+                      <View
+                        style={[
+                          styles.progressThumb,
+                          {
+                            left: `${Math.min(100, progressPercent * 100)}%` as `${number}%`,
+                            backgroundColor: recommendation.colorHex,
+                          },
+                        ]}
+                      />
+                    </View>
+                    <View style={styles.progressLabels}>
+                      <Text style={styles.progressTime}>{elapsedStr}</Text>
+                      <Text style={styles.progressTime}>{totalStr}</Text>
+                    </View>
+                  </View>
+                  <View style={styles.mixerContainer}>
+                    <AudioMixer
+                      music={recommendation.music}
+                      ambience={recommendation.ambience}
+                      accentColor={recommendation.colorHex}
+                      onMusicVolumeChange={setMusicVolume}
+                      onAmbienceVolumeChange={setAmbienceVolume}
+                    />
+                  </View>
+                </>
+              ) : null}
+            </Animated.View>
+          )}
+
+          <View style={styles.disclosureWrap}>
+            <PersistentDisclosure lines={timerDisclosureLines} variant="v2" />
+          </View>
         </SafeAreaView>
       </Pressable>
     </View>
@@ -162,10 +366,15 @@ const styles = StyleSheet.create({
   overlay: { ...StyleSheet.absoluteFillObject, backgroundColor: V2_BG_OVERLAY },
   centered: { justifyContent: 'center', alignItems: 'center' },
   safeArea: { flex: 1 },
-  topBar: { flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', paddingHorizontal: 20, paddingTop: 8, paddingBottom: 4 },
+  topBar: { flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', paddingHorizontal: 20, paddingTop: 8, paddingBottom: 4, minHeight: 56 },
   finishPill: { borderRadius: 999, paddingHorizontal: 18, paddingVertical: 10, backgroundColor: V2_SURFACE, borderWidth: 1, borderColor: V2_BORDER },
   finishPillText: { fontSize: 14, fontWeight: '700', color: V2_TEXT_PRIMARY, fontFamily: luxuryFonts.sans },
   centerSection: { flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 24 },
+  introBlock: { alignItems: 'center', maxWidth: 320 },
+  introLead: { fontSize: 24, lineHeight: 34, color: V2_TEXT_PRIMARY, textAlign: 'center', fontFamily: luxuryFonts.display, marginBottom: 14 },
+  introDetail: { fontSize: TYPE_BODY + 2, lineHeight: 26, color: V2_TEXT_SECONDARY, textAlign: 'center', fontFamily: luxuryFonts.sans, letterSpacing: luxuryTracking.label },
+  introFooter: { alignItems: 'center', paddingHorizontal: 24, paddingBottom: 10 },
+  introHint: { fontSize: TYPE_CAPTION, color: V2_TEXT_MUTED, fontFamily: luxuryFonts.sans, letterSpacing: luxuryTracking.label },
   recipeName: { fontSize: 24, color: V2_TEXT_PRIMARY, marginBottom: 18, textAlign: 'center', fontFamily: luxuryFonts.display },
   timerText: { fontSize: 72, fontWeight: '200', color: V2_TEXT_PRIMARY, letterSpacing: 4, fontVariant: ['tabular-nums'], fontFamily: luxuryFonts.mono },
   pausedLabel: { fontSize: 14, color: V2_TEXT_SECONDARY, marginTop: 10, letterSpacing: 2, fontFamily: luxuryFonts.sans },

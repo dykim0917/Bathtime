@@ -78,6 +78,8 @@ export const copy = {
     stepPrep: '준비',
     stepRun: '진행',
     stepFinish: '마무리',
+    introLead: '준비가 되셨다면, 깊게 숨을 한 번 내쉬어보세요.',
+    introHint: '화면을 터치하면 바로 시작합니다',
     timerPaused: '잠시 멈춤',
     timerPause: '일시정지',
     timerResume: '다시 시작',

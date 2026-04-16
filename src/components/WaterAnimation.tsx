@@ -4,8 +4,8 @@ import { Canvas, Path, Skia } from '@shopify/react-native-skia';
 import { useDerivedValue, useFrameCallback, useSharedValue } from 'react-native-reanimated';
 
 interface WaterAnimationProps {
-  /** 0–1; how full the water is (1 = full screen, 0 = empty) */
-  progress: number;
+  /** 0–1; current water fill level (1 = full screen, 0 = empty) */
+  fillLevel: number;
   /** Persona colour hex */
   colorHex: string;
 }
@@ -34,14 +34,14 @@ function buildWavePath(
   return d;
 }
 
-export function WaterAnimation({ progress, colorHex }: WaterAnimationProps) {
+export function WaterAnimation({ fillLevel, colorHex }: WaterAnimationProps) {
   // Manual clock using useFrameCallback
   const clock = useSharedValue(0);
   useFrameCallback((info) => {
     clock.value = info.timeSinceFirstFrame;
   });
 
-  const waterY = H * (1 - progress);
+  const waterY = H * (1 - fillLevel);
 
   const path1 = useDerivedValue(() => {
     const phase = (clock.value / 1200) % (Math.PI * 2);

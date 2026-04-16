@@ -2,8 +2,8 @@ import React from 'react';
 import { View, StyleSheet, Dimensions } from 'react-native';
 
 interface WaterAnimationProps {
-  /** 0–1; how full the water is (1 = full screen, 0 = empty) */
-  progress: number;
+  /** 0–1; current water fill level (1 = full screen, 0 = empty) */
+  fillLevel: number;
   /** Persona colour hex */
   colorHex: string;
 }
@@ -15,8 +15,8 @@ const { height: H } = Dimensions.get('window');
  * Uses simple View layers instead of Skia Canvas (which requires CanvasKit WASM on web).
  * Two overlapping colored rectangles that shrink as progress drains from 1 → 0.
  */
-export function WaterAnimation({ progress, colorHex }: WaterAnimationProps) {
-  const waterHeight = H * progress;
+export function WaterAnimation({ fillLevel, colorHex }: WaterAnimationProps) {
+  const waterHeight = H * fillLevel;
 
   return (
     <View style={[styles.root, styles.nonInteractive]}>
