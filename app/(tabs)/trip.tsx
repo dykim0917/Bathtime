@@ -326,7 +326,6 @@ export default function TripScreen() {
                   subtitle={getEnvironmentSubtitle(intent, normalizedEnvironment)}
                   safetyBadge={safetyBadge}
                   disabled={disabled}
-                  disabledText={copy.careCards.restrictedDisabled}
                   onPress={() => handleOpenSubProtocol(intent)}
                   width={intentCardWidth}
                   minHeight={CARD_MIN_HEIGHT_REGULAR}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { ImageBackground, Pressable, StyleSheet, Text, View } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import {
   TYPE_CAPTION,
   TYPE_SCALE,
@@ -7,13 +8,11 @@ import {
 } from '@/src/data/colors';
 import { luxuryFonts, luxuryRadii } from '@/src/theme/luxury';
 import { getTripCardImage, TripImageVariant } from '@/src/data/tripImages';
-import { AppIconBadge, getTripIntentBadgeTone } from '@/src/components/AppIconBadge';
 
 interface HomeTripEditorialCardProps {
   intentId: string;
   title: string;
   subtitle: string;
-  destination: string;
   accent: [string, string];
   fitLabel?: string;
   safetyBadge?: string;
@@ -28,7 +27,6 @@ export function HomeTripEditorialCard({
   intentId,
   title,
   subtitle,
-  destination,
   accent,
   fitLabel,
   safetyBadge,
@@ -39,7 +37,6 @@ export function HomeTripEditorialCard({
   imageVariant = 'deep',
 }: HomeTripEditorialCardProps) {
   const imageSource = getTripCardImage(intentId, imageVariant);
-  const tripTone = getTripIntentBadgeTone(intentId, true);
 
   return (
     <Pressable
@@ -54,18 +51,12 @@ export function HomeTripEditorialCard({
           </ImageBackground>
         ) : null}
         <View style={styles.imageScrim} />
+        <LinearGradient
+          colors={['rgba(5, 10, 24, 0.08)', 'rgba(5, 10, 24, 0.18)', 'rgba(5, 10, 24, 0.72)']}
+          locations={[0, 0.42, 1]}
+          style={styles.bottomGradient}
+        />
         <View style={styles.imageTopRow}>
-          <View style={styles.destinationGroup}>
-            <AppIconBadge
-              spec={tripTone.spec}
-              size={32}
-              iconSize={15}
-              color={tripTone.color}
-              backgroundColor={tripTone.backgroundColor}
-              borderColor={tripTone.borderColor}
-            />
-            <Text style={styles.destination}>{destination}</Text>
-          </View>
           {fitLabel ? <Text style={styles.fitBadge}>{fitLabel}</Text> : null}
         </View>
         <View style={styles.imageBottom}>
@@ -108,30 +99,20 @@ const styles = StyleSheet.create({
   },
   imagePhotoOverlay: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(4, 9, 23, 0.06)',
+    backgroundColor: 'rgba(4, 9, 23, 0.12)',
   },
   imageScrim: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(5, 10, 24, 0.18)',
+    backgroundColor: 'rgba(5, 10, 24, 0.24)',
+  },
+  bottomGradient: {
+    ...StyleSheet.absoluteFillObject,
   },
   imageTopRow: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
     alignItems: 'flex-start',
     gap: 10,
-  },
-  destinationGroup: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 10,
-  },
-  destination: {
-    color: '#F3F6FF',
-    fontSize: TYPE_CAPTION - 1,
-    fontWeight: '700',
-    letterSpacing: 1.2,
-    fontFamily: luxuryFonts.sans,
-    textTransform: 'uppercase',
   },
   fitBadge: {
     color: '#F3F6FF',
@@ -148,7 +129,7 @@ const styles = StyleSheet.create({
   imageBottom: {
     gap: 7,
     marginTop: 'auto',
-    paddingTop: 56,
+    paddingTop: 82,
   },
   imageTitle: {
     color: '#FFFFFF',

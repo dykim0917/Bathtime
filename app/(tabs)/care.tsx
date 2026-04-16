@@ -400,7 +400,7 @@ export default function CareScreen() {
                   fitLabel={isPlaceholder ? undefined : getEnvironmentFitLabel(intent, normalizedEnvironment)}
                   safetyBadge={safetyBadge}
                   disabled={disabled}
-                  disabledText={isPlaceholder ? copy.careCards.placeholderDisabled : copy.careCards.restrictedDisabled}
+                  disabledText={isPlaceholder ? copy.careCards.placeholderDisabled : undefined}
                   onPress={() => handleOpenSubProtocol(intent)}
                   width={intentCardWidth}
                   minHeight={isFeaturedCard ? CARD_MIN_HEIGHT_REGULAR + 24 : CARD_MIN_HEIGHT_REGULAR}

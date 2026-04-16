@@ -690,7 +690,7 @@ export default function HomeIntentScreen() {
           </View>
           {heroCard ? (
             <>
-              <HomeCareHeroCard
+                <HomeCareHeroCard
                 eyebrow={copy.careCards.featuredEyebrow}
                 title={heroTitle}
                 description={heroDescription}
@@ -714,7 +714,6 @@ export default function HomeIntentScreen() {
                     : undefined
                 }
                 disabled={!heroCard.allowed_environments.includes(normalizedEnvironment)}
-                disabledText={copy.careCards.restrictedDisabled}
                 onPress={() => handleOpenCareSubProtocol(heroCard)}
               />
 
@@ -744,7 +743,6 @@ export default function HomeIntentScreen() {
                     },
                   ]}
                   disabled={disabled}
-                  disabledText={copy.careCards.restrictedDisabled}
                   onPress={() => handleOpenCareSubProtocol(intent)}
                 />
               );
@@ -772,12 +770,10 @@ export default function HomeIntentScreen() {
                   intentId={intent.intent_id}
                   title={intent.copy_title}
                   subtitle={getEnvironmentSubtitle(intent, normalizedEnvironment)}
-                  destination={meta.destination}
                   accent={meta.accent}
                   fitLabel={getEnvironmentFitLabel(intent, normalizedEnvironment)}
                   safetyBadge={safetyBadge}
                   disabled={disabled}
-                  disabledText={copy.careCards.restrictedDisabled}
                   onPress={() => handleStartTripIntent(intent)}
                   width={tripCardWidth}
                   imageVariant="deep"
