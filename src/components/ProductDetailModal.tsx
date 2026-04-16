@@ -15,7 +15,7 @@ import {
 } from '@/src/data/colors';
 import { luxuryFonts, luxuryRadii, luxuryTracking } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
-import { CustomIcon, getProductCategoryIconName } from '@/src/components/CustomIcon';
+import { AppIconBadge, getProductCategoryBadgeTone } from '@/src/components/AppIconBadge';
 
 interface ProductDetailModalProps {
   visible: boolean;
@@ -37,6 +37,7 @@ export function ProductDetailModal({
   closeActionLabel = '루틴으로 돌아가기',
 }: ProductDetailModalProps) {
   if (!product) return null;
+  const categoryTone = getProductCategoryBadgeTone(product.category);
 
   return (
     <Modal visible={visible} animationType="slide" transparent onRequestClose={onClose}>
@@ -45,15 +46,15 @@ export function ProductDetailModal({
         <View style={styles.card}>
           <View style={styles.handle} />
           <View style={styles.header}>
-            <View style={[styles.iconWrap, { backgroundColor: product.bgColor }]}>
-              <CustomIcon
-                name={getProductCategoryIconName(product.category)}
-                size={26}
-                color="#23303B"
-                fillColor="#23303B"
-                strokeColor="#23303B"
-              />
-            </View>
+            <AppIconBadge
+              spec={categoryTone.spec}
+              size={56}
+              iconSize={24}
+              color={categoryTone.color}
+              backgroundColor={product.bgColor}
+              borderColor={categoryTone.borderColor}
+              style={styles.iconWrap}
+            />
             <View style={styles.headerCopy}>
               <Text style={styles.brand}>{product.brand}</Text>
               <Text style={styles.name}>{product.name}</Text>
@@ -134,13 +135,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   iconWrap: {
-    width: 56,
-    height: 56,
     borderRadius: luxuryRadii.button,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.12)',
   },
   headerCopy: {
     flex: 1,

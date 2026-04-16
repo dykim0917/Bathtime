@@ -3,11 +3,11 @@ import { ImageBackground, Pressable, StyleSheet, Text, View } from 'react-native
 import {
   TYPE_CAPTION,
   TYPE_SCALE,
-  V2_ACCENT,
   V2_WARNING,
 } from '@/src/data/colors';
 import { luxuryFonts, luxuryRadii } from '@/src/theme/luxury';
 import { getTripCardImage, TripImageVariant } from '@/src/data/tripImages';
+import { AppIconBadge, getTripIntentBadgeTone } from '@/src/components/AppIconBadge';
 
 interface HomeTripEditorialCardProps {
   intentId: string;
@@ -39,6 +39,7 @@ export function HomeTripEditorialCard({
   imageVariant = 'deep',
 }: HomeTripEditorialCardProps) {
   const imageSource = getTripCardImage(intentId, imageVariant);
+  const tripTone = getTripIntentBadgeTone(intentId, true);
 
   return (
     <Pressable
@@ -54,7 +55,17 @@ export function HomeTripEditorialCard({
         ) : null}
         <View style={styles.imageScrim} />
         <View style={styles.imageTopRow}>
-          <Text style={styles.destination}>{destination}</Text>
+          <View style={styles.destinationGroup}>
+            <AppIconBadge
+              spec={tripTone.spec}
+              size={32}
+              iconSize={15}
+              color={tripTone.color}
+              backgroundColor={tripTone.backgroundColor}
+              borderColor={tripTone.borderColor}
+            />
+            <Text style={styles.destination}>{destination}</Text>
+          </View>
           {fitLabel ? <Text style={styles.fitBadge}>{fitLabel}</Text> : null}
         </View>
         <View style={styles.imageBottom}>
@@ -107,6 +118,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
+    gap: 10,
+  },
+  destinationGroup: {
+    flexDirection: 'row',
+    alignItems: 'center',
     gap: 10,
   },
   destination: {

@@ -11,6 +11,7 @@ import {
 } from '@/src/data/colors';
 import { luxuryFonts, luxuryRadii } from '@/src/theme/luxury';
 import { getTripCardImage, TripImageVariant } from '@/src/data/tripImages';
+import { AppIconBadge, getTripIntentBadgeTone } from '@/src/components/AppIconBadge';
 
 interface TripThemeCardProps {
   intentId: string;
@@ -58,6 +59,7 @@ export function TripThemeCard({
   const isV2 = variant === 'v2';
   const visual = (isV2 ? TRIP_VISUALS_V2 : TRIP_VISUALS)[intentId] ?? (isV2 ? TRIP_VISUALS_V2.kyoto_forest : TRIP_VISUALS.kyoto_forest);
   const imageSource = getTripCardImage(intentId, imageVariant);
+  const tripTone = getTripIntentBadgeTone(intentId, isV2);
 
   return (
     <Pressable
@@ -75,12 +77,22 @@ export function TripThemeCard({
       <View style={[styles.scrim, isV2 && styles.scrimV2]} />
 
       <View style={styles.content}>
-        {(fitLabel || safetyBadge) ? (
-          <View style={styles.badgeRow}>
+        <View style={styles.headerRow}>
+          <AppIconBadge
+            spec={tripTone.spec}
+            size={34}
+            iconSize={16}
+            color={tripTone.color}
+            backgroundColor={tripTone.backgroundColor}
+            borderColor={tripTone.borderColor}
+          />
+          {(fitLabel || safetyBadge) ? (
+            <View style={styles.badgeRow}>
             {fitLabel ? <Text style={[styles.fitBadge, isV2 && styles.fitBadgeV2]}>{fitLabel}</Text> : null}
             {safetyBadge ? <Text style={[styles.safetyBadge, isV2 && styles.safetyBadgeV2]}>{safetyBadge}</Text> : null}
-          </View>
-        ) : null}
+            </View>
+          ) : <View />}
+        </View>
         <Text style={[styles.title, disabled && styles.titleDisabled, isV2 && styles.titleV2]} numberOfLines={2}>
           {title}
         </Text>
@@ -150,11 +162,19 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     gap: 6,
   },
+  headerRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'space-between',
+    gap: 10,
+    marginBottom: 2,
+  },
   badgeRow: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     gap: 6,
-    marginBottom: 2,
+    justifyContent: 'flex-end',
+    flex: 1,
   },
   fitBadge: {
     fontSize: TYPE_SCALE.caption - 1,

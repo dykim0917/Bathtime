@@ -6,10 +6,10 @@ import { router, useLocalSearchParams } from 'expo-router';
 import { BathEnvironment, HealthCondition, UserProfile } from '@/src/engine/types';
 import { useHaptic } from '@/src/hooks/useHaptic';
 import { useUserProfile } from '@/src/hooks/useUserProfile';
-import { TYPE_CAPTION, TYPE_BODY, TYPE_HEADING_LG, TYPE_TITLE, V2_ACCENT, V2_ACCENT_SOFT, V2_ACCENT_TEXT, V2_BG_BASE, V2_BG_BOTTOM, V2_BG_TOP, V2_BORDER, V2_TEXT_MUTED, V2_TEXT_PRIMARY, V2_TEXT_SECONDARY } from '@/src/data/colors';
-import { luxuryFonts, luxuryRadii, luxuryTracking } from '@/src/theme/luxury';
+import { TYPE_CAPTION, TYPE_BODY, TYPE_HEADING_LG, TYPE_TITLE, V2_ACCENT, V2_ACCENT_TEXT, V2_BG_BASE, V2_BG_BOTTOM, V2_BG_TOP, V2_BORDER, V2_TEXT_PRIMARY, V2_TEXT_SECONDARY } from '@/src/data/colors';
+import { luxuryFonts } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
-import { CustomIcon } from '@/src/components/CustomIcon';
+import { AppIconBadge, getHealthConditionBadgeTone } from '@/src/components/AppIconBadge';
 
 interface ConditionOption { id: HealthCondition; labelKo: string; }
 const CONDITIONS: ConditionOption[] = [
@@ -83,18 +83,27 @@ export default function OnboardingHealth() {
             <View style={styles.conditions}>
               {CONDITIONS.map((cond) => {
                 const selected = selectedConditions.has(cond.id);
+                const iconTone = getHealthConditionBadgeTone(cond.id, selected);
                 return (
-                  <Pressable key={cond.id} style={[ui.glassCardV2, styles.conditionCard, selected && styles.conditionCardSelected]} onPress={() => handleToggle(cond.id)}>
-                    <View style={[styles.conditionIcon, selected && styles.conditionIconSelected]}>
-                      <CustomIcon
-                        name="care"
-                        size={18}
-                        color={selected ? V2_ACCENT : V2_TEXT_SECONDARY}
-                        fillColor={selected ? V2_ACCENT : V2_TEXT_SECONDARY}
-                        strokeColor={selected ? V2_ACCENT : V2_TEXT_SECONDARY}
-                      />
-                    </View>
-                    <Text style={[styles.conditionLabel, selected && styles.conditionLabelSelected]}>{cond.labelKo}</Text>
+                  <Pressable
+                    key={cond.id}
+                    style={[
+                      ui.glassCardV2,
+                      styles.conditionCard,
+                      selected && { borderColor: iconTone.borderColor, backgroundColor: iconTone.backgroundColor },
+                    ]}
+                    onPress={() => handleToggle(cond.id)}
+                  >
+                    <AppIconBadge
+                      spec={iconTone.spec}
+                      size={38}
+                      iconSize={16}
+                      color={iconTone.color}
+                      backgroundColor={iconTone.backgroundColor}
+                      borderColor={iconTone.borderColor}
+                      style={styles.conditionIcon}
+                    />
+                    <Text style={[styles.conditionLabel, selected && { color: iconTone.color }]}>{cond.labelKo}</Text>
                     <View style={[styles.radio, selected && styles.radioSelected]}>{selected ? <FontAwesome name="check" size={11} color={V2_ACCENT_TEXT} /> : null}</View>
                   </Pressable>
                 );
@@ -133,11 +142,8 @@ const styles = StyleSheet.create({
   scrollContent: { paddingBottom: 132 },
   conditions: { gap: 12 },
   conditionCard: { minHeight: 68, paddingHorizontal: 16, flexDirection: 'row', alignItems: 'center' },
-  conditionCardSelected: { borderColor: V2_ACCENT, backgroundColor: 'rgba(176, 141, 87, 0.08)' },
-  conditionIcon: { width: 38, height: 38, borderRadius: luxuryRadii.button, backgroundColor: 'rgba(255,255,255,0.06)', borderWidth: 1, borderColor: V2_BORDER, justifyContent: 'center', alignItems: 'center', marginRight: 12 },
-  conditionIconSelected: { backgroundColor: V2_ACCENT_SOFT, borderColor: 'rgba(176, 141, 87, 0.32)' },
+  conditionIcon: { marginRight: 12 },
   conditionLabel: { flex: 1, fontSize: TYPE_TITLE, color: V2_TEXT_PRIMARY, fontFamily: luxuryFonts.display },
-  conditionLabelSelected: { color: V2_ACCENT },
   radio: { width: 24, height: 24, borderRadius: 12, borderWidth: 1.5, borderColor: V2_BORDER, justifyContent: 'center', alignItems: 'center' },
   radioSelected: { borderColor: V2_ACCENT, backgroundColor: V2_ACCENT },
   footerCta: {

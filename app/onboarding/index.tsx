@@ -5,10 +5,10 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { router, useLocalSearchParams } from 'expo-router';
 import { BathEnvironment } from '@/src/engine/types';
 import { useHaptic } from '@/src/hooks/useHaptic';
-import { TYPE_CAPTION, TYPE_BODY, TYPE_HEADING_LG, TYPE_TITLE, V2_ACCENT, V2_ACCENT_SOFT, V2_ACCENT_TEXT, V2_BG_BASE, V2_BG_BOTTOM, V2_BG_TOP, V2_BORDER, V2_TEXT_MUTED, V2_TEXT_PRIMARY, V2_TEXT_SECONDARY } from '@/src/data/colors';
-import { luxuryFonts, luxuryRadii, luxuryTracking } from '@/src/theme/luxury';
+import { TYPE_CAPTION, TYPE_BODY, TYPE_HEADING_LG, TYPE_TITLE, V2_ACCENT, V2_ACCENT_TEXT, V2_BG_BASE, V2_BG_BOTTOM, V2_BG_TOP, V2_BORDER, V2_TEXT_MUTED, V2_TEXT_PRIMARY, V2_TEXT_SECONDARY } from '@/src/data/colors';
+import { luxuryFonts, luxuryTracking } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
-import { CustomIcon, getEnvironmentIconName } from '@/src/components/CustomIcon';
+import { AppIconBadge, getEnvironmentBadgeTone } from '@/src/components/AppIconBadge';
 
 const ENVIRONMENTS: { id: BathEnvironment; labelKo: string; desc: string }[] = [
   { id: 'bathtub', labelKo: '욕조', desc: '전신욕, 반신욕 가능' },
@@ -74,23 +74,32 @@ export default function OnboardingEnvironment() {
               <View style={styles.cards}>
                 {ENVIRONMENTS.map((env) => {
                   const isSelected = selected === env.id;
+                  const tone = getEnvironmentBadgeTone(env.id, isSelected);
                   return (
-                    <Pressable key={env.id} onPress={() => handleSelect(env.id)} style={[ui.glassCardV2, styles.card, isSelected && styles.cardSelected]}>
-                      <View style={[styles.iconWrap, isSelected && styles.iconWrapSelected]}>
-                        <CustomIcon
-                          name={getEnvironmentIconName(env.id)}
-                          size={24}
-                          color={isSelected ? V2_ACCENT : V2_TEXT_SECONDARY}
-                          fillColor={isSelected ? V2_ACCENT : V2_TEXT_SECONDARY}
-                          strokeColor={isSelected ? V2_ACCENT : V2_TEXT_SECONDARY}
-                        />
-                      </View>
+                    <Pressable
+                      key={env.id}
+                      onPress={() => handleSelect(env.id)}
+                      style={[
+                        ui.glassCardV2,
+                        styles.card,
+                        isSelected && { borderColor: tone.borderColor, backgroundColor: tone.backgroundColor },
+                      ]}
+                    >
+                      <AppIconBadge
+                        spec={tone.spec}
+                        size={50}
+                        iconSize={22}
+                        color={tone.color}
+                        backgroundColor={tone.backgroundColor}
+                        borderColor={tone.borderColor}
+                        style={styles.iconWrap}
+                      />
                       <View style={styles.cardText}>
-                      <View style={styles.cardLabelRow}>
-                        <Text style={[styles.cardLabel, isSelected && styles.cardLabelSelected]}>{env.labelKo}</Text>
+                        <View style={styles.cardLabelRow}>
+                          <Text style={[styles.cardLabel, isSelected && { color: tone.color }]}>{env.labelKo}</Text>
+                        </View>
+                        <Text style={styles.cardDesc}>{env.desc}</Text>
                       </View>
-                      <Text style={styles.cardDesc}>{env.desc}</Text>
-                    </View>
                       <View style={[styles.radio, isSelected && styles.radioSelected]}>{isSelected ? <FontAwesome name="check" size={12} color={V2_ACCENT_TEXT} /> : null}</View>
                     </Pressable>
                   );
@@ -134,13 +143,10 @@ const styles = StyleSheet.create({
   scrollContent: { paddingBottom: 132 },
   cards: { gap: 14 },
   card: { flexDirection: 'row', alignItems: 'center', paddingVertical: 16, paddingHorizontal: 18 },
-  cardSelected: { borderColor: V2_ACCENT, backgroundColor: 'rgba(176, 141, 87, 0.1)' },
-  iconWrap: { width: 50, height: 50, borderRadius: luxuryRadii.button, backgroundColor: 'rgba(255,255,255,0.05)', borderWidth: 1, borderColor: V2_BORDER, justifyContent: 'center', alignItems: 'center', marginRight: 16 },
-  iconWrapSelected: { backgroundColor: V2_ACCENT_SOFT, borderColor: 'rgba(176, 141, 87, 0.32)' },
+  iconWrap: { marginRight: 16 },
   cardText: { flex: 1 },
   cardLabelRow: { flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 4 },
   cardLabel: { fontSize: TYPE_TITLE + 1, color: V2_TEXT_PRIMARY, fontFamily: luxuryFonts.display, lineHeight: 24 },
-  cardLabelSelected: { color: '#F5F0E8' },
   cardDesc: { fontSize: TYPE_CAPTION, color: V2_TEXT_MUTED, fontFamily: luxuryFonts.sans, lineHeight: 18 },
   radio: { width: 24, height: 24, borderRadius: 12, borderWidth: 1.5, borderColor: V2_BORDER, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(255,255,255,0.03)' },
   radioSelected: { borderColor: V2_ACCENT, backgroundColor: V2_ACCENT, transform: [{ scale: 1.05 }] },

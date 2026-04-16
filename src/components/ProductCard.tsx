@@ -15,7 +15,7 @@ import {
 } from '@/src/data/colors';
 import { CatalogProduct, PRODUCT_CATEGORY_LABELS } from '@/src/data/catalog';
 import { luxuryFonts, luxuryRadii, luxuryTracking } from '@/src/theme/luxury';
-import { CustomIcon, getProductCategoryIconName } from '@/src/components/CustomIcon';
+import { AppIconBadge, getProductCategoryBadgeTone } from '@/src/components/AppIconBadge';
 
 interface ProductCardProps {
   item: CatalogProduct;
@@ -26,6 +26,7 @@ interface ProductCardProps {
 export function ProductCard({ item, variant = 'default', onPress }: ProductCardProps) {
   const isV2 = variant === 'v2';
   const categoryLabel = PRODUCT_CATEGORY_LABELS[item.category];
+  const categoryTone = getProductCategoryBadgeTone(item.category);
 
   return (
     <Pressable
@@ -48,15 +49,15 @@ export function ProductCard({ item, variant = 'default', onPress }: ProductCardP
         </View>
       ) : null}
       <View style={styles.header}>
-        <View style={[styles.emojiWrap, { backgroundColor: item.bgColor }, isV2 && styles.emojiWrapV2]}>
-          <CustomIcon
-            name={getProductCategoryIconName(item.category)}
-            size={24}
-            color={isV2 ? V2_TEXT_PRIMARY : '#23303B'}
-            fillColor={isV2 ? V2_TEXT_PRIMARY : '#23303B'}
-            strokeColor={isV2 ? V2_TEXT_PRIMARY : '#23303B'}
-          />
-        </View>
+        <AppIconBadge
+          spec={categoryTone.spec}
+          size={52}
+          iconSize={22}
+          color={isV2 ? V2_TEXT_PRIMARY : categoryTone.color}
+          backgroundColor={isV2 ? categoryTone.backgroundColor : item.bgColor}
+          borderColor={isV2 ? categoryTone.borderColor : 'transparent'}
+          style={[styles.emojiWrap, isV2 && styles.emojiWrapV2]}
+        />
         <View style={styles.nameWrap}>
           <Text style={[styles.name, isV2 && styles.nameV2]} numberOfLines={1}>{item.name}</Text>
           <Text style={[styles.brand, isV2 && styles.brandV2]} numberOfLines={1}>{item.brand}</Text>
@@ -134,15 +135,10 @@ const styles = StyleSheet.create({
     gap: 12,
   },
   emojiWrap: {
-    width: 52,
-    height: 52,
     borderRadius: luxuryRadii.button,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   emojiWrapV2: {
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.12)',
+    
   },
   nameWrap: {
     flex: 1,
