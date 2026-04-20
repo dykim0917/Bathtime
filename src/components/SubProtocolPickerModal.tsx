@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { SubProtocolOption } from '@/src/engine/types';
 import {
   TYPE_SCALE,
@@ -15,6 +15,7 @@ import {
 } from '@/src/data/colors';
 import { luxuryFonts, luxuryRadii, luxuryTracking } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
+import { AnimatedModalShell } from '@/src/components/AnimatedModalShell';
 
 interface SubProtocolPickerModalProps {
   visible: boolean;
@@ -41,9 +42,13 @@ export function SubProtocolPickerModal({
   const isV2 = variant === 'v2';
 
   return (
-    <Modal visible={visible} animationType="slide" transparent onRequestClose={onClose}>
-      <View style={[styles.overlay, isV2 && styles.overlayV2]}>
-        <Pressable style={StyleSheet.absoluteFillObject} onPress={onClose} />
+    <AnimatedModalShell
+      visible={visible}
+      onClose={onClose}
+      layoutStyle={styles.overlay}
+      backdropStyle={[styles.backdrop, isV2 && styles.backdropV2]}
+    >
+      {(requestClose) => (
         <View style={styles.card}>
           <View style={styles.handle} />
           <Text style={[styles.title, isV2 && styles.titleV2]}>{heading}</Text>
@@ -71,12 +76,12 @@ export function SubProtocolPickerModal({
             ))}
           </View>
 
-          <Pressable style={styles.closeButton} onPress={onClose}>
+          <Pressable style={styles.closeButton} onPress={requestClose}>
             <Text style={styles.closeText}>닫기</Text>
           </Pressable>
         </View>
-      </View>
-    </Modal>
+      )}
+    </AnimatedModalShell>
   );
 }
 
@@ -84,10 +89,12 @@ const styles = StyleSheet.create({
   overlay: {
     flex: 1,
     justifyContent: 'flex-end',
-    backgroundColor: V2_BG_OVERLAY,
     paddingTop: 48,
   },
-  overlayV2: {
+  backdrop: {
+    backgroundColor: V2_BG_OVERLAY,
+  },
+  backdropV2: {
     backgroundColor: 'rgba(3, 8, 21, 0.64)',
   },
   card: {

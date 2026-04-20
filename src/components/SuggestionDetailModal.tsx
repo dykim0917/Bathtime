@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Modal,
   View,
   Text,
   Pressable,
@@ -21,6 +20,7 @@ import {
 import { copy } from '@/src/content/copy';
 import { luxuryFonts, luxuryRadii, luxuryTracking } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
+import { AnimatedModalShell } from '@/src/components/AnimatedModalShell';
 
 interface SuggestionDetailModalProps {
   visible: boolean;
@@ -41,9 +41,13 @@ export function SuggestionDetailModal({
   const isTrip = suggestion.mode === 'trip';
 
   return (
-    <Modal visible={visible} animationType="slide" transparent onRequestClose={onClose}>
-      <View style={styles.overlay}>
-        <Pressable style={StyleSheet.absoluteFillObject} onPress={onClose} />
+    <AnimatedModalShell
+      visible={visible}
+      onClose={onClose}
+      layoutStyle={styles.overlay}
+      backdropStyle={styles.backdrop}
+    >
+      {(requestClose) => (
         <View style={styles.card}>
           <View style={styles.handle} />
           <Text style={styles.title}>
@@ -90,13 +94,13 @@ export function SuggestionDetailModal({
             <Pressable style={ui.primaryButtonV2} onPress={onStart}>
               <Text style={styles.startText}>{copy.suggestion.cta.start}</Text>
             </Pressable>
-            <Pressable style={styles.closeButton} onPress={onClose}>
+            <Pressable style={styles.closeButton} onPress={requestClose}>
               <Text style={styles.closeText}>{copy.suggestion.cta.close}</Text>
             </Pressable>
           </View>
         </View>
-      </View>
-    </Modal>
+      )}
+    </AnimatedModalShell>
   );
 }
 
@@ -104,8 +108,10 @@ const styles = StyleSheet.create({
   overlay: {
     flex: 1,
     justifyContent: 'flex-end',
-    backgroundColor: V2_BG_OVERLAY,
     paddingTop: 48,
+  },
+  backdrop: {
+    backgroundColor: V2_BG_OVERLAY,
   },
   card: {
     maxHeight: '82%',

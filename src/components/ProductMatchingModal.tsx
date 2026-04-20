@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { ProductMatchItem } from '@/src/engine/productMatching';
 import {
   TYPE_SCALE,
@@ -16,6 +16,7 @@ import {
 import { copy } from '@/src/content/copy';
 import { luxuryFonts, luxuryRadii, luxuryTracking } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
+import { AnimatedModalShell } from '@/src/components/AnimatedModalShell';
 
 interface ProductMatchingModalProps {
   visible: boolean;
@@ -33,9 +34,13 @@ export function ProductMatchingModal({
   onPurchasePress,
 }: ProductMatchingModalProps) {
   return (
-    <Modal visible={visible} animationType="slide" transparent onRequestClose={onClose}>
-      <View style={styles.overlay}>
-        <Pressable style={StyleSheet.absoluteFillObject} onPress={onClose} />
+    <AnimatedModalShell
+      visible={visible}
+      onClose={onClose}
+      layoutStyle={styles.overlay}
+      backdropStyle={styles.backdrop}
+    >
+      {(requestClose) => (
         <View style={styles.card}>
           <View style={styles.handle} />
           <Text style={styles.title}>{copy.product.title}</Text>
@@ -74,12 +79,12 @@ export function ProductMatchingModal({
             ))}
           </ScrollView>
 
-          <Pressable style={styles.closeButton} onPress={onClose}>
+          <Pressable style={styles.closeButton} onPress={requestClose}>
             <Text style={styles.closeText}>{copy.product.cta.close}</Text>
           </Pressable>
         </View>
-      </View>
-    </Modal>
+      )}
+    </AnimatedModalShell>
   );
 }
 
@@ -87,8 +92,10 @@ const styles = StyleSheet.create({
   overlay: {
     flex: 1,
     justifyContent: 'flex-end',
-    backgroundColor: V2_BG_OVERLAY,
     paddingTop: 48,
+  },
+  backdrop: {
+    backgroundColor: V2_BG_OVERLAY,
   },
   card: {
     maxHeight: '84%',

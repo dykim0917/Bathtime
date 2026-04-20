@@ -8,7 +8,6 @@ import {
   StyleSheet,
   TouchableOpacity,
   Alert,
-  Modal,
   useWindowDimensions,
   Platform,
 } from 'react-native';
@@ -28,6 +27,7 @@ import { useUserProfile } from '@/src/hooks/useUserProfile';
 import { useHaptic } from '@/src/hooks/useHaptic';
 import { OpenTabHeader } from '@/src/components/OpenTabHeader';
 import { PersistentDisclosure } from '@/src/components/PersistentDisclosure';
+import { AnimatedModalShell } from '@/src/components/AnimatedModalShell';
 import {
   TYPE_BODY,
   TYPE_CAPTION,
@@ -530,20 +530,22 @@ function SettingsSection({
       </ScrollView>
 
       {showResetSection ? (
-        <Modal
-          transparent
-          animationType="fade"
+        <AnimatedModalShell
           visible={resetModalVisible}
-          onRequestClose={() => setResetModalVisible(false)}
+          onClose={() => setResetModalVisible(false)}
+          align="center"
+          layoutStyle={styles.modalBackdrop}
+          backdropStyle={styles.modalBackdropTint}
+          containerStyle={styles.modalContainer}
         >
-          <View style={styles.modalBackdrop}>
+          {(requestClose) => (
             <View style={styles.modalCard}>
               <Text style={styles.modalTitle}>{copy.settings.resetDialogTitle}</Text>
               <Text style={styles.modalBody}>{copy.settings.resetDialogBody}</Text>
               <View style={styles.modalActions}>
                 <Pressable
                   style={[styles.modalButton, styles.modalCancelButton]}
-                  onPress={() => setResetModalVisible(false)}
+                  onPress={requestClose}
                   disabled={isResetting}
                 >
                   <Text style={styles.modalCancelText}>{copy.settings.resetCancel}</Text>
@@ -561,8 +563,8 @@ function SettingsSection({
                 </Pressable>
               </View>
             </View>
-          </View>
-        </Modal>
+          )}
+        </AnimatedModalShell>
       ) : null}
     </View>
   );
@@ -1001,9 +1003,14 @@ const styles = StyleSheet.create({
   },
   modalBackdrop: {
     flex: 1,
+    paddingHorizontal: 24,
+  },
+  modalBackdropTint: {
     backgroundColor: 'rgba(3, 8, 21, 0.72)',
-    justifyContent: 'center',
+  },
+  modalContainer: {
     alignItems: 'center',
+    justifyContent: 'center',
     paddingHorizontal: 24,
   },
   modalCard: {

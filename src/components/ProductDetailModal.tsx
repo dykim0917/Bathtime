@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { CatalogProduct, PRODUCT_CATEGORY_LABELS } from '@/src/data/catalog';
 import {
   V2_ACCENT,
@@ -16,6 +16,7 @@ import {
 import { luxuryFonts, luxuryRadii, luxuryTracking } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
 import { AppIconBadge, getProductCategoryBadgeTone } from '@/src/components/AppIconBadge';
+import { AnimatedModalShell } from '@/src/components/AnimatedModalShell';
 
 interface ProductDetailModalProps {
   visible: boolean;
@@ -40,9 +41,13 @@ export function ProductDetailModal({
   const categoryTone = getProductCategoryBadgeTone(product.category);
 
   return (
-    <Modal visible={visible} animationType="slide" transparent onRequestClose={onClose}>
-      <View style={styles.overlay}>
-        <Pressable style={StyleSheet.absoluteFillObject} onPress={onClose} />
+    <AnimatedModalShell
+      visible={visible}
+      onClose={onClose}
+      layoutStyle={styles.overlay}
+      backdropStyle={styles.backdrop}
+    >
+      {(requestClose) => (
         <View style={styles.card}>
           <View style={styles.handle} />
           <View style={styles.header}>
@@ -93,13 +98,13 @@ export function ProductDetailModal({
                 <Text style={styles.secondaryButtonText}>{secondaryActionLabel}</Text>
               </Pressable>
             ) : null}
-            <Pressable style={styles.closeButton} onPress={onClose}>
+            <Pressable style={styles.closeButton} onPress={requestClose}>
               <Text style={styles.closeButtonText}>{closeActionLabel}</Text>
             </Pressable>
           </View>
         </View>
-      </View>
-    </Modal>
+      )}
+    </AnimatedModalShell>
   );
 }
 
@@ -107,8 +112,10 @@ const styles = StyleSheet.create({
   overlay: {
     flex: 1,
     justifyContent: 'flex-end',
-    backgroundColor: V2_BG_OVERLAY,
     paddingTop: 48,
+  },
+  backdrop: {
+    backgroundColor: V2_BG_OVERLAY,
   },
   card: {
     backgroundColor: V2_MODAL_SURFACE,

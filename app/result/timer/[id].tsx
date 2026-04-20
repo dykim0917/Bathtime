@@ -10,8 +10,6 @@ import { saveSession, updateSessionCompletion } from '@/src/storage/session';
 import { WaterAnimation } from '@/src/components/WaterAnimation';
 import { SteamAnimation } from '@/src/components/SteamAnimation';
 import { AudioMixer } from '@/src/components/AudioMixer';
-import { PersistentDisclosure } from '@/src/components/PersistentDisclosure';
-import { buildDisclosureLines } from '@/src/engine/disclosures';
 import { useDualAudioPlayer } from '@/src/hooks/useDualAudioPlayer';
 import { useHaptic } from '@/src/hooks/useHaptic';
 import { copy } from '@/src/content/copy';
@@ -31,6 +29,7 @@ export default function TimerScreen() {
   const [showControls, setShowControls] = useState(true);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const introTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const introCompleteTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const startedAtRef = useRef<string>(new Date().toISOString());
   const hasRoutineStartedRef = useRef(false);
   const isCompletingRef = useRef(false);
@@ -39,6 +38,9 @@ export default function TimerScreen() {
   const accumulatedPausedMsRef = useRef(0);
   const isPausedRef = useRef(false);
   const haptic = useHaptic();
+  const { light: triggerLightHaptic, success: triggerSuccessHaptic } = haptic;
+  const recommendationRef = useRef<BathRecommendation | null>(null);
+  const totalSecondsRef = useRef(0);
 
   const audio = useDualAudioPlayer(recommendation?.music ?? null, recommendation?.ambience ?? null);
   const { play: playAudio, pause: pauseAudio, stop: stopAudio, setMusicVolume, setAmbienceVolume } = audio;
@@ -56,6 +58,10 @@ export default function TimerScreen() {
     if (introTimerRef.current) {
       clearInterval(introTimerRef.current);
       introTimerRef.current = null;
+    }
+    if (introCompleteTimeoutRef.current) {
+      clearTimeout(introCompleteTimeoutRef.current);
+      introCompleteTimeoutRef.current = null;
     }
   }, []);
 
@@ -86,18 +92,20 @@ export default function TimerScreen() {
       const nextRemaining = computeRemainingSeconds();
       setRemainingSeconds(nextRemaining);
       if (nextRemaining <= 0) {
-        haptic.success();
+        triggerSuccessHaptic();
         void handleComplete(0);
       }
     }, 250);
-  }, [clearTimer, computeRemainingSeconds, haptic, handleComplete]);
+  }, [clearTimer, computeRemainingSeconds, triggerSuccessHaptic, handleComplete]);
 
   const startRoutine = useCallback(() => {
-    if (!id || !recommendation || totalSeconds <= 0 || hasRoutineStartedRef.current) return;
+    const currentRecommendation = recommendationRef.current;
+    const currentTotalSeconds = totalSecondsRef.current;
+    if (!id || !currentRecommendation || currentTotalSeconds <= 0 || hasRoutineStartedRef.current) return;
 
     clearIntroTimer();
     const now = Date.now();
-    targetEndAtMsRef.current = now + totalSeconds * 1000;
+    targetEndAtMsRef.current = now + currentTotalSeconds * 1000;
     accumulatedPausedMsRef.current = 0;
     pausedAtMsRef.current = null;
     isPausedRef.current = false;
@@ -107,13 +115,21 @@ export default function TimerScreen() {
     setPhase('active');
     setIntroRemainingMs(0);
     setIsPaused(false);
-    setRemainingSeconds(totalSeconds);
+    setRemainingSeconds(currentTotalSeconds);
 
-    haptic.light();
+    triggerLightHaptic();
     void saveSession({ recommendationId: id, startedAt: startedAtRef.current });
     playAudio();
     startTicking();
-  }, [id, recommendation, totalSeconds, clearIntroTimer, haptic, playAudio, startTicking]);
+  }, [id, clearIntroTimer, triggerLightHaptic, playAudio, startTicking]);
+
+  useEffect(() => {
+    recommendationRef.current = recommendation;
+  }, [recommendation]);
+
+  useEffect(() => {
+    totalSecondsRef.current = totalSeconds;
+  }, [totalSeconds]);
 
   useEffect(() => {
     if (!id) return;
@@ -158,11 +174,11 @@ export default function TimerScreen() {
       const elapsed = Date.now() - introStartedAt;
       const nextRemainingMs = Math.max(0, INTRO_DURATION_MS - elapsed);
       setIntroRemainingMs(nextRemainingMs);
-
-      if (nextRemainingMs <= 0) {
-        startRoutine();
-      }
     }, 50);
+    introCompleteTimeoutRef.current = setTimeout(() => {
+      setIntroRemainingMs(0);
+      startRoutine();
+    }, INTRO_DURATION_MS);
 
     return clearIntroTimer;
   }, [recommendation, totalSeconds, phase, clearIntroTimer, startRoutine]);
@@ -204,7 +220,7 @@ export default function TimerScreen() {
       pauseAudio();
     }
 
-    haptic.light();
+    triggerLightHaptic();
   };
 
   const confirmFinish = () => {
@@ -254,12 +270,6 @@ export default function TimerScreen() {
     remainingSeconds,
     totalSeconds,
   });
-  const timerDisclosureLines = buildDisclosureLines({
-    fallbackStrategy: 'none',
-    selectedMode: recommendation.mode === 'trip' ? 'recovery' : recommendation.persona === 'P4_SLEEP' ? 'sleep' : 'recovery',
-    healthConditions: [],
-  });
-
   return (
     <View style={styles.container}>
       <LinearGradient colors={[V2_BG_TOP, V2_BG_BASE, V2_BG_BOTTOM]} style={StyleSheet.absoluteFillObject} />
@@ -351,10 +361,6 @@ export default function TimerScreen() {
               ) : null}
             </Animated.View>
           )}
-
-          <View style={styles.disclosureWrap}>
-            <PersistentDisclosure lines={timerDisclosureLines} variant="v2" />
-          </View>
         </SafeAreaView>
       </Pressable>
     </View>
@@ -407,5 +413,4 @@ const styles = StyleSheet.create({
   progressLabels: { flexDirection: 'row', justifyContent: 'space-between' },
   progressTime: { fontSize: TYPE_CAPTION, color: V2_TEXT_MUTED, fontVariant: ['tabular-nums'], fontFamily: luxuryFonts.mono },
   mixerContainer: { marginBottom: 8 },
-  disclosureWrap: { paddingHorizontal: 14, paddingBottom: 8 },
 });
