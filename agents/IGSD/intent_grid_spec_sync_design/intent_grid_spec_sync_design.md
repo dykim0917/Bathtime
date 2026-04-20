@@ -72,7 +72,7 @@ docs/WIREFRAME_V3_11_0.md         ← UI 스펙 소스
 | 카드 수 제한 | 2×2 그리드 = 카테고리당 4개, 총 8개 고정 |
 | 옵션 수 제한 | SubProtocolOption 1~3개 (미만/초과 모두 불일치) |
 | 모달 기본값 | `partial_bath` 환경에서 첫 번째 옵션 preselect 필수 |
-| Safety Gate | 고위험 조건 Intent에 SafetyWarning 트리거 연결 필수 — 누락 시 CRITICAL 레벨 |
+| Safety Gate | 모든 추천은 레시피의 공통 PreBathGateModal을 거쳐야 하며, 고위험 조건은 추가 안전 항목이 붙어야 함 |
 | partialOverrides | "additive only" 원칙 — 기존 필드 덮어쓰기 불가 (위반 시 불일치) |
 | 코드 수정 금지 | 에이전트는 읽기 전용 — 산출물은 리포트만 |
 
@@ -80,7 +80,7 @@ docs/WIREFRAME_V3_11_0.md         ← UI 스펙 소스
 
 | 레벨 | 기준 | 예시 |
 |------|------|------|
-| CRITICAL | 안전 관련 누락, Safety Gate 미연결 | 고위험 Intent에 SafetyWarning 없음 |
+| CRITICAL | 안전 관련 누락, Safety Gate 미연결 | 추천이 레시피 공통 게이트를 우회하거나 고위험 추가 항목이 없음 |
 | ERROR | 스펙과 코드 간 값 불일치 | subtitle 텍스트 다름, 옵션 수 초과 |
 | WARNING | 선택적 필드 누락 또는 권장 미준수 | 이벤트 속성 누락 |
 | INFO | 참고용 현황 (불일치 아님) | 미사용 색상 토큰 |
@@ -93,7 +93,7 @@ docs/WIREFRAME_V3_11_0.md         ← UI 스펙 소스
 | SubProtocolOption | IntentCard 선택 시 모달에 표시되는 세부 옵션 |
 | partialOverrides | `partial_bath` 환경에서 bathtub 기본값에 추가 적용되는 필드 |
 | preselect | 모달 최초 진입 시 자동 선택되는 기본 옵션 |
-| Safety Gate | 고위험 조건 감지 시 SafetyWarning 모달을 강제 표시하는 트리거 |
+| Safety Gate | 레시피 진입 시 공통 PreBathGateModal을 강제 표시하고, 고위험 조건은 추가 확인 항목을 부착하는 규칙 |
 | 정답 스펙 | `output/spec_*.json` — STEP 0에서 자동 추출한 소스 오브 트루스 |
 | 코드 현황 | 스캔 대상 파일에서 추출한 현재 구현 상태 |
 
@@ -534,7 +534,7 @@ docs/WIREFRAME_V3_11_0.md         ← UI 스펙 소스
       "source_line": null,
       "current_value": false,
       "expected_value": true,
-      "description": "숙취 해소 Intent에 SafetyWarning 트리거가 연결되지 않았습니다. PRD §20.4 기준 P1_SAFETY 강제 적용 대상입니다.",
+      "description": "숙취 해소 Intent가 레시피 공통 PreBathGateModal을 우회하거나, 고위험 추가 항목이 붙지 않았습니다. PRD §20.4 기준 P1_SAFETY 강제 적용 대상입니다.",
       "reference": "PRD §20.4, WIREFRAME W05"
     }
   ]

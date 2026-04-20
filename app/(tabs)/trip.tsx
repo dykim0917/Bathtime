@@ -19,7 +19,6 @@ import { useHaptic } from '@/src/hooks/useHaptic';
 import { saveRecommendation } from '@/src/storage/history';
 import { upsertSessionRecord } from '@/src/storage/sessionLog';
 import { loadLastEnvironment, saveLastEnvironment } from '@/src/storage/environment';
-import { SafetyWarning } from '@/src/components/SafetyWarning';
 import {
   TYPE_SCALE,
   V2_ACCENT,
@@ -29,7 +28,7 @@ import {
   V2_TEXT_PRIMARY,
   V2_TEXT_SECONDARY,
 } from '@/src/data/colors';
-import { TripThemeCard } from '@/src/components/TripThemeCard';
+import { HomeTripEditorialCard } from '@/src/components/HomeTripEditorialCard';
 import {
   RecommendationCardEventPayload,
   trackIntentCardClick,
@@ -38,9 +37,8 @@ import {
   trackRoutineStartAfterSubprotocol,
   trackSubprotocolSelected,
 } from '@/src/analytics/events';
-import { PersistentDisclosure } from '@/src/components/PersistentDisclosure';
-import { buildDisclosureLines } from '@/src/engine/disclosures';
 import {
+  getEnvironmentFitLabel,
   getEnvironmentSubtitle,
   pickAutoTripSubProtocol,
   TRIP_INTENT_CARDS,
@@ -57,10 +55,16 @@ const TRIP_ENV_OPTIONS: { id: BathEnvironment; label: string }[] = [
   { id: 'shower', label: '샤워' },
 ];
 
+const TRIP_EDITORIAL_META: Record<string, { accent: [string, string] }> = {
+  kyoto_forest: { accent: ['#274539', '#5E846F'] },
+  nordic_sauna: { accent: ['#4B3421', '#8B6540'] },
+  rainy_camping: { accent: ['#19334A', '#4F7DA1'] },
+  snow_cabin: { accent: ['#22354E', '#7590AA'] },
+};
+
 const SCREEN_HORIZONTAL_PADDING = 22;
 const SECTION_GAP = 18;
-const CARD_GAP = 12;
-const CARD_MIN_HEIGHT_REGULAR = 142;
+const CARD_GAP = 14;
 
 function getTimeContext(date = new Date()): TimeContext {
   const h = date.getHours();
@@ -124,10 +128,6 @@ export default function TripScreen() {
   const insets = useSafeAreaInsets();
 
   const [environment, setEnvironment] = useState<BathEnvironment>('bathtub');
-  const [warningVisible, setWarningVisible] = useState(false);
-  const [pendingWarnings, setPendingWarnings] = useState<string[]>([]);
-  const [pendingRecId, setPendingRecId] = useState<string | null>(null);
-  const [pendingStartPayload, setPendingStartPayload] = useState<RecommendationCardEventPayload | null>(null);
 
   const sessionIdRef = useRef(`session_${Date.now()}`);
   const timeContext = useMemo(() => getTimeContext(), []);
@@ -145,10 +145,7 @@ export default function TripScreen() {
   }, [profile]);
 
   const normalizedEnvironment = normalizeEnvironmentInput(environment);
-  const useSingleColumn = screenWidth < 340;
-  const gridColumns = useSingleColumn ? 1 : 2;
-  const sectionInnerWidth = Math.max(220, screenWidth - SCREEN_HORIZONTAL_PADDING * 2);
-  const intentCardWidth = gridColumns === 2 ? (sectionInnerWidth - CARD_GAP) / 2 : sectionInnerWidth;
+  const tripCardWidth = Math.max(220, screenWidth - SCREEN_HORIZONTAL_PADDING * 2);
 
   useFocusEffect(
     useCallback(() => {
@@ -183,16 +180,6 @@ export default function TripScreen() {
     });
     }, [environment, profile?.createdAt, profile?.healthConditions, timeContext])
   );
-
-  const disclosureLines = useMemo(() => {
-    const healthConditions = profile?.healthConditions ?? ['none'];
-    const fallback = hasHighRiskCondition(healthConditions) ? 'SAFE_ROUTINE_ONLY' as const : 'none' as const;
-    return buildDisclosureLines({
-      fallbackStrategy: fallback,
-      selectedMode: 'recovery',
-      healthConditions,
-    });
-  }, [profile?.healthConditions]);
 
   const handleSelectEnvironment = (next: BathEnvironment) => {
     haptic.light();
@@ -256,30 +243,9 @@ export default function TripScreen() {
 
     trackSubprotocolSelected(payloadWithSub);
 
-    if (recommendation.safetyWarnings.length > 0) {
-      setPendingWarnings(recommendation.safetyWarnings);
-      setPendingRecId(recommendation.id);
-      setPendingStartPayload(payloadWithSub);
-      setWarningVisible(true);
-      return;
-    }
-
     trackRoutineStart(payloadWithSub);
     trackRoutineStartAfterSubprotocol(payloadWithSub);
     router.push(`/result/recipe/${recommendation.id}?source=trip`);
-  };
-
-  const handleWarningDismiss = () => {
-    setWarningVisible(false);
-    if (pendingStartPayload) {
-      trackRoutineStart(pendingStartPayload);
-      trackRoutineStartAfterSubprotocol(pendingStartPayload);
-      setPendingStartPayload(null);
-    }
-    if (pendingRecId) {
-      router.push(`/result/recipe/${pendingRecId}?source=trip`);
-      setPendingRecId(null);
-    }
   };
 
   return (
@@ -311,25 +277,26 @@ export default function TripScreen() {
 
         <View>
           <Text style={styles.sectionTitle}>테마 루틴</Text>
-          <View style={[styles.gridWrap, { columnGap: CARD_GAP, rowGap: CARD_GAP }]}>
+          <View style={styles.tripList}>
             {TRIP_INTENT_CARDS.map((intent) => {
               const disabled = !intent.allowed_environments.includes(normalizedEnvironment);
               const fallback = resolveFallback(profile?.healthConditions ?? ['none']);
               const safetyBadge = hasSafetyPriorityFallback(fallback)
                 ? copy.home.safetyPriorityBadge
                 : undefined;
+              const meta = TRIP_EDITORIAL_META[intent.intent_id] ?? TRIP_EDITORIAL_META.kyoto_forest;
               return (
-                <TripThemeCard
+                <HomeTripEditorialCard
                   key={intent.id}
                   intentId={intent.intent_id}
                   title={intent.copy_title}
                   subtitle={getEnvironmentSubtitle(intent, normalizedEnvironment)}
+                  accent={meta.accent}
+                  fitLabel={getEnvironmentFitLabel(intent, normalizedEnvironment)}
                   safetyBadge={safetyBadge}
                   disabled={disabled}
                   onPress={() => handleOpenSubProtocol(intent)}
-                  width={intentCardWidth}
-                  minHeight={CARD_MIN_HEIGHT_REGULAR}
-                  variant="v2"
+                  width={tripCardWidth}
                   imageVariant="deep"
                 />
               );
@@ -337,15 +304,7 @@ export default function TripScreen() {
           </View>
         </View>
 
-        <PersistentDisclosure style={styles.disclosureInline} lines={disclosureLines} variant="v2" />
       </ScrollView>
-
-      <SafetyWarning
-        visible={warningVisible}
-        warnings={pendingWarnings}
-        onDismiss={handleWarningDismiss}
-        variant="v2"
-      />
     </View>
   );
 }
@@ -381,12 +340,7 @@ const styles = StyleSheet.create({
   envTextActive: {
     color: V2_ACCENT,
   },
-  gridWrap: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'flex-start',
-  },
-  disclosureInline: {
-    marginTop: 4,
+  tripList: {
+    gap: CARD_GAP,
   },
 });

@@ -20,7 +20,6 @@ import { useHaptic } from '@/src/hooks/useHaptic';
 import { saveRecommendation } from '@/src/storage/history';
 import { upsertSessionRecord } from '@/src/storage/sessionLog';
 import { loadLastEnvironment, saveLastEnvironment } from '@/src/storage/environment';
-import { SafetyWarning } from '@/src/components/SafetyWarning';
 import {
   TYPE_SCALE,
   V2_ACCENT,
@@ -45,8 +44,6 @@ import {
   trackSubprotocolModalOpen,
   trackSubprotocolSelected,
 } from '@/src/analytics/events';
-import { PersistentDisclosure } from '@/src/components/PersistentDisclosure';
-import { buildDisclosureLines } from '@/src/engine/disclosures';
 import { SubProtocolPickerModal } from '@/src/components/SubProtocolPickerModal';
 import {
   CARE_INTENT_CARDS,
@@ -167,10 +164,6 @@ export default function CareScreen() {
   const insets = useSafeAreaInsets();
 
   const [environment, setEnvironment] = useState<BathEnvironment>('bathtub');
-  const [warningVisible, setWarningVisible] = useState(false);
-  const [pendingWarnings, setPendingWarnings] = useState<string[]>([]);
-  const [pendingRecId, setPendingRecId] = useState<string | null>(null);
-  const [pendingStartPayload, setPendingStartPayload] = useState<RecommendationCardEventPayload | null>(null);
   const [subModalVisible, setSubModalVisible] = useState(false);
   const [selectedIntent, setSelectedIntent] = useState<IntentCard | null>(null);
   const [selectedIntentPayload, setSelectedIntentPayload] = useState<RecommendationCardEventPayload | null>(null);
@@ -226,16 +219,6 @@ export default function CareScreen() {
     });
     }, [environment, profile?.createdAt, profile?.healthConditions, timeContext])
   );
-
-  const disclosureLines = useMemo(() => {
-    const healthConditions = profile?.healthConditions ?? ['none'];
-    const fallback = hasHighRiskCondition(healthConditions) ? 'SAFE_ROUTINE_ONLY' as const : 'none' as const;
-    return buildDisclosureLines({
-      fallbackStrategy: fallback,
-      selectedMode: 'recovery',
-      healthConditions,
-    });
-  }, [profile?.healthConditions]);
 
   const handleSelectEnvironment = (next: BathEnvironment) => {
     haptic.light();
@@ -319,30 +302,9 @@ export default function CareScreen() {
 
     trackSubprotocolSelected(payloadWithSub);
 
-    if (recommendation.safetyWarnings.length > 0) {
-      setPendingWarnings(recommendation.safetyWarnings);
-      setPendingRecId(recommendation.id);
-      setPendingStartPayload(payloadWithSub);
-      setWarningVisible(true);
-      return;
-    }
-
     trackRoutineStart(payloadWithSub);
     trackRoutineStartAfterSubprotocol(payloadWithSub);
     router.push(`/result/recipe/${recommendation.id}?source=care`);
-  };
-
-  const handleWarningDismiss = () => {
-    setWarningVisible(false);
-    if (pendingStartPayload) {
-      trackRoutineStart(pendingStartPayload);
-      trackRoutineStartAfterSubprotocol(pendingStartPayload);
-      setPendingStartPayload(null);
-    }
-    if (pendingRecId) {
-      router.push(`/result/recipe/${pendingRecId}?source=care`);
-      setPendingRecId(null);
-    }
   };
 
   const subOptions = selectedIntent
@@ -412,16 +374,7 @@ export default function CareScreen() {
           </View>
         </View>
 
-        <PersistentDisclosure style={styles.disclosureInline} lines={disclosureLines} variant="v2" />
       </ScrollView>
-
-      <SafetyWarning
-        visible={warningVisible}
-        warnings={pendingWarnings}
-        onDismiss={handleWarningDismiss}
-        variant="v2"
-      />
-
       <SubProtocolPickerModal
         visible={subModalVisible}
         title={selectedIntent?.copy_title ?? ''}
@@ -482,8 +435,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'flex-start',
-  },
-  disclosureInline: {
-    marginTop: 4,
   },
 });

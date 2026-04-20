@@ -289,7 +289,7 @@ selectedConditions: Set<HealthCondition>
 ```
 environment: BathEnvironment          → 환경 칩 선택 상태
 recentRoutines: BathRecommendation[]  → 최근 기록
-warningVisible: boolean               → SafetyWarning 모달
+isPreBathGateVisible: boolean         → 레시피 공통 프리플라이트 게이트
 subModalVisible: boolean              → SubProtocolPicker 모달
 selectedIntent: IntentCard | null     → 선택된 의도
 ```
@@ -624,9 +624,9 @@ snapshotLine: string | null
 └──────────────────────────────────────┘
 ```
 
-### OV03 SafetyWarning — `src/components/SafetyWarning.tsx`
+### OV03 PreBathGateModal — `src/components/PreBathGateModal.tsx`
 
-**배치**: 고위험 조건 + 특정 의도 선택 시 홈 탭에서 표시
+**배치**: 레시피 화면 진입 직후 모든 루틴에 공통 표시, 고위험 조건이면 추가 항목 부착
 
 ### OV04 SuggestionDetailModal — `src/components/SuggestionDetailModal.tsx`
 
@@ -703,7 +703,7 @@ snapshotLine: string | null
 
 | 화면 | 로딩 상태 | 빈 상태 | 에러 처리 |
 |------|----------|---------|-----------|
-| 홈 | useEffect (프로필 로드) | 기본 추천 제공 | SafetyWarning 모달 |
+| 홈 | useEffect (프로필 로드) | 기본 추천 제공 | 레시피 진입 후 PreBathGateModal |
 | 기록 | useEffect (history 로드) | 빈 상태 일러스트 + 텍스트 | 없음 |
 | 설정 | useUserProfile loading | — | — |
 | 레시피 | `if (!recommendation) return <loading>` | — | router.back() |
@@ -756,12 +756,12 @@ snapshotLine: string | null
 
 ### 플로우
 - [ ] 온보딩 완료 후 재실행 시 홈으로 직행
-- [ ] `source=history`인 레시피에서 "다시 시작하기" Alert 표시
+- [ ] `source=history`인 레시피에서 replay 문맥이 PreBathGateModal에 반영
 - [ ] 타이머 완료/끝내기 후 completion 화면으로 정상 이동
 - [ ] completion에서 홈/기록 이동 시 clearSession 호출
 
 ### 안전
-- [ ] 고위험 건강 조건에서 SafetyWarning 표시
+- [ ] 모든 루틴에서 PreBathGateModal 표시, 고위험 조건이면 추가 항목 부착
 - [ ] PersistentDisclosure 모든 핵심 화면 하단 노출
 - [ ] 냉수 금기 조건에서 coldWarning 텍스트 노출 (설정 탭)
 

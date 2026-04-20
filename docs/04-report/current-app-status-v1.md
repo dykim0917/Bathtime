@@ -172,7 +172,7 @@ Bath Sommelier는 **AI 맞춤형 목욕 추천 앱**으로, 2026-02-27 기준 **
 | **BathTimer** | 타이머 로직 | ✅ |
 | **MusicPlayer** | 오디오 재생 제어 | ✅ |
 | **GradientBackground** | LinearGradient 래퍼 | ✅ |
-| **SafetyWarning** | 안전 경고 배너 | ✅ |
+| **PreBathGateModal** | 레시피 진입 전 공통 프리플라이트 게이트 | ✅ |
 | **PersonaCard** | 페르소나 표현 | ✅ |
 | **SuggestionDetailModal** | 추천 상세 모달 | ✅ |
 | **ProductMatchingModal** | 제품 매칭 모달 | ✅ |

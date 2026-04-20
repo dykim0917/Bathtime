@@ -1,10 +1,9 @@
 module.exports = {
-  preset: 'ts-jest',
-  testEnvironment: 'node',
-  roots: ['<rootDir>/src'],
+  preset: 'jest-expo',
+  roots: ['<rootDir>/src', '<rootDir>/app'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',
     '\\.svg$': '<rootDir>/__mocks__/svgMock.js',
   },
-  testMatch: ['**/__tests__/**/*.test.ts'],
+  testMatch: ['**/__tests__/**/*.test.ts', '**/__tests__/**/*.test.tsx'],
 };

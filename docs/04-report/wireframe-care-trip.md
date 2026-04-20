@@ -27,7 +27,7 @@
 
 5. Overlay
 - `SubProtocolPickerModal`
-- `SafetyWarning`
+- `PreBathGateModal` (레시피 화면 소유)
 
 ### 3) 상태 규칙
 - 환경 미지원 카드: 비활성 + `현재 환경에선 제한적으로 추천돼요`
@@ -45,10 +45,11 @@
 - `saveRecommendation` 저장
 - `upsertSessionRecord` 저장
 
-3. 안전 경고 분기
-- 경고 있음: `SafetyWarning` 표시 후 확인 시 이동
-- 경고 없음: 즉시 레시피 이동
+3. 레시피 진입
+- 모든 추천은 즉시 레시피 이동
 - 이동 경로: `/result/recipe/[id]?source=care`
+- 레시피 화면에서 `PreBathGateModal`을 먼저 표시
+- 위험 조건이 있으면 프리플라이트 항목이 추가됨
 
 ### 5) 텍스트 와이어프레임
 ```text
@@ -76,7 +77,7 @@
 
 [Overlay]
   SubProtocolPickerModal
-  SafetyWarning
+  (레시피 화면에서) PreBathGateModal
 ```
 
 ---
@@ -108,7 +109,7 @@
 
 5. Overlay
 - `SubProtocolPickerModal`
-- `SafetyWarning`
+- `PreBathGateModal` (레시피 화면 소유)
 
 ### 3) 상태 규칙
 - 저장 환경이 trip 미지원이면 `bathtub` fallback
@@ -124,10 +125,11 @@
 - `applySubProtocolOverrides` 적용
 - `saveRecommendation` + `upsertSessionRecord`
 
-3. 안전 경고 분기
-- 경고 있음: SafetyWarning 확인 후 이동
-- 경고 없음: 즉시 이동
+3. 레시피 진입
+- 모든 추천은 즉시 레시피 이동
 - 이동 경로: `/result/recipe/[id]?source=trip`
+- 레시피 화면에서 `PreBathGateModal`을 먼저 표시
+- 위험 조건이 있으면 프리플라이트 항목이 추가됨
 
 ### 5) 텍스트 와이어프레임
 ```text
@@ -150,5 +152,5 @@
 
 [Overlay]
   SubProtocolPickerModal
-  SafetyWarning
+  (레시피 화면에서) PreBathGateModal
 ```

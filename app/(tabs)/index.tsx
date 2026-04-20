@@ -24,7 +24,6 @@ import { loadHistory, saveRecommendation } from '@/src/storage/history';
 import { upsertSessionRecord } from '@/src/storage/sessionLog';
 import { loadLastEnvironment, saveLastEnvironment } from '@/src/storage/environment';
 import { loadTripMemoryHistory } from '@/src/storage/memory';
-import { SafetyWarning } from '@/src/components/SafetyWarning';
 import {
   TYPE_SCALE,
   V2_ACCENT,
@@ -309,10 +308,6 @@ export default function HomeIntentScreen() {
   const [recentRoutines, setRecentRoutines] = useState<BathRecommendation[]>([]);
   const [isHistoryLoaded, setIsHistoryLoaded] = useState(false);
   const [streakSummary, setStreakSummary] = useState<HomeStreakSummary>(buildHomeStreakSummary([]));
-  const [warningVisible, setWarningVisible] = useState(false);
-  const [pendingWarnings, setPendingWarnings] = useState<string[]>([]);
-  const [pendingRoute, setPendingRoute] = useState<Href | null>(null);
-  const [pendingStartPayload, setPendingStartPayload] = useState<RecommendationCardEventPayload | null>(null);
   const [subModalVisible, setSubModalVisible] = useState(false);
   const [selectedIntent, setSelectedIntent] = useState<IntentCard | null>(null);
   const [selectedIntentPayload, setSelectedIntentPayload] = useState<RecommendationCardEventPayload | null>(null);
@@ -444,19 +439,11 @@ export default function HomeIntentScreen() {
     return CARE_SUBPROTOCOL_OPTIONS[intent.intent_id] ?? [];
   };
 
-  const handleRouteWithSafety = (
+  const handleRouteToRecipe = (
     recommendation: BathRecommendation,
     startPayload: RecommendationCardEventPayload,
     route: Href
   ) => {
-    if (recommendation.safetyWarnings.length > 0) {
-      setPendingWarnings(recommendation.safetyWarnings);
-      setPendingRoute(route);
-      setPendingStartPayload(startPayload);
-      setWarningVisible(true);
-      return;
-    }
-
     trackRoutineStart(startPayload);
     trackRoutineStartAfterSubprotocol(startPayload);
     router.push(route);
@@ -497,7 +484,7 @@ export default function HomeIntentScreen() {
     };
 
     trackSubprotocolSelected(payloadWithSub);
-    handleRouteWithSafety(
+    handleRouteToRecipe(
       recommendation,
       payloadWithSub,
       `/result/recipe/${recommendation.id}?source=trip` as Href
@@ -550,24 +537,11 @@ export default function HomeIntentScreen() {
     };
 
     trackSubprotocolSelected(payloadWithSub);
-    handleRouteWithSafety(
+    handleRouteToRecipe(
       recommendation,
       payloadWithSub,
       `/result/recipe/${recommendation.id}` as Href
     );
-  };
-
-  const handleWarningDismiss = () => {
-    setWarningVisible(false);
-    if (pendingStartPayload) {
-      trackRoutineStart(pendingStartPayload);
-      trackRoutineStartAfterSubprotocol(pendingStartPayload);
-      setPendingStartPayload(null);
-    }
-    if (pendingRoute) {
-      router.push(pendingRoute);
-      setPendingRoute(null);
-    }
   };
 
   return (
@@ -758,7 +732,12 @@ export default function HomeIntentScreen() {
               <FontAwesome name="angle-right" size={14} color={V2_ACCENT} />
             </Pressable>
           </View>
-          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.tripRow}>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            style={styles.fullBleedScroll}
+            contentContainerStyle={styles.tripRow}
+          >
             {tripCards.map((intent) => {
               const disabled = !intent.allowed_environments.includes(normalizedEnvironment);
               const fallback = resolveFallback(intent, profile?.healthConditions ?? ['none']);
@@ -791,7 +770,12 @@ export default function HomeIntentScreen() {
               <FontAwesome name="angle-right" size={14} color={V2_ACCENT} />
             </Pressable>
           </View>
-          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.recentRow}>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            style={styles.fullBleedScroll}
+            contentContainerStyle={styles.recentRow}
+          >
             {recentRoutines.length === 0 ? (
               <View style={[ui.glassCardV2, styles.recentEmptyCard]}>
                 <Text style={styles.recentEmptyText}>최근 기록이 아직 없어요</Text>
@@ -817,14 +801,6 @@ export default function HomeIntentScreen() {
 
         <PersistentDisclosure style={styles.disclosureInline} lines={disclosureLines} variant="v2" />
       </ScrollView>
-
-      <SafetyWarning
-        visible={warningVisible}
-        warnings={pendingWarnings}
-        onDismiss={handleWarningDismiss}
-        variant="v2"
-      />
-
       <SubProtocolPickerModal
         visible={subModalVisible}
         title={selectedIntent?.copy_title ?? ''}
@@ -1114,13 +1090,18 @@ const styles = StyleSheet.create({
   careList: {
     gap: 12,
   },
+  fullBleedScroll: {
+    marginHorizontal: -SCREEN_HORIZONTAL_PADDING,
+  },
   tripRow: {
     gap: 16,
-    paddingRight: 12,
+    paddingHorizontal: SCREEN_HORIZONTAL_PADDING,
+    paddingRight: SCREEN_HORIZONTAL_PADDING + 12,
   },
   recentRow: {
     gap: 12,
-    paddingRight: 8,
+    paddingHorizontal: SCREEN_HORIZONTAL_PADDING,
+    paddingRight: SCREEN_HORIZONTAL_PADDING + 8,
   },
   recentCard: {
     width: 172,

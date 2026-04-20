@@ -204,8 +204,7 @@ CareScreen
   │     ├── 환경 선택 pill row
   │     ├── IntentCard 2열 그리드 (8종 — 4종 활성 + 4종 disabled placeholder)
   │     └── PersistentDisclosure
-  ├── SubProtocolPickerModal (Modal, 오버레이)
-  └── SafetyWarning (Modal, 오버레이)
+  └── SubProtocolPickerModal (Modal, 오버레이)
 ```
 
 **P0 Care 탭 상태**: 기존 Home에서 이식
@@ -269,8 +268,7 @@ TripScreen
   │     │     ← 각 카드에 Lite/Deep 배지 자동 표시 (P1)
   │     ├── Narrative Recall Card (최근 Trip 기억, P1)
   │     └── PersistentDisclosure
-  ├── SubProtocolPickerModal
-  └── SafetyWarning
+  └── SubProtocolPickerModal
 ```
 
 **환경 제한**: Trip 탭에서는 `bathtub` / `shower` 만 허용 (Trip 루틴 특성상 부분입욕 미지원).
@@ -457,7 +455,7 @@ export const MOCK_PRODUCTS: MockProduct[] = [
 |---------|---------|---------|---------|-----------|-------|
 | `CategoryCard` | `src/components/` | 재사용 (Intent 카드) | 재사용 (Trip 테마 카드) | — | — |
 | `SubProtocolPickerModal` | `src/components/` | 재사용 | 재사용 | — | — |
-| `SafetyWarning` | `src/components/` | 재사용 | 재사용 | — | — |
+| `PreBathGateModal` | `src/components/` | 레시피 화면 공통 게이트 | 레시피 화면 공통 게이트 | — | — |
 | `PersistentDisclosure` | `src/components/` | 재사용 | 재사용 | 재사용 | 재사용 |
 | `ProductMatchingModal` | `src/components/` | — | — | 재사용 (P1) | — |
 | `PersonaCard` | `src/components/` | — | — | — | 재사용 (P2) |
@@ -487,7 +485,7 @@ Care 탭 (care.tsx)
   │           → SubProtocol 선택
   │                 → generateCareRecommendation() 실행
   │                       → 안전 경고 없음: router.push('/result/recipe/[id]')
-  │                       → 안전 경고 있음: SafetyWarning 모달 → 확인 후 push
+  │                       → `/result/recipe/[id]` 이동 → PreBathGateModal 확인 → timer 진입
   ├── IntentCard 탭 (disabled 카드, P0)
   │     → 탭 무시 (disabled)
   └── /result/recipe/[id]
@@ -658,12 +656,12 @@ Step 8. npx tsc --noEmit 확인 + npx jest 49개 통과 확인
   - [ ] Care / Trip / Product / My Screen 추가
   - [ ] 아이콘 size 24 → 22 조정
 - [ ] `app/(tabs)/care.tsx` 신규 생성
-  - [ ] Home에서 Care 섹션 로직 이식 (환경 pill + CategoryCard 그리드 + SubProtocolPickerModal + SafetyWarning)
+  - [ ] Home에서 Care 섹션 로직 이식 (환경 pill + CategoryCard 그리드 + SubProtocolPickerModal)
   - [ ] CARE_INTENT_CARDS 4종 활성 + 4종 disabled placeholder 렌더링
   - [ ] PersistentDisclosure 하단 배치
   - [ ] 루틴 실행 플로우 (`/result/recipe/[id]`) 검증
 - [ ] `app/(tabs)/trip.tsx` 신규 생성
-  - [ ] Home에서 Trip 섹션 로직 이식 (환경 pill + CategoryCard 그리드 + SubProtocolPickerModal + SafetyWarning)
+  - [ ] Home에서 Trip 섹션 로직 이식 (환경 pill + CategoryCard 그리드 + SubProtocolPickerModal)
   - [ ] 환경 옵션을 bathtub/shower 2종으로 제한
   - [ ] PersistentDisclosure 하단 배치
   - [ ] 루틴 실행 플로우 검증
@@ -681,7 +679,7 @@ Step 8. npx tsc --noEmit 확인 + npx jest 49개 통과 확인
 - [ ] `npx tsc --noEmit` 에러 0 확인
 - [ ] `npx jest` 49개 전부 통과 확인
 - [ ] PersistentDisclosure Care/Trip 탭에서 정상 노출 확인
-- [ ] SafetyWarning Care 탭에서 고위험 조건 시 정상 트리거 확인
+- [ ] 레시피 PreBathGateModal이 모든 루틴에서 정상 노출되는지 확인
 
 ### P1 — 콘텐츠 보완
 
