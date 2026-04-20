@@ -24,7 +24,7 @@ describe('catalogRuntime', () => {
 
     const fetchSpy = jest.spyOn(global, 'fetch');
 
-    const { hydrateCatalogFromApi } = await import('../catalogRuntime');
+    const { hydrateCatalogFromApi } = require('../catalogRuntime');
     const products = await hydrateCatalogFromApi();
 
     expect(fetchSpy).not.toHaveBeenCalled();

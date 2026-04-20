@@ -1,14 +1,14 @@
-const store = new Map<string, string>();
+const mockStore = new Map<string, string>();
 
 jest.mock('@react-native-async-storage/async-storage', () => ({
-  __esModule: true,
-  default: {
-    getItem: jest.fn(async (key: string) => store.get(key) ?? null),
+    __esModule: true,
+    default: {
+    getItem: jest.fn(async (key: string) => mockStore.get(key) ?? null),
     setItem: jest.fn(async (key: string, value: string) => {
-      store.set(key, value);
+      mockStore.set(key, value);
     }),
     removeItem: jest.fn(async (key: string) => {
-      store.delete(key);
+      mockStore.delete(key);
     }),
   },
 }));
@@ -17,7 +17,7 @@ import { loadSession, saveSession, updateSessionCompletion } from '../session';
 
 describe('session storage', () => {
   beforeEach(() => {
-    store.clear();
+    mockStore.clear();
   });
 
   test('updateSessionCompletion updates completedAt and actual duration', async () => {
