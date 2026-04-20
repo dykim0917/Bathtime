@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import {
   V2_ACCENT,
@@ -16,6 +16,10 @@ import { PreBathChecklistItem } from '@/src/engine/preBathChecklist';
 import { luxuryFonts, luxuryRadii, luxuryTracking } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
 import { AnimatedModalShell } from '@/src/components/AnimatedModalShell';
+
+const ITEM_ESTIMATED_HEIGHT = 92;
+const CARD_FIXED_HEIGHT = 220;
+const CARD_MAX_HEIGHT_RATIO = 0.9;
 
 interface PreBathGateModalProps {
   visible: boolean;
@@ -37,6 +41,7 @@ export function PreBathGateModal({
   onConfirm,
 }: PreBathGateModalProps) {
   const [checkedIds, setCheckedIds] = useState<string[]>([]);
+  const { height: windowHeight } = useWindowDimensions();
 
   useEffect(() => {
     if (!visible) return;
@@ -47,6 +52,12 @@ export function PreBathGateModal({
     () => items.length > 0 && items.every((item) => checkedIds.includes(item.id)),
     [checkedIds, items]
   );
+
+  const maxCardHeight = Math.min(windowHeight - 20, windowHeight * CARD_MAX_HEIGHT_RATIO);
+  const maxListHeight = Math.max(0, maxCardHeight - CARD_FIXED_HEIGHT);
+  const estimatedListHeight = items.length * ITEM_ESTIMATED_HEIGHT;
+  const resolvedListHeight = Math.min(estimatedListHeight, maxListHeight);
+  const shouldScroll = estimatedListHeight > maxListHeight;
 
   if (!visible || items.length === 0) return null;
 
@@ -64,14 +75,20 @@ export function PreBathGateModal({
       onClose={onClose}
       layoutStyle={styles.overlay}
       backdropStyle={styles.backdrop}
+      containerStyle={styles.container}
     >
       {(requestClose) => (
-        <View style={styles.card}>
+        <View style={[styles.card, { maxHeight: maxCardHeight }]}>
           <View style={styles.handle} />
           <Text style={styles.eyebrow}>PRE-BATH GATE</Text>
           <Text style={styles.title}>{title}</Text>
           <Text style={styles.subtitle}>{subtitle}</Text>
-          <ScrollView style={styles.list} showsVerticalScrollIndicator={false}>
+          <ScrollView
+            style={[styles.list, { maxHeight: resolvedListHeight }]}
+            contentContainerStyle={styles.listContent}
+            showsVerticalScrollIndicator={shouldScroll}
+            bounces={shouldScroll}
+          >
             {items.map((item, index) => {
               const checked = checkedIds.includes(item.id);
               return (
@@ -129,14 +146,18 @@ const styles = StyleSheet.create({
   overlay: {
     flex: 1,
     justifyContent: 'flex-end',
-    paddingTop: 48,
+    paddingTop: 32,
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    width: '100%',
   },
   backdrop: {
     backgroundColor: V2_BG_OVERLAY,
   },
   card: {
     width: '100%',
-    maxHeight: '82%',
     paddingHorizontal: 18,
     paddingTop: 14,
     paddingBottom: 24,
@@ -176,7 +197,10 @@ const styles = StyleSheet.create({
     fontFamily: luxuryFonts.sans,
   },
   list: {
-    maxHeight: 320,
+    flexGrow: 0,
+  },
+  listContent: {
+    paddingBottom: 4,
   },
   itemRow: {
     flexDirection: 'row',
