@@ -6,6 +6,7 @@ import {
   V2_ACCENT_TEXT,
   V2_BG_OVERLAY,
   V2_BORDER,
+  V2_DANGER,
   V2_MODAL_SURFACE,
   V2_TEXT_MUTED,
   V2_TEXT_PRIMARY,
@@ -13,6 +14,7 @@ import {
   V2_WARNING,
 } from '@/src/data/colors';
 import { PreBathChecklistItem } from '@/src/engine/preBathChecklist';
+import { copy } from '@/src/content/copy';
 import { luxuryFonts, luxuryRadii, luxuryTracking } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
 import { AnimatedModalShell } from '@/src/components/AnimatedModalShell';
@@ -80,7 +82,15 @@ export function PreBathGateModal({
       {(requestClose) => (
         <View style={[styles.card, { maxHeight: maxCardHeight }]}>
           <View style={styles.handle} />
-          <Text style={styles.eyebrow}>PRE-BATH GATE</Text>
+          <View style={styles.warningBanner}>
+            <View style={styles.warningIconWrap}>
+              <FontAwesome name="exclamation-triangle" size={14} color={V2_DANGER} />
+            </View>
+            <View style={styles.warningCopy}>
+              <Text style={styles.eyebrow}>{copy.routine.preBath.warningBadge}</Text>
+              <Text style={styles.warningLead}>{copy.routine.preBath.warningLead}</Text>
+            </View>
+          </View>
           <Text style={styles.title}>{title}</Text>
           <Text style={styles.subtitle}>{subtitle}</Text>
           <ScrollView
@@ -165,7 +175,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: luxuryRadii.cardLg,
     borderTopRightRadius: luxuryRadii.cardLg,
     borderWidth: 1,
-    borderColor: V2_BORDER,
+    borderColor: 'rgba(194, 134, 118, 0.34)',
   },
   handle: {
     alignSelf: 'center',
@@ -175,13 +185,44 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(245,240,232,0.28)',
     marginBottom: 14,
   },
+  warningBanner: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+    marginBottom: 12,
+    borderRadius: luxuryRadii.card,
+    backgroundColor: 'rgba(194, 134, 118, 0.12)',
+    borderWidth: 1,
+    borderColor: 'rgba(194, 134, 118, 0.24)',
+  },
+  warningIconWrap: {
+    width: 34,
+    height: 34,
+    borderRadius: 17,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(194, 134, 118, 0.14)',
+    borderWidth: 1,
+    borderColor: 'rgba(194, 134, 118, 0.28)',
+  },
+  warningCopy: {
+    flex: 1,
+    gap: 2,
+  },
   eyebrow: {
     fontSize: 12,
-    color: V2_WARNING,
-    marginBottom: 4,
+    color: V2_DANGER,
     letterSpacing: luxuryTracking.label,
     fontFamily: luxuryFonts.sans,
     fontWeight: '800',
+  },
+  warningLead: {
+    fontSize: 14,
+    color: V2_TEXT_PRIMARY,
+    fontFamily: luxuryFonts.sans,
+    fontWeight: '700',
   },
   title: {
     fontSize: 22,
@@ -225,8 +266,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(255,255,255,0.02)',
   },
   checkboxChecked: {
-    backgroundColor: V2_ACCENT,
-    borderColor: V2_ACCENT,
+    backgroundColor: V2_WARNING,
+    borderColor: V2_WARNING,
   },
   itemCopy: {
     flex: 1,
@@ -251,6 +292,8 @@ const styles = StyleSheet.create({
   },
   confirmButton: {
     width: '100%',
+    backgroundColor: V2_WARNING,
+    borderColor: 'rgba(194, 134, 118, 0.34)',
   },
   confirmButtonDisabled: {
     opacity: 0.42,

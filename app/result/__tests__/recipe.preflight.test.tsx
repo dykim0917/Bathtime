@@ -136,23 +136,36 @@ describe('RecipeScreen pre-bath gate', () => {
     mockGetRecommendationById.mockResolvedValue(baseRecommendation);
   });
 
-  test('blocks timer start until every checklist item is checked', async () => {
+  test('starts immediately for a standard routine without opening the gate', async () => {
+    const screen = render(React.createElement(RecipeScreen));
+
+    await waitFor(() => expect(screen.getByText('목욕 시작하기')).toBeTruthy());
+
+    fireEvent.press(screen.getByText('목욕 시작하기'));
+    expect(mockReplace).toHaveBeenCalledWith('/result/timer/rec_1');
+  });
+
+  test('blocks timer start until every risky checklist item is checked', async () => {
+    mockGetRecommendationById.mockResolvedValue({
+      ...baseRecommendation,
+      safetyWarnings: ['음주 후 입욕은 위험합니다. 미온수 족욕만 가능합니다.'],
+    });
+
     const screen = render(React.createElement(RecipeScreen));
 
     await waitFor(() =>
-      expect(screen.getByText('시작 전에 확인할 항목')).toBeTruthy()
+      expect(screen.getByText('시작 전 꼭 확인하세요')).toBeTruthy()
     );
 
     const confirmButton = screen.getByTestId('prebath-confirm-button');
     expect(confirmButton.props.accessibilityState.disabled).toBe(true);
 
-    fireEvent.press(screen.getByTestId('prebath-item-temperature-duration'));
-    fireEvent.press(screen.getByTestId('prebath-item-environment-ready'));
+    fireEvent.press(screen.getByTestId('prebath-item-warning-0'));
     expect(screen.getByTestId('prebath-confirm-button').props.accessibilityState.disabled).toBe(
       true
     );
 
-    fireEvent.press(screen.getByTestId('prebath-item-hydration-ready'));
+    fireEvent.press(screen.getByTestId('prebath-item-warning-1'));
     expect(screen.getByTestId('prebath-confirm-button').props.accessibilityState.disabled).toBe(
       false
     );
@@ -161,13 +174,17 @@ describe('RecipeScreen pre-bath gate', () => {
     expect(mockReplace).toHaveBeenCalledWith('/result/timer/rec_1');
   });
 
-  test('shows replay context for history routes without a second restart alert', async () => {
+  test('shows replay context for risky history routes without a second restart alert', async () => {
     mockUseLocalSearchParams.mockReturnValue({ id: 'rec_1', source: 'history' } as any);
+    mockGetRecommendationById.mockResolvedValue({
+      ...baseRecommendation,
+      safetyWarnings: ['고혈압/심장 질환이 있으시므로 수온이 38°C로 제한됩니다.'],
+    });
 
     const screen = render(React.createElement(RecipeScreen));
 
     await waitFor(() =>
-      expect(screen.getByText('이전에 저장한 루틴입니다. 오늘 컨디션과 환경에도 무리 없는지 확인한 뒤 다시 시작해주세요.')).toBeTruthy()
+      expect(screen.getByText('이전에 저장한 루틴입니다. 오늘도 같은 제약을 지킬 수 있는지 확인한 뒤 다시 시작해주세요.')).toBeTruthy()
     );
 
     expect(screen.getByText('다시 시작하기')).toBeTruthy();

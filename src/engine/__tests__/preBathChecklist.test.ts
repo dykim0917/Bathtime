@@ -1,4 +1,4 @@
-import { buildPreBathChecklist } from '../preBathChecklist';
+import { buildPreBathChecklist, shouldRequirePreBathGate } from '../preBathChecklist';
 import { BathRecommendation } from '../types';
 
 const baseRecommendation: BathRecommendation = {
@@ -33,51 +33,59 @@ const baseRecommendation: BathRecommendation = {
 };
 
 describe('buildPreBathChecklist', () => {
-  test('builds three base items for a standard routine', () => {
+  test('does not require a gate for a standard routine', () => {
+    expect(shouldRequirePreBathGate(baseRecommendation)).toBe(false);
     const result = buildPreBathChecklist(baseRecommendation);
-
-    expect(result).toHaveLength(3);
-    expect(result[0].title).toContain('수온과 시간');
-    expect(result[1].title).toContain('입욕 환경');
-    expect(result[2].title).toContain('입욕 전 물 한 잔');
+    expect(result).toHaveLength(0);
   });
 
-  test('adds warning-driven items after the base checklist', () => {
-    const result = buildPreBathChecklist({
+  test('builds a concise gate for blocking safety warnings', () => {
+    const riskyRecommendation = {
       ...baseRecommendation,
       safetyWarnings: ['고혈압/심장 질환이 있으시므로 수온이 38°C로 제한됩니다.'],
-    });
+    };
 
-    expect(result).toHaveLength(5);
-    expect(result[3].source).toBe('warning');
-    expect(result[3].title).toContain('38°C');
-    expect(result[4].title).toContain('즉시 중단');
+    expect(shouldRequirePreBathGate(riskyRecommendation)).toBe(true);
+    const result = buildPreBathChecklist(riskyRecommendation);
+
+    expect(result).toHaveLength(2);
+    expect(result[0].source).toBe('warning');
+    expect(result[0].title).toContain('38°C');
   });
 
-  test('uses history replay context instead of the hydration item', () => {
-    const result = buildPreBathChecklist(baseRecommendation, { source: 'history' });
-
-    expect(result).toHaveLength(3);
-    expect(result[2].source).toBe('history');
-    expect(result[2].title).toContain('오늘 컨디션');
-  });
-
-  test('keeps a stable order with base items first and warning items after', () => {
+  test('adds history replay context ahead of a risky restart', () => {
     const result = buildPreBathChecklist(
       {
         ...baseRecommendation,
-        bathType: 'foot',
         safetyWarnings: ['음주 후 입욕은 위험합니다. 미온수 족욕만 가능합니다.'],
       },
       { source: 'history' }
     );
 
+    expect(result).toHaveLength(3);
+    expect(result[0].source).toBe('history');
+    expect(result[0].title).toContain('오늘 몸 상태');
+  });
+
+  test('uses contrast-specific gate items for nordic sauna', () => {
+    const result = buildPreBathChecklist(
+      {
+        ...baseRecommendation,
+        mode: 'trip',
+        intentId: 'nordic_sauna',
+        themeId: 'nordic_sauna',
+      }
+    );
+
+    expect(shouldRequirePreBathGate({
+      ...baseRecommendation,
+      mode: 'trip',
+      intentId: 'nordic_sauna',
+      themeId: 'nordic_sauna',
+    })).toBe(true);
     expect(result.map((item) => item.id)).toEqual([
-      'temperature-duration',
-      'environment-ready',
-      'history-replay',
-      'warning-0',
-      'warning-1',
+      'contrast-gentle-cool',
+      'contrast-rest-cycle',
     ]);
   });
 });

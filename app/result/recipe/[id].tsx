@@ -21,7 +21,7 @@ import { useCatalogHydration } from '@/src/data/catalogRuntime';
 import { formatTemperature } from '@/src/utils/temperature';
 import { formatDuration } from '@/src/utils/time';
 import { buildRecipeEvidenceLines } from '@/src/engine/explainability';
-import { buildPreBathChecklist } from '@/src/engine/preBathChecklist';
+import { buildPreBathChecklist, shouldRequirePreBathGate } from '@/src/engine/preBathChecklist';
 import { PreBathGateModal } from '@/src/components/PreBathGateModal';
 import { TYPE_BODY, TYPE_CAPTION, TYPE_HEADING_LG, TYPE_TITLE, V2_ACCENT, V2_BG_BASE, V2_BG_BOTTOM, V2_BG_TOP, V2_BORDER, V2_TEXT_MUTED, V2_TEXT_PRIMARY, V2_TEXT_SECONDARY } from '@/src/data/colors';
 import { luxuryFonts, luxuryRadii, luxuryTracking } from '@/src/theme/luxury';
@@ -46,12 +46,23 @@ export default function RecipeScreen() {
     getRecommendationById(id).then((rec) => {
       if (rec) {
         setRecommendation(rec);
-        setIsPreBathGateVisible(true);
+        setIsPreBathGateVisible(shouldRequirePreBathGate(rec));
       }
     });
   }, [id]);
+
+  const shouldGateStart = useMemo(
+    () => (recommendation ? shouldRequirePreBathGate(recommendation) : false),
+    [recommendation]
+  );
+
   const handleStartBath = () => {
-    setIsPreBathGateVisible(true);
+    if (!recommendation) return;
+    if (shouldGateStart) {
+      setIsPreBathGateVisible(true);
+      return;
+    }
+    router.replace(`/result/timer/${id}`);
   };
 
   const preBathItems = useMemo(
@@ -308,7 +319,7 @@ export default function RecipeScreen() {
 
       </Animated.ScrollView>
 
-      <View style={styles.bottomCTA}><Pressable style={[ui.primaryButtonV2, styles.startButton]} onPress={handleStartBath}><Text style={ui.primaryButtonTextV2}>{source === 'history' ? copy.routine.preBath.historyReviewCta : copy.routine.preBath.reviewCta}</Text></Pressable></View>
+      <View style={styles.bottomCTA}><Pressable style={[ui.primaryButtonV2, styles.startButton]} onPress={handleStartBath}><Text style={ui.primaryButtonTextV2}>{shouldGateStart ? (source === 'history' ? copy.routine.preBath.historyReviewCta : copy.routine.preBath.reviewCta) : copy.routine.startCta}</Text></Pressable></View>
       <ProductMatchingModal
         visible={showProductModal}
         items={productSlots}
@@ -323,15 +334,17 @@ export default function RecipeScreen() {
         onOpenCatalog={handleOpenCatalogFromDetail}
         onPurchasePress={handleDetailPurchase}
       />
-      <PreBathGateModal
-        visible={isPreBathGateVisible}
-        title={copy.routine.preBath.title}
-        subtitle={source === 'history' ? copy.routine.preBath.historySubtitle : copy.routine.preBath.subtitle}
-        items={preBathItems}
-        confirmLabel={source === 'history' ? copy.routine.preBath.historyStartCta : copy.routine.startCta}
-        onClose={() => setIsPreBathGateVisible(false)}
-        onConfirm={handleConfirmPreBath}
-      />
+      {shouldGateStart ? (
+        <PreBathGateModal
+          visible={isPreBathGateVisible}
+          title={copy.routine.preBath.title}
+          subtitle={source === 'history' ? copy.routine.preBath.historySubtitle : copy.routine.preBath.subtitle}
+          items={preBathItems}
+          confirmLabel={source === 'history' ? copy.routine.preBath.historyStartCta : copy.routine.startCta}
+          onClose={() => setIsPreBathGateVisible(false)}
+          onConfirm={handleConfirmPreBath}
+        />
+      ) : null}
     </View>
   );
 }

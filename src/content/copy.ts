@@ -79,11 +79,13 @@ export const copy = {
     stepRun: '진행',
     stepFinish: '마무리',
     preBath: {
-      title: '시작 전에 확인할 항목',
-      subtitle: '루틴을 시작하기 전에 아래 체크를 모두 확인해주세요.',
+      title: '시작 전 꼭 확인하세요',
+      subtitle: '안전 제약이 걸린 루틴입니다. 핵심 주의사항만 확인하고 시작해주세요.',
       historySubtitle:
-        '이전에 저장한 루틴입니다. 오늘 컨디션과 환경에도 무리 없는지 확인한 뒤 다시 시작해주세요.',
-      reviewCta: '시작 전 확인하기',
+        '이전에 저장한 루틴입니다. 오늘도 같은 제약을 지킬 수 있는지 확인한 뒤 다시 시작해주세요.',
+      warningBadge: '주의',
+      warningLead: '이번 루틴은 안전 제약이 있어요',
+      reviewCta: '주의사항 확인하기',
       historyReviewCta: '다시 시작 전 확인하기',
       historyStartCta: '다시 시작하기',
     },
