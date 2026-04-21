@@ -16,6 +16,7 @@ import {
   getCatalogProductForIngredient,
   isBeginnerFriendlyProduct,
 } from '@/src/data/catalog';
+import { getCareCardImageForEnvironment } from '@/src/data/careImages';
 import { getTripCardImageForEnvironment } from '@/src/data/tripImages';
 import { useCatalogHydration } from '@/src/data/catalogRuntime';
 import { formatTemperature } from '@/src/utils/temperature';
@@ -91,12 +92,13 @@ export default function RecipeScreen() {
   const durationLabel = formatDuration(recommendation.durationMinutes);
   const temperatureLabel = formatTemperature(recommendation.temperature);
   const heroGradient: [string, string] = [recommendation.colorHex, `${recommendation.colorHex}99`];
-  const tripHeroImage = isTripRecipe
+  const heroImage = isTripRecipe
     ? getTripCardImageForEnvironment(
       recommendation.themeId ?? recommendation.intentId ?? '',
       recommendation.environmentUsed
     )
-    : null;
+    : getCareCardImageForEnvironment(recommendation.intentId ?? '', recommendation.environmentUsed);
+  const isImageHeroRecipe = Boolean(heroImage);
   const evidence = buildRecipeEvidenceLines(recommendation);
   const productSlots = buildProductMatchingSlots(recommendation, recommendation.environmentUsed);
   const primarySafetyLine = recommendation.safetyWarnings[0] ?? copy.routine.evidence.defaultSafety;
@@ -207,27 +209,27 @@ export default function RecipeScreen() {
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
       >
-        <View style={[styles.heroWrapper, isTripRecipe && styles.heroWrapperTrip]}>
+        <View style={[styles.heroWrapper, isImageHeroRecipe && styles.heroWrapperImage]}>
           <LinearGradient
             colors={heroGradient}
             start={{ x: 0.16, y: 0 }}
             end={{ x: 0.92, y: 1 }}
-            style={[styles.hero, isTripRecipe && styles.heroTrip]}
+            style={[styles.hero, isImageHeroRecipe && styles.heroImageRecipe]}
           >
-            {tripHeroImage ? (
-              <ImageBackground source={tripHeroImage} style={StyleSheet.absoluteFillObject} imageStyle={styles.heroImage}>
+            {heroImage ? (
+              <ImageBackground source={heroImage} style={StyleSheet.absoluteFillObject} imageStyle={styles.heroImage}>
                 <View style={styles.heroImageOverlay} />
               </ImageBackground>
             ) : null}
-            {isTripRecipe ? (
+            {isImageHeroRecipe ? (
               <LinearGradient
                 colors={['rgba(6, 12, 24, 0.08)', 'rgba(6, 12, 24, 0.18)', 'rgba(8, 14, 26, 0.46)', V2_BG_BASE]}
                 locations={[0, 0.32, 0.7, 1]}
                 style={styles.heroImageGradient}
               />
             ) : null}
-            {!isTripRecipe ? <View style={styles.heroGlowLarge} /> : null}
-            {!isTripRecipe ? <View style={styles.heroGlowSmall} /> : null}
+            {!isImageHeroRecipe ? <View style={styles.heroGlowLarge} /> : null}
+            {!isImageHeroRecipe ? <View style={styles.heroGlowSmall} /> : null}
             <View style={styles.heroNavRow}>
               <Pressable style={styles.navButton} onPress={() => router.back()}>
                 <FontAwesome name="angle-left" size={24} color={V2_TEXT_PRIMARY} />
@@ -243,8 +245,8 @@ export default function RecipeScreen() {
                 ) : null}
               </View>
             </View>
-            <Animated.View entering={FadeIn.duration(450)} style={[styles.heroContent, isTripRecipe && styles.heroContentTrip]}>
-              <View style={[styles.heroTitleBlock, isTripRecipe && styles.heroTitleBlockTrip]}>
+            <Animated.View entering={FadeIn.duration(450)} style={[styles.heroContent, isImageHeroRecipe && styles.heroContentImage]}>
+              <View style={[styles.heroTitleBlock, isImageHeroRecipe && styles.heroTitleBlockImage]}>
                 <Text style={styles.heroEyebrow}>{modeLabel}</Text>
                 <Text style={styles.heroTitle}>{recipeTitle}</Text>
                 <Text style={styles.heroLead}>{evidence.reasonLines[0]}</Text>
@@ -380,9 +382,9 @@ const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: V2_BG_BASE },
   centered: { justifyContent: 'center', alignItems: 'center' },
   heroWrapper: { paddingHorizontal: 18, paddingTop: 14 },
-  heroWrapperTrip: { paddingHorizontal: 0, paddingTop: 0, marginTop: -18, marginHorizontal: -20 },
+  heroWrapperImage: { paddingHorizontal: 0, paddingTop: 0, marginTop: -18, marginHorizontal: -20 },
   hero: { height: HERO_HEIGHT, borderRadius: luxuryRadii.cardLg, overflow: 'hidden', paddingHorizontal: 20, paddingTop: 18, paddingBottom: 24, justifyContent: 'space-between' },
-  heroTrip: {
+  heroImageRecipe: {
     height: HERO_HEIGHT_TRIP,
     borderRadius: 0,
     paddingHorizontal: 22,
@@ -415,13 +417,13 @@ const styles = StyleSheet.create({
     maxWidth: '84%',
   },
   heroContent: { gap: 12, alignItems: 'flex-start' },
-  heroContentTrip: { width: '100%', marginTop: 'auto' },
+  heroContentImage: { width: '100%', marginTop: 'auto' },
   heroInfoBadge: { borderRadius: 999, paddingHorizontal: 9, paddingVertical: 4, backgroundColor: 'rgba(8,22,54,0.26)', borderWidth: 1, borderColor: 'rgba(255,255,255,0.18)' },
   heroInfoBadgeText: { fontSize: TYPE_CAPTION - 1, color: V2_TEXT_PRIMARY, fontWeight: '700', fontFamily: luxuryFonts.sans },
   heroSafetyBadge: { borderRadius: 999, paddingHorizontal: 9, paddingVertical: 4, backgroundColor: 'rgba(201,164,91,0.22)', borderWidth: 1, borderColor: 'rgba(201,164,91,0.36)' },
   heroSafetyBadgeText: { fontSize: TYPE_CAPTION - 1, color: V2_TEXT_PRIMARY, fontWeight: '800', fontFamily: luxuryFonts.sans },
   heroTitleBlock: { gap: 8, maxWidth: '82%' },
-  heroTitleBlockTrip: { maxWidth: '100%' },
+  heroTitleBlockImage: { maxWidth: '100%' },
   heroEyebrow: { fontSize: TYPE_CAPTION - 1, color: 'rgba(255,255,255,0.74)', fontWeight: '700', letterSpacing: 1.2, fontFamily: luxuryFonts.sans },
   heroTitle: { fontSize: TYPE_HEADING_LG + 2, lineHeight: 42, color: V2_TEXT_PRIMARY, fontFamily: luxuryFonts.display, maxWidth: '100%' },
   heroLead: { fontSize: TYPE_BODY, color: 'rgba(255,255,255,0.86)', lineHeight: 21, fontFamily: luxuryFonts.sans, maxWidth: '100%' },
