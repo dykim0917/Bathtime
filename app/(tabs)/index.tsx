@@ -101,7 +101,6 @@ const HOME_PREVIEW_CARD_LIMIT = 4;
 const HOME_SECTION_ORDER: RecommendationCardEventPayload['section_order'] = 'care_first';
 
 interface CareVisualMeta {
-  visualLabel: string;
   accent: [string, string];
 }
 
@@ -193,35 +192,27 @@ function resolveFallback(intent: IntentCard, healthConditions: UserProfile['heal
 
 const HOME_CARE_VISUAL_META: Record<string, CareVisualMeta> = {
   muscle_relief: {
-    visualLabel: 'DEEP REST',
     accent: ['#7D6656', '#C6AB96'],
   },
   sleep_ready: {
-    visualLabel: 'NIGHT STEAM',
     accent: ['#193259', '#6178B9'],
   },
   hangover_relief: {
-    visualLabel: 'AMBER RESET',
     accent: ['#84501D', '#D7A052'],
   },
   edema_relief: {
-    visualLabel: 'MINERAL FLOW',
     accent: ['#526D87', '#B7CBDD'],
   },
   cold_relief: {
-    visualLabel: 'WARM BREATH',
     accent: ['#4E6B79', '#9FC4CF'],
   },
   menstrual_relief: {
-    visualLabel: 'SOFT WARMS',
     accent: ['#7C5968', '#C89DAF'],
   },
   stress_relief: {
-    visualLabel: 'SILENT RESET',
     accent: ['#4B6651', '#89AF8C'],
   },
   mood_lift: {
-    visualLabel: 'SOFT GLOW',
     accent: ['#715F35', '#D0B36B'],
   },
 };
@@ -300,7 +291,6 @@ function buildCarePreviewRecommendation(
 
 function getCareVisualMeta(intentId: string): CareVisualMeta {
   return HOME_CARE_VISUAL_META[intentId] ?? {
-    visualLabel: 'CARE ROUTINE',
     accent: ['#5D708A', '#99AEC5'],
   };
 }
@@ -672,10 +662,8 @@ export default function HomeIntentScreen() {
           {heroCard ? (
             <>
                 <HomeCareHeroCard
-                eyebrow={copy.careCards.featuredEyebrow}
                 title={heroTitle}
                 description={heroDescription}
-                visualLabel={heroVisual.visualLabel}
                 metaChips={[
                   {
                     iconName: 'temperature' as CustomIconName,
@@ -693,7 +681,6 @@ export default function HomeIntentScreen() {
                     resolveIntentImageEnvironment(heroCard, normalizedEnvironment)
                   ) ?? HOME_CARE_HERO_IMAGE
                 }
-                fitLabel={getEnvironmentFitLabel(heroCard, normalizedEnvironment)}
                 safetyBadge={
                   hasSafetyPriorityFallback(resolveFallback(heroCard, profile?.healthConditions ?? ['none']))
                     ? copy.home.safetyPriorityBadge
@@ -718,7 +705,6 @@ export default function HomeIntentScreen() {
                   key={intent.id}
                   title={intent.copy_title}
                   description={getEnvironmentSubtitle(intent, normalizedEnvironment, profile?.healthConditions ?? ['none'])}
-                  visualLabel={visual.visualLabel}
                   accent={visual.accent}
                   metaChips={[
                     {

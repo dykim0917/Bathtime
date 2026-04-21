@@ -20,10 +20,10 @@ interface MetaChip {
 
 interface HomeCareHeroCardProps {
   badge?: string;
-  eyebrow: string;
+  eyebrow?: string;
   title: string;
   description: string;
-  visualLabel: string;
+  visualLabel?: string;
   metaChips: MetaChip[];
   accent: [string, string];
   backgroundSource?: ImageSourcePropType | null;
@@ -86,7 +86,7 @@ export function HomeCareHeroCard({
 
         <View style={styles.copyBlock}>
           {badge ? <Text style={styles.heroBadge}>{badge}</Text> : null}
-          <Text style={styles.eyebrow}>{eyebrow}</Text>
+          {eyebrow ? <Text style={styles.eyebrow}>{eyebrow}</Text> : null}
           <Text style={styles.title}>{title}</Text>
           <Text style={styles.description}>{description}</Text>
           <View style={styles.metaRow}>

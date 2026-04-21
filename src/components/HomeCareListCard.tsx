@@ -20,7 +20,7 @@ interface MetaChip {
 interface HomeCareListCardProps {
   title: string;
   description: string;
-  visualLabel: string;
+  visualLabel?: string;
   accent: [string, string];
   metaChips?: MetaChip[];
   backgroundImage?: ImageSourcePropType | null;
@@ -60,7 +60,7 @@ export function HomeCareListCard({
           </ImageBackground>
         ) : null}
         {!hasBackgroundImage ? <View style={[styles.visualGlow, { backgroundColor: `${accent[1]}28` }]} /> : null}
-        <Text style={styles.visualLabel}>{visualLabel}</Text>
+        {visualLabel ? <Text style={styles.visualLabel}>{visualLabel}</Text> : null}
       </LinearGradient>
 
       <View style={styles.copyWrap}>
