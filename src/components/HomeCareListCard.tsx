@@ -40,6 +40,8 @@ export function HomeCareListCard({
   disabledText,
   onPress,
 }: HomeCareListCardProps) {
+  const hasBackgroundImage = Boolean(backgroundImage);
+
   return (
     <Pressable
       onPress={onPress}
@@ -57,7 +59,7 @@ export function HomeCareListCard({
             <View style={styles.imageOverlay} />
           </ImageBackground>
         ) : null}
-        <View style={[styles.visualGlow, { backgroundColor: `${accent[1]}28` }]} />
+        {!hasBackgroundImage ? <View style={[styles.visualGlow, { backgroundColor: `${accent[1]}28` }]} /> : null}
         <Text style={styles.visualLabel}>{visualLabel}</Text>
       </LinearGradient>
 

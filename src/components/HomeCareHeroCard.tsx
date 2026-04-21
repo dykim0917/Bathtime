@@ -49,6 +49,8 @@ export function HomeCareHeroCard({
   disabledText,
   onPress,
 }: HomeCareHeroCardProps) {
+  const hasBackgroundImage = Boolean(backgroundSource);
+
   return (
     <Pressable
       onPress={onPress}
@@ -66,8 +68,8 @@ export function HomeCareHeroCard({
             <View style={styles.imagePhotoOverlay} />
           </ImageBackground>
         ) : null}
-        <View style={[styles.visualGlowLarge, { backgroundColor: `${accent[1]}30` }]} />
-        <View style={[styles.visualGlowSmall, { backgroundColor: `${accent[0]}22` }]} />
+        {!hasBackgroundImage ? <View style={[styles.visualGlowLarge, { backgroundColor: `${accent[1]}30` }]} /> : null}
+        {!hasBackgroundImage ? <View style={[styles.visualGlowSmall, { backgroundColor: `${accent[0]}22` }]} /> : null}
         <View style={styles.visualScrim} />
 
         <View style={styles.heroTopRow}>

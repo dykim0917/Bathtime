@@ -1,5 +1,6 @@
 import React from 'react';
 import { ImageBackground, ImageSourcePropType, View, Text, Pressable, StyleSheet } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import {
   TYPE_SCALE,
   V2_ACCENT,
@@ -55,6 +56,7 @@ export function CategoryCard({
 }: CategoryCardProps) {
   const isV2 = variant === 'v2';
   const isFeatured = emphasis === 'featured';
+  const hasBackgroundImage = Boolean(backgroundImage);
 
   return (
     <Pressable
@@ -63,6 +65,7 @@ export function CategoryCard({
       style={[
         styles.card,
         isV2 ? styles.cardV2 : { backgroundColor: disabled ? '#E8E8E8' : bgColor },
+        hasBackgroundImage && styles.cardWithImage,
         isV2 && disabled && styles.cardV2Disabled,
         isV2 && isFeatured && styles.cardV2Featured,
         { width, minHeight },
@@ -71,9 +74,14 @@ export function CategoryCard({
       {backgroundImage ? (
         <ImageBackground source={backgroundImage} style={StyleSheet.absoluteFillObject} imageStyle={styles.backgroundImage}>
           <View style={styles.imageOverlay} />
+          <LinearGradient
+            colors={['rgba(5, 10, 18, 0.2)', 'rgba(5, 10, 18, 0.48)', 'rgba(5, 10, 18, 0.9)']}
+            locations={[0, 0.44, 1]}
+            style={StyleSheet.absoluteFillObject}
+          />
         </ImageBackground>
       ) : null}
-      {isV2 ? <View style={[styles.tintOrb, isFeatured && styles.tintOrbFeatured, { backgroundColor: `${bgColor}28` }]} /> : null}
+      {isV2 && !hasBackgroundImage ? <View style={[styles.tintOrb, isFeatured && styles.tintOrbFeatured, { backgroundColor: `${bgColor}28` }]} /> : null}
       {(fitLabel || safetyBadge) ? (
         <View style={styles.badgeRow}>
           {fitLabel ? <Text style={[styles.fitBadge, isV2 && styles.fitBadgeV2]}>{fitLabel}</Text> : null}
@@ -82,7 +90,7 @@ export function CategoryCard({
       ) : null}
       <View style={styles.body}>
         {eyebrow ? <Text style={[styles.eyebrow, isV2 && styles.eyebrowV2]}>{eyebrow}</Text> : null}
-        {iconName ? (
+        {iconName && !hasBackgroundImage ? (
           <View
             style={[
               styles.iconWrap,
@@ -145,6 +153,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(28, 39, 49, 0.94)',
     borderColor: 'rgba(176, 141, 87, 0.28)',
   },
+  cardWithImage: {
+    backgroundColor: 'rgba(7, 12, 20, 0.96)',
+  },
   tintOrb: {
     position: 'absolute',
     top: -24,
@@ -161,7 +172,7 @@ const styles = StyleSheet.create({
   },
   imageOverlay: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(5, 10, 24, 0.5)',
+    backgroundColor: 'rgba(5, 10, 24, 0.18)',
   },
   tintOrbFeatured: {
     top: -12,
