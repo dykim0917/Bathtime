@@ -16,7 +16,7 @@ import {
   getCatalogProductForIngredient,
   isBeginnerFriendlyProduct,
 } from '@/src/data/catalog';
-import { getTripCardImage } from '@/src/data/tripImages';
+import { getTripCardImageForEnvironment } from '@/src/data/tripImages';
 import { useCatalogHydration } from '@/src/data/catalogRuntime';
 import { formatTemperature } from '@/src/utils/temperature';
 import { formatDuration } from '@/src/utils/time';
@@ -92,7 +92,10 @@ export default function RecipeScreen() {
   const temperatureLabel = formatTemperature(recommendation.temperature);
   const heroGradient: [string, string] = [recommendation.colorHex, `${recommendation.colorHex}99`];
   const tripHeroImage = isTripRecipe
-    ? getTripCardImage(recommendation.themeId ?? recommendation.intentId ?? '', 'deep')
+    ? getTripCardImageForEnvironment(
+      recommendation.themeId ?? recommendation.intentId ?? '',
+      recommendation.environmentUsed
+    )
     : null;
   const evidence = buildRecipeEvidenceLines(recommendation);
   const productSlots = buildProductMatchingSlots(recommendation, recommendation.environmentUsed);

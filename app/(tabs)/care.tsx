@@ -53,6 +53,8 @@ import {
   getEnvironmentUnavailableReason,
   getEnvironmentSubtitle,
 } from '@/src/data/intents';
+import { getCareCardImageForEnvironment } from '@/src/data/careImages';
+import { resolveIntentImageEnvironment } from '@/src/data/routineImageVariants';
 import { applySubProtocolOverrides } from '@/src/engine/subprotocol';
 import { inferFeelingBefore } from '@/src/engine/feeling';
 import { copy } from '@/src/content/copy';
@@ -349,6 +351,7 @@ export default function CareScreen() {
               const isPlaceholder = intent.allowed_environments.length === 0;
               const disabled = isPlaceholder || !intent.allowed_environments.includes(normalizedEnvironment);
               const healthConditions = profile?.healthConditions ?? ['none'];
+              const imageEnvironment = resolveIntentImageEnvironment(intent, normalizedEnvironment);
               const fallback = resolveFallback(intent, healthConditions);
               const safetyBadge = hasSafetyPriorityFallback(fallback)
                 ? copy.home.safetyPriorityBadge
@@ -366,6 +369,7 @@ export default function CareScreen() {
                   safetyBadge={safetyBadge}
                   disabled={disabled}
                   disabledText={isPlaceholder ? copy.careCards.placeholderDisabled : getEnvironmentUnavailableReason(intent, normalizedEnvironment)}
+                  backgroundImage={isPlaceholder ? null : getCareCardImageForEnvironment(intent.intent_id, imageEnvironment)}
                   onPress={() => handleOpenSubProtocol(intent)}
                   width={intentCardWidth}
                   minHeight={isFeaturedCard ? CARD_MIN_HEIGHT_REGULAR + 24 : CARD_MIN_HEIGHT_REGULAR}

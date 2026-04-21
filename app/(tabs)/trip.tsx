@@ -43,6 +43,10 @@ import {
   pickAutoTripSubProtocol,
   TRIP_INTENT_CARDS,
 } from '@/src/data/intents';
+import {
+  getImageVariantForEnvironment,
+  resolveIntentImageEnvironment,
+} from '@/src/data/routineImageVariants';
 import { applySubProtocolOverrides } from '@/src/engine/subprotocol';
 import { inferFeelingBefore } from '@/src/engine/feeling';
 import { copy } from '@/src/content/copy';
@@ -280,6 +284,7 @@ export default function TripScreen() {
           <View style={styles.tripList}>
             {TRIP_INTENT_CARDS.map((intent) => {
               const disabled = !intent.allowed_environments.includes(normalizedEnvironment);
+              const imageEnvironment = resolveIntentImageEnvironment(intent, normalizedEnvironment);
               const fallback = resolveFallback(profile?.healthConditions ?? ['none']);
               const safetyBadge = hasSafetyPriorityFallback(fallback)
                 ? copy.home.safetyPriorityBadge
@@ -297,7 +302,7 @@ export default function TripScreen() {
                   disabled={disabled}
                   onPress={() => handleOpenSubProtocol(intent)}
                   width={tripCardWidth}
-                  imageVariant="deep"
+                  imageVariant={getImageVariantForEnvironment(imageEnvironment)}
                 />
               );
             })}

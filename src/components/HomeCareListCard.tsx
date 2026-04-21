@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { ImageBackground, ImageSourcePropType, Pressable, StyleSheet, Text, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import {
   TYPE_CAPTION,
@@ -23,6 +23,7 @@ interface HomeCareListCardProps {
   visualLabel: string;
   accent: [string, string];
   metaChips?: MetaChip[];
+  backgroundImage?: ImageSourcePropType | null;
   disabled?: boolean;
   disabledText?: string;
   onPress: () => void;
@@ -34,6 +35,7 @@ export function HomeCareListCard({
   visualLabel,
   accent,
   metaChips = [],
+  backgroundImage,
   disabled = false,
   disabledText,
   onPress,
@@ -50,6 +52,11 @@ export function HomeCareListCard({
         end={{ x: 1, y: 1 }}
         style={styles.visual}
       >
+        {backgroundImage ? (
+          <ImageBackground source={backgroundImage} style={StyleSheet.absoluteFillObject} imageStyle={styles.backgroundImage}>
+            <View style={styles.imageOverlay} />
+          </ImageBackground>
+        ) : null}
         <View style={[styles.visualGlow, { backgroundColor: `${accent[1]}28` }]} />
         <Text style={styles.visualLabel}>{visualLabel}</Text>
       </LinearGradient>
@@ -96,6 +103,15 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     justifyContent: 'flex-end',
     padding: 8,
+  },
+  backgroundImage: {
+    width: '100%',
+    height: '112%',
+    resizeMode: 'cover',
+  },
+  imageOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(6, 10, 18, 0.42)',
   },
   visualGlow: {
     position: 'absolute',

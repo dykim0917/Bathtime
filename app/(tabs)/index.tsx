@@ -70,6 +70,11 @@ import { HomeTripEditorialCard } from '@/src/components/HomeTripEditorialCard';
 import { OpenTabHeader } from '@/src/components/OpenTabHeader';
 import { HOME_CARE_HERO_IMAGE, HOME_HEADER_ILLUSTRATION } from '@/src/data/homeVisuals';
 import { CustomIconName } from '@/src/components/CustomIcon';
+import { getCareCardImageForEnvironment } from '@/src/data/careImages';
+import {
+  getImageVariantForEnvironment,
+  resolveIntentImageEnvironment,
+} from '@/src/data/routineImageVariants';
 
 const ENV_OPTIONS: { id: BathEnvironment; label: string }[] = [
   { id: 'bathtub', label: '욕조' },
@@ -682,7 +687,12 @@ export default function HomeIntentScreen() {
                   },
                 ]}
                 accent={heroVisual.accent}
-                backgroundSource={HOME_CARE_HERO_IMAGE}
+                backgroundSource={
+                  getCareCardImageForEnvironment(
+                    heroCard.intent_id,
+                    resolveIntentImageEnvironment(heroCard, normalizedEnvironment)
+                  ) ?? HOME_CARE_HERO_IMAGE
+                }
                 fitLabel={getEnvironmentFitLabel(heroCard, normalizedEnvironment)}
                 safetyBadge={
                   hasSafetyPriorityFallback(resolveFallback(heroCard, profile?.healthConditions ?? ['none']))
@@ -702,6 +712,7 @@ export default function HomeIntentScreen() {
               const disabled = !intent.allowed_environments.includes(normalizedEnvironment);
               const visual = getCareVisualMeta(intent.intent_id);
               const previewRecommendation = listPreviewById[intent.id];
+              const imageEnvironment = resolveIntentImageEnvironment(intent, normalizedEnvironment);
               return (
                 <HomeCareListCard
                   key={intent.id}
@@ -719,6 +730,7 @@ export default function HomeIntentScreen() {
                       label: `${previewRecommendation?.durationMinutes ?? 10}분`,
                     },
                   ]}
+                  backgroundImage={getCareCardImageForEnvironment(intent.intent_id, imageEnvironment)}
                   disabled={disabled}
                   disabledText={getEnvironmentUnavailableReason(intent, normalizedEnvironment)}
                   onPress={() => handleOpenCareSubProtocol(intent)}
@@ -744,6 +756,7 @@ export default function HomeIntentScreen() {
           >
             {tripCards.map((intent) => {
               const disabled = !intent.allowed_environments.includes(normalizedEnvironment);
+              const imageEnvironment = resolveIntentImageEnvironment(intent, normalizedEnvironment);
               const fallback = resolveFallback(intent, profile?.healthConditions ?? ['none']);
               const safetyBadge = hasSafetyPriorityFallback(fallback) ? copy.home.safetyPriorityBadge : undefined;
               const meta = TRIP_EDITORIAL_META[intent.intent_id] ?? TRIP_EDITORIAL_META.kyoto_forest;
@@ -759,7 +772,7 @@ export default function HomeIntentScreen() {
                   disabled={disabled}
                   onPress={() => handleStartTripIntent(intent)}
                   width={tripCardWidth}
-                  imageVariant="deep"
+                  imageVariant={getImageVariantForEnvironment(imageEnvironment)}
                 />
               );
             })}

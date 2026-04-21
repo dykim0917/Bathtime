@@ -68,6 +68,7 @@ jest.mock('@/src/data/catalogRuntime', () => ({
 
 jest.mock('@/src/data/tripImages', () => ({
   getTripCardImage: () => null,
+  getTripCardImageForEnvironment: () => null,
 }));
 
 jest.mock('@/src/engine/explainability', () => ({

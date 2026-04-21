@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Pressable, StyleSheet } from 'react-native';
+import { ImageBackground, ImageSourcePropType, View, Text, Pressable, StyleSheet } from 'react-native';
 import {
   TYPE_SCALE,
   V2_ACCENT,
@@ -26,6 +26,7 @@ interface CategoryCardProps {
   safetyBadge?: string;
   disabled?: boolean;
   disabledText?: string;
+  backgroundImage?: ImageSourcePropType | null;
   onPress: () => void;
   width: number;
   minHeight?: number;
@@ -45,6 +46,7 @@ export function CategoryCard({
   safetyBadge,
   disabled = false,
   disabledText,
+  backgroundImage,
   onPress,
   width,
   minHeight = 140,
@@ -66,6 +68,11 @@ export function CategoryCard({
         { width, minHeight },
       ]}
     >
+      {backgroundImage ? (
+        <ImageBackground source={backgroundImage} style={StyleSheet.absoluteFillObject} imageStyle={styles.backgroundImage}>
+          <View style={styles.imageOverlay} />
+        </ImageBackground>
+      ) : null}
       {isV2 ? <View style={[styles.tintOrb, isFeatured && styles.tintOrbFeatured, { backgroundColor: `${bgColor}28` }]} /> : null}
       {(fitLabel || safetyBadge) ? (
         <View style={styles.badgeRow}>
@@ -145,6 +152,16 @@ const styles = StyleSheet.create({
     width: 110,
     height: 110,
     borderRadius: 55,
+  },
+  backgroundImage: {
+    borderRadius: luxuryRadii.card,
+    width: '100%',
+    height: '116%',
+    resizeMode: 'cover',
+  },
+  imageOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(5, 10, 24, 0.5)',
   },
   tintOrbFeatured: {
     top: -12,

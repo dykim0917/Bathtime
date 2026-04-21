@@ -1,4 +1,10 @@
-export type TripImageVariant = 'lite' | 'deep';
+import { BathEnvironment } from '@/src/engine/types';
+import {
+  getImageVariantForEnvironment,
+  RoutineImageVariant,
+} from '@/src/data/routineImageVariants';
+
+export type TripImageVariant = RoutineImageVariant;
 
 export const TRIP_CARD_IMAGES: Record<string, { lite: any; deep: any }> = {
   kyoto_forest: {
@@ -45,4 +51,11 @@ export const TRIP_CARD_IMAGES: Record<string, { lite: any; deep: any }> = {
 
 export function getTripCardImage(intentId: string, variant: TripImageVariant) {
   return TRIP_CARD_IMAGES[intentId]?.[variant] ?? null;
+}
+
+export function getTripCardImageForEnvironment(
+  intentId: string,
+  environment: BathEnvironment
+) {
+  return getTripCardImage(intentId, getImageVariantForEnvironment(environment));
 }
