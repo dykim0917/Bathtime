@@ -48,7 +48,9 @@ import { SubProtocolPickerModal } from '@/src/components/SubProtocolPickerModal'
 import {
   CARE_INTENT_CARDS,
   CARE_SUBPROTOCOL_OPTIONS,
+  getCareCardSafetyBadge,
   getEnvironmentFitLabel,
+  getEnvironmentUnavailableReason,
   getEnvironmentSubtitle,
 } from '@/src/data/intents';
 import { applySubProtocolOverrides } from '@/src/engine/subprotocol';
@@ -346,15 +348,16 @@ export default function CareScreen() {
               const isFeaturedCard = intent.card_position === 1;
               const isPlaceholder = intent.allowed_environments.length === 0;
               const disabled = isPlaceholder || !intent.allowed_environments.includes(normalizedEnvironment);
-              const fallback = resolveFallback(intent, profile?.healthConditions ?? ['none']);
+              const healthConditions = profile?.healthConditions ?? ['none'];
+              const fallback = resolveFallback(intent, healthConditions);
               const safetyBadge = hasSafetyPriorityFallback(fallback)
                 ? copy.home.safetyPriorityBadge
-                : undefined;
+                : getCareCardSafetyBadge(intent, healthConditions);
               return (
                 <CategoryCard
                   key={intent.id}
                   title={intent.copy_title}
-                  subtitle={isPlaceholder ? copy.careCards.placeholderSubtitle : getEnvironmentSubtitle(intent, normalizedEnvironment)}
+                  subtitle={isPlaceholder ? copy.careCards.placeholderSubtitle : getEnvironmentSubtitle(intent, normalizedEnvironment, healthConditions)}
                   iconName={getIntentIconName(intent.intent_id)}
                   bgColor={getIntentTint(intent.intent_id)}
                   eyebrow={isFeaturedCard ? copy.careCards.featuredEyebrow : copy.careCards.quickEyebrow}
@@ -362,7 +365,7 @@ export default function CareScreen() {
                   fitLabel={isPlaceholder ? undefined : getEnvironmentFitLabel(intent, normalizedEnvironment)}
                   safetyBadge={safetyBadge}
                   disabled={disabled}
-                  disabledText={isPlaceholder ? copy.careCards.placeholderDisabled : undefined}
+                  disabledText={isPlaceholder ? copy.careCards.placeholderDisabled : getEnvironmentUnavailableReason(intent, normalizedEnvironment)}
                   onPress={() => handleOpenSubProtocol(intent)}
                   width={intentCardWidth}
                   minHeight={isFeaturedCard ? CARD_MIN_HEIGHT_REGULAR + 24 : CARD_MIN_HEIGHT_REGULAR}

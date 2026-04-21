@@ -151,6 +151,15 @@ export const copy = {
       temperatureLabel: '수온',
       durationLabel: '시간',
       environmentLabel: '환경',
+      sleepWindow: {
+        eyebrow: '수면 준비 타이밍',
+        title: '잠들기 90분 전까지 끝내는 편이 좋아요',
+        defaultBedtimeHint: '기본 취침 시각 23:00 기준',
+        scheduledSummary: (startTime: string, endTime: string) =>
+          `${startTime}쯤 시작해 ${endTime} 전에 마치는 흐름을 추천해요.`,
+        startNowSummary: (bedtimeTime: string) =>
+          `지금 시작한다면 루틴이 끝난 뒤 최소 90분은 쉬고 ${bedtimeTime} 이후에 잠자리에 들어보세요.`,
+      },
     },
     startCta: '목욕 시작하기',
   },
@@ -162,11 +171,16 @@ export const copy = {
     placeholderSubtitle: '곧 추가될 예정이에요',
     placeholderDisabled: '준비 중이에요',
     restrictedDisabled: '현재 환경에선 제한적으로 추천돼요',
+    hangoverBlocked: '숙취 루틴은 전신 입욕 없이 미지근한 족욕만 가능해요.',
+    edemaBlocked: '붓기 루틴은 샤워보다 욕조나 부분입욕을 먼저 권장해요.',
+    sensitiveSkinBadge: '저자극 조정',
+    sensitiveSkinAdjusted: '저자극 기준으로 자동 조정해요.',
   },
   completion: {
     feedbackTitleDefault: '오늘 루틴은 어떠셨나요?',
     feedbackTitleWithThemePrefix: '오늘의',
     feedbackTitleWithThemeSuffix: '분위기는 어떠셨나요?',
+    summaryTitle: '이번 루틴을 이렇게 정리했어요',
     feedback: {
       good: '좋아요',
       bad: '별로예요',
@@ -179,6 +193,15 @@ export const copy = {
       snapshot: '진행 기록',
       weight: '선호도 변화',
       recall: '오늘의 한 줄 기억',
+    },
+    aftercare: {
+      eyebrow: '끝난 직후',
+      title: '지금 바로 이 세 가지만 챙겨주세요',
+      items: [
+        '물 한 잔으로 수분을 먼저 보충하세요.',
+        '물기가 완전히 마르기 전에 보습제를 가볍게 발라주세요.',
+        '어지럽거나 심장이 빨리 뛰면 바로 앉아서 쉬세요.',
+      ],
     },
     homeCta: '홈으로 가기',
     loading: '불러오는 중이에요...',

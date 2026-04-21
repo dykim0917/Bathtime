@@ -51,7 +51,9 @@ import { SubProtocolPickerModal } from '@/src/components/SubProtocolPickerModal'
 import {
   CARE_INTENT_CARDS,
   CARE_SUBPROTOCOL_OPTIONS,
+  getCareCardSafetyBadge,
   getEnvironmentFitLabel,
+  getEnvironmentUnavailableReason,
   getEnvironmentSubtitle,
   TRIP_INTENT_CARDS,
   pickAutoTripSubProtocol,
@@ -354,7 +356,7 @@ export default function HomeIntentScreen() {
 
   const heroTitle = heroCard?.copy_title ?? '오늘의 케어 루틴';
   const heroDescription = heroCard
-    ? getEnvironmentSubtitle(heroCard, normalizedEnvironment)
+    ? getEnvironmentSubtitle(heroCard, normalizedEnvironment, profile?.healthConditions ?? ['none'])
     : '오늘의 환경에 맞는 케어 루틴을 보여드려요.';
   const heroVisual = useMemo(
     () => getCareVisualMeta(heroCard?.intent_id ?? ''),
@@ -685,9 +687,10 @@ export default function HomeIntentScreen() {
                 safetyBadge={
                   hasSafetyPriorityFallback(resolveFallback(heroCard, profile?.healthConditions ?? ['none']))
                     ? copy.home.safetyPriorityBadge
-                    : undefined
+                    : getCareCardSafetyBadge(heroCard, profile?.healthConditions ?? ['none'])
                 }
                 disabled={!heroCard.allowed_environments.includes(normalizedEnvironment)}
+                disabledText={getEnvironmentUnavailableReason(heroCard, normalizedEnvironment)}
                 onPress={() => handleOpenCareSubProtocol(heroCard)}
               />
 
@@ -703,7 +706,7 @@ export default function HomeIntentScreen() {
                 <HomeCareListCard
                   key={intent.id}
                   title={intent.copy_title}
-                  description={getEnvironmentSubtitle(intent, normalizedEnvironment)}
+                  description={getEnvironmentSubtitle(intent, normalizedEnvironment, profile?.healthConditions ?? ['none'])}
                   visualLabel={visual.visualLabel}
                   accent={visual.accent}
                   metaChips={[
@@ -717,6 +720,7 @@ export default function HomeIntentScreen() {
                     },
                   ]}
                   disabled={disabled}
+                  disabledText={getEnvironmentUnavailableReason(intent, normalizedEnvironment)}
                   onPress={() => handleOpenCareSubProtocol(intent)}
                 />
               );
@@ -748,7 +752,7 @@ export default function HomeIntentScreen() {
                   key={intent.id}
                   intentId={intent.intent_id}
                   title={intent.copy_title}
-                  subtitle={getEnvironmentSubtitle(intent, normalizedEnvironment)}
+                  subtitle={getEnvironmentSubtitle(intent, normalizedEnvironment, profile?.healthConditions ?? ['none'])}
                   accent={meta.accent}
                   fitLabel={getEnvironmentFitLabel(intent, normalizedEnvironment)}
                   safetyBadge={safetyBadge}

@@ -1,6 +1,9 @@
 import {
   CARE_INTENT_CARDS,
   CARE_SUBPROTOCOL_OPTIONS,
+  getCareCardSafetyBadge,
+  getEnvironmentSubtitle,
+  getEnvironmentUnavailableReason,
   pickAutoTripSubProtocol,
   TRIP_INTENT_CARDS,
   TRIP_SUBPROTOCOL_OPTIONS,
@@ -37,5 +40,23 @@ describe('intents data integrity', () => {
 
   test('auto trip selection falls back to default when no deeper bathtub option exists', () => {
     expect(pickAutoTripSubProtocol('rainy_camping', 'bathtub')?.id).toBe('trip_rainy_balanced');
+  });
+
+  test('hangover card is partial-bath only and explains the restriction elsewhere', () => {
+    const card = CARE_INTENT_CARDS.find((item) => item.intent_id === 'hangover_relief');
+    expect(card?.allowed_environments).toEqual(['partial_bath']);
+    expect(getEnvironmentUnavailableReason(card!, 'bathtub')).toContain('족욕');
+  });
+
+  test('edema card does not present shower as a main solution', () => {
+    const card = CARE_INTENT_CARDS.find((item) => item.intent_id === 'edema_relief');
+    expect(card?.allowed_environments).toEqual(['partial_bath', 'bathtub']);
+    expect(getEnvironmentUnavailableReason(card!, 'shower')).toContain('욕조');
+  });
+
+  test('sensitive skin adds low-irritation card messaging', () => {
+    const card = CARE_INTENT_CARDS.find((item) => item.intent_id === 'stress_relief');
+    expect(getEnvironmentSubtitle(card!, 'bathtub', ['sensitive_skin'])).toContain('저자극');
+    expect(getCareCardSafetyBadge(card!, ['sensitive_skin'])).toBe('저자극 조정');
   });
 });

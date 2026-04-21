@@ -129,11 +129,17 @@ const baseRecommendation = {
 
 describe('RecipeScreen pre-bath gate', () => {
   beforeEach(() => {
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date('2026-04-20T20:00:00+09:00'));
     mockReplace.mockReset();
     mockPush.mockReset();
     mockBack.mockReset();
     mockUseLocalSearchParams.mockReturnValue({ id: 'rec_1' });
     mockGetRecommendationById.mockResolvedValue(baseRecommendation);
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
   });
 
   test('starts immediately for a standard routine without opening the gate', async () => {
@@ -145,6 +151,24 @@ describe('RecipeScreen pre-bath gate', () => {
     expect(mockReplace).toHaveBeenCalledWith('/result/timer/rec_1');
   });
 
+  test('shows a calculated sleep timing card for sleep preparation routines', async () => {
+    mockGetRecommendationById.mockResolvedValue({
+      ...baseRecommendation,
+      intentId: 'sleep_ready',
+    });
+
+    const screen = render(React.createElement(RecipeScreen));
+
+    await waitFor(() =>
+      expect(screen.getByText('잠들기 90분 전까지 끝내는 편이 좋아요')).toBeTruthy()
+    );
+
+    expect(
+      screen.getByText('오후 9:18쯤 시작해 오후 9:30 전에 마치는 흐름을 추천해요.')
+    ).toBeTruthy();
+    expect(screen.getByText('기본 취침 시각 23:00 기준')).toBeTruthy();
+  });
+
   test('blocks timer start until every risky checklist item is checked', async () => {
     mockGetRecommendationById.mockResolvedValue({
       ...baseRecommendation,
@@ -152,6 +176,14 @@ describe('RecipeScreen pre-bath gate', () => {
     });
 
     const screen = render(React.createElement(RecipeScreen));
+
+    await waitFor(() =>
+      expect(screen.getByText('목욕 시작하기')).toBeTruthy()
+    );
+
+    expect(screen.queryByText('시작 전 꼭 확인하세요')).toBeNull();
+
+    fireEvent.press(screen.getByText('목욕 시작하기'));
 
     await waitFor(() =>
       expect(screen.getByText('시작 전 꼭 확인하세요')).toBeTruthy()
@@ -184,10 +216,22 @@ describe('RecipeScreen pre-bath gate', () => {
     const screen = render(React.createElement(RecipeScreen));
 
     await waitFor(() =>
+      expect(screen.getByText('다시 시작하기')).toBeTruthy()
+    );
+
+    expect(
+      screen.queryByText(
+        '이전에 저장한 루틴입니다. 오늘도 같은 제약을 지킬 수 있는지 확인한 뒤 다시 시작해주세요.'
+      )
+    ).toBeNull();
+
+    fireEvent.press(screen.getByText('다시 시작하기'));
+
+    await waitFor(() =>
       expect(screen.getByText('이전에 저장한 루틴입니다. 오늘도 같은 제약을 지킬 수 있는지 확인한 뒤 다시 시작해주세요.')).toBeTruthy()
     );
 
-    expect(screen.getByText('다시 시작하기')).toBeTruthy();
+    expect(screen.getAllByText('다시 시작하기').length).toBeGreaterThanOrEqual(1);
     expect(screen.getByTestId('prebath-item-history-replay')).toBeTruthy();
   });
 });

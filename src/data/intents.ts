@@ -1,9 +1,11 @@
 import {
   CanonicalBathEnvironment,
+  HealthCondition,
   IntentCard,
   SubProtocolOption,
   TimeContext,
 } from '@/src/engine/types';
+import { copy } from '@/src/content/copy';
 import {
   GENERATED_TRIP_INTENT_CARDS,
   GENERATED_TRIP_SUBPROTOCOL_OPTIONS,
@@ -45,12 +47,12 @@ export const CARE_INTENT_CARDS: IntentCard[] = [
     domain: 'care',
     intent_id: 'hangover_relief',
     mapped_mode: 'reset',
-    allowed_environments: ['shower', 'bathtub'],
+    allowed_environments: ['partial_bath'],
     copy_title: '술 마신 다음엔 이렇게 시작해보세요',
     copy_subtitle_by_environment: {
-      shower: '샤워 5분으로 부담 없이 정리해요.',
-      bathtub: '욕조 8분으로 몸을 부드럽게 풀어줘요.',
-      partial_bath: '부분입욕보다 샤워 또는 욕조를 권장해요.',
+      shower: '전신 입욕은 건너뛰고 미지근한 족욕만 진행해요.',
+      bathtub: '전신 입욕은 건너뛰고 미지근한 족욕만 진행해요.',
+      partial_bath: '미지근한 족욕 8분으로 부담 없이 정리해요.',
     },
     default_subprotocol_id: 'hangover_sensitive',
     card_position: 3,
@@ -60,12 +62,12 @@ export const CARE_INTENT_CARDS: IntentCard[] = [
     domain: 'care',
     intent_id: 'edema_relief',
     mapped_mode: 'recovery',
-    allowed_environments: ['partial_bath', 'bathtub', 'shower'],
+    allowed_environments: ['partial_bath', 'bathtub'],
     copy_title: '붓기가 느껴질 때 해보세요',
     copy_subtitle_by_environment: {
-      shower: '샤워 6분으로 가볍게 순환 리듬을 만들어요.',
-      bathtub: '욕조 10분으로 전신을 편안하게 풀어줘요.',
-      partial_bath: '부분입욕 12분으로 하체 붓기에 집중해요.',
+      shower: '샤워는 임시 대안이에요. 가능하면 욕조나 부분입욕으로 진행해요.',
+      bathtub: '욕조 10분으로 붓기 완화에 먼저 집중해요.',
+      partial_bath: '부분입욕 12분으로 하체 붓기를 가볍게 풀어줘요.',
     },
     default_subprotocol_id: 'edema_lower',
     card_position: 4,
@@ -271,7 +273,7 @@ export const CARE_SUBPROTOCOL_OPTIONS: Record<string, SubProtocolOption[]> = {
       partialOverrides: {
         behavior_blocks: ['짧은 안정 루틴'],
         duration_delta: -2,
-        environment_bias: 'shower',
+        environment_bias: 'partial_bath',
       },
     },
     {
@@ -282,6 +284,7 @@ export const CARE_SUBPROTOCOL_OPTIONS: Record<string, SubProtocolOption[]> = {
       is_default: false,
       partialOverrides: {
         behavior_blocks: ['리듬 전환 1회'],
+        environment_bias: 'partial_bath',
       },
     },
   ],
@@ -536,9 +539,13 @@ export function getSectionOrderByContext(
 
 export function getEnvironmentSubtitle(
   card: IntentCard,
-  environment: CanonicalBathEnvironment
+  environment: CanonicalBathEnvironment,
+  healthConditions: HealthCondition[] = ['none']
 ): string {
-  return card.copy_subtitle_by_environment[environment];
+  const base = card.copy_subtitle_by_environment[environment];
+  if (card.domain !== 'care') return base;
+  if (!healthConditions.includes('sensitive_skin')) return base;
+  return `${base} ${copy.careCards.sensitiveSkinAdjusted}`;
 }
 
 const ENV_LABEL: Record<CanonicalBathEnvironment, string> = {
@@ -562,4 +569,30 @@ export function getEnvironmentFitLabel(
     return `${ENV_LABEL[environment]} 바로 가능`;
   }
   return `${ENV_LABEL[environment]} 권장`;
+}
+
+export function getEnvironmentUnavailableReason(
+  card: IntentCard,
+  environment: CanonicalBathEnvironment
+): string | undefined {
+  if (card.intent_id === 'hangover_relief' && environment !== 'partial_bath') {
+    return copy.careCards.hangoverBlocked;
+  }
+
+  if (card.intent_id === 'edema_relief' && environment === 'shower') {
+    return copy.careCards.edemaBlocked;
+  }
+
+  return undefined;
+}
+
+export function getCareCardSafetyBadge(
+  card: IntentCard,
+  healthConditions: HealthCondition[] = ['none']
+): string | undefined {
+  if (card.domain !== 'care') return undefined;
+  if (healthConditions.includes('sensitive_skin')) {
+    return copy.careCards.sensitiveSkinBadge;
+  }
+  return undefined;
 }

@@ -20,6 +20,7 @@ import { getTripCardImage } from '@/src/data/tripImages';
 import { useCatalogHydration } from '@/src/data/catalogRuntime';
 import { formatTemperature } from '@/src/utils/temperature';
 import { formatDuration } from '@/src/utils/time';
+import { buildSleepPreparationPlan, formatSleepPlanTime } from '@/src/utils/sleepWindow';
 import { buildRecipeEvidenceLines } from '@/src/engine/explainability';
 import { buildPreBathChecklist, shouldRequirePreBathGate } from '@/src/engine/preBathChecklist';
 import { PreBathGateModal } from '@/src/components/PreBathGateModal';
@@ -46,7 +47,6 @@ export default function RecipeScreen() {
     getRecommendationById(id).then((rec) => {
       if (rec) {
         setRecommendation(rec);
-        setIsPreBathGateVisible(shouldRequirePreBathGate(rec));
       }
     });
   }, [id]);
@@ -69,6 +69,13 @@ export default function RecipeScreen() {
     () => (recommendation ? buildPreBathChecklist(recommendation, { source }) : []),
     [recommendation, source]
   );
+  const sleepPreparationPlan = useMemo(() => {
+    if (!recommendation || recommendation.intentId !== 'sleep_ready') {
+      return null;
+    }
+
+    return buildSleepPreparationPlan(new Date(), recommendation.durationMinutes ?? 10);
+  }, [recommendation]);
 
   if (!recommendation) return <View style={[ui.screenShellV2, styles.centered]}><Text style={{ color: V2_TEXT_SECONDARY }}>{copy.completion.loading}</Text></View>;
 
@@ -101,7 +108,6 @@ export default function RecipeScreen() {
   const preparationRows = [
     {
       id: 'required',
-      label: copy.routine.recipe.requiredLabel,
       title: requiredPreparation ? requiredPreparation.name : copy.routine.recipe.noneTitle,
       body: requiredPreparation
         ? copy.routine.recipe.requiredBody(requiredPreparation.name)
@@ -111,7 +117,6 @@ export default function RecipeScreen() {
     },
     {
       id: 'optional',
-      label: copy.routine.recipe.optionalLabel,
       title: optionalPreparation
         ? optionalPreparation.name
         : recommendation.environmentUsed === 'shower'
@@ -125,7 +130,6 @@ export default function RecipeScreen() {
     },
   ].filter((item) => item.id !== 'optional' || optionalPreparation) as Array<{
     id: string;
-    label: string;
     title: string;
     body: string;
   }>;
@@ -290,7 +294,6 @@ export default function RecipeScreen() {
                   <Text style={styles.trackBadgeText}>{String(index + 1).padStart(2, '0')}</Text>
                 </View>
                 <View style={styles.trackInfo}><Text style={styles.trackName}>{item.title}</Text><Text style={styles.trackDesc}>{item.body}</Text></View>
-                <Text style={styles.trackIndex}>{item.label}</Text>
               </View>
             ))}
             {productSlots.length > 0 ? (
@@ -319,7 +322,28 @@ export default function RecipeScreen() {
 
       </Animated.ScrollView>
 
-      <View style={styles.bottomCTA}><Pressable style={[ui.primaryButtonV2, styles.startButton]} onPress={handleStartBath}><Text style={ui.primaryButtonTextV2}>{shouldGateStart ? (source === 'history' ? copy.routine.preBath.historyReviewCta : copy.routine.preBath.reviewCta) : copy.routine.startCta}</Text></Pressable></View>
+      <View style={styles.bottomCTA}>
+        {sleepPreparationPlan ? (
+          <View style={[ui.glassCardV2, styles.sleepWindowCard]}>
+            <Text style={styles.sleepWindowEyebrow}>{copy.routine.recipe.sleepWindow.eyebrow}</Text>
+            <Text style={styles.sleepWindowTitle}>{copy.routine.recipe.sleepWindow.title}</Text>
+            <Text style={styles.sleepWindowBody}>
+              {sleepPreparationPlan.state === 'scheduled'
+                ? copy.routine.recipe.sleepWindow.scheduledSummary(
+                    formatSleepPlanTime(sleepPreparationPlan.recommendedStart),
+                    formatSleepPlanTime(sleepPreparationPlan.recommendedEnd)
+                  )
+                : copy.routine.recipe.sleepWindow.startNowSummary(
+                    formatSleepPlanTime(sleepPreparationPlan.earliestBedtimeIfStartingNow)
+                  )}
+            </Text>
+            <Text style={styles.sleepWindowHint}>{copy.routine.recipe.sleepWindow.defaultBedtimeHint}</Text>
+          </View>
+        ) : null}
+        <Pressable style={[ui.primaryButtonV2, styles.startButton]} onPress={handleStartBath}>
+          <Text style={ui.primaryButtonTextV2}>{source === 'history' ? copy.routine.preBath.historyStartCta : copy.routine.startCta}</Text>
+        </Pressable>
+      </View>
       <ProductMatchingModal
         visible={showProductModal}
         items={productSlots}
@@ -448,7 +472,6 @@ const styles = StyleSheet.create({
   trackInfo: { flex: 1 },
   trackName: { fontSize: TYPE_BODY + 1, color: V2_TEXT_PRIMARY, marginBottom: 2, fontFamily: luxuryFonts.display },
   trackDesc: { fontSize: TYPE_CAPTION, color: V2_TEXT_MUTED, fontFamily: luxuryFonts.sans },
-  trackIndex: { fontSize: TYPE_CAPTION, color: V2_TEXT_MUTED, fontWeight: '600', fontVariant: ['tabular-nums'], fontFamily: luxuryFonts.mono },
   safetyBlock: { marginTop: 20, marginBottom: 18, padding: 14, gap: 4 },
   safetyEyebrow: { fontSize: TYPE_CAPTION - 1, fontWeight: '800', color: V2_ACCENT, letterSpacing: 1, marginBottom: 4, fontFamily: luxuryFonts.sans },
   safetyTitle: { fontSize: TYPE_TITLE, color: V2_TEXT_PRIMARY, marginBottom: 2, fontFamily: luxuryFonts.display },
@@ -461,6 +484,35 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderTopColor: V2_BORDER,
     backgroundColor: V2_BG_BASE,
+  },
+  sleepWindowCard: {
+    paddingHorizontal: 14,
+    paddingVertical: 14,
+    marginBottom: 10,
+    gap: 4,
+  },
+  sleepWindowEyebrow: {
+    fontSize: TYPE_CAPTION - 1,
+    fontWeight: '800',
+    color: V2_ACCENT,
+    letterSpacing: 1,
+    fontFamily: luxuryFonts.sans,
+  },
+  sleepWindowTitle: {
+    fontSize: TYPE_BODY + 1,
+    color: V2_TEXT_PRIMARY,
+    fontFamily: luxuryFonts.display,
+  },
+  sleepWindowBody: {
+    fontSize: TYPE_CAPTION,
+    color: V2_TEXT_SECONDARY,
+    lineHeight: 18,
+    fontFamily: luxuryFonts.sans,
+  },
+  sleepWindowHint: {
+    fontSize: TYPE_CAPTION - 1,
+    color: V2_TEXT_MUTED,
+    fontFamily: luxuryFonts.sans,
   },
   startButton: { width: '100%' },
 });

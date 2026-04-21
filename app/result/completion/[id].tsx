@@ -6,6 +6,7 @@ import {
   StyleSheet,
   SafeAreaView,
   Platform,
+  ScrollView,
 } from 'react-native';
 import { useLocalSearchParams, router } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -37,6 +38,8 @@ import {
 import { luxuryFonts, luxuryTracking } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
 
+type CompletionStep = 'feedback' | 'summary';
+
 function toEnvironmentLabel(environment: string): string {
   switch (environment) {
     case 'bathtub':
@@ -59,6 +62,7 @@ export default function CompletionScreen() {
   const [memoryNarrative, setMemoryNarrative] = useState<string | null>(null);
   const [themeWeight, setThemeWeight] = useState<number | null>(null);
   const [snapshotLine, setSnapshotLine] = useState<string | null>(null);
+  const [step, setStep] = useState<CompletionStep>('feedback');
 
   useEffect(() => {
     if (!id) return;
@@ -66,6 +70,8 @@ export default function CompletionScreen() {
     getRecommendationById(id).then(async (rec) => {
       if (!rec) return;
       setRecommendation(rec);
+      setFeedback(rec.feedback ?? null);
+      setStep(rec.feedback ? 'summary' : 'feedback');
       const session = await loadSession();
       const actualDurationMinutes =
         session?.recommendationId === id && session.actualDurationSeconds !== undefined
@@ -109,6 +115,7 @@ export default function CompletionScreen() {
   const handleFeedback = async (value: 'good' | 'bad') => {
     if (!id || feedback) return;
     setFeedback(value);
+    setStep('summary');
     await updateRecommendationFeedback(id, value);
     await patchSessionRecord(id, {
       user_feeling_after: mapFeedbackToFeelingAfter(value),
@@ -147,97 +154,119 @@ export default function CompletionScreen() {
       <LinearGradient colors={[V2_BG_TOP, V2_BG_BASE, V2_BG_BOTTOM]} style={StyleSheet.absoluteFillObject} />
       <View style={styles.softOverlay} />
       <SafeAreaView style={styles.safeArea}>
-        <View style={styles.content}>
-          <Animated.View entering={BounceIn.duration(800)} style={styles.celebrationBadge}>
-            <Text style={styles.celebrationBadgeText}>DONE</Text>
-          </Animated.View>
-
-          <Animated.View entering={FadeIn.duration(600).delay(200)} style={styles.headerBlock}>
-            <View style={styles.stepBadge}>
-              <Text style={styles.stepBadgeText}>{copy.routine.stepFinish}</Text>
-            </View>
-            <Text style={styles.mainMessage}>{timeMessage}</Text>
-          </Animated.View>
-
-          <Animated.View entering={FadeIn.duration(600).delay(350)} style={[ui.glassCardV2, styles.statsCard]}>
-            <Text style={styles.statsLabel}>이번 달 기록</Text>
-            <Text style={styles.statsText}>
-              {copy.completion.monthlyPrefix}{' '}
-              <Text style={styles.statsHighlight}>{monthlyCount}</Text>
-              {copy.completion.monthlySuffix}
-            </Text>
-          </Animated.View>
-
-          <Animated.View entering={FadeIn.duration(600).delay(500)} style={[ui.glassCardV2, styles.feedbackSection]}>
-            <Text style={styles.feedbackTitle}>{feedbackTitle}</Text>
-            <View style={styles.feedbackButtons}>
-              <Pressable
-                style={[
-                  styles.feedbackButton,
-                  feedback === 'good' && styles.feedbackButtonActive,
-                ]}
-                onPress={() => handleFeedback('good')}
-                disabled={feedback !== null}
-              >
-                <Text style={[styles.feedbackLabel, feedback === 'good' && styles.feedbackLabelActive]}>
-                  {copy.completion.feedback.good}
-                </Text>
-              </Pressable>
-
-              <Pressable
-                style={[
-                  styles.feedbackButton,
-                  feedback === 'bad' && styles.feedbackButtonActive,
-                ]}
-                onPress={() => handleFeedback('bad')}
-                disabled={feedback !== null}
-              >
-                <Text style={[styles.feedbackLabel, feedback === 'bad' && styles.feedbackLabelActive]}>
-                  {copy.completion.feedback.bad}
-                </Text>
-              </Pressable>
-            </View>
-            {feedback && (
-              <Animated.Text entering={FadeIn.duration(300)} style={styles.feedbackThanks}>
-                {copy.completion.feedback.thanks}
-              </Animated.Text>
-            )}
-          </Animated.View>
-
-          {(memoryNarrative || themeWeight !== null) && (
-            <Animated.View entering={FadeIn.duration(600).delay(650)} style={[ui.glassCardV2, styles.memoryCard]}>
-              <Text style={styles.memoryTitle}>{copy.completion.memoryTitle}</Text>
-              <Text style={styles.memoryLine}>
-                {copy.completion.memoryLabels.snapshot}: {snapshotLine ?? `${recommendation.temperature.recommended}°C · ${recommendation.durationMinutes ?? '자유'}분 · ${toEnvironmentLabel(recommendation.environmentUsed)}`}
-              </Text>
-              {themeWeight !== null && recommendation.themeTitle ? (
-                <Text style={styles.memoryLine}>
-                  {copy.completion.memoryLabels.weight}: {recommendation.themeTitle} {themeWeight}
-                </Text>
-              ) : null}
-              {memoryNarrative ? (
-                <Text style={styles.memoryLine}>
-                  {copy.completion.memoryLabels.recall}: {memoryNarrative}
-                </Text>
-              ) : null}
+        {step === 'feedback' ? (
+          <View style={styles.content}>
+            <Animated.View entering={BounceIn.duration(800)} style={styles.celebrationBadge}>
+              <Text style={styles.celebrationBadgeText}>DONE</Text>
             </Animated.View>
-          )}
 
-          <Animated.View entering={FadeIn.duration(500).delay(800)} style={styles.actionRow}>
-            <Pressable
-              style={[ui.secondaryButtonV2, styles.actionButton]}
-              onPress={handleGoHistory}
-            >
-              <Text style={ui.secondaryButtonTextV2}>기록 보기</Text>
-            </Pressable>
-            <Pressable
-              style={[ui.primaryButtonV2, styles.actionButton]}
-              onPress={handleGoHome}
-            >
-              <Text style={ui.primaryButtonTextV2}>{copy.completion.homeCta}</Text>
-            </Pressable>
-          </Animated.View>
-        </View>
+            <Animated.View entering={FadeIn.duration(600).delay(200)} style={styles.headerBlock}>
+              <View style={styles.stepBadge}>
+                <Text style={styles.stepBadgeText}>{copy.routine.stepFinish}</Text>
+              </View>
+              <Text style={styles.mainMessage}>{timeMessage}</Text>
+            </Animated.View>
+
+            <Animated.View entering={FadeIn.duration(600).delay(500)} style={[ui.glassCardV2, styles.feedbackSection]}>
+              <Text style={styles.feedbackTitle}>{feedbackTitle}</Text>
+              <View style={styles.feedbackButtons}>
+                <Pressable
+                  style={[
+                    styles.feedbackButton,
+                    feedback === 'good' && styles.feedbackButtonActive,
+                  ]}
+                  onPress={() => handleFeedback('good')}
+                  disabled={feedback !== null}
+                >
+                  <Text style={[styles.feedbackLabel, feedback === 'good' && styles.feedbackLabelActive]}>
+                    {copy.completion.feedback.good}
+                  </Text>
+                </Pressable>
+
+                <Pressable
+                  style={[
+                    styles.feedbackButton,
+                    feedback === 'bad' && styles.feedbackButtonActive,
+                  ]}
+                  onPress={() => handleFeedback('bad')}
+                  disabled={feedback !== null}
+                >
+                  <Text style={[styles.feedbackLabel, feedback === 'bad' && styles.feedbackLabelActive]}>
+                    {copy.completion.feedback.bad}
+                  </Text>
+                </Pressable>
+              </View>
+            </Animated.View>
+          </View>
+        ) : (
+          <ScrollView
+            style={styles.summaryScroll}
+            contentContainerStyle={styles.summaryContent}
+            showsVerticalScrollIndicator={false}
+          >
+            <Animated.View entering={FadeIn.duration(400)} style={styles.summaryHeaderBlock}>
+              <View style={styles.stepBadge}>
+                <Text style={styles.stepBadgeText}>{copy.routine.stepFinish}</Text>
+              </View>
+              <Text style={styles.summaryTitle}>{copy.completion.summaryTitle}</Text>
+            </Animated.View>
+
+            <Animated.View entering={FadeIn.duration(500).delay(120)} style={[ui.glassCardV2, styles.statsCard]}>
+              <Text style={styles.statsLabel}>이번 달 기록</Text>
+              <Text style={styles.statsText}>
+                {copy.completion.monthlyPrefix}{' '}
+                <Text style={styles.statsHighlight}>{monthlyCount}</Text>
+                {copy.completion.monthlySuffix}
+              </Text>
+            </Animated.View>
+
+            <Animated.View entering={FadeIn.duration(500).delay(180)} style={[ui.glassCardV2, styles.aftercareCard]}>
+              <Text style={styles.aftercareEyebrow}>{copy.completion.aftercare.eyebrow}</Text>
+              <Text style={styles.aftercareTitle}>{copy.completion.aftercare.title}</Text>
+              <View style={styles.aftercareList}>
+                {copy.completion.aftercare.items.map((item) => (
+                  <Text key={item} style={styles.aftercareItem}>
+                    • {item}
+                  </Text>
+                ))}
+              </View>
+            </Animated.View>
+
+            {(memoryNarrative || themeWeight !== null) && (
+              <Animated.View entering={FadeIn.duration(500).delay(240)} style={[ui.glassCardV2, styles.memoryCard]}>
+                <Text style={styles.memoryTitle}>{copy.completion.memoryTitle}</Text>
+                <Text style={styles.memoryLine}>
+                  {copy.completion.memoryLabels.snapshot}: {snapshotLine ?? `${recommendation.temperature.recommended}°C · ${recommendation.durationMinutes ?? '자유'}분 · ${toEnvironmentLabel(recommendation.environmentUsed)}`}
+                </Text>
+                {themeWeight !== null && recommendation.themeTitle ? (
+                  <Text style={styles.memoryLine}>
+                    {copy.completion.memoryLabels.weight}: {recommendation.themeTitle} {themeWeight}
+                  </Text>
+                ) : null}
+                {memoryNarrative ? (
+                  <Text style={styles.memoryLine}>
+                    {copy.completion.memoryLabels.recall}: {memoryNarrative}
+                  </Text>
+                ) : null}
+              </Animated.View>
+            )}
+
+            <Animated.View entering={FadeIn.duration(500).delay(320)} style={styles.actionRow}>
+              <Pressable
+                style={[ui.secondaryButtonV2, styles.actionButton]}
+                onPress={handleGoHistory}
+              >
+                <Text style={ui.secondaryButtonTextV2}>기록 보기</Text>
+              </Pressable>
+              <Pressable
+                style={[ui.primaryButtonV2, styles.actionButton]}
+                onPress={handleGoHome}
+              >
+                <Text style={ui.primaryButtonTextV2}>{copy.completion.homeCta}</Text>
+              </Pressable>
+            </Animated.View>
+          </ScrollView>
+        )}
       </SafeAreaView>
     </View>
   );
@@ -266,6 +295,15 @@ const styles = StyleSheet.create({
     paddingVertical: 24,
     gap: 18,
   },
+  summaryScroll: {
+    flex: 1,
+  },
+  summaryContent: {
+    paddingHorizontal: 22,
+    paddingTop: 24,
+    paddingBottom: 28,
+    gap: 18,
+  },
   celebrationBadge: {
     alignSelf: 'center',
     minWidth: 96,
@@ -289,11 +327,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 10,
   },
+  summaryHeaderBlock: {
+    alignItems: 'flex-start',
+    gap: 10,
+  },
   mainMessage: {
     fontSize: 28,
     color: V2_TEXT_PRIMARY,
     textAlign: 'center',
     lineHeight: 36,
+    fontFamily: luxuryFonts.display,
+    letterSpacing: luxuryTracking.hero,
+  },
+  summaryTitle: {
+    fontSize: 24,
+    color: V2_TEXT_PRIMARY,
+    lineHeight: 32,
     fontFamily: luxuryFonts.display,
     letterSpacing: luxuryTracking.hero,
   },
@@ -374,10 +423,31 @@ const styles = StyleSheet.create({
   feedbackLabelActive: {
     color: V2_ACCENT_TEXT,
   },
-  feedbackThanks: {
-    fontSize: 14,
-    color: V2_TEXT_MUTED,
-    textAlign: 'center',
+  aftercareCard: {
+    paddingVertical: 16,
+    paddingHorizontal: 16,
+    gap: 8,
+  },
+  aftercareEyebrow: {
+    fontSize: TYPE_SCALE.caption - 1,
+    fontWeight: '700',
+    color: V2_ACCENT,
+    letterSpacing: 1,
+    fontFamily: luxuryFonts.sans,
+  },
+  aftercareTitle: {
+    fontSize: TYPE_SCALE.title,
+    color: V2_TEXT_PRIMARY,
+    lineHeight: 24,
+    fontFamily: luxuryFonts.display,
+  },
+  aftercareList: {
+    gap: 6,
+  },
+  aftercareItem: {
+    fontSize: 13,
+    color: V2_TEXT_SECONDARY,
+    lineHeight: 19,
     fontFamily: luxuryFonts.sans,
   },
   memoryCard: {
