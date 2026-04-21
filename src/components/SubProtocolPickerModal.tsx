@@ -8,7 +8,9 @@ import {
   V2_ACCENT_TEXT,
   V2_BORDER,
   V2_BG_OVERLAY,
+  V2_MODAL_HANDLE,
   V2_MODAL_SURFACE,
+  V2_SURFACE,
   V2_TEXT_MUTED,
   V2_TEXT_PRIMARY,
   V2_TEXT_SECONDARY,
@@ -113,7 +115,7 @@ const styles = StyleSheet.create({
     width: 44,
     height: 4,
     borderRadius: 999,
-    backgroundColor: 'rgba(245,240,232,0.28)',
+    backgroundColor: V2_MODAL_HANDLE,
     marginBottom: 2,
   },
   title: {
@@ -149,7 +151,7 @@ const styles = StyleSheet.create({
     gap: 6,
   },
   optionButtonV2: {
-    backgroundColor: 'rgba(13, 27, 51, 0.86)',
+    backgroundColor: V2_SURFACE,
   },
   optionButtonDefault: {
     borderColor: V2_ACCENT,

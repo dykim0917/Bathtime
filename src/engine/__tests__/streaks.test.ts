@@ -32,6 +32,21 @@ describe('buildHomeStreakSummary', () => {
     expect(result.dailyStreakDays).toBe(3);
   });
 
+  test('counts repeated completions on the same day as one weekly routine day', () => {
+    const result = buildHomeStreakSummary(
+      [
+        '2026-03-04T08:00:00',
+        '2026-03-04T12:00:00',
+        '2026-03-04T21:00:00',
+      ],
+      now
+    );
+    expect(result.todayDone).toBe(true);
+    expect(result.weeklyBathCount).toBe(1);
+    expect(result.dailyCheck.filter((item) => item.done)).toHaveLength(1);
+    expect(result.dailyStreakDays).toBe(1);
+  });
+
   test('calculates weekly active streak with monday-sunday boundary', () => {
     const result = buildHomeStreakSummary(
       [

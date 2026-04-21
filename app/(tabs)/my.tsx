@@ -42,6 +42,7 @@ import {
   V2_MODAL_SURFACE,
   V2_SHADOW,
   V2_SURFACE,
+  V2_SURFACE_GHOST,
   V2_TEXT_MUTED,
   V2_TEXT_PRIMARY,
   V2_TEXT_SECONDARY,
@@ -805,7 +806,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 7,
     paddingVertical: 3,
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.08)',
+    borderColor: V2_SURFACE_GHOST,
   },
   modePillText: {
     fontSize: 10,

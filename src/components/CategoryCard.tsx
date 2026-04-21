@@ -7,6 +7,9 @@ import {
   V2_ACCENT_SOFT,
   V2_BORDER,
   V2_SURFACE,
+  V2_SURFACE_DEEP,
+  V2_SURFACE_ELEVATED,
+  V2_SURFACE_GHOST,
   V2_TEXT_PRIMARY,
   V2_TEXT_SECONDARY,
   V2_TEXT_MUTED,
@@ -150,11 +153,11 @@ const styles = StyleSheet.create({
     opacity: 0.76,
   },
   cardV2Featured: {
-    backgroundColor: 'rgba(28, 39, 49, 0.94)',
+    backgroundColor: V2_SURFACE_ELEVATED,
     borderColor: 'rgba(176, 141, 87, 0.28)',
   },
   cardWithImage: {
-    backgroundColor: 'rgba(7, 12, 20, 0.96)',
+    backgroundColor: V2_SURFACE_DEEP,
   },
   tintOrb: {
     position: 'absolute',
@@ -200,7 +203,7 @@ const styles = StyleSheet.create({
   },
   fitBadgeV2: {
     color: V2_TEXT_PRIMARY,
-    backgroundColor: 'rgba(255,255,255,0.08)',
+    backgroundColor: V2_SURFACE_GHOST,
     borderWidth: 1,
     borderColor: V2_BORDER,
   },

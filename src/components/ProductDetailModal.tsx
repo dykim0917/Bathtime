@@ -7,6 +7,7 @@ import {
   V2_ACCENT_TEXT,
   V2_BG_OVERLAY,
   V2_BORDER,
+  V2_MODAL_HANDLE,
   V2_MODAL_SURFACE,
   V2_SURFACE_SOFT,
   V2_TEXT_MUTED,
@@ -133,7 +134,7 @@ const styles = StyleSheet.create({
     width: 44,
     height: 4,
     borderRadius: 999,
-    backgroundColor: 'rgba(245,240,232,0.28)',
+    backgroundColor: V2_MODAL_HANDLE,
     marginBottom: 4,
   },
   header: {

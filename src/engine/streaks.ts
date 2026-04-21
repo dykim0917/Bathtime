@@ -32,6 +32,11 @@ function toLocalDateKey(date: Date): string {
   return `${date.getFullYear()}-${pad2(date.getMonth() + 1)}-${pad2(date.getDate())}`;
 }
 
+function dateKeyToLocalDate(dateKey: string): Date {
+  const [year, month, day] = dateKey.split('-').map(Number);
+  return new Date(year, month - 1, day);
+}
+
 function startOfDay(date: Date): Date {
   return new Date(date.getFullYear(), date.getMonth(), date.getDate());
 }
@@ -128,7 +133,8 @@ export function buildHomeStreakSummary(
   let weeklyBathCount = 0;
   const weekCountMap = new Map<string, number>();
 
-  parsedDates.forEach((date) => {
+  uniqueDateKeys.forEach((dateKey) => {
+    const date = dateKeyToLocalDate(dateKey);
     if (date >= weekStart && date < weekEndExclusive) {
       weeklyBathCount += 1;
     }

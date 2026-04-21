@@ -155,6 +155,7 @@ export function AnimatedModalShell({
           <Pressable style={StyleSheet.absoluteFillObject} onPress={requestClose} />
         </Animated.View>
         <View
+          pointerEvents="box-none"
           style={[
             styles.contentContainer,
             align === 'center' ? styles.contentCenter : styles.contentBottom,

@@ -5,6 +5,7 @@ import {
   TYPE_CAPTION,
   TYPE_SCALE,
   V2_ACCENT,
+  V2_SURFACE_GHOST,
   V2_TEXT_MUTED,
   V2_TEXT_PRIMARY,
   V2_TEXT_SECONDARY,
@@ -169,7 +170,7 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
     backgroundColor: 'rgba(7, 10, 18, 0.28)',
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.08)',
+    borderColor: V2_SURFACE_GHOST,
   },
   metaChipText: {
     color: V2_TEXT_PRIMARY,

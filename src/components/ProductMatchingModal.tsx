@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import { ProductMatchItem } from '@/src/engine/productMatching';
 import {
   TYPE_SCALE,
@@ -7,6 +7,7 @@ import {
   V2_ACCENT_TEXT,
   V2_BG_OVERLAY,
   V2_BORDER,
+  V2_MODAL_HANDLE,
   V2_MODAL_SURFACE,
   V2_SURFACE_SOFT,
   V2_TEXT_MUTED,
@@ -17,6 +18,9 @@ import { copy } from '@/src/content/copy';
 import { luxuryFonts, luxuryRadii, luxuryTracking } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
 import { AnimatedModalShell } from '@/src/components/AnimatedModalShell';
+
+const CARD_MAX_HEIGHT_RATIO = 0.88;
+const CARD_VERTICAL_MARGIN = 28;
 
 interface ProductMatchingModalProps {
   visible: boolean;
@@ -33,15 +37,22 @@ export function ProductMatchingModal({
   onProductPress,
   onPurchasePress,
 }: ProductMatchingModalProps) {
+  const { height: windowHeight } = useWindowDimensions();
+  const maxCardHeight = Math.min(
+    windowHeight - CARD_VERTICAL_MARGIN,
+    windowHeight * CARD_MAX_HEIGHT_RATIO
+  );
+
   return (
     <AnimatedModalShell
       visible={visible}
       onClose={onClose}
       layoutStyle={styles.overlay}
       backdropStyle={styles.backdrop}
+      containerStyle={styles.container}
     >
       {(requestClose) => (
-        <View style={styles.card}>
+        <View style={[styles.card, { maxHeight: maxCardHeight }]}>
           <View style={styles.handle} />
           <Text style={styles.title}>{copy.product.title}</Text>
           <Text style={styles.subTitle}>{copy.product.subtitle}</Text>
@@ -92,13 +103,18 @@ const styles = StyleSheet.create({
   overlay: {
     flex: 1,
     justifyContent: 'flex-end',
-    paddingTop: 48,
+    paddingTop: 28,
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    width: '100%',
   },
   backdrop: {
     backgroundColor: V2_BG_OVERLAY,
   },
   card: {
-    maxHeight: '84%',
+    width: '100%',
     backgroundColor: V2_MODAL_SURFACE,
     borderTopLeftRadius: luxuryRadii.cardLg,
     borderTopRightRadius: luxuryRadii.cardLg,
@@ -113,7 +129,7 @@ const styles = StyleSheet.create({
     width: 44,
     height: 4,
     borderRadius: 999,
-    backgroundColor: 'rgba(245,240,232,0.28)',
+    backgroundColor: V2_MODAL_HANDLE,
     marginBottom: 14,
   },
   title: {

@@ -29,12 +29,17 @@ export const V2_BG_BOTTOM = '#0A1117';
 export const V2_BG_OVERLAY = 'rgba(8, 11, 14, 0.42)';
 
 export const V2_SURFACE = 'rgba(23, 33, 42, 0.88)';
+export const V2_SURFACE_ELEVATED = 'rgba(28, 39, 49, 0.94)';
+export const V2_SURFACE_DEEP = 'rgba(7, 12, 20, 0.96)';
 export const V2_SURFACE_SOFT = 'rgba(19, 28, 36, 0.76)';
+export const V2_SURFACE_GHOST = 'rgba(255,255,255,0.08)';
 export const V2_BORDER = 'rgba(245, 240, 232, 0.12)';
 export const V2_BORDER_STRONG = 'rgba(176, 141, 87, 0.38)';
 export const V2_SHADOW = 'rgba(3, 5, 8, 0.42)';
 export const V2_MODAL_SURFACE = '#17212B';
+export const V2_MODAL_SURFACE_ELEVATED = 'rgba(23, 33, 43, 0.98)';
 export const V2_MODAL_SURFACE_SUBTLE = '#1B2731';
+export const V2_MODAL_HANDLE = 'rgba(245,240,232,0.28)';
 
 export const V2_TEXT_PRIMARY = '#F5F0E8';
 export const V2_TEXT_SECONDARY = '#D7CCBC';

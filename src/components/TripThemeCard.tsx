@@ -5,6 +5,7 @@ import {
   V2_ACCENT,
   V2_ACCENT_SOFT,
   V2_BORDER,
+  V2_SURFACE_GHOST,
   V2_TEXT_PRIMARY,
   V2_TEXT_SECONDARY,
   V2_WARNING,
@@ -189,7 +190,7 @@ const styles = StyleSheet.create({
   },
   fitBadgeV2: {
     color: V2_TEXT_PRIMARY,
-    backgroundColor: 'rgba(255,255,255,0.08)',
+    backgroundColor: V2_SURFACE_GHOST,
     borderWidth: 1,
     borderColor: V2_BORDER,
   },
