@@ -20,6 +20,7 @@ import {
 } from '@/src/data/colors';
 import { luxuryFonts, luxuryRadii, luxuryTracking } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
+import { brand } from '@/src/content/brand';
 
 export default function WelcomeScreen() {
   return (
@@ -32,23 +33,23 @@ export default function WelcomeScreen() {
         <View style={styles.container}>
           <View style={styles.logoRow}>
             <Image source={require('../../assets/images/brand/bath-symbol.png')} style={styles.logoIcon} resizeMode="contain" />
-            <Text style={styles.logoText}>BATH SOMMELIER</Text>
+            <Text style={styles.logoText}>{brand.logoText}</Text>
           </View>
 
           <View style={styles.hero}>
             <View style={styles.heroOrb}>
               <Image source={require('../../assets/images/brand/bath-symbol.png')} style={styles.heroSymbol} resizeMode="contain" />
             </View>
-            <Text style={styles.kicker}>오늘을 위한 목욕 가이드</Text>
-            <Text style={styles.title}>나만의 목욕 루틴</Text>
-            <Text style={styles.subtitle}>지금 상태에 맞는 입욕 루틴을 부담 없이 시작할 수 있게 추천해드려요.</Text>
+            <Text style={styles.kicker}>오늘 상태에 맞춘 배스타임</Text>
+            <Text style={styles.title}>더 잘 쉬는 목욕 루틴</Text>
+            <Text style={styles.subtitle}>컨디션과 환경에 맞춰 온도와 시간을 준비해드려요.</Text>
           </View>
 
           <View style={[ui.glassCardV2, styles.featureCard]}>
-            <Text style={styles.featureTitle}>오늘 바로 시작할 수 있어요</Text>
-            <Text style={styles.featureLine}>환경 선택</Text>
-            <Text style={styles.featureLine}>건강 상태 체크</Text>
-            <Text style={styles.featureLine}>맞춤 루틴 추천</Text>
+            <Text style={styles.featureTitle}>무리 없이 따라갈 수 있어요</Text>
+            <Text style={styles.featureLine}>목욕 환경 확인</Text>
+            <Text style={styles.featureLine}>안전 상태 반영</Text>
+            <Text style={styles.featureLine}>온도와 시간 추천</Text>
           </View>
 
           <View style={styles.footer}>

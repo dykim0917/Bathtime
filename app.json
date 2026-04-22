@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "Bath Sommelier",
-    "slug": "BathSommelier",
+    "name": "Bath Time",
+    "slug": "BathTime",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "bathsommelier",
+    "scheme": "bathtime",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {

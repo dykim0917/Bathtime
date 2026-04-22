@@ -130,15 +130,15 @@ describe('CompletionScreen', () => {
     const screen = render(React.createElement(CompletionScreen));
 
     await waitFor(() =>
-      expect(screen.getByText('오늘 루틴은 어떠셨나요?')).toBeTruthy()
+      expect(screen.getByText('오늘 배스타임은 어떠셨나요?')).toBeTruthy()
     );
 
-    expect(screen.queryByText('지금 바로 이 세 가지만 챙겨주세요')).toBeNull();
+    expect(screen.queryByText('마무리로 이 세 가지만 챙겨주세요')).toBeNull();
 
     fireEvent.press(screen.getByText('좋아요'));
 
     await waitFor(() =>
-      expect(screen.getByText('이번 루틴을 이렇게 정리했어요')).toBeTruthy()
+      expect(screen.getByText('잘 쉬었습니다')).toBeTruthy()
     );
 
     expect(mockUpdateRecommendationFeedback).toHaveBeenCalledWith('rec_1', 'good');
@@ -156,9 +156,9 @@ describe('CompletionScreen', () => {
     const screen = render(React.createElement(CompletionScreen));
 
     await waitFor(() =>
-      expect(screen.getByText('이번 루틴을 이렇게 정리했어요')).toBeTruthy()
+      expect(screen.getByText('잘 쉬었습니다')).toBeTruthy()
     );
 
-    expect(screen.queryByText('오늘 루틴은 어떠셨나요?')).toBeNull();
+    expect(screen.queryByText('오늘 배스타임은 어떠셨나요?')).toBeNull();
   });
 });

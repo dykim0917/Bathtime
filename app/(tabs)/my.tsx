@@ -23,6 +23,7 @@ import { buildHomeStreakSummary } from '@/src/engine/streaks';
 import { PERSONA_DEFINITIONS } from '@/src/engine/personas';
 import { THEME_BY_ID } from '@/src/data/themes';
 import { copy } from '@/src/content/copy';
+import { brand } from '@/src/content/brand';
 import { useUserProfile } from '@/src/hooks/useUserProfile';
 import { useHaptic } from '@/src/hooks/useHaptic';
 import { OpenTabHeader } from '@/src/components/OpenTabHeader';
@@ -524,7 +525,7 @@ function SettingsSection({
           </View>
           <View style={[ui.glassCardV2, styles.infoCard]}>
             <Text style={styles.infoLabelRow}>{copy.settings.nameLabel}</Text>
-            <Text style={styles.infoValue}>Bath Sommelier</Text>
+            <Text style={styles.infoValue}>{brand.displayName}</Text>
           </View>
           <PersistentDisclosure style={styles.disclosureInline} showColdWarning variant="v2" />
         </View>

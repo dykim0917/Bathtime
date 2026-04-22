@@ -1,11 +1,13 @@
+import { brand } from '@/src/content/brand';
+
 export const copy = {
   home: {
-    title: '오늘의 맞춤 목욕',
+    title: '오늘의 배스타임',
     subtitlePrefix: '오늘 상태:',
     modeHint: {
-      sleep: '케어(몸 상태에 맞춘 루틴) · 수면 준비 중심',
-      recovery: '케어(몸 상태에 맞춘 루틴) · 회복 중심',
-      reset: '케어(몸 상태에 맞춘 루틴) · 전환 중심',
+      sleep: '케어 · 수면 준비에 맞춘 쉬는 시간',
+      recovery: '케어 · 몸 상태에 맞춘 회복 루틴',
+      reset: '케어 · 기분 전환을 돕는 배스타임',
     },
     lateNightBadge: '늦은 시간이라 수면 준비 루틴을 먼저 보여드려요.',
     conflictBadge: '조건이 겹쳐서 가장 안전한 루틴 1개를 먼저 추천해요.',
@@ -13,7 +15,7 @@ export const copy = {
       signal: '오늘 상태',
       environment: '목욕 환경',
       tripTheme: '트립 테마',
-      suggestions: '지금 추천 루틴',
+      suggestions: '오늘 맞춘 배스타임',
       quickActions: '빠른 메뉴',
     },
     actions: {
@@ -28,17 +30,17 @@ export const copy = {
     },
     resetSafeHint: '냉수 단계는 안전을 위해 자동으로 제외됐어요.',
     noCommerceNotice: '지금은 상품 대신 루틴부터 바로 시작할 수 있어요.',
-    beginnerGuide: '처음 시작이라 안전하고 무난한 기본 추천부터 보여드려요.',
+    beginnerGuide: '처음 시작이라 무리 없이 쉬기 좋은 기본 루틴부터 보여드려요.',
     safetyPriorityBadge: '안전 우선 적용',
-    streakTitle: '이번주 루틴',
-    todayDone: '오늘 루틴 완료',
-    todayPending: '오늘 루틴 미완료',
+    streakTitle: '이번주 배스타임',
+    todayDone: '오늘의 배스타임 완료',
+    todayPending: '오늘의 배스타임 전',
     weeklyCount: (count: number, goal: number) => `이번주 ${count} / ${goal}일`,
     dailyStreak: (days: number) => `${days}일 연속`,
     weeklyStreak: (weeks: number) => `${weeks}주 연속`,
   },
   suggestion: {
-    titleCare: '추천 루틴 자세히 보기',
+    titleCare: '오늘 맞춘 루틴 자세히 보기',
     titleTrip: '트립 루틴 자세히 보기',
     labels: {
       state: '현재 상태',
@@ -177,18 +179,18 @@ export const copy = {
     sensitiveSkinAdjusted: '저자극 기준으로 자동 조정해요.',
   },
   completion: {
-    feedbackTitleDefault: '오늘 루틴은 어떠셨나요?',
+    feedbackTitleDefault: '오늘 배스타임은 어떠셨나요?',
     feedbackTitleWithThemePrefix: '오늘의',
     feedbackTitleWithThemeSuffix: '분위기는 어떠셨나요?',
-    summaryTitle: '이번 루틴을 이렇게 정리했어요',
+    summaryTitle: '잘 쉬었습니다',
     feedback: {
       good: '좋아요',
       bad: '별로예요',
       thanks: '의견 고마워요. 다음 추천에 반영할게요.',
     },
     monthlyPrefix: '이번 달',
-    monthlySuffix: '번째 루틴을 완료했어요',
-    memoryTitle: '이번 기록 요약',
+    monthlySuffix: '번째 배스타임을 기록했어요',
+    memoryTitle: '오늘 배스타임 요약',
     memoryLabels: {
       snapshot: '진행 기록',
       weight: '선호도 변화',
@@ -196,7 +198,7 @@ export const copy = {
     },
     aftercare: {
       eyebrow: '끝난 직후',
-      title: '지금 바로 이 세 가지만 챙겨주세요',
+      title: '마무리로 이 세 가지만 챙겨주세요',
       items: [
         '물 한 잔으로 수분을 먼저 보충하세요.',
         '물기가 완전히 마르기 전에 보습제를 가볍게 발라주세요.',
@@ -266,7 +268,7 @@ export const copy = {
   disclosure: {
     title: '안내',
     baseLines: [
-      'BathSommelier는 의료 진단이나 치료를 하지 않습니다.',
+      `${brand.medicalNoticeName}은 의료 진단이나 치료를 하지 않습니다.`,
       '건강 상태가 걱정되면 전문가와 먼저 상담하세요.',
     ],
     coldWarning:

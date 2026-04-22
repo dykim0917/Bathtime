@@ -62,6 +62,7 @@ import { applySubProtocolOverrides } from '@/src/engine/subprotocol';
 import { inferFeelingBefore } from '@/src/engine/feeling';
 import { buildHomeStreakSummary, HomeStreakSummary } from '@/src/engine/streaks';
 import { copy } from '@/src/content/copy';
+import { brand } from '@/src/content/brand';
 import { luxuryFonts, luxuryRadii, luxuryTracking } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
 import { HomeCareHeroCard } from '@/src/components/HomeCareHeroCard';
@@ -546,8 +547,8 @@ export default function HomeIntentScreen() {
       <LinearGradient colors={[V2_BG_TOP, V2_BG_BASE, V2_BG_BOTTOM]} style={StyleSheet.absoluteFillObject} />
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <OpenTabHeader
-          title="오늘은 편안하게 마무리해보세요"
-          subtitle="오늘의 환경과 컨디션에 맞춰, 부담 없이 바로 시작할 수 있는 조용한 휴식을 제안합니다."
+          title="오늘은 어떻게 쉬어볼까요?"
+          subtitle="컨디션과 목욕 환경에 맞춰 온도와 시간을 준비했어요."
           topSlot={
             <View style={styles.headerBrand}>
               <Image
@@ -555,7 +556,7 @@ export default function HomeIntentScreen() {
                 style={styles.headerBrandIcon}
                 resizeMode="contain"
               />
-              <Text style={styles.headerBadge}>BATH SOMMELIER</Text>
+              <Text style={styles.headerBadge}>{brand.logoText}</Text>
             </View>
           }
           mediaSlot={
@@ -595,7 +596,7 @@ export default function HomeIntentScreen() {
 
             <View style={styles.weeklyTopGroup}>
               <View style={styles.weeklyMainRow}>
-                <Text style={styles.weeklyCountTitle}>주간 루틴 {streakSummary.weeklyBathCount}/{streakSummary.weeklyGoal}일</Text>
+                <Text style={styles.weeklyCountTitle}>이번주 배스타임 {streakSummary.weeklyBathCount}/{streakSummary.weeklyGoal}일</Text>
                 <Pressable onPress={() => router.push('/(tabs)/history')} style={styles.inlineLinkButton}>
                   <Text style={styles.inlineLinkText}>전체 기록 보기</Text>
                   <FontAwesome name="angle-right" size={14} color={V2_ACCENT} />

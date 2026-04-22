@@ -9,6 +9,7 @@ import { TYPE_CAPTION, TYPE_BODY, TYPE_HEADING_LG, TYPE_TITLE, V2_ACCENT, V2_ACC
 import { luxuryFonts, luxuryTracking } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
 import { AppIconBadge, getEnvironmentBadgeTone } from '@/src/components/AppIconBadge';
+import { brand } from '@/src/content/brand';
 
 const ENVIRONMENTS: { id: BathEnvironment; labelKo: string; desc: string }[] = [
   { id: 'bathtub', labelKo: '욕조', desc: '전신욕, 반신욕 가능' },
@@ -52,7 +53,7 @@ export default function OnboardingEnvironment() {
             )}
             <View style={styles.brandLockup}>
               <Image source={require('../../assets/images/brand/bath-symbol.png')} style={styles.brandIcon} resizeMode="contain" />
-              <Text style={styles.brand}>BATH SOMMELIER</Text>
+              <Text style={styles.brand}>{brand.logoText}</Text>
             </View>
             <View style={styles.backButton} />
           </View>
@@ -63,8 +64,8 @@ export default function OnboardingEnvironment() {
             </View>
 
             <View style={styles.header}>
-              <Text style={styles.title}>나의 목욕 환경을 알려주세요</Text>
-              <Text style={styles.subtitle}>지금 집에서 할 수 있는 환경에 맞춰 루틴을 추천해드려요</Text>
+              <Text style={styles.title}>지금 가능한 목욕 환경을 알려주세요</Text>
+              <Text style={styles.subtitle}>오늘 무리 없이 쉴 수 있는 방식에 맞춰 온도와 시간을 준비해드려요</Text>
             </View>
             <ScrollView
               style={styles.scrollView}
@@ -107,7 +108,7 @@ export default function OnboardingEnvironment() {
               </View>
 
               <Text style={styles.nextGuide}>
-                다음 단계에서는 건강 상태를 확인하고, 지금 환경에 맞는 루틴만 추천해드릴게요.
+                다음 단계에서는 안전 상태를 확인하고, 지금 환경에 맞는 배스타임만 추천해드릴게요.
               </Text>
             </ScrollView>
 

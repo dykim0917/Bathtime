@@ -20,6 +20,7 @@ import {
 } from '@/src/data/colors';
 import { luxuryFonts, luxuryTracking } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
+import { brand } from '@/src/content/brand';
 
 export default function OnboardingGreeting() {
   const haptic = useHaptic();
@@ -50,7 +51,7 @@ export default function OnboardingGreeting() {
         <View style={styles.container}>
           <View style={styles.topBar}>
           <Image source={require('../../assets/images/brand/bath-symbol.png')} style={styles.brandIcon} resizeMode="contain" />
-            <Text style={styles.brand}>BATH SOMMELIER</Text>
+            <Text style={styles.brand}>{brand.logoText}</Text>
           </View>
 
           <View style={styles.centerContent}>
@@ -60,8 +61,8 @@ export default function OnboardingGreeting() {
               </View>
               <Text style={styles.welcome}>준비 완료</Text>
               <Text style={styles.title}>환영합니다</Text>
-              <Text style={styles.subtitle}>{'당신만의 입욕 루틴을\n시작할 준비가 됐어요'}</Text>
-              <Text style={styles.description}>이제 지금의 컨디션에 맞는 루틴을 바로 시작할 수 있어요.</Text>
+              <Text style={styles.subtitle}>{'오늘 상태에 맞춘\n배스타임을 시작해볼게요'}</Text>
+              <Text style={styles.description}>이제 컨디션과 환경에 맞는 쉬는 시간을 바로 준비할 수 있어요.</Text>
             </Animated.View>
           </View>
 
@@ -71,7 +72,7 @@ export default function OnboardingGreeting() {
                 <Text style={ui.primaryButtonTextV2}>시작하기</Text>
               </Pressable>
             </Animated.View>
-            <Text style={styles.premiumLine}>오늘 상태에 맞는 루틴을 차분하게 안내해드릴게요</Text>
+            <Text style={styles.premiumLine}>온도와 시간을 맞춰 무리 없이 안내해드릴게요</Text>
           </View>
         </View>
       </SafeAreaView>

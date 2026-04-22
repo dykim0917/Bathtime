@@ -10,6 +10,7 @@ import { TYPE_CAPTION, TYPE_BODY, TYPE_HEADING_LG, TYPE_TITLE, V2_ACCENT, V2_ACC
 import { luxuryFonts } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
 import { AppIconBadge, getHealthConditionBadgeTone } from '@/src/components/AppIconBadge';
+import { brand } from '@/src/content/brand';
 
 interface ConditionOption { id: HealthCondition; labelKo: string; }
 const CONDITIONS: ConditionOption[] = [
@@ -64,15 +65,15 @@ export default function OnboardingHealth() {
             </TouchableOpacity>
             <View style={styles.brandLockup}>
               <Image source={require('../../assets/images/brand/bath-symbol.png')} style={styles.brandIcon} resizeMode="contain" />
-              <Text style={styles.brand}>BATH SOMMELIER</Text>
+              <Text style={styles.brand}>{brand.logoText}</Text>
             </View>
             <View style={styles.backButton} />
           </View>
 
           <View style={styles.header}>
             <View style={styles.progressTrack}><View style={[styles.progressFill, styles.progressFillFull]} /></View>
-            <Text style={styles.title}>건강 상태를{`\n`}선택해주세요</Text>
-            <Text style={styles.subtitle}>무리 없는 루틴을 추천할 수 있게 현재 건강 상태를 확인해주세요.</Text>
+            <Text style={styles.title}>안전하게 쉴 수 있도록{`\n`}상태를 확인할게요</Text>
+            <Text style={styles.subtitle}>온도와 시간을 무리 없이 맞출 수 있게 현재 상태를 알려주세요.</Text>
           </View>
 
           <ScrollView

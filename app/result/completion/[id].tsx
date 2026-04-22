@@ -157,7 +157,7 @@ export default function CompletionScreen() {
         {step === 'feedback' ? (
           <View style={styles.content}>
             <Animated.View entering={BounceIn.duration(800)} style={styles.celebrationBadge}>
-              <Text style={styles.celebrationBadgeText}>DONE</Text>
+              <Text style={styles.celebrationBadgeText}>RESTED</Text>
             </Animated.View>
 
             <Animated.View entering={FadeIn.duration(600).delay(200)} style={styles.headerBlock}>

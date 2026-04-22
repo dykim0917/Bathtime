@@ -343,7 +343,7 @@ export default function CareScreen() {
         </View>
 
         <View>
-          <Text style={styles.sectionTitle}>추천 루틴</Text>
+          <Text style={styles.sectionTitle}>컨디션별 루틴</Text>
           <Text style={styles.sectionIntro}>지금 컨디션에 맞는 대표 루틴부터 보이고, 나머지는 같은 리듬 안에서 비교할 수 있게 정리했어요.</Text>
           <View style={[styles.gridWrap, { rowGap: CARD_GAP }]}> 
             {ALL_CARE_CARDS.map((intent) => {
