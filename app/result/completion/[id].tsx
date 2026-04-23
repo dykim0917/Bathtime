@@ -318,7 +318,7 @@ const styles = StyleSheet.create({
   celebrationBadgeText: {
     fontSize: TYPE_SCALE.caption,
     color: V2_ACCENT,
-    fontWeight: '800',
+    fontWeight: '700',
     letterSpacing: 1.4,
     fontVariant: ['tabular-nums'],
     fontFamily: luxuryFonts.mono,

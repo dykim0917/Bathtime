@@ -137,7 +137,7 @@ export const ui = StyleSheet.create({
   primaryButtonV2: {
     backgroundColor: V2_ACCENT,
     borderRadius: luxuryRadii.button,
-    minHeight: 56,
+    minHeight: 48,
     paddingHorizontal: 20,
     alignItems: 'center',
     justifyContent: 'center',
@@ -147,14 +147,14 @@ export const ui = StyleSheet.create({
   primaryButtonTextV2: {
     color: V2_ACCENT_TEXT,
     fontSize: TYPE_SCALE.body,
-    fontWeight: '800',
+    fontWeight: '700',
     fontFamily: luxuryFonts.sans,
     letterSpacing: 0.2,
   },
   secondaryButtonV2: {
     backgroundColor: V2_SURFACE,
     borderRadius: luxuryRadii.button,
-    minHeight: 56,
+    minHeight: 48,
     paddingHorizontal: 20,
     alignItems: 'center',
     justifyContent: 'center',

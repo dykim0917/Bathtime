@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import { Alert, ImageBackground, Linking, View, Text, Pressable, StyleSheet } from 'react-native';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
+import { Alert, Animated as RNAnimated, ImageBackground, Linking, View, Text, Pressable, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { useLocalSearchParams, router } from 'expo-router';
-import Animated, { FadeIn, FadeInDown } from 'react-native-reanimated';
+import Reanimated, { FadeIn, FadeInDown } from 'react-native-reanimated';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { BathRecommendation } from '@/src/engine/types';
 import { PERSONA_DEFINITIONS } from '@/src/engine/personas';
 import { getRecommendationById } from '@/src/storage/history';
@@ -33,9 +34,12 @@ const BATH_TYPE_LABELS: Record<string, string> = { full: '전신욕', half: '반
 const ENV_LABELS: Record<string, string> = { bathtub: '욕조', partial_bath: '부분입욕', footbath: '족욕', shower: '샤워' };
 const HERO_HEIGHT = 268;
 const HERO_HEIGHT_TRIP = 356;
+const STICKY_HEADER_HEIGHT = 54;
 
 export default function RecipeScreen() {
   const { id, source } = useLocalSearchParams<{ id: string; source?: string }>();
+  const insets = useSafeAreaInsets();
+  const scrollY = useRef(new RNAnimated.Value(0)).current;
   const [recommendation, setRecommendation] = useState<BathRecommendation | null>(null);
   const [showProductModal, setShowProductModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<CatalogProduct | null>(null);
@@ -99,6 +103,28 @@ export default function RecipeScreen() {
     )
     : getCareCardImageForEnvironment(recommendation.intentId ?? '', recommendation.environmentUsed);
   const isImageHeroRecipe = Boolean(heroImage);
+  const titleFadeStart = isImageHeroRecipe ? 72 : 46;
+  const titleFadeEnd = isImageHeroRecipe ? 158 : 118;
+  const heroTitleOpacity = scrollY.interpolate({
+    inputRange: [titleFadeStart, titleFadeEnd],
+    outputRange: [1, 0],
+    extrapolate: 'clamp',
+  });
+  const stickyTitleOpacity = scrollY.interpolate({
+    inputRange: [titleFadeStart + 12, titleFadeEnd],
+    outputRange: [0, 1],
+    extrapolate: 'clamp',
+  });
+  const stickyTitleTranslateY = scrollY.interpolate({
+    inputRange: [titleFadeStart + 12, titleFadeEnd],
+    outputRange: [4, 0],
+    extrapolate: 'clamp',
+  });
+  const stickyBackdropOpacity = scrollY.interpolate({
+    inputRange: [24, titleFadeEnd],
+    outputRange: [0, 1],
+    extrapolate: 'clamp',
+  });
   const evidence = buildRecipeEvidenceLines(recommendation);
   const productSlots = buildProductMatchingSlots(recommendation, recommendation.environmentUsed);
   const primarySafetyLine = recommendation.safetyWarnings[0] ?? copy.routine.evidence.defaultSafety;
@@ -204,10 +230,62 @@ export default function RecipeScreen() {
   return (
     <View style={styles.container}>
       <LinearGradient colors={[V2_BG_TOP, V2_BG_BASE, V2_BG_BOTTOM]} style={StyleSheet.absoluteFillObject} />
-      <Animated.ScrollView
+      <RNAnimated.View
+        pointerEvents="box-none"
+        style={[
+          styles.stickyHeader,
+          {
+            height: insets.top + STICKY_HEADER_HEIGHT,
+            paddingTop: insets.top + 8,
+          },
+        ]}
+      >
+        <RNAnimated.View
+          pointerEvents="none"
+          style={[styles.stickyHeaderBackdrop, { opacity: stickyBackdropOpacity }]}
+        />
+        <View style={styles.stickyHeaderContent}>
+          <Pressable style={styles.navButton} onPress={() => router.back()}>
+            <FontAwesome name="angle-left" size={24} color={V2_TEXT_PRIMARY} />
+          </Pressable>
+          <RNAnimated.View
+            pointerEvents="none"
+            style={[
+              styles.stickyHeaderTitleWrap,
+              {
+                opacity: stickyTitleOpacity,
+                transform: [{ translateY: stickyTitleTranslateY }],
+              },
+            ]}
+          >
+            <Text numberOfLines={1} style={styles.stickyHeaderTitle}>
+              {recipeTitle}
+            </Text>
+            <Text numberOfLines={1} style={styles.stickyHeaderMeta}>
+              {temperatureLabel} · {durationLabel}
+            </Text>
+          </RNAnimated.View>
+          <View style={styles.stickyMetaRow}>
+            <View style={styles.heroInfoBadge}>
+              <Text style={styles.heroInfoBadgeText}>{copy.routine.recipe.environmentLabel}: {environmentLabel}</Text>
+            </View>
+            {recommendation.safetyWarnings.length > 0 ? (
+              <View style={styles.heroSafetyBadge}>
+                <Text style={styles.heroSafetyBadgeText}>{copy.home.safetyPriorityBadge}</Text>
+              </View>
+            ) : null}
+          </View>
+        </View>
+      </RNAnimated.View>
+      <RNAnimated.ScrollView
         style={styles.scrollView}
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
+        scrollEventThrottle={16}
+        onScroll={RNAnimated.event(
+          [{ nativeEvent: { contentOffset: { y: scrollY } } }],
+          { useNativeDriver: true }
+        )}
       >
         <View style={[styles.heroWrapper, isImageHeroRecipe && styles.heroWrapperImage]}>
           <LinearGradient
@@ -230,27 +308,13 @@ export default function RecipeScreen() {
             ) : null}
             {!isImageHeroRecipe ? <View style={styles.heroGlowLarge} /> : null}
             {!isImageHeroRecipe ? <View style={styles.heroGlowSmall} /> : null}
-            <View style={styles.heroNavRow}>
-              <Pressable style={styles.navButton} onPress={() => router.back()}>
-                <FontAwesome name="angle-left" size={24} color={V2_TEXT_PRIMARY} />
-              </Pressable>
-              <View style={styles.heroTopMetaRow}>
-                <View style={styles.heroInfoBadge}>
-                  <Text style={styles.heroInfoBadgeText}>{copy.routine.recipe.environmentLabel}: {environmentLabel}</Text>
-                </View>
-                {recommendation.safetyWarnings.length > 0 ? (
-                  <View style={styles.heroSafetyBadge}>
-                    <Text style={styles.heroSafetyBadgeText}>{copy.home.safetyPriorityBadge}</Text>
-                  </View>
-                ) : null}
-              </View>
-            </View>
-            <Animated.View entering={FadeIn.duration(450)} style={[styles.heroContent, isImageHeroRecipe && styles.heroContentImage]}>
-              <View style={[styles.heroTitleBlock, isImageHeroRecipe && styles.heroTitleBlockImage]}>
+            <View style={styles.heroNavSpacer} />
+            <Reanimated.View entering={FadeIn.duration(450)} style={[styles.heroContent, isImageHeroRecipe && styles.heroContentImage]}>
+              <RNAnimated.View style={[styles.heroTitleBlock, isImageHeroRecipe && styles.heroTitleBlockImage, { opacity: heroTitleOpacity }]}>
                 <Text style={styles.heroEyebrow}>{modeLabel}</Text>
                 <Text style={styles.heroTitle}>{recipeTitle}</Text>
                 <Text style={styles.heroLead}>{evidence.reasonLines[0]}</Text>
-              </View>
+              </RNAnimated.View>
               <View style={styles.heroPlaque}>
                 <View style={styles.heroMetric}>
                   <Text style={styles.heroMetricLabel}>{copy.routine.recipe.bathLabel}</Text>
@@ -267,11 +331,11 @@ export default function RecipeScreen() {
                   <Text style={styles.heroMetricValue}>{durationLabel}</Text>
                 </View>
               </View>
-            </Animated.View>
+            </Reanimated.View>
           </LinearGradient>
         </View>
 
-        <Animated.View entering={FadeInDown.duration(400).delay(80)} style={[ui.glassCardV2, styles.stepsCard]}>
+        <Reanimated.View entering={FadeInDown.duration(400).delay(80)} style={[ui.glassCardV2, styles.stepsCard]}>
           <Text style={styles.sectionTitle}>{copy.routine.recipe.prepTitle}</Text>
           <Text style={styles.sectionSubtitle}>{copy.routine.recipe.prepSubtitle}</Text>
           <View style={styles.stepList}>
@@ -287,9 +351,9 @@ export default function RecipeScreen() {
               </View>
             ))}
           </View>
-        </Animated.View>
+        </Reanimated.View>
 
-        <Animated.View entering={FadeInDown.duration(400).delay(180)}>
+        <Reanimated.View entering={FadeInDown.duration(400).delay(180)}>
           <Text style={styles.sectionTitle}>{copy.routine.recipe.guideTitle}</Text>
           <Text style={styles.sectionSubtitle}>{copy.routine.recipe.guideSubtitle}</Text>
           <View style={[ui.glassCardV2, styles.ingredientsCard]}>
@@ -316,16 +380,16 @@ export default function RecipeScreen() {
               </View>
             ) : null}
           </View>
-        </Animated.View>
+        </Reanimated.View>
 
-        <Animated.View entering={FadeInDown.duration(400).delay(240)} style={[ui.glassCardV2, styles.safetyBlock]}>
+        <Reanimated.View entering={FadeInDown.duration(400).delay(240)} style={[ui.glassCardV2, styles.safetyBlock]}>
           <Text style={styles.safetyEyebrow}>{copy.routine.recipe.safetyEyebrow}</Text>
           <Text style={styles.safetyTitle}>{copy.routine.safetyTitle}</Text>
           <Text style={styles.safetyLead}>{primarySafetyLine}</Text>
           {copy.routine.safetyLines.map((line) => <Text key={line} style={styles.safetyText}>• {line}</Text>)}
-        </Animated.View>
+        </Reanimated.View>
 
-      </Animated.ScrollView>
+      </RNAnimated.ScrollView>
 
       <View style={styles.bottomCTA}>
         {sleepPreparationPlan ? (
@@ -381,6 +445,60 @@ export default function RecipeScreen() {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: V2_BG_BASE },
   centered: { justifyContent: 'center', alignItems: 'center' },
+  stickyHeader: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    zIndex: 20,
+    paddingHorizontal: 20,
+  },
+  stickyHeaderBackdrop: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(7, 13, 24, 0.76)',
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(255,255,255,0.08)',
+  },
+  stickyHeaderContent: {
+    minHeight: 40,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  stickyHeaderTitleWrap: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 96,
+  },
+  stickyHeaderTitle: {
+    maxWidth: '100%',
+    textAlign: 'center',
+    color: V2_TEXT_PRIMARY,
+    fontSize: 12,
+    fontWeight: '600',
+    fontFamily: luxuryFonts.display,
+  },
+  stickyHeaderMeta: {
+    marginTop: 1,
+    color: V2_TEXT_MUTED,
+    fontSize: 10,
+    fontWeight: '400',
+    fontFamily: luxuryFonts.sans,
+  },
+  stickyMetaRow: {
+    minWidth: 76,
+    maxWidth: 118,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    gap: 6,
+    flexWrap: 'wrap',
+  },
   heroWrapper: { paddingHorizontal: 18, paddingTop: 14 },
   heroWrapperImage: { paddingHorizontal: 0, paddingTop: 0, marginTop: -18, marginHorizontal: -20 },
   hero: { height: HERO_HEIGHT, borderRadius: luxuryRadii.cardLg, overflow: 'hidden', paddingHorizontal: 20, paddingTop: 18, paddingBottom: 24, justifyContent: 'space-between' },
@@ -406,22 +524,14 @@ const styles = StyleSheet.create({
   },
   heroGlowLarge: { position: 'absolute', width: 220, height: 220, borderRadius: 999, backgroundColor: 'rgba(245,240,232,0.08)', top: -110, right: -20 },
   heroGlowSmall: { position: 'absolute', width: 132, height: 132, borderRadius: 999, backgroundColor: 'rgba(8,22,54,0.16)', bottom: 52, left: -24 },
-  heroNavRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   navButton: { width: 32, height: 32, justifyContent: 'center', alignItems: 'flex-start' },
-  heroTopMetaRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    gap: 6,
-    flexWrap: 'wrap',
-    maxWidth: '84%',
-  },
+  heroNavSpacer: { height: 32 },
   heroContent: { gap: 12, alignItems: 'flex-start' },
   heroContentImage: { width: '100%', marginTop: 'auto' },
   heroInfoBadge: { borderRadius: 999, paddingHorizontal: 9, paddingVertical: 4, backgroundColor: 'rgba(8,22,54,0.26)', borderWidth: 1, borderColor: 'rgba(255,255,255,0.18)' },
   heroInfoBadgeText: { fontSize: TYPE_CAPTION - 1, color: V2_TEXT_PRIMARY, fontWeight: '700', fontFamily: luxuryFonts.sans },
   heroSafetyBadge: { borderRadius: 999, paddingHorizontal: 9, paddingVertical: 4, backgroundColor: 'rgba(201,164,91,0.22)', borderWidth: 1, borderColor: 'rgba(201,164,91,0.36)' },
-  heroSafetyBadgeText: { fontSize: TYPE_CAPTION - 1, color: V2_TEXT_PRIMARY, fontWeight: '800', fontFamily: luxuryFonts.sans },
+  heroSafetyBadgeText: { fontSize: TYPE_CAPTION - 1, color: V2_TEXT_PRIMARY, fontWeight: '700', fontFamily: luxuryFonts.sans },
   heroTitleBlock: { gap: 8, maxWidth: '82%' },
   heroTitleBlockImage: { maxWidth: '100%' },
   heroEyebrow: { fontSize: TYPE_CAPTION - 1, color: 'rgba(255,255,255,0.74)', fontWeight: '700', letterSpacing: 1.2, fontFamily: luxuryFonts.sans },
@@ -462,7 +572,7 @@ const styles = StyleSheet.create({
   ingredientsPairingDivider: { height: 1, backgroundColor: V2_BORDER, marginBottom: 2 },
   productBridgeEyebrow: {
     fontSize: TYPE_CAPTION - 1,
-    fontWeight: '800',
+    fontWeight: '700',
     color: V2_ACCENT,
     letterSpacing: 1,
     fontFamily: luxuryFonts.sans,
@@ -478,7 +588,7 @@ const styles = StyleSheet.create({
   trackName: { fontSize: TYPE_BODY + 1, color: V2_TEXT_PRIMARY, marginBottom: 2, fontFamily: luxuryFonts.display },
   trackDesc: { fontSize: TYPE_CAPTION, color: V2_TEXT_MUTED, fontFamily: luxuryFonts.sans },
   safetyBlock: { marginTop: 20, marginBottom: 18, padding: 14, gap: 4 },
-  safetyEyebrow: { fontSize: TYPE_CAPTION - 1, fontWeight: '800', color: V2_ACCENT, letterSpacing: 1, marginBottom: 4, fontFamily: luxuryFonts.sans },
+  safetyEyebrow: { fontSize: TYPE_CAPTION - 1, fontWeight: '700', color: V2_ACCENT, letterSpacing: 1, marginBottom: 4, fontFamily: luxuryFonts.sans },
   safetyTitle: { fontSize: TYPE_TITLE, color: V2_TEXT_PRIMARY, marginBottom: 2, fontFamily: luxuryFonts.display },
   safetyLead: { fontSize: TYPE_BODY, color: V2_TEXT_PRIMARY, lineHeight: 20, marginBottom: 6, fontFamily: luxuryFonts.sans, fontWeight: '700' },
   safetyText: { fontSize: TYPE_CAPTION, color: V2_TEXT_SECONDARY, lineHeight: 18, fontFamily: luxuryFonts.sans },
@@ -498,7 +608,7 @@ const styles = StyleSheet.create({
   },
   sleepWindowEyebrow: {
     fontSize: TYPE_CAPTION - 1,
-    fontWeight: '800',
+    fontWeight: '700',
     color: V2_ACCENT,
     letterSpacing: 1,
     fontFamily: luxuryFonts.sans,

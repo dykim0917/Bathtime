@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 import { CatalogProduct, PRODUCT_CATEGORY_LABELS } from '@/src/data/catalog';
 import {
   V2_ACCENT,
@@ -18,6 +18,7 @@ import { luxuryFonts, luxuryRadii, luxuryTracking } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
 import { AppIconBadge, getProductCategoryBadgeTone } from '@/src/components/AppIconBadge';
 import { AnimatedModalShell } from '@/src/components/AnimatedModalShell';
+import { getProductImageSource } from '@/src/data/productImages';
 
 interface ProductDetailModalProps {
   visible: boolean;
@@ -40,6 +41,9 @@ export function ProductDetailModal({
 }: ProductDetailModalProps) {
   if (!product) return null;
   const categoryTone = getProductCategoryBadgeTone(product.category);
+  const imageSource = getProductImageSource(product.id);
+  const priceLabel = formatProductPrice(product);
+  const marketLabel = formatMarketLabel(product.listing?.market);
 
   return (
     <AnimatedModalShell
@@ -51,6 +55,24 @@ export function ProductDetailModal({
       {(requestClose) => (
         <View style={styles.card}>
           <View style={styles.handle} />
+          <View style={styles.imageFrame}>
+            {imageSource ? (
+              <Image source={imageSource} style={styles.productImage} resizeMode="cover" />
+            ) : (
+              <View style={[styles.imagePlaceholder, { backgroundColor: `${product.bgColor}30` }]}>
+                <AppIconBadge
+                  spec={categoryTone.spec}
+                  size={58}
+                  iconSize={25}
+                  color={categoryTone.color}
+                  backgroundColor={product.bgColor}
+                  borderColor={categoryTone.borderColor}
+                  style={styles.iconWrap}
+                />
+                <Text style={styles.imagePathText} numberOfLines={1}>{product.imagePath}</Text>
+              </View>
+            )}
+          </View>
           <View style={styles.header}>
             <AppIconBadge
               spec={categoryTone.spec}
@@ -65,7 +87,7 @@ export function ProductDetailModal({
               <Text style={styles.brand}>{product.brand}</Text>
               <Text style={styles.name}>{product.name}</Text>
               <Text style={styles.meta}>
-                {PRODUCT_CATEGORY_LABELS[product.category]} · {product.priceTier}
+                {PRODUCT_CATEGORY_LABELS[product.category]} · {priceLabel}{marketLabel ? ` · ${marketLabel}` : ''}
               </Text>
             </View>
           </View>
@@ -76,8 +98,13 @@ export function ProductDetailModal({
                 <Text style={styles.detailMetaText}>{PRODUCT_CATEGORY_LABELS[product.category]}</Text>
               </View>
               <View style={styles.detailMetaPill}>
-                <Text style={styles.detailMetaText}>{product.priceTier.toUpperCase()}</Text>
+                <Text style={styles.detailMetaText}>{priceLabel}</Text>
               </View>
+              {marketLabel ? (
+                <View style={styles.detailMetaPill}>
+                  <Text style={styles.detailMetaText}>{marketLabel}</Text>
+                </View>
+              ) : null}
             </View>
             <Text style={styles.description}>{product.description}</Text>
             <View style={styles.tagRow}>
@@ -109,6 +136,33 @@ export function ProductDetailModal({
   );
 }
 
+function formatProductPrice(product: CatalogProduct): string {
+  const price = product.listing?.priceSnapshotKrw;
+  if (typeof price !== 'number') return `${product.priceTier.toUpperCase()} price`;
+  return `₩${price.toLocaleString('ko-KR')}`;
+}
+
+function formatMarketLabel(market?: string): string | null {
+  switch (market) {
+    case 'coupang':
+      return '쿠팡';
+    case 'naver_smartstore':
+      return '네이버';
+    case 'kurly':
+      return '컬리';
+    case 'oliveyoung':
+      return '올리브영';
+    case 'official_store':
+      return '공식몰';
+    case 'danawa':
+      return '다나와';
+    case 'other':
+      return '기타';
+    default:
+      return null;
+  }
+}
+
 const styles = StyleSheet.create({
   overlay: {
     flex: 1,
@@ -136,6 +190,32 @@ const styles = StyleSheet.create({
     borderRadius: 999,
     backgroundColor: V2_MODAL_HANDLE,
     marginBottom: 4,
+  },
+  imageFrame: {
+    width: '100%',
+    aspectRatio: 16 / 9,
+    borderRadius: luxuryRadii.card,
+    borderWidth: 1,
+    borderColor: V2_BORDER,
+    overflow: 'hidden',
+    backgroundColor: V2_SURFACE_SOFT,
+  },
+  productImage: {
+    width: '100%',
+    height: '100%',
+  },
+  imagePlaceholder: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 8,
+    paddingHorizontal: 16,
+  },
+  imagePathText: {
+    maxWidth: '90%',
+    color: V2_TEXT_MUTED,
+    fontSize: TYPE_SCALE.caption - 1,
+    fontFamily: luxuryFonts.sans,
   },
   header: {
     flexDirection: 'row',
@@ -190,7 +270,7 @@ const styles = StyleSheet.create({
   detailMetaText: {
     color: V2_ACCENT,
     fontSize: TYPE_SCALE.caption,
-    fontWeight: '800',
+    fontWeight: '700',
     letterSpacing: 0.3,
     fontFamily: luxuryFonts.sans,
   },

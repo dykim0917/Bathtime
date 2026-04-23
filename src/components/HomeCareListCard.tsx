@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
   visualLabel: {
     color: '#F6F2EA',
     fontSize: TYPE_CAPTION - 1,
-    fontWeight: '800',
+    fontWeight: '700',
     lineHeight: 16,
     letterSpacing: 0.4,
     fontFamily: luxuryFonts.sans,

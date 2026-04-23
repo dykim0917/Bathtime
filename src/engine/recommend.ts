@@ -72,9 +72,13 @@ export function generateCareRecommendation(
     context.bathType = safety.forcedBathType;
   }
 
+  const careAdditionalIngredientIds = dailyTags.includes('hangover')
+    ? [...context.additionalIngredientIds, 'epsom_salt']
+    : context.additionalIngredientIds;
+
   const ingredientIds = buildIngredientIds(
     resolved.mergedIngredientIds,
-    context.additionalIngredientIds,
+    careAdditionalIngredientIds,
     context.removedIngredientIds,
     safety.bannedIngredientIds
   );

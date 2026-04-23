@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Pressable } from 'react-native';
+import { View, Text, StyleSheet, Pressable, Image } from 'react-native';
 import { ui } from '@/src/theme/ui';
 import {
   TYPE_SCALE,
@@ -15,7 +15,8 @@ import {
 } from '@/src/data/colors';
 import { CatalogProduct, PRODUCT_CATEGORY_LABELS } from '@/src/data/catalog';
 import { luxuryFonts, luxuryRadii, luxuryTracking } from '@/src/theme/luxury';
-import { AppIconBadge, getProductCategoryBadgeTone } from '@/src/components/AppIconBadge';
+import { getProductImageSource } from '@/src/data/productImages';
+import { formatProductPrice, getDisplayProductName } from '@/src/utils/productDisplay';
 
 interface ProductCardProps {
   item: CatalogProduct;
@@ -26,7 +27,10 @@ interface ProductCardProps {
 export function ProductCard({ item, variant = 'default', onPress }: ProductCardProps) {
   const isV2 = variant === 'v2';
   const categoryLabel = PRODUCT_CATEGORY_LABELS[item.category];
-  const categoryTone = getProductCategoryBadgeTone(item.category);
+  const imageSource = getProductImageSource(item.id);
+  const priceLabel = formatProductPrice(item);
+  const marketLabel = formatMarketLabel(item.listing?.market);
+  const displayName = getDisplayProductName(item);
 
   return (
     <Pressable
@@ -41,6 +45,16 @@ export function ProductCard({ item, variant = 'default', onPress }: ProductCardP
       ]}
     >
       {isV2 ? <View style={[styles.glow, { backgroundColor: `${item.bgColor}24` }]} /> : null}
+      <View style={styles.imageFrame}>
+        {imageSource ? (
+          <Image source={imageSource} style={styles.productImage} resizeMode="cover" />
+        ) : (
+          <View style={[styles.imagePlaceholder, { backgroundColor: `${item.bgColor}30` }]}>
+            <Text style={styles.placeholderInitials}>{item.emoji}</Text>
+            <Text style={styles.imagePathText} numberOfLines={1}>{item.imagePath}</Text>
+          </View>
+        )}
+      </View>
       {isV2 ? (
         <View style={styles.metaRow}>
           <Text style={styles.metaEyebrow}>{item.editorial.eyebrow}</Text>
@@ -49,25 +63,20 @@ export function ProductCard({ item, variant = 'default', onPress }: ProductCardP
         </View>
       ) : null}
       <View style={styles.header}>
-        <AppIconBadge
-          spec={categoryTone.spec}
-          size={52}
-          iconSize={22}
-          color={isV2 ? V2_TEXT_PRIMARY : categoryTone.color}
-          backgroundColor={isV2 ? categoryTone.backgroundColor : item.bgColor}
-          borderColor={isV2 ? categoryTone.borderColor : 'transparent'}
-          style={[styles.emojiWrap, isV2 && styles.emojiWrapV2]}
-        />
         <View style={styles.nameWrap}>
-          <Text style={[styles.name, isV2 && styles.nameV2]} numberOfLines={1}>{item.name}</Text>
           <Text style={[styles.brand, isV2 && styles.brandV2]} numberOfLines={1}>{item.brand}</Text>
+          <Text style={[styles.name, isV2 && styles.nameV2]} numberOfLines={1}>{displayName}</Text>
         </View>
+      </View>
+      <View style={styles.commerceRow}>
+        <Text style={styles.priceText}>{priceLabel}</Text>
+        {marketLabel ? <Text style={styles.marketText}>{marketLabel}</Text> : null}
       </View>
       <Text style={[styles.description, isV2 && styles.descriptionV2]} numberOfLines={2}>{item.description}</Text>
       <View style={styles.tagRow}>
         {item.tags.map((tag) => (
           <View key={tag} style={[styles.tagPill, isV2 && styles.tagPillV2]}>
-            <Text style={[styles.tagText, isV2 && styles.tagTextV2]}>#{tag}</Text>
+            <Text style={[styles.tagText, isV2 && styles.tagTextV2]}>{tag}</Text>
           </View>
         ))}
       </View>
@@ -79,6 +88,27 @@ export function ProductCard({ item, variant = 'default', onPress }: ProductCardP
       ) : null}
     </Pressable>
   );
+}
+
+function formatMarketLabel(market?: string): string | null {
+  switch (market) {
+    case 'coupang':
+      return '쿠팡';
+    case 'naver_smartstore':
+      return '네이버';
+    case 'kurly':
+      return '컬리';
+    case 'oliveyoung':
+      return '올리브영';
+    case 'official_store':
+      return '공식몰';
+    case 'danawa':
+      return '다나와';
+    case 'other':
+      return '기타';
+    default:
+      return null;
+  }
 }
 
 const styles = StyleSheet.create({
@@ -107,6 +137,38 @@ const styles = StyleSheet.create({
     height: 120,
     borderRadius: 60,
   },
+  imageFrame: {
+    width: '100%',
+    aspectRatio: 16 / 9,
+    borderRadius: luxuryRadii.card,
+    borderWidth: 1,
+    borderColor: V2_BORDER,
+    overflow: 'hidden',
+    backgroundColor: 'rgba(255,255,255,0.04)',
+  },
+  productImage: {
+    width: '100%',
+    height: '100%',
+  },
+  imagePlaceholder: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 8,
+    paddingHorizontal: 14,
+  },
+  placeholderInitials: {
+    color: V2_TEXT_PRIMARY,
+    fontSize: TYPE_SCALE.headingMd,
+    fontWeight: '700',
+    fontFamily: luxuryFonts.sans,
+  },
+  imagePathText: {
+    maxWidth: '92%',
+    color: V2_TEXT_MUTED,
+    fontSize: TYPE_SCALE.caption - 1,
+    fontFamily: luxuryFonts.sans,
+  },
   metaRow: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -132,17 +194,10 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 12,
-  },
-  emojiWrap: {
-    borderRadius: luxuryRadii.button,
-  },
-  emojiWrapV2: {
-    
   },
   nameWrap: {
     flex: 1,
-    gap: 2,
+    gap: 3,
   },
   name: {
     fontSize: TYPE_SCALE.title,
@@ -153,17 +208,36 @@ const styles = StyleSheet.create({
     color: V2_TEXT_PRIMARY,
   },
   brand: {
-    fontSize: TYPE_SCALE.caption,
+    fontSize: TYPE_SCALE.caption - 1,
     color: V2_TEXT_MUTED,
+    fontWeight: '300',
     fontFamily: luxuryFonts.sans,
   },
   brandV2: {
     color: V2_TEXT_MUTED,
   },
+  commerceRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 10,
+  },
+  priceText: {
+    color: V2_TEXT_PRIMARY,
+    fontSize: TYPE_SCALE.title - 2,
+    fontWeight: '700',
+    fontFamily: luxuryFonts.sans,
+  },
+  marketText: {
+    color: V2_TEXT_MUTED,
+    fontSize: TYPE_SCALE.caption,
+    fontWeight: '700',
+    fontFamily: luxuryFonts.sans,
+  },
   description: {
     fontSize: TYPE_SCALE.body,
     color: V2_TEXT_SECONDARY,
-    lineHeight: 20,
+    lineHeight: 18,
     fontFamily: luxuryFonts.sans,
   },
   descriptionV2: {
@@ -189,7 +263,6 @@ const styles = StyleSheet.create({
   tagText: {
     fontSize: TYPE_SCALE.caption,
     color: V2_TEXT_SECONDARY,
-    fontWeight: '500',
     fontFamily: luxuryFonts.sans,
   },
   tagTextV2: {

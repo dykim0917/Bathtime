@@ -637,7 +637,7 @@ const styles = StyleSheet.create({
   },
   streakTitle: {
     color: V2_TEXT_PRIMARY,
-    fontWeight: '800',
+    fontWeight: '700',
     fontSize: TYPE_BODY,
   },
   streakTodayText: {
@@ -699,7 +699,7 @@ const styles = StyleSheet.create({
   },
   insightBannerMain: {
     fontSize: TYPE_TITLE,
-    fontWeight: '800',
+    fontWeight: '700',
     color: V2_TEXT_PRIMARY,
     marginBottom: 4,
   },
@@ -859,7 +859,7 @@ const styles = StyleSheet.create({
   emptyBadgeText: {
     color: V2_ACCENT,
     fontSize: TYPE_CAPTION - 1,
-    fontWeight: '800',
+    fontWeight: '700',
     letterSpacing: 1.1,
   },
   emptyIconWrap: {
@@ -907,7 +907,7 @@ const styles = StyleSheet.create({
   emptyActionText: {
     color: V2_ACCENT_TEXT,
     fontSize: TYPE_BODY,
-    fontWeight: '800',
+    fontWeight: '700',
   },
   filterEmptyContainer: {
     paddingVertical: 40,
@@ -1038,7 +1038,7 @@ const styles = StyleSheet.create({
   },
   modalTitle: {
     fontSize: TYPE_TITLE,
-    fontWeight: '800',
+    fontWeight: '700',
     color: V2_TEXT_PRIMARY,
     marginBottom: 8,
   },
@@ -1074,7 +1074,7 @@ const styles = StyleSheet.create({
   },
   modalConfirmText: {
     color: V2_ACCENT_TEXT,
-    fontWeight: '800',
+    fontWeight: '700',
     fontSize: TYPE_CAPTION,
   },
   modalButtonDisabled: {

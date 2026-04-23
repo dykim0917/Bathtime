@@ -69,6 +69,7 @@ import { HomeCareHeroCard } from '@/src/components/HomeCareHeroCard';
 import { HomeCareListCard } from '@/src/components/HomeCareListCard';
 import { HomeTripEditorialCard } from '@/src/components/HomeTripEditorialCard';
 import { OpenTabHeader } from '@/src/components/OpenTabHeader';
+import { HomeHeroBathAnimation } from '@/src/components/HomeHeroBathAnimation';
 import { HOME_CARE_HERO_IMAGE, HOME_HEADER_ILLUSTRATION } from '@/src/data/homeVisuals';
 import { CustomIconName } from '@/src/components/CustomIcon';
 import { getCareCardImageForEnvironment } from '@/src/data/careImages';
@@ -569,9 +570,9 @@ export default function HomeIntentScreen() {
                 />
               ) : (
                 <>
+                  <HomeHeroBathAnimation style={styles.headerLottie} />
                   <View style={styles.headerIllustrationMistLarge} />
                   <View style={styles.headerIllustrationMistSmall} />
-                  <View style={styles.headerIllustrationOrb} />
                 </>
               )}
             </View>
@@ -841,7 +842,7 @@ const styles = StyleSheet.create({
   headerBadge: {
     color: V2_ACCENT,
     fontSize: TYPE_SCALE.caption,
-    fontWeight: '800',
+    fontWeight: '700',
     letterSpacing: luxuryTracking.eyebrow,
     fontFamily: luxuryFonts.sans,
   },
@@ -856,6 +857,10 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(255, 255, 255, 0.03)',
   },
   headerIllustrationImage: {
+    width: '100%',
+    height: '100%',
+  },
+  headerLottie: {
     width: '100%',
     height: '100%',
   },
@@ -876,15 +881,6 @@ const styles = StyleSheet.create({
     left: -20,
     bottom: -28,
     backgroundColor: 'rgba(176, 141, 87, 0.1)',
-  },
-  headerIllustrationOrb: {
-    position: 'absolute',
-    width: 58,
-    height: 58,
-    borderRadius: 29,
-    right: 42,
-    bottom: 26,
-    backgroundColor: 'rgba(245, 240, 232, 0.07)',
   },
   beginnerGuide: {
     color: V2_TEXT_MUTED,
@@ -1127,7 +1123,7 @@ const styles = StyleSheet.create({
   recentMeta: {
     color: V2_TEXT_MUTED,
     fontSize: TYPE_SCALE.caption - 1,
-    fontWeight: '800',
+    fontWeight: '700',
     letterSpacing: 0.8,
     fontFamily: luxuryFonts.sans,
   },

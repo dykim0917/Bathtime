@@ -202,7 +202,7 @@ const styles = StyleSheet.create({
     borderRadius: 999,
     color: '#3B2000',
     backgroundColor: 'rgba(255, 226, 191, 0.95)',
-    fontWeight: '800',
+    fontWeight: '700',
     fontFamily: luxuryFonts.sans,
   },
   safetyBadgeV2: {

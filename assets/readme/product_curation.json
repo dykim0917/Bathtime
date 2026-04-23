@@ -1,0 +1,627 @@
+,
+      "modeBias": [
+        "recovery",
+        "sleep"
+      ],
+      "priorityWeight": 90,
+      "sommelierPick": true
+    },
+    "appCopy": {
+      "summary": "마그네슘과 라벤더가 선사하는 깊은 수면 리추얼",
+      "eyebrow": "RECOVERY & SLEEP",
+      "routineDescription": "고강도 활동으로 지친 하루 끝에, 황산마그네슘의 따뜻한 이완감과 라벤더의 은은한 향기로 일상의 긴장을 내려놓고 깊은 휴식을 준비하세요.",
+      "footerHint": "수면 1시간 전, 따뜻한 물에 2컵을 녹여 20분간 입욕하는 것을 권장합니다.",
+      "tags": [
+        "근육",
+        "회복",
+        "수면",
+        "라벤더",
+        "마그네슘"
+      ]
+    },
+    "safetyReview": {
+      "flags": [
+        "pregnant"
+      ],
+      "pregnancyNote": "라벤더 향료는 심신 안정에 도움을 주나, 임신 중에는 고온의 물에서 15분 이상 장시간 입욕하는 것을 반드시 피해야 합니다.",
+      "sensitiveSkinNote": null
+    },
+    "metadata": {
+      "sourceType": "market_page",
+      "referenceUrls": [
+        "https://prod.danawa.com/info/?pcode=30487835",
+        "https://www.costco.co.kr/"
+      ],
+      "curatorNotes": "코스트코 대용량 옵션(16,490원)이 존재하나, 일반적인 사용자 접근성을 고려하여 쿠팡 단가를 기준으로 스냅샷을 작성함.",
+      "lastUpdated": "2026-04-22"
+    }
+  },
+  {
+    "id": "bs_v1_002",
+    "canonical": {
+      "nameKo": "미드웨스트 씨 솔트 카모마일 플라워 보태니컬 블렌드",
+      "brand": "Midwest Sea Salt",
+      "category": "bath_salt",
+      "mechanism": "aromatic",
+      "priceTier": "mid"
+    },
+    "listing": {
+      "market": "naver_smartstore",
+      "sourceUrl": null,
+      "snapshot": {
+        "seller": null,
+        "price": 28000,
+        "currency": "KRW",
+        "availability": "unknown"
+      },
+      "sourceConfidence": 0.5
+    },
+    "curation": {
+      "routineFit": [
+        "mental_relaxation",
+        "botanical_immersion"
+      ],
+      "modeBias": [
+        "care",
+        "sleep"
+      ],
+      "priorityWeight": 70,
+      "sommelierPick": false
+    },
+    "appCopy": {
+      "summary": "자연을 담은 전통적인 식물성 입욕 리추얼",
+      "eyebrow": "BOTANICAL CARE",
+      "routineDescription": "천연 카모마일 꽃잎과 지중해 해염이 만나 피부를 부드럽게 감싸며, 하루의 스트레스와 복잡한 생각을 차분하게 씻어내는 진정 효과를 경험할 수 있습니다.",
+      "footerHint": "꽃잎이 욕조 배수구를 막지 않도록 전용 거름망이나 모슬린 주머니 사용을 권장합니다.",
+      "tags": [
+        "카모마일",
+        "식물성",
+        "진정",
+        "휴식"
+      ]
+    },
+    "safetyReview": {
+      "flags": [
+        "none"
+      ],
+      "pregnancyNote": "카모마일은 임신 중 진정과 휴식에 널리 권장되는 식물성 성분이나, 개인 민감도에 따른 패치 테스트를 권장합니다.",
+      "sensitiveSkinNote": "건조한 허브에 의한 물리적 자극을 느낄 수 있습니다."
+    },
+    "metadata": {
+      "sourceType": "document",
+      "referenceUrls":,
+      "curatorNotes": "원시 데이터 기준 해외 가격 $21.59이며 국내 공식 유통망의 명확한 링크 부재로 가용성 unknown 및 가격 환산 처리함.",
+      "lastUpdated": "2026-04-22"
+    }
+  },
+  {
+    "id": "bs_v1_003",
+    "canonical": {
+      "nameKo": "바스로망 밀크 프로테인",
+      "brand": "Bath Roman",
+      "category": "bath_item",
+      "mechanism": "neutral",
+      "priceTier": "low"
+    },
+    "listing": {
+      "market": "coupang",
+      "sourceUrl": "https://prod.danawa.com/info/?pcode=30478328",
+      "snapshot": {
+        "seller": "쿠팡",
+        "price": 9500,
+        "currency": "KRW",
+        "availability": "active"
+      },
+      "sourceConfidence": 0.95
+    },
+    "curation": {
+      "routineFit": [
+        "daily_moisture",
+        "family_care"
+      ],
+      "modeBias": [
+        "care"
+      ],
+      "priorityWeight": 85,
+      "sommelierPick": false
+    },
+    "appCopy": {
+      "summary": "우유 단백질이 선사하는 촘촘한 피부 보습막",
+      "eyebrow": "DAILY MOISTURE",
+      "routineDescription": "건조함이 느껴지는 날, 우유 단백질 성분이 뻣뻣해진 피부를 부드럽게 연화시키고 수분을 채워주어 목욕 후에도 당김 없는 촉촉함을 유지해 줍니다.",
+      "footerHint": "바닐라와 딸기가 어우러진 달콤한 향기로 기분 좋은 데일리 케어를 완성해 보세요.",
+      "tags": [
+        "보습",
+        "우유단백질",
+        "데일리",
+        "부드러움"
+      ]
+    },
+    "safetyReview": {
+      "flags": [
+        "none"
+      ],
+      "pregnancyNote": "우유 단백질 성분은 임신 중 건조해지기 쉬운 피부 장벽과 튼살 예방을 위한 보습 관리에 안전하게 활용될 수 있습니다.",
+      "sensitiveSkinNote": "유제품 알레르기가 있는 경우 사용에 주의가 필요합니다."
+    },
+    "metadata": {
+      "sourceType": "market_page",
+      "referenceUrls": [
+        "https://prod.danawa.com/info/?pcode=30478328"
+      ],
+      "curatorNotes": "쿠팡 최저가 9,500원으로 가격 접근성이 매우 뛰어난 데일리 베이직 제품. 피부 보습(Neutral) 기전 적용.",
+      "lastUpdated": "2026-04-22"
+    }
+  },
+  {
+    "id": "bs_v1_004",
+    "canonical": {
+      "nameKo": "트리헛 시어 모이스처라이징 엡섬 솔트",
+      "brand": "Tree Hut",
+      "category": "bath_salt",
+      "mechanism": "magnesium",
+      "priceTier": "mid"
+    },
+    "listing": {
+      "market": "coupang",
+      "sourceUrl": null,
+      "snapshot": {
+        "seller": null,
+        "price": 16000,
+        "currency": "KRW",
+        "availability": "unknown"
+      },
+      "sourceConfidence": 0.6
+    },
+    "curation": {
+      "routineFit": [
+        "muscle_relief",
+        "skin_nourishment"
+      ],
+      "modeBias": [
+        "recovery",
+        "care"
+      ],
+      "priorityWeight": 80,
+      "sommelierPick": false
+    },
+    "appCopy": {
+      "summary": "마그네슘의 깊은 휴식과 시어버터의 완벽한 보습",
+      "eyebrow": "RECOVERY & CARE",
+      "routineDescription": "순수한 황산마그네슘이 뭉친 근육의 피로를 풀어주고, 풍부한 시어버터와 코코넛 오일이 소금물로 인해 건조해질 수 있는 피부에 강력한 수분 장벽을 세워줍니다.",
+      "footerHint": "건조함과 근육 피로를 동시에 느끼는 날에 이상적입니다.",
+      "tags": [
+        "시어버터",
+        "보습",
+        "회복",
+        "마그네슘"
+      ]
+    },
+    "safetyReview": {
+      "flags": [
+        "none"
+      ],
+      "pregnancyNote": "시어버터와 코코넛 추출물 등 식물성 지질 성분은 임신 중 피부 유연성 확보 및 튼살 관리에 유익합니다.",
+      "sensitiveSkinNote": null
+    },
+    "metadata": {
+      "sourceType": "document",
+      "referenceUrls":,
+      "curatorNotes": "$12 가격대를 국내 환율 및 수입 비용을 고려하여 16,000원 선으로 추정. 마그네슘 황산염에 지질을 더한 특이 케이스.",
+      "lastUpdated": "2026-04-22"
+    }
+  },
+  {
+    "id": "bs_v1_005",
+    "canonical": {
+      "nameKo": "BARTH 바스 중성 중탄산 입욕제",
+      "brand": "BARTH",
+      "category": "bath_item",
+      "mechanism": "bicarbonate",
+      "priceTier": "high"
+    },
+    "listing": {
+      "market": "naver_smartstore",
+      "sourceUrl": "https://shop.mallpass.co.kr/mall/view/goodsNo/20938948/categoryNo/12730/pageNo/50",
+      "snapshot": {
+        "seller": "몰패스스토어",
+        "price": 54600,
+        "currency": "KRW",
+        "availability": "unknown"
+      },
+      "sourceConfidence": 0.7
+    },
+    "curation": {
+      "routineFit": [
+        "circulation_boost",
+        "deep_reset"
+      ],
+      "modeBias": [
+        "reset"
+      ],
+      "priorityWeight": 95,
+      "sommelierPick": true
+    },
+    "appCopy": {
+      "summary": "중성 중탄산 이온이 주도하는 순수한 리셋 리추얼",
+      "eyebrow": "CLINICAL RESET",
+      "routineDescription": "무향, 무색소의 순수한 포뮬러가 미세하고 풍부한 탄산 기포를 발생시켜 피로가 누적된 신체의 온기를 깊은 곳에서부터 채우고 가벼운 일상으로의 복귀를 돕습니다.",
+      "footerHint": "미지근한 물(37~40도)에서 15분 이상 천천히 심호흡하며 입욕하는 것을 권장합니다.",
+      "tags": [
+        "탄산",
+        "혈행",
+        "무향료",
+        "리셋"
+      ]
+    },
+    "safetyReview": {
+      "flags": [
+        "pregnant"
+      ],
+      "pregnancyNote": "중탄산 입욕제는 강력한 순환 효과를 지니므로, 혈류 변화와 체온 상승에 민감한 임산부는 장시간 고온 입욕을 반드시 피해야 합니다.",
+      "sensitiveSkinNote": "무첨가 제품으로 피부 자극이 적어 민감성 피부의 리추얼에도 훌륭한 선택이 됩니다."
+    },
+    "metadata": {
+      "sourceType": "market_page",
+      "referenceUrls": [
+        "https://shop.mallpass.co.kr/mall/view/goodsNo/20938948/categoryNo/12730/pageNo/50"
+      ],
+      "curatorNotes": "일본 직구 상품. 배송 지연 및 관세 리스크가 존재하여 가용성을 unknown으로 강제 할당함. 순환 촉진 효과가 뛰어나 픽(Pick) 상품으로 선정.",
+      "lastUpdated": "2026-04-22"
+    }
+  },
+  {
+    "id": "bs_v1_006",
+    "canonical": {
+      "nameKo": "카오 바브 탄산 입욕제 라벤더",
+      "brand": "Kao",
+      "category": "bath_item",
+      "mechanism": "bicarbonate",
+      "priceTier": "low"
+    },
+    "listing": {
+      "market": "coupang",
+      "sourceUrl": "https://japanday.kr/product/카오-바브-입욕제-라벤더향-20정입/263/",
+      "snapshot": {
+        "seller": "오픈마켓 대행",
+        "price": 11760,
+        "currency": "KRW",
+        "availability": "active"
+      },
+      "sourceConfidence": 0.8
+    },
+    "curation": {
+      "routineFit": [
+        "daily_circulation",
+        "quick_fatigue_relief"
+      ],
+      "modeBias": [
+        "reset",
+        "care"
+      ],
+      "priorityWeight": 75,
+      "sommelierPick": false
+    },
+    "appCopy": {
+      "summary": "경쾌한 탄산 기포와 향기로 여는 일상의 리셋",
+      "eyebrow": "DAILY RESET",
+      "routineDescription": "물에 닿는 순간 피어오르는 미세한 탄산 기포가 신체의 긴장을 가볍게 풀어주며, 기분 좋은 향기가 욕실을 채워 하루의 묵은 피로를 씻어냅니다.",
+      "footerHint": "바쁜 일상 속 가벼운 반신욕 리추얼에 최적화되어 있습니다.",
+      "tags": [
+        "발포비타민",
+        "탄산",
+        "데일리",
+        "리셋"
+      ]
+    },
+    "safetyReview": {
+      "flags": [
+        "pregnant"
+      ],
+      "pregnancyNote": "탄산 기포에 의한 순환 촉진 기능이 있으므로 임신 중 38도 이상의 뜨거운 물 사용에 각별한 주의가 필요합니다.",
+      "sensitiveSkinNote": "합성 향료와 색소가 포함되어 있어 극도로 예민한 피부의 경우 주의가 필요할 수 있습니다."
+    },
+    "metadata": {
+      "sourceType": "market_page",
+      "referenceUrls":,
+      "curatorNotes": "엔트리 레벨의 Bicarbonate 메커니즘 제품. 낮은 가격 접근성으로 대중적인 Reset 루틴에 배정.",
+      "lastUpdated": "2026-04-22"
+    }
+  },
+  {
+    "id": "bs_v1_007",
+    "canonical": {
+      "nameKo": "아로마티카 서렌 바디워시 라벤더 & 마조람",
+      "brand": "AROMATICA",
+      "category": "body_wash",
+      "mechanism": "aromatic",
+      "priceTier": "mid"
+    },
+    "listing": {
+      "market": "coupang",
+      "sourceUrl": "https://www.kurly.com/goods/5060122",
+      "snapshot": {
+        "seller": "마켓컬리 (정규화 대행)",
+        "price": 25000,
+        "currency": "KRW",
+        "availability": "active"
+      },
+      "sourceConfidence": 0.8
+    },
+    "curation": {
+      "routineFit": [
+        "shower_relaxation",
+        "aroma_therapy"
+      ],
+      "modeBias": [
+        "care",
+        "sleep"
+      ],
+      "priorityWeight": 80,
+      "sommelierPick": false
+    },
+    "appCopy": {
+      "summary": "샤워 부스 안에서 누리는 식물성 휴식",
+      "eyebrow": "AROMATIC SHOWER",
+      "routineDescription": "따뜻한 물줄기와 함께 퍼지는 라벤더와 마조람의 온기가 지친 하루의 마음을 부드럽게 보듬어 주는 고요한 아로마테라피 샤워를 완성합니다.",
+      "footerHint": "충분한 거품을 내어 전신을 마사지한 후, 잠시 향을 들이마시며 호흡을 가다듬어 보세요.",
+      "tags": [
+        "바디워시",
+        "라벤더",
+        "마조람",
+        "수면"
+      ]
+    },
+    "safetyReview": {
+      "flags": [
+        "pregnant"
+      ],
+      "pregnancyNote": "마조람과 라벤더는 대체로 안전한 신경 진정 오일이나, 후각이 극도로 민감해지는 임신 초기에는 강한 아로마 향이 거부감을 줄 수 있습니다.",
+      "sensitiveSkinNote": "마일드한 식물성 계면활성제를 사용하였으나, 포함된 천연 에센셜 오일에 대한 특정 알레르기 여부 확인이 필요합니다."
+    },
+    "metadata": {
+      "sourceType": "market_page",
+      "referenceUrls": [
+        "https://www.kurly.com/goods/5060122"
+      ],
+      "curatorNotes": "원 데이터 소스가 마켓컬리이나 스키마 제약으로 인해 가장 보편적인 쿠팡 시장으로 가상 매핑하여 처리. Body wash 카테고리 내 핵심 제품.",
+      "lastUpdated": "2026-04-22"
+    }
+  },
+  {
+    "id": "bs_v1_008",
+    "canonical": {
+      "nameKo": "논픽션 젠틀나잇 바디워시",
+      "brand": "NONFICTION",
+      "category": "body_wash",
+      "mechanism": "aromatic",
+      "priceTier": "high"
+    },
+    "listing": {
+      "market": "naver_smartstore",
+      "sourceUrl": "https://www.glowpick.com/products/139244",
+      "snapshot": {
+        "seller": "논픽션 공식 스토어",
+        "price": 36000,
+        "currency": "KRW",
+        "availability": "active"
+      },
+      "sourceConfidence": 0.85
+    },
+    "curation": {
+      "routineFit": [
+        "sensory_escape",
+        "skin_calming"
+      ],
+      "modeBias": [
+        "trip",
+        "care"
+      ],
+      "priorityWeight": 85,
+      "sommelierPick": false
+    },
+    "appCopy": {
+      "summary": "중성적인 잔향으로 떠나는 감각적인 샤워 트립",
+      "eyebrow": "SENSORY TRIP",
+      "routineDescription": "스웨이드와 시더우드, 달콤한 바닐라가 어우러진 향기가 세정의 순간을 넘어 마치 고요한 밤의 숲 속을 걷는 듯한 신비로운 휴식을 선사합니다.",
+      "footerHint": "샤워 후 동일한 조향의 바디 로션을 레이어링하면 향의 깊이와 지속력을 극대화할 수 있습니다.",
+      "tags": [
+        "머스크",
+        "바닐라",
+        "니치향수",
+        "휴식"
+      ]
+    },
+    "safetyReview": {
+      "flags": [
+        "pregnant",
+        "sensitive_skin"
+      ],
+      "pregnancyNote": "복합 향료의 농도가 높고 특정 기능성 주의 성분(레티놀 파생물 등)이 포함될 여지가 있으므로 임신 중 사용 전 전성분 스크리닝이 강력히 권장됩니다.",
+      "sensitiveSkinNote": "니치 향수 특성상 높은 부향률을 가지므로 향료 성분에 민감한 피부는 국소 부위 패치 테스트가 권장됩니다."
+    },
+    "metadata": {
+      "sourceType": "market_page",
+      "referenceUrls": [
+        "https://www.glowpick.com/products/139244"
+      ],
+      "curatorNotes": "글로우픽 리뷰 17건 기반 데이터 확인. 럭셔리 라이프스타일 지향으로 High price tier 할당. 샤워 환경 내 Trip 바이어스 충족용.",
+      "lastUpdated": "2026-04-22"
+    }
+  },
+  {
+    "id": "bs_v1_009",
+    "canonical": {
+      "nameKo": "바스로망 히노끼 입욕제",
+      "brand": "Bath Roman",
+      "category": "bath_item",
+      "mechanism": "aromatic",
+      "priceTier": "low"
+    },
+    "listing": {
+      "market": "coupang",
+      "sourceUrl": "https://www.wishbucket.io/items/3581186",
+      "snapshot": {
+        "seller": "쿠팡",
+        "price": 9670,
+        "currency": "KRW",
+        "availability": "active"
+      },
+      "sourceConfidence": 0.9
+    },
+    "curation": {
+      "routineFit": [
+        "forest_bathing",
+        "stress_relief"
+      ],
+      "modeBias": [
+        "trip",
+        "reset"
+      ],
+      "priorityWeight": 75,
+      "sommelierPick": false
+    },
+    "appCopy": {
+      "summary": "집에서 온전히 즐기는 고요한 편백나무 숲의 정취",
+      "eyebrow": "FOREST TRIP",
+      "routineDescription": "따뜻한 물에 풀면 진한 히노끼 오일 향이 욕실 전체에 퍼지며, 마치 깊은 숲 속의 노천 온천에 온 듯한 깊은 이완과 기분 전환을 선사합니다.",
+      "footerHint": "눈을 감고 나무 향기에 온전히 집중하며 천천히 심호흡을 이어가 보세요.",
+      "tags": [
+        "히노끼",
+        "편백나무",
+        "스트레스",
+        "반신욕"
+      ]
+    },
+    "safetyReview": {
+      "flags": [
+        "none"
+      ],
+      "pregnancyNote": "편백(사이프러스) 계열은 혈행을 일부 촉진할 수 있으나, 입욕제로 희석된 낮은 농도에서는 임산부도 전반적으로 안전하게 즐길 수 있습니다.",
+      "sensitiveSkinNote": null
+    },
+    "metadata": {
+      "sourceType": "market_page",
+      "referenceUrls": [
+        "https://www.wishbucket.io/items/3581186"
+      ],
+      "curatorNotes": "위시버킷 데이터를 교차 검증하여 쿠팡 최저가 9,670원 확인. 향기 중심의 Aromatic 매커니즘 매핑.",
+      "lastUpdated": "2026-04-22"
+    }
+  },
+  {
+    "id": "bs_v1_010",
+    "canonical": {
+      "nameKo": "나투로파티카 스위트 버치 마그네슘 바스 플레이크",
+      "brand": "Naturopathica",
+      "category": "bath_salt",
+      "mechanism": "magnesium",
+      "priceTier": "high"
+    },
+    "listing": {
+      "market": "naver_smartstore",
+      "sourceUrl": null,
+      "snapshot": {
+        "seller": null,
+        "price": 58000,
+        "currency": "KRW",
+        "availability": "unknown"
+      },
+      "sourceConfidence": 0.6
+    },
+    "curation": {
+      "routineFit": [
+        "intensive_recovery",
+        "warming_comfort"
+      ],
+      "modeBias": [
+        "recovery"
+      ],
+      "priorityWeight": 60,
+      "sommelierPick": false
+    },
+    "appCopy": {
+      "summary": "자작나무의 응축된 에너지를 담은 프리미엄 마그네슘 리추얼",
+      "eyebrow": "INTENSIVE RECOVERY",
+      "routineDescription": "스위트 버치 오일의 온열감과 고농축 마그네슘 플레이크가 만나, 차갑고 굳어진 몸을 깊숙이 따뜻하게 데워주며 일상의 활력을 되찾아주는 강력한 회복 루틴을 제공합니다.",
+      "footerHint": "격렬한 운동을 한 날이나 신체가 유난히 무겁고 경직된 날 사용을 권장합니다.",
+      "tags": [
+        "마그네슘",
+        "자작나무",
+        "활력",
+        "집중회복"
+      ]
+    },
+    "safetyReview": {
+      "flags": [
+        "pregnant"
+      ],
+      "pregnancyNote": "자작나무(Birch) 오일은 강력한 살리실산메틸 화합물을 함유하고 있어 혈류와 태아 발달에 영향을 줄 수 있으므로 임신 중 사용을 절대 금합니다.",
+      "sensitiveSkinNote": "에센셜 오일이 유발하는 강한 온열감이 피부에 물리적 자극이나 따가움으로 느껴질 수 있습니다."
+    },
+    "metadata": {
+      "sourceType": "document",
+      "referenceUrls":,
+      "curatorNotes": "$44 기준 환율 적용하여 한화 약 58,000원으로 추정. 살리실산메틸의 위험성으로 인해 임산부 절대 사용 금지(Pregnant) 플래그를 매우 강력히 적용함.",
+      "lastUpdated": "2026-04-22"
+    }
+  },
+  {
+    "id": "bs_v1_011",
+    "canonical": {
+      "nameKo": "조밍고 핸드메이드 샤워 스티머",
+      "brand": "Jomingo",
+      "category": "bath_item",
+      "mechanism": "aromatic",
+      "priceTier": "mid"
+    },
+    "listing": {
+      "market": "naver_smartstore",
+      "sourceUrl": null,
+      "snapshot": {
+        "seller": null,
+        "price": 19000,
+        "currency": "KRW",
+        "availability": "unknown"
+      },
+      "sourceConfidence": 0.5
+    },
+    "curation": {
+      "routineFit": [
+        "shower_aromatherapy",
+        "morning_vitality"
+      ],
+      "modeBias": [
+        "reset",
+        "trip"
+      ],
+      "priorityWeight": 65,
+      "sommelierPick": false
+    },
+    "appCopy": {
+      "summary": "증기와 함께 피어오르는 나만의 프라이빗 아로마 사우나",
+      "eyebrow": "STEAM AROMATHERAPY",
+      "routineDescription": "샤워기 물줄기가 닿지 않는 바닥에 놓아두면, 뜨거운 수증기와 결합된 유기농 에센셜 오일이 샤워 부스 전체를 싱그러운 스파 공간으로 탈바꿈시킵니다.",
+      "footerHint": "바닥의 배수구 근처나 직접적인 물줄기를 피해 놓아두면 발향이 오래 지속됩니다.",
+      "tags": [
+        "샤워스티머",
+        "아로마",
+        "활력",
+        "아침샤워"
+      ]
+    },
+    "safetyReview": {
+      "flags": [
+        "pregnant"
+      ],
+      "pregnancyNote": "포함된 로즈마리 에센셜 오일은 자궁 자극 가능성이 보고된 성분이므로 임신 중 발향 증기를 강하게 흡입하는 것을 피해야 합니다.",
+      "sensitiveSkinNote": "직접 피부에 닿는 제품이 아니나, 발 밑의 고농축 오일 잔여물에 맨발이 닿지 않도록 주의하세요."
+    },
+    "metadata": {
+      "sourceType": "document",
+      "referenceUrls":,
+      "curatorNotes": "샤워 환경을 위한 대체재. 스키마 가이드의 `shower_steamer` 룰을 적용하여 `aromatic` 매커니즘 부여. 해외 가격 $14 기반 한화 추정.",
+      "lastUpdated": "2026-04-22"
+    }
+  }
+]

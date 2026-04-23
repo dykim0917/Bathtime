@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
     color: V2_DANGER,
     letterSpacing: luxuryTracking.label,
     fontFamily: luxuryFonts.sans,
-    fontWeight: '800',
+    fontWeight: '700',
   },
   warningLead: {
     fontSize: 14,

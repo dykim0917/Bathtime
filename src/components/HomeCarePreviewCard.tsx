@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
     backgroundColor: V2_ACCENT_SOFT,
     borderWidth: 1,
     borderColor: 'rgba(215, 168, 94, 0.3)',
-    fontWeight: '800',
+    fontWeight: '700',
     fontFamily: luxuryFonts.sans,
   },
   title: {

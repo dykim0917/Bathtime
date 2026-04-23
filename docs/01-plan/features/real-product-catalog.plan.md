@@ -17,7 +17,7 @@
 현재 Product 탭과 추천 모달은 내부 mock 카탈로그를 기준으로 동작한다. 이를 실제 판매 상품 기준으로 전환하되, 마켓 링크가 바뀌더라도 추천 엔진과 UI 식별자가 흔들리지 않도록 다음 3개 레이어로 분리한다.
 
 - `canonical_product`: 서비스 내부 기준의 정규 상품
-- `product_market_listing`: 쿠팡/네이버 등 판매 링크 snapshot
+- `product_market_listing`: 쿠팡/네이버/컬리/올리브영/공식몰 등 판매 링크 snapshot
 - `product_match_rule`: 추천 엔진이 어떤 상품을 어느 상황에 연결할지 정의
 
 ### 1.2 Why This Structure
@@ -56,7 +56,7 @@
 
 | column | type | note |
 |---|---|---|
-| `id` | text pk | 예: `p_lavender_eo` |
+| `id` | text pk | 예: `bs_v1_003` |
 | `ingredient_key` | text | 현재 엔진 ingredient id와 연결 |
 | `name_ko` | text | 사용자 노출명 |
 | `brand` | text | 브랜드 |
@@ -79,9 +79,9 @@
 
 | column | type | note |
 |---|---|---|
-| `id` | text pk | 예: `listing_coupang_p_lavender_eo_01` |
+| `id` | text pk | 예: `listing_danawa_bs_v1_003_01` |
 | `canonical_product_id` | text fk | `canonical_product.id` |
-| `market` | text | `coupang`, `naver_smartstore` |
+| `market` | text | `coupang`, `naver_smartstore`, `kurly`, `oliveyoung`, `official_store`, `danawa`, `other` |
 | `source_url` | text | 실제 상품 URL |
 | `title_snapshot` | text | 확인 시점의 상품명 |
 | `seller_snapshot` | text nullable | 확인 가능 시 판매자명 |
@@ -98,7 +98,7 @@
 
 | column | type | note |
 |---|---|---|
-| `id` | text pk | 예: `rule_p_epsom_salt` |
+| `id` | text pk | 예: `rule_bs_v1_020` |
 | `canonical_product_id` | text fk | `canonical_product.id` |
 | `ingredient_keys` | json/text[] | 현재 recommendation ingredient id |
 | `allowed_environments` | json/text[] | `bathtub`, `shower` |
@@ -125,24 +125,45 @@
 - 용량/구성이 지나치게 특이한 상품은 보조 후보로만 유지
 - 국내 구매 난이도가 낮은 링크 우선
 - 브랜드 인지도가 있거나 재검색 가능한 상품 우선
+- 큐레이터/제휴 링크 발급이 가능한 마켓 우선
+- 브랜드 톤과 제품 품질이 맞는 경우 컬리, 올리브영, 공식몰도 적극 허용
 
-### 4.3 Market Policy Note
+### 4.3 Link Policy
+
+`source_url`은 사용자가 구매 행동을 이어갈 수 있는 URL이어야 한다.
+
+우선순위:
+
+1. 큐레이터/제휴 링크 발급 가능한 상품 URL
+2. 직접 구매 가능한 마켓 상품 URL
+3. 공식 브랜드몰 상품 URL
+4. 가격비교/검색 URL
+5. 리뷰/기사/문서 출처 URL
+
+운영 규칙:
+
+- `kurly`, `oliveyoung`, `official_store`는 수익화 또는 브랜드 적합성이 있으면 primary listing 후보로 허용한다.
+- `danawa`는 상품 확인과 가격 비교에는 유용하지만, 직접 구매 URL이 따로 있으면 primary listing에서 후순위다.
+- `glowpick`, 블로그, 기사, 리서치 문서는 구매 링크가 아니라 검증 source로만 기록한다.
+- placeholder URL이나 검색 URL만 있는 제품은 `hold` 상태로 두고, 실제 상품 URL을 확보한 뒤 `ready`로 승격한다.
+
+### 4.4 Market Policy Note
 
 - 2026-04-07 기준 이 세션에서는 SmartStore 일부 페이지가 robots 정책으로 직접 열리지 않았다.
-- 따라서 v1 seed는 쿠팡 snapshot 중심으로 시작하고, SmartStore는 동일 schema의 빈 슬롯을 유지한다.
+- 따라서 초기 seed는 쿠팡 snapshot 중심으로 시작했지만, 이후 수익화 채널 검토 결과 컬리, 올리브영, 공식몰도 허용한다.
 
 ---
 
-## 5. Sample Seed Candidates
+## 5. Curated Seed Candidates
 
-아래는 2026-04-07 기준 확인 가능한 샘플이다. 가격과 재고는 snapshot 값이므로 이후 바뀔 수 있다.
+아래는 2026-04-22 기준 앱 카탈로그로 변환된 큐레이션 seed 일부다. 가격과 재고는 snapshot 값이므로 이후 바뀔 수 있다.
 
 | canonical_product_id | market | title snapshot | availability | source |
 |---|---|---|---|---|
-| `p_lavender_eo` | coupang | 리비네이처 아로마 에센셜 오일 라벤더, 10ml, 1개 | `active` | [쿠팡](https://www.coupang.com/vp/products/6217087830) |
-| `p_epsom_salt` | coupang | 노템바이오 Nortembio 엡솜 솔트 3kg 천연 마그네슘 입욕제, 3kg, 1개 | `active` | [쿠팡](https://www.coupang.com/vp/products/7377732790) |
-| `p_shower_steamer` | coupang | Body Re 샤워 스티머 아로마테라피 입욕제 6팩 | `active` | [쿠팡](https://www.coupang.com/vp/products/9215967283) |
-| `p_relaxing_body_wash` | coupang | 해피바스 라벤더 에센스 릴랙싱 바디워시 허브향, 900g, 1개 | `active` | [쿠팡](https://www.coupang.com/vp/products/202875994) |
+| `bs_v1_003` | danawa | 바스로망 밀크 프로테인 | `active` | [다나와](https://prod.danawa.com/info/?pcode=30478328) |
+| `bs_v1_005` | naver_smartstore | BARTH 바스 중성 중탄산 입욕제 90정 | `unknown` | [몰패스스토어](https://shop.mallpass.co.kr/mall/view/goodsNo/20938948) |
+| `bs_v1_014` | kurly | 아로마티카 멜로우니스 오일 인 바디워시 메그놀리아&샌달우드 | `active` | [컬리](https://www.kurly.com/goods/1000332767) |
+| `bs_v1_021` | oliveyoung | 아로마티카 어웨이크닝 바디워시 페퍼민트&유칼립투스 300ml | `active` | [올리브영](https://m.oliveyoung.co.kr/m/G.do?goodsNo=A000000229545) |
 
 추가로 후보성 링크로 볼 만한 항목:
 

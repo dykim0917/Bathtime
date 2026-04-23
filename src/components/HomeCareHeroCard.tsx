@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
   heroBadge: {
     color: V2_ACCENT,
     fontSize: TYPE_CAPTION - 1,
-    fontWeight: '800',
+    fontWeight: '700',
     letterSpacing: luxuryTracking.eyebrow,
     fontFamily: luxuryFonts.sans,
   },
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
   safetyBadge: {
     color: V2_WARNING,
     fontSize: TYPE_CAPTION - 1,
-    fontWeight: '800',
+    fontWeight: '700',
     paddingHorizontal: 8,
     paddingVertical: 4,
     borderRadius: 999,

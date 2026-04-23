@@ -42,6 +42,14 @@ const baseRecommendation: BathRecommendation = {
       contraindications: [],
       purchaseUrl: 'https://example.com/shower-steamer',
     },
+    {
+      id: 'body_wash_relaxing',
+      nameKo: '릴랙싱 바디워시',
+      nameEn: 'Relaxing Body Wash',
+      description: '샤워 바디케어',
+      contraindications: [],
+      purchaseUrl: 'https://example.com/body-wash',
+    },
   ],
   music: {
     id: 'm1',
@@ -67,28 +75,59 @@ const baseRecommendation: BathRecommendation = {
 describe('productMatching', () => {
   test('builds three slots with sommelier pick in slot A', () => {
     const slots = buildProductMatchingSlots(baseRecommendation, 'bathtub');
+    const productSlots = slots.filter((slot) => slot.kind === 'product');
 
     expect(slots).toHaveLength(3);
-    expect(slots[0].slot).toBe('A');
-    expect(slots[0].sommelierPick).toBe(true);
-    expect(slots[0].product.id).toBe('p_epsom_salt');
-    expect(slots[1].slot).toBe('B');
-    expect(slots[2].slot).toBe('C');
-    expect(slots.every((slot) => slot.product.ingredientKeys.includes(slot.ingredient.id))).toBe(true);
+    expect(productSlots[0].slot).toBe('A');
+    expect(productSlots[0].sommelierPick).toBe(true);
+    expect(productSlots[0].product.id).toBe('bs_v1_020');
+    expect(productSlots[1].slot).toBe('B');
+    expect(productSlots[2].slot).toBe('C');
+    expect(
+      productSlots.every((slot) => slot.product.ingredientKeys.includes(slot.ingredient.id))
+    ).toBe(true);
   });
 
   test('filters incompatible shower products for bathtub', () => {
     const slots = buildProductMatchingSlots(baseRecommendation, 'bathtub');
-    expect(slots.some((slot) => slot.product.id === 'p_shower_steamer')).toBe(false);
+    expect(
+      slots.some((slot) => slot.kind === 'product' && slot.product.environments.includes('shower'))
+    ).toBe(false);
   });
 
   test('uses shower-compatible products in shower environment', () => {
     const slots = buildProductMatchingSlots(baseRecommendation, 'shower');
-    expect(
-      slots.every((slot) =>
-        ['p_shower_steamer', 'p_carbonated_bath'].includes(slot.product.id)
-      )
-    ).toBe(true);
-    expect(slots.every((slot) => slot.product.environments.includes('shower'))).toBe(true);
+    const productSlots = slots.filter((slot) => slot.kind === 'product');
+
+    expect(slots).toHaveLength(3);
+    expect(productSlots.every((slot) => slot.product.id.startsWith('bs_v1_'))).toBe(true);
+    expect(productSlots.every((slot) => slot.product.environments.includes('shower'))).toBe(true);
+  });
+
+  test('does not duplicate the same product to fill sparse routines', () => {
+    const slots = buildProductMatchingSlots(
+      {
+        ...baseRecommendation,
+        mode: 'trip',
+        ingredients: [
+          {
+            id: 'hinoki_oil',
+            nameKo: '히노끼',
+            nameEn: 'Hinoki',
+            description: '숲 향',
+            contraindications: [],
+            purchaseUrl: 'https://example.com/hinoki',
+          },
+        ],
+      },
+      'bathtub'
+    );
+    const productSlots = slots.filter((slot) => slot.kind === 'product');
+    const guideSlots = slots.filter((slot) => slot.kind === 'guide');
+
+    expect(slots).toHaveLength(3);
+    expect(productSlots).toHaveLength(1);
+    expect(guideSlots).toHaveLength(2);
+    expect(new Set(productSlots.map((slot) => slot.product.id)).size).toBe(productSlots.length);
   });
 });

@@ -35,19 +35,19 @@ npm run catalog:research
 브라우저 collector:
 
 ```bash
-npm run catalog:collect:browser -- --canonical-product-id p_shower_steamer --market coupang --limit 3
+npm run catalog:collect:browser -- --canonical-product-id bs_v1_021 --market oliveyoung --limit 3
 ```
 
 브라우저 수동 보조 모드:
 
 ```bash
-npm run catalog:collect:browser -- --canonical-product-id p_shower_steamer --market coupang --limit 3 --manual
+npm run catalog:collect:browser -- --canonical-product-id bs_v1_021 --market oliveyoung --limit 3 --manual
 ```
 
 특정 제품만 재조사:
 
 ```bash
-npm run catalog:research -- --canonical-product-id p_shower_steamer
+npm run catalog:research -- --canonical-product-id bs_v1_021
 ```
 
 새 쿼리로 ad-hoc 조사:
@@ -65,7 +65,7 @@ npm run catalog:proposal
 특정 후보 파일만 proposal로 변환:
 
 ```bash
-npm run catalog:proposal -- --file output/catalog-candidates/p_shower_steamer.json
+npm run catalog:proposal -- --file output/catalog-candidates/bs_v1_021.json
 ```
 
 ## 4. Output Contracts
@@ -108,5 +108,5 @@ v1이 안정화되면 다음 순서가 가장 자연스럽다.
 현재 repo에는 이 collector의 CLI 초안이 이미 있다.
 
 - [`/Users/exem/DK/BathSommelier/scripts/catalog_browser_collector.mjs`](/Users/exem/DK/BathSommelier/scripts/catalog_browser_collector.mjs)
-- 실행: `npm run catalog:collect:browser -- --canonical-product-id p_shower_steamer --market coupang --limit 3`
+- 실행: `npm run catalog:collect:browser -- --canonical-product-id bs_v1_021 --market oliveyoung --limit 3`
 - 자동화 차단이 심한 마켓에서는 `--manual`로 headed 브라우저를 열고 사람이 검색 결과를 정리한 뒤 계속 진행할 수 있다.

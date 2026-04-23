@@ -1,5 +1,6 @@
 import { BathEnvironment, HealthCondition } from '@/src/engine/types';
 import { INGREDIENTS } from '@/src/data/ingredients';
+import { getProductImagePath } from '@/src/data/productImages';
 import {
   CANONICAL_PRODUCT_SEED_V1,
   PRODUCT_MARKET_LISTING_SEED_V1,
@@ -39,6 +40,9 @@ export interface CatalogProduct {
   safetyFlags: HealthCondition[];
   mechanism: ProductMechanism;
   priceTier: ProductPriceTier;
+  priorityWeight: number;
+  sommelierPickCandidate: boolean;
+  imagePath: string;
   purchaseUrl?: string;
   editorial: {
     eyebrow: string;
@@ -60,70 +64,55 @@ interface CatalogPresentationMetadata {
 }
 
 const PRESENTATION_METADATA: Record<string, CatalogPresentationMetadata> = {
-  p_lavender_eo: {
-    tags: ['수면', '이완', '스트레스'],
-    emoji: 'LV',
-    bgColor: '#E8E1F9',
+  bs_v1_003: {
+    tags: ['보습', '우유단백질', '데일리'],
+    emoji: 'BR',
+    bgColor: '#EADBCB',
   },
-  p_marjoram_eo: {
-    tags: ['이완', '혈압안정', '근육'],
-    emoji: 'MJ',
-    bgColor: '#DDE7CF',
+  bs_v1_005: {
+    tags: ['중탄산', '무향', '기포감'],
+    emoji: 'BT',
+    bgColor: '#D9E5EA',
   },
-  p_carbonated_bath: {
-    tags: ['순환', '리셋', '탄산'],
-    emoji: 'CB',
-    bgColor: '#C9D9F7',
+  bs_v1_006: {
+    tags: ['라벤더', '발포', '반신욕'],
+    emoji: 'KB',
+    bgColor: '#DED7F0',
   },
-  p_grapefruit_eo: {
-    tags: ['부종', '순환', '기분전환'],
-    emoji: 'GF',
-    bgColor: '#F7D7A4',
+  bs_v1_007: {
+    tags: ['라벤더', '마조람', '저녁샤워'],
+    emoji: 'AS',
+    bgColor: '#D8E3D4',
   },
-  p_epsom_salt: {
-    tags: ['근육통', '회복', '마그네슘'],
-    emoji: 'EP',
-    bgColor: '#B5D5C0',
-  },
-  p_peppermint_eo: {
-    tags: ['두통', '피로', '집중'],
-    emoji: 'PM',
-    bgColor: '#D8ECDE',
-  },
-  p_hinoki_eo: {
-    tags: ['삼림욕', '안정', '수면'],
+  bs_v1_009: {
+    tags: ['히노끼', '편백향', '숲느낌'],
     emoji: 'HK',
     bgColor: '#D7E1C3',
   },
-  p_rosemary_eo: {
-    tags: ['순환', '근육', '활력'],
-    emoji: 'RS',
-    bgColor: '#DCE6F8',
+  bs_v1_013: {
+    tags: ['엠버', '허브향', '따뜻한잔향'],
+    emoji: 'RB',
+    bgColor: '#E3D6C9',
   },
-  p_clary_sage_eo: {
-    tags: ['생리통', '안정', '밸런스'],
-    emoji: 'CS',
-    bgColor: '#E7D8D0',
+  bs_v1_014: {
+    tags: ['매그놀리아', '샌달우드', '부드러운향'],
+    emoji: 'AM',
+    bgColor: '#E5D9D4',
   },
-  p_eucalyptus_eo: {
-    tags: ['호흡', '감기', '집중'],
-    emoji: 'EU',
-    bgColor: '#D8ECDE',
+  bs_v1_016: {
+    tags: ['천일염', '무향', '족욕'],
+    emoji: 'BP',
+    bgColor: '#D8E6E2',
   },
-  p_chamomile_oil: {
-    tags: ['진정', '민감피부', '수면'],
-    emoji: 'CM',
-    bgColor: '#F5E5A3',
+  bs_v1_020: {
+    tags: ['밀크앤허니', '마그네슘', '엡섬솔트'],
+    emoji: 'DT',
+    bgColor: '#F0DFC8',
   },
-  p_shower_steamer: {
-    tags: ['샤워', '아로마', '리프레시'],
-    emoji: 'SH',
-    bgColor: '#CFE2F3',
-  },
-  p_relaxing_body_wash: {
-    tags: ['샤워', '바디케어', '릴랙스'],
-    emoji: 'BW',
-    bgColor: '#DCCFEB',
+  bs_v1_021: {
+    tags: ['페퍼민트', '유칼립투스', '아침샤워'],
+    emoji: 'AW',
+    bgColor: '#D6E9E3',
   },
 };
 
@@ -210,9 +199,17 @@ export function buildCatalogProducts(bundle: {
         emoji: presentation.emoji,
         bgColor: presentation.bgColor,
         environments: product.environments,
-        safetyFlags: ingredient.contraindications,
+        safetyFlags: [
+          ...new Set([
+            ...ingredient.contraindications,
+            ...(product.safetyFlags ?? []).filter((flag) => flag !== 'none'),
+          ]),
+        ],
         mechanism: product.mechanism,
         priceTier: product.priceTier,
+        priorityWeight: rule.priorityWeight,
+        sommelierPickCandidate: rule.isSommelierPickCandidate,
+        imagePath: getProductImagePath(product.id),
         purchaseUrl: primaryListing?.sourceUrl ?? ingredient.purchaseUrl,
         editorial: {
           eyebrow: product.editorialEyebrow,
@@ -283,12 +280,34 @@ export function getCatalogProductForIngredient(
   ingredientId: string,
   environment: BathEnvironment
 ): CatalogProduct | undefined {
+  return getCatalogProductsForIngredient(ingredientId, environment)[0];
+}
+
+export function getCatalogProductsForIngredient(
+  ingredientId: string,
+  environment: BathEnvironment
+): CatalogProduct[] {
   const normalizedEnvironment: ProductEnvironment =
     environment === 'shower' ? 'shower' : 'bathtub';
 
-  return getProductCatalog().find(
-    (item) =>
+  return getProductCatalog()
+    .filter(
+      (item) =>
       item.ingredientKeys.includes(ingredientId) &&
       item.environments.includes(normalizedEnvironment)
-  );
+    )
+    .sort((a, b) => {
+      const beginnerDelta =
+        Number(isBeginnerFriendlyProduct(b)) - Number(isBeginnerFriendlyProduct(a));
+      if (beginnerDelta !== 0) return beginnerDelta;
+
+      const priorityDelta = b.priorityWeight - a.priorityWeight;
+      if (priorityDelta !== 0) return priorityDelta;
+
+      const pickDelta =
+        Number(b.sommelierPickCandidate) - Number(a.sommelierPickCandidate);
+      if (pickDelta !== 0) return pickDelta;
+
+      return a.name.localeCompare(b.name, 'ko');
+    });
 }

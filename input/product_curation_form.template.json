@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "bath-sommelier.product-curation-form.v1",
+  "instructions": {
+    "purpose": "Fill this file with product candidates that can be mapped into Bath Sommelier catalog.v1.",
+    "scope": "For now, collect only bath_salt, bath_item, and body_wash. Hold massage bars, body oils, sauna oils, and standalone essential oils for a later body-care phase.",
+    "dateFormat": "Use YYYY-MM-DD.",
+    "unknownValues": "Use null when unknown. Use availability: unknown when a listing page exists but stock is unclear.",
+    "copyPolicy": "Do not paste medical or therapeutic claims into appCopy. Rewrite as routine-context language.",
+    "marketPolicy": "Use listing.sourceUrl only for direct purchase or affiliate-ready product pages. Put reviews, comparison pages, articles, and source documents in sourceNotes.sourceRefs."
+  },
+  "allowedValues": {
+    "category": ["bath_salt", "bath_item", "body_wash"],
+    "mechanism": ["aromatic", "magnesium", "bicarbonate", "neutral"],
+    "priceTier": ["low", "mid", "high"],
+    "environment": ["bathtub", "shower"],
+    "market": ["coupang", "naver_smartstore", "kurly", "oliveyoung", "official_store", "danawa", "other"],
+    "availability": ["active", "low_stock", "out_of_stock", "unknown"],
+    "modeBias": ["care", "trip", "sleep", "recovery", "reset"],
+    "safetyFlags": ["hypertension_heart", "pregnant", "diabetes", "sensitive_skin", "none"],
+    "status": ["candidate", "ready", "hold", "reject"]
+  },
+  "ingredientKeyGuide": {
+    "epsom_salt": "Epsom salt or magnesium sulfate bath salt for muscle/recovery routines.",
+    "carbonated_bath": "Carbonated or bicarbonate bath tablets/powder for reset/circulation-style routines.",
+    "shower_steamer": "Aromatherapy shower steamer used only in shower routines.",
+    "body_wash_relaxing": "Relaxing body wash used in shower routines.",
+    "hinoki_oil": "Only use for finished bath/shower products whose main theme is hinoki/cypress. Avoid standalone essential oil in this phase.",
+    "chamomile_oil": "Only use for finished bath/shower products whose main theme is chamomile. Avoid standalone essential oil in this phase.",
+    "eucalyptus_oil": "Only use for finished bath/shower products whose main theme is eucalyptus. Avoid standalone essential oil in this phase.",
+    "grapefruit_oil": "Only use for finished bath/shower products whose main theme is citrus/grapefruit. Avoid standalone essential oil in this phase."
+  },
+  "products": [
+    {
+      "status": "candidate",
+      "canonical": {
+        "proposedId": "p_example_epsom_salt",
+        "nameKo": "예시 엡솜 솔트",
+        "brand": "예시 브랜드",
+        "category": "bath_salt",
+        "ingredientKey": "epsom_salt",
+        "mechanism": "magnesium",
+        "priceTier": "mid",
+        "environments": ["bathtub"],
+        "lastVerifiedAt": "2026-04-22"
+      },
+      "listing": {
+        "market": "coupang",
+        "sourceUrl": "https://example.com/product",
+        "titleSnapshot": "마켓에 보이는 전체 상품명",
+        "sellerSnapshot": "판매자명 또는 브랜드 공식몰",
+        "priceSnapshotKrw": 12000,
+        "availability": "active",
+        "verifiedAt": "2026-04-22",
+        "sourceConfidence": 0.9
+      },
+      "curation": {
+        "routineFit": {
+          "careIntents": ["muscle_relief"],
+          "tripThemes": [],
+          "modeBias": ["care", "recovery"],
+          "allowedEnvironments": ["bathtub"],
+          "priorityWeight": 90,
+          "isSommelierPickCandidate": true
+        },
+        "appCopy": {
+          "summary": "근육 회복 루틴에서 쓰기 쉬운 마그네슘 계열 입욕제",
+          "editorialEyebrow": "RECOVERY CORE",
+          "editorialFooterHint": "운동 후 회복 루틴의 기본 후보로 검토하기 좋은 제품",
+          "tags": ["근육", "회복", "마그네슘"]
+        },
+        "safetyReview": {
+          "safetyFlags": ["none"],
+          "pregnancyNote": "전성분 기준 특별 금기 성분 없음. 단, 고온 장시간 입욕은 피하는 카피 필요.",
+          "sensitiveSkinNote": "향료/색소 여부 확인 필요.",
+          "avoidReason": null
+        },
+        "sourceNotes": {
+          "sourceType": "market_page",
+          "sourceRefs": ["마켓 상품 페이지"],
+          "rawClaimSnapshot": "상품 상세의 효능 문구는 내부 검수용으로만 기록",
+          "reviewNotes": "용량, 옵션형 여부, 공식/병행수입 여부 확인"
+        }
+      }
+    }
+  ]
+}

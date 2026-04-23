@@ -57,18 +57,12 @@ export const copy = {
     },
   },
   product: {
-    title: '준비물로 볼 제품',
-    subtitle: '이번 루틴 준비물 카테고리 안에서 고르기 쉬운 제품이에요',
-    slotTitle: {
-      A: '대표 준비물',
-      B: '비슷한 대안',
-      C: '다른 선택지',
-    },
-    pickBadge: '추천 픽',
-    labels: {
-      mechanism: '추천 이유',
-      priceTier: '가격대',
-    },
+    title: '루틴에 더할 제품',
+    subtitle: '오늘 루틴에 맞춰 바로 보기 좋은 제품만 골랐어요',
+    primarySectionTitle: '먼저 보기 좋은 제품',
+    alternativeSectionTitle: '비슷하게 볼 제품',
+    guideSectionTitle: '함께 찾기 좋은 제품군',
+    pickBadge: 'BEST 추천',
     cta: {
       detail: '제품 보기',
       purchase: '구매 링크',
