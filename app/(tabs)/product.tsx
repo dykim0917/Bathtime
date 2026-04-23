@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Pressable, ScrollView, StyleSheet, Alert } from 'react-native';
+import { View, Text, Pressable, ScrollView, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useLocalSearchParams } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { AppAlertDialog } from '@/src/components/AppAlertDialog';
 import { ProductCard } from '@/src/components/ProductCard';
 import { ProductDetailModal } from '@/src/components/ProductDetailModal';
 import {
@@ -43,6 +44,7 @@ export default function ProductScreen() {
   const initialCategory = highlightedProduct?.category ?? 'all';
   const [activeCategory, setActiveCategory] = useState<ProductCategory>(initialCategory);
   const [selectedProduct, setSelectedProduct] = useState<CatalogProduct | null>(null);
+  const [alertDialog, setAlertDialog] = useState<{ title: string; body: string } | null>(null);
   const insets = useSafeAreaInsets();
   const categoryItems =
     activeCategory === 'all'
@@ -64,13 +66,19 @@ export default function ProductScreen() {
 
   const handleProductPurchase = async (product: CatalogProduct) => {
     if (!product.purchaseUrl) {
-      Alert.alert(copy.alerts.purchaseUnavailableTitle, copy.alerts.purchaseUnavailableBody);
+      setAlertDialog({
+        title: copy.alerts.purchaseUnavailableTitle,
+        body: copy.alerts.purchaseUnavailableBody,
+      });
       return;
     }
 
     const didOpen = await openExternalUrl(product.purchaseUrl);
     if (!didOpen) {
-      Alert.alert(copy.alerts.openLinkFailedTitle, copy.alerts.openLinkFailedBody);
+      setAlertDialog({
+        title: copy.alerts.openLinkFailedTitle,
+        body: copy.alerts.openLinkFailedBody,
+      });
     }
   };
 
@@ -141,6 +149,14 @@ export default function ProductScreen() {
         onClose={() => setSelectedProduct(null)}
         onPurchasePress={handleProductPurchase}
         closeActionLabel="제품 목록으로 돌아가기"
+      />
+      <AppAlertDialog
+        visible={alertDialog !== null}
+        title={alertDialog?.title ?? ''}
+        body={alertDialog?.body ?? ''}
+        onClose={() => setAlertDialog(null)}
+        eyebrow="SHOP"
+        iconName="shopping-bag"
       />
     </View>
   );

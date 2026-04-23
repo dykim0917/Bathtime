@@ -7,7 +7,6 @@ import {
   ScrollView,
   StyleSheet,
   TouchableOpacity,
-  Alert,
   useWindowDimensions,
   Platform,
 } from 'react-native';
@@ -29,6 +28,7 @@ import { useHaptic } from '@/src/hooks/useHaptic';
 import { OpenTabHeader } from '@/src/components/OpenTabHeader';
 import { PersistentDisclosure } from '@/src/components/PersistentDisclosure';
 import { AnimatedModalShell } from '@/src/components/AnimatedModalShell';
+import { AppAlertDialog } from '@/src/components/AppAlertDialog';
 import {
   TYPE_BODY,
   TYPE_CAPTION,
@@ -75,14 +75,14 @@ const MODE_LABELS = {
 
 const ENV_LABELS_HISTORY = {
   bathtub: '욕조',
-  partial_bath: '부분입욕',
+  partial_bath: '족욕',
   footbath: '족욕',
   shower: '샤워',
 } as const;
 
 const ENV_LABELS_SETTINGS: Record<BathEnvironment, string> = {
   bathtub: '욕조',
-  partial_bath: '부분입욕',
+  partial_bath: '족욕',
   footbath: '족욕',
   shower: '샤워',
 };
@@ -380,6 +380,7 @@ function SettingsSection({
   const haptic = useHaptic();
   const [resetModalVisible, setResetModalVisible] = useState(false);
   const [isResetting, setIsResetting] = useState(false);
+  const [showResetErrorDialog, setShowResetErrorDialog] = useState(false);
   const showResetSection = false;
 
   useEffect(() => {
@@ -425,7 +426,7 @@ function SettingsSection({
       setResetModalVisible(false);
       router.replace({ pathname: '/onboarding', params: { allowBack: '1' } });
     } catch {
-      Alert.alert(copy.settings.resetErrorTitle, copy.settings.resetErrorBody);
+      setShowResetErrorDialog(true);
     } finally {
       setIsResetting(false);
     }
@@ -592,6 +593,15 @@ function SettingsSection({
           )}
         </AnimatedModalShell>
       ) : null}
+      <AppAlertDialog
+        visible={showResetErrorDialog}
+        title={copy.settings.resetErrorTitle}
+        body={copy.settings.resetErrorBody}
+        onClose={() => setShowResetErrorDialog(false)}
+        eyebrow="NOTICE"
+        iconName="exclamation-circle"
+        tone="danger"
+      />
     </View>
   );
 }

@@ -18,6 +18,7 @@ interface OpenTabHeaderProps {
   footerSlot?: ReactNode;
   style?: StyleProp<ViewStyle>;
   centered?: boolean;
+  compact?: boolean;
 }
 
 export function OpenTabHeader({
@@ -29,14 +30,15 @@ export function OpenTabHeader({
   footerSlot,
   style,
   centered = false,
+  compact = false,
 }: OpenTabHeaderProps) {
   return (
-    <View style={[styles.container, centered && styles.containerCentered, style]}>
+    <View style={[styles.container, compact && styles.containerCompact, centered && styles.containerCentered, style]}>
       {topSlot ? <View style={[styles.topSlot, centered && styles.slotCentered]}>{topSlot}</View> : null}
       {mediaSlot ? <View style={[styles.mediaSlot, centered && styles.slotCentered]}>{mediaSlot}</View> : null}
       {eyebrow ? <Text style={[styles.eyebrow, centered && styles.textCentered]}>{eyebrow}</Text> : null}
-      <Text style={[styles.title, centered && styles.textCentered]}>{title}</Text>
-      <Text style={[styles.subtitle, centered && styles.textCentered]}>{subtitle}</Text>
+      <Text style={[styles.title, compact && styles.titleCompact, centered && styles.textCentered]}>{title}</Text>
+      <Text style={[styles.subtitle, compact && styles.subtitleCompact, centered && styles.textCentered]}>{subtitle}</Text>
       {footerSlot ? <View style={[styles.footerSlot, centered && styles.slotCentered]}>{footerSlot}</View> : null}
     </View>
   );
@@ -45,6 +47,9 @@ export function OpenTabHeader({
 const styles = StyleSheet.create({
   container: {
     gap: 8,
+  },
+  containerCompact: {
+    gap: 5,
   },
   containerCentered: {
     alignItems: 'center',
@@ -72,11 +77,19 @@ const styles = StyleSheet.create({
     lineHeight: 38,
     fontFamily: luxuryFonts.display,
   },
+  titleCompact: {
+    fontSize: 24,
+    lineHeight: 28,
+  },
   subtitle: {
     color: V2_TEXT_SECONDARY,
     fontSize: TYPE_SCALE.body + 1,
     lineHeight: 23,
     fontFamily: luxuryFonts.sans,
+  },
+  subtitleCompact: {
+    fontSize: 13,
+    lineHeight: 18,
   },
   footerSlot: {
     marginTop: 2,

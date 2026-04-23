@@ -168,7 +168,7 @@ export const copy = {
     placeholderDisabled: '준비 중이에요',
     restrictedDisabled: '현재 환경에선 제한적으로 추천돼요',
     hangoverBlocked: '숙취 루틴은 전신 입욕 없이 미지근한 족욕만 가능해요.',
-    edemaBlocked: '붓기 루틴은 샤워보다 욕조나 부분입욕을 먼저 권장해요.',
+    edemaBlocked: '붓기 루틴은 샤워보다 욕조나 족욕을 먼저 권장해요.',
     sensitiveSkinBadge: '저자극 조정',
     sensitiveSkinAdjusted: '저자극 기준으로 자동 조정해요.',
   },

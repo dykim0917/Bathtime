@@ -22,7 +22,7 @@ export const CARE_INTENT_CARDS: IntentCard[] = [
     copy_subtitle_by_environment: {
       shower: '샤워 5분으로 가볍게 이완해요.',
       bathtub: '욕조 12분으로 깊게 풀어줘요.',
-      partial_bath: '부분입욕 10분으로 하체를 먼저 풀어요.',
+      partial_bath: '족욕 10분으로 하체를 먼저 풀어요.',
     },
     default_subprotocol_id: 'muscle_whole_body',
     card_position: 1,
@@ -37,7 +37,7 @@ export const CARE_INTENT_CARDS: IntentCard[] = [
     copy_subtitle_by_environment: {
       shower: '샤워 6분으로 잠들기 전 긴장을 낮춰요.',
       bathtub: '욕조 15분으로 수면 준비를 도와요.',
-      partial_bath: '부분입욕 10분으로 몸을 천천히 가라앉혀요.',
+      partial_bath: '족욕 10분으로 몸을 천천히 가라앉혀요.',
     },
     default_subprotocol_id: 'sleep_sensitive',
     card_position: 2,
@@ -65,9 +65,9 @@ export const CARE_INTENT_CARDS: IntentCard[] = [
     allowed_environments: ['partial_bath', 'bathtub'],
     copy_title: '붓기가 느껴질 때 해보세요',
     copy_subtitle_by_environment: {
-      shower: '샤워는 임시 대안이에요. 가능하면 욕조나 부분입욕으로 진행해요.',
+      shower: '샤워는 임시 대안이에요. 가능하면 욕조나 족욕으로 진행해요.',
       bathtub: '욕조 10분으로 붓기 완화에 먼저 집중해요.',
-      partial_bath: '부분입욕 12분으로 하체 붓기를 가볍게 풀어줘요.',
+      partial_bath: '족욕 12분으로 하체 붓기를 가볍게 풀어줘요.',
     },
     default_subprotocol_id: 'edema_lower',
     card_position: 4,
@@ -80,9 +80,9 @@ export const CARE_INTENT_CARDS: IntentCard[] = [
     allowed_environments: ['bathtub', 'partial_bath'],
     copy_title: '감기 기운이 느껴질 때',
     copy_subtitle_by_environment: {
-      shower: '샤워보다 욕조나 부분입욕을 권장해요.',
+      shower: '샤워보다 욕조나 족욕을 권장해요.',
       bathtub: '욕조 10분으로 몸을 따뜻하게 풀어요.',
-      partial_bath: '부분입욕 12분으로 몸을 천천히 덥혀요.',
+      partial_bath: '족욕 12분으로 몸을 천천히 덥혀요.',
     },
     default_subprotocol_id: 'cold_warm',
     card_position: 5,
@@ -95,9 +95,9 @@ export const CARE_INTENT_CARDS: IntentCard[] = [
     allowed_environments: ['bathtub', 'partial_bath'],
     copy_title: '생리통이 있을 때',
     copy_subtitle_by_environment: {
-      shower: '샤워보다 욕조나 부분입욕이 더 잘 맞아요.',
+      shower: '샤워보다 욕조나 족욕이 더 잘 맞아요.',
       bathtub: '욕조 12분으로 아랫배를 따뜻하게 풀어요.',
-      partial_bath: '부분입욕 15분으로 하체를 집중적으로 덥혀요.',
+      partial_bath: '족욕 15분으로 하체를 집중적으로 덥혀요.',
     },
     default_subprotocol_id: 'menstrual_warm',
     card_position: 6,
@@ -112,7 +112,7 @@ export const CARE_INTENT_CARDS: IntentCard[] = [
     copy_subtitle_by_environment: {
       shower: '샤워 6분으로 긴장을 빠르게 덜어내요.',
       bathtub: '욕조 12분으로 조금 더 천천히 내려놓아요.',
-      partial_bath: '부분입욕 10분으로 차분하게 전환해요.',
+      partial_bath: '족욕 10분으로 차분하게 전환해요.',
     },
     default_subprotocol_id: 'stress_deep',
     card_position: 7,
@@ -127,7 +127,7 @@ export const CARE_INTENT_CARDS: IntentCard[] = [
     copy_subtitle_by_environment: {
       shower: '샤워 5분으로 기분 리셋을 시작해요.',
       bathtub: '욕조 10분으로 기분을 부드럽게 들어올려요.',
-      partial_bath: '부분입욕 10분으로 기분 전환을 시작해요.',
+      partial_bath: '족욕 10분으로 기분 전환을 시작해요.',
     },
     default_subprotocol_id: 'mood_warm',
     card_position: 8,
@@ -145,7 +145,7 @@ const BASE_TRIP_INTENT_CARDS: IntentCard[] = [
     copy_subtitle_by_environment: {
       shower: '샤워 5분, 숲 분위기로 전환해요.',
       bathtub: '욕조 12분, 숲 분위기에 천천히 잠겨요.',
-      partial_bath: '부분입욕 10분, 잔잔하게 쉬어가요.',
+      partial_bath: '족욕 10분, 잔잔하게 쉬어가요.',
     },
     default_subprotocol_id: 'trip_kyoto_balanced',
     card_position: 1,
@@ -160,7 +160,7 @@ const BASE_TRIP_INTENT_CARDS: IntentCard[] = [
     copy_subtitle_by_environment: {
       shower: '샤워 6분, 사우나 무드를 가볍게 느껴요.',
       bathtub: '욕조 12분, 따뜻하게 몰입해요.',
-      partial_bath: '부분입욕 10분, 차분하게 전환해요.',
+      partial_bath: '족욕 10분, 차분하게 전환해요.',
     },
     default_subprotocol_id: 'trip_nordic_balanced',
     card_position: 2,
@@ -175,7 +175,7 @@ const BASE_TRIP_INTENT_CARDS: IntentCard[] = [
     copy_subtitle_by_environment: {
       shower: '샤워 5분, 빗소리 무드로 정리해요.',
       bathtub: '욕조 12분, 비 오는 캠핑 무드로 쉬어요.',
-      partial_bath: '부분입욕 10분, 차분하게 쉬어요.',
+      partial_bath: '족욕 10분, 차분하게 쉬어요.',
     },
     default_subprotocol_id: 'trip_rainy_balanced',
     card_position: 3,
@@ -190,7 +190,7 @@ const BASE_TRIP_INTENT_CARDS: IntentCard[] = [
     copy_subtitle_by_environment: {
       shower: '샤워 5분, 부드럽게 마무리해요.',
       bathtub: '욕조 12분, 포근하게 정리해요.',
-      partial_bath: '부분입욕 10분, 잔잔하게 하루를 마무리해요.',
+      partial_bath: '족욕 10분, 잔잔하게 하루를 마무리해요.',
     },
     default_subprotocol_id: 'trip_snow_balanced',
     card_position: 4,
@@ -550,7 +550,7 @@ export function getEnvironmentSubtitle(
 
 const ENV_LABEL: Record<CanonicalBathEnvironment, string> = {
   bathtub: '욕조',
-  partial_bath: '부분입욕',
+  partial_bath: '족욕',
   shower: '샤워',
 };
 

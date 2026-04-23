@@ -104,7 +104,7 @@ export const GENERATED_TRIP_INTENT_CARDS: IntentCard[] = [
     copy_subtitle_by_environment: {
       shower: '샤워 5분, 푸른 항만 무드로 정리해요.',
       bathtub: '욕조 12분, 항만의 고요에 천천히 잠겨요.',
-      partial_bath: '부분입욕 10분, 차분하게 전환해요.',
+      partial_bath: '족욕 10분, 차분하게 전환해요.',
     },
     default_subprotocol_id: 'trip_busan_balanced',
     card_position: 5,
@@ -119,7 +119,7 @@ export const GENERATED_TRIP_INTENT_CARDS: IntentCard[] = [
     copy_subtitle_by_environment: {
       shower: '샤워 5분, 비 머금은 정원 무드로 전환해요.',
       bathtub: '욕조 12분, 조용한 교토 정원에 머물러요.',
-      partial_bath: '부분입욕 10분, 잔잔하게 가라앉아요.',
+      partial_bath: '족욕 10분, 잔잔하게 가라앉아요.',
     },
     default_subprotocol_id: 'trip_moss_balanced',
     card_position: 6,
@@ -134,7 +134,7 @@ export const GENERATED_TRIP_INTENT_CARDS: IntentCard[] = [
     copy_subtitle_by_environment: {
       shower: '샤워 5분, 차분하게 하루를 낮춰요.',
       bathtub: '욕조 12분, 겨울 정적에 포근히 머물러요.',
-      partial_bath: '부분입욕 10분, 잔잔하게 마무리해요.',
+      partial_bath: '족욕 10분, 잔잔하게 마무리해요.',
     },
     default_subprotocol_id: 'trip_sapporo_balanced',
     card_position: 7,
@@ -149,7 +149,7 @@ export const GENERATED_TRIP_INTENT_CARDS: IntentCard[] = [
     copy_subtitle_by_environment: {
       shower: '샤워 5분, 젖은 간판빛 무드로 선명하게 정리해요.',
       bathtub: '욕조 10분, 도시의 잔광에 천천히 잠겨요.',
-      partial_bath: '부분입욕 8분, 짧고 차분하게 전환해요.',
+      partial_bath: '족욕 8분, 짧고 차분하게 전환해요.',
     },
     default_subprotocol_id: 'trip_seoul_balanced',
     card_position: 8,
@@ -164,7 +164,7 @@ export const GENERATED_TRIP_INTENT_CARDS: IntentCard[] = [
     copy_subtitle_by_environment: {
       shower: '샤워 5분, 따뜻한 실내 무드로 정리해요.',
       bathtub: '욕조 14분, 벽난로 잔광 속에 깊게 머물러요.',
-      partial_bath: '부분입욕 10분, 포근하게 쉬어가요.',
+      partial_bath: '족욕 10분, 포근하게 쉬어가요.',
     },
     default_subprotocol_id: 'trip_fireside_balanced',
     card_position: 9,
@@ -179,7 +179,7 @@ export const GENERATED_TRIP_INTENT_CARDS: IntentCard[] = [
     copy_subtitle_by_environment: {
       shower: '샤워 5분, 빗소리와 랜턴 무드로 정리해요.',
       bathtub: '욕조 10분, 젖은 숲가 분위기에 천천히 머물러요.',
-      partial_bath: '부분입욕 10분, 빗속 캠핑 감성으로 쉬어요.',
+      partial_bath: '족욕 10분, 빗속 캠핑 감성으로 쉬어요.',
     },
     default_subprotocol_id: 'trip_karuizawa_balanced',
     card_position: 10,

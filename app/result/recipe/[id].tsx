@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
-import { Alert, Animated as RNAnimated, ImageBackground, View, Text, Pressable, StyleSheet } from 'react-native';
+import { Animated as RNAnimated, ImageBackground, View, Text, Pressable, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { useLocalSearchParams, router } from 'expo-router';
@@ -9,6 +9,7 @@ import { BathRecommendation } from '@/src/engine/types';
 import { PERSONA_DEFINITIONS } from '@/src/engine/personas';
 import { getRecommendationById } from '@/src/storage/history';
 import { copy } from '@/src/content/copy';
+import { AppAlertDialog } from '@/src/components/AppAlertDialog';
 import { ProductMatchingModal } from '@/src/components/ProductMatchingModal';
 import { ProductDetailModal } from '@/src/components/ProductDetailModal';
 import { ProductMatchItem, buildProductMatchingSlots } from '@/src/engine/productMatching';
@@ -32,7 +33,7 @@ import { ui } from '@/src/theme/ui';
 import { openExternalUrl } from '@/src/utils/externalLinks';
 
 const BATH_TYPE_LABELS: Record<string, string> = { full: '전신욕', half: '반신욕', foot: '족욕', shower: '샤워' };
-const ENV_LABELS: Record<string, string> = { bathtub: '욕조', partial_bath: '부분입욕', footbath: '족욕', shower: '샤워' };
+const ENV_LABELS: Record<string, string> = { bathtub: '욕조', partial_bath: '족욕', footbath: '족욕', shower: '샤워' };
 const HERO_HEIGHT = 268;
 const HERO_HEIGHT_TRIP = 356;
 const STICKY_HEADER_HEIGHT = 54;
@@ -45,6 +46,7 @@ export default function RecipeScreen() {
   const [showProductModal, setShowProductModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<CatalogProduct | null>(null);
   const [isPreBathGateVisible, setIsPreBathGateVisible] = useState(false);
+  const [alertDialog, setAlertDialog] = useState<{ title: string; body: string } | null>(null);
   useCatalogHydration();
 
   useEffect(() => {
@@ -188,25 +190,37 @@ export default function RecipeScreen() {
   const handleProductPurchase = async (item: ProductMatchItem) => {
     const purchaseUrl = item.product.purchaseUrl ?? item.ingredient.purchaseUrl;
     if (!purchaseUrl) {
-      Alert.alert(copy.alerts.purchaseUnavailableTitle, copy.alerts.purchaseUnavailableBody);
+      setAlertDialog({
+        title: copy.alerts.purchaseUnavailableTitle,
+        body: copy.alerts.purchaseUnavailableBody,
+      });
       return;
     }
 
     const didOpen = await openExternalUrl(purchaseUrl);
     if (!didOpen) {
-      Alert.alert(copy.alerts.openLinkFailedTitle, copy.alerts.openLinkFailedBody);
+      setAlertDialog({
+        title: copy.alerts.openLinkFailedTitle,
+        body: copy.alerts.openLinkFailedBody,
+      });
     }
   };
 
   const handleDetailPurchase = async (product: CatalogProduct) => {
     if (!product.purchaseUrl) {
-      Alert.alert(copy.alerts.purchaseUnavailableTitle, copy.alerts.purchaseUnavailableBody);
+      setAlertDialog({
+        title: copy.alerts.purchaseUnavailableTitle,
+        body: copy.alerts.purchaseUnavailableBody,
+      });
       return;
     }
 
     const didOpen = await openExternalUrl(product.purchaseUrl);
     if (!didOpen) {
-      Alert.alert(copy.alerts.openLinkFailedTitle, copy.alerts.openLinkFailedBody);
+      setAlertDialog({
+        title: copy.alerts.openLinkFailedTitle,
+        body: copy.alerts.openLinkFailedBody,
+      });
     }
   };
 
@@ -421,6 +435,14 @@ export default function RecipeScreen() {
         onClose={() => setSelectedProduct(null)}
         onOpenCatalog={handleOpenCatalogFromDetail}
         onPurchasePress={handleDetailPurchase}
+      />
+      <AppAlertDialog
+        visible={alertDialog !== null}
+        title={alertDialog?.title ?? ''}
+        body={alertDialog?.body ?? ''}
+        onClose={() => setAlertDialog(null)}
+        eyebrow="SHOP"
+        iconName="shopping-bag"
       />
       {shouldGateStart ? (
         <PreBathGateModal

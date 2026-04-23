@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Alert, Image, Platform, View, Text, TouchableOpacity, StyleSheet, SafeAreaView, Pressable } from 'react-native';
+import { Image, Platform, View, Text, TouchableOpacity, StyleSheet, SafeAreaView, Pressable } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { useLocalSearchParams, router } from 'expo-router';
@@ -15,7 +15,7 @@ import { copy } from '@/src/content/copy';
 import { CARE_INTENT_CARDS, TRIP_INTENT_CARDS } from '@/src/data/intents';
 import { getCareCardImageForEnvironment } from '@/src/data/careImages';
 import { getTripCardImageForEnvironment } from '@/src/data/tripImages';
-import { TYPE_BODY, TYPE_CAPTION, V2_ACCENT, V2_BG_BASE, V2_BG_BOTTOM, V2_BG_OVERLAY, V2_BG_TOP, V2_BORDER, V2_MODAL_HANDLE, V2_MODAL_SURFACE_ELEVATED, V2_SURFACE, V2_TEXT_MUTED, V2_TEXT_PRIMARY, V2_TEXT_SECONDARY } from '@/src/data/colors';
+import { TYPE_BODY, TYPE_CAPTION, V2_ACCENT, V2_ACCENT_SOFT, V2_BG_BASE, V2_BG_BOTTOM, V2_BG_OVERLAY, V2_BG_TOP, V2_BORDER, V2_DANGER, V2_MODAL_HANDLE, V2_MODAL_SURFACE_ELEVATED, V2_SURFACE, V2_TEXT_MUTED, V2_TEXT_PRIMARY, V2_TEXT_SECONDARY } from '@/src/data/colors';
 import { luxuryFonts, luxuryTracking } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
 import { buildRoutineIntroDetail, getRoutineFillLevel, INTRO_DURATION_MS, RoutineTimerPhase } from '@/src/utils/routineTimer';
@@ -50,6 +50,7 @@ export default function TimerScreen() {
   const [isPaused, setIsPaused] = useState(false);
   const [showControls, setShowControls] = useState(true);
   const [showSoundModal, setShowSoundModal] = useState(false);
+  const [showFinishConfirmModal, setShowFinishConfirmModal] = useState(false);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const introTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const introCompleteTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -174,6 +175,7 @@ export default function TimerScreen() {
     setIsPaused(false);
     setShowControls(true);
     setShowSoundModal(false);
+    setShowFinishConfirmModal(false);
     controlsOpacity.value = 1;
     setRemainingSeconds(0);
     setTotalSeconds(0);
@@ -248,16 +250,8 @@ export default function TimerScreen() {
   };
 
   const confirmFinish = () => {
-    if (Platform.OS === 'web') {
-      const confirmed = typeof window !== 'undefined' && window.confirm(copy.alerts.finishRoutineBody);
-      if (confirmed) void handleComplete();
-      return;
-    }
-
-    Alert.alert(copy.alerts.finishRoutineTitle, copy.alerts.finishRoutineBody, [
-      { text: copy.alerts.cancel, style: 'cancel' },
-      { text: copy.alerts.finish, style: 'destructive', onPress: () => void handleComplete() },
-    ]);
+    if (phase !== 'active') return;
+    setShowFinishConfirmModal(true);
   };
 
   if (!recommendation) {
@@ -413,6 +407,43 @@ export default function TimerScreen() {
         </SafeAreaView>
       </Pressable>
       <AnimatedModalShell
+        visible={showFinishConfirmModal}
+        onClose={() => setShowFinishConfirmModal(false)}
+        align="center"
+        layoutStyle={styles.finishModalOverlay}
+        backdropStyle={styles.finishBackdrop}
+        containerStyle={styles.finishModalContainer}
+      >
+        {(requestClose) => (
+          <View style={styles.finishCard}>
+            <View style={styles.finishIconBadge}>
+              <FontAwesome name="exclamation-triangle" size={18} color={V2_DANGER} />
+            </View>
+            <Text style={styles.finishModalEyebrow}>TIMER</Text>
+            <Text style={styles.finishModalTitle}>{copy.alerts.finishRoutineTitle}</Text>
+            <Text style={styles.finishModalBody}>{copy.alerts.finishRoutineBody}</Text>
+            <View style={styles.finishSummaryCard}>
+              <Text style={styles.finishSummaryRoutine} numberOfLines={1}>{routineName}</Text>
+              <Text style={styles.finishSummaryTime}>{elapsedStr}</Text>
+            </View>
+            <View style={styles.finishButtonStack}>
+              <Pressable style={ui.primaryButtonV2} onPress={requestClose}>
+                <Text style={ui.primaryButtonTextV2}>{copy.alerts.cancel}</Text>
+              </Pressable>
+              <Pressable
+                style={[ui.secondaryButtonV2, styles.finishDestructiveButton]}
+                onPress={() => {
+                  setShowFinishConfirmModal(false);
+                  void handleComplete();
+                }}
+              >
+                <Text style={[ui.secondaryButtonTextV2, styles.finishDestructiveText]}>{copy.alerts.finish}</Text>
+              </Pressable>
+            </View>
+          </View>
+        )}
+      </AnimatedModalShell>
+      <AnimatedModalShell
         visible={showSoundModal}
         onClose={() => setShowSoundModal(false)}
         layoutStyle={styles.soundModalOverlay}
@@ -545,6 +576,103 @@ const styles = StyleSheet.create({
   progressThumb: { position: 'absolute', top: -5, width: 14, height: 14, borderRadius: 7, marginLeft: -7 },
   progressLabels: { flexDirection: 'row', justifyContent: 'space-between' },
   progressTime: { fontSize: TYPE_CAPTION, color: V2_TEXT_MUTED, fontVariant: ['tabular-nums'], fontWeight: '600', fontFamily: luxuryFonts.sans },
+  finishModalOverlay: {
+    flex: 1,
+    justifyContent: 'center',
+    paddingHorizontal: 22,
+  },
+  finishBackdrop: {
+    backgroundColor: 'rgba(4, 8, 13, 0.76)',
+  },
+  finishModalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 22,
+  },
+  finishCard: {
+    width: '100%',
+    maxWidth: 360,
+    alignSelf: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 22,
+    paddingTop: 24,
+    paddingBottom: 20,
+    borderRadius: 28,
+    borderWidth: 1,
+    borderColor: 'rgba(194, 134, 118, 0.26)',
+    backgroundColor: V2_MODAL_SURFACE_ELEVATED,
+    gap: 10,
+  },
+  finishIconBadge: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(194, 134, 118, 0.12)',
+    borderWidth: 1,
+    borderColor: 'rgba(194, 134, 118, 0.2)',
+    marginBottom: 2,
+  },
+  finishModalEyebrow: {
+    fontSize: TYPE_CAPTION - 1,
+    color: V2_ACCENT,
+    fontWeight: '700',
+    letterSpacing: 1.4,
+    fontFamily: luxuryFonts.sans,
+  },
+  finishModalTitle: {
+    fontSize: 24,
+    lineHeight: 32,
+    color: V2_TEXT_PRIMARY,
+    textAlign: 'center',
+    fontFamily: luxuryFonts.display,
+  },
+  finishModalBody: {
+    fontSize: TYPE_BODY,
+    lineHeight: 21,
+    color: V2_TEXT_SECONDARY,
+    textAlign: 'center',
+    fontFamily: luxuryFonts.sans,
+    marginBottom: 4,
+  },
+  finishSummaryCard: {
+    width: '100%',
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+    borderRadius: 18,
+    borderWidth: 1,
+    borderColor: V2_BORDER,
+    backgroundColor: V2_ACCENT_SOFT,
+    gap: 4,
+  },
+  finishSummaryRoutine: {
+    fontSize: TYPE_CAPTION,
+    color: V2_TEXT_MUTED,
+    textAlign: 'center',
+    fontFamily: luxuryFonts.sans,
+  },
+  finishSummaryTime: {
+    fontSize: 28,
+    lineHeight: 34,
+    color: V2_TEXT_PRIMARY,
+    textAlign: 'center',
+    fontVariant: ['tabular-nums'],
+    fontFamily: luxuryFonts.display,
+  },
+  finishButtonStack: {
+    width: '100%',
+    gap: 10,
+    marginTop: 4,
+  },
+  finishDestructiveButton: {
+    backgroundColor: 'rgba(194, 134, 118, 0.08)',
+    borderColor: 'rgba(194, 134, 118, 0.26)',
+  },
+  finishDestructiveText: {
+    color: V2_DANGER,
+  },
   soundModalOverlay: { flex: 1, justifyContent: 'flex-end', paddingTop: 36 },
   soundBackdrop: { backgroundColor: 'rgba(4, 8, 13, 0.68)' },
   soundModalContainer: { flex: 1, justifyContent: 'flex-end', width: '100%' },

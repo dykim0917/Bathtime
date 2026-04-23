@@ -16,9 +16,11 @@ import {
   TYPE_CAPTION,
   TYPE_TITLE,
   V2_ACCENT,
+  V2_ACCENT_TEXT,
   V2_BG_BASE,
   V2_BG_BOTTOM,
   V2_BG_TOP,
+  V2_BORDER,
   V2_TEXT_MUTED,
   V2_TEXT_PRIMARY,
   V2_TEXT_SECONDARY,
@@ -56,6 +58,7 @@ const GUIDE_SLIDES: GuideSlide[] = [
 
 export default function WelcomeScreen() {
   const [stepIndex, setStepIndex] = useState(0);
+  const [legalAccepted, setLegalAccepted] = useState(false);
   const haptic = useHaptic();
   const isLastStep = stepIndex === GUIDE_SLIDES.length - 1;
   const slide = GUIDE_SLIDES[stepIndex];
@@ -65,7 +68,10 @@ export default function WelcomeScreen() {
     [stepIndex]
   );
 
+  const isPrimaryDisabled = isLastStep && !legalAccepted;
+
   const handleNext = () => {
+    if (isPrimaryDisabled) return;
     haptic.medium();
     if (isLastStep) {
       void saveCookieNoticeAck().finally(() => {
@@ -80,6 +86,16 @@ export default function WelcomeScreen() {
     if (stepIndex === 0) return;
     haptic.light();
     setStepIndex((current) => current - 1);
+  };
+
+  const handleOpenTerms = () => {
+    haptic.light();
+    router.push('/legal/terms');
+  };
+
+  const handleOpenPrivacy = () => {
+    haptic.light();
+    router.push('/legal/privacy');
   };
 
   return (
@@ -124,39 +140,37 @@ export default function WelcomeScreen() {
               ))}
             </View>
 
-            {isLastStep ? (
-              <View style={[ui.glassCardV2, styles.legalCard]}>
-                <Text style={styles.legalTitle}>시작 전에 함께 확인할 내용</Text>
-                <Text style={styles.legalBody}>
-                  배쓰타임은 맞춤 루틴 제공과 서비스 안정성 확인을 위해 필요한 정보만 처리합니다.
-                  접속 상태 유지를 위한 필수 쿠키와 접속기록을 사용할 수 있지만, 현재 광고 추적
-                  쿠키는 사용하지 않습니다.
-                </Text>
-                <View style={styles.legalLinks}>
-                  <Pressable
-                    onPress={() => router.push('/legal/privacy')}
-                    style={[ui.secondaryButtonV2, styles.legalLinkButton]}
-                  >
-                    <Text style={ui.secondaryButtonTextV2}>처리방침 보기</Text>
-                  </Pressable>
-                  <Pressable
-                    onPress={() => router.push('/legal/terms')}
-                    style={[ui.secondaryButtonV2, styles.legalLinkButton]}
-                  >
-                    <Text style={ui.secondaryButtonTextV2}>이용약관 보기</Text>
-                  </Pressable>
-                </View>
-              </View>
-            ) : null}
           </ScrollView>
 
           <View style={styles.footer}>
+            {isLastStep ? (
+              <View style={styles.legalConsentRow}>
+                <Pressable
+                  style={[styles.legalCheckbox, legalAccepted && styles.legalCheckboxChecked]}
+                  onPress={() => {
+                    haptic.light();
+                    setLegalAccepted((current) => !current);
+                  }}
+                  accessibilityRole="checkbox"
+                  accessibilityState={{ checked: legalAccepted }}
+                >
+                  {legalAccepted ? <Text style={styles.legalCheckboxMark}>✓</Text> : null}
+                </Pressable>
+                <Text style={styles.legalConsentText}>
+                  <Text style={styles.legalConsentLink} onPress={handleOpenTerms}>이용 약관</Text>
+                  <Text> 및 </Text>
+                  <Text style={styles.legalConsentLink} onPress={handleOpenPrivacy}>개인정보 처리방침</Text>
+                  <Text>에 동의합니다</Text>
+                </Text>
+              </View>
+            ) : null}
             <Pressable
               onPress={handleNext}
-              style={[ui.primaryButtonV2, styles.primaryButton]}
+              disabled={isPrimaryDisabled}
+              style={[ui.primaryButtonV2, styles.primaryButton, isPrimaryDisabled && styles.primaryButtonDisabled]}
             >
-              <Text style={ui.primaryButtonTextV2}>
-                {isLastStep ? '내용 확인하고 시작하기' : '다음'}
+              <Text style={[ui.primaryButtonTextV2, isPrimaryDisabled && styles.primaryButtonTextDisabled]}>
+                {isLastStep ? '시작하기' : '다음'}
               </Text>
             </Pressable>
 
@@ -257,30 +271,6 @@ const styles = StyleSheet.create({
     padding: 20,
     gap: 12,
   },
-  legalCard: {
-    marginTop: 16,
-    padding: 18,
-    gap: 12,
-  },
-  legalTitle: {
-    color: V2_TEXT_PRIMARY,
-    fontSize: TYPE_TITLE - 1,
-    fontFamily: luxuryFonts.display,
-  },
-  legalBody: {
-    color: V2_TEXT_SECONDARY,
-    fontSize: TYPE_CAPTION + 1,
-    lineHeight: 20,
-    fontFamily: luxuryFonts.sans,
-  },
-  legalLinks: {
-    flexDirection: 'row',
-    gap: 10,
-  },
-  legalLinkButton: {
-    flex: 1,
-    minHeight: 42,
-  },
   pointRow: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -302,8 +292,54 @@ const styles = StyleSheet.create({
   footer: {
     gap: 14,
   },
+  legalConsentRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
+    paddingHorizontal: 4,
+  },
+  legalCheckbox: {
+    width: 22,
+    height: 22,
+    borderRadius: 11,
+    borderWidth: 1,
+    borderColor: V2_BORDER,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(255,255,255,0.03)',
+  },
+  legalCheckboxChecked: {
+    backgroundColor: V2_ACCENT,
+    borderColor: V2_ACCENT,
+  },
+  legalCheckboxMark: {
+    color: V2_ACCENT_TEXT,
+    fontSize: 12,
+    fontWeight: '700',
+  },
+  legalConsentText: {
+    flex: 1,
+    color: V2_TEXT_SECONDARY,
+    fontSize: TYPE_CAPTION + 1,
+    lineHeight: 20,
+    fontFamily: luxuryFonts.sans,
+  },
+  legalConsentLink: {
+    color: V2_ACCENT,
+    fontWeight: '700',
+    textDecorationLine: 'underline',
+  },
   primaryButton: {
     width: '100%',
+  },
+  primaryButtonDisabled: {
+    opacity: 1,
+    backgroundColor: 'rgba(201, 164, 91, 0.34)',
+    borderWidth: 1,
+    borderColor: 'rgba(201, 164, 91, 0.16)',
+  },
+  primaryButtonTextDisabled: {
+    color: 'rgba(26, 36, 48, 0.7)',
   },
   directLink: {
     alignItems: 'center',

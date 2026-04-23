@@ -78,6 +78,6 @@ describe('subprotocol', () => {
       'edema_relief'
     );
 
-    expect(result.environmentHints.some((line) => line.includes('부분입욕'))).toBe(true);
+    expect(result.environmentHints.some((line) => line.includes('족욕'))).toBe(true);
   });
 });

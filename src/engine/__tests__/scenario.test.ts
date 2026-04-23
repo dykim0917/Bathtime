@@ -85,13 +85,13 @@ describe('시나리오 테스트 — 8명 가상 페르소나', () => {
     });
   });
 
-  // ⑤ 정혜린 (32세, 프리랜서) — 민감성 피부, 부분입욕, 스트레스+불면
-  describe('P05 정혜린 — 민감성 피부 / 부분입욕 / 스트레스·불면', () => {
+  // ⑤ 정혜린 (32세, 프리랜서) — 민감성 피부, 족욕, 스트레스+불면
+  describe('P05 정혜린 — 민감성 피부 / 족욕 / 스트레스·불면', () => {
     const profile = makeProfile('partial_bath', ['sensitive_skin']);
     const rec = generateCareRecommendation(profile, ['stress', 'insomnia'], 'partial_bath');
 
     it('P4_SLEEP 페르소나 (수면 우선)', () => expect(rec.persona).toBe('P4_SLEEP'));
-    it('부분입욕 → foot 유형', () => expect(rec.bathType).toBe('foot'));
+    it('족욕 → foot 유형', () => expect(rec.bathType).toBe('foot'));
     it('민감성 피부 경고 포함', () => {
       const warnings = rec.safetyWarnings.join(' ');
       expect(warnings).toMatch(/민감/);

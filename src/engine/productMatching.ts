@@ -53,7 +53,7 @@ const GUIDE_LIBRARY: Record<string, ProductGuideTemplate[]> = {
     {
       title: '미네랄 족욕 솔트',
       description: '다리만 가볍게 쉬고 싶은 날에는 족욕에 넣기 쉬운 미네랄 솔트도 좋아요.',
-      tags: ['족욕', '미네랄', '부분입욕'],
+      tags: ['족욕', '미네랄', '저자극'],
     },
   ],
   carbonated_bath: [

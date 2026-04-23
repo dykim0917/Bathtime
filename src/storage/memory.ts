@@ -6,7 +6,7 @@ const MAX_MEMORY_HISTORY = 40;
 
 const ENV_LABELS: Record<string, string> = {
   bathtub: '욕조',
-  partial_bath: '부분입욕',
+  partial_bath: '족욕',
   footbath: '족욕',
   shower: '샤워',
 };

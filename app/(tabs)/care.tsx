@@ -64,7 +64,7 @@ import { ui } from '@/src/theme/ui';
 
 const ENV_OPTIONS: { id: BathEnvironment; label: string }[] = [
   { id: 'bathtub', label: '욕조' },
-  { id: 'partial_bath', label: '부분입욕' },
+  { id: 'partial_bath', label: '족욕' },
   { id: 'shower', label: '샤워' },
 ];
 

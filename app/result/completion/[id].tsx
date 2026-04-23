@@ -46,7 +46,7 @@ function toEnvironmentLabel(environment: string): string {
       return '욕조';
     case 'partial_bath':
     case 'footbath':
-      return '부분입욕';
+      return '족욕';
     case 'shower':
       return '샤워';
     default:

@@ -62,15 +62,13 @@ import { applySubProtocolOverrides } from '@/src/engine/subprotocol';
 import { inferFeelingBefore } from '@/src/engine/feeling';
 import { buildHomeStreakSummary, HomeStreakSummary } from '@/src/engine/streaks';
 import { copy } from '@/src/content/copy';
-import { brand } from '@/src/content/brand';
-import { luxuryFonts, luxuryRadii, luxuryTracking } from '@/src/theme/luxury';
+import { luxuryFonts, luxuryRadii } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
 import { HomeCareHeroCard } from '@/src/components/HomeCareHeroCard';
 import { HomeCareListCard } from '@/src/components/HomeCareListCard';
 import { HomeTripEditorialCard } from '@/src/components/HomeTripEditorialCard';
 import { OpenTabHeader } from '@/src/components/OpenTabHeader';
-import { HomeHeroBathAnimation } from '@/src/components/HomeHeroBathAnimation';
-import { HOME_CARE_HERO_IMAGE, HOME_HEADER_ILLUSTRATION } from '@/src/data/homeVisuals';
+import { HOME_CARE_HERO_IMAGE } from '@/src/data/homeVisuals';
 import { CustomIconName } from '@/src/components/CustomIcon';
 import { getCareCardImageForEnvironment } from '@/src/data/careImages';
 import {
@@ -80,13 +78,13 @@ import {
 
 const ENV_OPTIONS: { id: BathEnvironment; label: string }[] = [
   { id: 'bathtub', label: '욕조' },
-  { id: 'partial_bath', label: '부분입욕' },
+  { id: 'partial_bath', label: '족욕' },
   { id: 'shower', label: '샤워' },
 ];
 
 const ENV_LABEL: Record<string, string> = {
   bathtub: '욕조',
-  partial_bath: '부분입욕',
+  partial_bath: '족욕',
   shower: '샤워',
 };
 
@@ -98,7 +96,6 @@ const TRIP_EDITORIAL_META: Record<string, { destination: string; accent: [string
 };
 
 const SCREEN_HORIZONTAL_PADDING = 22;
-const SECTION_GAP = 30;
 const HOME_PREVIEW_CARD_LIMIT = 4;
 const HOME_SECTION_ORDER: RecommendationCardEventPayload['section_order'] = 'care_first';
 
@@ -549,7 +546,7 @@ export default function HomeIntentScreen() {
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <OpenTabHeader
           title="오늘은 어떻게 쉬어볼까요?"
-          subtitle="컨디션과 목욕 환경에 맞춰 온도와 시간을 준비했어요."
+          subtitle="컨디션과 목욕 환경에 맞춰 배쓰 루틴을 준비했어요."
           topSlot={
             <View style={styles.headerBrand}>
               <Image
@@ -557,32 +554,9 @@ export default function HomeIntentScreen() {
                 style={styles.headerBrandIcon}
                 resizeMode="contain"
               />
-              <Text style={styles.headerBadge}>{brand.logoText}</Text>
             </View>
           }
-          mediaSlot={
-            <View style={styles.headerIllustrationFrame}>
-              {HOME_HEADER_ILLUSTRATION ? (
-                <Image
-                  source={HOME_HEADER_ILLUSTRATION}
-                  style={styles.headerIllustrationImage}
-                  resizeMode="cover"
-                />
-              ) : (
-                <>
-                  <HomeHeroBathAnimation style={styles.headerLottie} />
-                  <View style={styles.headerIllustrationMistLarge} />
-                  <View style={styles.headerIllustrationMistSmall} />
-                </>
-              )}
-            </View>
-          }
-          centered
-          footerSlot={
-            !isHistoryLoaded || recentRoutines.length > 0 ? null : (
-              <Text style={styles.beginnerGuide}>{copy.home.beginnerGuide}</Text>
-            )
-          }
+          compact
         />
 
         <View style={styles.weeklyCard}>
@@ -636,8 +610,8 @@ export default function HomeIntentScreen() {
           </LinearGradient>
         </View>
 
-        <View>
-          <Text style={styles.sectionLabel}>몰입 환경</Text>
+        <View style={styles.environmentSection}>
+          <Text style={styles.environmentLabel}>몰입 환경</Text>
           <View style={styles.environmentRow}>
             {ENV_OPTIONS.map((option) => (
               <Pressable
@@ -826,67 +800,16 @@ export default function HomeIntentScreen() {
 const styles = StyleSheet.create({
   content: {
     paddingHorizontal: SCREEN_HORIZONTAL_PADDING,
-    paddingTop: 18,
+    paddingTop: 12,
     paddingBottom: 40,
-    gap: SECTION_GAP,
+    gap: 24,
   },
   headerBrand: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+    alignItems: 'flex-start',
   },
   headerBrandIcon: {
     width: 18,
     height: 20,
-  },
-  headerBadge: {
-    color: V2_ACCENT,
-    fontSize: TYPE_SCALE.caption,
-    fontWeight: '700',
-    letterSpacing: luxuryTracking.eyebrow,
-    fontFamily: luxuryFonts.sans,
-  },
-  headerIllustrationFrame: {
-    width: '100%',
-    maxWidth: 320,
-    height: 144,
-    borderRadius: luxuryRadii.card,
-    overflow: 'hidden',
-    borderWidth: 1,
-    borderColor: 'rgba(245, 240, 232, 0.08)',
-    backgroundColor: 'rgba(255, 255, 255, 0.03)',
-  },
-  headerIllustrationImage: {
-    width: '100%',
-    height: '100%',
-  },
-  headerLottie: {
-    width: '100%',
-    height: '100%',
-  },
-  headerIllustrationMistLarge: {
-    position: 'absolute',
-    width: 196,
-    height: 196,
-    borderRadius: 98,
-    top: -82,
-    right: -22,
-    backgroundColor: 'rgba(255, 255, 255, 0.05)',
-  },
-  headerIllustrationMistSmall: {
-    position: 'absolute',
-    width: 116,
-    height: 116,
-    borderRadius: 58,
-    left: -20,
-    bottom: -28,
-    backgroundColor: 'rgba(176, 141, 87, 0.1)',
-  },
-  beginnerGuide: {
-    color: V2_TEXT_MUTED,
-    fontSize: TYPE_SCALE.caption,
-    lineHeight: 18,
-    fontFamily: luxuryFonts.sans,
   },
   weeklyCard: {
     borderRadius: luxuryRadii.cardLg,
@@ -994,12 +917,13 @@ const styles = StyleSheet.create({
   weekDot: {
     width: 24,
     height: 24,
-    borderRadius: 12,
+    borderRadius: 999,
     borderWidth: 1.25,
     borderColor: 'rgba(255, 236, 206, 0.2)',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'rgba(255, 247, 232, 0.04)',
+    overflow: 'hidden',
   },
   weekDotDone: {
     borderColor: '#E0B15E',
@@ -1011,8 +935,9 @@ const styles = StyleSheet.create({
   weekDotCenter: {
     width: 10,
     height: 10,
-    borderRadius: 5,
+    borderRadius: 999,
     backgroundColor: 'transparent',
+    overflow: 'hidden',
   },
   weekDotCenterDone: {
     backgroundColor: '#D8B05D',
@@ -1033,26 +958,34 @@ const styles = StyleSheet.create({
   weekDotLabelToday: {
     color: '#FFF7EA',
   },
-  sectionLabel: {
-    color: V2_TEXT_PRIMARY,
-    fontSize: TYPE_SCALE.title,
-    fontFamily: luxuryFonts.display,
-    marginBottom: 14,
+  environmentSection: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 12,
+  },
+  environmentLabel: {
+    fontSize: 12,
+    color: V2_TEXT_MUTED,
+    marginBottom: 2,
+    fontWeight: '600',
+    fontFamily: luxuryFonts.sans,
   },
   environmentRow: {
     flexDirection: 'row',
     gap: 8,
+    flexShrink: 1,
+    justifyContent: 'flex-end',
   },
   envChip: {
-    flex: 1,
-    minHeight: 40,
+    minHeight: 36,
     borderRadius: 999,
     backgroundColor: V2_SURFACE,
     borderWidth: 1,
     borderColor: V2_BORDER,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 8,
+    paddingHorizontal: 12,
     paddingVertical: 9,
   },
   envChipActive: {

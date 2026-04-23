@@ -15,7 +15,7 @@ function environmentLabel(environment: CanonicalBathEnvironment): string {
     case 'shower':
       return '샤워';
     case 'partial_bath':
-      return '부분입욕';
+      return '족욕';
     case 'bathtub':
     default:
       return '욕조';
