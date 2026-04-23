@@ -1,44 +1,79 @@
-# 배쓰타임
+# 배쓰타임 (Bath Sommelier)
 
-배쓰타임은 사용자의 오늘 컨디션과 목욕 환경을 바탕으로, 더 잘 쉴 수 있는 목욕·샤워 루틴을 추천해주는 프리미엄 웰니스 앱입니다.
+배쓰타임은 사용자의 오늘 컨디션, 목욕 환경, 건강 상태를 바탕으로 집에서도 따라 하기 쉬운 목욕·샤워 루틴을 추천하는 웰니스 앱입니다. `케어 루틴`과 `트립 루틴`을 나눠서 보여주고, 레시피 확인부터 타이머, 완료 피드백, 기록 축적까지 한 흐름으로 연결합니다.
 
 <p align="center">
-  <img src="assets/readme/home.png" alt="배쓰타임 home screen" width="280" />
+  <img src="output/screenshots/ui-states/home-with-history.png" alt="배쓰타임 홈 화면" width="320" />
 </p>
 
 ## Overview
 
-- 짧은 입력만으로 오늘 상태에 맞는 목욕·샤워 루틴 추천
-- 추천 이유, 진행 방법, 안전 안내를 함께 제공하는 설명형 경험
-- 준비, 진행, 마무리, 회고까지 이어지는 배쓰타임 플로우
-- 전문적으로 설계됐지만 부담 없이 따라갈 수 있는 조용한 프리미엄 톤
+- 온보딩에서 `욕조`, `부분입욕`, `샤워` 환경과 건강 상태를 저장합니다.
+- 홈에서 주간 배쓰타임 기록, 최근 루틴, 케어/트립 추천을 함께 확인할 수 있습니다.
+- 케어 탭은 컨디션 중심 루틴, 트립 탭은 무드와 테마 중심 루틴을 제공합니다.
+- 제품 탭에서 입문자가 바로 쓰기 쉬운 입욕제, 샤워 아이템, 바디워시를 큐레이션합니다.
+- 레시피, 타이머, 완료 피드백, 프로필/기록까지 로컬에 이어지는 루틴 플로우를 갖고 있습니다.
+- 안전 가이드와 환경 제약을 추천 전반에 반영합니다.
+
+## Current Flow
+
+1. 온보딩에서 목욕 환경과 건강 상태를 설정합니다.
+2. 홈 또는 케어/트립 탭에서 오늘 루틴을 고릅니다.
+3. 레시피 화면에서 준비물, 온도, 시간, 안전 안내를 확인합니다.
+4. 타이머 화면에서 루틴을 진행하고 완료 피드백을 남깁니다.
+5. 프로필 탭에서 기록과 설정, 법적 문서를 확인합니다.
 
 ## App Screenshots
 
-아래 이미지는 실행 중인 Expo 웹 앱에서 캡처한 실제 화면입니다.
+### Main Tabs
 
 <p align="center">
-  <img src="assets/readme/onboarding-welcome.png" alt="배쓰타임 onboarding welcome" width="220" />
-  <img src="assets/readme/onboarding-health.png" alt="배쓰타임 onboarding health" width="220" />
-  <img src="assets/readme/home.png" alt="배쓰타임 home" width="220" />
+  <img src="output/screenshots/ui-states/onboarding-welcome.png" alt="배쓰타임 온보딩 웰컴" width="180" />
+  <img src="output/screenshots/ui-states/home-with-history.png" alt="배쓰타임 홈" width="180" />
+  <img src="output/screenshots/ui-states/care-default.png" alt="배쓰타임 케어 탭" width="180" />
 </p>
 
 <p align="center">
-  <img src="assets/readme/care.png" alt="배쓰타임 care tab" width="220" />
-  <img src="assets/readme/trip.png" alt="배쓰타임 trip tab" width="220" />
-  <img src="assets/readme/product.png" alt="배쓰타임 product tab" width="220" />
+  <img src="output/screenshots/ui-states/trip-default.png" alt="배쓰타임 트립 탭" width="180" />
+  <img src="output/screenshots/ui-states/product-default.png" alt="배쓰타임 제품 탭" width="180" />
+  <img src="output/screenshots/ui-states/my-settings.png" alt="배쓰타임 프로필 설정 탭" width="180" />
+</p>
+
+### Routine Flow
+
+<p align="center">
+  <img src="output/screenshots/ui-states/recipe-care.png" alt="배쓰타임 레시피 화면" width="180" />
+  <img src="output/screenshots/ui-states/timer-running.png" alt="배쓰타임 타이머 화면" width="180" />
+  <img src="output/screenshots/ui-states/completion-default.png" alt="배쓰타임 완료 화면" width="180" />
 </p>
 
 ## Tech Stack
 
-- Expo
-- React Native
+- Expo SDK 54
+- React Native 0.81
 - Expo Router
 - TypeScript
+- AsyncStorage
 - Jest
 
-## Project Goal
+## Local Development
 
-이 프로젝트의 핵심은 한 문장으로 정리됩니다.
+```bash
+npm install
+npm run web
+```
 
-> 오늘 상태에 맞춰 더 잘 쉬는 목욕·샤워 루틴을 설계해준다.
+```bash
+npm test
+npm run typecheck
+```
+
+## Refreshing Screenshots
+
+README에 사용하는 최신 UI 캡처는 `output/screenshots/ui-states`에 저장됩니다.
+
+```bash
+npm run screenshots:ui
+```
+
+스크립트 실행 전에는 로컬 웹 서버가 떠 있어야 합니다. 기본 기준 주소는 `http://localhost:8082`이며, 다른 포트를 쓰면 `SCREENSHOT_BASE_URL` 환경변수로 바꿔서 실행할 수 있습니다.
