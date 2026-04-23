@@ -5,12 +5,13 @@ import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
+import { Platform } from 'react-native';
 import 'react-native-reanimated';
 import { CookieBanner } from '@/src/components/legal/CookieBanner';
 import { V2_ACCENT, V2_BG_BASE, V2_BORDER, V2_SURFACE, V2_TEXT_PRIMARY } from '@/src/data/colors';
 
 export { ErrorBoundary } from 'expo-router';
-export const unstable_settings = { initialRouteName: '(tabs)' };
+export const unstable_settings = { initialRouteName: Platform.OS === 'web' ? 'index' : '(tabs)' };
 SplashScreen.preventAutoHideAsync();
 
 const AppTheme = {
@@ -39,6 +40,7 @@ export default function RootLayout() {
     <ThemeProvider value={AppTheme}>
       <StatusBar style="light" />
       <Stack>
+        <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="onboarding" options={{ headerShown: false, gestureEnabled: false }} />
         <Stack.Screen name="legal/privacy" options={{ title: '개인정보 처리방침', headerShown: true }} />
