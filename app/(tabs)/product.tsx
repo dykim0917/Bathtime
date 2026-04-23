@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Pressable, ScrollView, StyleSheet, Alert, Linking } from 'react-native';
+import { View, Text, Pressable, ScrollView, StyleSheet, Alert } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useLocalSearchParams } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -27,6 +27,7 @@ import { copy } from '@/src/content/copy';
 import { OpenTabHeader } from '@/src/components/OpenTabHeader';
 import { luxuryFonts } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
+import { openExternalUrl } from '@/src/utils/externalLinks';
 
 const SCREEN_HORIZONTAL_PADDING = 22;
 
@@ -67,13 +68,10 @@ export default function ProductScreen() {
       return;
     }
 
-    const supported = await Linking.canOpenURL(product.purchaseUrl);
-    if (!supported) {
+    const didOpen = await openExternalUrl(product.purchaseUrl);
+    if (!didOpen) {
       Alert.alert(copy.alerts.openLinkFailedTitle, copy.alerts.openLinkFailedBody);
-      return;
     }
-
-    await Linking.openURL(product.purchaseUrl);
   };
 
   return (

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
-import { Alert, Animated as RNAnimated, ImageBackground, Linking, View, Text, Pressable, StyleSheet } from 'react-native';
+import { Alert, Animated as RNAnimated, ImageBackground, View, Text, Pressable, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { useLocalSearchParams, router } from 'expo-router';
@@ -29,6 +29,7 @@ import { PreBathGateModal } from '@/src/components/PreBathGateModal';
 import { TYPE_BODY, TYPE_CAPTION, TYPE_HEADING_LG, TYPE_TITLE, V2_ACCENT, V2_BG_BASE, V2_BG_BOTTOM, V2_BG_TOP, V2_BORDER, V2_TEXT_MUTED, V2_TEXT_PRIMARY, V2_TEXT_SECONDARY } from '@/src/data/colors';
 import { luxuryFonts, luxuryRadii, luxuryTracking } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
+import { openExternalUrl } from '@/src/utils/externalLinks';
 
 const BATH_TYPE_LABELS: Record<string, string> = { full: '전신욕', half: '반신욕', foot: '족욕', shower: '샤워' };
 const ENV_LABELS: Record<string, string> = { bathtub: '욕조', partial_bath: '부분입욕', footbath: '족욕', shower: '샤워' };
@@ -191,13 +192,10 @@ export default function RecipeScreen() {
       return;
     }
 
-    const supported = await Linking.canOpenURL(purchaseUrl);
-    if (!supported) {
+    const didOpen = await openExternalUrl(purchaseUrl);
+    if (!didOpen) {
       Alert.alert(copy.alerts.openLinkFailedTitle, copy.alerts.openLinkFailedBody);
-      return;
     }
-
-    await Linking.openURL(purchaseUrl);
   };
 
   const handleDetailPurchase = async (product: CatalogProduct) => {
@@ -206,13 +204,10 @@ export default function RecipeScreen() {
       return;
     }
 
-    const supported = await Linking.canOpenURL(product.purchaseUrl);
-    if (!supported) {
+    const didOpen = await openExternalUrl(product.purchaseUrl);
+    if (!didOpen) {
       Alert.alert(copy.alerts.openLinkFailedTitle, copy.alerts.openLinkFailedBody);
-      return;
     }
-
-    await Linking.openURL(product.purchaseUrl);
   };
 
   const handleOpenCatalogFromDetail = (product: CatalogProduct) => {

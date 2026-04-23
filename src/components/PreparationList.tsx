@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text, Pressable, Linking, StyleSheet, Platform } from 'react-native';
+import { View, Text, Pressable, StyleSheet, Platform } from 'react-native';
 import { Ingredient } from '@/src/engine/types';
 import { TYPE_SCALE, V2_BORDER, V2_SHADOW, V2_SURFACE, V2_TEXT_PRIMARY, V2_TEXT_SECONDARY } from '@/src/data/colors';
+import { openExternalUrl } from '@/src/utils/externalLinks';
 
 interface PreparationListProps {
   ingredients: Ingredient[];
@@ -25,7 +26,7 @@ export function PreparationList({
           {item.purchaseUrl && (
             <Pressable
               style={[styles.linkButton, { borderColor: accentColor }]}
-              onPress={() => Linking.openURL(item.purchaseUrl!)}
+              onPress={() => openExternalUrl(item.purchaseUrl!)}
             >
               <Text style={[styles.linkText, { color: accentColor }]}>
                 구매

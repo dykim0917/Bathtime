@@ -3,7 +3,6 @@ import {
   View,
   Text,
   FlatList,
-  Linking,
   TouchableOpacity,
   StyleSheet,
   Dimensions,
@@ -19,6 +18,7 @@ import {
   V2_TEXT_SECONDARY,
 } from '@/src/data/colors';
 import { luxuryFonts, luxuryRadii } from '@/src/theme/luxury';
+import { openExternalUrl } from '@/src/utils/externalLinks';
 
 interface IngredientCarouselProps {
   ingredients: Ingredient[];
@@ -50,7 +50,7 @@ export function IngredientCarousel({
   const handleOpenPurchase = async (url?: string) => {
     if (!url) return;
     try {
-      await Linking.openURL(url);
+      await openExternalUrl(url);
     } catch {
       // no-op for invalid/blocked external links in test environments
     }
