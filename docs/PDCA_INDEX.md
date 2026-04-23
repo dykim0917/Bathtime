@@ -1,4 +1,4 @@
-# Bath Sommelier PDCA Document Index
+# ë°°ì°íì PDCA Document Index
 
 > Central index of all Plan-Design-Do-Check-Act (PDCA) cycle documents for systematic project tracking.
 
@@ -6,7 +6,7 @@
 
 ## Overview
 
-Bath Sommelier uses the PDCA methodology to track feature development from planning through completion. This index organizes all PDCA documents by feature and phase.
+ë°°ì°íì uses the PDCA methodology to track feature development from planning through completion. This index organizes all PDCA documents by feature and phase.
 
 ```
 Project Structure:

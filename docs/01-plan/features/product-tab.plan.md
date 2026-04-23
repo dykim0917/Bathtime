@@ -2,7 +2,7 @@
 
 > **Summary**: 현재 placeholder 상태인 Product 탭을 에디토리얼 큐레이션 화면으로 구현한다. 카테고리 pill 필터 + ProductCard 컴포넌트 + 정적 데이터(src/data/products.ts) 3개 파일만으로 P0을 완성한다.
 >
-> **Project**: Bath Sommelier
+> **Project**: ë°°ì°íì
 > **Version**: v3.12.2 (예정)
 > **Author**: Plan Plus (Brainstorming-Enhanced)
 > **Date**: 2026-03-03

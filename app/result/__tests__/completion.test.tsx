@@ -130,7 +130,7 @@ describe('CompletionScreen', () => {
     const screen = render(React.createElement(CompletionScreen));
 
     await waitFor(() =>
-      expect(screen.getByText('오늘 배스타임은 어떠셨나요?')).toBeTruthy()
+      expect(screen.getByText('오늘 배쓰타임은 어떠셨나요?')).toBeTruthy()
     );
 
     expect(screen.queryByText('마무리로 이 세 가지만 챙겨주세요')).toBeNull();
@@ -159,6 +159,6 @@ describe('CompletionScreen', () => {
       expect(screen.getByText('잘 쉬었습니다')).toBeTruthy()
     );
 
-    expect(screen.queryByText('오늘 배스타임은 어떠셨나요?')).toBeNull();
+    expect(screen.queryByText('오늘 배쓰타임은 어떠셨나요?')).toBeNull();
   });
 });

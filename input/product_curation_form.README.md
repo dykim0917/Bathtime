@@ -1,6 +1,6 @@
 # Product Curation Form
 
-Use `product_curation_form.template.json` when collecting product candidates for Bath Sommelier.
+Use `product_curation_form.template.json` when collecting product candidates for ë°°ì°íì.
 
 ## How to Fill
 

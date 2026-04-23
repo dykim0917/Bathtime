@@ -1,7 +1,7 @@
 # Suno Music Generation Agent — 에이전트 설계서
 
 버전: v0.1 (설계 초안)  
-연계 시스템: BathSommelier Care/Trip 콘텐츠 파이프라인  
+연계 시스템: ë°°ì°íì Care/Trip 콘텐츠 파이프라인  
 작성 목적: Claude Code 구현 참조용 계획서
 
 ---
@@ -10,7 +10,7 @@
 
 ### 1.1 배경 및 목적
 
-BathSommelier의 Care 8개 조건 및 Trip 테마별로 Suno에서 음악을 생성하고 다운로드한다.  
+배쓰타임의 Care 8개 조건 및 Trip 테마별로 Suno에서 음악을 생성하고 다운로드한다.  
 Care는 각 조건당 20곡 이상을 확보해 랜덤 재생 풀을 구성하고,  
 Trip은 각 테마의 분위기에 맞는 곡을 생성한다.  
 Suno 공식 API가 없으므로 Playwright 브라우저 자동화로 조작하며,  

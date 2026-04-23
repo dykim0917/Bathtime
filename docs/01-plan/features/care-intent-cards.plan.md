@@ -2,7 +2,7 @@
 
 > **Summary**: Care 탭의 disabled placeholder로 표시되는 4종 카드(감기, 생리통, 스트레스, 기분전환)를 실제 동작하는 IntentCard로 구현하여 Care 탭 콘텐츠 커버리지를 4/8에서 8/8(100%)로 완성한다.
 >
-> **Project**: Bath Sommelier
+> **Project**: ë°°ì°íì
 > **Version**: v3.12.1 (예정)
 > **Author**: Plan Plus (Brainstorming-Enhanced)
 > **Date**: 2026-03-03

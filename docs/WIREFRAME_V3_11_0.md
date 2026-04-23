@@ -1,4 +1,4 @@
-# BathSommelier v3.11.0 Wireframe Spec
+# ë°°ì°íì v3.11.0 Wireframe Spec
 
 WireframeSpecVersion: `v3.11.0`
 기준일: 2026-02-27
@@ -89,7 +89,7 @@ Glass 카드       → CARD_SURFACE + borderWidth:1 + CARD_BORDER + shadow
 │   ────────────────────────────     │
 │   맞춤형 목욕 루틴              │
 │   당신의 오늘을 위한             │
-│   Bath Sommelier                   │
+│   ë°°ì°íì                   │
 │   ────────────────────────────     │
 │                                    │
 │  ┌──────────────────────────────┐  │
@@ -390,7 +390,7 @@ filterMode: 'all' | 'care' | 'trip'   → 필터 pill 상태
 │  ── 앱 정보 ─────────────────────  │
 │  ┌─────────────────────────────┐  │
 │  │  Version         3.2.0      │  │
-│  │  App Name  Bath Sommelier   │  │
+│  │  App Name  ë°°ì°íì   │  │
 │  └─────────────────────────────┘  │
 │                                    │
 │  ── 안전 안내 (PersistentDisclosure, coldWarning)
@@ -602,7 +602,7 @@ snapshotLine: string | null
 ```
 ┌──────────────────────────────────────┐
 │  안내                            [▼] │  ← 접기/펼치기
-│  BathSommelier는 의료 진단이나       │
+│  배쓰타임은 의료 진단이나            │
 │  치료를 하지 않습니다.              │
 │  건강 상태가 걱정되면 전문가와       │
 │  먼저 상담하세요.                   │

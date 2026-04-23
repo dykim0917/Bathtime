@@ -24,7 +24,7 @@ export default function Index() {
   }
 
   if (hasProfile) return <Redirect href="/(tabs)" />;
-  return <Redirect href="/onboarding" />;
+  return <Redirect href="/onboarding/welcome" />;
 }
 
 const styles = StyleSheet.create({

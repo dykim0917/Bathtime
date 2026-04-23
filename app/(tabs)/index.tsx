@@ -597,7 +597,7 @@ export default function HomeIntentScreen() {
 
             <View style={styles.weeklyTopGroup}>
               <View style={styles.weeklyMainRow}>
-                <Text style={styles.weeklyCountTitle}>이번주 배스타임 {streakSummary.weeklyBathCount}/{streakSummary.weeklyGoal}일</Text>
+                <Text style={styles.weeklyCountTitle}>이번주 배쓰타임 {streakSummary.weeklyBathCount}/{streakSummary.weeklyGoal}일</Text>
                 <Pressable onPress={() => router.push('/(tabs)/history')} style={styles.inlineLinkButton}>
                   <Text style={styles.inlineLinkText}>전체 기록 보기</Text>
                   <FontAwesome name="angle-right" size={14} color={V2_ACCENT} />

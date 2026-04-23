@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "Bath Time",
-    "slug": "BathTime",
+    "name": "배쓰타임",
+    "slug": "getbathtime",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "bathtime",
+    "scheme": "getbathtime",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
@@ -15,9 +15,10 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.bathsommelier.app"
+      "bundleIdentifier": "com.getbathtime.app"
     },
     "android": {
+      "package": "com.getbathtime.app",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#F2F0F7"

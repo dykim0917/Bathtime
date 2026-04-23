@@ -174,7 +174,7 @@ function responseToText(payload) {
 
 function buildThemeGenerationPrompts(brief, existingThemes, requestedCount) {
   const system = [
-    'You are a premium wellness creative director for Bath Sommelier.',
+    'You are a premium wellness creative director for ë°°ì°íì.',
     'Generate original trip routine themes for a bath ritual app.',
     'Return only valid JSON.',
     'Avoid medical framing, treatment framing, hype, party energy, and generic travel brochure language.',

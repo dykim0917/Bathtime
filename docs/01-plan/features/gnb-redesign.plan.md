@@ -2,7 +2,7 @@
 
 > **Summary**: 기존 Home/History/Settings 3탭 GNB를 Home/Care/Trip/Product/My 5탭 구조로 확장하여 앱의 핵심 엔진(CareEngine, TripEngine, ProductHub)을 독립 탭으로 노출하고 사용자 진입 경로를 다각화한다.
 >
-> **Project**: Bath Sommelier
+> **Project**: ë°°ì°íì
 > **Version**: v3.11.0 → v3.12.0 (예정)
 > **Author**: Product Manager
 > **Date**: 2026-02-27
@@ -14,7 +14,7 @@
 
 ### 1.1 Purpose
 
-현재 Bath Sommelier는 Home → Care/Trip 선택 → 루틴 실행이라는 단일 퍼널로만 동작한다. CareEngine, TripEngine, ProductHub 등 핵심 엔진들이 GNB에 직접 노출되지 않아 탐색 가능성(Discoverability)이 낮다. 5탭 GNB로 전환함으로써:
+현재 배쓰타임은 Home → Care/Trip 선택 → 루틴 실행이라는 단일 퍼널로만 동작한다. CareEngine, TripEngine, ProductHub 등 핵심 엔진들이 GNB에 직접 노출되지 않아 탐색 가능성(Discoverability)이 낮다. 5탭 GNB로 전환함으로써:
 
 - 각 엔진에 대한 직접 진입점을 사용자에게 제공한다
 - 기존 History + Settings를 My 탭으로 통합해 화면 수를 줄인다

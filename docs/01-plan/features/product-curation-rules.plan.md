@@ -2,7 +2,7 @@
 
 > Summary: 케어탭과 트립탭의 현재 루틴 구조를 기준으로, 제품 카탈로그와 추천 슬롯에 올릴 상품 선정 기준을 정의한다.
 >
-> Project: Bath Sommelier
+> Project: ë°°ì°íì
 > Date: 2026-04-22
 > Status: Draft
 

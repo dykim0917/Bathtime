@@ -2,12 +2,12 @@ import { brand } from '@/src/content/brand';
 
 export const copy = {
   home: {
-    title: '오늘의 배스타임',
+    title: '오늘의 배쓰타임',
     subtitlePrefix: '오늘 상태:',
     modeHint: {
       sleep: '케어 · 수면 준비에 맞춘 쉬는 시간',
       recovery: '케어 · 몸 상태에 맞춘 회복 루틴',
-      reset: '케어 · 기분 전환을 돕는 배스타임',
+      reset: '케어 · 기분 전환을 돕는 배쓰타임',
     },
     lateNightBadge: '늦은 시간이라 수면 준비 루틴을 먼저 보여드려요.',
     conflictBadge: '조건이 겹쳐서 가장 안전한 루틴 1개를 먼저 추천해요.',
@@ -15,7 +15,7 @@ export const copy = {
       signal: '오늘 상태',
       environment: '목욕 환경',
       tripTheme: '트립 테마',
-      suggestions: '오늘 맞춘 배스타임',
+      suggestions: '오늘 맞춘 배쓰타임',
       quickActions: '빠른 메뉴',
     },
     actions: {
@@ -32,9 +32,9 @@ export const copy = {
     noCommerceNotice: '지금은 상품 대신 루틴부터 바로 시작할 수 있어요.',
     beginnerGuide: '처음 시작이라 무리 없이 쉬기 좋은 기본 루틴부터 보여드려요.',
     safetyPriorityBadge: '안전 우선 적용',
-    streakTitle: '이번주 배스타임',
-    todayDone: '오늘의 배스타임 완료',
-    todayPending: '오늘의 배스타임 전',
+    streakTitle: '이번주 배쓰타임',
+    todayDone: '오늘의 배쓰타임 완료',
+    todayPending: '오늘의 배쓰타임 전',
     weeklyCount: (count: number, goal: number) => `이번주 ${count} / ${goal}일`,
     dailyStreak: (days: number) => `${days}일 연속`,
     weeklyStreak: (weeks: number) => `${weeks}주 연속`,
@@ -173,7 +173,7 @@ export const copy = {
     sensitiveSkinAdjusted: '저자극 기준으로 자동 조정해요.',
   },
   completion: {
-    feedbackTitleDefault: '오늘 배스타임은 어떠셨나요?',
+    feedbackTitleDefault: '오늘 배쓰타임은 어떠셨나요?',
     feedbackTitleWithThemePrefix: '오늘의',
     feedbackTitleWithThemeSuffix: '분위기는 어떠셨나요?',
     summaryTitle: '잘 쉬었습니다',
@@ -183,8 +183,8 @@ export const copy = {
       thanks: '의견 고마워요. 다음 추천에 반영할게요.',
     },
     monthlyPrefix: '이번 달',
-    monthlySuffix: '번째 배스타임을 기록했어요',
-    memoryTitle: '오늘 배스타임 요약',
+    monthlySuffix: '번째 배쓰타임을 기록했어요',
+    memoryTitle: '오늘 배쓰타임 요약',
     memoryLabels: {
       snapshot: '진행 기록',
       weight: '선호도 변화',

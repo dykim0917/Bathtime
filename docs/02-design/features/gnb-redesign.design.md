@@ -2,7 +2,7 @@
 
 > **Summary**: Plan 문서(gnb-redesign.plan.md) 기반 5탭 GNB 아키텍처 설계. 라우터 구조, 컴포넌트 인터페이스, 네비게이션 플로우, 데이터 플로우, 마이그레이션 전략을 포함한다.
 >
-> **Project**: Bath Sommelier
+> **Project**: ë°°ì°íì
 > **Version**: v3.11.0 → v3.12.0
 > **Author**: Frontend Architect
 > **Date**: 2026-02-27
@@ -549,7 +549,7 @@ app/(tabs)/settings.tsx   ← useFocusEffect: router.replace('/(tabs)/my')
 
 ### 5.1 탭 간 상태 공유
 
-Bath Sommelier는 AsyncStorage 기반 단방향 저장이므로, 탭 간 공유 상태가 적다. React Context나 Zustand는 불필요.
+배쓰타임은 AsyncStorage 기반 단방향 저장이므로, 탭 간 공유 상태가 적다. React Context나 Zustand는 불필요.
 
 | 데이터 | 저장소 | 탭간 공유 방법 |
 |--------|--------|--------------|

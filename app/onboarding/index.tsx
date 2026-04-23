@@ -108,7 +108,7 @@ export default function OnboardingEnvironment() {
               </View>
 
               <Text style={styles.nextGuide}>
-                다음 단계에서는 안전 상태를 확인하고, 지금 환경에 맞는 배스타임만 추천해드릴게요.
+                다음 단계에서는 안전 상태를 확인하고, 지금 환경에 맞는 배쓰타임만 추천해드릴게요.
               </Text>
             </ScrollView>
 

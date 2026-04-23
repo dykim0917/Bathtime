@@ -1,4 +1,4 @@
-# PRD — Bath Sommelier v3.11.0 (Current State Baseline + Patch Roadmap)
+# PRD — ë°°ì°íì v3.11.0 (Current State Baseline + Patch Roadmap)
 
 버전: v3.11.0 (Current State Baseline + Patch Roadmap)
 기준일: 2026-02-27
@@ -65,7 +65,7 @@
 ---
 
 ## 1. 제품 핵심가치
-BathSommelier의 핵심은 다음 한 문장으로 정의한다.
+배쓰타임의 핵심은 다음 한 문장으로 정의한다.
 
 **"내 상태를 이해하고 맞춤형 목욕을 설계해준다."**
 
@@ -681,7 +681,7 @@ Scale 기준:
 ## 21. Legal Disclaimer Layer
 
 ### 21.1 고정 문구 (확정)
-**"BathSommelier는 의료 진단 또는 치료 서비스를 제공하지 않습니다. 개인 건강 상태에 따라 전문의 상담을 권장합니다."**
+**"배쓰타임은 의료 진단 또는 치료 서비스를 제공하지 않습니다. 개인 건강 상태에 따라 전문의 상담을 권장합니다."**
 
 ### 21.2 노출 위치
 - 설정 화면 고정 영역
@@ -1311,7 +1311,7 @@ HealthInputPolicy {
   - 효과: 오디오 파일 없는 상태에서도 전 화면 정상 동작
 
 **[Build] iOS 개발 빌드**
-- `app.json`: `bundleIdentifier: "com.bathsommelier.app"` 추가
+- `app.json`: `slug: "getbathtime"`, `scheme: "getbathtime"`, `bundleIdentifier/package: "com.getbathtime.app"` 적용
 - iPhone 17 Pro 시뮬레이터 빌드/실행 성공 (`npx expo run:ios`)
 
 ### v3.10.2 — 2026-02-13

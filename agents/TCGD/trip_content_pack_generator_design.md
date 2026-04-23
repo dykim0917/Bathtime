@@ -1,7 +1,7 @@
 # Trip Content Pack Generator — 에이전트 설계서
 
 버전: v0.1 (설계 초안)  
-기준 PRD: BathSommelier PRD v3.11.0 §25 (Trip Immersion Engine)  
+기준 PRD: ë°°ì°íì PRD v3.11.0 §25 (Trip Immersion Engine)  
 작성 목적: Claude Code 구현 참조용 계획서
 
 ---
@@ -10,7 +10,7 @@
 
 ### 1.1 배경 및 목적
 
-BathSommelier TripEngine의 콘텐츠 자산(서사·사운드·비주얼·CTA)을 테마별로 생성하고 Content Bible에 누적한다.  
+ë°°ì°íì TripEngine의 콘텐츠 자산(서사·사운드·비주얼·CTA)을 테마별로 생성하고 Content Bible에 누적한다.  
 콘텐츠는 Lite(3~7분)·Deep(10~20분) 두 깊이로 분리 생성되며, Trip Copy Firewall을 통과한 것만 확정된다.  
 배치 실행 방식으로 여러 테마를 한 번에 처리하고, 테마 간 사운드 레이어 중복 등 일관성 문제를 탐지한다.
 

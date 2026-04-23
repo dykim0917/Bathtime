@@ -1,4 +1,4 @@
-# Bath Sommelier Session Summary (2026-03-03)
+# ë°°ì°íì Session Summary (2026-03-03)
 
 ## Quick Reference
 

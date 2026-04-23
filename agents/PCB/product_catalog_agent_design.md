@@ -1,7 +1,7 @@
 # Product Catalog Builder — 에이전트 설계서
 
 버전: v0.1 (설계 초안)  
-기준 스키마: `BathSommelier ProductProfile` (PRD v3.11.0 §24.1)  
+기준 스키마: `ë°°ì°íì ProductProfile` (PRD v3.11.0 §24.1)  
 작성 목적: Claude Code 구현 참조용 계획서
 
 ---
@@ -10,7 +10,7 @@
 
 ### 1.1 배경 및 목적
 
-BathSommelier의 ProductHub/추천 레이어에 연결할 제품 카탈로그를 자동으로 구축한다.  
+배쓰타임의 ProductHub/추천 레이어에 연결할 제품 카탈로그를 자동으로 구축한다.  
 쿠팡·네이버에서 카테고리별 베스트셀러를 수집하고, ProductProfile 스키마로 정규화한 뒤 환경·모드·리스크 태그까지 부여해 바로 사용 가능한 카탈로그를 출력한다.
 
 ### 1.2 범위

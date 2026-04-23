@@ -7,4 +7,5 @@ export const STORAGE_KEYS = {
   TRIP_MEMORY_HISTORY: '@bath_sommelier/trip_memory_history',
   THEME_PREFERENCE_WEIGHTS: '@bath_sommelier/theme_preference_weights',
   BATH_SESSION_LOG: '@bath_sommelier/bath_session_log',
+  COOKIE_NOTICE_ACK: '@bath_sommelier/cookie_notice_ack',
 } as const;

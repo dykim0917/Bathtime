@@ -1,4 +1,4 @@
-# BathSommelier v3.9.1 Wireframe Spec (Archived)
+# ë°°ì°íì v3.9.1 Wireframe Spec (Archived)
 
 이 문서는 아카이브 상태입니다.
 최신 와이어프레임 스펙은 아래 문서를 사용하세요.

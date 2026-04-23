@@ -527,6 +527,30 @@ function SettingsSection({
             <Text style={styles.infoLabelRow}>{copy.settings.nameLabel}</Text>
             <Text style={styles.infoValue}>{brand.displayName}</Text>
           </View>
+          <View style={styles.legalCardGroup}>
+            <TouchableOpacity
+              style={[ui.glassCardV2, styles.legalCard]}
+              onPress={() => router.push('/legal/privacy' as any)}
+              activeOpacity={0.82}
+            >
+              <View style={styles.legalCardText}>
+                <Text style={styles.legalCardTitle}>개인정보 처리방침</Text>
+                <Text style={styles.legalCardBody}>민감정보, 아동 이용, 쿠키 및 권리 행사 안내</Text>
+              </View>
+              <Text style={styles.actionArrow}>→</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[ui.glassCardV2, styles.legalCard]}
+              onPress={() => router.push('/legal/terms' as any)}
+              activeOpacity={0.82}
+            >
+              <View style={styles.legalCardText}>
+                <Text style={styles.legalCardTitle}>이용약관</Text>
+                <Text style={styles.legalCardBody}>서비스 이용 조건과 책임 범위 확인</Text>
+              </View>
+              <Text style={styles.actionArrow}>→</Text>
+            </TouchableOpacity>
+          </View>
           <PersistentDisclosure style={styles.disclosureInline} showColdWarning variant="v2" />
         </View>
       </ScrollView>
@@ -953,6 +977,33 @@ const styles = StyleSheet.create({
     fontSize: TYPE_BODY,
     fontWeight: '600',
     color: V2_TEXT_PRIMARY,
+  },
+  legalCardGroup: {
+    gap: 10,
+  },
+  legalCard: {
+    padding: 15,
+    borderRadius: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  legalCardText: {
+    flex: 1,
+    gap: 4,
+    paddingRight: 12,
+  },
+  legalCardTitle: {
+    fontSize: TYPE_BODY,
+    color: V2_TEXT_PRIMARY,
+    fontWeight: '600',
+    fontFamily: luxuryFonts.sans,
+  },
+  legalCardBody: {
+    fontSize: TYPE_CAPTION,
+    lineHeight: 18,
+    color: V2_TEXT_SECONDARY,
+    fontFamily: luxuryFonts.sans,
   },
   settingChoiceCard: {
     padding: 15,

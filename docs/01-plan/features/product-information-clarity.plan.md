@@ -2,7 +2,7 @@
 
 > **Summary**: 현재 Product 경험은 에디토리얼 무드는 있으나 실제 구매 판단에 필요한 정보가 부족하다. ProductCard, ProductDetailModal, catalog 데이터 계약을 정리해 "왜 이 제품인지", "얼마인지", "언제 확인한 정보인지", "어떤 루틴에 맞는지"를 명확하게 보여주는 방향으로 재설계한다.
 >
-> **Project**: Bath Sommelier
+> **Project**: ë°°ì°íì
 > **Version**: v3.12.4 (proposed)
 > **Author**: Codex
 > **Date**: 2026-04-08
@@ -33,7 +33,7 @@
 
 ## 2. Product Principle
 
-Bath Sommelier의 Product 경험은 "쇼핑몰"이 아니라 "루틴 보조 레이어"여야 한다.
+배쓰타임의 Product 경험은 "쇼핑몰"이 아니라 "루틴 보조 레이어"여야 한다.
 
 원칙:
 

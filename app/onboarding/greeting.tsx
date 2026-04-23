@@ -61,7 +61,7 @@ export default function OnboardingGreeting() {
               </View>
               <Text style={styles.welcome}>준비 완료</Text>
               <Text style={styles.title}>환영합니다</Text>
-              <Text style={styles.subtitle}>{'오늘 상태에 맞춘\n배스타임을 시작해볼게요'}</Text>
+              <Text style={styles.subtitle}>{'오늘 상태에 맞춘\n배쓰타임을 시작해볼게요'}</Text>
               <Text style={styles.description}>이제 컨디션과 환경에 맞는 쉬는 시간을 바로 준비할 수 있어요.</Text>
             </Animated.View>
           </View>

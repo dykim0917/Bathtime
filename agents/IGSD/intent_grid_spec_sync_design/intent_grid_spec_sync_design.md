@@ -10,7 +10,7 @@
 
 ### 1.1 배경 및 목적
 
-BathSommelier 홈 탭의 IntentCard 8종과 각 카드별 SubProtocolOption(1~3개)은  
+ë°°ì°íì 홈 탭의 IntentCard 8종과 각 카드별 SubProtocolOption(1~3개)은  
 문서(PRD/Wireframe), TypeScript 타입, 데이터 파일, 컴포넌트 코드 4곳에 분산 정의되어 있다.  
 이 에이전트는 **기존 코드베이스를 읽어 4자리 간 불일치를 탐지**하고,  
 개발자가 수정할 수 있도록 불일치 리포트(JSON + MD)를 생성한다.  
@@ -374,7 +374,7 @@ docs/WIREFRAME_V3_11_0.md         ← UI 스펙 소스
 ### 3.1 폴더 구조
 
 ```
-/intent-grid-sync                      # 프로젝트 루트 (BathSommelier와 별도)
+/intent-grid-sync                      # 프로젝트 루트 (배쓰타임과 별도)
  ├── CLAUDE.md                          # 메인 에이전트 지침 (오케스트레이터)
  │
  ├── /.claude

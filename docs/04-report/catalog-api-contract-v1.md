@@ -3,7 +3,7 @@
 버전: `catalog.v1`  
 기준일: `2026-04-07`
 
-이 문서는 BathSommelier 프론트가 ProductHub / 추천 제품 모달 / 루틴 상세에서 공통으로 사용할 `/api/catalog` 응답 계약을 정의한다.
+이 문서는 ë°°ì°íì 프론트가 ProductHub / 추천 제품 모달 / 루틴 상세에서 공통으로 사용할 `/api/catalog` 응답 계약을 정의한다.
 
 목표:
 

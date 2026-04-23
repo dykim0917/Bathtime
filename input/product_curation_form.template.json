@@ -1,7 +1,7 @@
 {
-  "schemaVersion": "bath-sommelier.product-curation-form.v1",
+  "schemaVersion": "getbathtime.product-curation-form.v1",
   "instructions": {
-    "purpose": "Fill this file with product candidates that can be mapped into Bath Sommelier catalog.v1.",
+    "purpose": "Fill this file with product candidates that can be mapped into ë°°ì°íì catalog.v1.",
     "scope": "For now, collect only bath_salt, bath_item, and body_wash. Hold massage bars, body oils, sauna oils, and standalone essential oils for a later body-care phase.",
     "dateFormat": "Use YYYY-MM-DD.",
     "unknownValues": "Use null when unknown. Use availability: unknown when a listing page exists but stock is unclear.",

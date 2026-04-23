@@ -1,4 +1,4 @@
-# BathSommelier 스타일 가이드 v1 (Figma Export 기반)
+# ë°°ì°íì 스타일 가이드 v1 (Figma Export 기반)
 
 기준 이미지:
 - `docs/04-report/figma-exports/인트로.png`

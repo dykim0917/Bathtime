@@ -1,4 +1,4 @@
-# Bath Sommelier — Claude Code Design System Rules
+# 배쓰타임 — Claude Code Design System Rules
 
 ## Figma MCP Integration
 

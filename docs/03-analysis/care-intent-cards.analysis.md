@@ -2,7 +2,7 @@
 
 > **Analysis Type**: Gap Analysis (Plan vs Implementation)
 >
-> **Project**: Bath Sommelier
+> **Project**: ë°°ì°íì
 > **Version**: v3.12.1
 > **Analyst**: gap-detector
 > **Date**: 2026-03-03

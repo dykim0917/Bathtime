@@ -1,4 +1,4 @@
-# Design System — Bath Time
+# Design System — 배쓰타임
 
 ## Product Context
 - **What this is:** 컨디션과 목욕 환경에 맞춰 더 잘 쉬는 목욕·샤워 루틴을 추천하고, 타이머와 회고까지 이어주는 모바일 웰니스 앱.
@@ -48,7 +48,7 @@
 ## Layout
 - **Approach:** Hybrid
 - **App shell:** 정돈된 단일 컬럼과 안정적인 루틴 카드 스택.
-- **Editorial moments:** 홈 히어로, 트립 카드, 배스타임 완료 화면에서만 에디토리얼 톤을 허용한다.
+- **Editorial moments:** 홈 히어로, 트립 카드, 배쓰타임 완료 화면에서만 에디토리얼 톤을 허용한다.
 - **Border radius:** card 24, large card 30, button 18, pill full.
 - **Grid:** 모바일 우선. 좌우 패딩 20-24를 기본으로 유지한다.
 
@@ -60,7 +60,7 @@
 
 ## Voice In UI
 - **Tone:** 전문성 있는 안내, 부담 없는 실행, 잘 쉬었다는 감각.
-- **Do:** "오늘 상태에 맞춘 배스타임", "온도와 시간을 맞춰드려요", "무리 없이 따라갈 수 있어요", "잘 쉬었습니다"
+- **Do:** "오늘 상태에 맞춘 배쓰타임", "온도와 시간을 맞춰드려요", "무리 없이 따라갈 수 있어요", "잘 쉬었습니다"
 - **Don't:** 몽환적 추상 카피, 과도한 힐링 문구, 럭셔리 과시, 루틴 완료 압박.
 
 ## Component Rules

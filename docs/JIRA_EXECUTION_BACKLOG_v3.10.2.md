@@ -1,4 +1,4 @@
-# BathSommelier v3.10.2 Jira Execution Backlog (Epic/Story/AC)
+# ë°°ì°íì v3.10.2 Jira Execution Backlog (Epic/Story/AC)
 
 버전: v1.0  
 기준 문서:
