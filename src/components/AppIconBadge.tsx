@@ -80,6 +80,7 @@ export function getEnvironmentIconSpec(environment: BathEnvironment): AppIconSpe
     case 'bathtub':
       return { kind: 'custom', name: 'care' };
     case 'footbath':
+    case 'partial_bath':
       return { kind: 'custom', name: 'footbath' };
     case 'shower':
     default:
@@ -97,6 +98,7 @@ export function getEnvironmentBadgeTone(environment: BathEnvironment, selected: 
         borderColor: selected ? 'rgba(194, 168, 119, 0.34)' : 'rgba(194, 168, 119, 0.18)',
       };
     case 'footbath':
+    case 'partial_bath':
       return {
         spec: getEnvironmentIconSpec(environment),
         color: selected ? '#8DB4A4' : '#7DA192',
@@ -171,9 +173,9 @@ export function getProductCategoryBadgeTone(category: string): AppIconTone {
     default:
       return {
         spec: getProductCategoryIconSpec(category),
-        color: '#B08D57',
-        backgroundColor: 'rgba(176, 141, 87, 0.14)',
-        borderColor: 'rgba(176, 141, 87, 0.22)',
+        color: '#94D2BF',
+        backgroundColor: 'rgba(148, 210, 191, 0.14)',
+        borderColor: 'rgba(148, 210, 191, 0.22)',
       };
   }
 }
@@ -252,9 +254,9 @@ export function getTripIntentBadgeTone(intentId: string, isElevated = false): Ap
     default:
       return {
         spec: getTripIntentIconSpec(intentId),
-        color: '#E0C48F',
-        backgroundColor: isElevated ? 'rgba(91, 74, 44, 0.28)' : 'rgba(176, 141, 87, 0.18)',
-        borderColor: isElevated ? 'rgba(224, 196, 143, 0.24)' : 'rgba(224, 196, 143, 0.18)',
+        color: '#94D2BF',
+        backgroundColor: isElevated ? 'rgba(35, 83, 82, 0.32)' : 'rgba(148, 210, 191, 0.18)',
+        borderColor: isElevated ? 'rgba(148, 210, 191, 0.26)' : 'rgba(148, 210, 191, 0.18)',
       };
   }
 }

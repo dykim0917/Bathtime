@@ -7,11 +7,15 @@ import {
   SafeAreaView,
   Platform,
   ScrollView,
+  Image,
 } from 'react-native';
 import { useLocalSearchParams, router } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
 import Animated, { FadeIn, BounceIn } from 'react-native-reanimated';
+import ConditionIcon from '@/assets/icons/condition.svg';
+import UnhappyIcon from '@/assets/icons/unhappy.svg';
 import { BathRecommendation, BathFeedback } from '@/src/engine/types';
+import { BrandMark } from '@/src/components/BrandMark';
 import { getRecommendationById, getMonthlyCount, updateRecommendationFeedback } from '@/src/storage/history';
 import { clearSession, loadSession } from '@/src/storage/session';
 import { patchSessionRecord } from '@/src/storage/sessionLog';
@@ -23,20 +27,17 @@ import {
   TYPE_SCALE,
   V2_ACCENT,
   V2_ACCENT_SOFT,
-  V2_ACCENT_TEXT,
   V2_BG_BASE,
-  V2_BG_BOTTOM,
-  V2_BG_OVERLAY,
-  V2_BG_TOP,
   V2_BORDER,
   V2_SHADOW,
-  V2_SURFACE,
   V2_TEXT_MUTED,
   V2_TEXT_PRIMARY,
   V2_TEXT_SECONDARY,
 } from '@/src/data/colors';
 import { luxuryFonts, luxuryTracking } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
+
+const RESULT_BACKGROUND = require('../../../assets/images/result_background.png');
 
 type CompletionStep = 'feedback' | 'summary';
 
@@ -151,24 +152,42 @@ export default function CompletionScreen() {
 
   return (
     <View style={styles.container}>
-      <LinearGradient colors={[V2_BG_TOP, V2_BG_BASE, V2_BG_BOTTOM]} style={StyleSheet.absoluteFillObject} />
+      <Image
+        source={RESULT_BACKGROUND}
+        style={styles.backgroundImage}
+        resizeMode="cover"
+      />
+      <LinearGradient
+        colors={['rgba(5, 20, 21, 0)', 'rgba(5, 20, 21, 0.08)', 'rgba(5, 20, 21, 0.46)']}
+        locations={[0, 0.52, 1]}
+        style={StyleSheet.absoluteFillObject}
+      />
       <View style={styles.softOverlay} />
       <SafeAreaView style={styles.safeArea}>
         {step === 'feedback' ? (
-          <View style={styles.content}>
-            <Animated.View entering={BounceIn.duration(800)} style={styles.celebrationBadge}>
-              <Text style={styles.celebrationBadgeText}>완료</Text>
+          <ScrollView
+            style={styles.feedbackScroll}
+            contentContainerStyle={styles.feedbackContent}
+            showsVerticalScrollIndicator={false}
+          >
+            <Animated.View entering={FadeIn.duration(500)} style={styles.brandBlock}>
+              <BrandMark size={72} />
             </Animated.View>
 
-            <Animated.View entering={FadeIn.duration(600).delay(200)} style={styles.headerBlock}>
-              <View style={styles.stepBadge}>
-                <Text style={styles.stepBadgeText}>{copy.routine.stepFinish}</Text>
-              </View>
+            <Animated.View entering={BounceIn.duration(800)} style={styles.stepBadge}>
+              <Text style={styles.stepBadgeText}>{copy.routine.stepFinish}</Text>
+            </Animated.View>
+
+            <Animated.View entering={FadeIn.duration(600).delay(160)} style={styles.headerBlock}>
               <Text style={styles.mainMessage}>{timeMessage}</Text>
+              <Text style={styles.mainLead}>
+                따뜻한 물이 몸을 녹인 시간, 오늘의 휴식을 천천히 간직해보세요.
+              </Text>
             </Animated.View>
 
-            <Animated.View entering={FadeIn.duration(600).delay(500)} style={[ui.glassCardV2, styles.feedbackSection]}>
+            <Animated.View entering={FadeIn.duration(600).delay(360)} style={styles.feedbackSection}>
               <Text style={styles.feedbackTitle}>{feedbackTitle}</Text>
+              <Text style={styles.feedbackSubtitle}>당신의 피드백이 더 좋은 휴식을 만듭니다.</Text>
               <View style={styles.feedbackButtons}>
                 <Pressable
                   style={[
@@ -178,6 +197,11 @@ export default function CompletionScreen() {
                   onPress={() => handleFeedback('good')}
                   disabled={feedback !== null}
                 >
+                  <ConditionIcon
+                    width={38}
+                    height={38}
+                    fill={feedback === 'good' ? V2_BG_BASE : V2_ACCENT}
+                  />
                   <Text style={[styles.feedbackLabel, feedback === 'good' && styles.feedbackLabelActive]}>
                     {copy.completion.feedback.good}
                   </Text>
@@ -191,13 +215,23 @@ export default function CompletionScreen() {
                   onPress={() => handleFeedback('bad')}
                   disabled={feedback !== null}
                 >
+                  <UnhappyIcon
+                    width={34}
+                    height={34}
+                    fill={feedback === 'bad' ? V2_BG_BASE : V2_TEXT_MUTED}
+                  />
                   <Text style={[styles.feedbackLabel, feedback === 'bad' && styles.feedbackLabelActive]}>
                     {copy.completion.feedback.bad}
                   </Text>
                 </Pressable>
               </View>
             </Animated.View>
-          </View>
+
+            <Animated.View entering={FadeIn.duration(600).delay(460)} style={styles.privateNote}>
+              <Text style={styles.privateNoteIcon}>*</Text>
+              <Text style={styles.privateNoteText}>기록은 나만 볼 수 있어요. 오늘의 휴식을 소중히 간직하세요.</Text>
+            </Animated.View>
+          </ScrollView>
         ) : (
           <ScrollView
             style={styles.summaryScroll}
@@ -281,18 +315,28 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  backgroundImage: {
+    ...StyleSheet.absoluteFillObject,
+    width: '100%',
+    height: '100%',
+    opacity: 1,
+  },
   safeArea: {
     flex: 1,
   },
   softOverlay: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: V2_BG_OVERLAY,
+    backgroundColor: 'rgba(1, 16, 17, 0.02)',
   },
-  content: {
+  feedbackScroll: {
     flex: 1,
-    justifyContent: 'center',
+  },
+  feedbackContent: {
+    flexGrow: 1,
+    justifyContent: 'flex-end',
     paddingHorizontal: 22,
-    paddingVertical: 24,
+    paddingTop: 28,
+    paddingBottom: 34,
     gap: 18,
   },
   summaryScroll: {
@@ -327,17 +371,30 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 10,
   },
+  brandBlock: {
+    alignItems: 'center',
+    gap: 4,
+    marginBottom: 8,
+  },
   summaryHeaderBlock: {
     alignItems: 'flex-start',
     gap: 10,
   },
   mainMessage: {
-    fontSize: 28,
+    fontSize: 34,
     color: V2_TEXT_PRIMARY,
     textAlign: 'center',
-    lineHeight: 36,
+    lineHeight: 44,
     fontFamily: luxuryFonts.display,
     letterSpacing: luxuryTracking.hero,
+  },
+  mainLead: {
+    maxWidth: 320,
+    fontSize: 15,
+    color: V2_TEXT_SECONDARY,
+    textAlign: 'center',
+    lineHeight: 23,
+    fontFamily: luxuryFonts.sans,
   },
   summaryTitle: {
     fontSize: 24,
@@ -386,42 +443,82 @@ const styles = StyleSheet.create({
     fontFamily: luxuryFonts.display,
   },
   feedbackSection: {
-    padding: 18,
+    borderRadius: 22,
+    borderWidth: 1,
+    borderColor: 'rgba(148, 210, 191, 0.32)',
+    backgroundColor: 'rgba(9, 37, 37, 0.68)',
+    paddingVertical: 24,
+    paddingHorizontal: 18,
     gap: 14,
   },
   feedbackTitle: {
-    fontSize: 20,
+    fontSize: 25,
     color: V2_TEXT_PRIMARY,
     textAlign: 'center',
-    lineHeight: 26,
+    lineHeight: 34,
     fontFamily: luxuryFonts.display,
+  },
+  feedbackSubtitle: {
+    fontSize: 14,
+    color: V2_TEXT_SECONDARY,
+    textAlign: 'center',
+    lineHeight: 20,
+    fontFamily: luxuryFonts.sans,
   },
   feedbackButtons: {
     flexDirection: 'row',
-    gap: 12,
+    gap: 14,
+    marginTop: 6,
   },
   feedbackButton: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: 'rgba(255,255,255,0.04)',
-    borderRadius: 16,
-    paddingVertical: 14,
+    justifyContent: 'center',
+    minHeight: 126,
+    backgroundColor: 'rgba(255,255,255,0.035)',
+    borderRadius: 20,
+    paddingVertical: 18,
     paddingHorizontal: 12,
     borderWidth: 1,
-    borderColor: V2_BORDER,
+    borderColor: 'rgba(148, 210, 191, 0.3)',
+    gap: 12,
   },
   feedbackButtonActive: {
-    backgroundColor: V2_ACCENT,
+    backgroundColor: 'rgba(148, 210, 191, 0.16)',
     borderColor: V2_ACCENT,
   },
   feedbackLabel: {
-    fontSize: 13,
+    fontSize: 17,
     color: V2_TEXT_SECONDARY,
     fontWeight: '700',
     fontFamily: luxuryFonts.sans,
   },
   feedbackLabelActive: {
-    color: V2_ACCENT_TEXT,
+    color: V2_TEXT_PRIMARY,
+  },
+  privateNote: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderRadius: 999,
+    borderWidth: 1,
+    borderColor: 'rgba(148, 210, 191, 0.2)',
+    backgroundColor: 'rgba(9, 37, 37, 0.46)',
+    paddingHorizontal: 18,
+    paddingVertical: 13,
+    gap: 10,
+  },
+  privateNoteIcon: {
+    color: V2_ACCENT,
+    fontSize: 20,
+    fontWeight: '700',
+    fontFamily: luxuryFonts.sans,
+  },
+  privateNoteText: {
+    flex: 1,
+    color: V2_TEXT_SECONDARY,
+    fontSize: 13,
+    lineHeight: 18,
+    fontFamily: luxuryFonts.sans,
   },
   aftercareCard: {
     paddingVertical: 16,

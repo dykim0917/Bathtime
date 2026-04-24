@@ -1,6 +1,6 @@
 # Real Product Catalog Research Plan
 
-> **Summary**: 배쓰타임의 mock 제품 카탈로그를 실제 판매 상품 기준 카탈로그로 전환하기 위한 DB 스키마, seed 구조, 조사 기준을 정의한다. 추천 엔진은 안정적인 canonical product를 바라보고, 마켓별 링크는 별도 listing snapshot으로 관리한다.
+> **Summary**: 바스타임의 mock 제품 카탈로그를 실제 판매 상품 기준 카탈로그로 전환하기 위한 DB 스키마, seed 구조, 조사 기준을 정의한다. 추천 엔진은 안정적인 canonical product를 바라보고, 마켓별 링크는 별도 listing snapshot으로 관리한다.
 >
 > **Project**: ë°°ì°íì
 > **Version**: v3.12.3 (예정)

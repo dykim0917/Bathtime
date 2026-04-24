@@ -88,6 +88,21 @@ describe('productMatching', () => {
     ).toBe(true);
   });
 
+  test('uses the active carbonated bath alternative instead of paused BARTH listing', () => {
+    const slots = buildProductMatchingSlots(
+      {
+        ...baseRecommendation,
+        persona: 'P2_CIRCULATION',
+        ingredients: baseRecommendation.ingredients.filter((item) => item.id === 'carbonated_bath'),
+      },
+      'bathtub'
+    );
+    const productSlots = slots.filter((slot) => slot.kind === 'product');
+
+    expect(productSlots[0].product.id).toBe('bs_v1_006');
+    expect(productSlots.some((slot) => slot.product.id === 'bs_v1_005')).toBe(false);
+  });
+
   test('filters incompatible shower products for bathtub', () => {
     const slots = buildProductMatchingSlots(baseRecommendation, 'bathtub');
     expect(

@@ -70,6 +70,26 @@ jest.mock('@/src/utils/messages', () => ({
   getTimeBasedMessage: () => '오늘도 잘 마무리했어요',
 }));
 
+jest.mock('@/src/components/BrandMark', () => {
+  const React = require('react');
+  const { View } = require('react-native');
+  return {
+    BrandMark: () => React.createElement(View),
+  };
+});
+
+jest.mock('@/assets/icons/condition.svg', () => {
+  const React = require('react');
+  const { View } = require('react-native');
+  return () => React.createElement(View);
+});
+
+jest.mock('@/assets/icons/unhappy.svg', () => {
+  const React = require('react');
+  const { View } = require('react-native');
+  return () => React.createElement(View);
+});
+
 const recommendation = {
   id: 'rec_1',
   mode: 'care' as const,
@@ -130,7 +150,7 @@ describe('CompletionScreen', () => {
     const screen = render(React.createElement(CompletionScreen));
 
     await waitFor(() =>
-      expect(screen.getByText('오늘 배쓰타임은 어떠셨나요?')).toBeTruthy()
+      expect(screen.getByText('오늘 바스타임은 어떠셨나요?')).toBeTruthy()
     );
 
     expect(screen.queryByText('마무리로 이 세 가지만 챙겨주세요')).toBeNull();
@@ -159,6 +179,6 @@ describe('CompletionScreen', () => {
       expect(screen.getByText('잘 쉬었습니다')).toBeTruthy()
     );
 
-    expect(screen.queryByText('오늘 배쓰타임은 어떠셨나요?')).toBeNull();
+    expect(screen.queryByText('오늘 바스타임은 어떠셨나요?')).toBeNull();
   });
 });

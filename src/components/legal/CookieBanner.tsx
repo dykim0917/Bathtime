@@ -36,7 +36,7 @@ export function CookieBanner() {
       <View style={[ui.glassCardV2, styles.banner]}>
         <Text style={styles.title}>쿠키 및 접속정보 안내</Text>
         <Text style={styles.body}>
-          배쓰타임은 접속 상태 유지와 서비스 안정성 확인을 위해 필수 쿠키와 접속기록을 사용할 수 있습니다.
+          바스타임은 접속 상태 유지와 서비스 안정성 확인을 위해 필수 쿠키와 접속기록을 사용할 수 있습니다.
           현재 광고 추적 쿠키는 사용하지 않습니다.
         </Text>
         <View style={styles.actions}>

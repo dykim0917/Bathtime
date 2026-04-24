@@ -1,15 +1,15 @@
-# 배쓰타임
+# 바스타임
 
-배쓰타임은 오늘 상태와 목욕 환경에 맞춰 무리 없이 따라할 목욕·샤워 루틴을 안내하는 생활형 셀프케어 앱입니다. 컨디션 루틴과 무드 루틴을 보여주고, 레시피 확인부터 타이머, 완료 피드백, 기록 축적까지 한 흐름으로 연결합니다.
+바스타임은 오늘 상태와 목욕 환경에 맞춰 무리 없이 따라할 목욕·샤워 루틴을 안내하는 생활형 셀프케어 앱입니다. 컨디션 루틴과 무드 루틴을 보여주고, 레시피 확인부터 타이머, 완료 피드백, 기록 축적까지 한 흐름으로 연결합니다.
 
 <p align="center">
-  <img src="output/screenshots/ui-states/home-with-history.png" alt="배쓰타임 홈 화면" width="320" />
+  <img src="output/screenshots/ui-states/home-with-history.png" alt="바스타임 홈 화면" width="320" />
 </p>
 
 ## Overview
 
 - 온보딩에서 `욕조`, `부분입욕`, `샤워` 환경과 건강 상태를 저장합니다.
-- 홈에서 주간 배쓰타임 기록, 최근 루틴, 컨디션/무드 추천을 함께 확인할 수 있습니다.
+- 홈에서 주간 바스타임 기록, 최근 루틴, 컨디션/무드 추천을 함께 확인할 수 있습니다.
 - 컨디션 탭은 몸 상태 중심 루틴, 무드 탭은 분위기와 테마 중심 루틴을 제공합니다.
 - 제품 탭에서 입문자가 바로 쓰기 쉬운 입욕제, 샤워 아이템, 바디워시를 안내합니다.
 - 레시피, 타이머, 완료 피드백, 프로필/기록까지 로컬에 이어지는 루틴 플로우를 갖고 있습니다.
@@ -28,23 +28,23 @@
 ### Main Tabs
 
 <p align="center">
-  <img src="output/screenshots/ui-states/onboarding-welcome.png" alt="배쓰타임 온보딩 웰컴" width="180" />
-  <img src="output/screenshots/ui-states/home-with-history.png" alt="배쓰타임 홈" width="180" />
-  <img src="output/screenshots/ui-states/care-default.png" alt="배쓰타임 케어 탭" width="180" />
+  <img src="output/screenshots/ui-states/onboarding-welcome.png" alt="바스타임 온보딩 웰컴" width="180" />
+  <img src="output/screenshots/ui-states/home-with-history.png" alt="바스타임 홈" width="180" />
+  <img src="output/screenshots/ui-states/care-default.png" alt="바스타임 케어 탭" width="180" />
 </p>
 
 <p align="center">
-  <img src="output/screenshots/ui-states/trip-default.png" alt="배쓰타임 트립 탭" width="180" />
-  <img src="output/screenshots/ui-states/product-default.png" alt="배쓰타임 제품 탭" width="180" />
-  <img src="output/screenshots/ui-states/my-settings.png" alt="배쓰타임 프로필 설정 탭" width="180" />
+  <img src="output/screenshots/ui-states/trip-default.png" alt="바스타임 트립 탭" width="180" />
+  <img src="output/screenshots/ui-states/product-default.png" alt="바스타임 제품 탭" width="180" />
+  <img src="output/screenshots/ui-states/my-settings.png" alt="바스타임 프로필 설정 탭" width="180" />
 </p>
 
 ### Routine Flow
 
 <p align="center">
-  <img src="output/screenshots/ui-states/recipe-care.png" alt="배쓰타임 레시피 화면" width="180" />
-  <img src="output/screenshots/ui-states/timer-running.png" alt="배쓰타임 타이머 화면" width="180" />
-  <img src="output/screenshots/ui-states/completion-default.png" alt="배쓰타임 완료 화면" width="180" />
+  <img src="output/screenshots/ui-states/recipe-care.png" alt="바스타임 레시피 화면" width="180" />
+  <img src="output/screenshots/ui-states/timer-running.png" alt="바스타임 타이머 화면" width="180" />
+  <img src="output/screenshots/ui-states/completion-default.png" alt="바스타임 완료 화면" width="180" />
 </p>
 
 ## Tech Stack

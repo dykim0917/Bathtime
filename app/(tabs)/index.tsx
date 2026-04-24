@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { View, Text, Pressable, ScrollView, StyleSheet, useWindowDimensions, Platform, Image } from 'react-native';
+import { View, Text, Pressable, ScrollView, StyleSheet, useWindowDimensions, Platform } from 'react-native';
 import { Href, router, useFocusEffect } from 'expo-router';
 import Constants from 'expo-constants';
 import { FontAwesome } from '@expo/vector-icons';
@@ -27,6 +27,7 @@ import { loadTripMemoryHistory } from '@/src/storage/memory';
 import {
   TYPE_SCALE,
   V2_ACCENT,
+  V2_ACCENT_SOFT,
   V2_BG_BASE,
   V2_BG_BOTTOM,
   V2_BG_TOP,
@@ -68,6 +69,8 @@ import { HomeCareHeroCard } from '@/src/components/HomeCareHeroCard';
 import { HomeCareListCard } from '@/src/components/HomeCareListCard';
 import { HomeTripEditorialCard } from '@/src/components/HomeTripEditorialCard';
 import { OpenTabHeader } from '@/src/components/OpenTabHeader';
+import { BrandMark } from '@/src/components/BrandMark';
+import { HomeProfileSetupModal } from '@/src/components/HomeProfileSetupModal';
 import { HOME_CARE_HERO_IMAGE } from '@/src/data/homeVisuals';
 import { CustomIconName } from '@/src/components/CustomIcon';
 import { getCareCardImageForEnvironment } from '@/src/data/careImages';
@@ -295,7 +298,7 @@ function getCareVisualMeta(intentId: string): CareVisualMeta {
 }
 
 export default function HomeIntentScreen() {
-  const { profile } = useUserProfile();
+  const { profile, save } = useUserProfile();
   const haptic = useHaptic();
   const { width: screenWidth } = useWindowDimensions();
   const insets = useSafeAreaInsets();
@@ -305,6 +308,7 @@ export default function HomeIntentScreen() {
   const [isHistoryLoaded, setIsHistoryLoaded] = useState(false);
   const [streakSummary, setStreakSummary] = useState<HomeStreakSummary>(buildHomeStreakSummary([]));
   const [subModalVisible, setSubModalVisible] = useState(false);
+  const [setupModalVisible, setSetupModalVisible] = useState(false);
   const [selectedIntent, setSelectedIntent] = useState<IntentCard | null>(null);
   const [selectedIntentPayload, setSelectedIntentPayload] = useState<RecommendationCardEventPayload | null>(null);
 
@@ -334,6 +338,7 @@ export default function HomeIntentScreen() {
   }, [profile]);
 
   const normalizedEnvironment = normalizeEnvironmentInput(environment);
+  const hasCompletedProfile = Boolean(profile?.onboardingComplete);
   const careCards = CARE_INTENT_CARDS.slice(0, HOME_PREVIEW_CARD_LIMIT);
   const tripCards = TRIP_INTENT_CARDS.slice(0, HOME_PREVIEW_CARD_LIMIT);
   const tripCardWidth = Math.max(
@@ -398,10 +403,11 @@ export default function HomeIntentScreen() {
 
   useFocusEffect(
     useCallback(() => {
+      if (!hasCompletedProfile) return;
       [...careCards, ...tripCards].forEach((intent) => {
         trackIntentCardImpression(buildIntentPayload(intent));
       });
-    }, [buildIntentPayload, careCards, tripCards])
+    }, [buildIntentPayload, careCards, hasCompletedProfile, tripCards])
   );
 
   const disclosureLines = useMemo(() => {
@@ -419,6 +425,14 @@ export default function HomeIntentScreen() {
     haptic.light();
     setEnvironment(next);
     saveLastEnvironment(next);
+  };
+
+  const handleCompleteFirstSetup = async (nextProfile: UserProfile) => {
+    haptic.success();
+    await save(nextProfile);
+    setEnvironment(normalizeEnvironmentInput(nextProfile.bathEnvironment));
+    await saveLastEnvironment(nextProfile.bathEnvironment);
+    setSetupModalVisible(false);
   };
 
   const handleOpenCareSubProtocol = (intent: IntentCard) => {
@@ -549,11 +563,7 @@ export default function HomeIntentScreen() {
           subtitle="컨디션과 목욕 환경에 맞춰 무리 없는 루틴을 준비했어요."
           topSlot={
             <View style={styles.headerBrand}>
-              <Image
-                source={require('../../assets/images/brand/bath-symbol.png')}
-                style={styles.headerBrandIcon}
-                resizeMode="contain"
-              />
+              <BrandMark size={28} framed />
             </View>
           }
           compact
@@ -561,7 +571,7 @@ export default function HomeIntentScreen() {
 
         <View style={styles.weeklyCard}>
           <LinearGradient
-            colors={['rgba(39, 39, 39, 0.96)', 'rgba(28, 28, 28, 0.98)']}
+            colors={['rgba(18, 57, 60, 0.98)', 'rgba(7, 25, 27, 0.99)']}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 1 }}
             style={styles.weeklyGradient}
@@ -571,7 +581,7 @@ export default function HomeIntentScreen() {
 
             <View style={styles.weeklyTopGroup}>
               <View style={styles.weeklyMainRow}>
-                <Text style={styles.weeklyCountTitle}>이번주 배쓰타임 {streakSummary.weeklyBathCount}/{streakSummary.weeklyGoal}일</Text>
+                <Text style={styles.weeklyCountTitle}>이번주 바스타임 {streakSummary.weeklyBathCount}/{streakSummary.weeklyGoal}일</Text>
                 <Pressable onPress={() => router.push('/(tabs)/history')} style={styles.inlineLinkButton}>
                   <Text style={styles.inlineLinkText}>전체 기록 보기</Text>
                   <FontAwesome name="angle-right" size={14} color={V2_ACCENT} />
@@ -610,34 +620,57 @@ export default function HomeIntentScreen() {
           </LinearGradient>
         </View>
 
-        <View style={styles.environmentSection}>
-          <Text style={styles.environmentLabel}>목욕 환경</Text>
-          <View style={styles.environmentRow}>
-            {ENV_OPTIONS.map((option) => (
-              <Pressable
-                key={option.id}
-                style={[styles.envChip, environment === option.id && styles.envChipActive]}
-                onPress={() => handleSelectEnvironment(option.id)}
-              >
-                <Text style={[styles.envText, environment === option.id && styles.envTextActive]} numberOfLines={1}>
-                  {option.label}
-                </Text>
-              </Pressable>
-            ))}
+        {hasCompletedProfile ? (
+          <View style={styles.environmentSection}>
+            <Text style={styles.environmentLabel}>목욕 환경</Text>
+            <View style={styles.environmentRow}>
+              {ENV_OPTIONS.map((option) => (
+                <Pressable
+                  key={option.id}
+                  style={[styles.envChip, environment === option.id && styles.envChipActive]}
+                  onPress={() => handleSelectEnvironment(option.id)}
+                >
+                  <Text style={[styles.envText, environment === option.id && styles.envTextActive]} numberOfLines={1}>
+                    {option.label}
+                  </Text>
+                </Pressable>
+              ))}
+            </View>
           </View>
-        </View>
+        ) : null}
 
         <View>
           <View style={styles.sectionHeaderRow}>
-            <Text style={styles.sectionTitle}>컨디션 루틴</Text>
-            <Pressable onPress={() => router.push('/(tabs)/care')} style={styles.inlineLinkButton}>
-              <Text style={styles.inlineLinkText}>전체 보기</Text>
-              <FontAwesome name="angle-right" size={14} color={V2_ACCENT} />
-            </Pressable>
+            <Text style={styles.sectionTitle}>{hasCompletedProfile ? '컨디션 루틴' : '첫 루틴 준비'}</Text>
+            {hasCompletedProfile ? (
+              <Pressable onPress={() => router.push('/(tabs)/care')} style={styles.inlineLinkButton}>
+                <Text style={styles.inlineLinkText}>전체 보기</Text>
+                <FontAwesome name="angle-right" size={14} color={V2_ACCENT} />
+              </Pressable>
+            ) : null}
           </View>
-          {heroCard ? (
+          {!hasCompletedProfile ? (
+            <HomeCareHeroCard
+              badge="FIRST SETUP"
+              eyebrow="30초 안에 끝나요"
+              title="오늘 가능한 방식만 알려주세요"
+              description="샤워, 욕조, 족욕 중 가능한 환경과 안전 상태를 확인하면 바로 무리 없는 루틴을 준비해요."
+              visualLabel="BATH TIME"
+              metaChips={[
+                { iconName: 'shower' as CustomIconName, label: '환경 선택' },
+                { iconName: 'care' as CustomIconName, label: '안전 확인' },
+              ]}
+              accent={['#12393C', '#94D2BF']}
+              backgroundSource={require('../../assets/images/welcome.jpg')}
+              fitLabel="첫 추천 준비"
+              onPress={() => {
+                haptic.medium();
+                setSetupModalVisible(true);
+              }}
+            />
+          ) : heroCard ? (
             <>
-                <HomeCareHeroCard
+              <HomeCareHeroCard
                 title={heroTitle}
                 description={heroDescription}
                 metaChips={[
@@ -670,39 +703,42 @@ export default function HomeIntentScreen() {
               <Text style={styles.careListLabel}>다른 컨디션 루틴 찾아보기</Text>
             </>
           ) : null}
-          <View style={styles.careList}>
-            {listCards.map((intent) => {
-              const disabled = !intent.allowed_environments.includes(normalizedEnvironment);
-              const visual = getCareVisualMeta(intent.intent_id);
-              const previewRecommendation = listPreviewById[intent.id];
-              const imageEnvironment = resolveIntentImageEnvironment(intent, normalizedEnvironment);
-              return (
-                <HomeCareListCard
-                  key={intent.id}
-                  title={intent.copy_title}
-                  description={getEnvironmentSubtitle(intent, normalizedEnvironment, profile?.healthConditions ?? ['none'])}
-                  accent={visual.accent}
-                  metaChips={[
-                    {
-                      iconName: 'temperature' as CustomIconName,
-                      label: `${previewRecommendation?.temperature.recommended ?? 38}도`,
-                    },
-                    {
-                      iconName: 'hourglass' as CustomIconName,
-                      label: `${previewRecommendation?.durationMinutes ?? 10}분`,
-                    },
-                  ]}
-                  backgroundImage={getCareCardImageForEnvironment(intent.intent_id, imageEnvironment)}
-                  disabled={disabled}
-                  disabledText={getEnvironmentUnavailableReason(intent, normalizedEnvironment)}
-                  onPress={() => handleOpenCareSubProtocol(intent)}
-                />
-              );
-            })}
-          </View>
+          {hasCompletedProfile ? (
+            <View style={styles.careList}>
+              {listCards.map((intent) => {
+                const disabled = !intent.allowed_environments.includes(normalizedEnvironment);
+                const visual = getCareVisualMeta(intent.intent_id);
+                const previewRecommendation = listPreviewById[intent.id];
+                const imageEnvironment = resolveIntentImageEnvironment(intent, normalizedEnvironment);
+                return (
+                  <HomeCareListCard
+                    key={intent.id}
+                    title={intent.copy_title}
+                    description={getEnvironmentSubtitle(intent, normalizedEnvironment, profile?.healthConditions ?? ['none'])}
+                    accent={visual.accent}
+                    metaChips={[
+                      {
+                        iconName: 'temperature' as CustomIconName,
+                        label: `${previewRecommendation?.temperature.recommended ?? 38}도`,
+                      },
+                      {
+                        iconName: 'hourglass' as CustomIconName,
+                        label: `${previewRecommendation?.durationMinutes ?? 10}분`,
+                      },
+                    ]}
+                    backgroundImage={getCareCardImageForEnvironment(intent.intent_id, imageEnvironment)}
+                    disabled={disabled}
+                    disabledText={getEnvironmentUnavailableReason(intent, normalizedEnvironment)}
+                    onPress={() => handleOpenCareSubProtocol(intent)}
+                  />
+                );
+              })}
+            </View>
+          ) : null}
         </View>
 
-        <View>
+        {hasCompletedProfile ? (
+          <View>
           <View style={styles.sectionHeaderRow}>
             <Text style={styles.sectionTitle}>무드 루틴</Text>
             <Pressable onPress={() => router.push('/(tabs)/trip')} style={styles.inlineLinkButton}>
@@ -739,9 +775,11 @@ export default function HomeIntentScreen() {
               );
             })}
           </ScrollView>
-        </View>
+          </View>
+        ) : null}
 
-        <View>
+        {hasCompletedProfile ? (
+          <View>
           <View style={styles.sectionHeaderRow}>
             <Text style={styles.sectionTitle}>최근 완료한 루틴</Text>
             <Pressable onPress={() => router.push('/(tabs)/history')} style={styles.inlineLinkButton}>
@@ -776,10 +814,18 @@ export default function HomeIntentScreen() {
               </Pressable>
             ))}
           </ScrollView>
-        </View>
+          </View>
+        ) : null}
 
-        <PersistentDisclosure style={styles.disclosureInline} lines={disclosureLines} variant="v2" />
+        {hasCompletedProfile ? (
+          <PersistentDisclosure style={styles.disclosureInline} lines={disclosureLines} variant="v2" />
+        ) : null}
       </ScrollView>
+      <HomeProfileSetupModal
+        visible={setupModalVisible}
+        onClose={() => setSetupModalVisible(false)}
+        onComplete={handleCompleteFirstSetup}
+      />
       <SubProtocolPickerModal
         visible={subModalVisible}
         title={selectedIntent?.copy_title ?? ''}
@@ -807,15 +853,11 @@ const styles = StyleSheet.create({
   headerBrand: {
     alignItems: 'flex-start',
   },
-  headerBrandIcon: {
-    width: 18,
-    height: 20,
-  },
   weeklyCard: {
     borderRadius: luxuryRadii.cardLg,
     overflow: 'hidden',
     borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.08)',
+    borderColor: 'rgba(148, 210, 191, 0.18)',
     ...Platform.select({
       web: {
         boxShadow: '0px 10px 24px rgba(0, 0, 0, 0.22)',
@@ -842,7 +884,7 @@ const styles = StyleSheet.create({
     width: 120,
     height: 120,
     borderRadius: 60,
-    backgroundColor: 'rgba(255, 221, 145, 0.08)',
+    backgroundColor: 'rgba(148, 210, 191, 0.12)',
   },
   weeklyGlowSecondary: {
     position: 'absolute',
@@ -851,7 +893,7 @@ const styles = StyleSheet.create({
     width: 110,
     height: 110,
     borderRadius: 55,
-    backgroundColor: 'rgba(255, 205, 104, 0.06)',
+    backgroundColor: 'rgba(148, 210, 191, 0.08)',
   },
   weeklyTopGroup: {
     gap: 6,
@@ -879,10 +921,10 @@ const styles = StyleSheet.create({
   weeklyProgressFill: {
     height: '100%',
     borderRadius: 999,
-    backgroundColor: '#D9BB70',
+    backgroundColor: V2_ACCENT,
   },
   weeklyStatus: {
-    color: 'rgba(255, 243, 225, 0.82)',
+    color: V2_TEXT_SECONDARY,
     fontSize: TYPE_SCALE.caption - 1,
     fontWeight: '600',
     lineHeight: 15,
@@ -897,7 +939,7 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   inlineLinkText: {
-    color: '#D9BB70',
+    color: V2_ACCENT,
     fontSize: TYPE_SCALE.caption - 1,
     fontWeight: '700',
     fontFamily: luxuryFonts.sans,
@@ -919,17 +961,17 @@ const styles = StyleSheet.create({
     height: 24,
     borderRadius: 999,
     borderWidth: 1.25,
-    borderColor: 'rgba(255, 236, 206, 0.2)',
+    borderColor: 'rgba(148, 210, 191, 0.22)',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'rgba(255, 247, 232, 0.04)',
+    backgroundColor: 'rgba(148, 210, 191, 0.06)',
     overflow: 'hidden',
   },
   weekDotDone: {
-    borderColor: '#E0B15E',
+    borderColor: V2_ACCENT,
   },
   weekDotToday: {
-    borderColor: '#F3D7A4',
+    borderColor: V2_ACCENT,
     transform: [{ scale: 1.04 }],
   },
   weekDotCenter: {
@@ -940,23 +982,23 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   weekDotCenterDone: {
-    backgroundColor: '#D8B05D',
+    backgroundColor: V2_ACCENT,
   },
   weekDotCenterTodayDone: {
-    backgroundColor: '#E9C97E',
+    backgroundColor: '#B8E8DA',
   },
   weekDotLabel: {
-    color: 'rgba(255, 241, 218, 0.58)',
+    color: V2_TEXT_MUTED,
     fontSize: 9,
     fontWeight: '700',
     lineHeight: 11,
     fontFamily: luxuryFonts.sans,
   },
   weekDotLabelDone: {
-    color: '#F1D49A',
+    color: V2_ACCENT,
   },
   weekDotLabelToday: {
-    color: '#FFF7EA',
+    color: V2_TEXT_PRIMARY,
   },
   environmentSection: {
     flexDirection: 'row',
@@ -989,7 +1031,7 @@ const styles = StyleSheet.create({
     paddingVertical: 9,
   },
   envChipActive: {
-    backgroundColor: 'rgba(201, 164, 91, 0.18)',
+    backgroundColor: V2_ACCENT_SOFT,
     borderColor: V2_ACCENT,
   },
   envText: {

@@ -549,7 +549,7 @@ app/(tabs)/settings.tsx   ← useFocusEffect: router.replace('/(tabs)/my')
 
 ### 5.1 탭 간 상태 공유
 
-배쓰타임은 AsyncStorage 기반 단방향 저장이므로, 탭 간 공유 상태가 적다. React Context나 Zustand는 불필요.
+바스타임은 AsyncStorage 기반 단방향 저장이므로, 탭 간 공유 상태가 적다. React Context나 Zustand는 불필요.
 
 | 데이터 | 저장소 | 탭간 공유 방법 |
 |--------|--------|--------------|

@@ -38,7 +38,7 @@ const TRIP_VISUALS: Record<string, { gradient: [string, string]; bloom: string }
 
 const TRIP_VISUALS_V2: Record<string, { gradient: [string, string]; bloom: string }> = {
   kyoto_forest: { gradient: ['#102C26', '#285243'], bloom: 'rgba(119, 185, 146, 0.24)' },
-  nordic_sauna: { gradient: ['#33251A', '#6C4C2D'], bloom: 'rgba(201, 164, 91, 0.24)' },
+  nordic_sauna: { gradient: ['#183A3E', '#326B68'], bloom: 'rgba(148, 210, 191, 0.22)' },
   rainy_camping: { gradient: ['#0F2336', '#234B68'], bloom: 'rgba(100, 153, 189, 0.22)' },
   snow_cabin: { gradient: ['#122033', '#314A65'], bloom: 'rgba(181, 203, 229, 0.18)' },
 };

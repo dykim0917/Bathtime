@@ -374,7 +374,7 @@ docs/WIREFRAME_V3_11_0.md         ← UI 스펙 소스
 ### 3.1 폴더 구조
 
 ```
-/intent-grid-sync                      # 프로젝트 루트 (배쓰타임과 별도)
+/intent-grid-sync                      # 프로젝트 루트 (바스타임과 별도)
  ├── CLAUDE.md                          # 메인 에이전트 지침 (오케스트레이터)
  │
  ├── /.claude

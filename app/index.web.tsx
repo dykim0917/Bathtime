@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { Image, Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import { useRouter } from 'expo-router';
+import { BrandMark } from '@/src/components/BrandMark';
 import {
   TYPE_CAPTION,
   TYPE_SCALE,
@@ -98,15 +99,13 @@ export default function WebLanding() {
         <View style={[styles.hero, desktop ? styles.heroRow : styles.heroColumn]}>
           <View style={[styles.heroCopy, desktop ? styles.heroCopyDesktop : styles.heroCopyMobile]}>
             <View style={styles.brandRow}>
-              <View style={styles.brandMark}>
-                <View style={styles.brandMarkCore} />
-              </View>
-              <Text style={styles.eyebrow}>BATHTIME</Text>
+              <BrandMark size={32} framed />
+              <Text style={styles.eyebrow}>BATH TIME</Text>
             </View>
 
             <Text style={[styles.heroTitle, desktop && styles.heroTitleDesktop]}>{heroTitle}</Text>
             <Text style={styles.heroBody}>
-              욕조, 샤워, 족욕 환경과 건강 상태를 함께 보고, 오늘 가장 편안하게 쉬기 좋은 배쓰타임을
+              욕조, 샤워, 족욕 환경과 건강 상태를 함께 보고, 오늘 가장 편안하게 쉬기 좋은 바스타임을
               준비합니다.
             </Text>
 
@@ -155,7 +154,7 @@ export default function WebLanding() {
             <Text style={styles.sectionEyebrow}>DAILY SELF-CARE</Text>
             <Text style={styles.sectionTitle}>오늘 쉬는 방법을, 내 몸 상태에 맞는 루틴으로 번역합니다.</Text>
             <Text style={styles.sectionBody}>
-              배쓰타임은 긴 설명보다 지금 가능한 행동을 먼저 정리합니다. 컨디션과 환경에 맞춘
+              바스타임은 긴 설명보다 지금 가능한 행동을 먼저 정리합니다. 컨디션과 환경에 맞춘
               실행 가능한 루틴으로 바로 연결합니다.
             </Text>
             <View style={styles.bulletList}>
@@ -183,7 +182,7 @@ export default function WebLanding() {
           <View style={styles.sectionHeaderRow}>
             <View style={styles.sectionHeaderCopy}>
               <Text style={styles.sectionEyebrow}>GUIDED FLOW</Text>
-              <Text style={styles.sectionTitle}>추천만 하지 않고, 배쓰타임이 끝날 때까지 함께 갑니다.</Text>
+              <Text style={styles.sectionTitle}>추천만 하지 않고, 바스타임이 끝날 때까지 함께 갑니다.</Text>
             </View>
             <Text style={styles.sectionAside}>
               랜딩에서는 이 플로우가 가장 강한 제품 증거입니다. 긴 설명보다 실제 화면이 먼저 보이게
@@ -231,7 +230,7 @@ export default function WebLanding() {
         <View style={styles.ctaPanel}>
           <View style={styles.ctaCopy}>
             <Text style={styles.sectionEyebrow}>START TODAY</Text>
-            <Text style={styles.ctaTitle}>오늘 가능한 방식으로, 무리 없이 시작하는 배쓰타임.</Text>
+            <Text style={styles.ctaTitle}>오늘 가능한 방식으로, 무리 없이 시작하는 바스타임.</Text>
             <Text style={styles.ctaBody}>
               분위기보다 먼저 온도와 시간, 안전 기준을 확인하고 바로 따라갈 수 있게 안내합니다.
             </Text>
@@ -326,7 +325,7 @@ const styles = StyleSheet.create({
     width: 420,
     height: 420,
     borderRadius: 999,
-    backgroundColor: 'rgba(176, 141, 87, 0.08)',
+    backgroundColor: 'rgba(148, 210, 191, 0.1)',
   },
   rail: {
     alignSelf: 'center',
@@ -360,22 +359,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 12,
-  },
-  brandMark: {
-    width: 24,
-    height: 24,
-    borderRadius: 999,
-    borderWidth: 1,
-    borderColor: V2_BORDER_STRONG,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: V2_ACCENT_SOFT,
-  },
-  brandMarkCore: {
-    width: 10,
-    height: 10,
-    borderRadius: 999,
-    backgroundColor: V2_ACCENT,
   },
   eyebrow: {
     color: V2_TEXT_MUTED,
@@ -777,7 +760,7 @@ const styles = StyleSheet.create({
     borderRadius: luxuryRadii.cardLg,
     borderWidth: 1,
     borderColor: V2_BORDER_STRONG,
-    backgroundColor: 'rgba(176, 141, 87, 0.08)',
+    backgroundColor: 'rgba(148, 210, 191, 0.1)',
     gap: 20,
   },
   ctaCopy: {

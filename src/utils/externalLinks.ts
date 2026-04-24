@@ -7,13 +7,17 @@ export async function openExternalUrl(url: string): Promise<boolean> {
   if (!nextUrl) return false;
 
   if (typeof window !== 'undefined' && WEB_URL_PATTERN.test(nextUrl)) {
-    const openedWindow = window.open(nextUrl, '_blank', 'noopener,noreferrer');
-    if (openedWindow) {
-      openedWindow.opener = null;
+    if (typeof document !== 'undefined') {
+      const link = document.createElement('a');
+      link.href = nextUrl;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.click();
       return true;
     }
 
-    window.location.assign(nextUrl);
+    const openedWindow = window.open(nextUrl, '_blank', 'noopener,noreferrer');
+    if (openedWindow) openedWindow.opener = null;
     return true;
   }
 

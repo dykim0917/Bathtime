@@ -19,6 +19,7 @@ import { ui } from '@/src/theme/ui';
 import { AppIconBadge, getProductCategoryBadgeTone } from '@/src/components/AppIconBadge';
 import { AnimatedModalShell } from '@/src/components/AnimatedModalShell';
 import { getProductImageSource } from '@/src/data/productImages';
+import { formatProductPrice } from '@/src/utils/productDisplay';
 
 interface ProductDetailModalProps {
   visible: boolean;
@@ -119,7 +120,7 @@ export function ProductDetailModal({
 
           <View style={styles.buttonStack}>
             <Pressable style={ui.primaryButtonV2} onPress={() => onPurchasePress(product)}>
-              <Text style={styles.primaryButtonText}>구매 링크 열기</Text>
+              <Text style={styles.primaryButtonText}>판매처에서 보기</Text>
             </Pressable>
             {onOpenCatalog ? (
               <Pressable style={ui.secondaryButtonV2} onPress={() => onOpenCatalog(product)}>
@@ -134,12 +135,6 @@ export function ProductDetailModal({
       )}
     </AnimatedModalShell>
   );
-}
-
-function formatProductPrice(product: CatalogProduct): string {
-  const price = product.listing?.priceSnapshotKrw;
-  if (typeof price !== 'number') return `${product.priceTier.toUpperCase()} price`;
-  return `₩${price.toLocaleString('ko-KR')}`;
 }
 
 function formatMarketLabel(market?: string): string | null {

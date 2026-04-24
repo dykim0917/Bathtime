@@ -76,13 +76,13 @@ const styles = StyleSheet.create({
   card: {
     borderRadius: luxuryRadii.card,
     overflow: 'hidden',
-    backgroundColor: 'rgba(10, 17, 30, 0.96)',
+    backgroundColor: 'rgba(7, 25, 27, 0.96)',
   },
   cardDisabled: {
     opacity: 0.76,
   },
   imageArea: {
-    height: 228,
+    height: 218,
     justifyContent: 'space-between',
     padding: 18,
   },

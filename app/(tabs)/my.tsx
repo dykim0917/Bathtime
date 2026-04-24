@@ -385,7 +385,7 @@ function SettingsSection({
 
   useEffect(() => {
     if (!loading && !profile) {
-      router.replace('/onboarding');
+      router.replace('/(tabs)');
     }
   }, [loading, profile]);
 
@@ -424,7 +424,7 @@ function SettingsSection({
       haptic.warning();
       await clear();
       setResetModalVisible(false);
-      router.replace({ pathname: '/onboarding', params: { allowBack: '1' } });
+      router.replace('/(tabs)');
     } catch {
       setShowResetErrorDialog(true);
     } finally {
@@ -762,7 +762,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: V2_ACCENT_SOFT,
     borderWidth: 1,
-    borderColor: 'rgba(176, 141, 87, 0.28)',
+    borderColor: 'rgba(148, 210, 191, 0.3)',
   },
   filterScroll: {
     marginBottom: 4,
@@ -879,15 +879,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 20,
     paddingVertical: 28,
-    borderColor: 'rgba(201, 164, 91, 0.18)',
+    borderColor: 'rgba(148, 210, 191, 0.18)',
   },
   emptyBadge: {
     paddingHorizontal: 10,
     paddingVertical: 6,
     borderRadius: 999,
-    backgroundColor: 'rgba(201, 164, 91, 0.12)',
+    backgroundColor: 'rgba(148, 210, 191, 0.12)',
     borderWidth: 1,
-    borderColor: 'rgba(201, 164, 91, 0.22)',
+    borderColor: 'rgba(148, 210, 191, 0.22)',
     marginBottom: 14,
   },
   emptyBadgeText: {
@@ -905,7 +905,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     backgroundColor: V2_ACCENT_SOFT,
     borderWidth: 1,
-    borderColor: 'rgba(176, 141, 87, 0.28)',
+    borderColor: 'rgba(148, 210, 191, 0.3)',
   },
   emptyText: {
     fontSize: TYPE_TITLE,

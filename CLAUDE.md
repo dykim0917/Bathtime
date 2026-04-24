@@ -1,4 +1,4 @@
-# 배쓰타임 — Claude Code Design System Rules
+# 바스타임 — Claude Code Design System Rules
 
 ## Figma MCP Integration
 

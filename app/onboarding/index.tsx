@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image, Pressable, ScrollView, StyleSheet, SafeAreaView } from 'react-native';
+import { View, Text, Pressable, ScrollView, StyleSheet, SafeAreaView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { router, useLocalSearchParams } from 'expo-router';
@@ -10,6 +10,7 @@ import { luxuryFonts, luxuryTracking } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
 import { AppIconBadge, getEnvironmentBadgeTone } from '@/src/components/AppIconBadge';
 import { brand } from '@/src/content/brand';
+import { BrandMark } from '@/src/components/BrandMark';
 
 const ENVIRONMENTS: { id: BathEnvironment; labelKo: string; desc: string }[] = [
   { id: 'bathtub', labelKo: '욕조', desc: '전신욕, 반신욕 가능' },
@@ -52,7 +53,7 @@ export default function OnboardingEnvironment() {
               <View style={styles.backButton} />
             )}
             <View style={styles.brandLockup}>
-              <Image source={require('../../assets/images/brand/bath-symbol.png')} style={styles.brandIcon} resizeMode="contain" />
+              <BrandMark size={20} />
               <Text style={styles.brand}>{brand.logoText}</Text>
             </View>
             <View style={styles.backButton} />
@@ -133,7 +134,6 @@ const styles = StyleSheet.create({
   backButton: { width: 28, height: 28, justifyContent: 'center', alignItems: 'center' },
   brand: { fontSize: TYPE_CAPTION + 1, color: V2_ACCENT, fontWeight: '700', letterSpacing: 0, fontFamily: luxuryFonts.sans },
   brandLockup: { flexDirection: 'row', alignItems: 'center', gap: 8 },
-  brandIcon: { width: 18, height: 20 },
   progressTrack: { height: 5, backgroundColor: 'rgba(90, 110, 145, 0.28)', borderRadius: 999, overflow: 'hidden', marginBottom: 24 },
   progressFill: { height: '100%', backgroundColor: V2_ACCENT },
   progressFillHalf: { width: '50%' },

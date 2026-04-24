@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Text,
   View,
+  useWindowDimensions,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
@@ -39,12 +40,12 @@ const GUIDE_SLIDES: GuideSlide[] = [
   {
     id: 'what',
     title: '오늘 상태에 맞는 쉬는 방법을 고르세요',
-    body: '배쓰타임은 지금 컨디션과 가능한 환경을 보고 바로 따라할 수 있는 목욕·샤워 루틴을 안내해요.',
+    body: '바스타임은 지금 컨디션과 가능한 환경을 보고 바로 따라할 수 있는 목욕·샤워 루틴을 안내해요.',
     points: ['컨디션 기준 추천', '목욕·샤워 모두 대응', '처음이어도 쉬운 시작'],
   },
   {
     id: 'how',
-    title: '온도와 시간은 배쓰타임이 정리해요',
+    title: '온도와 시간은 바스타임이 정리해요',
     body: '욕조, 족욕, 샤워 중 가능한 방식을 고르면 오늘 무리 없이 진행할 순서까지 함께 보여드려요.',
     points: ['가능한 환경 선택', '온도와 시간 확인', '타이머로 따라가기'],
   },
@@ -57,6 +58,7 @@ const GUIDE_SLIDES: GuideSlide[] = [
 ];
 
 export default function WelcomeScreen() {
+  const { height: viewportHeight } = useWindowDimensions();
   const [stepIndex, setStepIndex] = useState(0);
   const [legalAccepted, setLegalAccepted] = useState(false);
   const haptic = useHaptic();
@@ -75,7 +77,7 @@ export default function WelcomeScreen() {
     haptic.medium();
     if (isLastStep) {
       void saveCookieNoticeAck().finally(() => {
-        router.push('/onboarding');
+        router.replace('/(tabs)');
       });
       return;
     }
@@ -99,13 +101,15 @@ export default function WelcomeScreen() {
   };
 
   return (
-    <View style={styles.root}>
+    <View style={[styles.root, { height: viewportHeight, maxHeight: viewportHeight }]}>
       <LinearGradient
         colors={[V2_BG_TOP, V2_BG_BASE, V2_BG_BOTTOM]}
         style={StyleSheet.absoluteFillObject}
       />
-      <View style={styles.glowTop} />
-      <View style={styles.glowBottom} />
+      <View pointerEvents="none" style={styles.backgroundDecor}>
+        <View style={styles.glowTop} />
+        <View style={styles.glowBottom} />
+      </View>
 
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.container}>
@@ -190,6 +194,11 @@ const styles = StyleSheet.create({
   root: {
     flex: 1,
     backgroundColor: V2_BG_BASE,
+    overflow: 'hidden',
+  },
+  backgroundDecor: {
+    ...StyleSheet.absoluteFillObject,
+    overflow: 'hidden',
   },
   safeArea: {
     flex: 1,

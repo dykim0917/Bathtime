@@ -29,7 +29,7 @@
 - Source References
 
 ## 5) Labels strategy
-- Global labels: `bathsommelier`, `v3_10_2`, `market_first`
+- Global labels: `getbathtime`, `v3_10_2`, `market_first`
 - Domain labels by row: `engine`, `safety`, `analytics`, `commerce`, `trip`, `onboarding`, `home`, `qa`, `legal`, `copy`
 
 ## 6) Priority policy

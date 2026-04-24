@@ -6,7 +6,6 @@ import {
   V2_ACCENT_TEXT,
   V2_BG_BASE,
   V2_BORDER,
-  V2_BORDER_STRONG,
   V2_PILL_ACTIVE_BG,
   V2_PILL_BG,
   V2_PILL_BORDER,
@@ -70,12 +69,12 @@ export const ui = StyleSheet.create({
     borderColor: V2_ACCENT,
   },
   tabBarStyle: {
-    backgroundColor: 'rgba(12, 19, 25, 0.98)',
+    backgroundColor: 'rgba(7, 25, 27, 0.98)',
     borderTopColor: V2_BORDER,
     borderTopWidth: 1,
-    height: 72,
-    paddingTop: 7,
-    paddingBottom: 7,
+    height: 74,
+    paddingTop: 8,
+    paddingBottom: 8,
   },
   screenShellV2: {
     flex: 1,
@@ -142,7 +141,7 @@ export const ui = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 1,
-    borderColor: V2_BORDER_STRONG,
+    borderColor: V2_ACCENT,
   },
   primaryButtonTextV2: {
     color: V2_ACCENT_TEXT,

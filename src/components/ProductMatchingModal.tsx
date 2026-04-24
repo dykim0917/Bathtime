@@ -313,7 +313,7 @@ const styles = StyleSheet.create({
   featuredCard: {
     borderRadius: luxuryRadii.card,
     borderWidth: 1,
-    borderColor: 'rgba(176, 141, 87, 0.44)',
+    borderColor: 'rgba(148, 210, 191, 0.44)',
     backgroundColor: V2_SURFACE_SOFT,
     overflow: 'hidden',
   },
@@ -515,7 +515,7 @@ const styles = StyleSheet.create({
     minHeight: 38,
     borderRadius: luxuryRadii.button,
     borderWidth: 1,
-    borderColor: 'rgba(176, 141, 87, 0.42)',
+    borderColor: 'rgba(148, 210, 191, 0.42)',
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 12,

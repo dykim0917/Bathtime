@@ -59,7 +59,7 @@ export function HomeCareHeroCard({
       style={[styles.container, disabled && styles.cardDisabled]}
     >
       <LinearGradient
-        colors={[`${accent[0]}D9`, `${accent[1]}A6`, 'rgba(8, 11, 18, 0.96)']}
+        colors={[`${accent[0]}B8`, `${accent[1]}8F`, 'rgba(7, 25, 27, 0.96)']}
         start={{ x: 0.08, y: 0.08 }}
         end={{ x: 1, y: 1 }}
         style={styles.visualStage}
@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
   },
   visualStage: {
     minHeight: 336,
-    borderRadius: luxuryRadii.card,
+    borderRadius: luxuryRadii.cardLg,
     overflow: 'hidden',
     justifyContent: 'space-between',
     padding: 20,

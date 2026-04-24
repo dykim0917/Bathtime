@@ -38,7 +38,7 @@ export function LegalDocumentScreen({
       <LinearGradient colors={[V2_BG_TOP, V2_BG_BASE, V2_BG_BOTTOM]} style={StyleSheet.absoluteFillObject} />
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <View style={styles.hero}>
-          <Text style={styles.eyebrow}>BATHTIME LEGAL</Text>
+          <Text style={styles.eyebrow}>BATH TIME LEGAL</Text>
           <Text style={styles.title}>{title}</Text>
           <Text style={styles.subtitle}>{subtitle}</Text>
           <Text style={styles.meta}>시행일 {effectiveDate}</Text>

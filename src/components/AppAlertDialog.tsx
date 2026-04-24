@@ -43,7 +43,7 @@ export function AppAlertDialog({
 }: AppAlertDialogProps) {
   const accentColor = tone === 'danger' ? V2_DANGER : V2_ACCENT;
   const accentSurface = tone === 'danger' ? 'rgba(194, 134, 118, 0.12)' : V2_ACCENT_SOFT;
-  const accentBorder = tone === 'danger' ? 'rgba(194, 134, 118, 0.22)' : 'rgba(176, 141, 87, 0.24)';
+  const accentBorder = tone === 'danger' ? 'rgba(194, 134, 118, 0.22)' : 'rgba(148, 210, 191, 0.26)';
 
   return (
     <AnimatedModalShell

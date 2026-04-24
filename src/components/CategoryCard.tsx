@@ -78,7 +78,7 @@ export function CategoryCard({
         <ImageBackground source={backgroundImage} style={StyleSheet.absoluteFillObject} imageStyle={styles.backgroundImage}>
           <View style={styles.imageOverlay} />
           <LinearGradient
-            colors={['rgba(5, 10, 18, 0.2)', 'rgba(5, 10, 18, 0.48)', 'rgba(5, 10, 18, 0.9)']}
+            colors={['rgba(5, 18, 20, 0.2)', 'rgba(5, 18, 20, 0.5)', 'rgba(5, 18, 20, 0.92)']}
             locations={[0, 0.44, 1]}
             style={StyleSheet.absoluteFillObject}
           />
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
   },
   cardV2Featured: {
     backgroundColor: V2_SURFACE_ELEVATED,
-    borderColor: 'rgba(176, 141, 87, 0.28)',
+    borderColor: 'rgba(148, 210, 191, 0.3)',
   },
   cardWithImage: {
     backgroundColor: V2_SURFACE_DEEP,
@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
   },
   imageOverlay: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(5, 10, 24, 0.18)',
+    backgroundColor: 'rgba(5, 18, 20, 0.18)',
   },
   tintOrbFeatured: {
     top: -12,

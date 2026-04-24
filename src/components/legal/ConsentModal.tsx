@@ -70,7 +70,7 @@ export function ConsentModal({
         <View style={[ui.glassCardV2, styles.card]}>
           <Text style={styles.title}>회원가입 동의</Text>
           <Text style={styles.subtitle}>
-            배쓰타임은 맞춤 입욕 루틴을 제공하기 위해 건강 상태를 포함한 정보를 확인합니다.
+            바스타임은 맞춤 입욕 루틴을 제공하기 위해 건강 상태를 포함한 정보를 확인합니다.
           </Text>
 
           <Row

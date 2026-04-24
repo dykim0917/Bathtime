@@ -159,7 +159,9 @@ export function buildCatalogProducts(bundle: {
   matchRules: ProductMatchRuleRecord[];
 }): CatalogProduct[] {
   const matchRuleByCanonicalId = new Map(
-    bundle.matchRules.map((rule) => [rule.canonicalProductId, rule])
+    bundle.matchRules
+      .filter((rule) => rule.status === 'active')
+      .map((rule) => [rule.canonicalProductId, rule])
   );
   const listingsByCanonicalId = new Map<string, ProductMarketListingRecord[]>();
 
@@ -170,6 +172,7 @@ export function buildCatalogProducts(bundle: {
   }
 
   return bundle.canonicalProducts
+    .filter((product) => product.status === 'active')
     .map((product) => {
       const rule = matchRuleByCanonicalId.get(product.id);
       if (!rule) {

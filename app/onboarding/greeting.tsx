@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View, Text, Pressable, StyleSheet, SafeAreaView, Image } from 'react-native';
+import { View, Text, Pressable, StyleSheet, SafeAreaView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 import Animated, { Easing, useAnimatedStyle, useSharedValue, withDelay, withTiming } from 'react-native-reanimated';
@@ -21,6 +21,7 @@ import {
 import { luxuryFonts, luxuryTracking } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
 import { brand } from '@/src/content/brand';
+import { BrandMark } from '@/src/components/BrandMark';
 
 export default function OnboardingGreeting() {
   const haptic = useHaptic();
@@ -50,14 +51,14 @@ export default function OnboardingGreeting() {
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.container}>
           <View style={styles.topBar}>
-          <Image source={require('../../assets/images/brand/bath-symbol.png')} style={styles.brandIcon} resizeMode="contain" />
+            <BrandMark size={20} />
             <Text style={styles.brand}>{brand.logoText}</Text>
           </View>
 
           <View style={styles.centerContent}>
             <Animated.View style={[styles.heroWrap, textAnim]}>
               <View style={styles.heroCircle}>
-                <Image source={require('../../assets/images/brand/bath-symbol.png')} style={styles.heroIcon} resizeMode="contain" />
+                <BrandMark size={64} />
               </View>
               <Text style={styles.welcome}>설정 완료</Text>
               <Text style={styles.title}>환영합니다</Text>
@@ -86,11 +87,9 @@ const styles = StyleSheet.create({
   container: { flex: 1, paddingHorizontal: 24, paddingBottom: 28 },
   topBar: { marginTop: 10, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8 },
   brand: { fontSize: TYPE_CAPTION + 1, color: V2_ACCENT, fontWeight: '700', letterSpacing: 0, fontFamily: luxuryFonts.sans },
-  brandIcon: { width: 18, height: 20 },
   centerContent: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   heroWrap: { alignItems: 'center', paddingHorizontal: 8 },
   heroCircle: { width: 126, height: 126, borderRadius: 63, marginBottom: 18, backgroundColor: V2_ACCENT_SOFT, borderWidth: 1, borderColor: V2_BORDER, justifyContent: 'center', alignItems: 'center' },
-  heroIcon: { width: 46, height: 52 },
   welcome: { fontSize: TYPE_CAPTION + 1, color: V2_ACCENT, letterSpacing: luxuryTracking.eyebrow, fontWeight: '700', marginBottom: 8, fontFamily: luxuryFonts.sans },
   title: { fontSize: TYPE_HEADING_LG + 6, color: V2_TEXT_PRIMARY, marginBottom: 14, fontFamily: luxuryFonts.display, lineHeight: 44 },
   subtitle: { fontSize: 21, color: V2_TEXT_PRIMARY, textAlign: 'center', lineHeight: 32, marginBottom: 16, fontFamily: luxuryFonts.display },

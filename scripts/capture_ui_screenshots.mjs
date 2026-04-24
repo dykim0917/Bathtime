@@ -299,7 +299,7 @@ async function captureMainFlow(browser, manifest) {
     page.once('dialog', (dialog) => dialog.accept());
     await page.getByText('루틴 마치기', { exact: true }).click();
     await page.waitForURL(/\/result\/completion\//, { timeout: 10000 });
-    await waitForText(page, '오늘 배쓰타임은 어떠셨나요?');
+    await waitForText(page, '오늘 바스타임은 어떠셨나요?');
     await capture(page, manifest, 'completion-default.png', 'Completion feedback step');
 
     await page.getByText('좋아요', { exact: true }).click();
