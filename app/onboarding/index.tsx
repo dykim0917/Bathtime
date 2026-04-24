@@ -65,7 +65,7 @@ export default function OnboardingEnvironment() {
 
             <View style={styles.header}>
               <Text style={styles.title}>지금 가능한 목욕 환경을 알려주세요</Text>
-              <Text style={styles.subtitle}>오늘 무리 없이 쉴 수 있는 방식에 맞춰 온도와 시간을 준비해드려요</Text>
+              <Text style={styles.subtitle}>오늘 가능한 방식에 맞춰 온도와 시간을 준비해드려요</Text>
             </View>
             <ScrollView
               style={styles.scrollView}
@@ -108,7 +108,7 @@ export default function OnboardingEnvironment() {
               </View>
 
               <Text style={styles.nextGuide}>
-                다음 단계에서는 안전 상태를 확인하고, 지금 환경에 맞는 배쓰타임만 추천해드릴게요.
+                다음 단계에서는 안전 상태를 확인하고, 지금 환경에 맞는 루틴만 추천해드릴게요.
               </Text>
             </ScrollView>
 
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
   contentColumn: { flex: 1, width: '100%', maxWidth: 720, alignSelf: 'center' },
   topBar: { marginTop: 8, marginBottom: 28, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   backButton: { width: 28, height: 28, justifyContent: 'center', alignItems: 'center' },
-  brand: { fontSize: TYPE_CAPTION + 1, color: V2_ACCENT, fontWeight: '700', letterSpacing: 2, fontFamily: luxuryFonts.sans },
+  brand: { fontSize: TYPE_CAPTION + 1, color: V2_ACCENT, fontWeight: '700', letterSpacing: 0, fontFamily: luxuryFonts.sans },
   brandLockup: { flexDirection: 'row', alignItems: 'center', gap: 8 },
   brandIcon: { width: 18, height: 20 },
   progressTrack: { height: 5, backgroundColor: 'rgba(90, 110, 145, 0.28)', borderRadius: 999, overflow: 'hidden', marginBottom: 24 },
@@ -158,6 +158,6 @@ const styles = StyleSheet.create({
     backgroundColor: V2_BG_BOTTOM,
   },
   nextButton: { minHeight: 50 },
-  nextButtonDisabled: { opacity: 1, backgroundColor: 'rgba(201, 164, 91, 0.34)', borderWidth: 1, borderColor: 'rgba(201, 164, 91, 0.16)' },
-  nextButtonTextDisabled: { color: 'rgba(26, 36, 48, 0.7)' },
+  nextButtonDisabled: { opacity: 1, backgroundColor: 'rgba(148, 210, 191, 0.32)', borderWidth: 1, borderColor: 'rgba(148, 210, 191, 0.16)' },
+  nextButtonTextDisabled: { color: 'rgba(13, 41, 43, 0.72)' },
 });

@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     fontSize: TYPE_CAPTION,
     fontFamily: luxuryFonts.sans,
     fontWeight: '700',
-    letterSpacing: 1,
+    letterSpacing: 0,
   },
   title: {
     color: V2_TEXT_PRIMARY,

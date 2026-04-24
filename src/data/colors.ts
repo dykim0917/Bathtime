@@ -14,46 +14,46 @@ export const TYPE_TITLE = TYPE_SCALE.title;
 export const TYPE_BODY = TYPE_SCALE.body;
 export const TYPE_CAPTION = TYPE_SCALE.caption;
 
-export const SPA_IVORY = '#F5F0E8';
-export const SPA_IVORY_SOFT = '#EDE5D8';
-export const SPA_STONE = '#CFC4B3';
-export const SPA_STONE_MUTED = '#9F9486';
-export const SPA_NAVY = '#1A2430';
-export const SPA_NAVY_DEEP = '#0E171F';
-export const SPA_NAVY_MID = '#24323E';
-export const SPA_MIST = '#D8DDE0';
+export const SPA_IVORY = '#F7F3EA';
+export const SPA_IVORY_SOFT = '#EAE4D6';
+export const SPA_STONE = '#C8D7D0';
+export const SPA_STONE_MUTED = '#93A7A1';
+export const SPA_NAVY = '#153236';
+export const SPA_NAVY_DEEP = '#0B1F22';
+export const SPA_NAVY_MID = '#21464A';
+export const SPA_MIST = '#D9ECE6';
 
-export const V2_BG_BASE = '#101920';
-export const V2_BG_TOP = '#1A252E';
-export const V2_BG_BOTTOM = '#0A1117';
-export const V2_BG_OVERLAY = 'rgba(8, 11, 14, 0.42)';
+export const V2_BG_BASE = '#102629';
+export const V2_BG_TOP = '#193A3E';
+export const V2_BG_BOTTOM = '#07191B';
+export const V2_BG_OVERLAY = 'rgba(5, 18, 20, 0.42)';
 
-export const V2_SURFACE = 'rgba(23, 33, 42, 0.88)';
-export const V2_SURFACE_ELEVATED = 'rgba(28, 39, 49, 0.94)';
-export const V2_SURFACE_DEEP = 'rgba(7, 12, 20, 0.96)';
-export const V2_SURFACE_SOFT = 'rgba(19, 28, 36, 0.76)';
+export const V2_SURFACE = 'rgba(22, 45, 48, 0.9)';
+export const V2_SURFACE_ELEVATED = 'rgba(28, 55, 58, 0.94)';
+export const V2_SURFACE_DEEP = 'rgba(6, 22, 24, 0.96)';
+export const V2_SURFACE_SOFT = 'rgba(18, 39, 42, 0.76)';
 export const V2_SURFACE_GHOST = 'rgba(255,255,255,0.08)';
-export const V2_BORDER = 'rgba(245, 240, 232, 0.12)';
-export const V2_BORDER_STRONG = 'rgba(176, 141, 87, 0.38)';
-export const V2_SHADOW = 'rgba(3, 5, 8, 0.42)';
-export const V2_MODAL_SURFACE = '#17212B';
-export const V2_MODAL_SURFACE_ELEVATED = 'rgba(23, 33, 43, 0.98)';
-export const V2_MODAL_SURFACE_SUBTLE = '#1B2731';
-export const V2_MODAL_HANDLE = 'rgba(245,240,232,0.28)';
+export const V2_BORDER = 'rgba(230, 246, 239, 0.14)';
+export const V2_BORDER_STRONG = 'rgba(148, 210, 191, 0.42)';
+export const V2_SHADOW = 'rgba(3, 12, 14, 0.36)';
+export const V2_MODAL_SURFACE = '#18363A';
+export const V2_MODAL_SURFACE_ELEVATED = 'rgba(22, 47, 51, 0.98)';
+export const V2_MODAL_SURFACE_SUBTLE = '#1E4448';
+export const V2_MODAL_HANDLE = 'rgba(230,246,239,0.3)';
 
-export const V2_TEXT_PRIMARY = '#F5F0E8';
-export const V2_TEXT_SECONDARY = '#D7CCBC';
-export const V2_TEXT_MUTED = '#9E9488';
+export const V2_TEXT_PRIMARY = '#F7F3EA';
+export const V2_TEXT_SECONDARY = '#D7E1DC';
+export const V2_TEXT_MUTED = '#9FB5AF';
 
-export const V2_ACCENT = '#B08D57';
-export const V2_ACCENT_SOFT = 'rgba(176, 141, 87, 0.14)';
-export const V2_ACCENT_TEXT = '#1A2430';
-export const V2_WARNING = '#CAA071';
+export const V2_ACCENT = '#94D2BF';
+export const V2_ACCENT_SOFT = 'rgba(148, 210, 191, 0.16)';
+export const V2_ACCENT_TEXT = '#0D292B';
+export const V2_WARNING = '#D7B873';
 export const V2_DANGER = '#C28676';
 
 export const V2_PILL_BG = 'rgba(255,255,255,0.06)';
 export const V2_PILL_BORDER = V2_BORDER;
-export const V2_PILL_ACTIVE_BG = 'rgba(176, 141, 87, 0.16)';
+export const V2_PILL_ACTIVE_BG = 'rgba(148, 210, 191, 0.18)';
 
 export const PERSONA_COLORS: Record<PersonaCode, string> = {
   P1_SAFETY: '#7FAE97',

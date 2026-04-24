@@ -57,8 +57,8 @@ type FilterMode = 'all' | 'care' | 'trip';
 
 const FILTER_OPTIONS: { key: FilterMode; label: string }[] = [
   { key: 'all', label: '전체' },
-  { key: 'care', label: '케어' },
-  { key: 'trip', label: '트립' },
+  { key: 'care', label: '컨디션' },
+  { key: 'trip', label: '무드' },
 ];
 
 const BATH_TYPE_LABELS: Record<string, string> = {
@@ -351,13 +351,13 @@ function HistorySection({
               <Text style={styles.emptySubtext}>{copy.history.empty.subtitle}</Text>
               <Text style={styles.emptyGuide}>첫 추천을 저장하면 이 공간이 나만의 루틴 기록으로 채워져요.</Text>
               <Pressable style={styles.emptyAction} onPress={() => router.push('/(tabs)/care')}>
-                <Text style={styles.emptyActionText}>케어 루틴 보러가기</Text>
+                <Text style={styles.emptyActionText}>컨디션 루틴 보러가기</Text>
               </Pressable>
             </View>
           ) : (
             <View style={styles.filterEmptyContainer}>
               <Text style={styles.filterEmptyText}>
-                {filterMode === 'care' ? '케어' : '트립'} 루틴 기록이 없어요
+                {filterMode === 'care' ? '컨디션' : '무드'} 루틴 기록이 없어요
               </Text>
             </View>
           )
@@ -728,7 +728,7 @@ const styles = StyleSheet.create({
     fontSize: TYPE_CAPTION,
     fontWeight: '700',
     color: V2_ACCENT,
-    letterSpacing: 0.7,
+    letterSpacing: 0,
     marginBottom: 4,
   },
   insightBannerMain: {
@@ -894,7 +894,7 @@ const styles = StyleSheet.create({
     color: V2_ACCENT,
     fontSize: TYPE_CAPTION - 1,
     fontWeight: '700',
-    letterSpacing: 1.1,
+    letterSpacing: 0,
   },
   emptyIconWrap: {
     width: 40,

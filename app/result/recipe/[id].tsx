@@ -88,7 +88,7 @@ export default function RecipeScreen() {
   if (!recommendation) return <View style={[ui.screenShellV2, styles.centered]}><Text style={{ color: V2_TEXT_SECONDARY }}>{copy.completion.loading}</Text></View>;
 
   const persona = PERSONA_DEFINITIONS.find((p) => p.code === recommendation.persona);
-  const recipeTitle = recommendation.mode === 'trip' ? (recommendation.themeTitle ?? '트립 테마') : (persona?.nameKo ?? '맞춤 케어');
+  const recipeTitle = recommendation.mode === 'trip' ? (recommendation.themeTitle ?? '무드 테마') : (persona?.nameKo ?? '맞춤 루틴');
   const isTripRecipe = recommendation.mode === 'trip';
   const modeLabel =
     recommendation.mode === 'trip'
@@ -551,7 +551,7 @@ const styles = StyleSheet.create({
   heroSafetyBadgeText: { fontSize: TYPE_CAPTION - 1, color: V2_TEXT_PRIMARY, fontWeight: '700', fontFamily: luxuryFonts.sans },
   heroTitleBlock: { gap: 8, maxWidth: '82%' },
   heroTitleBlockImage: { maxWidth: '100%' },
-  heroEyebrow: { fontSize: TYPE_CAPTION - 1, color: 'rgba(255,255,255,0.74)', fontWeight: '700', letterSpacing: 1.2, fontFamily: luxuryFonts.sans },
+  heroEyebrow: { fontSize: TYPE_CAPTION - 1, color: 'rgba(255,255,255,0.74)', fontWeight: '700', letterSpacing: 0, fontFamily: luxuryFonts.sans },
   heroTitle: { fontSize: TYPE_HEADING_LG + 2, lineHeight: 42, color: V2_TEXT_PRIMARY, fontFamily: luxuryFonts.display, maxWidth: '100%' },
   heroLead: { fontSize: TYPE_BODY, color: 'rgba(255,255,255,0.86)', lineHeight: 21, fontFamily: luxuryFonts.sans, maxWidth: '100%' },
   heroPlaque: {
@@ -591,7 +591,7 @@ const styles = StyleSheet.create({
     fontSize: TYPE_CAPTION - 1,
     fontWeight: '700',
     color: V2_ACCENT,
-    letterSpacing: 1,
+    letterSpacing: 0,
     fontFamily: luxuryFonts.sans,
   },
   productBridgeTitle: { fontSize: TYPE_TITLE, color: V2_TEXT_PRIMARY, fontFamily: luxuryFonts.display },
@@ -600,12 +600,12 @@ const styles = StyleSheet.create({
   trackRow: { flexDirection: 'row', alignItems: 'center', paddingVertical: 12, borderBottomWidth: 1, borderBottomColor: V2_BORDER, gap: 14 },
   trackRowLast: { borderBottomWidth: 0 },
   trackCircle: { width: 44, height: 44, borderRadius: 22, borderWidth: 1, justifyContent: 'center', alignItems: 'center' },
-  trackBadgeText: { fontSize: TYPE_CAPTION, color: V2_TEXT_PRIMARY, fontWeight: '700', letterSpacing: 0.8, fontVariant: ['tabular-nums'], fontFamily: luxuryFonts.mono },
+  trackBadgeText: { fontSize: TYPE_CAPTION, color: V2_TEXT_PRIMARY, fontWeight: '700', letterSpacing: 0, fontVariant: ['tabular-nums'], fontFamily: luxuryFonts.mono },
   trackInfo: { flex: 1 },
   trackName: { fontSize: TYPE_BODY + 1, color: V2_TEXT_PRIMARY, marginBottom: 2, fontFamily: luxuryFonts.display },
   trackDesc: { fontSize: TYPE_CAPTION, color: V2_TEXT_MUTED, fontFamily: luxuryFonts.sans },
   safetyBlock: { marginTop: 20, marginBottom: 18, padding: 14, gap: 4 },
-  safetyEyebrow: { fontSize: TYPE_CAPTION - 1, fontWeight: '700', color: V2_ACCENT, letterSpacing: 1, marginBottom: 4, fontFamily: luxuryFonts.sans },
+  safetyEyebrow: { fontSize: TYPE_CAPTION - 1, fontWeight: '700', color: V2_ACCENT, letterSpacing: 0, marginBottom: 4, fontFamily: luxuryFonts.sans },
   safetyTitle: { fontSize: TYPE_TITLE, color: V2_TEXT_PRIMARY, marginBottom: 2, fontFamily: luxuryFonts.display },
   safetyLead: { fontSize: TYPE_BODY, color: V2_TEXT_PRIMARY, lineHeight: 20, marginBottom: 6, fontFamily: luxuryFonts.sans, fontWeight: '700' },
   safetyText: { fontSize: TYPE_CAPTION, color: V2_TEXT_SECONDARY, lineHeight: 18, fontFamily: luxuryFonts.sans },
@@ -627,7 +627,7 @@ const styles = StyleSheet.create({
     fontSize: TYPE_CAPTION - 1,
     fontWeight: '700',
     color: V2_ACCENT,
-    letterSpacing: 1,
+    letterSpacing: 0,
     fontFamily: luxuryFonts.sans,
   },
   sleepWindowTitle: {

@@ -199,7 +199,7 @@ const styles = StyleSheet.create({
     color: '#F7F2EA',
     fontSize: TYPE_CAPTION - 1,
     fontWeight: '700',
-    letterSpacing: 0.6,
+    letterSpacing: 0,
     fontFamily: luxuryFonts.sans,
   },
   copyBlock: {
@@ -211,7 +211,7 @@ const styles = StyleSheet.create({
     color: V2_ACCENT,
     fontSize: TYPE_CAPTION,
     fontWeight: '700',
-    letterSpacing: 0.3,
+    letterSpacing: 0,
     fontFamily: luxuryFonts.sans,
   },
   title: {

@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
     fontSize: TYPE_CAPTION - 1,
     fontWeight: '700',
     lineHeight: 16,
-    letterSpacing: 0.4,
+    letterSpacing: 0,
     fontFamily: luxuryFonts.sans,
   },
   copyWrap: {

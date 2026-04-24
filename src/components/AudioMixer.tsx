@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     fontSize: 11,
     color: V2_TEXT_SECONDARY,
     fontWeight: '700',
-    letterSpacing: 0.8,
+    letterSpacing: 0,
     fontVariant: ['tabular-nums'],
     fontFamily: luxuryFonts.mono,
     marginRight: 10,

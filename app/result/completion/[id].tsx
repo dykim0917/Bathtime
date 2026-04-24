@@ -157,7 +157,7 @@ export default function CompletionScreen() {
         {step === 'feedback' ? (
           <View style={styles.content}>
             <Animated.View entering={BounceIn.duration(800)} style={styles.celebrationBadge}>
-              <Text style={styles.celebrationBadgeText}>RESTED</Text>
+              <Text style={styles.celebrationBadgeText}>완료</Text>
             </Animated.View>
 
             <Animated.View entering={FadeIn.duration(600).delay(200)} style={styles.headerBlock}>
@@ -319,7 +319,7 @@ const styles = StyleSheet.create({
     fontSize: TYPE_SCALE.caption,
     color: V2_ACCENT,
     fontWeight: '700',
-    letterSpacing: 1.4,
+    letterSpacing: 0,
     fontVariant: ['tabular-nums'],
     fontFamily: luxuryFonts.mono,
   },
@@ -359,7 +359,7 @@ const styles = StyleSheet.create({
     fontSize: TYPE_SCALE.caption - 1,
     fontWeight: '700',
     color: V2_ACCENT,
-    letterSpacing: 1,
+    letterSpacing: 0,
     fontFamily: luxuryFonts.sans,
   },
   statsCard: {
@@ -371,7 +371,7 @@ const styles = StyleSheet.create({
     fontSize: TYPE_SCALE.caption - 1,
     fontWeight: '700',
     color: V2_TEXT_MUTED,
-    letterSpacing: 1,
+    letterSpacing: 0,
     fontFamily: luxuryFonts.sans,
   },
   statsText: {
@@ -432,7 +432,7 @@ const styles = StyleSheet.create({
     fontSize: TYPE_SCALE.caption - 1,
     fontWeight: '700',
     color: V2_ACCENT,
-    letterSpacing: 1,
+    letterSpacing: 0,
     fontFamily: luxuryFonts.sans,
   },
   aftercareTitle: {
@@ -458,7 +458,7 @@ const styles = StyleSheet.create({
   memoryTitle: {
     fontSize: TYPE_SCALE.title - 2,
     color: V2_TEXT_PRIMARY,
-    letterSpacing: 0.6,
+    letterSpacing: 0,
     textTransform: 'uppercase',
     fontFamily: luxuryFonts.sans,
   },

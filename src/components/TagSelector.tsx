@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: V2_TEXT_PRIMARY,
     marginBottom: 10,
-    letterSpacing: 0.2,
+    letterSpacing: 0,
     fontFamily: luxuryFonts.display,
   },
   tagsRow: {

@@ -187,8 +187,8 @@ function buildTripSecondary(selectedThemeId: ThemeId): HomeSuggestion {
     id: `home_secondary_trip_${selectedThemeId}`,
     rank: 'secondary_1',
     mode: 'trip',
-    title: '분위기 트립 루틴',
-    subtitle: '테마 몰입으로 분위기를 전환해요.',
+    title: '무드 루틴',
+    subtitle: '테마에 맞춰 분위기를 전환해요.',
     themeId: selectedThemeId,
   };
 }
@@ -272,10 +272,10 @@ export function buildSuggestionExplanation(
     const themeTitle = theme?.title ?? '오늘의 테마';
     return {
       stateLabel: stateLabelMap[activeState],
-      whySummary: '현재 상태에서 분위기 전환이 도움이 될 것 같아 트립 루틴을 함께 제안해요.',
+      whySummary: '현재 상태에서 분위기 전환이 도움이 될 것 같아 무드 루틴을 함께 제안해요.',
       routineParams: '테마 중심 루틴으로, 환경에 맞춰 강도와 길이를 조절해요.',
       expectedGoal: '짧은 시간 안에 분위기를 바꾸고 감각을 다시 정리하는 데 도움을 줘요.',
-      alternativeRoutine: '원하면 케어 루틴으로 바꿔 더 무난하게 시작할 수도 있어요.',
+      alternativeRoutine: '원하면 컨디션 루틴으로 바꿔 더 무난하게 시작할 수도 있어요.',
       narrativeHeadline: `오늘은 ${themeTitle} 분위기로 쉬어가요.`,
       atmosphereChips: [
         theme ? `향: ${theme.recScent}` : '향: 테마 추천',

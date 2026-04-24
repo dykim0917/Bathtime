@@ -257,9 +257,9 @@ export default function TripScreen() {
       <LinearGradient colors={[V2_BG_TOP, V2_BG_BASE, V2_BG_BOTTOM]} style={StyleSheet.absoluteFillObject} />
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <OpenTabHeader
-          eyebrow="트립 가이드"
-          title="트립 루틴"
-          subtitle="여행처럼 몰입하는 테마 목욕을 환경에 맞게 골라보세요."
+          eyebrow="무드 가이드"
+          title="무드 루틴"
+          subtitle="분위기를 바꾸고 싶은 날, 가능한 환경에 맞춰 골라보세요."
         />
 
         <View>
@@ -280,7 +280,7 @@ export default function TripScreen() {
         </View>
 
         <View>
-          <Text style={styles.sectionTitle}>테마 루틴</Text>
+          <Text style={styles.sectionTitle}>분위기별 루틴</Text>
           <View style={styles.tripList}>
             {TRIP_INTENT_CARDS.map((intent) => {
               const disabled = !intent.allowed_environments.includes(normalizedEnvironment);

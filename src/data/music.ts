@@ -1,32 +1,30 @@
 import { MusicTrack, AmbienceTrack, PersonaCode, ThemeId } from '@/src/engine/types';
 
-// Audio assets - require() calls must be static for Metro bundler
-// Placeholder: actual audio files will be added to assets/audio/
+// Audio assets - require() calls must remain static for Metro bundler.
+// These generated placeholder loops can be swapped later with mastered production files
+// as long as the filenames/keys stay the same.
 export const AUDIO_ASSETS: Record<string, any> = {
-  // Care music tracks
-  // care_muscle_relief: require('@/assets/audio/care/care_muscle_relief.mp3'),
-  // care_sleep_ready: require('@/assets/audio/care/care_sleep_ready.mp3'),
-  // care_hangover_relief: require('@/assets/audio/care/care_hangover_relief.mp3'),
-  // care_edema_relief: require('@/assets/audio/care/care_edema_relief.mp3'),
-  // care_cold_relief: require('@/assets/audio/care/care_cold_relief.mp3'),
-  // care_menstrual_relief: require('@/assets/audio/care/care_menstrual_relief.mp3'),
-  // care_stress_relief: require('@/assets/audio/care/care_stress_relief.mp3'),
-  // care_mood_lift: require('@/assets/audio/care/care_mood_lift.mp3'),
-  // Trip music tracks
-  // trip_kyoto_forest: require('@/assets/audio/trip/trip_kyoto_forest.mp3'),
-  // trip_rainy_camping: require('@/assets/audio/trip/trip_rainy_camping.mp3'),
-  // trip_midnight_paris: require('@/assets/audio/trip/trip_midnight_paris.mp3'),
-  // trip_nordic_sauna: require('@/assets/audio/trip/trip_nordic_sauna.mp3'),
-  // trip_desert_onsen: require('@/assets/audio/trip/trip_desert_onsen.mp3'),
-  // trip_ocean_dawn: require('@/assets/audio/trip/trip_ocean_dawn.mp3'),
-  // trip_tea_house: require('@/assets/audio/trip/trip_tea_house.mp3'),
-  // trip_snow_cabin: require('@/assets/audio/trip/trip_snow_cabin.mp3'),
-  // Ambience tracks
-  // rain: require('@/assets/audio/rain.mp3'),
-  // ocean: require('@/assets/audio/ocean.mp3'),
-  // forest: require('@/assets/audio/forest.mp3'),
-  // hotspring: require('@/assets/audio/hotspring.mp3'),
-  // fireplace: require('@/assets/audio/fireplace.mp3'),
+  care_muscle_relief: require('../../assets/audio/care/care_muscle_relief.wav'),
+  care_sleep_ready: require('../../assets/audio/care/care_sleep_ready.wav'),
+  care_hangover_relief: require('../../assets/audio/care/care_hangover_relief.wav'),
+  care_edema_relief: require('../../assets/audio/care/care_edema_relief.wav'),
+  care_cold_relief: require('../../assets/audio/care/care_cold_relief.wav'),
+  care_menstrual_relief: require('../../assets/audio/care/care_menstrual_relief.wav'),
+  care_stress_relief: require('../../assets/audio/care/care_stress_relief.wav'),
+  care_mood_lift: require('../../assets/audio/care/care_mood_lift.wav'),
+  trip_kyoto_forest: require('../../assets/audio/trip/trip_kyoto_forest.wav'),
+  trip_rainy_camping: require('../../assets/audio/trip/trip_rainy_camping.wav'),
+  trip_midnight_paris: require('../../assets/audio/trip/trip_midnight_paris.wav'),
+  trip_nordic_sauna: require('../../assets/audio/trip/trip_nordic_sauna.wav'),
+  trip_desert_onsen: require('../../assets/audio/trip/trip_desert_onsen.wav'),
+  trip_ocean_dawn: require('../../assets/audio/trip/trip_ocean_dawn.wav'),
+  trip_tea_house: require('../../assets/audio/trip/trip_tea_house.wav'),
+  trip_snow_cabin: require('../../assets/audio/trip/trip_snow_cabin.wav'),
+  rain: require('../../assets/audio/ambience/rain.wav'),
+  ocean: require('../../assets/audio/ambience/ocean.wav'),
+  forest: require('../../assets/audio/ambience/forest.wav'),
+  hotspring: require('../../assets/audio/ambience/hotspring.wav'),
+  fireplace: require('../../assets/audio/ambience/fireplace.wav'),
 };
 
 // --- Music (instrumental, persona-matched) ---

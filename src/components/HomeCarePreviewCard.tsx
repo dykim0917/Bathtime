@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     fontSize: TYPE_CAPTION,
     color: V2_TEXT_PRIMARY,
     fontWeight: '700',
-    letterSpacing: 1.2,
+    letterSpacing: 0,
     fontVariant: ['tabular-nums'],
     fontFamily: luxuryFonts.mono,
   },

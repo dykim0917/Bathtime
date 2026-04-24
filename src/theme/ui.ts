@@ -50,7 +50,7 @@ export const ui = StyleSheet.create({
     fontSize: TYPE_SCALE.headingMd,
     fontFamily: luxuryFonts.display,
     color: V2_TEXT_PRIMARY,
-    letterSpacing: 0.2,
+    letterSpacing: 0,
   },
   bodyText: {
     fontSize: TYPE_SCALE.body,
@@ -103,7 +103,7 @@ export const ui = StyleSheet.create({
     fontSize: TYPE_SCALE.headingMd,
     fontFamily: luxuryFonts.display,
     color: V2_TEXT_PRIMARY,
-    letterSpacing: 0.2,
+    letterSpacing: 0,
   },
   sectionTitleV2: {
     fontSize: TYPE_SCALE.title,
@@ -149,7 +149,7 @@ export const ui = StyleSheet.create({
     fontSize: TYPE_SCALE.body,
     fontWeight: '700',
     fontFamily: luxuryFonts.sans,
-    letterSpacing: 0.2,
+    letterSpacing: 0,
   },
   secondaryButtonV2: {
     backgroundColor: V2_SURFACE,
@@ -166,6 +166,6 @@ export const ui = StyleSheet.create({
     fontSize: TYPE_SCALE.body,
     fontWeight: '700',
     fontFamily: luxuryFonts.sans,
-    letterSpacing: 0.2,
+    letterSpacing: 0,
   },
 });

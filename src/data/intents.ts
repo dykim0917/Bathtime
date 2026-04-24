@@ -159,7 +159,7 @@ const BASE_TRIP_INTENT_CARDS: IntentCard[] = [
     copy_title: '노르딕 무드로 리셋해볼까요?',
     copy_subtitle_by_environment: {
       shower: '샤워 6분, 사우나 무드를 가볍게 느껴요.',
-      bathtub: '욕조 12분, 따뜻하게 몰입해요.',
+      bathtub: '욕조 12분, 따뜻하게 분위기를 바꿔요.',
       partial_bath: '족욕 10분, 차분하게 전환해요.',
     },
     default_subprotocol_id: 'trip_nordic_balanced',
@@ -417,7 +417,7 @@ const BASE_TRIP_SUBPROTOCOL_OPTIONS: Record<string, SubProtocolOption[]> = {
     {
       id: 'trip_kyoto_balanced',
       intent_id: 'kyoto_forest',
-      label: '기본 몰입',
+      label: '기본 진행',
       hint: '잔잔하고 안정적인 교토 무드.',
       is_default: true,
       partialOverrides: {
@@ -427,11 +427,11 @@ const BASE_TRIP_SUBPROTOCOL_OPTIONS: Record<string, SubProtocolOption[]> = {
     {
       id: 'trip_kyoto_deep',
       intent_id: 'kyoto_forest',
-      label: '깊은 몰입',
+      label: '조금 더 길게',
       hint: '조금 더 오래 머무는 느낌으로 진행해요.',
       is_default: false,
       partialOverrides: {
-        behavior_blocks: ['몰입 구간 1회'],
+        behavior_blocks: ['분위기 전환 구간 1회'],
         duration_delta: 2,
       },
     },

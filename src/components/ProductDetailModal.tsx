@@ -271,7 +271,7 @@ const styles = StyleSheet.create({
     color: V2_ACCENT,
     fontSize: TYPE_SCALE.caption,
     fontWeight: '700',
-    letterSpacing: 0.3,
+    letterSpacing: 0,
     fontFamily: luxuryFonts.sans,
   },
   description: {

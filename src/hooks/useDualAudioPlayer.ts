@@ -16,7 +16,7 @@ interface DualAudioState {
  * (one for music, one for ambient sounds) using expo-audio.
  *
  * Audio files are loaded from AUDIO_ASSETS using the track's filename.
- * If the asset doesn't exist (placeholder), the player receives null (no-op).
+ * If an asset is missing, the player receives null and becomes a no-op.
  */
 export function useDualAudioPlayer(
   music: MusicTrack | null,
@@ -56,7 +56,7 @@ export function useDualAudioPlayer(
   }, [musicPlayer, ambiencePlayer]);
 
   const stop = useCallback(() => {
-    // Guard seekTo — throws on iOS when no audio source is loaded (placeholder files)
+  // Guard seekTo — throws on iOS when no audio source is loaded.
     try { musicPlayer.pause(); } catch {}
     try { musicPlayer.seekTo(0); } catch {}
     try { ambiencePlayer.pause(); } catch {}

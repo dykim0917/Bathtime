@@ -191,7 +191,7 @@ export const GENERATED_TRIP_SUBPROTOCOL_OPTIONS: Record<string, SubProtocolOptio
     {
       id: 'trip_busan_balanced',
       intent_id: 'busan_harbor_blue',
-      label: '기본 몰입',
+      label: '기본 진행',
       hint: '푸른 항만의 정적을 안정적으로 느껴요.',
       is_default: true,
       partialOverrides: {
@@ -205,7 +205,7 @@ export const GENERATED_TRIP_SUBPROTOCOL_OPTIONS: Record<string, SubProtocolOptio
       hint: '조금 더 길고 깊게 항만 무드에 잠겨요.',
       is_default: false,
       partialOverrides: {
-        behavior_blocks: ['몰입 구간 1회'],
+        behavior_blocks: ['분위기 전환 구간 1회'],
         duration_delta: 2,
       },
     },
@@ -228,7 +228,7 @@ export const GENERATED_TRIP_SUBPROTOCOL_OPTIONS: Record<string, SubProtocolOptio
       hint: '안개와 정원의 고요에 더 오래 머물러요.',
       is_default: false,
       partialOverrides: {
-        behavior_blocks: ['몰입 구간 1회'],
+        behavior_blocks: ['분위기 전환 구간 1회'],
         duration_delta: 2,
       },
     },
@@ -297,7 +297,7 @@ export const GENERATED_TRIP_SUBPROTOCOL_OPTIONS: Record<string, SubProtocolOptio
       hint: '짙은 목재의 온기에 조금 더 오래 머물러요.',
       is_default: false,
       partialOverrides: {
-        behavior_blocks: ['몰입 구간 1회'],
+        behavior_blocks: ['분위기 전환 구간 1회'],
         duration_delta: 2,
       },
     },

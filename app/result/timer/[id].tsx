@@ -30,13 +30,13 @@ function getTimerRoutineName(recommendation: BathRecommendation): string {
     return (
       recommendation.themeTitle ??
       TRIP_INTENT_CARDS.find((card) => card.intent_id === recommendation.intentId)?.copy_title ??
-      '트립 루틴'
+      '무드 루틴'
     );
   }
 
   return (
     CARE_INTENT_CARDS.find((card) => card.intent_id === recommendation.intentId)?.copy_title ??
-    '케어 루틴'
+    '컨디션 루틴'
   );
 }
 
@@ -278,7 +278,7 @@ export default function TimerScreen() {
   })();
   const progressPercent = totalSeconds > 0 ? 1 - remainingSeconds / totalSeconds : 0;
   const routineName = getTimerRoutineName(recommendation);
-  const modeLabel = recommendation.mode === 'trip' ? '트립 루틴' : '케어 루틴';
+  const modeLabel = recommendation.mode === 'trip' ? '무드 루틴' : '컨디션 루틴';
   const audioSummary = `${recommendation.music.title} · ${recommendation.ambience.title}`;
   const introDetail = buildRoutineIntroDetail(routineName);
   const fillLevel = getRoutineFillLevel({
@@ -419,7 +419,7 @@ export default function TimerScreen() {
             <View style={styles.finishIconBadge}>
               <FontAwesome name="exclamation-triangle" size={18} color={V2_DANGER} />
             </View>
-            <Text style={styles.finishModalEyebrow}>TIMER</Text>
+            <Text style={styles.finishModalEyebrow}>타이머</Text>
             <Text style={styles.finishModalTitle}>{copy.alerts.finishRoutineTitle}</Text>
             <Text style={styles.finishModalBody}>{copy.alerts.finishRoutineBody}</Text>
             <View style={styles.finishSummaryCard}>
@@ -453,8 +453,8 @@ export default function TimerScreen() {
         {(requestClose) => (
           <View style={styles.soundSheet}>
             <View style={styles.soundHandle} />
-            <Text style={styles.soundEyebrow}>SOUND</Text>
-            <Text style={styles.soundTitle}>몰입 사운드 조절</Text>
+            <Text style={styles.soundEyebrow}>사운드</Text>
+            <Text style={styles.soundTitle}>배경 소리 조절</Text>
             <Text style={styles.soundDescription}>{audioSummary}</Text>
             <AudioMixer
               music={recommendation.music}
@@ -512,7 +512,7 @@ const styles = StyleSheet.create({
   safeArea: { flex: 1 },
   topBar: { flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', paddingHorizontal: 22, paddingTop: 18, paddingBottom: 4, minHeight: 68 },
   routineStatus: { alignItems: 'center', gap: 4, marginBottom: 14, maxWidth: '92%' },
-  routineStatusMeta: { fontSize: TYPE_CAPTION - 1, color: V2_ACCENT, fontWeight: '700', letterSpacing: 1.2, fontFamily: luxuryFonts.sans },
+  routineStatusMeta: { fontSize: TYPE_CAPTION - 1, color: V2_ACCENT, fontWeight: '700', letterSpacing: 0, fontFamily: luxuryFonts.sans },
   routineStatusTitle: { fontSize: TYPE_BODY + 3, color: V2_TEXT_PRIMARY, textAlign: 'center', fontFamily: luxuryFonts.display },
   routineStatusAudio: { fontSize: TYPE_CAPTION, color: V2_TEXT_MUTED, textAlign: 'center', fontFamily: luxuryFonts.sans },
   finishPill: { paddingHorizontal: 2, paddingVertical: 8 },
@@ -533,11 +533,11 @@ const styles = StyleSheet.create({
     lineHeight: 98,
     fontWeight: '400',
     color: V2_TEXT_PRIMARY,
-    letterSpacing: 0.2,
+    letterSpacing: 0,
     fontVariant: ['tabular-nums'],
     fontFamily: luxuryFonts.display,
   },
-  pausedLabel: { fontSize: 13, color: V2_TEXT_SECONDARY, marginTop: 10, letterSpacing: 1.2, fontWeight: '700', fontFamily: luxuryFonts.sans },
+  pausedLabel: { fontSize: 13, color: V2_TEXT_SECONDARY, marginTop: 10, letterSpacing: 0, fontWeight: '700', fontFamily: luxuryFonts.sans },
   controlsArea: { paddingHorizontal: 24, paddingBottom: 8 },
   playRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 14, marginBottom: 26 },
   playButton: {
@@ -619,7 +619,7 @@ const styles = StyleSheet.create({
     fontSize: TYPE_CAPTION - 1,
     color: V2_ACCENT,
     fontWeight: '700',
-    letterSpacing: 1.4,
+    letterSpacing: 0,
     fontFamily: luxuryFonts.sans,
   },
   finishModalTitle: {
@@ -689,7 +689,7 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   soundHandle: { alignSelf: 'center', width: 44, height: 4, borderRadius: 999, backgroundColor: V2_MODAL_HANDLE, marginBottom: 6 },
-  soundEyebrow: { fontSize: TYPE_CAPTION - 1, color: V2_ACCENT, fontWeight: '700', letterSpacing: 1.4, fontFamily: luxuryFonts.sans },
+  soundEyebrow: { fontSize: TYPE_CAPTION - 1, color: V2_ACCENT, fontWeight: '700', letterSpacing: 0, fontFamily: luxuryFonts.sans },
   soundTitle: { fontSize: 22, color: V2_TEXT_PRIMARY, fontFamily: luxuryFonts.display },
   soundDescription: { fontSize: TYPE_CAPTION, color: V2_TEXT_MUTED, fontFamily: luxuryFonts.sans, marginBottom: 4 },
   soundCloseButton: { alignItems: 'center', paddingVertical: 8 },

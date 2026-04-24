@@ -348,10 +348,10 @@ export default function HomeIntentScreen() {
     [careCards, normalizedEnvironment, timeContext]
   );
 
-  const heroTitle = heroCard?.copy_title ?? '오늘의 케어 루틴';
+  const heroTitle = heroCard?.copy_title ?? '오늘의 컨디션 루틴';
   const heroDescription = heroCard
     ? getEnvironmentSubtitle(heroCard, normalizedEnvironment, profile?.healthConditions ?? ['none'])
-    : '오늘의 환경에 맞는 케어 루틴을 보여드려요.';
+    : '오늘 가능한 환경에 맞는 루틴을 보여드려요.';
   const heroVisual = useMemo(
     () => getCareVisualMeta(heroCard?.intent_id ?? ''),
     [heroCard?.intent_id]
@@ -546,7 +546,7 @@ export default function HomeIntentScreen() {
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <OpenTabHeader
           title="오늘은 어떻게 쉬어볼까요?"
-          subtitle="컨디션과 목욕 환경에 맞춰 배쓰 루틴을 준비했어요."
+          subtitle="컨디션과 목욕 환경에 맞춰 무리 없는 루틴을 준비했어요."
           topSlot={
             <View style={styles.headerBrand}>
               <Image
@@ -611,7 +611,7 @@ export default function HomeIntentScreen() {
         </View>
 
         <View style={styles.environmentSection}>
-          <Text style={styles.environmentLabel}>몰입 환경</Text>
+          <Text style={styles.environmentLabel}>목욕 환경</Text>
           <View style={styles.environmentRow}>
             {ENV_OPTIONS.map((option) => (
               <Pressable
@@ -629,7 +629,7 @@ export default function HomeIntentScreen() {
 
         <View>
           <View style={styles.sectionHeaderRow}>
-            <Text style={styles.sectionTitle}>케어 루틴</Text>
+            <Text style={styles.sectionTitle}>컨디션 루틴</Text>
             <Pressable onPress={() => router.push('/(tabs)/care')} style={styles.inlineLinkButton}>
               <Text style={styles.inlineLinkText}>전체 보기</Text>
               <FontAwesome name="angle-right" size={14} color={V2_ACCENT} />
@@ -667,7 +667,7 @@ export default function HomeIntentScreen() {
                 onPress={() => handleOpenCareSubProtocol(heroCard)}
               />
 
-              <Text style={styles.careListLabel}>다른 케어 루틴 찾아보기</Text>
+              <Text style={styles.careListLabel}>다른 컨디션 루틴 찾아보기</Text>
             </>
           ) : null}
           <View style={styles.careList}>
@@ -704,7 +704,7 @@ export default function HomeIntentScreen() {
 
         <View>
           <View style={styles.sectionHeaderRow}>
-            <Text style={styles.sectionTitle}>트립 루틴</Text>
+            <Text style={styles.sectionTitle}>무드 루틴</Text>
             <Pressable onPress={() => router.push('/(tabs)/trip')} style={styles.inlineLinkButton}>
               <Text style={styles.inlineLinkText}>전체 보기</Text>
               <FontAwesome name="angle-right" size={14} color={V2_ACCENT} />
@@ -767,9 +767,9 @@ export default function HomeIntentScreen() {
               >
                 <View style={styles.recentCardHeader}>
                   <View style={[styles.recentColorDot, { backgroundColor: routine.colorHex }]} />
-                  <Text style={styles.recentMeta}>{routine.mode === 'trip' ? '트립' : '케어'}</Text>
+                  <Text style={styles.recentMeta}>{routine.mode === 'trip' ? '무드' : '컨디션'}</Text>
                 </View>
-                <Text style={styles.recentTitle} numberOfLines={1}>{routine.themeTitle ?? '맞춤 케어'}</Text>
+                <Text style={styles.recentTitle} numberOfLines={1}>{routine.themeTitle ?? '맞춤 루틴'}</Text>
                 <Text style={styles.recentSub} numberOfLines={2}>
                   {routine.temperature.recommended}°C · {routine.durationMinutes ?? 10}분 · {ENV_LABEL[normalizeEnvironmentInput(routine.environmentUsed)] ?? '욕조'}
                 </Text>
@@ -1057,7 +1057,7 @@ const styles = StyleSheet.create({
     color: V2_TEXT_MUTED,
     fontSize: TYPE_SCALE.caption - 1,
     fontWeight: '700',
-    letterSpacing: 0.8,
+    letterSpacing: 0,
     fontFamily: luxuryFonts.sans,
   },
   recentTitle: {

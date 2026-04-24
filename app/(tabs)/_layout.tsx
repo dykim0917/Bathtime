@@ -17,14 +17,14 @@ export default function TabLayout() {
         tabBarActiveTintColor: V2_ACCENT,
         tabBarInactiveTintColor: V2_TEXT_MUTED,
         tabBarStyle: ui.tabBarStyle,
-        tabBarLabelStyle: { fontSize: 11, fontWeight: '700', letterSpacing: 0.2, fontFamily: luxuryFonts.sans },
+        tabBarLabelStyle: { fontSize: 11, fontWeight: '700', letterSpacing: 0, fontFamily: luxuryFonts.sans },
         tabBarItemStyle: { borderRadius: 10, marginHorizontal: 0 },
         tabBarBackground: () => null,
       }}
     >
       <Tabs.Screen name="index" options={{ title: '홈', tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} /> }} />
-      <Tabs.Screen name="care" options={{ title: '케어', tabBarIcon: ({ color }) => <TabBarIcon name="heart" color={color} /> }} />
-      <Tabs.Screen name="trip" options={{ title: '트립', tabBarIcon: ({ color }) => <TabBarIcon name="compass" color={color} /> }} />
+      <Tabs.Screen name="care" options={{ title: '컨디션', tabBarIcon: ({ color }) => <TabBarIcon name="heart" color={color} /> }} />
+      <Tabs.Screen name="trip" options={{ title: '무드', tabBarIcon: ({ color }) => <TabBarIcon name="compass" color={color} /> }} />
       <Tabs.Screen name="product" options={{ title: '제품', tabBarIcon: ({ color }) => <TabBarIcon name="shopping-bag" color={color} /> }} />
       <Tabs.Screen name="my" options={{ title: '프로필', tabBarIcon: ({ color }) => <TabBarIcon name="user-o" color={color} /> }} />
       <Tabs.Screen name="history" options={{ href: null }} />

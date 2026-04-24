@@ -38,21 +38,21 @@ type GuideSlide = {
 const GUIDE_SLIDES: GuideSlide[] = [
   {
     id: 'what',
-    title: '오늘 상태에 맞는 목욕 루틴을 차분하게 추천해드려요',
-    body: '복잡하게 고르지 않아도 괜찮아요. 지금 컨디션에 맞는 목욕·샤워 루틴을 바로 시작할 수 있게 안내해드릴게요.',
-    points: ['오늘 컨디션 기준 추천', '목욕·샤워 모두 대응', '부담 없는 첫 시작'],
+    title: '오늘 상태에 맞는 쉬는 방법을 고르세요',
+    body: '배쓰타임은 지금 컨디션과 가능한 환경을 보고 바로 따라할 수 있는 목욕·샤워 루틴을 안내해요.',
+    points: ['컨디션 기준 추천', '목욕·샤워 모두 대응', '처음이어도 쉬운 시작'],
   },
   {
     id: 'how',
-    title: '환경과 상태만 확인하면 바로 루틴이 정해져요',
-    body: '지금 가능한 환경과 건강 상태만 확인하면, 오늘 바로 따라할 수 있는 온도·시간·순서를 정리해드려요.',
-    points: ['목욕 환경 선택', '건강 상태 확인', '루틴 시작'],
+    title: '온도와 시간은 배쓰타임이 정리해요',
+    body: '욕조, 족욕, 샤워 중 가능한 방식을 고르면 오늘 무리 없이 진행할 순서까지 함께 보여드려요.',
+    points: ['가능한 환경 선택', '온도와 시간 확인', '타이머로 따라가기'],
   },
   {
     id: 'safety',
-    title: '건강 상태는 더 강한 추천보다 안전한 추천을 위해 확인해요',
-    body: '배쓰타임은 위험할 수 있는 루틴을 먼저 걸러내기 위해 최소한의 정보만 확인합니다. 안심하고 시작할 수 있게 돕는 과정이에요.',
-    points: ['안전 우선', '필요한 정보만', '언제든 다시 조정 가능'],
+    title: '건강 정보는 무리한 루틴을 피하려고 확인해요',
+    body: '더 강한 추천을 하기 위해서가 아니에요. 위험할 수 있는 온도나 시간을 먼저 걸러내기 위한 최소 확인입니다.',
+    points: ['안전 우선', '필요한 정보만 확인', '언제든 다시 조정 가능'],
   },
 ];
 
@@ -207,7 +207,7 @@ const styles = StyleSheet.create({
     width: 240,
     height: 240,
     borderRadius: 120,
-    backgroundColor: 'rgba(201, 164, 91, 0.14)',
+    backgroundColor: 'rgba(148, 210, 191, 0.14)',
   },
   glowBottom: {
     position: 'absolute',
@@ -216,7 +216,7 @@ const styles = StyleSheet.create({
     width: 280,
     height: 280,
     borderRadius: 140,
-    backgroundColor: 'rgba(115, 150, 196, 0.12)',
+    backgroundColor: 'rgba(126, 177, 204, 0.12)',
   },
   progressMeta: {
     gap: 10,
@@ -334,12 +334,12 @@ const styles = StyleSheet.create({
   },
   primaryButtonDisabled: {
     opacity: 1,
-    backgroundColor: 'rgba(201, 164, 91, 0.34)',
+    backgroundColor: 'rgba(148, 210, 191, 0.32)',
     borderWidth: 1,
-    borderColor: 'rgba(201, 164, 91, 0.16)',
+    borderColor: 'rgba(148, 210, 191, 0.16)',
   },
   primaryButtonTextDisabled: {
-    color: 'rgba(26, 36, 48, 0.7)',
+    color: 'rgba(13, 41, 43, 0.72)',
   },
   directLink: {
     alignItems: 'center',

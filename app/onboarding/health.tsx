@@ -73,7 +73,7 @@ export default function OnboardingHealth() {
           <View style={styles.header}>
             <View style={styles.progressTrack}><View style={[styles.progressFill, styles.progressFillFull]} /></View>
             <Text style={styles.title}>안전하게 쉴 수 있도록{`\n`}상태를 확인할게요</Text>
-            <Text style={styles.subtitle}>온도와 시간을 무리 없이 맞출 수 있게 현재 상태를 알려주세요.</Text>
+            <Text style={styles.subtitle}>위험할 수 있는 온도와 시간을 피할 수 있게 현재 상태를 알려주세요.</Text>
           </View>
 
           <ScrollView
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
   container: { flex: 1, paddingHorizontal: 24 },
   topRow: { marginTop: 8, marginBottom: 18, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   backButton: { width: 28, height: 28, justifyContent: 'center', alignItems: 'center' },
-  brand: { fontSize: TYPE_CAPTION + 1, color: V2_ACCENT, fontWeight: '700', letterSpacing: 2, fontFamily: luxuryFonts.sans },
+  brand: { fontSize: TYPE_CAPTION + 1, color: V2_ACCENT, fontWeight: '700', letterSpacing: 0, fontFamily: luxuryFonts.sans },
   brandLockup: { flexDirection: 'row', alignItems: 'center', gap: 8 },
   brandIcon: { width: 18, height: 20 },
   header: { marginBottom: 20 },

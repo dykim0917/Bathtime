@@ -38,8 +38,8 @@ const proofPoints = [
     body: '레시피, 타이머, 마무리 화면까지 이어져 실제로 쉬는 시간을 완성합니다.',
   },
   {
-    title: '집에서도 차분한 리추얼처럼',
-    body: '욕조, 샤워, 족욕 상황마다 톤이 다른 배쓰 경험을 준비합니다.',
+    title: '집에 있는 방식으로 시작합니다',
+    body: '욕조, 샤워, 족욕 상황에 맞춰 온도와 시간을 다르게 안내합니다.',
   },
 ] as const;
 
@@ -47,7 +47,7 @@ const flowSteps = [
   {
     eyebrow: 'STEP 1',
     title: '레시피 확인',
-    body: '온도와 시간, 루틴 톤을 바로 이해할 수 있게 정리해 보여줍니다.',
+    body: '온도와 시간, 준비물을 바로 이해할 수 있게 정리해 보여줍니다.',
     image: recipeShot,
   },
   {
@@ -59,20 +59,20 @@ const flowSteps = [
   {
     eyebrow: 'STEP 3',
     title: '잔잔하게 마무리',
-    body: '끝난 뒤의 한숨까지 설계된 완료 화면이 배쓰타임을 닫아줍니다.',
+    body: '끝난 뒤에는 수분 보충과 보습 같은 다음 행동을 안내합니다.',
     image: completionShot,
   },
 ] as const;
 
 const modeCards = [
   {
-    title: 'Care Routine',
-    body: '컨디션 회복과 안전한 휴식에 더 집중한 기본 루틴.',
+    title: 'Condition Routine',
+    body: '몸 상태와 안전 기준에 맞춘 기본 루틴.',
     image: careShot,
   },
   {
-    title: 'Trip Routine',
-    body: '조금 더 분위기와 몰입감이 살아 있는 씬 중심 루틴.',
+    title: 'Mood Routine',
+    body: '분위기를 바꾸고 싶은 날을 위한 테마 루틴.',
     image: tripShot,
   },
 ] as const;
@@ -85,8 +85,8 @@ export default function WebLanding() {
   const railWidth = desktop ? (wide ? 1180 : 1040) : Math.min(width - 32, 720);
 
   const heroTitle = useMemo(() => {
-    if (desktop) return '오늘의 컨디션에 맞는 배쓰 루틴을,\n가장 무리 없는 순서로.';
-    return '오늘의 컨디션에 맞는 배쓰 루틴을\n가장 무리 없는 순서로.';
+    if (desktop) return '오늘 상태에 맞는 목욕 루틴을,\n무리 없는 순서로.';
+    return '오늘 상태에 맞는 목욕 루틴을\n무리 없는 순서로.';
   }, [desktop]);
 
   return (
@@ -112,7 +112,7 @@ export default function WebLanding() {
 
             <View style={[styles.heroActions, !desktop && styles.heroActionsStack]}>
               <PrimaryButton label="온보딩 시작하기" onPress={() => router.push('/onboarding/welcome')} />
-              <SecondaryButton label="케어 루틴 보기" onPress={() => router.push('/(tabs)')} />
+              <SecondaryButton label="컨디션 루틴 보기" onPress={() => router.push('/(tabs)')} />
             </View>
 
             <View style={[styles.metricRow, !desktop && styles.metricColumn]}>
@@ -129,8 +129,8 @@ export default function WebLanding() {
 
             <View style={styles.heroMiniCardTop}>
               <Text style={styles.miniEyebrow}>CARE</Text>
-              <Text style={styles.miniTitle}>기본 루틴을 바로 제안</Text>
-              <Text style={styles.miniBody}>홈에서 케어 루틴이 첫 화면에 보이도록 구성됩니다.</Text>
+              <Text style={styles.miniTitle}>오늘 루틴을 바로 제안</Text>
+              <Text style={styles.miniBody}>홈에서 가장 맞는 컨디션 루틴을 먼저 보여줍니다.</Text>
             </View>
 
             <View style={styles.heroMiniCardBottom}>
@@ -152,10 +152,10 @@ export default function WebLanding() {
 
         <View style={[styles.section, styles.personalSection, desktop ? styles.sectionRow : styles.sectionColumn]}>
           <View style={[styles.sectionCopy, desktop && styles.sectionCopyWide]}>
-            <Text style={styles.sectionEyebrow}>PERSONALIZED RITUAL</Text>
+            <Text style={styles.sectionEyebrow}>DAILY SELF-CARE</Text>
             <Text style={styles.sectionTitle}>오늘 쉬는 방법을, 내 몸 상태에 맞는 루틴으로 번역합니다.</Text>
             <Text style={styles.sectionBody}>
-              일반적인 웰니스 앱처럼 콘텐츠만 보여주는 대신, Bathtime은 지금의 컨디션과 환경에 맞춘
+              배쓰타임은 긴 설명보다 지금 가능한 행동을 먼저 정리합니다. 컨디션과 환경에 맞춘
               실행 가능한 루틴으로 바로 연결합니다.
             </Text>
             <View style={styles.bulletList}>
@@ -168,7 +168,7 @@ export default function WebLanding() {
           <View style={[styles.dualVisuals, desktop ? styles.dualVisualsRow : styles.dualVisualsColumn]}>
             <PreviewCard
               title="Care"
-              caption="회복과 안정에 집중한 기본 루틴"
+              caption="몸 상태에 맞춘 기본 루틴"
               image={careShot}
             />
             <PreviewCard
@@ -207,11 +207,11 @@ export default function WebLanding() {
 
         <View style={[styles.section, styles.modeSection, desktop ? styles.sectionRow : styles.sectionColumn]}>
           <View style={[styles.sectionCopy, desktop && styles.sectionCopyWide]}>
-            <Text style={styles.sectionEyebrow}>CALM, NOT CLINICAL</Text>
-            <Text style={styles.sectionTitle}>안전을 앞에 두되, 전체 경험은 여전히 조용하고 아름답게.</Text>
+            <Text style={styles.sectionEyebrow}>SAFE, STILL SIMPLE</Text>
+            <Text style={styles.sectionTitle}>안전을 앞에 두되, 화면은 계속 쉽게.</Text>
             <Text style={styles.sectionBody}>
-              앱의 신뢰는 건강 상태를 묻는 순간에 생기고, 앱의 매력은 그 다음 화면들에서 완성됩니다.
-              그래서 랜딩도 안전성과 분위기를 한쪽으로 치우치지 않게 보여주는 편이 좋습니다.
+              건강 상태를 묻는 이유는 더 강한 추천이 아니라 무리한 루틴을 피하기 위해서입니다.
+              그래서 안내 문구도 조용하지만 분명하게 유지합니다.
             </Text>
           </View>
 
@@ -230,10 +230,10 @@ export default function WebLanding() {
 
         <View style={styles.ctaPanel}>
           <View style={styles.ctaCopy}>
-            <Text style={styles.sectionEyebrow}>QUIET RITUAL</Text>
-            <Text style={styles.ctaTitle}>집에서도, 오늘의 몸 상태에 맞는 가장 차분한 배쓰타임을.</Text>
+            <Text style={styles.sectionEyebrow}>START TODAY</Text>
+            <Text style={styles.ctaTitle}>오늘 가능한 방식으로, 무리 없이 시작하는 배쓰타임.</Text>
             <Text style={styles.ctaBody}>
-              감성적인 분위기와 실제로 따라갈 수 있는 가이드, 그리고 안전한 기준까지 함께 담았습니다.
+              분위기보다 먼저 온도와 시간, 안전 기준을 확인하고 바로 따라갈 수 있게 안내합니다.
             </Text>
           </View>
           <View style={[styles.heroActions, !desktop && styles.heroActionsStack]}>
@@ -494,7 +494,7 @@ const styles = StyleSheet.create({
     color: V2_TEXT_MUTED,
     fontSize: 11,
     fontFamily: luxuryFonts.sans,
-    letterSpacing: 1.1,
+    letterSpacing: 0,
   },
   miniTitle: {
     color: V2_TEXT_PRIMARY,
@@ -712,7 +712,7 @@ const styles = StyleSheet.create({
     color: V2_TEXT_MUTED,
     fontSize: 11,
     fontFamily: luxuryFonts.sans,
-    letterSpacing: 1.1,
+    letterSpacing: 0,
   },
   flowTitle: {
     color: V2_TEXT_PRIMARY,

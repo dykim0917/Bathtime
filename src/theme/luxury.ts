@@ -2,10 +2,10 @@ import { Platform } from 'react-native';
 
 export const luxuryFonts = {
   display: Platform.select({
-    web: '"Nanum Myeongjo", Georgia, "Times New Roman", serif',
-    ios: 'Georgia',
-    android: 'serif',
-    default: 'Georgia, Times New Roman, serif',
+    web: 'system-ui, -apple-system, BlinkMacSystemFont, sans-serif',
+    ios: 'System',
+    android: 'sans-serif',
+    default: 'system-ui, -apple-system, BlinkMacSystemFont, sans-serif',
   }),
   sans: Platform.select({
     ios: 'System',
@@ -20,9 +20,9 @@ export const luxuryFonts = {
 } as const;
 
 export const luxuryRadii = {
-  card: 24,
-  cardLg: 30,
-  button: 18,
+  card: 12,
+  cardLg: 16,
+  button: 14,
   pill: 999,
 } as const;
 
@@ -33,7 +33,7 @@ export const luxurySpacing = {
 } as const;
 
 export const luxuryTracking = {
-  eyebrow: 1.4,
-  label: 0.6,
-  hero: 0.2,
+  eyebrow: 0,
+  label: 0,
+  hero: 0,
 } as const;

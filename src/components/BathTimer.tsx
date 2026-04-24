@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
     fontSize: 48,
     fontWeight: '200',
     fontVariant: ['tabular-nums'],
-    letterSpacing: 2,
+    letterSpacing: 0,
     marginBottom: 16,
   },
   progressBarBg: {

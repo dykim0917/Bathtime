@@ -32,8 +32,8 @@ export function PersonaCard({ recommendation }: PersonaCardProps) {
   );
 
   const title = recommendation.mode === 'trip'
-    ? recommendation.themeTitle ?? '트립 테마'
-    : persona?.nameKo ?? '맞춤 케어';
+    ? recommendation.themeTitle ?? '무드 테마'
+    : persona?.nameKo ?? '맞춤 루틴';
 
   return (
     <View style={styles.container}>
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     textAlign: 'center',
     marginBottom: 16,
-    letterSpacing: 0.8,
+    letterSpacing: 0,
     fontFamily: luxuryFonts.display,
   },
   statsRow: {

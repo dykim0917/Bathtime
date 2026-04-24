@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
   eyebrow: {
     fontSize: TYPE_CAPTION - 1,
     fontWeight: '700',
-    letterSpacing: 1.4,
+    letterSpacing: 0,
     fontFamily: luxuryFonts.sans,
   },
   title: {

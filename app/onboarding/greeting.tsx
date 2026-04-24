@@ -59,10 +59,10 @@ export default function OnboardingGreeting() {
               <View style={styles.heroCircle}>
                 <Image source={require('../../assets/images/brand/bath-symbol.png')} style={styles.heroIcon} resizeMode="contain" />
               </View>
-              <Text style={styles.welcome}>준비 완료</Text>
+              <Text style={styles.welcome}>설정 완료</Text>
               <Text style={styles.title}>환영합니다</Text>
-              <Text style={styles.subtitle}>{'오늘 상태에 맞춘\n배쓰타임을 시작해볼게요'}</Text>
-              <Text style={styles.description}>이제 컨디션과 환경에 맞는 쉬는 시간을 바로 준비할 수 있어요.</Text>
+              <Text style={styles.subtitle}>{'오늘 상태에 맞는\n루틴을 시작해볼게요'}</Text>
+              <Text style={styles.description}>이제 가능한 환경과 현재 상태에 맞춰 무리 없는 순서로 안내할게요.</Text>
             </Animated.View>
           </View>
 
@@ -72,7 +72,7 @@ export default function OnboardingGreeting() {
                 <Text style={ui.primaryButtonTextV2}>시작하기</Text>
               </Pressable>
             </Animated.View>
-            <Text style={styles.premiumLine}>온도와 시간을 맞춰 무리 없이 안내해드릴게요</Text>
+            <Text style={styles.premiumLine}>온도와 시간을 확인하며 천천히 진행해요</Text>
           </View>
         </View>
       </SafeAreaView>
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
   safeArea: { flex: 1 },
   container: { flex: 1, paddingHorizontal: 24, paddingBottom: 28 },
   topBar: { marginTop: 10, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8 },
-  brand: { fontSize: TYPE_CAPTION + 1, color: V2_ACCENT, fontWeight: '700', letterSpacing: 2, fontFamily: luxuryFonts.sans },
+  brand: { fontSize: TYPE_CAPTION + 1, color: V2_ACCENT, fontWeight: '700', letterSpacing: 0, fontFamily: luxuryFonts.sans },
   brandIcon: { width: 18, height: 20 },
   centerContent: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   heroWrap: { alignItems: 'center', paddingHorizontal: 8 },
@@ -97,5 +97,5 @@ const styles = StyleSheet.create({
   description: { fontSize: TYPE_BODY + 1, color: V2_TEXT_SECONDARY, textAlign: 'center', lineHeight: 24, paddingHorizontal: 12, fontFamily: luxuryFonts.sans },
   footer: { gap: 16 },
   ctaButton: { width: '100%' },
-  premiumLine: { fontSize: 11, color: V2_TEXT_MUTED, textAlign: 'center', letterSpacing: 0.3, fontFamily: luxuryFonts.sans },
+  premiumLine: { fontSize: 11, color: V2_TEXT_MUTED, textAlign: 'center', letterSpacing: 0, fontFamily: luxuryFonts.sans },
 });

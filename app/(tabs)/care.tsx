@@ -320,9 +320,9 @@ export default function CareScreen() {
       <LinearGradient colors={[V2_BG_TOP, V2_BG_BASE, V2_BG_BOTTOM]} style={StyleSheet.absoluteFillObject} />
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <OpenTabHeader
-          eyebrow="케어 가이드"
-          title="케어 루틴"
-          subtitle="증상과 컨디션에 맞춰 안전한 루틴을 바로 골라보세요."
+          eyebrow="컨디션 가이드"
+          title="컨디션 루틴"
+          subtitle="지금 몸 상태에 맞춰 무리 없는 루틴을 골라보세요."
         />
 
         <View>
@@ -344,7 +344,7 @@ export default function CareScreen() {
 
         <View>
           <Text style={styles.sectionTitle}>컨디션별 루틴</Text>
-          <Text style={styles.sectionIntro}>지금 컨디션에 맞는 대표 루틴부터 보이고, 나머지는 같은 리듬 안에서 비교할 수 있게 정리했어요.</Text>
+          <Text style={styles.sectionIntro}>지금 컨디션에 맞는 대표 루틴부터 보고, 나머지도 같은 기준으로 비교할 수 있어요.</Text>
           <View style={[styles.gridWrap, { rowGap: CARD_GAP }]}> 
             {ALL_CARE_CARDS.map((intent) => {
               const isFeaturedCard = intent.card_position === 1;

@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   },
   titleV2: {
     color: V2_TEXT_MUTED,
-    letterSpacing: 0.6,
+    letterSpacing: 0,
     textTransform: 'uppercase',
   },
   line: {
