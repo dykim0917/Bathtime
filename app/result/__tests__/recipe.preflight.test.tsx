@@ -150,9 +150,9 @@ describe('RecipeScreen pre-bath gate', () => {
   test('starts immediately for a standard routine without opening the gate', async () => {
     const screen = render(React.createElement(RecipeScreen));
 
-    await waitFor(() => expect(screen.getByText('목욕 시작하기')).toBeTruthy());
+    await waitFor(() => expect(screen.getByText('루틴 시작하기')).toBeTruthy());
 
-    fireEvent.press(screen.getByText('목욕 시작하기'));
+    fireEvent.press(screen.getByText('루틴 시작하기'));
     expect(mockReplace).toHaveBeenCalledWith('/result/timer/rec_1');
   });
 
@@ -183,12 +183,12 @@ describe('RecipeScreen pre-bath gate', () => {
     const screen = render(React.createElement(RecipeScreen));
 
     await waitFor(() =>
-      expect(screen.getByText('목욕 시작하기')).toBeTruthy()
+      expect(screen.getByText('루틴 시작하기')).toBeTruthy()
     );
 
     expect(screen.queryByText('시작 전 꼭 확인하세요')).toBeNull();
 
-    fireEvent.press(screen.getByText('목욕 시작하기'));
+    fireEvent.press(screen.getByText('루틴 시작하기'));
 
     await waitFor(() =>
       expect(screen.getByText('시작 전 꼭 확인하세요')).toBeTruthy()
