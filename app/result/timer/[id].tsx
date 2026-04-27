@@ -280,7 +280,7 @@ export default function TimerScreen() {
   const routineName = getTimerRoutineName(recommendation);
   const modeLabel = recommendation.mode === 'trip' ? '무드 루틴' : '컨디션 루틴';
   const audioSummary = `${recommendation.music.title} · ${recommendation.ambience.title}`;
-  const introDetail = buildRoutineIntroDetail(routineName);
+  const introDetail = buildRoutineIntroDetail();
   const fillLevel = getRoutineFillLevel({
     phase,
     introRemainingMs,

@@ -150,7 +150,7 @@ describe('CompletionScreen', () => {
     expect(screen.getByText('마무리로 이 세 가지만 챙겨주세요')).toBeTruthy();
     expect(screen.getByText('오늘 루틴은 어땠나요?')).toBeTruthy();
 
-    fireEvent.press(screen.getByText('좋아요'));
+    fireEvent.press(screen.getByText('좋았어요'));
 
     await waitFor(() => expect(mockUpdateRecommendationFeedback).toHaveBeenCalledWith('rec_1', 'good'));
     expect(screen.getByText('물 한 잔으로 수분을 먼저 보충하세요.')).toBeTruthy();
@@ -170,11 +170,11 @@ describe('CompletionScreen', () => {
       expect(screen.getByText('잘 쉬었습니다')).toBeTruthy()
     );
 
-    fireEvent.press(screen.getByText('별로예요'));
+    fireEvent.press(screen.getByText('아쉬웠어요'));
 
     expect(mockUpdateRecommendationFeedback).not.toHaveBeenCalled();
 
-    fireEvent.press(screen.getByText('좋아요'));
+    fireEvent.press(screen.getByText('좋았어요'));
 
     await waitFor(() => expect(mockUpdateRecommendationFeedback).toHaveBeenCalledWith('rec_1', 'good'));
   });

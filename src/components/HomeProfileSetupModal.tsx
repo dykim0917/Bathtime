@@ -29,8 +29,8 @@ import {
 
 const ENVIRONMENTS: { id: BathEnvironment; label: string; description: string }[] = [
   { id: 'shower', label: '샤워', description: '가볍게 바로 시작할 수 있어요' },
-  { id: 'bathtub', label: '욕조', description: '전신욕이나 반신욕이 가능해요' },
   { id: 'partial_bath', label: '족욕', description: '대야나 족욕기로 진행해요' },
+  { id: 'bathtub', label: '욕조', description: '전신욕이나 반신욕이 가능해요' },
 ];
 
 const CONDITIONS: { id: HealthCondition; label: string }[] = [
@@ -106,7 +106,7 @@ export function HomeProfileSetupModal({
             <Text style={styles.eyebrow}>FIRST SETUP</Text>
             <Text style={styles.title}>오늘 가능한 방식만 알려주세요</Text>
             <Text style={styles.subtitle}>
-              환경과 안전 상태를 한 번에 확인하고, 바로 무리 없는 루틴을 준비할게요.
+              가능한 방식과 안전 상태를 한 번에 확인하고, 바로 무리 없는 루틴을 준비할게요.
             </Text>
           </View>
 
@@ -116,7 +116,7 @@ export function HomeProfileSetupModal({
             showsVerticalScrollIndicator={false}
           >
             <View style={styles.section}>
-              <Text style={styles.sectionTitle}>목욕 환경</Text>
+              <Text style={styles.sectionTitle}>가능한 방식</Text>
               <View style={styles.environmentGrid}>
                 {ENVIRONMENTS.map((option) => {
                   const selected = environment === option.id;

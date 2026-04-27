@@ -13,9 +13,9 @@ import { brand } from '@/src/content/brand';
 import { BrandMark } from '@/src/components/BrandMark';
 
 const ENVIRONMENTS: { id: BathEnvironment; labelKo: string; desc: string }[] = [
-  { id: 'bathtub', labelKo: '욕조', desc: '전신욕, 반신욕 가능' },
+  { id: 'shower', labelKo: '샤워', desc: '샤워만 가능해도 충분해요' },
   { id: 'footbath', labelKo: '족욕 (대야)', desc: '족욕 전용' },
-  { id: 'shower', labelKo: '샤워', desc: '샤워 스티머 활용' },
+  { id: 'bathtub', labelKo: '욕조', desc: '전신욕, 반신욕 가능' },
 ];
 
 export default function OnboardingEnvironment() {
@@ -65,8 +65,8 @@ export default function OnboardingEnvironment() {
             </View>
 
             <View style={styles.header}>
-              <Text style={styles.title}>지금 가능한 목욕 환경을 알려주세요</Text>
-              <Text style={styles.subtitle}>오늘 가능한 방식에 맞춰 온도와 시간을 준비해드려요</Text>
+              <Text style={styles.title}>지금 가능한 방식을 알려주세요</Text>
+              <Text style={styles.subtitle}>오늘은 그 방식에 맞춰 온도와 시간만 정리해드려요</Text>
             </View>
             <ScrollView
               style={styles.scrollView}
@@ -109,7 +109,7 @@ export default function OnboardingEnvironment() {
               </View>
 
               <Text style={styles.nextGuide}>
-                다음 단계에서는 안전 상태를 확인하고, 지금 환경에 맞는 루틴만 추천해드릴게요.
+                다음 단계에서는 안전 상태를 확인하고, 지금 가능한 방식에 맞는 루틴만 추천해드릴게요.
               </Text>
             </ScrollView>
 

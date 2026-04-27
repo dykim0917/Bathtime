@@ -32,6 +32,8 @@ interface CategoryCardProps {
   disabledText?: string;
   backgroundImage?: ImageSourcePropType | null;
   onPress: () => void;
+  secondaryActionLabel?: string;
+  onSecondaryActionPress?: () => void;
   width: number;
   minHeight?: number;
   emphasis?: 'default' | 'featured';
@@ -52,6 +54,8 @@ export function CategoryCard({
   disabledText,
   backgroundImage,
   onPress,
+  secondaryActionLabel,
+  onSecondaryActionPress,
   width,
   minHeight = 140,
   emphasis = 'default',
@@ -125,6 +129,13 @@ export function CategoryCard({
             </Text>
             <Text style={[styles.footerArrow, isV2 && styles.footerArrowV2]}>›</Text>
           </View>
+        ) : null}
+        {!disabled && secondaryActionLabel && onSecondaryActionPress ? (
+          <Pressable style={styles.secondaryAction} onPress={onSecondaryActionPress}>
+            <Text style={[styles.secondaryActionText, isV2 && styles.secondaryActionTextV2]} numberOfLines={1}>
+              {secondaryActionLabel}
+            </Text>
+          </Pressable>
         ) : null}
         {disabled && disabledText ? (
           <Text style={[styles.warning, isV2 && styles.warningV2]} numberOfLines={2}>
@@ -310,6 +321,20 @@ const styles = StyleSheet.create({
   },
   footerArrowV2: {
     color: V2_ACCENT,
+  },
+  secondaryAction: {
+    alignSelf: 'flex-start',
+    marginTop: -2,
+    paddingVertical: 3,
+  },
+  secondaryActionText: {
+    fontSize: TYPE_SCALE.caption,
+    color: V2_TEXT_MUTED,
+    fontWeight: '700',
+    fontFamily: luxuryFonts.sans,
+  },
+  secondaryActionTextV2: {
+    color: V2_TEXT_SECONDARY,
   },
   warning: {
     marginTop: 2,

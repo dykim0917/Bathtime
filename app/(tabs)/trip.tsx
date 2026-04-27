@@ -55,8 +55,8 @@ import { luxuryFonts } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
 
 const TRIP_ENV_OPTIONS: { id: BathEnvironment; label: string }[] = [
-  { id: 'bathtub', label: '욕조' },
   { id: 'shower', label: '샤워' },
+  { id: 'bathtub', label: '욕조' },
 ];
 
 const TRIP_EDITORIAL_META: Record<string, { accent: [string, string] }> = {

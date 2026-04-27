@@ -46,6 +46,7 @@ export default function RecipeScreen() {
   const [showProductModal, setShowProductModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<CatalogProduct | null>(null);
   const [isPreBathGateVisible, setIsPreBathGateVisible] = useState(false);
+  const [detailsExpanded, setDetailsExpanded] = useState(false);
   const [alertDialog, setAlertDialog] = useState<{ title: string; body: string } | null>(null);
   useCatalogHydration();
 
@@ -171,7 +172,7 @@ export default function RecipeScreen() {
     {
       id: 'bath',
       label: copy.routine.recipe.waterStepLabel,
-      body: `${temperatureLabel}로 맞추고 ${recommendation.environmentHints[0] ?? `${environmentLabel} 환경에 맞게 편안한 높이로 물을 준비해주세요.`}`,
+      body: `${temperatureLabel}로 맞추고 ${recommendation.environmentHints[0] ?? `${environmentLabel} 방식에 맞게 편안한 높이로 물을 준비해주세요.`}`,
     },
     {
       id: 'ingredient',
@@ -181,6 +182,15 @@ export default function RecipeScreen() {
         : copy.routine.recipe.noIngredientStepBody,
     },
   ] as const;
+  const quickSummarySteps = (() => {
+    if (recommendation.environmentUsed === 'shower') {
+      return ['물 온도 맞추기', '목과 어깨부터 천천히', '마지막엔 물 온도 살짝 낮추기'];
+    }
+    if (recommendation.environmentUsed === 'footbath' || recommendation.environmentUsed === 'partial_bath') {
+      return ['발목까지 물 준비하기', `${durationLabel}만 가볍게 담그기`, '끝나면 천천히 일어나기'];
+    }
+    return ['물 온도 맞추기', `${durationLabel}만 몸 담그기`, '끝나면 물 한 잔'];
+  })();
 
   const handleProductDetail = (item: ProductMatchItem) => {
     setShowProductModal(false);
@@ -344,54 +354,104 @@ export default function RecipeScreen() {
           </LinearGradient>
         </View>
 
-        <Reanimated.View entering={FadeInDown.duration(400).delay(80)} style={[ui.glassCardV2, styles.stepsCard]}>
-          <Text style={styles.sectionTitle}>{copy.routine.recipe.prepTitle}</Text>
-          <Text style={styles.sectionSubtitle}>{copy.routine.recipe.prepSubtitle}</Text>
-          <View style={styles.stepList}>
-            {routineSteps.map((step, index) => (
-              <View key={step.id} style={[styles.stepRow, index === routineSteps.length - 1 && styles.stepRowLast]}>
+        <Reanimated.View entering={FadeInDown.duration(400).delay(80)} style={[ui.glassCardV2, styles.quickSummaryCard]}>
+          <Text style={styles.quickSummaryEyebrow}>{copy.routine.recipe.summaryEyebrow}</Text>
+          <Text style={styles.quickSummaryTitle}>{copy.routine.recipe.summaryTitle}</Text>
+          <View style={styles.quickMetricRow}>
+            <Text style={styles.quickMetricText}>{temperatureLabel}</Text>
+            <View style={styles.quickMetricDot} />
+            <Text style={styles.quickMetricText}>{durationLabel}</Text>
+            <View style={styles.quickMetricDot} />
+            <Text style={styles.quickMetricText}>{environmentLabel}</Text>
+          </View>
+          <View style={styles.quickStepList}>
+            {quickSummarySteps.map((step, index) => (
+              <View key={step} style={styles.quickStepRow}>
                 <View style={[styles.stepIndexBadge, { backgroundColor: `${recommendation.colorHex}18`, borderColor: `${recommendation.colorHex}45` }]}>
                   <Text style={styles.stepIndexText}>{index + 1}</Text>
                 </View>
-                <View style={styles.stepCopy}>
-                  <Text style={styles.stepLabel}>{step.label}</Text>
-                  <Text style={styles.stepBody}>{step.body}</Text>
-                </View>
+                <Text style={styles.quickStepText}>{step}</Text>
               </View>
             ))}
           </View>
-        </Reanimated.View>
-
-        <Reanimated.View entering={FadeInDown.duration(400).delay(180)}>
-          <Text style={styles.sectionTitle}>{copy.routine.recipe.guideTitle}</Text>
-          <Text style={styles.sectionSubtitle}>{copy.routine.recipe.guideSubtitle}</Text>
-          <View style={[ui.glassCardV2, styles.ingredientsCard]}>
-            {preparationRows.map((item, index) => (
-              <View key={item.id} style={[styles.trackRow, index === preparationRows.length - 1 && styles.trackRowLast]}>
-                <View style={[styles.trackCircle, { backgroundColor: `${recommendation.colorHex}20`, borderColor: `${recommendation.colorHex}55` }]}>
-                  <Text style={styles.trackBadgeText}>{String(index + 1).padStart(2, '0')}</Text>
-                </View>
-                <View style={styles.trackInfo}><Text style={styles.trackName}>{item.title}</Text><Text style={styles.trackDesc}>{item.body}</Text></View>
-              </View>
-            ))}
-            {productSlots.length > 0 ? (
-              <View style={styles.ingredientsPairingWrap}>
-                <View style={styles.ingredientsPairingDivider} />
-                <Text style={styles.productBridgeEyebrow}>{copy.routine.recipe.bridgeEyebrow}</Text>
-                <Text style={styles.productBridgeTitle}>{copy.routine.recipe.bridgeTitle}</Text>
-                <Text style={styles.productBridgeBody}>{copy.routine.recipe.bridgeBody}</Text>
-                <Pressable
-                  style={[ui.secondaryButtonV2, styles.productBridgeButton]}
-                  onPress={() => setShowProductModal(true)}
-                >
-                  <Text style={ui.secondaryButtonTextV2}>{copy.routine.recipe.bridgeButton}</Text>
-                </Pressable>
-              </View>
-            ) : null}
+          <View style={styles.quickActionRow}>
+            <Pressable style={[ui.primaryButtonV2, styles.quickPrimaryButton]} onPress={handleStartBath}>
+              <Text style={ui.primaryButtonTextV2}>{source === 'history' ? copy.routine.preBath.historyStartCta : copy.routine.startCta}</Text>
+            </Pressable>
+            <Pressable
+              style={[ui.secondaryButtonV2, styles.quickSecondaryButton]}
+              onPress={() => setDetailsExpanded((current) => !current)}
+            >
+              <Text style={ui.secondaryButtonTextV2}>
+                {detailsExpanded ? '접어두기' : copy.routine.detailCta}
+              </Text>
+            </Pressable>
           </View>
         </Reanimated.View>
 
-        <Reanimated.View entering={FadeInDown.duration(400).delay(240)} style={[ui.glassCardV2, styles.safetyBlock]}>
+        {detailsExpanded ? (
+          <>
+            <Reanimated.View entering={FadeInDown.duration(400)} style={[ui.glassCardV2, styles.stepsCard]}>
+              <Text style={styles.sectionTitle}>{copy.routine.recipe.prepTitle}</Text>
+              <Text style={styles.sectionSubtitle}>{copy.routine.recipe.prepSubtitle}</Text>
+              <View style={styles.stepList}>
+                {routineSteps.map((step, index) => (
+                  <View key={step.id} style={[styles.stepRow, index === routineSteps.length - 1 && styles.stepRowLast]}>
+                    <View style={[styles.stepIndexBadge, { backgroundColor: `${recommendation.colorHex}18`, borderColor: `${recommendation.colorHex}45` }]}>
+                      <Text style={styles.stepIndexText}>{index + 1}</Text>
+                    </View>
+                    <View style={styles.stepCopy}>
+                      <Text style={styles.stepLabel}>{step.label}</Text>
+                      <Text style={styles.stepBody}>{step.body}</Text>
+                    </View>
+                  </View>
+                ))}
+              </View>
+            </Reanimated.View>
+
+            <Reanimated.View entering={FadeInDown.duration(400).delay(80)}>
+              <Text style={styles.sectionTitle}>{copy.routine.recipe.guideTitle}</Text>
+              <Text style={styles.sectionSubtitle}>{copy.routine.recipe.guideSubtitle}</Text>
+              <View style={[ui.glassCardV2, styles.ingredientsCard]}>
+                {preparationRows.map((item, index) => (
+                  <View key={item.id} style={[styles.trackRow, index === preparationRows.length - 1 && styles.trackRowLast]}>
+                    <View style={[styles.trackCircle, { backgroundColor: `${recommendation.colorHex}20`, borderColor: `${recommendation.colorHex}55` }]}>
+                      <Text style={styles.trackBadgeText}>{String(index + 1).padStart(2, '0')}</Text>
+                    </View>
+                    <View style={styles.trackInfo}><Text style={styles.trackName}>{item.title}</Text><Text style={styles.trackDesc}>{item.body}</Text></View>
+                  </View>
+                ))}
+                {productSlots.length > 0 ? (
+                  <View style={styles.ingredientsPairingWrap}>
+                    <View style={styles.ingredientsPairingDivider} />
+                    <Text style={styles.productBridgeEyebrow}>{copy.routine.recipe.bridgeEyebrow}</Text>
+                    <Text style={styles.productBridgeTitle}>{copy.routine.recipe.bridgeTitle}</Text>
+                    <Text style={styles.productBridgeBody}>{copy.routine.recipe.bridgeBody}</Text>
+                    <Pressable
+                      style={[ui.secondaryButtonV2, styles.productBridgeButton]}
+                      onPress={() => setShowProductModal(true)}
+                    >
+                      <Text style={ui.secondaryButtonTextV2}>{copy.routine.recipe.bridgeButton}</Text>
+                    </Pressable>
+                  </View>
+                ) : null}
+              </View>
+            </Reanimated.View>
+          </>
+        ) : (
+          <Pressable
+            style={[ui.glassCardV2, styles.detailCollapsedCard]}
+            onPress={() => setDetailsExpanded(true)}
+          >
+            <View style={styles.detailCollapsedCopy}>
+              <Text style={styles.detailCollapsedTitle}>{copy.routine.detailCta}</Text>
+              <Text style={styles.detailCollapsedText}>추천 이유와 준비물은 필요할 때만 확인해요.</Text>
+            </View>
+            <FontAwesome name="angle-down" size={18} color={V2_ACCENT} />
+          </Pressable>
+        )}
+
+        <Reanimated.View entering={FadeInDown.duration(400).delay(160)} style={[ui.glassCardV2, styles.safetyBlock]}>
           <Text style={styles.safetyEyebrow}>{copy.routine.recipe.safetyEyebrow}</Text>
           <Text style={styles.safetyTitle}>{copy.routine.safetyTitle}</Text>
           <Text style={styles.safetyLead}>{primarySafetyLine}</Text>
@@ -572,7 +632,61 @@ const styles = StyleSheet.create({
   heroMetricValue: { fontSize: TYPE_BODY, color: V2_TEXT_PRIMARY, fontFamily: luxuryFonts.display },
   heroMetricDivider: { width: 1, height: 32, backgroundColor: 'rgba(255,255,255,0.12)', marginHorizontal: 10 },
   scrollView: { flex: 1 },
-  scrollContent: { paddingHorizontal: 20, paddingTop: 18 },
+  scrollContent: { paddingHorizontal: 20, paddingTop: 18, paddingBottom: 12 },
+  quickSummaryCard: { paddingHorizontal: 16, paddingVertical: 16, marginBottom: 14, marginTop: 14 },
+  quickSummaryEyebrow: {
+    fontSize: TYPE_CAPTION - 1,
+    fontWeight: '700',
+    color: V2_ACCENT,
+    letterSpacing: 0,
+    fontFamily: luxuryFonts.sans,
+    marginBottom: 4,
+  },
+  quickSummaryTitle: {
+    fontSize: TYPE_TITLE + 4,
+    color: V2_TEXT_PRIMARY,
+    lineHeight: 30,
+    fontFamily: luxuryFonts.display,
+  },
+  quickMetricRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    gap: 8,
+    marginTop: 8,
+    marginBottom: 12,
+  },
+  quickMetricText: {
+    fontSize: TYPE_BODY,
+    color: V2_TEXT_PRIMARY,
+    fontWeight: '700',
+    fontFamily: luxuryFonts.sans,
+  },
+  quickMetricDot: {
+    width: 4,
+    height: 4,
+    borderRadius: 2,
+    backgroundColor: V2_ACCENT,
+    opacity: 0.68,
+  },
+  quickStepList: { gap: 8 },
+  quickStepRow: { flexDirection: 'row', alignItems: 'center', gap: 10 },
+  quickStepText: { flex: 1, fontSize: TYPE_BODY, color: V2_TEXT_PRIMARY, lineHeight: 21, fontFamily: luxuryFonts.sans },
+  quickActionRow: { flexDirection: 'row', gap: 10, marginTop: 16 },
+  quickPrimaryButton: { flex: 1, minHeight: 48 },
+  quickSecondaryButton: { flex: 1, minHeight: 48 },
+  detailCollapsedCard: {
+    marginBottom: 14,
+    paddingHorizontal: 14,
+    paddingVertical: 14,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 12,
+  },
+  detailCollapsedCopy: { flex: 1, gap: 4 },
+  detailCollapsedTitle: { fontSize: TYPE_BODY, color: V2_TEXT_PRIMARY, fontFamily: luxuryFonts.display },
+  detailCollapsedText: { fontSize: TYPE_CAPTION, color: V2_TEXT_MUTED, lineHeight: 18, fontFamily: luxuryFonts.sans },
   stepsCard: { paddingHorizontal: 16, paddingVertical: 16, marginBottom: 20, marginTop: 14 },
   stepList: { marginTop: 4 },
   stepRow: { flexDirection: 'row', alignItems: 'flex-start', gap: 12, paddingVertical: 12, borderBottomWidth: 1, borderBottomColor: V2_BORDER },

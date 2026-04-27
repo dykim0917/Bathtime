@@ -2,9 +2,7 @@ import { buildRoutineIntroDetail, getRoutineFillLevel, INTRO_DURATION_MS } from 
 
 describe('routineTimer helpers', () => {
   test('buildRoutineIntroDetail returns the updated ritual copy detail', () => {
-    expect(buildRoutineIntroDetail('근육 이완 루틴')).toBe(
-      '따뜻한 근육 이완 루틴이 곧 시작됩니다.'
-    );
+    expect(buildRoutineIntroDetail()).toBe('온도와 시간만 지키며 편하게 따라와 주세요.');
   });
 
   test('getRoutineFillLevel fills water during intro', () => {

@@ -135,6 +135,7 @@ export default function CompletionScreen() {
     const duration = toDurationLabel(actualDurationMinutes ?? recommendation.durationMinutes);
     const environment = toEnvironmentLabel(recommendation.environmentUsed);
     await Share.share({
+      title: copy.completion.shareSheetTitle,
       message: `오늘 바스타임 완료: ${environment}에서 ${duration} 루틴을 마쳤어요.`,
     });
   };
@@ -164,7 +165,7 @@ export default function CompletionScreen() {
   const metrics: SummaryMetric[] = [
     { icon: 'thermometer-half', label: '온도', value: `${recommendation.temperature.recommended}°C` },
     { icon: 'clock-o', label: '시간', value: durationLabel },
-    { icon: 'bath', label: '환경', value: environmentLabel },
+    { icon: 'bath', label: '방식', value: environmentLabel },
     { icon: 'check-circle-o', label: '완료', value: completedTimeLabel },
   ];
 

@@ -80,9 +80,9 @@ import {
 } from '@/src/data/routineImageVariants';
 
 const ENV_OPTIONS: { id: BathEnvironment; label: string }[] = [
-  { id: 'bathtub', label: '욕조' },
-  { id: 'partial_bath', label: '족욕' },
   { id: 'shower', label: '샤워' },
+  { id: 'partial_bath', label: '족욕' },
+  { id: 'bathtub', label: '욕조' },
 ];
 
 const ENV_LABEL: Record<string, string> = {
@@ -99,7 +99,7 @@ const TRIP_EDITORIAL_META: Record<string, { destination: string; accent: [string
 };
 
 const SCREEN_HORIZONTAL_PADDING = 22;
-const HOME_PREVIEW_CARD_LIMIT = 4;
+const HOME_PREVIEW_CARD_LIMIT = 3;
 const HOME_SECTION_ORDER: RecommendationCardEventPayload['section_order'] = 'care_first';
 
 interface CareVisualMeta {
@@ -444,6 +444,53 @@ export default function HomeIntentScreen() {
     setSubModalVisible(true);
   };
 
+  const handleQuickStartCareIntent = async (intent: IntentCard) => {
+    const payload = buildIntentPayload(intent);
+    const option = (CARE_SUBPROTOCOL_OPTIONS[intent.intent_id] ?? []).find(
+      (candidate) => candidate.id === intent.default_subprotocol_id || candidate.is_default
+    );
+
+    trackIntentCardClick(payload);
+    haptic.medium();
+
+    const runtimeProfile = buildRuntimeProfile(profile, environment);
+    const baseRecommendation = generateCareRecommendation(
+      runtimeProfile,
+      mapIntentToTags(intent.intent_id),
+      toEngineEnvironment(environment),
+      intent.intent_id
+    );
+    const recommendation = option
+      ? applySubProtocolOverrides(baseRecommendation, option, environment, intent.intent_id)
+      : baseRecommendation;
+
+    await saveRecommendation(recommendation);
+    await upsertSessionRecord({
+      id: recommendation.id,
+      date: recommendation.createdAt,
+      mode: recommendation.mode,
+      trip_name: recommendation.mode === 'trip' ? recommendation.themeTitle ?? null : null,
+      temperature: recommendation.temperature.recommended,
+      duration: recommendation.durationMinutes,
+      user_feeling_before: inferFeelingBefore(recommendation.intentId, recommendation.mode),
+      user_feeling_after: 3,
+    });
+
+    const payloadWithSub: RecommendationCardEventPayload = {
+      ...payload,
+      subprotocol_id: option?.id,
+    };
+
+    if (option) {
+      trackSubprotocolSelected(payloadWithSub);
+    }
+    handleRouteToRecipe(
+      recommendation,
+      payloadWithSub,
+      `/result/recipe/${recommendation.id}?source=care` as Href
+    );
+  };
+
   const resolveSubOptions = (intent: IntentCard | null): SubProtocolOption[] => {
     if (!intent) return [];
     return CARE_SUBPROTOCOL_OPTIONS[intent.intent_id] ?? [];
@@ -559,8 +606,8 @@ export default function HomeIntentScreen() {
       <LinearGradient colors={[V2_BG_TOP, V2_BG_BASE, V2_BG_BOTTOM]} style={StyleSheet.absoluteFillObject} />
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <OpenTabHeader
-          title="오늘은 어떻게 쉬어볼까요?"
-          subtitle="컨디션과 목욕 환경에 맞춰 무리 없는 루틴을 준비했어요."
+          title="오늘은 어떻게 씻을까요?"
+          subtitle="피곤한 날, 잠 안 오는 밤, 운동 후 뻐근한 몸까지. 오늘 몸에 맞는 씻는 방법만 가볍게 골라드려요."
           topSlot={
             <View style={styles.headerBrand}>
               <BrandMark size={28} framed />
@@ -622,7 +669,7 @@ export default function HomeIntentScreen() {
 
         {hasCompletedProfile ? (
           <View style={styles.environmentSection}>
-            <Text style={styles.environmentLabel}>목욕 환경</Text>
+            <Text style={styles.environmentLabel}>{copy.home.sections.environment}</Text>
             <View style={styles.environmentRow}>
               {ENV_OPTIONS.map((option) => (
                 <Pressable
@@ -641,7 +688,7 @@ export default function HomeIntentScreen() {
 
         <View>
           <View style={styles.sectionHeaderRow}>
-            <Text style={styles.sectionTitle}>{hasCompletedProfile ? '컨디션 루틴' : '첫 루틴 준비'}</Text>
+            <Text style={styles.sectionTitle}>{hasCompletedProfile ? copy.home.sections.suggestions : '첫 루틴 준비'}</Text>
             {hasCompletedProfile ? (
               <Pressable onPress={() => router.push('/(tabs)/care')} style={styles.inlineLinkButton}>
                 <Text style={styles.inlineLinkText}>전체 보기</Text>
@@ -697,10 +744,10 @@ export default function HomeIntentScreen() {
                 }
                 disabled={!heroCard.allowed_environments.includes(normalizedEnvironment)}
                 disabledText={getEnvironmentUnavailableReason(heroCard, normalizedEnvironment)}
-                onPress={() => handleOpenCareSubProtocol(heroCard)}
+                onPress={() => handleQuickStartCareIntent(heroCard)}
               />
 
-              <Text style={styles.careListLabel}>다른 컨디션 루틴 찾아보기</Text>
+              <Text style={styles.careListLabel}>다른 컨디션도 가볍게 보기</Text>
             </>
           ) : null}
           {hasCompletedProfile ? (
@@ -729,7 +776,7 @@ export default function HomeIntentScreen() {
                     backgroundImage={getCareCardImageForEnvironment(intent.intent_id, imageEnvironment)}
                     disabled={disabled}
                     disabledText={getEnvironmentUnavailableReason(intent, normalizedEnvironment)}
-                    onPress={() => handleOpenCareSubProtocol(intent)}
+                    onPress={() => handleQuickStartCareIntent(intent)}
                   />
                 );
               })}

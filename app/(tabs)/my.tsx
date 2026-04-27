@@ -87,7 +87,7 @@ const ENV_LABELS_SETTINGS: Record<BathEnvironment, string> = {
   shower: '샤워',
 };
 
-const SETTINGS_ENV_OPTIONS: BathEnvironment[] = ['bathtub', 'partial_bath', 'shower'];
+const SETTINGS_ENV_OPTIONS: BathEnvironment[] = ['shower', 'partial_bath', 'bathtub'];
 
 const CONDITION_LABELS: Record<HealthCondition, string> = {
   hypertension_heart: '고혈압/심장',

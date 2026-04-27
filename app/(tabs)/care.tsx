@@ -63,9 +63,9 @@ import { luxuryFonts } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
 
 const ENV_OPTIONS: { id: BathEnvironment; label: string }[] = [
-  { id: 'bathtub', label: '욕조' },
-  { id: 'partial_bath', label: '족욕' },
   { id: 'shower', label: '샤워' },
+  { id: 'partial_bath', label: '족욕' },
+  { id: 'bathtub', label: '욕조' },
 ];
 
 const ALL_CARE_CARDS = CARE_INTENT_CARDS;
@@ -265,6 +265,75 @@ export default function CareScreen() {
     setSubModalVisible(true);
   };
 
+  const handleQuickStartIntent = async (intent: IntentCard) => {
+    const appVersion = Constants.expoConfig?.version ?? 'unknown';
+    const locale = Intl.DateTimeFormat().resolvedOptions().locale;
+    const healthConditions = profile?.healthConditions ?? ['none'];
+    const payload: RecommendationCardEventPayload = {
+      user_id: profile?.createdAt ?? 'anonymous',
+      session_id: sessionIdRef.current,
+      app_version: appVersion,
+      locale,
+      time_context: timeContext,
+      environment,
+      partial_bath_subtype: environment === 'partial_bath' ? 'footbath' : null,
+      active_state: 'low_mood',
+      mode_type: intent.mapped_mode,
+      suggestion_id: intent.id,
+      suggestion_rank: mapCardPositionToRank(intent.card_position),
+      fallback_strategy_applied: resolveFallback(intent, healthConditions),
+      experiment_id: 'none',
+      variant: 'default',
+      ts: new Date().toISOString(),
+      engine_source: intent.domain,
+      intent_id: intent.intent_id,
+      intent_domain: intent.domain,
+      section_order: 'care_first',
+      card_position: intent.card_position,
+    };
+    const defaultOption = (CARE_SUBPROTOCOL_OPTIONS[intent.intent_id] ?? []).find(
+      (option) => option.id === intent.default_subprotocol_id || option.is_default
+    );
+
+    haptic.medium();
+    trackIntentCardClick(payload);
+
+    const runtimeProfile = buildRuntimeProfile(profile, environment);
+    const baseRecommendation = generateCareRecommendation(
+      runtimeProfile,
+      mapIntentToTags(intent.intent_id),
+      toEngineEnvironment(environment),
+      intent.intent_id
+    );
+    const recommendation = defaultOption
+      ? applySubProtocolOverrides(baseRecommendation, defaultOption, environment, intent.intent_id)
+      : baseRecommendation;
+
+    await saveRecommendation(recommendation);
+    await upsertSessionRecord({
+      id: recommendation.id,
+      date: recommendation.createdAt,
+      mode: recommendation.mode,
+      trip_name: recommendation.mode === 'trip' ? recommendation.themeTitle ?? null : null,
+      temperature: recommendation.temperature.recommended,
+      duration: recommendation.durationMinutes,
+      user_feeling_before: inferFeelingBefore(recommendation.intentId, recommendation.mode),
+      user_feeling_after: 3,
+    });
+
+    const payloadWithSub: RecommendationCardEventPayload = {
+      ...payload,
+      subprotocol_id: defaultOption?.id,
+    };
+
+    if (defaultOption) {
+      trackSubprotocolSelected(payloadWithSub);
+    }
+    trackRoutineStart(payloadWithSub);
+    trackRoutineStartAfterSubprotocol(payloadWithSub);
+    router.push(`/result/recipe/${recommendation.id}?source=care`);
+  };
+
   const handleSelectSubProtocol = async (option: SubProtocolOption) => {
     if (!selectedIntent || !selectedIntentPayload) return;
 
@@ -326,7 +395,7 @@ export default function CareScreen() {
         />
 
         <View>
-          <Text style={styles.sectionTitle}>입욕 환경</Text>
+          <Text style={styles.sectionTitle}>{copy.home.sections.environment}</Text>
           <View style={styles.environmentRow}>
             {ENV_OPTIONS.map((option) => (
               <Pressable
@@ -344,7 +413,7 @@ export default function CareScreen() {
 
         <View>
           <Text style={styles.sectionTitle}>컨디션별 루틴</Text>
-          <Text style={styles.sectionIntro}>지금 컨디션에 맞는 대표 루틴부터 보고, 나머지도 같은 기준으로 비교할 수 있어요.</Text>
+          <Text style={styles.sectionIntro}>지금 컨디션에 맞는 추천을 바로 시작하고, 필요할 때만 세부 느낌을 더 골라보세요.</Text>
           <View style={[styles.gridWrap, { rowGap: CARD_GAP }]}> 
             {ALL_CARE_CARDS.map((intent) => {
               const isFeaturedCard = intent.card_position === 1;
@@ -370,7 +439,9 @@ export default function CareScreen() {
                   disabled={disabled}
                   disabledText={isPlaceholder ? copy.careCards.placeholderDisabled : getEnvironmentUnavailableReason(intent, normalizedEnvironment)}
                   backgroundImage={isPlaceholder ? null : getCareCardImageForEnvironment(intent.intent_id, imageEnvironment)}
-                  onPress={() => handleOpenSubProtocol(intent)}
+                  onPress={() => handleQuickStartIntent(intent)}
+                  secondaryActionLabel={copy.careCards.secondaryFooter}
+                  onSecondaryActionPress={() => handleOpenSubProtocol(intent)}
                   width={intentCardWidth}
                   minHeight={isFeaturedCard ? CARD_MIN_HEIGHT_REGULAR + 24 : CARD_MIN_HEIGHT_REGULAR}
                   emphasis={isFeaturedCard ? 'featured' : 'default'}

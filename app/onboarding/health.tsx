@@ -73,8 +73,8 @@ export default function OnboardingHealth() {
 
           <View style={styles.header}>
             <View style={styles.progressTrack}><View style={[styles.progressFill, styles.progressFillFull]} /></View>
-            <Text style={styles.title}>안전하게 쉴 수 있도록{`\n`}상태를 확인할게요</Text>
-            <Text style={styles.subtitle}>위험할 수 있는 온도와 시간을 피할 수 있게 현재 상태를 알려주세요.</Text>
+            <Text style={styles.title}>무리하지 않도록{`\n`}상태만 확인할게요</Text>
+            <Text style={styles.subtitle}>피해야 할 온도와 시간을 먼저 걸러낼게요.</Text>
           </View>
 
           <ScrollView

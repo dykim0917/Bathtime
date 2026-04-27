@@ -9,8 +9,8 @@ interface RoutineFillLevelParams {
   totalSeconds: number;
 }
 
-export function buildRoutineIntroDetail(routineName: string): string {
-  return `따뜻한 ${routineName}이 곧 시작됩니다.`;
+export function buildRoutineIntroDetail(): string {
+  return '온도와 시간만 지키며 편하게 따라와 주세요.';
 }
 
 export function getRoutineFillLevel({
