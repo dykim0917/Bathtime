@@ -31,13 +31,13 @@ jest.mock('expo-linear-gradient', () => {
 jest.mock('react-native-reanimated', () => {
   const React = require('react');
   const { View } = require('react-native');
+  const animation = { delay: () => ({}) };
   return {
     __esModule: true,
     default: {
       View,
     },
-    FadeIn: { duration: () => ({ delay: () => ({}) }) },
-    BounceIn: { duration: () => ({}) },
+    FadeIn: { duration: () => animation },
   };
 });
 
@@ -66,9 +66,11 @@ jest.mock('@/src/engine/feeling', () => ({
   mapFeedbackToFeelingAfter: () => 4,
 }));
 
-jest.mock('@/src/utils/messages', () => ({
-  getTimeBasedMessage: () => '오늘도 잘 마무리했어요',
-}));
+jest.mock('@expo/vector-icons/FontAwesome', () => {
+  const React = require('react');
+  const { View } = require('react-native');
+  return () => React.createElement(View);
+});
 
 jest.mock('@/src/components/BrandMark', () => {
   const React = require('react');
@@ -76,18 +78,6 @@ jest.mock('@/src/components/BrandMark', () => {
   return {
     BrandMark: () => React.createElement(View),
   };
-});
-
-jest.mock('@/assets/icons/condition.svg', () => {
-  const React = require('react');
-  const { View } = require('react-native');
-  return () => React.createElement(View);
-});
-
-jest.mock('@/assets/icons/unhappy.svg', () => {
-  const React = require('react');
-  const { View } = require('react-native');
-  return () => React.createElement(View);
 });
 
 const recommendation = {
@@ -123,7 +113,7 @@ const recommendation = {
 
 describe('CompletionScreen', () => {
   beforeEach(() => {
-    mockReplace.mockReset();
+    jest.clearAllMocks();
     mockGetRecommendationById.mockResolvedValue(recommendation);
     mockGetMonthlyCount.mockResolvedValue(3);
     mockUpdateRecommendationFeedback.mockResolvedValue(undefined);
@@ -142,32 +132,33 @@ describe('CompletionScreen', () => {
         environment: 'bathtub',
         temperatureRecommended: 39,
         durationMinutes: 12,
+        feedback: null,
       },
     });
   });
 
-  test('moves from feedback step to summary step after rating the routine', async () => {
+  test('opens directly on redesigned completion summary and saves inline feedback', async () => {
     const screen = render(React.createElement(CompletionScreen));
-
-    await waitFor(() =>
-      expect(screen.getByText('오늘 바스타임은 어떠셨나요?')).toBeTruthy()
-    );
-
-    expect(screen.queryByText('마무리로 이 세 가지만 챙겨주세요')).toBeNull();
-
-    fireEvent.press(screen.getByText('좋아요'));
 
     await waitFor(() =>
       expect(screen.getByText('잘 쉬었습니다')).toBeTruthy()
     );
 
-    expect(mockUpdateRecommendationFeedback).toHaveBeenCalledWith('rec_1', 'good');
-    expect(screen.getByText('• 물 한 잔으로 수분을 먼저 보충하세요.')).toBeTruthy();
-    expect(screen.getByText('• 물기가 완전히 마르기 전에 보습제를 가볍게 발라주세요.')).toBeTruthy();
-    expect(screen.getByText('• 어지럽거나 심장이 빨리 뛰면 바로 앉아서 쉬세요.')).toBeTruthy();
+    expect(screen.getByText('이번 달 기록')).toBeTruthy();
+    expect(screen.getByText('오늘 바스타임 요약')).toBeTruthy();
+    expect(screen.getByText('오늘 바스타임 공유')).toBeTruthy();
+    expect(screen.getByText('마무리로 이 세 가지만 챙겨주세요')).toBeTruthy();
+    expect(screen.getByText('오늘 루틴은 어땠나요?')).toBeTruthy();
+
+    fireEvent.press(screen.getByText('좋아요'));
+
+    await waitFor(() => expect(mockUpdateRecommendationFeedback).toHaveBeenCalledWith('rec_1', 'good'));
+    expect(screen.getByText('물 한 잔으로 수분을 먼저 보충하세요.')).toBeTruthy();
+    expect(screen.getByText('물기가 완전히 마르기 전에 보습제를 가볍게 발라주세요.')).toBeTruthy();
+    expect(screen.getByText('어지럽거나 심장이 빨리 뛰면 바로 앉아서 쉬세요.')).toBeTruthy();
   });
 
-  test('opens directly on summary step when feedback already exists', async () => {
+  test('allows changing feedback when feedback already exists', async () => {
     mockGetRecommendationById.mockResolvedValue({
       ...recommendation,
       feedback: 'bad',
@@ -179,6 +170,12 @@ describe('CompletionScreen', () => {
       expect(screen.getByText('잘 쉬었습니다')).toBeTruthy()
     );
 
-    expect(screen.queryByText('오늘 바스타임은 어떠셨나요?')).toBeNull();
+    fireEvent.press(screen.getByText('별로예요'));
+
+    expect(mockUpdateRecommendationFeedback).not.toHaveBeenCalled();
+
+    fireEvent.press(screen.getByText('좋아요'));
+
+    await waitFor(() => expect(mockUpdateRecommendationFeedback).toHaveBeenCalledWith('rec_1', 'good'));
   });
 });

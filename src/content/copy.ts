@@ -177,6 +177,9 @@ export const copy = {
     feedbackTitleWithThemePrefix: '오늘의',
     feedbackTitleWithThemeSuffix: '분위기는 어떠셨나요?',
     summaryTitle: '잘 쉬었습니다',
+    monthlyLabel: '이번 달 기록',
+    shareCta: '오늘 바스타임 공유',
+    feedbackQuestion: '오늘 루틴은 어땠나요?',
     feedback: {
       good: '좋아요',
       bad: '별로예요',
