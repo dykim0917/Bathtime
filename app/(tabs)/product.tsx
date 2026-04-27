@@ -97,7 +97,7 @@ export default function ProductScreen() {
               ? `${highlightedProduct.name}부터 이어서 볼 수 있어요.`
               : status === 'loading'
                 ? '실제 카탈로그를 불러오는 중이에요.'
-                : '지금 바로 쓰기 쉬운 입욕제, 샤워 아이템, 바디워시만 먼저 골라봤어요.'
+                : '샤워부터 족욕, 욕조까지 지금 방식에 맞춰 더하기 쉬운 제품만 골라봤어요.'
           }
         />
 

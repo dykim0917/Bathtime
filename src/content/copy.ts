@@ -146,8 +146,8 @@ export const copy = {
       bridgeBody: '새로 사야 하는 것은 아니에요. 필요하다면 함께 보기 좋은 제품만 골랐어요.',
       bridgeButton: '추천 제품 보기',
       safetyEyebrow: '안전 먼저',
-      bathLabel: '입욕',
-      temperatureLabel: '수온',
+      bathLabel: '방식',
+      temperatureLabel: '온도',
       durationLabel: '시간',
       environmentLabel: '방식',
       sleepWindow: {

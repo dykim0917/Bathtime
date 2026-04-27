@@ -259,11 +259,11 @@ export default function TripScreen() {
         <OpenTabHeader
           eyebrow="무드 가이드"
           title="무드 루틴"
-          subtitle="분위기를 바꾸고 싶은 날, 가능한 환경에 맞춰 골라보세요."
+          subtitle="분위기를 바꾸고 싶은 날, 가능한 방식에 맞춰 골라보세요."
         />
 
         <View>
-          <Text style={styles.sectionTitle}>입욕 환경</Text>
+          <Text style={styles.sectionTitle}>{copy.home.sections.environment}</Text>
           <View style={styles.environmentRow}>
             {TRIP_ENV_OPTIONS.map((option) => (
               <Pressable
