@@ -6,4 +6,4 @@
 - `/Users/exem/DK/BathSommelier/docs/WIREFRAME_V3_10_2.md`
 
 참고:
-- 본 문서는 v3.9.1 기준 초안이며, v3.10.2의 EngineSelector v1.1 / fallback 4종 / analytics common_properties / Jira story mapping을 포함하지 않습니다.
+- 본 문서는 v3.9.1 기준 초안이며, v3.10.2의 EngineSelector v1.1 / fallback 4종 / analytics common_properties를 포함하지 않습니다.

@@ -18,13 +18,17 @@
       "bundleIdentifier": "com.getbathtime.app"
     },
     "android": {
-      "package": "com.getbathtime.app",
+      "package": "com.bathtimestudio.bathtime",
+      "versionCode": 4,
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#102629"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "blockedPermissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "web": {
       "bundler": "metro",
@@ -37,6 +41,12 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "aad216ef-4f0f-46d4-884e-f4f5ab5c4b64"
+      }
     }
   }
 }

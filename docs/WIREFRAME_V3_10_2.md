@@ -7,7 +7,6 @@ WireframeSpecVersion: `v3.10.2`
 - Policy: `/Users/exem/DK/BathSommelier/docs/POLICY_APPENDIX.md` (v1.1)
 - Analytics: `/Users/exem/DK/BathSommelier/docs/ANALYTICS_APPENDIX.md` (v1.1)
 - Config: `/Users/exem/DK/BathSommelier/docs/CONFIG_APPENDIX.md` (v1.1)
-- Jira Backlog: `/Users/exem/DK/BathSommelier/docs/JIRA_EXECUTION_BACKLOG_v3.10.2.md`
 
 ## 1) IA & Layer Rules
 
@@ -70,7 +69,6 @@ ScreenSpec {
 - EngineSelector path
 - Fallback key
 - Required events
-- Jira story link
 
 모든 핵심 이벤트 공통 속성 체크:
 - `user_id`
@@ -332,16 +330,7 @@ A/B 실험 표기:
 6. W16 -> W01 or W17
 7. W18은 전체 퍼널에서 persistent overlay로 동작
 
-## 7) Jira Story Mapping Matrix
-
-- Home/Fallback cluster: `E2-S3`, `E3-S3`, `E4-S1`, `E4-S2`, `E4-S3`
-- Explanation cluster: `E5-S1`, `E5-S2`
-- Routine cluster: `E6-S1`, `E6-S2`
-- Commerce cluster: `E7-S1`, `E7-S2`, `E7-S3`
-- Trip cluster: `E8-S1`, `E8-S2`, `E8-S3`
-- Analytics/QA cluster: `E9-S1`, `E9-S2`, `E9-S3`, `E10-S1`, `E10-S2`
-
-## 8) Figma Composition Spec
+## 7) Figma Composition Spec
 
 페이지:
 - `v3.10.2 Wireframes`
@@ -365,7 +354,6 @@ A/B 실험 표기:
   - EngineSelector path
   - fallback key
   - required events
-  - Jira story links
 
 실험 프레임 복제:
 - `W01-A` onboarding 1tap

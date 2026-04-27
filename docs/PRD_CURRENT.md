@@ -1233,7 +1233,6 @@ ValidationEventSpec {
 - PMF 미확정 시 ProductHub 확장보다 Home/실행률 개선 작업을 우선
 
 ## 29. MVP Execution Order (Market-first)
-Jira 실행 백로그(에픽/스토리/AC)는 `/Users/exem/DK/BathSommelier/docs/JIRA_EXECUTION_BACKLOG_v3.10.2.md`를 단일 소스로 참조한다.
 
 ### 29.1 실행 우선순위
 1. Home Orchestration: Primary 1 + Secondary 0~2
