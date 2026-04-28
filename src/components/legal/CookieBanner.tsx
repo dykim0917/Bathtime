@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Platform, Pressable, StyleSheet, Text, View } from 'react-native';
 import { router, useSegments } from 'expo-router';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { loadCookieNoticeAck, saveCookieNoticeAck } from '@/src/storage/legal';
 import {
   TYPE_BODY,
@@ -15,6 +16,7 @@ import { ui } from '@/src/theme/ui';
 
 export function CookieBanner() {
   const [visible, setVisible] = useState(false);
+  const insets = useSafeAreaInsets();
   const segments = useSegments();
   const isOnboardingRoute = segments[0] === 'onboarding';
 
@@ -32,7 +34,10 @@ export function CookieBanner() {
   };
 
   return (
-    <View pointerEvents="box-none" style={styles.overlay}>
+    <View
+      pointerEvents="box-none"
+      style={[styles.overlay, { paddingBottom: Platform.OS === 'web' ? 0 : insets.bottom + 8 }]}
+    >
       <View style={[ui.glassCardV2, styles.banner]}>
         <Text style={styles.title}>쿠키 및 접속정보 안내</Text>
         <Text style={styles.body}>
@@ -59,7 +64,6 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: Platform.select({ web: 20, default: 12 }),
     paddingHorizontal: 16,
-    paddingBottom: Platform.select({ web: 0, default: 8 }),
   },
   banner: {
     backgroundColor: V2_MODAL_SURFACE_ELEVATED,

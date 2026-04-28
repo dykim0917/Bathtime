@@ -3,14 +3,18 @@ import {
   Animated,
   Dimensions,
   Easing,
+  GestureResponderEvent,
   LayoutChangeEvent,
   Modal,
+  PanResponder,
+  PanResponderGestureState,
   Pressable,
   StyleProp,
   StyleSheet,
   View,
   ViewStyle,
 } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 interface AnimatedModalShellProps {
   visible: boolean;
@@ -27,6 +31,9 @@ const BACKDROP_ENTER_DURATION = 220;
 const BACKDROP_EXIT_DURATION = 160;
 const SHEET_ENTER_DURATION = 320;
 const SHEET_EXIT_DURATION = 260;
+const DRAG_DISMISS_DISTANCE = 80;
+const DRAG_DISMISS_VELOCITY = 0.7;
+const DRAG_ACTIVATION_DISTANCE = 10;
 
 export function AnimatedModalShell({
   visible,
@@ -38,6 +45,7 @@ export function AnimatedModalShell({
   cardStyle,
   align = 'bottom',
 }: AnimatedModalShellProps) {
+  const insets = useSafeAreaInsets();
   const [isRendered, setIsRendered] = useState(visible);
   const [sheetHeight, setSheetHeight] = useState(0);
   const isClosingByRequest = useRef(false);
@@ -47,6 +55,10 @@ export function AnimatedModalShell({
   ).current;
 
   const hiddenOffset = useMemo(() => getHiddenOffset(align, sheetHeight), [align, sheetHeight]);
+  const modalSafeAreaStyle = useMemo(
+    () => (align === 'bottom' ? { paddingBottom: insets.bottom } : null),
+    [align, insets.bottom],
+  );
 
   const animateIn = useCallback(() => {
     backdropOpacity.stopAnimation();
@@ -123,6 +135,55 @@ export function AnimatedModalShell({
     animateOut(true);
   }, [animateOut, isRendered]);
 
+  const shouldStartDrag = useCallback((
+    _event: GestureResponderEvent,
+    gestureState: PanResponderGestureState
+  ) => {
+    if (align !== 'bottom' || isClosingByRequest.current) return false;
+    const isMostlyVertical = Math.abs(gestureState.dy) > Math.abs(gestureState.dx) * 1.4;
+    return gestureState.dy > DRAG_ACTIVATION_DISTANCE && isMostlyVertical;
+  }, [align]);
+
+  const panResponder = useMemo(
+    () =>
+      PanResponder.create({
+        onMoveShouldSetPanResponder: shouldStartDrag,
+        onMoveShouldSetPanResponderCapture: shouldStartDrag,
+        onPanResponderGrant: () => {
+          sheetTranslateY.stopAnimation();
+        },
+        onPanResponderMove: (_event, gestureState) => {
+          sheetTranslateY.setValue(Math.max(0, gestureState.dy));
+        },
+        onPanResponderRelease: (_event, gestureState) => {
+          const shouldDismiss =
+            gestureState.dy > DRAG_DISMISS_DISTANCE ||
+            gestureState.vy > DRAG_DISMISS_VELOCITY;
+
+          if (shouldDismiss) {
+            requestClose();
+            return;
+          }
+
+          Animated.timing(sheetTranslateY, {
+            toValue: 0,
+            duration: 180,
+            easing: Easing.out(Easing.quad),
+            useNativeDriver: true,
+          }).start();
+        },
+        onPanResponderTerminate: () => {
+          Animated.timing(sheetTranslateY, {
+            toValue: 0,
+            duration: 180,
+            easing: Easing.out(Easing.quad),
+            useNativeDriver: true,
+          }).start();
+        },
+      }),
+    [requestClose, sheetTranslateY, shouldStartDrag]
+  );
+
   const handleSheetLayout = useCallback((event: LayoutChangeEvent) => {
     const nextHeight = Math.ceil(event.nativeEvent.layout.height);
     if (!nextHeight || nextHeight === sheetHeight) return;
@@ -159,10 +220,12 @@ export function AnimatedModalShell({
           style={[
             styles.contentContainer,
             align === 'center' ? styles.contentCenter : styles.contentBottom,
+            modalSafeAreaStyle,
             containerStyle,
           ]}
         >
           <Animated.View
+            {...(align === 'bottom' ? panResponder.panHandlers : {})}
             style={[
               styles.cardWrap,
               { transform: [{ translateY: sheetTranslateY }] },

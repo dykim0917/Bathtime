@@ -19,12 +19,13 @@
     },
     "android": {
       "package": "com.bathtimestudio.bathtime",
-      "versionCode": 4,
+      "versionCode": 10,
+      "icon": "./assets/images/icon.png",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./assets/images/adaptive-foreground.png",
         "backgroundColor": "#102629"
       },
-      "edgeToEdgeEnabled": true,
+      "edgeToEdgeEnabled": false,
       "predictiveBackGestureEnabled": false,
       "blockedPermissions": [
         "android.permission.RECORD_AUDIO"
@@ -37,7 +38,16 @@
     },
     "plugins": [
       "expo-router",
-      "expo-audio"
+      "expo-audio",
+      [
+        "expo-navigation-bar",
+        {
+          "backgroundColor": "#07191B",
+          "barStyle": "light",
+          "borderColor": "#183236",
+          "position": "relative"
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true

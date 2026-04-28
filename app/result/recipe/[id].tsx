@@ -460,7 +460,7 @@ export default function RecipeScreen() {
 
       </RNAnimated.ScrollView>
 
-      <View style={styles.bottomCTA}>
+      <View style={[styles.bottomCTA, { paddingBottom: insets.bottom + 10 }]}>
         {sleepPreparationPlan ? (
           <View style={[ui.glassCardV2, styles.sleepWindowCard]}>
             <Text style={styles.sleepWindowEyebrow}>{copy.routine.recipe.sleepWindow.eyebrow}</Text>
@@ -726,7 +726,6 @@ const styles = StyleSheet.create({
   bottomCTA: {
     paddingHorizontal: 20,
     paddingTop: 8,
-    paddingBottom: 10,
     borderTopWidth: 1,
     borderTopColor: V2_BORDER,
     backgroundColor: V2_BG_BASE,

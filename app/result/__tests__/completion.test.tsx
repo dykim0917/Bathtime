@@ -4,12 +4,13 @@ import CompletionScreen from '../completion/[id]';
 
 const mockReplace = jest.fn();
 const mockGetRecommendationById = jest.fn();
-const mockGetMonthlyCount = jest.fn();
+const mockGetMonthlyCompletionCount = jest.fn();
 const mockUpdateRecommendationFeedback = jest.fn();
 const mockLoadSession = jest.fn();
 const mockClearSession = jest.fn();
 const mockPatchSessionRecord = jest.fn();
 const mockSaveCompletionMemory = jest.fn();
+const mockUpdateCompletionMemoryFeedback = jest.fn();
 const mockApplyFeedbackToThemePreference = jest.fn();
 
 jest.mock('expo-router', () => ({
@@ -43,7 +44,6 @@ jest.mock('react-native-reanimated', () => {
 
 jest.mock('@/src/storage/history', () => ({
   getRecommendationById: (...args: unknown[]) => mockGetRecommendationById(...args),
-  getMonthlyCount: (...args: unknown[]) => mockGetMonthlyCount(...args),
   updateRecommendationFeedback: (...args: unknown[]) => mockUpdateRecommendationFeedback(...args),
 }));
 
@@ -57,7 +57,11 @@ jest.mock('@/src/storage/sessionLog', () => ({
 }));
 
 jest.mock('@/src/storage/memory', () => ({
+  getMonthlyCompletionCount: (...args: unknown[]) =>
+    mockGetMonthlyCompletionCount(...args),
   saveCompletionMemory: (...args: unknown[]) => mockSaveCompletionMemory(...args),
+  updateCompletionMemoryFeedback: (...args: unknown[]) =>
+    mockUpdateCompletionMemoryFeedback(...args),
   applyFeedbackToThemePreference: (...args: unknown[]) =>
     mockApplyFeedbackToThemePreference(...args),
 }));
@@ -115,13 +119,16 @@ describe('CompletionScreen', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     mockGetRecommendationById.mockResolvedValue(recommendation);
-    mockGetMonthlyCount.mockResolvedValue(3);
+    mockGetMonthlyCompletionCount.mockResolvedValue(3);
     mockUpdateRecommendationFeedback.mockResolvedValue(undefined);
     mockLoadSession.mockResolvedValue(null);
     mockClearSession.mockResolvedValue(undefined);
     mockPatchSessionRecord.mockResolvedValue(undefined);
+    mockUpdateCompletionMemoryFeedback.mockResolvedValue(undefined);
     mockApplyFeedbackToThemePreference.mockResolvedValue(0);
     mockSaveCompletionMemory.mockResolvedValue({
+      completionId: 'rec_1:2026-04-20T12:10:00.000Z',
+      recommendationId: 'rec_1',
       themeId: null,
       themePreferenceWeight: 0,
       narrativeRecallCard: '몸이 한결 가벼워졌어요.',
@@ -153,6 +160,10 @@ describe('CompletionScreen', () => {
     fireEvent.press(screen.getByText('좋았어요'));
 
     await waitFor(() => expect(mockUpdateRecommendationFeedback).toHaveBeenCalledWith('rec_1', 'good'));
+    expect(mockUpdateCompletionMemoryFeedback).toHaveBeenCalledWith(
+      'rec_1:2026-04-20T12:10:00.000Z',
+      'good'
+    );
     expect(screen.getByText('물 한 잔으로 수분을 먼저 보충하세요.')).toBeTruthy();
     expect(screen.getByText('물기가 완전히 마르기 전에 보습제를 가볍게 발라주세요.')).toBeTruthy();
     expect(screen.getByText('어지럽거나 심장이 빨리 뛰면 바로 앉아서 쉬세요.')).toBeTruthy();

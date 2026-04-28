@@ -145,7 +145,7 @@ IMPORTANT: Reuse `ui.*` entries for common patterns before creating new styles.
   ```typescript
   import { LinearGradient } from 'expo-linear-gradient';
   ```
-- **Skia graphics** (water fill): `@shopify/react-native-skia` — provide `.web.tsx` fallback for web
+- **Lottie visuals** (water fill): `lottie-react-native` — provide `.web.tsx` fallback for web
 - **Reanimated visuals** such as steam should also provide `.web.tsx` fallback when native-only behavior is involved
 
 ---

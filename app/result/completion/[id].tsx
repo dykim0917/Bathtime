@@ -4,22 +4,27 @@ import {
   Text,
   Pressable,
   StyleSheet,
-  SafeAreaView,
   Platform,
   ScrollView,
   Share,
   Image,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { useLocalSearchParams, router } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
 import Animated, { FadeIn } from 'react-native-reanimated';
 import { BathFeedback, BathRecommendation } from '@/src/engine/types';
 import { BrandMark } from '@/src/components/BrandMark';
-import { getRecommendationById, getMonthlyCount, updateRecommendationFeedback } from '@/src/storage/history';
+import { getRecommendationById, updateRecommendationFeedback } from '@/src/storage/history';
 import { clearSession, loadSession } from '@/src/storage/session';
 import { patchSessionRecord } from '@/src/storage/sessionLog';
-import { applyFeedbackToThemePreference, saveCompletionMemory } from '@/src/storage/memory';
+import {
+  applyFeedbackToThemePreference,
+  getMonthlyCompletionCount,
+  saveCompletionMemory,
+  updateCompletionMemoryFeedback,
+} from '@/src/storage/memory';
 import { mapFeedbackToFeelingAfter } from '@/src/engine/feeling';
 import { copy } from '@/src/content/copy';
 import {
@@ -39,7 +44,7 @@ import {
 import { luxuryFonts, luxuryTracking } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
 
-const RESULT_BACKGROUND = require('../../../assets/images/result_background.png');
+const RESULT_BACKGROUND = require('../../../assets/images/result_background.jpg');
 
 type SummaryMetric = {
   icon: React.ComponentProps<typeof FontAwesome>['name'];
@@ -77,6 +82,7 @@ export default function CompletionScreen() {
   const [feedback, setFeedback] = useState<BathFeedback>(null);
   const [completedAt, setCompletedAt] = useState<string | null>(null);
   const [actualDurationMinutes, setActualDurationMinutes] = useState<number | null>(null);
+  const [completionId, setCompletionId] = useState<string | null>(null);
 
   useEffect(() => {
     if (!id) return;
@@ -111,10 +117,11 @@ export default function CompletionScreen() {
 
       setActualDurationMinutes(memory.completionSnapshot.durationMinutes);
       setCompletedAt(memory.completionSnapshot.completedAt);
+      setCompletionId(memory.completionId);
     });
 
     const now = new Date();
-    getMonthlyCount(now.getFullYear(), now.getMonth() + 1).then(setMonthlyCount);
+    getMonthlyCompletionCount(now.getFullYear(), now.getMonth() + 1).then(setMonthlyCount);
   }, [id]);
 
   const handleFeedback = async (value: Exclude<BathFeedback, null>) => {
@@ -124,6 +131,9 @@ export default function CompletionScreen() {
     await patchSessionRecord(id, {
       user_feeling_after: mapFeedbackToFeelingAfter(value),
     });
+    if (completionId) {
+      await updateCompletionMemoryFeedback(completionId, value);
+    }
     if (recommendation?.themeId) {
       await applyFeedbackToThemePreference(recommendation.themeId, value);
     }

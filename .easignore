@@ -1,0 +1,38 @@
+# Dependencies and generated native folders
+node_modules/
+ios/
+android/
+
+# Local build outputs and downloaded artifacts
+dist/
+web-build/
+*.aab
+*.apk
+
+# Project documentation, reports, and generated review assets
+docs/
+output/
+.audit-shots/
+.gstack/
+
+# Tooling/cache files not needed by EAS Build
+.expo/
+.git/
+.tmp/
+tmp/
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# Local high-resolution source assets; the app uses optimized jpg files.
+assets/images/products/*.png
+
+# Secrets and credentials
+.env*.local
+*.der
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+.keys/

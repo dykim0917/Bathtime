@@ -24,6 +24,7 @@ import { loadHistory, saveRecommendation } from '@/src/storage/history';
 import { upsertSessionRecord } from '@/src/storage/sessionLog';
 import { loadLastEnvironment, saveLastEnvironment } from '@/src/storage/environment';
 import { loadTripMemoryHistory } from '@/src/storage/memory';
+import { buildCompletionColorsByDate, buildCompletionRecordItems } from '@/src/engine/completionRecords';
 import {
   TYPE_SCALE,
   V2_ACCENT,
@@ -307,6 +308,7 @@ export default function HomeIntentScreen() {
   const [recentRoutines, setRecentRoutines] = useState<BathRecommendation[]>([]);
   const [isHistoryLoaded, setIsHistoryLoaded] = useState(false);
   const [streakSummary, setStreakSummary] = useState<HomeStreakSummary>(buildHomeStreakSummary([]));
+  const [completionColorsByDate, setCompletionColorsByDate] = useState<Record<string, string[]>>({});
   const [subModalVisible, setSubModalVisible] = useState(false);
   const [setupModalVisible, setSetupModalVisible] = useState(false);
   const [selectedIntent, setSelectedIntent] = useState<IntentCard | null>(null);
@@ -330,6 +332,9 @@ export default function HomeIntentScreen() {
     Promise.all([loadHistory(), loadTripMemoryHistory()])
       .then(([history, memories]) => {
         setRecentRoutines(history.slice(0, 8));
+        setCompletionColorsByDate(
+          buildCompletionColorsByDate(buildCompletionRecordItems(history, memories))
+        );
         setStreakSummary(
           buildHomeStreakSummary(memories.map((memory) => memory.completionSnapshot.completedAt))
         );
@@ -648,12 +653,27 @@ export default function HomeIntentScreen() {
               <View style={styles.weekDotsRow}>
                 {streakSummary.dailyCheck.map((item) => (
                   <View key={item.dateKey} style={styles.weekDotItem}>
-                    <View style={[styles.weekDot, item.done && styles.weekDotDone, item.isToday && styles.weekDotToday]}>
+                    <View
+                      style={[
+                        styles.weekDot,
+                        item.done && styles.weekDotDone,
+                        item.done && completionColorsByDate[item.dateKey]?.[0]
+                          ? {
+                              borderColor: completionColorsByDate[item.dateKey][0],
+                              backgroundColor: `${completionColorsByDate[item.dateKey][0]}18`,
+                            }
+                          : null,
+                        item.isToday && styles.weekDotToday,
+                      ]}
+                    >
                       <View
                         style={[
                           styles.weekDotCenter,
                           item.done && styles.weekDotCenterDone,
                           item.done && item.isToday && styles.weekDotCenterTodayDone,
+                          item.done && completionColorsByDate[item.dateKey]?.[0]
+                            ? { backgroundColor: completionColorsByDate[item.dateKey][0] }
+                            : null,
                         ]}
                       />
                     </View>

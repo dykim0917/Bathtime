@@ -222,6 +222,7 @@ export interface CompletionSnapshot {
 }
 
 export interface TripMemoryRecord {
+  completionId: string;
   recommendationId: string;
   themeId: ThemeId | null;
   themeTitle: string | null;

@@ -23,6 +23,20 @@ function buildNarrativeRecallCard(rec: BathRecommendation): string {
   return `${ENV_LABELS[rec.environmentUsed] ?? '욕실'}에서 ${toReadableDuration(rec.durationMinutes)} 루틴을 완료했어요.`;
 }
 
+function buildCompletionId(recommendationId: string, completedAt: string): string {
+  return `${recommendationId}:${completedAt}`;
+}
+
+function normalizeMemoryRecord(record: TripMemoryRecord): TripMemoryRecord {
+  const completedAt = record.completionSnapshot.completedAt;
+  return {
+    ...record,
+    completionId:
+      record.completionId ??
+      `legacy_${buildCompletionId(record.recommendationId, completedAt)}`,
+  };
+}
+
 export async function loadThemePreferenceWeights(): Promise<Record<string, number>> {
   const raw = await AsyncStorage.getItem(STORAGE_KEYS.THEME_PREFERENCE_WEIGHTS);
   if (!raw) return {};
@@ -68,7 +82,7 @@ export async function loadTripMemoryHistory(): Promise<TripMemoryRecord[]> {
   if (!raw) return [];
 
   try {
-    return JSON.parse(raw) as TripMemoryRecord[];
+    return (JSON.parse(raw) as TripMemoryRecord[]).map(normalizeMemoryRecord);
   } catch {
     return [];
   }
@@ -83,9 +97,9 @@ export async function saveCompletionMemory(
   }
 ): Promise<TripMemoryRecord> {
   const existing = await loadTripMemoryHistory();
-  const existingRecord = existing.find(
-    (entry) => entry.recommendationId === recommendation.id
-  );
+  const completedAt = overrides?.completedAt ?? new Date().toISOString();
+  const completionId = buildCompletionId(recommendation.id, completedAt);
+  const existingRecord = existing.find((entry) => entry.completionId === completionId);
   if (existingRecord) {
     if (
       overrides?.completedAt ||
@@ -93,9 +107,10 @@ export async function saveCompletionMemory(
     ) {
       const updatedRecord: TripMemoryRecord = {
         ...existingRecord,
+        completionId,
         completionSnapshot: {
           ...existingRecord.completionSnapshot,
-          completedAt: overrides.completedAt ?? existingRecord.completionSnapshot.completedAt,
+          completedAt,
           durationMinutes:
             overrides.durationMinutes !== undefined
               ? overrides.durationMinutes
@@ -121,12 +136,13 @@ export async function saveCompletionMemory(
     : 0;
 
   const record: TripMemoryRecord = {
+    completionId,
     recommendationId: recommendation.id,
     themeId: recommendation.themeId ?? null,
     themeTitle: recommendation.themeTitle ?? null,
     completionSnapshot: {
       recommendationId: recommendation.id,
-      completedAt: overrides?.completedAt ?? new Date().toISOString(),
+      completedAt,
       mode: recommendation.mode,
       environment: recommendation.environmentUsed,
       temperatureRecommended: recommendation.temperature.recommended,
@@ -140,11 +156,42 @@ export async function saveCompletionMemory(
     narrativeRecallCard: buildNarrativeRecallCard(recommendation),
   };
 
-  const history = [record, ...existing.filter((entry) => entry.recommendationId !== recommendation.id)];
+  const history = [record, ...existing.filter((entry) => entry.completionId !== completionId)];
   if (history.length > MAX_MEMORY_HISTORY) {
     history.length = MAX_MEMORY_HISTORY;
   }
 
   await AsyncStorage.setItem(STORAGE_KEYS.TRIP_MEMORY_HISTORY, JSON.stringify(history));
   return record;
+}
+
+export async function getMonthlyCompletionCount(
+  year: number,
+  month: number
+): Promise<number> {
+  const history = await loadTripMemoryHistory();
+  return history.filter((memory) => {
+    const date = new Date(memory.completionSnapshot.completedAt);
+    return date.getFullYear() === year && date.getMonth() === month - 1;
+  }).length;
+}
+
+export async function updateCompletionMemoryFeedback(
+  completionId: string,
+  feedback: Exclude<BathFeedback, null>
+): Promise<void> {
+  const existing = await loadTripMemoryHistory();
+  const next = existing.map((entry) =>
+    entry.completionId === completionId
+      ? {
+          ...entry,
+          completionSnapshot: {
+            ...entry.completionSnapshot,
+            feedback,
+          },
+        }
+      : entry
+  );
+
+  await AsyncStorage.setItem(STORAGE_KEYS.TRIP_MEMORY_HISTORY, JSON.stringify(next));
 }

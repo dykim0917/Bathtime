@@ -21,6 +21,7 @@ const rec = (overrides: Partial<BathRecommendation>): BathRecommendation => ({
 });
 
 const memory = (overrides: Partial<TripMemoryRecord>): TripMemoryRecord => ({
+  completionId: 'completion_base',
   recommendationId: 'rec_base',
   themeId: null,
   themeTitle: null,
@@ -48,8 +49,8 @@ describe('historyInsights', () => {
 
     const memories = [
       memory({ recommendationId: 'r1', completionSnapshot: { ...memory({}).completionSnapshot, durationMinutes: 8 } }),
-      memory({ recommendationId: 'r2', completionSnapshot: { ...memory({}).completionSnapshot, durationMinutes: 12 } }),
-      memory({ recommendationId: 'r3', completionSnapshot: { ...memory({}).completionSnapshot, durationMinutes: 10 } }),
+      memory({ recommendationId: 'r2', completionSnapshot: { ...memory({}).completionSnapshot, mode: 'trip', environment: 'shower', durationMinutes: 12 } }),
+      memory({ recommendationId: 'r3', completionSnapshot: { ...memory({}).completionSnapshot, mode: 'trip', environment: 'shower', durationMinutes: 10 } }),
     ];
 
     const result = buildHistoryInsights(history, memories);

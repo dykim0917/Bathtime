@@ -17,6 +17,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { BathEnvironment, BathRecommendation, HealthCondition, TripMemoryRecord } from '@/src/engine/types';
 import { loadHistory } from '@/src/storage/history';
 import { loadThemePreferenceWeights, loadTripMemoryHistory } from '@/src/storage/memory';
+import { buildCompletionRecordItems, CompletionRecordItem } from '@/src/engine/completionRecords';
 import { buildHistoryInsights } from '@/src/engine/historyInsights';
 import { buildHomeStreakSummary } from '@/src/engine/streaks';
 import { PERSONA_DEFINITIONS } from '@/src/engine/personas';
@@ -60,13 +61,6 @@ const FILTER_OPTIONS: { key: FilterMode; label: string }[] = [
   { key: 'care', label: '컨디션' },
   { key: 'trip', label: '무드' },
 ];
-
-const BATH_TYPE_LABELS: Record<string, string> = {
-  full: '전신욕',
-  half: '반신욕',
-  foot: '족욕',
-  shower: '샤워',
-};
 
 const MODE_LABELS = {
   care: copy.history.cardLabels.modeCare,
@@ -168,11 +162,10 @@ function HistorySection({
     }, [])
   );
 
-  const memoryByRecommendation = useMemo(() => {
-    return Object.fromEntries(
-      memoryHistory.map((record) => [record.recommendationId, record])
-    ) as Record<string, TripMemoryRecord>;
-  }, [memoryHistory]);
+  const completionItems = useMemo(
+    () => buildCompletionRecordItems(history, memoryHistory),
+    [history, memoryHistory]
+  );
 
   const topThemeInsight = useMemo(() => {
     const sorted = Object.entries(themeWeights).sort((a, b) => b[1] - a[1]);
@@ -191,18 +184,33 @@ function HistorySection({
     [memoryHistory]
   );
 
-  const filteredHistory = useMemo(() => {
-    if (filterMode === 'all') return history;
-    return history.filter((item) => item.mode === filterMode);
-  }, [history, filterMode]);
+  const filteredCompletions = useMemo(() => {
+    if (filterMode === 'all') return completionItems;
+    return completionItems.filter((item) => item.memory.completionSnapshot.mode === filterMode);
+  }, [completionItems, filterMode]);
 
-  const renderCard = ({ item, index }: { item: BathRecommendation; index: number }) => {
-    const persona = PERSONA_DEFINITIONS.find((p) => p.code === item.persona);
-    const title = item.themeTitle ?? persona?.nameKo ?? copy.history.cardLabels.defaultTitle;
-    const intentIconName = getIntentIconName(item.intentId);
-    const date = new Date(item.createdAt);
+  const renderCard = ({ item, index }: { item: CompletionRecordItem; index: number }) => {
+    const recommendation = item.recommendation;
+    const memory = item.memory;
+    const persona = recommendation
+      ? PERSONA_DEFINITIONS.find((p) => p.code === recommendation.persona)
+      : null;
+    const title =
+      recommendation?.themeTitle ??
+      memory.themeTitle ??
+      persona?.nameKo ??
+      item.title ??
+      copy.history.cardLabels.defaultTitle;
+    const intentIconName = getIntentIconName(recommendation?.intentId);
+    const date = new Date(memory.completionSnapshot.completedAt);
     const dateStr = `${date.getMonth() + 1}/${date.getDate()}`;
-    const memory = memoryByRecommendation[item.id];
+    const duration = memory.completionSnapshot.durationMinutes;
+    const feedbackLabel =
+      memory.completionSnapshot.feedback === 'good'
+        ? '좋았어요'
+        : memory.completionSnapshot.feedback === 'bad'
+          ? '아쉬웠어요'
+          : null;
     const isLeft = index % 2 === 0;
 
     return (
@@ -211,13 +219,13 @@ function HistorySection({
         onPress={() =>
           router.push({
             pathname: '/result/recipe/[id]',
-            params: { id: item.id, source: 'history' },
+            params: { id: memory.recommendationId, source: 'history' },
           })
         }
       >
-        <View style={[styles.gridCardHeader, { backgroundColor: `${item.colorHex}22` }]}> 
+        <View style={[styles.gridCardHeader, { backgroundColor: `${item.accentColor}22` }]}> 
           <View style={styles.gridCardGlow} />
-          <View style={[styles.gridCardIconWrap, { backgroundColor: `${item.colorHex}20`, borderColor: `${item.colorHex}42` }]}>
+          <View style={[styles.gridCardIconWrap, { backgroundColor: `${item.accentColor}20`, borderColor: `${item.accentColor}42` }]}>
             <CustomIcon
               name={intentIconName ?? 'care'}
               size={24}
@@ -226,18 +234,21 @@ function HistorySection({
               strokeColor={V2_TEXT_PRIMARY}
             />
           </View>
-          <View style={[styles.modePill, { backgroundColor: `${item.colorHex}33` }]}> 
-            <Text style={styles.modePillText}>{MODE_LABELS[item.mode]}</Text>
+          <View style={[styles.modePill, { backgroundColor: `${item.accentColor}33` }]}> 
+            <Text style={styles.modePillText}>{MODE_LABELS[memory.completionSnapshot.mode]}</Text>
           </View>
         </View>
         <View style={styles.gridCardFooter}>
           <Text style={styles.gridCardTitle} numberOfLines={2}>{title}</Text>
           <Text style={styles.gridCardMeta}>
-            {item.temperature.recommended}°C · {BATH_TYPE_LABELS[item.bathType]}
+            {memory.completionSnapshot.temperatureRecommended}°C · {ENV_LABELS_HISTORY[memory.completionSnapshot.environment]}
+            {duration !== null ? ` · ${duration}분` : ''}
           </Text>
           <View style={styles.gridCardBottom}>
             <Text style={styles.gridCardDate}>{dateStr}</Text>
-            {memory?.narrativeRecallCard ? (
+            {feedbackLabel ? (
+              <Text style={styles.gridCardFeedback}>{feedbackLabel}</Text>
+            ) : memory.narrativeRecallCard ? (
               <FontAwesome name="comment-o" size={10} color={V2_TEXT_MUTED} />
             ) : null}
           </View>
@@ -280,7 +291,7 @@ function HistorySection({
         </Text>
       </View>
 
-      {history.length > 0 && (
+      {completionItems.length > 0 && (
         <View style={[ui.glassCardV2, styles.insightBanner]}>
           <View style={styles.insightBannerLeft}>
             <Text style={styles.insightBannerLabel}>이번 달 요약</Text>
@@ -324,8 +335,8 @@ function HistorySection({
         ))}
       </ScrollView>
 
-      {filteredHistory.length > 0 && (
-        <Text style={styles.gridSectionLabel}>{filteredHistory.length}개의 루틴</Text>
+      {filteredCompletions.length > 0 && (
+        <Text style={styles.gridSectionLabel}>{filteredCompletions.length}개의 완료 기록</Text>
       )}
     </View>
   );
@@ -333,13 +344,13 @@ function HistorySection({
   return (
     <View style={styles.historyContainer}>
       <FlatList
-        data={filteredHistory}
-        keyExtractor={(item) => item.id}
+        data={filteredCompletions}
+        keyExtractor={(item) => item.memory.completionId}
         renderItem={renderCard}
         numColumns={2}
         ListHeaderComponent={<ListHeader />}
         ListEmptyComponent={
-          history.length === 0 ? (
+          completionItems.length === 0 ? (
             <View style={[ui.glassCardV2, styles.emptyContainer]}>
               <View style={styles.emptyBadge}>
                 <Text style={styles.emptyBadgeText}>첫 루틴을 시작해보세요</Text>
@@ -872,6 +883,11 @@ const styles = StyleSheet.create({
     fontSize: TYPE_CAPTION,
     color: V2_TEXT_MUTED,
     fontWeight: '600',
+  },
+  gridCardFeedback: {
+    fontSize: TYPE_CAPTION - 1,
+    color: V2_ACCENT,
+    fontWeight: '700',
   },
   emptyContainer: {
     marginHorizontal: SIDE_PAD,

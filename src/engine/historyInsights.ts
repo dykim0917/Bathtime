@@ -34,9 +34,9 @@ export function buildHistoryInsights(
   history: BathRecommendation[],
   memories: TripMemoryRecord[]
 ): HistoryInsights {
-  const totalSessions = history.length;
-  const careSessions = history.filter((item) => item.mode === 'care').length;
-  const tripSessions = history.filter((item) => item.mode === 'trip').length;
+  const totalSessions = memories.length;
+  const careSessions = memories.filter((item) => item.completionSnapshot.mode === 'care').length;
+  const tripSessions = memories.filter((item) => item.completionSnapshot.mode === 'trip').length;
 
   const durationPool = memories
     .map((memory) => memory.completionSnapshot.durationMinutes)
@@ -48,7 +48,7 @@ export function buildHistoryInsights(
       : 0;
 
   const topEnvironment = pickTopKey(
-    countBy(history.map((item) => item.environmentUsed))
+    countBy(memories.map((item) => item.completionSnapshot.environment))
   );
 
   const themeTitles = memories
