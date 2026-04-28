@@ -9,7 +9,6 @@ import { StatusBar } from 'expo-status-bar';
 import { Platform } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import 'react-native-reanimated';
-import { CookieBanner } from '@/src/components/legal/CookieBanner';
 import { V2_ACCENT, V2_BG_BASE, V2_BORDER, V2_SURFACE, V2_TEXT_PRIMARY } from '@/src/data/colors';
 
 export { ErrorBoundary } from 'expo-router';
@@ -61,7 +60,6 @@ export default function RootLayout() {
           <Stack.Screen name="result/timer/[id]" options={{ headerShown: false, presentation: 'modal', gestureEnabled: false }} />
           <Stack.Screen name="result/completion/[id]" options={{ headerShown: false, presentation: 'modal', gestureEnabled: false }} />
         </Stack>
-        <CookieBanner />
       </ThemeProvider>
     </SafeAreaProvider>
   );

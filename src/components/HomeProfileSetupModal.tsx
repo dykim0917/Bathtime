@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import {
   BathEnvironment,
   HealthCondition,
@@ -53,6 +54,7 @@ export function HomeProfileSetupModal({
   onComplete,
 }: HomeProfileSetupModalProps) {
   const { height: windowHeight } = useWindowDimensions();
+  const insets = useSafeAreaInsets();
   const [environment, setEnvironment] = useState<BathEnvironment | null>(null);
   const [conditions, setConditions] = useState<Set<HealthCondition>>(new Set());
 
@@ -63,7 +65,7 @@ export function HomeProfileSetupModal({
   }, [visible]);
 
   const canComplete = Boolean(environment) && conditions.size > 0;
-  const maxSheetHeight = Math.min(windowHeight - 24, windowHeight * 0.92);
+  const maxSheetHeight = Math.min(windowHeight - insets.top - 56, windowHeight * 0.86);
   const selectedConditions = useMemo(() => Array.from(conditions), [conditions]);
 
   const toggleCondition = (condition: HealthCondition) => {

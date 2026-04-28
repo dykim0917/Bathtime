@@ -1,5 +1,6 @@
 import { useCallback, useEffect } from 'react';
 import { useAudioPlayer } from 'expo-audio';
+import type { AudioPlayer } from 'expo-audio';
 import { MusicTrack, AmbienceTrack } from '@/src/engine/types';
 import { AUDIO_ASSETS } from '@/src/data/music';
 
@@ -9,6 +10,16 @@ interface DualAudioState {
   stop: () => void;
   setMusicVolume: (v: number) => void;
   setAmbienceVolume: (v: number) => void;
+}
+
+function resetPlayer(player: AudioPlayer) {
+  try {
+    player.pause();
+  } catch {}
+
+  try {
+    player.seekTo(0).catch(() => {});
+  } catch {}
 }
 
 /**
@@ -56,11 +67,8 @@ export function useDualAudioPlayer(
   }, [musicPlayer, ambiencePlayer]);
 
   const stop = useCallback(() => {
-  // Guard seekTo — throws on iOS when no audio source is loaded.
-    try { musicPlayer.pause(); } catch {}
-    try { musicPlayer.seekTo(0); } catch {}
-    try { ambiencePlayer.pause(); } catch {}
-    try { ambiencePlayer.seekTo(0); } catch {}
+    resetPlayer(musicPlayer);
+    resetPlayer(ambiencePlayer);
   }, [musicPlayer, ambiencePlayer]);
 
   const setMusicVolume = useCallback((v: number) => {
@@ -69,7 +77,7 @@ export function useDualAudioPlayer(
 
   const setAmbienceVolume = useCallback((v: number) => {
     try { ambiencePlayer.volume = Math.max(0, Math.min(1, v)); } catch {}
-  }, [musicPlayer, ambiencePlayer]);
+  }, [ambiencePlayer]);
 
   return { play, pause, stop, setMusicVolume, setAmbienceVolume };
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Tabs } from 'expo-router';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { SvgProps } from 'react-native-svg';
 import ConditionIcon from '@/assets/icons/condition.svg';
 import ConditionIconOn from '@/assets/icons/condition_on.svg';
@@ -31,13 +32,22 @@ function TabBarIcon({ name, color, focused }: { name: TabIconName; color: string
 }
 
 export default function TabLayout() {
+  const insets = useSafeAreaInsets();
+  const bottomInset = Math.max(insets.bottom, 0);
+
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: V2_ACCENT,
         tabBarInactiveTintColor: V2_TEXT_MUTED,
-        tabBarStyle: ui.tabBarStyle,
+        tabBarStyle: [
+          ui.tabBarStyle,
+          {
+            height: ui.tabBarStyle.height + bottomInset,
+            paddingBottom: ui.tabBarStyle.paddingBottom + bottomInset,
+          },
+        ],
         tabBarLabelStyle: { fontSize: 11, fontWeight: '700', letterSpacing: 0, fontFamily: luxuryFonts.sans },
         tabBarItemStyle: { borderRadius: 16, marginHorizontal: 1 },
         tabBarBackground: () => null,

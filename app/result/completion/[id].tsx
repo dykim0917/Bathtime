@@ -461,14 +461,17 @@ const styles = StyleSheet.create({
     fontSize: TYPE_SCALE.caption,
     color: V2_TEXT_MUTED,
     fontFamily: luxuryFonts.sans,
+    textAlign: 'center',
   },
   metricValue: {
+    width: '100%',
     fontSize: 17,
     color: V2_TEXT_PRIMARY,
     lineHeight: 22,
     fontWeight: '700',
     fontVariant: ['tabular-nums'],
     fontFamily: luxuryFonts.sans,
+    textAlign: 'center',
   },
   recordLine: {
     flexDirection: 'row',

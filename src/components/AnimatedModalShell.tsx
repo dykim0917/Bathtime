@@ -14,7 +14,6 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 interface AnimatedModalShellProps {
   visible: boolean;
@@ -45,7 +44,6 @@ export function AnimatedModalShell({
   cardStyle,
   align = 'bottom',
 }: AnimatedModalShellProps) {
-  const insets = useSafeAreaInsets();
   const [isRendered, setIsRendered] = useState(visible);
   const [sheetHeight, setSheetHeight] = useState(0);
   const isClosingByRequest = useRef(false);
@@ -55,11 +53,6 @@ export function AnimatedModalShell({
   ).current;
 
   const hiddenOffset = useMemo(() => getHiddenOffset(align, sheetHeight), [align, sheetHeight]);
-  const modalSafeAreaStyle = useMemo(
-    () => (align === 'bottom' ? { paddingBottom: insets.bottom } : null),
-    [align, insets.bottom],
-  );
-
   const animateIn = useCallback(() => {
     backdropOpacity.stopAnimation();
     sheetTranslateY.stopAnimation();
@@ -220,7 +213,6 @@ export function AnimatedModalShell({
           style={[
             styles.contentContainer,
             align === 'center' ? styles.contentCenter : styles.contentBottom,
-            modalSafeAreaStyle,
             containerStyle,
           ]}
         >
