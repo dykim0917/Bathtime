@@ -2,10 +2,11 @@ import { AdminShell } from '../../components/AdminShell';
 import {
   buildAdminTripListViewModel,
   getTripStatusLabel,
+  readAdminTripRows,
 } from '../../lib/tripData';
 
-export default function TripPage() {
-  const trip = buildAdminTripListViewModel();
+export default async function TripPage() {
+  const trip = buildAdminTripListViewModel(await readAdminTripRows());
 
   return (
     <AdminShell activePath="/trip">

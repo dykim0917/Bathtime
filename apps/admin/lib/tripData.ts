@@ -1,3 +1,8 @@
+import {
+  readAdminPostgrestConfig,
+  readPostgrestRows,
+} from './data/postgrest';
+
 export interface AdminTripThemeRow {
   id: string;
   title: string;
@@ -57,6 +62,18 @@ const tripRows: AdminTripThemeRow[] = [
   },
 ];
 
+interface TripThemeRecord {
+  id: string;
+  title: string;
+  recommended_environment: string;
+  base_temp: number;
+  duration_minutes: number | null;
+  music_id: string;
+  ambience_id: string;
+  lighting: string;
+  status: AdminTripThemeRow['status'];
+}
+
 export interface AdminTripListViewModel {
   rows: AdminTripThemeRow[];
   totalCount: number;
@@ -77,6 +94,27 @@ export function buildAdminTripListViewModel(
     ),
     linkedAudioCount: new Set(rows.flatMap((row) => [row.musicId, row.ambienceId])).size,
   };
+}
+
+export async function readAdminTripRows(): Promise<AdminTripThemeRow[]> {
+  const config = readAdminPostgrestConfig();
+  if (!config) return tripRows;
+
+  const themes = await readPostgrestRows<TripThemeRecord>(config, 'trip_theme', {
+    order: 'id.asc',
+  });
+
+  return themes.map((theme) => ({
+    id: theme.id,
+    title: theme.title,
+    environment: theme.recommended_environment,
+    baseTemp: theme.base_temp,
+    durationMinutes: theme.duration_minutes ?? 0,
+    musicId: theme.music_id,
+    ambienceId: theme.ambience_id,
+    lighting: theme.lighting,
+    status: theme.status,
+  }));
 }
 
 export function getTripStatusLabel(status: AdminTripThemeRow['status']): string {
