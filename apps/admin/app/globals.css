@@ -84,6 +84,42 @@ button {
   gap: 8px;
 }
 
+.sessionBox {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(148, 210, 191, 0.08);
+  padding: 12px;
+}
+
+.sessionBox span {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.sessionBox strong {
+  color: var(--text);
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.sessionBox button {
+  min-height: 32px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(7, 21, 23, 0.64);
+  color: var(--secondary);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 800;
+  margin-top: 4px;
+  width: 100%;
+}
+
 .navItem {
   border: 1px solid transparent;
   border-radius: 8px;

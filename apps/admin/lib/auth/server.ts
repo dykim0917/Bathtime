@@ -23,3 +23,15 @@ export async function createSupabaseServerClient() {
     },
   });
 }
+
+export async function getCurrentAdminEmail(): Promise<string | null> {
+  try {
+    const supabase = await createSupabaseServerClient();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    return user?.email ?? null;
+  } catch {
+    return null;
+  }
+}
