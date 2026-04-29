@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { AdminShell } from '../../components/AdminShell';
 import {
   buildAdminProductListViewModel,
@@ -44,7 +46,7 @@ export default async function ProductsPage() {
             <h3>제품 목록</h3>
             <span>Read-only table</span>
           </div>
-          <div className="dataTable" role="table" aria-label="제품 목록">
+          <div className="dataTable productTable" role="table" aria-label="제품 목록">
             <div className="dataTableHeader" role="row">
               <span>제품</span>
               <span>카테고리</span>
@@ -53,6 +55,7 @@ export default async function ProductsPage() {
               <span>안전</span>
               <span>상태</span>
               <span>검수일</span>
+              <span>상세</span>
             </div>
             {products.rows.map((product) => (
               <div className="dataTableRow" role="row" key={product.id}>
@@ -66,6 +69,9 @@ export default async function ProductsPage() {
                 <span>{product.safetyFlags.length || '-'}</span>
                 <span className="statusText">{getProductStatusLabel(product.status)}</span>
                 <span>{product.lastVerifiedAt}</span>
+                <Link className="textButton" href={`/products/${product.id}`}>
+                  열기
+                </Link>
               </div>
             ))}
           </div>

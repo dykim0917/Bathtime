@@ -1,0 +1,93 @@
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+
+import { AdminShell } from '../../../components/AdminShell';
+import {
+  getProductStatusLabel,
+  readAdminProductRows,
+} from '../../../lib/productsData';
+
+interface ProductDetailPageProps {
+  params: Promise<{
+    id: string;
+  }>;
+}
+
+export default async function ProductDetailPage({ params }: ProductDetailPageProps) {
+  const { id } = await params;
+  const products = await readAdminProductRows();
+  const product = products.find((item) => item.id === id);
+
+  if (!product) notFound();
+
+  return (
+    <AdminShell activePath="/products">
+      <section className="workspace">
+        <header className="topbar">
+          <div>
+            <p className="eyebrow">PRODUCTS</p>
+            <h2>{product.name}</h2>
+            <p className="lede">
+              제품 원본 데이터와 발행 전 검수 상태를 확인합니다.
+            </p>
+          </div>
+          <Link className="primaryButton linkButton" href="/products">
+            목록으로
+          </Link>
+        </header>
+
+        <section className="summaryGrid compact" aria-label="제품 상세 요약">
+          <div className="summaryCard">
+            <span>Status</span>
+            <strong>{getProductStatusLabel(product.status)}</strong>
+          </div>
+          <div className="summaryCard">
+            <span>Listings</span>
+            <strong>{product.activeListings}</strong>
+          </div>
+          <div className="summaryCard">
+            <span>Rules</span>
+            <strong>{product.matchRules}</strong>
+          </div>
+        </section>
+
+        <section className="detailGrid">
+          <section className="panel">
+            <div className="panelHeader">
+              <h3>기본 정보</h3>
+              <span>{product.id}</span>
+            </div>
+            <dl className="detailList">
+              <div>
+                <dt>브랜드</dt>
+                <dd>{product.brand}</dd>
+              </div>
+              <div>
+                <dt>카테고리</dt>
+                <dd>{product.category}</dd>
+              </div>
+              <div>
+                <dt>최근 검수일</dt>
+                <dd>{product.lastVerifiedAt}</dd>
+              </div>
+            </dl>
+          </section>
+
+          <section className="panel">
+            <div className="panelHeader">
+              <h3>안전 플래그</h3>
+              <span>Read-only</span>
+            </div>
+            <div className="tagList">
+              {product.safetyFlags.length > 0 ? (
+                product.safetyFlags.map((flag) => <span key={flag}>{flag}</span>)
+              ) : (
+                <p className="mutedText">등록된 안전 플래그가 없습니다.</p>
+              )}
+            </div>
+          </section>
+        </section>
+      </section>
+    </AdminShell>
+  );
+}
