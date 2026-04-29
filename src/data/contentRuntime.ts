@@ -38,6 +38,7 @@ import {
   type SubProtocolOption,
   type ThemePreset,
 } from '@/src/engine/types';
+import { validateContentApiResponse } from '@/src/data/contentValidation';
 
 export interface ContentRuntimeBundle {
   products: CatalogProduct[];
@@ -367,6 +368,11 @@ export function pickRuntimeAutoTripSubProtocol(
 }
 
 export function toContentRuntimeBundle(payload: ContentApiResponse): ContentRuntimeBundle {
+  const validation = validateContentApiResponse(payload);
+  if (!validation.ok) {
+    const firstError = validation.issues.find((item) => item.severity === 'error');
+    throw new Error(firstError?.message ?? 'Invalid content payload');
+  }
   assertContentSchema(payload);
 
   const catalogBundle = toCatalogApiRuntimeBundle(payload.catalog);

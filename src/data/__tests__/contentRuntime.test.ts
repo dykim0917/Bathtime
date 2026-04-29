@@ -60,7 +60,7 @@ describe('contentRuntime', () => {
     payload.trip.themes[0].music_id = 'missing_music_track';
 
     expect(() => toContentRuntimeBundle(payload)).toThrow(
-      /references missing music track/
+      /references missing active music track/
     );
   });
 
