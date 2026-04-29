@@ -8,6 +8,7 @@ const navItems = [
   { href: '/care', label: 'Care Routines' },
   { href: '/trip', label: 'Mood Routines' },
   { href: '/audio', label: 'Audio' },
+  { href: '/publish', label: 'Publish' },
 ];
 
 export async function AdminShell({

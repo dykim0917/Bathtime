@@ -30,6 +30,14 @@ Without Supabase values, `/login` renders a configuration warning and the route 
 
 `ADMIN_ALLOWED_EMAILS` is optional for local development. Set it in production so only approved Supabase users can enter the console.
 
+## Publish Validation
+
+Set this to let the `/publish` page validate a deployed snapshot endpoint:
+
+```txt
+CONTENT_SNAPSHOT_API_URL=https://<host>/api/content-snapshot
+```
+
 ## Scope
 
 This scaffold is intentionally read-only. The next PRs should add:
