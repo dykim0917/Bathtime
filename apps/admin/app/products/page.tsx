@@ -2,10 +2,11 @@ import { AdminShell } from '../../components/AdminShell';
 import {
   buildAdminProductListViewModel,
   getProductStatusLabel,
+  readAdminProductRows,
 } from '../../lib/productsData';
 
-export default function ProductsPage() {
-  const products = buildAdminProductListViewModel();
+export default async function ProductsPage() {
+  const products = buildAdminProductListViewModel(await readAdminProductRows());
 
   return (
     <AdminShell activePath="/products">
