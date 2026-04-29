@@ -2,6 +2,7 @@
 
 import { redirect } from 'next/navigation';
 import { createSupabaseServerClient } from './server';
+import { isAllowedAdminEmail, requireAdminAuthConfig } from './config';
 
 export async function signInWithPassword(formData: FormData) {
   const email = String(formData.get('email') ?? '').trim();
@@ -16,6 +17,15 @@ export async function signInWithPassword(formData: FormData) {
 
   if (error) {
     redirect('/login?error=invalid_credentials');
+  }
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  const config = requireAdminAuthConfig();
+  if (!isAllowedAdminEmail(user?.email, config.allowedEmails)) {
+    await supabase.auth.signOut();
+    redirect('/login?error=not_allowed');
   }
 
   redirect('/');

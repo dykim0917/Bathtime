@@ -4,6 +4,7 @@ import { signInWithPassword } from '../../lib/auth/actions';
 function getErrorMessage(error?: string): string | null {
   if (error === 'missing_credentials') return '이메일과 비밀번호를 모두 입력해주세요.';
   if (error === 'invalid_credentials') return '로그인 정보를 확인해주세요.';
+  if (error === 'not_allowed') return '관리자 접근 권한이 없는 계정입니다.';
   return null;
 }
 

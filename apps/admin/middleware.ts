@@ -1,6 +1,6 @@
 import { createServerClient } from '@supabase/ssr';
 import { NextResponse, type NextRequest } from 'next/server';
-import { readAdminAuthConfig } from './lib/auth/config';
+import { isAllowedAdminEmail, readAdminAuthConfig } from './lib/auth/config';
 
 const PUBLIC_PATHS = ['/login'];
 
@@ -39,6 +39,17 @@ export async function middleware(request: NextRequest) {
     const url = request.nextUrl.clone();
     url.pathname = '/login';
     url.searchParams.set('next', request.nextUrl.pathname);
+    return NextResponse.redirect(url);
+  }
+
+  if (
+    user &&
+    !isAllowedAdminEmail(user.email, config.allowedEmails) &&
+    !isPublicPath(request.nextUrl.pathname)
+  ) {
+    const url = request.nextUrl.clone();
+    url.pathname = '/login';
+    url.searchParams.set('error', 'not_allowed');
     return NextResponse.redirect(url);
   }
 

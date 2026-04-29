@@ -23,9 +23,12 @@ Set these environment variables before enabling login:
 ```txt
 NEXT_PUBLIC_SUPABASE_URL=https://<project>.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=<anon-key>
+ADMIN_ALLOWED_EMAILS=owner@example.com,ops@example.com
 ```
 
-Without those values, `/login` renders a configuration warning and the route guard stays open for local scaffold work.
+Without Supabase values, `/login` renders a configuration warning and the route guard stays open for local scaffold work.
+
+`ADMIN_ALLOWED_EMAILS` is optional for local development. Set it in production so only approved Supabase users can enter the console.
 
 ## Scope
 
