@@ -17,6 +17,7 @@
     "catalog:proposal": "node scripts/catalog_normalize_agent.mjs",
     "catalog:seed:export": "node scripts/export_catalog_research_seed.mjs",
     "catalog:seed:export:postgres": "node scripts/export_catalog_research_seed_postgres.mjs",
+    "content:seed:export:postgres": "node scripts/export_content_seed_postgres.mjs",
     "catalog:api:mock": "node scripts/mock_catalog_api.mjs",
     "content:api:mock": "node scripts/mock_content_api.mjs",
     "test": "jest",
