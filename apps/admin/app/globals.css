@@ -258,6 +258,11 @@ button {
   align-items: center;
 }
 
+.careTable .dataTableHeader,
+.careTable .dataTableRow {
+  grid-template-columns: minmax(260px, 1.3fr) 90px 180px 80px 150px minmax(180px, 1fr) 80px;
+}
+
 .dataTableHeader {
   border-bottom: 1px solid var(--line);
   color: var(--muted);
