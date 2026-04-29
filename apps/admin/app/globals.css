@@ -245,6 +245,93 @@ button {
   line-height: 1.8;
 }
 
+.loginShell {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: 32px;
+  background:
+    radial-gradient(circle at top left, rgba(148, 210, 191, 0.16), transparent 28rem),
+    linear-gradient(135deg, #193a3e 0%, var(--bg) 44%, var(--bg-deep) 100%);
+}
+
+.loginCard {
+  width: min(440px, 100%);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(22, 45, 48, 0.94);
+  box-shadow: 0 18px 36px rgba(3, 12, 14, 0.28);
+  padding: 28px;
+}
+
+.loginCard h1 {
+  margin: 8px 0 0;
+  font-size: 28px;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.loginForm label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--secondary);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.loginForm input {
+  min-height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(7, 21, 23, 0.64);
+  color: var(--text);
+  padding: 0 12px;
+}
+
+.loginForm .primaryButton {
+  margin-top: 6px;
+}
+
+.loginForm .primaryButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.48;
+}
+
+.configWarning,
+.formError {
+  border-radius: 8px;
+  margin-top: 18px;
+  padding: 12px;
+}
+
+.configWarning {
+  border: 1px solid rgba(215, 184, 115, 0.36);
+  background: rgba(215, 184, 115, 0.12);
+}
+
+.configWarning strong,
+.configWarning span {
+  display: block;
+}
+
+.configWarning span {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.formError {
+  border: 1px solid rgba(194, 134, 118, 0.42);
+  background: rgba(194, 134, 118, 0.14);
+  color: var(--text);
+}
+
 .dataTable {
   display: flex;
   flex-direction: column;
