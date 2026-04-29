@@ -1,3 +1,8 @@
+import {
+  readAdminPostgrestConfig,
+  readPostgrestRows,
+} from './data/postgrest';
+
 export interface AdminCareRoutineRow {
   id: string;
   title: string;
@@ -57,6 +62,20 @@ const careRows: AdminCareRoutineRow[] = [
   },
 ];
 
+interface CareIntentRecord {
+  id: string;
+  intent_id: string;
+  mapped_mode: string;
+  allowed_environments: string[];
+  copy_title: string;
+  default_subprotocol_id: string;
+  status: AdminCareRoutineRow['status'];
+}
+
+interface CareSubprotocolRecord {
+  intent_id: string;
+}
+
 export interface AdminCareListViewModel {
   rows: AdminCareRoutineRow[];
   totalCount: number;
@@ -75,6 +94,30 @@ export function buildAdminCareListViewModel(
     subprotocolCount: rows.reduce((total, row) => total + row.subprotocols, 0),
     safetyReviewCount: rows.filter((row) => row.safetyNote.length > 0).length,
   };
+}
+
+export async function readAdminCareRows(): Promise<AdminCareRoutineRow[]> {
+  const config = readAdminPostgrestConfig();
+  if (!config) return careRows;
+
+  const [intents, subprotocols] = await Promise.all([
+    readPostgrestRows<CareIntentRecord>(config, 'care_intent', {
+      order: 'card_position.asc,id.asc',
+    }),
+    readPostgrestRows<CareSubprotocolRecord>(config, 'care_subprotocol'),
+  ]);
+
+  return intents.map((intent) => ({
+    id: intent.id,
+    title: intent.copy_title,
+    intentId: intent.intent_id,
+    mode: intent.mapped_mode,
+    environments: intent.allowed_environments,
+    subprotocols: subprotocols.filter((item) => item.intent_id === intent.intent_id).length,
+    defaultSubprotocolId: intent.default_subprotocol_id,
+    safetyNote: 'validation 대상',
+    status: intent.status,
+  }));
 }
 
 export function getCareStatusLabel(status: AdminCareRoutineRow['status']): string {

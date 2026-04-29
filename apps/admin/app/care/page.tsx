@@ -2,10 +2,11 @@ import { AdminShell } from '../../components/AdminShell';
 import {
   buildAdminCareListViewModel,
   getCareStatusLabel,
+  readAdminCareRows,
 } from '../../lib/careData';
 
-export default function CarePage() {
-  const care = buildAdminCareListViewModel();
+export default async function CarePage() {
+  const care = buildAdminCareListViewModel(await readAdminCareRows());
 
   return (
     <AdminShell activePath="/care">
