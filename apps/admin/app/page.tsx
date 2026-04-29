@@ -1,44 +1,10 @@
-const sections = [
-  {
-    title: '제품',
-    description: '상품, 구매처, 추천 규칙, 표시 메타데이터',
-    active: 30,
-    draft: 0,
-    status: '정상',
-  },
-  {
-    title: '케어 루틴',
-    description: '의도 카드, 환경별 문구, 세부 루틴',
-    active: 16,
-    draft: 0,
-    status: '정상',
-  },
-  {
-    title: '무드 루틴',
-    description: '테마, 온도, 조명, 음악 연결',
-    active: 22,
-    draft: 0,
-    status: '정상',
-  },
-  {
-    title: '음악',
-    description: '음악, 앰비언스, 원격 URL, 라이선스',
-    active: 12,
-    draft: 0,
-    status: '정상',
-  },
-];
-
-const queue = [
-  'Supabase/PostgREST 연결값 등록',
-  '제품 목록 read-only 테이블',
-  '케어 루틴 목록 read-only 테이블',
-  '발행 전 validation 결과 패널',
-];
+import {
+  buildAdminDashboardViewModel,
+  getStatusLabel,
+} from '../lib/dashboardData';
 
 export default function AdminHomePage() {
-  const totalActive = sections.reduce((total, item) => total + item.active, 0);
-  const totalDraft = sections.reduce((total, item) => total + item.draft, 0);
+  const dashboard = buildAdminDashboardViewModel();
 
   return (
     <main className="shell">
@@ -84,19 +50,19 @@ export default function AdminHomePage() {
         <section className="summaryGrid" aria-label="콘텐츠 상태 요약">
           <div className="summaryCard">
             <span>Active rows</span>
-            <strong>{totalActive}</strong>
+            <strong>{dashboard.summary.activeRows}</strong>
           </div>
           <div className="summaryCard">
             <span>Draft rows</span>
-            <strong>{totalDraft}</strong>
+            <strong>{dashboard.summary.draftRows}</strong>
           </div>
           <div className="summaryCard">
             <span>Publish blockers</span>
-            <strong>0</strong>
+            <strong>{dashboard.summary.publishBlockers}</strong>
           </div>
           <div className="summaryCard">
             <span>Snapshot</span>
-            <strong>content.v1</strong>
+            <strong>{dashboard.summary.schemaVersion}</strong>
           </div>
         </section>
 
@@ -107,16 +73,16 @@ export default function AdminHomePage() {
               <span>Read-only shell</span>
             </div>
             <div className="sectionTable">
-              {sections.map((section) => (
+              {dashboard.sections.map((section) => (
                 <article className="sectionRow" key={section.title}>
                   <div>
                     <h4>{section.title}</h4>
                     <p>{section.description}</p>
                   </div>
                   <div className="rowMetrics">
-                    <span>{section.active} active</span>
-                    <span>{section.draft} draft</span>
-                    <strong>{section.status}</strong>
+                    <span>{section.activeCount} active</span>
+                    <span>{section.draftCount} draft</span>
+                    <strong>{getStatusLabel(section.status)}</strong>
                   </div>
                 </article>
               ))}
@@ -129,7 +95,7 @@ export default function AdminHomePage() {
               <span>MVP queue</span>
             </div>
             <ol className="queueList">
-              {queue.map((item) => (
+              {dashboard.queue.map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ol>
