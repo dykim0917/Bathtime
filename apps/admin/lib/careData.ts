@@ -1,5 +1,5 @@
 import {
-  readAdminPostgrestConfig,
+  readAdminPostgrestSessionConfig,
   readPostgrestRows,
 } from './data/postgrest';
 
@@ -97,7 +97,7 @@ export function buildAdminCareListViewModel(
 }
 
 export async function readAdminCareRows(): Promise<AdminCareRoutineRow[]> {
-  const config = readAdminPostgrestConfig();
+  const config = await readAdminPostgrestSessionConfig();
   if (!config) return careRows;
 
   const [intents, subprotocols] = await Promise.all([

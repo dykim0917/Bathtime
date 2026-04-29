@@ -1,5 +1,5 @@
 import {
-  readAdminPostgrestConfig,
+  readAdminPostgrestSessionConfig,
   readPostgrestRows,
 } from './data/postgrest';
 
@@ -97,7 +97,7 @@ export function buildAdminTripListViewModel(
 }
 
 export async function readAdminTripRows(): Promise<AdminTripThemeRow[]> {
-  const config = readAdminPostgrestConfig();
+  const config = await readAdminPostgrestSessionConfig();
   if (!config) return tripRows;
 
   const themes = await readPostgrestRows<TripThemeRecord>(config, 'trip_theme', {

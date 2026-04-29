@@ -1,5 +1,5 @@
 import {
-  readAdminPostgrestConfig,
+  readAdminPostgrestSessionConfig,
   readPostgrestRows,
 } from './data/postgrest';
 
@@ -105,7 +105,7 @@ export function buildAdminAudioListViewModel(
 }
 
 export async function readAdminAudioRows(): Promise<AdminAudioTrackRow[]> {
-  const config = readAdminPostgrestConfig();
+  const config = await readAdminPostgrestSessionConfig();
   if (!config) return audioRows;
 
   const [tracks, tripThemes] = await Promise.all([

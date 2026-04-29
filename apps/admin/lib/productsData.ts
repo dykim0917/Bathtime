@@ -1,5 +1,5 @@
 import {
-  readAdminPostgrestConfig,
+  readAdminPostgrestSessionConfig,
   readPostgrestRows,
 } from './data/postgrest';
 
@@ -124,7 +124,7 @@ function countByProductId<T extends { canonical_product_id: string }>(
 }
 
 export async function readAdminProductRows(): Promise<AdminProductRow[]> {
-  const config = readAdminPostgrestConfig();
+  const config = await readAdminPostgrestSessionConfig();
   if (!config) return productRows;
 
   const [products, listings, matchRules, presentations] = await Promise.all([

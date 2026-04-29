@@ -30,6 +30,8 @@ Without Supabase values, `/login` renders a configuration warning and the route 
 
 `ADMIN_ALLOWED_EMAILS` is optional for local development. Set it in production so only approved Supabase users can enter the console.
 
+Content tables are read through the signed-in Supabase Auth session first. If `CONTENT_DB_REST_URL` is absent, the admin app uses `NEXT_PUBLIC_SUPABASE_URL/rest/v1`. `CONTENT_DB_SERVICE_ROLE_KEY` remains a fallback for local DB smoke checks and should not be required for normal admin browsing.
+
 ## Publish Validation
 
 Set this to let the `/publish` page validate a deployed snapshot endpoint:
