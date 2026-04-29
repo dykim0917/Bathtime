@@ -6,17 +6,35 @@ import {
   getProductStatusLabel,
   readAdminProductRows,
 } from '../../../lib/productsData';
+import { updateProductStatus } from '../../../lib/productActions';
 
 interface ProductDetailPageProps {
   params: Promise<{
     id: string;
   }>;
+  searchParams: Promise<{
+    error?: string;
+    updated?: string;
+  }>;
 }
 
-export default async function ProductDetailPage({ params }: ProductDetailPageProps) {
+function getStatusMessage(error?: string, updated?: string): string | null {
+  if (updated === 'status') return '상태가 저장되었습니다.';
+  if (error === 'invalid_status') return '상태 값이 올바르지 않습니다.';
+  if (error === 'missing_content_db') return '콘텐츠 DB 연결이 설정되지 않았습니다.';
+  if (error === 'update_failed') return '상태 저장에 실패했습니다. RLS 정책과 권한을 확인하세요.';
+  return null;
+}
+
+export default async function ProductDetailPage({
+  params,
+  searchParams,
+}: ProductDetailPageProps) {
   const { id } = await params;
+  const { error, updated } = await searchParams;
   const products = await readAdminProductRows();
   const product = products.find((item) => item.id === id);
+  const statusMessage = getStatusMessage(error, updated);
 
   if (!product) notFound();
 
@@ -71,6 +89,31 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                 <dd>{product.lastVerifiedAt}</dd>
               </div>
             </dl>
+          </section>
+
+          <section className="panel">
+            <div className="panelHeader">
+              <h3>상태 변경</h3>
+              <span>Supabase Auth</span>
+            </div>
+            <form className="inlineForm" action={updateProductStatus}>
+              <input type="hidden" name="id" value={product.id} />
+              <label htmlFor="product-status">상태</label>
+              <select id="product-status" name="status" defaultValue={product.status}>
+                <option value="active">Active</option>
+                <option value="draft">Draft</option>
+                <option value="paused">Paused</option>
+                <option value="retired">Retired</option>
+              </select>
+              <button type="submit" className="primaryButton">
+                저장
+              </button>
+            </form>
+            {statusMessage ? (
+              <p className={error ? 'formNotice error' : 'formNotice'}>
+                {statusMessage}
+              </p>
+            ) : null}
           </section>
 
           <section className="panel">

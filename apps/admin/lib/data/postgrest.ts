@@ -80,3 +80,30 @@ export async function readPostgrestRows<T>(
 
   return (await response.json()) as T[];
 }
+
+export async function updatePostgrestRows(
+  config: AdminPostgrestConfig,
+  tableName: string,
+  filters: Record<string, string>,
+  body: Record<string, unknown>
+): Promise<void> {
+  const url = new URL(`${config.restUrl}/${tableName}`);
+  for (const [key, value] of Object.entries(filters)) {
+    url.searchParams.set(key, value);
+  }
+
+  const response = await fetch(url.toString(), {
+    method: 'PATCH',
+    headers: {
+      apikey: config.apiKey,
+      authorization: `Bearer ${config.authorizationToken}`,
+      'content-type': 'application/json',
+      prefer: 'return=minimal',
+    },
+    body: JSON.stringify(body),
+  });
+
+  if (!response.ok) {
+    throw new Error(`PostgREST ${tableName} update failed with status ${response.status}`);
+  }
+}

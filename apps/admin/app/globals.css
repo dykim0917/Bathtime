@@ -510,6 +510,10 @@ button {
   gap: 14px;
 }
 
+.detailGrid .panel:first-child {
+  grid-row: span 2;
+}
+
 .detailList {
   display: grid;
   gap: 16px;
@@ -559,6 +563,43 @@ button {
 .mutedText {
   color: var(--muted);
   margin: 0;
+}
+
+.inlineForm {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.inlineForm label {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.inlineForm select {
+  min-height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(7, 21, 23, 0.6);
+  color: var(--text);
+  font: inherit;
+  padding: 0 10px;
+}
+
+.formNotice {
+  border: 1px solid rgba(148, 210, 191, 0.28);
+  border-radius: 8px;
+  background: rgba(148, 210, 191, 0.1);
+  color: var(--secondary);
+  font-size: 13px;
+  margin: 14px 0 0;
+  padding: 10px;
+}
+
+.formNotice.error {
+  border-color: rgba(194, 134, 118, 0.42);
+  background: rgba(194, 134, 118, 0.14);
 }
 
 @media (max-width: 980px) {
