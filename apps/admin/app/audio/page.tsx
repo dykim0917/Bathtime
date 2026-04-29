@@ -3,10 +3,11 @@ import {
   buildAdminAudioListViewModel,
   formatDuration,
   getAudioStatusLabel,
+  readAdminAudioRows,
 } from '../../lib/audioData';
 
-export default function AudioPage() {
-  const audio = buildAdminAudioListViewModel();
+export default async function AudioPage() {
+  const audio = buildAdminAudioListViewModel(await readAdminAudioRows());
 
   return (
     <AdminShell activePath="/audio">

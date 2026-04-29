@@ -1,3 +1,8 @@
+import {
+  readAdminPostgrestConfig,
+  readPostgrestRows,
+} from './data/postgrest';
+
 export interface AdminAudioTrackRow {
   id: string;
   title: string;
@@ -57,6 +62,22 @@ const audioRows: AdminAudioTrackRow[] = [
   },
 ];
 
+interface AudioTrackRecord {
+  id: string;
+  title: string;
+  type: AdminAudioTrackRow['type'];
+  duration_seconds: number;
+  remote_url?: string | null;
+  persona_codes: string[];
+  license_note?: string | null;
+  status: AdminAudioTrackRow['status'];
+}
+
+interface TripThemeAudioRecord {
+  music_id: string;
+  ambience_id: string;
+}
+
 export interface AdminAudioListViewModel {
   rows: AdminAudioTrackRow[];
   totalCount: number;
@@ -81,6 +102,32 @@ export function buildAdminAudioListViewModel(
     ambienceCount: rows.filter((row) => row.type === 'ambience').length,
     remoteCount: rows.filter((row) => row.source === 'remote').length,
   };
+}
+
+export async function readAdminAudioRows(): Promise<AdminAudioTrackRow[]> {
+  const config = readAdminPostgrestConfig();
+  if (!config) return audioRows;
+
+  const [tracks, tripThemes] = await Promise.all([
+    readPostgrestRows<AudioTrackRecord>(config, 'audio_track', {
+      order: 'type.asc,id.asc',
+    }),
+    readPostgrestRows<TripThemeAudioRecord>(config, 'trip_theme'),
+  ]);
+
+  return tracks.map((track) => ({
+    id: track.id,
+    title: track.title,
+    type: track.type,
+    durationSeconds: track.duration_seconds,
+    source: track.remote_url ? 'remote' : 'bundled',
+    personaCodes: track.persona_codes,
+    linkedRoutineCount: tripThemes.filter(
+      (theme) => theme.music_id === track.id || theme.ambience_id === track.id
+    ).length,
+    licenseNote: track.license_note ?? '-',
+    status: track.status,
+  }));
 }
 
 export function getAudioStatusLabel(status: AdminAudioTrackRow['status']): string {
