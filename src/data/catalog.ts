@@ -25,6 +25,13 @@ export type ProductEnvironment = 'bathtub' | 'shower';
 export type CanonicalProductRecord = CanonicalProductSeed;
 export type ProductMarketListingRecord = ProductMarketListingSeed;
 export type ProductMatchRuleRecord = ProductMatchRuleSeed;
+export interface CatalogPresentationRecord {
+  canonicalProductId: string;
+  tags: string[];
+  emoji: string;
+  bgColor: string;
+  safetyFlags: HealthCondition[];
+}
 
 export interface CatalogProduct {
   id: string;
@@ -61,6 +68,7 @@ interface CatalogPresentationMetadata {
   tags: string[];
   emoji: string;
   bgColor: string;
+  safetyFlags?: HealthCondition[];
 }
 
 const PRESENTATION_METADATA: Record<string, CatalogPresentationMetadata> = {
@@ -157,11 +165,18 @@ export function buildCatalogProducts(bundle: {
   canonicalProducts: CanonicalProductRecord[];
   marketListings: ProductMarketListingRecord[];
   matchRules: ProductMatchRuleRecord[];
+  presentations?: CatalogPresentationRecord[];
 }): CatalogProduct[] {
   const matchRuleByCanonicalId = new Map(
     bundle.matchRules
       .filter((rule) => rule.status === 'active')
       .map((rule) => [rule.canonicalProductId, rule])
+  );
+  const presentationByCanonicalId = new Map(
+    (bundle.presentations ?? []).map((presentation) => [
+      presentation.canonicalProductId,
+      presentation,
+    ])
   );
   const listingsByCanonicalId = new Map<string, ProductMarketListingRecord[]>();
 
@@ -184,7 +199,8 @@ export function buildCatalogProducts(bundle: {
         throw new Error(`Missing ingredient for canonical product: ${product.id}`);
       }
 
-      const presentation = PRESENTATION_METADATA[product.id];
+      const presentation =
+        presentationByCanonicalId.get(product.id) ?? PRESENTATION_METADATA[product.id];
       if (!presentation) {
         throw new Error(`Missing presentation metadata for canonical product: ${product.id}`);
       }
@@ -206,6 +222,7 @@ export function buildCatalogProducts(bundle: {
           ...new Set([
             ...ingredient.contraindications,
             ...(product.safetyFlags ?? []).filter((flag) => flag !== 'none'),
+            ...(presentation.safetyFlags ?? []).filter((flag) => flag !== 'none'),
           ]),
         ],
         mechanism: product.mechanism,

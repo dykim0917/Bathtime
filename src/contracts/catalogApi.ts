@@ -1,5 +1,6 @@
 import {
   type CanonicalProductRecord,
+  type CatalogPresentationRecord,
   type ProductCategory,
   type ProductEnvironment,
   type ProductMarketListingRecord,
@@ -43,7 +44,7 @@ export interface CatalogApiMatchRule {
   canonical_product_id: string;
   ingredient_keys: string[];
   allowed_environments: ProductEnvironment[];
-  mode_bias?: ProductMatchRuleRecord['modeBias'];
+  mode_bias?: ProductMatchRuleRecord['modeBias'] | null;
   priority_weight: number;
   is_sommelier_pick_candidate: boolean;
   status: ProductMatchRuleRecord['status'];
@@ -70,6 +71,7 @@ export interface CatalogApiRuntimeBundle {
   canonicalProducts: CanonicalProductRecord[];
   marketListings: ProductMarketListingRecord[];
   matchRules: ProductMatchRuleRecord[];
+  presentations: CatalogPresentationRecord[];
 }
 
 export function toCatalogApiRuntimeBundle(
@@ -109,10 +111,17 @@ export function toCatalogApiRuntimeBundle(
       canonicalProductId: item.canonical_product_id,
       ingredientKeys: item.ingredient_keys,
       allowedEnvironments: item.allowed_environments,
-      modeBias: item.mode_bias,
+      modeBias: item.mode_bias ?? undefined,
       priorityWeight: item.priority_weight,
       isSommelierPickCandidate: item.is_sommelier_pick_candidate,
       status: item.status,
+    })),
+    presentations: payload.presentations.map((item) => ({
+      canonicalProductId: item.canonical_product_id,
+      tags: item.tags,
+      emoji: item.emoji,
+      bgColor: item.bg_color,
+      safetyFlags: item.safety_flags,
     })),
   };
 }
