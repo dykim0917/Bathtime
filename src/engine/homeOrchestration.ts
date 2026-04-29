@@ -11,7 +11,7 @@ import {
   ThemeId,
   TimeContext,
 } from './types';
-import { THEME_BY_ID } from '@/src/data/themes';
+import { getThemeById } from '@/src/data/contentRuntime';
 
 interface BuildHomeOrchestrationInput {
   activeState: ActiveState;
@@ -268,7 +268,7 @@ export function buildSuggestionExplanation(
   };
 
   if (suggestion.mode === 'trip') {
-    const theme = suggestion.themeId ? THEME_BY_ID[suggestion.themeId] : null;
+    const theme = suggestion.themeId ? getThemeById(suggestion.themeId) : null;
     const themeTitle = theme?.title ?? '오늘의 테마';
     return {
       stateLabel: stateLabelMap[activeState],

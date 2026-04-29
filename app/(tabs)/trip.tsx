@@ -40,9 +40,8 @@ import {
 import {
   getEnvironmentFitLabel,
   getEnvironmentSubtitle,
-  pickAutoTripSubProtocol,
-  TRIP_INTENT_CARDS,
 } from '@/src/data/intents';
+import { pickRuntimeAutoTripSubProtocol, useContentHydration } from '@/src/data/contentRuntime';
 import {
   getImageVariantForEnvironment,
   resolveIntentImageEnvironment,
@@ -127,6 +126,7 @@ function hasSafetyPriorityFallback(fallback: FallbackStrategy): boolean {
 
 export default function TripScreen() {
   const { profile } = useUserProfile();
+  const { content } = useContentHydration();
   const haptic = useHaptic();
   const { width: screenWidth } = useWindowDimensions();
   const insets = useSafeAreaInsets();
@@ -150,6 +150,7 @@ export default function TripScreen() {
 
   const normalizedEnvironment = normalizeEnvironmentInput(environment);
   const tripCardWidth = Math.max(220, screenWidth - SCREEN_HORIZONTAL_PADDING * 2);
+  const tripCards = content.trip.intents;
 
   useFocusEffect(
     useCallback(() => {
@@ -157,7 +158,7 @@ export default function TripScreen() {
     const locale = Intl.DateTimeFormat().resolvedOptions().locale;
     const healthConditions = profile?.healthConditions ?? ['none'];
 
-    TRIP_INTENT_CARDS.forEach((intent) => {
+    tripCards.forEach((intent) => {
       const payload: RecommendationCardEventPayload = {
         user_id: profile?.createdAt ?? 'anonymous',
         session_id: sessionIdRef.current,
@@ -182,7 +183,7 @@ export default function TripScreen() {
       };
       trackIntentCardImpression(payload);
     });
-    }, [environment, profile?.createdAt, profile?.healthConditions, timeContext])
+    }, [environment, profile?.createdAt, profile?.healthConditions, timeContext, tripCards])
   );
 
   const handleSelectEnvironment = (next: BathEnvironment) => {
@@ -223,7 +224,7 @@ export default function TripScreen() {
     haptic.medium();
     const runtimeProfile = buildRuntimeProfile(profile, environment);
     const baseRecommendation = generateTripRecommendation(runtimeProfile, mapIntentToTheme(intent.intent_id), toEngineEnvironment(environment));
-    const option = pickAutoTripSubProtocol(intent.intent_id, normalizedEnvironment);
+    const option = pickRuntimeAutoTripSubProtocol(intent.intent_id, normalizedEnvironment);
     const recommendation = option
       ? applySubProtocolOverrides(baseRecommendation, option, environment, intent.intent_id)
       : baseRecommendation;
@@ -282,7 +283,7 @@ export default function TripScreen() {
         <View>
           <Text style={styles.sectionTitle}>분위기별 루틴</Text>
           <View style={styles.tripList}>
-            {TRIP_INTENT_CARDS.map((intent) => {
+            {tripCards.map((intent) => {
               const disabled = !intent.allowed_environments.includes(normalizedEnvironment);
               const imageEnvironment = resolveIntentImageEnvironment(intent, normalizedEnvironment);
               const fallback = resolveFallback(profile?.healthConditions ?? ['none']);

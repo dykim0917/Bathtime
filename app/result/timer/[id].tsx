@@ -13,7 +13,11 @@ import { AnimatedModalShell } from '@/src/components/AnimatedModalShell';
 import { useDualAudioPlayer } from '@/src/hooks/useDualAudioPlayer';
 import { useHaptic } from '@/src/hooks/useHaptic';
 import { copy } from '@/src/content/copy';
-import { CARE_INTENT_CARDS, TRIP_INTENT_CARDS } from '@/src/data/intents';
+import {
+  getCareIntentCards,
+  getTripIntentCards,
+  useContentHydration,
+} from '@/src/data/contentRuntime';
 import { getCareCardImageForEnvironment } from '@/src/data/careImages';
 import { getTripCardImageForEnvironment } from '@/src/data/tripImages';
 import { TYPE_BODY, TYPE_CAPTION, V2_ACCENT, V2_ACCENT_SOFT, V2_BG_BASE, V2_BG_BOTTOM, V2_BG_OVERLAY, V2_BG_TOP, V2_BORDER, V2_DANGER, V2_MODAL_HANDLE, V2_MODAL_SURFACE_ELEVATED, V2_SURFACE, V2_TEXT_MUTED, V2_TEXT_PRIMARY, V2_TEXT_SECONDARY } from '@/src/data/colors';
@@ -30,19 +34,20 @@ function getTimerRoutineName(recommendation: BathRecommendation): string {
   if (recommendation.mode === 'trip') {
     return (
       recommendation.themeTitle ??
-      TRIP_INTENT_CARDS.find((card) => card.intent_id === recommendation.intentId)?.copy_title ??
+      getTripIntentCards().find((card) => card.intent_id === recommendation.intentId)?.copy_title ??
       '무드 루틴'
     );
   }
 
   return (
-    CARE_INTENT_CARDS.find((card) => card.intent_id === recommendation.intentId)?.copy_title ??
+    getCareIntentCards().find((card) => card.intent_id === recommendation.intentId)?.copy_title ??
     '컨디션 루틴'
   );
 }
 
 export default function TimerScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
+  useContentHydration();
   const [recommendation, setRecommendation] = useState<BathRecommendation | null>(null);
   const [phase, setPhase] = useState<RoutineTimerPhase>('intro');
   const [introRemainingMs, setIntroRemainingMs] = useState(INTRO_DURATION_MS);

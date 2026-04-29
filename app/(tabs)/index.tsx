@@ -51,15 +51,16 @@ import { PersistentDisclosure } from '@/src/components/PersistentDisclosure';
 import { buildDisclosureLines } from '@/src/engine/disclosures';
 import { SubProtocolPickerModal } from '@/src/components/SubProtocolPickerModal';
 import {
-  CARE_INTENT_CARDS,
-  CARE_SUBPROTOCOL_OPTIONS,
   getCareCardSafetyBadge,
   getEnvironmentFitLabel,
   getEnvironmentUnavailableReason,
   getEnvironmentSubtitle,
-  TRIP_INTENT_CARDS,
-  pickAutoTripSubProtocol,
 } from '@/src/data/intents';
+import {
+  getDefaultCareSubProtocol,
+  pickRuntimeAutoTripSubProtocol,
+  useContentHydration,
+} from '@/src/data/contentRuntime';
 import { applySubProtocolOverrides } from '@/src/engine/subprotocol';
 import { inferFeelingBefore } from '@/src/engine/feeling';
 import { buildHomeStreakSummary, HomeStreakSummary } from '@/src/engine/streaks';
@@ -143,20 +144,16 @@ function mapIntentToTags(intentId: string): DailyTag[] {
     case 'sleep_ready': return ['insomnia'];
     case 'hangover_relief': return ['hangover'];
     case 'edema_relief': return ['swelling'];
+    case 'cold_relief': return ['cold'];
+    case 'menstrual_relief': return ['menstrual_pain'];
+    case 'stress_relief': return ['stress'];
+    case 'mood_lift': return ['depression'];
     default: return ['stress'];
   }
 }
 
 function mapIntentToTheme(intentId: string): ThemeId {
-  switch (intentId) {
-    case 'kyoto_forest':
-    case 'rainy_camping':
-    case 'nordic_sauna':
-    case 'snow_cabin':
-      return intentId;
-    default:
-      return 'kyoto_forest';
-  }
+  return intentId;
 }
 
 function mapIntentToActiveState(intentId: string): RecommendationCardEventPayload['active_state'] {
@@ -278,9 +275,7 @@ function buildCarePreviewRecommendation(
     toEngineEnvironment(environment),
     intent.intent_id
   );
-  const defaultOption = (CARE_SUBPROTOCOL_OPTIONS[intent.intent_id] ?? []).find(
-    (option) => option.id === intent.default_subprotocol_id || option.is_default
-  );
+  const defaultOption = getDefaultCareSubProtocol(intent);
 
   if (!defaultOption) return baseRecommendation;
 
@@ -300,6 +295,7 @@ function getCareVisualMeta(intentId: string): CareVisualMeta {
 
 export default function HomeIntentScreen() {
   const { profile, save } = useUserProfile();
+  const { content } = useContentHydration();
   const haptic = useHaptic();
   const { width: screenWidth } = useWindowDimensions();
   const insets = useSafeAreaInsets();
@@ -344,8 +340,8 @@ export default function HomeIntentScreen() {
 
   const normalizedEnvironment = normalizeEnvironmentInput(environment);
   const hasCompletedProfile = Boolean(profile?.onboardingComplete);
-  const careCards = CARE_INTENT_CARDS.slice(0, HOME_PREVIEW_CARD_LIMIT);
-  const tripCards = TRIP_INTENT_CARDS.slice(0, HOME_PREVIEW_CARD_LIMIT);
+  const careCards = content.care.intents.slice(0, HOME_PREVIEW_CARD_LIMIT);
+  const tripCards = content.trip.intents.slice(0, HOME_PREVIEW_CARD_LIMIT);
   const tripCardWidth = Math.max(
     236,
     Math.min(screenWidth - SCREEN_HORIZONTAL_PADDING * 2 - 22, 292)
@@ -451,9 +447,7 @@ export default function HomeIntentScreen() {
 
   const handleQuickStartCareIntent = async (intent: IntentCard) => {
     const payload = buildIntentPayload(intent);
-    const option = (CARE_SUBPROTOCOL_OPTIONS[intent.intent_id] ?? []).find(
-      (candidate) => candidate.id === intent.default_subprotocol_id || candidate.is_default
-    );
+    const option = getDefaultCareSubProtocol(intent);
 
     trackIntentCardClick(payload);
     haptic.medium();
@@ -498,7 +492,7 @@ export default function HomeIntentScreen() {
 
   const resolveSubOptions = (intent: IntentCard | null): SubProtocolOption[] => {
     if (!intent) return [];
-    return CARE_SUBPROTOCOL_OPTIONS[intent.intent_id] ?? [];
+    return content.care.subprotocols[intent.intent_id] ?? [];
   };
 
   const handleRouteToRecipe = (
@@ -523,7 +517,7 @@ export default function HomeIntentScreen() {
       mapIntentToTheme(intent.intent_id),
       toEngineEnvironment(environment)
     );
-    const option = pickAutoTripSubProtocol(intent.intent_id, normalizedEnvironment);
+    const option = pickRuntimeAutoTripSubProtocol(intent.intent_id, normalizedEnvironment);
     const recommendation = option
       ? applySubProtocolOverrides(baseRecommendation, option, environment, intent.intent_id)
       : baseRecommendation;

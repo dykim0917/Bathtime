@@ -22,6 +22,13 @@ function resetPlayer(player: AudioPlayer) {
   } catch {}
 }
 
+function resolveAudioSource(track: MusicTrack | AmbienceTrack | null) {
+  if (!track) return null;
+  const remoteUrl = (track as MusicTrack & { remoteUrl?: string }).remoteUrl;
+  if (remoteUrl) return { uri: remoteUrl };
+  return AUDIO_ASSETS[track.filename] ?? null;
+}
+
 /**
  * Dual audio player hook — manages two concurrent audio instances
  * (one for music, one for ambient sounds) using expo-audio.
@@ -34,8 +41,8 @@ export function useDualAudioPlayer(
   ambience: AmbienceTrack | null,
 ): DualAudioState {
   // Resolve audio sources (returns require() asset or null)
-  const musicSource = music ? (AUDIO_ASSETS[music.filename] ?? null) : null;
-  const ambienceSource = ambience ? (AUDIO_ASSETS[ambience.filename] ?? null) : null;
+  const musicSource = resolveAudioSource(music);
+  const ambienceSource = resolveAudioSource(ambience);
 
   // Always call hooks unconditionally (React rules)
   const musicPlayer = useAudioPlayer(musicSource);

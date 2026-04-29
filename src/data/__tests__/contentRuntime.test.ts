@@ -1,5 +1,7 @@
 import {
   buildStaticContentApiResponse,
+  hydrateContentFromApi,
+  resetContentRuntime,
   toContentRuntimeBundle,
 } from '@/src/data/contentRuntime';
 import { type ContentApiResponse } from '@/src/contracts/contentApi';
@@ -9,6 +11,14 @@ function cloneStaticPayload(): ContentApiResponse {
 }
 
 describe('contentRuntime', () => {
+  const originalContentUrl = process.env.EXPO_PUBLIC_CONTENT_API_URL;
+
+  afterEach(() => {
+    jest.restoreAllMocks();
+    process.env.EXPO_PUBLIC_CONTENT_API_URL = originalContentUrl;
+    resetContentRuntime();
+  });
+
   test('normalizes the bundled seed into a runtime content bundle', () => {
     const bundle = toContentRuntimeBundle(buildStaticContentApiResponse());
 
@@ -52,5 +62,29 @@ describe('contentRuntime', () => {
     expect(() => toContentRuntimeBundle(payload)).toThrow(
       /references missing music track/
     );
+  });
+
+  test('uses fallback content when no content API URL is configured', async () => {
+    process.env.EXPO_PUBLIC_CONTENT_API_URL = '';
+    const fetchSpy = jest.spyOn(global, 'fetch');
+
+    const bundle = await hydrateContentFromApi();
+
+    expect(fetchSpy).not.toHaveBeenCalled();
+    expect(bundle.care.intents.length).toBeGreaterThan(0);
+  });
+
+  test('hydrates remote content when a content API URL is configured', async () => {
+    const payload = cloneStaticPayload();
+    payload.care.intents[0].copy_title = '원격 수면 루틴';
+    process.env.EXPO_PUBLIC_CONTENT_API_URL = 'https://example.test/api/content-snapshot';
+    jest.spyOn(global, 'fetch').mockResolvedValue({
+      ok: true,
+      json: async () => payload,
+    } as Response);
+
+    const bundle = await hydrateContentFromApi();
+
+    expect(bundle.care.intents[0].copy_title).toBe('원격 수면 루틴');
   });
 });

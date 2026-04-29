@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import {
   type ContentApiAudioTrack,
   type ContentApiIntentCard,
@@ -33,6 +34,7 @@ import {
   type AmbienceTrack,
   type IntentCard,
   type MusicTrack,
+  type PersonaCode,
   type SubProtocolOption,
   type ThemePreset,
 } from '@/src/engine/types';
@@ -172,6 +174,196 @@ function validateTripThemeAudio(
       throw new Error(`Trip theme ${theme.id} references missing ambience track ${theme.ambienceId}`);
     }
   }
+}
+
+type ContentHydrationStatus = 'fallback' | 'loading' | 'remote';
+
+const DEFAULT_CONTENT_RUNTIME = toContentRuntimeBundle(buildStaticContentApiResponse());
+
+let runtimeContent = DEFAULT_CONTENT_RUNTIME;
+let hasRemoteContent = false;
+let remoteContentAttempted = false;
+let remoteContentPromise: Promise<ContentRuntimeBundle> | null = null;
+
+function getContentApiUrl(): string | undefined {
+  const configuredUrl = process.env.EXPO_PUBLIC_CONTENT_API_URL?.trim();
+  if (configuredUrl) return configuredUrl;
+  return undefined;
+}
+
+export function getContentRuntime(): ContentRuntimeBundle {
+  return runtimeContent;
+}
+
+export function setContentRuntime(bundle: ContentRuntimeBundle) {
+  runtimeContent = bundle;
+}
+
+export function resetContentRuntime() {
+  runtimeContent = DEFAULT_CONTENT_RUNTIME;
+  hasRemoteContent = false;
+  remoteContentAttempted = false;
+  remoteContentPromise = null;
+}
+
+export async function hydrateContentFromApi(): Promise<ContentRuntimeBundle> {
+  const apiUrl = getContentApiUrl();
+  if (!apiUrl) return getContentRuntime();
+  if (hasRemoteContent) return getContentRuntime();
+  if (remoteContentPromise) return remoteContentPromise;
+
+  remoteContentAttempted = true;
+  remoteContentPromise = fetch(apiUrl)
+    .then(async (response) => {
+      if (!response.ok) {
+        throw new Error(`Content API request failed with status ${response.status}`);
+      }
+
+      const payload = (await response.json()) as ContentApiResponse;
+      const bundle = toContentRuntimeBundle(payload);
+      setContentRuntime(bundle);
+      hasRemoteContent = true;
+      return bundle;
+    })
+    .finally(() => {
+      remoteContentPromise = null;
+    });
+
+  return remoteContentPromise;
+}
+
+export function useContentHydration(): {
+  content: ContentRuntimeBundle;
+  status: ContentHydrationStatus;
+} {
+  const [content, setContent] = useState(() => getContentRuntime());
+  const [status, setStatus] = useState<ContentHydrationStatus>(
+    hasRemoteContent ? 'remote' : 'fallback'
+  );
+
+  useEffect(() => {
+    if (hasRemoteContent) {
+      setContent(getContentRuntime());
+      setStatus('remote');
+      return;
+    }
+
+    const apiUrl = getContentApiUrl();
+    if (!apiUrl) return;
+
+    let cancelled = false;
+    if (remoteContentPromise) {
+      setStatus('loading');
+      remoteContentPromise
+        .then((nextContent) => {
+          if (cancelled) return;
+          setContent(nextContent);
+          setStatus('remote');
+        })
+        .catch(() => {
+          if (cancelled) return;
+          setContent(getContentRuntime());
+          setStatus('fallback');
+        });
+
+      return () => {
+        cancelled = true;
+      };
+    }
+
+    if (remoteContentAttempted) {
+      setContent(getContentRuntime());
+      setStatus('fallback');
+      return;
+    }
+
+    setStatus('loading');
+    hydrateContentFromApi()
+      .then((nextContent) => {
+        if (cancelled) return;
+        setContent(nextContent);
+        setStatus('remote');
+      })
+      .catch(() => {
+        if (cancelled) return;
+        setContent(getContentRuntime());
+        setStatus('fallback');
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  return { content, status };
+}
+
+export function getCareIntentCards(): IntentCard[] {
+  return getContentRuntime().care.intents;
+}
+
+export function getCareSubProtocolOptions(): Record<string, SubProtocolOption[]> {
+  return getContentRuntime().care.subprotocols;
+}
+
+export function getTripIntentCards(): IntentCard[] {
+  return getContentRuntime().trip.intents;
+}
+
+export function getTripSubProtocolOptions(): Record<string, SubProtocolOption[]> {
+  return getContentRuntime().trip.subprotocols;
+}
+
+export function getTripThemes(): ThemePreset[] {
+  return getContentRuntime().trip.themes;
+}
+
+export function getThemeById(themeId: string): ThemePreset | undefined {
+  return getTripThemes().find((theme) => theme.id === themeId);
+}
+
+export function getMusicTracks(): RuntimeMusicTrack[] {
+  return getContentRuntime().audio.musicTracks;
+}
+
+export function getAmbienceTracks(): RuntimeAmbienceTrack[] {
+  return getContentRuntime().audio.ambienceTracks;
+}
+
+export function getCareMusicByIntentId(intentId: string): RuntimeMusicTrack | undefined {
+  return getMusicTracks().find((track) => track.id === `care_${intentId}`);
+}
+
+export function getCareMusicByPersona(persona: PersonaCode): RuntimeMusicTrack | undefined {
+  return getMusicTracks().find((track) => track.persona.includes(persona));
+}
+
+export function getTripMusicByThemeId(themeId: string): RuntimeMusicTrack | undefined {
+  const theme = getThemeById(themeId);
+  if (!theme) return undefined;
+  return getMusicTracks().find((track) => track.id === theme.musicId);
+}
+
+export function getDefaultCareSubProtocol(intent: IntentCard): SubProtocolOption | undefined {
+  return getCareSubProtocolOptions()[intent.intent_id]?.find(
+    (option) => option.id === intent.default_subprotocol_id || option.is_default
+  );
+}
+
+export function pickRuntimeAutoTripSubProtocol(
+  intentId: string,
+  environment: 'bathtub' | 'partial_bath' | 'shower'
+): SubProtocolOption | null {
+  const options = getTripSubProtocolOptions()[intentId] ?? [];
+  if (options.length === 0) return null;
+
+  const defaultOption = options.find((option) => option.is_default) ?? options[0];
+
+  if (environment === 'shower') {
+    return options.find((option) => (option.partialOverrides.duration_delta ?? 0) < 0) ?? defaultOption;
+  }
+
+  return options.find((option) => (option.partialOverrides.duration_delta ?? 0) > 0) ?? defaultOption;
 }
 
 export function toContentRuntimeBundle(payload: ContentApiResponse): ContentRuntimeBundle {

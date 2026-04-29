@@ -21,7 +21,7 @@ import { buildCompletionRecordItems, CompletionRecordItem } from '@/src/engine/c
 import { buildHistoryInsights } from '@/src/engine/historyInsights';
 import { buildHomeStreakSummary } from '@/src/engine/streaks';
 import { PERSONA_DEFINITIONS } from '@/src/engine/personas';
-import { THEME_BY_ID } from '@/src/data/themes';
+import { getThemeById, useContentHydration } from '@/src/data/contentRuntime';
 import { copy } from '@/src/content/copy';
 import { brand } from '@/src/content/brand';
 import { useUserProfile } from '@/src/hooks/useUserProfile';
@@ -171,7 +171,7 @@ function HistorySection({
     const sorted = Object.entries(themeWeights).sort((a, b) => b[1] - a[1]);
     if (sorted.length === 0) return null;
     const [themeId, weight] = sorted[0];
-    const themeTitle = THEME_BY_ID[themeId as keyof typeof THEME_BY_ID]?.title ?? themeId;
+    const themeTitle = getThemeById(themeId)?.title ?? themeId;
     return { themeTitle, weight };
   }, [themeWeights]);
 
@@ -618,6 +618,7 @@ function SettingsSection({
 }
 
 export default function MyScreen() {
+  useContentHydration();
   const { tab } = useLocalSearchParams<{ tab?: string }>();
   const initialTab: MyTab = tab === 'settings' ? 'settings' : 'history';
   const [activeTab, setActiveTab] = useState<MyTab>(initialTab);

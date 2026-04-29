@@ -46,13 +46,12 @@ import {
 } from '@/src/analytics/events';
 import { SubProtocolPickerModal } from '@/src/components/SubProtocolPickerModal';
 import {
-  CARE_INTENT_CARDS,
-  CARE_SUBPROTOCOL_OPTIONS,
   getCareCardSafetyBadge,
   getEnvironmentFitLabel,
   getEnvironmentUnavailableReason,
   getEnvironmentSubtitle,
 } from '@/src/data/intents';
+import { getDefaultCareSubProtocol, useContentHydration } from '@/src/data/contentRuntime';
 import { getCareCardImageForEnvironment } from '@/src/data/careImages';
 import { resolveIntentImageEnvironment } from '@/src/data/routineImageVariants';
 import { applySubProtocolOverrides } from '@/src/engine/subprotocol';
@@ -67,8 +66,6 @@ const ENV_OPTIONS: { id: BathEnvironment; label: string }[] = [
   { id: 'partial_bath', label: '족욕' },
   { id: 'bathtub', label: '욕조' },
 ];
-
-const ALL_CARE_CARDS = CARE_INTENT_CARDS;
 
 const SCREEN_HORIZONTAL_PADDING = 22;
 const SECTION_GAP = 18;
@@ -163,6 +160,7 @@ function getIntentTint(intentId: string): string {
 
 export default function CareScreen() {
   const { profile } = useUserProfile();
+  const { content } = useContentHydration();
   const haptic = useHaptic();
   const { width: screenWidth } = useWindowDimensions();
   const insets = useSafeAreaInsets();
@@ -189,6 +187,8 @@ export default function CareScreen() {
 
   const normalizedEnvironment = normalizeEnvironmentInput(environment);
   const intentCardWidth = Math.max(220, screenWidth - SCREEN_HORIZONTAL_PADDING * 2);
+  const careCards = content.care.intents;
+  const careSubprotocols = content.care.subprotocols;
 
   useFocusEffect(
     useCallback(() => {
@@ -196,7 +196,7 @@ export default function CareScreen() {
     const locale = Intl.DateTimeFormat().resolvedOptions().locale;
     const healthConditions = profile?.healthConditions ?? ['none'];
 
-    CARE_INTENT_CARDS.forEach((intent) => {
+    careCards.forEach((intent) => {
       const payload: RecommendationCardEventPayload = {
         user_id: profile?.createdAt ?? 'anonymous',
         session_id: sessionIdRef.current,
@@ -221,7 +221,7 @@ export default function CareScreen() {
       };
       trackIntentCardImpression(payload);
     });
-    }, [environment, profile?.createdAt, profile?.healthConditions, timeContext])
+    }, [careCards, environment, profile?.createdAt, profile?.healthConditions, timeContext])
   );
 
   const handleSelectEnvironment = (next: BathEnvironment) => {
@@ -291,9 +291,7 @@ export default function CareScreen() {
       section_order: 'care_first',
       card_position: intent.card_position,
     };
-    const defaultOption = (CARE_SUBPROTOCOL_OPTIONS[intent.intent_id] ?? []).find(
-      (option) => option.id === intent.default_subprotocol_id || option.is_default
-    );
+    const defaultOption = getDefaultCareSubProtocol(intent);
 
     haptic.medium();
     trackIntentCardClick(payload);
@@ -381,7 +379,7 @@ export default function CareScreen() {
   };
 
   const subOptions = selectedIntent
-    ? (CARE_SUBPROTOCOL_OPTIONS[selectedIntent.intent_id] ?? [])
+    ? (careSubprotocols[selectedIntent.intent_id] ?? [])
     : [];
 
   return (
@@ -415,7 +413,7 @@ export default function CareScreen() {
           <Text style={styles.sectionTitle}>컨디션별 루틴</Text>
           <Text style={styles.sectionIntro}>지금 컨디션에 맞는 추천을 바로 시작하고, 필요할 때만 세부 느낌을 더 골라보세요.</Text>
           <View style={[styles.gridWrap, { rowGap: CARD_GAP }]}> 
-            {ALL_CARE_CARDS.map((intent) => {
+            {careCards.map((intent) => {
               const isFeaturedCard = intent.card_position === 1;
               const isPlaceholder = intent.allowed_environments.length === 0;
               const disabled = isPlaceholder || !intent.allowed_environments.includes(normalizedEnvironment);

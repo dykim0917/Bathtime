@@ -12,15 +12,15 @@ import { applySafetyFilter, SafetyFilterResult } from './safety';
 import { resolveConflicts } from './conflicts';
 import { applyContextBranch, applyEnvironmentOverrides } from './context';
 import { INGREDIENTS } from '@/src/data/ingredients';
-import {
-  MUSIC_TRACKS,
-  AMBIENCE_TRACKS,
-  CARE_MUSIC_BY_INTENT_ID,
-  CARE_MUSIC_BY_PERSONA,
-  TRIP_MUSIC_BY_THEME_ID,
-} from '@/src/data/music';
 import { PERSONA_COLORS } from '@/src/data/colors';
-import { THEME_BY_ID } from '@/src/data/themes';
+import {
+  getAmbienceTracks,
+  getCareMusicByIntentId,
+  getCareMusicByPersona,
+  getMusicTracks,
+  getThemeById,
+  getTripMusicByThemeId,
+} from '@/src/data/contentRuntime';
 import {
   GENERATED_TRIP_INGREDIENT_MAP,
   GENERATED_TRIP_PERSONA_MAP,
@@ -85,13 +85,13 @@ export function generateCareRecommendation(
 
   const ingredients = resolveIngredients(profile, ingredientIds);
 
-  const music = (intentId ? CARE_MUSIC_BY_INTENT_ID[intentId] : undefined)
-    ?? CARE_MUSIC_BY_PERSONA[resolved.primaryPersona.code]
-    ?? MUSIC_TRACKS[0];
+  const music = (intentId ? getCareMusicByIntentId(intentId) : undefined)
+    ?? getCareMusicByPersona(resolved.primaryPersona.code)
+    ?? getMusicTracks()[0];
 
   const ambience =
-    AMBIENCE_TRACKS.find((t) => t.persona.includes(resolved.primaryPersona.code)) ??
-    AMBIENCE_TRACKS[0];
+    getAmbienceTracks().find((t) => t.persona.includes(resolved.primaryPersona.code)) ??
+    getAmbienceTracks()[0];
 
   return {
     id: generateRecommendationId(),
@@ -118,7 +118,7 @@ export function generateTripRecommendation(
   themeId: ThemeId,
   environment: BathEnvironment
 ): BathRecommendation {
-  const theme = THEME_BY_ID[themeId];
+  const theme = getThemeById(themeId) ?? getThemeById('kyoto_forest')!;
   const safety = applySafetyFilter(profile, []);
 
   const baseTemperature = {
@@ -146,11 +146,11 @@ export function generateTripRecommendation(
   const ingredientIds = buildTripIngredientIds(theme.id, context);
   const ingredients = resolveIngredients(profile, ingredientIds);
 
-  const music = TRIP_MUSIC_BY_THEME_ID[theme.id] ??
-    MUSIC_TRACKS.find((track) => track.id === theme.musicId) ??
-    MUSIC_TRACKS[0];
+  const music = getTripMusicByThemeId(theme.id) ??
+    getMusicTracks().find((track) => track.id === theme.musicId) ??
+    getMusicTracks()[0];
   const ambience =
-    AMBIENCE_TRACKS.find((track) => track.id === theme.ambienceId) ?? AMBIENCE_TRACKS[0];
+    getAmbienceTracks().find((track) => track.id === theme.ambienceId) ?? getAmbienceTracks()[0];
 
   return {
     id: generateRecommendationId(),
