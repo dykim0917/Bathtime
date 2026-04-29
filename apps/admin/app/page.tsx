@@ -2,36 +2,13 @@ import {
   buildAdminDashboardViewModel,
   getStatusLabel,
 } from '../lib/dashboardData';
+import { AdminShell } from '../components/AdminShell';
 
 export default function AdminHomePage() {
   const dashboard = buildAdminDashboardViewModel();
 
   return (
-    <main className="shell">
-      <aside className="sidebar" aria-label="관리자 메뉴">
-        <div>
-          <p className="eyebrow">BATH SOMMELIER</p>
-          <h1>Content Admin</h1>
-        </div>
-        <nav>
-          <a className="navItem active" href="/">
-            Dashboard
-          </a>
-          <a className="navItem" href="/">
-            Products
-          </a>
-          <a className="navItem" href="/">
-            Care Routines
-          </a>
-          <a className="navItem" href="/">
-            Mood Routines
-          </a>
-          <a className="navItem" href="/">
-            Audio
-          </a>
-        </nav>
-      </aside>
-
+    <AdminShell activePath="/">
       <section className="workspace">
         <header className="topbar">
           <div>
@@ -102,6 +79,6 @@ export default function AdminHomePage() {
           </div>
         </section>
       </section>
-    </main>
+    </AdminShell>
   );
 }
