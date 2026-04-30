@@ -6,7 +6,10 @@ import {
   getCareStatusLabel,
   readAdminCareRows,
 } from '../../../lib/careData';
-import { cloneCareRoutineDraft } from '../../../lib/careActions';
+import {
+  cloneCareRoutineDraft,
+  updateCareRoutineBasicInfo,
+} from '../../../lib/careActions';
 
 interface CareDetailPageProps {
   params: Promise<{
@@ -20,9 +23,12 @@ interface CareDetailPageProps {
 
 function getStatusMessage(error?: string, updated?: string): string | null {
   if (updated === 'clone') return '복제한 draft 케어 루틴입니다. 발행 전 내용을 검수하세요.';
+  if (updated === 'basic_info') return '케어 루틴 기본 정보가 저장되었습니다.';
+  if (error === 'invalid_basic_info') return '케어 루틴 기본 정보 값을 확인하세요.';
   if (error === 'missing_content_db') return '콘텐츠 DB 연결이 설정되지 않았습니다.';
   if (error === 'missing_admin') return '관리자 세션을 확인할 수 없습니다. 다시 로그인하세요.';
   if (error === 'clone_failed') return '케어 루틴 복제에 실패했습니다. INSERT RLS 정책을 확인하세요.';
+  if (error === 'update_failed') return '케어 루틴 저장에 실패했습니다. RLS 정책과 권한을 확인하세요.';
   return null;
 }
 
@@ -86,8 +92,38 @@ export default async function CareDetailPage({
         <section className="detailGrid">
           <section className="panel">
             <div className="panelHeader">
-              <h3>기본 정보</h3>
-              <span>{routine.id}</span>
+              <h3>기본 정보 편집</h3>
+              <span>Supabase Auth</span>
+            </div>
+            <form className="inlineForm" action={updateCareRoutineBasicInfo}>
+              <input type="hidden" name="id" value={routine.id} />
+              <label htmlFor="care-title">Title</label>
+              <input id="care-title" name="title" defaultValue={routine.title} />
+              <label htmlFor="care-mode">Mode</label>
+              <input id="care-mode" name="mode" defaultValue={routine.mode} />
+              <label htmlFor="care-environments">Allowed environments</label>
+              <textarea
+                id="care-environments"
+                name="environments"
+                defaultValue={routine.environments.join(', ')}
+                rows={3}
+              />
+              <label htmlFor="care-default-subprotocol">Default subprotocol</label>
+              <input
+                id="care-default-subprotocol"
+                name="defaultSubprotocolId"
+                defaultValue={routine.defaultSubprotocolId}
+              />
+              <button type="submit" className="primaryButton">
+                기본 정보 저장
+              </button>
+            </form>
+          </section>
+
+          <section className="panel">
+            <div className="panelHeader">
+              <h3>현재 연결</h3>
+              <span>Read-only</span>
             </div>
             <dl className="detailList">
               <div>
@@ -95,26 +131,14 @@ export default async function CareDetailPage({
                 <dd>{routine.intentId}</dd>
               </div>
               <div>
-                <dt>Default subprotocol</dt>
-                <dd>{routine.defaultSubprotocolId}</dd>
+                <dt>Subprotocols</dt>
+                <dd>{routine.subprotocols}</dd>
               </div>
               <div>
                 <dt>Safety note</dt>
                 <dd>{routine.safetyNote}</dd>
               </div>
             </dl>
-          </section>
-
-          <section className="panel">
-            <div className="panelHeader">
-              <h3>허용 환경</h3>
-              <span>Read-only</span>
-            </div>
-            <div className="tagList">
-              {routine.environments.map((environment) => (
-                <span key={environment}>{environment}</span>
-              ))}
-            </div>
           </section>
         </section>
       </section>

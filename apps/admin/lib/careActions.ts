@@ -49,6 +49,13 @@ function buildCloneSuffix(): string {
   return Date.now().toString(36);
 }
 
+function parseListField(value: FormDataEntryValue | null): string[] {
+  return String(value ?? '')
+    .split(',')
+    .map((item) => item.trim())
+    .filter(Boolean);
+}
+
 export async function updateCareRoutineStatus(formData: FormData) {
   const id = String(formData.get('id') ?? '').trim();
   const status = String(formData.get('status') ?? '').trim();
@@ -168,4 +175,41 @@ export async function cloneCareRoutineDraft(formData: FormData) {
 
   revalidatePath('/care');
   redirect(`/care/${newId}?updated=clone`);
+}
+
+export async function updateCareRoutineBasicInfo(formData: FormData) {
+  const id = String(formData.get('id') ?? '').trim();
+  const title = String(formData.get('title') ?? '').trim();
+  const mode = String(formData.get('mode') ?? '').trim();
+  const defaultSubprotocolId = String(formData.get('defaultSubprotocolId') ?? '').trim();
+  const environments = parseListField(formData.get('environments'));
+
+  if (!id || !title || !mode || !defaultSubprotocolId || environments.length === 0) {
+    redirect(`/care/${id || ''}?error=invalid_basic_info`);
+  }
+
+  const config = await readAdminPostgrestSessionConfig();
+  if (!config) {
+    redirect(`/care/${id}?error=missing_content_db`);
+  }
+
+  try {
+    await updatePostgrestRows(
+      config,
+      'care_intent',
+      { id: `eq.${id}` },
+      {
+        copy_title: title,
+        mapped_mode: mode,
+        allowed_environments: environments,
+        default_subprotocol_id: defaultSubprotocolId,
+      }
+    );
+  } catch {
+    redirect(`/care/${id}?error=update_failed`);
+  }
+
+  revalidatePath('/care');
+  revalidatePath(`/care/${id}`);
+  redirect(`/care/${id}?updated=basic_info`);
 }

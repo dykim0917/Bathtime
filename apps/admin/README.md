@@ -38,6 +38,8 @@ Product, care, trip, and audio clone actions create draft rows and require their
 
 Audio basic edits require the audio basic RLS migration.
 
+Care basic edits require the care basic RLS migration.
+
 ## Publish Validation
 
 Set this to let the `/publish` page validate a deployed snapshot endpoint:
