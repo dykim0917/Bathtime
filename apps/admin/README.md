@@ -32,6 +32,8 @@ Without Supabase values, `/login` renders a configuration warning and protected 
 
 Content tables are read through the signed-in Supabase Auth session and Supabase RLS. If `CONTENT_DB_REST_URL` is absent, the admin app uses `NEXT_PUBLIC_SUPABASE_URL/rest/v1`. Do not configure `CONTENT_DB_SERVICE_ROLE_KEY` in the admin Vercel project.
 
+Admin updates are audited in Postgres through `admin_action_log` triggers. Apply the audit log schema and update trigger migrations before enabling production edits.
+
 ## Publish Validation
 
 Set this to let the `/publish` page validate a deployed snapshot endpoint:
