@@ -66,6 +66,10 @@ function buildCloneSuffix(): string {
   return Date.now().toString(36);
 }
 
+function isHexColor(value: string): boolean {
+  return /^#[0-9a-fA-F]{6}$/.test(value);
+}
+
 export async function updateTripThemeStatus(formData: FormData) {
   const id = String(formData.get('id') ?? '').trim();
   const status = String(formData.get('status') ?? '').trim();
@@ -214,4 +218,63 @@ export async function cloneTripThemeDraft(formData: FormData) {
 
   revalidatePath('/trip');
   redirect(`/trip/${newId}?updated=clone`);
+}
+
+export async function updateTripThemeBasicInfo(formData: FormData) {
+  const id = String(formData.get('id') ?? '').trim();
+  const title = String(formData.get('title') ?? '').trim();
+  const subtitle = String(formData.get('subtitle') ?? '').trim();
+  const baseTemp = Number(String(formData.get('baseTemp') ?? '').trim());
+  const colorHex = String(formData.get('colorHex') ?? '').trim();
+  const recScent = String(formData.get('recScent') ?? '').trim();
+  const defaultBathType = String(formData.get('defaultBathType') ?? '').trim();
+  const environment = String(formData.get('environment') ?? '').trim();
+  const durationMinutes = Number(String(formData.get('durationMinutes') ?? '').trim());
+  const lighting = String(formData.get('lighting') ?? '').trim();
+
+  if (
+    !id ||
+    !title ||
+    !subtitle ||
+    !Number.isInteger(baseTemp) ||
+    !isHexColor(colorHex) ||
+    !recScent ||
+    !defaultBathType ||
+    !environment ||
+    !Number.isInteger(durationMinutes) ||
+    durationMinutes <= 0 ||
+    !lighting
+  ) {
+    redirect(`/trip/${id || ''}?error=invalid_basic_info`);
+  }
+
+  const config = await readAdminPostgrestSessionConfig();
+  if (!config) {
+    redirect(`/trip/${id}?error=missing_content_db`);
+  }
+
+  try {
+    await updatePostgrestRows(
+      config,
+      'trip_theme',
+      { id: `eq.${id}` },
+      {
+        title,
+        subtitle,
+        base_temp: baseTemp,
+        color_hex: colorHex,
+        rec_scent: recScent,
+        default_bath_type: defaultBathType,
+        recommended_environment: environment,
+        duration_minutes: durationMinutes,
+        lighting,
+      }
+    );
+  } catch {
+    redirect(`/trip/${id}?error=update_failed`);
+  }
+
+  revalidatePath('/trip');
+  revalidatePath(`/trip/${id}`);
+  redirect(`/trip/${id}?updated=basic_info`);
 }

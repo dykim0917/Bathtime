@@ -6,8 +6,12 @@ import {
 export interface AdminTripThemeRow {
   id: string;
   title: string;
+  subtitle: string;
   environment: string;
   baseTemp: number;
+  colorHex: string;
+  recScent: string;
+  defaultBathType: string;
   durationMinutes: number;
   musicId: string;
   ambienceId: string;
@@ -19,8 +23,12 @@ const tripRows: AdminTripThemeRow[] = [
   {
     id: 'kyoto_forest',
     title: 'Kyoto Forest',
+    subtitle: '숲비가 내리는 교토의 고요함',
     environment: 'bathtub',
     baseTemp: 39,
+    colorHex: '#4f7d69',
+    recScent: 'hinoki',
+    defaultBathType: 'soak',
     durationMinutes: 18,
     musicId: 'trip_kyoto_forest',
     ambienceId: 'forest_rain',
@@ -30,8 +38,12 @@ const tripRows: AdminTripThemeRow[] = [
   {
     id: 'nordic_sauna',
     title: 'Nordic Sauna',
+    subtitle: '건식 사우나의 따뜻한 나무결',
     environment: 'bathtub',
     baseTemp: 40,
+    colorHex: '#b97a56',
+    recScent: 'cedar',
+    defaultBathType: 'soak',
     durationMinutes: 16,
     musicId: 'trip_nordic_sauna',
     ambienceId: 'sauna_wood',
@@ -41,8 +53,12 @@ const tripRows: AdminTripThemeRow[] = [
   {
     id: 'rainy_camping',
     title: 'Rainy Camping',
+    subtitle: '비 오는 텐트 안의 낮은 안정감',
     environment: 'partial_bath',
     baseTemp: 38,
+    colorHex: '#5f7480',
+    recScent: 'rain',
+    defaultBathType: 'partial',
     durationMinutes: 14,
     musicId: 'trip_rainy_camping',
     ambienceId: 'rain_tent',
@@ -52,8 +68,12 @@ const tripRows: AdminTripThemeRow[] = [
   {
     id: 'snow_cabin',
     title: 'Snow Cabin',
+    subtitle: '눈 내린 오두막의 조용한 온기',
     environment: 'bathtub',
     baseTemp: 39,
+    colorHex: '#dfe8ec',
+    recScent: 'pine',
+    defaultBathType: 'soak',
     durationMinutes: 18,
     musicId: 'trip_snow_cabin',
     ambienceId: 'fireplace',
@@ -65,8 +85,12 @@ const tripRows: AdminTripThemeRow[] = [
 interface TripThemeRecord {
   id: string;
   title: string;
+  subtitle: string;
   recommended_environment: string;
   base_temp: number;
+  color_hex: string;
+  rec_scent: string;
+  default_bath_type: string;
   duration_minutes: number | null;
   music_id: string;
   ambience_id: string;
@@ -107,8 +131,12 @@ export async function readAdminTripRows(): Promise<AdminTripThemeRow[]> {
   return themes.map((theme) => ({
     id: theme.id,
     title: theme.title,
+    subtitle: theme.subtitle,
     environment: theme.recommended_environment,
     baseTemp: theme.base_temp,
+    colorHex: theme.color_hex,
+    recScent: theme.rec_scent,
+    defaultBathType: theme.default_bath_type,
     durationMinutes: theme.duration_minutes ?? 0,
     musicId: theme.music_id,
     ambienceId: theme.ambience_id,
