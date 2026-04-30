@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { AdminShell } from '../../components/AdminShell';
 import {
   buildAdminTripListViewModel,
@@ -77,6 +79,7 @@ export default async function TripPage({ searchParams }: TripPageProps) {
               <span>앰비언스</span>
               <span>조명</span>
               <span>상태</span>
+              <span>상세</span>
             </div>
             {trip.rows.map((theme) => (
               <div className="dataTableRow" role="row" key={theme.id}>
@@ -106,6 +109,9 @@ export default async function TripPage({ searchParams }: TripPageProps) {
                     저장
                   </button>
                 </form>
+                <Link className="textButton" href={`/trip/${theme.id}`}>
+                  열기
+                </Link>
               </div>
             ))}
           </div>
