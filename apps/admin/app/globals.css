@@ -178,6 +178,16 @@ button {
   opacity: 0.5;
 }
 
+.secondaryButton {
+  background: transparent;
+  color: var(--accent);
+}
+
+.topbarActions {
+  display: flex;
+  gap: 10px;
+}
+
 .summaryGrid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));

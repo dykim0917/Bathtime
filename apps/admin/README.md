@@ -34,6 +34,8 @@ Content tables are read through the signed-in Supabase Auth session and Supabase
 
 Admin updates are audited in Postgres through `admin_action_log` triggers. Apply the audit log schema and update trigger migrations before enabling production edits.
 
+Product clone actions create draft rows and require the product clone RLS migration.
+
 ## Publish Validation
 
 Set this to let the `/publish` page validate a deployed snapshot endpoint:

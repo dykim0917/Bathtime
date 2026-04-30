@@ -7,8 +7,22 @@ import {
   readAdminProductRows,
 } from '../../lib/productsData';
 
-export default async function ProductsPage() {
+interface ProductsPageProps {
+  searchParams: Promise<{
+    error?: string;
+  }>;
+}
+
+function getProductsMessage(error?: string): string | null {
+  if (error === 'invalid_clone') return '복제할 제품을 찾을 수 없습니다.';
+  if (error === 'clone_source_missing') return '원본 제품을 찾을 수 없습니다.';
+  return null;
+}
+
+export default async function ProductsPage({ searchParams }: ProductsPageProps) {
+  const { error } = await searchParams;
   const products = buildAdminProductListViewModel(await readAdminProductRows());
+  const statusMessage = getProductsMessage(error);
 
   return (
     <AdminShell activePath="/products">
@@ -46,6 +60,7 @@ export default async function ProductsPage() {
             <h3>제품 목록</h3>
             <span>Read-only table</span>
           </div>
+          {statusMessage ? <p className="formNotice error">{statusMessage}</p> : null}
           <div className="dataTable productTable" role="table" aria-label="제품 목록">
             <div className="dataTableHeader" role="row">
               <span>제품</span>
