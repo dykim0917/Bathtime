@@ -14,6 +14,7 @@ export interface PublishValidationMetric {
 export interface PublishValidationViewModel {
   configured: boolean;
   snapshotUrl: string | null;
+  snapshotDate: string | null;
   checkedAt: string;
   status: ValidationState;
   checks: PublishValidationCheck[];
@@ -74,6 +75,7 @@ export async function buildPublishValidationViewModel(): Promise<PublishValidati
     return {
       configured: false,
       snapshotUrl,
+      snapshotDate: null,
       checkedAt,
       status: 'warn',
       checks: [
@@ -90,13 +92,14 @@ export async function buildPublishValidationViewModel(): Promise<PublishValidati
   try {
     const response = await fetch(snapshotUrl, {
       headers: { accept: 'application/json' },
-      next: { revalidate: 60 },
+      cache: 'no-store',
     });
 
     if (!response.ok) {
       return {
         configured: true,
         snapshotUrl,
+        snapshotDate: null,
         checkedAt,
         status: 'fail',
         checks: [
@@ -147,6 +150,7 @@ export async function buildPublishValidationViewModel(): Promise<PublishValidati
     return {
       configured: true,
       snapshotUrl,
+      snapshotDate: typeof payload.snapshot_date === 'string' ? payload.snapshot_date : null,
       checkedAt,
       status: getOverallStatus(checks),
       checks,
@@ -156,6 +160,7 @@ export async function buildPublishValidationViewModel(): Promise<PublishValidati
     return {
       configured: true,
       snapshotUrl,
+      snapshotDate: null,
       checkedAt,
       status: 'fail',
       checks: [

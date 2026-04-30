@@ -42,6 +42,8 @@ Set this to let the `/publish` page validate a deployed snapshot endpoint:
 CONTENT_SNAPSHOT_API_URL=https://<host>/api/content-snapshot
 ```
 
+The Publish button reruns validation and records a `publish_snapshot` checkpoint in `admin_action_log`; the snapshot endpoint still serves active DB rows.
+
 ## Scope
 
 This scaffold is intentionally read-only. The next PRs should add:

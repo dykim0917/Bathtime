@@ -93,3 +93,26 @@ export async function updatePostgrestRows(
     throw new Error(`PostgREST ${tableName} update failed with status ${response.status}`);
   }
 }
+
+export async function insertPostgrestRow(
+  config: AdminPostgrestConfig,
+  tableName: string,
+  body: Record<string, unknown>
+): Promise<void> {
+  const url = new URL(`${config.restUrl}/${tableName}`);
+
+  const response = await fetch(url.toString(), {
+    method: 'POST',
+    headers: {
+      apikey: config.apiKey,
+      authorization: `Bearer ${config.authorizationToken}`,
+      'content-type': 'application/json',
+      prefer: 'return=minimal',
+    },
+    body: JSON.stringify(body),
+  });
+
+  if (!response.ok) {
+    throw new Error(`PostgREST ${tableName} insert failed with status ${response.status}`);
+  }
+}

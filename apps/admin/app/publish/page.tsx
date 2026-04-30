@@ -1,14 +1,35 @@
 import { AdminShell } from '../../components/AdminShell';
+import { publishContentSnapshot } from '../../lib/publishActions';
 import {
   buildPublishValidationViewModel,
   countFailedChecks,
   countWarningChecks,
 } from '../../lib/publishValidation';
 
-export default async function PublishPage() {
+interface PublishPageProps {
+  searchParams: Promise<{
+    error?: string;
+    updated?: string;
+  }>;
+}
+
+function getPublishStatusMessage(error?: string, updated?: string): string | null {
+  if (updated === 'publish') return '발행 체크포인트가 기록되었습니다.';
+  if (error === 'missing_content_db') return '콘텐츠 DB 연결이 설정되지 않았습니다.';
+  if (error === 'missing_snapshot') return 'Snapshot endpoint가 설정되지 않았습니다.';
+  if (error === 'validation_failed') return '검증 실패 항목이 있어 발행할 수 없습니다.';
+  if (error === 'missing_admin') return '관리자 세션을 확인할 수 없습니다.';
+  if (error === 'publish_log_failed') return '발행 기록 저장에 실패했습니다. Audit log RLS를 확인하세요.';
+  return null;
+}
+
+export default async function PublishPage({ searchParams }: PublishPageProps) {
+  const { error, updated } = await searchParams;
   const validation = await buildPublishValidationViewModel();
   const failedChecks = countFailedChecks(validation.checks);
   const warningChecks = countWarningChecks(validation.checks);
+  const statusMessage = getPublishStatusMessage(error, updated);
+  const canPublish = validation.configured && validation.status === 'pass' && failedChecks === 0;
 
   return (
     <AdminShell activePath="/publish">
@@ -21,9 +42,11 @@ export default async function PublishPage() {
               공개 snapshot endpoint를 기준으로 앱이 받을 콘텐츠 구조를 점검합니다.
             </p>
           </div>
-          <button type="button" className="primaryButton">
-            Publish 준비중
-          </button>
+          <form action={publishContentSnapshot}>
+            <button type="submit" className="primaryButton" disabled={!canPublish}>
+              Publish
+            </button>
+          </form>
         </header>
 
         <section className="summaryGrid compact" aria-label="발행 검증 요약">
@@ -46,6 +69,11 @@ export default async function PublishPage() {
             <h3>검증 결과</h3>
             <span>{validation.snapshotUrl ?? 'CONTENT_SNAPSHOT_API_URL 필요'}</span>
           </div>
+          {statusMessage ? (
+            <p className={error ? 'formNotice error' : 'formNotice'}>
+              {statusMessage}
+            </p>
+          ) : null}
           <div className="validationList">
             {validation.checks.map((check) => (
               <article className="validationRow" key={check.label}>
