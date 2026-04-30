@@ -33,7 +33,7 @@ export default async function PublishPage({ searchParams }: PublishPageProps) {
   const failedChecks = countFailedChecks(validation.checks);
   const warningChecks = countWarningChecks(validation.checks);
   const statusMessage = getPublishStatusMessage(error, updated);
-  const canPublish = validation.configured && validation.status === 'pass' && failedChecks === 0;
+  const canPublish = validation.configured && failedChecks === 0;
 
   return (
     <AdminShell activePath="/publish">
@@ -89,6 +89,30 @@ export default async function PublishPage({ searchParams }: PublishPageProps) {
               </article>
             ))}
           </div>
+        </section>
+
+        <section className="panel">
+          <div className="panelHeader">
+            <h3>상세 이슈</h3>
+            <span>{validation.issues.length ? `${validation.issues.length} findings` : 'Ready'}</span>
+          </div>
+          {validation.issues.length > 0 ? (
+            <div className="issueList">
+              {validation.issues.map((issue) => (
+                <article className="issueRow" key={`${issue.path}-${issue.message}`}>
+                  <span className={`validationBadge ${issue.severity === 'error' ? 'fail' : 'warn'}`}>
+                    {issue.severity}
+                  </span>
+                  <div>
+                    <strong>{issue.path}</strong>
+                    <p>{issue.message}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <p className="mutedText">발행을 막는 상세 이슈가 없습니다.</p>
+          )}
         </section>
 
         <section className="panel">

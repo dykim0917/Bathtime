@@ -28,7 +28,7 @@ export async function publishContentSnapshot() {
     redirect('/publish?error=missing_snapshot');
   }
 
-  if (validation.status !== 'pass' || countFailedChecks(validation.checks) > 0) {
+  if (countFailedChecks(validation.checks) > 0) {
     redirect('/publish?error=validation_failed');
   }
 

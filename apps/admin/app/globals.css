@@ -367,6 +367,34 @@ button {
   margin: 5px 0 0;
 }
 
+.issueList {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.issueRow {
+  display: grid;
+  grid-template-columns: 86px minmax(0, 1fr);
+  gap: 14px;
+  border-bottom: 1px solid var(--line);
+  padding: 12px 0;
+}
+
+.issueRow:last-child {
+  border-bottom: 0;
+}
+
+.issueRow strong {
+  color: var(--secondary);
+  font-size: 13px;
+}
+
+.issueRow p {
+  color: var(--muted);
+  margin: 4px 0 0;
+}
+
 .validationBadge {
   align-self: start;
   border: 1px solid var(--line);
