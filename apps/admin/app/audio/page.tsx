@@ -5,9 +5,27 @@ import {
   getAudioStatusLabel,
   readAdminAudioRows,
 } from '../../lib/audioData';
+import { updateAudioTrackStatus } from '../../lib/audioActions';
 
-export default async function AudioPage() {
+interface AudioPageProps {
+  searchParams: Promise<{
+    error?: string;
+    updated?: string;
+  }>;
+}
+
+function getAudioStatusMessage(error?: string, updated?: string): string | null {
+  if (updated === 'status') return '상태가 저장되었습니다.';
+  if (error === 'invalid_status') return '상태 값이 올바르지 않습니다.';
+  if (error === 'missing_content_db') return '콘텐츠 DB 연결이 설정되지 않았습니다.';
+  if (error === 'update_failed') return '상태 저장에 실패했습니다. RLS 정책과 권한을 확인하세요.';
+  return null;
+}
+
+export default async function AudioPage({ searchParams }: AudioPageProps) {
+  const { error, updated } = await searchParams;
   const audio = buildAdminAudioListViewModel(await readAdminAudioRows());
+  const statusMessage = getAudioStatusMessage(error, updated);
 
   return (
     <AdminShell activePath="/audio">
@@ -43,8 +61,13 @@ export default async function AudioPage() {
         <section className="panel">
           <div className="panelHeader">
             <h3>오디오 트랙 목록</h3>
-            <span>Read-only table</span>
+            <span>Supabase Auth</span>
           </div>
+          {statusMessage ? (
+            <p className={error ? 'formNotice error' : 'formNotice'}>
+              {statusMessage}
+            </p>
+          ) : null}
           <div className="dataTable audioTable" role="table" aria-label="오디오 트랙 목록">
             <div className="dataTableHeader" role="row">
               <span>트랙</span>
@@ -68,7 +91,22 @@ export default async function AudioPage() {
                 <span>{track.personaCodes.join(', ')}</span>
                 <span>{track.linkedRoutineCount}</span>
                 <span>{track.licenseNote}</span>
-                <span className="statusText">{getAudioStatusLabel(track.status)}</span>
+                <form className="tableForm" action={updateAudioTrackStatus}>
+                  <input type="hidden" name="id" value={track.id} />
+                  <select
+                    aria-label={`${track.title} 상태`}
+                    name="status"
+                    defaultValue={track.status}
+                  >
+                    <option value="active">{getAudioStatusLabel('active')}</option>
+                    <option value="draft">{getAudioStatusLabel('draft')}</option>
+                    <option value="paused">{getAudioStatusLabel('paused')}</option>
+                    <option value="retired">{getAudioStatusLabel('retired')}</option>
+                  </select>
+                  <button type="submit" className="textButton">
+                    저장
+                  </button>
+                </form>
               </div>
             ))}
           </div>
