@@ -6,7 +6,10 @@ import {
   getProductStatusLabel,
   readAdminProductRows,
 } from '../../../lib/productsData';
-import { updateProductStatus } from '../../../lib/productActions';
+import {
+  updateProductPresentation,
+  updateProductStatus,
+} from '../../../lib/productActions';
 
 interface ProductDetailPageProps {
   params: Promise<{
@@ -20,7 +23,9 @@ interface ProductDetailPageProps {
 
 function getStatusMessage(error?: string, updated?: string): string | null {
   if (updated === 'status') return '상태가 저장되었습니다.';
+  if (updated === 'presentation') return '표시 메타데이터가 저장되었습니다.';
   if (error === 'invalid_status') return '상태 값이 올바르지 않습니다.';
+  if (error === 'invalid_presentation') return '표시 메타데이터 값을 확인하세요.';
   if (error === 'missing_content_db') return '콘텐츠 DB 연결이 설정되지 않았습니다.';
   if (error === 'update_failed') return '상태 저장에 실패했습니다. RLS 정책과 권한을 확인하세요.';
   return null;
@@ -118,16 +123,33 @@ export default async function ProductDetailPage({
 
           <section className="panel">
             <div className="panelHeader">
-              <h3>안전 플래그</h3>
-              <span>Read-only</span>
+              <h3>표시 메타데이터</h3>
+              <span>Supabase Auth</span>
             </div>
-            <div className="tagList">
-              {product.safetyFlags.length > 0 ? (
-                product.safetyFlags.map((flag) => <span key={flag}>{flag}</span>)
-              ) : (
-                <p className="mutedText">등록된 안전 플래그가 없습니다.</p>
-              )}
-            </div>
+            <form className="inlineForm" action={updateProductPresentation}>
+              <input type="hidden" name="id" value={product.id} />
+              <label htmlFor="product-tags">Tags</label>
+              <textarea
+                id="product-tags"
+                name="tags"
+                defaultValue={product.tags.join(', ')}
+                rows={3}
+              />
+              <label htmlFor="product-emoji">Emoji code</label>
+              <input id="product-emoji" name="emoji" defaultValue={product.emoji} />
+              <label htmlFor="product-bg">Background color</label>
+              <input id="product-bg" name="bgColor" defaultValue={product.bgColor} />
+              <label htmlFor="product-safety-flags">Safety flags</label>
+              <textarea
+                id="product-safety-flags"
+                name="safetyFlags"
+                defaultValue={product.safetyFlags.join(', ')}
+                rows={3}
+              />
+              <button type="submit" className="primaryButton">
+                표시 저장
+              </button>
+            </form>
           </section>
         </section>
       </section>
