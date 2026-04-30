@@ -337,6 +337,34 @@ button {
   background: rgba(194, 134, 118, 0.16);
 }
 
+.metricGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.metricItem {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(7, 21, 23, 0.34);
+  padding: 14px;
+}
+
+.metricItem span {
+  color: var(--muted);
+  display: block;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.metricItem strong {
+  color: var(--text);
+  display: block;
+  font-size: 22px;
+  margin-top: 6px;
+}
+
 .loginShell {
   display: grid;
   min-height: 100vh;

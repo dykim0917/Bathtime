@@ -2,11 +2,13 @@ import { AdminShell } from '../../components/AdminShell';
 import {
   buildPublishValidationViewModel,
   countFailedChecks,
+  countWarningChecks,
 } from '../../lib/publishValidation';
 
 export default async function PublishPage() {
   const validation = await buildPublishValidationViewModel();
   const failedChecks = countFailedChecks(validation.checks);
+  const warningChecks = countWarningChecks(validation.checks);
 
   return (
     <AdminShell activePath="/publish">
@@ -30,12 +32,12 @@ export default async function PublishPage() {
             <strong>{validation.configured ? 'Ready' : 'Missing'}</strong>
           </div>
           <div className="summaryCard">
-            <span>Failed checks</span>
-            <strong>{failedChecks}</strong>
+            <span>Overall status</span>
+            <strong>{validation.status.toUpperCase()}</strong>
           </div>
           <div className="summaryCard">
-            <span>Checked at</span>
-            <strong className="smallValue">{validation.checkedAt.slice(11, 19)}</strong>
+            <span>Issues</span>
+            <strong>{failedChecks}/{warningChecks}</strong>
           </div>
         </section>
 
@@ -55,6 +57,25 @@ export default async function PublishPage() {
               </article>
             ))}
           </div>
+        </section>
+
+        <section className="panel">
+          <div className="panelHeader">
+            <h3>Snapshot 구성</h3>
+            <span>{validation.metrics.length ? 'Payload counts' : 'Endpoint 연결 필요'}</span>
+          </div>
+          {validation.metrics.length > 0 ? (
+            <div className="metricGrid">
+              {validation.metrics.map((metric) => (
+                <div className="metricItem" key={metric.label}>
+                  <span>{metric.label}</span>
+                  <strong>{metric.value}</strong>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p className="mutedText">검증할 snapshot payload가 아직 없습니다.</p>
+          )}
         </section>
       </section>
     </AdminShell>
