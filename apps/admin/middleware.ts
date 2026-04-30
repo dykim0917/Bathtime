@@ -13,6 +13,13 @@ export async function middleware(request: NextRequest) {
   let response = NextResponse.next({ request });
 
   if (!config) {
+    if (!isPublicPath(request.nextUrl.pathname)) {
+      const url = request.nextUrl.clone();
+      url.pathname = '/login';
+      url.searchParams.set('error', 'auth_config');
+      return NextResponse.redirect(url);
+    }
+
     return response;
   }
 

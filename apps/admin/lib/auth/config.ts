@@ -33,7 +33,7 @@ export function requireAdminAuthConfig(): AdminAuthConfig {
 }
 
 export function isAllowedAdminEmail(email: string | null | undefined, allowedEmails: string[]): boolean {
-  if (allowedEmails.length === 0) return true;
+  if (allowedEmails.length === 0) return process.env.NODE_ENV !== 'production';
   if (!email) return false;
   return allowedEmails.includes(email.toLowerCase());
 }
