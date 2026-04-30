@@ -444,7 +444,7 @@ button {
 
 .careTable .dataTableHeader,
 .careTable .dataTableRow {
-  grid-template-columns: minmax(260px, 1.3fr) 90px 180px 80px 150px minmax(180px, 1fr) 80px;
+  grid-template-columns: minmax(260px, 1.3fr) 90px 180px 80px 150px minmax(180px, 1fr) 148px;
 }
 
 .tripTable .dataTableHeader,
@@ -585,6 +585,31 @@ button {
   color: var(--text);
   font: inherit;
   padding: 0 10px;
+}
+
+.tableForm {
+  display: grid;
+  grid-template-columns: minmax(92px, 1fr) 36px;
+  gap: 8px;
+  align-items: center;
+}
+
+.tableForm select {
+  min-height: 34px;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(7, 21, 23, 0.6);
+  color: var(--text);
+  font: inherit;
+  padding: 0 8px;
+}
+
+.tableForm .textButton {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
 }
 
 .formNotice {
