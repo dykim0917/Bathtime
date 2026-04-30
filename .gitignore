@@ -35,6 +35,9 @@ yarn-error.*
 .DS_Store
 *.pem
 
+# IDE
+.idea/
+
 # local high-resolution product image sources
 assets/images/products/*.png
 
