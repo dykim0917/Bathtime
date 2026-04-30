@@ -6,17 +6,35 @@ import {
   getTripStatusLabel,
   readAdminTripRows,
 } from '../../../lib/tripData';
+import { cloneTripThemeDraft } from '../../../lib/tripActions';
 
 interface TripDetailPageProps {
   params: Promise<{
     id: string;
   }>;
+  searchParams: Promise<{
+    error?: string;
+    updated?: string;
+  }>;
 }
 
-export default async function TripDetailPage({ params }: TripDetailPageProps) {
+function getStatusMessage(error?: string, updated?: string): string | null {
+  if (updated === 'clone') return '복제한 draft 무드 테마입니다. 발행 전 내용을 검수하세요.';
+  if (error === 'missing_content_db') return '콘텐츠 DB 연결이 설정되지 않았습니다.';
+  if (error === 'missing_admin') return '관리자 세션을 확인할 수 없습니다. 다시 로그인하세요.';
+  if (error === 'clone_failed') return '무드 테마 복제에 실패했습니다. INSERT RLS 정책을 확인하세요.';
+  return null;
+}
+
+export default async function TripDetailPage({
+  params,
+  searchParams,
+}: TripDetailPageProps) {
   const { id } = await params;
+  const { error, updated } = await searchParams;
   const themes = await readAdminTripRows();
   const theme = themes.find((item) => item.id === id);
+  const statusMessage = getStatusMessage(error, updated);
 
   if (!theme) notFound();
 
@@ -31,10 +49,24 @@ export default async function TripDetailPage({ params }: TripDetailPageProps) {
               무드 테마의 환경, 온도, 시간, 조명, 오디오 연결 상태를 확인합니다.
             </p>
           </div>
-          <Link className="primaryButton linkButton" href="/trip">
-            목록으로
-          </Link>
+          <div className="topbarActions">
+            <form action={cloneTripThemeDraft}>
+              <input type="hidden" name="id" value={theme.id} />
+              <button type="submit" className="primaryButton secondaryButton">
+                Draft 복제
+              </button>
+            </form>
+            <Link className="primaryButton linkButton" href="/trip">
+              목록으로
+            </Link>
+          </div>
         </header>
+
+        {statusMessage ? (
+          <p className={error ? 'formNotice error' : 'formNotice'}>
+            {statusMessage}
+          </p>
+        ) : null}
 
         <section className="summaryGrid compact" aria-label="무드 테마 상세 요약">
           <div className="summaryCard">
