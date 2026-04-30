@@ -2,10 +2,6 @@
 
 바스타임은 오늘 상태와 목욕 환경에 맞춰 무리 없이 따라할 목욕·샤워 루틴을 안내하는 생활형 셀프케어 앱입니다. 컨디션 루틴과 무드 루틴을 보여주고, 레시피 확인부터 타이머, 완료 피드백, 기록 축적까지 한 흐름으로 연결합니다.
 
-<p align="center">
-  <img src="output/screenshots/ui-states/home-with-history.png" alt="바스타임 홈 화면" width="320" />
-</p>
-
 ## Overview
 
 - 온보딩에서 `욕조`, `부분입욕`, `샤워` 환경과 건강 상태를 저장합니다.
@@ -22,30 +18,6 @@
 3. 레시피 화면에서 준비물, 온도, 시간, 안전 안내를 확인합니다.
 4. 타이머 화면에서 루틴을 진행하고 완료 피드백을 남깁니다.
 5. 프로필 탭에서 기록과 설정, 법적 문서를 확인합니다.
-
-## App Screenshots
-
-### Main Tabs
-
-<p align="center">
-  <img src="output/screenshots/ui-states/onboarding-welcome.png" alt="바스타임 온보딩 웰컴" width="180" />
-  <img src="output/screenshots/ui-states/home-with-history.png" alt="바스타임 홈" width="180" />
-  <img src="output/screenshots/ui-states/care-default.png" alt="바스타임 케어 탭" width="180" />
-</p>
-
-<p align="center">
-  <img src="output/screenshots/ui-states/trip-default.png" alt="바스타임 트립 탭" width="180" />
-  <img src="output/screenshots/ui-states/product-default.png" alt="바스타임 제품 탭" width="180" />
-  <img src="output/screenshots/ui-states/my-settings.png" alt="바스타임 프로필 설정 탭" width="180" />
-</p>
-
-### Routine Flow
-
-<p align="center">
-  <img src="output/screenshots/ui-states/recipe-care.png" alt="바스타임 레시피 화면" width="180" />
-  <img src="output/screenshots/ui-states/timer-running.png" alt="바스타임 타이머 화면" width="180" />
-  <img src="output/screenshots/ui-states/completion-default.png" alt="바스타임 완료 화면" width="180" />
-</p>
 
 ## Tech Stack
 
@@ -70,7 +42,7 @@ npm run typecheck
 
 ## Refreshing Screenshots
 
-README에 사용하는 최신 UI 캡처는 `output/screenshots/ui-states`에 저장됩니다.
+UI 캡처는 `output/screenshots/ui-states`에 로컬 산출물로 저장됩니다.
 
 ```bash
 npm run screenshots:ui
