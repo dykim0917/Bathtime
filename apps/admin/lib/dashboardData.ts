@@ -1,5 +1,11 @@
+import {
+  readAdminPostgrestSessionConfig,
+  readPostgrestRows,
+} from './data/postgrest';
+
 export type AdminSectionId = 'products' | 'care' | 'trip' | 'audio';
 export type AdminSectionStatus = 'ready' | 'needs_review' | 'blocked';
+export type AdminActivityStatus = 'ready' | 'not_configured' | 'unavailable';
 
 export interface AdminSectionSummary {
   id: AdminSectionId;
@@ -26,6 +32,28 @@ export interface AdminDashboardViewModel {
   summary: AdminDashboardSummary;
   sections: AdminSectionSummary[];
   queue: string[];
+  activity: {
+    status: AdminActivityStatus;
+    rows: AdminActivityRow[];
+  };
+}
+
+export interface AdminActivityRow {
+  id: number;
+  actorEmail: string;
+  action: string;
+  targetTable: string;
+  targetId: string;
+  createdAt: string;
+}
+
+interface AdminActionLogRecord {
+  id: number;
+  actor_email: string;
+  action: string;
+  target_table: string;
+  target_id: string;
+  created_at: string;
 }
 
 const sections: AdminSectionSummary[] = [
@@ -87,7 +115,11 @@ function countBlockedSections(items: AdminSectionSummary[]): number {
 }
 
 export function buildAdminDashboardViewModel(
-  items: AdminSectionSummary[] = sections
+  items: AdminSectionSummary[] = sections,
+  activity: AdminDashboardViewModel['activity'] = {
+    status: 'not_configured',
+    rows: [],
+  }
 ): AdminDashboardViewModel {
   return {
     summary: {
@@ -100,7 +132,63 @@ export function buildAdminDashboardViewModel(
     },
     sections: items,
     queue,
+    activity,
   };
+}
+
+function mapActivityRow(row: AdminActionLogRecord): AdminActivityRow {
+  return {
+    id: row.id,
+    actorEmail: row.actor_email,
+    action: row.action,
+    targetTable: row.target_table,
+    targetId: row.target_id,
+    createdAt: row.created_at,
+  };
+}
+
+export async function readRecentAdminActivity(): Promise<
+  AdminDashboardViewModel['activity']
+> {
+  const config = await readAdminPostgrestSessionConfig();
+  if (!config) {
+    return { status: 'not_configured', rows: [] };
+  }
+
+  try {
+    const rows = await readPostgrestRows<AdminActionLogRecord>(
+      config,
+      'admin_action_log',
+      {
+        order: 'created_at.desc',
+        limit: '8',
+      }
+    );
+
+    return { status: 'ready', rows: rows.map(mapActivityRow) };
+  } catch {
+    return { status: 'unavailable', rows: [] };
+  }
+}
+
+export function formatActivityTime(value: string): string {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return value;
+
+  return new Intl.DateTimeFormat('ko-KR', {
+    dateStyle: 'short',
+    timeStyle: 'short',
+    timeZone: 'Asia/Seoul',
+  }).format(date);
+}
+
+export function getActivityTargetLabel(tableName: string): string {
+  if (tableName === 'canonical_product') return 'Product';
+  if (tableName === 'product_presentation') return 'Presentation';
+  if (tableName === 'care_intent') return 'Care';
+  if (tableName === 'trip_theme') return 'Trip';
+  if (tableName === 'audio_track') return 'Audio';
+  return tableName;
 }
 
 export function getStatusLabel(status: AdminSectionStatus): string {

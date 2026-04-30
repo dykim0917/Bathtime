@@ -285,6 +285,47 @@ button {
   line-height: 1.8;
 }
 
+.activityList {
+  display: flex;
+  flex-direction: column;
+}
+
+.activityRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 110px;
+  gap: 12px;
+  align-items: start;
+  border-bottom: 1px solid var(--line);
+  padding: 15px 0;
+}
+
+.activityRow:last-child {
+  border-bottom: 0;
+}
+
+.activityRow strong {
+  color: var(--text);
+  font-size: 14px;
+}
+
+.activityRow p,
+.activityRow time {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.activityRow p {
+  margin: 5px 0 0;
+}
+
+.activityRow time {
+  text-align: right;
+}
+
+.emptyPanelText {
+  margin-top: 16px;
+}
+
 .validationList {
   display: flex;
   flex-direction: column;

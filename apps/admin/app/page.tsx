@@ -1,11 +1,21 @@
 import {
   buildAdminDashboardViewModel,
+  formatActivityTime,
+  getActivityTargetLabel,
   getStatusLabel,
+  readRecentAdminActivity,
 } from '../lib/dashboardData';
 import { AdminShell } from '../components/AdminShell';
 
-export default function AdminHomePage() {
-  const dashboard = buildAdminDashboardViewModel();
+function getActivityEmptyMessage(status: string): string {
+  if (status === 'not_configured') return 'Supabase 세션 연결 후 최근 작업이 표시됩니다.';
+  if (status === 'unavailable') return 'Audit log migration 적용 후 최근 작업이 표시됩니다.';
+  return '아직 기록된 관리자 작업이 없습니다.';
+}
+
+export default async function AdminHomePage() {
+  const activity = await readRecentAdminActivity();
+  const dashboard = buildAdminDashboardViewModel(undefined, activity);
 
   return (
     <AdminShell activePath="/">
@@ -47,7 +57,7 @@ export default function AdminHomePage() {
           <div className="panel wide">
             <div className="panelHeader">
               <h3>관리 섹션</h3>
-              <span>Read-only shell</span>
+              <span>Content areas</span>
             </div>
             <div className="sectionTable">
               {dashboard.sections.map((section) => (
@@ -68,14 +78,30 @@ export default function AdminHomePage() {
 
           <div className="panel">
             <div className="panelHeader">
-              <h3>다음 작업</h3>
-              <span>MVP queue</span>
+              <h3>최근 작업</h3>
+              <span>{dashboard.activity.status === 'ready' ? 'Audit log' : 'Setup required'}</span>
             </div>
-            <ol className="queueList">
-              {dashboard.queue.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ol>
+            {dashboard.activity.rows.length > 0 ? (
+              <div className="activityList">
+                {dashboard.activity.rows.map((item) => (
+                  <article className="activityRow" key={item.id}>
+                    <div>
+                      <strong>
+                        {getActivityTargetLabel(item.targetTable)} · {item.targetId}
+                      </strong>
+                      <p>
+                        {item.action} by {item.actorEmail}
+                      </p>
+                    </div>
+                    <time dateTime={item.createdAt}>{formatActivityTime(item.createdAt)}</time>
+                  </article>
+                ))}
+              </div>
+            ) : (
+              <p className="mutedText emptyPanelText">
+                {getActivityEmptyMessage(dashboard.activity.status)}
+              </p>
+            )}
           </div>
         </section>
       </section>
