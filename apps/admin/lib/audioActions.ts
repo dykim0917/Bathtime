@@ -125,3 +125,60 @@ export async function cloneAudioTrackDraft(formData: FormData) {
   revalidatePath('/audio');
   redirect(`/audio/${newId}?updated=clone`);
 }
+
+function parseOptionalText(value: FormDataEntryValue | null): string | null {
+  const text = String(value ?? '').trim();
+  return text.length > 0 ? text : null;
+}
+
+function parsePersonaCodes(value: FormDataEntryValue | null): string[] {
+  return String(value ?? '')
+    .split(',')
+    .map((item) => item.trim())
+    .filter(Boolean);
+}
+
+export async function updateAudioTrackBasicInfo(formData: FormData) {
+  const id = String(formData.get('id') ?? '').trim();
+  const title = String(formData.get('title') ?? '').trim();
+  const durationSeconds = Number(String(formData.get('durationSeconds') ?? '').trim());
+  const filename = parseOptionalText(formData.get('filename'));
+  const remoteUrl = parseOptionalText(formData.get('remoteUrl'));
+  const personaCodes = parsePersonaCodes(formData.get('personaCodes'));
+  const licenseNote = parseOptionalText(formData.get('licenseNote'));
+
+  if (!id || !title || !Number.isInteger(durationSeconds) || durationSeconds <= 0) {
+    redirect(`/audio/${id || ''}?error=invalid_basic_info`);
+  }
+
+  if (remoteUrl && !/^https?:\/\//.test(remoteUrl)) {
+    redirect(`/audio/${id}?error=invalid_basic_info`);
+  }
+
+  const config = await readAdminPostgrestSessionConfig();
+  if (!config) {
+    redirect(`/audio/${id}?error=missing_content_db`);
+  }
+
+  try {
+    await updatePostgrestRows(
+      config,
+      'audio_track',
+      { id: `eq.${id}` },
+      {
+        title,
+        filename,
+        remote_url: remoteUrl,
+        duration_seconds: durationSeconds,
+        persona_codes: personaCodes,
+        license_note: licenseNote,
+      }
+    );
+  } catch {
+    redirect(`/audio/${id}?error=update_failed`);
+  }
+
+  revalidatePath('/audio');
+  revalidatePath(`/audio/${id}`);
+  redirect(`/audio/${id}?updated=basic_info`);
+}

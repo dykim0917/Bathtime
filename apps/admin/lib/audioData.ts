@@ -8,6 +8,8 @@ export interface AdminAudioTrackRow {
   title: string;
   type: 'music' | 'ambience';
   durationSeconds: number;
+  filename: string;
+  remoteUrl: string;
   source: 'bundled' | 'remote';
   personaCodes: string[];
   linkedRoutineCount: number;
@@ -21,6 +23,8 @@ const audioRows: AdminAudioTrackRow[] = [
     title: '수면 준비 케어 사운드',
     type: 'music',
     durationSeconds: 300,
+    filename: 'care_sleep_ready.mp3',
+    remoteUrl: '',
     source: 'bundled',
     personaCodes: ['P4_SLEEP'],
     linkedRoutineCount: 1,
@@ -32,6 +36,8 @@ const audioRows: AdminAudioTrackRow[] = [
     title: 'Kyoto Forest OST',
     type: 'music',
     durationSeconds: 260,
+    filename: 'trip_kyoto_forest.mp3',
+    remoteUrl: '',
     source: 'bundled',
     personaCodes: ['P1_SAFETY'],
     linkedRoutineCount: 1,
@@ -43,6 +49,8 @@ const audioRows: AdminAudioTrackRow[] = [
     title: 'Forest Rain',
     type: 'ambience',
     durationSeconds: 300,
+    filename: 'forest_rain.mp3',
+    remoteUrl: '',
     source: 'bundled',
     personaCodes: ['P1_SAFETY', 'P4_SLEEP'],
     linkedRoutineCount: 1,
@@ -54,6 +62,8 @@ const audioRows: AdminAudioTrackRow[] = [
     title: 'Fireplace',
     type: 'ambience',
     durationSeconds: 300,
+    filename: 'fireplace.mp3',
+    remoteUrl: '',
     source: 'bundled',
     personaCodes: ['P4_SLEEP'],
     linkedRoutineCount: 1,
@@ -67,6 +77,7 @@ interface AudioTrackRecord {
   title: string;
   type: AdminAudioTrackRow['type'];
   duration_seconds: number;
+  filename?: string | null;
   remote_url?: string | null;
   persona_codes: string[];
   license_note?: string | null;
@@ -120,6 +131,8 @@ export async function readAdminAudioRows(): Promise<AdminAudioTrackRow[]> {
     title: track.title,
     type: track.type,
     durationSeconds: track.duration_seconds,
+    filename: track.filename ?? '',
+    remoteUrl: track.remote_url ?? '',
     source: track.remote_url ? 'remote' : 'bundled',
     personaCodes: track.persona_codes,
     linkedRoutineCount: tripThemes.filter(

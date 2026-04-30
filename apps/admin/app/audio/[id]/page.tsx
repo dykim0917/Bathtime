@@ -7,7 +7,10 @@ import {
   getAudioStatusLabel,
   readAdminAudioRows,
 } from '../../../lib/audioData';
-import { cloneAudioTrackDraft } from '../../../lib/audioActions';
+import {
+  cloneAudioTrackDraft,
+  updateAudioTrackBasicInfo,
+} from '../../../lib/audioActions';
 
 interface AudioDetailPageProps {
   params: Promise<{
@@ -21,9 +24,12 @@ interface AudioDetailPageProps {
 
 function getStatusMessage(error?: string, updated?: string): string | null {
   if (updated === 'clone') return '복제한 draft 오디오 트랙입니다. 발행 전 내용을 검수하세요.';
+  if (updated === 'basic_info') return '오디오 기본 정보가 저장되었습니다.';
+  if (error === 'invalid_basic_info') return '오디오 기본 정보 값을 확인하세요.';
   if (error === 'missing_content_db') return '콘텐츠 DB 연결이 설정되지 않았습니다.';
   if (error === 'missing_admin') return '관리자 세션을 확인할 수 없습니다. 다시 로그인하세요.';
   if (error === 'clone_failed') return '오디오 트랙 복제에 실패했습니다. INSERT RLS 정책을 확인하세요.';
+  if (error === 'update_failed') return '오디오 저장에 실패했습니다. RLS 정책과 권한을 확인하세요.';
   return null;
 }
 
@@ -87,8 +93,49 @@ export default async function AudioDetailPage({
         <section className="detailGrid">
           <section className="panel">
             <div className="panelHeader">
-              <h3>기본 정보</h3>
-              <span>{track.id}</span>
+              <h3>기본 정보 편집</h3>
+              <span>Supabase Auth</span>
+            </div>
+            <form className="inlineForm" action={updateAudioTrackBasicInfo}>
+              <input type="hidden" name="id" value={track.id} />
+              <label htmlFor="audio-title">Title</label>
+              <input id="audio-title" name="title" defaultValue={track.title} />
+              <label htmlFor="audio-duration">Duration seconds</label>
+              <input
+                id="audio-duration"
+                name="durationSeconds"
+                type="number"
+                min="1"
+                defaultValue={track.durationSeconds}
+              />
+              <label htmlFor="audio-filename">Bundled filename</label>
+              <input id="audio-filename" name="filename" defaultValue={track.filename} />
+              <label htmlFor="audio-remote-url">Remote URL</label>
+              <input id="audio-remote-url" name="remoteUrl" defaultValue={track.remoteUrl} />
+              <label htmlFor="audio-persona">Persona codes</label>
+              <textarea
+                id="audio-persona"
+                name="personaCodes"
+                defaultValue={track.personaCodes.join(', ')}
+                rows={3}
+              />
+              <label htmlFor="audio-license">License note</label>
+              <textarea
+                id="audio-license"
+                name="licenseNote"
+                defaultValue={track.licenseNote === '-' ? '' : track.licenseNote}
+                rows={3}
+              />
+              <button type="submit" className="primaryButton">
+                기본 정보 저장
+              </button>
+            </form>
+          </section>
+
+          <section className="panel">
+            <div className="panelHeader">
+              <h3>현재 연결</h3>
+              <span>Read-only</span>
             </div>
             <dl className="detailList">
               <div>
@@ -100,24 +147,10 @@ export default async function AudioDetailPage({
                 <dd>{track.source}</dd>
               </div>
               <div>
-                <dt>License</dt>
-                <dd>{track.licenseNote}</dd>
+                <dt>Linked routines</dt>
+                <dd>{track.linkedRoutineCount}</dd>
               </div>
             </dl>
-          </section>
-
-          <section className="panel">
-            <div className="panelHeader">
-              <h3>Persona</h3>
-              <span>Read-only</span>
-            </div>
-            <div className="tagList">
-              {track.personaCodes.length > 0 ? (
-                track.personaCodes.map((code) => <span key={code}>{code}</span>)
-              ) : (
-                <p className="mutedText">연결된 페르소나가 없습니다.</p>
-              )}
-            </div>
           </section>
         </section>
       </section>

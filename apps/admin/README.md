@@ -36,6 +36,8 @@ Admin updates are audited in Postgres through `admin_action_log` triggers. Apply
 
 Product, care, trip, and audio clone actions create draft rows and require their clone RLS migrations.
 
+Audio basic edits require the audio basic RLS migration.
+
 ## Publish Validation
 
 Set this to let the `/publish` page validate a deployed snapshot endpoint:
