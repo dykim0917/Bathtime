@@ -5,6 +5,7 @@ import {
   countFailedChecks,
   countWarningChecks,
 } from '../../lib/publishValidation';
+import { buildReleasePreviewViewModel } from '../../lib/releasePreview';
 
 interface PublishPageProps {
   searchParams: Promise<{
@@ -25,7 +26,10 @@ function getPublishStatusMessage(error?: string, updated?: string): string | nul
 
 export default async function PublishPage({ searchParams }: PublishPageProps) {
   const { error, updated } = await searchParams;
-  const validation = await buildPublishValidationViewModel();
+  const [validation, preview] = await Promise.all([
+    buildPublishValidationViewModel(),
+    buildReleasePreviewViewModel(),
+  ]);
   const failedChecks = countFailedChecks(validation.checks);
   const warningChecks = countWarningChecks(validation.checks);
   const statusMessage = getPublishStatusMessage(error, updated);
@@ -103,6 +107,39 @@ export default async function PublishPage({ searchParams }: PublishPageProps) {
             </div>
           ) : (
             <p className="mutedText">검증할 snapshot payload가 아직 없습니다.</p>
+          )}
+        </section>
+
+        <section className="panel">
+          <div className="panelHeader">
+            <h3>발행 미리보기</h3>
+            <span>{preview.totalCards ? `${preview.totalCards} active cards` : 'No active cards'}</span>
+          </div>
+          {preview.totalCards > 0 ? (
+            <div className="previewGrid">
+              {preview.sections.map((section) => (
+                <section className="previewColumn" key={section.title}>
+                  <h4>{section.title}</h4>
+                  {section.cards.length > 0 ? (
+                    <div className="previewStack">
+                      {section.cards.map((card) => (
+                        <article className="previewCard" key={`${card.kind}-${card.id}`}>
+                          <span>{card.kind}</span>
+                          <strong>{card.title}</strong>
+                          <p>{card.subtitle}</p>
+                          <small>{card.detail}</small>
+                          <em>{card.meta}</em>
+                        </article>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="mutedText">Active 항목이 없습니다.</p>
+                  )}
+                </section>
+              ))}
+            </div>
+          ) : (
+            <p className="mutedText">미리보기할 active 콘텐츠가 없습니다.</p>
           )}
         </section>
       </section>

@@ -411,6 +411,58 @@ button {
   margin-top: 6px;
 }
 
+.previewGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.previewColumn h4 {
+  color: var(--secondary);
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.previewStack {
+  display: grid;
+  gap: 10px;
+}
+
+.previewCard {
+  min-height: 156px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(7, 21, 23, 0.34);
+  padding: 14px;
+}
+
+.previewCard span,
+.previewCard small,
+.previewCard em {
+  color: var(--muted);
+  display: block;
+  font-size: 12px;
+}
+
+.previewCard strong {
+  color: var(--text);
+  display: block;
+  font-size: 15px;
+  margin-top: 8px;
+}
+
+.previewCard p {
+  color: var(--secondary);
+  font-size: 13px;
+  margin: 6px 0 10px;
+}
+
+.previewCard em {
+  font-style: normal;
+  margin-top: 10px;
+}
+
 .loginShell {
   display: grid;
   min-height: 100vh;
@@ -726,7 +778,8 @@ button {
 
   .summaryGrid,
   .contentGrid,
-  .detailGrid {
+  .detailGrid,
+  .previewGrid {
     grid-template-columns: 1fr 1fr;
   }
 
