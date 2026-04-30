@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { AdminShell } from '../../components/AdminShell';
 import {
   buildAdminCareListViewModel,
@@ -76,6 +78,7 @@ export default async function CarePage({ searchParams }: CarePageProps) {
               <span>Default</span>
               <span>안전 메모</span>
               <span>상태</span>
+              <span>상세</span>
             </div>
             {care.rows.map((routine) => (
               <div className="dataTableRow" role="row" key={routine.id}>
@@ -104,6 +107,9 @@ export default async function CarePage({ searchParams }: CarePageProps) {
                     저장
                   </button>
                 </form>
+                <Link className="textButton" href={`/care/${routine.id}`}>
+                  열기
+                </Link>
               </div>
             ))}
           </div>
