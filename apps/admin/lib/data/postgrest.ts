@@ -4,21 +4,7 @@ export interface AdminPostgrestConfig {
   restUrl: string;
   apiKey: string;
   authorizationToken: string;
-  mode: 'supabase_auth' | 'service_role';
-}
-
-export function readAdminPostgrestConfig(
-  env: Partial<Record<string, string | undefined>> = process.env
-): AdminPostgrestConfig | null {
-  const restUrl = env.CONTENT_DB_REST_URL?.trim();
-  const serviceRoleKey = env.CONTENT_DB_SERVICE_ROLE_KEY?.trim();
-  if (!restUrl || !serviceRoleKey) return null;
-  return {
-    restUrl: restUrl.replace(/\/+$/, ''),
-    apiKey: serviceRoleKey,
-    authorizationToken: serviceRoleKey,
-    mode: 'service_role',
-  };
+  mode: 'supabase_auth';
 }
 
 function buildSupabaseRestUrl(env: Partial<Record<string, string | undefined>>): string | null {
@@ -34,7 +20,7 @@ export async function readAdminPostgrestSessionConfig(): Promise<AdminPostgrestC
   const restUrl = buildSupabaseRestUrl(process.env);
   const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY?.trim();
 
-  if (!restUrl || !anonKey) return readAdminPostgrestConfig();
+  if (!restUrl || !anonKey) return null;
 
   try {
     const supabase = await createSupabaseServerClient();
@@ -42,7 +28,7 @@ export async function readAdminPostgrestSessionConfig(): Promise<AdminPostgrestC
       data: { session },
     } = await supabase.auth.getSession();
 
-    if (!session?.access_token) return readAdminPostgrestConfig();
+    if (!session?.access_token) return null;
 
     return {
       restUrl,
@@ -51,7 +37,7 @@ export async function readAdminPostgrestSessionConfig(): Promise<AdminPostgrestC
       mode: 'supabase_auth',
     };
   } catch {
-    return readAdminPostgrestConfig();
+    return null;
   }
 }
 
@@ -71,7 +57,7 @@ export async function readPostgrestRows<T>(
       apikey: config.apiKey,
       authorization: `Bearer ${config.authorizationToken}`,
     },
-    next: { revalidate: 60 },
+    cache: 'no-store',
   });
 
   if (!response.ok) {
