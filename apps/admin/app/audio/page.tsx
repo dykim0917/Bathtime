@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { AdminShell } from '../../components/AdminShell';
 import {
   buildAdminAudioListViewModel,
@@ -78,6 +80,7 @@ export default async function AudioPage({ searchParams }: AudioPageProps) {
               <span>연결</span>
               <span>License</span>
               <span>상태</span>
+              <span>상세</span>
             </div>
             {audio.rows.map((track) => (
               <div className="dataTableRow" role="row" key={track.id}>
@@ -107,6 +110,9 @@ export default async function AudioPage({ searchParams }: AudioPageProps) {
                     저장
                   </button>
                 </form>
+                <Link className="textButton" href={`/audio/${track.id}`}>
+                  열기
+                </Link>
               </div>
             ))}
           </div>
