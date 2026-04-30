@@ -7,6 +7,7 @@ import {
   readAdminProductRows,
 } from '../../../lib/productsData';
 import {
+  updateProductBasicInfo,
   updateProductPresentation,
   updateProductStatus,
 } from '../../../lib/productActions';
@@ -23,8 +24,10 @@ interface ProductDetailPageProps {
 
 function getStatusMessage(error?: string, updated?: string): string | null {
   if (updated === 'status') return '상태가 저장되었습니다.';
+  if (updated === 'basic_info') return '기본 정보가 저장되었습니다.';
   if (updated === 'presentation') return '표시 메타데이터가 저장되었습니다.';
   if (error === 'invalid_status') return '상태 값이 올바르지 않습니다.';
+  if (error === 'invalid_basic_info') return '기본 정보 값을 확인하세요.';
   if (error === 'invalid_presentation') return '표시 메타데이터 값을 확인하세요.';
   if (error === 'missing_content_db') return '콘텐츠 DB 연결이 설정되지 않았습니다.';
   if (error === 'update_failed') return '상태 저장에 실패했습니다. RLS 정책과 권한을 확인하세요.';
@@ -78,22 +81,34 @@ export default async function ProductDetailPage({
           <section className="panel">
             <div className="panelHeader">
               <h3>기본 정보</h3>
-              <span>{product.id}</span>
+              <span>Supabase Auth</span>
             </div>
-            <dl className="detailList">
-              <div>
-                <dt>브랜드</dt>
-                <dd>{product.brand}</dd>
-              </div>
-              <div>
-                <dt>카테고리</dt>
-                <dd>{product.category}</dd>
-              </div>
-              <div>
-                <dt>최근 검수일</dt>
-                <dd>{product.lastVerifiedAt}</dd>
-              </div>
-            </dl>
+            <form className="inlineForm" action={updateProductBasicInfo}>
+              <input type="hidden" name="id" value={product.id} />
+              <label htmlFor="product-name">이름</label>
+              <input id="product-name" name="name" defaultValue={product.name} />
+              <label htmlFor="product-brand">브랜드</label>
+              <input id="product-brand" name="brand" defaultValue={product.brand} />
+              <label htmlFor="product-category">카테고리</label>
+              <input id="product-category" name="category" defaultValue={product.category} />
+              <label htmlFor="product-summary">요약</label>
+              <textarea
+                id="product-summary"
+                name="summary"
+                defaultValue={product.summary}
+                rows={4}
+              />
+              <label htmlFor="product-last-verified">최근 검수일</label>
+              <input
+                id="product-last-verified"
+                name="lastVerifiedAt"
+                type="date"
+                defaultValue={product.lastVerifiedAt}
+              />
+              <button type="submit" className="primaryButton">
+                기본 정보 저장
+              </button>
+            </form>
           </section>
 
           <section className="panel">

@@ -8,6 +8,7 @@ export interface AdminProductRow {
   name: string;
   brand: string;
   category: string;
+  summary: string;
   tags: string[];
   emoji: string;
   bgColor: string;
@@ -24,6 +25,7 @@ const productRows: AdminProductRow[] = [
     name: '밀크 프로틴 배스',
     brand: 'Daily Bath',
     category: 'bath_salt',
+    summary: '우유 단백질 계열 보습 성분이 들어 있어요.',
     tags: ['보습', '데일리'],
     emoji: 'BR',
     bgColor: '#EADBCB',
@@ -38,6 +40,7 @@ const productRows: AdminProductRow[] = [
     name: '중탄산 입욕정',
     brand: 'Bath Therapy',
     category: 'bath_item',
+    summary: '향과 색을 거의 더하지 않은 중탄산 입욕제예요.',
     tags: ['중탄산', '리셋'],
     emoji: 'BT',
     bgColor: '#D8E5EA',
@@ -52,6 +55,7 @@ const productRows: AdminProductRow[] = [
     name: '히노끼 배스 오일',
     brand: 'Forest Ritual',
     category: 'essential_oil',
+    summary: '편백나무를 떠올리게 하는 히노끼 향이 물에 퍼져요.',
     tags: ['히노끼', '숲'],
     emoji: 'HK',
     bgColor: '#D8E4D4',
@@ -66,6 +70,7 @@ const productRows: AdminProductRow[] = [
     name: '천일염 풋배스 솔트',
     brand: 'Barefoot Lab',
     category: 'bath_salt',
+    summary: '향이 거의 없는 천일염 계열 바스솔트예요.',
     tags: ['솔트', '풋배스'],
     emoji: 'BS',
     bgColor: '#E9DEC9',
@@ -80,6 +85,7 @@ const productRows: AdminProductRow[] = [
     name: '페퍼민트 바디워시',
     brand: 'Awake Shower',
     category: 'body_wash',
+    summary: '페퍼민트와 유칼립투스 향의 산뜻한 바디워시예요.',
     tags: ['페퍼민트', '샤워'],
     emoji: 'AW',
     bgColor: '#D6E9E4',
@@ -96,6 +102,7 @@ interface CanonicalProductRecord {
   name_ko: string;
   brand: string;
   category: string;
+  summary: string;
   status: AdminProductRow['status'];
   last_verified_at: string;
 }
@@ -167,6 +174,7 @@ export async function readAdminProductRows(): Promise<AdminProductRow[]> {
       name: product.name_ko,
       brand: product.brand,
       category: product.category,
+      summary: product.summary,
       tags: presentation?.tags ?? [],
       emoji: presentation?.emoji ?? '-',
       bgColor: presentation?.bg_color ?? '#000000',

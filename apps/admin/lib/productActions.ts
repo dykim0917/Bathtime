@@ -49,6 +49,49 @@ export async function updateProductStatus(formData: FormData) {
   redirect(`/products/${id}?updated=status`);
 }
 
+function isDateString(value: string): boolean {
+  return /^\d{4}-\d{2}-\d{2}$/.test(value);
+}
+
+export async function updateProductBasicInfo(formData: FormData) {
+  const id = String(formData.get('id') ?? '').trim();
+  const name = String(formData.get('name') ?? '').trim();
+  const brand = String(formData.get('brand') ?? '').trim();
+  const category = String(formData.get('category') ?? '').trim();
+  const summary = String(formData.get('summary') ?? '').trim();
+  const lastVerifiedAt = String(formData.get('lastVerifiedAt') ?? '').trim();
+
+  if (!id || !name || !brand || !category || !summary || !isDateString(lastVerifiedAt)) {
+    redirect(`/products/${id || ''}?error=invalid_basic_info`);
+  }
+
+  const config = await readAdminPostgrestSessionConfig();
+  if (!config) {
+    redirect(`/products/${id}?error=missing_content_db`);
+  }
+
+  try {
+    await updatePostgrestRows(
+      config,
+      'canonical_product',
+      { id: `eq.${id}` },
+      {
+        name_ko: name,
+        brand,
+        category,
+        summary,
+        last_verified_at: lastVerifiedAt,
+      }
+    );
+  } catch {
+    redirect(`/products/${id}?error=update_failed`);
+  }
+
+  revalidatePath('/products');
+  revalidatePath(`/products/${id}`);
+  redirect(`/products/${id}?updated=basic_info`);
+}
+
 function parseListField(value: FormDataEntryValue | null): string[] {
   return String(value ?? '')
     .split(',')
