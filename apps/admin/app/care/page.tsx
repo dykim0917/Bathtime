@@ -18,6 +18,8 @@ interface CarePageProps {
 function getCareStatusMessage(error?: string, updated?: string): string | null {
   if (updated === 'status') return '상태가 저장되었습니다.';
   if (error === 'invalid_status') return '상태 값이 올바르지 않습니다.';
+  if (error === 'invalid_clone') return '복제할 케어 루틴을 찾을 수 없습니다.';
+  if (error === 'clone_source_missing') return '원본 케어 루틴을 찾을 수 없습니다.';
   if (error === 'missing_content_db') return '콘텐츠 DB 연결이 설정되지 않았습니다.';
   if (error === 'update_failed') return '상태 저장에 실패했습니다. RLS 정책과 권한을 확인하세요.';
   return null;
