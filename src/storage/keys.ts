@@ -8,4 +8,5 @@ export const STORAGE_KEYS = {
   THEME_PREFERENCE_WEIGHTS: '@bath_sommelier/theme_preference_weights',
   BATH_SESSION_LOG: '@bath_sommelier/bath_session_log',
   COOKIE_NOTICE_ACK: '@bath_sommelier/cookie_notice_ack',
+  SAVED_ARCHIVE_CONTENT: '@bath_sommelier/saved_archive_content',
 } as const;

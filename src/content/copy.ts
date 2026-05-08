@@ -1,16 +1,57 @@
 import { brand } from '@/src/content/brand';
 
 export const copy = {
+  archive: {
+    nav: {
+      home: '지금',
+      explore: '탐색',
+      routines: '의식',
+      submit: '제보',
+      saved: '보관함',
+    },
+    categories: {
+      HOME_BATH: '홈케어',
+      BATH_PLACES: '목욕 공간',
+      BATH_ITEMS: '욕실 아이템',
+      TIPS_CULTURE: '읽을거리 / 문화',
+    },
+    sections: {
+      featured: '이달의 픽',
+      editorPick: '에디터 픽',
+      categories: '카테고리',
+      latest: '새로 정리한 기록',
+      rituals: '바로 해볼 수 있는 의식',
+    },
+    meta: {
+      brandEyebrow: brand.logoText,
+      archiveEyebrow: `${brand.logoText} ARCHIVE`,
+      p0Archive: 'P0 Archive',
+      all: '전체',
+      records: (count: number) => `${count}개 기록`,
+    },
+    actions: {
+      viewRecord: '기록 보기',
+      viewAll: '전체 보기',
+      backToExplore: '탐색으로 돌아가기',
+      goExplore: '탐색으로 이동',
+      save: '저장하기',
+      saved: '저장됨',
+      submit: '제보하기',
+      startRitual: '의식 시작',
+      backToRituals: '의식 목록으로',
+      stop: '중단하기',
+    },
+  },
   home: {
     title: '오늘의 바스타임',
     subtitlePrefix: '오늘 상태:',
     modeHint: {
       sleep: '수면 준비에 맞춘 쉬는 시간',
-      recovery: '몸 상태에 맞춘 회복 루틴',
+      recovery: '몸 상태에 맞춘 회복 의식',
       reset: '기분 전환을 돕는 바스타임',
     },
-    lateNightBadge: '늦은 시간이라 수면 준비 루틴을 먼저 보여드려요.',
-    conflictBadge: '조건이 겹쳐서 가장 안전한 루틴 1개를 먼저 추천해요.',
+    lateNightBadge: '늦은 시간이라 수면 준비 의식을 먼저 보여드려요.',
+    conflictBadge: '조건이 겹쳐서 가장 안전한 의식 1개를 먼저 추천해요.',
     sections: {
       signal: '오늘 상태',
       environment: '가능한 방식',
@@ -29,19 +70,19 @@ export const copy = {
       secondary_2: '가벼운 대안이에요',
     },
     resetSafeHint: '냉수 단계는 안전을 위해 자동으로 제외됐어요.',
-    noCommerceNotice: '지금은 상품 대신 루틴부터 바로 시작할 수 있어요.',
-    beginnerGuide: '처음 시작이라 무리 없이 쉬기 좋은 기본 루틴부터 보여드려요.',
+    noCommerceNotice: '지금은 상품 대신 의식부터 바로 시작할 수 있어요.',
+    beginnerGuide: '처음 시작이라 무리 없이 쉬기 좋은 기본 의식부터 보여드려요.',
     safetyPriorityBadge: '안전 우선 적용',
-    streakTitle: '이번주 바스타임',
-    todayDone: '오늘의 바스타임 완료',
-    todayPending: '오늘의 바스타임 전',
+    streakTitle: '이번주 의식 기록',
+    todayDone: '오늘의 의식 완료',
+    todayPending: '오늘의 의식 전',
     weeklyCount: (count: number, goal: number) => `이번주 ${count} / ${goal}일`,
     dailyStreak: (days: number) => `${days}일 연속`,
     weeklyStreak: (weeks: number) => `${weeks}주 연속`,
   },
   suggestion: {
-    titleCare: '오늘 맞춘 루틴 자세히 보기',
-    titleTrip: '무드 루틴 자세히 보기',
+    titleCare: '오늘 맞춘 의식 자세히 보기',
+    titleTrip: '무드 의식 자세히 보기',
     labels: {
       state: '현재 상태',
       narrative: '오늘의 분위기',
@@ -53,12 +94,12 @@ export const copy = {
     },
     cta: {
       close: '닫기',
-      start: '이 루틴 시작하기',
+      start: '이 의식 시작하기',
     },
   },
   product: {
-    title: '루틴에 더할 제품',
-    subtitle: '오늘 루틴에 맞춰 쓰기 쉬운 제품만 골랐어요',
+    title: '의식에 더할 제품',
+    subtitle: '오늘 의식에 맞춰 쓰기 쉬운 제품만 골랐어요',
     primarySectionTitle: '먼저 보기 좋은 제품',
     alternativeSectionTitle: '비슷하게 볼 제품',
     guideSectionTitle: '함께 찾기 좋은 제품군',
@@ -67,7 +108,7 @@ export const copy = {
       detail: '제품 보기',
       purchase: '판매처 보기',
       close: '닫기',
-      continue: '루틴 계속하기',
+      continue: '의식 계속하기',
     },
   },
   routine: {
@@ -76,11 +117,11 @@ export const copy = {
     stepFinish: '마무리',
     preBath: {
       title: '시작 전 꼭 확인하세요',
-      subtitle: '안전 제약이 걸린 루틴입니다. 핵심 주의사항만 확인하고 시작해주세요.',
+      subtitle: '안전 제약이 걸린 의식입니다. 핵심 주의사항만 확인하고 시작해주세요.',
       historySubtitle:
-        '이전에 저장한 루틴입니다. 오늘도 같은 제약을 지킬 수 있는지 확인한 뒤 다시 시작해주세요.',
+        '이전에 저장한 의식입니다. 오늘도 같은 제약을 지킬 수 있는지 확인한 뒤 다시 시작해주세요.',
       warningBadge: '주의',
-      warningLead: '이번 루틴은 안전 제약이 있어요',
+      warningLead: '이번 의식은 안전 제약이 있어요',
       reviewCta: '주의사항 확인하기',
       historyReviewCta: '다시 시작 전 확인하기',
       historyStartCta: '다시 시작하기',
@@ -90,10 +131,10 @@ export const copy = {
     timerPaused: '잠시 멈춤',
     timerPause: '일시정지',
     timerResume: '다시 시작',
-    timerFinish: '루틴 마치기',
+    timerFinish: '의식 마치기',
     safetyTitle: '안전 안내',
     safetyLines: [
-      '38~40°C를 권장해요. 수면 루틴은 38~41°C예요.',
+      '38~40°C를 권장해요. 수면 의식은 38~41°C예요.',
       '10~15분 진행하고 이상하면 바로 중단하세요.',
       '음주 직후에는 사용하지 마세요.',
     ],
@@ -101,7 +142,7 @@ export const copy = {
       title: '추천 근거',
       defaultSafety: '권장 수온과 시간을 지키고, 불편하면 바로 중단하세요.',
       reasonTemplates: {
-      trip: (themeTitle: string) => `${themeTitle} 테마에 맞춘 무드 루틴으로 구성했어요.`,
+      trip: (themeTitle: string) => `${themeTitle} 테마에 맞춘 무드 의식으로 구성했어요.`,
         care: (personaLabel: string) => `${personaLabel} 기준으로 현재 상태에 맞췄어요.`,
         params: (bathTypeLabel: string, temperature: number, durationLabel: string) =>
           `${bathTypeLabel} 기준 ${temperature}°C · ${durationLabel}으로 최적화했어요.`,
@@ -115,8 +156,8 @@ export const copy = {
       ],
     },
     recipe: {
-      tripModeLabel: '무드 · 분위기 전환 루틴',
-      careModeLabel: '컨디션 · 몸 상태에 맞춘 루틴',
+      tripModeLabel: '무드 · 분위기 전환 의식',
+      careModeLabel: '컨디션 · 몸 상태에 맞춘 의식',
       summaryEyebrow: '3초 요약',
       summaryTitle: '오늘은 이렇게만 해보세요',
       quickSummary: {
@@ -136,13 +177,13 @@ export const copy = {
       noRequiredBody: '다른 준비물 없이도 충분해요. 지금 가능한 방식으로 시작해보세요.',
       optionalBody: (name: string) => `${name} 대신 고르거나 함께 보기 좋은 완제품이에요.`,
       showerOptionalBody: '향이 있는 바디워시나 샤워타월 정도만 더해도 충분해요.',
-      noOptionalBody: '이번 루틴은 추가 준비물 없이도 충분해요.',
+      noOptionalBody: '이번 의식은 추가 준비물 없이도 충분해요.',
       waterStepLabel: '물 준비',
       ingredientStepLabel: '재료 넣기',
       ingredientStepBody: (name: string) => `${name} 하나만 준비하면 바로 시작할 수 있어요.`,
       noIngredientStepBody: '필수 준비물 없이도 괜찮아요. 집에 있는 것만으로 먼저 시작해보세요.',
-      bridgeEyebrow: '루틴에 더하기',
-      bridgeTitle: '오늘 루틴에 맞는 제품',
+      bridgeEyebrow: '의식에 더하기',
+      bridgeTitle: '오늘 의식에 맞는 제품',
       bridgeBody: '새로 사야 하는 것은 아니에요. 필요하다면 함께 보기 좋은 제품만 골랐어요.',
       bridgeButton: '추천 제품 보기',
       safetyEyebrow: '안전 먼저',
@@ -157,7 +198,7 @@ export const copy = {
         scheduledSummary: (startTime: string, endTime: string) =>
           `${startTime}쯤 시작해 ${endTime} 전에 마치는 흐름을 추천해요.`,
         startNowSummary: (bedtimeTime: string) =>
-          `지금 시작한다면 루틴이 끝난 뒤 최소 90분은 쉬고 ${bedtimeTime} 이후에 잠자리에 들어보세요.`,
+          `지금 시작한다면 의식이 끝난 뒤 최소 90분은 쉬고 ${bedtimeTime} 이후에 잠자리에 들어보세요.`,
       },
     },
     simpleStartCta: '간단히 시작',
@@ -173,8 +214,8 @@ export const copy = {
     placeholderSubtitle: '곧 추가될 예정이에요',
     placeholderDisabled: '준비 중이에요',
     restrictedDisabled: '현재 환경에선 제한적으로 추천돼요',
-    hangoverBlocked: '숙취 루틴은 전신 입욕 없이 미지근한 족욕만 가능해요.',
-    edemaBlocked: '붓기 루틴은 샤워보다 욕조나 족욕을 먼저 권장해요.',
+    hangoverBlocked: '숙취 의식은 전신 입욕 없이 미지근한 족욕만 가능해요.',
+    edemaBlocked: '붓기 의식은 샤워보다 욕조나 족욕을 먼저 권장해요.',
     sensitiveSkinBadge: '저자극 조정',
     sensitiveSkinAdjusted: '저자극 기준으로 자동 조정해요.',
   },
@@ -186,7 +227,7 @@ export const copy = {
     monthlyLabel: '이번 달 기록',
     shareCta: '오늘 바스타임 공유',
     shareSheetTitle: '오늘 바스타임',
-    feedbackQuestion: '오늘 루틴은 어땠나요?',
+    feedbackQuestion: '오늘 의식은 어땠나요?',
     feedback: {
       good: '좋았어요',
       bad: '아쉬웠어요',
@@ -217,7 +258,7 @@ export const copy = {
     expand: '펼치기',
     collapse: '접기',
     summary: {
-      sessions: '총 루틴',
+      sessions: '총 의식',
       care: '케어',
       trip: '무드',
       avgDuration: '평균 진행 시간',
@@ -237,7 +278,7 @@ export const copy = {
     },
     empty: {
       title: '아직 기록이 없어요',
-      subtitle: '첫 루틴을 시작하면 여기에 쌓여요.',
+      subtitle: '첫 의식을 시작하면 여기에 쌓여요.',
     },
   },
   settings: {
@@ -263,7 +304,7 @@ export const copy = {
     purchaseUnavailableBody: '아직 연결된 판매처 링크가 없어요.',
     openLinkFailedTitle: '링크 열기 실패',
     openLinkFailedBody: '지금은 판매처 링크를 열 수 없어요.',
-    finishRoutineTitle: '루틴을 마칠까요?',
+    finishRoutineTitle: '의식을 마칠까요?',
     finishRoutineBody: '지금 마치면 현재 진행 시간으로 기록돼요. 계속할까요?',
     cancel: '취소',
     proceed: '진행',
@@ -278,7 +319,7 @@ export const copy = {
     coldWarning:
       '고혈압·부정맥·뇌혈관 병력이 있으면 냉수 단계는 피하세요.',
     safeOnly:
-      '현재 상태에서는 안전 루틴만 보여드려요. 이상하면 즉시 중단하세요.',
+      '현재 상태에서는 안전 의식만 보여드려요. 이상하면 즉시 중단하세요.',
     conflictResolved: '조건이 겹칠 때는 더 안전한 추천을 먼저 보여드려요.',
     diabetesCaution:
       '당뇨가 있으면 온도 체감이 다를 수 있어 천천히 진행하세요.',

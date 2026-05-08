@@ -40,6 +40,7 @@ assets/images/products/*.png
 
 # local env files
 .env*.local
+.data/
 
 # typescript
 *.tsbuildinfo

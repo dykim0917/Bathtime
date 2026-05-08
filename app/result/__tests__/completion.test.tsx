@@ -155,7 +155,7 @@ describe('CompletionScreen', () => {
     expect(screen.getByText('오늘 바스타임 요약')).toBeTruthy();
     expect(screen.getByText('오늘 바스타임 공유')).toBeTruthy();
     expect(screen.getByText('마무리로 이 세 가지만 챙겨주세요')).toBeTruthy();
-    expect(screen.getByText('오늘 루틴은 어땠나요?')).toBeTruthy();
+    expect(screen.getByText('오늘 의식은 어땠나요?')).toBeTruthy();
 
     fireEvent.press(screen.getByText('좋았어요'));
 

@@ -621,6 +621,21 @@ button {
   grid-template-columns: minmax(220px, 1.2fr) 90px 90px 90px minmax(160px, 1fr) 70px 140px 148px 64px;
 }
 
+.contentArchiveTable .dataTableHeader,
+.contentArchiveTable .dataTableRow {
+  grid-template-columns: minmax(260px, 1.4fr) 120px 90px 76px 90px minmax(180px, 1fr) 64px;
+}
+
+.submissionsTable .dataTableHeader,
+.submissionsTable .dataTableRow {
+  grid-template-columns: 110px minmax(160px, 0.8fr) minmax(260px, 1.4fr) 100px 80px 90px 64px;
+}
+
+.routinesTable .dataTableHeader,
+.routinesTable .dataTableRow {
+  grid-template-columns: minmax(260px, 1.4fr) 90px 90px 80px 70px 64px;
+}
+
 .dataTableHeader {
   border-bottom: 1px solid var(--line);
   color: var(--muted);
@@ -757,6 +772,76 @@ button {
   min-height: 74px;
   padding: 10px;
   resize: vertical;
+}
+
+.filterBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.filterBar select {
+  min-height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(7, 21, 23, 0.6);
+  color: var(--text);
+  font: inherit;
+  padding: 0 10px;
+}
+
+.structuredGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.structuredCard {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(7, 21, 23, 0.34);
+  padding: 14px;
+}
+
+.structuredCard h4 {
+  margin: 0;
+}
+
+.structuredCard p,
+.structuredCard li {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.structuredCard ul {
+  margin: 10px 0 0;
+  padding-left: 18px;
+}
+
+.readonlyList {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.readonlyList p {
+  display: grid;
+  gap: 5px;
+  margin: 0;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 12px;
+}
+
+.readonlyList strong {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.readonlyList span {
+  color: var(--text);
+  overflow-wrap: anywhere;
 }
 
 .tableForm {
