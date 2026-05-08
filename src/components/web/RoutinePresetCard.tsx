@@ -1,6 +1,6 @@
 import React from 'react';
-import { FontAwesome } from '@expo/vector-icons';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Play } from '@/src/components/web/phosphorIcons';
 import { RoutinePreset } from '@/src/archive/types';
 import { ROUTINE_ENVIRONMENT_LABELS } from '@/src/archive/labels';
 import { archiveColors, archiveRadius } from '@/src/theme/archiveTheme';
@@ -27,7 +27,7 @@ export function RoutinePresetCard({ routine, onStart }: { routine: RoutinePreset
         ))}
       </View>
       <Pressable style={styles.button} onPress={onStart}>
-        <FontAwesome name="play" size={14} color={archiveColors.onPrimary} />
+        <Play size={15} color={archiveColors.onPrimary} weight="fill" />
         <Text style={styles.buttonText}>{copy.archive.actions.startRitual}</Text>
       </Pressable>
     </View>

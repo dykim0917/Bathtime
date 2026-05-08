@@ -17,13 +17,14 @@ export function ArchivePageContainer({ children, variant }: Props) {
   const { width } = useWindowDimensions();
   const isDesktop = width >= 768;
   const desktopPadding = variant === 'detail' ? 0 : 62;
+  const maxWidth = variant === 'detail' ? undefined : getMaxWidth(variant);
 
   return (
     <View
       style={[
         styles.container,
         {
-          maxWidth: isDesktop ? getMaxWidth(variant) : undefined,
+          maxWidth: isDesktop ? maxWidth : undefined,
           paddingHorizontal: isDesktop ? desktopPadding : 0,
         },
       ]}

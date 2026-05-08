@@ -23,18 +23,29 @@ export function ArchiveVisual({
   height = 172,
   showBadge = true,
   radius = archiveRadius.lg,
+  roundBottom = true,
 }: {
   content: ArchiveContent;
   height?: number;
   showBadge?: boolean;
   radius?: number;
+  roundBottom?: boolean;
 }) {
+  const radiusStyle = roundBottom
+    ? { borderRadius: radius }
+    : {
+        borderTopLeftRadius: radius,
+        borderTopRightRadius: radius,
+        borderBottomLeftRadius: 0,
+        borderBottomRightRadius: 0,
+      };
+
   return (
     <ImageBackground
       source={getImageSource(content)}
-      imageStyle={[styles.image, { borderRadius: radius }]}
+      imageStyle={[styles.image, radiusStyle]}
       resizeMode="cover"
-      style={[styles.visual, { minHeight: height, borderRadius: radius }]}
+      style={[styles.visual, { minHeight: height }, radiusStyle]}
     >
       {showBadge ? (
         <View style={styles.badge}>

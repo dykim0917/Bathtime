@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Href, router, useLocalSearchParams } from 'expo-router';
 import { Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
+import { BookmarkSimple, PlusSquare } from '@/src/components/web/phosphorIcons';
 import { ArchiveStructuredInfo } from '@/src/components/web/ArchiveStructuredInfo';
 import { ArchivePageContainer } from '@/src/components/web/ArchivePageContainer';
 import { ArchiveVisual } from '@/src/components/web/ArchiveVisual';
@@ -58,6 +58,27 @@ export default function ContentDetailPage() {
     trackArchiveEvent(isSaved ? 'content_saved' : 'content_unsaved', { contentId: content.id, category: content.category, platform: 'web' });
   };
 
+  const headerBlock = (
+    <View style={webStyles.header}>
+      <Text style={webStyles.eyebrow}>{CATEGORY_LABELS[content.category]} · {CONTENT_TYPE_LABELS[content.contentType]}</Text>
+      <Text style={webStyles.title}>{content.title}</Text>
+      {content.subtitle ? <Text style={webStyles.lede}>{content.subtitle}</Text> : null}
+    </View>
+  );
+
+  const actionBlock = (
+    <View style={styles.actionRow}>
+      <Pressable style={styles.secondaryButton} onPress={handleToggleSaved}>
+        <BookmarkSimple size={17} color={archiveColors.ink} weight={saved ? 'fill' : 'regular'} />
+        <Text style={styles.secondaryButtonText}>{saved ? copy.archive.actions.saved : copy.archive.actions.save}</Text>
+      </Pressable>
+      <Pressable style={styles.primaryButton} onPress={() => router.push('/submit' as Href)}>
+        <PlusSquare size={17} color={archiveColors.onPrimary} weight="regular" />
+        <Text style={styles.primaryButtonText}>{copy.archive.actions.submit}</Text>
+      </Pressable>
+    </View>
+  );
+
   return (
     <WebShell>
       <SeoMetadata
@@ -68,7 +89,7 @@ export default function ContentDetailPage() {
       />
       <ArchivePageContainer variant="detail">
       <View style={[webStyles.pageStack, styles.detailFrame]}>
-        <View style={styles.heroWrap}>
+        <View style={[styles.heroWrap, !isDesktopDetail && styles.heroWrapMobileFull]}>
           <ArchiveVisual content={content} height={390} showBadge={false} radius={0} />
           <View style={styles.heroPills}>
             <Text style={styles.heroPill}>{CATEGORY_LABELS[content.category]}</Text>
@@ -76,32 +97,36 @@ export default function ContentDetailPage() {
           </View>
         </View>
 
-        <View style={styles.detailContent}>
-          <View style={webStyles.header}>
-            <Text style={webStyles.eyebrow}>{CATEGORY_LABELS[content.category]} · {CONTENT_TYPE_LABELS[content.contentType]}</Text>
-            <Text style={webStyles.title}>{content.title}</Text>
-            {content.subtitle ? <Text style={webStyles.lede}>{content.subtitle}</Text> : null}
-          </View>
-
-          <View style={styles.actionRow}>
-            <Pressable style={styles.secondaryButton} onPress={handleToggleSaved}>
-              <FontAwesome name={saved ? 'bookmark' : 'bookmark-o'} size={15} color={archiveColors.ink} />
-              <Text style={styles.secondaryButtonText}>{saved ? copy.archive.actions.saved : copy.archive.actions.save}</Text>
-            </Pressable>
-            <Pressable style={styles.primaryButton} onPress={() => router.push('/submit' as Href)}>
-              <FontAwesome name="plus-square-o" size={15} color={archiveColors.onPrimary} />
-              <Text style={styles.primaryButtonText}>{copy.archive.actions.submit}</Text>
-            </Pressable>
-          </View>
-
-          <View style={[styles.detailColumns, isDesktopDetail && styles.detailColumnsDesktop]}>
-            <View style={styles.bodyColumn}>
-              <ContentBodyRenderer blocks={content.body} />
+        <View style={[styles.detailContent, isDesktopDetail && styles.detailContentDesktop]}>
+          {isDesktopDetail ? (
+            <View style={[styles.detailColumns, styles.detailColumnsDesktop]}>
+              <View style={styles.contentColumn}>
+                {headerBlock}
+                {actionBlock}
+                <View style={styles.bodyColumn}>
+                  <ContentBodyRenderer blocks={content.body} />
+                </View>
+              </View>
+              {React.createElement(
+                'div',
+                { className: 'bath-detail-sticky-info' },
+                <ArchiveStructuredInfo content={content} />,
+              )}
             </View>
-            <View style={[styles.infoColumn, isDesktopDetail && styles.infoColumnDesktop]}>
-              <ArchiveStructuredInfo content={content} />
-            </View>
-          </View>
+          ) : (
+            <>
+              {headerBlock}
+              {actionBlock}
+              <View style={styles.detailColumns}>
+                <View style={styles.infoColumn}>
+                  <ArchiveStructuredInfo content={content} />
+                </View>
+                <View style={styles.bodyColumn}>
+                  <ContentBodyRenderer blocks={content.body} />
+                </View>
+              </View>
+            </>
+          )}
 
           {routines.length > 0 ? (
             <View style={webStyles.section}>
@@ -134,6 +159,9 @@ const styles = StyleSheet.create({
     borderBottomColor: archiveColors.hairline,
     backgroundColor: archiveColors.surfaceSoft,
   },
+  heroWrapMobileFull: {
+    marginHorizontal: -16,
+  },
   heroPills: {
     position: 'absolute',
     left: 30,
@@ -162,6 +190,11 @@ const styles = StyleSheet.create({
   detailContent: {
     paddingHorizontal: 30,
     gap: 28,
+  },
+  detailContentDesktop: {
+    width: '100%',
+    maxWidth: 1120,
+    alignSelf: 'center',
   },
   actionRow: {
     flexDirection: 'row',
@@ -219,6 +252,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'flex-start',
     gap: 48,
+  },
+  contentColumn: {
+    flex: 1,
+    gap: 28,
   },
   bodyColumn: {
     flex: 1,
