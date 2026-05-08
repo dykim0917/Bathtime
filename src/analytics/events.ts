@@ -143,3 +143,38 @@ export function trackSommelierPickClick(payload: CommerceEventPayload): void {
 export function trackAffiliateLinkClick(payload: CommerceEventPayload): void {
   emitCommerce('affiliate_link_click', payload);
 }
+
+export type ArchiveAnalyticsEventName =
+  | 'archive_home_viewed'
+  | 'content_card_clicked'
+  | 'content_detail_viewed'
+  | 'content_saved'
+  | 'content_unsaved'
+  | 'explore_filter_used'
+  | 'routine_cta_clicked'
+  | 'routine_started'
+  | 'routine_completed'
+  | 'submit_started'
+  | 'submit_completed'
+  | 'external_link_clicked';
+
+export interface ArchiveEventPayload {
+  contentId?: string;
+  category?: string;
+  contentType?: string;
+  tags?: string[];
+  source?: string;
+  routineId?: string;
+  submissionType?: string;
+  platform?: string;
+  ts?: string;
+}
+
+export function trackArchiveEvent(eventName: ArchiveAnalyticsEventName, payload: ArchiveEventPayload = {}): void {
+  if (__DEV__) {
+    console.log(`[analytics] ${eventName}`, {
+      ts: new Date().toISOString(),
+      ...payload,
+    });
+  }
+}

@@ -227,16 +227,16 @@ describe('RecipeScreen pre-bath gate', () => {
     );
 
     expect(
-      screen.queryByText(
-        '이전에 저장한 루틴입니다. 오늘도 같은 제약을 지킬 수 있는지 확인한 뒤 다시 시작해주세요.'
-      )
+	      screen.queryByText(
+	        '이전에 저장한 의식입니다. 오늘도 같은 제약을 지킬 수 있는지 확인한 뒤 다시 시작해주세요.'
+	      )
     ).toBeNull();
 
     fireEvent.press(screen.getAllByText('다시 시작하기')[0]);
 
-    await waitFor(() =>
-      expect(screen.getByText('이전에 저장한 루틴입니다. 오늘도 같은 제약을 지킬 수 있는지 확인한 뒤 다시 시작해주세요.')).toBeTruthy()
-    );
+	    await waitFor(() =>
+	      expect(screen.getByText('이전에 저장한 의식입니다. 오늘도 같은 제약을 지킬 수 있는지 확인한 뒤 다시 시작해주세요.')).toBeTruthy()
+	    );
 
     expect(screen.getAllByText('다시 시작하기').length).toBeGreaterThanOrEqual(1);
     expect(screen.getByTestId('prebath-item-history-replay')).toBeTruthy();

@@ -4,10 +4,9 @@ import { getCurrentAdminEmail } from '../lib/auth/server';
 
 const navItems = [
   { href: '/', label: 'Dashboard' },
-  { href: '/products', label: 'Products' },
-  { href: '/care', label: 'Care Routines' },
-  { href: '/trip', label: 'Mood Routines' },
-  { href: '/audio', label: 'Audio' },
+  { href: '/content', label: 'Archive Content' },
+  { href: '/submissions', label: 'Submissions' },
+  { href: '/routines', label: 'Routine Presets' },
   { href: '/publish', label: 'Publish' },
 ];
 

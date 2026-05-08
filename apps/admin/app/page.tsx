@@ -1,11 +1,10 @@
 import {
-  buildAdminDashboardViewModel,
   formatActivityTime,
   getActivityTargetLabel,
-  getStatusLabel,
   readRecentAdminActivity,
 } from '../lib/dashboardData';
 import { AdminShell } from '../components/AdminShell';
+import { adminArchiveContents, adminRoutinePresets, readAdminSubmissions } from '../lib/archive/data';
 
 function getActivityEmptyMessage(status: string): string {
   if (status === 'not_configured') return 'Supabase 세션 연결 후 최근 작업이 표시됩니다.';
@@ -14,8 +13,13 @@ function getActivityEmptyMessage(status: string): string {
 }
 
 export default async function AdminHomePage() {
-  const activity = await readRecentAdminActivity();
-  const dashboard = buildAdminDashboardViewModel(undefined, activity);
+  const [activity, submissions] = await Promise.all([
+    readRecentAdminActivity(),
+    readAdminSubmissions(),
+  ]);
+  const published = adminArchiveContents.filter((item) => item.isPublished).length;
+  const drafts = adminArchiveContents.length - published;
+  const newSubmissions = submissions.filter((item) => item.status === 'new').length;
 
   return (
     <AdminShell activePath="/">
@@ -23,10 +27,9 @@ export default async function AdminHomePage() {
         <header className="topbar">
           <div>
             <p className="eyebrow">운영 콘솔</p>
-            <h2>콘텐츠 관리 대시보드</h2>
+            <h2>바스타임 아카이브 관리자</h2>
             <p className="lede">
-              앱 업데이트 없이 제품, 루틴, 음악 콘텐츠를 검수하고 발행하는 PC 전용
-              작업 공간입니다.
+              콘텐츠 구조화 정보, 제보 상태, 루틴 프리셋을 관리하는 P0 운영 공간입니다.
             </p>
           </div>
           <button type="button" className="primaryButton">
@@ -36,20 +39,20 @@ export default async function AdminHomePage() {
 
         <section className="summaryGrid" aria-label="콘텐츠 상태 요약">
           <div className="summaryCard">
-            <span>Active rows</span>
-            <strong>{dashboard.summary.activeRows}</strong>
+            <span>Published content</span>
+            <strong>{published}</strong>
           </div>
           <div className="summaryCard">
-            <span>Draft rows</span>
-            <strong>{dashboard.summary.draftRows}</strong>
+            <span>Draft content</span>
+            <strong>{drafts}</strong>
           </div>
           <div className="summaryCard">
-            <span>Publish blockers</span>
-            <strong>{dashboard.summary.publishBlockers}</strong>
+            <span>New submissions</span>
+            <strong>{newSubmissions}</strong>
           </div>
           <div className="summaryCard">
-            <span>Snapshot</span>
-            <strong>{dashboard.summary.schemaVersion}</strong>
+            <span>Routine presets</span>
+            <strong>{adminRoutinePresets.length}</strong>
           </div>
         </section>
 
@@ -57,10 +60,14 @@ export default async function AdminHomePage() {
           <div className="panel wide">
             <div className="panelHeader">
               <h3>관리 섹션</h3>
-              <span>Content areas</span>
+              <span>P0 archive operations</span>
             </div>
             <div className="sectionTable">
-              {dashboard.sections.map((section) => (
+              {[
+                { title: 'Archive Content', description: '콘텐츠 등록/수정과 공개 상태 관리', activeCount: published, draftCount: drafts, status: 'P0' },
+                { title: 'Submissions', description: '사용자 제보 확인과 상태 변경', activeCount: submissions.length, draftCount: newSubmissions, status: 'Review' },
+                { title: 'Routine Presets', description: '샤워/족욕/입욕/자유 루틴 관리', activeCount: adminRoutinePresets.length, draftCount: 0, status: 'P0' },
+              ].map((section) => (
                 <article className="sectionRow" key={section.title}>
                   <div>
                     <h4>{section.title}</h4>
@@ -69,7 +76,7 @@ export default async function AdminHomePage() {
                   <div className="rowMetrics">
                     <span>{section.activeCount} active</span>
                     <span>{section.draftCount} draft</span>
-                    <strong>{getStatusLabel(section.status)}</strong>
+                    <strong>{section.status}</strong>
                   </div>
                 </article>
               ))}
@@ -79,11 +86,11 @@ export default async function AdminHomePage() {
           <div className="panel">
             <div className="panelHeader">
               <h3>최근 작업</h3>
-              <span>{dashboard.activity.status === 'ready' ? 'Audit log' : 'Setup required'}</span>
+              <span>{activity.status === 'ready' ? 'Audit log' : 'Setup required'}</span>
             </div>
-            {dashboard.activity.rows.length > 0 ? (
+            {activity.rows.length > 0 ? (
               <div className="activityList">
-                {dashboard.activity.rows.map((item) => (
+                {activity.rows.map((item) => (
                   <article className="activityRow" key={item.id}>
                     <div>
                       <strong>
@@ -99,7 +106,7 @@ export default async function AdminHomePage() {
               </div>
             ) : (
               <p className="mutedText emptyPanelText">
-                {getActivityEmptyMessage(dashboard.activity.status)}
+                {getActivityEmptyMessage(activity.status)}
               </p>
             )}
           </div>
