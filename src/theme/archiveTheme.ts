@@ -1,0 +1,33 @@
+export const archiveColors = {
+  canvas: '#FAF7F1',
+  surface: '#FFFFFF',
+  surfaceSoft: '#F3EFE7',
+  surfaceStrong: '#ECE6DA',
+  ink: '#252A2A',
+  body: '#3F4745',
+  muted: '#6B7471',
+  mutedSoft: '#929C98',
+  primary: '#277C78',
+  primaryActive: '#1F6662',
+  primarySoft: '#DFF0ED',
+  primaryDisabled: '#B9D9D5',
+  brass: '#D6A85F',
+  brassSoft: '#F4E7C8',
+  hairline: '#E4DED3',
+  hairlineSoft: '#EFE9DE',
+  borderStrong: '#CFC6B8',
+  onPrimary: '#FFFFFF',
+  error: '#B94A3A',
+  warning: '#A66F2A',
+  success: '#2F7D5C',
+  scrim: 'rgba(37, 42, 42, 0.48)',
+} as const;
+
+export const archiveRadius = {
+  xs: 6,
+  sm: 8,
+  md: 8,
+  lg: 10,
+  xl: 12,
+  full: 999,
+} as const;
