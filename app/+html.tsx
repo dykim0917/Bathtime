@@ -30,6 +30,13 @@ export default function Root({ children }: PropsWithChildren) {
                 word-break: inherit;
                 overflow-wrap: inherit;
               }
+
+              .bath-detail-sticky-info {
+                width: 32%;
+                position: sticky !important;
+                top: 28px !important;
+                align-self: flex-start !important;
+              }
             `,
           }}
         />

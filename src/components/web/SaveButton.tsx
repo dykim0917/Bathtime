@@ -1,6 +1,6 @@
 import React from 'react';
-import { FontAwesome } from '@expo/vector-icons';
 import { GestureResponderEvent, Pressable, StyleSheet } from 'react-native';
+import { BookmarkSimple } from '@/src/components/web/phosphorIcons';
 import { archiveColors } from '@/src/theme/archiveTheme';
 
 type Props = {
@@ -11,6 +11,8 @@ type Props = {
 };
 
 export function SaveButton({ saved, onPress, disabled = false, variant = 'floating' }: Props) {
+  const [hovered, setHovered] = React.useState(false);
+
   const handlePress = (event: GestureResponderEvent) => {
     event.stopPropagation?.();
     onPress();
@@ -25,11 +27,15 @@ export function SaveButton({ saved, onPress, disabled = false, variant = 'floati
       style={[
         styles.button,
         variant === 'inline' && styles.inline,
+        hovered && styles.hovered,
         disabled && styles.disabled,
+        styles.webTransition,
       ]}
+      onHoverIn={() => setHovered(true)}
+      onHoverOut={() => setHovered(false)}
       onPress={handlePress}
     >
-      <FontAwesome name={saved ? 'bookmark' : 'bookmark-o'} size={15} color={saved ? archiveColors.primary : archiveColors.muted} />
+      <BookmarkSimple size={18} color={saved ? archiveColors.primary : archiveColors.muted} weight={saved ? 'fill' : 'regular'} />
     </Pressable>
   );
 }
@@ -48,7 +54,16 @@ const styles = StyleSheet.create({
   inline: {
     backgroundColor: archiveColors.primarySoft,
   },
+  hovered: {
+    borderColor: archiveColors.primaryDisabled,
+    backgroundColor: archiveColors.primarySoft,
+  },
   disabled: {
     opacity: 0.45,
   },
+  webTransition: {
+    transitionDuration: '140ms',
+    transitionProperty: 'background-color, border-color, transform',
+    transitionTimingFunction: 'ease-out',
+  } as any,
 });

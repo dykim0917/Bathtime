@@ -1,69 +1,161 @@
 import React from 'react';
 import { Href, router, usePathname } from 'expo-router';
-import { FontAwesome } from '@expo/vector-icons';
-import { Image, Pressable, ScrollView, StyleSheet, Text, TextInput, View, useWindowDimensions } from 'react-native';
+import { Animated, Easing, Image, Pressable, ScrollView, StyleSheet, Text, TextInput, View, useWindowDimensions } from 'react-native';
+import {
+  BookmarkSimple,
+  Compass,
+  House,
+  List,
+  MagnifyingGlass,
+  PlayCircle,
+  PlusSquare,
+  type PhosphorIcon,
+} from '@/src/components/web/phosphorIcons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { archiveColors, archiveRadius } from '@/src/theme/archiveTheme';
 import { luxuryFonts } from '@/src/theme/luxury';
 import { copy } from '@/src/content/copy';
-import { brand } from '@/src/content/brand';
+import { BrandMark } from '@/src/components/BrandMark';
 
 type NavItem = {
   href: Href;
   label: string;
-  icon: React.ComponentProps<typeof FontAwesome>['name'];
+  icon: PhosphorIcon;
 };
 
 const NAV_ITEMS: NavItem[] = [
-  { href: '/' as Href, label: copy.archive.nav.home, icon: 'home' },
-  { href: '/explore' as unknown as Href, label: copy.archive.nav.explore, icon: 'search' },
-  { href: '/routines' as unknown as Href, label: copy.archive.nav.routines, icon: 'play-circle' },
-  { href: '/submit' as unknown as Href, label: copy.archive.nav.submit, icon: 'plus-square-o' },
-  { href: '/saved' as unknown as Href, label: copy.archive.nav.saved, icon: 'bookmark-o' },
+  { href: '/' as Href, label: copy.archive.nav.home, icon: House },
+  { href: '/explore' as unknown as Href, label: copy.archive.nav.explore, icon: Compass },
+  { href: '/routines' as unknown as Href, label: copy.archive.nav.routines, icon: PlayCircle },
+  { href: '/submit' as unknown as Href, label: copy.archive.nav.submit, icon: PlusSquare },
+  { href: '/saved' as unknown as Href, label: copy.archive.nav.saved, icon: BookmarkSimple },
 ];
+
+const SIDEBAR_COLLAPSED_STORAGE_KEY = 'bathtime:web-sidebar-collapsed';
+
+function getStoredSidebarCollapsed(): boolean {
+  if (typeof window === 'undefined') return false;
+  return window.localStorage.getItem(SIDEBAR_COLLAPSED_STORAGE_KEY) === 'true';
+}
 
 function getHrefPath(href: Href): string {
   return typeof href === 'string' ? href : href.pathname;
 }
 
-function isActive(pathname: string, href: Href): boolean {
-  const hrefPath = getHrefPath(href);
-  if (hrefPath === '/') return pathname === '/';
-  return pathname.startsWith(hrefPath);
+function getActivePath(pathname: string): string {
+  if (pathname.startsWith('/content/')) return '/explore';
+  return pathname;
 }
 
-function NavLink({ item, active, compact = false }: { item: NavItem; active: boolean; compact?: boolean }) {
+function isActive(pathname: string, href: Href): boolean {
+  const activePath = getActivePath(pathname);
+  const hrefPath = getHrefPath(href);
+  if (hrefPath === '/') return activePath === '/';
+  return activePath.startsWith(hrefPath);
+}
+
+function NavLink({
+  item,
+  active,
+  compact = false,
+  collapsed = false,
+  labelOpacity,
+}: {
+  item: NavItem;
+  active: boolean;
+  compact?: boolean;
+  collapsed?: boolean;
+  labelOpacity?: Animated.Value;
+}) {
+  const [hovered, setHovered] = React.useState(false);
+  const IconComponent = item.icon;
+
   return (
-    <Pressable style={[compact ? styles.bottomTabItem : styles.navItem, active && styles.navItemActive]} onPress={() => router.push(item.href)}>
-      <FontAwesome name={item.icon} size={compact ? 17 : 18} color={active ? archiveColors.primaryActive : archiveColors.body} />
-      <Text style={[compact ? styles.bottomTabLabel : styles.navLabel, active && styles.navLabelActive]} numberOfLines={1}>
-        {item.label}
-      </Text>
+    <Pressable
+      style={[
+        compact ? styles.bottomTabItem : styles.navItem,
+        collapsed && styles.navItemCollapsed,
+        active && styles.navItemActive,
+        hovered && !active && styles.navItemHover,
+        styles.webTransition,
+      ]}
+      onHoverIn={() => setHovered(true)}
+      onHoverOut={() => setHovered(false)}
+      onPress={() => router.push(item.href)}
+    >
+      <IconComponent
+        size={compact ? 21 : 20}
+        color={active ? archiveColors.primaryActive : archiveColors.body}
+        weight={active ? 'fill' : 'regular'}
+      />
+      {!collapsed ? (
+        <Animated.Text
+          style={[compact ? styles.bottomTabLabel : styles.navLabel, active && styles.navLabelActive, labelOpacity ? { opacity: labelOpacity } : null]}
+          numberOfLines={1}
+        >
+          {item.label}
+        </Animated.Text>
+      ) : null}
     </Pressable>
   );
 }
 
-function Sidebar({ pathname }: { pathname: string }) {
+function Sidebar({
+  pathname,
+  collapsed,
+  onToggle,
+  progress,
+}: {
+  pathname: string;
+  collapsed: boolean;
+  onToggle: () => void;
+  progress: Animated.Value;
+}) {
+  const sidebarWidth = progress.interpolate({ inputRange: [0, 1], outputRange: [77, 192] });
+
   return (
-    <View style={styles.sidebar}>
+    <Animated.View style={[styles.sidebar, { width: sidebarWidth }, collapsed && styles.sidebarCollapsed]}>
       <View style={styles.brandBlock}>
-        <Image source={require('@/assets/images/logo.png')} style={styles.logo} resizeMode="contain" />
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel={collapsed ? '사이드바 펼치기' : '사이드바 접기'}
+          style={styles.sidebarToggle}
+          onPress={onToggle}
+        >
+          <List size={21} color={archiveColors.body} weight="regular" />
+        </Pressable>
+        {!collapsed ? (
+          <Animated.View style={[styles.logoWrap, { opacity: progress }]}>
+            <Image source={require('@/assets/images/logo.png')} style={styles.logo} resizeMode="contain" />
+          </Animated.View>
+        ) : (
+          <View style={styles.symbolWrap}>
+            <BrandMark size={28} />
+          </View>
+        )}
       </View>
-      <View style={styles.sidebarNav}>
+      <View style={[styles.sidebarNav, collapsed && styles.sidebarNavCollapsed]}>
         {NAV_ITEMS.map((item) => (
-          <NavLink key={item.label} item={item} active={isActive(pathname, item.href)} />
+          <NavLink key={item.label} item={item} active={isActive(pathname, item.href)} collapsed={collapsed} labelOpacity={progress} />
         ))}
       </View>
-      <View style={styles.sidebarFooter}>
-        <Text style={styles.sidebarFooterText}>개인정보처리방침</Text>
-        <Text style={styles.sidebarFooterText}>이용약관</Text>
-      </View>
-    </View>
+      {!collapsed ? (
+        <Animated.View style={[styles.sidebarFooter, { opacity: progress }]}>
+          <Pressable onPress={() => router.push('/legal/privacy' as Href)}>
+            <Text style={styles.sidebarFooterText}>개인정보처리방침</Text>
+          </Pressable>
+          <Pressable onPress={() => router.push('/legal/terms' as Href)}>
+            <Text style={styles.sidebarFooterText}>이용약관</Text>
+          </Pressable>
+        </Animated.View>
+      ) : null}
+    </Animated.View>
   );
 }
 
 function DesktopSearch() {
   const [query, setQuery] = React.useState('');
+  const [focused, setFocused] = React.useState(false);
 
   const submitSearch = () => {
     const value = query.trim();
@@ -72,11 +164,13 @@ function DesktopSearch() {
 
   return (
     <View style={styles.topSearchWrap}>
-      <View style={styles.topSearch}>
-        <FontAwesome name="search" size={15} color={archiveColors.muted} />
+      <View style={[styles.topSearch, focused && styles.topSearchFocused, styles.webTransition]}>
+        <MagnifyingGlass size={17} color={focused ? archiveColors.primaryActive : archiveColors.muted} weight="regular" />
         <TextInput
           value={query}
           onChangeText={setQuery}
+          onFocus={() => setFocused(true)}
+          onBlur={() => setFocused(false)}
           onSubmitEditing={submitSearch}
           placeholder="의식, 재료 또는 장소를 입력해주세요..."
           placeholderTextColor={archiveColors.muted}
@@ -103,33 +197,66 @@ export function WebShell({ children }: { children: React.ReactNode }) {
   const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
   const isDesktop = width >= 768;
+  const [sidebarCollapsed, setSidebarCollapsed] = React.useState(getStoredSidebarCollapsed);
+  const sidebarProgress = React.useRef(new Animated.Value(sidebarCollapsed ? 0 : 1)).current;
+  const pageProgress = React.useRef(new Animated.Value(0)).current;
+
+  React.useEffect(() => {
+    if (typeof window === 'undefined') return;
+    window.localStorage.setItem(SIDEBAR_COLLAPSED_STORAGE_KEY, String(sidebarCollapsed));
+  }, [sidebarCollapsed]);
+
+  React.useEffect(() => {
+    Animated.timing(sidebarProgress, {
+      toValue: sidebarCollapsed ? 0 : 1,
+      duration: 180,
+      easing: Easing.out(Easing.cubic),
+      useNativeDriver: false,
+    }).start();
+  }, [sidebarCollapsed, sidebarProgress]);
+
+  React.useEffect(() => {
+    pageProgress.setValue(0);
+    Animated.timing(pageProgress, {
+      toValue: 1,
+      duration: 220,
+      easing: Easing.out(Easing.cubic),
+      useNativeDriver: false,
+    }).start();
+  }, [pathname, pageProgress]);
+
+  const pageTranslateY = pageProgress.interpolate({ inputRange: [0, 1], outputRange: [6, 0] });
 
   return (
     <View style={styles.root}>
-      {isDesktop ? <Sidebar pathname={pathname} /> : null}
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        showsVerticalScrollIndicator={false}
-        style={styles.scroll}
-        contentContainerStyle={[
+      {isDesktop ? (
+        <Sidebar
+          pathname={pathname}
+          collapsed={sidebarCollapsed}
+          progress={sidebarProgress}
+          onToggle={() => setSidebarCollapsed((current) => !current)}
+        />
+      ) : null}
+      <View style={styles.contentArea}>
+        {isDesktop ? <DesktopSearch /> : null}
+        <ScrollView
+          contentInsetAdjustmentBehavior="automatic"
+          showsVerticalScrollIndicator={false}
+          style={styles.scroll}
+          contentContainerStyle={[
           styles.main,
           {
-            paddingTop: isDesktop ? 12 : insets.top + 18,
+            paddingHorizontal: isDesktop ? 0 : 16,
+            paddingTop: isDesktop ? 40 : insets.top + 18,
             paddingBottom: isDesktop ? 48 : insets.bottom + 98,
           },
         ]}
       >
-        {!isDesktop ? (
-          <View style={styles.mobileHeader}>
-            <View>
-              <Text style={styles.eyebrow}>{copy.archive.meta.brandEyebrow}</Text>
-              <Text style={styles.mobileBrand}>{brand.displayName}</Text>
-            </View>
-          </View>
-        ) : null}
-        {isDesktop ? <DesktopSearch /> : null}
-        {children}
-      </ScrollView>
+          <Animated.View style={{ opacity: pageProgress, transform: [{ translateY: pageTranslateY }] }}>
+            {children}
+          </Animated.View>
+        </ScrollView>
+      </View>
       {!isDesktop ? <BottomTab pathname={pathname} bottomInset={insets.bottom} /> : null}
     </View>
   );
@@ -189,6 +316,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: archiveColors.canvas,
   },
+  contentArea: {
+    flex: 1,
+    backgroundColor: archiveColors.canvas,
+  },
   main: {
     width: '100%',
     alignSelf: 'center',
@@ -201,14 +332,33 @@ const styles = StyleSheet.create({
     borderRightWidth: 1,
     borderRightColor: archiveColors.hairline,
     backgroundColor: archiveColors.surface,
-    paddingHorizontal: 16,
+    paddingHorizontal: 0,
     paddingTop: 26,
     paddingBottom: 24,
-    gap: 300,
+    position: 'relative',
   },
+  sidebarCollapsed: {},
   brandBlock: {
-    minHeight: 76,
+    minHeight: 116,
+    position: 'relative',
+  },
+  sidebarToggle: {
+    position: 'absolute',
+    top: 0,
+    left: 22,
+    width: 32,
+    height: 32,
+    alignItems: 'center',
     justifyContent: 'center',
+    zIndex: 2,
+  },
+  logoWrap: {
+    marginTop: 58,
+    marginLeft: 16,
+  },
+  symbolWrap: {
+    alignItems: 'center',
+    marginTop: 62,
   },
   logo: {
     width: 158,
@@ -228,18 +378,35 @@ const styles = StyleSheet.create({
     fontFamily: luxuryFonts.display,
   },
   sidebarNav: {
-    gap: 18,
+    position: 'absolute',
+    left: 16,
+    right: 16,
+    top: '50%',
+    transform: [{ translateY: -170 }],
+    gap: 8,
+  },
+  sidebarNavCollapsed: {
+    left: 8,
+    right: 8,
   },
   navItem: {
-    minHeight: 40,
+    minHeight: 60,
     borderRadius: archiveRadius.lg,
     paddingHorizontal: 16,
     flexDirection: 'row',
     alignItems: 'center',
     gap: 10,
   },
+  navItemCollapsed: {
+    width: 60,
+    paddingHorizontal: 0,
+    justifyContent: 'center',
+  },
   navItemActive: {
     backgroundColor: archiveColors.primarySoft,
+  },
+  navItemHover: {
+    backgroundColor: archiveColors.surfaceSoft,
   },
   navLabel: {
     color: archiveColors.body,
@@ -284,7 +451,12 @@ const styles = StyleSheet.create({
   },
   topSearchWrap: {
     width: '100%',
+    minHeight: 64,
+    backgroundColor: archiveColors.surface,
+    borderBottomWidth: 1,
+    borderBottomColor: archiveColors.hairline,
     paddingHorizontal: 62,
+    justifyContent: 'center',
   },
   topSearch: {
     width: 665,
@@ -298,6 +470,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 10,
+  },
+  topSearchFocused: {
+    borderColor: archiveColors.primaryDisabled,
+    backgroundColor: archiveColors.surface,
   },
   topSearchInput: {
     flex: 1,
@@ -346,4 +522,9 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     fontFamily: luxuryFonts.sans,
   },
+  webTransition: {
+    transitionDuration: '160ms',
+    transitionProperty: 'background-color, border-color, opacity, transform',
+    transitionTimingFunction: 'ease-out',
+  } as any,
 });
