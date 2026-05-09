@@ -55,8 +55,8 @@ export default function RootLayout() {
           <Stack.Screen name="(web)" options={{ headerShown: false }} />
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="onboarding" options={{ headerShown: false, gestureEnabled: false }} />
-          <Stack.Screen name="legal/privacy" options={{ title: '개인정보 처리방침', headerShown: true }} />
-          <Stack.Screen name="legal/terms" options={{ title: '이용약관', headerShown: true }} />
+          <Stack.Screen name="legal/privacy" options={{ title: '개인정보 처리방침', headerShown: Platform.OS !== 'web' }} />
+          <Stack.Screen name="legal/terms" options={{ title: '이용약관', headerShown: Platform.OS !== 'web' }} />
           <Stack.Screen name="result/recipe/[id]" options={{ headerShown: false, presentation: 'modal', gestureEnabled: true }} />
           <Stack.Screen name="result/timer/[id]" options={{ headerShown: false, presentation: 'modal', gestureEnabled: false }} />
           <Stack.Screen name="result/completion/[id]" options={{ headerShown: false, presentation: 'modal', gestureEnabled: false }} />
