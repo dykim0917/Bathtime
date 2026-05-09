@@ -12,21 +12,21 @@ export default function Root({ children }: PropsWithChildren) {
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
         <ScrollViewStyleReset />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap"
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
           rel="stylesheet"
         />
         <style
           dangerouslySetInnerHTML={{
             __html: `
               html, body {
+                font-family: Pretendard, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
                 word-break: keep-all;
                 overflow-wrap: normal;
               }
 
-              body * {
+              body *, input, button, textarea, select {
+                font-family: inherit;
                 word-break: inherit;
                 overflow-wrap: inherit;
               }
