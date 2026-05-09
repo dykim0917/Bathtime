@@ -141,10 +141,10 @@ function Sidebar({
       </View>
       {!collapsed ? (
         <Animated.View style={[styles.sidebarFooter, { opacity: progress }]}>
-          <Pressable onPress={() => router.push('/legal/privacy' as Href)}>
+          <Pressable style={styles.sidebarFooterLink} onPress={() => router.push('/legal/privacy' as Href)}>
             <Text style={styles.sidebarFooterText}>개인정보처리방침</Text>
           </Pressable>
-          <Pressable onPress={() => router.push('/legal/terms' as Href)}>
+          <Pressable style={styles.sidebarFooterLink} onPress={() => router.push('/legal/terms' as Href)}>
             <Text style={styles.sidebarFooterText}>이용약관</Text>
           </Pressable>
         </Animated.View>
@@ -440,8 +440,12 @@ const styles = StyleSheet.create({
   },
   sidebarFooter: {
     marginTop: 'auto',
-    gap: 8,
-    paddingHorizontal: 2,
+    gap: 4,
+    paddingHorizontal: 16,
+  },
+  sidebarFooterLink: {
+    minHeight: 28,
+    justifyContent: 'center',
   },
   sidebarFooterText: {
     color: archiveColors.muted,

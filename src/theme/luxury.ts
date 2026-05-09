@@ -2,12 +2,13 @@ import { Platform } from 'react-native';
 
 export const luxuryFonts = {
   display: Platform.select({
-    web: 'system-ui, -apple-system, BlinkMacSystemFont, sans-serif',
+    web: 'Pretendard, system-ui, -apple-system, BlinkMacSystemFont, sans-serif',
     ios: 'System',
     android: 'sans-serif',
     default: 'system-ui, -apple-system, BlinkMacSystemFont, sans-serif',
   }),
   sans: Platform.select({
+    web: 'Pretendard, system-ui, -apple-system, BlinkMacSystemFont, sans-serif',
     ios: 'System',
     android: 'sans-serif',
     default: 'system-ui, -apple-system, BlinkMacSystemFont, sans-serif',
