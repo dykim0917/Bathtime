@@ -36,7 +36,11 @@ const SIDEBAR_COLLAPSED_STORAGE_KEY = 'bathtime:web-sidebar-collapsed';
 function getStoredSidebarCollapsed(): boolean {
   if (typeof window === 'undefined') return false;
   if (!('localStorage' in window) || !window.localStorage) return false;
-  return window.localStorage.getItem(SIDEBAR_COLLAPSED_STORAGE_KEY) === 'true';
+  try {
+    return window.localStorage.getItem(SIDEBAR_COLLAPSED_STORAGE_KEY) === 'true';
+  } catch {
+    return false;
+  }
 }
 
 function getHrefPath(href: Href): string {
@@ -76,7 +80,7 @@ function NavLink({
       style={[
         compact ? styles.bottomTabItem : styles.navItem,
         collapsed && styles.navItemCollapsed,
-        active && styles.navItemActive,
+        active && (compact ? styles.bottomTabItemActive : styles.navItemActive),
         hovered && !active && styles.navItemHover,
         styles.webTransition,
       ]}
@@ -85,7 +89,7 @@ function NavLink({
       onPress={() => router.push(item.href)}
     >
       <IconComponent
-        size={compact ? 21 : 20}
+        size={compact ? 24 : 20}
         color={active ? archiveColors.primaryActive : archiveColors.body}
         weight={active ? 'fill' : 'regular'}
       />
@@ -183,7 +187,7 @@ function DesktopSearch() {
 
 function BottomTab({ pathname, bottomInset }: { pathname: string; bottomInset: number }) {
   return (
-    <View style={[styles.bottomTab, { paddingBottom: Math.max(bottomInset, 8) }]}>
+    <View style={[styles.bottomTab, { paddingBottom: Math.max(bottomInset, 4) }]}>
       {NAV_ITEMS.map((item) => (
         <NavLink key={item.label} item={item} active={isActive(pathname, item.href)} compact />
       ))}
@@ -268,7 +272,15 @@ function DesktopTopBar() {
   );
 }
 
-export function WebShell({ children }: { children: React.ReactNode }) {
+export function WebShell({
+  children,
+  desktopContentPaddingTop = 40,
+  mobileContentPaddingTop,
+}: {
+  children: React.ReactNode;
+  desktopContentPaddingTop?: number;
+  mobileContentPaddingTop?: number;
+}) {
   const pathname = usePathname();
   const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
@@ -279,7 +291,12 @@ export function WebShell({ children }: { children: React.ReactNode }) {
 
   React.useEffect(() => {
     if (typeof window === 'undefined') return;
-    window.localStorage.setItem(SIDEBAR_COLLAPSED_STORAGE_KEY, String(sidebarCollapsed));
+    if (!('localStorage' in window) || !window.localStorage) return;
+    try {
+      window.localStorage.setItem(SIDEBAR_COLLAPSED_STORAGE_KEY, String(sidebarCollapsed));
+    } catch {
+      // Ignore unavailable storage in native/webview-like runtimes.
+    }
   }, [sidebarCollapsed]);
 
   React.useEffect(() => {
@@ -323,7 +340,7 @@ export function WebShell({ children }: { children: React.ReactNode }) {
           styles.main,
           {
             paddingHorizontal: isDesktop ? 0 : 16,
-            paddingTop: isDesktop ? 40 : insets.top + 18,
+            paddingTop: isDesktop ? desktopContentPaddingTop : insets.top + (mobileContentPaddingTop ?? 18),
             paddingBottom: isDesktop ? 48 : insets.bottom + 98,
           },
         ]}
@@ -672,24 +689,27 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    minHeight: 76,
+    minHeight: 62,
     flexDirection: 'row',
-    gap: 4,
-    paddingHorizontal: 8,
-    paddingTop: 8,
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    gap: 2,
+    paddingHorizontal: 10,
+    paddingTop: 5,
     borderTopWidth: 1,
     borderTopColor: archiveColors.hairline,
     backgroundColor: archiveColors.surface,
   },
   bottomTabItem: {
-    flex: 1,
+    width: 66,
     minWidth: 0,
-    minHeight: 52,
-    borderRadius: archiveRadius.md,
+    height: 48,
+    borderRadius: archiveRadius.sm,
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 4,
+    gap: 3,
   },
+  bottomTabItemActive: {},
   bottomTabLabel: {
     color: archiveColors.body,
     fontSize: 10,

@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Href, Redirect, router } from 'expo-router';
+import { Href, Redirect, router, useLocalSearchParams } from 'expo-router';
 import { Platform, Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import { ArchiveContentCard } from '@/src/components/web/ArchiveContentCard';
 import { ArchivePageContainer } from '@/src/components/web/ArchivePageContainer';
@@ -15,7 +15,7 @@ import { ContentCategory } from '@/src/archive/types';
 import { trackArchiveEvent } from '@/src/analytics/events';
 import { useAuth } from '@/src/auth/AuthProvider';
 import { setPendingAuthAction } from '@/src/auth/pendingActions';
-import { toggleSavedContent, getSavedContentStorage } from '@/src/storage/savedContent';
+import { getSavedContentStorage, getStorageErrorMessage, toggleSavedContent } from '@/src/storage/savedContent';
 import { archiveColors, archiveRadius } from '@/src/theme/archiveTheme';
 import { luxuryFonts } from '@/src/theme/luxury';
 import { copy } from '@/src/content/copy';
@@ -23,11 +23,27 @@ import { brand } from '@/src/content/brand';
 
 const CATEGORIES: ContentCategory[] = ['HOME_BATH', 'BATH_PLACES', 'BATH_ITEMS', 'TIPS_CULTURE'];
 
+function firstParam(value: string | string[] | undefined): string {
+  return Array.isArray(value) ? value[0] ?? '' : value ?? '';
+}
+
 export default function WebHomePage() {
   if (Platform.OS !== 'web') {
     return <Redirect href={'/(tabs)' as any} />;
   }
 
+  const params = useLocalSearchParams<{ code?: string | string[]; next?: string | string[] }>();
+  const code = firstParam(params.code);
+  const next = firstParam(params.next);
+  if (code) {
+    const callbackPath = `/auth/callback?code=${encodeURIComponent(code)}${next ? `&next=${encodeURIComponent(next)}` : ''}`;
+    return <Redirect href={callbackPath as Href} />;
+  }
+
+  return <WebHomeContent />;
+}
+
+function WebHomeContent() {
   const featured = getFeaturedContent();
   const latest = getLatestContents(4);
   const [savedIds, setSavedIds] = useState<string[]>([]);
@@ -63,7 +79,7 @@ export default function WebHomePage() {
       trackArchiveEvent(next.includes(id) ? 'content_saved' : 'content_unsaved', { contentId: id, source: 'home', platform: 'web' });
     } catch (error) {
       console.warn('Failed to toggle saved content', error);
-      if (typeof window !== 'undefined') window.alert('저장에 실패했어요. 잠시 후 다시 시도해주세요.');
+      if (typeof window !== 'undefined') window.alert(`저장에 실패했어요.\n${getStorageErrorMessage(error)}`);
     }
   };
 

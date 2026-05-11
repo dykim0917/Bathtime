@@ -5,7 +5,7 @@ import { ArchivePageContainer } from '@/src/components/web/ArchivePageContainer'
 import { SeoMetadata } from '@/src/components/web/SeoMetadata';
 import { WebShell, webStyles } from '@/src/components/web/WebShell';
 import { getSupabaseClient } from '@/src/auth/supabase';
-import { completePendingAuthAction, readPendingAuthAction } from '@/src/auth/pendingActions';
+import { completePendingAuthAction, readPendingAuthActionAsync } from '@/src/auth/pendingActions';
 import { archiveColors } from '@/src/theme/archiveTheme';
 import { luxuryFonts } from '@/src/theme/luxury';
 import { trackArchiveEvent } from '@/src/analytics/events';
@@ -24,7 +24,9 @@ export default function AuthCallbackPage() {
 
     async function completeLogin() {
       const supabase = getSupabaseClient();
-      const nextPath = normalizeParam(params.next) || readPendingAuthAction()?.returnTo || '/saved';
+      const pendingAction = await readPendingAuthActionAsync();
+      const defaultPath = Platform.OS === 'web' ? '/saved' : '/(tabs)/my?saved=1';
+      const nextPath = normalizeParam(params.next) || pendingAction?.returnTo || defaultPath;
       const code = normalizeParam(params.code);
 
       if (!supabase) {

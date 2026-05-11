@@ -99,8 +99,15 @@ export default function SubmitPage() {
           <Text style={styles.label}>닉네임</Text>
           <TextInput value={nickname} onChangeText={setNickname} placeholder="선택 입력" placeholderTextColor={archiveColors.muted} style={styles.input} />
 
-          <Pressable style={styles.checkRow} onPress={() => setCanPublish((current) => !current)}>
-            <View style={[styles.checkbox, canPublish && styles.checkboxActive]} />
+          <Pressable
+            accessibilityRole="checkbox"
+            accessibilityState={{ checked: canPublish }}
+            style={styles.checkRow}
+            onPress={() => setCanPublish((current) => !current)}
+          >
+            <View style={[styles.checkbox, canPublish && styles.checkboxActive]}>
+              {canPublish ? <Text style={styles.checkboxMark}>✓</Text> : null}
+            </View>
             <Text style={styles.checkText}>운영자가 확인 후 공개 콘텐츠에 참고해도 괜찮아요.</Text>
           </Pressable>
 
@@ -186,6 +193,15 @@ const styles = StyleSheet.create({
   },
   checkboxActive: {
     backgroundColor: archiveColors.primary,
+    borderColor: archiveColors.primary,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  checkboxMark: {
+    color: archiveColors.onPrimary,
+    fontSize: 13,
+    lineHeight: 16,
+    fontWeight: '900',
   },
   checkText: {
     flex: 1,

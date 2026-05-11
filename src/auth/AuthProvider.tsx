@@ -19,16 +19,15 @@ type AuthContextValue = AuthState & {
 
 const AuthContext = createContext<AuthContextValue | null>(null);
 
-function buildRedirectTo(nextPath?: string): string | undefined {
+export function buildRedirectTo(nextPath?: string): string | undefined {
   if (Platform.OS !== 'web') {
-    const url = new URL('getbathtime://auth/callback');
-    if (nextPath) url.searchParams.set('next', nextPath);
-    return url.toString();
+    return Linking.createURL('auth/callback', {
+      scheme: 'getbathtime',
+    });
   }
   if (typeof window === 'undefined') return undefined;
-  const url = new URL('/auth/callback', window.location.origin);
-  if (nextPath) url.searchParams.set('next', nextPath);
-  return url.toString();
+  const origin = window.location.origin === 'https://www.getbathtime.com' ? 'https://getbathtime.com' : window.location.origin;
+  return new URL('/auth/callback', origin).toString();
 }
 
 function readUrlParam(url: string, key: string): string {

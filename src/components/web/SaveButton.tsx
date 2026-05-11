@@ -8,9 +8,10 @@ type Props = {
   onPress: () => void;
   disabled?: boolean;
   variant?: 'floating' | 'inline';
+  size?: number;
 };
 
-export function SaveButton({ saved, onPress, disabled = false, variant = 'floating' }: Props) {
+export function SaveButton({ saved, onPress, disabled = false, variant = 'floating', size = 32 }: Props) {
   const [hovered, setHovered] = React.useState(false);
 
   const handlePress = (event: GestureResponderEvent) => {
@@ -31,12 +32,13 @@ export function SaveButton({ saved, onPress, disabled = false, variant = 'floati
         hovered && styles.hovered,
         disabled && styles.disabled,
         styles.webTransition,
+        { width: size, height: size, borderRadius: size / 2 },
       ]}
       onHoverIn={() => setHovered(true)}
       onHoverOut={() => setHovered(false)}
       onPress={handlePress}
     >
-      <BookmarkSimple size={18} color={saved ? archiveColors.primary : archiveColors.muted} weight={saved ? 'fill' : 'regular'} />
+      <BookmarkSimple size={Math.round(size * 0.56)} color={saved ? archiveColors.primary : archiveColors.muted} weight={saved ? 'fill' : 'regular'} />
     </Pressable>
   );
 }

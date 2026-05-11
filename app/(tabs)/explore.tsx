@@ -9,7 +9,7 @@ import { searchContents } from '@/src/archive/selectors';
 import { trackArchiveEvent } from '@/src/analytics/events';
 import { useAuth } from '@/src/auth/AuthProvider';
 import { setPendingAuthAction } from '@/src/auth/pendingActions';
-import { getSavedContentStorage, toggleSavedContent } from '@/src/storage/savedContent';
+import { getSavedContentStorage, getStorageErrorMessage, toggleSavedContent } from '@/src/storage/savedContent';
 import { luxuryFonts } from '@/src/theme/luxury';
 import { archiveColors, archiveRadius } from '@/src/theme/archiveTheme';
 
@@ -51,7 +51,7 @@ export default function NativeExploreScreen() {
       trackArchiveEvent(next.includes(id) ? 'content_saved' : 'content_unsaved', { contentId: id, source: 'native_explore', platform: 'native' });
     } catch (error) {
       console.warn('Failed to toggle saved content', error);
-      Alert.alert('저장에 실패했어요', '잠시 후 다시 시도해주세요.');
+      Alert.alert('저장에 실패했어요', getStorageErrorMessage(error));
     }
   };
 

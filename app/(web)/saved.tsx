@@ -9,7 +9,7 @@ import { AuthPrompt } from '@/src/components/auth/AuthPrompt';
 import { AppHandoffCard } from '@/src/components/web/AppHandoffCard';
 import { archiveContents } from '@/src/archive/seed';
 import { useAuth } from '@/src/auth/AuthProvider';
-import { getSavedContentStorage, toggleSavedContent } from '@/src/storage/savedContent';
+import { getSavedContentStorage, getStorageErrorMessage, toggleSavedContent } from '@/src/storage/savedContent';
 import { archiveColors, archiveRadius } from '@/src/theme/archiveTheme';
 import { luxuryFonts } from '@/src/theme/luxury';
 import { copy } from '@/src/content/copy';
@@ -38,7 +38,7 @@ export default function SavedPage() {
       setSavedIds(await toggleSavedContent(id));
     } catch (error) {
       console.warn('Failed to toggle saved content', error);
-      if (typeof window !== 'undefined') window.alert('저장 변경에 실패했어요. 잠시 후 다시 시도해주세요.');
+      if (typeof window !== 'undefined') window.alert(`저장 변경에 실패했어요.\n${getStorageErrorMessage(error)}`);
     }
   };
 

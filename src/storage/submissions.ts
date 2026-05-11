@@ -1,6 +1,6 @@
 import { Submission } from '@/src/archive/types';
 import { requireSupabaseClient } from '@/src/auth/supabase';
-import { AuthRequiredError } from '@/src/storage/savedContent';
+import { getAuthenticatedUserId } from '@/src/storage/savedContent';
 
 type SubmissionInput = Omit<Submission, 'id' | 'status' | 'createdAt' | 'updatedAt' | 'userId'>;
 
@@ -34,17 +34,12 @@ function mapSubmissionRow(row: SubmissionRow): Submission {
 
 export async function loadSubmissions(): Promise<Submission[]> {
   const supabase = requireSupabaseClient();
-  const {
-    data: { user },
-    error: userError,
-  } = await supabase.auth.getUser();
-
-  if (userError || !user) throw new AuthRequiredError();
+  const userId = await getAuthenticatedUserId();
 
   const { data, error } = await supabase
     .from('submissions')
     .select('*')
-    .eq('user_id', user.id)
+    .eq('user_id', userId)
     .order('created_at', { ascending: false });
 
   if (error) throw error;
@@ -53,16 +48,12 @@ export async function loadSubmissions(): Promise<Submission[]> {
 
 export async function saveSubmission(input: SubmissionInput): Promise<Submission> {
   const supabase = requireSupabaseClient();
-  const {
-    data: { user },
-    error: userError,
-  } = await supabase.auth.getUser();
-
-  if (userError || !user) throw new AuthRequiredError();
+  const userId = await getAuthenticatedUserId({ ensureProfile: true });
 
   const { data, error } = await supabase
     .from('submissions')
     .insert({
+      user_id: userId,
       type: input.type,
       link_or_image: input.linkOrImage ?? null,
       comment: input.comment,

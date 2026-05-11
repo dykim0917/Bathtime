@@ -48,7 +48,7 @@ import { SubProtocolPickerModal } from '@/src/components/SubProtocolPickerModal'
 import { PersistentDisclosure } from '@/src/components/PersistentDisclosure';
 import { buildDisclosureLines } from '@/src/engine/disclosures';
 import { getLatestContents } from '@/src/archive/selectors';
-import { getSavedContentStorage, toggleSavedContent } from '@/src/storage/savedContent';
+import { getSavedContentStorage, getStorageErrorMessage, toggleSavedContent } from '@/src/storage/savedContent';
 import { useAuth } from '@/src/auth/AuthProvider';
 import { setPendingAuthAction } from '@/src/auth/pendingActions';
 import { archiveColors, archiveRadius } from '@/src/theme/archiveTheme';
@@ -423,7 +423,7 @@ export default function HomeScreen() {
       setSavedIds(next);
     } catch (error) {
       console.warn('Failed to toggle saved content', error);
-      Alert.alert('저장에 실패했어요', '잠시 후 다시 시도해주세요.');
+      Alert.alert('저장에 실패했어요', getStorageErrorMessage(error));
     }
   };
 

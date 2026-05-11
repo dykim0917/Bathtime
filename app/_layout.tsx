@@ -51,6 +51,14 @@ export default function RootLayout() {
     <Stack>
       <Stack.Screen name="index" options={{ headerShown: false }} />
       <Stack.Screen name="(web)" options={{ headerShown: false }} />
+      <Stack.Screen name="explore" options={{ headerShown: false }} />
+      <Stack.Screen name="submit" options={{ headerShown: false }} />
+      <Stack.Screen name="saved" options={{ headerShown: false }} />
+      <Stack.Screen name="app" options={{ headerShown: false }} />
+      <Stack.Screen name="content/[id]" options={{ headerShown: false }} />
+      <Stack.Screen name="routines" options={{ headerShown: false }} />
+      <Stack.Screen name="history" options={{ headerShown: false }} />
+      <Stack.Screen name="my" options={{ headerShown: false }} />
       <Stack.Screen name="auth/login" options={{ headerShown: false }} />
       <Stack.Screen name="auth/callback" options={{ headerShown: false }} />
       <Stack.Screen name="profile" options={{ headerShown: false }} />
@@ -69,6 +77,14 @@ export default function RootLayout() {
       <Stack.Screen name="auth/login" options={{ headerShown: false }} />
       <Stack.Screen name="auth/callback" options={{ headerShown: false }} />
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack.Screen name="content/[id]" options={{ headerShown: false }} />
+      <Stack.Screen name="explore" options={{ headerShown: false }} />
+      <Stack.Screen name="saved" options={{ headerShown: false }} />
+      <Stack.Screen name="submit" options={{ headerShown: false }} />
+      <Stack.Screen name="app" options={{ headerShown: false }} />
+      <Stack.Screen name="routines" options={{ headerShown: false }} />
+      <Stack.Screen name="history" options={{ headerShown: false }} />
+      <Stack.Screen name="my" options={{ headerShown: false }} />
       <Stack.Screen name="profile" options={{ headerShown: false }} />
       <Stack.Screen name="routine/[id]" options={{ headerShown: false }} />
       <Stack.Screen name="onboarding" options={{ headerShown: false, gestureEnabled: false }} />

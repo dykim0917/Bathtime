@@ -1,5 +1,46 @@
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
+CREATE TABLE IF NOT EXISTS admin_user_allowlist (
+  email TEXT PRIMARY KEY,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+ALTER TABLE admin_user_allowlist ENABLE ROW LEVEL SECURITY;
+
+CREATE OR REPLACE FUNCTION is_content_admin()
+RETURNS BOOLEAN
+LANGUAGE SQL
+STABLE
+SECURITY DEFINER
+SET search_path = public
+AS $$
+  SELECT EXISTS (
+    SELECT 1
+    FROM admin_user_allowlist
+    WHERE lower(email) = lower(auth.jwt() ->> 'email')
+  );
+$$;
+
+GRANT EXECUTE ON FUNCTION is_content_admin() TO authenticated;
+
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1
+    FROM pg_policies
+    WHERE schemaname = 'public'
+      AND tablename = 'admin_user_allowlist'
+      AND policyname = 'content admin can read self allowlist row'
+  ) THEN
+    CREATE POLICY "content admin can read self allowlist row"
+      ON admin_user_allowlist
+      FOR SELECT
+      TO authenticated
+      USING (lower(email) = lower(auth.jwt() ->> 'email'));
+  END IF;
+END
+$$;
+
 CREATE TABLE IF NOT EXISTS user_profiles (
   id UUID PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
   provider TEXT NOT NULL CHECK (provider = 'google'),
