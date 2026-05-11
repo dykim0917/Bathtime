@@ -1,12 +1,13 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Href, router } from 'expo-router';
-import { Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
+import { Href, Redirect, router } from 'expo-router';
+import { Platform, Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import { ArchiveContentCard } from '@/src/components/web/ArchiveContentCard';
 import { ArchivePageContainer } from '@/src/components/web/ArchivePageContainer';
 import { ArchiveVisual } from '@/src/components/web/ArchiveVisual';
 import { SeoMetadata } from '@/src/components/web/SeoMetadata';
 import { WebShell, webStyles } from '@/src/components/web/WebShell';
 import { RoutinePresetCard } from '@/src/components/web/RoutinePresetCard';
+import { AppHandoffCard } from '@/src/components/web/AppHandoffCard';
 import { CATEGORY_LABELS } from '@/src/archive/labels';
 import { archiveContents, routinePresets } from '@/src/archive/seed';
 import { getContentsByCategory, getFeaturedContent, getLatestContents } from '@/src/archive/selectors';
@@ -23,6 +24,10 @@ import { brand } from '@/src/content/brand';
 const CATEGORIES: ContentCategory[] = ['HOME_BATH', 'BATH_PLACES', 'BATH_ITEMS', 'TIPS_CULTURE'];
 
 export default function WebHomePage() {
+  if (Platform.OS !== 'web') {
+    return <Redirect href={'/(tabs)' as any} />;
+  }
+
   const featured = getFeaturedContent();
   const latest = getLatestContents(4);
   const [savedIds, setSavedIds] = useState<string[]>([]);
@@ -45,16 +50,21 @@ export default function WebHomePage() {
 
   const handleSave = async (id: string) => {
     if (!isAuthenticated) {
-      setPendingAuthAction({ type: 'save_content', contentId: id, returnTo: '/', source: 'home' });
+      await setPendingAuthAction({ type: 'save_content', contentId: id, returnTo: '/', source: 'home' });
       trackArchiveEvent('saved_login_required', { contentId: id, source: 'home', platform: 'web' });
       trackArchiveEvent('auth_prompt_shown', { contentId: id, source: 'home', pendingAction: 'save_content', platform: 'web' });
       router.push('/auth/login?source=save&next=/' as Href);
       return;
     }
 
-    const next = await toggleSavedContent(id);
-    setSavedIds(next);
-    trackArchiveEvent(next.includes(id) ? 'content_saved' : 'content_unsaved', { contentId: id, source: 'home', platform: 'web' });
+    try {
+      const next = await toggleSavedContent(id);
+      setSavedIds(next);
+      trackArchiveEvent(next.includes(id) ? 'content_saved' : 'content_unsaved', { contentId: id, source: 'home', platform: 'web' });
+    } catch (error) {
+      console.warn('Failed to toggle saved content', error);
+      if (typeof window !== 'undefined') window.alert('저장에 실패했어요. 잠시 후 다시 시도해주세요.');
+    }
   };
 
   return (
@@ -123,10 +133,25 @@ export default function WebHomePage() {
           <View style={styles.cardGrid}>
             {routinePresets.slice(0, 2).map((routine) => (
               <View key={routine.id} style={[styles.cardTile, isDesktopGrid && styles.cardTileHalf]}>
-                <RoutinePresetCard routine={routine} onStart={() => {}} />
+                <RoutinePresetCard
+                  routine={routine}
+                  ctaLabel="앱에서 의식 열기"
+                  onStart={() => {
+                    trackArchiveEvent('routine_cta_clicked', { routineId: routine.id, source: 'home', platform: 'web' });
+                    router.push(`/app?from=routine_preview&routine=${routine.id}` as Href);
+                  }}
+                />
               </View>
             ))}
           </View>
+          <AppHandoffCard
+            source="routine_preview"
+            title="앱에서 루틴으로 저장하고 실행하기"
+            body="웹에서는 의식을 미리 보고, 앱에서는 타이머와 보관함으로 이어갈 수 있어요."
+            ctaLabel="앱에서 루틴 열기"
+            deepLink="getbathtime://profile?saved=1"
+            ctaType="routine_preview"
+          />
         </View>
       </View>
       </ArchivePageContainer>

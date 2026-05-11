@@ -37,7 +37,7 @@ export default function SubmitPage() {
     };
 
     if (!isAuthenticated) {
-      setPendingAuthAction({ type: 'submit_draft', draft, returnTo: '/submit' });
+      await setPendingAuthAction({ type: 'submit_draft', draft, returnTo: '/submit' });
       trackArchiveEvent('submit_login_required', { submissionType: type, platform: 'web' });
       trackArchiveEvent('auth_prompt_shown', { submissionType: type, pendingAction: 'submit_draft', platform: 'web' });
       router.push('/auth/login?source=submit&next=/submit' as Href);

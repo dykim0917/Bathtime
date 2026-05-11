@@ -235,6 +235,8 @@ export interface TripMemoryRecord {
 export interface BathRecommendation {
   id: string;
   mode: RecommendationMode;
+  routinePresetId?: string;
+  routineTitle?: string;
   intentId?: string;
   subProtocolId?: string;
   themeId?: ThemeId;

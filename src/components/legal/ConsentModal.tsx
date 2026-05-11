@@ -28,13 +28,12 @@ export function ConsentModal({
 }) {
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
-  const [healthAccepted, setHealthAccepted] = useState(false);
   const [guardianAccepted, setGuardianAccepted] = useState(false);
 
   const ready = useMemo(() => {
-    if (isMinor) return termsAccepted && privacyAccepted && healthAccepted && guardianAccepted;
-    return termsAccepted && privacyAccepted && healthAccepted;
-  }, [guardianAccepted, healthAccepted, isMinor, privacyAccepted, termsAccepted]);
+    if (isMinor) return termsAccepted && privacyAccepted && guardianAccepted;
+    return termsAccepted && privacyAccepted;
+  }, [guardianAccepted, isMinor, privacyAccepted, termsAccepted]);
 
   const Row = ({
     checked,
@@ -70,7 +69,7 @@ export function ConsentModal({
         <View style={[ui.glassCardV2, styles.card]}>
           <Text style={styles.title}>회원가입 동의</Text>
           <Text style={styles.subtitle}>
-            바스타임은 맞춤 입욕 루틴을 제공하기 위해 건강 상태를 포함한 정보를 확인합니다.
+            바스타임은 로그인과 저장 기능 제공에 필요한 최소한의 정보만 확인합니다.
           </Text>
 
           <Row
@@ -84,12 +83,6 @@ export function ConsentModal({
             onPress={() => setPrivacyAccepted((prev) => !prev)}
             title="[필수] 개인정보 처리방침 동의"
             body="수집 항목, 이용 목적, 보관 기간, 권리 행사 방법을 확인했습니다."
-          />
-          <Row
-            checked={healthAccepted}
-            onPress={() => setHealthAccepted((prev) => !prev)}
-            title="[필수] 건강정보 처리 동의"
-            body="고혈압/심장병 여부, 임신 여부, 당뇨 여부, 민감성 피부 여부를 민감정보로 처리하는 데 동의합니다."
           />
           {isMinor ? (
             <Row

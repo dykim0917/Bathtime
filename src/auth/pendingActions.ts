@@ -2,6 +2,8 @@ import { trackArchiveEvent } from '@/src/analytics/events';
 import { Submission } from '@/src/archive/types';
 import { saveSubmission } from '@/src/storage/submissions';
 import { getSavedContentStorage } from '@/src/storage/savedContent';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Platform } from 'react-native';
 
 const PENDING_AUTH_ACTION_KEY = '@bath_time/pending_auth_action';
 
@@ -24,9 +26,12 @@ function canUseSessionStorage(): boolean {
   return typeof window !== 'undefined' && typeof window.sessionStorage !== 'undefined';
 }
 
-export function setPendingAuthAction(action: PendingAuthAction): void {
-  if (!canUseSessionStorage()) return;
-  window.sessionStorage.setItem(PENDING_AUTH_ACTION_KEY, JSON.stringify(action));
+export async function setPendingAuthAction(action: PendingAuthAction): Promise<void> {
+  if (canUseSessionStorage()) {
+    window.sessionStorage.setItem(PENDING_AUTH_ACTION_KEY, JSON.stringify(action));
+    return;
+  }
+  await AsyncStorage.setItem(PENDING_AUTH_ACTION_KEY, JSON.stringify(action));
 }
 
 export function readPendingAuthAction(): PendingAuthAction | null {
@@ -41,12 +46,34 @@ export function readPendingAuthAction(): PendingAuthAction | null {
 }
 
 export function clearPendingAuthAction(): void {
-  if (!canUseSessionStorage()) return;
-  window.sessionStorage.removeItem(PENDING_AUTH_ACTION_KEY);
+  if (canUseSessionStorage()) {
+    window.sessionStorage.removeItem(PENDING_AUTH_ACTION_KEY);
+    return;
+  }
+  void AsyncStorage.removeItem(PENDING_AUTH_ACTION_KEY);
+}
+
+export async function readPendingAuthActionAsync(): Promise<PendingAuthAction | null> {
+  if (canUseSessionStorage()) return readPendingAuthAction();
+
+  try {
+    const value = await AsyncStorage.getItem(PENDING_AUTH_ACTION_KEY);
+    return value ? (JSON.parse(value) as PendingAuthAction) : null;
+  } catch {
+    return null;
+  }
+}
+
+export async function clearPendingAuthActionAsync(): Promise<void> {
+  if (canUseSessionStorage()) {
+    clearPendingAuthAction();
+    return;
+  }
+  await AsyncStorage.removeItem(PENDING_AUTH_ACTION_KEY);
 }
 
 export async function completePendingAuthAction(): Promise<PendingAuthAction | null> {
-  const action = readPendingAuthAction();
+  const action = await readPendingAuthActionAsync();
   if (!action) return null;
 
   if (action.type === 'save_content') {
@@ -55,21 +82,21 @@ export async function completePendingAuthAction(): Promise<PendingAuthAction | n
       contentId: action.contentId,
       source: action.source ?? 'auth_callback',
       pendingAction: action.type,
-      platform: 'web',
+      platform: Platform.OS === 'web' ? 'web' : 'native',
     });
   } else {
     await saveSubmission(action.draft);
     trackArchiveEvent('submit_completed', {
       submissionType: action.draft.type,
       pendingAction: action.type,
-      platform: 'web',
+      platform: Platform.OS === 'web' ? 'web' : 'native',
     });
   }
 
-  clearPendingAuthAction();
+  await clearPendingAuthActionAsync();
   trackArchiveEvent('auth_required_action_completed', {
     pendingAction: action.type,
-    platform: 'web',
+    platform: Platform.OS === 'web' ? 'web' : 'native',
   });
   return action;
 }

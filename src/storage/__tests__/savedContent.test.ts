@@ -52,15 +52,18 @@ describe('web saved content storage', () => {
   });
 
   it('ignores duplicate save violations', async () => {
-    const insert = jest.fn().mockResolvedValue({ error: { code: '23505' } });
-    const from = jest.fn().mockReturnValue({ insert });
+    const upsert = jest.fn().mockResolvedValue({ error: { code: '23505' } });
+    const from = jest.fn().mockReturnValue({ upsert });
     mockSupabase('user-1', { from });
 
     await expect(webSavedContentStorage.save('content-a')).resolves.toBeUndefined();
-    expect(insert).toHaveBeenCalledWith({
-      user_id: 'user-1',
-      target_type: 'content',
-      target_id: 'content-a',
-    });
+    expect(upsert).toHaveBeenCalledWith(
+      {
+        user_id: 'user-1',
+        target_type: 'content',
+        target_id: 'content-a',
+      },
+      { onConflict: 'user_id,target_type,target_id', ignoreDuplicates: true }
+    );
   });
 });

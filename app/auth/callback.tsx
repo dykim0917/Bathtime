@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Href, router, useLocalSearchParams } from 'expo-router';
-import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, Platform, StyleSheet, Text, View } from 'react-native';
 import { ArchivePageContainer } from '@/src/components/web/ArchivePageContainer';
 import { SeoMetadata } from '@/src/components/web/SeoMetadata';
 import { WebShell, webStyles } from '@/src/components/web/WebShell';
@@ -46,7 +46,7 @@ export default function AuthCallbackPage() {
       } catch (error) {
         trackArchiveEvent('auth_login_failed', {
           errorCode: error instanceof Error ? error.message : 'callback_failed',
-          platform: 'web',
+          platform: Platform.OS === 'web' ? 'web' : 'native',
         });
         router.replace(`/auth/login?next=${encodeURIComponent(nextPath)}` as Href);
       }
@@ -58,15 +58,27 @@ export default function AuthCallbackPage() {
     };
   }, [params.code, params.next]);
 
+  const status = (
+    <View style={styles.statusBox}>
+      <ActivityIndicator color={archiveColors.primary} />
+      <Text style={styles.statusText}>{message}</Text>
+    </View>
+  );
+
+  if (Platform.OS !== 'web') {
+    return (
+      <View style={styles.nativeRoot}>
+        {status}
+      </View>
+    );
+  }
+
   return (
     <WebShell>
       <SeoMetadata title="로그인 처리 중 - 바스타임" description="로그인을 처리하고 있습니다." />
       <ArchivePageContainer variant="narrow">
         <View style={webStyles.pageStack}>
-          <View style={styles.statusBox}>
-            <ActivityIndicator color={archiveColors.primary} />
-            <Text style={styles.statusText}>{message}</Text>
-          </View>
+          {status}
         </View>
       </ArchivePageContainer>
     </WebShell>
@@ -84,5 +96,10 @@ const styles = StyleSheet.create({
     color: archiveColors.body,
     fontSize: 15,
     fontFamily: luxuryFonts.sans,
+  },
+  nativeRoot: {
+    flex: 1,
+    backgroundColor: archiveColors.canvas,
+    justifyContent: 'center',
   },
 });

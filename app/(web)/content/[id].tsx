@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { Href, router, useLocalSearchParams } from 'expo-router';
-import { Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
+import { Platform, Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import { BookmarkSimple, PlusSquare } from '@/src/components/web/phosphorIcons';
 import { ArchiveStructuredInfo } from '@/src/components/web/ArchiveStructuredInfo';
+import { AppHandoffCard } from '@/src/components/web/AppHandoffCard';
 import { ArchivePageContainer } from '@/src/components/web/ArchivePageContainer';
 import { ArchiveVisual } from '@/src/components/web/ArchiveVisual';
 import { ContentBodyRenderer } from '@/src/components/web/ContentBodyRenderer';
 import { RoutinePresetCard } from '@/src/components/web/RoutinePresetCard';
 import { SeoMetadata } from '@/src/components/web/SeoMetadata';
 import { WebShell, webStyles } from '@/src/components/web/WebShell';
+import { NativeScreen } from '@/src/components/native/NativeScreen';
 import { CATEGORY_LABELS, CONTENT_TYPE_LABELS } from '@/src/archive/labels';
 import { getContentById, getRelatedRoutinePresets } from '@/src/archive/selectors';
 import { trackArchiveEvent } from '@/src/analytics/events';
@@ -61,17 +63,22 @@ export default function ContentDetailPage() {
   const handleToggleSaved = async () => {
     if (!isAuthenticated) {
       const returnTo = `/content/${content.id}`;
-      setPendingAuthAction({ type: 'save_content', contentId: content.id, returnTo, source: 'detail' });
+      await setPendingAuthAction({ type: 'save_content', contentId: content.id, returnTo, source: 'detail' });
       trackArchiveEvent('saved_login_required', { contentId: content.id, source: 'detail', platform: 'web' });
       trackArchiveEvent('auth_prompt_shown', { contentId: content.id, source: 'detail', pendingAction: 'save_content', platform: 'web' });
       router.push(`/auth/login?source=save&next=${encodeURIComponent(returnTo)}` as Href);
       return;
     }
 
-    const next = await toggleSavedContent(content.id);
-    const isSaved = next.includes(content.id);
-    setSaved(isSaved);
-    trackArchiveEvent(isSaved ? 'content_saved' : 'content_unsaved', { contentId: content.id, category: content.category, platform: 'web' });
+    try {
+      const next = await toggleSavedContent(content.id);
+      const isSaved = next.includes(content.id);
+      setSaved(isSaved);
+      trackArchiveEvent(isSaved ? 'content_saved' : 'content_unsaved', { contentId: content.id, category: content.category, platform: 'web' });
+    } catch (error) {
+      console.warn('Failed to toggle saved content', error);
+      if (typeof window !== 'undefined') window.alert('저장에 실패했어요. 잠시 후 다시 시도해주세요.');
+    }
   };
 
   const headerBlock = (
@@ -94,6 +101,42 @@ export default function ContentDetailPage() {
       </Pressable>
     </View>
   );
+
+  if (Platform.OS !== 'web') {
+    return (
+      <NativeScreen eyebrow={`${CATEGORY_LABELS[content.category]} · ${CONTENT_TYPE_LABELS[content.contentType]}`} title={content.title} subtitle={content.subtitle}>
+        <View style={styles.nativeActionRow}>{actionBlock}</View>
+        <View style={styles.nativeInfoCard}>
+          <Text style={styles.nativeInfoTitle}>앱에서 이어가기</Text>
+          <Text style={styles.nativeInfoBody}>이 콘텐츠를 저장하면 프로필의 내 보관함에서 다시 꺼내볼 수 있어요.</Text>
+        </View>
+        <View style={styles.nativeBodyCard}>
+          {content.body.map((block, index) => {
+            if (block.type === 'heading') return <Text key={index} style={styles.nativeBodyHeading}>{block.text}</Text>;
+            if (block.type === 'paragraph') return <Text key={index} style={styles.nativeBodyText}>{block.text}</Text>;
+            if (block.type === 'quote') return <Text key={index} style={styles.nativeBodyQuote}>{block.text}</Text>;
+            if (block.type === 'list') {
+              return block.items.map((item) => <Text key={`${index}-${item}`} style={styles.nativeBodyText}>• {item}</Text>);
+            }
+            return null;
+          })}
+        </View>
+        {routines.length > 0 ? (
+          <View style={styles.nativeRoutineList}>
+            <Text style={styles.nativeSectionTitle}>연결된 의식</Text>
+            {routines.map((routine) => (
+              <RoutinePresetCard
+                key={routine.id}
+                routine={routine}
+                ctaLabel="의식 보기"
+                onStart={() => router.push('/(tabs)/routines' as Href)}
+              />
+            ))}
+          </View>
+        ) : null}
+      </NativeScreen>
+    );
+  }
 
   return (
     <WebShell>
@@ -152,14 +195,26 @@ export default function ContentDetailPage() {
                   <RoutinePresetCard
                     key={routine.id}
                     routine={routine}
+                    ctaLabel="앱에서 이 의식 따라 하기"
                     onStart={() => {
                       trackArchiveEvent('routine_cta_clicked', { contentId: content.id, routineId: routine.id, platform: 'web' });
+                      router.push(`/app?from=routine_preview&routine=${routine.id}` as Href);
                     }}
                   />
                 ))}
               </View>
             </View>
           ) : null}
+          <AppHandoffCard
+            source="content"
+            title="앱에서 내 바스타임으로 이어가기"
+            body="저장하고, 나중에 다시 꺼내보고, 연결된 의식을 타이머로 실행할 수 있어요."
+            ctaLabel="앱에서 열기"
+            deepLink={`getbathtime://content/${content.id}`}
+            contentId={content.id}
+            contentCategory={content.category}
+            ctaType="content_detail"
+          />
         </View>
       </View>
       </ArchivePageContainer>
@@ -257,6 +312,65 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '900',
     fontFamily: luxuryFonts.sans,
+  },
+  nativeActionRow: {
+    gap: 10,
+  },
+  nativeInfoCard: {
+    borderRadius: 18,
+    borderWidth: 1,
+    borderColor: 'rgba(230, 246, 239, 0.14)',
+    backgroundColor: 'rgba(22, 45, 48, 0.9)',
+    padding: 16,
+    gap: 8,
+  },
+  nativeInfoTitle: {
+    color: '#F7F3EA',
+    fontSize: 18,
+    fontWeight: '900',
+    fontFamily: luxuryFonts.display,
+  },
+  nativeInfoBody: {
+    color: '#D7E1DC',
+    fontSize: 14,
+    lineHeight: 20,
+    fontFamily: luxuryFonts.sans,
+  },
+  nativeBodyCard: {
+    borderRadius: 18,
+    borderWidth: 1,
+    borderColor: 'rgba(230, 246, 239, 0.14)',
+    backgroundColor: 'rgba(22, 45, 48, 0.9)',
+    padding: 16,
+    gap: 10,
+  },
+  nativeBodyHeading: {
+    color: '#F7F3EA',
+    fontSize: 17,
+    fontWeight: '900',
+    fontFamily: luxuryFonts.display,
+  },
+  nativeBodyText: {
+    color: '#D7E1DC',
+    fontSize: 14,
+    lineHeight: 22,
+    fontFamily: luxuryFonts.sans,
+  },
+  nativeBodyQuote: {
+    color: '#94D2BF',
+    fontSize: 15,
+    lineHeight: 22,
+    fontWeight: '800',
+    fontFamily: luxuryFonts.sans,
+  },
+  nativeRoutineList: {
+    gap: 12,
+  },
+  nativeSectionTitle: {
+    color: '#F7F3EA',
+    fontSize: 18,
+    fontWeight: '900',
+    fontFamily: luxuryFonts.display,
   },
   disabledButton: {
     opacity: 0.45,

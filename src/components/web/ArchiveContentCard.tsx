@@ -55,41 +55,44 @@ export function ArchiveContentCard({ content, saved = false, onSavePress }: Prop
   const imageScale = hoverProgress.interpolate({ inputRange: [0, 1], outputRange: [1, 1.1] });
 
   return (
-    <Pressable
-      onHoverIn={() => setHovered(true)}
-      onHoverOut={() => setHovered(false)}
-      onPress={() => router.push(`/content/${content.id}` as Href)}
-    >
-    {({ pressed }) => (
-    <Animated.View style={[styles.card, pressed && styles.cardPressed]}>
-      <View style={styles.visualWrap}>
-        <Animated.View style={{ transform: [{ scale: imageScale }] }}>
-          <ArchiveVisual content={content} height={194} showBadge={false} radius={archiveRadius.lg} roundBottom={false} />
-        </Animated.View>
-        {onSavePress ? (
-          <View style={styles.saveWrap}>
-            <SaveButton saved={saved} onPress={onSavePress} />
-          </View>
-        ) : null}
-      </View>
-      <View style={styles.body}>
-        <View style={styles.titleArea}>
-          <Text style={styles.kicker} numberOfLines={1}>{CATEGORY_LABELS[content.category]} · {CONTENT_TYPE_LABELS[content.contentType]}</Text>
-          <Text style={styles.title} numberOfLines={2}>{content.title}</Text>
+    <Animated.View style={styles.card}>
+      <Pressable
+        onHoverIn={() => setHovered(true)}
+        onHoverOut={() => setHovered(false)}
+        onPress={() => router.push(`/content/${content.id}` as Href)}
+      >
+        {({ pressed }) => (
+          <Animated.View style={pressed && styles.cardPressed}>
+            <View style={styles.visualWrap}>
+              <Animated.View style={{ transform: [{ scale: imageScale }] }}>
+                <ArchiveVisual content={content} height={194} showBadge={false} radius={archiveRadius.lg} roundBottom={false} />
+              </Animated.View>
+            </View>
+            <View style={styles.body}>
+              <View style={styles.titleArea}>
+                <Text style={styles.kicker} numberOfLines={1}>{CATEGORY_LABELS[content.category]} · {CONTENT_TYPE_LABELS[content.contentType]}</Text>
+                <Text style={styles.title} numberOfLines={2}>{content.title}</Text>
+              </View>
+              <View style={styles.contentDivider} />
+              <View style={styles.metaArea}>
+                <MetaRow items={summaryMeta(content)} />
+              </View>
+            </View>
+          </Animated.View>
+        )}
+      </Pressable>
+      {onSavePress ? (
+        <View style={styles.saveWrap}>
+          <SaveButton saved={saved} onPress={onSavePress} />
         </View>
-        <View style={styles.contentDivider} />
-        <View style={styles.metaArea}>
-          <MetaRow items={summaryMeta(content)} />
-        </View>
-      </View>
+      ) : null}
     </Animated.View>
-    )}
-    </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
   card: {
+    position: 'relative',
     backgroundColor: archiveColors.surface,
     borderWidth: 1,
     borderColor: archiveColors.hairline,
