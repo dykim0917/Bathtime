@@ -1,5 +1,5 @@
 import { Redirect } from 'expo-router';
 
-export default function WebTabsProfileRedirect() {
+export default function SettingsRedirect() {
   return <Redirect href="/saved" />;
 }
