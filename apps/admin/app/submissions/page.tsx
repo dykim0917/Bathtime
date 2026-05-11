@@ -57,6 +57,7 @@ export default async function SubmissionsPage({ searchParams }: SubmissionsPageP
               <span>사진/링크</span>
               <span>코멘트</span>
               <span>닉네임</span>
+              <span>계정</span>
               <span>공개 가능</span>
               <span>상태</span>
               <span>상세</span>
@@ -67,6 +68,7 @@ export default async function SubmissionsPage({ searchParams }: SubmissionsPageP
                 <span>{submission.linkOrImage ?? '-'}</span>
                 <span>{submission.comment}</span>
                 <span>{submission.nickname ?? '-'}</span>
+                <span>{submission.user?.email ?? submission.userId ?? '-'}</span>
                 <span>{submission.canPublish ? '예' : '아니오'}</span>
                 <strong>{submissionStatusLabels[submission.status]}</strong>
                 <Link className="textButton" href={`/submissions/${submission.id}`}>열기</Link>

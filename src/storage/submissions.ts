@@ -1,70 +1,77 @@
-import { Platform } from 'react-native';
 import { Submission } from '@/src/archive/types';
+import { requireSupabaseClient } from '@/src/auth/supabase';
+import { AuthRequiredError } from '@/src/storage/savedContent';
 
-const WEB_KEY = '@bath_time/submissions';
-const DEFAULT_WEB_ENDPOINT = '/api/submissions';
+type SubmissionInput = Omit<Submission, 'id' | 'status' | 'createdAt' | 'updatedAt' | 'userId'>;
 
-function getSubmissionsEndpoint(): string {
-  return process.env.EXPO_PUBLIC_SUBMISSIONS_API_URL?.trim() || DEFAULT_WEB_ENDPOINT;
-}
+type SubmissionRow = {
+  id: string;
+  user_id: string;
+  type: Submission['type'];
+  link_or_image: string | null;
+  comment: string;
+  nickname: string | null;
+  can_publish: boolean | null;
+  status: Submission['status'];
+  created_at: string;
+  updated_at: string;
+};
 
-function readWebSubmissions(): Submission[] {
-  if (typeof window === 'undefined') return [];
-  try {
-    const data = window.localStorage.getItem(WEB_KEY);
-    if (!data) return [];
-    return JSON.parse(data) as Submission[];
-  } catch {
-    return [];
-  }
-}
-
-function writeWebSubmissions(submissions: Submission[]): void {
-  if (typeof window === 'undefined') return;
-  window.localStorage.setItem(WEB_KEY, JSON.stringify(submissions));
+function mapSubmissionRow(row: SubmissionRow): Submission {
+  return {
+    id: row.id,
+    userId: row.user_id,
+    type: row.type,
+    linkOrImage: row.link_or_image ?? undefined,
+    comment: row.comment,
+    nickname: row.nickname ?? undefined,
+    canPublish: row.can_publish ?? undefined,
+    status: row.status,
+    createdAt: row.created_at,
+    updatedAt: row.updated_at,
+  };
 }
 
 export async function loadSubmissions(): Promise<Submission[]> {
-  if (Platform.OS !== 'web') return [];
-  try {
-    const response = await fetch(getSubmissionsEndpoint());
-    if (!response.ok) return readWebSubmissions();
-    const payload = await response.json() as { submissions?: Submission[] };
-    return payload.submissions ?? readWebSubmissions();
-  } catch {
-    return readWebSubmissions();
-  }
+  const supabase = requireSupabaseClient();
+  const {
+    data: { user },
+    error: userError,
+  } = await supabase.auth.getUser();
+
+  if (userError || !user) throw new AuthRequiredError();
+
+  const { data, error } = await supabase
+    .from('submissions')
+    .select('*')
+    .eq('user_id', user.id)
+    .order('created_at', { ascending: false });
+
+  if (error) throw error;
+  return ((data ?? []) as SubmissionRow[]).map(mapSubmissionRow);
 }
 
-export async function saveSubmission(input: Omit<Submission, 'id' | 'status' | 'createdAt' | 'updatedAt'>): Promise<Submission> {
-  if (Platform.OS === 'web') {
-    try {
-      const response = await fetch(getSubmissionsEndpoint(), {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify(input),
-      });
-      if (response.ok) {
-        const payload = await response.json() as { submission?: Submission };
-        if (payload.submission) return payload.submission;
-      }
-    } catch {
-      // Fall through to local fallback so the user does not lose a draft.
-    }
-  }
+export async function saveSubmission(input: SubmissionInput): Promise<Submission> {
+  const supabase = requireSupabaseClient();
+  const {
+    data: { user },
+    error: userError,
+  } = await supabase.auth.getUser();
 
-  const now = new Date().toISOString();
-  const submission: Submission = {
-    ...input,
-    id: `submission-${Date.now()}`,
-    status: 'new',
-    createdAt: now,
-    updatedAt: now,
-  };
+  if (userError || !user) throw new AuthRequiredError();
 
-  if (Platform.OS === 'web') {
-    writeWebSubmissions([submission, ...readWebSubmissions()]);
-  }
+  const { data, error } = await supabase
+    .from('submissions')
+    .insert({
+      type: input.type,
+      link_or_image: input.linkOrImage ?? null,
+      comment: input.comment,
+      nickname: input.nickname ?? null,
+      can_publish: input.canPublish ?? null,
+    })
+    .select('*')
+    .single();
 
-  return submission;
+  if (error) throw error;
+  return mapSubmissionRow(data as SubmissionRow);
 }
