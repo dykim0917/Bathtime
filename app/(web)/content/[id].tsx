@@ -41,7 +41,7 @@ export default function ContentDetailPage() {
       contentType: content.contentType,
       tags: content.tags,
       source: 'detail',
-      platform: 'web',
+      platform: Platform.OS === 'web' ? 'web' : 'native',
     });
   }, [content, isAuthenticated]);
 
@@ -73,7 +73,11 @@ export default function ContentDetailPage() {
       const next = await toggleSavedContent(content.id);
       const isSaved = next.includes(content.id);
       setSaved(isSaved);
-      trackArchiveEvent(isSaved ? 'content_saved' : 'content_unsaved', { contentId: content.id, category: content.category, platform: 'web' });
+      trackArchiveEvent(isSaved ? 'content_saved' : 'content_unsaved', {
+        contentId: content.id,
+        category: content.category,
+        platform: Platform.OS === 'web' ? 'web' : 'native',
+      });
     } catch (error) {
       console.warn('Failed to toggle saved content', error);
       if (typeof window !== 'undefined') window.alert(`저장에 실패했어요.\n${getStorageErrorMessage(error)}`);
@@ -95,11 +99,9 @@ export default function ContentDetailPage() {
         title={content.title}
         subtitle={content.subtitle}
         backHref="/(tabs)/explore"
+        hero={<ArchiveVisual content={content} height={330} showBadge={false} radius={0} />}
+        heroAccessory={<SaveButton saved={saved} onPress={handleToggleSaved} disabled={isLoading} size={42} />}
       >
-        <View style={styles.nativeInfoCard}>
-          <Text style={styles.nativeInfoTitle}>앱에서 이어가기</Text>
-          <Text style={styles.nativeInfoBody}>이 콘텐츠를 저장하면 프로필의 내 보관함에서 다시 꺼내볼 수 있어요.</Text>
-        </View>
         <View style={styles.nativeBodyCard}>
           {content.body.map((block, index) => {
             if (block.type === 'heading') return <Text key={index} style={styles.nativeBodyHeading}>{block.text}</Text>;
@@ -258,26 +260,6 @@ const styles = StyleSheet.create({
     color: archiveColors.primary,
     fontSize: 14,
     fontWeight: '900',
-    fontFamily: luxuryFonts.sans,
-  },
-  nativeInfoCard: {
-    borderRadius: 18,
-    borderWidth: 1,
-    borderColor: 'rgba(230, 246, 239, 0.14)',
-    backgroundColor: 'rgba(22, 45, 48, 0.9)',
-    padding: 16,
-    gap: 8,
-  },
-  nativeInfoTitle: {
-    color: '#F7F3EA',
-    fontSize: 18,
-    fontWeight: '900',
-    fontFamily: luxuryFonts.display,
-  },
-  nativeInfoBody: {
-    color: '#D7E1DC',
-    fontSize: 14,
-    lineHeight: 20,
     fontFamily: luxuryFonts.sans,
   },
   nativeBodyCard: {

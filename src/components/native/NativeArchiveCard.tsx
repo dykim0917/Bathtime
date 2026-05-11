@@ -1,8 +1,10 @@
 import React from 'react';
-import { GestureResponderEvent, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { Href, router } from 'expo-router';
 import { ArchiveContent } from '@/src/archive/types';
-import { CATEGORY_LABELS, CONTENT_TYPE_LABELS } from '@/src/archive/labels';
+import { CONTENT_TYPE_LABELS } from '@/src/archive/labels';
+import { ArchiveVisual } from '@/src/components/web/ArchiveVisual';
+import { SaveButton } from '@/src/components/web/SaveButton';
 import { luxuryFonts } from '@/src/theme/luxury';
 import { archiveColors, archiveRadius } from '@/src/theme/archiveTheme';
 
@@ -15,24 +17,23 @@ type Props = {
 export function NativeArchiveCard({ content, saved = false, onSavePress }: Props) {
   return (
     <Pressable style={styles.card} onPress={() => router.push(`/content/${content.id}` as Href)}>
-      <View style={styles.visual}>
-        <Text style={styles.visualText}>{CATEGORY_LABELS[content.category]}</Text>
+      <View style={styles.visualWrap}>
+        <ArchiveVisual content={content} height={154} showBadge={false} radius={archiveRadius.lg} roundBottom={false} />
+        {onSavePress ? (
+          <View style={styles.saveWrap}>
+            <SaveButton
+              saved={saved}
+              onPress={() => {
+                onSavePress();
+              }}
+            />
+          </View>
+        ) : null}
       </View>
       <View style={styles.body}>
         <Text style={styles.kicker}>{CONTENT_TYPE_LABELS[content.contentType]}</Text>
         <Text style={styles.title} numberOfLines={2}>{content.title}</Text>
         {content.subtitle ? <Text style={styles.subtitle} numberOfLines={2}>{content.subtitle}</Text> : null}
-        {onSavePress ? (
-          <Pressable
-            style={[styles.saveButton, saved && styles.saveButtonActive]}
-            onPress={(event: GestureResponderEvent) => {
-              event.stopPropagation();
-              onSavePress();
-            }}
-          >
-            <Text style={[styles.saveButtonText, saved && styles.saveButtonTextActive]}>{saved ? '저장됨' : '저장하기'}</Text>
-          </Pressable>
-        ) : null}
       </View>
     </Pressable>
   );
@@ -46,17 +47,13 @@ const styles = StyleSheet.create({
     borderColor: archiveColors.hairline,
     backgroundColor: archiveColors.surface,
   },
-  visual: {
-    minHeight: 112,
-    justifyContent: 'flex-end',
-    padding: 14,
-    backgroundColor: archiveColors.primarySoft,
+  visualWrap: {
+    position: 'relative',
   },
-  visualText: {
-    color: archiveColors.primary,
-    fontSize: 12,
-    fontWeight: '800',
-    fontFamily: luxuryFonts.sans,
+  saveWrap: {
+    position: 'absolute',
+    top: 12,
+    right: 12,
   },
   body: {
     padding: 14,
@@ -80,26 +77,5 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 20,
     fontFamily: luxuryFonts.sans,
-  },
-  saveButton: {
-    minHeight: 40,
-    borderRadius: archiveRadius.md,
-    borderWidth: 1,
-    borderColor: archiveColors.hairline,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  saveButtonActive: {
-    backgroundColor: archiveColors.primary,
-    borderColor: archiveColors.primary,
-  },
-  saveButtonText: {
-    color: archiveColors.ink,
-    fontSize: 14,
-    fontWeight: '800',
-    fontFamily: luxuryFonts.sans,
-  },
-  saveButtonTextActive: {
-    color: archiveColors.onPrimary,
   },
 });
