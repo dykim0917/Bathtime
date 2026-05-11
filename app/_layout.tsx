@@ -10,7 +10,7 @@ import { Platform } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import 'react-native-reanimated';
 import { AuthProvider } from '@/src/auth/AuthProvider';
-import { V2_ACCENT, V2_BG_BASE, V2_BORDER, V2_SURFACE, V2_TEXT_PRIMARY } from '@/src/data/colors';
+import { archiveColors } from '@/src/theme/archiveTheme';
 
 export { ErrorBoundary } from 'expo-router';
 export const unstable_settings = { initialRouteName: Platform.OS === 'web' ? 'index' : '(tabs)' };
@@ -20,11 +20,11 @@ const AppTheme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    background: V2_BG_BASE,
-    card: V2_SURFACE,
-    text: V2_TEXT_PRIMARY,
-    border: V2_BORDER,
-    primary: V2_ACCENT,
+    background: archiveColors.canvas,
+    card: archiveColors.surface,
+    text: archiveColors.ink,
+    border: archiveColors.hairline,
+    primary: archiveColors.primary,
   },
 };
 
@@ -39,32 +39,53 @@ export default function RootLayout() {
   useEffect(() => {
     if (Platform.OS !== 'android') return;
 
-    void NavigationBar.setBackgroundColorAsync(V2_BG_BASE);
-    void NavigationBar.setBorderColorAsync(V2_BORDER);
-    void NavigationBar.setButtonStyleAsync('light');
+    void NavigationBar.setBackgroundColorAsync(archiveColors.surface);
+    void NavigationBar.setBorderColorAsync(archiveColors.hairline);
+    void NavigationBar.setButtonStyleAsync('dark');
     void NavigationBar.setPositionAsync('relative');
   }, []);
 
   if (!loaded) return null;
 
+  const stack = Platform.OS === 'web' ? (
+    <Stack>
+      <Stack.Screen name="index" options={{ headerShown: false }} />
+      <Stack.Screen name="(web)" options={{ headerShown: false }} />
+      <Stack.Screen name="auth/login" options={{ headerShown: false }} />
+      <Stack.Screen name="auth/callback" options={{ headerShown: false }} />
+      <Stack.Screen name="profile" options={{ headerShown: false }} />
+      <Stack.Screen name="routine/[id]" options={{ headerShown: false }} />
+      <Stack.Screen name="onboarding" options={{ headerShown: false, gestureEnabled: false }} />
+      <Stack.Screen name="legal/privacy" options={{ title: '개인정보 처리방침', headerShown: false }} />
+      <Stack.Screen name="legal/terms" options={{ title: '이용약관', headerShown: false }} />
+      <Stack.Screen name="result/recipe/[id]" options={{ headerShown: false, presentation: 'modal', gestureEnabled: true }} />
+      <Stack.Screen name="result/timer/[id]" options={{ headerShown: false, presentation: 'modal', gestureEnabled: false }} />
+      <Stack.Screen name="result/completion/[id]" options={{ headerShown: false, presentation: 'modal', gestureEnabled: false }} />
+    </Stack>
+  ) : (
+    <Stack>
+      <Stack.Screen name="index" options={{ headerShown: false }} />
+      <Stack.Screen name="(web)" options={{ headerShown: false }} />
+      <Stack.Screen name="auth/login" options={{ headerShown: false }} />
+      <Stack.Screen name="auth/callback" options={{ headerShown: false }} />
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack.Screen name="profile" options={{ headerShown: false }} />
+      <Stack.Screen name="routine/[id]" options={{ headerShown: false }} />
+      <Stack.Screen name="onboarding" options={{ headerShown: false, gestureEnabled: false }} />
+      <Stack.Screen name="legal/privacy" options={{ title: '개인정보 처리방침', headerShown: true }} />
+      <Stack.Screen name="legal/terms" options={{ title: '이용약관', headerShown: true }} />
+      <Stack.Screen name="result/recipe/[id]" options={{ headerShown: false, presentation: 'modal', gestureEnabled: true }} />
+      <Stack.Screen name="result/timer/[id]" options={{ headerShown: false, presentation: 'modal', gestureEnabled: false }} />
+      <Stack.Screen name="result/completion/[id]" options={{ headerShown: false, presentation: 'modal', gestureEnabled: false }} />
+    </Stack>
+  );
+
   return (
     <SafeAreaProvider>
       <ThemeProvider value={AppTheme}>
         <AuthProvider>
-          <StatusBar style="light" />
-          <Stack>
-            <Stack.Screen name="index" options={{ headerShown: false }} />
-            <Stack.Screen name="(web)" options={{ headerShown: false }} />
-            <Stack.Screen name="auth/login" options={{ headerShown: false }} />
-            <Stack.Screen name="auth/callback" options={{ headerShown: false }} />
-            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-            <Stack.Screen name="onboarding" options={{ headerShown: false, gestureEnabled: false }} />
-            <Stack.Screen name="legal/privacy" options={{ title: '개인정보 처리방침', headerShown: Platform.OS !== 'web' }} />
-            <Stack.Screen name="legal/terms" options={{ title: '이용약관', headerShown: Platform.OS !== 'web' }} />
-            <Stack.Screen name="result/recipe/[id]" options={{ headerShown: false, presentation: 'modal', gestureEnabled: true }} />
-            <Stack.Screen name="result/timer/[id]" options={{ headerShown: false, presentation: 'modal', gestureEnabled: false }} />
-            <Stack.Screen name="result/completion/[id]" options={{ headerShown: false, presentation: 'modal', gestureEnabled: false }} />
-          </Stack>
+          <StatusBar style="dark" />
+          {stack}
         </AuthProvider>
       </ThemeProvider>
     </SafeAreaProvider>

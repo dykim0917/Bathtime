@@ -77,7 +77,7 @@ export default function WelcomeScreen() {
     haptic.medium();
     if (isLastStep) {
       void saveCookieNoticeAck().finally(() => {
-        router.replace('/(tabs)');
+        router.replace('/(tabs)' as any);
       });
       return;
     }

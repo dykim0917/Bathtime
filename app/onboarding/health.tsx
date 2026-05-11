@@ -23,7 +23,7 @@ export default function OnboardingHealthRedirect() {
       await save(profile);
       router.replace(
         allowBack === '1'
-          ? { pathname: '/(tabs)/my', params: { tab: 'settings' } }
+          ? { pathname: '/(tabs)/my', params: { tab: 'settings' } } as any
           : '/onboarding/greeting'
       );
     };

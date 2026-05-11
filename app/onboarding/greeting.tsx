@@ -43,7 +43,7 @@ export default function OnboardingGreeting() {
 
   const handleStart = () => {
     haptic.success();
-    router.replace('/(tabs)');
+    router.replace('/(tabs)' as any);
   };
 
   return (

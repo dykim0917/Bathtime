@@ -31,6 +31,8 @@ function withAlpha(hex: string, alpha: string): string {
 }
 
 function getTimerRoutineName(recommendation: BathRecommendation): string {
+  if (recommendation.routineTitle) return recommendation.routineTitle;
+
   if (recommendation.mode === 'trip') {
     return (
       recommendation.themeTitle ??

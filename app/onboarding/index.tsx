@@ -42,7 +42,7 @@ export default function OnboardingEnvironment() {
     await save(profile);
     router.replace(
       shouldShowBackButton
-        ? { pathname: '/(tabs)/my', params: { tab: 'settings' } }
+        ? { pathname: '/(tabs)/my', params: { tab: 'settings' } } as any
         : '/onboarding/greeting'
     );
   };
@@ -56,7 +56,7 @@ export default function OnboardingEnvironment() {
             {shouldShowBackButton ? (
               <Pressable
                 style={styles.backButton}
-                onPress={() => router.replace({ pathname: '/(tabs)/my', params: { tab: 'settings' } })}
+                onPress={() => router.replace({ pathname: '/(tabs)/my', params: { tab: 'settings' } } as any)}
               >
                 <FontAwesome name="angle-left" size={26} color={V2_TEXT_PRIMARY} />
               </Pressable>

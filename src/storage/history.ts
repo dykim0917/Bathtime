@@ -12,6 +12,8 @@ function normalizeRecommendation(rec: BathRecommendation): BathRecommendation {
   return {
     ...rec,
     mode: rec.mode ?? 'care',
+    routinePresetId: rec.routinePresetId,
+    routineTitle: rec.routineTitle,
     environmentUsed: rec.environmentUsed ?? 'bathtub',
     themeId: rec.themeId,
     themeTitle: rec.themeTitle,
