@@ -715,11 +715,11 @@ export default function HomeIntentScreen() {
               badge="FIRST SETUP"
               eyebrow="30초 안에 끝나요"
               title="오늘 가능한 방식만 알려주세요"
-              description="샤워, 욕조, 족욕 중 가능한 환경과 안전 상태를 확인하면 바로 무리 없는 루틴을 준비해요."
+              description="샤워, 욕조, 족욕 중 가능한 환경만 고르면 바로 무리 없는 루틴을 준비해요."
               visualLabel="BATH TIME"
               metaChips={[
                 { iconName: 'shower' as CustomIconName, label: '환경 선택' },
-                { iconName: 'care' as CustomIconName, label: '안전 확인' },
+                { iconName: 'care' as CustomIconName, label: '기본 안전' },
               ]}
               accent={['#12393C', '#94D2BF']}
               backgroundSource={require('../../assets/images/welcome.jpg')}
