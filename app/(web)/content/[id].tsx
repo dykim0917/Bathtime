@@ -77,6 +77,7 @@ export default function ContentDetailPage() {
       trackArchiveEvent(isSaved ? 'content_saved' : 'content_unsaved', { contentId: content.id, category: content.category, platform: 'web' });
     } catch (error) {
       console.warn('Failed to toggle saved content', error);
+      if (typeof window !== 'undefined') window.alert('저장에 실패했어요. 잠시 후 다시 시도해주세요.');
     }
   };
 
