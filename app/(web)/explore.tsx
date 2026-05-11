@@ -158,6 +158,7 @@ export default function ExplorePage() {
       trackArchiveEvent(next.includes(id) ? 'content_saved' : 'content_unsaved', { contentId: id, source: 'explore', platform: 'web' });
     } catch (error) {
       console.warn('Failed to toggle saved content', error);
+      if (typeof window !== 'undefined') window.alert('저장에 실패했어요. 잠시 후 다시 시도해주세요.');
     }
   };
 
