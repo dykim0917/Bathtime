@@ -1,0 +1,367 @@
+{
+  "spot_id": "kr-seoul-dongjak-jangseong-grand-sauna",
+  "name_ko": "장성그랜드사우나",
+  "name_en": "Jangseong Grand Sauna",
+  "aliases": [
+    "장성 그랜드 사우나",
+    "장성그랜드사우나 불한증막",
+    "장성24시그랜드보석사우나",
+    "장승그랜드사우나"
+  ],
+  "spot_type": "jjimjilbang",
+  "status": "draft",
+  "short_summary": "서울 동작구 노량진동, 장승배기역 인근의 24시간 사우나·찜질방. 공공 인허가 데이터 기준 목욕장업과 찜질시설서비스영업으로 등록되어 있고, 후기에서는 동네 주민이 많이 찾는 대형 로컬 찜질방 신호가 반복된다.",
+  "one_line_editorial_note": "프리미엄 스파보다는 장승배기·노량진 생활권에서 씻고 데우고 쉬기 좋은 공용 로컬 찜질방에 가깝다.",
+  "location": {
+    "country": "KR",
+    "city": "서울",
+    "district": "동작구",
+    "neighborhood": "노량진동",
+    "address": "서울특별시 동작구 장승배기로 113 장성빌딩",
+    "nearest_station": "7호선 장승배기역 5번 출구 인근",
+    "access_note": "장승배기역 5번 출구에서 약 246m, 장승배기역과 노량진역 사이 생활권으로 여러 출처에서 언급된다. 실제 출입구와 지하 동선은 현장 확인 필요.",
+    "map_urls": [
+      "https://map.naver.com/p/search/%EC%9E%A5%EC%84%B1%EA%B7%B8%EB%9E%9C%EB%93%9C%EC%82%AC%EC%9A%B0%EB%82%98",
+      "https://map.kakao.com/?q=%EC%9E%A5%EC%84%B1%EA%B7%B8%EB%9E%9C%EB%93%9C%EC%82%AC%EC%9A%B0%EB%82%98",
+      "https://www.google.com/maps/search/?api=1&query=%EC%9E%A5%EC%84%B1%EA%B7%B8%EB%9E%9C%EB%93%9C%EC%82%AC%EC%9A%B0%EB%82%98%20%EC%9E%A5%EC%8A%B9%EB%B0%B0%EA%B8%B0%EB%A1%9C%20113"
+    ]
+  },
+  "access_conditions": {
+    "external_user_access_status": "available",
+    "external_user_access_condition": "공개 후기와 지도성 정보 기준 일반 외부 이용이 가능한 24시 사우나·찜질방으로 보인다. 현재 입장 조건은 전화 확인 필요.",
+    "guest_only_status": "no",
+    "member_only_status": "no",
+    "reservation_required": "not_required",
+    "reservation_method": "현장 입장 중심으로 보임",
+    "walk_in_available": "likely",
+    "gender_rules": "남녀 목욕 공간은 분리 운영으로 추정. 찜질방 공용 공간 범위는 현장 확인 필요.",
+    "age_rules": "요금 정보에서 초등학생 이상/초등학생 미만 구분 신호가 있음. 영유아 기준, 청소년 심야 이용 제한은 확인 필요.",
+    "contact": "02-812-3005",
+    "official_booking_url": ""
+  },
+  "price": {
+    "price_summary": "공개 정리글 기준 주간 05:00~21:00 초등학생 이상 10,000원, 야간 21:00~05:00 초등학생 이상 11,000원, 주간 초등학생 미만 8,000원, 야간 초등학생 미만 9,000원으로 언급된다. 후기에서는 목욕탕 이용과 찜질방 이용 금액 차이가 1,000원 정도라는 신호가 있다.",
+    "price_min": 8000,
+    "price_max": 11000,
+    "currency": "KRW",
+    "price_basis": "사우나/찜질방 주간·야간 입장 기준으로 추정. 최신 현장 요금표 확인 필요.",
+    "included_items": [],
+    "extra_fees": [
+      "대형 타월 대여 가능 신호 있음",
+      "세신, 마사지, 음식, 음료 등 부가서비스 별도 추정"
+    ],
+    "price_updated_at": "2026-05-11",
+    "price_confidence": "low"
+  },
+  "operating_info": {
+    "opening_hours": "24시간 영업으로 여러 공개 출처에서 반복 언급됨",
+    "closed_days": "연중무휴로 여러 공개 출처에서 언급됨. 임시 휴무는 전화 확인 필요.",
+    "last_entry_time": "확인 필요",
+    "seasonal_or_package_limitations": "동작구 한파 대피 목욕탕 협약 시설로 2025년 겨울 기사에 언급됨. 일반 이용 조건과 복지 이용 조건은 별도.",
+    "operating_info_confidence": "medium"
+  },
+  "facilities": {
+    "facility_types": [
+      "public_bath",
+      "sauna",
+      "jjimjilbang",
+      "food_court",
+      "snack_bar",
+      "massage"
+    ],
+    "bath_facilities": [
+      "온탕",
+      "이벤트탕",
+      "히노끼탕",
+      "마사지탕",
+      "좌식 샤워대",
+      "입식 샤워대"
+    ],
+    "sauna_facilities": [
+      "사우나 3개 신호",
+      "불한증막",
+      "찜질방",
+      "얼음방 신호"
+    ],
+    "rest_facilities": [
+      "온돌 바닥 휴게공간",
+      "만남의 광장",
+      "소파",
+      "테이블 공간",
+      "누워서 쉴 수 있는 공간"
+    ],
+    "private_facilities": [],
+    "amenities": [
+      "락커",
+      "푸드코트",
+      "매점",
+      "정수기",
+      "마사지샵",
+      "세신 가능 신호",
+      "대형 타월 대여 가능 신호"
+    ],
+    "towel_or_gown_included": "unknown",
+    "shower_facility": "yes",
+    "locker_facility": "yes",
+    "phone_policy": "확인 필요",
+    "food_or_drink_available": "yes"
+  },
+  "experience_fit": {
+    "solo_fit": "medium",
+    "couple_fit": "medium",
+    "friend_group_fit": "medium",
+    "quietness_level": "mixed",
+    "privacy_level": "public",
+    "luxury_level": "low",
+    "cleanliness_signal": "medium",
+    "crowding_signal": "high_on_weekends",
+    "old_facility_signal": "medium",
+    "beginner_friendliness": "medium"
+  },
+  "bathtime_context": {
+    "recommended_contexts": [
+      "장승배기·노량진 생활권에서 24시간 사우나가 필요할 때",
+      "목욕 후 찜질방에서 가볍게 쉬고 싶을 때",
+      "대중교통으로 접근 가능한 로컬 찜질방을 찾을 때",
+      "친구나 커플과 부담 없는 실내 휴식을 할 때",
+      "겨울철 몸을 데우는 짧은 루틴이 필요할 때"
+    ],
+    "not_recommended_contexts": [
+      "조용하고 프라이빗한 스파 경험을 원하는 경우",
+      "시설이 새롭고 고급스러운 웰니스 공간을 원하는 경우",
+      "주말에도 조용한 휴식이 꼭 필요한 경우",
+      "최신 요금과 주차 조건을 확인하지 않고 차로 방문하는 경우"
+    ],
+    "good_for": [
+      "로컬 사우나",
+      "24시간 찜질방",
+      "대중교통 접근",
+      "목욕+찜질+간식 루틴",
+      "동네 주민형 휴식"
+    ],
+    "not_good_for": [
+      "프라이빗 배스타임",
+      "호텔 사우나 감도",
+      "고요한 1인 몰입 휴식",
+      "사진 중심 콘텐츠"
+    ],
+    "ritual_angle": "노량진·장승배기 생활권에서 몸을 씻고, 짧게 땀을 내고, 온돌 바닥이나 테이블 공간에서 식혜 한 잔으로 마무리하는 로컬 찜질방 루틴.",
+    "visit_tips": [
+      "주말에는 사람이 많고 시끄러울 수 있다는 후기 신호가 있어 조용히 쉬려면 평일이나 이른 시간대를 고려한다.",
+      "주차 3시간 무료 신호가 있으나 최신 적용 조건은 전화로 확인한다.",
+      "가격표와 주간/야간 기준은 현장 요금표를 확인한다.",
+      "대형 타월 대여, 세신, 마사지, 음식은 별도 비용 가능성이 높다.",
+      "사진 촬영은 목욕/탈의 공간 특성상 하지 않는 쪽이 안전하다."
+    ],
+    "things_to_check_before_visit": [
+      "현재 24시간 운영 여부",
+      "최신 입장 요금",
+      "목욕탕과 찜질방 이용권 차이",
+      "주차 무료 시간과 야간 주차 조건",
+      "찜질복·수건 포함 여부",
+      "세신/마사지/푸드코트 운영시간",
+      "청소년·아동 심야 이용 규정",
+      "휴대폰·사진 촬영 정책"
+    ],
+    "related_tags": [
+      "서울",
+      "동작구",
+      "노량진",
+      "장승배기",
+      "사우나",
+      "찜질방",
+      "24시간",
+      "불한증막",
+      "로컬목욕탕",
+      "푸드코트"
+    ]
+  },
+  "editorial": {
+    "good_points": [
+      "공공 인허가 데이터 기준 영업/정상 상태의 목욕장업·찜질시설서비스영업 시설이다.",
+      "24시간 영업과 연중무휴 정보가 여러 공개 출처에서 반복된다.",
+      "장승배기역 인근으로 대중교통 접근성이 좋다.",
+      "후기에서 규모가 크고 좌석/테이블/휴게공간이 많다는 신호가 반복된다.",
+      "푸드코트와 매점이 있어 목욕 후 간단히 먹고 쉬는 동선이 가능해 보인다."
+    ],
+    "weak_points": [
+      "공식 홈페이지나 공식 SNS를 확인하지 못했다.",
+      "네이버플레이스·카카오맵·구글맵 리뷰 원문은 공개 웹에서 충분히 확인하지 못했다.",
+      "가격은 현장 요금표 사진/정리글 기반으로 최신성 확인이 필요하다.",
+      "주말에는 사람이 많고 시끄럽다는 후기 신호가 있다.",
+      "일부 후기에서는 시설 취향이 갈릴 수 있다는 신호가 있어 고급/신식 공간으로 기대하면 맞지 않을 수 있다."
+    ],
+    "fit_for": [
+      "동작구 생활권에서 24시간 사우나를 찾는 사람",
+      "노량진·장승배기 근처에서 목욕과 찜질을 함께 하고 싶은 사람",
+      "푸드코트/매점이 있는 대형 로컬 찜질방을 선호하는 사람",
+      "친구나 커플과 부담 없는 실내 휴식처를 찾는 사람"
+    ],
+    "not_fit_for": [
+      "조용한 1인 스파를 원하는 사람",
+      "프라이빗룸이나 개별 욕조를 원하는 사람",
+      "새로 리뉴얼된 고급 웰니스 공간을 기대하는 사람",
+      "주말 피크 시간대의 소음과 혼잡을 피하고 싶은 사람"
+    ],
+    "missing_or_uncertain_info": [
+      "공식 최신 요금표",
+      "주차 무료 시간과 주차장 위치",
+      "찜질복/수건 포함 여부",
+      "푸드코트/매점 운영시간",
+      "세신/마사지 운영시간과 가격",
+      "청소년·아동 심야 이용 규정",
+      "지도 리뷰 최신 저평점 사유",
+      "사진 사용 가능 범위"
+    ],
+    "update_needed_items": [
+      "전화로 가격, 운영시간, 주차, 휴무 확인",
+      "네이버플레이스·카카오맵·구글맵 최신 리뷰 직접 확인",
+      "현장 요금표와 이용 안내문 사진 확인",
+      "푸드코트/매점 운영 상태 확인",
+      "발행 전 이미지 권리 확인"
+    ]
+  },
+  "sources": [
+    {
+      "title": "전국 목욕탕 지도 - 장성그랜드사우나",
+      "url": "https://fbh.purpleo.co.kr/view/483",
+      "source_type": "public_data_aggregator",
+      "date_found": "2026-05-11",
+      "publication_or_update_date": "데이터갱신일자 2020-09-20 / 페이지 크롤링 2026년 검색 기준",
+      "supports": [
+        "인허가일자",
+        "영업/정상 상태",
+        "주소",
+        "전화번호",
+        "목욕장업",
+        "찜질시설서비스영업",
+        "욕실수",
+        "발한실 여부"
+      ],
+      "reliability_level": "medium"
+    },
+    {
+      "title": "114On - 장성그랜드사우나",
+      "url": "https://www.114.co.kr/biznumber/detail/cc0470b2b4a4",
+      "source_type": "business_directory",
+      "date_found": "2026-05-11",
+      "publication_or_update_date": "최종 업데이트 2026-01-21",
+      "supports": [
+        "상호",
+        "업종",
+        "전화번호",
+        "주소"
+      ],
+      "reliability_level": "medium"
+    },
+    {
+      "title": "Trip.com - 장성그랜드사우나",
+      "url": "https://kr.trip.com/travel-guide/attraction/seoul/jangseong-grand-sauna-146854273/",
+      "source_type": "travel_platform",
+      "date_found": "2026-05-11",
+      "publication_or_update_date": "",
+      "supports": [
+        "전화번호",
+        "플랫폼상 리뷰 없음"
+      ],
+      "reliability_level": "low"
+    },
+    {
+      "title": "동작구 한파 대피 목욕탕 확대 운영 기사",
+      "url": "https://www.jungannews.com/news/article.html?no=655939",
+      "source_type": "local_news",
+      "date_found": "2026-05-11",
+      "publication_or_update_date": "2025-12-30",
+      "supports": [
+        "동작구 한파 대피 목욕탕 지정",
+        "주소",
+        "입장료/찜질복/야간 이용료 지원 대상 시설"
+      ],
+      "reliability_level": "medium"
+    },
+    {
+      "title": "수달로그 - 동작구 노량진 24시 찜질방 추천 장성그랜드사우나 방문 후기",
+      "url": "https://zingunt2.tistory.com/193",
+      "source_type": "user_review",
+      "date_found": "2026-05-11",
+      "publication_or_update_date": "2024-01-15",
+      "supports": [
+        "24시간/연중무휴",
+        "주소",
+        "전화번호",
+        "주차 3시간 무료 신호",
+        "목욕탕 시설",
+        "푸드코트/매점",
+        "혼잡/청결 주관 신호"
+      ],
+      "reliability_level": "medium"
+    },
+    {
+      "title": "키자드/네이버 블로그 미러 - 노량진/장승배기 24시 찜질방 장성그랜드사우나",
+      "url": "https://www.keyzard.cc/koj0330/nb/223331106694",
+      "source_type": "blog_mirror",
+      "date_found": "2026-05-11",
+      "publication_or_update_date": "2024-06-02",
+      "supports": [
+        "장승배기역 5번 출구 거리",
+        "24시간/연중무휴",
+        "가격 구조 신호",
+        "대형 타월 대여",
+        "주차 3시간 무료",
+        "혼잡/소음 신호"
+      ],
+      "reliability_level": "medium"
+    },
+    {
+      "title": "키자드/네이버 블로그 미러 - 장성그랜드사우나 재방문 후기",
+      "url": "https://www.keyzard.cc/koj0330/nb/223383537751",
+      "source_type": "blog_mirror",
+      "date_found": "2026-05-11",
+      "publication_or_update_date": "2024년 공개 후기 미러",
+      "supports": [
+        "재방문 신호",
+        "주말 혼잡/소음",
+        "노량진역과 장승배기역 사이 접근성",
+        "가격 구조",
+        "대형 타월 대여"
+      ],
+      "reliability_level": "medium"
+    },
+    {
+      "title": "노량진 찜질방 사우나 목욕탕 추천 Best 3",
+      "url": "https://sssbrain.com/entry/%EB%85%B8%EB%9F%89%EC%A7%84-%EC%B0%9C%EC%A7%88%EB%B0%A9-%EC%82%AC%EC%9A%B0%EB%82%98-%EB%AA%A9%EC%9A%95%ED%83%95-%EC%B6%94%EC%B2%9C-best-3/",
+      "source_type": "local_list_article",
+      "date_found": "2026-05-11",
+      "publication_or_update_date": "2025년 검색 기준",
+      "supports": [
+        "주소",
+        "24시간/연중무휴",
+        "장승배기역 5번 출구 246m",
+        "요금 정보",
+        "전화번호"
+      ],
+      "reliability_level": "low"
+    }
+  ],
+  "source_conflicts": [
+    {
+      "field": "phone_or_contact",
+      "conflict": "대부분 02-812-3005로 일치하나 Jobploy 영문 페이지에는 02-875-2134가 표시됨.",
+      "resolution": "공공 데이터, 114On, 후기 다수에서 반복되는 02-812-3005를 우선 기록. 전화 확인 필요."
+    },
+    {
+      "field": "price",
+      "conflict": "요금표 사진 기반 후기와 정리글은 있으나 공식 최신 요금표를 직접 확인하지 못함.",
+      "resolution": "10,000~11,000원대 신호를 기록하되 price_confidence는 low."
+    },
+    {
+      "field": "crowding",
+      "conflict": "규모가 커 이용 불편이 적다는 후기와 주말에 많고 시끄럽다는 후기가 함께 있음.",
+      "resolution": "crowding_signal은 high_on_weekends, quietness_level은 mixed로 기록."
+    }
+  ],
+  "last_researched_at": "2026-05-11",
+  "last_updated_at": "2026-05-11",
+  "researcher_note": "공식 홈페이지/SNS는 확인하지 못했다. 공공 인허가와 공개 후기 기반 초안이며, 지도 리뷰 원문과 최신 현장 요금은 발행 전 확인이 필요하다.",
+  "confidence_overall": "medium"
+}

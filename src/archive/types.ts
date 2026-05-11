@@ -72,6 +72,7 @@ export type ArchiveContent = {
   id: string;
   title: string;
   subtitle?: string;
+  summary: string;
   category: ContentCategory;
   contentType: ContentType;
   tags: string[];

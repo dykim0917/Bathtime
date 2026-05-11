@@ -1,0 +1,483 @@
+{
+  "spot_id": "kr-seoul-gangseo-venueg-aqua24-fitness",
+  "name_ko": "베뉴지아쿠아24&피트니스",
+  "name_en": "VenueG Aqua 24 & Fitness",
+  "aliases": [
+    "베뉴지아쿠아24",
+    "베뉴지 아쿠아 24",
+    "그랜드아쿠아24",
+    "그랜드아쿠아&베뉴지피트니스",
+    "베뉴지피트니스&그랜드아쿠아"
+  ],
+  "spot_type": "jjimjilbang",
+  "status": "draft",
+  "short_summary": "서울 강서구 화곡동/강서구청사거리 인근의 대형 24시간 찜질방·사우나·피트니스 복합시설. 리뉴얼 이후 후기에서는 넓고 깔끔한 공간, 키즈존, 북카페, 릴렉스룸, 푸드코트 신호가 반복된다.",
+  "one_line_editorial_note": "리뉴얼 후 가족형 휴식 적합도는 강해졌지만, 주말에는 주차·매트·응대 동선 병목을 감안해야 하는 대형 공용 찜질방이다.",
+  "location": {
+    "country": "KR",
+    "city": "서울",
+    "district": "강서구",
+    "neighborhood": "화곡동",
+    "address": "서울특별시 강서구 화곡로 347 지하2층 그랜드아쿠아&베뉴지피트니스",
+    "nearest_station": "강서구청사거리 인근. 가양역/화곡역/발산역 접근 동선은 지도 확인 필요",
+    "access_note": "후기 기준 강서구청사거리 아이파크 건물 지하 2층. 주차는 지하 3층과 지하 6층 신호가 있으나 피크 시간대 만차/이중주차 신호가 반복된다.",
+    "map_urls": [
+      "https://map.naver.com/p/search/%EB%B2%A0%EB%89%B4%EC%A7%80%EC%95%84%EC%BF%A0%EC%95%8424",
+      "https://map.kakao.com/?q=%EB%B2%A0%EB%89%B4%EC%A7%80%EC%95%84%EC%BF%A0%EC%95%8424",
+      "https://www.google.com/maps/search/?api=1&query=%EB%B2%A0%EB%89%B4%EC%A7%80%EC%95%84%EC%BF%A0%EC%95%8424%20%ED%99%94%EA%B3%A1%EB%A1%9C%20347"
+    ]
+  },
+  "access_conditions": {
+    "external_user_access_status": "available",
+    "external_user_access_condition": "리뉴얼 이후 공개 후기와 운영 안내성 페이지 기준 일반 사우나/찜질방 이용 가능성이 높다. 피트니스 회원 조건과 사우나 단독 이용 조건은 확인 필요.",
+    "external_user_access_confidence": "medium",
+    "guest_only_status": "no",
+    "member_only_status": "no",
+    "reservation_required": "not_required",
+    "reservation_method": "현장 입장 중심으로 보이나 공식 확인 필요. 카카오톡 채널 할인 쿠폰 신호가 있다.",
+    "walk_in_available": "likely",
+    "gender_rules": "남녀 사우나 구역은 분리 운영으로 추정. 찜질/휴게 공간의 공용 범위와 어린이 동반 규정은 확인 필요.",
+    "age_rules": "청소년은 23시까지 이용 가능하다는 운영 안내성 페이지 신호가 있다. 소인 기준과 24개월 미만 무료 여부는 공식 확인 필요.",
+    "contact": "02-2065-0011 / 0507-1441-0011 - 출처별 표기 차이 있음",
+    "official_booking_url": ""
+  },
+  "price": {
+    "price_summary": "리뉴얼 이후 공개 후기/정리글 기준 주간 대인 11,000원, 주간 소인 6,000원, 야간 대인 13,000원, 야간 소인 8,000원, 찜질복 대여 2,000원 신호가 반복된다.",
+    "price_min": 6000,
+    "price_max": 15000,
+    "currency": "KRW",
+    "price_basis": "사우나/찜질방 1회 입장 및 찜질복 대여 기준. 성인 야간+찜질복 기준 15,000원까지 추정.",
+    "included_items": [
+      "사우나 기본 입장",
+      "찜질방 이용은 찜질복 대여/입장권 구성 확인 필요"
+    ],
+    "extra_fees": [
+      "찜질복 대여 2,000원",
+      "대형 수면타월 대여료와 보증금 신호 있음",
+      "무료 주차 초과 시 30분당 1,500원 또는 1시간 3,000원 신호",
+      "15시간 이상 이용 시 시간당 1,000원 추가요금 신호"
+    ],
+    "price_updated_at": "2026-05-11",
+    "price_confidence": "medium"
+  },
+  "operating_info": {
+    "opening_hours": "24시간 운영 신호가 공식성 안내와 후기에서 반복됨",
+    "closed_days": "매월 셋째 주 수요일 정기휴무, 휴무 전날 23시까지 운영 신호가 반복됨",
+    "last_entry_time": "확인 필요",
+    "seasonal_or_package_limitations": "2025년 6월~8월 리뉴얼 보도 이후 2025-09 이후 방문 후기가 확인된다. 일부 리뉴얼 보도 시설은 실제 운영 여부 확인 필요.",
+    "operating_info_confidence": "medium"
+  },
+  "facilities": {
+    "facility_types": [
+      "sauna",
+      "jjimjilbang",
+      "fitness",
+      "cafeteria",
+      "rest_area",
+      "kids_zone",
+      "game_zone"
+    ],
+    "bath_facilities": [
+      "대온탕(안마탕)",
+      "열탕",
+      "이벤트탕",
+      "냉탕",
+      "급냉탕",
+      "전신 바디샤워",
+      "입식샤워"
+    ],
+    "sauna_facilities": [
+      "핀란드 사우나",
+      "습식 사우나",
+      "소나무 전통 불한증막",
+      "미네랄 소금방",
+      "음이온 참숯방",
+      "황토방",
+      "편백방",
+      "토굴방"
+    ],
+    "rest_facilities": [
+      "북카페",
+      "미디어 휴게실",
+      "소파베드 휴게공간",
+      "릴렉스룸",
+      "안마의자",
+      "풋스파/족욕 또는 풋마사지존",
+      "카페테리아",
+      "푸드코트",
+      "매점"
+    ],
+    "private_facilities": [
+      "프라이빗 힐링룸 - 리뉴얼 보도 기반, 실제 운영 확인 필요",
+      "커플룸 - 리뉴얼 보도 기반, 실제 운영 확인 필요"
+    ],
+    "amenities": [
+      "락커룸",
+      "파우더룸",
+      "세신 존",
+      "수유실",
+      "키즈존",
+      "오락실/게임존",
+      "스포츠마사지",
+      "실면도",
+      "이발소(남성)",
+      "좌욕실(여성)"
+    ],
+    "towel_or_gown_included": "unknown",
+    "shower_facility": "yes",
+    "locker_facility": "yes",
+    "phone_policy": "확인 필요",
+    "food_or_drink_available": "yes"
+  },
+  "experience_fit": {
+    "solo_fit": "medium",
+    "couple_fit": "medium",
+    "friend_group_fit": "high",
+    "quietness_level": "mixed",
+    "privacy_level": "public",
+    "luxury_level": "medium",
+    "cleanliness_signal": "medium_high",
+    "crowding_signal": "mixed_high_on_weekends",
+    "parking_signal": "weekend_difficult_conflicting_free_time",
+    "old_facility_signal": "low_after_renovation",
+    "beginner_friendliness": "medium"
+  },
+  "bathtime_context": {
+    "recommended_contexts": [
+      "강서구에서 긴 시간 몸을 데우고 쉬고 싶을 때",
+      "아이 동반 가족 실내 휴식",
+      "친구/커플과 찜질, 식사, 휴게를 한 번에 하고 싶을 때",
+      "운동 후 사우나 루틴",
+      "평일 낮이나 야간처럼 피크를 피해 혼자 쉬고 싶을 때"
+    ],
+    "not_recommended_contexts": [
+      "주말 오후에 주차 스트레스 없이 오래 머물고 싶은 경우",
+      "조용한 1인 몰입 휴식만 원하는 경우",
+      "외부 음식이나 아기 간식 반입이 꼭 필요한 경우",
+      "완전한 프라이빗 스파를 원하는 경우",
+      "최신 운영 여부를 전화 확인하기 어려운 경우"
+    ],
+    "good_for": [
+      "가족형 찜질방",
+      "대형 찜질방 입문",
+      "사우나+찜질+식사 동선",
+      "아이 동반 실내 나들이",
+      "강서구 생활권 이용자"
+    ],
+    "not_good_for": [
+      "프라이빗 욕조 중심의 배스타임",
+      "소규모 조용한 사우나",
+      "주말 피크 시간 차 방문",
+      "외부음식 반입이 중요한 가족 방문"
+    ],
+    "ritual_angle": "씻고, 뜨거운 방을 짧게 돌고, 북카페나 릴렉스존에서 눕고, 가볍게 먹는 하루형 찜질방 루틴. 가족 방문은 오전 시간대, 혼자 방문은 평일 낮/야간이 더 맞다.",
+    "visit_tips": [
+      "주말 방문이라면 주차 만차를 감안해 오전 일찍 가거나 대중교통을 고려한다.",
+      "무료 주차 시간이 3시간인지 4시간인지 방문 전 확인한다.",
+      "15시간 이상 추가요금과 청소년 23시 제한을 확인한다.",
+      "아이 동반 시 외부음식 반입 제한, 여벌 수건, 얇은 양말/덧신을 챙길지 확인한다.",
+      "황토방이나 바닥 열기가 강할 수 있어 처음에는 짧게 이용한다.",
+      "피크 시간에는 매트 부족과 주문/정산 동선 불편이 있을 수 있다."
+    ],
+    "things_to_check_before_visit": [
+      "현재 24시간 운영 여부",
+      "셋째 주 수요일 휴무와 전날 단축 운영",
+      "최신 요금표와 찜질복/수건 포함 여부",
+      "무료 주차 시간과 주차 등록 방법",
+      "키즈존/수유실 실제 운영 여부",
+      "푸드코트/매점 운영시간",
+      "외부음식 및 아기 간식 반입 정책",
+      "15시간 이상 추가요금",
+      "프라이빗룸/커플룸 실제 운영 여부"
+    ],
+    "related_tags": [
+      "서울",
+      "강서구",
+      "화곡동",
+      "찜질방",
+      "사우나",
+      "24시간",
+      "키즈존",
+      "수유실",
+      "푸드코트",
+      "리뉴얼",
+      "가족휴식",
+      "대형찜질방"
+    ]
+  },
+  "editorial": {
+    "good_points": [
+      "2025-09 이후 후기에서 리뉴얼 후 깔끔함과 넓은 공간에 대한 긍정 신호가 반복된다.",
+      "키즈존, 수유실, 오락실/게임존, 아이 놀이기구 등 가족 이용 신호가 강하다.",
+      "북카페, 미디어 휴게실, 릴렉스룸, 안마의자, 휴식 베드 등 오래 머물 요소가 확인된다.",
+      "푸드코트와 매점 운영 신호가 있으며 라면, 돈가스, 치킨, 식혜 등 이용 후기가 있다.",
+      "테마 찜질방과 사우나 시설이 다양하고, 황토방/편백방/소금방 등 체감 온도 선택지가 있다."
+    ],
+    "weak_points": [
+      "주말 피크 시간대 주차 만차, 이중주차, 매트 부족 신호가 반복된다.",
+      "무료 주차 시간이 3시간/4시간으로 갈려 발행 전 확인이 필요하다.",
+      "일부 후기에서 직원 응대와 정산/주차 등록 키오스크 불편 신호가 있다.",
+      "외부음식 반입 제한이 있어 영유아 동반 가족은 사전 확인이 필요하다.",
+      "지도 리뷰 원문과 인스타그램 위치/태그 게시물은 직접 확인하지 못했다."
+    ],
+    "fit_for": [
+      "강서구 생활권에서 리뉴얼된 큰 찜질방을 찾는 사람",
+      "아이와 함께 실내에서 오래 머무를 곳을 찾는 가족",
+      "친구·커플과 부담 없는 찜질방 데이를 원하는 사람",
+      "운동 후 씻고 찜질까지 이어가고 싶은 사람",
+      "평일 낮/야간에 피크를 피해서 혼자 쉬려는 사람"
+    ],
+    "not_fit_for": [
+      "주말 오후 주차 스트레스 없이 방문하고 싶은 사람",
+      "조용하고 작은 사우나를 선호하는 사람",
+      "외부 간식 반입이 꼭 필요한 영유아 동반 가족",
+      "정산/주차/정책 안내가 매끄러운 공간을 우선하는 사람",
+      "프라이빗 욕조/개별 스파룸이 핵심인 사용자"
+    ],
+    "missing_or_uncertain_info": [
+      "네이버플레이스 방문자리뷰 최신 본문",
+      "카카오맵 리뷰 최신 본문",
+      "구글맵 리뷰 최신 본문",
+      "인스타그램 위치/태그 게시물의 실제 방문 신호",
+      "무료 주차 시간이 현재 3시간인지 4시간인지",
+      "15시간 이상 추가요금의 현재 적용 여부",
+      "프라이빗룸/커플룸 실제 운영 여부",
+      "키즈존 운영시간과 연령 제한",
+      "푸드코트/매점 운영시간"
+    ],
+    "update_needed_items": [
+      "지도 앱 3종에서 최신 저평점 리뷰 원인 확인",
+      "전화로 주차 무료 시간, 요금, 휴무, 외부음식 정책 확인",
+      "공식 인스타그램/카카오 채널 공지 확인",
+      "주말 오전/오후/저녁 혼잡 차이를 추가 샘플로 확인",
+      "콘텐츠 발행 전 사진 사용권 확인"
+    ]
+  },
+  "review_intelligence": {
+    "review_depth": "medium",
+    "review_coverage_gap": true,
+    "review_source_baskets_checked": [
+      "long_form_reviews",
+      "blog_mirror",
+      "review_summary",
+      "official_or_channel_like_page",
+      "search_snippets",
+      "instagram_account_link"
+    ],
+    "missing_review_source_baskets": [
+      "naver_place_review_original_text",
+      "kakao_map_review_original_text",
+      "google_maps_review_original_text",
+      "naver_cafe_public_threads",
+      "instagram_location_or_tag_post_text"
+    ],
+    "latest_review_date_found": "2026-04-28",
+    "latest_review_body_confirmed_date": "2026-04-08",
+    "post_renovation_reviews_found": true,
+    "signals": [
+      {
+        "topic": "weekend_crowding",
+        "classification": "repeated_review_signal",
+        "summary": "주말에는 주차 만차, 이중주차, 매트 부족 신호가 있다. 내부는 넓어 밀집도가 낮다는 완화 신호도 있다.",
+        "confidence": "medium"
+      },
+      {
+        "topic": "parking",
+        "classification": "conflicting_review_signal",
+        "summary": "4시간 무료 신호가 우세하지만 3시간 무료 신호도 있어 확인 필요. B3/B6 사용 신호와 피크 주차난이 반복된다.",
+        "confidence": "medium"
+      },
+      {
+        "topic": "renovation_cleanliness",
+        "classification": "repeated_review_signal",
+        "summary": "리뉴얼 후 깔끔함, 넓음, 조명/인테리어 개선, 샤워실/탈의실 관리 긍정 신호가 반복된다.",
+        "confidence": "medium_high"
+      },
+      {
+        "topic": "kids_zone",
+        "classification": "repeated_review_signal",
+        "summary": "키즈존, 수유실, 아이 놀이기구, 오락실 등 아이 동반 가족 이용 신호가 강하다.",
+        "confidence": "medium_high"
+      },
+      {
+        "topic": "rest_sleep_area",
+        "classification": "repeated_review_signal",
+        "summary": "북카페, 미디어 휴게실, 릴렉스룸, 안마의자, 휴식 베드 신호가 있다. 피크 시간 매트 부족은 주의.",
+        "confidence": "medium"
+      },
+      {
+        "topic": "temperature",
+        "classification": "mixed_review_signal",
+        "summary": "물 온도는 잘 맞는다는 신호가 있고, 황토방/바닥 열기는 강하다는 신호가 있다.",
+        "confidence": "medium"
+      },
+      {
+        "topic": "food_cafeteria",
+        "classification": "repeated_review_signal",
+        "summary": "푸드코트와 매점 이용 신호가 있으며 라면, 돈가스, 치킨, 식혜 등이 언급된다. 피크 응대/주문 동선 불만 신호가 있다.",
+        "confidence": "medium"
+      },
+      {
+        "topic": "solo_use",
+        "classification": "supported_by_review_summary",
+        "summary": "북카페/휴게실 때문에 혼자 이용에도 맞을 수 있으나, 주말 가족 이용이 많아 조용함은 시간대 조건부다.",
+        "confidence": "low_medium"
+      },
+      {
+        "topic": "family_use",
+        "classification": "repeated_review_signal",
+        "summary": "가족 이용, 아이 동반, 키즈존, 수유실, 오전 방문 추천 신호가 강하다.",
+        "confidence": "high"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "title": "베뉴지그룹 - 베뉴지아쿠아24",
+      "url": "https://www.venueg.com/sub02/page07.php",
+      "source_type": "official_website",
+      "date_found": "2026-05-11",
+      "publication_or_update_date": "",
+      "supports": [
+        "시설 개요",
+        "사우나/찜질방/피트니스/카페테리아 구성",
+        "키즈존/수유실/북카페/찜질존/사우나 시설"
+      ],
+      "reliability_level": "high"
+    },
+    {
+      "title": "베뉴지 사우나/찜질방 안내 페이지",
+      "url": "https://test2.akdlglvh.com/",
+      "source_type": "operation_info_page",
+      "date_found": "2026-05-11",
+      "publication_or_update_date": "",
+      "supports": [
+        "24시간 운영",
+        "셋째 주 수요일 휴무",
+        "주말/공휴일 정상운영",
+        "주차 4시간",
+        "외부음식 반입금지",
+        "청소년 23시까지",
+        "15시간 이상 추가요금"
+      ],
+      "reliability_level": "medium"
+    },
+    {
+      "title": "베뉴지아쿠아24 솔직 후기, 강서구 리뉴얼 찜질방!",
+      "url": "https://myview45797.tistory.com/21",
+      "source_type": "post_renovation_user_review",
+      "date_found": "2026-05-11",
+      "publication_or_update_date": "2025-09-20",
+      "supports": [
+        "리뉴얼 후 청결/시설 상태",
+        "북카페/미디어 휴게실",
+        "풋스파",
+        "키즈존",
+        "물 온도/사우나 관리",
+        "피크 혼잡/주차 부족"
+      ],
+      "reliability_level": "medium"
+    },
+    {
+      "title": "아기와 김포 베뉴지 아쿠아 24 찜질방 솔직이용후기",
+      "url": "https://pandarank.net/contents/693d7d16b620eae3125d5c04",
+      "source_type": "post_renovation_review_summary",
+      "date_found": "2026-05-11",
+      "publication_or_update_date": "2025-12-13",
+      "supports": [
+        "17개월 아기 동반",
+        "3시간 무료주차 신호",
+        "키즈존/북카페/풋스파",
+        "푸드코트",
+        "외부음식 반입 제한",
+        "주말 저녁 혼잡/매트 부족",
+        "직원 응대 불만 신호"
+      ],
+      "reliability_level": "low_medium"
+    },
+    {
+      "title": "서울 강서구 찜질방 - 베뉴지아쿠아24 방문 후기",
+      "url": "https://lwmm.tistory.com/119",
+      "source_type": "post_renovation_user_review",
+      "date_found": "2026-05-11",
+      "publication_or_update_date": "2026-01-14",
+      "supports": [
+        "토요일 오후 주차난",
+        "4시간 무료주차",
+        "넓고 깨끗함",
+        "아이 놀이",
+        "푸드코트/매점",
+        "황토방 온도 체감",
+        "정산/주차 등록 키오스크 불편"
+      ],
+      "reliability_level": "medium"
+    },
+    {
+      "title": "키자드/네이버 블로그 미러 - 키즈존 찜질방 베뉴지아쿠아24 방문 후기",
+      "url": "https://www.keyzard.cc/bong9me/nb/224022679152",
+      "source_type": "naver_blog_mirror_recent_review",
+      "date_found": "2026-05-11",
+      "publication_or_update_date": "2026-04-08",
+      "supports": [
+        "일요일 오전 방문",
+        "4시간 무료주차",
+        "지하 6층 주차",
+        "오전 만차/오후 이중주차",
+        "키즈존/수유실",
+        "리뉴얼 후 쾌적성"
+      ],
+      "reliability_level": "medium"
+    },
+    {
+      "title": "베뉴지아쿠아24 이슈 흐름 한눈에",
+      "url": "https://pandarank.net/contents/694f2c4f80287e230a587bc6",
+      "source_type": "review_trend_summary",
+      "date_found": "2026-05-11",
+      "publication_or_update_date": "2025-12-27",
+      "supports": [
+        "리뉴얼 후 후기 흐름",
+        "가족/데이트/혼자 이용 신호",
+        "주말 피크 혼잡 가능성",
+        "오전/야간 방문 팁"
+      ],
+      "reliability_level": "low"
+    },
+    {
+      "title": "공식 인스타그램 링크 - venuegaqua24",
+      "url": "https://www.instagram.com/venuegaqua24/",
+      "source_type": "official_social_signal",
+      "date_found": "2026-05-11",
+      "publication_or_update_date": "",
+      "supports": [
+        "공식 인스타그램 계정 존재 신호"
+      ],
+      "reliability_level": "low"
+    }
+  ],
+  "source_conflicts": [
+    {
+      "field": "parking_free_time",
+      "conflict": "4시간 무료 신호가 우세하지만 3시간 무료 신호도 있다.",
+      "resolution": "발행 전 전화/현장 확인 필요. 현재 기록은 '3~4시간으로 출처 충돌'로 유지."
+    },
+    {
+      "field": "parking_difficulty",
+      "conflict": "운영 안내성 페이지와 일부 요약글은 주차를 편리하게 설명하지만, 주말 후기에서는 만차/이중주차/빙빙 돌았다는 불편 신호가 반복된다.",
+      "resolution": "주차 가능 여부와 주차 난이도를 분리한다. 가능은 likely, 피크 난이도는 high."
+    },
+    {
+      "field": "quietness",
+      "conflict": "혼자 쉬기 좋다는 휴게공간 신호와 가족/주말 혼잡 신호가 함께 있다.",
+      "resolution": "solo_fit은 medium, quietness_level은 mixed. 평일 낮/야간 조건부로 안내."
+    },
+    {
+      "field": "renovation_facilities",
+      "conflict": "보도자료는 프라이빗룸/커플룸/웰니스 프로그램을 언급하지만 후기에서 실제 운영 확인은 제한적이다.",
+      "resolution": "후기에서 확인된 키즈존/북카페/풋스파/릴렉스룸 중심으로 쓰고, 프라이빗룸/커플룸은 확인 필요."
+    }
+  ],
+  "last_researched_at": "2026-05-11",
+  "last_updated_at": "2026-05-11",
+  "researcher_note": "이번 업데이트는 리뉴얼 이후 후기 신호 보강이다. 네이버플레이스/카카오맵/구글맵 리뷰 원문, 네이버 카페 공개글, 인스타그램 위치/태그 게시물은 공개 웹에서 충분히 확인하지 못해 review_coverage_gap을 true로 유지한다.",
+  "confidence_overall": "medium"
+}
