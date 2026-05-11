@@ -11,12 +11,16 @@ export function NativeScreen({
   title,
   subtitle,
   backHref,
+  hero,
+  heroAccessory,
   children,
 }: {
   eyebrow?: string;
   title: string;
   subtitle?: string;
   backHref?: Href;
+  hero?: React.ReactNode;
+  heroAccessory?: React.ReactNode;
   children: React.ReactNode;
 }) {
   const insets = useSafeAreaInsets();
@@ -34,9 +38,24 @@ export function NativeScreen({
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentInsetAdjustmentBehavior="automatic"
-        contentContainerStyle={[styles.content, { paddingTop: insets.top + 18, paddingBottom: insets.bottom + 98 }]}
+        contentContainerStyle={[styles.content, { paddingTop: hero ? 0 : insets.top + 18, paddingBottom: insets.bottom + 98 }]}
       >
-        {backHref ? (
+        {hero ? (
+          <View style={styles.heroWrap}>
+            {hero}
+            {backHref ? (
+              <Pressable
+                accessibilityRole="button"
+                accessibilityLabel="뒤로가기"
+                style={[styles.heroBackButton, { top: insets.top + 10 }]}
+                onPress={handleBack}
+              >
+                <FontAwesome name="angle-left" size={25} color={archiveColors.ink} />
+              </Pressable>
+            ) : null}
+            {heroAccessory ? <View style={[styles.heroAccessory, { top: insets.top + 10 }]}>{heroAccessory}</View> : null}
+          </View>
+        ) : backHref ? (
           <Pressable accessibilityRole="button" accessibilityLabel="뒤로가기" style={styles.backButton} onPress={handleBack}>
             <FontAwesome name="angle-left" size={25} color={archiveColors.ink} />
           </Pressable>
@@ -64,12 +83,32 @@ const styles = StyleSheet.create({
   header: {
     gap: 8,
   },
+  heroWrap: {
+    position: 'relative',
+    marginHorizontal: -18,
+  },
   backButton: {
     width: 34,
     height: 34,
     marginBottom: -2,
     alignItems: 'flex-start',
     justifyContent: 'center',
+  },
+  heroBackButton: {
+    position: 'absolute',
+    left: 14,
+    width: 42,
+    height: 42,
+    borderRadius: 21,
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.7)',
+    backgroundColor: 'rgba(255, 255, 255, 0.92)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  heroAccessory: {
+    position: 'absolute',
+    right: 14,
   },
   eyebrow: {
     color: archiveColors.primary,

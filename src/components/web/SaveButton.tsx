@@ -1,5 +1,5 @@
 import React from 'react';
-import { GestureResponderEvent, Pressable, StyleSheet } from 'react-native';
+import { GestureResponderEvent, Platform, Pressable, StyleSheet } from 'react-native';
 import { BookmarkSimple } from '@/src/components/web/phosphorIcons';
 import { archiveColors } from '@/src/theme/archiveTheme';
 
@@ -31,7 +31,7 @@ export function SaveButton({ saved, onPress, disabled = false, variant = 'floati
         variant === 'inline' && styles.inline,
         hovered && styles.hovered,
         disabled && styles.disabled,
-        styles.webTransition,
+        Platform.OS === 'web' && styles.webTransition,
         { width: size, height: size, borderRadius: size / 2 },
       ]}
       onHoverIn={() => setHovered(true)}
