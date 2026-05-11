@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Href, router, useLocalSearchParams } from 'expo-router';
 import { Platform, Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
-import { BookmarkSimple, PlusSquare } from '@/src/components/web/phosphorIcons';
 import { ArchiveStructuredInfo } from '@/src/components/web/ArchiveStructuredInfo';
-import { AppHandoffCard } from '@/src/components/web/AppHandoffCard';
 import { ArchivePageContainer } from '@/src/components/web/ArchivePageContainer';
 import { ArchiveVisual } from '@/src/components/web/ArchiveVisual';
 import { ContentBodyRenderer } from '@/src/components/web/ContentBodyRenderer';
 import { RoutinePresetCard } from '@/src/components/web/RoutinePresetCard';
+import { SaveButton } from '@/src/components/web/SaveButton';
 import { SeoMetadata } from '@/src/components/web/SeoMetadata';
 import { WebShell, webStyles } from '@/src/components/web/WebShell';
 import { NativeScreen } from '@/src/components/native/NativeScreen';
@@ -16,7 +15,7 @@ import { getContentById, getRelatedRoutinePresets } from '@/src/archive/selector
 import { trackArchiveEvent } from '@/src/analytics/events';
 import { useAuth } from '@/src/auth/AuthProvider';
 import { setPendingAuthAction } from '@/src/auth/pendingActions';
-import { getSavedContentStorage, toggleSavedContent } from '@/src/storage/savedContent';
+import { getSavedContentStorage, getStorageErrorMessage, toggleSavedContent } from '@/src/storage/savedContent';
 import { archiveColors, archiveRadius } from '@/src/theme/archiveTheme';
 import { luxuryFonts } from '@/src/theme/luxury';
 import { copy } from '@/src/content/copy';
@@ -77,7 +76,7 @@ export default function ContentDetailPage() {
       trackArchiveEvent(isSaved ? 'content_saved' : 'content_unsaved', { contentId: content.id, category: content.category, platform: 'web' });
     } catch (error) {
       console.warn('Failed to toggle saved content', error);
-      if (typeof window !== 'undefined') window.alert('저장에 실패했어요. 잠시 후 다시 시도해주세요.');
+      if (typeof window !== 'undefined') window.alert(`저장에 실패했어요.\n${getStorageErrorMessage(error)}`);
     }
   };
 
@@ -89,23 +88,14 @@ export default function ContentDetailPage() {
     </View>
   );
 
-  const actionBlock = (
-    <View style={styles.actionRow}>
-      <Pressable style={[styles.secondaryButton, isLoading && styles.disabledButton]} onPress={handleToggleSaved} disabled={isLoading}>
-        <BookmarkSimple size={17} color={archiveColors.ink} weight={saved ? 'fill' : 'regular'} />
-        <Text style={styles.secondaryButtonText}>{saved ? copy.archive.actions.saved : copy.archive.actions.save}</Text>
-      </Pressable>
-      <Pressable style={styles.primaryButton} onPress={() => router.push('/submit' as Href)}>
-        <PlusSquare size={17} color={archiveColors.onPrimary} weight="regular" />
-        <Text style={styles.primaryButtonText}>{copy.archive.actions.submit}</Text>
-      </Pressable>
-    </View>
-  );
-
   if (Platform.OS !== 'web') {
     return (
-      <NativeScreen eyebrow={`${CATEGORY_LABELS[content.category]} · ${CONTENT_TYPE_LABELS[content.contentType]}`} title={content.title} subtitle={content.subtitle}>
-        <View style={styles.nativeActionRow}>{actionBlock}</View>
+      <NativeScreen
+        eyebrow={`${CATEGORY_LABELS[content.category]} · ${CONTENT_TYPE_LABELS[content.contentType]}`}
+        title={content.title}
+        subtitle={content.subtitle}
+        backHref="/(tabs)/explore"
+      >
         <View style={styles.nativeInfoCard}>
           <Text style={styles.nativeInfoTitle}>앱에서 이어가기</Text>
           <Text style={styles.nativeInfoBody}>이 콘텐츠를 저장하면 프로필의 내 보관함에서 다시 꺼내볼 수 있어요.</Text>
@@ -139,7 +129,7 @@ export default function ContentDetailPage() {
   }
 
   return (
-    <WebShell>
+    <WebShell desktopContentPaddingTop={0} mobileContentPaddingTop={0}>
       <SeoMetadata
         title={content.seo?.seoTitle ?? `${content.title} - 바스타임`}
         description={description}
@@ -150,6 +140,9 @@ export default function ContentDetailPage() {
       <View style={[webStyles.pageStack, styles.detailFrame]}>
         <View style={[styles.heroWrap, !isDesktopDetail && styles.heroWrapMobileFull]}>
           <ArchiveVisual content={content} height={390} showBadge={false} radius={0} />
+          <View style={styles.heroSaveButton}>
+            <SaveButton saved={saved} onPress={handleToggleSaved} disabled={isLoading} size={42} />
+          </View>
           <View style={styles.heroPills}>
             <Text style={styles.heroPill}>{CATEGORY_LABELS[content.category]}</Text>
             <Text style={[styles.heroPill, styles.heroPillDark]}>{CONTENT_TYPE_LABELS[content.contentType]}</Text>
@@ -161,7 +154,6 @@ export default function ContentDetailPage() {
             <View style={[styles.detailColumns, styles.detailColumnsDesktop]}>
               <View style={styles.contentColumn}>
                 {headerBlock}
-                {actionBlock}
                 <View style={styles.bodyColumn}>
                   <ContentBodyRenderer blocks={content.body} />
                 </View>
@@ -175,7 +167,6 @@ export default function ContentDetailPage() {
           ) : (
             <>
               {headerBlock}
-              {actionBlock}
               <View style={styles.detailColumns}>
                 <View style={styles.infoColumn}>
                   <ArchiveStructuredInfo content={content} />
@@ -205,16 +196,6 @@ export default function ContentDetailPage() {
               </View>
             </View>
           ) : null}
-          <AppHandoffCard
-            source="content"
-            title="앱에서 내 바스타임으로 이어가기"
-            body="저장하고, 나중에 다시 꺼내보고, 연결된 의식을 타이머로 실행할 수 있어요."
-            ctaLabel="앱에서 열기"
-            deepLink={`getbathtime://content/${content.id}`}
-            contentId={content.id}
-            contentCategory={content.category}
-            ctaType="content_detail"
-          />
         </View>
       </View>
       </ArchivePageContainer>
@@ -258,63 +239,26 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(37, 42, 42, 0.54)',
     borderColor: 'rgba(255, 255, 255, 0.24)',
   },
+  heroSaveButton: {
+    position: 'absolute',
+    right: 14,
+    top: 14,
+  },
   detailContent: {
-    paddingHorizontal: 30,
+    paddingHorizontal: 8,
     gap: 28,
   },
   detailContentDesktop: {
     width: '100%',
     maxWidth: 1120,
+    paddingHorizontal: 30,
     alignSelf: 'center',
-  },
-  actionRow: {
-    flexDirection: 'row',
-    gap: 10,
-  },
-  secondaryButton: {
-    minWidth: 104,
-    minHeight: 46,
-    borderRadius: archiveRadius.md,
-    borderWidth: 1,
-    borderColor: archiveColors.hairline,
-    backgroundColor: archiveColors.surface,
-    paddingHorizontal: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'row',
-    gap: 8,
-  },
-  secondaryButtonText: {
-    color: archiveColors.ink,
-    fontSize: 14,
-    fontWeight: '900',
-    fontFamily: luxuryFonts.sans,
-  },
-  primaryButton: {
-    minWidth: 128,
-    minHeight: 46,
-    borderRadius: archiveRadius.md,
-    backgroundColor: archiveColors.primary,
-    paddingHorizontal: 22,
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'row',
-    gap: 8,
-  },
-  primaryButtonText: {
-    color: archiveColors.onPrimary,
-    fontSize: 14,
-    fontWeight: '800',
-    fontFamily: luxuryFonts.sans,
   },
   textLink: {
     color: archiveColors.primary,
     fontSize: 14,
     fontWeight: '900',
     fontFamily: luxuryFonts.sans,
-  },
-  nativeActionRow: {
-    gap: 10,
   },
   nativeInfoCard: {
     borderRadius: 18,
@@ -388,10 +332,14 @@ const styles = StyleSheet.create({
   },
   contentColumn: {
     flex: 1,
-    gap: 28,
+    gap: 0,
   },
   bodyColumn: {
     flex: 1,
+    marginTop: 28,
+    borderTopWidth: 1,
+    borderTopColor: archiveColors.hairline,
+    paddingTop: 28,
   },
   infoColumn: {
     width: '100%',

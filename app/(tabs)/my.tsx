@@ -6,7 +6,7 @@ import { NativeScreen } from '@/src/components/native/NativeScreen';
 import { AuthPrompt } from '@/src/components/auth/AuthPrompt';
 import { archiveContents } from '@/src/archive/seed';
 import { useAuth } from '@/src/auth/AuthProvider';
-import { getSavedContentStorage, toggleSavedContent } from '@/src/storage/savedContent';
+import { getSavedContentStorage, getStorageErrorMessage, toggleSavedContent } from '@/src/storage/savedContent';
 import { luxuryFonts } from '@/src/theme/luxury';
 import { archiveColors, archiveRadius } from '@/src/theme/archiveTheme';
 
@@ -36,7 +36,7 @@ export default function ProfileScreen() {
       setSavedIds(next);
     } catch (error) {
       console.warn('Failed to toggle saved content', error);
-      Alert.alert('저장 변경에 실패했어요', '잠시 후 다시 시도해주세요.');
+      Alert.alert('저장 변경에 실패했어요', getStorageErrorMessage(error));
     }
   };
 

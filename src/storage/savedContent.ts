@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Platform } from 'react-native';
 import { requireSupabaseClient } from '@/src/auth/supabase';
+import { mapSupabaseUser, upsertCurrentUserProfile } from '@/src/auth/session';
 import { STORAGE_KEYS } from '@/src/storage/keys';
 
 export interface SavedContentStorage {
@@ -17,7 +17,17 @@ export class AuthRequiredError extends Error {
   }
 }
 
-async function getAuthenticatedUserId(): Promise<string> {
+export function getStorageErrorMessage(error: unknown): string {
+  if (error instanceof Error && error.message) return error.message;
+  if (typeof error === 'object' && error !== null) {
+    const item = error as { code?: unknown; message?: unknown; details?: unknown };
+    const parts = [item.code, item.message, item.details].filter(Boolean).map(String);
+    if (parts.length > 0) return parts.join(' · ');
+  }
+  return 'unknown_error';
+}
+
+export async function getAuthenticatedUserId(options: { ensureProfile?: boolean } = {}): Promise<string> {
   const supabase = requireSupabaseClient();
   const {
     data: { user },
@@ -25,6 +35,9 @@ async function getAuthenticatedUserId(): Promise<string> {
   } = await supabase.auth.getUser();
 
   if (error || !user) throw new AuthRequiredError();
+  if (options.ensureProfile) {
+    await upsertCurrentUserProfile(mapSupabaseUser(user));
+  }
   return user.id;
 }
 
@@ -47,16 +60,13 @@ export const webSavedContentStorage: SavedContentStorage = {
     return (data ?? []).map((item) => item.target_id as string);
   },
   async save(id) {
-    const userId = await getAuthenticatedUserId();
+    const userId = await getAuthenticatedUserId({ ensureProfile: true });
     const supabase = requireSupabaseClient();
-    const { error } = await supabase.from('saved_items').upsert(
-      {
-        user_id: userId,
-        target_type: 'content',
-        target_id: id,
-      },
-      { onConflict: 'user_id,target_type,target_id', ignoreDuplicates: true }
-    );
+    const { error } = await supabase.from('saved_items').insert({
+      user_id: userId,
+      target_type: 'content',
+      target_id: id,
+    });
 
     if (error && !isUniqueViolation(error)) throw error;
   },

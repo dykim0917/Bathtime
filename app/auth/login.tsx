@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Href, router, useLocalSearchParams } from 'expo-router';
 import { Platform, Pressable, StyleSheet, Text, View } from 'react-native';
 import { AuthPrompt } from '@/src/components/auth/AuthPrompt';
+import { NativeScreen } from '@/src/components/native/NativeScreen';
 import { ArchivePageContainer } from '@/src/components/web/ArchivePageContainer';
 import { SeoMetadata } from '@/src/components/web/SeoMetadata';
 import { WebShell, webStyles } from '@/src/components/web/WebShell';
@@ -42,9 +43,17 @@ export default function LoginPage() {
 
   if (Platform.OS !== 'web') {
     return (
-      <View style={styles.nativeRoot}>
-        {content}
-      </View>
+      <NativeScreen
+        eyebrow="LOGIN"
+        title="내 바스타임을 이어서 보기"
+        subtitle="Google 계정으로 저장한 콘텐츠와 제보를 연결합니다."
+        backHref="/(tabs)/explore"
+      >
+        <AuthPrompt source={source === 'submit' ? 'submit' : source === 'save' ? 'save' : 'saved'} nextPath={nextPath} />
+        <Pressable style={styles.secondaryButton} onPress={() => router.replace('/(tabs)/explore' as Href)}>
+          <Text style={styles.secondaryButtonText}>둘러보기로 돌아가기</Text>
+        </Pressable>
+      </NativeScreen>
     );
   }
 
@@ -59,12 +68,6 @@ export default function LoginPage() {
 }
 
 const styles = StyleSheet.create({
-  nativeRoot: {
-    flex: 1,
-    backgroundColor: archiveColors.canvas,
-    paddingHorizontal: 18,
-    paddingTop: 88,
-  },
   secondaryButton: {
     minHeight: 44,
     borderRadius: archiveRadius.md,

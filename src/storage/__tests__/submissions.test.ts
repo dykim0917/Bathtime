@@ -28,6 +28,7 @@ describe('submission storage', () => {
   });
 
   it('inserts the authenticated submission without trusting client userId', async () => {
+    const profileUpsert = jest.fn().mockResolvedValue({ error: null });
     const single = jest.fn().mockResolvedValue({
       data: {
         id: 'submission-1',
@@ -45,10 +46,20 @@ describe('submission storage', () => {
     });
     const select = jest.fn().mockReturnValue({ single });
     const insert = jest.fn().mockReturnValue({ select });
-    const from = jest.fn().mockReturnValue({ insert });
+    const from = jest.fn((table: string) => (table === 'user_profiles' ? { upsert: profileUpsert } : { insert }));
     mockedRequireSupabaseClient.mockReturnValue({
       auth: {
-        getUser: jest.fn().mockResolvedValue({ data: { user: { id: 'user-1' } }, error: null }),
+        getUser: jest.fn().mockResolvedValue({
+          data: {
+            user: {
+              id: 'user-1',
+              app_metadata: { provider: 'google' },
+              user_metadata: {},
+              identities: [{ id: 'google-user-1', provider: 'google' }],
+            },
+          },
+          error: null,
+        }),
       },
       from,
     });
@@ -59,6 +70,7 @@ describe('submission storage', () => {
       status: 'new',
     });
     expect(insert).toHaveBeenCalledWith({
+      user_id: 'user-1',
       type: 'topic',
       link_or_image: null,
       comment: '다뤄주세요',
