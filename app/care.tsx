@@ -1,5 +1,5 @@
 import { Redirect } from 'expo-router';
 
-export default function WebTabsProductRedirect() {
+export default function CareRedirect() {
   return <Redirect href="/app" />;
 }
