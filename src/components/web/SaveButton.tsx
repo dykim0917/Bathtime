@@ -15,6 +15,7 @@ export function SaveButton({ saved, onPress, disabled = false, variant = 'floati
 
   const handlePress = (event: GestureResponderEvent) => {
     event.stopPropagation?.();
+    event.preventDefault?.();
     onPress();
   };
 

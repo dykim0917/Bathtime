@@ -1,10 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { View, Text, Pressable, ScrollView, StyleSheet, useWindowDimensions, Platform } from 'react-native';
 import { Href, router, useFocusEffect } from 'expo-router';
 import Constants from 'expo-constants';
-import { FontAwesome } from '@expo/vector-icons';
-import { LinearGradient } from 'expo-linear-gradient';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { Alert, Pressable, StyleSheet, Text, View } from 'react-native';
 import {
   BathEnvironment,
   BathRecommendation,
@@ -14,30 +11,27 @@ import {
   IntentCard,
   SubProtocolOption,
   ThemeId,
-  TimeContext,
   UserProfile,
 } from '@/src/engine/types';
 import { generateCareRecommendation, generateTripRecommendation } from '@/src/engine/recommend';
 import { useUserProfile } from '@/src/hooks/useUserProfile';
 import { useHaptic } from '@/src/hooks/useHaptic';
-import { loadHistory, saveRecommendation } from '@/src/storage/history';
+import { saveRecommendation, loadHistory } from '@/src/storage/history';
 import { upsertSessionRecord } from '@/src/storage/sessionLog';
 import { loadLastEnvironment, saveLastEnvironment } from '@/src/storage/environment';
 import { loadTripMemoryHistory } from '@/src/storage/memory';
-import { buildCompletionColorsByDate, buildCompletionRecordItems } from '@/src/engine/completionRecords';
+import { buildHomeStreakSummary, HomeStreakSummary } from '@/src/engine/streaks';
 import {
-  TYPE_SCALE,
-  V2_ACCENT,
-  V2_ACCENT_SOFT,
-  V2_BG_BASE,
-  V2_BG_BOTTOM,
-  V2_BG_TOP,
-  V2_BORDER,
-  V2_SURFACE,
-  V2_TEXT_MUTED,
-  V2_TEXT_PRIMARY,
-  V2_TEXT_SECONDARY,
-} from '@/src/data/colors';
+  getDefaultCareSubProtocol,
+  pickRuntimeAutoTripSubProtocol,
+  useContentHydration,
+} from '@/src/data/contentRuntime';
+import {
+  getEnvironmentSubtitle,
+  getEnvironmentUnavailableReason,
+} from '@/src/data/intents';
+import { applySubProtocolOverrides } from '@/src/engine/subprotocol';
+import { inferFeelingBefore } from '@/src/engine/feeling';
 import {
   RecommendationCardEventPayload,
   trackIntentCardClick,
@@ -47,39 +41,19 @@ import {
   trackSubprotocolModalOpen,
   trackSubprotocolSelected,
 } from '@/src/analytics/events';
+import { NativeArchiveCard } from '@/src/components/native/NativeArchiveCard';
+import { NativeScreen } from '@/src/components/native/NativeScreen';
+import { HomeProfileSetupModal } from '@/src/components/HomeProfileSetupModal';
+import { SubProtocolPickerModal } from '@/src/components/SubProtocolPickerModal';
 import { PersistentDisclosure } from '@/src/components/PersistentDisclosure';
 import { buildDisclosureLines } from '@/src/engine/disclosures';
-import { SubProtocolPickerModal } from '@/src/components/SubProtocolPickerModal';
-import {
-  getCareCardSafetyBadge,
-  getEnvironmentFitLabel,
-  getEnvironmentUnavailableReason,
-  getEnvironmentSubtitle,
-} from '@/src/data/intents';
-import {
-  getDefaultCareSubProtocol,
-  pickRuntimeAutoTripSubProtocol,
-  useContentHydration,
-} from '@/src/data/contentRuntime';
-import { applySubProtocolOverrides } from '@/src/engine/subprotocol';
-import { inferFeelingBefore } from '@/src/engine/feeling';
-import { buildHomeStreakSummary, HomeStreakSummary } from '@/src/engine/streaks';
+import { getLatestContents } from '@/src/archive/selectors';
+import { getSavedContentStorage, toggleSavedContent } from '@/src/storage/savedContent';
+import { useAuth } from '@/src/auth/AuthProvider';
+import { setPendingAuthAction } from '@/src/auth/pendingActions';
+import { archiveColors, archiveRadius } from '@/src/theme/archiveTheme';
+import { luxuryFonts } from '@/src/theme/luxury';
 import { copy } from '@/src/content/copy';
-import { luxuryFonts, luxuryRadii } from '@/src/theme/luxury';
-import { ui } from '@/src/theme/ui';
-import { HomeCareHeroCard } from '@/src/components/HomeCareHeroCard';
-import { HomeCareListCard } from '@/src/components/HomeCareListCard';
-import { HomeTripEditorialCard } from '@/src/components/HomeTripEditorialCard';
-import { OpenTabHeader } from '@/src/components/OpenTabHeader';
-import { BrandMark } from '@/src/components/BrandMark';
-import { HomeProfileSetupModal } from '@/src/components/HomeProfileSetupModal';
-import { HOME_CARE_HERO_IMAGE } from '@/src/data/homeVisuals';
-import { CustomIconName } from '@/src/components/CustomIcon';
-import { getCareCardImageForEnvironment } from '@/src/data/careImages';
-import {
-  getImageVariantForEnvironment,
-  resolveIntentImageEnvironment,
-} from '@/src/data/routineImageVariants';
 
 const ENV_OPTIONS: { id: BathEnvironment; label: string }[] = [
   { id: 'shower', label: '샤워' },
@@ -87,34 +61,8 @@ const ENV_OPTIONS: { id: BathEnvironment; label: string }[] = [
   { id: 'bathtub', label: '욕조' },
 ];
 
-const ENV_LABEL: Record<string, string> = {
-  bathtub: '욕조',
-  partial_bath: '족욕',
-  shower: '샤워',
-};
-
-const TRIP_EDITORIAL_META: Record<string, { destination: string; accent: [string, string] }> = {
-  kyoto_forest: { destination: 'JAPAN', accent: ['#274539', '#5E846F'] },
-  nordic_sauna: { destination: 'FINLAND', accent: ['#4B3421', '#8B6540'] },
-  rainy_camping: { destination: 'PACIFIC', accent: ['#19334A', '#4F7DA1'] },
-  snow_cabin: { destination: 'ICELAND', accent: ['#22354E', '#7590AA'] },
-};
-
-const SCREEN_HORIZONTAL_PADDING = 22;
 const HOME_PREVIEW_CARD_LIMIT = 3;
 const HOME_SECTION_ORDER: RecommendationCardEventPayload['section_order'] = 'care_first';
-
-interface CareVisualMeta {
-  accent: [string, string];
-}
-
-function getTimeContext(date = new Date()): TimeContext {
-  const h = date.getHours();
-  if (h >= 22 || h < 5) return 'late_night';
-  if (h >= 5 && h < 11) return 'morning';
-  if (h >= 11 && h < 18) return 'day';
-  return 'evening';
-}
 
 function normalizeEnvironmentInput(environment: BathEnvironment): 'bathtub' | 'partial_bath' | 'shower' {
   if (environment === 'footbath') return 'partial_bath';
@@ -174,68 +122,25 @@ function mapCardPositionToRank(position: number): HomeSuggestionRank {
   return 'secondary_2';
 }
 
-function hasHighRiskCondition(conditions: UserProfile['healthConditions']): boolean {
-  return conditions.some((condition) => ['hypertension_heart', 'pregnant'].includes(condition));
-}
-
-function hasResetContraindication(conditions: UserProfile['healthConditions']): boolean {
-  return conditions.some((condition) => ['hypertension_heart', 'pregnant', 'diabetes'].includes(condition));
-}
-
-function resolveFallback(intent: IntentCard, healthConditions: UserProfile['healthConditions']): FallbackStrategy {
-  if (hasHighRiskCondition(healthConditions)) return 'SAFE_ROUTINE_ONLY';
-  if (intent.intent_id === 'hangover_relief' && hasResetContraindication(healthConditions)) {
-    return 'RESET_WITHOUT_COLD';
-  }
-  return 'none';
-}
-
-const HOME_CARE_VISUAL_META: Record<string, CareVisualMeta> = {
-  muscle_relief: {
-    accent: ['#7D6656', '#C6AB96'],
-  },
-  sleep_ready: {
-    accent: ['#193259', '#6178B9'],
-  },
-  hangover_relief: {
-    accent: ['#84501D', '#D7A052'],
-  },
-  edema_relief: {
-    accent: ['#526D87', '#B7CBDD'],
-  },
-  cold_relief: {
-    accent: ['#4E6B79', '#9FC4CF'],
-  },
-  menstrual_relief: {
-    accent: ['#7C5968', '#C89DAF'],
-  },
-  stress_relief: {
-    accent: ['#4B6651', '#89AF8C'],
-  },
-  mood_lift: {
-    accent: ['#715F35', '#D0B36B'],
-  },
-};
-
 function modeFromIntent(intent: IntentCard): RecommendationCardEventPayload['mode_type'] {
   if (intent.domain === 'trip') return 'trip';
   return intent.mapped_mode;
 }
 
-function hasSafetyPriorityFallback(fallback: FallbackStrategy): boolean {
-  return fallback === 'SAFE_ROUTINE_ONLY' || fallback === 'RESET_WITHOUT_COLD';
+function getTimeContext(date = new Date()): RecommendationCardEventPayload['time_context'] {
+  const h = date.getHours();
+  if (h >= 22 || h < 5) return 'late_night';
+  if (h >= 5 && h < 11) return 'morning';
+  if (h >= 11 && h < 18) return 'day';
+  return 'evening';
 }
 
-function getWeekdayMarker(label: HomeStreakSummary['dailyCheck'][number]['weekdayLabel']): string {
-  switch (label) {
-    case 'Mon': return '월';
-    case 'Tue': return '화';
-    case 'Wed': return '수';
-    case 'Thu': return '목';
-    case 'Fri': return '금';
-    case 'Sat': return '토';
-    case 'Sun': return '일';
-  }
+function resolveFallback(intent: IntentCard, healthConditions: UserProfile['healthConditions']): FallbackStrategy {
+  const hasHighRisk = healthConditions.some((condition) => ['hypertension_heart', 'pregnant'].includes(condition));
+  const hasResetRisk = healthConditions.some((condition) => ['hypertension_heart', 'pregnant', 'diabetes'].includes(condition));
+  if (hasHighRisk) return 'SAFE_ROUTINE_ONLY';
+  if (intent.intent_id === 'hangover_relief' && hasResetRisk) return 'RESET_WITHOUT_COLD';
+  return 'none';
 }
 
 function isIntentAvailable(intent: IntentCard, environment: BathEnvironment): boolean {
@@ -245,10 +150,9 @@ function isIntentAvailable(intent: IntentCard, environment: BathEnvironment): bo
 function selectHomeCareCards(
   cards: IntentCard[],
   environment: BathEnvironment,
-  timeContext: TimeContext
-): { heroCard: IntentCard; listCards: IntentCard[] } {
+  timeContext: RecommendationCardEventPayload['time_context']
+): { heroCard: IntentCard | null; listCards: IntentCard[] } {
   const ordered = [...cards];
-
   if (timeContext === 'late_night') {
     const sleepIndex = ordered.findIndex((card) => card.intent_id === 'sleep_ready' && isIntentAvailable(card, environment));
     if (sleepIndex > 0) {
@@ -257,61 +161,36 @@ function selectHomeCareCards(
     }
   }
 
-  const heroCard = ordered.find((card) => isIntentAvailable(card, environment)) ?? ordered[0];
-  const listCards = ordered.filter((card) => card.id !== heroCard.id).slice(0, HOME_PREVIEW_CARD_LIMIT - 1);
-
+  const heroCard = ordered.find((card) => isIntentAvailable(card, environment)) ?? ordered[0] ?? null;
+  const listCards = ordered.filter((card) => card.id !== heroCard?.id).slice(0, HOME_PREVIEW_CARD_LIMIT - 1);
   return { heroCard, listCards };
 }
 
-function buildCarePreviewRecommendation(
-  intent: IntentCard,
-  profile: UserProfile | null,
-  environment: BathEnvironment
-): BathRecommendation {
-  const runtimeProfile = buildRuntimeProfile(profile, environment);
-  const baseRecommendation = generateCareRecommendation(
-    runtimeProfile,
+function buildCarePreviewRecommendation(intent: IntentCard, profile: UserProfile | null, environment: BathEnvironment): BathRecommendation {
+  return generateCareRecommendation(
+    buildRuntimeProfile(profile, environment),
     mapIntentToTags(intent.intent_id),
     toEngineEnvironment(environment),
     intent.intent_id
   );
-  const defaultOption = getDefaultCareSubProtocol(intent);
-
-  if (!defaultOption) return baseRecommendation;
-
-  return applySubProtocolOverrides(
-    baseRecommendation,
-    defaultOption,
-    environment,
-    intent.intent_id
-  );
 }
 
-function getCareVisualMeta(intentId: string): CareVisualMeta {
-  return HOME_CARE_VISUAL_META[intentId] ?? {
-    accent: ['#5D708A', '#99AEC5'],
-  };
-}
-
-export default function HomeIntentScreen() {
+export default function HomeScreen() {
   const { profile, save } = useUserProfile();
-  const { content } = useContentHydration();
   const haptic = useHaptic();
-  const { width: screenWidth } = useWindowDimensions();
-  const insets = useSafeAreaInsets();
-
-  const [environment, setEnvironment] = useState<BathEnvironment>('bathtub');
-  const [recentRoutines, setRecentRoutines] = useState<BathRecommendation[]>([]);
-  const [isHistoryLoaded, setIsHistoryLoaded] = useState(false);
-  const [streakSummary, setStreakSummary] = useState<HomeStreakSummary>(buildHomeStreakSummary([]));
-  const [completionColorsByDate, setCompletionColorsByDate] = useState<Record<string, string[]>>({});
-  const [subModalVisible, setSubModalVisible] = useState(false);
-  const [setupModalVisible, setSetupModalVisible] = useState(false);
-  const [selectedIntent, setSelectedIntent] = useState<IntentCard | null>(null);
-  const [selectedIntentPayload, setSelectedIntentPayload] = useState<RecommendationCardEventPayload | null>(null);
-
+  const { content } = useContentHydration();
+  const { isAuthenticated, isLoading } = useAuth();
   const sessionIdRef = useRef(`session_${Date.now()}`);
   const timeContext = useMemo(() => getTimeContext(), []);
+  const latestContents = useMemo(() => getLatestContents(3), []);
+
+  const [environment, setEnvironment] = useState<BathEnvironment>('bathtub');
+  const [streakSummary, setStreakSummary] = useState<HomeStreakSummary>(buildHomeStreakSummary([]));
+  const [setupModalVisible, setSetupModalVisible] = useState(false);
+  const [subModalVisible, setSubModalVisible] = useState(false);
+  const [selectedIntent, setSelectedIntent] = useState<IntentCard | null>(null);
+  const [selectedIntentPayload, setSelectedIntentPayload] = useState<RecommendationCardEventPayload | null>(null);
+  const [savedIds, setSavedIds] = useState<string[]>([]);
 
   useEffect(() => {
     loadLastEnvironment().then((saved) => {
@@ -319,70 +198,50 @@ export default function HomeIntentScreen() {
         setEnvironment(normalizeEnvironmentInput(saved));
         return;
       }
-      if (profile) {
-        setEnvironment(normalizeEnvironmentInput(profile.bathEnvironment));
-      }
+      if (profile) setEnvironment(normalizeEnvironmentInput(profile.bathEnvironment));
     });
 
-    setIsHistoryLoaded(false);
-    Promise.all([loadHistory(), loadTripMemoryHistory()])
-      .then(([history, memories]) => {
-        setRecentRoutines(history.slice(0, 8));
-        setCompletionColorsByDate(
-          buildCompletionColorsByDate(buildCompletionRecordItems(history, memories))
-        );
-        setStreakSummary(
-          buildHomeStreakSummary(memories.map((memory) => memory.completionSnapshot.completedAt))
-        );
-      })
-      .finally(() => setIsHistoryLoaded(true));
+    Promise.all([loadHistory(), loadTripMemoryHistory()]).then(([, memories]) => {
+      setStreakSummary(buildHomeStreakSummary(memories.map((memory) => memory.completionSnapshot.completedAt)));
+    });
   }, [profile]);
+
+  const refreshSaved = useCallback(() => {
+    if (!isAuthenticated) {
+      setSavedIds([]);
+      return;
+    }
+    getSavedContentStorage().getSavedIds().then(setSavedIds).catch(() => setSavedIds([]));
+  }, [isAuthenticated]);
+
+  useFocusEffect(refreshSaved);
 
   const normalizedEnvironment = normalizeEnvironmentInput(environment);
   const hasCompletedProfile = Boolean(profile?.onboardingComplete);
   const careCards = content.care.intents.slice(0, HOME_PREVIEW_CARD_LIMIT);
-  const tripCards = content.trip.intents.slice(0, HOME_PREVIEW_CARD_LIMIT);
-  const tripCardWidth = Math.max(
-    236,
-    Math.min(screenWidth - SCREEN_HORIZONTAL_PADDING * 2 - 22, 292)
-  );
-  const weeklyProgressRatio = streakSummary.weeklyGoal > 0
-    ? Math.min(streakSummary.weeklyBathCount / streakSummary.weeklyGoal, 1)
-    : 0;
+  const tripCards = content.trip.intents.slice(0, 2);
   const { heroCard, listCards } = useMemo(
     () => selectHomeCareCards(careCards, normalizedEnvironment, timeContext),
     [careCards, normalizedEnvironment, timeContext]
   );
 
-  const heroTitle = heroCard?.copy_title ?? '오늘의 컨디션 루틴';
-  const heroDescription = heroCard
-    ? getEnvironmentSubtitle(heroCard, normalizedEnvironment, profile?.healthConditions ?? ['none'])
-    : '오늘 가능한 환경에 맞는 루틴을 보여드려요.';
-  const heroVisual = useMemo(
-    () => getCareVisualMeta(heroCard?.intent_id ?? ''),
-    [heroCard?.intent_id]
-  );
-  const heroPreviewRecommendation = useMemo(() => {
+  const heroPreview = useMemo(() => {
     if (!heroCard) return null;
     return buildCarePreviewRecommendation(heroCard, profile, environment);
   }, [environment, heroCard, profile]);
+
   const listPreviewById = useMemo(
-    () => Object.fromEntries(
-      listCards.map((intent) => [intent.id, buildCarePreviewRecommendation(intent, profile, environment)])
-    ),
+    () => Object.fromEntries(listCards.map((intent) => [intent.id, buildCarePreviewRecommendation(intent, profile, environment)])),
     [environment, listCards, profile]
   );
 
   const buildIntentPayload = useCallback((intent: IntentCard): RecommendationCardEventPayload => {
-    const appVersion = Constants.expoConfig?.version ?? 'unknown';
-    const locale = Intl.DateTimeFormat().resolvedOptions().locale;
     const healthConditions = profile?.healthConditions ?? ['none'];
-
     return {
       user_id: profile?.createdAt ?? 'anonymous',
       session_id: sessionIdRef.current,
-      app_version: appVersion,
-      locale,
+      app_version: Constants.expoConfig?.version ?? 'unknown',
+      locale: Intl.DateTimeFormat().resolvedOptions().locale,
       time_context: timeContext,
       environment,
       partial_bath_subtype: environment === 'partial_bath' ? 'footbath' : null,
@@ -411,21 +270,18 @@ export default function HomeIntentScreen() {
     }, [buildIntentPayload, careCards, hasCompletedProfile, tripCards])
   );
 
-  const disclosureLines = useMemo(() => {
-    const healthConditions = profile?.healthConditions ?? ['none'];
-    const fallback = hasHighRiskCondition(healthConditions) ? 'SAFE_ROUTINE_ONLY' as const : 'none' as const;
-    const hasResetIntent = careCards.some((c) => c.mapped_mode === 'reset');
-    return buildDisclosureLines({
-      fallbackStrategy: fallback,
-      selectedMode: hasResetIntent ? 'reset' : 'recovery',
-      healthConditions,
-    });
-  }, [careCards, profile?.healthConditions]);
+  const disclosureLines = useMemo(() => buildDisclosureLines({
+    fallbackStrategy: profile?.healthConditions.some((condition) => ['hypertension_heart', 'pregnant'].includes(condition))
+      ? 'SAFE_ROUTINE_ONLY'
+      : 'none',
+    selectedMode: 'recovery',
+    healthConditions: profile?.healthConditions ?? ['none'],
+  }), [profile?.healthConditions]);
 
-  const handleSelectEnvironment = (next: BathEnvironment) => {
+  const handleSelectEnvironment = async (next: BathEnvironment) => {
     haptic.light();
     setEnvironment(next);
-    saveLastEnvironment(next);
+    await saveLastEnvironment(next);
   };
 
   const handleCompleteFirstSetup = async (nextProfile: UserProfile) => {
@@ -436,25 +292,24 @@ export default function HomeIntentScreen() {
     setSetupModalVisible(false);
   };
 
-  const handleOpenCareSubProtocol = (intent: IntentCard) => {
-    const payload = buildIntentPayload(intent);
-    trackIntentCardClick(payload);
-    trackSubprotocolModalOpen(payload);
-    setSelectedIntent(intent);
-    setSelectedIntentPayload(payload);
-    setSubModalVisible(true);
+  const handleRouteToRecipe = (
+    recommendation: BathRecommendation,
+    startPayload: RecommendationCardEventPayload,
+    route: Href
+  ) => {
+    trackRoutineStart(startPayload);
+    trackRoutineStartAfterSubprotocol(startPayload);
+    router.push(route);
   };
 
   const handleQuickStartCareIntent = async (intent: IntentCard) => {
     const payload = buildIntentPayload(intent);
     const option = getDefaultCareSubProtocol(intent);
-
     trackIntentCardClick(payload);
     haptic.medium();
 
-    const runtimeProfile = buildRuntimeProfile(profile, environment);
     const baseRecommendation = generateCareRecommendation(
-      runtimeProfile,
+      buildRuntimeProfile(profile, environment),
       mapIntentToTags(intent.intent_id),
       toEngineEnvironment(environment),
       intent.intent_id
@@ -475,45 +330,27 @@ export default function HomeIntentScreen() {
       user_feeling_after: 3,
     });
 
-    const payloadWithSub: RecommendationCardEventPayload = {
-      ...payload,
-      subprotocol_id: option?.id,
-    };
-
-    if (option) {
-      trackSubprotocolSelected(payloadWithSub);
-    }
-    handleRouteToRecipe(
-      recommendation,
-      payloadWithSub,
-      `/result/recipe/${recommendation.id}?source=care` as Href
-    );
+    const payloadWithSub = { ...payload, subprotocol_id: option?.id };
+    if (option) trackSubprotocolSelected(payloadWithSub);
+    handleRouteToRecipe(recommendation, payloadWithSub, `/result/recipe/${recommendation.id}?source=care` as Href);
   };
 
-  const resolveSubOptions = (intent: IntentCard | null): SubProtocolOption[] => {
-    if (!intent) return [];
-    return content.care.subprotocols[intent.intent_id] ?? [];
-  };
-
-  const handleRouteToRecipe = (
-    recommendation: BathRecommendation,
-    startPayload: RecommendationCardEventPayload,
-    route: Href
-  ) => {
-    trackRoutineStart(startPayload);
-    trackRoutineStartAfterSubprotocol(startPayload);
-    router.push(route);
+  const handleOpenCareSubProtocol = (intent: IntentCard) => {
+    const payload = buildIntentPayload(intent);
+    trackIntentCardClick(payload);
+    trackSubprotocolModalOpen(payload);
+    setSelectedIntent(intent);
+    setSelectedIntentPayload(payload);
+    setSubModalVisible(true);
   };
 
   const handleStartTripIntent = async (intent: IntentCard) => {
     const payload = buildIntentPayload(intent);
-
     trackIntentCardClick(payload);
     haptic.medium();
 
-    const runtimeProfile = buildRuntimeProfile(profile, environment);
     const baseRecommendation = generateTripRecommendation(
-      runtimeProfile,
+      buildRuntimeProfile(profile, environment),
       mapIntentToTheme(intent.intent_id),
       toEngineEnvironment(environment)
     );
@@ -534,42 +371,24 @@ export default function HomeIntentScreen() {
       user_feeling_after: 3,
     });
 
-    const payloadWithSub: RecommendationCardEventPayload = {
-      ...payload,
-      subprotocol_id: option?.id,
-    };
-
+    const payloadWithSub = { ...payload, subprotocol_id: option?.id };
     trackSubprotocolSelected(payloadWithSub);
-    handleRouteToRecipe(
-      recommendation,
-      payloadWithSub,
-      `/result/recipe/${recommendation.id}?source=trip` as Href
-    );
+    handleRouteToRecipe(recommendation, payloadWithSub, `/result/recipe/${recommendation.id}?source=trip` as Href);
+  };
+
+  const resolveSubOptions = (intent: IntentCard | null): SubProtocolOption[] => {
+    if (!intent) return [];
+    return content.care.subprotocols[intent.intent_id] ?? [];
   };
 
   const handleSelectSubProtocol = async (option: SubProtocolOption) => {
     if (!selectedIntent || !selectedIntentPayload) return;
 
     haptic.medium();
-    const runtimeProfile = buildRuntimeProfile(profile, environment);
     const baseRecommendation = selectedIntent.domain === 'trip'
-      ? generateTripRecommendation(
-          runtimeProfile,
-          mapIntentToTheme(selectedIntent.intent_id),
-          toEngineEnvironment(environment)
-        )
-      : generateCareRecommendation(
-          runtimeProfile,
-          mapIntentToTags(selectedIntent.intent_id),
-          toEngineEnvironment(environment)
-        );
-
-    const recommendation = applySubProtocolOverrides(
-      baseRecommendation,
-      option,
-      environment,
-      selectedIntent.intent_id
-    );
+      ? generateTripRecommendation(buildRuntimeProfile(profile, environment), mapIntentToTheme(selectedIntent.intent_id), toEngineEnvironment(environment))
+      : generateCareRecommendation(buildRuntimeProfile(profile, environment), mapIntentToTags(selectedIntent.intent_id), toEngineEnvironment(environment));
+    const recommendation = applySubProtocolOverrides(baseRecommendation, option, environment, selectedIntent.intent_id);
 
     await saveRecommendation(recommendation);
     await upsertSessionRecord({
@@ -587,301 +406,128 @@ export default function HomeIntentScreen() {
     setSelectedIntent(null);
     setSelectedIntentPayload(null);
 
-    const payloadWithSub: RecommendationCardEventPayload = {
-      ...selectedIntentPayload,
-      subprotocol_id: option.id,
-    };
-
+    const payloadWithSub = { ...selectedIntentPayload, subprotocol_id: option.id };
     trackSubprotocolSelected(payloadWithSub);
-    handleRouteToRecipe(
-      recommendation,
-      payloadWithSub,
-      `/result/recipe/${recommendation.id}` as Href
-    );
+    handleRouteToRecipe(recommendation, payloadWithSub, `/result/recipe/${recommendation.id}` as Href);
+  };
+
+  const handleSaveContent = async (id: string) => {
+    if (!isAuthenticated) {
+      await setPendingAuthAction({ type: 'save_content', contentId: id, returnTo: '/(tabs)', source: 'native_home' });
+      router.push('/auth/login?source=save&next=/(tabs)' as Href);
+      return;
+    }
+
+    try {
+      const next = await toggleSavedContent(id);
+      setSavedIds(next);
+    } catch (error) {
+      console.warn('Failed to toggle saved content', error);
+      Alert.alert('저장에 실패했어요', '잠시 후 다시 시도해주세요.');
+    }
   };
 
   return (
-    <View style={[ui.screenShellV2, { paddingTop: insets.top }]}> 
-      <LinearGradient colors={[V2_BG_TOP, V2_BG_BASE, V2_BG_BOTTOM]} style={StyleSheet.absoluteFillObject} />
-      <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
-        <OpenTabHeader
-          title="오늘은 어떻게 씻을까요?"
-          subtitle="피곤한 날, 잠 안 오는 밤, 운동 후 뻐근한 몸까지. 오늘 몸에 맞는 씻는 방법만 가볍게 골라드려요."
-          topSlot={
-            <View style={styles.headerBrand}>
-              <BrandMark size={28} framed />
-            </View>
-          }
-          compact
-        />
+    <NativeScreen
+      eyebrow="HOME"
+      title="오늘의 바스타임"
+      subtitle="가볍게 고르고, 준비 화면을 거쳐 몰입형 타이머로 이어갑니다."
+    >
+      <View style={styles.summaryCard}>
+        <Text style={styles.summaryLabel}>이번주 바스타임</Text>
+        <Text style={styles.summaryTitle}>{streakSummary.weeklyBathCount}/{streakSummary.weeklyGoal}일</Text>
+        <Text style={styles.summaryBody}>{streakSummary.todayDone ? copy.home.todayDone : copy.home.todayPending}</Text>
+      </View>
 
-        <View style={styles.weeklyCard}>
-          <LinearGradient
-            colors={['rgba(18, 57, 60, 0.98)', 'rgba(7, 25, 27, 0.99)']}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 1 }}
-            style={styles.weeklyGradient}
-          >
-            <View style={styles.weeklyGlowPrimary} />
-            <View style={styles.weeklyGlowSecondary} />
-
-            <View style={styles.weeklyTopGroup}>
-              <View style={styles.weeklyMainRow}>
-                <Text style={styles.weeklyCountTitle}>이번주 바스타임 {streakSummary.weeklyBathCount}/{streakSummary.weeklyGoal}일</Text>
-                <Pressable onPress={() => router.push('/(tabs)/history')} style={styles.inlineLinkButton}>
-                  <Text style={styles.inlineLinkText}>전체 기록 보기</Text>
-                  <FontAwesome name="angle-right" size={14} color={V2_ACCENT} />
-                </Pressable>
-              </View>
-
-              <View style={styles.weeklyProgressTrack}>
-                <View style={[styles.weeklyProgressFill, { width: `${weeklyProgressRatio * 100}%` }]} />
-              </View>
-            </View>
-
-            <View style={styles.weeklyBottomGroup}>
-              <Text style={styles.weeklyStatus}>
-                {streakSummary.todayDone ? copy.home.todayDone : copy.home.todayPending}
-              </Text>
-
-              <View style={styles.weekDotsRow}>
-                {streakSummary.dailyCheck.map((item) => (
-                  <View key={item.dateKey} style={styles.weekDotItem}>
-                    <View
-                      style={[
-                        styles.weekDot,
-                        item.done && styles.weekDotDone,
-                        item.done && completionColorsByDate[item.dateKey]?.[0]
-                          ? {
-                              borderColor: completionColorsByDate[item.dateKey][0],
-                              backgroundColor: `${completionColorsByDate[item.dateKey][0]}18`,
-                            }
-                          : null,
-                        item.isToday && styles.weekDotToday,
-                      ]}
-                    >
-                      <View
-                        style={[
-                          styles.weekDotCenter,
-                          item.done && styles.weekDotCenterDone,
-                          item.done && item.isToday && styles.weekDotCenterTodayDone,
-                          item.done && completionColorsByDate[item.dateKey]?.[0]
-                            ? { backgroundColor: completionColorsByDate[item.dateKey][0] }
-                            : null,
-                        ]}
-                      />
-                    </View>
-                    <Text style={[styles.weekDotLabel, item.done && styles.weekDotLabelDone, item.isToday && styles.weekDotLabelToday]}>
-                      {getWeekdayMarker(item.weekdayLabel)}
-                    </Text>
-                  </View>
-                ))}
-              </View>
-            </View>
-          </LinearGradient>
-        </View>
-
-        {hasCompletedProfile ? (
-          <View style={styles.environmentSection}>
-            <Text style={styles.environmentLabel}>{copy.home.sections.environment}</Text>
-            <View style={styles.environmentRow}>
-              {ENV_OPTIONS.map((option) => (
-                <Pressable
-                  key={option.id}
-                  style={[styles.envChip, environment === option.id && styles.envChipActive]}
-                  onPress={() => handleSelectEnvironment(option.id)}
-                >
-                  <Text style={[styles.envText, environment === option.id && styles.envTextActive]} numberOfLines={1}>
-                    {option.label}
-                  </Text>
-                </Pressable>
-              ))}
-            </View>
-          </View>
-        ) : null}
-
-        <View>
-          <View style={styles.sectionHeaderRow}>
-            <Text style={styles.sectionTitle}>{hasCompletedProfile ? copy.home.sections.suggestions : '첫 루틴 준비'}</Text>
-            {hasCompletedProfile ? (
-              <Pressable onPress={() => router.push('/(tabs)/care')} style={styles.inlineLinkButton}>
-                <Text style={styles.inlineLinkText}>전체 보기</Text>
-                <FontAwesome name="angle-right" size={14} color={V2_ACCENT} />
+      <View style={styles.environmentSection}>
+        <Text style={styles.sectionTitle}>{copy.home.sections.environment}</Text>
+        <View style={styles.environmentRow}>
+          {ENV_OPTIONS.map((option) => {
+            const selected = environment === option.id;
+            return (
+              <Pressable key={option.id} style={[styles.envChip, selected && styles.envChipActive]} onPress={() => void handleSelectEnvironment(option.id)}>
+                <Text style={[styles.envText, selected && styles.envTextActive]}>{option.label}</Text>
               </Pressable>
-            ) : null}
-          </View>
-          {!hasCompletedProfile ? (
-            <HomeCareHeroCard
-              badge="FIRST SETUP"
-              eyebrow="30초 안에 끝나요"
-              title="오늘 가능한 방식만 알려주세요"
-              description="샤워, 욕조, 족욕 중 가능한 환경만 고르면 바로 무리 없는 루틴을 준비해요."
-              visualLabel="BATH TIME"
-              metaChips={[
-                { iconName: 'shower' as CustomIconName, label: '환경 선택' },
-                { iconName: 'care' as CustomIconName, label: '기본 안전' },
-              ]}
-              accent={['#12393C', '#94D2BF']}
-              backgroundSource={require('../../assets/images/welcome.jpg')}
-              fitLabel="첫 추천 준비"
-              onPress={() => {
-                haptic.medium();
-                setSetupModalVisible(true);
-              }}
-            />
-          ) : heroCard ? (
-            <>
-              <HomeCareHeroCard
-                title={heroTitle}
-                description={heroDescription}
-                metaChips={[
-                  {
-                    iconName: 'temperature' as CustomIconName,
-                    label: `${heroPreviewRecommendation?.temperature.recommended ?? 38}도`,
-                  },
-                  {
-                    iconName: 'hourglass' as CustomIconName,
-                    label: `${heroPreviewRecommendation?.durationMinutes ?? 10}분`,
-                  },
-                ]}
-                accent={heroVisual.accent}
-                backgroundSource={
-                  getCareCardImageForEnvironment(
-                    heroCard.intent_id,
-                    resolveIntentImageEnvironment(heroCard, normalizedEnvironment)
-                  ) ?? HOME_CARE_HERO_IMAGE
-                }
-                safetyBadge={
-                  hasSafetyPriorityFallback(resolveFallback(heroCard, profile?.healthConditions ?? ['none']))
-                    ? copy.home.safetyPriorityBadge
-                    : getCareCardSafetyBadge(heroCard, profile?.healthConditions ?? ['none'])
-                }
-                disabled={!heroCard.allowed_environments.includes(normalizedEnvironment)}
-                disabledText={getEnvironmentUnavailableReason(heroCard, normalizedEnvironment)}
-                onPress={() => handleQuickStartCareIntent(heroCard)}
+            );
+          })}
+        </View>
+      </View>
+
+      {!hasCompletedProfile ? (
+        <Pressable style={styles.setupCard} onPress={() => setSetupModalVisible(true)}>
+          <Text style={styles.cardKicker}>FIRST SETUP</Text>
+          <Text style={styles.cardTitle}>오늘 가능한 방식만 알려주세요</Text>
+          <Text style={styles.cardBody}>샤워, 욕조, 족욕 중 가능한 환경만 고르면 바로 무리 없는 루틴을 준비해요.</Text>
+          <Text style={styles.textLink}>30초 설정하기</Text>
+        </Pressable>
+      ) : heroCard ? (
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>{copy.home.sections.suggestions}</Text>
+          <RecommendationCard
+            intent={heroCard}
+            description={getEnvironmentSubtitle(heroCard, normalizedEnvironment, profile?.healthConditions ?? ['none'])}
+            temperature={heroPreview?.temperature.recommended}
+            duration={heroPreview?.durationMinutes}
+            primary
+            disabled={!isIntentAvailable(heroCard, normalizedEnvironment)}
+            disabledText={getEnvironmentUnavailableReason(heroCard, normalizedEnvironment)}
+            onStart={() => void handleQuickStartCareIntent(heroCard)}
+            onChoose={() => handleOpenCareSubProtocol(heroCard)}
+          />
+          {listCards.map((intent) => {
+            const preview = listPreviewById[intent.id];
+            return (
+              <RecommendationCard
+                key={intent.id}
+                intent={intent}
+                description={getEnvironmentSubtitle(intent, normalizedEnvironment, profile?.healthConditions ?? ['none'])}
+                temperature={preview?.temperature.recommended}
+                duration={preview?.durationMinutes}
+                disabled={!isIntentAvailable(intent, normalizedEnvironment)}
+                disabledText={getEnvironmentUnavailableReason(intent, normalizedEnvironment)}
+                onStart={() => void handleQuickStartCareIntent(intent)}
+                onChoose={() => handleOpenCareSubProtocol(intent)}
               />
-
-              <Text style={styles.careListLabel}>다른 컨디션도 가볍게 보기</Text>
-            </>
-          ) : null}
-          {hasCompletedProfile ? (
-            <View style={styles.careList}>
-              {listCards.map((intent) => {
-                const disabled = !intent.allowed_environments.includes(normalizedEnvironment);
-                const visual = getCareVisualMeta(intent.intent_id);
-                const previewRecommendation = listPreviewById[intent.id];
-                const imageEnvironment = resolveIntentImageEnvironment(intent, normalizedEnvironment);
-                return (
-                  <HomeCareListCard
-                    key={intent.id}
-                    title={intent.copy_title}
-                    description={getEnvironmentSubtitle(intent, normalizedEnvironment, profile?.healthConditions ?? ['none'])}
-                    accent={visual.accent}
-                    metaChips={[
-                      {
-                        iconName: 'temperature' as CustomIconName,
-                        label: `${previewRecommendation?.temperature.recommended ?? 38}도`,
-                      },
-                      {
-                        iconName: 'hourglass' as CustomIconName,
-                        label: `${previewRecommendation?.durationMinutes ?? 10}분`,
-                      },
-                    ]}
-                    backgroundImage={getCareCardImageForEnvironment(intent.intent_id, imageEnvironment)}
-                    disabled={disabled}
-                    disabledText={getEnvironmentUnavailableReason(intent, normalizedEnvironment)}
-                    onPress={() => handleQuickStartCareIntent(intent)}
-                  />
-                );
-              })}
-            </View>
-          ) : null}
+            );
+          })}
         </View>
+      ) : null}
 
-        {hasCompletedProfile ? (
-          <View>
-          <View style={styles.sectionHeaderRow}>
-            <Text style={styles.sectionTitle}>무드 루틴</Text>
-            <Pressable onPress={() => router.push('/(tabs)/trip')} style={styles.inlineLinkButton}>
-              <Text style={styles.inlineLinkText}>전체 보기</Text>
-              <FontAwesome name="angle-right" size={14} color={V2_ACCENT} />
-            </Pressable>
-          </View>
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            style={styles.fullBleedScroll}
-            contentContainerStyle={styles.tripRow}
-          >
-            {tripCards.map((intent) => {
-              const disabled = !intent.allowed_environments.includes(normalizedEnvironment);
-              const imageEnvironment = resolveIntentImageEnvironment(intent, normalizedEnvironment);
-              const fallback = resolveFallback(intent, profile?.healthConditions ?? ['none']);
-              const safetyBadge = hasSafetyPriorityFallback(fallback) ? copy.home.safetyPriorityBadge : undefined;
-              const meta = TRIP_EDITORIAL_META[intent.intent_id] ?? TRIP_EDITORIAL_META.kyoto_forest;
-              return (
-                <HomeTripEditorialCard
-                  key={intent.id}
-                  intentId={intent.intent_id}
-                  title={intent.copy_title}
-                  subtitle={getEnvironmentSubtitle(intent, normalizedEnvironment, profile?.healthConditions ?? ['none'])}
-                  accent={meta.accent}
-                  fitLabel={getEnvironmentFitLabel(intent, normalizedEnvironment)}
-                  safetyBadge={safetyBadge}
-                  disabled={disabled}
-                  onPress={() => handleStartTripIntent(intent)}
-                  width={tripCardWidth}
-                  imageVariant={getImageVariantForEnvironment(imageEnvironment)}
-                />
-              );
-            })}
-          </ScrollView>
-          </View>
-        ) : null}
+      {hasCompletedProfile ? (
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>무드 루틴</Text>
+          {tripCards.map((intent) => (
+            <RecommendationCard
+              key={intent.id}
+              intent={intent}
+              description={getEnvironmentSubtitle(intent, normalizedEnvironment, profile?.healthConditions ?? ['none'])}
+              disabled={!isIntentAvailable(intent, normalizedEnvironment)}
+              disabledText={getEnvironmentUnavailableReason(intent, normalizedEnvironment)}
+              onStart={() => void handleStartTripIntent(intent)}
+            />
+          ))}
+        </View>
+      ) : null}
 
-        {hasCompletedProfile ? (
-          <View>
-          <View style={styles.sectionHeaderRow}>
-            <Text style={styles.sectionTitle}>최근 완료한 루틴</Text>
-            <Pressable onPress={() => router.push('/(tabs)/history')} style={styles.inlineLinkButton}>
-              <Text style={styles.inlineLinkText}>전체 보기</Text>
-              <FontAwesome name="angle-right" size={14} color={V2_ACCENT} />
-            </Pressable>
-          </View>
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            style={styles.fullBleedScroll}
-            contentContainerStyle={styles.recentRow}
-          >
-            {recentRoutines.length === 0 ? (
-              <View style={[ui.glassCardV2, styles.recentEmptyCard]}>
-                <Text style={styles.recentEmptyText}>최근 기록이 아직 없어요</Text>
-              </View>
-            ) : recentRoutines.slice(0, 8).map((routine) => (
-              <Pressable
-                key={routine.id}
-                style={[ui.glassCardV2, styles.recentCard]}
-                onPress={() => router.push(`/result/recipe/${routine.id}`)}
-              >
-                <View style={styles.recentCardHeader}>
-                  <View style={[styles.recentColorDot, { backgroundColor: routine.colorHex }]} />
-                  <Text style={styles.recentMeta}>{routine.mode === 'trip' ? '무드' : '컨디션'}</Text>
-                </View>
-                <Text style={styles.recentTitle} numberOfLines={1}>{routine.themeTitle ?? '맞춤 루틴'}</Text>
-                <Text style={styles.recentSub} numberOfLines={2}>
-                  {routine.temperature.recommended}°C · {routine.durationMinutes ?? 10}분 · {ENV_LABEL[normalizeEnvironmentInput(routine.environmentUsed)] ?? '욕조'}
-                </Text>
-              </Pressable>
-            ))}
-          </ScrollView>
-          </View>
-        ) : null}
+      <View style={styles.section}>
+        <View style={styles.sectionHeader}>
+          <Text style={styles.sectionTitle}>추천 콘텐츠</Text>
+          <Pressable onPress={() => router.push('/(tabs)/explore' as Href)}>
+            <Text style={styles.textLink}>탐색 더보기</Text>
+          </Pressable>
+        </View>
+        {latestContents.map((item) => (
+          <NativeArchiveCard
+            key={item.id}
+            content={item}
+            saved={savedIds.includes(item.id)}
+            onSavePress={isLoading ? undefined : () => void handleSaveContent(item.id)}
+          />
+        ))}
+      </View>
 
-        {hasCompletedProfile ? (
-          <PersistentDisclosure style={styles.disclosureInline} lines={disclosureLines} variant="v2" />
-        ) : null}
-      </ScrollView>
+      {hasCompletedProfile ? <PersistentDisclosure lines={disclosureLines} variant="v2" /> : null}
+
       <HomeProfileSetupModal
         visible={setupModalVisible}
         onClose={() => setSetupModalVisible(false)}
@@ -900,295 +546,220 @@ export default function HomeIntentScreen() {
         onSelect={handleSelectSubProtocol}
         variant="v2"
       />
+    </NativeScreen>
+  );
+}
+
+function RecommendationCard({
+  intent,
+  description,
+  temperature,
+  duration,
+  primary = false,
+  disabled = false,
+  disabledText,
+  onStart,
+  onChoose,
+}: {
+  intent: IntentCard;
+  description: string;
+  temperature?: number;
+  duration?: number | null;
+  primary?: boolean;
+  disabled?: boolean;
+  disabledText?: string;
+  onStart: () => void;
+  onChoose?: () => void;
+}) {
+  return (
+    <View style={[styles.recommendationCard, primary && styles.recommendationPrimary]}>
+      <Text style={styles.cardKicker}>{intent.domain === 'trip' ? 'MOOD' : 'CARE'}</Text>
+      <Text style={styles.cardTitle}>{intent.copy_title}</Text>
+      <Text style={styles.cardBody}>{disabled ? disabledText : description}</Text>
+      <View style={styles.metaRow}>
+        {temperature ? <Text style={styles.metaPill}>{temperature}도</Text> : null}
+        {duration ? <Text style={styles.metaPill}>{duration}분</Text> : null}
+      </View>
+      <View style={styles.actionRow}>
+        {onChoose ? (
+          <Pressable style={styles.secondaryButton} onPress={onChoose} disabled={disabled}>
+            <Text style={styles.secondaryButtonText}>방식 선택</Text>
+          </Pressable>
+        ) : null}
+        <Pressable style={[styles.primaryButton, disabled && styles.disabledButton]} onPress={onStart} disabled={disabled}>
+          <Text style={styles.primaryButtonText}>시작하기</Text>
+        </Pressable>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  content: {
-    paddingHorizontal: SCREEN_HORIZONTAL_PADDING,
-    paddingTop: 12,
-    paddingBottom: 40,
-    gap: 24,
-  },
-  headerBrand: {
-    alignItems: 'flex-start',
-  },
-  weeklyCard: {
-    borderRadius: luxuryRadii.cardLg,
-    overflow: 'hidden',
-    borderWidth: 1,
-    borderColor: 'rgba(148, 210, 191, 0.18)',
-    ...Platform.select({
-      web: {
-        boxShadow: '0px 10px 24px rgba(0, 0, 0, 0.22)',
-      },
-      default: {
-        shadowColor: '#000000',
-        shadowOpacity: 0.22,
-        shadowRadius: 24,
-        shadowOffset: { width: 0, height: 10 },
-        elevation: 6,
-      },
-    }),
-  },
-  weeklyGradient: {
-    paddingHorizontal: 18,
-    paddingTop: 15,
-    paddingBottom: 15,
-    gap: 8,
-  },
-  weeklyGlowPrimary: {
-    position: 'absolute',
-    top: -18,
-    left: 14,
-    width: 120,
-    height: 120,
-    borderRadius: 60,
-    backgroundColor: 'rgba(148, 210, 191, 0.12)',
-  },
-  weeklyGlowSecondary: {
-    position: 'absolute',
-    right: -22,
-    bottom: -22,
-    width: 110,
-    height: 110,
-    borderRadius: 55,
-    backgroundColor: 'rgba(148, 210, 191, 0.08)',
-  },
-  weeklyTopGroup: {
-    gap: 6,
-  },
-  weeklyMainRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    gap: 10,
-  },
-  weeklyCountTitle: {
-    color: '#F5EFE6',
-    fontSize: TYPE_SCALE.title - 1,
-    lineHeight: 22,
-    fontFamily: luxuryFonts.display,
-    flex: 1,
-    paddingRight: 8,
-  },
-  weeklyProgressTrack: {
-    height: 5,
-    borderRadius: 999,
-    overflow: 'hidden',
-    backgroundColor: 'rgba(255, 255, 255, 0.12)',
-  },
-  weeklyProgressFill: {
-    height: '100%',
-    borderRadius: 999,
-    backgroundColor: V2_ACCENT,
-  },
-  weeklyStatus: {
-    color: V2_TEXT_SECONDARY,
-    fontSize: TYPE_SCALE.caption - 1,
-    fontWeight: '600',
-    lineHeight: 15,
-    fontFamily: luxuryFonts.sans,
-  },
-  weeklyBottomGroup: {
-    gap: 7,
-  },
-  inlineLinkButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 4,
-  },
-  inlineLinkText: {
-    color: V2_ACCENT,
-    fontSize: TYPE_SCALE.caption - 1,
-    fontWeight: '700',
-    fontFamily: luxuryFonts.sans,
-  },
-  weekDotsRow: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    justifyContent: 'space-between',
-    width: '100%',
-  },
-  weekDotItem: {
-    alignItems: 'center',
-    gap: 4,
-    flex: 1,
-    minWidth: 0,
-  },
-  weekDot: {
-    width: 24,
-    height: 24,
-    borderRadius: 999,
-    borderWidth: 1.25,
-    borderColor: 'rgba(148, 210, 191, 0.22)',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'rgba(148, 210, 191, 0.06)',
-    overflow: 'hidden',
-  },
-  weekDotDone: {
-    borderColor: V2_ACCENT,
-  },
-  weekDotToday: {
-    borderColor: V2_ACCENT,
-    transform: [{ scale: 1.04 }],
-  },
-  weekDotCenter: {
-    width: 10,
-    height: 10,
-    borderRadius: 999,
-    backgroundColor: 'transparent',
-    overflow: 'hidden',
-  },
-  weekDotCenterDone: {
-    backgroundColor: V2_ACCENT,
-  },
-  weekDotCenterTodayDone: {
-    backgroundColor: '#B8E8DA',
-  },
-  weekDotLabel: {
-    color: V2_TEXT_MUTED,
-    fontSize: 9,
-    fontWeight: '700',
-    lineHeight: 11,
-    fontFamily: luxuryFonts.sans,
-  },
-  weekDotLabelDone: {
-    color: V2_ACCENT,
-  },
-  weekDotLabelToday: {
-    color: V2_TEXT_PRIMARY,
-  },
-  environmentSection: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+  section: {
     gap: 12,
   },
-  environmentLabel: {
+  sectionHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  sectionTitle: {
+    color: archiveColors.ink,
+    fontSize: 18,
+    fontWeight: '900',
+    fontFamily: luxuryFonts.display,
+  },
+  summaryCard: {
+    borderRadius: archiveRadius.lg,
+    borderWidth: 1,
+    borderColor: archiveColors.hairline,
+    backgroundColor: archiveColors.surface,
+    padding: 16,
+    gap: 6,
+  },
+  summaryLabel: {
+    color: archiveColors.primary,
     fontSize: 12,
-    color: V2_TEXT_MUTED,
-    marginBottom: 2,
-    fontWeight: '600',
+    fontWeight: '900',
     fontFamily: luxuryFonts.sans,
+  },
+  summaryTitle: {
+    color: archiveColors.ink,
+    fontSize: 28,
+    lineHeight: 34,
+    fontWeight: '900',
+    fontFamily: luxuryFonts.display,
+  },
+  summaryBody: {
+    color: archiveColors.body,
+    fontSize: 14,
+    lineHeight: 20,
+    fontFamily: luxuryFonts.sans,
+  },
+  environmentSection: {
+    gap: 10,
   },
   environmentRow: {
     flexDirection: 'row',
     gap: 8,
-    flexShrink: 1,
-    justifyContent: 'flex-end',
   },
   envChip: {
-    minHeight: 36,
-    borderRadius: 999,
-    backgroundColor: V2_SURFACE,
+    flex: 1,
+    minHeight: 42,
+    borderRadius: archiveRadius.md,
     borderWidth: 1,
-    borderColor: V2_BORDER,
+    borderColor: archiveColors.hairline,
+    backgroundColor: archiveColors.surface,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 12,
-    paddingVertical: 9,
   },
   envChipActive: {
-    backgroundColor: V2_ACCENT_SOFT,
-    borderColor: V2_ACCENT,
+    backgroundColor: archiveColors.primary,
+    borderColor: archiveColors.primary,
   },
   envText: {
-    color: V2_TEXT_SECONDARY,
-    fontSize: TYPE_SCALE.caption,
-    fontWeight: '700',
+    color: archiveColors.body,
+    fontSize: 14,
+    fontWeight: '900',
     fontFamily: luxuryFonts.sans,
   },
   envTextActive: {
-    color: V2_ACCENT,
+    color: archiveColors.onPrimary,
   },
-  sectionHeaderRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 16,
+  setupCard: {
+    borderRadius: archiveRadius.lg,
+    borderWidth: 1,
+    borderColor: archiveColors.hairline,
+    backgroundColor: archiveColors.surface,
+    padding: 16,
+    gap: 9,
   },
-  sectionTitle: {
-    color: V2_TEXT_PRIMARY,
-    fontSize: TYPE_SCALE.title,
+  recommendationCard: {
+    borderRadius: archiveRadius.lg,
+    borderWidth: 1,
+    borderColor: archiveColors.hairline,
+    backgroundColor: archiveColors.surface,
+    padding: 16,
+    gap: 10,
+  },
+  recommendationPrimary: {
+    backgroundColor: archiveColors.surfaceSoft,
+  },
+  cardKicker: {
+    color: archiveColors.primary,
+    fontSize: 12,
+    fontWeight: '900',
+    fontFamily: luxuryFonts.sans,
+  },
+  cardTitle: {
+    color: archiveColors.ink,
+    fontSize: 20,
+    lineHeight: 26,
+    fontWeight: '900',
     fontFamily: luxuryFonts.display,
   },
-  careListLabel: {
-    color: V2_TEXT_MUTED,
-    fontSize: TYPE_SCALE.caption,
-    lineHeight: 18,
+  cardBody: {
+    color: archiveColors.body,
+    fontSize: 14,
+    lineHeight: 21,
     fontFamily: luxuryFonts.sans,
-    marginTop: 18,
-    marginBottom: 14,
   },
-  careList: {
-    gap: 12,
-  },
-  fullBleedScroll: {
-    marginHorizontal: -SCREEN_HORIZONTAL_PADDING,
-  },
-  tripRow: {
-    gap: 16,
-    paddingHorizontal: SCREEN_HORIZONTAL_PADDING,
-    paddingRight: SCREEN_HORIZONTAL_PADDING + 12,
-  },
-  recentRow: {
-    gap: 12,
-    paddingHorizontal: SCREEN_HORIZONTAL_PADDING,
-    paddingRight: SCREEN_HORIZONTAL_PADDING + 8,
-  },
-  recentCard: {
-    width: 172,
-    paddingHorizontal: 14,
-    paddingVertical: 14,
-    gap: 8,
-    minHeight: 112,
-  },
-  recentCardHeader: {
+  metaRow: {
     flexDirection: 'row',
-    alignItems: 'center',
     gap: 8,
   },
-  recentColorDot: {
-    width: 8,
-    height: 8,
-    borderRadius: 4,
-  },
-  recentMeta: {
-    color: V2_TEXT_MUTED,
-    fontSize: TYPE_SCALE.caption - 1,
-    fontWeight: '700',
-    letterSpacing: 0,
+  metaPill: {
+    overflow: 'hidden',
+    borderRadius: 999,
+    backgroundColor: archiveColors.primarySoft,
+    color: archiveColors.primary,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    fontSize: 12,
+    fontWeight: '900',
     fontFamily: luxuryFonts.sans,
   },
-  recentTitle: {
-    color: V2_TEXT_PRIMARY,
-    fontSize: TYPE_SCALE.title - 1,
-    lineHeight: 22,
-    fontFamily: luxuryFonts.display,
+  actionRow: {
+    flexDirection: 'row',
+    gap: 8,
   },
-  recentSub: {
-    color: V2_TEXT_SECONDARY,
-    fontSize: TYPE_SCALE.caption,
-    lineHeight: 17,
-    fontFamily: luxuryFonts.sans,
-  },
-  recentEmptyCard: {
-    width: 220,
-    paddingHorizontal: 16,
-    paddingVertical: 18,
-    minHeight: 112,
+  primaryButton: {
+    flex: 1,
+    minHeight: 42,
+    borderRadius: archiveRadius.md,
+    backgroundColor: archiveColors.primary,
+    alignItems: 'center',
     justifyContent: 'center',
   },
-  recentEmptyText: {
-    color: V2_TEXT_SECONDARY,
-    fontSize: TYPE_SCALE.body,
-    lineHeight: 20,
+  primaryButtonText: {
+    color: archiveColors.onPrimary,
+    fontSize: 14,
+    fontWeight: '900',
     fontFamily: luxuryFonts.sans,
   },
-  disclosureInline: {
-    marginTop: -2,
+  secondaryButton: {
+    flex: 1,
+    minHeight: 42,
+    borderRadius: archiveRadius.md,
+    borderWidth: 1,
+    borderColor: archiveColors.hairline,
+    backgroundColor: archiveColors.surface,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  secondaryButtonText: {
+    color: archiveColors.ink,
+    fontSize: 14,
+    fontWeight: '900',
+    fontFamily: luxuryFonts.sans,
+  },
+  disabledButton: {
+    backgroundColor: archiveColors.primaryDisabled,
+  },
+  textLink: {
+    color: archiveColors.primary,
+    fontSize: 13,
+    fontWeight: '900',
+    fontFamily: luxuryFonts.sans,
   },
 });

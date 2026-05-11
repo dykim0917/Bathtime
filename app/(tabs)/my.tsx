@@ -1,1110 +1,251 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import {
-  View,
-  Text,
-  FlatList,
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  TouchableOpacity,
-  useWindowDimensions,
-  Platform,
-} from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { router, useFocusEffect, useLocalSearchParams } from 'expo-router';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { BathEnvironment, BathRecommendation, TripMemoryRecord } from '@/src/engine/types';
-import { loadHistory } from '@/src/storage/history';
-import { loadThemePreferenceWeights, loadTripMemoryHistory } from '@/src/storage/memory';
-import { buildCompletionRecordItems, CompletionRecordItem } from '@/src/engine/completionRecords';
-import { buildHistoryInsights } from '@/src/engine/historyInsights';
-import { buildHomeStreakSummary } from '@/src/engine/streaks';
-import { PERSONA_DEFINITIONS } from '@/src/engine/personas';
-import { getThemeById, useContentHydration } from '@/src/data/contentRuntime';
-import { copy } from '@/src/content/copy';
-import { brand } from '@/src/content/brand';
-import { useUserProfile } from '@/src/hooks/useUserProfile';
-import { useHaptic } from '@/src/hooks/useHaptic';
-import { OpenTabHeader } from '@/src/components/OpenTabHeader';
-import { PersistentDisclosure } from '@/src/components/PersistentDisclosure';
-import { AnimatedModalShell } from '@/src/components/AnimatedModalShell';
-import { AppAlertDialog } from '@/src/components/AppAlertDialog';
-import {
-  TYPE_BODY,
-  TYPE_CAPTION,
-  TYPE_TITLE,
-  V2_ACCENT,
-  V2_ACCENT_SOFT,
-  V2_ACCENT_TEXT,
-  V2_BG_BASE,
-  V2_BG_BOTTOM,
-  V2_BG_TOP,
-  V2_BORDER,
-  V2_MODAL_SURFACE,
-  V2_SHADOW,
-  V2_SURFACE,
-  V2_SURFACE_GHOST,
-  V2_TEXT_MUTED,
-  V2_TEXT_PRIMARY,
-  V2_TEXT_SECONDARY,
-} from '@/src/data/colors';
-import { CustomIcon, getIntentIconName } from '@/src/components/CustomIcon';
+import React, { useCallback, useMemo, useState } from 'react';
+import { Href, router, useFocusEffect, useLocalSearchParams } from 'expo-router';
+import { Alert, Pressable, StyleSheet, Text, View } from 'react-native';
+import { NativeArchiveCard } from '@/src/components/native/NativeArchiveCard';
+import { NativeScreen } from '@/src/components/native/NativeScreen';
+import { AuthPrompt } from '@/src/components/auth/AuthPrompt';
+import { archiveContents } from '@/src/archive/seed';
+import { useAuth } from '@/src/auth/AuthProvider';
+import { getSavedContentStorage, toggleSavedContent } from '@/src/storage/savedContent';
 import { luxuryFonts } from '@/src/theme/luxury';
-import { ui } from '@/src/theme/ui';
+import { archiveColors, archiveRadius } from '@/src/theme/archiveTheme';
 
-type MyTab = 'history' | 'settings';
-type FilterMode = 'all' | 'care' | 'trip';
+export default function ProfileScreen() {
+  const params = useLocalSearchParams<{ saved?: string }>();
+  const { user, isAuthenticated, isLoading, logout } = useAuth();
+  const [savedIds, setSavedIds] = useState<string[]>([]);
 
-const FILTER_OPTIONS: { key: FilterMode; label: string }[] = [
-  { key: 'all', label: '전체' },
-  { key: 'care', label: '컨디션' },
-  { key: 'trip', label: '무드' },
-];
-
-const MODE_LABELS = {
-  care: copy.history.cardLabels.modeCare,
-  trip: copy.history.cardLabels.modeTrip,
-} as const;
-
-const ENV_LABELS_HISTORY = {
-  bathtub: '욕조',
-  partial_bath: '족욕',
-  footbath: '족욕',
-  shower: '샤워',
-} as const;
-
-const ENV_LABELS_SETTINGS: Record<BathEnvironment, string> = {
-  bathtub: '욕조',
-  partial_bath: '족욕',
-  footbath: '족욕',
-  shower: '샤워',
-};
-
-const SETTINGS_ENV_OPTIONS: BathEnvironment[] = ['shower', 'partial_bath', 'bathtub'];
-
-const SIDE_PAD = 18;
-const COL_GAP = 10;
-const CARD_HEADER_HEIGHT = 100;
-
-function normalizeSettingsEnvironment(environment: BathEnvironment): BathEnvironment {
-  if (environment === 'footbath') return 'partial_bath';
-  return environment;
-}
-
-function MyTabHeaderBlock({
-  activeTab,
-  onTabChange,
-  style,
-}: {
-  activeTab: MyTab;
-  onTabChange: (tab: MyTab) => void;
-  style?: object;
-}) {
-  return (
-    <OpenTabHeader
-      title="프로필"
-      subtitle="기록을 돌아보고, 내 환경과 상태를 한곳에서 차분히 관리하세요."
-      style={style}
-      footerSlot={
-        <View style={styles.subTabRow}>
-          {(['history', 'settings'] as MyTab[]).map((tab) => (
-            <Pressable
-              key={tab}
-              style={[ui.pillButtonV2, styles.subTabPill, activeTab === tab && ui.pillButtonV2Active]}
-              onPress={() => onTabChange(tab)}
-            >
-              <Text style={[styles.subTabText, activeTab === tab && styles.subTabTextActive]}>
-                {tab === 'history' ? '기록' : '설정'}
-              </Text>
-            </Pressable>
-          ))}
-        </View>
-      }
-    />
-  );
-}
-
-function HistorySection({
-  activeTab,
-  onTabChange,
-}: {
-  activeTab: MyTab;
-  onTabChange: (tab: MyTab) => void;
-}) {
-  const { width } = useWindowDimensions();
-  const cardWidth = (width - SIDE_PAD * 2 - COL_GAP) / 2;
-
-  const [history, setHistory] = useState<BathRecommendation[]>([]);
-  const [memoryHistory, setMemoryHistory] = useState<TripMemoryRecord[]>([]);
-  const [themeWeights, setThemeWeights] = useState<Record<string, number>>({});
-  const [filterMode, setFilterMode] = useState<FilterMode>('all');
-
-  useFocusEffect(
-    useCallback(() => {
-      Promise.all([
-        loadHistory(),
-        loadTripMemoryHistory(),
-        loadThemePreferenceWeights(),
-      ]).then(([historyData, memoryData, weightData]) => {
-        setHistory(historyData);
-        setMemoryHistory(memoryData);
-        setThemeWeights(weightData);
-      });
-    }, [])
-  );
-
-  const completionItems = useMemo(
-    () => buildCompletionRecordItems(history, memoryHistory),
-    [history, memoryHistory]
-  );
-
-  const topThemeInsight = useMemo(() => {
-    const sorted = Object.entries(themeWeights).sort((a, b) => b[1] - a[1]);
-    if (sorted.length === 0) return null;
-    const [themeId, weight] = sorted[0];
-    const themeTitle = getThemeById(themeId)?.title ?? themeId;
-    return { themeTitle, weight };
-  }, [themeWeights]);
-
-  const insights = useMemo(
-    () => buildHistoryInsights(history, memoryHistory),
-    [history, memoryHistory]
-  );
-  const streakSummary = useMemo(
-    () => buildHomeStreakSummary(memoryHistory.map((memory) => memory.completionSnapshot.completedAt)),
-    [memoryHistory]
-  );
-
-  const filteredCompletions = useMemo(() => {
-    if (filterMode === 'all') return completionItems;
-    return completionItems.filter((item) => item.memory.completionSnapshot.mode === filterMode);
-  }, [completionItems, filterMode]);
-
-  const renderCard = ({ item, index }: { item: CompletionRecordItem; index: number }) => {
-    const recommendation = item.recommendation;
-    const memory = item.memory;
-    const persona = recommendation
-      ? PERSONA_DEFINITIONS.find((p) => p.code === recommendation.persona)
-      : null;
-    const title =
-      recommendation?.themeTitle ??
-      memory.themeTitle ??
-      persona?.nameKo ??
-      item.title ??
-      copy.history.cardLabels.defaultTitle;
-    const intentIconName = getIntentIconName(recommendation?.intentId);
-    const date = new Date(memory.completionSnapshot.completedAt);
-    const dateStr = `${date.getMonth() + 1}/${date.getDate()}`;
-    const duration = memory.completionSnapshot.durationMinutes;
-    const feedbackLabel =
-      memory.completionSnapshot.feedback === 'good'
-        ? '좋았어요'
-        : memory.completionSnapshot.feedback === 'bad'
-          ? '아쉬웠어요'
-          : null;
-    const isLeft = index % 2 === 0;
-
-    return (
-      <Pressable
-        style={[styles.gridCard, { width: cardWidth, marginRight: isLeft ? COL_GAP : 0 }]}
-        onPress={() =>
-          router.push({
-            pathname: '/result/recipe/[id]',
-            params: { id: memory.recommendationId, source: 'history' },
-          })
-        }
-      >
-        <View style={[styles.gridCardHeader, { backgroundColor: `${item.accentColor}22` }]}> 
-          <View style={styles.gridCardGlow} />
-          <View style={[styles.gridCardIconWrap, { backgroundColor: `${item.accentColor}20`, borderColor: `${item.accentColor}42` }]}>
-            <CustomIcon
-              name={intentIconName ?? 'care'}
-              size={24}
-              color={V2_TEXT_PRIMARY}
-              fillColor={V2_TEXT_PRIMARY}
-              strokeColor={V2_TEXT_PRIMARY}
-            />
-          </View>
-          <View style={[styles.modePill, { backgroundColor: `${item.accentColor}33` }]}> 
-            <Text style={styles.modePillText}>{MODE_LABELS[memory.completionSnapshot.mode]}</Text>
-          </View>
-        </View>
-        <View style={styles.gridCardFooter}>
-          <Text style={styles.gridCardTitle} numberOfLines={2}>{title}</Text>
-          <Text style={styles.gridCardMeta}>
-            {memory.completionSnapshot.temperatureRecommended}°C · {ENV_LABELS_HISTORY[memory.completionSnapshot.environment]}
-            {duration !== null ? ` · ${duration}분` : ''}
-          </Text>
-          <View style={styles.gridCardBottom}>
-            <Text style={styles.gridCardDate}>{dateStr}</Text>
-            {feedbackLabel ? (
-              <Text style={styles.gridCardFeedback}>{feedbackLabel}</Text>
-            ) : memory.narrativeRecallCard ? (
-              <FontAwesome name="comment-o" size={10} color={V2_TEXT_MUTED} />
-            ) : null}
-          </View>
-        </View>
-      </Pressable>
-    );
-  };
-
-  const ListHeader = () => (
-    <View style={styles.listHeader}>
-      <MyTabHeaderBlock
-        activeTab={activeTab}
-        onTabChange={onTabChange}
-        style={styles.historyHeaderBlock}
-      />
-
-      <View style={[ui.glassCardV2, styles.streakCard]}>
-        <Text style={styles.streakTitle}>{copy.home.streakTitle}</Text>
-        <Text style={styles.streakTodayText}>
-          {streakSummary.todayDone ? copy.home.todayDone : copy.home.todayPending}
-        </Text>
-        <View style={styles.streakWeekRow}>
-          {streakSummary.dailyCheck.map((item) => (
-            <View key={item.dateKey} style={styles.streakDayItem}>
-              <Text style={[styles.streakDayLabel, item.isToday && styles.streakTodayLabel]}>
-                {item.weekdayLabel}
-              </Text>
-              <Text style={[styles.streakDayMark, item.done && styles.streakDayMarkDone]}>
-                {item.done ? '✔' : '-'}
-              </Text>
-            </View>
-          ))}
-        </View>
-        <Text style={styles.streakCountText}>
-          {copy.home.weeklyCount(streakSummary.weeklyBathCount, streakSummary.weeklyGoal)}
-        </Text>
-        <Text style={styles.streakMetaText}>
-          {copy.home.dailyStreak(streakSummary.dailyStreakDays)} {'\u00b7'}{' '}
-          {copy.home.weeklyStreak(streakSummary.weeklyStreakWeeks)}
-        </Text>
-      </View>
-
-      {completionItems.length > 0 && (
-        <View style={[ui.glassCardV2, styles.insightBanner]}>
-          <View style={styles.insightBannerLeft}>
-            <Text style={styles.insightBannerLabel}>이번 달 요약</Text>
-            <Text style={styles.insightBannerMain}>{insights.totalSessions}회 완료</Text>
-            {insights.avgDurationMinutes > 0 && (
-              <Text style={styles.insightBannerSub}>
-                평균 {insights.avgDurationMinutes}분
-                {insights.topEnvironment ? ` · ${ENV_LABELS_HISTORY[insights.topEnvironment]}` : ''}
-              </Text>
-            )}
-            {topThemeInsight && (
-              <Text style={styles.insightBannerTheme}>
-                자주 찾은 테마: {topThemeInsight.themeTitle} · {topThemeInsight.weight}
-              </Text>
-            )}
-          </View>
-          <View style={styles.insightBannerIcon}>
-            <View style={styles.insightBannerIconBadge}>
-              <CustomIcon name="care" size={20} color={V2_ACCENT} fillColor={V2_ACCENT} strokeColor={V2_ACCENT} />
-            </View>
-          </View>
-        </View>
-      )}
-
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        style={styles.filterScroll}
-        contentContainerStyle={styles.filterContent}
-      >
-        {FILTER_OPTIONS.map((opt) => (
-          <Pressable
-            key={opt.key}
-            style={[ui.pillButtonV2, styles.filterPill, filterMode === opt.key && ui.pillButtonV2Active]}
-            onPress={() => setFilterMode(opt.key)}
-          >
-            <Text style={[styles.filterPillText, filterMode === opt.key && styles.filterPillTextActive]}>
-              {opt.label}
-            </Text>
-          </Pressable>
-        ))}
-      </ScrollView>
-
-      {filteredCompletions.length > 0 && (
-        <Text style={styles.gridSectionLabel}>{filteredCompletions.length}개의 완료 기록</Text>
-      )}
-    </View>
-  );
-
-  return (
-    <View style={styles.historyContainer}>
-      <FlatList
-        data={filteredCompletions}
-        keyExtractor={(item) => item.memory.completionId}
-        renderItem={renderCard}
-        numColumns={2}
-        ListHeaderComponent={<ListHeader />}
-        ListEmptyComponent={
-          completionItems.length === 0 ? (
-            <View style={[ui.glassCardV2, styles.emptyContainer]}>
-              <View style={styles.emptyBadge}>
-                <Text style={styles.emptyBadgeText}>첫 루틴을 시작해보세요</Text>
-              </View>
-              <View style={styles.emptyIconWrap}>
-                <CustomIcon name="care" size={24} color={V2_ACCENT} fillColor={V2_ACCENT} strokeColor={V2_ACCENT} />
-              </View>
-              <Text style={styles.emptyText}>{copy.history.empty.title}</Text>
-              <Text style={styles.emptySubtext}>{copy.history.empty.subtitle}</Text>
-              <Text style={styles.emptyGuide}>첫 추천을 저장하면 이 공간이 나만의 루틴 기록으로 채워져요.</Text>
-              <Pressable style={styles.emptyAction} onPress={() => router.push('/(tabs)/care')}>
-                <Text style={styles.emptyActionText}>컨디션 루틴 보러가기</Text>
-              </Pressable>
-            </View>
-          ) : (
-            <View style={styles.filterEmptyContainer}>
-              <Text style={styles.filterEmptyText}>
-                {filterMode === 'care' ? '컨디션' : '무드'} 루틴 기록이 없어요
-              </Text>
-            </View>
-          )
-        }
-        contentContainerStyle={styles.list}
-        showsVerticalScrollIndicator={false}
-      />
-    </View>
-  );
-}
-
-function SettingsSection({
-  activeTab,
-  onTabChange,
-}: {
-  activeTab: MyTab;
-  onTabChange: (tab: MyTab) => void;
-}) {
-  const { profile, loading, update, clear } = useUserProfile();
-  const haptic = useHaptic();
-  const [resetModalVisible, setResetModalVisible] = useState(false);
-  const [isResetting, setIsResetting] = useState(false);
-  const [showResetErrorDialog, setShowResetErrorDialog] = useState(false);
-  const showResetSection = false;
-
-  useEffect(() => {
-    if (!loading && !profile) {
-      router.replace('/(tabs)');
+  const refreshSaved = useCallback(() => {
+    if (!isAuthenticated) {
+      setSavedIds([]);
+      return;
     }
-  }, [loading, profile]);
+    getSavedContentStorage().getSavedIds().then(setSavedIds).catch(() => setSavedIds([]));
+  }, [isAuthenticated]);
 
-  const handleEnvironmentChange = async (environment: BathEnvironment) => {
-    if (!profile) return;
-    if (normalizeSettingsEnvironment(profile.bathEnvironment) === environment) return;
-    haptic.light();
-    await update({ bathEnvironment: environment });
-  };
+  useFocusEffect(refreshSaved);
 
-  const runReset = async () => {
-    if (isResetting) return;
+  const savedContents = useMemo(
+    () => savedIds.map((id) => archiveContents.find((content) => content.id === id)).filter(Boolean),
+    [savedIds]
+  );
+
+  const handleSave = async (id: string) => {
     try {
-      setIsResetting(true);
-      haptic.warning();
-      await clear();
-      setResetModalVisible(false);
-      router.replace('/(tabs)');
-    } catch {
-      setShowResetErrorDialog(true);
-    } finally {
-      setIsResetting(false);
+      const next = await toggleSavedContent(id);
+      setSavedIds(next);
+    } catch (error) {
+      console.warn('Failed to toggle saved content', error);
+      Alert.alert('저장 변경에 실패했어요', '잠시 후 다시 시도해주세요.');
     }
   };
 
-  const handleResetOnboarding = () => {
-    haptic.light();
-    setResetModalVisible(true);
-  };
-
-  if (loading || !profile) {
-    return (
-      <View style={[styles.settingsContainer, styles.settingsCentered]}>
-        <Text style={{ color: V2_TEXT_SECONDARY }}>{copy.settings.loading}</Text>
-      </View>
-    );
-  }
-
   return (
-    <View style={styles.settingsContainer}>
-      <ScrollView contentContainerStyle={styles.settingsContent} showsVerticalScrollIndicator={false}>
-        <MyTabHeaderBlock
-          activeTab={activeTab}
-          onTabChange={onTabChange}
-          style={styles.settingsHeaderBlock}
-        />
-
-        <View style={styles.settingsSection}>
-          <Text style={styles.settingsSectionTitle}>{copy.settings.sectionProfile}</Text>
-          <View style={[ui.glassCardV2, styles.settingChoiceCard]}>
-            <Text style={styles.settingChoiceLabel}>{copy.settings.environmentLabel}</Text>
-            <View style={styles.settingChoiceList}>
-              {SETTINGS_ENV_OPTIONS.map((env) => (
-                <TouchableOpacity
-                  key={env}
-                  style={[
-                    ui.pillButtonV2,
-                    styles.conditionTagButton,
-                    normalizeSettingsEnvironment(profile.bathEnvironment) === env && ui.pillButtonV2Active,
-                  ]}
-                  onPress={() => handleEnvironmentChange(env)}
-                  activeOpacity={0.78}
-                >
-                  <Text
-                    style={[
-                      styles.conditionTag,
-                      normalizeSettingsEnvironment(profile.bathEnvironment) === env &&
-                        styles.conditionTagActiveText,
-                    ]}
-                  >
-                    {ENV_LABELS_SETTINGS[env]}
-                  </Text>
-                </TouchableOpacity>
-              ))}
-            </View>
-            <Text style={styles.helperText}>항목을 탭하면 바로 저장됩니다.</Text>
-          </View>
-        </View>
-
-        {showResetSection ? (
-          <View style={styles.settingsSection}>
-            <Text style={styles.settingsSectionTitle}>{copy.settings.sectionActions}</Text>
-            <TouchableOpacity style={[ui.glassCardV2, styles.actionCard]} onPress={handleResetOnboarding} activeOpacity={0.78}>
-              <Text style={styles.actionText}>{copy.settings.resetProfile}</Text>
-              <Text style={styles.actionArrow}>→</Text>
-            </TouchableOpacity>
-          </View>
-        ) : null}
-
-        <View style={styles.settingsSection}>
-          <Text style={styles.settingsSectionTitle}>{copy.settings.sectionApp}</Text>
-          <View style={[ui.glassCardV2, styles.infoCard]}>
-            <Text style={styles.infoLabelRow}>{copy.settings.versionLabel}</Text>
-            <Text style={styles.infoValue}>3.12.0</Text>
-          </View>
-          <View style={[ui.glassCardV2, styles.infoCard]}>
-            <Text style={styles.infoLabelRow}>{copy.settings.nameLabel}</Text>
-            <Text style={styles.infoValue}>{brand.displayName}</Text>
-          </View>
-          <View style={styles.legalCardGroup}>
-            <TouchableOpacity
-              style={[ui.glassCardV2, styles.legalCard]}
-              onPress={() => router.push('/legal/privacy' as any)}
-              activeOpacity={0.82}
-            >
-              <View style={styles.legalCardText}>
-                <Text style={styles.legalCardTitle}>개인정보 처리방침</Text>
-                <Text style={styles.legalCardBody}>로그인, 쿠키, 아동 이용 및 권리 행사 안내</Text>
-              </View>
-              <Text style={styles.actionArrow}>→</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={[ui.glassCardV2, styles.legalCard]}
-              onPress={() => router.push('/legal/terms' as any)}
-              activeOpacity={0.82}
-            >
-              <View style={styles.legalCardText}>
-                <Text style={styles.legalCardTitle}>이용약관</Text>
-                <Text style={styles.legalCardBody}>서비스 이용 조건과 책임 범위 확인</Text>
-              </View>
-              <Text style={styles.actionArrow}>→</Text>
-            </TouchableOpacity>
-          </View>
-          <PersistentDisclosure style={styles.disclosureInline} showColdWarning variant="v2" />
-        </View>
-      </ScrollView>
-
-      {showResetSection ? (
-        <AnimatedModalShell
-          visible={resetModalVisible}
-          onClose={() => setResetModalVisible(false)}
-          align="center"
-          layoutStyle={styles.modalBackdrop}
-          backdropStyle={styles.modalBackdropTint}
-          containerStyle={styles.modalContainer}
-        >
-          {(requestClose) => (
-            <View style={styles.modalCard}>
-              <Text style={styles.modalTitle}>{copy.settings.resetDialogTitle}</Text>
-              <Text style={styles.modalBody}>{copy.settings.resetDialogBody}</Text>
-              <View style={styles.modalActions}>
-                <Pressable
-                  style={[styles.modalButton, styles.modalCancelButton]}
-                  onPress={requestClose}
-                  disabled={isResetting}
-                >
-                  <Text style={styles.modalCancelText}>{copy.settings.resetCancel}</Text>
-                </Pressable>
-                <Pressable
-                  style={[styles.modalButton, styles.modalConfirmButton, isResetting && styles.modalButtonDisabled]}
-                  onPress={() => {
-                    void runReset();
-                  }}
-                  disabled={isResetting}
-                >
-                  <Text style={styles.modalConfirmText}>
-                    {isResetting ? '초기화 중...' : copy.settings.resetConfirm}
-                  </Text>
-                </Pressable>
-              </View>
-            </View>
-          )}
-        </AnimatedModalShell>
-      ) : null}
-      <AppAlertDialog
-        visible={showResetErrorDialog}
-        title={copy.settings.resetErrorTitle}
-        body={copy.settings.resetErrorBody}
-        onClose={() => setShowResetErrorDialog(false)}
-        eyebrow="NOTICE"
-        iconName="exclamation-circle"
-        tone="danger"
-      />
-    </View>
-  );
-}
-
-export default function MyScreen() {
-  useContentHydration();
-  const { tab } = useLocalSearchParams<{ tab?: string }>();
-  const initialTab: MyTab = tab === 'settings' ? 'settings' : 'history';
-  const [activeTab, setActiveTab] = useState<MyTab>(initialTab);
-  const insets = useSafeAreaInsets();
-
-  useEffect(() => {
-    setActiveTab(tab === 'settings' ? 'settings' : 'history');
-  }, [tab]);
-
-  return (
-    <View style={[ui.screenShellV2, { paddingTop: insets.top }]}> 
-      <LinearGradient colors={[V2_BG_TOP, V2_BG_BASE, V2_BG_BOTTOM]} style={StyleSheet.absoluteFillObject} />
-      {activeTab === 'history' ? (
-        <HistorySection activeTab={activeTab} onTabChange={setActiveTab} />
+    <NativeScreen eyebrow="PROFILE" title="프로필" subtitle="계정, 보관함, 기록과 설정을 한곳에서 관리합니다.">
+      {!isAuthenticated && !isLoading ? (
+        <AuthPrompt source="saved" nextPath="/(tabs)/my?saved=1" />
       ) : (
-        <SettingsSection activeTab={activeTab} onTabChange={setActiveTab} />
+        <View style={styles.accountCard}>
+          <View style={styles.avatar}>
+            <Text style={styles.avatarText}>{user?.nickname?.slice(0, 1) ?? user?.email?.slice(0, 1) ?? 'B'}</Text>
+          </View>
+          <View style={styles.accountText}>
+            <Text style={styles.accountName}>{user?.nickname ?? '내 계정'}</Text>
+            {user?.email ? <Text style={styles.accountEmail}>{user.email}</Text> : null}
+          </View>
+          <Pressable style={styles.logoutButton} onPress={() => void logout()}>
+            <Text style={styles.logoutButtonText}>로그아웃</Text>
+          </Pressable>
+        </View>
       )}
-    </View>
+
+      <View style={styles.sectionHeader}>
+        <Text style={styles.sectionTitle}>내 보관함</Text>
+        <Text style={styles.sectionMeta}>{savedIds.length}개 저장</Text>
+      </View>
+      {isAuthenticated ? (
+        savedContents.length > 0 ? (
+          <View style={styles.list}>
+            {savedContents.map((content) => content ? (
+              <NativeArchiveCard
+                key={content.id}
+                content={content}
+                saved
+                onSavePress={() => handleSave(content.id)}
+              />
+            ) : null)}
+          </View>
+        ) : (
+          <View style={[styles.emptyCard, params.saved === '1' && styles.emptyCardActive]}>
+            <Text style={styles.emptyTitle}>아직 저장한 콘텐츠가 없습니다.</Text>
+            <Text style={styles.emptyBody}>탐색에서 나중에 다시 보고 싶은 바스타임을 저장해보세요.</Text>
+            <Pressable style={styles.primaryButton} onPress={() => router.push('/(tabs)/explore' as Href)}>
+              <Text style={styles.primaryButtonText}>탐색으로 이동</Text>
+            </Pressable>
+          </View>
+        )
+      ) : null}
+
+      <View style={styles.linkGroup}>
+        <Pressable style={styles.linkCard} onPress={() => router.push('/(tabs)/history' as Href)}>
+          <View>
+            <Text style={styles.linkTitle}>의식 기록</Text>
+            <Text style={styles.linkBody}>완료한 루틴과 지난 바스타임을 확인합니다.</Text>
+          </View>
+          <Text style={styles.arrow}>→</Text>
+        </Pressable>
+        <Pressable style={styles.linkCard} onPress={() => router.push('/(tabs)/settings' as Href)}>
+          <View>
+            <Text style={styles.linkTitle}>설정</Text>
+            <Text style={styles.linkBody}>목욕 환경, 법적 문서, 앱 정보를 확인합니다.</Text>
+          </View>
+          <Text style={styles.arrow}>→</Text>
+        </Pressable>
+      </View>
+    </NativeScreen>
   );
 }
 
 const styles = StyleSheet.create({
-  subTabRow: {
+  accountCard: {
     flexDirection: 'row',
-    gap: 8,
-    marginTop: 6,
+    alignItems: 'center',
+    borderRadius: archiveRadius.lg,
+    borderWidth: 1,
+    borderColor: archiveColors.hairline,
+    backgroundColor: archiveColors.surface,
+    padding: 14,
+    gap: 12,
   },
-  subTabPill: {
-    minHeight: 42,
+  avatar: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: archiveColors.primary,
   },
-  subTabText: {
-    fontSize: TYPE_BODY,
-    fontWeight: '600',
-    color: V2_TEXT_SECONDARY,
+  avatarText: {
+    color: archiveColors.onPrimary,
+    fontSize: 18,
+    fontWeight: '900',
     fontFamily: luxuryFonts.sans,
   },
-  subTabTextActive: {
-    color: V2_ACCENT,
-  },
-  historyContainer: {
+  accountText: {
     flex: 1,
+    minWidth: 0,
+    gap: 3,
+  },
+  accountName: {
+    color: archiveColors.ink,
+    fontSize: 18,
+    fontWeight: '900',
+    fontFamily: luxuryFonts.display,
+  },
+  accountEmail: {
+    color: archiveColors.muted,
+    fontSize: 12,
+    fontFamily: luxuryFonts.sans,
+  },
+  logoutButton: {
+    minHeight: 38,
+    borderRadius: archiveRadius.md,
+    borderWidth: 1,
+    borderColor: archiveColors.hairline,
+    paddingHorizontal: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  logoutButtonText: {
+    color: archiveColors.ink,
+    fontSize: 12,
+    fontWeight: '900',
+    fontFamily: luxuryFonts.sans,
+  },
+  sectionHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  sectionTitle: {
+    color: archiveColors.ink,
+    fontSize: 18,
+    fontWeight: '900',
+    fontFamily: luxuryFonts.display,
+  },
+  sectionMeta: {
+    color: archiveColors.primary,
+    fontSize: 12,
+    fontWeight: '900',
+    fontFamily: luxuryFonts.sans,
   },
   list: {
-    paddingHorizontal: SIDE_PAD,
-    paddingBottom: 32,
+    gap: 12,
   },
-  listHeader: {
-    paddingTop: 12,
-    marginBottom: 16,
-    gap: 14,
-  },
-  historyHeaderBlock: {
-    marginBottom: 22,
-  },
-  settingsHeaderBlock: {
-    marginBottom: 22,
-  },
-  streakCard: {
-    paddingHorizontal: 14,
-    paddingVertical: 14,
-    gap: 8,
-  },
-  streakTitle: {
-    color: V2_TEXT_PRIMARY,
-    fontWeight: '700',
-    fontSize: TYPE_BODY,
-  },
-  streakTodayText: {
-    color: V2_TEXT_SECONDARY,
-    fontSize: TYPE_CAPTION,
-    fontWeight: '600',
-  },
-  streakWeekRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    columnGap: 6,
-  },
-  streakDayItem: {
-    alignItems: 'center',
-    gap: 2,
-    minWidth: 35,
-  },
-  streakDayLabel: {
-    color: V2_TEXT_SECONDARY,
-    fontSize: 11,
-    fontWeight: '600',
-  },
-  streakTodayLabel: {
-    color: V2_ACCENT,
-    fontWeight: '700',
-  },
-  streakDayMark: {
-    color: V2_TEXT_SECONDARY,
-    fontSize: TYPE_CAPTION,
-    fontWeight: '700',
-  },
-  streakDayMarkDone: {
-    color: V2_ACCENT,
-  },
-  streakCountText: {
-    color: V2_TEXT_PRIMARY,
-    fontSize: TYPE_BODY,
-    fontWeight: '700',
-  },
-  streakMetaText: {
-    color: V2_TEXT_SECONDARY,
-    fontSize: TYPE_CAPTION,
-    fontWeight: '600',
-  },
-  insightBanner: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    padding: 18,
-  },
-  insightBannerLeft: {
-    flex: 1,
-  },
-  insightBannerLabel: {
-    fontSize: TYPE_CAPTION,
-    fontWeight: '700',
-    color: V2_ACCENT,
-    letterSpacing: 0,
-    marginBottom: 4,
-  },
-  insightBannerMain: {
-    fontSize: TYPE_TITLE,
-    fontWeight: '700',
-    color: V2_TEXT_PRIMARY,
-    marginBottom: 4,
-  },
-  insightBannerSub: {
-    fontSize: TYPE_CAPTION,
-    color: V2_TEXT_SECONDARY,
-    lineHeight: 18,
-  },
-  insightBannerTheme: {
-    fontSize: TYPE_CAPTION,
-    color: V2_TEXT_MUTED,
-    marginTop: 4,
-  },
-  insightBannerIcon: {
-    marginLeft: 16,
-    width: 34,
-    height: 34,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  insightBannerIconBadge: {
-    width: 34,
-    height: 34,
-    borderRadius: 17,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: V2_ACCENT_SOFT,
+  emptyCard: {
+    borderRadius: archiveRadius.lg,
     borderWidth: 1,
-    borderColor: 'rgba(148, 210, 191, 0.3)',
-  },
-  filterScroll: {
-    marginBottom: 4,
-  },
-  filterContent: {
-    gap: 8,
-    paddingRight: 4,
-  },
-  filterPill: {
-    minHeight: 42,
-  },
-  filterPillText: {
-    fontSize: TYPE_BODY,
-    fontWeight: '600',
-    color: V2_TEXT_SECONDARY,
-    fontFamily: luxuryFonts.sans,
-  },
-  filterPillTextActive: {
-    color: V2_ACCENT,
-  },
-  gridSectionLabel: {
-    fontSize: TYPE_CAPTION,
-    color: V2_TEXT_MUTED,
-    marginBottom: 2,
-    fontWeight: '600',
-  },
-  gridCard: {
-    backgroundColor: V2_SURFACE,
-    borderRadius: 18,
-    marginBottom: COL_GAP,
-    borderWidth: 1,
-    borderColor: V2_BORDER,
-    ...Platform.select({
-      web: {
-        boxShadow: `0px 4px 10px ${V2_SHADOW}`,
-      },
-      default: {
-        shadowColor: V2_SHADOW,
-        shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 1,
-        shadowRadius: 10,
-        elevation: 3,
-      },
-    }),
-    overflow: 'hidden',
-  },
-  gridCardHeader: {
-    height: CARD_HEADER_HEIGHT,
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'relative',
-    backgroundColor: 'rgba(255,255,255,0.04)',
-  },
-  gridCardGlow: {
-    position: 'absolute',
-    top: -18,
-    right: -10,
-    width: 88,
-    height: 88,
-    borderRadius: 44,
-    backgroundColor: 'rgba(255,255,255,0.06)',
-  },
-  gridCardIconWrap: {
-    width: 34,
-    height: 34,
-    borderRadius: 17,
-    borderWidth: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  modePill: {
-    position: 'absolute',
-    top: 8,
-    right: 8,
-    borderRadius: 999,
-    paddingHorizontal: 7,
-    paddingVertical: 3,
-    borderWidth: 1,
-    borderColor: V2_SURFACE_GHOST,
-  },
-  modePillText: {
-    fontSize: 10,
-    fontWeight: '700',
-    color: V2_TEXT_PRIMARY,
-  },
-  gridCardFooter: {
-    padding: 10,
-  },
-  gridCardTitle: {
-    fontSize: TYPE_BODY,
-    fontWeight: '700',
-    color: V2_TEXT_PRIMARY,
-    marginBottom: 2,
-    lineHeight: 19,
-  },
-  gridCardMeta: {
-    fontSize: TYPE_CAPTION,
-    color: V2_TEXT_SECONDARY,
-    marginBottom: 6,
-  },
-  gridCardBottom: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  gridCardDate: {
-    fontSize: TYPE_CAPTION,
-    color: V2_TEXT_MUTED,
-    fontWeight: '600',
-  },
-  gridCardFeedback: {
-    fontSize: TYPE_CAPTION - 1,
-    color: V2_ACCENT,
-    fontWeight: '700',
-  },
-  emptyContainer: {
-    marginHorizontal: SIDE_PAD,
-    marginTop: 8,
-    alignItems: 'center',
-    paddingHorizontal: 20,
-    paddingVertical: 28,
-    borderColor: 'rgba(148, 210, 191, 0.18)',
-  },
-  emptyBadge: {
-    paddingHorizontal: 10,
-    paddingVertical: 6,
-    borderRadius: 999,
-    backgroundColor: 'rgba(148, 210, 191, 0.12)',
-    borderWidth: 1,
-    borderColor: 'rgba(148, 210, 191, 0.22)',
-    marginBottom: 14,
-  },
-  emptyBadgeText: {
-    color: V2_ACCENT,
-    fontSize: TYPE_CAPTION - 1,
-    fontWeight: '700',
-    letterSpacing: 0,
-  },
-  emptyIconWrap: {
-    width: 40,
-    height: 40,
-    marginBottom: 14,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 20,
-    backgroundColor: V2_ACCENT_SOFT,
-    borderWidth: 1,
-    borderColor: 'rgba(148, 210, 191, 0.3)',
-  },
-  emptyText: {
-    fontSize: TYPE_TITLE,
-    fontWeight: '700',
-    color: V2_TEXT_PRIMARY,
-    marginBottom: 8,
-    textAlign: 'center',
-  },
-  emptySubtext: {
-    fontSize: TYPE_BODY,
-    color: V2_TEXT_SECONDARY,
-    textAlign: 'center',
-    lineHeight: 20,
-  },
-  emptyGuide: {
-    marginTop: 10,
-    fontSize: TYPE_CAPTION,
-    color: V2_TEXT_MUTED,
-    textAlign: 'center',
-    lineHeight: 18,
-  },
-  emptyAction: {
-    marginTop: 18,
-    minHeight: 44,
-    minWidth: 180,
-    paddingHorizontal: 18,
-    paddingVertical: 11,
-    borderRadius: 999,
-    backgroundColor: V2_ACCENT,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  emptyActionText: {
-    color: V2_ACCENT_TEXT,
-    fontSize: TYPE_BODY,
-    fontWeight: '700',
-  },
-  filterEmptyContainer: {
-    paddingVertical: 40,
-    alignItems: 'center',
-  },
-  filterEmptyText: {
-    fontSize: TYPE_BODY,
-    color: V2_TEXT_MUTED,
-  },
-  settingsContainer: {
-    flex: 1,
-  },
-  settingsCentered: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  settingsContent: {
-    paddingHorizontal: SIDE_PAD,
-    paddingTop: 12,
-    paddingBottom: 28,
-  },
-  settingsSection: {
-    marginBottom: 20,
-  },
-  settingsSectionTitle: {
-    fontSize: TYPE_TITLE,
-    fontWeight: '700',
-    color: V2_TEXT_PRIMARY,
-    marginBottom: 10,
-  },
-  infoCard: {
-    padding: 15,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginBottom: 8,
-  },
-  infoLabelRow: {
-    fontSize: TYPE_BODY,
-    color: V2_TEXT_SECONDARY,
-  },
-  infoValue: {
-    fontSize: TYPE_BODY,
-    fontWeight: '600',
-    color: V2_TEXT_PRIMARY,
-  },
-  legalCardGroup: {
+    borderColor: archiveColors.hairline,
+    backgroundColor: archiveColors.surface,
+    padding: 16,
     gap: 10,
   },
-  legalCard: {
-    padding: 15,
-    borderRadius: 20,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+  emptyCardActive: {
+    borderColor: archiveColors.primary,
   },
-  legalCardText: {
-    flex: 1,
-    gap: 4,
-    paddingRight: 12,
-  },
-  legalCardTitle: {
-    fontSize: TYPE_BODY,
-    color: V2_TEXT_PRIMARY,
-    fontWeight: '600',
-    fontFamily: luxuryFonts.sans,
-  },
-  legalCardBody: {
-    fontSize: TYPE_CAPTION,
-    lineHeight: 18,
-    color: V2_TEXT_SECONDARY,
-    fontFamily: luxuryFonts.sans,
-  },
-  settingChoiceCard: {
-    padding: 15,
-    marginBottom: 10,
-  },
-  settingChoiceLabel: {
-    fontSize: TYPE_BODY,
-    color: V2_TEXT_SECONDARY,
-    marginBottom: 10,
-  },
-  settingChoiceList: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 8,
-  },
-  conditionTagButton: {
-    minHeight: 40,
-  },
-  conditionTag: {
-    fontSize: 12,
-    color: V2_TEXT_PRIMARY,
-    paddingHorizontal: 2,
-  },
-  conditionTagActiveText: {
-    color: V2_ACCENT,
-    fontWeight: '700',
-  },
-  helperText: {
-    marginTop: 8,
-    fontSize: 12,
-    color: V2_TEXT_MUTED,
-  },
-  actionCard: {
-    padding: 15,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  actionText: {
-    fontSize: TYPE_BODY,
-    color: V2_TEXT_PRIMARY,
-    fontWeight: '600',
-  },
-  actionArrow: {
+  emptyTitle: {
+    color: archiveColors.ink,
     fontSize: 18,
-    color: V2_ACCENT,
+    fontWeight: '900',
+    fontFamily: luxuryFonts.display,
   },
-  disclosureInline: {
-    marginTop: 8,
+  emptyBody: {
+    color: archiveColors.body,
+    fontSize: 14,
+    lineHeight: 20,
+    fontFamily: luxuryFonts.sans,
   },
-  modalBackdrop: {
-    flex: 1,
-    paddingHorizontal: 24,
-  },
-  modalBackdropTint: {
-    backgroundColor: 'rgba(3, 8, 21, 0.72)',
-  },
-  modalContainer: {
+  primaryButton: {
+    minHeight: 44,
+    borderRadius: archiveRadius.md,
+    backgroundColor: archiveColors.primary,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 24,
   },
-  modalCard: {
-    width: '100%',
-    maxWidth: 360,
-    backgroundColor: V2_MODAL_SURFACE,
-    borderRadius: 18,
-    borderWidth: 1,
-    borderColor: V2_BORDER,
-    padding: 18,
-    ...Platform.select({
-      web: {
-        boxShadow: `0px 8px 16px ${V2_SHADOW}`,
-      },
-      default: {
-        shadowColor: V2_SHADOW,
-        shadowOffset: { width: 0, height: 8 },
-        shadowOpacity: 1,
-        shadowRadius: 16,
-        elevation: 4,
-      },
-    }),
+  primaryButtonText: {
+    color: archiveColors.onPrimary,
+    fontSize: 14,
+    fontWeight: '900',
+    fontFamily: luxuryFonts.sans,
   },
-  modalTitle: {
-    fontSize: TYPE_TITLE,
-    fontWeight: '700',
-    color: V2_TEXT_PRIMARY,
-    marginBottom: 8,
-  },
-  modalBody: {
-    fontSize: TYPE_BODY,
-    color: V2_TEXT_SECONDARY,
-    lineHeight: 20,
-    marginBottom: 16,
-  },
-  modalActions: {
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
+  linkGroup: {
     gap: 10,
   },
-  modalButton: {
-    borderRadius: 999,
-    paddingVertical: 9,
-    paddingHorizontal: 14,
+  linkCard: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    borderRadius: archiveRadius.lg,
     borderWidth: 1,
+    borderColor: archiveColors.hairline,
+    backgroundColor: archiveColors.surface,
+    padding: 16,
+    gap: 12,
   },
-  modalCancelButton: {
-    borderColor: V2_BORDER,
-    backgroundColor: V2_SURFACE,
+  linkTitle: {
+    color: archiveColors.ink,
+    fontSize: 14,
+    fontWeight: '900',
+    fontFamily: luxuryFonts.sans,
   },
-  modalConfirmButton: {
-    borderColor: V2_ACCENT,
-    backgroundColor: V2_ACCENT,
+  linkBody: {
+    color: archiveColors.muted,
+    fontSize: 12,
+    lineHeight: 18,
+    fontFamily: luxuryFonts.sans,
   },
-  modalCancelText: {
-    color: V2_TEXT_PRIMARY,
-    fontWeight: '700',
-    fontSize: TYPE_CAPTION,
-  },
-  modalConfirmText: {
-    color: V2_ACCENT_TEXT,
-    fontWeight: '700',
-    fontSize: TYPE_CAPTION,
-  },
-  modalButtonDisabled: {
-    opacity: 0.72,
+  arrow: {
+    color: archiveColors.primary,
+    fontSize: 18,
   },
 });

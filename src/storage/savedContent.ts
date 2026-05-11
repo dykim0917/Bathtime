@@ -49,11 +49,14 @@ export const webSavedContentStorage: SavedContentStorage = {
   async save(id) {
     const userId = await getAuthenticatedUserId();
     const supabase = requireSupabaseClient();
-    const { error } = await supabase.from('saved_items').insert({
-      user_id: userId,
-      target_type: 'content',
-      target_id: id,
-    });
+    const { error } = await supabase.from('saved_items').upsert(
+      {
+        user_id: userId,
+        target_type: 'content',
+        target_id: id,
+      },
+      { onConflict: 'user_id,target_type,target_id', ignoreDuplicates: true }
+    );
 
     if (error && !isUniqueViolation(error)) throw error;
   },
@@ -112,7 +115,7 @@ export const nativeSavedContentStorage: SavedContentStorage = {
 };
 
 export function getSavedContentStorage(): SavedContentStorage {
-  return Platform.OS === 'web' ? webSavedContentStorage : nativeSavedContentStorage;
+  return webSavedContentStorage;
 }
 
 export async function toggleSavedContent(id: string): Promise<string[]> {

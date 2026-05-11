@@ -7,7 +7,6 @@ import {
   House,
   List,
   MagnifyingGlass,
-  PlayCircle,
   PlusSquare,
   User,
   type PhosphorIcon,
@@ -28,7 +27,6 @@ type NavItem = {
 const NAV_ITEMS: NavItem[] = [
   { href: '/' as Href, label: copy.archive.nav.home, icon: House },
   { href: '/explore' as unknown as Href, label: copy.archive.nav.explore, icon: Compass },
-  { href: '/routines' as unknown as Href, label: copy.archive.nav.routines, icon: PlayCircle },
   { href: '/submit' as unknown as Href, label: copy.archive.nav.submit, icon: PlusSquare },
   { href: '/saved' as unknown as Href, label: copy.archive.nav.saved, icon: BookmarkSimple },
 ];
@@ -37,6 +35,7 @@ const SIDEBAR_COLLAPSED_STORAGE_KEY = 'bathtime:web-sidebar-collapsed';
 
 function getStoredSidebarCollapsed(): boolean {
   if (typeof window === 'undefined') return false;
+  if (!('localStorage' in window) || !window.localStorage) return false;
   return window.localStorage.getItem(SIDEBAR_COLLAPSED_STORAGE_KEY) === 'true';
 }
 
@@ -236,13 +235,23 @@ export function AccountControls() {
             {user?.email ? <Text style={styles.accountEmail} numberOfLines={1}>{user.email}</Text> : null}
           </View>
           <Pressable
-            style={styles.logoutMenuItem}
+            style={styles.profileMenuItem}
+            onPress={() => {
+              setMenuOpen(false);
+              router.push('/saved' as Href);
+            }}
+          >
+            <BookmarkSimple size={15} color={archiveColors.ink} weight="regular" />
+            <Text style={styles.profileMenuItemText}>내 보관함</Text>
+          </Pressable>
+          <Pressable
+            style={styles.profileMenuItem}
             onPress={() => {
               setMenuOpen(false);
               void logout();
             }}
           >
-            <Text style={styles.logoutMenuItemText}>로그아웃</Text>
+            <Text style={styles.profileMenuItemText}>로그아웃</Text>
           </Pressable>
         </View>
       ) : null}
@@ -585,14 +594,16 @@ const styles = StyleSheet.create({
     paddingHorizontal: 4,
     paddingVertical: 5,
   },
-  logoutMenuItem: {
+  profileMenuItem: {
     minHeight: 38,
     borderRadius: archiveRadius.md,
     backgroundColor: archiveColors.surfaceSoft,
     alignItems: 'center',
     justifyContent: 'center',
+    flexDirection: 'row',
+    gap: 8,
   },
-  logoutMenuItemText: {
+  profileMenuItemText: {
     color: archiveColors.ink,
     fontSize: 13,
     fontWeight: '900',

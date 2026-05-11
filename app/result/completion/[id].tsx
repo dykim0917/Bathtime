@@ -152,12 +152,12 @@ export default function CompletionScreen() {
 
   const handleGoHome = async () => {
     await clearSession();
-    router.replace('/(tabs)');
+    router.replace('/(tabs)' as any);
   };
 
   const handleGoHistory = async () => {
     await clearSession();
-    router.replace('/(tabs)/history');
+    router.replace('/(tabs)/history' as any);
   };
 
   if (!recommendation) {

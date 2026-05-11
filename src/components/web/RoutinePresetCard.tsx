@@ -7,7 +7,15 @@ import { archiveColors, archiveRadius } from '@/src/theme/archiveTheme';
 import { luxuryFonts } from '@/src/theme/luxury';
 import { copy } from '@/src/content/copy';
 
-export function RoutinePresetCard({ routine, onStart }: { routine: RoutinePreset; onStart: () => void }) {
+export function RoutinePresetCard({
+  routine,
+  onStart,
+  ctaLabel = copy.archive.actions.startRitual,
+}: {
+  routine: RoutinePreset;
+  onStart: () => void;
+  ctaLabel?: string;
+}) {
   return (
     <View style={styles.card}>
       <View style={styles.topRow}>
@@ -28,7 +36,7 @@ export function RoutinePresetCard({ routine, onStart }: { routine: RoutinePreset
       </View>
       <Pressable style={styles.button} onPress={onStart}>
         <Play size={15} color={archiveColors.onPrimary} weight="fill" />
-        <Text style={styles.buttonText}>{copy.archive.actions.startRitual}</Text>
+        <Text style={styles.buttonText}>{ctaLabel}</Text>
       </Pressable>
     </View>
   );

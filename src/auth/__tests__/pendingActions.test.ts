@@ -15,6 +15,10 @@ jest.mock('@/src/storage/submissions', () => ({
   saveSubmission: jest.fn(),
 }));
 
+jest.mock('@react-native-async-storage/async-storage', () =>
+  require('@react-native-async-storage/async-storage/jest/async-storage-mock')
+);
+
 jest.mock('@/src/analytics/events', () => ({
   trackArchiveEvent: jest.fn(),
 }));
@@ -48,8 +52,8 @@ describe('pending auth actions', () => {
     jest.clearAllMocks();
   });
 
-  it('stores and clears a pending save action', () => {
-    setPendingAuthAction({ type: 'save_content', contentId: 'content-a', returnTo: '/content/content-a' });
+  it('stores and clears a pending save action', async () => {
+    await setPendingAuthAction({ type: 'save_content', contentId: 'content-a', returnTo: '/content/content-a' });
 
     expect(readPendingAuthAction()).toEqual({
       type: 'save_content',
@@ -64,7 +68,7 @@ describe('pending auth actions', () => {
   it('runs a pending content save after login', async () => {
     const save = jest.fn().mockResolvedValue(undefined);
     mockedGetSavedContentStorage.mockReturnValue({ save });
-    setPendingAuthAction({ type: 'save_content', contentId: 'content-a', returnTo: '/content/content-a' });
+    await setPendingAuthAction({ type: 'save_content', contentId: 'content-a', returnTo: '/content/content-a' });
 
     await expect(completePendingAuthAction()).resolves.toMatchObject({ type: 'save_content' });
     expect(save).toHaveBeenCalledWith('content-a');
@@ -74,7 +78,7 @@ describe('pending auth actions', () => {
   it('runs a pending submission after login', async () => {
     mockedSaveSubmission.mockResolvedValue({ id: 'submission-1' });
     const draft = { type: 'topic' as const, comment: '확인해주세요', canPublish: true };
-    setPendingAuthAction({ type: 'submit_draft', draft, returnTo: '/submit' });
+    await setPendingAuthAction({ type: 'submit_draft', draft, returnTo: '/submit' });
 
     await expect(completePendingAuthAction()).resolves.toMatchObject({ type: 'submit_draft' });
     expect(mockedSaveSubmission).toHaveBeenCalledWith(draft);

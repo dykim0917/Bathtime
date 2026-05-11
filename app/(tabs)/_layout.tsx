@@ -12,9 +12,8 @@ import ProductIcon from '@/assets/icons/product.svg';
 import ProductIconOn from '@/assets/icons/product_on.svg';
 import ProfileIcon from '@/assets/icons/profile.svg';
 import ProfileIconOn from '@/assets/icons/profile_on.svg';
-import { V2_ACCENT, V2_TEXT_MUTED } from '@/src/data/colors';
+import { archiveColors, archiveRadius } from '@/src/theme/archiveTheme';
 import { luxuryFonts } from '@/src/theme/luxury';
-import { ui } from '@/src/theme/ui';
 
 type TabIconName = 'home' | 'condition' | 'mood' | 'product' | 'profile';
 
@@ -39,25 +38,29 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: V2_ACCENT,
-        tabBarInactiveTintColor: V2_TEXT_MUTED,
-        tabBarStyle: [
-          ui.tabBarStyle,
-          {
-            height: ui.tabBarStyle.height + bottomInset,
-            paddingBottom: ui.tabBarStyle.paddingBottom + bottomInset,
-          },
-        ],
+        tabBarActiveTintColor: archiveColors.primaryActive,
+        tabBarInactiveTintColor: archiveColors.muted,
+        tabBarStyle: {
+          backgroundColor: archiveColors.surface,
+          borderTopColor: archiveColors.hairline,
+          borderTopWidth: 1,
+          height: 74 + bottomInset,
+          paddingTop: 8,
+          paddingBottom: 8 + bottomInset,
+        },
         tabBarLabelStyle: { fontSize: 11, fontWeight: '700', letterSpacing: 0, fontFamily: luxuryFonts.sans },
-        tabBarItemStyle: { borderRadius: 16, marginHorizontal: 1 },
+        tabBarItemStyle: { borderRadius: archiveRadius.md, marginHorizontal: 1 },
         tabBarBackground: () => null,
       }}
     >
       <Tabs.Screen name="index" options={{ title: '홈', tabBarIcon: ({ color, focused }) => <TabBarIcon name="home" color={color} focused={focused} /> }} />
-      <Tabs.Screen name="care" options={{ title: '컨디션', tabBarIcon: ({ color, focused }) => <TabBarIcon name="condition" color={color} focused={focused} /> }} />
-      <Tabs.Screen name="trip" options={{ title: '무드', tabBarIcon: ({ color, focused }) => <TabBarIcon name="mood" color={color} focused={focused} /> }} />
-      <Tabs.Screen name="product" options={{ title: '제품', tabBarIcon: ({ color, focused }) => <TabBarIcon name="product" color={color} focused={focused} /> }} />
+      <Tabs.Screen name="explore" options={{ title: '탐색', tabBarIcon: ({ color, focused }) => <TabBarIcon name="condition" color={color} focused={focused} /> }} />
+      <Tabs.Screen name="routines" options={{ title: '의식', tabBarIcon: ({ color, focused }) => <TabBarIcon name="mood" color={color} focused={focused} /> }} />
+      <Tabs.Screen name="submit" options={{ title: '제보', tabBarIcon: ({ color, focused }) => <TabBarIcon name="product" color={color} focused={focused} /> }} />
       <Tabs.Screen name="my" options={{ title: '프로필', tabBarIcon: ({ color, focused }) => <TabBarIcon name="profile" color={color} focused={focused} /> }} />
+      <Tabs.Screen name="care" options={{ href: null }} />
+      <Tabs.Screen name="trip" options={{ href: null }} />
+      <Tabs.Screen name="product" options={{ href: null }} />
       <Tabs.Screen name="history" options={{ href: null }} />
       <Tabs.Screen name="settings" options={{ href: null }} />
     </Tabs>
