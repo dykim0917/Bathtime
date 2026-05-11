@@ -12,6 +12,8 @@ import { archiveContents, routinePresets } from '@/src/archive/seed';
 import { getContentsByCategory, getFeaturedContent, getLatestContents } from '@/src/archive/selectors';
 import { ContentCategory } from '@/src/archive/types';
 import { trackArchiveEvent } from '@/src/analytics/events';
+import { useAuth } from '@/src/auth/AuthProvider';
+import { setPendingAuthAction } from '@/src/auth/pendingActions';
 import { toggleSavedContent, getSavedContentStorage } from '@/src/storage/savedContent';
 import { archiveColors, archiveRadius } from '@/src/theme/archiveTheme';
 import { luxuryFonts } from '@/src/theme/luxury';
@@ -26,10 +28,15 @@ export default function WebHomePage() {
   const [savedIds, setSavedIds] = useState<string[]>([]);
   const { width } = useWindowDimensions();
   const isDesktopGrid = width >= 980;
+  const { isAuthenticated, isLoading } = useAuth();
 
   const refreshSaved = useCallback(() => {
+    if (!isAuthenticated) {
+      setSavedIds([]);
+      return;
+    }
     getSavedContentStorage().getSavedIds().then(setSavedIds);
-  }, []);
+  }, [isAuthenticated]);
 
   useEffect(() => {
     refreshSaved();
@@ -37,6 +44,14 @@ export default function WebHomePage() {
   }, [refreshSaved]);
 
   const handleSave = async (id: string) => {
+    if (!isAuthenticated) {
+      setPendingAuthAction({ type: 'save_content', contentId: id, returnTo: '/', source: 'home' });
+      trackArchiveEvent('saved_login_required', { contentId: id, source: 'home', platform: 'web' });
+      trackArchiveEvent('auth_prompt_shown', { contentId: id, source: 'home', pendingAction: 'save_content', platform: 'web' });
+      router.push('/auth/login?source=save&next=/' as Href);
+      return;
+    }
+
     const next = await toggleSavedContent(id);
     setSavedIds(next);
     trackArchiveEvent(next.includes(id) ? 'content_saved' : 'content_unsaved', { contentId: id, source: 'home', platform: 'web' });
@@ -95,7 +110,8 @@ export default function WebHomePage() {
                 <ArchiveContentCard
                   content={content}
                   saved={savedIds.includes(content.id)}
-                  onSavePress={() => handleSave(content.id)}
+                  source="home"
+                  onSavePress={isLoading ? undefined : () => handleSave(content.id)}
                 />
               </View>
             ))}

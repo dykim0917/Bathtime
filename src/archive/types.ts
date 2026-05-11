@@ -103,6 +103,7 @@ export type SubmissionStatus = 'new' | 'reviewing' | 'accepted' | 'rejected';
 
 export type Submission = {
   id: string;
+  userId?: string;
   type: 'sauna_spa' | 'bathtub_stay' | 'home_spa' | 'item' | 'topic';
   linkOrImage?: string;
   comment: string;

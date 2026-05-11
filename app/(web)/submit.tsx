@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Href, router } from 'expo-router';
 import { ArchivePageContainer } from '@/src/components/web/ArchivePageContainer';
 import { SeoMetadata } from '@/src/components/web/SeoMetadata';
 import { WebShell, webStyles } from '@/src/components/web/WebShell';
 import { SUBMISSION_TYPE_LABELS } from '@/src/archive/labels';
 import { Submission } from '@/src/archive/types';
 import { trackArchiveEvent } from '@/src/analytics/events';
+import { useAuth } from '@/src/auth/AuthProvider';
+import { setPendingAuthAction } from '@/src/auth/pendingActions';
 import { saveSubmission } from '@/src/storage/submissions';
 import { archiveColors, archiveRadius } from '@/src/theme/archiveTheme';
 import { luxuryFonts } from '@/src/theme/luxury';
@@ -20,17 +23,28 @@ export default function SubmitPage() {
   const [nickname, setNickname] = useState('');
   const [canPublish, setCanPublish] = useState(true);
   const [complete, setComplete] = useState(false);
+  const { isAuthenticated } = useAuth();
 
   const handleSubmit = async () => {
     if (!comment.trim()) return;
     trackArchiveEvent('submit_started', { submissionType: type, platform: 'web' });
-    await saveSubmission({
+    const draft = {
       type,
       linkOrImage: linkOrImage.trim() || undefined,
       comment: comment.trim(),
       nickname: nickname.trim() || undefined,
       canPublish,
-    });
+    };
+
+    if (!isAuthenticated) {
+      setPendingAuthAction({ type: 'submit_draft', draft, returnTo: '/submit' });
+      trackArchiveEvent('submit_login_required', { submissionType: type, platform: 'web' });
+      trackArchiveEvent('auth_prompt_shown', { submissionType: type, pendingAction: 'submit_draft', platform: 'web' });
+      router.push('/auth/login?source=submit&next=/submit' as Href);
+      return;
+    }
+
+    await saveSubmission(draft);
     setComplete(true);
     setLinkOrImage('');
     setComment('');

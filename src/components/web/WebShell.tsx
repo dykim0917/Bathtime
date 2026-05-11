@@ -9,6 +9,7 @@ import {
   MagnifyingGlass,
   PlayCircle,
   PlusSquare,
+  User,
   type PhosphorIcon,
 } from '@/src/components/web/phosphorIcons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -16,6 +17,7 @@ import { archiveColors, archiveRadius } from '@/src/theme/archiveTheme';
 import { luxuryFonts } from '@/src/theme/luxury';
 import { copy } from '@/src/content/copy';
 import { BrandMark } from '@/src/components/BrandMark';
+import { useAuth } from '@/src/auth/AuthProvider';
 
 type NavItem = {
   href: Href;
@@ -163,21 +165,19 @@ function DesktopSearch() {
   };
 
   return (
-    <View style={styles.topSearchWrap}>
-      <View style={[styles.topSearch, focused && styles.topSearchFocused, styles.webTransition]}>
-        <MagnifyingGlass size={17} color={focused ? archiveColors.primaryActive : archiveColors.muted} weight="regular" />
-        <TextInput
-          value={query}
-          onChangeText={setQuery}
-          onFocus={() => setFocused(true)}
-          onBlur={() => setFocused(false)}
-          onSubmitEditing={submitSearch}
-          placeholder="의식, 재료 또는 장소를 입력해주세요..."
-          placeholderTextColor={archiveColors.muted}
-          style={styles.topSearchInput}
-          returnKeyType="search"
-        />
-      </View>
+    <View style={[styles.topSearch, focused && styles.topSearchFocused, styles.webTransition]}>
+      <MagnifyingGlass size={17} color={focused ? archiveColors.primaryActive : archiveColors.muted} weight="regular" />
+      <TextInput
+        value={query}
+        onChangeText={setQuery}
+        onFocus={() => setFocused(true)}
+        onBlur={() => setFocused(false)}
+        onSubmitEditing={submitSearch}
+        placeholder="의식, 재료 또는 장소를 입력해주세요..."
+        placeholderTextColor={archiveColors.muted}
+        style={styles.topSearchInput}
+        returnKeyType="search"
+      />
     </View>
   );
 }
@@ -188,6 +188,73 @@ function BottomTab({ pathname, bottomInset }: { pathname: string; bottomInset: n
       {NAV_ITEMS.map((item) => (
         <NavLink key={item.label} item={item} active={isActive(pathname, item.href)} compact />
       ))}
+    </View>
+  );
+}
+
+export function AccountControls() {
+  const { user, isLoading, isAuthenticated, logout } = useAuth();
+  const pathname = usePathname();
+  const [menuOpen, setMenuOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
+  if (isLoading) return null;
+
+  if (!isAuthenticated) {
+    return (
+      <Pressable style={styles.accountButton} onPress={() => router.push('/auth/login' as Href)}>
+        <Text style={styles.accountButtonText}>로그인</Text>
+      </Pressable>
+    );
+  }
+
+  return (
+    <View style={styles.profileMenuWrap}>
+      {menuOpen ? <Pressable style={styles.profileMenuBackdrop} onPress={() => setMenuOpen(false)} /> : null}
+      <Pressable
+        accessibilityRole="button"
+        accessibilityLabel="계정 메뉴 열기"
+        testID="account-profile-button"
+        style={styles.profileButton}
+        onPress={() => setMenuOpen((current) => !current)}
+      >
+        {user?.profileImageUrl ? (
+          <Image testID="account-profile-image" source={{ uri: user.profileImageUrl }} style={styles.profileImage} resizeMode="cover" />
+        ) : (
+          <View testID="account-profile-fallback">
+            <User size={18} color={archiveColors.primaryActive} weight="regular" />
+          </View>
+        )}
+      </Pressable>
+      {menuOpen ? (
+        <View testID="account-profile-menu" style={styles.profileMenu}>
+          <View style={styles.profileMenuHeader}>
+            <Text style={styles.accountName} numberOfLines={1}>{user?.nickname ?? '내 계정'}</Text>
+            {user?.email ? <Text style={styles.accountEmail} numberOfLines={1}>{user.email}</Text> : null}
+          </View>
+          <Pressable
+            style={styles.logoutMenuItem}
+            onPress={() => {
+              setMenuOpen(false);
+              void logout();
+            }}
+          >
+            <Text style={styles.logoutMenuItemText}>로그아웃</Text>
+          </Pressable>
+        </View>
+      ) : null}
+    </View>
+  );
+}
+
+function DesktopTopBar() {
+  return (
+    <View style={styles.topBar}>
+      <DesktopSearch />
+      <AccountControls />
     </View>
   );
 }
@@ -238,7 +305,7 @@ export function WebShell({ children }: { children: React.ReactNode }) {
         />
       ) : null}
       <View style={styles.contentArea}>
-        {isDesktop ? <DesktopSearch /> : null}
+        {isDesktop ? <DesktopTopBar /> : null}
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           showsVerticalScrollIndicator={false}
@@ -443,6 +510,94 @@ const styles = StyleSheet.create({
     gap: 4,
     paddingHorizontal: 16,
   },
+  accountName: {
+    color: archiveColors.ink,
+    fontSize: 13,
+    fontWeight: '900',
+    fontFamily: luxuryFonts.sans,
+  },
+  accountButton: {
+    minHeight: 38,
+    minWidth: 72,
+    borderRadius: archiveRadius.md,
+    borderWidth: 1,
+    borderColor: archiveColors.hairline,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: archiveColors.surface,
+  },
+  accountButtonText: {
+    color: archiveColors.ink,
+    fontSize: 12,
+    fontWeight: '900',
+    fontFamily: luxuryFonts.sans,
+  },
+  accountEmail: {
+    color: archiveColors.muted,
+    fontSize: 11,
+    lineHeight: 16,
+    fontFamily: luxuryFonts.sans,
+  },
+  profileMenuWrap: {
+    position: 'relative',
+    zIndex: 20,
+  },
+  profileMenuBackdrop: {
+    position: 'fixed',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    zIndex: 10,
+  } as any,
+  profileButton: {
+    width: 38,
+    height: 38,
+    borderRadius: 19,
+    borderWidth: 1,
+    borderColor: archiveColors.hairline,
+    backgroundColor: archiveColors.surfaceSoft,
+    alignItems: 'center',
+    justifyContent: 'center',
+    overflow: 'hidden',
+    zIndex: 30,
+  },
+  profileImage: {
+    width: 38,
+    height: 38,
+  },
+  profileMenu: {
+    position: 'absolute',
+    top: 46,
+    right: 0,
+    width: 220,
+    borderRadius: archiveRadius.lg,
+    borderWidth: 1,
+    borderColor: archiveColors.hairline,
+    backgroundColor: archiveColors.surface,
+    padding: 10,
+    gap: 8,
+    zIndex: 40,
+    boxShadow: '0 16px 38px rgba(37, 42, 42, 0.16)',
+  } as any,
+  profileMenuHeader: {
+    gap: 3,
+    paddingHorizontal: 4,
+    paddingVertical: 5,
+  },
+  logoutMenuItem: {
+    minHeight: 38,
+    borderRadius: archiveRadius.md,
+    backgroundColor: archiveColors.surfaceSoft,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  logoutMenuItemText: {
+    color: archiveColors.ink,
+    fontSize: 13,
+    fontWeight: '900',
+    fontFamily: luxuryFonts.sans,
+  },
   sidebarFooterLink: {
     minHeight: 28,
     justifyContent: 'center',
@@ -453,14 +608,18 @@ const styles = StyleSheet.create({
     lineHeight: 16,
     fontFamily: luxuryFonts.sans,
   },
-  topSearchWrap: {
+  topBar: {
     width: '100%',
     minHeight: 64,
     backgroundColor: archiveColors.surface,
     borderBottomWidth: 1,
     borderBottomColor: archiveColors.hairline,
     paddingHorizontal: 62,
-    justifyContent: 'center',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 18,
+    zIndex: 10,
   },
   topSearch: {
     width: 665,

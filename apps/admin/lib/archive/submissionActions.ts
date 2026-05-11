@@ -3,6 +3,7 @@
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { updateP0SubmissionStatus } from '../../../../src/server/archiveSubmissionStore';
+import { readAdminPostgrestSessionConfig, updatePostgrestRows } from '../data/postgrest';
 import type { SubmissionStatus } from './data';
 
 const statuses: SubmissionStatus[] = ['new', 'reviewing', 'accepted', 'rejected'];
@@ -19,13 +20,26 @@ export async function updateSubmissionStatus(formData: FormData) {
     redirect('/submissions?error=invalid_status');
   }
 
-  const updated = await updateP0SubmissionStatus(id, status);
-  if (!updated) {
-    redirect('/submissions?error=submission_not_found');
+  const config = await readAdminPostgrestSessionConfig();
+  if (config) {
+    try {
+      await updatePostgrestRows(
+        config,
+        'submissions',
+        { id: `eq.${id}` },
+        { status, updated_at: new Date().toISOString() }
+      );
+    } catch {
+      redirect('/submissions?error=submission_not_found');
+    }
+  } else {
+    const updated = await updateP0SubmissionStatus(id, status);
+    if (!updated) {
+      redirect('/submissions?error=submission_not_found');
+    }
   }
 
   revalidatePath('/submissions');
   revalidatePath(`/submissions/${id}`);
   redirect(`/submissions/${id}?updated=status`);
 }
-

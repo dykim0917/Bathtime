@@ -46,6 +46,7 @@ export default async function SubmissionDetailPage({ params, searchParams }: Pag
             </div>
             <div className="readonlyList">
               <p><strong>사진/링크</strong><span>{submission.linkOrImage ?? '-'}</span></p>
+              <p><strong>작성자 계정</strong><span>{submission.user?.email ?? submission.userId ?? '-'}</span></p>
               <p><strong>닉네임</strong><span>{submission.nickname ?? '-'}</span></p>
               <p><strong>공개 가능</strong><span>{submission.canPublish ? '예' : '아니오'}</span></p>
             </div>

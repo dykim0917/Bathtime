@@ -1,5 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Platform } from 'react-native';
+import { requireSupabaseClient } from '@/src/auth/supabase';
 import { STORAGE_KEYS } from '@/src/storage/keys';
 
 export interface SavedContentStorage {
@@ -9,33 +10,78 @@ export interface SavedContentStorage {
   isSaved(id: string): Promise<boolean>;
 }
 
-const WEB_KEY = '@bath_time/saved_content';
-
-function readWebIds(): string[] {
-  if (typeof window === 'undefined') return [];
-  const data = window.localStorage.getItem(WEB_KEY);
-  if (!data) return [];
-  return JSON.parse(data) as string[];
+export class AuthRequiredError extends Error {
+  constructor(message = 'Login is required') {
+    super(message);
+    this.name = 'AuthRequiredError';
+  }
 }
 
-function writeWebIds(ids: string[]): void {
-  if (typeof window === 'undefined') return;
-  window.localStorage.setItem(WEB_KEY, JSON.stringify(ids));
+async function getAuthenticatedUserId(): Promise<string> {
+  const supabase = requireSupabaseClient();
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser();
+
+  if (error || !user) throw new AuthRequiredError();
+  return user.id;
+}
+
+function isUniqueViolation(error: { code?: string } | null): boolean {
+  return error?.code === '23505';
 }
 
 export const webSavedContentStorage: SavedContentStorage = {
   async getSavedIds() {
-    return readWebIds();
+    const userId = await getAuthenticatedUserId();
+    const supabase = requireSupabaseClient();
+    const { data, error } = await supabase
+      .from('saved_items')
+      .select('target_id')
+      .eq('user_id', userId)
+      .eq('target_type', 'content')
+      .order('created_at', { ascending: false });
+
+    if (error) throw error;
+    return (data ?? []).map((item) => item.target_id as string);
   },
   async save(id) {
-    const ids = readWebIds();
-    if (!ids.includes(id)) writeWebIds([id, ...ids]);
+    const userId = await getAuthenticatedUserId();
+    const supabase = requireSupabaseClient();
+    const { error } = await supabase.from('saved_items').insert({
+      user_id: userId,
+      target_type: 'content',
+      target_id: id,
+    });
+
+    if (error && !isUniqueViolation(error)) throw error;
   },
   async remove(id) {
-    writeWebIds(readWebIds().filter((item) => item !== id));
+    const userId = await getAuthenticatedUserId();
+    const supabase = requireSupabaseClient();
+    const { error } = await supabase
+      .from('saved_items')
+      .delete()
+      .eq('user_id', userId)
+      .eq('target_type', 'content')
+      .eq('target_id', id);
+
+    if (error) throw error;
   },
   async isSaved(id) {
-    return readWebIds().includes(id);
+    const userId = await getAuthenticatedUserId();
+    const supabase = requireSupabaseClient();
+    const { data, error } = await supabase
+      .from('saved_items')
+      .select('id')
+      .eq('user_id', userId)
+      .eq('target_type', 'content')
+      .eq('target_id', id)
+      .maybeSingle();
+
+    if (error) throw error;
+    return Boolean(data);
   },
 };
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Pressable, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
-import { useLocalSearchParams } from 'expo-router';
+import { Href, router, useLocalSearchParams } from 'expo-router';
 import { ArchiveContentCard } from '@/src/components/web/ArchiveContentCard';
 import { ArchivePageContainer } from '@/src/components/web/ArchivePageContainer';
 import { SeoMetadata } from '@/src/components/web/SeoMetadata';
@@ -26,6 +26,8 @@ import { CATEGORY_LABELS, P0_ARCHIVE_TAGS } from '@/src/archive/labels';
 import { searchContents } from '@/src/archive/selectors';
 import { ContentCategory } from '@/src/archive/types';
 import { trackArchiveEvent } from '@/src/analytics/events';
+import { useAuth } from '@/src/auth/AuthProvider';
+import { setPendingAuthAction } from '@/src/auth/pendingActions';
 import { getSavedContentStorage, toggleSavedContent } from '@/src/storage/savedContent';
 import { archiveColors } from '@/src/theme/archiveTheme';
 import { luxuryFonts } from '@/src/theme/luxury';
@@ -109,10 +111,15 @@ export default function ExplorePage() {
   const [savedIds, setSavedIds] = useState<string[]>([]);
   const { width } = useWindowDimensions();
   const isDesktopGrid = width >= 980;
+  const { isAuthenticated, isLoading } = useAuth();
 
   useEffect(() => {
+    if (!isAuthenticated) {
+      setSavedIds([]);
+      return;
+    }
     getSavedContentStorage().getSavedIds().then(setSavedIds);
-  }, []);
+  }, [isAuthenticated]);
 
   const results = useMemo(() => {
     const baseResults = searchContents({ category, query });
@@ -136,8 +143,18 @@ export default function ExplorePage() {
   };
 
   const handleSave = async (id: string) => {
+    if (!isAuthenticated) {
+      const returnTo = query ? `/explore?query=${encodeURIComponent(query)}` : '/explore';
+      setPendingAuthAction({ type: 'save_content', contentId: id, returnTo, source: 'explore' });
+      trackArchiveEvent('saved_login_required', { contentId: id, source: 'explore', platform: 'web' });
+      trackArchiveEvent('auth_prompt_shown', { contentId: id, source: 'explore', pendingAction: 'save_content', platform: 'web' });
+      router.push(`/auth/login?source=save&next=${encodeURIComponent(returnTo)}` as Href);
+      return;
+    }
+
     const next = await toggleSavedContent(id);
     setSavedIds(next);
+    trackArchiveEvent(next.includes(id) ? 'content_saved' : 'content_unsaved', { contentId: id, source: 'explore', platform: 'web' });
   };
 
   return (
@@ -179,7 +196,7 @@ export default function ExplorePage() {
               <ArchiveContentCard
                 content={content}
                 saved={savedIds.includes(content.id)}
-                onSavePress={() => handleSave(content.id)}
+                onSavePress={isLoading ? undefined : () => handleSave(content.id)}
               />
             </View>
           ))}

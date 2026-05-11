@@ -1,4 +1,5 @@
 import { readP0Submissions } from '../../../../src/server/archiveSubmissionStore';
+import { readAdminPostgrestSessionConfig, readPostgrestRows } from '../data/postgrest';
 
 export type AdminContentCategory = 'HOME_BATH' | 'BATH_PLACES' | 'BATH_ITEMS' | 'TIPS_CULTURE';
 export type AdminContentType = 'TRIED' | 'RESEARCHED' | 'ORGANIZED' | 'VISITED' | 'SUBMITTED' | 'UPDATED';
@@ -101,8 +102,64 @@ export const adminSubmissions = [
   },
 ];
 
-export async function readAdminSubmissions() {
-  return readP0Submissions();
+export type AdminSubmission = Awaited<ReturnType<typeof readP0Submissions>>[number] & {
+  user?: {
+    email?: string;
+    nickname?: string;
+    provider?: string;
+  };
+};
+
+type SubmissionRow = {
+  id: string;
+  user_id: string;
+  type: string;
+  link_or_image: string | null;
+  comment: string;
+  nickname: string | null;
+  can_publish: boolean | null;
+  status: SubmissionStatus;
+  created_at: string;
+  updated_at: string;
+  user_profiles?: {
+    email: string | null;
+    nickname: string | null;
+    provider: string | null;
+  } | null;
+};
+
+function mapSubmissionRow(row: SubmissionRow): AdminSubmission {
+  return {
+    id: row.id,
+    userId: row.user_id,
+    type: row.type as AdminSubmission['type'],
+    linkOrImage: row.link_or_image ?? undefined,
+    comment: row.comment,
+    nickname: row.nickname ?? undefined,
+    canPublish: row.can_publish ?? undefined,
+    status: row.status,
+    createdAt: row.created_at,
+    updatedAt: row.updated_at,
+    user: row.user_profiles
+      ? {
+          email: row.user_profiles.email ?? undefined,
+          nickname: row.user_profiles.nickname ?? undefined,
+          provider: row.user_profiles.provider ?? undefined,
+        }
+      : undefined,
+  };
+}
+
+export async function readAdminSubmissions(): Promise<AdminSubmission[]> {
+  const config = await readAdminPostgrestSessionConfig();
+  if (!config) return (await readP0Submissions()) as AdminSubmission[];
+
+  const rows = await readPostgrestRows<SubmissionRow>(config, 'submissions', {
+    select: '*,user_profiles(email,nickname,provider)',
+    order: 'created_at.desc',
+  });
+
+  return rows.map(mapSubmissionRow);
 }
 
 export const adminRoutinePresets = [

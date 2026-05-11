@@ -156,7 +156,15 @@ export type ArchiveAnalyticsEventName =
   | 'routine_completed'
   | 'submit_started'
   | 'submit_completed'
-  | 'external_link_clicked';
+  | 'external_link_clicked'
+  | 'auth_prompt_shown'
+  | 'auth_provider_clicked'
+  | 'auth_login_succeeded'
+  | 'auth_login_failed'
+  | 'auth_logout_clicked'
+  | 'auth_required_action_completed'
+  | 'saved_login_required'
+  | 'submit_login_required';
 
 export interface ArchiveEventPayload {
   contentId?: string;
@@ -167,6 +175,9 @@ export interface ArchiveEventPayload {
   routineId?: string;
   submissionType?: string;
   platform?: string;
+  provider?: 'google';
+  pendingAction?: string;
+  errorCode?: string;
   ts?: string;
 }
 

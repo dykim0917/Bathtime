@@ -5,7 +5,9 @@ import { ArchiveContentCard } from '@/src/components/web/ArchiveContentCard';
 import { ArchivePageContainer } from '@/src/components/web/ArchivePageContainer';
 import { SeoMetadata } from '@/src/components/web/SeoMetadata';
 import { WebShell, webStyles } from '@/src/components/web/WebShell';
+import { AuthPrompt } from '@/src/components/auth/AuthPrompt';
 import { archiveContents } from '@/src/archive/seed';
+import { useAuth } from '@/src/auth/AuthProvider';
 import { getSavedContentStorage, toggleSavedContent } from '@/src/storage/savedContent';
 import { archiveColors, archiveRadius } from '@/src/theme/archiveTheme';
 import { luxuryFonts } from '@/src/theme/luxury';
@@ -15,10 +17,15 @@ export default function SavedPage() {
   const [savedIds, setSavedIds] = useState<string[]>([]);
   const { width } = useWindowDimensions();
   const isDesktopGrid = width >= 980;
+  const { isAuthenticated, isLoading } = useAuth();
 
   useEffect(() => {
+    if (!isAuthenticated) {
+      setSavedIds([]);
+      return;
+    }
     getSavedContentStorage().getSavedIds().then(setSavedIds);
-  }, []);
+  }, [isAuthenticated]);
 
   const savedContents = useMemo(
     () => savedIds.map((id) => archiveContents.find((content) => content.id === id)).filter(Boolean),
@@ -37,10 +44,12 @@ export default function SavedPage() {
         <View style={webStyles.header}>
           <Text style={webStyles.eyebrow}>{copy.archive.nav.saved}</Text>
           <Text style={webStyles.title}>내 바스타임 보관함</Text>
-          <Text style={webStyles.lede}>P0에서는 로그인 없이 이 브라우저에 저장한 콘텐츠를 다시 꺼내봅니다.</Text>
+          <Text style={webStyles.lede}>저장한 콘텐츠를 계정에 연결해 다시 꺼내봅니다.</Text>
         </View>
 
-        {savedContents.length > 0 ? (
+        {!isAuthenticated && !isLoading ? (
+          <AuthPrompt source="saved" nextPath="/saved" />
+        ) : savedContents.length > 0 ? (
           <View style={styles.cardGrid}>
             {savedContents.map((content) => content ? (
               <View key={content.id} style={[styles.cardTile, isDesktopGrid && styles.cardTileDesktop]}>

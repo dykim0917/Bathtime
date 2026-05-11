@@ -12,6 +12,8 @@ import { WebShell, webStyles } from '@/src/components/web/WebShell';
 import { CATEGORY_LABELS, CONTENT_TYPE_LABELS } from '@/src/archive/labels';
 import { getContentById, getRelatedRoutinePresets } from '@/src/archive/selectors';
 import { trackArchiveEvent } from '@/src/analytics/events';
+import { useAuth } from '@/src/auth/AuthProvider';
+import { setPendingAuthAction } from '@/src/auth/pendingActions';
 import { getSavedContentStorage, toggleSavedContent } from '@/src/storage/savedContent';
 import { archiveColors, archiveRadius } from '@/src/theme/archiveTheme';
 import { luxuryFonts } from '@/src/theme/luxury';
@@ -23,10 +25,15 @@ export default function ContentDetailPage() {
   const [saved, setSaved] = useState(false);
   const { width } = useWindowDimensions();
   const isDesktopDetail = width >= 980;
+  const { isAuthenticated, isLoading } = useAuth();
 
   useEffect(() => {
     if (!content) return;
-    getSavedContentStorage().isSaved(content.id).then(setSaved);
+    if (isAuthenticated) {
+      getSavedContentStorage().isSaved(content.id).then(setSaved);
+    } else {
+      setSaved(false);
+    }
     trackArchiveEvent('content_detail_viewed', {
       contentId: content.id,
       category: content.category,
@@ -35,7 +42,7 @@ export default function ContentDetailPage() {
       source: 'detail',
       platform: 'web',
     });
-  }, [content]);
+  }, [content, isAuthenticated]);
 
   if (!content) {
     return (
@@ -52,6 +59,15 @@ export default function ContentDetailPage() {
   const description = content.seo?.seoDescription ?? content.subtitle ?? content.body.find((block) => block.type === 'paragraph')?.text;
 
   const handleToggleSaved = async () => {
+    if (!isAuthenticated) {
+      const returnTo = `/content/${content.id}`;
+      setPendingAuthAction({ type: 'save_content', contentId: content.id, returnTo, source: 'detail' });
+      trackArchiveEvent('saved_login_required', { contentId: content.id, source: 'detail', platform: 'web' });
+      trackArchiveEvent('auth_prompt_shown', { contentId: content.id, source: 'detail', pendingAction: 'save_content', platform: 'web' });
+      router.push(`/auth/login?source=save&next=${encodeURIComponent(returnTo)}` as Href);
+      return;
+    }
+
     const next = await toggleSavedContent(content.id);
     const isSaved = next.includes(content.id);
     setSaved(isSaved);
@@ -68,7 +84,7 @@ export default function ContentDetailPage() {
 
   const actionBlock = (
     <View style={styles.actionRow}>
-      <Pressable style={styles.secondaryButton} onPress={handleToggleSaved}>
+      <Pressable style={[styles.secondaryButton, isLoading && styles.disabledButton]} onPress={handleToggleSaved} disabled={isLoading}>
         <BookmarkSimple size={17} color={archiveColors.ink} weight={saved ? 'fill' : 'regular'} />
         <Text style={styles.secondaryButtonText}>{saved ? copy.archive.actions.saved : copy.archive.actions.save}</Text>
       </Pressable>
@@ -241,6 +257,9 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '900',
     fontFamily: luxuryFonts.sans,
+  },
+  disabledButton: {
+    opacity: 0.45,
   },
   cardList: {
     gap: 14,
