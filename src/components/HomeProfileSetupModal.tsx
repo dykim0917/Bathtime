@@ -1,16 +1,13 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import {
   BathEnvironment,
-  HealthCondition,
   UserProfile,
 } from '@/src/engine/types';
 import {
   TYPE_SCALE,
   V2_ACCENT,
-  V2_ACCENT_TEXT,
   V2_BG_OVERLAY,
   V2_BORDER,
   V2_MODAL_HANDLE,
@@ -25,21 +22,12 @@ import { AnimatedModalShell } from '@/src/components/AnimatedModalShell';
 import {
   AppIconBadge,
   getEnvironmentBadgeTone,
-  getHealthConditionBadgeTone,
 } from '@/src/components/AppIconBadge';
 
 const ENVIRONMENTS: { id: BathEnvironment; label: string; description: string }[] = [
   { id: 'shower', label: '샤워', description: '가볍게 바로 시작할 수 있어요' },
   { id: 'partial_bath', label: '족욕', description: '대야나 족욕기로 진행해요' },
   { id: 'bathtub', label: '욕조', description: '전신욕이나 반신욕이 가능해요' },
-];
-
-const CONDITIONS: { id: HealthCondition; label: string }[] = [
-  { id: 'hypertension_heart', label: '고혈압/심장' },
-  { id: 'pregnant', label: '임신 중' },
-  { id: 'diabetes', label: '당뇨' },
-  { id: 'sensitive_skin', label: '민감성 피부' },
-  { id: 'none', label: '해당 없음' },
 ];
 
 interface HomeProfileSetupModalProps {
@@ -56,31 +44,15 @@ export function HomeProfileSetupModal({
   const { height: windowHeight } = useWindowDimensions();
   const insets = useSafeAreaInsets();
   const [environment, setEnvironment] = useState<BathEnvironment | null>(null);
-  const [conditions, setConditions] = useState<Set<HealthCondition>>(new Set());
 
   useEffect(() => {
     if (!visible) return;
     setEnvironment(null);
-    setConditions(new Set());
   }, [visible]);
 
-  const canComplete = Boolean(environment) && conditions.size > 0;
+  const canComplete = Boolean(environment);
   const maxSheetHeight = Math.min(windowHeight - insets.top - 56, windowHeight * 0.86);
-  const selectedConditions = useMemo(() => Array.from(conditions), [conditions]);
-
-  const toggleCondition = (condition: HealthCondition) => {
-    setConditions((current) => {
-      if (condition === 'none') return new Set<HealthCondition>(['none']);
-      const next = new Set(current);
-      next.delete('none');
-      if (next.has(condition)) {
-        next.delete(condition);
-      } else {
-        next.add(condition);
-      }
-      return next.size > 0 ? next : new Set();
-    });
-  };
+  const selectedConditions = useMemo<UserProfile['healthConditions']>(() => ['none'], []);
 
   const completeSetup = () => {
     if (!environment || !canComplete) return;
@@ -108,7 +80,7 @@ export function HomeProfileSetupModal({
             <Text style={styles.eyebrow}>FIRST SETUP</Text>
             <Text style={styles.title}>오늘 가능한 방식만 알려주세요</Text>
             <Text style={styles.subtitle}>
-              가능한 방식과 안전 상태를 한 번에 확인하고, 바로 무리 없는 루틴을 준비할게요.
+              건강정보는 받지 않고, 가능한 방식에 맞춰 바로 루틴을 준비할게요.
             </Text>
           </View>
 
@@ -153,46 +125,9 @@ export function HomeProfileSetupModal({
               </View>
             </View>
 
-            <View style={styles.section}>
-              <Text style={styles.sectionTitle}>현재 상태</Text>
-              <View style={styles.conditionList}>
-                {CONDITIONS.map((condition) => {
-                  const selected = conditions.has(condition.id);
-                  const tone = getHealthConditionBadgeTone(condition.id, selected);
-                  return (
-                    <Pressable
-                      key={condition.id}
-                      style={[
-                        styles.conditionRow,
-                        selected && {
-                          borderColor: tone.borderColor,
-                          backgroundColor: tone.backgroundColor,
-                        },
-                      ]}
-                      onPress={() => toggleCondition(condition.id)}
-                    >
-                      <AppIconBadge
-                        spec={tone.spec}
-                        size={34}
-                        iconSize={14}
-                        color={tone.color}
-                        backgroundColor={tone.backgroundColor}
-                        borderColor={tone.borderColor}
-                      />
-                      <Text style={[styles.conditionLabel, selected && { color: tone.color }]}>
-                        {condition.label}
-                      </Text>
-                      <View style={[styles.checkCircle, selected && styles.checkCircleSelected]}>
-                        {selected ? <FontAwesome name="check" size={11} color={V2_ACCENT_TEXT} /> : null}
-                      </View>
-                    </Pressable>
-                  );
-                })}
-              </View>
-              <Text style={styles.note}>
-                건강 상태는 더 강한 추천이 아니라 위험한 온도와 시간을 피하기 위해 확인해요.
-              </Text>
-            </View>
+            <Text style={styles.note}>
+              의식 추천은 선택한 방식과 서비스의 기본 안전 기준을 바탕으로 구성됩니다.
+            </Text>
           </ScrollView>
 
           <View style={styles.footer}>
@@ -305,41 +240,6 @@ const styles = StyleSheet.create({
     fontSize: TYPE_SCALE.caption,
     lineHeight: 18,
     fontFamily: luxuryFonts.sans,
-  },
-  conditionList: {
-    gap: 9,
-  },
-  conditionRow: {
-    minHeight: 54,
-    borderRadius: luxuryRadii.card,
-    borderWidth: 1,
-    borderColor: V2_BORDER,
-    backgroundColor: 'rgba(255,255,255,0.03)',
-    paddingHorizontal: 12,
-    paddingVertical: 10,
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 11,
-  },
-  conditionLabel: {
-    flex: 1,
-    color: V2_TEXT_PRIMARY,
-    fontSize: TYPE_SCALE.body,
-    lineHeight: 20,
-    fontFamily: luxuryFonts.display,
-  },
-  checkCircle: {
-    width: 22,
-    height: 22,
-    borderRadius: 11,
-    borderWidth: 1,
-    borderColor: V2_BORDER,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  checkCircleSelected: {
-    borderColor: V2_ACCENT,
-    backgroundColor: V2_ACCENT,
   },
   note: {
     color: V2_TEXT_MUTED,

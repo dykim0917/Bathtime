@@ -14,7 +14,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { router, useFocusEffect, useLocalSearchParams } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { BathEnvironment, BathRecommendation, HealthCondition, TripMemoryRecord } from '@/src/engine/types';
+import { BathEnvironment, BathRecommendation, TripMemoryRecord } from '@/src/engine/types';
 import { loadHistory } from '@/src/storage/history';
 import { loadThemePreferenceWeights, loadTripMemoryHistory } from '@/src/storage/memory';
 import { buildCompletionRecordItems, CompletionRecordItem } from '@/src/engine/completionRecords';
@@ -82,14 +82,6 @@ const ENV_LABELS_SETTINGS: Record<BathEnvironment, string> = {
 };
 
 const SETTINGS_ENV_OPTIONS: BathEnvironment[] = ['shower', 'partial_bath', 'bathtub'];
-
-const CONDITION_LABELS: Record<HealthCondition, string> = {
-  hypertension_heart: '고혈압/심장',
-  pregnant: '임신 중',
-  diabetes: '당뇨',
-  sensitive_skin: '민감성 피부',
-  none: '해당 없음',
-};
 
 const SIDE_PAD = 18;
 const COL_GAP = 10;
@@ -407,27 +399,6 @@ function SettingsSection({
     await update({ bathEnvironment: environment });
   };
 
-  const handleHealthToggle = async (condition: HealthCondition) => {
-    if (!profile) return;
-    const next = new Set(profile.healthConditions);
-    if (condition === 'none') {
-      next.clear();
-      next.add('none');
-    } else {
-      next.delete('none');
-      if (next.has(condition)) {
-        next.delete(condition);
-      } else {
-        next.add(condition);
-      }
-      if (next.size === 0) {
-        next.add('none');
-      }
-    }
-    haptic.light();
-    await update({ healthConditions: Array.from(next) });
-  };
-
   const runReset = async () => {
     if (isResetting) return;
     try {
@@ -495,28 +466,6 @@ function SettingsSection({
             </View>
             <Text style={styles.helperText}>항목을 탭하면 바로 저장됩니다.</Text>
           </View>
-          <View style={[ui.glassCardV2, styles.settingChoiceCard]}>
-            <Text style={styles.settingChoiceLabel}>{copy.settings.healthLabel}</Text>
-            <View style={styles.settingChoiceList}>
-              {(Object.keys(CONDITION_LABELS) as HealthCondition[]).map((c) => (
-                <TouchableOpacity
-                  key={c}
-                  style={[
-                    ui.pillButtonV2,
-                    styles.conditionTagButton,
-                    profile.healthConditions.includes(c) && ui.pillButtonV2Active,
-                  ]}
-                  onPress={() => handleHealthToggle(c)}
-                  activeOpacity={0.78}
-                >
-                  <Text style={[styles.conditionTag, profile.healthConditions.includes(c) && styles.conditionTagActiveText]}>
-                    {CONDITION_LABELS[c]}
-                  </Text>
-                </TouchableOpacity>
-              ))}
-            </View>
-            <Text style={styles.helperText}>항목을 탭하면 바로 저장됩니다.</Text>
-          </View>
         </View>
 
         {showResetSection ? (
@@ -547,7 +496,7 @@ function SettingsSection({
             >
               <View style={styles.legalCardText}>
                 <Text style={styles.legalCardTitle}>개인정보 처리방침</Text>
-                <Text style={styles.legalCardBody}>민감정보, 아동 이용, 쿠키 및 권리 행사 안내</Text>
+                <Text style={styles.legalCardBody}>로그인, 쿠키, 아동 이용 및 권리 행사 안내</Text>
               </View>
               <Text style={styles.actionArrow}>→</Text>
             </TouchableOpacity>

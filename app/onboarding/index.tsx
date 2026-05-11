@@ -4,8 +4,9 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { router, useLocalSearchParams } from 'expo-router';
-import { BathEnvironment } from '@/src/engine/types';
+import { BathEnvironment, UserProfile } from '@/src/engine/types';
 import { useHaptic } from '@/src/hooks/useHaptic';
+import { useUserProfile } from '@/src/hooks/useUserProfile';
 import { TYPE_CAPTION, TYPE_BODY, TYPE_HEADING_LG, TYPE_TITLE, V2_ACCENT, V2_ACCENT_TEXT, V2_BG_BASE, V2_BG_BOTTOM, V2_BG_TOP, V2_BORDER, V2_TEXT_MUTED, V2_TEXT_PRIMARY, V2_TEXT_SECONDARY } from '@/src/data/colors';
 import { luxuryFonts, luxuryTracking } from '@/src/theme/luxury';
 import { ui } from '@/src/theme/ui';
@@ -23,18 +24,27 @@ export default function OnboardingEnvironment() {
   const { allowBack } = useLocalSearchParams<{ allowBack?: string }>();
   const [selected, setSelected] = useState<BathEnvironment | null>(null);
   const haptic = useHaptic();
+  const { save } = useUserProfile();
   const shouldShowBackButton = allowBack === '1';
 
   const handleSelect = (env: BathEnvironment) => { haptic.light(); setSelected(env); };
-  const handleNext = () => {
+  const handleNext = async () => {
     if (!selected) return;
-    haptic.medium();
-    router.push({
-      pathname: '/onboarding/health',
-      params: shouldShowBackButton
-        ? { environment: selected, allowBack: '1' }
-        : { environment: selected },
-    });
+    haptic.success();
+    const now = new Date().toISOString();
+    const profile: UserProfile = {
+      bathEnvironment: selected,
+      healthConditions: ['none'],
+      onboardingComplete: true,
+      createdAt: now,
+      updatedAt: now,
+    };
+    await save(profile);
+    router.replace(
+      shouldShowBackButton
+        ? { pathname: '/(tabs)/my', params: { tab: 'settings' } }
+        : '/onboarding/greeting'
+    );
   };
 
   return (
@@ -110,13 +120,13 @@ export default function OnboardingEnvironment() {
               </View>
 
               <Text style={styles.nextGuide}>
-                다음 단계에서는 안전 상태를 확인하고, 지금 가능한 방식에 맞는 루틴만 추천해드릴게요.
+                건강정보는 받지 않고, 지금 가능한 방식에 맞는 의식만 추천해드릴게요.
               </Text>
             </ScrollView>
 
             <View style={styles.footerCta}>
-              <Pressable onPress={handleNext} disabled={!selected} style={[ui.primaryButtonV2, styles.nextButton, !selected && styles.nextButtonDisabled]}>
-                <Text style={[ui.primaryButtonTextV2, !selected && styles.nextButtonTextDisabled]}>다음</Text>
+              <Pressable onPress={() => void handleNext()} disabled={!selected} style={[ui.primaryButtonV2, styles.nextButton, !selected && styles.nextButtonDisabled]}>
+                <Text style={[ui.primaryButtonTextV2, !selected && styles.nextButtonTextDisabled]}>설정 완료</Text>
               </Pressable>
             </View>
           </View>
