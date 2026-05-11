@@ -164,7 +164,14 @@ export type ArchiveAnalyticsEventName =
   | 'auth_logout_clicked'
   | 'auth_required_action_completed'
   | 'saved_login_required'
-  | 'submit_login_required';
+  | 'submit_login_required'
+  | 'app_cta_impression'
+  | 'app_cta_clicked'
+  | 'app_handoff_from_content'
+  | 'app_handoff_from_saved'
+  | 'app_handoff_from_routine_preview'
+  | 'app_download_page_viewed'
+  | 'app_store_clicked';
 
 export interface ArchiveEventPayload {
   contentId?: string;
@@ -178,6 +185,11 @@ export interface ArchiveEventPayload {
   provider?: 'google';
   pendingAction?: string;
   errorCode?: string;
+  sourcePage?: string;
+  contentCategory?: string;
+  ctaType?: string;
+  deviceType?: string;
+  loggedIn?: boolean;
   ts?: string;
 }
 

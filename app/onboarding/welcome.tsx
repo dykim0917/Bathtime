@@ -52,8 +52,8 @@ const GUIDE_SLIDES: GuideSlide[] = [
   {
     id: 'safety',
     title: '무리한 루틴은 먼저 걸러요',
-    body: '건강 정보는 더 강한 추천을 위해서가 아니라 피해야 할 온도와 시간을 확인하기 위한 거예요.',
-    points: ['안전 우선', '필요한 정보만 확인', '언제든 다시 조정'],
+    body: '건강정보를 묻지 않아도 무리한 온도와 시간을 피하도록 기본 기준을 낮춰 안내해요.',
+    points: ['안전 우선', '건강정보 미수집', '언제든 다시 조정'],
   },
 ];
 
@@ -77,7 +77,7 @@ export default function WelcomeScreen() {
     haptic.medium();
     if (isLastStep) {
       void saveCookieNoticeAck().finally(() => {
-        router.replace('/(tabs)');
+        router.replace('/(tabs)' as any);
       });
       return;
     }

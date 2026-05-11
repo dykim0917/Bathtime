@@ -1,9 +1,15 @@
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { AuthChangeEvent, Session } from '@supabase/supabase-js';
+import * as Linking from 'expo-linking';
+import * as WebBrowser from 'expo-web-browser';
+import { Platform } from 'react-native';
 import { AuthProvider as ProviderName, AuthState, BathtimeUser } from '@/src/auth/types';
 import { getSupabaseClient } from '@/src/auth/supabase';
 import { mapSupabaseUser, upsertCurrentUserProfile } from '@/src/auth/session';
 import { trackArchiveEvent } from '@/src/analytics/events';
+import { completePendingAuthAction } from '@/src/auth/pendingActions';
+
+WebBrowser.maybeCompleteAuthSession();
 
 type AuthContextValue = AuthState & {
   loginWithProvider: (provider: ProviderName, nextPath?: string) => Promise<void>;
@@ -14,10 +20,21 @@ type AuthContextValue = AuthState & {
 const AuthContext = createContext<AuthContextValue | null>(null);
 
 function buildRedirectTo(nextPath?: string): string | undefined {
+  if (Platform.OS !== 'web') {
+    const url = new URL('getbathtime://auth/callback');
+    if (nextPath) url.searchParams.set('next', nextPath);
+    return url.toString();
+  }
   if (typeof window === 'undefined') return undefined;
   const url = new URL('/auth/callback', window.location.origin);
   if (nextPath) url.searchParams.set('next', nextPath);
   return url.toString();
+}
+
+function readUrlParam(url: string, key: string): string {
+  const parsed = Linking.parse(url);
+  const value = parsed.queryParams?.[key];
+  return Array.isArray(value) ? String(value[0] ?? '') : String(value ?? '');
 }
 
 function userFromSession(session: Session | null): BathtimeUser | null {
@@ -69,7 +86,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       if (event === 'SIGNED_IN') {
         trackArchiveEvent('auth_login_succeeded', {
           provider: session?.user ? mapSupabaseUser(session.user).provider : undefined,
-          platform: 'web',
+          platform: Platform.OS === 'web' ? 'web' : 'native',
         });
       }
     });
@@ -84,19 +101,38 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         return;
       }
 
-      trackArchiveEvent('auth_provider_clicked', { provider, platform: 'web' });
-      const { error } = await supabase.auth.signInWithOAuth({
+      const platform = Platform.OS === 'web' ? 'web' : 'native';
+      trackArchiveEvent('auth_provider_clicked', { provider, platform });
+      const redirectTo = buildRedirectTo(nextPath);
+      const { data, error } = await supabase.auth.signInWithOAuth({
         provider,
         options: {
-          redirectTo: buildRedirectTo(nextPath),
+          redirectTo,
+          skipBrowserRedirect: Platform.OS !== 'web',
         },
       });
 
       if (error) {
-        trackArchiveEvent('auth_login_failed', { provider, errorCode: error.message, platform: 'web' });
+        trackArchiveEvent('auth_login_failed', { provider, errorCode: error.message, platform });
+        return;
+      }
+
+      if (Platform.OS !== 'web') {
+        if (!data.url) return;
+        const result = await WebBrowser.openAuthSessionAsync(data.url, redirectTo);
+        if (result.type !== 'success') return;
+        const code = readUrlParam(result.url, 'code');
+        if (!code) return;
+        const { error: exchangeError } = await supabase.auth.exchangeCodeForSession(code);
+        if (exchangeError) {
+          trackArchiveEvent('auth_login_failed', { provider, errorCode: exchangeError.message, platform: 'native' });
+          return;
+        }
+        await refreshUser();
+        await completePendingAuthAction();
       }
     },
-    [supabase]
+    [refreshUser, supabase]
   );
 
   const logout = useCallback(async () => {

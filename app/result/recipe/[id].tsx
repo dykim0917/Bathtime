@@ -89,7 +89,7 @@ export default function RecipeScreen() {
   if (!recommendation) return <View style={[ui.screenShellV2, styles.centered]}><Text style={{ color: V2_TEXT_SECONDARY }}>{copy.completion.loading}</Text></View>;
 
   const persona = PERSONA_DEFINITIONS.find((p) => p.code === recommendation.persona);
-  const recipeTitle = recommendation.mode === 'trip' ? (recommendation.themeTitle ?? '무드 테마') : (persona?.nameKo ?? '맞춤 루틴');
+  const recipeTitle = recommendation.routineTitle ?? (recommendation.mode === 'trip' ? (recommendation.themeTitle ?? '무드 테마') : (persona?.nameKo ?? '맞춤 루틴'));
   const isTripRecipe = recommendation.mode === 'trip';
   const modeLabel =
     recommendation.mode === 'trip'
@@ -239,7 +239,7 @@ export default function RecipeScreen() {
     router.push({
       pathname: '/(tabs)/product',
       params: { highlight: product.id },
-    });
+    } as any);
   };
 
   const handleConfirmPreBath = () => {

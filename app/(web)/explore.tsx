@@ -145,16 +145,21 @@ export default function ExplorePage() {
   const handleSave = async (id: string) => {
     if (!isAuthenticated) {
       const returnTo = query ? `/explore?query=${encodeURIComponent(query)}` : '/explore';
-      setPendingAuthAction({ type: 'save_content', contentId: id, returnTo, source: 'explore' });
+      await setPendingAuthAction({ type: 'save_content', contentId: id, returnTo, source: 'explore' });
       trackArchiveEvent('saved_login_required', { contentId: id, source: 'explore', platform: 'web' });
       trackArchiveEvent('auth_prompt_shown', { contentId: id, source: 'explore', pendingAction: 'save_content', platform: 'web' });
       router.push(`/auth/login?source=save&next=${encodeURIComponent(returnTo)}` as Href);
       return;
     }
 
-    const next = await toggleSavedContent(id);
-    setSavedIds(next);
-    trackArchiveEvent(next.includes(id) ? 'content_saved' : 'content_unsaved', { contentId: id, source: 'explore', platform: 'web' });
+    try {
+      const next = await toggleSavedContent(id);
+      setSavedIds(next);
+      trackArchiveEvent(next.includes(id) ? 'content_saved' : 'content_unsaved', { contentId: id, source: 'explore', platform: 'web' });
+    } catch (error) {
+      console.warn('Failed to toggle saved content', error);
+      if (typeof window !== 'undefined') window.alert('저장에 실패했어요. 잠시 후 다시 시도해주세요.');
+    }
   };
 
   return (

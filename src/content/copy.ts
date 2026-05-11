@@ -286,7 +286,6 @@ export const copy = {
     sectionActions: '설정',
     sectionApp: '앱 정보',
     environmentLabel: '가능한 방식',
-    healthLabel: '건강 상태',
     versionLabel: '버전',
     nameLabel: '이름',
     resetProfile: '프로필 다시 설정하기',
