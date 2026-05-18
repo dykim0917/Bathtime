@@ -32,6 +32,17 @@ function getStatusMessage(error?: string, updated?: string): string | null {
   return null;
 }
 
+function getContentPreviewHref(id: string): string {
+  const previewToken = process.env.ADMIN_PREVIEW_TOKEN?.trim();
+  const webUrl = process.env.NEXT_PUBLIC_WEB_URL?.trim() ?? 'https://getbathtime.com';
+
+  if (!previewToken) return `/content/${id}/preview`;
+
+  const url = new URL(`/content/${id}`, webUrl);
+  url.searchParams.set('previewToken', previewToken);
+  return url.toString();
+}
+
 export default async function ContentDetailPage({ params, searchParams }: PageProps) {
   const { id } = await params;
   const { error, updated } = await searchParams;
@@ -50,7 +61,7 @@ export default async function ContentDetailPage({ params, searchParams }: PagePr
             <p className="lede">{content.subtitle}</p>
           </div>
           <div className="topbarActions">
-            <Link className="primaryButton secondaryButton linkButton" href={`/content/${content.id}/preview`}>
+            <Link className="primaryButton secondaryButton linkButton" href={getContentPreviewHref(content.id)}>
               미리보기
             </Link>
             <Link className="primaryButton linkButton" href="/content">목록으로</Link>

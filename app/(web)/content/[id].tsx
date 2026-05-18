@@ -13,6 +13,7 @@ import { NativeScreen } from '@/src/components/native/NativeScreen';
 import { CATEGORY_LABELS, CONTENT_TYPE_LABELS } from '@/src/archive/labels';
 import { getRelatedRoutinePresets } from '@/src/archive/selectors';
 import { useArchiveContentHydration } from '@/src/archive/runtime';
+import { ArchiveContent } from '@/src/archive/types';
 import { trackArchiveEvent } from '@/src/analytics/events';
 import { useAuth } from '@/src/auth/AuthProvider';
 import { setPendingAuthAction } from '@/src/auth/pendingActions';
@@ -21,14 +22,78 @@ import { archiveColors, archiveRadius } from '@/src/theme/archiveTheme';
 import { luxuryFonts } from '@/src/theme/luxury';
 import { copy } from '@/src/content/copy';
 
+type PreviewStatus = 'idle' | 'loading' | 'ready' | 'error';
+
+function normalizeParam(value: string | string[] | undefined): string {
+  if (Array.isArray(value)) return value[0] ?? '';
+  return value ?? '';
+}
+
+function getArchivePreviewApiBase(): string {
+  return process.env.EXPO_PUBLIC_ARCHIVE_PREVIEW_API_BASE?.trim() || 'https://admin.getbathtime.com';
+}
+
+async function fetchArchivePreviewContent(id: string, token: string): Promise<ArchiveContent> {
+  const url = new URL(`/api/archive-preview/${id}`, getArchivePreviewApiBase());
+  url.searchParams.set('token', token);
+
+  const response = await fetch(url.toString());
+  if (!response.ok) {
+    throw new Error(`Archive preview request failed with status ${response.status}`);
+  }
+
+  const payload = (await response.json()) as {
+    schema_version?: string;
+    content?: ArchiveContent;
+  };
+
+  if (payload.schema_version !== 'archive-content-preview.v1' || !payload.content) {
+    throw new Error('Invalid archive preview response');
+  }
+
+  return payload.content;
+}
+
 export default function ContentDetailPage() {
-  const { id } = useLocalSearchParams<{ id: string }>();
+  const params = useLocalSearchParams<{ id: string; previewToken?: string | string[] }>();
+  const id = params.id;
+  const previewToken = normalizeParam(params.previewToken);
   const { contents, status } = useArchiveContentHydration();
-  const content = id ? contents.find((item) => item.id === id) : undefined;
+  const [previewContent, setPreviewContent] = useState<ArchiveContent | null>(null);
+  const [previewStatus, setPreviewStatus] = useState<PreviewStatus>('idle');
+  const content = previewContent ?? (id ? contents.find((item) => item.id === id) : undefined);
   const [saved, setSaved] = useState(false);
   const { width } = useWindowDimensions();
   const isDesktopDetail = width >= 980;
   const { isAuthenticated, isLoading } = useAuth();
+
+  useEffect(() => {
+    if (!id || !previewToken || Platform.OS !== 'web') {
+      setPreviewContent(null);
+      setPreviewStatus('idle');
+      return;
+    }
+
+    let cancelled = false;
+    setPreviewStatus('loading');
+
+    fetchArchivePreviewContent(id, previewToken)
+      .then((nextContent) => {
+        if (cancelled) return;
+        setPreviewContent(nextContent);
+        setPreviewStatus('ready');
+      })
+      .catch((error) => {
+        console.warn('Failed to load archive preview content', error);
+        if (cancelled) return;
+        setPreviewContent(null);
+        setPreviewStatus('error');
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [id, previewToken]);
 
   useEffect(() => {
     if (!content) return;
@@ -52,7 +117,9 @@ export default function ContentDetailPage() {
       <WebShell>
         <View style={webStyles.pageStack}>
           <Text style={webStyles.title}>
-            {status === 'loading' ? '콘텐츠를 불러오는 중입니다.' : '콘텐츠를 찾을 수 없습니다.'}
+            {status === 'loading' || previewStatus === 'loading'
+              ? '콘텐츠를 불러오는 중입니다.'
+              : '콘텐츠를 찾을 수 없습니다.'}
           </Text>
           <Pressable onPress={() => router.push('/explore' as Href)}><Text style={styles.textLink}>{copy.archive.actions.backToExplore}</Text></Pressable>
         </View>

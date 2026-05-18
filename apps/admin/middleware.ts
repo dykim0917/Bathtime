@@ -1,7 +1,12 @@
 import { createServerClient } from '@supabase/ssr';
 import { NextResponse, type NextRequest } from 'next/server';
 import { isAllowedAdminEmail, readAdminAuthConfig } from './lib/auth/config';
-import { isPreviewPath, isValidPreviewToken, previewTokenParam } from './lib/previewToken';
+import {
+  isPreviewApiPath,
+  isPreviewPath,
+  isValidPreviewToken,
+  previewTokenParam,
+} from './lib/previewToken';
 
 const PUBLIC_PATHS = ['/login'];
 
@@ -13,7 +18,7 @@ export async function middleware(request: NextRequest) {
   const config = readAdminAuthConfig();
   let response = NextResponse.next({ request });
   const hasValidPreviewToken =
-    isPreviewPath(request.nextUrl.pathname) &&
+    (isPreviewPath(request.nextUrl.pathname) || isPreviewApiPath(request.nextUrl.pathname)) &&
     isValidPreviewToken(request.nextUrl.searchParams.get(previewTokenParam));
 
   if (hasValidPreviewToken) {
