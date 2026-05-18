@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { AdminShell } from '../../../components/AdminShell';
+import { ArchiveBodyBlockEditor } from '../../../components/ArchiveBodyBlockEditor';
 import {
   categoryLabels,
   contentStatusLabels,
@@ -48,7 +49,12 @@ export default async function ContentDetailPage({ params, searchParams }: PagePr
             <h2>{content.title}</h2>
             <p className="lede">{content.subtitle}</p>
           </div>
-          <Link className="primaryButton linkButton" href="/content">목록으로</Link>
+          <div className="topbarActions">
+            <Link className="primaryButton secondaryButton linkButton" href={`/content/${content.id}/preview`}>
+              미리보기
+            </Link>
+            <Link className="primaryButton linkButton" href="/content">목록으로</Link>
+          </div>
         </header>
 
         <section className="summaryGrid compact">
@@ -107,26 +113,14 @@ export default async function ContentDetailPage({ params, searchParams }: PagePr
               <h3>본문</h3>
               <span>JSON blocks</span>
             </div>
-            <form className="inlineForm" action={updateArchiveContentBody}>
-              <input type="hidden" name="id" value={content.id} />
-              <input type="hidden" name="structuredInfo" value={JSON.stringify(content.structuredInfo)} />
-              <input type="hidden" name="seo" value={JSON.stringify(content.seo)} />
-              <label htmlFor="heroImage">대표 이미지 JSON</label>
-              <textarea
-                id="heroImage"
-                name="heroImage"
-                rows={6}
-                defaultValue={JSON.stringify(content.heroImage ?? {}, null, 2)}
-              />
-              <label htmlFor="body">본문</label>
-              <textarea
-                id="body"
-                name="body"
-                rows={12}
-                defaultValue={JSON.stringify(content.body, null, 2)}
-              />
-              <button type="submit" className="primaryButton">본문 저장</button>
-            </form>
+            <ArchiveBodyBlockEditor
+              contentId={content.id}
+              initialHeroImage={content.heroImage}
+              initialBody={content.body}
+              structuredInfo={content.structuredInfo}
+              seo={content.seo}
+              action={updateArchiveContentBody}
+            />
           </section>
 
           <section className="panel wide">

@@ -23,7 +23,7 @@ import {
   type PhosphorIcon,
 } from '@/src/components/web/phosphorIcons';
 import { CATEGORY_LABELS, P0_ARCHIVE_TAGS } from '@/src/archive/labels';
-import { searchContents } from '@/src/archive/selectors';
+import { searchArchiveContents, useArchiveContentHydration } from '@/src/archive/runtime';
 import { ContentCategory } from '@/src/archive/types';
 import { trackArchiveEvent } from '@/src/analytics/events';
 import { useAuth } from '@/src/auth/AuthProvider';
@@ -112,6 +112,7 @@ export default function ExplorePage() {
   const { width } = useWindowDimensions();
   const isDesktopGrid = width >= 980;
   const { isAuthenticated, isLoading } = useAuth();
+  const { contents } = useArchiveContentHydration();
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -122,10 +123,10 @@ export default function ExplorePage() {
   }, [isAuthenticated]);
 
   const results = useMemo(() => {
-    const baseResults = searchContents({ category, query });
+    const baseResults = searchArchiveContents(contents, { category, query });
     if (selectedTags.length === 0) return baseResults;
     return baseResults.filter((content) => selectedTags.some((tag) => content.tags.includes(tag)));
-  }, [category, query, selectedTags]);
+  }, [category, contents, query, selectedTags]);
   const visibleTags = CATEGORY_TAGS[category];
 
   const handleCategory = (next: ContentCategory | 'ALL') => {

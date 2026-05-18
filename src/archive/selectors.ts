@@ -1,5 +1,6 @@
 import { archiveContents, routinePresets } from '@/src/archive/seed';
 import { ArchiveContent, ContentCategory } from '@/src/archive/types';
+import { searchArchiveContents } from '@/src/archive/runtime';
 
 export function getPublishedContents(): ArchiveContent[] {
   return archiveContents.filter((content) => content.isPublished);
@@ -29,18 +30,7 @@ export function searchContents(params: {
   tag?: string | null;
   query?: string;
 }): ArchiveContent[] {
-  const query = params.query?.trim().toLowerCase() ?? '';
-
-  return getPublishedContents().filter((content) => {
-    const matchesCategory = !params.category || params.category === 'ALL' || content.category === params.category;
-    const matchesTag = !params.tag || content.tags.includes(params.tag);
-    const matchesQuery =
-      query.length === 0 ||
-      content.title.toLowerCase().includes(query) ||
-      content.subtitle?.toLowerCase().includes(query) ||
-      content.tags.some((tag) => tag.toLowerCase().includes(query));
-    return matchesCategory && matchesTag && matchesQuery;
-  });
+  return searchArchiveContents(getPublishedContents(), params);
 }
 
 export function getRelatedRoutinePresets(content: ArchiveContent) {

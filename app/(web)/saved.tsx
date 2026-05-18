@@ -7,7 +7,7 @@ import { SeoMetadata } from '@/src/components/web/SeoMetadata';
 import { WebShell, webStyles } from '@/src/components/web/WebShell';
 import { AuthPrompt } from '@/src/components/auth/AuthPrompt';
 import { AppHandoffCard } from '@/src/components/web/AppHandoffCard';
-import { archiveContents } from '@/src/archive/seed';
+import { useArchiveContentHydration } from '@/src/archive/runtime';
 import { useAuth } from '@/src/auth/AuthProvider';
 import { getSavedContentStorage, getStorageErrorMessage, toggleSavedContent } from '@/src/storage/savedContent';
 import { archiveColors, archiveRadius } from '@/src/theme/archiveTheme';
@@ -19,6 +19,7 @@ export default function SavedPage() {
   const { width } = useWindowDimensions();
   const isDesktopGrid = width >= 980;
   const { isAuthenticated, isLoading } = useAuth();
+  const { contents } = useArchiveContentHydration();
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -29,8 +30,8 @@ export default function SavedPage() {
   }, [isAuthenticated]);
 
   const savedContents = useMemo(
-    () => savedIds.map((id) => archiveContents.find((content) => content.id === id)).filter(Boolean),
-    [savedIds]
+    () => savedIds.map((id) => contents.find((content) => content.id === id)).filter(Boolean),
+    [contents, savedIds]
   );
 
   const handleSave = async (id: string) => {
