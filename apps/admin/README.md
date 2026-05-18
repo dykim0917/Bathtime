@@ -30,7 +30,16 @@ Without Supabase values, `/login` renders a configuration warning and protected 
 
 `ADMIN_ALLOWED_EMAILS` is optional for local development. It is required in production so only approved Supabase users can enter the console.
 
-Content tables are read through the signed-in Supabase Auth session and Supabase RLS. If `CONTENT_DB_REST_URL` is absent, the admin app uses `NEXT_PUBLIC_SUPABASE_URL/rest/v1`. Do not configure `CONTENT_DB_SERVICE_ROLE_KEY` in the admin Vercel project.
+Content tables are read through the signed-in Supabase Auth session and Supabase RLS. If `CONTENT_DB_REST_URL` is absent, the admin app uses `NEXT_PUBLIC_SUPABASE_URL/rest/v1`. Do not configure `CONTENT_DB_SERVICE_ROLE_KEY` in the admin Vercel project unless token-based draft previews are enabled.
+
+Draft archive content previews can be shared without an admin session when all of these server-only values are configured:
+
+```txt
+ADMIN_PREVIEW_TOKEN=<long random token>
+CONTENT_DB_SERVICE_ROLE_KEY=<service-role-key>
+```
+
+The preview URL format is `/content/<id>/preview?token=<ADMIN_PREVIEW_TOKEN>`. Token preview bypasses login only for that route and still keeps draft content out of the public web app.
 
 Admin updates are audited in Postgres through `admin_action_log` triggers. Apply the audit log schema and update trigger migrations before enabling production edits.
 

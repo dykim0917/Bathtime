@@ -1,5 +1,9 @@
 import { readP0Submissions } from '../../../../src/server/archiveSubmissionStore';
-import { readAdminPostgrestSessionConfig, readPostgrestRows } from '../data/postgrest';
+import {
+  type AdminPostgrestConfig,
+  readAdminPostgrestSessionConfig,
+  readPostgrestRows,
+} from '../data/postgrest';
 
 export type AdminContentCategory = 'HOME_BATH' | 'BATH_PLACES' | 'BATH_ITEMS' | 'TIPS_CULTURE';
 export type AdminContentType = 'TRIED' | 'RESEARCHED' | 'ORGANIZED' | 'VISITED' | 'SUBMITTED' | 'UPDATED';
@@ -262,6 +266,39 @@ export async function readAdminArchiveContent(
 ): Promise<AdminArchiveContentRow | undefined> {
   const config = await readAdminPostgrestSessionConfig();
   if (!config) return adminArchiveContents.find((item) => item.id === id);
+
+  const rows = await readPostgrestRows<ArchiveContentRecord>(config, 'archive_content', {
+    select: archiveDetailSelect,
+    id: `eq.${id}`,
+    limit: '1',
+  });
+
+  return rows[0] ? mapArchiveContentRecord(rows[0]) : undefined;
+}
+
+function readServiceRoleArchiveConfig(
+  env: Partial<Record<string, string | undefined>> = process.env
+): AdminPostgrestConfig | null {
+  const explicitRestUrl = env.CONTENT_DB_REST_URL?.trim();
+  const supabaseUrl = env.NEXT_PUBLIC_SUPABASE_URL?.trim();
+  const restUrl = explicitRestUrl || (supabaseUrl ? `${supabaseUrl.replace(/\/+$/, '')}/rest/v1` : '');
+  const serviceRoleKey = env.CONTENT_DB_SERVICE_ROLE_KEY?.trim();
+
+  if (!restUrl || !serviceRoleKey) return null;
+
+  return {
+    restUrl: restUrl.replace(/\/+$/, ''),
+    apiKey: serviceRoleKey,
+    authorizationToken: serviceRoleKey,
+    mode: 'supabase_auth',
+  };
+}
+
+export async function readPreviewArchiveContent(
+  id: string
+): Promise<AdminArchiveContentRow | undefined> {
+  const config = readServiceRoleArchiveConfig();
+  if (!config) return undefined;
 
   const rows = await readPostgrestRows<ArchiveContentRecord>(config, 'archive_content', {
     select: archiveDetailSelect,
