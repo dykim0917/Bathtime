@@ -31,8 +31,13 @@ npm-debug.*
 yarn-debug.*
 yarn-error.*
 
+# generated outputs
+output/
+outputs/
+
 # macOS
 .DS_Store
+*.swp
 *.pem
 
 # local high-resolution product image sources
