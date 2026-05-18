@@ -4,7 +4,7 @@ import {
   readRecentAdminActivity,
 } from '../lib/dashboardData';
 import { AdminShell } from '../components/AdminShell';
-import { adminArchiveContents, adminRoutinePresets, readAdminSubmissions } from '../lib/archive/data';
+import { adminRoutinePresets, readAdminArchiveContents, readAdminSubmissions } from '../lib/archive/data';
 
 function getActivityEmptyMessage(status: string): string {
   if (status === 'not_configured') return 'Supabase 세션 연결 후 최근 작업이 표시됩니다.';
@@ -13,12 +13,13 @@ function getActivityEmptyMessage(status: string): string {
 }
 
 export default async function AdminHomePage() {
-  const [activity, submissions] = await Promise.all([
+  const [activity, submissions, archiveContents] = await Promise.all([
     readRecentAdminActivity(),
     readAdminSubmissions(),
+    readAdminArchiveContents(),
   ]);
-  const published = adminArchiveContents.filter((item) => item.isPublished).length;
-  const drafts = adminArchiveContents.length - published;
+  const published = archiveContents.filter((item) => item.isPublished).length;
+  const drafts = archiveContents.length - published;
   const newSubmissions = submissions.filter((item) => item.status === 'new').length;
 
   return (
