@@ -1,6 +1,11 @@
 import Link from 'next/link';
 import { AdminShell } from '../../components/AdminShell';
-import { adminArchiveContents, categoryLabels, contentTypeLabels } from '../../lib/archive/data';
+import {
+  categoryLabels,
+  contentStatusLabels,
+  contentTypeLabels,
+  readAdminArchiveContents,
+} from '../../lib/archive/data';
 
 interface ContentPageProps {
   searchParams: Promise<{
@@ -12,9 +17,9 @@ interface ContentPageProps {
 
 export default async function ContentPage({ searchParams }: ContentPageProps) {
   const { category = 'ALL', status = 'ALL', type = 'ALL' } = await searchParams;
-  const rows = adminArchiveContents.filter((content) => {
+  const rows = (await readAdminArchiveContents()).filter((content) => {
     const matchesCategory = category === 'ALL' || content.category === category;
-    const matchesStatus = status === 'ALL' || (status === 'published' ? content.isPublished : !content.isPublished);
+    const matchesStatus = status === 'ALL' || content.status === status;
     const matchesType = type === 'ALL' || content.contentType === type;
     return matchesCategory && matchesStatus && matchesType;
   });
@@ -47,8 +52,7 @@ export default async function ContentPage({ searchParams }: ContentPageProps) {
             </select>
             <select name="status" defaultValue={status}>
               <option value="ALL">전체 상태</option>
-              <option value="published">공개</option>
-              <option value="draft">비공개</option>
+              {Object.entries(contentStatusLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
             </select>
             <button type="submit" className="primaryButton">적용</button>
           </form>
@@ -77,7 +81,7 @@ export default async function ContentPage({ searchParams }: ContentPageProps) {
                 </div>
                 <span>{categoryLabels[content.category]}</span>
                 <span>{contentTypeLabels[content.contentType]}</span>
-                <strong>{content.isPublished ? '공개' : '비공개'}</strong>
+                <strong>{contentStatusLabels[content.status]}</strong>
                 <span>{content.updatedAt}</span>
                 <span>{content.tags.join(', ')}</span>
                 <Link className="textButton" href={`/content/${content.id}`}>열기</Link>

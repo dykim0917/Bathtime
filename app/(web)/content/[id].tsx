@@ -11,7 +11,8 @@ import { SeoMetadata } from '@/src/components/web/SeoMetadata';
 import { WebShell, webStyles } from '@/src/components/web/WebShell';
 import { NativeScreen } from '@/src/components/native/NativeScreen';
 import { CATEGORY_LABELS, CONTENT_TYPE_LABELS } from '@/src/archive/labels';
-import { getContentById, getRelatedRoutinePresets } from '@/src/archive/selectors';
+import { getRelatedRoutinePresets } from '@/src/archive/selectors';
+import { useArchiveContentHydration } from '@/src/archive/runtime';
 import { trackArchiveEvent } from '@/src/analytics/events';
 import { useAuth } from '@/src/auth/AuthProvider';
 import { setPendingAuthAction } from '@/src/auth/pendingActions';
@@ -22,7 +23,8 @@ import { copy } from '@/src/content/copy';
 
 export default function ContentDetailPage() {
   const { id } = useLocalSearchParams<{ id: string }>();
-  const content = id ? getContentById(id) : undefined;
+  const { contents, status } = useArchiveContentHydration();
+  const content = id ? contents.find((item) => item.id === id) : undefined;
   const [saved, setSaved] = useState(false);
   const { width } = useWindowDimensions();
   const isDesktopDetail = width >= 980;
@@ -49,7 +51,9 @@ export default function ContentDetailPage() {
     return (
       <WebShell>
         <View style={webStyles.pageStack}>
-          <Text style={webStyles.title}>콘텐츠를 찾을 수 없습니다.</Text>
+          <Text style={webStyles.title}>
+            {status === 'loading' ? '콘텐츠를 불러오는 중입니다.' : '콘텐츠를 찾을 수 없습니다.'}
+          </Text>
           <Pressable onPress={() => router.push('/explore' as Href)}><Text style={styles.textLink}>{copy.archive.actions.backToExplore}</Text></Pressable>
         </View>
       </WebShell>

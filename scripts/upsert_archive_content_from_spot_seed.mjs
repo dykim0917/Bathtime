@@ -5,6 +5,34 @@ import ts from 'typescript';
 
 const rootDir = path.resolve(new URL('..', import.meta.url).pathname);
 
+function parseEnvFile(source) {
+  return source
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter((line) => line && !line.startsWith('#') && line.includes('='))
+    .reduce((acc, line) => {
+      const separatorIndex = line.indexOf('=');
+      const key = line.slice(0, separatorIndex).trim();
+      const rawValue = line.slice(separatorIndex + 1).trim();
+      acc[key] = rawValue.replace(/^['"]|['"]$/g, '');
+      return acc;
+    }, {});
+}
+
+async function loadLocalEnv() {
+  for (const fileName of ['.env.local', '.env']) {
+    try {
+      const values = parseEnvFile(await readFile(path.join(rootDir, fileName), 'utf8'));
+      for (const [key, value] of Object.entries(values)) {
+        if (process.env[key] === undefined) process.env[key] = value;
+      }
+    } catch (error) {
+      if (error && error.code === 'ENOENT') continue;
+      throw error;
+    }
+  }
+}
+
 function usage() {
   return `Usage: node scripts/upsert_archive_content_from_spot_seed.mjs <seed-dir> [--apply]
 
@@ -176,7 +204,9 @@ ON CONFLICT (id) DO UPDATE SET
 }
 
 function readPostgrestConfig(env = process.env) {
-  const restUrl = env.CONTENT_DB_REST_URL?.trim();
+  const explicitRestUrl = env.CONTENT_DB_REST_URL?.trim();
+  const supabaseUrl = env.EXPO_PUBLIC_SUPABASE_URL?.trim() ?? env.NEXT_PUBLIC_SUPABASE_URL?.trim();
+  const restUrl = explicitRestUrl || (supabaseUrl ? `${supabaseUrl.replace(/\/+$/, '')}/rest/v1` : '');
   const serviceRoleKey = env.CONTENT_DB_SERVICE_ROLE_KEY?.trim();
   if (!restUrl || !serviceRoleKey) return null;
 
@@ -189,7 +219,7 @@ function readPostgrestConfig(env = process.env) {
 async function applyPostgrestUpsert(row) {
   const config = readPostgrestConfig();
   if (!config) {
-    throw new Error('Missing CONTENT_DB_REST_URL or CONTENT_DB_SERVICE_ROLE_KEY');
+    throw new Error('Missing CONTENT_DB_SERVICE_ROLE_KEY or Supabase URL env');
   }
 
   const url = new URL(`${config.restUrl}/archive_content`);
@@ -224,6 +254,7 @@ async function readOptionalText(filePath) {
 }
 
 async function main() {
+  await loadLocalEnv();
   const { seedDir, apply } = parseArgs(process.argv);
   const archiveContentPath = path.join(seedDir, 'spot-seed.archive-content.ts');
   const canonicalPath = path.join(seedDir, 'spot-seed.canonical.json');
