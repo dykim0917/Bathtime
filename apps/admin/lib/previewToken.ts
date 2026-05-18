@@ -8,3 +8,7 @@ export function isValidPreviewToken(token: string | null | undefined): boolean {
 export function isPreviewPath(pathname: string): boolean {
   return /^\/content\/[^/]+\/preview\/?$/.test(pathname);
 }
+
+export function isPreviewApiPath(pathname: string): boolean {
+  return /^\/api\/archive-preview\/[^/]+\/?$/.test(pathname);
+}
