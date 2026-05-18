@@ -7,11 +7,14 @@ import {
   contentStatusLabels,
   contentTypeLabels,
   readAdminArchiveContent,
+  readPreviewArchiveContent,
   type AdminArchiveBodyBlock,
 } from '../../../../lib/archive/data';
+import { isValidPreviewToken, previewTokenParam } from '../../../../lib/previewToken';
 
 interface PageProps {
   params: Promise<{ id: string }>;
+  searchParams: Promise<{ token?: string }>;
 }
 
 function renderBodyBlock(block: AdminArchiveBodyBlock, index: number) {
@@ -47,9 +50,13 @@ function renderBodyBlock(block: AdminArchiveBodyBlock, index: number) {
   return <p key={index}>{block.text}</p>;
 }
 
-export default async function ContentPreviewPage({ params }: PageProps) {
+export default async function ContentPreviewPage({ params, searchParams }: PageProps) {
   const { id } = await params;
-  const content = await readAdminArchiveContent(id);
+  const { token } = await searchParams;
+  const hasPreviewToken = isValidPreviewToken(token);
+  const content = hasPreviewToken
+    ? await readPreviewArchiveContent(id)
+    : await readAdminArchiveContent(id);
 
   if (!content) notFound();
 
@@ -60,15 +67,23 @@ export default async function ContentPreviewPage({ params }: PageProps) {
           <div>
             <p className="eyebrow">ARCHIVE PREVIEW</p>
             <h2>{content.title}</h2>
-            <p className="lede">비공개 초안도 관리자 권한으로 확인하는 웹 표시 미리보기입니다.</p>
+            <p className="lede">
+              {hasPreviewToken
+                ? '공유 토큰으로 확인하는 비공개 초안 웹 표시 미리보기입니다.'
+                : '비공개 초안도 관리자 권한으로 확인하는 웹 표시 미리보기입니다.'}
+            </p>
           </div>
           <div className="topbarActions">
-            <Link className="primaryButton secondaryButton linkButton" href={`/content/${content.id}`}>
-              편집으로
-            </Link>
-            <Link className="primaryButton linkButton" href="/content">
-              목록으로
-            </Link>
+            {hasPreviewToken ? null : (
+              <>
+                <Link className="primaryButton secondaryButton linkButton" href={`/content/${content.id}`}>
+                  편집으로
+                </Link>
+                <Link className="primaryButton linkButton" href="/content">
+                  목록으로
+                </Link>
+              </>
+            )}
           </div>
         </header>
 
@@ -88,6 +103,8 @@ export default async function ContentPreviewPage({ params }: PageProps) {
               <strong>{contentStatusLabels[content.status]}</strong>
               <span>Published</span>
               <strong>{content.isPublished ? 'true' : 'false'}</strong>
+              <span>Preview</span>
+              <strong>{hasPreviewToken ? previewTokenParam : 'admin'}</strong>
             </aside>
           </section>
 
