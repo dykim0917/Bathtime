@@ -89,6 +89,10 @@ export default function ContentDetailPage() {
       <Text style={webStyles.eyebrow}>{CATEGORY_LABELS[content.category]} · {CONTENT_TYPE_LABELS[content.contentType]}</Text>
       <Text style={webStyles.title}>{content.title}</Text>
       {content.subtitle ? <Text style={webStyles.lede}>{content.subtitle}</Text> : null}
+      <View style={styles.summaryBox}>
+        <Text style={styles.summaryLabel}>요약</Text>
+        <Text style={styles.summaryText}>{content.summary}</Text>
+      </View>
     </View>
   );
 
@@ -255,6 +259,27 @@ const styles = StyleSheet.create({
     maxWidth: 1120,
     paddingHorizontal: 30,
     alignSelf: 'center',
+  },
+  summaryBox: {
+    borderWidth: 1,
+    borderColor: archiveColors.hairline,
+    borderRadius: archiveRadius.md,
+    backgroundColor: archiveColors.primarySoft,
+    paddingHorizontal: 18,
+    paddingVertical: 16,
+    gap: 7,
+  },
+  summaryLabel: {
+    color: archiveColors.primary,
+    fontSize: 11,
+    fontWeight: '800',
+    fontFamily: luxuryFonts.sans,
+  },
+  summaryText: {
+    color: archiveColors.ink,
+    fontSize: 15,
+    lineHeight: 23,
+    fontFamily: luxuryFonts.sans,
   },
   textLink: {
     color: archiveColors.primary,
