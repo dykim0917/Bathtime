@@ -72,6 +72,7 @@ export function ArchiveContentCard({ content, saved = false, onSavePress }: Prop
               <View style={styles.titleArea}>
                 <Text style={styles.kicker} numberOfLines={1}>{CATEGORY_LABELS[content.category]} · {CONTENT_TYPE_LABELS[content.contentType]}</Text>
                 <Text style={styles.title} numberOfLines={2}>{content.title}</Text>
+                <Text style={styles.summary} numberOfLines={2}>{content.summary}</Text>
               </View>
               <View style={styles.contentDivider} />
               <View style={styles.metaArea}>
@@ -141,5 +142,11 @@ const styles = StyleSheet.create({
     lineHeight: 25,
     fontWeight: '700',
     fontFamily: luxuryFonts.display,
+  },
+  summary: {
+    color: archiveColors.body,
+    fontSize: 14,
+    lineHeight: 21,
+    fontFamily: luxuryFonts.sans,
   },
 });
