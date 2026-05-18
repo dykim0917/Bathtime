@@ -34,6 +34,7 @@ yarn-error.*
 # generated outputs
 output/
 outputs/
+test-results/
 
 # macOS
 .DS_Store
