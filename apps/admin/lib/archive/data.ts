@@ -3,7 +3,34 @@ import { readAdminPostgrestSessionConfig, readPostgrestRows } from '../data/post
 
 export type AdminContentCategory = 'HOME_BATH' | 'BATH_PLACES' | 'BATH_ITEMS' | 'TIPS_CULTURE';
 export type AdminContentType = 'TRIED' | 'RESEARCHED' | 'ORGANIZED' | 'VISITED' | 'SUBMITTED' | 'UPDATED';
+export type AdminContentStatus = 'active' | 'draft' | 'paused' | 'retired';
 export type SubmissionStatus = 'new' | 'reviewing' | 'accepted' | 'rejected';
+
+export type AdminArchiveBodyBlock =
+  | { type: 'paragraph'; text: string }
+  | { type: 'heading'; text: string }
+  | { type: 'image'; uri: string; caption?: string }
+  | { type: 'quote'; text: string }
+  | { type: 'list'; items: string[] }
+  | { type: 'divider' };
+
+export interface AdminArchiveContentRow {
+  id: string;
+  title: string;
+  subtitle?: string;
+  summary: string;
+  category: AdminContentCategory;
+  contentType: AdminContentType;
+  tags: string[];
+  heroImage: Record<string, unknown> | null;
+  body: AdminArchiveBodyBlock[];
+  structuredInfo: Record<string, unknown>;
+  seo: Record<string, unknown>;
+  isPublished: boolean;
+  status: AdminContentStatus;
+  updatedAt: string;
+  source: 'database' | 'fallback';
+}
 
 export const categoryLabels: Record<AdminContentCategory, string> = {
   HOME_BATH: '홈케어',
@@ -21,6 +48,13 @@ export const contentTypeLabels: Record<AdminContentType, string> = {
   UPDATED: '업데이트했다',
 };
 
+export const contentStatusLabels: Record<AdminContentStatus, string> = {
+  active: '공개',
+  draft: '초안',
+  paused: '일시중지',
+  retired: '보관',
+};
+
 export const submissionStatusLabels: Record<SubmissionStatus, string> = {
   new: '새 제보',
   reviewing: '검토 중',
@@ -36,16 +70,23 @@ export const submissionTypeLabels: Record<string, string> = {
   topic: '다뤄줬으면 하는 주제',
 };
 
-export const adminArchiveContents = [
+export const adminArchiveContents: AdminArchiveContentRow[] = [
   {
     id: 'home-shower-reset-7',
     title: '퇴근 후 샤워를 7분 의식으로 바꾸기',
     subtitle: '욕조 없이도 하루를 닫는 가장 작은 의식',
     category: 'HOME_BATH' as AdminContentCategory,
     contentType: 'TRIED' as AdminContentType,
+    summary: '퇴근 후 짧은 샤워 루틴을 아카이브 카드로 관리하는 fallback 콘텐츠입니다.',
     isPublished: true,
+    status: 'active',
     tags: ['욕조 없음', '수면 전', '짧은 의식'],
+    heroImage: null,
+    body: [],
+    structuredInfo: {},
+    seo: {},
     updatedAt: '2026-05-01',
+    source: 'fallback',
   },
   {
     id: 'place-seoul-solo-sauna-checklist',
@@ -53,9 +94,16 @@ export const adminArchiveContents = [
     subtitle: '예쁜 사진보다 먼저 확인해야 하는 이용 조건',
     category: 'BATH_PLACES' as AdminContentCategory,
     contentType: 'ORGANIZED' as AdminContentType,
+    summary: '서울 사우나 이용 조건을 확인하는 fallback 콘텐츠입니다.',
     isPublished: true,
+    status: 'active',
     tags: ['서울', '혼자 쉬기', '외부인 이용 가능'],
+    heroImage: null,
+    body: [],
+    structuredInfo: {},
+    seo: {},
     updatedAt: '2026-05-02',
+    source: 'fallback',
   },
   {
     id: 'item-footbath-basin-first',
@@ -63,9 +111,16 @@ export const adminArchiveContents = [
     subtitle: '제품보다 먼저 확인할 것은 내 반복 가능성',
     category: 'BATH_ITEMS' as AdminContentCategory,
     contentType: 'RESEARCHED' as AdminContentType,
+    summary: '족욕 아이템 구매 전 반복 가능성을 확인하는 fallback 콘텐츠입니다.',
     isPublished: true,
+    status: 'active',
     tags: ['욕조 없음', '비 오는 날'],
+    heroImage: null,
+    body: [],
+    structuredInfo: {},
+    seo: {},
     updatedAt: '2026-05-03',
+    source: 'fallback',
   },
   {
     id: 'tips-bath-archive-why',
@@ -73,11 +128,149 @@ export const adminArchiveContents = [
     subtitle: '좋은 장소와 방법을 같은 기준으로 다시 찾기 위해',
     category: 'TIPS_CULTURE' as AdminContentCategory,
     contentType: 'ORGANIZED' as AdminContentType,
+    summary: '바스타임 아카이브 운영 기준을 설명하는 fallback 콘텐츠입니다.',
     isPublished: true,
+    status: 'active',
     tags: ['혼자 쉬기', '서울'],
+    heroImage: null,
+    body: [],
+    structuredInfo: {},
+    seo: {},
     updatedAt: '2026-05-04',
+    source: 'fallback',
   },
 ];
+
+export interface ArchiveContentRecord {
+  id: string;
+  title: string;
+  subtitle: string | null;
+  summary: string;
+  category: string;
+  content_type: string;
+  tags: unknown;
+  hero_image?: Record<string, unknown> | null;
+  body?: unknown;
+  structured_info?: Record<string, unknown> | null;
+  seo?: Record<string, unknown> | null;
+  is_published: boolean;
+  status: string;
+  content_updated_at?: string | null;
+  updated_at?: string | null;
+}
+
+const contentCategories: AdminContentCategory[] = [
+  'HOME_BATH',
+  'BATH_PLACES',
+  'BATH_ITEMS',
+  'TIPS_CULTURE',
+];
+
+const contentTypes: AdminContentType[] = [
+  'TRIED',
+  'RESEARCHED',
+  'ORGANIZED',
+  'VISITED',
+  'SUBMITTED',
+  'UPDATED',
+];
+
+const contentStatuses: AdminContentStatus[] = ['active', 'draft', 'paused', 'retired'];
+
+function isStringArray(value: unknown): value is string[] {
+  return Array.isArray(value) && value.every((item) => typeof item === 'string');
+}
+
+function normalizeCategory(value: string): AdminContentCategory {
+  return contentCategories.includes(value as AdminContentCategory)
+    ? (value as AdminContentCategory)
+    : 'TIPS_CULTURE';
+}
+
+function normalizeContentType(value: string): AdminContentType {
+  return contentTypes.includes(value as AdminContentType)
+    ? (value as AdminContentType)
+    : 'ORGANIZED';
+}
+
+function normalizeStatus(value: string): AdminContentStatus {
+  return contentStatuses.includes(value as AdminContentStatus)
+    ? (value as AdminContentStatus)
+    : 'draft';
+}
+
+function normalizeBody(value: unknown): AdminArchiveBodyBlock[] {
+  return Array.isArray(value) ? (value as AdminArchiveBodyBlock[]) : [];
+}
+
+export function mapArchiveContentRecord(row: ArchiveContentRecord): AdminArchiveContentRow {
+  return {
+    id: row.id,
+    title: row.title,
+    subtitle: row.subtitle ?? undefined,
+    summary: row.summary,
+    category: normalizeCategory(row.category),
+    contentType: normalizeContentType(row.content_type),
+    tags: isStringArray(row.tags) ? row.tags : [],
+    heroImage: row.hero_image ?? null,
+    body: normalizeBody(row.body),
+    structuredInfo: row.structured_info ?? {},
+    seo: row.seo ?? {},
+    isPublished: row.is_published,
+    status: normalizeStatus(row.status),
+    updatedAt: row.content_updated_at ?? row.updated_at?.slice(0, 10) ?? '',
+    source: 'database',
+  };
+}
+
+const archiveListSelect = [
+  'id',
+  'title',
+  'subtitle',
+  'summary',
+  'category',
+  'content_type',
+  'tags',
+  'is_published',
+  'status',
+  'content_updated_at',
+  'updated_at',
+].join(',');
+
+const archiveDetailSelect = [
+  archiveListSelect,
+  'hero_image',
+  'body',
+  'structured_info',
+  'seo',
+].join(',');
+
+export async function readAdminArchiveContents(): Promise<AdminArchiveContentRow[]> {
+  const config = await readAdminPostgrestSessionConfig();
+  if (!config) return adminArchiveContents;
+
+  const rows = await readPostgrestRows<ArchiveContentRecord>(config, 'archive_content', {
+    select: archiveListSelect,
+    order: 'content_updated_at.desc,id.asc',
+  });
+
+  return rows.map(mapArchiveContentRecord);
+}
+
+export async function readAdminArchiveContent(
+  id: string
+): Promise<AdminArchiveContentRow | undefined> {
+  const config = await readAdminPostgrestSessionConfig();
+  if (!config) return adminArchiveContents.find((item) => item.id === id);
+
+  const rows = await readPostgrestRows<ArchiveContentRecord>(config, 'archive_content', {
+    select: archiveDetailSelect,
+    id: `eq.${id}`,
+    limit: '1',
+  });
+
+  return rows[0] ? mapArchiveContentRecord(rows[0]) : undefined;
+}
 
 export const adminSubmissions = [
   {

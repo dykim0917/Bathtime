@@ -1,8 +1,25 @@
 import Link from 'next/link';
 import { AdminShell } from '../../../components/AdminShell';
-import { categoryLabels, contentTypeLabels } from '../../../lib/archive/data';
+import { createArchiveContentDraft } from '../../../lib/archive/contentActions';
+import { categoryLabels, contentStatusLabels, contentTypeLabels } from '../../../lib/archive/data';
 
-export default function NewContentPage() {
+interface NewContentPageProps {
+  searchParams: Promise<{
+    error?: string;
+  }>;
+}
+
+function getStatusMessage(error?: string): string | null {
+  if (error === 'invalid_basic_info') return '필수 기본 정보 값을 확인하세요.';
+  if (error === 'missing_content_db') return '콘텐츠 DB 연결이 설정되지 않았습니다.';
+  if (error === 'create_failed') return '콘텐츠 생성에 실패했습니다. 중복 ID 또는 RLS 정책을 확인하세요.';
+  return null;
+}
+
+export default async function NewContentPage({ searchParams }: NewContentPageProps) {
+  const { error } = await searchParams;
+  const statusMessage = getStatusMessage(error);
+
   return (
     <AdminShell activePath="/content">
       <section className="workspace">
@@ -10,10 +27,11 @@ export default function NewContentPage() {
           <div>
             <p className="eyebrow">ARCHIVE CONTENT</p>
             <h2>콘텐츠 등록</h2>
-            <p className="lede">P0에서는 저장 액션보다 입력 구조와 필수 필드 확인을 먼저 고정합니다.</p>
+            <p className="lede">필수 메타데이터를 먼저 저장한 뒤 상세 화면에서 본문과 구조화 정보를 편집합니다.</p>
           </div>
           <Link className="primaryButton linkButton" href="/content">목록으로</Link>
         </header>
+        {statusMessage ? <p className="formNotice error">{statusMessage}</p> : null}
         <ContentFormSummary />
       </section>
     </AdminShell>
@@ -28,11 +46,15 @@ function ContentFormSummary() {
           <h3>기본 정보</h3>
           <span>Required</span>
         </div>
-        <form className="inlineForm">
+        <form className="inlineForm" action={createArchiveContentDraft}>
+          <label htmlFor="id">콘텐츠 ID</label>
+          <input id="id" name="id" placeholder="place-dormy-inn-gangnam" />
           <label htmlFor="title">제목</label>
           <input id="title" name="title" placeholder="콘텐츠 제목" />
           <label htmlFor="subtitle">부제</label>
           <input id="subtitle" name="subtitle" placeholder="콘텐츠 부제" />
+          <label htmlFor="summary">요약</label>
+          <textarea id="summary" name="summary" rows={4} placeholder="목록과 SEO에 쓰일 짧은 요약" />
           <label htmlFor="category">카테고리</label>
           <select id="category" name="category">
             {Object.entries(categoryLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
@@ -43,21 +65,11 @@ function ContentFormSummary() {
           </select>
           <label htmlFor="tags">태그</label>
           <input id="tags" name="tags" placeholder="쉼표로 구분" />
-          <label htmlFor="heroImage">대표 이미지</label>
-          <input id="heroImage" name="heroImage" placeholder="이미지 URL 또는 asset id" />
-          <label htmlFor="routine">관련 루틴</label>
-          <select id="routine" name="routine">
-            <option value="shower-7">샤워 7분</option>
-            <option value="footbath-10">족욕 10분</option>
-            <option value="bath-15">입욕 15분</option>
-            <option value="free-timer">자유 의식/타이머</option>
+          <label htmlFor="status">상태</label>
+          <select id="status" name="status" defaultValue="draft">
+            {Object.entries(contentStatusLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
           </select>
-          <label htmlFor="published">공개 상태</label>
-          <select id="published" name="published">
-            <option value="true">공개</option>
-            <option value="false">비공개</option>
-          </select>
-          <button type="button" className="primaryButton">저장 준비중</button>
+          <button type="submit" className="primaryButton">초안 생성</button>
         </form>
       </section>
 
@@ -66,10 +78,9 @@ function ContentFormSummary() {
           <h3>본문</h3>
           <span>Blocks / Markdown</span>
         </div>
-        <form className="inlineForm">
-          <label htmlFor="body">본문</label>
-          <textarea id="body" name="body" rows={14} placeholder="paragraph / heading / image / list 블록으로 전환 가능한 원고" />
-        </form>
+        <p className="mutedText">
+          초안 생성 후 상세 화면에서 JSON 블록, 대표 이미지, SEO 정보를 편집합니다.
+        </p>
       </section>
 
       <section className="panel wide">

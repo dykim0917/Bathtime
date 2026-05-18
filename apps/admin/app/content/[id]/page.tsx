@@ -1,15 +1,43 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { AdminShell } from '../../../components/AdminShell';
-import { adminArchiveContents, categoryLabels, contentTypeLabels } from '../../../lib/archive/data';
+import { ArchiveBodyBlockEditor } from '../../../components/ArchiveBodyBlockEditor';
+import {
+  categoryLabels,
+  contentStatusLabels,
+  contentTypeLabels,
+  readAdminArchiveContent,
+} from '../../../lib/archive/data';
+import {
+  updateArchiveContentBasicInfo,
+  updateArchiveContentBody,
+} from '../../../lib/archive/contentActions';
 
 interface PageProps {
   params: Promise<{ id: string }>;
+  searchParams: Promise<{
+    error?: string;
+    updated?: string;
+  }>;
 }
 
-export default async function ContentDetailPage({ params }: PageProps) {
+function getStatusMessage(error?: string, updated?: string): string | null {
+  if (updated === 'create') return '콘텐츠 초안이 생성되었습니다.';
+  if (updated === 'basic_info') return '기본 정보가 저장되었습니다.';
+  if (updated === 'body') return '본문과 구조화 정보가 저장되었습니다.';
+  if (error === 'invalid_basic_info') return '필수 기본 정보 값을 확인하세요.';
+  if (error === 'invalid_content_json') return '본문, 대표 이미지, 구조화 정보 JSON 형식을 확인하세요.';
+  if (error === 'missing_content_db') return '콘텐츠 DB 연결이 설정되지 않았습니다.';
+  if (error === 'update_failed') return '저장에 실패했습니다. RLS 정책과 권한을 확인하세요.';
+  return null;
+}
+
+export default async function ContentDetailPage({ params, searchParams }: PageProps) {
   const { id } = await params;
-  const content = adminArchiveContents.find((item) => item.id === id);
+  const { error, updated } = await searchParams;
+  const content = await readAdminArchiveContent(id);
+  const statusMessage = getStatusMessage(error, updated);
+
   if (!content) notFound();
 
   return (
@@ -21,7 +49,12 @@ export default async function ContentDetailPage({ params }: PageProps) {
             <h2>{content.title}</h2>
             <p className="lede">{content.subtitle}</p>
           </div>
-          <Link className="primaryButton linkButton" href="/content">목록으로</Link>
+          <div className="topbarActions">
+            <Link className="primaryButton secondaryButton linkButton" href={`/content/${content.id}/preview`}>
+              미리보기
+            </Link>
+            <Link className="primaryButton linkButton" href="/content">목록으로</Link>
+          </div>
         </header>
 
         <section className="summaryGrid compact">
@@ -35,7 +68,11 @@ export default async function ContentDetailPage({ params }: PageProps) {
           </div>
           <div className="summaryCard">
             <span>Status</span>
-            <strong className="smallValue">{content.isPublished ? '공개' : '비공개'}</strong>
+            <strong className="smallValue">{contentStatusLabels[content.status]}</strong>
+          </div>
+          <div className="summaryCard">
+            <span>Source</span>
+            <strong className="smallValue">{content.source === 'database' ? 'DB' : 'Fallback'}</strong>
           </div>
         </section>
 
@@ -43,33 +80,47 @@ export default async function ContentDetailPage({ params }: PageProps) {
           <section className="panel">
             <div className="panelHeader">
               <h3>기본 정보</h3>
-              <span>P0 mock</span>
+              <span>Supabase Auth</span>
             </div>
-            <form className="inlineForm">
+            <form className="inlineForm" action={updateArchiveContentBasicInfo}>
+              <input type="hidden" name="id" value={content.id} />
               <label htmlFor="title">제목</label>
               <input id="title" name="title" defaultValue={content.title} />
               <label htmlFor="subtitle">부제</label>
               <input id="subtitle" name="subtitle" defaultValue={content.subtitle} />
+              <label htmlFor="summary">요약</label>
+              <textarea id="summary" name="summary" defaultValue={content.summary} rows={4} />
+              <label htmlFor="category">카테고리</label>
+              <select id="category" name="category" defaultValue={content.category}>
+                {Object.entries(categoryLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
+              </select>
+              <label htmlFor="contentType">콘텐츠 타입</label>
+              <select id="contentType" name="contentType" defaultValue={content.contentType}>
+                {Object.entries(contentTypeLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
+              </select>
               <label htmlFor="tags">태그</label>
               <input id="tags" name="tags" defaultValue={content.tags.join(', ')} />
-              <label htmlFor="published">공개 상태</label>
-              <select id="published" name="published" defaultValue={content.isPublished ? 'true' : 'false'}>
-                <option value="true">공개</option>
-                <option value="false">비공개</option>
+              <label htmlFor="status">상태</label>
+              <select id="status" name="status" defaultValue={content.status}>
+                {Object.entries(contentStatusLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
               </select>
-              <button type="button" className="primaryButton">저장 준비중</button>
+              <button type="submit" className="primaryButton">기본 정보 저장</button>
             </form>
           </section>
 
           <section className="panel">
             <div className="panelHeader">
               <h3>본문</h3>
-              <span>Blocks / Markdown</span>
+              <span>JSON blocks</span>
             </div>
-            <form className="inlineForm">
-              <label htmlFor="body">본문</label>
-              <textarea id="body" name="body" rows={10} defaultValue="P0 seed 본문을 블록형 구조로 전환합니다." />
-            </form>
+            <ArchiveBodyBlockEditor
+              contentId={content.id}
+              initialHeroImage={content.heroImage}
+              initialBody={content.body}
+              structuredInfo={content.structuredInfo}
+              seo={content.seo}
+              action={updateArchiveContentBody}
+            />
           </section>
 
           <section className="panel wide">
@@ -77,10 +128,31 @@ export default async function ContentDetailPage({ params }: PageProps) {
               <h3>구조화 정보</h3>
               <span>{categoryLabels[content.category]}</span>
             </div>
-            <p className="mutedText">
-              선택된 카테고리에 맞는 구조화 필드를 노출합니다. 장소는 이용 가능 여부와 가격대,
-              홈 리추얼은 소요 시간과 필요한 아이템, 아이템은 사용 상황과 관리 난이도가 핵심입니다.
-            </p>
+            {statusMessage ? (
+              <p className={error ? 'formNotice error' : 'formNotice'}>
+                {statusMessage}
+              </p>
+            ) : null}
+            <form className="inlineForm" action={updateArchiveContentBody}>
+              <input type="hidden" name="id" value={content.id} />
+              <input type="hidden" name="heroImage" value={JSON.stringify(content.heroImage ?? {})} />
+              <input type="hidden" name="body" value={JSON.stringify(content.body)} />
+              <label htmlFor="structuredInfo">구조화 정보 JSON</label>
+              <textarea
+                id="structuredInfo"
+                name="structuredInfo"
+                rows={10}
+                defaultValue={JSON.stringify(content.structuredInfo, null, 2)}
+              />
+              <label htmlFor="seo">SEO JSON</label>
+              <textarea
+                id="seo"
+                name="seo"
+                rows={8}
+                defaultValue={JSON.stringify(content.seo, null, 2)}
+              />
+              <button type="submit" className="primaryButton">구조화 정보 저장</button>
+            </form>
           </section>
         </section>
       </section>
