@@ -1,6 +1,6 @@
 interface:
   display_name: "Bathtime Web Content Producer"
-  short_description: "스팟 시드를 웹 게시용 콘텐츠로 정리"
+  short_description: "스팟 시드를 웹 게시용 원고와 이미지 배치 브리프로 정리"
   default_prompt: "Use $bathtime-web-content-producer to turn these spot seed files into a publish-ready Bathtime web archive content package."
 
 policy:
