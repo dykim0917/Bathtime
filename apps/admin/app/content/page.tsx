@@ -15,6 +15,17 @@ interface ContentPageProps {
   }>;
 }
 
+function getContentPreviewHref(id: string): string {
+  const previewToken = process.env.ADMIN_PREVIEW_TOKEN?.trim();
+  const webUrl = process.env.NEXT_PUBLIC_WEB_URL?.trim() ?? 'https://getbathtime.com';
+
+  if (!previewToken) return `/content/${id}/preview`;
+
+  const url = new URL(`/content/${id}`, webUrl);
+  url.searchParams.set('previewToken', previewToken);
+  return url.toString();
+}
+
 export default async function ContentPage({ searchParams }: ContentPageProps) {
   const { category = 'ALL', status = 'ALL', type = 'ALL' } = await searchParams;
   const rows = (await readAdminArchiveContents()).filter((content) => {
@@ -71,7 +82,7 @@ export default async function ContentPage({ searchParams }: ContentPageProps) {
               <span>상태</span>
               <span>수정일</span>
               <span>태그</span>
-              <span>상세</span>
+              <span>작업</span>
             </div>
             {rows.map((content) => (
               <div className="dataTableRow" role="row" key={content.id}>
@@ -84,7 +95,10 @@ export default async function ContentPage({ searchParams }: ContentPageProps) {
                 <strong>{contentStatusLabels[content.status]}</strong>
                 <span>{content.updatedAt}</span>
                 <span>{content.tags.join(', ')}</span>
-                <Link className="textButton" href={`/content/${content.id}`}>열기</Link>
+                <div className="rowActions">
+                  <Link className="textButton" href={`/content/${content.id}`}>상세</Link>
+                  <Link className="textButton" href={getContentPreviewHref(content.id)}>미리보기</Link>
+                </div>
               </div>
             ))}
           </div>
