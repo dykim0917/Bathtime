@@ -26,7 +26,7 @@ This skill starts after `bathtime-spot-seed-builder` has produced files such as:
 
 2. Create a publish package before changing production seed files.
    - Recommended filename: `spot-seed.web-content.md` beside the seed files.
-   - Include: page title, subtitle, summary, final body block order, hero image plan, inline image plan, SEO fields, CTA/link notes, publish blockers, and final checklist.
+   - Include: page title, subtitle, summary, final body block order, hero image plan, inline image placement brief, SEO fields, CTA/link notes, publish blockers, and final checklist.
    - Keep factual claims traceable to the canonical JSON or mapping report.
 
 3. Shape the content for the current archive UI.
@@ -42,6 +42,10 @@ This skill starts after `bathtime-spot-seed-builder` has produced files such as:
    - If proposing local assets, specify destination paths under `assets/images/` and note any code changes needed to resolve them.
    - Do not use user-review photos, map screenshots, or third-party images without a clear rights basis.
    - Always write meaningful Korean `alt` text.
+   - Add planned inline image slots even when the actual image is not ready, so another team member can source or shoot the right image later.
+   - For each inline slot, specify where it appears in the body, what decision it helps the reader make, the desired image mood/composition, acceptable sources, rights requirements, and fallback behavior.
+   - Avoid vague prompts such as "nice spa photo"; describe observable subjects, angle, framing, and what must not appear.
+   - Do not add decorative images that do not support a reader decision. Every image slot should clarify place atmosphere, facility type, access, price/policy, or usage context.
 
 5. Decide publish status conservatively.
    - Keep `isPublished: false` if any publish blockers remain.
@@ -88,11 +92,18 @@ This skill starts after `bathtime-spot-seed-builder` has produced files such as:
 5. Access/price note:
 6. Closing note:
 
+## Inline Image Placement Brief
+| Placement | Purpose | Desired image direction | Acceptable source | Rights/status | Fallback |
+| --- | --- | --- | --- | --- | --- |
+| After section 1 | Establish the actual bath/place atmosphere before practical details. | Horizontal image of the bath entrance, lobby sign, official bath area photo, or quiet hotel-bath mood. Avoid crowded people, faces, or unreadable screenshots. | Owned photo, official press/website image with permission, licensed stock, or generated fallback. | Confirm before publishing. | Omit slot or show `category-place` fallback until ready. |
+| After section 3 | Help readers judge whether the visit context fits them. | Context image such as hotel exterior, nearby street approach, amenity detail, changing-room neutral detail, or sauna material texture. No user-review photos without permission. | Owned photo, official image with permission, licensed stock, or generated fallback. | Confirm before publishing. | Keep text-only body if no safe image exists. |
+
 ## Image Plan
 | Slot | URI/path | Source type | Alt | Notes |
 | --- | --- | --- | --- | --- |
 | Hero | `category-place` | `generated` |  | Safe fallback until owned/official image is ready. |
-| Inline 1 |  |  |  |  |
+| Inline 1 |  |  |  | Must match the first row of Inline Image Placement Brief. |
+| Inline 2 |  |  |  | Optional; use only if it helps the reader decide. |
 
 ## SEO
 - SEO title:
