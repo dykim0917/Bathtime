@@ -46,6 +46,14 @@ const VALUE_LABELS: Record<string, string> = {
   BATH_PLACES: '목욕 공간',
   BATH_ITEMS: '욕실 아이템',
   TIPS_CULTURE: '읽을거리 / 문화',
+  hotel_public_bath: '호텔 대욕장',
+  hotel_sauna: '사우나',
+  public_bath: '대중목욕탕',
+  jjimjilbang: '찜질방',
+  sauna: '사우나',
+  spa: '스파',
+  massage: '마사지',
+  bathtub_stay: '욕조 숙소',
 };
 
 const ROW_ICONS: Record<string, PhosphorIcon> = {
