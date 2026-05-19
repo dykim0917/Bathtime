@@ -148,6 +148,57 @@ function toDbRow(content, canonical, webContentPlan) {
   };
 }
 
+const RESEARCH_MEMO_HEADINGS = new Set([
+  'Short Situation Summary',
+  'Quick Facts',
+  'What This Place Seems Good For',
+  'What To Check Before Visiting',
+  'Good Points',
+  'Weak Points',
+  'Fit For',
+  'Not Fit For',
+  'Source And Update Note',
+  'CTA Suggestions',
+]);
+
+function collectArchiveContentApplyIssues(content) {
+  const issues = [];
+  const body = normalizeJsonArray(content.body);
+
+  body.forEach((block, index) => {
+    if (!block || typeof block !== 'object') return;
+    const position = `body[${index}]`;
+
+    if (block.type === 'heading' && RESEARCH_MEMO_HEADINGS.has(block.text)) {
+      issues.push(`${position}: research memo heading "${block.text}" must not be published as archive body`);
+    }
+
+    if (block.type === 'heading' && /^콘텐츠 초안[:：]/.test(block.text)) {
+      issues.push(`${position}: draft memo heading "${block.text}" must not be published as archive body`);
+    }
+
+    if (block.type === 'heading' && block.text === '아카이브 메모') {
+      issues.push(`${position}: archive memo heading must not be published as archive body`);
+    }
+
+    if (block.type === 'paragraph' && typeof block.text === 'string' && /\|\s*[-:]{3,}\s*\|/.test(block.text)) {
+      issues.push(`${position}: markdown table text must not be published as archive body`);
+    }
+  });
+
+  [
+    ['subtitle', content.subtitle],
+    ['summary', content.summary],
+    ['seo.seoDescription', content.seo?.seoDescription],
+  ].forEach(([field, value]) => {
+    if (typeof value === 'string' && /리서치 기반 시드 초안|콘텐츠 초안|seed draft/i.test(value)) {
+      issues.push(`${field}: seed/draft placeholder copy must not be published`);
+    }
+  });
+
+  return issues;
+}
+
 function toUpsertSql(row) {
   return `INSERT INTO archive_content (
   id, title, subtitle, summary, category, content_type, tags, hero_image, body,
@@ -281,6 +332,11 @@ async function main() {
 
   let applied = false;
   if (apply) {
+    const applyIssues = collectArchiveContentApplyIssues(content);
+    if (applyIssues.length > 0) {
+      throw new Error(`Archive content apply guard failed for ${content.id}:\n- ${applyIssues.join('\n- ')}`);
+    }
+
     await applyPostgrestUpsert(row);
     applied = true;
   }
