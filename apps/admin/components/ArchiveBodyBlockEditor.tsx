@@ -15,7 +15,7 @@ interface ArchiveBodyBlockEditorProps {
   action: ArchiveBodyAction;
 }
 
-type BodyBlockType = AdminArchiveBodyBlock['type'];
+type BodyBlockType = 'paragraph' | 'heading' | 'image' | 'quote' | 'list' | 'divider';
 
 function createBlock(type: BodyBlockType): AdminArchiveBodyBlock {
   if (type === 'heading') return { type, text: '새 제목' };
@@ -43,6 +43,10 @@ function getBlockLabel(type: BodyBlockType): string {
   if (type === 'image') return '이미지';
   if (type === 'divider') return '구분선';
   return '문단';
+}
+
+function isEditableBlock(block: AdminArchiveBodyBlock): block is Extract<AdminArchiveBodyBlock, { type: BodyBlockType }> {
+  return ['paragraph', 'heading', 'image', 'quote', 'list', 'divider'].includes(block.type);
 }
 
 export function ArchiveBodyBlockEditor({
@@ -113,13 +117,17 @@ export function ArchiveBodyBlockEditor({
         {blocks.map((block, index) => (
           <section className="blockEditorCard" key={`${block.type}-${index}`}>
             <div className="blockEditorHeader">
-              <strong>{index + 1}. {getBlockLabel(block.type)}</strong>
+              <strong>{index + 1}. {isEditableBlock(block) ? getBlockLabel(block.type) : block.type}</strong>
               <div>
                 <button type="button" className="textButton" onClick={() => moveBlock(index, -1)}>위로</button>
                 <button type="button" className="textButton" onClick={() => moveBlock(index, 1)}>아래로</button>
                 <button type="button" className="textButton dangerText" onClick={() => removeBlock(index)}>삭제</button>
               </div>
             </div>
+
+            {!isEditableBlock(block) ? (
+              <pre className="mutedText">{JSON.stringify(block, null, 2)}</pre>
+            ) : null}
 
             {block.type === 'paragraph' || block.type === 'heading' || block.type === 'quote' ? (
               <textarea

@@ -18,6 +18,96 @@ interface PageProps {
 }
 
 function renderBodyBlock(block: AdminArchiveBodyBlock, index: number) {
+  if (block.type === 'heroIntro') {
+    return (
+      <section key={index}>
+        <p className="eyebrow">{block.eyebrow}</p>
+        <h2>{block.title}</h2>
+        {block.intro.map((text) => <p key={text}>{text}</p>)}
+      </section>
+    );
+  }
+
+  if (block.type === 'aha') {
+    return (
+      <blockquote key={index}>
+        <strong>{block.title}</strong>
+        <p>{block.text}</p>
+      </blockquote>
+    );
+  }
+
+  if (block.type === 'mechanism') {
+    return (
+      <section key={index}>
+        <h3>{block.title}</h3>
+        {block.subtitle ? <p>{block.subtitle}</p> : null}
+        <ol>
+          {block.steps.map((step) => (
+            <li key={step.label}>
+              <strong>{step.label}</strong>
+              <p>{step.description}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+    );
+  }
+
+  if (block.type === 'evidenceCard') {
+    return (
+      <section key={index}>
+        <h3>{block.title}</h3>
+        {block.intro ? <p>{block.intro}</p> : null}
+        {block.items.map((item) => (
+          <article key={`${item.sourceName}-${item.year ?? ''}`}>
+            <strong>{item.sourceName}{item.year ? ` · ${item.year}` : ''}</strong>
+            <p>{item.finding}</p>
+            <p>배스타임 해석: {item.bathtimeTakeaway}</p>
+          </article>
+        ))}
+      </section>
+    );
+  }
+
+  if (block.type === 'ritualTimer') {
+    return (
+      <section key={index}>
+        <h3>{block.title}</h3>
+        {block.description ? <p>{block.description}</p> : null}
+        <p>{block.durationMinutes}분 · {block.timerId}</p>
+        <ol>
+          {block.steps.map((step) => (
+            <li key={`${step.timeLabel}-${step.title}`}>
+              <strong>{step.timeLabel} {step.title}</strong>
+              <p>{step.instruction}</p>
+            </li>
+          ))}
+        </ol>
+        <p>{block.ctaLabel}</p>
+      </section>
+    );
+  }
+
+  if (block.type === 'safetyBox') {
+    return (
+      <section key={index}>
+        <h3>{block.title}</h3>
+        <ul>{block.items.map((item) => <li key={item}>{item}</li>)}</ul>
+        {block.note ? <p>{block.note}</p> : null}
+      </section>
+    );
+  }
+
+  if (block.type === 'ctaGroup') {
+    return (
+      <section key={index}>
+        {block.title ? <h3>{block.title}</h3> : null}
+        <ul>{block.items.map((item) => <li key={`${item.action}-${item.targetId ?? item.label}`}>{item.label}</li>)}</ul>
+      </section>
+    );
+  }
+
   if (block.type === 'heading') {
     return <h3 key={index}>{block.text}</h3>;
   }
