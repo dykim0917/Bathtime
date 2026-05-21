@@ -246,6 +246,20 @@ Not allowed:
 - Presenting subjective review claims as verified facts
 - Using private community content without permission
 
+### Public Copy Language
+
+`신호`, `시그널`, and `signal` are allowed in internal research notes only.
+
+Do not carry these words into user-facing content drafts, web packages, ArchiveContent body, summary, subtitle, SEO, CTA, or structuredInfo.
+
+When writing public-facing copy, replace them:
+
+- `공식 정보 신호` -> `공식 정보에서 확인된다` / `공식 안내에 따르면`
+- `가격 신호` -> `공식 요금표 기준` / `공개 정보의 요금 안내`
+- `후기 신호` -> `후기에서 반복적으로 언급된다` / `최근 후기에서는 ... 이야기가 나온다`
+- `운영시간 신호` -> `운영시간은 ...로 안내되어 있다`
+- `충돌 신호` -> `출처별 안내가 다르다`
+
 ## Review Search Query Patterns
 
 For each spot, search multiple query patterns.
@@ -323,6 +337,14 @@ Use source priority in this order:
 Official information has higher weight than reviews.
 Recent sources have higher weight than old sources.
 User reviews can support atmosphere, crowding, and practical tips, but must not be treated as verified facts.
+
+If an official page exists but the browser/web fetch path fails, retry with a local HTTP fallback such as:
+
+```bash
+curl -L --max-time 20 -A 'Mozilla/5.0' '<official-url>'
+```
+
+Do this especially for official pricing, operating hours, facilities, reservation, location, and policy pages. Do not downgrade a field to "확인 필요" just because one fetch method failed.
 
 ### 2. Mark uncertainty clearly
 

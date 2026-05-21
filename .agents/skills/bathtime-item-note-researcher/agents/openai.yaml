@@ -1,0 +1,7 @@
+interface:
+  display_name: "Bathtime Item Note Researcher"
+  short_description: "아이템을 쇼핑 리뷰가 아닌 목욕 루틴 도구 관점으로 조사"
+  default_prompt: "Use $bathtime-item-note-researcher to research this bath-related item through the Item Note angle brief and create structured research artifacts."
+
+policy:
+  allow_implicit_invocation: true

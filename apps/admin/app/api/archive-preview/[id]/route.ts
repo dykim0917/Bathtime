@@ -33,13 +33,15 @@ function toArchiveContent(content: Awaited<ReturnType<typeof readPreviewArchiveC
           alt: content.heroImage.alt,
           credit: typeof content.heroImage.credit === 'string' ? content.heroImage.credit : undefined,
           sourceType:
-            content.heroImage.sourceType === 'owned' ||
-            content.heroImage.sourceType === 'official' ||
-            content.heroImage.sourceType === 'licensed' ||
-            content.heroImage.sourceType === 'generated' ||
-            content.heroImage.sourceType === 'none'
-              ? content.heroImage.sourceType
-              : undefined,
+            content.heroImage.sourceType === 'uploaded'
+              ? 'owned'
+              : content.heroImage.sourceType === 'owned' ||
+                  content.heroImage.sourceType === 'official' ||
+                  content.heroImage.sourceType === 'licensed' ||
+                  content.heroImage.sourceType === 'generated' ||
+                  content.heroImage.sourceType === 'none'
+                ? content.heroImage.sourceType
+                : undefined,
         }
       : undefined,
     body: content.body,

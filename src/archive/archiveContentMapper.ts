@@ -105,13 +105,15 @@ function normalizeImageAsset(value: unknown): ImageAsset | undefined {
     alt: value.alt,
     credit: typeof value.credit === 'string' ? value.credit : undefined,
     sourceType:
-      value.sourceType === 'owned' ||
-      value.sourceType === 'official' ||
-      value.sourceType === 'licensed' ||
-      value.sourceType === 'generated' ||
-      value.sourceType === 'none'
-        ? value.sourceType
-        : undefined,
+      value.sourceType === 'uploaded'
+        ? 'owned'
+        : value.sourceType === 'owned' ||
+            value.sourceType === 'official' ||
+            value.sourceType === 'licensed' ||
+            value.sourceType === 'generated' ||
+            value.sourceType === 'none'
+          ? value.sourceType
+          : undefined,
   };
 }
 

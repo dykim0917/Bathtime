@@ -37,8 +37,10 @@ function usage() {
   return `Usage: node scripts/upsert_archive_content_from_spot_seed.mjs <seed-dir> [--apply]
 
 Creates:
-  <seed-dir>/spot-seed.archive-content.db-row.json
-  <seed-dir>/spot-seed.archive-content.upsert.sql
+  <seed-dir>/<prefix>.archive-content.db-row.json
+  <seed-dir>/<prefix>.archive-content.upsert.sql
+
+Where <prefix> is spot-seed or item-seed, inferred from files in <seed-dir>.
 
 With --apply, upserts to PostgREST using:
   CONTENT_DB_REST_URL
@@ -304,14 +306,35 @@ async function readOptionalText(filePath) {
   }
 }
 
+async function fileExists(filePath) {
+  try {
+    await readFile(filePath, 'utf8');
+    return true;
+  } catch (error) {
+    if (error && error.code === 'ENOENT') return false;
+    throw error;
+  }
+}
+
+async function detectSeedPrefix(seedDir) {
+  for (const prefix of ['spot-seed', 'item-seed']) {
+    if (await fileExists(path.join(seedDir, `${prefix}.archive-content.ts`))) {
+      return prefix;
+    }
+  }
+
+  throw new Error(`Expected spot-seed.archive-content.ts or item-seed.archive-content.ts in ${seedDir}`);
+}
+
 async function main() {
   await loadLocalEnv();
   const { seedDir, apply } = parseArgs(process.argv);
-  const archiveContentPath = path.join(seedDir, 'spot-seed.archive-content.ts');
-  const canonicalPath = path.join(seedDir, 'spot-seed.canonical.json');
-  const webContentPath = path.join(seedDir, 'spot-seed.web-content.md');
-  const dbRowOutputPath = path.join(seedDir, 'spot-seed.archive-content.db-row.json');
-  const sqlOutputPath = path.join(seedDir, 'spot-seed.archive-content.upsert.sql');
+  const seedPrefix = await detectSeedPrefix(seedDir);
+  const archiveContentPath = path.join(seedDir, `${seedPrefix}.archive-content.ts`);
+  const canonicalPath = path.join(seedDir, `${seedPrefix}.canonical.json`);
+  const webContentPath = path.join(seedDir, `${seedPrefix}.web-content.md`);
+  const dbRowOutputPath = path.join(seedDir, `${seedPrefix}.archive-content.db-row.json`);
+  const sqlOutputPath = path.join(seedDir, `${seedPrefix}.archive-content.upsert.sql`);
 
   const content = await loadArchiveContent(archiveContentPath);
   const canonical = JSON.parse(await readFile(canonicalPath, 'utf8'));
@@ -345,6 +368,7 @@ async function main() {
     JSON.stringify(
       {
         id: row.id,
+        seedPrefix,
         status: row.status,
         isPublished: row.is_published,
         dbRowOutputPath,

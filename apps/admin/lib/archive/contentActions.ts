@@ -91,7 +91,7 @@ function createUploadedImageAsset(
     ...(previous ?? {}),
     uri: imageUrl,
     alt: typeof previous?.alt === 'string' && previous.alt ? previous.alt : altFallback,
-    sourceType: 'uploaded',
+    sourceType: 'owned',
   };
 }
 
