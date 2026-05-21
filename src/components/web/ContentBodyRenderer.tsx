@@ -1,6 +1,6 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
-import { ContentBodyBlock } from '@/src/archive/types';
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
+import { CareCTA, ContentBodyBlock } from '@/src/archive/types';
 import { getCareGuideImage } from '@/src/data/careImages';
 import { archiveColors, archiveRadius } from '@/src/theme/archiveTheme';
 import { luxuryFonts } from '@/src/theme/luxury';
@@ -15,7 +15,36 @@ function getBodyImageSource(uri: string) {
   return null;
 }
 
-export function ContentBodyRenderer({ blocks }: { blocks: ContentBodyBlock[] }) {
+const GUIDE_IMAGE_ASPECT_RATIOS: Record<string, number> = {
+  cold_relief: 1448 / 1086,
+  edema_relief: 1672 / 941,
+  hangover_relief: 1672 / 941,
+  menstrual_relief: 1672 / 941,
+  mood_lift: 1536 / 1024,
+  muscle_relief: 1672 / 941,
+  sleep_ready: 1491 / 1055,
+  stress_relief: 1672 / 941,
+};
+
+function getImageAspectRatio(uri: string): number {
+  if (uri.startsWith('care-guide:')) {
+    return GUIDE_IMAGE_ASPECT_RATIOS[uri.replace('care-guide:', '')] ?? 4 / 3;
+  }
+  return 4 / 3;
+}
+
+function getImageBackgroundColor(uri: string): string {
+  if (uri.startsWith('care-guide:')) return '#F5EFE7';
+  return archiveColors.canvas;
+}
+
+export function ContentBodyRenderer({
+  blocks,
+  onCtaPress,
+}: {
+  blocks: ContentBodyBlock[];
+  onCtaPress?: (cta: CareCTA) => void;
+}) {
   return (
     <View style={styles.stack}>
       {blocks.map((block, index) => {
@@ -115,9 +144,16 @@ export function ContentBodyRenderer({ blocks }: { blocks: ContentBodyBlock[] }) 
               {block.title ? <Text style={styles.cardTitle}>{block.title}</Text> : null}
               <View style={styles.ctaList}>
                 {block.items.map((item) => (
-                  <Text key={`${item.action}-${item.targetId ?? item.label}`} style={item.emphasis === 'primary' ? styles.primaryCta : styles.secondaryCta}>
+                  <Pressable
+                    key={`${item.action}-${item.targetId ?? item.label}`}
+                    disabled={!onCtaPress}
+                    onPress={() => onCtaPress?.(item)}
+                    style={item.emphasis === 'primary' ? styles.primaryCta : styles.secondaryCta}
+                  >
+                  <Text style={item.emphasis === 'primary' ? styles.primaryCtaText : styles.secondaryCtaText}>
                     {item.label}
                   </Text>
+                  </Pressable>
                 ))}
               </View>
             </View>
@@ -141,17 +177,20 @@ export function ContentBodyRenderer({ blocks }: { blocks: ContentBodyBlock[] }) 
         }
         if (block.type === 'image') {
           const imageSource = getBodyImageSource(block.uri);
+          const backgroundColor = getImageBackgroundColor(block.uri);
 
           return (
-            <View key={index} style={styles.imageBlock}>
+            <View key={index} style={[styles.imageBlock, { backgroundColor }]}>
               {imageSource ? (
-                <Image source={imageSource} style={styles.bodyImage} resizeMode="contain" />
+                <View style={[styles.bodyImageFrame, { aspectRatio: getImageAspectRatio(block.uri), backgroundColor }]}>
+                  <Image source={imageSource} style={[StyleSheet.absoluteFillObject, styles.absoluteImage]} resizeMode="cover" />
+                </View>
               ) : (
                 <View style={styles.imageFallback}>
                   <Text style={styles.paragraph}>{block.caption ?? '이미지'}</Text>
                 </View>
               )}
-              {block.caption ? <Text style={styles.imageCaption}>{block.caption}</Text> : null}
+              {block.caption ? <Text style={[styles.imageCaption, { backgroundColor }]}>{block.caption}</Text> : null}
             </View>
           );
         }
@@ -333,7 +372,6 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   primaryCta: {
-    color: archiveColors.onPrimary,
     backgroundColor: archiveColors.primaryActive,
     borderRadius: archiveRadius.sm,
     overflow: 'hidden',
@@ -346,13 +384,28 @@ const styles = StyleSheet.create({
     fontFamily: luxuryFonts.sans,
   },
   secondaryCta: {
-    color: archiveColors.primaryActive,
     borderWidth: 1,
     borderColor: archiveColors.primaryDisabled,
     borderRadius: archiveRadius.sm,
     overflow: 'hidden',
     paddingHorizontal: 14,
     paddingVertical: 11,
+    fontSize: 14,
+    lineHeight: 20,
+    fontWeight: '800',
+    textAlign: 'center',
+    fontFamily: luxuryFonts.sans,
+  },
+  primaryCtaText: {
+    color: archiveColors.onPrimary,
+    fontSize: 14,
+    lineHeight: 20,
+    fontWeight: '800',
+    textAlign: 'center',
+    fontFamily: luxuryFonts.sans,
+  },
+  secondaryCtaText: {
+    color: archiveColors.primaryActive,
     fontSize: 14,
     lineHeight: 20,
     fontWeight: '800',
@@ -375,15 +428,15 @@ const styles = StyleSheet.create({
   },
   imageBlock: {
     overflow: 'hidden',
-    borderWidth: 1,
-    borderColor: archiveColors.hairline,
     borderRadius: archiveRadius.lg,
-    backgroundColor: archiveColors.surface,
   },
-  bodyImage: {
+  bodyImageFrame: {
     width: '100%',
-    aspectRatio: 16 / 9,
-    backgroundColor: archiveColors.surfaceSoft,
+    position: 'relative',
+  },
+  absoluteImage: {
+    width: '100%',
+    height: '100%',
   },
   imageCaption: {
     color: archiveColors.muted,

@@ -13,7 +13,7 @@ import { NativeScreen } from '@/src/components/native/NativeScreen';
 import { CATEGORY_LABELS, CONTENT_TYPE_LABELS } from '@/src/archive/labels';
 import { getRelatedRoutinePresets } from '@/src/archive/selectors';
 import { useArchiveContentHydration } from '@/src/archive/runtime';
-import { ArchiveContent } from '@/src/archive/types';
+import { ArchiveContent, CareCTA } from '@/src/archive/types';
 import { trackArchiveEvent } from '@/src/analytics/events';
 import { useAuth } from '@/src/auth/AuthProvider';
 import { setPendingAuthAction } from '@/src/auth/pendingActions';
@@ -155,6 +155,38 @@ export default function ContentDetailPage() {
     }
   };
 
+  const handleBodyCtaPress = async (cta: CareCTA) => {
+    if (cta.action === 'start_timer' && cta.targetId) {
+      trackArchiveEvent('routine_cta_clicked', { contentId: content.id, routineId: cta.targetId, platform: 'web' });
+      router.push(`/app?from=care_archive&routine=${encodeURIComponent(cta.targetId)}` as Href);
+      return;
+    }
+
+    if (cta.action === 'save') {
+      await handleToggleSaved();
+      return;
+    }
+
+    if (cta.action === 'view_related' && cta.targetId) {
+      router.push(`/explore?query=${encodeURIComponent(cta.targetId)}` as Href);
+      return;
+    }
+
+    if (cta.action === 'open_article' && cta.targetId) {
+      router.push(`/content/${cta.targetId}` as Href);
+      return;
+    }
+
+    if (cta.action === 'open_item' && cta.targetId) {
+      router.push(`/explore?query=${encodeURIComponent(cta.targetId)}` as Href);
+      return;
+    }
+
+    if (cta.action === 'submit') {
+      router.push('/app?from=care_archive_submit' as Href);
+    }
+  };
+
   const headerBlock = (
     <View style={webStyles.header}>
       <Text style={webStyles.eyebrow}>{CATEGORY_LABELS[content.category]} · {CONTENT_TYPE_LABELS[content.contentType]}</Text>
@@ -232,7 +264,7 @@ export default function ContentDetailPage() {
               <View style={styles.contentColumn}>
                 {headerBlock}
                 <View style={styles.bodyColumn}>
-                  <ContentBodyRenderer blocks={content.body} />
+                  <ContentBodyRenderer blocks={content.body} onCtaPress={handleBodyCtaPress} />
                 </View>
               </View>
               {React.createElement(
@@ -249,7 +281,7 @@ export default function ContentDetailPage() {
                   <ArchiveStructuredInfo content={content} />
                 </View>
                 <View style={styles.bodyColumn}>
-                  <ContentBodyRenderer blocks={content.body} />
+                  <ContentBodyRenderer blocks={content.body} onCtaPress={handleBodyCtaPress} />
                 </View>
               </View>
             </>
