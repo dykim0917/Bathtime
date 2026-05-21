@@ -9,6 +9,7 @@ import {
   readAdminArchiveContent,
 } from '../../../lib/archive/data';
 import {
+  uploadArchiveContentImage,
   updateArchiveContentBasicInfo,
   updateArchiveContentBody,
 } from '../../../lib/archive/contentActions';
@@ -25,9 +26,12 @@ function getStatusMessage(error?: string, updated?: string): string | null {
   if (updated === 'create') return '콘텐츠 초안이 생성되었습니다.';
   if (updated === 'basic_info') return '기본 정보가 저장되었습니다.';
   if (updated === 'body') return '본문과 구조화 정보가 저장되었습니다.';
+  if (updated === 'asset') return '이미지가 업로드되고 콘텐츠에 반영되었습니다.';
   if (error === 'invalid_basic_info') return '필수 기본 정보 값을 확인하세요.';
   if (error === 'invalid_content_json') return '본문, 대표 이미지, 구조화 정보 JSON 형식을 확인하세요.';
+  if (error === 'invalid_upload') return '업로드할 이미지 파일을 선택하세요.';
   if (error === 'missing_content_db') return '콘텐츠 DB 연결이 설정되지 않았습니다.';
+  if (error === 'upload_failed') return '이미지 업로드에 실패했습니다. Storage 버킷과 정책을 확인하세요.';
   if (error === 'update_failed') return '저장에 실패했습니다. RLS 정책과 권한을 확인하세요.';
   return null;
 }
@@ -131,6 +135,7 @@ export default async function ContentDetailPage({ params, searchParams }: PagePr
               structuredInfo={content.structuredInfo}
               seo={content.seo}
               action={updateArchiveContentBody}
+              assetUploadAction={uploadArchiveContentImage}
             />
           </section>
 

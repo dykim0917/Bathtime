@@ -5,9 +5,11 @@ import { redirect } from 'next/navigation';
 
 import {
   insertPostgrestRow,
+  readPostgrestRows,
   readAdminPostgrestSessionConfig,
   updatePostgrestRows,
 } from '../data/postgrest';
+import { createSupabaseServerClient } from '../auth/server';
 import {
   categoryLabels,
   contentStatusLabels,
@@ -20,6 +22,8 @@ import {
 function todayDateString(): string {
   return new Date().toISOString().slice(0, 10);
 }
+
+const archiveAssetBucket = process.env.ARCHIVE_ASSET_BUCKET?.trim() || 'bathtime-assets';
 
 function parseListField(value: FormDataEntryValue | null): string[] {
   return String(value ?? '')
@@ -53,6 +57,42 @@ function parseJsonField(value: FormDataEntryValue | null): unknown | undefined {
 
 function isPlainObject(value: unknown): value is Record<string, unknown> {
   return Boolean(value) && typeof value === 'object' && !Array.isArray(value);
+}
+
+function sanitizePathSegment(value: string): string {
+  return value
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9-_]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+function getFileExtension(file: File): string {
+  const nameExtension = file.name.split('.').pop()?.toLowerCase();
+  if (nameExtension && /^[a-z0-9]+$/.test(nameExtension)) return nameExtension;
+  if (file.type === 'image/png') return 'png';
+  if (file.type === 'image/jpeg') return 'jpg';
+  if (file.type === 'image/webp') return 'webp';
+  return 'bin';
+}
+
+function getUploadedFile(formData: FormData, fieldName: string): File | null {
+  const value = formData.get(fieldName);
+  if (!(value instanceof File) || value.size === 0) return null;
+  return value;
+}
+
+function createUploadedImageAsset(
+  imageUrl: string,
+  previous: Record<string, unknown> | undefined,
+  altFallback: string
+): Record<string, unknown> {
+  return {
+    ...(previous ?? {}),
+    uri: imageUrl,
+    alt: typeof previous?.alt === 'string' && previous.alt ? previous.alt : altFallback,
+    sourceType: 'uploaded',
+  };
 }
 
 export async function updateArchiveContentBasicInfo(formData: FormData) {
@@ -149,6 +189,109 @@ export async function updateArchiveContentBody(formData: FormData) {
   revalidatePath('/content');
   revalidatePath(`/content/${id}`);
   redirect(`/content/${id}?updated=body`);
+}
+
+export async function uploadArchiveContentImage(formData: FormData) {
+  const id = String(formData.get('id') ?? '').trim();
+  const assetTarget = String(formData.get('assetTarget') ?? '').trim();
+  const heroImage = parseJsonField(formData.get('heroImage'));
+  const body = parseJsonField(formData.get('body'));
+  const structuredInfo = parseJsonField(formData.get('structuredInfo'));
+  const seo = parseJsonField(formData.get('seo'));
+
+  if (
+    !id ||
+    !assetTarget ||
+    (heroImage !== undefined && !isPlainObject(heroImage)) ||
+    !Array.isArray(body) ||
+    (structuredInfo !== undefined && !isPlainObject(structuredInfo)) ||
+    (seo !== undefined && !isPlainObject(seo))
+  ) {
+    redirect(`/content/${id || ''}?error=invalid_content_json`);
+  }
+
+  const config = await readAdminPostgrestSessionConfig();
+  if (!config) {
+    redirect(`/content/${id}?error=missing_content_db`);
+  }
+
+  const fileFieldName = assetTarget === 'hero'
+    ? 'assetFile_hero'
+    : `assetFile_${assetTarget.replace('body:', '')}`;
+  const file = getUploadedFile(formData, fileFieldName);
+  if (!file || !file.type.startsWith('image/')) {
+    redirect(`/content/${id}?error=invalid_upload`);
+  }
+
+  const contentRows = await readPostgrestRows<{ title?: string }>(config, 'archive_content', {
+    id: `eq.${id}`,
+    select: 'title',
+    limit: '1',
+  });
+  const title = contentRows[0]?.title ?? id;
+  const extension = getFileExtension(file);
+  const safeId = sanitizePathSegment(id) || 'archive-content';
+  const storageTarget = assetTarget === 'hero'
+    ? 'hero'
+    : `body-${sanitizePathSegment(assetTarget.replace('body:', '')) || 'image'}`;
+  const storagePath = `archive/${safeId}/${storageTarget}.${extension}`;
+
+  try {
+    const supabase = await createSupabaseServerClient();
+    const { error: uploadError } = await supabase.storage
+      .from(archiveAssetBucket)
+      .upload(storagePath, file, {
+        contentType: file.type,
+        upsert: true,
+      });
+
+    if (uploadError) throw uploadError;
+
+    const { data } = supabase.storage
+      .from(archiveAssetBucket)
+      .getPublicUrl(storagePath);
+    const publicUrl = data.publicUrl;
+
+    if (assetTarget === 'hero') {
+      await updatePostgrestRows(
+        config,
+        'archive_content',
+        { id: `eq.${id}` },
+        {
+          hero_image: createUploadedImageAsset(publicUrl, heroImage, title),
+          body,
+          structured_info: structuredInfo ?? {},
+          seo: seo ?? {},
+          content_updated_at: todayDateString(),
+        }
+      );
+    } else {
+      const blockIndex = Number(assetTarget.replace('body:', ''));
+      const nextBody = body.map((block, index) => {
+        if (index !== blockIndex || !isPlainObject(block) || block.type !== 'image') return block;
+        return { ...block, uri: publicUrl };
+      });
+
+      await updatePostgrestRows(
+        config,
+        'archive_content',
+        { id: `eq.${id}` },
+        {
+          hero_image: heroImage ?? null,
+          body: nextBody,
+          structured_info: structuredInfo ?? {},
+          seo: seo ?? {},
+          content_updated_at: todayDateString(),
+        }
+      );
+    }
+  } catch {
+    redirect(`/content/${id}?error=upload_failed`);
+  }
+
+  revalidatePath('/content');
+  revalidatePath(`/content/${id}`);
+  redirect(`/content/${id}?updated=asset`);
 }
 
 export async function createArchiveContentDraft(formData: FormData) {
