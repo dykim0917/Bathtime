@@ -1,4 +1,5 @@
 import { readP0Submissions } from '../../../../src/server/archiveSubmissionStore';
+import { type P0CareBodyBlock } from '../../../../src/archive/types';
 import {
   type AdminPostgrestConfig,
   readAdminPostgrestSessionConfig,
@@ -16,7 +17,8 @@ export type AdminArchiveBodyBlock =
   | { type: 'image'; uri: string; caption?: string }
   | { type: 'quote'; text: string }
   | { type: 'list'; items: string[] }
-  | { type: 'divider' };
+  | { type: 'divider' }
+  | P0CareBodyBlock;
 
 export interface AdminArchiveContentRow {
   id: string;

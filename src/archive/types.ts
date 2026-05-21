@@ -2,13 +2,94 @@ export type ContentCategory = 'HOME_BATH' | 'BATH_PLACES' | 'BATH_ITEMS' | 'TIPS
 
 export type ContentType = 'TRIED' | 'RESEARCHED' | 'ORGANIZED' | 'VISITED' | 'SUBMITTED' | 'UPDATED';
 
+export type CareEnvironment = 'shower' | 'footbath' | 'bath' | 'sauna';
+
+export type CareCTA = {
+  label: string;
+  action: 'start_timer' | 'save' | 'view_related' | 'submit' | 'open_article' | 'open_item';
+  targetId?: string;
+  emphasis: 'primary' | 'secondary' | 'tertiary';
+};
+
+export type CareSummaryCard = {
+  situation: string;
+  recommendedFor: string[];
+  duration: {
+    minMinutes: number;
+    maxMinutes: number;
+    label: string;
+  };
+  environments: CareEnvironment[];
+  bathtubRequired: boolean;
+  items: string[];
+  difficulty: 'low' | 'medium' | 'high';
+  bestTiming?: string;
+  intensity: 'low' | 'medium' | 'high';
+  avoidWhen: string[];
+  primaryCTA: {
+    label: string;
+    timerId?: string;
+  };
+};
+
+export type CareRitual = {
+  id: string;
+  environment: CareEnvironment;
+  durationMinutes: number;
+  title: string;
+};
+
+export type CareSource = {
+  title: string;
+  type: 'paper' | 'medical_org' | 'public_health' | 'expert_org' | 'book' | 'official_site';
+  url?: string;
+  note?: string;
+};
+
+export type P0CareBodyBlock =
+  | { type: 'heroIntro'; eyebrow: string; title: string; intro: string[] }
+  | { type: 'aha'; title: string; text: string }
+  | {
+      type: 'mechanism';
+      title: string;
+      subtitle?: string;
+      steps: { label: string; description: string; icon?: string }[];
+      visualHint?: string;
+    }
+  | {
+      type: 'evidenceCard';
+      title: string;
+      intro?: string;
+      items: {
+        sourceName: string;
+        year?: string;
+        sourceType?: CareSource['type'];
+        finding: string;
+        bathtimeTakeaway: string;
+        url?: string;
+      }[];
+    }
+  | {
+      type: 'ritualTimer';
+      title: string;
+      description?: string;
+      environment?: CareEnvironment;
+      durationMinutes: number;
+      timerId: string;
+      steps: { timeLabel: string; title: string; instruction: string }[];
+      ctaLabel: string;
+    }
+  | { type: 'safetyBox'; title: string; tone?: 'gentle' | 'caution' | 'medical'; items: string[]; note?: string }
+  | { type: 'ctaGroup'; title?: string; items: CareCTA[] };
+
 export type ContentBodyBlock =
-  | { type: 'paragraph'; text: string }
-  | { type: 'heading'; text: string }
+  | { type: 'paragraph'; text: string; legacyFallback?: boolean }
+  | { type: 'heading'; text: string; legacyFallback?: boolean }
   | { type: 'image'; uri: string; caption?: string }
   | { type: 'quote'; text: string }
-  | { type: 'list'; items: string[] }
-  | { type: 'divider' };
+  | { type: 'list'; items: string[]; legacyFallback?: boolean }
+  | { type: 'divider' }
+  | P0CareBodyBlock;
 
 export type HomeBathStructuredInfo = {
   durationMinutes?: number;
@@ -82,6 +163,15 @@ export type ArchiveContent = {
   relatedRoutineIds?: string[];
   relatedItemIds?: string[];
   relatedPlaceIds?: string[];
+  careArchive?: {
+    templateVersion: 'care-archive.v1';
+    summaryCard: CareSummaryCard;
+    ahaPoint: string;
+    rituals: CareRitual[];
+    ctas: CareCTA[];
+    sources: CareSource[];
+    disclaimers: string[];
+  };
   seo?: ContentSeoMetadata;
   isPublished: boolean;
   createdAt: string;

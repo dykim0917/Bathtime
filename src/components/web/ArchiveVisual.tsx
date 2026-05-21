@@ -2,6 +2,7 @@ import React from 'react';
 import { ImageBackground, StyleSheet, Text, View } from 'react-native';
 import { ArchiveContent, ContentCategory } from '@/src/archive/types';
 import { CATEGORY_LABELS } from '@/src/archive/labels';
+import { getCareHeroImage } from '@/src/data/careImages';
 import { archiveColors, archiveRadius } from '@/src/theme/archiveTheme';
 import { luxuryFonts } from '@/src/theme/luxury';
 
@@ -15,6 +16,9 @@ const CATEGORY_IMAGES: Record<ContentCategory, number> = {
 function getImageSource(content: ArchiveContent) {
   const uri = content.heroImage?.uri;
   if (!uri || uri.startsWith('category-')) return CATEGORY_IMAGES[content.category];
+  if (uri.startsWith('care-hero:')) {
+    return getCareHeroImage(uri.replace('care-hero:', '')) ?? CATEGORY_IMAGES[content.category];
+  }
   return { uri };
 }
 
