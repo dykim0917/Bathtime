@@ -13,6 +13,7 @@ interface ArchiveBodyBlockEditorProps {
   structuredInfo: Record<string, unknown>;
   seo: Record<string, unknown>;
   action: ArchiveBodyAction;
+  assetUploadAction: ArchiveBodyAction;
 }
 
 type BodyBlockType = 'paragraph' | 'heading' | 'image' | 'quote' | 'list' | 'divider';
@@ -56,6 +57,7 @@ export function ArchiveBodyBlockEditor({
   structuredInfo,
   seo,
   action,
+  assetUploadAction,
 }: ArchiveBodyBlockEditorProps) {
   const [heroImageText, setHeroImageText] = useState(() =>
     JSON.stringify(initialHeroImage ?? {}, null, 2)
@@ -89,7 +91,7 @@ export function ArchiveBodyBlockEditor({
   };
 
   return (
-    <form className="inlineForm" action={action}>
+    <form className="inlineForm" action={action} encType="multipart/form-data">
       <input type="hidden" name="id" value={contentId} />
       <input type="hidden" name="body" value={bodyJson} />
       <input type="hidden" name="structuredInfo" value={JSON.stringify(structuredInfo)} />
@@ -103,6 +105,18 @@ export function ArchiveBodyBlockEditor({
         value={heroImageText}
         onChange={(event) => setHeroImageText(event.currentTarget.value)}
       />
+      <div className="assetUploadRow">
+        <input name="assetFile_hero" type="file" accept="image/*" />
+        <button
+          type="submit"
+          className="primaryButton secondaryButton"
+          formAction={assetUploadAction}
+          name="assetTarget"
+          value="hero"
+        >
+          대표 이미지 업로드
+        </button>
+      </div>
 
       <div className="blockToolbar" aria-label="본문 블록 추가">
         {(['paragraph', 'heading', 'list', 'quote', 'image', 'divider'] as BodyBlockType[]).map((type) => (
@@ -158,6 +172,18 @@ export function ArchiveBodyBlockEditor({
                   value={block.uri}
                   onChange={(event) => updateBlock(index, { ...block, uri: event.currentTarget.value })}
                 />
+                <div className="assetUploadRow">
+                  <input name={`assetFile_${index}`} type="file" accept="image/*" />
+                  <button
+                    type="submit"
+                    className="primaryButton secondaryButton"
+                    formAction={assetUploadAction}
+                    name="assetTarget"
+                    value={`body:${index}`}
+                  >
+                    이미지 업로드
+                  </button>
+                </div>
                 <label htmlFor={`image-caption-${index}`}>캡션</label>
                 <input
                   id={`image-caption-${index}`}

@@ -786,6 +786,17 @@ button {
   margin-top: 8px;
 }
 
+.assetUploadRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+}
+
+.assetUploadRow .primaryButton {
+  min-width: 132px;
+}
+
 .miniButton {
   min-height: 34px;
   padding: 0 11px;
