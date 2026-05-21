@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageBackground, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
 import { ArchiveContent, ContentCategory } from '@/src/archive/types';
 import { CATEGORY_LABELS } from '@/src/archive/labels';
 import { getCareHeroImage } from '@/src/data/careImages';
@@ -45,18 +45,18 @@ export function ArchiveVisual({
       };
 
   return (
-    <ImageBackground
-      source={getImageSource(content)}
-      imageStyle={[styles.image, radiusStyle]}
-      resizeMode="cover"
-      style={[styles.visual, { minHeight: height }, radiusStyle]}
-    >
+    <View style={[styles.visual, { height }, radiusStyle]}>
+      <Image
+        source={getImageSource(content)}
+        resizeMode="cover"
+        style={[StyleSheet.absoluteFillObject, styles.absoluteImage, styles.image, radiusStyle]}
+      />
       {showBadge ? (
         <View style={styles.badge}>
           <Text style={styles.label}>{CATEGORY_LABELS[content.category]}</Text>
         </View>
       ) : null}
-    </ImageBackground>
+    </View>
   );
 }
 
@@ -72,6 +72,10 @@ const styles = StyleSheet.create({
   },
   image: {
     borderRadius: archiveRadius.lg,
+  },
+  absoluteImage: {
+    width: '100%',
+    height: '100%',
   },
   badge: {
     alignSelf: 'flex-start',
