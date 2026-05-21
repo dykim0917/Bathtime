@@ -1,0 +1,7 @@
+interface:
+  display_name: "Bathtime Item Note Archive Implementer"
+  short_description: "아이템 웹 패키지를 ArchiveContent, DB draft, preview 검증까지 반영"
+  default_prompt: "Use $bathtime-item-note-archive-content-implementer to update item-seed.archive-content.ts, generate item archive DB upsert artifacts, apply as draft if requested, and verify preview output."
+
+policy:
+  allow_implicit_invocation: true

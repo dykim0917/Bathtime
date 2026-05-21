@@ -1,0 +1,7 @@
+interface:
+  display_name: "Bathtime Item Note Skills"
+  short_description: "아이템 노트 제작 스킬 묶음의 진입점"
+  default_prompt: "Use $bathtime-item-note-skills to choose the right Bathtime Item Note skill, or default to the full publishing pipeline for private draft creation."
+
+policy:
+  allow_implicit_invocation: true

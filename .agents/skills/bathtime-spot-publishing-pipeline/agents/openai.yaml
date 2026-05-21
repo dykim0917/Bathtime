@@ -1,0 +1,7 @@
+interface:
+  display_name: "Bathtime Spot Publishing Pipeline"
+  short_description: "스팟 조사부터 비공개 DB draft와 preview 검증까지 한 사이클 실행"
+  default_prompt: "Use $bathtime-spot-publishing-pipeline to research this Bathtime spot, build seed files, create the web content package, implement ArchiveContent, apply it as a private draft, and verify the preview."
+
+policy:
+  allow_implicit_invocation: true

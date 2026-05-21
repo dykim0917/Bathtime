@@ -57,6 +57,24 @@ describe('mapArchiveContentDbRow', () => {
     expect(content.isPublished).toBe(false);
   });
 
+  test('treats admin-uploaded hero images as owned assets', () => {
+    const content = mapArchiveContentDbRow(
+      makeRow({
+        hero_image: {
+          uri: 'https://example.supabase.co/storage/v1/object/public/bathtime-assets/archive/item/hero.png',
+          alt: '관리자가 업로드한 대표 이미지',
+          sourceType: 'uploaded',
+        },
+      })
+    );
+
+    expect(content.heroImage).toMatchObject({
+      uri: 'https://example.supabase.co/storage/v1/object/public/bathtime-assets/archive/item/hero.png',
+      alt: '관리자가 업로드한 대표 이미지',
+      sourceType: 'owned',
+    });
+  });
+
   test('normalizes unsupported enum and json values conservatively', () => {
     const content = mapArchiveContentDbRow(
       makeRow({

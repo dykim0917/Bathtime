@@ -209,6 +209,15 @@ function normalizeBody(value: unknown): AdminArchiveBodyBlock[] {
   return Array.isArray(value) ? (value as AdminArchiveBodyBlock[]) : [];
 }
 
+function normalizeHeroImage(value: Record<string, unknown> | null | undefined): Record<string, unknown> | null {
+  if (!value) return null;
+  if (value.sourceType !== 'uploaded') return value;
+  return {
+    ...value,
+    sourceType: 'owned',
+  };
+}
+
 export function mapArchiveContentRecord(row: ArchiveContentRecord): AdminArchiveContentRow {
   return {
     id: row.id,
@@ -218,7 +227,7 @@ export function mapArchiveContentRecord(row: ArchiveContentRecord): AdminArchive
     category: normalizeCategory(row.category),
     contentType: normalizeContentType(row.content_type),
     tags: isStringArray(row.tags) ? row.tags : [],
-    heroImage: row.hero_image ?? null,
+    heroImage: normalizeHeroImage(row.hero_image),
     body: normalizeBody(row.body),
     structuredInfo: row.structured_info ?? {},
     seo: row.seo ?? {},

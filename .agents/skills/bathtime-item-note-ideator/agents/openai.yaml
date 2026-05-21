@@ -1,0 +1,7 @@
+interface:
+  display_name: "Bathtime Item Note Ideator"
+  short_description: "욕실·목욕 아이템을 배스타임식 콘텐츠 각도로 설계"
+  default_prompt: "Use $bathtime-item-note-ideator to turn this bath-related item or product idea into a Bathtime Item Note angle brief before research."
+
+policy:
+  allow_implicit_invocation: true

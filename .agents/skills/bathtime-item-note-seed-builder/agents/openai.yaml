@@ -1,0 +1,7 @@
+interface:
+  display_name: "Bathtime Item Note Seed Builder"
+  short_description: "아이템 노트 리서치 결과를 canonical seed와 ArchiveContent 초안으로 변환"
+  default_prompt: "Use $bathtime-item-note-seed-builder to convert these Item Note research files into canonical item seed artifacts and an ArchiveContent-compatible draft."
+
+policy:
+  allow_implicit_invocation: true
