@@ -24,6 +24,13 @@ import { copy } from '@/src/content/copy';
 
 type PreviewStatus = 'idle' | 'loading' | 'ready' | 'error';
 
+const CARE_ENVIRONMENT_LABELS: Record<string, string> = {
+  shower: '샤워',
+  footbath: '족욕',
+  bath: '입욕',
+  sauna: '사우나',
+};
+
 function normalizeParam(value: string | string[] | undefined): string {
   if (Array.isArray(value)) return value[0] ?? '';
   return value ?? '';
@@ -187,6 +194,31 @@ export default function ContentDetailPage() {
     }
   };
 
+  const primaryRitualBlock = content.body.find((block) => block.type === 'ritualTimer');
+  const primaryTimerId = content.careArchive?.summaryCard.primaryCTA.timerId ?? primaryRitualBlock?.timerId;
+  const primaryRitual = primaryTimerId
+    ? content.careArchive?.rituals.find((ritual) => ritual.id === primaryTimerId)
+    : undefined;
+  const primaryCareCta: CareCTA | undefined = primaryTimerId
+    ? {
+        label: primaryRitual || primaryRitualBlock?.type === 'ritualTimer'
+          ? `${primaryRitual?.durationMinutes ?? primaryRitualBlock?.durationMinutes}분 ${CARE_ENVIRONMENT_LABELS[primaryRitual?.environment ?? primaryRitualBlock?.environment ?? ''] ?? '루틴'} 루틴 보기`
+          : content.careArchive?.summaryCard.primaryCTA.label ?? '앱에서 따라 하기',
+        action: 'start_timer',
+        targetId: primaryTimerId,
+        emphasis: 'primary',
+      }
+    : undefined;
+  const inlineCareCta = primaryCareCta
+    ? { ...primaryCareCta, label: '앱에서 이 의식 따라 하기' }
+    : undefined;
+  const saveCareCta: CareCTA = {
+    label: '저장하기',
+    action: 'save',
+    targetId: content.id,
+    emphasis: 'secondary',
+  };
+
   const headerBlock = (
     <View style={webStyles.header}>
       <Text style={webStyles.eyebrow}>{CATEGORY_LABELS[content.category]} · {CONTENT_TYPE_LABELS[content.contentType]}</Text>
@@ -196,6 +228,19 @@ export default function ContentDetailPage() {
         <Text style={styles.summaryLabel}>요약</Text>
         <Text style={styles.summaryText}>{content.summary}</Text>
       </View>
+      {primaryCareCta ? (
+        <View style={styles.quickCtaBox}>
+          <Text style={styles.quickCtaEyebrow}>오늘 밤 바로 해볼 의식</Text>
+          <View style={styles.quickCtaRow}>
+            <Pressable style={styles.quickPrimaryCta} onPress={() => handleBodyCtaPress(primaryCareCta)}>
+              <Text style={styles.quickPrimaryCtaText}>{primaryCareCta.label}</Text>
+            </Pressable>
+            <Pressable style={styles.quickSecondaryCta} onPress={() => handleBodyCtaPress(saveCareCta)}>
+              <Text style={styles.quickSecondaryCtaText}>저장</Text>
+            </Pressable>
+          </View>
+        </View>
+      ) : null}
     </View>
   );
 
@@ -264,7 +309,7 @@ export default function ContentDetailPage() {
               <View style={styles.contentColumn}>
                 {headerBlock}
                 <View style={styles.bodyColumn}>
-                  <ContentBodyRenderer blocks={content.body} onCtaPress={handleBodyCtaPress} />
+                  <ContentBodyRenderer blocks={content.body} onCtaPress={handleBodyCtaPress} inlineCta={inlineCareCta} />
                 </View>
               </View>
               {React.createElement(
@@ -278,10 +323,10 @@ export default function ContentDetailPage() {
               {headerBlock}
               <View style={styles.detailColumns}>
                 <View style={styles.infoColumn}>
-                  <ArchiveStructuredInfo content={content} />
+                  <ArchiveStructuredInfo content={content} compact />
                 </View>
                 <View style={styles.bodyColumn}>
-                  <ContentBodyRenderer blocks={content.body} onCtaPress={handleBodyCtaPress} />
+                  <ContentBodyRenderer blocks={content.body} onCtaPress={handleBodyCtaPress} inlineCta={inlineCareCta} />
                 </View>
               </View>
             </>
@@ -382,6 +427,57 @@ const styles = StyleSheet.create({
     color: archiveColors.ink,
     fontSize: 15,
     lineHeight: 23,
+    fontFamily: luxuryFonts.sans,
+  },
+  quickCtaBox: {
+    borderWidth: 1,
+    borderColor: archiveColors.primaryDisabled,
+    borderRadius: archiveRadius.md,
+    backgroundColor: archiveColors.surface,
+    padding: 14,
+    gap: 10,
+  },
+  quickCtaEyebrow: {
+    color: archiveColors.primaryActive,
+    fontSize: 12,
+    fontWeight: '900',
+    fontFamily: luxuryFonts.sans,
+  },
+  quickCtaRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+  },
+  quickPrimaryCta: {
+    flexGrow: 1,
+    minHeight: 42,
+    justifyContent: 'center',
+    borderRadius: archiveRadius.sm,
+    backgroundColor: archiveColors.primaryActive,
+    paddingHorizontal: 14,
+    paddingVertical: 10,
+  },
+  quickSecondaryCta: {
+    minHeight: 42,
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: archiveColors.primaryDisabled,
+    borderRadius: archiveRadius.sm,
+    paddingHorizontal: 14,
+    paddingVertical: 10,
+  },
+  quickPrimaryCtaText: {
+    color: archiveColors.onPrimary,
+    fontSize: 14,
+    fontWeight: '900',
+    textAlign: 'center',
+    fontFamily: luxuryFonts.sans,
+  },
+  quickSecondaryCtaText: {
+    color: archiveColors.primaryActive,
+    fontSize: 14,
+    fontWeight: '900',
+    textAlign: 'center',
     fontFamily: luxuryFonts.sans,
   },
   textLink: {

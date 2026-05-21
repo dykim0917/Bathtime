@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import {
   Bathtub,
   BookOpen,
@@ -132,29 +132,58 @@ function getRows(content: ArchiveContent): Array<[string, unknown]> {
   ];
 }
 
-export function ArchiveStructuredInfo({ content }: { content: ArchiveContent }) {
+export function ArchiveStructuredInfo({ content, compact = false }: { content: ArchiveContent; compact?: boolean }) {
+  const [expanded, setExpanded] = useState(false);
+  const rows = getRows(content);
+  const compactRows = content.category === 'HOME_BATH'
+    ? [
+        ['소요 시간', 'durationMinutes' in content.structuredInfo ? `${content.structuredInfo.durationMinutes}분` : undefined],
+        ['욕조', 'bathRequired' in content.structuredInfo && content.structuredInfo.bathRequired ? '필요' : '욕조 없음'],
+        ['난이도', 'difficulty' in content.structuredInfo ? content.structuredInfo.difficulty : undefined],
+        ['타이밍', content.careArchive?.summaryCard.bestTiming ?? ('recommendedSituations' in content.structuredInfo ? content.structuredInfo.recommendedSituations?.[0] : undefined)],
+      ] as Array<[string, unknown]>
+    : rows.slice(0, 4);
+  const showGrid = !compact || expanded;
+
   return (
     <View style={styles.panel}>
       <View style={styles.panelHeader}>
         <Text style={styles.panelTitle}>구조화 정보</Text>
       </View>
-      <View style={styles.grid}>
-        {getRows(content).map(([label, value]) => {
-          const IconComponent = ROW_ICONS[label];
+      {compact ? (
+        <>
+          <View style={styles.compactChips}>
+            {compactRows.map(([label, value]) => (
+              <View key={label} style={styles.compactChip}>
+                <Text style={styles.compactChipLabel}>{label}</Text>
+                <Text style={styles.compactChipValue}>{formatValue(value)}</Text>
+              </View>
+            ))}
+          </View>
+          <Pressable style={styles.expandButton} onPress={() => setExpanded((current) => !current)}>
+            <Text style={styles.expandButtonText}>{expanded ? '상세 정보 접기' : '상세 정보 보기'}</Text>
+          </Pressable>
+        </>
+      ) : null}
+      {showGrid ? (
+        <View style={styles.grid}>
+          {rows.map(([label, value]) => {
+            const IconComponent = ROW_ICONS[label];
 
-          return (
-            <View style={styles.row} key={label}>
-              <View style={styles.iconBox}>
-                {IconComponent ? <IconComponent size={16} color={archiveColors.primaryActive} weight="regular" /> : null}
+            return (
+              <View style={styles.row} key={label}>
+                <View style={styles.iconBox}>
+                  {IconComponent ? <IconComponent size={16} color={archiveColors.primaryActive} weight="regular" /> : null}
+                </View>
+                <View style={styles.rowContent}>
+                  <Text style={styles.label}>{label}</Text>
+                  <Text style={styles.value}>{formatValue(value)}</Text>
+                </View>
               </View>
-              <View style={styles.rowContent}>
-                <Text style={styles.label}>{label}</Text>
-                <Text style={styles.value}>{formatValue(value)}</Text>
-              </View>
-            </View>
-          );
-        })}
-      </View>
+            );
+          })}
+        </View>
+      ) : null}
     </View>
   );
 }
@@ -183,6 +212,45 @@ const styles = StyleSheet.create({
     gap: 0,
     paddingHorizontal: 24,
     paddingBottom: 10,
+  } as any,
+  compactChips: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+    paddingHorizontal: 14,
+    paddingTop: 14,
+  } as any,
+  compactChip: {
+    borderWidth: 1,
+    borderColor: archiveColors.hairline,
+    borderRadius: archiveRadius.sm,
+    backgroundColor: archiveColors.primarySoft,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+    gap: 3,
+  },
+  compactChipLabel: {
+    color: archiveColors.muted,
+    fontSize: 10,
+    fontWeight: '700',
+    fontFamily: luxuryFonts.sans,
+  },
+  compactChipValue: {
+    color: archiveColors.ink,
+    fontSize: 12,
+    fontWeight: '900',
+    fontFamily: luxuryFonts.sans,
+  },
+  expandButton: {
+    paddingHorizontal: 14,
+    paddingTop: 12,
+    paddingBottom: 2,
+  } as any,
+  expandButtonText: {
+    color: archiveColors.primaryActive,
+    fontSize: 13,
+    fontWeight: '900',
+    fontFamily: luxuryFonts.sans,
   },
   row: {
     flexDirection: 'row',

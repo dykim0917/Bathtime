@@ -1,7 +1,8 @@
 import React from 'react';
-import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Image, Linking, Pressable, StyleSheet, Text, View } from 'react-native';
 import { CareCTA, ContentBodyBlock } from '@/src/archive/types';
 import { getCareGuideImage } from '@/src/data/careImages';
+import { FileText } from '@/src/components/web/phosphorIcons';
 import { archiveColors, archiveRadius } from '@/src/theme/archiveTheme';
 import { luxuryFonts } from '@/src/theme/luxury';
 
@@ -41,10 +42,14 @@ function getImageBackgroundColor(uri: string): string {
 export function ContentBodyRenderer({
   blocks,
   onCtaPress,
+  inlineCta,
 }: {
   blocks: ContentBodyBlock[];
   onCtaPress?: (cta: CareCTA) => void;
+  inlineCta?: CareCTA;
 }) {
+  let inlineCtaRendered = false;
+
   return (
     <View style={styles.stack}>
       {blocks.map((block, index) => {
@@ -66,7 +71,7 @@ export function ContentBodyRenderer({
           return (
             <View key={index} style={styles.ahaBox}>
               <Text style={styles.cardTitle}>{block.title}</Text>
-              <Text style={styles.quote}>{block.text}</Text>
+              <Text style={styles.ahaText}>{block.text}</Text>
             </View>
           );
         }
@@ -96,11 +101,23 @@ export function ContentBodyRenderer({
               {block.intro ? <Text style={styles.cardSubtitle}>{block.intro}</Text> : null}
               <View style={styles.cardStack}>
                 {block.items.map((item) => (
-                  <View key={`${item.sourceName}-${item.year ?? ''}`} style={styles.evidenceItem}>
-                    <Text style={styles.stepLabel}>{item.sourceName}{item.year ? ` · ${item.year}` : ''}</Text>
-                    <Text style={styles.paragraph}>{item.finding}</Text>
-                    <Text style={styles.takeaway}>배스타임 해석: {item.bathtimeTakeaway}</Text>
-                  </View>
+                  <Pressable
+                    key={`${item.sourceName}-${item.year ?? ''}`}
+                    disabled={!item.url}
+                    onPress={() => item.url ? Linking.openURL(item.url) : undefined}
+                    style={styles.evidenceLinkCard}
+                  >
+                    <View style={styles.evidenceLinkHeader}>
+                      <View style={styles.evidenceIconBox}>
+                        <FileText size={16} color={archiveColors.primaryActive} weight="regular" />
+                      </View>
+                      <View style={styles.stepContent}>
+                        <Text style={styles.stepLabel}>{item.sourceName}{item.year ? ` · ${item.year}` : ''}</Text>
+                        <Text style={styles.evidenceSummary}>{item.bathtimeTakeaway}</Text>
+                      </View>
+                      {item.url ? <Text style={styles.externalMark}>↗</Text> : null}
+                    </View>
+                  </Pressable>
                 ))}
               </View>
             </View>
@@ -173,6 +190,33 @@ export function ContentBodyRenderer({
         if (block.type === 'heading') {
           return <Text key={index} style={styles.heading}>{block.text}</Text>;
         }
+        if (block.type === 'paragraph') {
+          const shouldRenderInlineCta = Boolean(
+            inlineCta &&
+            !inlineCtaRendered &&
+            block.text.includes('배스타임의 결론')
+          );
+
+          if (shouldRenderInlineCta) {
+            inlineCtaRendered = true;
+          }
+          const renderedInlineCta = shouldRenderInlineCta ? inlineCta : undefined;
+
+          return (
+            <React.Fragment key={index}>
+              <Text style={styles.paragraph}>{block.text}</Text>
+              {renderedInlineCta ? (
+                <Pressable
+                  disabled={!onCtaPress}
+                  onPress={() => onCtaPress?.(renderedInlineCta)}
+                  style={styles.inlineCta}
+                >
+                  <Text style={styles.primaryCtaText}>{renderedInlineCta.label}</Text>
+                </Pressable>
+              ) : null}
+            </React.Fragment>
+          );
+        }
         if (block.type === 'list') {
           return (
             <View key={index} style={styles.list}>
@@ -205,7 +249,7 @@ export function ContentBodyRenderer({
             </View>
           );
         }
-        return <Text key={index} style={styles.paragraph}>{block.text}</Text>;
+        return null;
       })}
     </View>
   );
@@ -263,12 +307,19 @@ const styles = StyleSheet.create({
     padding: 18,
   },
   ahaBox: {
-    gap: 12,
+    gap: 8,
     borderWidth: 1,
     borderColor: archiveColors.brassSoft,
     borderRadius: archiveRadius.lg,
     backgroundColor: archiveColors.brassSoft,
-    padding: 18,
+    padding: 14,
+  },
+  ahaText: {
+    color: archiveColors.ink,
+    fontSize: 15,
+    lineHeight: 23,
+    fontWeight: '800',
+    fontFamily: luxuryFonts.sans,
   },
   timerBox: {
     gap: 14,
@@ -337,6 +388,39 @@ const styles = StyleSheet.create({
     borderTopColor: archiveColors.hairlineSoft,
     paddingTop: 12,
   },
+  evidenceLinkCard: {
+    borderWidth: 1,
+    borderColor: archiveColors.hairline,
+    borderRadius: archiveRadius.md,
+    backgroundColor: archiveColors.canvas,
+    padding: 12,
+  },
+  evidenceLinkHeader: {
+    flexDirection: 'row',
+    gap: 10,
+    alignItems: 'flex-start',
+  },
+  evidenceIconBox: {
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: archiveColors.primarySoft,
+  },
+  evidenceSummary: {
+    color: archiveColors.body,
+    fontSize: 13,
+    lineHeight: 20,
+    fontFamily: luxuryFonts.sans,
+  },
+  externalMark: {
+    color: archiveColors.primaryActive,
+    fontSize: 16,
+    lineHeight: 20,
+    fontWeight: '900',
+    fontFamily: luxuryFonts.sans,
+  },
   takeaway: {
     color: archiveColors.primaryActive,
     fontSize: 14,
@@ -380,6 +464,13 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     textAlign: 'center',
     fontFamily: luxuryFonts.sans,
+  },
+  inlineCta: {
+    backgroundColor: archiveColors.primaryActive,
+    borderRadius: archiveRadius.sm,
+    overflow: 'hidden',
+    paddingHorizontal: 14,
+    paddingVertical: 11,
   },
   secondaryCta: {
     borderWidth: 1,
