@@ -123,7 +123,18 @@ export function ContentBodyRenderer({
                   </View>
                 ))}
               </View>
-              <Text style={styles.ctaText}>{block.ctaLabel}</Text>
+              <Pressable
+                disabled={!onCtaPress}
+                onPress={() => onCtaPress?.({
+                  label: block.ctaLabel,
+                  action: 'start_timer',
+                  targetId: block.timerId,
+                  emphasis: 'primary',
+                })}
+                style={styles.primaryCta}
+              >
+                <Text style={styles.primaryCtaText}>{block.ctaLabel}</Text>
+              </Pressable>
             </View>
           );
         }
@@ -353,19 +364,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 21,
     fontWeight: '800',
-    fontFamily: luxuryFonts.sans,
-  },
-  ctaText: {
-    color: archiveColors.onPrimary,
-    backgroundColor: archiveColors.primaryActive,
-    borderRadius: archiveRadius.sm,
-    overflow: 'hidden',
-    paddingHorizontal: 14,
-    paddingVertical: 11,
-    fontSize: 14,
-    lineHeight: 20,
-    fontWeight: '800',
-    textAlign: 'center',
     fontFamily: luxuryFonts.sans,
   },
   ctaList: {
