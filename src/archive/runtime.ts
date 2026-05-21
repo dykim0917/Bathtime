@@ -113,6 +113,10 @@ export async function hydrateArchiveContentsFromApi(): Promise<ArchiveContent[]>
         throw new Error('Invalid archive content API response');
       }
 
+      if (contents.length === 0 && getArchiveContents().length > 0) {
+        return getArchiveContents();
+      }
+
       setArchiveContents(contents);
       hasRemoteArchiveContents = true;
       return getArchiveContents();
