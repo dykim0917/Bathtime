@@ -85,6 +85,12 @@ async function optimizeUploadedImage(file: File): Promise<Buffer> {
     .toBuffer();
 }
 
+async function getImageAspectRatio(buffer: Buffer): Promise<number | undefined> {
+  const metadata = await sharp(buffer).metadata();
+  if (!metadata.width || !metadata.height) return undefined;
+  return Number((metadata.width / metadata.height).toFixed(4));
+}
+
 function createUploadedImageAsset(
   imageUrl: string,
   previous: Record<string, unknown> | undefined,
@@ -240,6 +246,7 @@ export async function uploadArchiveContentImage(formData: FormData) {
 
   try {
     const optimizedImage = await optimizeUploadedImage(file);
+    const aspectRatio = await getImageAspectRatio(optimizedImage);
     const supabase = await createSupabaseServerClient();
     const { error: uploadError } = await supabase.storage
       .from(archiveAssetBucket)
@@ -272,7 +279,7 @@ export async function uploadArchiveContentImage(formData: FormData) {
       const blockIndex = Number(assetTarget.replace('body:', ''));
       const nextBody = body.map((block, index) => {
         if (index !== blockIndex || !isPlainObject(block) || block.type !== 'image') return block;
-        return { ...block, uri: publicUrl };
+        return { ...block, uri: publicUrl, aspectRatio };
       });
 
       await updatePostgrestRows(

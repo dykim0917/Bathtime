@@ -85,7 +85,7 @@ export type P0CareBodyBlock =
 export type ContentBodyBlock =
   | { type: 'paragraph'; text: string; legacyFallback?: boolean }
   | { type: 'heading'; text: string; legacyFallback?: boolean }
-  | { type: 'image'; uri: string; caption?: string }
+  | { type: 'image'; uri: string; caption?: string; aspectRatio?: number }
   | { type: 'quote'; text: string }
   | { type: 'list'; items: string[]; legacyFallback?: boolean }
   | { type: 'divider' }
