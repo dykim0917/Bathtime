@@ -2,6 +2,7 @@
 
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
+import sharp from 'sharp';
 
 import {
   insertPostgrestRow,
@@ -24,6 +25,8 @@ function todayDateString(): string {
 }
 
 const archiveAssetBucket = process.env.ARCHIVE_ASSET_BUCKET?.trim() || 'bathtime-assets';
+const archiveAssetMaxWidth = 1400;
+const archiveAssetWebpQuality = 82;
 
 function parseListField(value: FormDataEntryValue | null): string[] {
   return String(value ?? '')
@@ -67,19 +70,19 @@ function sanitizePathSegment(value: string): string {
     .replace(/^-+|-+$/g, '');
 }
 
-function getFileExtension(file: File): string {
-  const nameExtension = file.name.split('.').pop()?.toLowerCase();
-  if (nameExtension && /^[a-z0-9]+$/.test(nameExtension)) return nameExtension;
-  if (file.type === 'image/png') return 'png';
-  if (file.type === 'image/jpeg') return 'jpg';
-  if (file.type === 'image/webp') return 'webp';
-  return 'bin';
-}
-
 function getUploadedFile(formData: FormData, fieldName: string): File | null {
   const value = formData.get(fieldName);
   if (!(value instanceof File) || value.size === 0) return null;
   return value;
+}
+
+async function optimizeUploadedImage(file: File): Promise<Buffer> {
+  const input = Buffer.from(await file.arrayBuffer());
+  return sharp(input)
+    .rotate()
+    .resize({ width: archiveAssetMaxWidth, withoutEnlargement: true })
+    .webp({ quality: archiveAssetWebpQuality, effort: 6 })
+    .toBuffer();
 }
 
 function createUploadedImageAsset(
@@ -229,19 +232,19 @@ export async function uploadArchiveContentImage(formData: FormData) {
     limit: '1',
   });
   const title = contentRows[0]?.title ?? id;
-  const extension = getFileExtension(file);
   const safeId = sanitizePathSegment(id) || 'archive-content';
   const storageTarget = assetTarget === 'hero'
     ? 'hero'
     : `body-${sanitizePathSegment(assetTarget.replace('body:', '')) || 'image'}`;
-  const storagePath = `archive/${safeId}/${storageTarget}.${extension}`;
+  const storagePath = `archive/${safeId}/${storageTarget}.webp`;
 
   try {
+    const optimizedImage = await optimizeUploadedImage(file);
     const supabase = await createSupabaseServerClient();
     const { error: uploadError } = await supabase.storage
       .from(archiveAssetBucket)
-      .upload(storagePath, file, {
-        contentType: file.type,
+      .upload(storagePath, optimizedImage, {
+        contentType: 'image/webp',
         upsert: true,
       });
 
