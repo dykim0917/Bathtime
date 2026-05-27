@@ -27,7 +27,10 @@ const GUIDE_IMAGE_ASPECT_RATIOS: Record<string, number> = {
   stress_relief: 1672 / 941,
 };
 
-function getImageAspectRatio(uri: string): number {
+function getImageAspectRatio(uri: string, explicitAspectRatio?: number): number {
+  if (typeof explicitAspectRatio === 'number' && Number.isFinite(explicitAspectRatio) && explicitAspectRatio > 0) {
+    return explicitAspectRatio;
+  }
   if (uri.startsWith('care-guide:')) {
     return GUIDE_IMAGE_ASPECT_RATIOS[uri.replace('care-guide:', '')] ?? 4 / 3;
   }
@@ -237,7 +240,7 @@ export function ContentBodyRenderer({
           return (
             <View key={index} style={[styles.imageBlock, { backgroundColor }]}>
               {imageSource ? (
-                <View style={[styles.bodyImageFrame, { aspectRatio: getImageAspectRatio(block.uri), backgroundColor }]}>
+                <View style={[styles.bodyImageFrame, { aspectRatio: getImageAspectRatio(block.uri, block.aspectRatio), backgroundColor }]}>
                   <Image source={imageSource} style={[StyleSheet.absoluteFillObject, styles.absoluteImage]} resizeMode="cover" />
                 </View>
               ) : (
