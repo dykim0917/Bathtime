@@ -285,7 +285,13 @@ export async function uploadArchiveContentImage(formData: FormData) {
         }
       );
     }
-  } catch {
+  } catch (error) {
+    console.error('Archive content image upload failed', {
+      id,
+      assetTarget,
+      bucket: archiveAssetBucket,
+      error,
+    });
     redirect(`/content/${id}?error=upload_failed`);
   }
 

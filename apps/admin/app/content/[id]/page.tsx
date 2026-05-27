@@ -23,6 +23,8 @@ interface PageProps {
 }
 
 function getStatusMessage(error?: string, updated?: string): string | null {
+  const assetBucket = process.env.ARCHIVE_ASSET_BUCKET?.trim() || 'bathtime-assets';
+
   if (updated === 'create') return '콘텐츠 초안이 생성되었습니다.';
   if (updated === 'basic_info') return '기본 정보가 저장되었습니다.';
   if (updated === 'body') return '본문과 구조화 정보가 저장되었습니다.';
@@ -31,7 +33,7 @@ function getStatusMessage(error?: string, updated?: string): string | null {
   if (error === 'invalid_content_json') return '본문, 대표 이미지, 구조화 정보 JSON 형식을 확인하세요.';
   if (error === 'invalid_upload') return '업로드할 이미지 파일을 선택하세요.';
   if (error === 'missing_content_db') return '콘텐츠 DB 연결이 설정되지 않았습니다.';
-  if (error === 'upload_failed') return '이미지 업로드에 실패했습니다. Storage 버킷과 정책을 확인하세요.';
+  if (error === 'upload_failed') return `이미지 업로드에 실패했습니다. Supabase Storage의 ${assetBucket} 버킷과 정책을 확인하세요.`;
   if (error === 'update_failed') return '저장에 실패했습니다. RLS 정책과 권한을 확인하세요.';
   return null;
 }
@@ -91,6 +93,12 @@ export default async function ContentDetailPage({ params, searchParams }: PagePr
           </div>
         </section>
 
+        {statusMessage ? (
+          <p className={error ? 'formNotice error' : 'formNotice'}>
+            {statusMessage}
+          </p>
+        ) : null}
+
         <section className="detailGrid">
           <section className="panel">
             <div className="panelHeader">
@@ -144,11 +152,6 @@ export default async function ContentDetailPage({ params, searchParams }: PagePr
               <h3>구조화 정보</h3>
               <span>{categoryLabels[content.category]}</span>
             </div>
-            {statusMessage ? (
-              <p className={error ? 'formNotice error' : 'formNotice'}>
-                {statusMessage}
-              </p>
-            ) : null}
             <form className="inlineForm" action={updateArchiveContentBody}>
               <input type="hidden" name="id" value={content.id} />
               <input type="hidden" name="heroImage" value={JSON.stringify(content.heroImage ?? {})} />
