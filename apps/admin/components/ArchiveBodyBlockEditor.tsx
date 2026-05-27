@@ -63,6 +63,8 @@ export function ArchiveBodyBlockEditor({
     JSON.stringify(initialHeroImage ?? {}, null, 2)
   );
   const [blocks, setBlocks] = useState<AdminArchiveBodyBlock[]>(initialBody);
+  const [heroAssetFileName, setHeroAssetFileName] = useState('');
+  const [bodyAssetFileNames, setBodyAssetFileNames] = useState<Record<number, string>>({});
 
   const bodyJson = useMemo(() => JSON.stringify(blocks), [blocks]);
 
@@ -88,6 +90,19 @@ export function ArchiveBodyBlockEditor({
 
   const removeBlock = (index: number) => {
     setBlocks((current) => current.filter((_, blockIndex) => blockIndex !== index));
+    setBodyAssetFileNames((current) => {
+      const next: Record<number, string> = {};
+      Object.entries(current).forEach(([key, value]) => {
+        const numericKey = Number(key);
+        if (numericKey < index) next[numericKey] = value;
+        if (numericKey > index) next[numericKey - 1] = value;
+      });
+      return next;
+    });
+  };
+
+  const updateBodyAssetFileName = (index: number, fileName: string) => {
+    setBodyAssetFileNames((current) => ({ ...current, [index]: fileName }));
   };
 
   return (
@@ -106,13 +121,23 @@ export function ArchiveBodyBlockEditor({
         onChange={(event) => setHeroImageText(event.currentTarget.value)}
       />
       <div className="assetUploadRow">
-        <input name="assetFile_hero" type="file" accept="image/*" />
+        <div className="assetFileControl">
+          <input
+            id="assetFile_hero"
+            name="assetFile_hero"
+            type="file"
+            accept="image/*"
+            onChange={(event) => setHeroAssetFileName(event.currentTarget.files?.[0]?.name ?? '')}
+          />
+          <span className="assetFileName">{heroAssetFileName || '선택된 파일 없음'}</span>
+        </div>
         <button
           type="submit"
           className="primaryButton secondaryButton"
           formAction={assetUploadAction}
           name="assetTarget"
           value="hero"
+          disabled={!heroAssetFileName}
         >
           대표 이미지 업로드
         </button>
@@ -173,13 +198,22 @@ export function ArchiveBodyBlockEditor({
                   onChange={(event) => updateBlock(index, { ...block, uri: event.currentTarget.value })}
                 />
                 <div className="assetUploadRow">
-                  <input name={`assetFile_${index}`} type="file" accept="image/*" />
+                  <div className="assetFileControl">
+                    <input
+                      name={`assetFile_${index}`}
+                      type="file"
+                      accept="image/*"
+                      onChange={(event) => updateBodyAssetFileName(index, event.currentTarget.files?.[0]?.name ?? '')}
+                    />
+                    <span className="assetFileName">{bodyAssetFileNames[index] || '선택된 파일 없음'}</span>
+                  </div>
                   <button
                     type="submit"
                     className="primaryButton secondaryButton"
                     formAction={assetUploadAction}
                     name="assetTarget"
                     value={`body:${index}`}
+                    disabled={!bodyAssetFileNames[index]}
                   >
                     이미지 업로드
                   </button>
