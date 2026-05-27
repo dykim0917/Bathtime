@@ -106,12 +106,7 @@ export function ArchiveBodyBlockEditor({
   };
 
   return (
-    <form className="inlineForm" action={action} encType="multipart/form-data">
-      <input type="hidden" name="id" value={contentId} />
-      <input type="hidden" name="body" value={bodyJson} />
-      <input type="hidden" name="structuredInfo" value={JSON.stringify(structuredInfo)} />
-      <input type="hidden" name="seo" value={JSON.stringify(seo)} />
-
+    <div className="inlineForm">
       <label htmlFor="heroImage">대표 이미지 JSON</label>
       <textarea
         id="heroImage"
@@ -120,7 +115,13 @@ export function ArchiveBodyBlockEditor({
         value={heroImageText}
         onChange={(event) => setHeroImageText(event.currentTarget.value)}
       />
-      <div className="assetUploadRow">
+      <form className="assetUploadRow" action={assetUploadAction} encType="multipart/form-data">
+        <input type="hidden" name="id" value={contentId} />
+        <input type="hidden" name="body" value={bodyJson} />
+        <input type="hidden" name="structuredInfo" value={JSON.stringify(structuredInfo)} />
+        <input type="hidden" name="seo" value={JSON.stringify(seo)} />
+        <input type="hidden" name="heroImage" value={heroImageText} />
+        <input type="hidden" name="assetTarget" value="hero" />
         <div className="assetFileControl">
           <input
             id="assetFile_hero"
@@ -134,14 +135,11 @@ export function ArchiveBodyBlockEditor({
         <button
           type="submit"
           className="primaryButton secondaryButton"
-          formAction={assetUploadAction}
-          name="assetTarget"
-          value="hero"
           disabled={!heroAssetFileName}
         >
           대표 이미지 업로드
         </button>
-      </div>
+      </form>
 
       <div className="blockToolbar" aria-label="본문 블록 추가">
         {(['paragraph', 'heading', 'list', 'quote', 'image', 'divider'] as BodyBlockType[]).map((type) => (
@@ -197,7 +195,13 @@ export function ArchiveBodyBlockEditor({
                   value={block.uri}
                   onChange={(event) => updateBlock(index, { ...block, uri: event.currentTarget.value })}
                 />
-                <div className="assetUploadRow">
+                <form className="assetUploadRow" action={assetUploadAction} encType="multipart/form-data">
+                  <input type="hidden" name="id" value={contentId} />
+                  <input type="hidden" name="body" value={bodyJson} />
+                  <input type="hidden" name="structuredInfo" value={JSON.stringify(structuredInfo)} />
+                  <input type="hidden" name="seo" value={JSON.stringify(seo)} />
+                  <input type="hidden" name="heroImage" value={heroImageText} />
+                  <input type="hidden" name="assetTarget" value={`body:${index}`} />
                   <div className="assetFileControl">
                     <input
                       name={`assetFile_${index}`}
@@ -210,14 +214,11 @@ export function ArchiveBodyBlockEditor({
                   <button
                     type="submit"
                     className="primaryButton secondaryButton"
-                    formAction={assetUploadAction}
-                    name="assetTarget"
-                    value={`body:${index}`}
                     disabled={!bodyAssetFileNames[index]}
                   >
                     이미지 업로드
                   </button>
-                </div>
+                </form>
                 <label htmlFor={`image-caption-${index}`}>캡션</label>
                 <input
                   id={`image-caption-${index}`}
@@ -232,7 +233,14 @@ export function ArchiveBodyBlockEditor({
         ))}
       </div>
 
-      <button type="submit" className="primaryButton">본문 저장</button>
-    </form>
+      <form action={action} encType="multipart/form-data">
+        <input type="hidden" name="id" value={contentId} />
+        <input type="hidden" name="body" value={bodyJson} />
+        <input type="hidden" name="structuredInfo" value={JSON.stringify(structuredInfo)} />
+        <input type="hidden" name="seo" value={JSON.stringify(seo)} />
+        <input type="hidden" name="heroImage" value={heroImageText} />
+        <button type="submit" className="primaryButton">본문 저장</button>
+      </form>
+    </div>
   );
 }
