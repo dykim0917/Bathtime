@@ -9,6 +9,11 @@ const nextConfig = {
   outputFileTracingRoot: repoRoot,
   reactStrictMode: true,
   transpilePackages: [],
+  experimental: {
+    serverActions: {
+      bodySizeLimit: '4mb',
+    },
+  },
 };
 
 export default nextConfig;

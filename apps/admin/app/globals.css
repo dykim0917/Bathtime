@@ -820,6 +820,10 @@ button {
   font-weight: 700;
 }
 
+.assetFileError {
+  color: #b91c1c;
+}
+
 .assetUploadRow .primaryButton {
   min-width: 132px;
 }

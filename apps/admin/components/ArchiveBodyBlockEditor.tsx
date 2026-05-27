@@ -18,6 +18,25 @@ interface ArchiveBodyBlockEditorProps {
 
 type BodyBlockType = 'paragraph' | 'heading' | 'image' | 'quote' | 'list' | 'divider';
 
+const maxAssetUploadBytes = 4 * 1024 * 1024;
+const maxAssetUploadLabel = '4MB';
+
+interface AssetFileState {
+  name: string;
+  error: string;
+}
+
+function getAssetFileState(file: File | undefined): AssetFileState {
+  if (!file) return { name: '', error: '' };
+  if (file.size > maxAssetUploadBytes) {
+    return {
+      name: file.name,
+      error: `이미지는 ${maxAssetUploadLabel} 이하로 줄여서 업로드해주세요.`,
+    };
+  }
+  return { name: file.name, error: '' };
+}
+
 function createBlock(type: BodyBlockType): AdminArchiveBodyBlock {
   if (type === 'heading') return { type, text: '새 제목' };
   if (type === 'quote') return { type, text: '인용 문구를 입력하세요.' };
@@ -63,8 +82,8 @@ export function ArchiveBodyBlockEditor({
     JSON.stringify(initialHeroImage ?? {}, null, 2)
   );
   const [blocks, setBlocks] = useState<AdminArchiveBodyBlock[]>(initialBody);
-  const [heroAssetFileName, setHeroAssetFileName] = useState('');
-  const [bodyAssetFileNames, setBodyAssetFileNames] = useState<Record<number, string>>({});
+  const [heroAssetFile, setHeroAssetFile] = useState<AssetFileState>({ name: '', error: '' });
+  const [bodyAssetFiles, setBodyAssetFiles] = useState<Record<number, AssetFileState>>({});
 
   const bodyJson = useMemo(() => JSON.stringify(blocks), [blocks]);
 
@@ -90,8 +109,8 @@ export function ArchiveBodyBlockEditor({
 
   const removeBlock = (index: number) => {
     setBlocks((current) => current.filter((_, blockIndex) => blockIndex !== index));
-    setBodyAssetFileNames((current) => {
-      const next: Record<number, string> = {};
+    setBodyAssetFiles((current) => {
+      const next: Record<number, AssetFileState> = {};
       Object.entries(current).forEach(([key, value]) => {
         const numericKey = Number(key);
         if (numericKey < index) next[numericKey] = value;
@@ -101,8 +120,8 @@ export function ArchiveBodyBlockEditor({
     });
   };
 
-  const updateBodyAssetFileName = (index: number, fileName: string) => {
-    setBodyAssetFileNames((current) => ({ ...current, [index]: fileName }));
+  const updateBodyAssetFile = (index: number, file: File | undefined) => {
+    setBodyAssetFiles((current) => ({ ...current, [index]: getAssetFileState(file) }));
   };
 
   return (
@@ -128,14 +147,16 @@ export function ArchiveBodyBlockEditor({
             name="assetFile_hero"
             type="file"
             accept="image/*"
-            onChange={(event) => setHeroAssetFileName(event.currentTarget.files?.[0]?.name ?? '')}
+            onChange={(event) => setHeroAssetFile(getAssetFileState(event.currentTarget.files?.[0]))}
           />
-          <span className="assetFileName">{heroAssetFileName || '선택된 파일 없음'}</span>
+          <span className={heroAssetFile.error ? 'assetFileName assetFileError' : 'assetFileName'}>
+            {heroAssetFile.error || heroAssetFile.name || '선택된 파일 없음'}
+          </span>
         </div>
         <button
           type="submit"
           className="primaryButton secondaryButton"
-          disabled={!heroAssetFileName}
+          disabled={!heroAssetFile.name || Boolean(heroAssetFile.error)}
         >
           대표 이미지 업로드
         </button>
@@ -207,14 +228,16 @@ export function ArchiveBodyBlockEditor({
                       name={`assetFile_${index}`}
                       type="file"
                       accept="image/*"
-                      onChange={(event) => updateBodyAssetFileName(index, event.currentTarget.files?.[0]?.name ?? '')}
+                      onChange={(event) => updateBodyAssetFile(index, event.currentTarget.files?.[0])}
                     />
-                    <span className="assetFileName">{bodyAssetFileNames[index] || '선택된 파일 없음'}</span>
+                    <span className={bodyAssetFiles[index]?.error ? 'assetFileName assetFileError' : 'assetFileName'}>
+                      {bodyAssetFiles[index]?.error || bodyAssetFiles[index]?.name || '선택된 파일 없음'}
+                    </span>
                   </div>
                   <button
                     type="submit"
                     className="primaryButton secondaryButton"
-                    disabled={!bodyAssetFileNames[index]}
+                    disabled={!bodyAssetFiles[index]?.name || Boolean(bodyAssetFiles[index]?.error)}
                   >
                     이미지 업로드
                   </button>
