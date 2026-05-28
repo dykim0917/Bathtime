@@ -283,9 +283,10 @@ const styles = StyleSheet.create({
     color: archiveColors.ink,
     fontSize: 22,
     lineHeight: 31,
-    fontWeight: '700',
+    fontWeight: '500',
     fontFamily: luxuryFonts.display,
-    marginTop: 18,
+    marginTop: 34,
+    marginBottom: 2,
   },
   paragraph: {
     color: archiveColors.body,
