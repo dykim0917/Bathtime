@@ -1,6 +1,6 @@
 ---
 name: bathtime-item-note-skills
-description: Entry point for Bathtime Item Note skills. Use when the user references the bathtime-item-note-skills folder or asks which Item Note skill to use. Route work to the appropriate dedicated skill: ideator, researcher, seed-builder, web-content-producer, archive-content-implementer, or publishing-pipeline.
+description: Entry point for Bathtime Item Note skills. Use when the user references the bathtime-item-note-skills folder or asks which Item Note skill to use. Route work to the appropriate dedicated skill: ideator, researcher, product-researcher, seed-builder, web-content-producer, archive-content-implementer, or publishing-pipeline.
 metadata:
   short-description: 배스타임 아이템 노트 스킬 묶음 진입점
 ---
@@ -13,6 +13,7 @@ Prefer the dedicated skills:
 
 - `bathtime-item-note-ideator`: define the editorial angle before research.
 - `bathtime-item-note-researcher`: research item/category facts and practical friction.
+- `bathtime-item-product-researcher`: research real product candidates, purchase links, price/date notes, and non-ranking product sections.
 - `bathtime-item-note-seed-builder`: create canonical item seed artifacts.
 - `bathtime-item-note-web-content-producer`: create the web content package.
 - `bathtime-item-note-archive-content-implementer`: implement `ArchiveContent`, DB artifacts, and preview verification.

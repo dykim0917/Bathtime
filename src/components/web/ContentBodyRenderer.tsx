@@ -281,10 +281,11 @@ const styles = StyleSheet.create({
   },
   heading: {
     color: archiveColors.ink,
-    fontSize: 20,
-    lineHeight: 28,
-    fontWeight: '800',
+    fontSize: 22,
+    lineHeight: 31,
+    fontWeight: '700',
     fontFamily: luxuryFonts.display,
+    marginTop: 18,
   },
   paragraph: {
     color: archiveColors.body,
@@ -342,9 +343,9 @@ const styles = StyleSheet.create({
   },
   cardTitle: {
     color: archiveColors.ink,
-    fontSize: 17,
-    lineHeight: 24,
-    fontWeight: '800',
+    fontSize: 18,
+    lineHeight: 25,
+    fontWeight: '700',
     fontFamily: luxuryFonts.sans,
   },
   cardSubtitle: {
@@ -382,7 +383,7 @@ const styles = StyleSheet.create({
     color: archiveColors.ink,
     fontSize: 15,
     lineHeight: 21,
-    fontWeight: '800',
+    fontWeight: '700',
     fontFamily: luxuryFonts.sans,
   },
   evidenceItem: {

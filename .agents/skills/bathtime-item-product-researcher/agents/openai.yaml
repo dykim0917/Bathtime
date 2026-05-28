@@ -1,0 +1,7 @@
+interface:
+  display_name: "Bathtime Item Product Researcher"
+  short_description: "아이템 노트 하단에 넣을 실제 제품 후보와 구매 링크를 안전하게 리서치"
+  default_prompt: "Use $bathtime-item-product-researcher to research representative product types, 3-5 real product candidates, purchase links, price/date notes, info status, and a non-ranking product section for this Bathtime Item Note."
+
+policy:
+  allow_implicit_invocation: true
