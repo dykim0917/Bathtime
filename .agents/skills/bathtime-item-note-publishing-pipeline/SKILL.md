@@ -1,6 +1,6 @@
 ---
 name: bathtime-item-note-publishing-pipeline
-description: Run the full Bathtime Item Note content publishing pipeline through private draft DB apply. Use when the user wants to take a bath-related item, item category, comparison, or item idea from editorial angle to draft preview in one cycle: angle brief, research artifacts, canonical seed, web content package, ArchiveContent implementation, DB upsert artifacts, optional Supabase/PostgREST draft apply, and preview verification. This skill orchestrates bathtime-item-note-ideator, bathtime-item-note-researcher, bathtime-item-note-seed-builder, bathtime-item-note-web-content-producer, and bathtime-item-note-archive-content-implementer. It never publishes publicly by default.
+description: Run the full Bathtime Item Note content publishing pipeline through private draft DB apply. Use when the user wants to take a bath-related item, item category, comparison, or item idea from editorial angle to draft preview in one cycle: angle brief, research artifacts, optional real product candidates, canonical seed, web content package, ArchiveContent implementation, DB upsert artifacts, optional Supabase/PostgREST draft apply, and preview verification. This skill orchestrates bathtime-item-note-ideator, bathtime-item-note-researcher, optional bathtime-item-product-researcher, bathtime-item-note-seed-builder, bathtime-item-note-web-content-producer, and bathtime-item-note-archive-content-implementer. It never publishes publicly by default.
 metadata:
   short-description: 배스타임 아이템 노트 아이디어부터 비공개 draft 반영까지 전체 파이프라인
 ---
@@ -27,7 +27,7 @@ Item Note content starts with an item, product category, or vague purchase quest
 Therefore this pipeline begins with an idea/angle step:
 
 ```text
-item idea -> Bathtime angle -> angle review -> research -> seed -> web package -> visual asset generation -> implementation -> draft preview
+item idea -> Bathtime angle -> angle review -> research -> optional product candidates -> seed -> web package -> visual asset generation -> implementation -> draft preview
 ```
 
 The first skill must define:
@@ -116,6 +116,32 @@ Create or update:
 
 Do not start ranking products.
 
+### Optional. `bathtime-item-product-researcher`
+
+Run this step when the user asks to add actual products, purchase links, product candidates, or a bottom-of-article product section.
+
+Create or update:
+
+- `product_research/product-type-map.md`
+- `product_research/product-candidates.json`
+- `product_research/product-candidates.md`
+- `product_research/purchase-link-checklist.md`
+
+This step must not create rankings or recommendations. Use reader-facing titles such as:
+
+- `실제로 찾아볼 만한 선택지`
+- `비교해볼 만한 제품 예시`
+
+Every product candidate must include:
+
+- purchase/source URL
+- price checked date or unavailable note
+- information status: direct use, public information summary, review-pattern reference, brand-provided information, or affiliate/sponsored
+- affiliate/sponsor status
+- image rights status
+
+Do not use `추천 TOP`, `베스트`, `최고`, `가성비 최고`, `무조건`, `인생템`, `필수템`, or unsupported `인기 제품`.
+
 ### 4. `bathtime-item-note-seed-builder`
 
 Convert research outputs into seed artifacts.
@@ -135,6 +161,7 @@ Preserve:
 - practical burden
 - source uncertainty
 - image rights status
+- product candidate notes when the optional product researcher ran
 - publish blockers
 
 ### 5. `bathtime-item-note-web-content-producer`

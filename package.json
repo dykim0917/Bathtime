@@ -11,7 +11,7 @@
     "trip:content": "node scripts/trip_content_agent.mjs",
     "trip:image": "node scripts/trip_image_agent.mjs --input-dir output",
     "screenshots:ui": "node scripts/capture_ui_screenshots.mjs",
-    "export:web": "expo export --platform web",
+    "export:web": "expo export --platform web && node scripts/generate_static_archive_content_pages.mjs",
     "catalog:research": "node scripts/catalog_research_agent.mjs",
     "catalog:collect:browser": "node scripts/catalog_browser_collector.mjs",
     "catalog:proposal": "node scripts/catalog_normalize_agent.mjs",
