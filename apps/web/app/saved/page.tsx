@@ -1,20 +1,25 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import { SavedContentList } from '@web/components/SavedContentList';
+import { getPublishedArchiveContents } from '@web/lib/archive';
+
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: '보관함',
   description: '앱에서 저장한 바스타임 콘텐츠를 이어서 확인합니다.',
 };
 
-export default function SavedPage() {
+export default async function SavedPage() {
+  const contents = await getPublishedArchiveContents();
+
   return (
     <div className="page-stack">
       <header className="page-header compact">
         <p className="kicker">SAVED</p>
-        <h1>보관함은 앱에서 이어서 볼 수 있어요.</h1>
-        <p>저장한 콘텐츠와 루틴은 앱에서 더 안정적으로 관리됩니다.</p>
-        <Link className="button-primary" href="/app">앱 열기</Link>
+        <h1>다시 보고 싶은 바스타임 기록</h1>
+        <p>저장한 공간, 아이템, 루틴 기록을 한곳에서 확인합니다.</p>
       </header>
+      <SavedContentList contents={contents} />
     </div>
   );
 }

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useMemo, useState } from 'react';
 import logoImage from '@/assets/images/logo.png';
+import { getSupabaseClient } from '@web/lib/auth';
 
 type IconName = 'bookmark' | 'compass' | 'house' | 'list' | 'plus' | 'search' | 'user';
 
@@ -96,6 +97,54 @@ function getStoredCollapsed(): boolean {
   return window.localStorage.getItem(sidebarCollapsedStorageKey) === 'true';
 }
 
+function AccountButton() {
+  const [signedIn, setSignedIn] = useState(false);
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    const supabase = getSupabaseClient();
+    if (!supabase) {
+      setReady(true);
+      return;
+    }
+
+    supabase.auth.getSession().then(({ data }) => {
+      setSignedIn(Boolean(data.session));
+      setReady(true);
+    });
+    const { data } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSignedIn(Boolean(session));
+      setReady(true);
+    });
+
+    return () => data.subscription.unsubscribe();
+  }, []);
+
+  if (!ready || !signedIn) {
+    return (
+      <Link className="account-button" href="/auth/login">
+        <Icon name="user" size={16} />
+        <span>로그인</span>
+      </Link>
+    );
+  }
+
+  return (
+    <button
+      className="account-button"
+      type="button"
+      onClick={async () => {
+        const supabase = getSupabaseClient();
+        await supabase?.auth.signOut();
+        window.dispatchEvent(new CustomEvent('bathtime:saved-content-changed'));
+      }}
+    >
+      <Icon name="user" size={16} />
+      <span>로그아웃</span>
+    </button>
+  );
+}
+
 export function Shell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
@@ -165,10 +214,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
               placeholder="의식, 재료 또는 장소를 입력해주세요..."
             />
           </form>
-          <Link className="account-button" href="/auth/login">
-            <Icon name="user" size={16} />
-            <span>로그인</span>
-          </Link>
+          <AccountButton />
         </header>
         <main className="main">{children}</main>
       </div>

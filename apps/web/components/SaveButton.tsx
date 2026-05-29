@@ -1,23 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-
-const savedStorageKey = 'bathtime:saved-content-ids';
-
-function readSavedIds(): string[] {
-  try {
-    const value = window.localStorage.getItem(savedStorageKey);
-    const parsed = value ? JSON.parse(value) : [];
-    return Array.isArray(parsed) ? parsed.filter((item): item is string => typeof item === 'string') : [];
-  } catch {
-    return [];
-  }
-}
-
-function writeSavedIds(ids: string[]) {
-  window.localStorage.setItem(savedStorageKey, JSON.stringify(ids));
-  window.dispatchEvent(new CustomEvent('bathtime:saved-content-changed'));
-}
+import { getSupabaseClient } from '@web/lib/auth';
+import { AuthRequiredError, isContentSaved, redirectToLogin, toggleSavedContent } from '@web/lib/userContent';
 
 export function SaveButton({
   contentId,
@@ -29,14 +14,31 @@ export function SaveButton({
   className?: string;
 }) {
   const [saved, setSaved] = useState(false);
+  const [busy, setBusy] = useState(false);
 
   useEffect(() => {
-    const syncSaved = () => setSaved(readSavedIds().includes(contentId));
+    let active = true;
+    const syncSaved = async () => {
+      const supabase = getSupabaseClient();
+      if (!supabase) return;
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      if (!session) {
+        if (active) setSaved(false);
+        return;
+      }
+      try {
+        const nextSaved = await isContentSaved(contentId);
+        if (active) setSaved(nextSaved);
+      } catch {
+        if (active) setSaved(false);
+      }
+    };
     syncSaved();
-    window.addEventListener('storage', syncSaved);
     window.addEventListener('bathtime:saved-content-changed', syncSaved);
     return () => {
-      window.removeEventListener('storage', syncSaved);
+      active = false;
       window.removeEventListener('bathtime:saved-content-changed', syncSaved);
     };
   }, [contentId]);
@@ -47,15 +49,25 @@ export function SaveButton({
       className={`save-button ${saved ? 'saved' : ''} ${className}`.trim()}
       aria-label={saved ? '저장 해제' : '저장하기'}
       style={{ width: size, height: size }}
-      onClick={(event) => {
+      disabled={busy}
+      onClick={async (event) => {
         event.preventDefault();
         event.stopPropagation();
-        const current = readSavedIds();
-        const next = current.includes(contentId)
-          ? current.filter((id) => id !== contentId)
-          : [...current, contentId];
-        writeSavedIds(next);
-        setSaved(next.includes(contentId));
+        if (busy) return;
+        setBusy(true);
+        try {
+          const nextSaved = await toggleSavedContent(contentId);
+          setSaved(nextSaved);
+          window.dispatchEvent(new CustomEvent('bathtime:saved-content-changed'));
+        } catch (error) {
+          if (error instanceof AuthRequiredError) {
+            redirectToLogin('save');
+            return;
+          }
+          console.error('Failed to toggle saved content', error);
+        } finally {
+          setBusy(false);
+        }
       }}
     >
       <svg width={Math.round(size * 0.56)} height={Math.round(size * 0.56)} viewBox="0 0 24 24" fill={saved ? 'currentColor' : 'none'} aria-hidden="true">

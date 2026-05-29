@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { SubmitForm } from '@web/components/SubmitForm';
 
 export const metadata: Metadata = {
   title: '제보',
@@ -20,10 +21,8 @@ export default function SubmitPage() {
           <li>직접 경험인지, 공개 정보를 보고 알게 된 내용인지 알려주세요.</li>
           <li>사진은 직접 촬영했거나 사용 허락을 받은 것만 보내주세요.</li>
         </ul>
-        <a className="button-primary" href="mailto:getbathtime@gmail.com?subject=%EB%B0%94%EC%8A%A4%ED%83%80%EC%9E%84%20%EC%A0%9C%EB%B3%B4">
-          이메일로 제보하기
-        </a>
       </section>
+      <SubmitForm />
     </div>
   );
 }

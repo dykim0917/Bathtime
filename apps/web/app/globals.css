@@ -247,6 +247,7 @@ img {
   color: var(--ink);
   font-size: 12px;
   font-weight: 800;
+  cursor: pointer;
 }
 
 .bottom-nav {
@@ -779,6 +780,88 @@ p {
   font-size: 18px;
   line-height: 1.4;
   font-weight: 700;
+}
+
+.saved-empty-panel {
+  align-items: start;
+  max-width: 620px;
+}
+
+.saved-empty-panel h2 {
+  color: var(--ink);
+  font-size: 20px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+.saved-empty-panel p {
+  color: var(--body);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.submit-form {
+  max-width: 720px;
+}
+
+.submit-form label {
+  display: grid;
+  gap: 8px;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.submit-form input,
+.submit-form select,
+.submit-form textarea {
+  width: 100%;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  font-size: 14px;
+  line-height: 1.45;
+  padding: 12px 13px;
+  outline: none;
+}
+
+.submit-form textarea {
+  resize: vertical;
+}
+
+.submit-form input:focus,
+.submit-form select:focus,
+.submit-form textarea:focus {
+  border-color: var(--primary-active);
+  box-shadow: 0 0 0 3px var(--primary-soft);
+}
+
+.submit-form .checkbox-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: var(--body);
+  line-height: 1.55;
+}
+
+.submit-form .checkbox-row input {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  padding: 0;
+  accent-color: var(--primary-active);
+}
+
+.submit-form button {
+  justify-self: start;
+  border: 0;
+}
+
+.submit-form button:disabled {
+  cursor: default;
+  opacity: 0.55;
 }
 
 .step-grid,
