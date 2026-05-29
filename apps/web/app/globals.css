@@ -600,8 +600,9 @@ p {
 
 .content-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 330px;
+  grid-template-columns: minmax(0, 605px) 330px;
   gap: 48px;
+  justify-content: center;
   width: 100%;
   max-width: 1120px;
   margin: 0 auto;
@@ -609,6 +610,8 @@ p {
 }
 
 .content-main {
+  width: 100%;
+  max-width: 605px;
   min-width: 0;
 }
 
