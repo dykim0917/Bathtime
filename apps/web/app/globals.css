@@ -648,6 +648,7 @@ p {
 
 .content-body {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 18px;
   width: 100%;
   max-width: 100%;
@@ -670,6 +671,8 @@ p {
   color: var(--body);
   font-size: 16px;
   line-height: 1.75;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .content-body > ul {
