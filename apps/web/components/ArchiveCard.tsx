@@ -2,6 +2,7 @@ import Link from 'next/link';
 import type { ArchiveContent } from '@/src/archive/types';
 import { CATEGORY_LABELS, CONTENT_TYPE_LABELS } from '@web/lib/labels';
 import { ArchiveVisual } from './ArchiveVisual';
+import { SaveButton } from './SaveButton';
 
 function summaryMeta(content: ArchiveContent): string[] {
   const info = content.structuredInfo;
@@ -19,18 +20,23 @@ function summaryMeta(content: ArchiveContent): string[] {
 
 export function ArchiveCard({ content }: { content: ArchiveContent }) {
   return (
-    <Link className="archive-card" href={`/content/${content.id}`}>
-      <ArchiveVisual content={content} />
-      <div className="archive-card-body">
-        <p className="kicker">{CATEGORY_LABELS[content.category]} · {CONTENT_TYPE_LABELS[content.contentType]}</p>
-        <h3>{content.title}</h3>
-        <p>{content.summary}</p>
+    <article className="archive-card-shell">
+      <Link className="archive-card" href={`/content/${content.id}`}>
+        <ArchiveVisual content={content} />
+        <div className="archive-card-body">
+          <p className="kicker">{CATEGORY_LABELS[content.category]} · {CONTENT_TYPE_LABELS[content.contentType]}</p>
+          <h3>{content.title}</h3>
+          <p>{content.summary}</p>
+        </div>
+        <div className="meta-row">
+          {summaryMeta(content).map((item) => (
+            <span key={item}>{item}</span>
+          ))}
+        </div>
+      </Link>
+      <div className="archive-card-save">
+        <SaveButton contentId={content.id} />
       </div>
-      <div className="meta-row">
-        {summaryMeta(content).map((item) => (
-          <span key={item}>{item}</span>
-        ))}
-      </div>
-    </Link>
+    </article>
   );
 }

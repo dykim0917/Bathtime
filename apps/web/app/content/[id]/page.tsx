@@ -4,6 +4,7 @@ import { ArchiveVisual } from '@web/components/ArchiveVisual';
 import { BodyRenderer } from '@web/components/BodyRenderer';
 import { StructuredInfo } from '@web/components/StructuredInfo';
 import { RoutineCard } from '@web/components/RoutineCard';
+import { SaveButton } from '@web/components/SaveButton';
 import {
   getCanonicalContentUrl,
   getPreviewArchiveContent,
@@ -112,7 +113,12 @@ export default async function ContentPage({
 
       {isPreview ? <p className="preview-banner">비공개 미리보기입니다. 검색엔진에는 노출되지 않습니다.</p> : null}
 
-      <ArchiveVisual content={content} priority />
+      <div className="content-hero-wrap">
+        <ArchiveVisual content={content} priority />
+        <div className="hero-save-button">
+          <SaveButton contentId={content.id} size={42} />
+        </div>
+      </div>
 
       <div className="content-layout">
         <div className="content-main">

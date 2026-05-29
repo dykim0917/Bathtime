@@ -417,7 +417,7 @@ p {
 }
 
 .category-card,
-.archive-card,
+.archive-card-shell,
 .routine-card,
 .body-panel,
 .structured-info,
@@ -449,9 +449,15 @@ p {
   gap: 16px;
 }
 
+.archive-card-shell {
+  position: relative;
+  overflow: hidden;
+}
+
 .archive-card {
   display: flex;
   flex-direction: column;
+  height: 100%;
   overflow: hidden;
 }
 
@@ -492,6 +498,40 @@ p {
   color: var(--muted);
   font-size: 12px;
   font-weight: 700;
+}
+
+.archive-card-save,
+.hero-save-button {
+  position: absolute;
+  z-index: 2;
+}
+
+.archive-card-save {
+  top: 12px;
+  right: 12px;
+}
+
+.save-button {
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--muted);
+  cursor: pointer;
+  transition: background-color 140ms ease-out, border-color 140ms ease-out, transform 140ms ease-out;
+}
+
+.save-button:hover,
+.save-button:focus-visible {
+  border-color: var(--primary-soft);
+  background: var(--primary-soft);
+  color: var(--primary-active);
+  outline: none;
+}
+
+.save-button.saved {
+  color: var(--primary);
 }
 
 .routine-grid {
@@ -589,13 +629,23 @@ p {
   margin: 0 auto;
 }
 
-.content-detail > .archive-visual {
+.content-hero-wrap {
+  position: relative;
+}
+
+.content-detail > .archive-visual,
+.content-hero-wrap > .archive-visual {
   min-height: 390px;
   border-radius: 0;
   border-left: 0;
   border-right: 0;
   border-top: 0;
   border-bottom: 1px solid var(--hairline);
+}
+
+.hero-save-button {
+  top: 14px;
+  right: 14px;
 }
 
 .content-layout {
@@ -795,8 +845,7 @@ p {
 }
 
 .structured-info {
-  position: sticky;
-  top: 92px;
+  position: static;
   align-self: start;
   overflow: hidden;
 }
@@ -961,8 +1010,13 @@ p {
     grid-template-columns: 1fr;
   }
 
-  .content-detail > .archive-visual {
+  .content-detail > .archive-visual,
+  .content-hero-wrap {
     margin-inline: -16px;
+  }
+
+  .content-detail > .archive-visual,
+  .content-hero-wrap > .archive-visual {
     min-height: 330px;
   }
 }
