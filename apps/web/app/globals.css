@@ -785,38 +785,62 @@ p {
   position: sticky;
   top: 92px;
   align-self: start;
-  padding: 18px;
+  overflow: hidden;
+}
+
+.structured-info-header {
+  border-bottom: 1px solid var(--hairline);
+  padding: 20px 24px;
 }
 
 .structured-info h2 {
-  margin-bottom: 14px;
-  font-size: 18px;
+  font-size: 17px;
+  font-weight: 800;
 }
 
-.structured-info dl {
+.structured-info-grid {
   display: grid;
-  gap: 10px;
+  gap: 0;
   margin: 0;
+  padding: 0 24px 10px;
 }
 
-.structured-info div {
-  border: 1px solid var(--hairline-soft);
-  border-radius: var(--radius);
+.structured-info-row {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  gap: 12px;
+  border-bottom: 1px solid rgba(226, 217, 204, 0.56);
+  padding: 14px 0;
+}
+
+.structured-info-icon {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
   background: var(--primary-soft);
-  padding: 11px;
+  color: var(--primary-active);
+}
+
+.structured-info-copy {
+  display: grid;
+  gap: 7px;
+  min-width: 0;
 }
 
 .structured-info dt {
   color: var(--muted);
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 500;
 }
 
 .structured-info dd {
-  margin: 5px 0 0;
+  margin: 0;
   color: var(--ink);
   font-size: 14px;
-  line-height: 1.55;
+  line-height: 1.43;
+  font-weight: 700;
 }
 
 .preview-banner {
