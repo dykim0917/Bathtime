@@ -557,6 +557,14 @@ p {
   padding: 18px;
 }
 
+.content-main .routine-grid {
+  grid-template-columns: 1fr;
+}
+
+.related-routines-section {
+  margin-top: 36px;
+}
+
 .routine-duration {
   display: grid;
   align-content: center;
@@ -594,6 +602,10 @@ p {
 .routine-card ol {
   margin: 12px 0 0;
   padding-left: 18px;
+}
+
+.routine-card-cta {
+  margin-top: 16px;
 }
 
 .filter-section {
