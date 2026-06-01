@@ -777,14 +777,9 @@ p {
 }
 
 .content-header > .kicker {
-  display: inline-flex;
-  align-items: center;
-  width: max-content;
-  border: 1px solid var(--hairline);
-  border-radius: 999px;
-  background: var(--primary-soft);
   color: var(--primary-active);
-  padding: 6px 10px;
+  font-size: 11px;
+  font-weight: 700;
 }
 
 .content-header h1 {
