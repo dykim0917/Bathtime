@@ -38,6 +38,23 @@ a {
   text-decoration: none;
 }
 
+:where(a[href], button, [role="button"], .chip, .token, .archive-card) {
+  cursor: pointer;
+}
+
+:where(button, .button-primary, .button-secondary, .chip, .token, .archive-card, .nav-link, .account-button, .google-login-button, .submit-type-grid button) {
+  transition:
+    background-color 140ms ease-out,
+    border-color 140ms ease-out,
+    color 140ms ease-out,
+    box-shadow 140ms ease-out,
+    transform 140ms ease-out;
+}
+
+:where(button:disabled, [aria-disabled="true"]) {
+  cursor: default;
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -351,6 +368,7 @@ p {
   height: 100%;
   min-height: inherit;
   object-fit: cover;
+  transition: transform 180ms ease-out;
 }
 
 .archive-visual span {
@@ -389,6 +407,27 @@ p {
 .button-secondary {
   border: 1px solid var(--hairline);
   color: var(--primary-active);
+}
+
+.button-primary:hover,
+.button-primary:focus-visible {
+  background: var(--primary);
+  box-shadow: 0 8px 18px rgba(31, 102, 98, 0.18);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.button-secondary:hover,
+.button-secondary:focus-visible {
+  border-color: var(--primary-active);
+  background: var(--primary-soft);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.button-primary:active,
+.button-secondary:active {
+  transform: translateY(0);
 }
 
 .section {
@@ -468,6 +507,17 @@ p {
   flex-direction: column;
   height: 100%;
   overflow: hidden;
+}
+
+.archive-card:hover,
+.archive-card:focus-visible {
+  background: var(--surface-soft);
+  outline: none;
+}
+
+.archive-card:hover .archive-visual img,
+.archive-card:focus-visible .archive-visual img {
+  transform: scale(1.025);
 }
 
 .archive-card .archive-visual {
@@ -650,6 +700,25 @@ p {
 .chip.active {
   background: var(--primary);
   color: #fff;
+}
+
+.chip:hover,
+.chip:focus-visible,
+.token:hover,
+.token:focus-visible,
+.submit-type-grid button:hover,
+.submit-type-grid button:focus-visible {
+  border-color: var(--primary-active);
+  background: var(--primary-soft);
+  color: var(--primary-active);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.chip:active,
+.token:active,
+.submit-type-grid button:active {
+  transform: translateY(0);
 }
 
 .result-note,
@@ -963,6 +1032,7 @@ p {
   font-size: 13px;
   font-weight: 700;
   padding: 0 13px;
+  cursor: pointer;
 }
 
 .submit-type-grid button.active {
