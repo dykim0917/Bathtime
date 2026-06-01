@@ -667,7 +667,9 @@ p {
 
 .content-detail > .archive-visual,
 .content-hero-wrap > .archive-visual {
-  min-height: 390px;
+  aspect-ratio: 16 / 9;
+  min-height: 0;
+  height: auto;
   border-radius: 0;
   border-left: 0;
   border-right: 0;
@@ -1230,6 +1232,6 @@ p {
 
   .content-detail > .archive-visual,
   .content-hero-wrap > .archive-visual {
-    min-height: 330px;
+    min-height: 0;
   }
 }
