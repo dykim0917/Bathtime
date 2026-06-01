@@ -135,10 +135,13 @@ export default async function ContentPage({
           <BodyRenderer blocks={content.body} />
 
           {routines.length > 0 ? (
-            <section className="section">
-              <h2>연결된 의식</h2>
+            <section className="section related-routines-section">
+              <div className="section-heading-row">
+                <h2>연결된 의식</h2>
+                <a href="/routines">전체 보기</a>
+              </div>
               <div className="routine-grid">
-                {routines.map((routine) => <RoutineCard key={routine.id} routine={routine} />)}
+                {routines.map((routine) => <RoutineCard key={routine.id} routine={routine} showCta />)}
               </div>
             </section>
           ) : null}
