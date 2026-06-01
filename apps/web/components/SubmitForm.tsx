@@ -70,18 +70,31 @@ export function SubmitForm() {
 
   return (
     <form className="submit-form body-panel" onSubmit={onSubmit}>
+      <div className="submit-form-heading">
+        <h2>제보 남기기</h2>
+        <p>필수 입력은 제보 내용 하나예요. 이름이나 링크는 알고 있는 만큼만 적어도 됩니다.</p>
+      </div>
+
       {!isSignedIn ? (
         <p className="auth-note">제보는 로그인 후 계정에 연결됩니다. 제출하면 Google 로그인으로 이동합니다.</p>
       ) : null}
 
-      <label>
-        <span>제보 유형</span>
-        <select value={type} onChange={(event) => setType(event.target.value as SubmissionType)}>
+      <fieldset className="submit-type-field">
+        <legend>제보 유형</legend>
+        <div className="submit-type-grid">
           {submissionTypes.map((item) => (
-            <option key={item.value} value={item.value}>{item.label}</option>
+            <button
+              key={item.value}
+              type="button"
+              className={type === item.value ? 'active' : undefined}
+              aria-pressed={type === item.value}
+              onClick={() => setType(item.value)}
+            >
+              {item.label}
+            </button>
           ))}
-        </select>
-      </label>
+        </div>
+      </fieldset>
 
       <label>
         <span>이름 또는 링크</span>
