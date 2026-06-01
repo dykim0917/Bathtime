@@ -1,21 +1,37 @@
 import Link from 'next/link';
+import type { ComponentType } from 'react';
+import { Bathtub, CheckCircle, Clock, FileText, MapPin, ShoppingBag, Tag } from '@phosphor-icons/react/ssr';
 import type { ArchiveContent } from '@/src/archive/types';
 import { CATEGORY_LABELS, CONTENT_TYPE_LABELS } from '@web/lib/labels';
 import { ArchiveVisual } from './ArchiveVisual';
 import { SaveButton } from './SaveButton';
 
-function summaryMeta(content: ArchiveContent): string[] {
+type CardMeta = {
+  icon: ComponentType<{ size?: number; weight?: 'regular' | 'bold' | 'fill'; 'aria-hidden'?: boolean | 'true' | 'false' }>;
+  label: string;
+};
+
+function summaryMeta(content: ArchiveContent): CardMeta[] {
   const info = content.structuredInfo;
   if ('durationMinutes' in info) {
-    return [`${info.durationMinutes ?? '-'}분`, info.bathRequired ? '욕조 필요' : '욕조 없음'];
+    return [
+      { icon: Clock, label: `${info.durationMinutes ?? '-'}분` },
+      { icon: Bathtub, label: info.bathRequired ? '욕조 필요' : '욕조 없음' },
+    ];
   }
   if ('publicAccess' in info) {
-    return [info.region ?? '지역 미정', info.publicAccess === 'available' ? '외부인 가능' : '이용 조건 확인'];
+    return [
+      { icon: MapPin, label: info.region ?? '지역 미정' },
+      { icon: CheckCircle, label: info.publicAccess === 'available' ? '외부인 가능' : '이용 조건 확인' },
+    ];
   }
   if ('itemType' in info) {
-    return [info.itemType ?? '아이템', info.priceRange ?? '가격대 미정'];
+    return [
+      { icon: ShoppingBag, label: info.itemType ?? '아이템' },
+      { icon: Tag, label: info.priceRange ?? '가격대 미정' },
+    ];
   }
-  return ['정리 글'];
+  return [{ icon: FileText, label: '정리 글' }];
 }
 
 export function ArchiveCard({ content }: { content: ArchiveContent }) {
@@ -29,8 +45,11 @@ export function ArchiveCard({ content }: { content: ArchiveContent }) {
           <p>{content.summary}</p>
         </div>
         <div className="meta-row">
-          {summaryMeta(content).map((item) => (
-            <span key={item}>{item}</span>
+          {summaryMeta(content).map(({ icon: IconComponent, label }) => (
+            <span key={label}>
+              <IconComponent size={13} weight="bold" aria-hidden="true" />
+              {label}
+            </span>
           ))}
         </div>
       </Link>
