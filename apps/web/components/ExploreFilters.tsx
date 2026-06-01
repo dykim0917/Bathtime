@@ -1,6 +1,23 @@
 'use client';
 
 import { useMemo, useState } from 'react';
+import {
+  Bathtub,
+  BookOpen,
+  CheckCircle,
+  HouseLine,
+  Lock,
+  MapPin,
+  MapTrifold,
+  Moon,
+  Package,
+  Shower,
+  SquaresFour,
+  Timer,
+  Umbrella,
+  Wind,
+  type Icon,
+} from '@phosphor-icons/react';
 import type { ArchiveContent, ContentCategory } from '@/src/archive/types';
 import { ARCHIVE_TAGS, CATEGORIES, CATEGORY_LABELS } from '@web/lib/labels';
 import { ArchiveCard } from './ArchiveCard';
@@ -11,6 +28,26 @@ const categoryTags: Record<ContentCategory | 'ALL', Array<(typeof ARCHIVE_TAGS)[
   BATH_PLACES: ['서울', '외부인 이용 가능', '프라이빗', '혼자 쉬기'],
   BATH_ITEMS: ['욕조 없음', '수면 전', '프라이빗', '혼자 쉬기'],
   TIPS_CULTURE: ['비 오는 날', '수면 전', '혼자 쉬기', '짧은 의식'],
+};
+
+const categoryIcons: Record<ContentCategory | 'ALL', Icon> = {
+  ALL: SquaresFour,
+  HOME_BATH: Bathtub,
+  BATH_PLACES: MapTrifold,
+  BATH_ITEMS: Package,
+  TIPS_CULTURE: BookOpen,
+};
+
+const tagIcons: Record<(typeof ARCHIVE_TAGS)[number], Icon> = {
+  '욕조 없음': Shower,
+  '수면 전': Moon,
+  '운동 후': Wind,
+  '혼자 쉬기': HouseLine,
+  '외부인 이용 가능': CheckCircle,
+  프라이빗: Lock,
+  서울: MapPin,
+  '비 오는 날': Umbrella,
+  '짧은 의식': Timer,
 };
 
 function matchesQuery(content: ArchiveContent, query: string): boolean {
@@ -70,6 +107,7 @@ export function ExploreFilters({
       <section className="filter-section" aria-label="카테고리">
         {CATEGORIES.map((item) => {
           const selected = category === item;
+          const IconComponent = categoryIcons[item];
           return (
             <button
               key={item}
@@ -78,7 +116,7 @@ export function ExploreFilters({
               aria-pressed={selected}
               onClick={() => selectCategory(item)}
             >
-              <span className="chip-icon" aria-hidden="true" />
+              <IconComponent size={15} weight={selected ? 'fill' : 'regular'} aria-hidden="true" />
               <span>{item === 'ALL' ? '전체' : CATEGORY_LABELS[item]}</span>
             </button>
           );
@@ -88,6 +126,7 @@ export function ExploreFilters({
       <section className="filter-section" aria-label="태그">
         {visibleTags.map((item) => {
           const selected = selectedTags.includes(item);
+          const IconComponent = tagIcons[item];
           return (
             <button
               key={item}
@@ -97,7 +136,7 @@ export function ExploreFilters({
               aria-checked={selected}
               onClick={() => toggleTag(item)}
             >
-              <span className="token-box" aria-hidden="true" />
+              <IconComponent size={12} weight={selected ? 'bold' : 'regular'} aria-hidden="true" />
               <span>{item}</span>
             </button>
           );
