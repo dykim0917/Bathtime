@@ -1,7 +1,53 @@
 import type { CareCTA, ContentBodyBlock } from '@/src/archive/types';
+import { careGuideAspectRatios, getCareGuideImageSrc } from '@web/lib/careImages';
 
 function isExternalUrl(value: string | undefined): value is string {
   return Boolean(value?.startsWith('http://') || value?.startsWith('https://'));
+}
+
+function getBodyImageSrc(uri: string): string | null {
+  if (uri.startsWith('care-guide:')) return getCareGuideImageSrc(uri.replace('care-guide:', ''));
+  return isExternalUrl(uri) ? uri : null;
+}
+
+function getImageAspectRatio(uri: string, explicitAspectRatio?: number): number | undefined {
+  if (typeof explicitAspectRatio === 'number' && Number.isFinite(explicitAspectRatio) && explicitAspectRatio > 0) {
+    return explicitAspectRatio;
+  }
+  if (uri.startsWith('care-guide:')) return careGuideAspectRatios[uri.replace('care-guide:', '')] ?? 4 / 3;
+  return undefined;
+}
+
+function hostname(url: string): string {
+  try {
+    return new URL(url).hostname.replace(/^www\./, '');
+  } catch {
+    return '링크';
+  }
+}
+
+function splitTextUrl(value: string): { label: string; url: string } | null {
+  const match = value.match(/^(.*?)(?:\s+-\s+|\s+)(https?:\/\/\S+)$/);
+  if (!match) return null;
+  return {
+    label: match[1].trim().replace(/[\s,;:.-]+$/, ''),
+    url: match[2],
+  };
+}
+
+function ListItem({ item }: { item: string }) {
+  const linked = splitTextUrl(item);
+  if (!linked) return <li>{item}</li>;
+
+  return (
+    <li>
+      {linked.label}
+      {' '}
+      <a className="inline-source-link" href={linked.url} target="_blank" rel="noreferrer">
+        {hostname(linked.url)}에서 보기
+      </a>
+    </li>
+  );
 }
 
 function ctaHref(cta: CareCTA): string {
@@ -27,15 +73,17 @@ export function BodyRenderer({ blocks }: { blocks: ContentBodyBlock[] }) {
         if (block.type === 'list') {
           return (
             <ul key={index}>
-              {block.items.map((item) => <li key={item}>{item}</li>)}
+              {block.items.map((item) => <ListItem key={item} item={item} />)}
             </ul>
           );
         }
 
         if (block.type === 'image') {
+          const imageSrc = getBodyImageSrc(block.uri);
+          const aspectRatio = getImageAspectRatio(block.uri, block.aspectRatio);
           return (
-            <figure key={index} className="body-image" style={block.aspectRatio ? { aspectRatio: `${block.aspectRatio}` } : undefined}>
-              {isExternalUrl(block.uri) ? <img src={block.uri} alt={block.caption ?? '바스타임 콘텐츠 이미지'} loading="lazy" /> : null}
+            <figure key={index} className="body-image" style={aspectRatio ? { aspectRatio: `${aspectRatio}` } : undefined}>
+              {imageSrc ? <img src={imageSrc} alt={block.caption ?? '바스타임 콘텐츠 이미지'} loading="lazy" /> : null}
               {block.caption ? <figcaption>{block.caption}</figcaption> : null}
             </figure>
           );

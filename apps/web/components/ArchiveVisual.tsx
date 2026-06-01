@@ -2,6 +2,7 @@ import type { ComponentType } from 'react';
 import { Bathtub, BookOpen, MapTrifold, Package } from '@phosphor-icons/react/ssr';
 import type { ArchiveContent, ContentCategory } from '@/src/archive/types';
 import { CATEGORY_LABELS } from '@web/lib/labels';
+import { getCareHeroImageSrc } from '@web/lib/careImages';
 
 type PhosphorIcon = ComponentType<{ size?: number; weight?: 'regular' | 'bold' | 'fill'; 'aria-hidden'?: boolean | 'true' | 'false' }>;
 
@@ -21,7 +22,8 @@ const categoryIcons: Record<ContentCategory, PhosphorIcon> = {
 
 function getUsableImageUri(content: ArchiveContent): string | null {
   const uri = content.heroImage?.uri;
-  if (!uri || uri.startsWith('category-') || uri.startsWith('care-hero:')) return null;
+  if (!uri || uri.startsWith('category-')) return null;
+  if (uri.startsWith('care-hero:')) return getCareHeroImageSrc(uri.replace('care-hero:', ''));
   if (!uri.startsWith('http://') && !uri.startsWith('https://')) return null;
   return uri;
 }

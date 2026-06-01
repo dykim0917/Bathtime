@@ -66,10 +66,16 @@ async function fetchArchiveRows(query: URLSearchParams): Promise<ArchiveContent[
   const url = new URL(config.url);
   query.forEach((value, key) => url.searchParams.set(key, value));
 
-  const response = await fetch(url, {
-    headers: config.headers,
-    next: { revalidate: archiveRevalidateSeconds, tags: ['archive-content'] },
-  });
+  let response: Response;
+  try {
+    response = await fetch(url, {
+      headers: config.headers,
+      next: { revalidate: archiveRevalidateSeconds, tags: ['archive-content'] },
+    });
+  } catch (error) {
+    console.warn('archive_content fetch failed', error);
+    return getPublishedFallbackContents();
+  }
 
   if (!response.ok) {
     console.warn(`archive_content fetch failed: ${response.status}`);
