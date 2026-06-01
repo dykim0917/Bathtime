@@ -10,6 +10,17 @@ function normalizeNextPath(value: string | null): string {
   return value;
 }
 
+function GoogleMark() {
+  return (
+    <svg className="google-mark" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+      <path fill="#4285F4" d="M23.49 12.27c0-.79-.07-1.54-.2-2.27H12v4.29h6.47a5.53 5.53 0 0 1-2.4 3.63v3h3.89c2.27-2.09 3.53-5.17 3.53-8.65Z" />
+      <path fill="#34A853" d="M12 24c3.24 0 5.96-1.07 7.95-2.91l-3.89-3c-1.08.72-2.45 1.14-4.06 1.14-3.12 0-5.77-2.11-6.72-4.95H1.27v3.09A12 12 0 0 0 12 24Z" />
+      <path fill="#FBBC05" d="M5.28 14.28A7.22 7.22 0 0 1 4.9 12c0-.79.14-1.56.38-2.28V6.63H1.27A12 12 0 0 0 0 12c0 1.94.46 3.77 1.27 5.37l4.01-3.09Z" />
+      <path fill="#EA4335" d="M12 4.77c1.76 0 3.34.6 4.58 1.79l3.45-3.45C17.95 1.17 15.23 0 12 0A12 12 0 0 0 1.27 6.63l4.01 3.09C6.23 6.88 8.88 4.77 12 4.77Z" />
+    </svg>
+  );
+}
+
 export function LoginPanel() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -53,7 +64,9 @@ export function LoginPanel() {
           }
         }}
       >
-        <span>G</span>
+        <span className="google-mark-frame">
+          <GoogleMark />
+        </span>
         Google로 계속하기
       </button>
     </section>
