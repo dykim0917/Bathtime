@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useMemo, useState } from 'react';
+import brandSymbol from '@/assets/images/bathtime.svg';
 import logoImage from '@/assets/images/logo.png';
 import { getSupabaseClient } from '@web/lib/auth';
 
@@ -174,7 +175,13 @@ export function Shell({ children }: { children: React.ReactNode }) {
             <Icon name="list" size={21} />
           </button>
           <Link className="brand" href="/" aria-label="Bathtime 홈">
-            <img src={logoImage.src} alt="Bathtime" />
+            {collapsed ? (
+              <span className="brand-symbol">
+                <img src={brandSymbol.src} alt="" aria-hidden="true" />
+              </span>
+            ) : (
+              <img className="brand-logo" src={logoImage.src} alt="Bathtime" />
+            )}
           </Link>
         </div>
         <nav className="nav-list" aria-label="주요 메뉴">

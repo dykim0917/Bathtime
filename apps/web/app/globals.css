@@ -98,21 +98,29 @@ img {
   margin: 58px 0 18px;
 }
 
-.brand img {
+.brand-logo {
   width: 158px;
   height: auto;
 }
 
 .sidebar-collapsed .brand {
   justify-content: center;
-  width: 44px;
-  margin-top: 54px;
-  overflow: hidden;
+  width: 60px;
+  min-height: 28px;
+  margin-top: 62px;
 }
 
-.sidebar-collapsed .brand img {
-  width: 44px;
-  max-width: none;
+.brand-symbol {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+}
+
+.brand-symbol img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
 }
 
 .nav-list {
