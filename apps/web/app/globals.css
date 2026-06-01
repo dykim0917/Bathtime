@@ -103,23 +103,16 @@ img {
   height: auto;
 }
 
-.brand-symbol {
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  border: 1px solid var(--hairline);
-  border-radius: 50%;
-  background: var(--primary-soft);
-  color: var(--primary-active);
-  font-size: 20px;
-  font-weight: 800;
-}
-
 .sidebar-collapsed .brand {
   justify-content: center;
-  width: 60px;
+  width: 44px;
   margin-top: 54px;
+  overflow: hidden;
+}
+
+.sidebar-collapsed .brand img {
+  width: 44px;
+  max-width: none;
 }
 
 .nav-list {
@@ -256,6 +249,10 @@ img {
 
 .main {
   padding: 40px 0 48px;
+}
+
+.content-route-main {
+  padding-top: 0;
 }
 
 .page-stack {
@@ -595,6 +592,8 @@ p {
 .token {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  gap: 7px;
   min-height: 34px;
   border: 1px solid var(--hairline);
   border-radius: 999px;
@@ -603,6 +602,7 @@ p {
   font-size: 13px;
   font-weight: 700;
   padding: 0 15px;
+  cursor: pointer;
 }
 
 .token {
@@ -612,11 +612,52 @@ p {
   padding: 0 11px;
 }
 
+.chip-icon {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--muted);
+}
+
+.token-box {
+  display: inline-grid;
+  place-items: center;
+  width: 12px;
+  height: 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: 2px;
+  background: var(--surface);
+}
+
 .chip.active,
 .token.active {
   border-color: var(--primary-active);
   background: var(--primary-soft);
   color: var(--primary-active);
+}
+
+.chip.active {
+  background: var(--primary);
+  color: #fff;
+}
+
+.chip.active .chip-icon {
+  background: #fff;
+}
+
+.token.active .token-box {
+  border-color: var(--primary-active);
+  background: var(--primary-active);
+}
+
+.token.active .token-box::after {
+  width: 5px;
+  height: 8px;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  content: '';
+  transform: rotate(45deg) translate(-1px, -1px);
 }
 
 .result-note,

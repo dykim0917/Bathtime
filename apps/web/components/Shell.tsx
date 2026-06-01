@@ -173,8 +173,8 @@ export function Shell({ children }: { children: React.ReactNode }) {
           >
             <Icon name="list" size={21} />
           </button>
-          <Link className="brand" href="/">
-            {collapsed ? <span className="brand-symbol">B</span> : <img src={logoImage.src} alt="Bathtime" />}
+          <Link className="brand" href="/" aria-label="Bathtime 홈">
+            <img src={logoImage.src} alt="Bathtime" />
           </Link>
         </div>
         <nav className="nav-list" aria-label="주요 메뉴">
@@ -216,7 +216,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
           </form>
           <AccountButton />
         </header>
-        <main className="main">{children}</main>
+        <main className={pathname.startsWith('/content/') ? 'main content-route-main' : 'main'}>{children}</main>
       </div>
       <nav className="bottom-nav" aria-label="모바일 메뉴">
         {navItems.map((item) => (

@@ -1,0 +1,116 @@
+'use client';
+
+import { useMemo, useState } from 'react';
+import type { ArchiveContent, ContentCategory } from '@/src/archive/types';
+import { ARCHIVE_TAGS, CATEGORIES, CATEGORY_LABELS } from '@web/lib/labels';
+import { ArchiveCard } from './ArchiveCard';
+
+const categoryTags: Record<ContentCategory | 'ALL', Array<(typeof ARCHIVE_TAGS)[number]>> = {
+  ALL: [...ARCHIVE_TAGS],
+  HOME_BATH: ['욕조 없음', '수면 전', '운동 후', '혼자 쉬기', '비 오는 날', '짧은 의식'],
+  BATH_PLACES: ['서울', '외부인 이용 가능', '프라이빗', '혼자 쉬기'],
+  BATH_ITEMS: ['욕조 없음', '수면 전', '프라이빗', '혼자 쉬기'],
+  TIPS_CULTURE: ['비 오는 날', '수면 전', '혼자 쉬기', '짧은 의식'],
+};
+
+function matchesQuery(content: ArchiveContent, query: string): boolean {
+  const normalized = query.trim().toLowerCase();
+  if (!normalized) return true;
+
+  return (
+    content.title.toLowerCase().includes(normalized) ||
+    content.subtitle?.toLowerCase().includes(normalized) ||
+    content.summary.toLowerCase().includes(normalized) ||
+    content.tags.some((tag) => tag.toLowerCase().includes(normalized))
+  );
+}
+
+function filterContents(
+  contents: ArchiveContent[],
+  category: ContentCategory | 'ALL',
+  selectedTags: string[],
+  query: string
+): ArchiveContent[] {
+  return contents.filter((content) => {
+    const matchesCategory = category === 'ALL' || content.category === category;
+    const matchesTags = selectedTags.length === 0 || selectedTags.some((tag) => content.tags.includes(tag));
+    return matchesCategory && matchesTags && matchesQuery(content, query);
+  });
+}
+
+export function ExploreFilters({
+  contents,
+  initialCategory,
+  query,
+}: {
+  contents: ArchiveContent[];
+  initialCategory: ContentCategory | 'ALL';
+  query: string;
+}) {
+  const [category, setCategory] = useState<ContentCategory | 'ALL'>(initialCategory);
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+
+  const visibleTags = categoryTags[category];
+  const results = useMemo(
+    () => filterContents(contents, category, selectedTags, query),
+    [category, contents, query, selectedTags]
+  );
+
+  function selectCategory(next: ContentCategory | 'ALL') {
+    setCategory(next);
+    setSelectedTags((current) => current.filter((tag) => categoryTags[next].includes(tag as (typeof ARCHIVE_TAGS)[number])));
+  }
+
+  function toggleTag(tag: string) {
+    setSelectedTags((current) => (current.includes(tag) ? current.filter((item) => item !== tag) : [...current, tag]));
+  }
+
+  return (
+    <>
+      <section className="filter-section" aria-label="카테고리">
+        {CATEGORIES.map((item) => {
+          const selected = category === item;
+          return (
+            <button
+              key={item}
+              type="button"
+              className={selected ? 'chip active' : 'chip'}
+              aria-pressed={selected}
+              onClick={() => selectCategory(item)}
+            >
+              <span className="chip-icon" aria-hidden="true" />
+              <span>{item === 'ALL' ? '전체' : CATEGORY_LABELS[item]}</span>
+            </button>
+          );
+        })}
+      </section>
+
+      <section className="filter-section" aria-label="태그">
+        {visibleTags.map((item) => {
+          const selected = selectedTags.includes(item);
+          return (
+            <button
+              key={item}
+              type="button"
+              className={selected ? 'token active' : 'token'}
+              role="checkbox"
+              aria-checked={selected}
+              onClick={() => toggleTag(item)}
+            >
+              <span className="token-box" aria-hidden="true" />
+              <span>{item}</span>
+            </button>
+          );
+        })}
+      </section>
+
+      {query ? <p className="result-note">검색어: {query}</p> : null}
+      {selectedTags.length > 0 ? <p className="result-note">선택한 태그: {selectedTags.join(', ')}</p> : null}
+
+      <div className="card-grid">
+        {results.map((content) => <ArchiveCard key={content.id} content={content} />)}
+      </div>
+      {results.length === 0 ? <p className="empty-note">조건에 맞는 콘텐츠를 찾지 못했습니다.</p> : null}
+    </>
+  );
+}
