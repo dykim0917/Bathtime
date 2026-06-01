@@ -357,6 +357,9 @@ p {
   position: absolute;
   left: 12px;
   bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
   border: 1px solid var(--hairline);
   border-radius: 999px;
   background: var(--surface);
@@ -501,6 +504,9 @@ p {
 }
 
 .meta-row span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
   color: var(--muted);
   font-size: 12px;
   font-weight: 700;
