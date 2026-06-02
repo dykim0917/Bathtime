@@ -59,7 +59,7 @@ function sortByUpdatedAt(contents: ArchiveContent[]): ArchiveContent[] {
   return [...contents].sort((a, b) => b.updatedAt.localeCompare(a.updatedAt) || a.id.localeCompare(b.id));
 }
 
-async function fetchArchiveRows(query: URLSearchParams): Promise<ArchiveContent[]> {
+async function fetchArchiveRows(query: URLSearchParams, options?: { noStore?: boolean }): Promise<ArchiveContent[]> {
   const config = getSupabaseConfig();
   if (!config) return getPublishedFallbackContents();
 
@@ -70,7 +70,9 @@ async function fetchArchiveRows(query: URLSearchParams): Promise<ArchiveContent[
   try {
     response = await fetch(url, {
       headers: config.headers,
-      next: { revalidate: archiveRevalidateSeconds, tags: ['archive-content'] },
+      ...(options?.noStore
+        ? { cache: 'no-store' as const }
+        : { next: { revalidate: archiveRevalidateSeconds, tags: ['archive-content'] } }),
     });
   } catch (error) {
     console.warn('archive_content fetch failed', error);
@@ -108,7 +110,7 @@ export async function getPublishedArchiveContent(id: string): Promise<ArchiveCon
     limit: '1',
   });
 
-  const contents = await fetchArchiveRows(query);
+  const contents = await fetchArchiveRows(query, { noStore: true });
   return contents.find((content) => content.id === id) ?? null;
 }
 
