@@ -849,9 +849,9 @@ p {
 
 .content-detail > .archive-visual,
 .content-hero-wrap > .archive-visual {
-  aspect-ratio: 16 / 9;
+  aspect-ratio: auto;
+  height: clamp(300px, 32vw, 420px);
   min-height: 0;
-  height: auto;
   border-radius: 0;
   border-left: 0;
   border-right: 0;
@@ -916,6 +916,27 @@ p {
 .summary-box p {
   color: var(--ink);
   line-height: 1.7;
+}
+
+.lead-verdict {
+  display: grid;
+  gap: 8px;
+  border-left: 3px solid var(--primary-active);
+  background: var(--surface);
+  padding: 4px 0 4px 14px;
+}
+
+.lead-verdict strong {
+  color: var(--primary-active);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.lead-verdict p {
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.7;
+  font-weight: 500;
 }
 
 .content-body {
@@ -1611,7 +1632,6 @@ p {
 
   .structured-info {
     position: static;
-    order: -1;
   }
 
   .card-grid,
@@ -1628,6 +1648,7 @@ p {
 
   .content-detail > .archive-visual,
   .content-hero-wrap > .archive-visual {
+    height: clamp(190px, 48vw, 240px);
     min-height: 0;
   }
 }
