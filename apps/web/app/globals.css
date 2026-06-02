@@ -328,15 +328,49 @@ p {
   line-height: 1.72;
 }
 
+.home-stack {
+  gap: 26px;
+}
+
+.home-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 20px;
+  align-items: end;
+}
+
+.home-hero-copy {
+  max-width: 760px;
+}
+
+.home-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+  min-width: 280px;
+}
+
+.home-hero-actions a,
+.app-bridge a {
+  gap: 7px;
+}
+
 .feature-band {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
   gap: 20px;
   border: 1px solid var(--hairline);
   border-radius: var(--radius-lg);
   background: var(--surface);
   padding: 14px;
   overflow: hidden;
+}
+
+.feature-band .archive-visual {
+  aspect-ratio: 16 / 9;
+  min-height: 0;
+  height: auto;
 }
 
 .feature-copy {
@@ -352,6 +386,44 @@ p {
   font-size: 30px;
   line-height: 1.27;
   font-weight: 700;
+}
+
+.situation-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.situation-card {
+  display: grid;
+  gap: 8px;
+  min-height: 112px;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  padding: 18px;
+}
+
+.situation-card:hover,
+.situation-card:focus-visible,
+.category-card:hover,
+.category-card:focus-visible {
+  border-color: var(--primary-active);
+  background: var(--primary-soft);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.situation-card strong {
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.35;
+}
+
+.situation-card span {
+  color: var(--body);
+  font-size: 14px;
+  line-height: 1.55;
 }
 
 .archive-visual {
@@ -490,6 +562,45 @@ p {
   color: var(--muted);
   font-size: 13px;
   font-weight: 700;
+}
+
+.app-bridge {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) auto;
+  gap: 16px;
+  align-items: center;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  padding: 20px;
+}
+
+.app-bridge-icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: var(--primary-soft);
+  color: var(--primary-active);
+}
+
+.app-bridge h2 {
+  margin: 5px 0 6px;
+  color: var(--ink);
+  font-size: 22px;
+  line-height: 1.35;
+  font-weight: 600;
+}
+
+.app-bridge p:not(.kicker) {
+  color: var(--body);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.app-bridge .button-secondary {
+  white-space: nowrap;
 }
 
 .card-grid {
@@ -1446,6 +1557,22 @@ p {
     color: var(--primary-active);
   }
 
+  .home-hero,
+  .app-bridge {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .home-hero-actions {
+    justify-content: flex-start;
+    min-width: 0;
+  }
+
+  .home-hero-actions a,
+  .app-bridge a {
+    width: 100%;
+  }
+
   .feature-band,
   .content-layout,
   .submit-layout,
@@ -1467,6 +1594,15 @@ p {
 
   .submit-form {
     max-width: none;
+  }
+
+  .situation-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .app-bridge-icon {
+    width: 40px;
+    height: 40px;
   }
 
   .feature-copy {
