@@ -1,6 +1,6 @@
 ---
 name: bathtime-item-note-publishing-pipeline
-description: Run the full Bathtime Item Note content publishing pipeline through private draft DB apply. Use when the user wants to take a bath-related item, item category, comparison, or item idea from editorial angle to draft preview in one cycle: angle brief, research artifacts, canonical seed, web content package, ArchiveContent implementation, DB upsert artifacts, optional Supabase/PostgREST draft apply, and preview verification. This skill orchestrates bathtime-item-note-ideator, bathtime-item-note-researcher, bathtime-item-note-seed-builder, bathtime-item-note-web-content-producer, and bathtime-item-note-archive-content-implementer. It never publishes publicly by default.
+description: Run the full Bathtime Item Note content publishing pipeline through private draft DB apply. Use when the user wants to take a bath-related item, item category, comparison, or item idea from editorial angle to draft preview in one cycle: angle brief, research artifacts, canonical seed, web content package, Korean humanization review, ArchiveContent implementation, DB upsert artifacts, optional Supabase/PostgREST draft apply, and preview verification. This skill orchestrates bathtime-item-note-ideator, bathtime-item-note-researcher, bathtime-item-note-seed-builder, bathtime-item-note-web-content-producer, humanize-korean, and bathtime-item-note-archive-content-implementer. It never publishes publicly by default.
 metadata:
   short-description: 배스타임 아이템 노트 아이디어부터 비공개 draft 반영까지 전체 파이프라인
 ---
@@ -27,7 +27,7 @@ Item Note content starts with an item, product category, or vague purchase quest
 Therefore this pipeline begins with an idea/angle step:
 
 ```text
-item idea -> Bathtime angle -> angle review -> research -> seed -> web package -> visual asset generation -> implementation -> draft preview
+item idea -> Bathtime angle -> angle review -> research -> seed -> web package -> Korean humanization review -> implementation -> draft preview
 ```
 
 The first skill must define:
@@ -160,35 +160,78 @@ The package must include:
 
 The final page must read as an Item Note, not a product review.
 
-### 6. Optional generated visual assets with `imagegen`
+### 6. `humanize-korean`
 
-Use this step when the user asks to create hero images, inline images, visual assets, or a more complete preview.
+Run this required review step before ArchiveContent implementation or DB apply.
+
+Input:
+
+- `item-seed.web-content.md`
 
 Create or update:
 
-- `assets/hero-generation-prompt.md`
-- generated hero image under `outputs/item-archive/{item-slug}/assets/`
-- optional generated inline diagrams/cards under `outputs/item-archive/{item-slug}/assets/`
-- image generation notes in `item-seed.web-content.md`
+- `item-seed.web-content.humanized.md`
+- `item-seed.web-content.humanize-summary.md`
 
-Use `imagegen` with `photorealistic-natural` for calm editorial lifestyle hero images and `infographic-diagram` for comparison/setup cards.
+Use the local skill:
 
-Hero prompt rules:
+```text
+humanize-korean:humanize-korean
+```
 
-- show the item category or ritual context, not a specific branded product
-- avoid logos, labels, packaging, UI text, watermarks, and brand lookalikes
-- avoid marketplace/review-photo composition
-- keep the mood quiet, natural, and Bathtime-like
-- include composition guidance for archive hero cropping
-- include Korean alt text and a rights note
+Humanize only reader-facing Korean copy:
 
-If `OPENAI_API_KEY` is missing, do not block the content pipeline. Write the prompt file and keep the fallback image in `heroImage.uri`.
+- page title, subtitle, summary
+- reader verdict
+- body headings and paragraphs
+- structuredInfo visible labels and values
+- SEO title and description
+- CTA text
 
-If an image is generated but not uploaded to a public URL or app asset path, do not set it as the final `heroImage.uri` for DB/app rendering. Keep the fallback URI and add a publish blocker or implementation note with the local generated path.
+Preserve exactly:
+
+- facts, claims, prices, dates, source uncertainty, safety notes
+- product names, brand names, URLs, slugs, IDs, image URIs, asset paths
+- JSON/TypeScript field names and block type names
+- publish blockers and implementation notes
+- the no-ranking/no-recommendation stance
+
+Use conservative/default strength. Do not add new facts, examples, products, claims, images, links, or CTAs.
+
+The humanize skill writes `_workspace/{run_id}/final.md`. After the run, copy or adapt that final reader-facing result into:
+
+```text
+outputs/item-archive/{item-slug}/seed/item-seed.web-content.humanized.md
+```
+
+Record the summary comment and key before/after notes in:
+
+```text
+outputs/item-archive/{item-slug}/seed/item-seed.web-content.humanize-summary.md
+```
+
+The next implementation step must use `item-seed.web-content.humanized.md` as its primary input. Use the original `item-seed.web-content.md` only as a reference for structure or rollback.
+
+Stop before DB apply when:
+
+- humanize output changes meaning, facts, numbers, dates, product names, links, or uncertainty
+- humanize output removes publish blockers
+- humanize grade is C or D
+- change rate exceeds the humanize skill guardrail
+
+If humanize cannot run, stop before DB apply and report the missing review step. Do not silently apply the unreviewed original package.
 
 ### 7. `bathtime-item-note-archive-content-implementer`
 
-Convert the web package into the real app/DB source.
+Convert the humanized web package into the real app/DB source.
+
+Primary input:
+
+- `item-seed.web-content.humanized.md`
+
+Fallback/reference input:
+
+- `item-seed.web-content.md`
 
 Update:
 
@@ -283,12 +326,13 @@ Stop before DB apply and report the blocker when:
 - safety risk appears and cannot be framed responsibly
 - product image rights are unresolved and no safe fallback exists
 - affiliate/ad disclosure is required but unavailable
+- the required humanize review is missing, failed, or changed meaning
 - `item-seed.archive-content.ts` fails implementer fail conditions
 - the upsert generation command fails
 - required DB env is missing for `--apply`
 - preview token or endpoint is unavailable after DB apply and no alternate verification path exists
 
-Do not stop before DB apply merely because generated images are not hosted. Keep the hero fallback and carry the generated local asset path as a draft/publish note.
+Do not stop before DB apply merely because custom images are not ready. Keep the hero fallback and carry image slots as draft/publish notes.
 
 Do not stop merely because exact price, product image rights, or product examples are unresolved. Those are normal draft blockers. Surface them in the draft and keep the content private.
 
@@ -298,6 +342,7 @@ Do not mark an official fact as unresolved until the direct official URL has bee
 
 Final `item-seed.archive-content.ts` must:
 
+- be based on `item-seed.web-content.humanized.md` after the humanize review step
 - use Korean reader-facing body headings
 - avoid English research memo headings
 - avoid markdown quick-facts tables in `body`
@@ -340,16 +385,16 @@ Bad:
 
 Move details to body, `사기 전에 먼저 볼 것`, source notes, or publish blockers.
 
-## Image Rules
+## Image Slot Rules
 
-Images are required but product photos are not.
+The pipeline does not generate or upload images. It only plans image slots that a later image task or human editor can fill.
 
 Use:
 
 - category fallback
 - owned photos
 - licensed stock
-- generated conceptual diagrams
+- generated conceptual diagrams from a separate image task
 - setup/cleanup cards
 - comparison diagrams
 
@@ -370,21 +415,9 @@ Every image plan must specify:
 - rights requirement
 - fallback URI/token
 - Korean alt text
-- generation prompt path when using `imagegen`
-- generated local asset path when available
 - hosted/public URI or app asset URI before replacing the fallback
 
-Generated hero images should usually be produced as:
-
-```bash
-python "$IMAGE_GEN" generate \
-  --prompt "$(cat outputs/item-archive/{item-slug}/assets/hero-generation-prompt.md)" \
-  --size 1536x1024 \
-  --quality high \
-  --out outputs/item-archive/{item-slug}/assets/hero.png
-```
-
-Use `--dry-run` first when checking prompt shape or when `OPENAI_API_KEY` is not available.
+Do not write local generated image paths into `heroImage.uri` or body image blocks. Use hosted/public URLs, app-supported asset URIs, or category fallbacks only.
 
 ## Verification Commands
 
@@ -429,7 +462,8 @@ For each item note, report:
 - item slug and archive id
 - angle type
 - files created or updated
-- generated image prompt path, generated asset path, and whether it was actually wired into `heroImage.uri`
+- hero image fallback and planned image slots
+- humanize output path, grade, change rate, and whether it passed meaning-preservation checks
 - DB artifact generation result
 - DB apply result if attempted
 - preview verification result if available
@@ -456,8 +490,8 @@ Tasks:
 3. Run `bathtime-item-note-researcher` and create item research artifacts.
 4. Run `bathtime-item-note-seed-builder` and create item seed artifacts.
 5. Run `bathtime-item-note-web-content-producer` and create `item-seed.web-content.md`.
-6. If requested, run `imagegen` for a rights-safe generated hero image and/or inline diagrams. Keep fallback image URI unless the generated asset is hosted or app-addressable.
-7. Run `bathtime-item-note-archive-content-implementer` and update `item-seed.archive-content.ts`.
+6. Run `humanize-korean:humanize-korean` against `item-seed.web-content.md`, then create `item-seed.web-content.humanized.md` and `item-seed.web-content.humanize-summary.md`.
+7. Run `bathtime-item-note-archive-content-implementer` using `item-seed.web-content.humanized.md` as the primary input and update `item-seed.archive-content.ts`.
 8. Generate DB upsert artifacts if an item/generic archive upsert command exists.
 9. Apply draft only if requested and env is configured.
 10. Keep `isPublished: false` / `status: draft`.

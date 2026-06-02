@@ -928,7 +928,7 @@ p {
   gap: 8px;
   border-left: 3px solid var(--primary-active);
   background: var(--surface);
-  padding: 4px 0 4px 14px;
+  padding: 8px 0 8px 14px;
 }
 
 .lead-verdict strong {
@@ -964,6 +964,8 @@ p {
 
 .content-body > p,
 .content-body li,
+.body-panel p,
+.body-panel li,
 .panel-subtitle,
 .evidence-card p {
   color: var(--body);
@@ -1234,18 +1236,33 @@ p {
 .step-card,
 .evidence-card {
   display: grid;
-  gap: 7px;
+  gap: 9px;
   border: 1px solid var(--hairline-soft);
   border-radius: var(--radius);
   background: var(--canvas);
-  padding: 14px;
+  padding: 16px;
+}
+
+.step-card {
+  position: relative;
+  overflow: hidden;
+  align-content: start;
+  border-left: 3px solid var(--primary-active);
+}
+
+.step-card:nth-child(2) {
+  border-left-color: #9F8B5F;
+}
+
+.step-card:nth-child(3) {
+  border-left-color: #6F8A82;
 }
 
 .step-card span {
   display: inline-grid;
   place-items: center;
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   border-radius: 999px;
   background: var(--primary-soft);
   color: var(--primary-active);
@@ -1256,6 +1273,17 @@ p {
 .step-card strong,
 .evidence-card strong {
   font-size: 15px;
+}
+
+.step-card strong {
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.35;
+  font-weight: 600;
+}
+
+.step-card p {
+  margin-top: 1px;
 }
 
 .finding {

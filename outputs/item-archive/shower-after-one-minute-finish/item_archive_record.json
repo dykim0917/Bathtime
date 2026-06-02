@@ -1,0 +1,12 @@
+{
+  "id": "item-shower-after-one-minute-finish",
+  "slug": "shower-after-one-minute-finish",
+  "title": "샤워 후 만족감은 물을 끈 뒤 1분에서 갈립니다.",
+  "itemScope": "multi_item_setup",
+  "items": ["큰 수건", "목욕 가운", "바디로션"],
+  "ritual": "샤워 후 1분 마무리",
+  "sourceStatus": "public guidance and editorial synthesis",
+  "imageRightsStatus": "no product images used",
+  "lastResearchedAt": "2026-06-02"
+}
+
