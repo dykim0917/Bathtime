@@ -5,6 +5,7 @@ import { BodyRenderer } from '@web/components/BodyRenderer';
 import { StructuredInfo } from '@web/components/StructuredInfo';
 import { RoutineCard } from '@web/components/RoutineCard';
 import { SaveButton } from '@web/components/SaveButton';
+import type { ContentBodyBlock } from '@/src/archive/types';
 import {
   getCanonicalContentUrl,
   getPreviewArchiveContent,
@@ -19,6 +20,20 @@ export const dynamicParams = true;
 
 function normalizeParam(value: string | string[] | undefined): string {
   return Array.isArray(value) ? value[0] ?? '' : value ?? '';
+}
+
+function splitLeadVerdict(blocks: ContentBodyBlock[]): { leadVerdict: string | null; bodyBlocks: ContentBodyBlock[] } {
+  const headingIndex = blocks.findIndex((block) => block.type === 'heading' && block.text === '한 줄 판단');
+  const nextBlock = headingIndex >= 0 ? blocks[headingIndex + 1] : undefined;
+
+  if (!nextBlock || nextBlock.type !== 'paragraph') {
+    return { leadVerdict: null, bodyBlocks: blocks };
+  }
+
+  return {
+    leadVerdict: nextBlock.text,
+    bodyBlocks: blocks.filter((_, index) => index !== headingIndex && index !== headingIndex + 1),
+  };
 }
 
 async function resolveContent(id: string, previewToken?: string) {
@@ -88,6 +103,7 @@ export default async function ContentPage({
 
   const { content, isPreview } = resolved;
   const routines = getRelatedRoutinePresets(content);
+  const { leadVerdict, bodyBlocks } = splitLeadVerdict(content.body);
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -130,9 +146,15 @@ export default async function ContentPage({
               <strong>요약</strong>
               <p>{content.summary}</p>
             </div>
+            {leadVerdict ? (
+              <aside className="lead-verdict">
+                <strong>한 줄 판단</strong>
+                <p>{leadVerdict}</p>
+              </aside>
+            ) : null}
           </header>
 
-          <BodyRenderer blocks={content.body} />
+          <BodyRenderer blocks={bodyBlocks} />
 
           {routines.length > 0 ? (
             <section className="section related-routines-section">
