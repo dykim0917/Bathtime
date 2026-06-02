@@ -142,10 +142,6 @@ export default async function ContentPage({
             <p className="kicker">{CATEGORY_LABELS[content.category]} · {CONTENT_TYPE_LABELS[content.contentType]}</p>
             <h1>{content.title}</h1>
             {content.subtitle ? <p>{content.subtitle}</p> : null}
-            <div className="summary-box">
-              <strong>요약</strong>
-              <p>{content.summary}</p>
-            </div>
             {leadVerdict ? (
               <aside className="lead-verdict">
                 <strong>한 줄 판단</strong>
