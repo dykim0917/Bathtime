@@ -53,11 +53,11 @@ export default function TabLayout() {
         tabBarBackground: () => null,
       }}
     >
-      <Tabs.Screen name="index" options={{ title: '홈', tabBarIcon: ({ color, focused }) => <TabBarIcon name="home" color={color} focused={focused} /> }} />
+      <Tabs.Screen name="index" options={{ title: '지금', tabBarIcon: ({ color, focused }) => <TabBarIcon name="home" color={color} focused={focused} /> }} />
       <Tabs.Screen name="explore" options={{ title: '탐색', tabBarIcon: ({ color, focused }) => <TabBarIcon name="condition" color={color} focused={focused} /> }} />
       <Tabs.Screen name="routines" options={{ title: '의식', tabBarIcon: ({ color, focused }) => <TabBarIcon name="mood" color={color} focused={focused} /> }} />
       <Tabs.Screen name="submit" options={{ title: '제보', tabBarIcon: ({ color, focused }) => <TabBarIcon name="product" color={color} focused={focused} /> }} />
-      <Tabs.Screen name="my" options={{ title: '프로필', tabBarIcon: ({ color, focused }) => <TabBarIcon name="profile" color={color} focused={focused} /> }} />
+      <Tabs.Screen name="my" options={{ title: '보관함', tabBarIcon: ({ color, focused }) => <TabBarIcon name="profile" color={color} focused={focused} /> }} />
       <Tabs.Screen name="care" options={{ href: null }} />
       <Tabs.Screen name="trip" options={{ href: null }} />
       <Tabs.Screen name="product" options={{ href: null }} />
