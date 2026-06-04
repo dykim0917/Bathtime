@@ -18,31 +18,43 @@ const situationLinks = [
     title: '욕조 없는 집',
     description: '샤워와 족욕으로 가능한 홈케어를 찾습니다.',
     href: '/explore?query=%EC%9A%95%EC%A1%B0%20%EC%97%86%EC%9D%8C',
+    image: '/images/situations/no-bathtub-home.png',
+    imageAlt: '작은 욕실에서 샤워와 족욕을 준비하는 사람',
   },
   {
     title: '수면 전',
     description: '잠들기 전 부담이 낮은 바스타임을 고릅니다.',
     href: '/explore?query=%EC%88%98%EB%A9%B4%20%EC%A0%84',
+    image: '/images/situations/before-sleep.png',
+    imageAlt: '밤 욕실에서 조용히 쉬는 사람',
   },
   {
     title: '퇴근 후',
     description: '하루를 닫는 짧은 회복 콘텐츠를 봅니다.',
     href: '/explore?query=%ED%87%B4%EA%B7%BC%20%ED%9B%84',
+    image: '/images/situations/after-work.png',
+    imageAlt: '퇴근 후 따뜻한 물로 쉬는 사람',
   },
   {
     title: '몸이 찬 날',
     description: '오래 버티지 않는 온기 루틴을 찾습니다.',
     href: '/explore?query=%EC%9C%BC%EC%8A%AC%EC%9C%BC%EC%8A%AC',
+    image: '/images/situations/cold-day.png',
+    imageAlt: '추운 날 따뜻한 음료와 목도리로 몸을 녹이는 사람',
   },
   {
     title: '욕실 아이템',
     description: '도구를 사기 전 현실 조건을 확인합니다.',
     href: '/explore?category=BATH_ITEMS',
+    image: '/images/situations/bathroom-items.png',
+    imageAlt: '욕실 도구와 세면용품을 살펴보는 사람',
   },
   {
     title: '좋은 공간 제보',
     description: '알고 있는 사우나, 숙소, 세팅 단서를 남깁니다.',
     href: '/submit',
+    image: '/images/situations/submit-place.png',
+    imageAlt: '좋은 목욕 공간을 휴대폰으로 제보하는 사람',
   },
 ];
 
@@ -83,8 +95,13 @@ export default async function HomePage() {
         <div className="situation-grid">
           {situationLinks.map((item) => (
             <Link key={item.title} className="situation-card" href={item.href}>
-              <strong>{item.title}</strong>
-              <span>{item.description}</span>
+              <span className="situation-illustration">
+                <img src={item.image} alt={item.imageAlt} loading="lazy" />
+              </span>
+              <span className="situation-copy">
+                <strong>{item.title}</strong>
+                <span>{item.description}</span>
+              </span>
             </Link>
           ))}
         </div>

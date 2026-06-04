@@ -43,6 +43,16 @@ function getStoredSidebarCollapsed(): boolean {
   }
 }
 
+function getNativeWebViewShell(): boolean {
+  if (typeof window === 'undefined') return false;
+  if ((window as any).ReactNativeWebView) return true;
+  try {
+    return new URLSearchParams(window.location.search).get('appShell') === '1';
+  } catch {
+    return false;
+  }
+}
+
 function getHrefPath(href: Href): string {
   return typeof href === 'string' ? href : href.pathname;
 }
@@ -286,8 +296,13 @@ export function WebShell({
   const { width } = useWindowDimensions();
   const isDesktop = width >= 768;
   const [sidebarCollapsed, setSidebarCollapsed] = React.useState(getStoredSidebarCollapsed);
+  const [nativeWebViewShell, setNativeWebViewShell] = React.useState(getNativeWebViewShell);
   const sidebarProgress = React.useRef(new Animated.Value(sidebarCollapsed ? 0 : 1)).current;
   const pageProgress = React.useRef(new Animated.Value(0)).current;
+
+  React.useEffect(() => {
+    setNativeWebViewShell(getNativeWebViewShell());
+  }, [pathname]);
 
   React.useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -341,7 +356,7 @@ export function WebShell({
           {
             paddingHorizontal: isDesktop ? 0 : 16,
             paddingTop: isDesktop ? desktopContentPaddingTop : insets.top + (mobileContentPaddingTop ?? 18),
-            paddingBottom: isDesktop ? 48 : insets.bottom + 98,
+            paddingBottom: isDesktop ? 48 : insets.bottom + (nativeWebViewShell ? 24 : 98),
           },
         ]}
       >
@@ -350,7 +365,7 @@ export function WebShell({
           </Animated.View>
         </ScrollView>
       </View>
-      {!isDesktop ? <BottomTab pathname={pathname} bottomInset={insets.bottom} /> : null}
+      {!isDesktop && !nativeWebViewShell ? <BottomTab pathname={pathname} bottomInset={insets.bottom} /> : null}
     </View>
   );
 }
