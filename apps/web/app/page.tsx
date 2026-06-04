@@ -58,6 +58,25 @@ const situationLinks = [
   },
 ];
 
+const categoryIllustrations: Record<ContentCategory, { image: string; imageAlt: string }> = {
+  HOME_BATH: {
+    image: '/images/categories/home-bath.png',
+    imageAlt: '집에서 샤워와 족욕으로 홈케어를 하는 모습',
+  },
+  BATH_PLACES: {
+    image: '/images/categories/bath-places.png',
+    imageAlt: '따뜻한 목욕 공간에 머무는 사람',
+  },
+  BATH_ITEMS: {
+    image: '/images/categories/bath-items.png',
+    imageAlt: '욕실 의자와 수건, 족욕기 같은 욕실 아이템',
+  },
+  TIPS_CULTURE: {
+    image: '/images/categories/tips-culture.png',
+    imageAlt: '바스타임 노트와 체크리스트',
+  },
+};
+
 export default async function HomePage() {
   const contents = await getPublishedArchiveContents();
   const featured = getFeaturedContent(contents);
@@ -123,12 +142,17 @@ export default async function HomePage() {
 
       {visibleCategories.length > 0 ? (
         <section className="section">
-          <h2>아카이브 갈래</h2>
+          <h2>무엇을 찾고 있나요?</h2>
           <div className="category-grid">
             {visibleCategories.map(({ category, count }) => (
               <Link key={category} className="category-card" href={`/explore?category=${category}`}>
-                <strong>{CATEGORY_LABELS[category]}</strong>
-                <span>{count}개 기록</span>
+                <span className="category-illustration">
+                  <img src={categoryIllustrations[category].image} alt={categoryIllustrations[category].imageAlt} loading="lazy" />
+                </span>
+                <span className="category-copy">
+                  <strong>{CATEGORY_LABELS[category]}</strong>
+                  <span>{count}개 기록</span>
+                </span>
               </Link>
             ))}
           </div>

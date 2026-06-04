@@ -1,11 +1,16 @@
 # Dependencies and generated native folders
 node_modules/
+**/node_modules/
 ios/
 android/
 
 # Local build outputs and downloaded artifacts
 dist/
 web-build/
+.next/
+**/.next/
+outputs/
+*.tsbuildinfo
 *.aab
 *.apk
 
@@ -14,12 +19,16 @@ docs/
 output/
 .audit-shots/
 .gstack/
+.codex-*.png
+BathSommelier_*.docx
 
 # Tooling/cache files not needed by EAS Build
 .expo/
 .git/
+.git/**
 .tmp/
 tmp/
+im-not-ai/
 npm-debug.*
 yarn-debug.*
 yarn-error.*

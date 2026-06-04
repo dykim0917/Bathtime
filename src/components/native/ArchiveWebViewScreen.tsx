@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { ActivityIndicator, Linking, StyleSheet, Text, View } from 'react-native';
 import { router } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -8,6 +8,35 @@ import { luxuryFonts } from '@/src/theme/luxury';
 
 const DEFAULT_ARCHIVE_WEB_BASE_URL = 'https://www.getbathtime.com';
 const BATHTIME_HOSTS = new Set(['getbathtime.com', 'www.getbathtime.com']);
+const APP_SHELL_STYLE_ID = 'bathtime-app-shell-style';
+const APP_SHELL_INJECTION = `
+(function () {
+  var css = [
+    '.bottom-nav{display:none!important;}',
+    '.app-bridge{display:none!important;}',
+    '@media(max-width:767px){.main{padding-bottom:28px!important;}}'
+  ].join('');
+
+  function injectAppShellStyle() {
+    if (document.getElementById('${APP_SHELL_STYLE_ID}')) return;
+    var style = document.createElement('style');
+    style.id = '${APP_SHELL_STYLE_ID}';
+    style.textContent = css;
+    (document.head || document.documentElement).appendChild(style);
+  }
+
+  function markAppShell() {
+    document.documentElement.dataset.bathtimeSurface = 'app';
+    if (document.body) document.body.classList.add('bathtime-app-shell');
+    injectAppShellStyle();
+  }
+
+  injectAppShellStyle();
+  markAppShell();
+  document.addEventListener('DOMContentLoaded', markAppShell);
+})();
+true;
+`;
 
 function getArchiveWebBaseUrl() {
   return (process.env.EXPO_PUBLIC_ARCHIVE_WEB_BASE_URL?.trim() || DEFAULT_ARCHIVE_WEB_BASE_URL).replace(/\/$/, '');
@@ -61,6 +90,7 @@ export function ArchiveWebViewScreen({ path }: { path: string }) {
   const handleShouldStartLoad = useCallback((request: { url: string }) => {
     const routineIntent = getRoutineIntent(request.url);
     if (routineIntent) {
+      setLoading(false);
       router.push('/(tabs)/routines' as any);
       return false;
     }
@@ -73,6 +103,12 @@ export function ArchiveWebViewScreen({ path }: { path: string }) {
     return false;
   }, []);
 
+  useEffect(() => {
+    if (!loading) return;
+    const timeout = setTimeout(() => setLoading(false), 12000);
+    return () => clearTimeout(timeout);
+  }, [loading]);
+
   return (
     <View style={[styles.root, { paddingTop: insets.top }]}>
       <WebView
@@ -84,11 +120,17 @@ export function ArchiveWebViewScreen({ path }: { path: string }) {
           setFailed(false);
         }}
         onLoadEnd={() => setLoading(false)}
+        onLoadProgress={({ nativeEvent }) => {
+          if (nativeEvent.progress >= 0.96) setLoading(false);
+        }}
         onError={() => {
           setLoading(false);
           setFailed(true);
         }}
         onShouldStartLoadWithRequest={handleShouldStartLoad}
+        injectedJavaScriptBeforeContentLoaded={APP_SHELL_INJECTION}
+        injectedJavaScript={APP_SHELL_INJECTION}
+        applicationNameForUserAgent="BathtimeApp"
         setSupportMultipleWindows={false}
       />
       {loading ? (

@@ -160,6 +160,19 @@ export function Shell({ children }: { children: React.ReactNode }) {
     window.localStorage.setItem(sidebarCollapsedStorageKey, String(collapsed));
   }, [collapsed]);
 
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const isAppShell =
+      searchParams.get('appShell') === '1' ||
+      Boolean((window as any).ReactNativeWebView) ||
+      window.navigator.userAgent.includes('BathtimeApp');
+
+    if (!isAppShell) return;
+
+    document.documentElement.dataset.bathtimeSurface = 'app';
+    document.body.classList.add('bathtime-app-shell');
+  }, [pathname]);
+
   const shellClassName = useMemo(() => (collapsed ? 'site-shell sidebar-collapsed' : 'site-shell'), [collapsed]);
 
   return (
