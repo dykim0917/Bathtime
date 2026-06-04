@@ -1,10 +1,11 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ActivityIndicator, Linking, StyleSheet, Text, View } from 'react-native';
 import { router } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { WebView } from 'react-native-webview';
+import { WebView, WebViewMessageEvent } from 'react-native-webview';
 import { archiveColors, archiveRadius } from '@/src/theme/archiveTheme';
 import { luxuryFonts } from '@/src/theme/luxury';
+import { requestExpoPushTokenAsync } from '@/src/notifications/pushNotifications';
 
 const DEFAULT_ARCHIVE_WEB_BASE_URL = 'https://www.getbathtime.com';
 const BATHTIME_HOSTS = new Set(['getbathtime.com', 'www.getbathtime.com']);
@@ -83,6 +84,7 @@ function isInternalArchiveUrl(url: string) {
 
 export function ArchiveWebViewScreen({ path }: { path: string }) {
   const insets = useSafeAreaInsets();
+  const webViewRef = useRef<WebView>(null);
   const [loading, setLoading] = useState(true);
   const [failed, setFailed] = useState(false);
   const uri = useMemo(() => buildArchiveUrl(path), [path]);
@@ -109,9 +111,49 @@ export function ArchiveWebViewScreen({ path }: { path: string }) {
     return () => clearTimeout(timeout);
   }, [loading]);
 
+  const postPushMessage = useCallback((payload: Record<string, unknown>) => {
+    webViewRef.current?.postMessage(JSON.stringify({ source: 'bathtime-native', ...payload }));
+  }, []);
+
+  const handleWebViewMessage = useCallback(
+    async (event: WebViewMessageEvent) => {
+      let payload: { type?: string } | null = null;
+      try {
+        payload = JSON.parse(event.nativeEvent.data);
+      } catch {
+        return;
+      }
+
+      if (payload?.type === 'bathtime:push:enable') {
+        const result = await requestExpoPushTokenAsync();
+        postPushMessage({
+          type: 'bathtime:push:registration-result',
+          enabled: result.ok,
+          platform: 'android',
+          token: result.ok ? result.token : null,
+          error: result.ok ? null : result.message,
+          reason: result.ok ? null : result.reason,
+        });
+      }
+
+      if (payload?.type === 'bathtime:push:disable') {
+        postPushMessage({
+          type: 'bathtime:push:registration-result',
+          enabled: false,
+          platform: 'android',
+          token: null,
+          error: null,
+          reason: 'disabled',
+        });
+      }
+    },
+    [postPushMessage]
+  );
+
   return (
     <View style={[styles.root, { paddingTop: insets.top }]}>
       <WebView
+        ref={webViewRef}
         source={{ uri }}
         style={styles.webView}
         startInLoadingState={false}
@@ -131,6 +173,7 @@ export function ArchiveWebViewScreen({ path }: { path: string }) {
         injectedJavaScriptBeforeContentLoaded={APP_SHELL_INJECTION}
         injectedJavaScript={APP_SHELL_INJECTION}
         applicationNameForUserAgent="BathtimeApp"
+        onMessage={handleWebViewMessage}
         setSupportMultipleWindows={false}
       />
       {loading ? (

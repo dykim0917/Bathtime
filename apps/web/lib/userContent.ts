@@ -81,6 +81,71 @@ export async function getSavedContentIds(): Promise<string[]> {
   return (data ?? []).map((item) => item.target_id as string);
 }
 
+export async function getNotificationPreference(): Promise<boolean> {
+  const user = await getAuthenticatedUser();
+  const supabase = requireClient();
+  const { data, error } = await supabase
+    .from('notification_preferences')
+    .select('push_enabled')
+    .eq('user_id', user.id)
+    .maybeSingle();
+
+  if (error) throw error;
+  return Boolean(data?.push_enabled);
+}
+
+export async function setNotificationPreference(pushEnabled: boolean): Promise<void> {
+  const user = await getAuthenticatedUser({ ensureProfile: true });
+  const supabase = requireClient();
+  const { error } = await supabase.from('notification_preferences').upsert({
+    user_id: user.id,
+    push_enabled: pushEnabled,
+    updated_at: new Date().toISOString(),
+  });
+
+  if (error) throw error;
+}
+
+export async function upsertPushToken(input: { token: string; platform: 'android' | 'ios' }): Promise<void> {
+  const user = await getAuthenticatedUser({ ensureProfile: true });
+  const supabase = requireClient();
+  const now = new Date().toISOString();
+  const { error } = await supabase.from('push_tokens').upsert(
+    {
+      user_id: user.id,
+      expo_push_token: input.token,
+      platform: input.platform,
+      status: 'active',
+      disabled_at: null,
+      last_registered_at: now,
+      updated_at: now,
+    },
+    { onConflict: 'expo_push_token' }
+  );
+
+  if (error) throw error;
+}
+
+export async function deactivatePushTokens(): Promise<void> {
+  const user = await getAuthenticatedUser();
+  const supabase = requireClient();
+  const now = new Date().toISOString();
+
+  const { error: tokenError } = await supabase
+    .from('push_tokens')
+    .update({ status: 'inactive', disabled_at: now, updated_at: now })
+    .eq('user_id', user.id);
+  if (tokenError) throw tokenError;
+
+  await setNotificationPreference(false);
+}
+
+export async function sendTestPushNotification(): Promise<void> {
+  const supabase = requireClient();
+  const { error } = await supabase.functions.invoke('send-test-push');
+  if (error) throw error;
+}
+
 export async function isContentSaved(id: string): Promise<boolean> {
   const user = await getAuthenticatedUser();
   const supabase = requireClient();

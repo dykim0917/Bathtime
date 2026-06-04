@@ -1,18 +1,19 @@
 'use client';
 
 import { FormEvent, useEffect, useState } from 'react';
+import { Bed, ChatCircleDots, MapTrifold, Package, Sparkle, type Icon } from '@phosphor-icons/react';
 import type { Submission } from '@/src/archive/types';
 import { getSupabaseClient } from '@web/lib/auth';
 import { AuthRequiredError, redirectToLogin, saveSubmission } from '@web/lib/userContent';
 
 type SubmissionType = Submission['type'];
 
-const submissionTypes: Array<{ value: SubmissionType; label: string }> = [
-  { value: 'sauna_spa', label: '목욕 공간' },
-  { value: 'bathtub_stay', label: '욕조 숙소' },
-  { value: 'home_spa', label: '홈스파 루틴' },
-  { value: 'item', label: '욕실 아이템' },
-  { value: 'topic', label: '다뤘으면 하는 주제' },
+const submissionTypes: Array<{ value: SubmissionType; label: string; icon: Icon }> = [
+  { value: 'sauna_spa', label: '목욕 공간', icon: MapTrifold },
+  { value: 'bathtub_stay', label: '욕조 숙소', icon: Bed },
+  { value: 'home_spa', label: '홈스파 루틴', icon: Sparkle },
+  { value: 'item', label: '욕실 아이템', icon: Package },
+  { value: 'topic', label: '다뤘으면 하는 주제', icon: ChatCircleDots },
 ];
 
 export function SubmitForm() {
@@ -82,17 +83,22 @@ export function SubmitForm() {
       <fieldset className="submit-type-field">
         <legend>제보 유형</legend>
         <div className="submit-type-grid">
-          {submissionTypes.map((item) => (
-            <button
-              key={item.value}
-              type="button"
-              className={type === item.value ? 'active' : undefined}
-              aria-pressed={type === item.value}
-              onClick={() => setType(item.value)}
-            >
-              {item.label}
-            </button>
-          ))}
+          {submissionTypes.map((item) => {
+            const active = type === item.value;
+            const TypeIcon = item.icon;
+            return (
+              <button
+                key={item.value}
+                type="button"
+                className={active ? 'active' : undefined}
+                aria-pressed={active}
+                onClick={() => setType(item.value)}
+              >
+                <TypeIcon size={16} weight={active ? 'fill' : 'regular'} aria-hidden="true" />
+                <span>{item.label}</span>
+              </button>
+            );
+          })}
         </div>
       </fieldset>
 

@@ -39,6 +39,7 @@
     "plugins": [
       "expo-router",
       "expo-audio",
+      "expo-notifications",
       [
         "expo-navigation-bar",
         {
