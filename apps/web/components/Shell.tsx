@@ -2,8 +2,8 @@
 
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { BookmarkSimple, Compass, House, List, MagnifyingGlass, PlusSquare, UserCircle } from '@phosphor-icons/react';
-import { useEffect, useMemo, useState } from 'react';
+import { BookmarkSimple, Compass, House, List, MagnifyingGlass, PlusSquare, UserCircle, X } from '@phosphor-icons/react';
+import { useEffect, useMemo, useState, type MouseEvent } from 'react';
 import brandSymbol from '@/assets/images/bathtime.svg';
 import logoImage from '@/assets/images/logo.png';
 import { getSupabaseClient } from '@web/lib/auth';
@@ -20,13 +20,14 @@ type NavItem = {
   href: string;
   label: string;
   icon: IconName;
+  requiresAuth?: boolean;
 };
 
 const navItems: NavItem[] = [
   { href: '/', label: '지금', icon: 'house' },
   { href: '/explore', label: '탐색', icon: 'compass' },
-  { href: '/submit', label: '제보', icon: 'plus' },
-  { href: '/saved', label: '보관함', icon: 'bookmark' },
+  { href: '/submit', label: '제보', icon: 'plus', requiresAuth: true },
+  { href: '/saved', label: '보관함', icon: 'bookmark', requiresAuth: true },
 ];
 
 const sidebarCollapsedStorageKey = 'bathtime:web-sidebar-collapsed';
@@ -57,29 +58,7 @@ function getStoredCollapsed(): boolean {
   return window.localStorage.getItem(sidebarCollapsedStorageKey) === 'true';
 }
 
-function AccountButton() {
-  const [signedIn, setSignedIn] = useState(false);
-  const [ready, setReady] = useState(false);
-
-  useEffect(() => {
-    const supabase = getSupabaseClient();
-    if (!supabase) {
-      setReady(true);
-      return;
-    }
-
-    supabase.auth.getSession().then(({ data }) => {
-      setSignedIn(Boolean(data.session));
-      setReady(true);
-    });
-    const { data } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSignedIn(Boolean(session));
-      setReady(true);
-    });
-
-    return () => data.subscription.unsubscribe();
-  }, []);
-
+function AccountButton({ signedIn, ready, onSignedOut }: { signedIn: boolean; ready: boolean; onSignedOut: () => void }) {
   if (!ready || !signedIn) {
     return (
       <Link className="account-button" href="/auth/login">
@@ -97,6 +76,7 @@ function AccountButton() {
         const supabase = getSupabaseClient();
         await supabase?.auth.signOut();
         window.dispatchEvent(new CustomEvent('bathtime:saved-content-changed'));
+        onSignedOut();
       }}
     >
       <Icon name="user" size={16} />
@@ -110,9 +90,31 @@ export function Shell({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const [collapsed, setCollapsed] = useState(false);
   const [query, setQuery] = useState('');
+  const [signedIn, setSignedIn] = useState(false);
+  const [authReady, setAuthReady] = useState(false);
+  const [authGate, setAuthGate] = useState<{ source: string; next: string; message: string } | null>(null);
 
   useEffect(() => {
     setCollapsed(getStoredCollapsed());
+  }, []);
+
+  useEffect(() => {
+    const supabase = getSupabaseClient();
+    if (!supabase) {
+      setAuthReady(true);
+      return;
+    }
+
+    supabase.auth.getSession().then(({ data }) => {
+      setSignedIn(Boolean(data.session));
+      setAuthReady(true);
+    });
+    const { data } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSignedIn(Boolean(session));
+      setAuthReady(true);
+    });
+
+    return () => data.subscription.unsubscribe();
   }, []);
 
   useEffect(() => {
@@ -133,6 +135,16 @@ export function Shell({ children }: { children: React.ReactNode }) {
   }, [pathname]);
 
   const shellClassName = useMemo(() => (collapsed ? 'site-shell sidebar-collapsed' : 'site-shell'), [collapsed]);
+  const handleProtectedNav = (event: MouseEvent<HTMLAnchorElement>, item: NavItem) => {
+    if (!item.requiresAuth || signedIn) return;
+
+    event.preventDefault();
+    setAuthGate({
+      source: item.href === '/submit' ? 'submit' : 'saved',
+      next: item.href,
+      message: item.href === '/submit' ? '제보를 남기려면 로그인해주세요.' : '저장한 기록을 보려면 로그인해주세요.',
+    });
+  };
 
   return (
     <div className={shellClassName}>
@@ -165,6 +177,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
                 className={active ? 'nav-link active' : 'nav-link'}
                 href={item.href}
                 title={collapsed ? item.label : undefined}
+                onClick={(event) => handleProtectedNav(event, item)}
               >
                 <Icon name={item.icon} active={active} />
                 <span>{item.label}</span>
@@ -196,7 +209,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
               placeholder="의식, 재료 또는 장소를 입력해주세요..."
             />
           </form>
-          <AccountButton />
+          <AccountButton signedIn={signedIn} ready={authReady} onSignedOut={() => setSignedIn(false)} />
         </header>
         <main className={pathname.startsWith('/content/') ? 'main content-route-main' : 'main'}>{children}</main>
       </div>
@@ -204,13 +217,45 @@ export function Shell({ children }: { children: React.ReactNode }) {
         {navItems.map((item) => {
           const active = isActive(pathname, item.href);
           return (
-            <Link key={item.href} className={active ? 'active' : ''} href={item.href}>
+            <Link key={item.href} className={active ? 'active' : ''} href={item.href} onClick={(event) => handleProtectedNav(event, item)}>
               <Icon name={item.icon} size={24} active={active} />
               <span>{item.label}</span>
             </Link>
           );
         })}
       </nav>
+      {authGate ? (
+        <div className="modal-backdrop" role="presentation">
+          <section className="auth-gate-modal" role="alertdialog" aria-modal="true" aria-labelledby="auth-gate-title">
+            <button className="modal-icon-button" type="button" aria-label="닫기" onClick={() => setAuthGate(null)}>
+              <X size={18} weight="bold" aria-hidden />
+            </button>
+            <div className="auth-gate-icon" aria-hidden="true">
+              <UserCircle size={24} weight="fill" />
+            </div>
+            <div className="auth-gate-copy">
+              <h2 id="auth-gate-title">{authGate.message}</h2>
+              <p>Google 계정으로 로그인한 뒤 이어서 사용할 수 있어요.</p>
+            </div>
+            <div className="modal-actions">
+              <button className="button-secondary" type="button" onClick={() => setAuthGate(null)}>
+                취소
+              </button>
+              <button
+                className="button-primary"
+                type="button"
+                onClick={() => {
+                  const next = encodeURIComponent(authGate.next);
+                  router.push(`/auth/login?source=${encodeURIComponent(authGate.source)}&next=${next}`);
+                  setAuthGate(null);
+                }}
+              >
+                확인
+              </button>
+            </div>
+          </section>
+        </div>
+      ) : null}
     </div>
   );
 }

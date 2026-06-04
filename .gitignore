@@ -49,10 +49,18 @@ assets/images/products/*.png
 .env*.local
 .data/
 
+# local Firebase / FCM credentials
+app/google-services.json
+firebase-adminsdk*.json
+*firebase-adminsdk*.json
+fcm-service-account*.json
+*-service-account*.json
+
 # typescript
 *.tsbuildinfo
 
 # generated native folders
 /ios
 /android
+supabase/.temp/
 .gstack/

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { SavedContentList } from '@web/components/SavedContentList';
+import { SavedSettingsButton } from '@web/components/SavedSettingsButton';
 import { getPublishedArchiveContents } from '@web/lib/archive';
 
 export const revalidate = 300;
@@ -14,11 +15,14 @@ export default async function SavedPage() {
 
   return (
     <div className="page-stack">
-      <header className="page-header compact">
-        <p className="kicker">SAVED</p>
-        <h1>다시 보고 싶은 바스타임 기록</h1>
-        <p>저장한 공간, 아이템, 루틴 기록을 한곳에서 확인합니다.</p>
-      </header>
+      <div className="saved-header-row">
+        <header className="page-header compact">
+          <p className="kicker">SAVED</p>
+          <h1>다시 보고 싶은 바스타임 기록</h1>
+          <p>저장한 공간, 아이템, 루틴 기록을 한곳에서 확인합니다.</p>
+        </header>
+        <SavedSettingsButton />
+      </div>
       <SavedContentList contents={contents} />
     </div>
   );
