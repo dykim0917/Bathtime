@@ -2,12 +2,19 @@
 
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
+import { BookmarkSimple, Compass, House, List, MagnifyingGlass, PlusSquare, UserCircle } from '@phosphor-icons/react';
 import { useEffect, useMemo, useState } from 'react';
 import brandSymbol from '@/assets/images/bathtime.svg';
 import logoImage from '@/assets/images/logo.png';
 import { getSupabaseClient } from '@web/lib/auth';
 
 type IconName = 'bookmark' | 'compass' | 'house' | 'list' | 'plus' | 'search' | 'user';
+type IconWeight = 'thin' | 'light' | 'regular' | 'bold' | 'fill' | 'duotone';
+type PhosphorIcon = React.ComponentType<{
+  size?: number;
+  weight?: IconWeight;
+  'aria-hidden'?: boolean;
+}>;
 
 type NavItem = {
   href: string;
@@ -24,67 +31,19 @@ const navItems: NavItem[] = [
 
 const sidebarCollapsedStorageKey = 'bathtime:web-sidebar-collapsed';
 
-function Icon({ name, size = 20 }: { name: IconName; size?: number }) {
-  const common = {
-    width: size,
-    height: size,
-    viewBox: '0 0 24 24',
-    fill: 'none',
-    xmlns: 'http://www.w3.org/2000/svg',
-    'aria-hidden': true,
-  };
+const icons: Record<IconName, PhosphorIcon> = {
+  bookmark: BookmarkSimple,
+  compass: Compass,
+  house: House,
+  list: List,
+  plus: PlusSquare,
+  search: MagnifyingGlass,
+  user: UserCircle,
+};
 
-  if (name === 'house') {
-    return (
-      <svg {...common}>
-        <path d="M4 10.8 12 4l8 6.8V20a1 1 0 0 1-1 1h-5v-6h-4v6H5a1 1 0 0 1-1-1v-9.2Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
-      </svg>
-    );
-  }
-  if (name === 'compass') {
-    return (
-      <svg {...common}>
-        <circle cx="12" cy="12" r="8" stroke="currentColor" strokeWidth="1.8" />
-        <path d="m15.5 8.5-2 5-5 2 2-5 5-2Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
-      </svg>
-    );
-  }
-  if (name === 'plus') {
-    return (
-      <svg {...common}>
-        <rect x="4" y="4" width="16" height="16" rx="3" stroke="currentColor" strokeWidth="1.8" />
-        <path d="M12 8v8M8 12h8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-      </svg>
-    );
-  }
-  if (name === 'bookmark') {
-    return (
-      <svg {...common}>
-        <path d="M7 5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16l-5-3-5 3V5Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
-      </svg>
-    );
-  }
-  if (name === 'list') {
-    return (
-      <svg {...common}>
-        <path d="M5 7h14M5 12h14M5 17h14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-      </svg>
-    );
-  }
-  if (name === 'search') {
-    return (
-      <svg {...common}>
-        <circle cx="11" cy="11" r="6" stroke="currentColor" strokeWidth="1.8" />
-        <path d="m16 16 4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-      </svg>
-    );
-  }
-  return (
-    <svg {...common}>
-      <circle cx="12" cy="8" r="4" stroke="currentColor" strokeWidth="1.8" />
-      <path d="M5 21a7 7 0 0 1 14 0" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-    </svg>
-  );
+function Icon({ name, size = 20, active = false }: { name: IconName; size?: number; active?: boolean }) {
+  const IconComponent = icons[name];
+  return <IconComponent size={size} weight={active ? 'fill' : 'regular'} aria-hidden />;
 }
 
 function isActive(pathname: string, href: string): boolean {
@@ -198,17 +157,20 @@ export function Shell({ children }: { children: React.ReactNode }) {
           </Link>
         </div>
         <nav className="nav-list" aria-label="주요 메뉴">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              className={isActive(pathname, item.href) ? 'nav-link active' : 'nav-link'}
-              href={item.href}
-              title={collapsed ? item.label : undefined}
-            >
-              <Icon name={item.icon} />
-              <span>{item.label}</span>
-            </Link>
-          ))}
+          {navItems.map((item) => {
+            const active = isActive(pathname, item.href);
+            return (
+              <Link
+                key={item.href}
+                className={active ? 'nav-link active' : 'nav-link'}
+                href={item.href}
+                title={collapsed ? item.label : undefined}
+              >
+                <Icon name={item.icon} active={active} />
+                <span>{item.label}</span>
+              </Link>
+            );
+          })}
         </nav>
         <div className="sidebar-footer">
           <Link href="/legal/privacy">개인정보처리방침</Link>
@@ -239,12 +201,15 @@ export function Shell({ children }: { children: React.ReactNode }) {
         <main className={pathname.startsWith('/content/') ? 'main content-route-main' : 'main'}>{children}</main>
       </div>
       <nav className="bottom-nav" aria-label="모바일 메뉴">
-        {navItems.map((item) => (
-          <Link key={item.href} className={isActive(pathname, item.href) ? 'active' : ''} href={item.href}>
-            <Icon name={item.icon} size={24} />
-            <span>{item.label}</span>
-          </Link>
-        ))}
+        {navItems.map((item) => {
+          const active = isActive(pathname, item.href);
+          return (
+            <Link key={item.href} className={active ? 'active' : ''} href={item.href}>
+              <Icon name={item.icon} size={24} active={active} />
+              <span>{item.label}</span>
+            </Link>
+          );
+        })}
       </nav>
     </div>
   );
