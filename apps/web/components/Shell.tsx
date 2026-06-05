@@ -92,8 +92,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
   const [query, setQuery] = useState('');
   const [signedIn, setSignedIn] = useState(false);
   const [authReady, setAuthReady] = useState(false);
-  const [appShell, setAppShell] = useState(false);
-  const [authGate, setAuthGate] = useState<{ source: string; next: string; message: string; cancelHref?: string } | null>(null);
+  const [authGate, setAuthGate] = useState<{ source: string; next: string; message: string } | null>(null);
 
   useEffect(() => {
     setCollapsed(getStoredCollapsed());
@@ -129,34 +128,13 @@ export function Shell({ children }: { children: React.ReactNode }) {
       Boolean((window as any).ReactNativeWebView) ||
       window.navigator.userAgent.includes('BathtimeApp');
 
-    setAppShell(isAppShell);
     if (!isAppShell) return;
 
     document.documentElement.dataset.bathtimeSurface = 'app';
     document.body.classList.add('bathtime-app-shell');
   }, [pathname]);
 
-  useEffect(() => {
-    if (!appShell || !authReady || signedIn || authGate) return;
-
-    const protectedItem = navItems.find((item) => item.requiresAuth && item.href === pathname);
-    if (!protectedItem) return;
-
-    setAuthGate({
-      source: protectedItem.href === '/submit' ? 'submit' : 'saved',
-      next: protectedItem.href,
-      cancelHref: '/',
-      message: protectedItem.href === '/submit' ? '제보를 남기려면 로그인해주세요.' : '저장한 기록을 보려면 로그인해주세요.',
-    });
-  }, [appShell, authGate, authReady, pathname, signedIn]);
-
   const shellClassName = useMemo(() => (collapsed ? 'site-shell sidebar-collapsed' : 'site-shell'), [collapsed]);
-  const closeAuthGate = () => {
-    const cancelHref = authGate?.cancelHref;
-    setAuthGate(null);
-    if (cancelHref) router.replace(cancelHref);
-  };
-
   const handleProtectedNav = (event: MouseEvent<HTMLAnchorElement>, item: NavItem) => {
     if (!item.requiresAuth || signedIn) return;
 
@@ -249,7 +227,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
       {authGate ? (
         <div className="modal-backdrop" role="presentation">
           <section className="auth-gate-modal" role="alertdialog" aria-modal="true" aria-labelledby="auth-gate-title">
-            <button className="modal-icon-button" type="button" aria-label="닫기" onClick={closeAuthGate}>
+            <button className="modal-icon-button" type="button" aria-label="닫기" onClick={() => setAuthGate(null)}>
               <X size={18} weight="bold" aria-hidden />
             </button>
             <div className="auth-gate-icon" aria-hidden="true">
@@ -260,7 +238,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
               <p>Google 계정으로 로그인한 뒤 이어서 사용할 수 있어요.</p>
             </div>
             <div className="modal-actions">
-              <button className="button-secondary" type="button" onClick={closeAuthGate}>
+              <button className="button-secondary" type="button" onClick={() => setAuthGate(null)}>
                 취소
               </button>
               <button
