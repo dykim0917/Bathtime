@@ -63,7 +63,7 @@ function renderBodyBlock(block: AdminArchiveBodyBlock, index: number) {
           <article key={`${item.sourceName}-${item.year ?? ''}`}>
             <strong>{item.sourceName}{item.year ? ` · ${item.year}` : ''}</strong>
             <p>{item.finding}</p>
-            <p>배스타임 해석: {item.bathtimeTakeaway}</p>
+            <p>바스타임 해석: {item.bathtimeTakeaway}</p>
           </article>
         ))}
       </section>

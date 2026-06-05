@@ -156,6 +156,42 @@ export async function updateArchiveContentBasicInfo(formData: FormData) {
   redirect(`/content/${id}?updated=basic_info`);
 }
 
+export async function updateArchiveContentStatusFromList(formData: FormData) {
+  const id = String(formData.get('id') ?? '').trim();
+  const status = String(formData.get('status') ?? '').trim();
+  const returnTo = String(formData.get('returnTo') ?? '/content').trim();
+  const redirectTo = returnTo.startsWith('/content') ? returnTo : '/content';
+  const separator = redirectTo.includes('?') ? '&' : '?';
+
+  if (!id || !isContentStatus(status)) {
+    redirect(`${redirectTo}${separator}error=invalid_status`);
+  }
+
+  const config = await readAdminPostgrestSessionConfig();
+  if (!config) {
+    redirect(`${redirectTo}${separator}error=missing_content_db`);
+  }
+
+  try {
+    await updatePostgrestRows(
+      config,
+      'archive_content',
+      { id: `eq.${id}` },
+      {
+        status,
+        is_published: status === 'active',
+        content_updated_at: todayDateString(),
+      }
+    );
+  } catch {
+    redirect(`${redirectTo}${separator}error=update_failed`);
+  }
+
+  revalidatePath('/content');
+  revalidatePath(`/content/${id}`);
+  redirect(`${redirectTo}${separator}updated=status`);
+}
+
 export async function updateArchiveContentBody(formData: FormData) {
   const id = String(formData.get('id') ?? '').trim();
   const heroImage = parseJsonField(formData.get('heroImage'));

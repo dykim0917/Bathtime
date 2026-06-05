@@ -197,7 +197,7 @@ export function ContentBodyRenderer({
           const shouldRenderInlineCta = Boolean(
             inlineCta &&
             !inlineCtaRendered &&
-            block.text.includes('배스타임의 결론')
+            block.text.includes('바스타임의 결론')
           );
 
           if (shouldRenderInlineCta) {
