@@ -1,7 +1,9 @@
 import React from 'react';
-import { Tabs } from 'expo-router';
+import { router, Tabs, type Href } from 'expo-router';
+import { Alert } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Circle, Path } from 'react-native-svg';
+import { useAuth } from '@/src/auth/AuthProvider';
 import { archiveColors, archiveRadius } from '@/src/theme/archiveTheme';
 import { luxuryFonts } from '@/src/theme/luxury';
 
@@ -45,6 +47,36 @@ function TabBarIcon({ name, color, focused }: { name: TabIconName; color: string
 export default function TabLayout() {
   const insets = useSafeAreaInsets();
   const bottomInset = Math.max(insets.bottom, 0);
+  const { isAuthenticated, isConfigured, isLoading } = useAuth();
+
+  function showAuthRequiredAlert(source: 'submit' | 'saved') {
+    const isSubmit = source === 'submit';
+    Alert.alert(
+      isConfigured ? (isSubmit ? '제보를 남기려면 로그인해주세요.' : '저장한 기록을 보려면 로그인해주세요.') : '로그인 설정이 필요합니다.',
+      isConfigured ? 'Google 계정으로 로그인한 뒤 이어서 사용할 수 있어요.' : 'Supabase 로그인 환경변수가 필요합니다.',
+      [
+        { text: '취소', style: 'cancel' },
+        {
+          text: '확인',
+          onPress: () => {
+            const next = isSubmit ? '/(tabs)/submit' : '/(tabs)/my';
+            router.push({ pathname: '/auth/login', params: { source, next } } as Href);
+          },
+        },
+      ]
+    );
+  }
+
+  function protectedTabListeners(source: 'submit' | 'saved') {
+    return {
+      tabPress: (event: { preventDefault: () => void }) => {
+        if (isAuthenticated) return;
+        event.preventDefault();
+        if (isLoading) return;
+        showAuthRequiredAlert(source);
+      },
+    };
+  }
 
   return (
     <Tabs
@@ -68,8 +100,16 @@ export default function TabLayout() {
       <Tabs.Screen name="index" options={{ title: '지금', tabBarIcon: ({ color, focused }) => <TabBarIcon name="home" color={color} focused={focused} /> }} />
       <Tabs.Screen name="explore" options={{ title: '탐색', tabBarIcon: ({ color, focused }) => <TabBarIcon name="explore" color={color} focused={focused} /> }} />
       <Tabs.Screen name="routines" options={{ title: '의식', tabBarIcon: ({ color, focused }) => <TabBarIcon name="routine" color={color} focused={focused} /> }} />
-      <Tabs.Screen name="submit" options={{ title: '제보', tabBarIcon: ({ color, focused }) => <TabBarIcon name="submit" color={color} focused={focused} /> }} />
-      <Tabs.Screen name="my" options={{ title: '보관함', tabBarIcon: ({ color, focused }) => <TabBarIcon name="saved" color={color} focused={focused} /> }} />
+      <Tabs.Screen
+        name="submit"
+        options={{ title: '제보', tabBarIcon: ({ color, focused }) => <TabBarIcon name="submit" color={color} focused={focused} /> }}
+        listeners={protectedTabListeners('submit')}
+      />
+      <Tabs.Screen
+        name="my"
+        options={{ title: '보관함', tabBarIcon: ({ color, focused }) => <TabBarIcon name="saved" color={color} focused={focused} /> }}
+        listeners={protectedTabListeners('saved')}
+      />
       <Tabs.Screen name="care" options={{ href: null }} />
       <Tabs.Screen name="trip" options={{ href: null }} />
       <Tabs.Screen name="product" options={{ href: null }} />
