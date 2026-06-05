@@ -448,13 +448,13 @@ export const archiveContents: ArchiveContent[] = [
         intro: [
           '잠이 안 오는 밤에는 몸보다 머리가 더 깨어 있는 것처럼 느껴집니다.',
           '이럴 때 따뜻한 샤워가 도움이 된다는 말은 익숙하지만, 이유는 조금 다릅니다.',
-          '핵심은 몸을 계속 뜨겁게 만드는 것이 아니라, 따뜻해진 몸이 다시 식을 시간을 남기는 데 있습니다.',
+          '핵심은 몸을 계속 뜨겁게 만드는 것이 아니라, 따뜻해진 몸이 다시 식을 시간을 남기는 일입니다.',
         ],
       },
       {
         type: 'aha',
         title: '오늘의 발견',
-        text: '잠이 오는 건 몸이 더 뜨거워져서가 아니라, 따뜻해진 몸이 다시 식기 시작하면서 준비될 수 있습니다.',
+        text: '잠이 오는 건 몸이 더 뜨거워져서가 아니라, 따뜻해진 몸이 다시 식기 시작할 때 준비되는 쪽에 가깝습니다.',
       },
       {
         type: 'mechanism',
@@ -464,7 +464,7 @@ export const archiveContents: ArchiveContent[] = [
           { label: '따뜻한 물', description: '피부와 손발 쪽 감각이 따뜻해집니다.', icon: 'water' },
           { label: '말단 혈류', description: '손과 발 쪽으로 열이 이동하기 쉬워집니다.', icon: 'hands' },
           { label: '열 발산', description: '몸 안쪽의 열이 바깥으로 빠져나가는 흐름이 생깁니다.', icon: 'steam' },
-          { label: '식는 시간', description: '몸은 잠들 준비를 조금 더 쉽게 시작할 수 있습니다.', icon: 'moon' },
+          { label: '식는 시간', description: '몸은 잠들 준비를 조금 더 쉽게 시작합니다.', icon: 'moon' },
         ],
         visualHint: 'Deep Steam Navy 배경에 Brass 선으로 아래 방향 흐름을 표현',
       },
@@ -500,7 +500,7 @@ export const archiveContents: ArchiveContent[] = [
       },
       {
         type: 'paragraph',
-        text: '배스타임의 결론은 단순합니다. 잠이 안 오는 밤의 목표는 땀을 빼거나 오래 버티는 것이 아니라, 잠들기 60~90분 전 짧게 데우고 천천히 식을 시간을 남기는 것입니다.',
+        text: '바스타임은 단순하게 봅니다. 잠이 안 오는 밤의 목표는 땀을 빼거나 오래 버티는 것이 아니라, 잠들기 60~90분 전 짧게 데우고 천천히 식을 시간을 남기는 일입니다.',
       },
       {
         type: 'ritualTimer',
@@ -548,7 +548,7 @@ export const archiveContents: ArchiveContent[] = [
           '임신 중이거나 심혈관 질환 등 열 노출에 주의가 필요한 경우',
           '불면이 오래 지속되거나 일상에 영향을 줄 정도인 경우',
         ],
-        note: '배스타임의 케어 아카이브는 치료나 진단이 아니라, 일상에서 시도해볼 수 있는 낮은 자극의 의식 제안입니다.',
+        note: '바스타임의 케어 아카이브는 치료나 진단이 아니라, 일상에서 시도해볼 수 있는 낮은 자극의 의식 제안입니다.',
       },
       {
         type: 'ctaGroup',
@@ -561,12 +561,12 @@ export const archiveContents: ArchiveContent[] = [
         ],
       },
       { type: 'heading', text: '몸에서 일어나는 일', legacyFallback: true },
-      { type: 'paragraph', text: '따뜻한 물은 피부와 손발 쪽 감각을 데우고, 손과 발 쪽으로 열이 이동하기 쉬운 상태를 만듭니다. 중요한 건 더 뜨겁게 버티는 것이 아니라, 그 뒤에 몸이 다시 식을 시간을 남기는 것입니다.', legacyFallback: true },
-      { type: 'heading', text: '찾아본 자료와 배스타임의 해석', legacyFallback: true },
+      { type: 'paragraph', text: '따뜻한 물은 피부와 손발 쪽 감각을 데우고, 손과 발 쪽으로 열이 이동하기 쉬운 상태를 만듭니다. 중요한 건 더 뜨겁게 버티는 것이 아니라, 그 뒤에 몸이 다시 식을 시간을 남기는 일입니다.', legacyFallback: true },
+      { type: 'heading', text: '찾아본 자료와 바스타임의 해석', legacyFallback: true },
       { type: 'list', legacyFallback: true, items: [
-        'Sleep Medicine Reviews 2019: 잠들기 1~2시간 전 따뜻한 샤워나 목욕이 수면의 질과 잠드는 시간에 긍정적 경향을 보였다고 정리했습니다. 배스타임은 이를 잠들기 60~90분 전 짧은 루틴으로 해석합니다.',
-        'Nature 1999: 손과 발 쪽 혈관 확장과 열 손실이 빠른 수면 시작과 관련된 흐름으로 설명됩니다. 배스타임은 몸 전체를 오래 데우기보다 손발 온감과 식는 시간을 함께 봅니다.',
-        'American Academy of Dermatology: 뜨거운 물보다 따뜻한 물, 긴 샤워보다 짧은 샤워를 권장합니다. 배스타임은 수면 전 샤워를 6분 정도로 짧게 제안합니다.',
+        'Sleep Medicine Reviews 2019: 잠들기 1~2시간 전 따뜻한 샤워나 목욕이 수면의 질과 잠드는 시간에 긍정적 경향을 보였다고 정리했습니다. 바스타임은 이를 잠들기 60~90분 전 짧은 루틴으로 해석합니다.',
+        'Nature 1999: 손과 발 쪽 혈관 확장과 열 손실이 빠른 수면 시작과 관련된 흐름으로 설명됩니다. 바스타임은 몸 전체를 오래 데우기보다 손발 온감과 식는 시간을 함께 봅니다.',
+        'American Academy of Dermatology: 뜨거운 물보다 따뜻한 물, 긴 샤워보다 짧은 샤워를 권장합니다. 바스타임은 수면 전 샤워를 6분 정도로 짧게 제안합니다.',
       ] },
       { type: 'heading', text: '오늘의 의식', legacyFallback: true },
       { type: 'list', legacyFallback: true, items: [
@@ -609,7 +609,7 @@ export const archiveContents: ArchiveContent[] = [
           timerId: 'care-sleep-shower-6',
         },
       },
-      ahaPoint: '잠들기 전 따뜻한 샤워의 핵심은 몸을 계속 데우는 것이 아니라, 따뜻해진 몸이 다시 식을 시간을 남기는 데 있습니다.',
+      ahaPoint: '잠들기 전 따뜻한 샤워의 핵심은 몸을 계속 데우는 것이 아니라, 따뜻해진 몸이 다시 식을 시간을 남기는 일입니다.',
       rituals: [
         { id: 'care-sleep-shower-6', environment: 'shower', durationMinutes: 6, title: '6분 수면 전 샤워' },
         { id: 'footbath-10', environment: 'footbath', durationMinutes: 10, title: '10분 수면 전 족욕' },
@@ -651,14 +651,14 @@ export const archiveContents: ArchiveContent[] = [
         title: '긴장이 몸에 남은 밤, 따뜻한 물이 바꾸는 것',
         intro: [
           '말은 멈췄는데 몸은 아직 일을 계속하는 것처럼 긴장해 있는 밤이 있습니다.',
-          '이럴 때 필요한 건 더 센 자극보다, 몸이 지금은 멈춰도 된다고 알아차릴 수 있는 반복적인 감각일 수 있습니다.',
+          '이럴 때 필요한 건 더 센 자극보다, 몸이 지금은 멈춰도 된다고 알아차릴 반복적인 감각입니다.',
           '오늘의 샤워는 씻어내는 시간이 아니라, 물소리와 호흡으로 속도를 낮추는 짧은 의식입니다.',
         ],
       },
       {
         type: 'aha',
         title: '오늘의 발견',
-        text: '긴장이 남은 밤에는 몸을 풀어야 한다기보다, 몸이 긴장하고 있다는 사실을 조용히 알아차리는 순서가 먼저일 수 있습니다.',
+        text: '긴장이 남은 밤에는 몸을 풀어야 한다기보다, 몸이 긴장하고 있다는 사실을 조용히 알아차리는 순서가 먼저입니다.',
       },
       {
         type: 'mechanism',
@@ -682,7 +682,7 @@ export const archiveContents: ArchiveContent[] = [
             year: '2024',
             sourceType: 'medical_org',
             finding: '이완 기법은 호흡, 신체 감각, 근육 긴장을 알아차리며 스트레스 관리에 쓰일 수 있다고 안내합니다.',
-            bathtimeTakeaway: '샤워 시간을 긴장을 없애는 방법이 아니라, 호흡과 어깨 힘을 알아차리는 6분 루틴으로 번역합니다.',
+            bathtimeTakeaway: '샤워 시간을 긴장을 없애는 방법이 아니라, 호흡과 어깨 힘을 알아차리는 6분 루틴으로 봅니다.',
             url: 'https://www.mayoclinic.org/healthy-lifestyle/stress-management/in-depth/relaxation-technique/art-20045368',
           },
           {
@@ -703,7 +703,7 @@ export const archiveContents: ArchiveContent[] = [
       },
       {
         type: 'paragraph',
-        text: '배스타임의 결론은 긴장을 없애겠다고 애쓰지 않는 것입니다. 오늘은 따뜻한 물, 낮은 조명, 긴 숨 하나만 남겨 몸이 아직 긴장하고 있다는 사실을 부드럽게 확인합니다.',
+        text: '바스타임은 긴장을 없애겠다고 애쓰지 않는 쪽을 권합니다. 오늘은 따뜻한 물, 낮은 조명, 긴 숨 하나만 남겨 몸이 아직 긴장하고 있다는 사실을 부드럽게 확인합니다.',
       },
       {
         type: 'ritualTimer',
@@ -735,7 +735,7 @@ export const archiveContents: ArchiveContent[] = [
           '숨쉬기 어렵거나 가슴 통증이 있는 날',
           '스트레스가 수면, 식사, 일상 기능을 오래 방해하는 경우',
         ],
-        note: '배스타임의 케어 아카이브는 치료나 진단이 아니라, 일상에서 시도해볼 수 있는 낮은 자극의 의식 제안입니다.',
+        note: '바스타임의 케어 아카이브는 치료나 진단이 아니라, 일상에서 시도해볼 수 있는 낮은 자극의 의식 제안입니다.',
       },
       {
         type: 'ctaGroup',
@@ -748,10 +748,10 @@ export const archiveContents: ArchiveContent[] = [
       },
       { type: 'heading', text: '몸에서 일어나는 일', legacyFallback: true },
       { type: 'paragraph', text: '스트레스가 높을 때 몸은 호흡이 얕아지고 어깨와 턱에 힘이 들어가기 쉽습니다. 낮은 조명, 따뜻한 물, 반복되는 물소리, 긴 숨 내쉬기는 긴장을 없애기보다 몸이 긴장하고 있다는 사실을 알아차리는 환경 신호가 됩니다.', legacyFallback: true },
-      { type: 'heading', text: '찾아본 자료와 배스타임의 해석', legacyFallback: true },
+      { type: 'heading', text: '찾아본 자료와 바스타임의 해석', legacyFallback: true },
       { type: 'list', legacyFallback: true, items: [
-        'Mayo Clinic: 이완 기법은 호흡, 신체 감각, 근육 긴장을 알아차리며 스트레스 관리에 쓰일 수 있다고 안내합니다. 배스타임은 이를 호흡과 어깨 힘을 확인하는 6분 샤워로 번역합니다.',
-        'NCCIH: 스트레스 반응은 몸과 마음에 영향을 줄 수 있고, 이완 반응을 유도하는 접근들이 연구되고 있다고 정리합니다. 배스타임은 물소리와 낮은 조명을 몸이 한 박자 늦추는 환경 신호로 봅니다.',
+        'Mayo Clinic: 이완 기법은 호흡, 신체 감각, 근육 긴장을 알아차리며 스트레스 관리에 쓰일 수 있다고 안내합니다. 바스타임은 이를 호흡과 어깨 힘을 확인하는 6분 샤워로 봅니다.',
+        'NCCIH: 스트레스 반응은 몸과 마음에 영향을 줄 수 있고, 이완 반응을 유도하는 접근들이 연구되고 있다고 정리합니다. 바스타임은 물소리와 낮은 조명을 몸이 한 박자 늦추는 환경 신호로 봅니다.',
         'American Academy of Dermatology: 피부 부담을 줄이기 위해 뜨거운 물보다 따뜻한 물, 긴 샤워보다 짧은 샤워를 권장합니다.',
       ] },
       { type: 'heading', text: '오늘의 의식', legacyFallback: true },
@@ -801,7 +801,7 @@ export const archiveContents: ArchiveContent[] = [
           timerId: 'care-stress-shower-6',
         },
       },
-      ahaPoint: '긴장이 남은 밤에는 몸을 풀어야 한다기보다, 몸이 긴장하고 있다는 사실을 조용히 알아차리는 순서가 먼저일 수 있습니다.',
+      ahaPoint: '긴장이 남은 밤에는 몸을 풀어야 한다기보다, 몸이 긴장하고 있다는 사실을 조용히 알아차리는 순서가 먼저입니다.',
       rituals: [
         { id: 'care-stress-shower-6', environment: 'shower', durationMinutes: 6, title: '6분 긴장 낮추는 샤워' },
       ],
@@ -843,14 +843,14 @@ export const archiveContents: ArchiveContent[] = [
         title: '오래 앉아 있던 날, 따뜻한 샤워가 뻐근함을 푸는 방식',
         intro: [
           '오래 앉아 있거나 운동 뒤 몸이 무거운 날에는 뭉친 곳을 세게 누르고 싶어집니다.',
-          '하지만 날카로운 통증이나 붓기가 없다면, 먼저 필요한 건 강한 압박보다 움직일 준비일 수 있습니다.',
+          '하지만 날카로운 통증이나 붓기가 없다면, 먼저 필요한 건 강한 압박보다 움직일 준비입니다.',
           '오늘의 샤워는 몸을 고치는 시간이 아니라, 따뜻한 물과 작은 움직임으로 문턱을 낮추는 의식입니다.',
         ],
       },
       {
         type: 'aha',
         title: '오늘의 발견',
-        text: '뻐근한 몸에는 세게 푸는 시간보다, 통증 없는 범위에서 다시 움직일 수 있게 데우는 시간이 먼저일 수 있습니다.',
+        text: '뻐근한 몸에는 세게 푸는 시간보다, 통증 없는 범위에서 다시 움직일 수 있게 데우는 시간이 먼저입니다.',
       },
       {
         type: 'mechanism',
@@ -873,7 +873,7 @@ export const archiveContents: ArchiveContent[] = [
             sourceName: 'Mayo Clinic',
             sourceType: 'medical_org',
             finding: '근육 경련에는 따뜻한 목욕이나 샤워 물줄기, 부드러운 스트레칭이 도움이 될 수 있다고 안내합니다.',
-            bathtimeTakeaway: '뻐근함이 날카로운 통증이 아니라면, 따뜻한 물 뒤에 작은 움직임을 붙이는 8분 샤워로 번역합니다.',
+            bathtimeTakeaway: '뻐근함이 날카로운 통증이 아니라면, 따뜻한 물 뒤에 작은 움직임을 붙이는 8분 샤워로 풀어 봅니다.',
             url: 'https://www.mayoclinic.org/diseases-conditions/muscle-cramp/diagnosis-treatment/drc-20350825',
           },
           {
@@ -887,7 +887,7 @@ export const archiveContents: ArchiveContent[] = [
       },
       {
         type: 'paragraph',
-        text: '배스타임의 결론은 뻐근한 부위를 세게 밀어붙이지 않는 것입니다. 따뜻한 물로 몸이 움직일 준비를 하게 하고, 통증 없는 범위에서 아주 작게 돌려본 뒤 바로 마무리합니다.',
+        text: '바스타임은 뻐근한 부위를 세게 밀어붙이지 않는 쪽을 권합니다. 따뜻한 물로 몸이 움직일 준비를 하게 하고, 통증 없는 범위에서 아주 작게 돌려본 뒤 바로 마무리합니다.',
       },
       {
         type: 'ritualTimer',
@@ -919,7 +919,7 @@ export const archiveContents: ArchiveContent[] = [
           '움직일수록 통증이 심해지는 경우',
           '통증이 반복되거나 일상 움직임을 방해하는 경우',
         ],
-        note: '배스타임의 케어 아카이브는 치료나 진단이 아니라, 일상에서 시도해볼 수 있는 낮은 자극의 의식 제안입니다.',
+        note: '바스타임의 케어 아카이브는 치료나 진단이 아니라, 일상에서 시도해볼 수 있는 낮은 자극의 의식 제안입니다.',
       },
       {
         type: 'ctaGroup',
@@ -932,10 +932,10 @@ export const archiveContents: ArchiveContent[] = [
       },
       { type: 'heading', text: '몸에서 일어나는 일', legacyFallback: true },
       { type: 'paragraph', text: '따뜻한 물은 무겁고 굳은 느낌이 있는 부위에 온감을 주고, 목과 어깨, 종아리처럼 힘이 들어간 곳을 알아차리게 합니다. 핵심은 통증을 참는 스트레칭이 아니라, 통증 없는 범위에서 아주 작게 다시 움직이는 것입니다.', legacyFallback: true },
-      { type: 'heading', text: '찾아본 자료와 배스타임의 해석', legacyFallback: true },
+      { type: 'heading', text: '찾아본 자료와 바스타임의 해석', legacyFallback: true },
       { type: 'list', legacyFallback: true, items: [
-        'Mayo Clinic: 근육 경련에는 따뜻한 목욕이나 샤워 물줄기, 부드러운 스트레칭이 도움이 될 수 있다고 안내합니다. 배스타임은 이를 따뜻한 물 뒤 작은 움직임을 붙이는 8분 샤워로 번역합니다.',
-        'Mayo Clinic: 근육 손상 의심 상황에서는 초기 자가 관리로 휴식, 냉찜질, 압박, 올리기 등이 안내됩니다. 배스타임은 삐끗한 직후, 붓기, 멍, 날카로운 통증이 있으면 루틴보다 확인을 우선합니다.',
+        'Mayo Clinic: 근육 경련에는 따뜻한 목욕이나 샤워 물줄기, 부드러운 스트레칭이 도움이 될 수 있다고 안내합니다. 바스타임은 이를 따뜻한 물 뒤 작은 움직임을 붙이는 8분 샤워로 풀어 봅니다.',
+        'Mayo Clinic: 근육 손상 의심 상황에서는 초기 자가 관리로 휴식, 냉찜질, 압박, 올리기 등이 안내됩니다. 바스타임은 삐끗한 직후, 붓기, 멍, 날카로운 통증이 있으면 루틴보다 확인을 우선합니다.',
       ] },
       { type: 'heading', text: '오늘의 의식', legacyFallback: true },
       { type: 'list', legacyFallback: true, items: [
@@ -984,7 +984,7 @@ export const archiveContents: ArchiveContent[] = [
           timerId: 'care-muscle-shower-8',
         },
       },
-      ahaPoint: '뻐근한 몸에는 세게 푸는 시간보다, 통증 없는 범위에서 다시 움직일 수 있게 데우는 시간이 먼저일 수 있습니다.',
+      ahaPoint: '뻐근한 몸에는 세게 푸는 시간보다, 통증 없는 범위에서 다시 움직일 수 있게 데우는 시간이 먼저입니다.',
       rituals: [
         { id: 'care-muscle-shower-8', environment: 'shower', durationMinutes: 8, title: '8분 뻐근함 샤워' },
       ],
@@ -1024,7 +1024,7 @@ export const archiveContents: ArchiveContent[] = [
         eyebrow: '하루 끝 발목 의식',
         title: '발목이 답답한 저녁, 족욕이 먼저 하는 일',
         intro: [
-          '하루 종일 서 있거나 오래 앉아 있던 날에는 발목과 종아리가 답답하게 느껴질 수 있습니다.',
+          '하루 종일 서 있거나 오래 앉아 있던 날에는 발목과 종아리가 답답하게 느껴지곤 합니다.',
           '이럴 때 뜨겁게 오래 버티는 족욕보다 먼저 볼 것은, 내 몸이 지금 보내는 신호가 가벼운 피로인지 확인하는 일입니다.',
           '오늘의 족욕은 붓기를 없애는 방법이 아니라, 하루 끝 하체 감각을 부드럽게 정리하는 짧은 의식입니다.',
         ],
@@ -1032,7 +1032,7 @@ export const archiveContents: ArchiveContent[] = [
       {
         type: 'aha',
         title: '오늘의 발견',
-        text: '발목이 답답한 날의 핵심은 뜨겁게 버티는 것이 아니라, 따뜻한 물과 작은 움직임으로 멈춰 있던 하체 감각을 다시 알아차리는 데 있습니다.',
+        text: '발목이 답답한 날의 핵심은 뜨겁게 버티는 것이 아니라, 따뜻한 물과 작은 움직임으로 멈춰 있던 하체 감각을 다시 알아차리는 일입니다.',
       },
       {
         type: 'mechanism',
@@ -1055,7 +1055,7 @@ export const archiveContents: ArchiveContent[] = [
             sourceName: 'Cleveland Clinic',
             sourceType: 'medical_org',
             finding: '부종은 오래 앉거나 서 있는 상황 등 여러 이유로 나타날 수 있고, 움직임이나 다리 올리기 같은 생활 관리가 언급됩니다.',
-            bathtimeTakeaway: '배스타임은 족욕을 부종 해결책이 아니라, 오래 멈춰 있던 하체 감각을 움직임과 함께 정리하는 저녁 의식으로 제한합니다.',
+            bathtimeTakeaway: '바스타임은 족욕을 부종 해결책이 아니라, 오래 멈춰 있던 하체 감각을 움직임과 함께 정리하는 저녁 의식으로 제한합니다.',
             url: 'https://my.clevelandclinic.org/health/diseases/12564-edema',
           },
           {
@@ -1069,7 +1069,7 @@ export const archiveContents: ArchiveContent[] = [
       },
       {
         type: 'paragraph',
-        text: '배스타임의 결론은 발목이 답답한 날에도 뜨겁게 오래 버티지 않는 것입니다. 12분 안에서 따뜻한 물, 발목 움직임, 마실 물, 편한 자세만 남깁니다.',
+        text: '바스타임은 발목이 답답한 날에도 뜨겁게 오래 버티지 않는 쪽을 권합니다. 12분 안에서 따뜻한 물, 발목 움직임, 마실 물, 편한 자세만 남깁니다.',
       },
       {
         type: 'ritualTimer',
@@ -1101,7 +1101,7 @@ export const archiveContents: ArchiveContent[] = [
           '심장, 신장, 간 질환 이력이 있거나 붓기가 반복되는 경우',
           '붓기가 빠르게 심해지거나 이유를 알기 어려운 경우',
         ],
-        note: '배스타임의 케어 아카이브는 치료나 진단이 아니라, 일상에서 시도해볼 수 있는 낮은 자극의 의식 제안입니다.',
+        note: '바스타임의 케어 아카이브는 치료나 진단이 아니라, 일상에서 시도해볼 수 있는 낮은 자극의 의식 제안입니다.',
       },
       {
         type: 'ctaGroup',
@@ -1113,11 +1113,11 @@ export const archiveContents: ArchiveContent[] = [
         ],
       },
       { type: 'heading', text: '몸에서 일어나는 일', legacyFallback: true },
-      { type: 'paragraph', text: '따뜻한 물에 발을 담그면 하루 끝 무거운 감각을 부드럽게 확인할 수 있습니다. 핵심은 오래 뜨겁게 버티는 것이 아니라, 마지막 몇 분 동안 발목과 발가락을 천천히 움직이고 끝난 뒤 다리를 편하게 쉬게 두는 것입니다.', legacyFallback: true },
-      { type: 'heading', text: '찾아본 자료와 배스타임의 해석', legacyFallback: true },
+      { type: 'paragraph', text: '따뜻한 물에 발을 담그면 하루 끝 무거운 감각을 부드럽게 확인합니다. 핵심은 오래 뜨겁게 버티는 것이 아니라, 마지막 몇 분 동안 발목과 발가락을 천천히 움직이고 끝난 뒤 다리를 편하게 쉬게 두는 일입니다.', legacyFallback: true },
+      { type: 'heading', text: '찾아본 자료와 바스타임의 해석', legacyFallback: true },
       { type: 'list', legacyFallback: true, items: [
-        'Cleveland Clinic: 부종은 오래 앉거나 서 있는 상황 등 여러 이유로 나타날 수 있고, 움직임이나 다리 올리기 같은 생활 관리가 언급됩니다. 배스타임은 족욕을 해결책이 아니라 하체 감각을 정리하는 저녁 의식으로 봅니다.',
-        'Mayo Clinic: 다리 붓기가 갑자기 나타나거나 한쪽만 심하거나, 통증·호흡곤란·가슴 통증 등이 함께 있으면 의료적 확인이 필요할 수 있다고 안내합니다. 배스타임은 이런 상황에서는 족욕보다 확인을 우선합니다.',
+        'Cleveland Clinic: 부종은 오래 앉거나 서 있는 상황 등 여러 이유로 나타날 수 있고, 움직임이나 다리 올리기 같은 생활 관리가 언급됩니다. 바스타임은 족욕을 해결책이 아니라 하체 감각을 정리하는 저녁 의식으로 봅니다.',
+        'Mayo Clinic: 다리 붓기가 갑자기 나타나거나 한쪽만 심하거나, 통증·호흡곤란·가슴 통증 등이 함께 있으면 의료적 확인이 필요할 수 있다고 안내합니다. 바스타임은 이런 상황에서는 족욕보다 확인을 우선합니다.',
       ] },
       { type: 'heading', text: '오늘의 의식', legacyFallback: true },
       { type: 'list', legacyFallback: true, items: [
@@ -1166,7 +1166,7 @@ export const archiveContents: ArchiveContent[] = [
           timerId: 'care-edema-footbath-12',
         },
       },
-      ahaPoint: '발목이 답답한 날의 핵심은 뜨겁게 버티는 것이 아니라, 따뜻한 물과 작은 움직임으로 멈춰 있던 하체 감각을 다시 알아차리는 데 있습니다.',
+      ahaPoint: '발목이 답답한 날의 핵심은 뜨겁게 버티는 것이 아니라, 따뜻한 물과 작은 움직임으로 멈춰 있던 하체 감각을 다시 알아차리는 일입니다.',
       rituals: [
         { id: 'care-edema-footbath-12', environment: 'footbath', durationMinutes: 12, title: '12분 발목 족욕' },
       ],
@@ -1206,7 +1206,7 @@ export const archiveContents: ArchiveContent[] = [
         eyebrow: '음주 다음 날의 의식',
         title: '술 마신 다음 날, 뜨거운 목욕보다 미지근한 족욕',
         intro: [
-          '술 마신 다음 날에는 뜨거운 물로 땀을 빼고 싶어질 수 있습니다.',
+          '술 마신 다음 날에는 뜨거운 물로 땀을 빼고 싶어집니다.',
           '하지만 숙취가 있는 날의 바스타임은 개운함보다 안전을 먼저 봐야 합니다.',
           '오늘의 족욕은 숙취를 없애는 방법이 아니라, 전신 고온 입욕을 피하고 낮은 강도로 몸을 정리하는 선택지입니다.',
         ],
@@ -1214,7 +1214,7 @@ export const archiveContents: ArchiveContent[] = [
       {
         type: 'aha',
         title: '오늘의 발견',
-        text: '숙취가 있는 날에는 더 뜨겁게 버티는 것보다, 물을 마시고 열 자극을 낮춘 뒤 쉬는 쪽이 먼저일 수 있습니다.',
+        text: '숙취가 있는 날에는 더 뜨겁게 버티기보다, 물을 마시고 열 자극을 낮춘 뒤 쉬는 쪽이 먼저입니다.',
       },
       {
         type: 'mechanism',
@@ -1237,14 +1237,14 @@ export const archiveContents: ArchiveContent[] = [
             sourceName: 'NIAAA',
             sourceType: 'public_health',
             finding: '숙취 증상은 알코올, 수면 방해, 가벼운 탈수 등과 관련될 수 있으며, 시간 외에 확실한 해결책은 없다고 설명합니다.',
-            bathtimeTakeaway: '배스타임은 족욕을 숙취를 없애는 방법이 아니라, 전신 고온 입욕을 피하는 낮은 강도의 정리로 제안합니다.',
+            bathtimeTakeaway: '바스타임은 족욕을 숙취를 없애는 방법이 아니라, 전신 고온 입욕을 피하는 낮은 강도의 정리로 제안합니다.',
             url: 'https://www.niaaa.nih.gov/publications/brochures-and-fact-sheets/hangovers',
           },
           {
             sourceName: 'CDC',
             sourceType: 'public_health',
             finding: '온수 욕조를 사용할 때 음주 전후 알코올을 피하고, 임신 중이면 의료진과 상담하라고 안내합니다.',
-            bathtimeTakeaway: '술을 마신 직후나 몸이 불안정한 날에는 전신 고온 목욕, 사우나, 온수 욕조를 피하는 안전 기준으로 번역합니다.',
+            bathtimeTakeaway: '술을 마신 직후나 몸이 불안정한 날에는 전신 고온 목욕, 사우나, 온수 욕조를 피하는 안전 기준으로 삼습니다.',
             url: 'https://www.cdc.gov/healthy-swimming/safety/what-you-can-do-to-stay-healthy-in-hot-tubs.html',
           },
           {
@@ -1258,7 +1258,7 @@ export const archiveContents: ArchiveContent[] = [
       },
       {
         type: 'paragraph',
-        text: '배스타임의 결론은 숙취가 있는 날에는 전신 입욕, 사우나, 뜨거운 목욕을 권하지 않는 것입니다. 물을 마시고, 몸이 괜찮다면 미지근한 족욕 8분으로 짧게 정리한 뒤 바로 쉽니다.',
+        text: '바스타임은 숙취가 있는 날 전신 입욕, 사우나, 뜨거운 목욕을 권하지 않습니다. 물을 마시고, 몸이 괜찮다면 미지근한 족욕 8분으로 짧게 정리한 뒤 바로 쉽니다.',
       },
       {
         type: 'ritualTimer',
@@ -1289,7 +1289,7 @@ export const archiveContents: ArchiveContent[] = [
           '의식이 흐리거나 호흡이 이상한 경우',
           '임신 중이거나 심혈관 질환 등 열 노출에 주의가 필요한 경우',
         ],
-        note: '배스타임의 케어 아카이브는 치료나 진단이 아니라, 일상에서 시도해볼 수 있는 낮은 자극의 의식 제안입니다.',
+        note: '바스타임의 케어 아카이브는 치료나 진단이 아니라, 일상에서 시도해볼 수 있는 낮은 자극의 의식 제안입니다.',
       },
       {
         type: 'ctaGroup',
@@ -1302,11 +1302,11 @@ export const archiveContents: ArchiveContent[] = [
       },
       { type: 'heading', text: '몸에서 일어나는 일', legacyFallback: true },
       { type: 'paragraph', text: '알코올 다음 날에는 피로, 두통, 메스꺼움, 탈수감이 함께 올 수 있습니다. 이때 뜨거운 전신 입욕은 이미 부담이 있는 몸에 열과 어지럼 자극을 더할 수 있어, 발만 짧게 담그는 미지근한 족욕 정도로 낮추는 편이 안전합니다.', legacyFallback: true },
-      { type: 'heading', text: '찾아본 자료와 배스타임의 해석', legacyFallback: true },
+      { type: 'heading', text: '찾아본 자료와 바스타임의 해석', legacyFallback: true },
       { type: 'list', legacyFallback: true, items: [
-        'NIAAA: 숙취 증상은 알코올, 수면 방해, 가벼운 탈수 등과 관련될 수 있으며, 시간 외에 확실한 해결책은 없다고 설명합니다. 배스타임은 족욕을 숙취를 없애는 방법이 아니라 전신 고온 입욕을 피하는 낮은 강도의 정리로 제안합니다.',
-        'CDC: 온수 욕조를 사용할 때 음주 전후 알코올을 피하라고 안내합니다. 배스타임은 술을 마신 직후나 몸이 불안정한 날에는 전신 고온 목욕, 사우나, 온수 욕조를 피하는 안전 기준으로 번역합니다.',
-        'MedlinePlus: 숙취에는 휴식과 수분 섭취 등 보조적 관리가 언급됩니다. 배스타임은 물을 먼저 준비하고, 어지럼이나 구토감이 있으면 바로 쉬는 방향으로 제한합니다.',
+        'NIAAA: 숙취 증상은 알코올, 수면 방해, 가벼운 탈수 등과 관련될 수 있으며, 시간 외에 확실한 해결책은 없다고 설명합니다. 바스타임은 족욕을 숙취를 없애는 방법이 아니라 전신 고온 입욕을 피하는 낮은 강도의 정리로 제안합니다.',
+        'CDC: 온수 욕조를 사용할 때 음주 전후 알코올을 피하라고 안내합니다. 바스타임은 술을 마신 직후나 몸이 불안정한 날에는 전신 고온 목욕, 사우나, 온수 욕조를 피하는 안전 기준으로 삼습니다.',
+        'MedlinePlus: 숙취에는 휴식과 수분 섭취 등 보조적 관리가 언급됩니다. 바스타임은 물을 먼저 준비하고, 어지럼이나 구토감이 있으면 바로 쉬는 방향으로 제한합니다.',
       ] },
       { type: 'heading', text: '오늘의 의식', legacyFallback: true },
       { type: 'list', legacyFallback: true, items: [
@@ -1354,7 +1354,7 @@ export const archiveContents: ArchiveContent[] = [
           timerId: 'care-hangover-footbath-8',
         },
       },
-      ahaPoint: '숙취가 있는 날에는 더 뜨겁게 버티는 것보다, 물을 마시고 열 자극을 낮춘 뒤 쉬는 쪽이 먼저일 수 있습니다.',
+      ahaPoint: '숙취가 있는 날에는 더 뜨겁게 버티기보다, 물을 마시고 열 자극을 낮춘 뒤 쉬는 쪽이 먼저입니다.',
       rituals: [
         { id: 'care-hangover-footbath-8', environment: 'footbath', durationMinutes: 8, title: '8분 숙취 날 미지근한 족욕' },
       ],
@@ -1383,8 +1383,8 @@ export const archiveContents: ArchiveContent[] = [
   {
     id: 'care-cold-gentle-warmth',
     title: '으슬으슬한 날, 몸을 오래 데우지 않는 온기 루틴',
-    subtitle: '컨디션이 떨어진 날엔 오래 버티기보다 짧게 마칩니다',
-    summary: '컨디션이 떨어진 날에는 오래 버티는 목욕보다 짧은 온감과 휴식으로 몸의 부담을 낮춘다.',
+    subtitle: '컨디션이 떨어진 날엔 오래 버티지 말고 짧게 마칩니다',
+    summary: '컨디션이 떨어진 날에는 오래 이어가는 목욕보다 짧은 온감과 휴식으로 몸의 부담을 낮춘다.',
     category: 'HOME_BATH',
     contentType: 'RESEARCHED',
     tags: ['감기 기운', '족욕', '짧은 의식', '안전 우선'],
@@ -1395,7 +1395,7 @@ export const archiveContents: ArchiveContent[] = [
         eyebrow: '으슬으슬한 날의 의식',
         title: '으슬으슬한 날, 몸을 오래 데우지 않는 온기 루틴',
         intro: [
-          '으슬으슬한 날에는 뜨거운 물에 오래 있고 싶어질 수 있습니다.',
+          '으슬으슬한 날에는 뜨거운 물에 오래 있고 싶어집니다.',
           '하지만 컨디션이 떨어진 날의 목표는 땀을 내는 것이 아니라, 몸을 더 지치게 하지 않는 것입니다.',
           '오늘의 족욕은 감기를 해결하는 방법이 아니라, 고열이 없는 날 짧은 온감과 휴식으로 하루를 닫는 의식입니다.',
         ],
@@ -1403,7 +1403,7 @@ export const archiveContents: ArchiveContent[] = [
       {
         type: 'aha',
         title: '오늘의 발견',
-        text: '으슬으슬한 날에는 오래 뜨겁게 버티는 것보다, 몸이 답답해지기 전에 짧게 데우고 바로 쉬는 편이 더 바스타임답습니다.',
+        text: '으슬으슬한 날에는 오래 뜨겁게 버티기보다, 몸이 답답해지기 전에 짧게 데우고 바로 쉬는 편이 더 바스타임답습니다.',
       },
       {
         type: 'mechanism',
@@ -1426,7 +1426,7 @@ export const archiveContents: ArchiveContent[] = [
             sourceName: 'Mayo Clinic',
             sourceType: 'medical_org',
             finding: '감기는 대체로 시간이 지나며 좋아질 수 있지만, 증상이 심하거나 오래 지속되거나 고열, 숨가쁨 등이 있으면 진료가 필요할 수 있다고 안내합니다.',
-            bathtimeTakeaway: '배스타임은 고열이나 심한 몸살이 없는 날에만 짧은 족욕과 휴식을 제안합니다.',
+            bathtimeTakeaway: '바스타임은 고열이나 심한 몸살이 없는 날에만 짧은 족욕과 휴식을 제안합니다.',
             url: 'https://www.mayoclinic.org/diseases-conditions/common-cold/symptoms-causes/syc-20351605',
           },
           {
@@ -1447,7 +1447,7 @@ export const archiveContents: ArchiveContent[] = [
       },
       {
         type: 'paragraph',
-        text: '배스타임의 결론은 으슬으슬한 날에도 오래 뜨겁게 버티지 않는 것입니다. 고열이나 심한 몸살이 없다면 10분 안에서 발만 따뜻하게 하고, 바로 물을 마시며 쉬는 시간을 남깁니다.',
+        text: '바스타임은 으슬으슬한 날에도 오래 뜨겁게 버티지 않는 쪽을 권합니다. 고열이나 심한 몸살이 없다면 10분 안에서 발만 따뜻하게 하고, 바로 물을 마시며 쉬는 시간을 남깁니다.',
       },
       {
         type: 'ritualTimer',
@@ -1478,7 +1478,7 @@ export const archiveContents: ArchiveContent[] = [
           '임신 중이거나 심혈관 질환 등 열 노출에 주의가 필요한 경우',
           '증상이 오래 지속되거나 악화되는 경우',
         ],
-        note: '배스타임의 케어 아카이브는 치료나 진단이 아니라, 일상에서 시도해볼 수 있는 낮은 자극의 의식 제안입니다.',
+        note: '바스타임의 케어 아카이브는 치료나 진단이 아니라, 일상에서 시도해볼 수 있는 낮은 자극의 의식 제안입니다.',
       },
       {
         type: 'ctaGroup',
@@ -1490,12 +1490,12 @@ export const archiveContents: ArchiveContent[] = [
         ],
       },
       { type: 'heading', text: '몸에서 일어나는 일', legacyFallback: true },
-      { type: 'paragraph', text: '으슬으슬한 날에는 따뜻한 물이 일시적으로 몸을 편안하게 느끼게 할 수 있습니다. 하지만 컨디션이 떨어진 날의 목표는 땀을 내거나 오래 버티는 것이 아니라, 몸이 답답해지기 전에 짧게 데우고 바로 쉬는 것입니다.', legacyFallback: true },
-      { type: 'heading', text: '찾아본 자료와 배스타임의 해석', legacyFallback: true },
+      { type: 'paragraph', text: '으슬으슬한 날에는 따뜻한 물이 일시적으로 몸을 편안하게 느끼게 합니다. 하지만 컨디션이 떨어진 날의 목표는 땀을 내거나 오래 버티는 것이 아니라, 몸이 답답해지기 전에 짧게 데우고 바로 쉬는 것입니다.', legacyFallback: true },
+      { type: 'heading', text: '찾아본 자료와 바스타임의 해석', legacyFallback: true },
       { type: 'list', legacyFallback: true, items: [
-        'Mayo Clinic: 감기는 대체로 시간이 지나며 좋아질 수 있지만, 증상이 심하거나 오래 지속되거나 고열, 숨가쁨 등이 있으면 진료가 필요할 수 있다고 안내합니다. 배스타임은 고열이나 심한 몸살이 없는 날에만 짧은 족욕과 휴식을 제안합니다.',
-        'CDC: 임신 중에는 더위와 열 노출에 더 취약할 수 있어 주의가 필요하다고 안내합니다. 배스타임은 임신 중이거나 열 노출에 주의가 필요한 경우 전문가 안내를 우선합니다.',
-        'ACOG: 임신 초기 사우나나 온수 욕조 사용에 대해 의료진과 상담하는 것이 좋다고 안내합니다. 배스타임은 전신 고온 입욕 대신 낮은 강도와 짧은 시간으로 제한합니다.',
+        'Mayo Clinic: 감기는 대체로 시간이 지나며 좋아질 수 있지만, 증상이 심하거나 오래 지속되거나 고열, 숨가쁨 등이 있으면 진료가 필요할 수 있다고 안내합니다. 바스타임은 고열이나 심한 몸살이 없는 날에만 짧은 족욕과 휴식을 제안합니다.',
+        'CDC: 임신 중에는 더위와 열 노출에 더 취약할 수 있어 주의가 필요하다고 안내합니다. 바스타임은 임신 중이거나 열 노출에 주의가 필요한 경우 전문가 안내를 우선합니다.',
+        'ACOG: 임신 초기 사우나나 온수 욕조 사용에 대해 의료진과 상담하는 것이 좋다고 안내합니다. 바스타임은 전신 고온 입욕 대신 낮은 강도와 짧은 시간으로 제한합니다.',
       ] },
       { type: 'heading', text: '오늘의 의식', legacyFallback: true },
       { type: 'list', legacyFallback: true, items: [
@@ -1543,7 +1543,7 @@ export const archiveContents: ArchiveContent[] = [
           timerId: 'care-cold-footbath-10',
         },
       },
-      ahaPoint: '으슬으슬한 날에는 오래 뜨겁게 버티는 것보다, 몸이 답답해지기 전에 짧게 데우고 바로 쉬는 편이 더 바스타임답습니다.',
+      ahaPoint: '으슬으슬한 날에는 오래 뜨겁게 버티기보다, 몸이 답답해지기 전에 짧게 데우고 바로 쉬는 편이 더 바스타임답습니다.',
       rituals: [
         { id: 'care-cold-footbath-10', environment: 'footbath', durationMinutes: 10, title: '10분 으슬으슬한 날 족욕' },
       ],
@@ -1563,7 +1563,7 @@ export const archiveContents: ArchiveContent[] = [
     },
     seo: {
       seoTitle: '으슬으슬한 날 짧은 온기 족욕 루틴',
-      seoDescription: '컨디션이 떨어진 날 오래 뜨겁게 버티지 않고 짧은 온감과 휴식으로 부담을 낮추는 루틴.',
+      seoDescription: '컨디션이 떨어진 날 오래 뜨겁게 버티지 않고 짧은 온감과 휴식으로 몸의 부담을 낮추는 루틴.',
     },
     isPublished: true,
     createdAt: '2026-05-11',
@@ -1592,7 +1592,7 @@ export const archiveContents: ArchiveContent[] = [
       {
         type: 'aha',
         title: '오늘의 발견',
-        text: '아랫배가 무거운 날에는 더 뜨겁게 견디는 것보다, 편안한 온도와 자세를 먼저 찾는 것이 몸에 덜 부담스러울 수 있습니다.',
+        text: '아랫배가 무거운 날에는 더 뜨겁게 견디기보다, 편안한 온도와 자세를 먼저 찾는 편이 몸에 덜 부담스럽습니다.',
       },
       {
         type: 'mechanism',
@@ -1615,7 +1615,7 @@ export const archiveContents: ArchiveContent[] = [
             sourceName: 'NHS',
             sourceType: 'medical_org',
             finding: '생리통이 있을 때 따뜻한 목욕이나 샤워, 온찜질 등이 도움이 될 수 있다고 안내합니다.',
-            bathtimeTakeaway: '배스타임은 강한 열보다 편안한 온도의 족욕과 안정된 자세로 낮은 강도의 의식으로 번역합니다.',
+            bathtimeTakeaway: '바스타임은 이를 강한 열이 아니라 편안한 온도의 족욕과 안정된 자세로 풀어 봅니다.',
             url: 'https://www.nhs.uk/symptoms/period-pain/',
           },
           {
@@ -1636,7 +1636,7 @@ export const archiveContents: ArchiveContent[] = [
       },
       {
         type: 'paragraph',
-        text: '배스타임의 결론은 생리통이 있는 날에 루틴을 이겨내려고 하지 않는 것입니다. 편안한 온도의 족욕 12분으로 몸을 낮은 강도로 안정시키고, 통증이 심하면 의식보다 상담과 휴식을 우선합니다.',
+        text: '바스타임은 생리통이 있는 날에 루틴을 이겨내려 하지 않는 쪽을 권합니다. 편안한 온도의 족욕 12분으로 몸을 낮은 강도로 안정시키고, 통증이 심하면 의식보다 상담과 휴식을 우선합니다.',
       },
       {
         type: 'ritualTimer',
@@ -1668,7 +1668,7 @@ export const archiveContents: ArchiveContent[] = [
           '임신 가능성이 있거나 임신 중인 경우',
           '일상생활이 어려울 정도로 통증이 반복되는 경우',
         ],
-        note: '배스타임의 케어 아카이브는 치료나 진단이 아니라, 일상에서 시도해볼 수 있는 낮은 자극의 의식 제안입니다.',
+        note: '바스타임의 케어 아카이브는 치료나 진단이 아니라, 일상에서 시도해볼 수 있는 낮은 자극의 의식 제안입니다.',
       },
       {
         type: 'ctaGroup',
@@ -1681,11 +1681,11 @@ export const archiveContents: ArchiveContent[] = [
       },
       { type: 'heading', text: '몸에서 일어나는 일', legacyFallback: true },
       { type: 'paragraph', text: '아랫배가 무거운 날에는 강한 열로 참아내기보다 몸에 힘이 덜 들어가는 자세와 편안한 온도를 먼저 찾는 편이 좋습니다. 하복부를 직접 뜨겁게 하기보다 발을 담그고, 허리와 배에 힘이 들어가지 않도록 낮은 강도로 시작합니다.', legacyFallback: true },
-      { type: 'heading', text: '찾아본 자료와 배스타임의 해석', legacyFallback: true },
+      { type: 'heading', text: '찾아본 자료와 바스타임의 해석', legacyFallback: true },
       { type: 'list', legacyFallback: true, items: [
-        'NHS: 생리통이 있을 때 따뜻한 목욕이나 샤워, 온찜질 등이 도움이 될 수 있다고 안내합니다. 배스타임은 이를 강한 열이 아니라 편안한 온도의 족욕과 안정된 자세로 번역합니다.',
-        'NHS: 통증이 심하거나 평소와 다르거나 갑자기 악화되는 경우에는 의료적 확인이 필요할 수 있다고 안내합니다. 배스타임은 이런 날에는 루틴보다 상담과 휴식을 우선합니다.',
-        'CDC: 임신 중에는 더위와 열 노출에 더 취약할 수 있어 주의가 필요하다고 안내합니다. 배스타임은 임신 가능성이 있거나 임신 중이면 전문가 안내를 먼저 확인하도록 제안합니다.',
+        'NHS: 생리통이 있을 때 따뜻한 목욕이나 샤워, 온찜질 등이 도움이 될 수 있다고 안내합니다. 바스타임은 이를 강한 열이 아니라 편안한 온도의 족욕과 안정된 자세로 풀어 봅니다.',
+        'NHS: 통증이 심하거나 평소와 다르거나 갑자기 악화되는 경우에는 의료적 확인이 필요할 수 있다고 안내합니다. 바스타임은 이런 날에는 루틴보다 상담과 휴식을 우선합니다.',
+        'CDC: 임신 중에는 더위와 열 노출에 더 취약할 수 있어 주의가 필요하다고 안내합니다. 바스타임은 임신 가능성이 있거나 임신 중이면 전문가 안내를 먼저 확인하도록 제안합니다.',
       ] },
       { type: 'heading', text: '오늘의 의식', legacyFallback: true },
       { type: 'list', legacyFallback: true, items: [
@@ -1734,7 +1734,7 @@ export const archiveContents: ArchiveContent[] = [
           timerId: 'care-menstrual-footbath-12',
         },
       },
-      ahaPoint: '아랫배가 무거운 날에는 더 뜨겁게 견디는 것보다, 편안한 온도와 자세를 먼저 찾는 것이 몸에 덜 부담스러울 수 있습니다.',
+      ahaPoint: '아랫배가 무거운 날에는 더 뜨겁게 견디기보다, 편안한 온도와 자세를 먼저 찾는 편이 몸에 덜 부담스럽습니다.',
       rituals: [
         { id: 'care-menstrual-footbath-12', environment: 'footbath', durationMinutes: 12, title: '12분 편안한 온도 족욕' },
       ],
@@ -1775,7 +1775,7 @@ export const archiveContents: ArchiveContent[] = [
         eyebrow: '기분이 가라앉은 날의 의식',
         title: '기분이 가라앉은 날, 샤워를 작은 전환점으로 쓰는 법',
         intro: [
-          '기분이 가라앉은 날에는 무엇이든 크게 바꿔야 할 것처럼 느껴질 수 있습니다.',
+          '기분이 가라앉은 날에는 무엇이든 크게 바꿔야 할 것처럼 느껴집니다.',
           '하지만 그런 날일수록 크고 긴 루틴보다 작고 끝낼 수 있는 행동이 더 현실적입니다.',
           '오늘의 샤워는 기분을 고치는 시간이 아니라, 다음 장면으로 넘어가는 작은 표시를 만드는 의식입니다.',
         ],
@@ -1783,7 +1783,7 @@ export const archiveContents: ArchiveContent[] = [
       {
         type: 'aha',
         title: '오늘의 발견',
-        text: '기분이 가라앉은 날에는 좋아지려고 애쓰는 것보다, 다음 행동으로 넘어갈 수 있는 작은 표시 하나가 먼저일 수 있습니다.',
+        text: '기분이 가라앉은 날에는 좋아지려고 애쓰기보다, 다음 행동으로 넘어갈 작은 표시 하나가 먼저입니다.',
       },
       {
         type: 'mechanism',
@@ -1806,7 +1806,7 @@ export const archiveContents: ArchiveContent[] = [
             sourceName: 'Mayo Clinic',
             sourceType: 'medical_org',
             finding: '우울감이 있을 때 규칙적인 일과, 수면, 활동 계획 같은 자기 돌봄이 언급됩니다.',
-            bathtimeTakeaway: '배스타임은 샤워를 기분을 끌어올리는 방법이 아니라, 하루의 다음 장면으로 넘어가는 작고 끝낼 수 있는 행동으로 번역합니다.',
+            bathtimeTakeaway: '바스타임은 샤워를 기분을 끌어올리는 방법이 아니라, 하루의 다음 장면으로 넘어가는 작고 끝낼 수 있는 행동으로 봅니다.',
             url: 'https://www.mayoclinic.org/health/depression/MH00016',
           },
           {
@@ -1827,7 +1827,7 @@ export const archiveContents: ArchiveContent[] = [
       },
       {
         type: 'paragraph',
-        text: '배스타임의 결론은 기분을 끌어올리겠다는 목표를 세우지 않는 것입니다. 5분 안에서 준비, 물, 향 또는 소리, 앉을 자리만 남겨 하루의 결을 조금 바꿉니다.',
+        text: '바스타임은 기분을 끌어올리겠다는 목표를 세우지 않는 쪽을 권합니다. 5분 안에서 준비, 물, 향 또는 소리, 앉을 자리만 남겨 하루의 결을 조금 바꿉니다.',
       },
       {
         type: 'ritualTimer',
@@ -1859,7 +1859,7 @@ export const archiveContents: ArchiveContent[] = [
           '샤워 자체가 큰 부담이 되는 컨디션인 경우',
           '식사, 수면, 출근이나 등교가 계속 어려운 경우',
         ],
-        note: '배스타임의 케어 아카이브는 치료나 진단이 아니라, 일상에서 시도해볼 수 있는 낮은 자극의 의식 제안입니다.',
+        note: '바스타임의 케어 아카이브는 치료나 진단이 아니라, 일상에서 시도해볼 수 있는 낮은 자극의 의식 제안입니다.',
       },
       {
         type: 'ctaGroup',
@@ -1871,12 +1871,12 @@ export const archiveContents: ArchiveContent[] = [
         ],
       },
       { type: 'heading', text: '몸에서 일어나는 일', legacyFallback: true },
-      { type: 'paragraph', text: '기분이 가라앉은 날의 샤워는 기분을 해결하는 도구가 아닙니다. 다만 수건, 갈아입을 옷, 물 온도, 향이나 소리처럼 작은 감각을 바꾸면 하루의 흐름을 끊고 다음 장면으로 넘어가는 표시가 될 수 있습니다.', legacyFallback: true },
-      { type: 'heading', text: '찾아본 자료와 배스타임의 해석', legacyFallback: true },
+      { type: 'paragraph', text: '기분이 가라앉은 날의 샤워는 기분을 해결하는 도구가 아닙니다. 다만 수건, 갈아입을 옷, 물 온도, 향이나 소리처럼 작은 감각을 바꾸면 하루의 흐름을 끊고 다음 장면으로 넘어가는 표시가 됩니다.', legacyFallback: true },
+      { type: 'heading', text: '찾아본 자료와 바스타임의 해석', legacyFallback: true },
       { type: 'list', legacyFallback: true, items: [
-        'Mayo Clinic: 우울감이 있을 때 규칙적인 일과, 수면, 활동 계획 같은 자기 돌봄이 언급됩니다. 배스타임은 샤워를 기분을 끌어올리는 방법이 아니라 작고 끝낼 수 있는 행동으로 번역합니다.',
-        'Mayo Clinic: 우울 증상이 지속되거나 일상 기능을 방해하거나 자해 생각이 있으면 전문가의 도움이 중요하다고 안내합니다. 배스타임은 이런 경우 샤워 루틴보다 도움 요청을 먼저 둡니다.',
-        'Mayo Clinic: 이완 기법은 호흡, 신체 감각, 근육 긴장을 알아차리는 방식으로 스트레스 관리에 쓰일 수 있다고 안내합니다. 배스타임은 향, 물소리, 손의 감각처럼 하나의 감각만 남기는 방식으로 제안합니다.',
+        'Mayo Clinic: 우울감이 있을 때 규칙적인 일과, 수면, 활동 계획 같은 자기 돌봄이 언급됩니다. 바스타임은 샤워를 기분을 끌어올리는 방법이 아니라 작고 끝낼 수 있는 행동으로 봅니다.',
+        'Mayo Clinic: 우울 증상이 지속되거나 일상 기능을 방해하거나 자해 생각이 있으면 전문가의 도움이 중요하다고 안내합니다. 바스타임은 이런 경우 샤워 루틴보다 도움 요청을 먼저 둡니다.',
+        'Mayo Clinic: 이완 기법은 호흡, 신체 감각, 근육 긴장을 알아차리는 방식으로 스트레스 관리에 쓰일 수 있다고 안내합니다. 바스타임은 향, 물소리, 손의 감각처럼 하나의 감각만 남기는 방식으로 제안합니다.',
       ] },
       { type: 'heading', text: '오늘의 의식', legacyFallback: true },
       { type: 'list', legacyFallback: true, items: [
@@ -1925,7 +1925,7 @@ export const archiveContents: ArchiveContent[] = [
           timerId: 'care-mood-shower-5',
         },
       },
-      ahaPoint: '기분이 가라앉은 날에는 좋아지려고 애쓰는 것보다, 다음 행동으로 넘어갈 수 있는 작은 표시 하나가 먼저일 수 있습니다.',
+      ahaPoint: '기분이 가라앉은 날에는 좋아지려고 애쓰기보다, 다음 행동으로 넘어갈 작은 표시 하나가 먼저입니다.',
       rituals: [
         { id: 'care-mood-shower-5', environment: 'shower', durationMinutes: 5, title: '5분 작은 전환 샤워' },
       ],

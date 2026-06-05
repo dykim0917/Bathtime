@@ -6,12 +6,15 @@ import {
   contentTypeLabels,
   readAdminArchiveContents,
 } from '../../lib/archive/data';
+import { updateArchiveContentStatusFromList } from '../../lib/archive/contentActions';
 
 interface ContentPageProps {
   searchParams: Promise<{
     category?: string;
     status?: string;
     type?: string;
+    error?: string;
+    updated?: string;
   }>;
 }
 
@@ -27,13 +30,19 @@ function getContentPreviewHref(id: string): string {
 }
 
 export default async function ContentPage({ searchParams }: ContentPageProps) {
-  const { category = 'ALL', status = 'ALL', type = 'ALL' } = await searchParams;
+  const { category = 'ALL', status = 'ALL', type = 'ALL', error, updated } = await searchParams;
+  const filterParams = new URLSearchParams();
+  if (category !== 'ALL') filterParams.set('category', category);
+  if (type !== 'ALL') filterParams.set('type', type);
+  if (status !== 'ALL') filterParams.set('status', status);
+  const returnTo = `/content${filterParams.toString() ? `?${filterParams.toString()}` : ''}`;
   const rows = (await readAdminArchiveContents()).filter((content) => {
     const matchesCategory = category === 'ALL' || content.category === category;
     const matchesStatus = status === 'ALL' || content.status === status;
     const matchesType = type === 'ALL' || content.contentType === type;
     return matchesCategory && matchesStatus && matchesType;
   });
+  const statusMessage = getStatusMessage(error, updated);
 
   return (
     <AdminShell activePath="/content">
@@ -47,7 +56,7 @@ export default async function ContentPage({ searchParams }: ContentPageProps) {
           <Link className="primaryButton linkButton" href="/content/new">콘텐츠 등록</Link>
         </header>
 
-        <section className="panel">
+        <section className="panel compactPanel">
           <div className="panelHeader">
             <h3>필터</h3>
             <span>P0 filters</span>
@@ -74,6 +83,11 @@ export default async function ContentPage({ searchParams }: ContentPageProps) {
             <h3>콘텐츠</h3>
             <span>{rows.length} rows</span>
           </div>
+          {statusMessage ? (
+            <p className={error ? 'formNotice error' : 'formNotice'}>
+              {statusMessage}
+            </p>
+          ) : null}
           <div className="dataTable contentArchiveTable" role="table" aria-label="콘텐츠 목록">
             <div className="dataTableHeader" role="row">
               <span>제목</span>
@@ -92,9 +106,23 @@ export default async function ContentPage({ searchParams }: ContentPageProps) {
                 </div>
                 <span>{categoryLabels[content.category]}</span>
                 <span>{contentTypeLabels[content.contentType]}</span>
-                <strong>{contentStatusLabels[content.status]}</strong>
+                <form className="tableForm statusSelectForm" action={updateArchiveContentStatusFromList}>
+                  <input type="hidden" name="id" value={content.id} />
+                  <input type="hidden" name="returnTo" value={returnTo} />
+                  <select
+                    className="autoSubmitStatusSelect"
+                    name="status"
+                    defaultValue={content.status}
+                    aria-label={`${content.title} 발행 상태`}
+                  >
+                    {Object.entries(contentStatusLabels).map(([value, label]) => (
+                      <option key={value} value={value}>{label}</option>
+                    ))}
+                  </select>
+                  <button type="submit" className="srOnly">상태 저장</button>
+                </form>
                 <span>{content.updatedAt}</span>
-                <span>{content.tags.join(', ')}</span>
+                <span className="tagText" title={content.tags.join(', ')}>{content.tags.join(', ')}</span>
                 <div className="rowActions">
                   <Link className="textButton" href={`/content/${content.id}`}>상세</Link>
                   <Link className="textButton" href={getContentPreviewHref(content.id)}>미리보기</Link>
@@ -104,6 +132,26 @@ export default async function ContentPage({ searchParams }: ContentPageProps) {
           </div>
         </section>
       </section>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            document.addEventListener('change', function (event) {
+              var target = event.target;
+              if (!(target instanceof HTMLSelectElement)) return;
+              if (!target.classList.contains('autoSubmitStatusSelect')) return;
+              if (target.form) target.form.requestSubmit();
+            });
+          `,
+        }}
+      />
     </AdminShell>
   );
+}
+
+function getStatusMessage(error?: string, updated?: string): string | null {
+  if (updated === 'status') return '콘텐츠 상태가 저장되었습니다.';
+  if (error === 'invalid_status') return '상태 값이 올바르지 않습니다.';
+  if (error === 'missing_content_db') return '콘텐츠 DB 연결이 설정되지 않았습니다.';
+  if (error === 'update_failed') return '상태 저장에 실패했습니다. 권한과 RLS 정책을 확인하세요.';
+  return null;
 }
