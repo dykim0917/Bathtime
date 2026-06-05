@@ -2,12 +2,48 @@
 
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useMemo, useState } from 'react';
-import { buildRedirectTo, getSupabaseClient } from '@web/lib/auth';
+import { buildNativeAppRedirectTo, buildRedirectTo, getSupabaseClient } from '@web/lib/auth';
+
+declare global {
+  interface Window {
+    __BATHTIME_NATIVE_AUTH__?: boolean;
+    ReactNativeWebView?: {
+      postMessage: (message: string) => void;
+    };
+  }
+}
+
+type NativeOAuthResult = {
+  source?: string;
+  type?: string;
+  status?: string;
+  error?: string | null;
+};
 
 function normalizeNextPath(value: string | null): string {
   if (!value || !value.startsWith('/')) return '/saved';
   if (value.startsWith('//')) return '/saved';
   return value;
+}
+
+function isNativeAppShell(): boolean {
+  if (typeof window === 'undefined') return false;
+  if (window.ReactNativeWebView) return true;
+  if (window.navigator.userAgent.includes('BathtimeApp')) return true;
+  return new URLSearchParams(window.location.search).get('appShell') === '1';
+}
+
+function postNativeOAuthRequest(url: string, nextPath: string): boolean {
+  if (!window.ReactNativeWebView) return false;
+  window.ReactNativeWebView.postMessage(
+    JSON.stringify({
+      type: 'bathtime:auth:oauth',
+      provider: 'google',
+      url,
+      nextPath,
+    })
+  );
+  return true;
 }
 
 function GoogleMark() {
@@ -36,6 +72,30 @@ export function LoginPanel() {
     });
   }, [nextPath, router, supabase]);
 
+  useEffect(() => {
+    function handleNativeOAuthResult(event: MessageEvent) {
+      let data: NativeOAuthResult | null = null;
+      try {
+        data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
+      } catch {
+        return;
+      }
+
+      if (data?.source !== 'bathtime-native' || data.type !== 'bathtime:auth:oauth-result') return;
+      if (data.status === 'success') return;
+
+      setStatus('error');
+      setMessage(data.error ?? '로그인이 취소됐어요. 다시 시도해주세요.');
+    }
+
+    window.addEventListener('message', handleNativeOAuthResult);
+    document.addEventListener('message', handleNativeOAuthResult as EventListener);
+    return () => {
+      window.removeEventListener('message', handleNativeOAuthResult);
+      document.removeEventListener('message', handleNativeOAuthResult as EventListener);
+    };
+  }, []);
+
   return (
     <section className="auth-box">
       <div className="auth-copy">
@@ -52,15 +112,27 @@ export function LoginPanel() {
           if (!supabase) return;
           setStatus('loading');
           setMessage('Google 로그인으로 이동하고 있어요.');
-          const { error } = await supabase.auth.signInWithOAuth({
+          const nativeAppShell = isNativeAppShell() && Boolean(window.ReactNativeWebView) && window.__BATHTIME_NATIVE_AUTH__ === true;
+          const { data, error } = await supabase.auth.signInWithOAuth({
             provider: 'google',
             options: {
-              redirectTo: buildRedirectTo(),
+              redirectTo: nativeAppShell ? buildNativeAppRedirectTo() : buildRedirectTo(),
+              skipBrowserRedirect: nativeAppShell,
             },
           });
           if (error) {
             setStatus('error');
             setMessage(error.message);
+            return;
+          }
+
+          if (nativeAppShell) {
+            if (!data.url || !postNativeOAuthRequest(data.url, nextPath)) {
+              setStatus('error');
+              setMessage('앱 로그인 연결을 시작하지 못했어요. 다시 시도해주세요.');
+              return;
+            }
+            setMessage('Google 로그인 후 앱으로 돌아옵니다.');
           }
         }}
       >

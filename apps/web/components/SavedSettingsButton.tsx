@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { BellSimple, Gear, SignOut, X } from '@phosphor-icons/react';
+import { BellSimple, ClockCounterClockwise, Gear, SignOut, X } from '@phosphor-icons/react';
 import { useRouter } from 'next/navigation';
 import { getSupabaseClient } from '@web/lib/auth';
 import {
@@ -184,7 +184,7 @@ export function SavedSettingsButton() {
   return (
     <>
       <button className="saved-settings-button" type="button" aria-label="보관함 설정" onClick={() => setOpen(true)}>
-        <Gear size={20} weight="bold" aria-hidden />
+        <Gear size={27} weight="bold" aria-hidden />
       </button>
       {open ? (
         <div className="modal-backdrop" role="presentation">
@@ -197,6 +197,24 @@ export function SavedSettingsButton() {
               <h2 id="settings-modal-title">보관함 설정</h2>
             </header>
             <div className="settings-list">
+              {nativeAppShell ? (
+                <button
+                  className="settings-row"
+                  type="button"
+                  onClick={() => {
+                    const posted = postNativeMessage({ type: 'bathtime:navigate', target: 'history' });
+                    if (posted) setOpen(false);
+                  }}
+                >
+                  <span className="settings-row-icon">
+                    <ClockCounterClockwise size={19} weight="bold" aria-hidden />
+                  </span>
+                  <span>
+                    <strong>의식 기록 보기</strong>
+                    <small>완료했거나 저장했던 바스타임 기록을 다시 확인합니다.</small>
+                  </span>
+                </button>
+              ) : null}
               <button
                 className={pushEnabled ? 'settings-row active' : 'settings-row'}
                 type="button"

@@ -28,3 +28,7 @@ export function buildRedirectTo(): string | undefined {
   const origin = window.location.origin === 'https://www.getbathtime.com' ? 'https://getbathtime.com' : window.location.origin;
   return new URL('/auth/callback', origin).toString();
 }
+
+export function buildNativeAppRedirectTo(): string {
+  return 'getbathtime://auth/callback';
+}

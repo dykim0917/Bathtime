@@ -1121,7 +1121,19 @@ p {
   gap: 16px;
 }
 
-.saved-settings-button,
+.saved-settings-button {
+  display: none;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink);
+  padding: 0;
+}
+
 .modal-icon-button {
   display: inline-grid;
   place-items: center;
@@ -1135,7 +1147,12 @@ p {
 }
 
 .saved-settings-button:hover,
-.saved-settings-button:focus-visible,
+.saved-settings-button:focus-visible {
+  color: var(--primary-active);
+  outline: none;
+  transform: translateY(-1px);
+}
+
 .modal-icon-button:hover,
 .modal-icon-button:focus-visible {
   border-color: var(--primary-active);
@@ -1909,6 +1926,10 @@ p {
   .saved-header-row {
     align-items: start;
     gap: 12px;
+  }
+
+  .saved-settings-button {
+    display: inline-grid;
   }
 
   .situation-grid {

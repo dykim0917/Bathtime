@@ -1,11 +1,14 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ActivityIndicator, Linking, StyleSheet, Text, View } from 'react-native';
 import { router } from 'expo-router';
+import * as WebBrowser from 'expo-web-browser';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { WebView, WebViewMessageEvent } from 'react-native-webview';
 import { archiveColors, archiveRadius } from '@/src/theme/archiveTheme';
 import { luxuryFonts } from '@/src/theme/luxury';
 import { requestExpoPushTokenAsync } from '@/src/notifications/pushNotifications';
+
+WebBrowser.maybeCompleteAuthSession();
 
 const DEFAULT_ARCHIVE_WEB_BASE_URL = 'https://www.getbathtime.com';
 const BATHTIME_HOSTS = new Set(['getbathtime.com', 'www.getbathtime.com']);
@@ -27,6 +30,7 @@ const APP_SHELL_INJECTION = `
   }
 
   function markAppShell() {
+    window.__BATHTIME_NATIVE_AUTH__ = true;
     document.documentElement.dataset.bathtimeSurface = 'app';
     if (document.body) document.body.classList.add('bathtime-app-shell');
     injectAppShellStyle();
@@ -82,6 +86,23 @@ function isInternalArchiveUrl(url: string) {
   }
 }
 
+function normalizeNextPath(value: unknown): string {
+  if (typeof value !== 'string' || !value.startsWith('/')) return '/saved';
+  if (value.startsWith('//')) return '/saved';
+  return value;
+}
+
+function buildWebAuthCallbackUrl(nativeCallbackUrl: string, nextPath: string) {
+  const nativeUrl = new URL(nativeCallbackUrl);
+  const webUrl = new URL(`${getArchiveWebBaseUrl()}/auth/callback`);
+  nativeUrl.searchParams.forEach((value, key) => {
+    webUrl.searchParams.set(key, value);
+  });
+  webUrl.searchParams.set('next', normalizeNextPath(nextPath));
+  webUrl.searchParams.set('appShell', '1');
+  return webUrl.toString();
+}
+
 export function ArchiveWebViewScreen({ path }: { path: string }) {
   const insets = useSafeAreaInsets();
   const webViewRef = useRef<WebView>(null);
@@ -111,22 +132,79 @@ export function ArchiveWebViewScreen({ path }: { path: string }) {
     return () => clearTimeout(timeout);
   }, [loading]);
 
-  const postPushMessage = useCallback((payload: Record<string, unknown>) => {
+  const postBridgeMessage = useCallback((payload: Record<string, unknown>) => {
     webViewRef.current?.postMessage(JSON.stringify({ source: 'bathtime-native', ...payload }));
   }, []);
 
+  const openOAuthSession = useCallback(
+    async (payload: { url?: unknown; nextPath?: unknown }) => {
+      if (typeof payload.url !== 'string' || !payload.url) {
+        postBridgeMessage({
+          type: 'bathtime:auth:oauth-result',
+          status: 'error',
+          error: 'missing_oauth_url',
+        });
+        return;
+      }
+
+      const callbackUrl = 'getbathtime://auth/callback';
+      const nextPath = normalizeNextPath(payload.nextPath);
+      const result = await WebBrowser.openAuthSessionAsync(payload.url, callbackUrl).catch((error: unknown) => {
+        postBridgeMessage({
+          type: 'bathtime:auth:oauth-result',
+          status: 'error',
+          error: error instanceof Error ? error.message : 'oauth_session_failed',
+        });
+        return null;
+      });
+
+      if (!result) return;
+
+      if (result.type !== 'success') {
+        postBridgeMessage({
+          type: 'bathtime:auth:oauth-result',
+          status: result.type,
+        });
+        return;
+      }
+
+      let webCallbackUrl: string;
+      try {
+        webCallbackUrl = buildWebAuthCallbackUrl(result.url, nextPath);
+      } catch {
+        postBridgeMessage({
+          type: 'bathtime:auth:oauth-result',
+          status: 'error',
+          error: 'invalid_callback_url',
+        });
+        return;
+      }
+
+      webViewRef.current?.injectJavaScript(`window.location.href = ${JSON.stringify(webCallbackUrl)}; true;`);
+    },
+    [postBridgeMessage]
+  );
+
   const handleWebViewMessage = useCallback(
     async (event: WebViewMessageEvent) => {
-      let payload: { type?: string } | null = null;
+      let payload: { type?: string; url?: unknown; nextPath?: unknown; target?: unknown } | null = null;
       try {
         payload = JSON.parse(event.nativeEvent.data);
       } catch {
         return;
       }
 
+      if (payload?.type === 'bathtime:auth:oauth') {
+        await openOAuthSession(payload);
+      }
+
+      if (payload?.type === 'bathtime:navigate' && payload.target === 'history') {
+        router.push('/(tabs)/history' as any);
+      }
+
       if (payload?.type === 'bathtime:push:enable') {
         const result = await requestExpoPushTokenAsync();
-        postPushMessage({
+        postBridgeMessage({
           type: 'bathtime:push:registration-result',
           enabled: result.ok,
           platform: 'android',
@@ -137,7 +215,7 @@ export function ArchiveWebViewScreen({ path }: { path: string }) {
       }
 
       if (payload?.type === 'bathtime:push:disable') {
-        postPushMessage({
+        postBridgeMessage({
           type: 'bathtime:push:registration-result',
           enabled: false,
           platform: 'android',
@@ -147,7 +225,7 @@ export function ArchiveWebViewScreen({ path }: { path: string }) {
         });
       }
     },
-    [postPushMessage]
+    [openOAuthSession, postBridgeMessage]
   );
 
   return (
