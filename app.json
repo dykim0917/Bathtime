@@ -48,7 +48,10 @@
           "borderColor": "#183236",
           "position": "relative"
         }
-      ]
+      ],
+      "expo-asset",
+      "expo-font",
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true
