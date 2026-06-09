@@ -26,16 +26,35 @@ function removeNamedEntries(entries = [], names) {
   return entries.filter((entry) => !names.has(normalizeClassName(getAndroidName(entry))));
 }
 
+function ensureRemoveEntry(entries = [], androidName) {
+  const nextEntries = removeNamedEntries(entries, new Set([androidName]));
+  nextEntries.push({
+    $: {
+      'android:name': androidName,
+      'tools:node': 'remove',
+    },
+  });
+  return nextEntries;
+}
+
 module.exports = function withAndroidStoreAudioManifest(config) {
   return withAndroidManifest(config, (config) => {
     const manifest = config.modResults.manifest;
     const application = AndroidConfig.Manifest.getMainApplicationOrThrow(config.modResults);
 
-    manifest['uses-permission'] = removeNamedEntries(
-      manifest['uses-permission'],
-      AUDIO_PERMISSION_NAMES
+    manifest.$ = {
+      ...manifest.$,
+      'xmlns:tools': 'http://schemas.android.com/tools',
+    };
+
+    manifest['uses-permission'] = [...AUDIO_PERMISSION_NAMES].reduce(
+      (permissions, permissionName) => ensureRemoveEntry(permissions, permissionName),
+      manifest['uses-permission'] ?? []
     );
-    application.service = removeNamedEntries(application.service, AUDIO_SERVICE_NAMES);
+    application.service = [...AUDIO_SERVICE_NAMES].reduce(
+      (services, serviceName) => ensureRemoveEntry(services, serviceName),
+      application.service ?? []
+    );
 
     return config;
   });
