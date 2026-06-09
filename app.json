@@ -38,7 +38,13 @@
     },
     "plugins": [
       "expo-router",
-      "expo-audio",
+      [
+        "expo-audio",
+        {
+          "microphonePermission": false,
+          "recordAudioAndroid": false
+        }
+      ],
       "expo-notifications",
       [
         "expo-navigation-bar",
@@ -51,7 +57,8 @@
       ],
       "expo-asset",
       "expo-font",
-      "expo-web-browser"
+      "expo-web-browser",
+      "./plugins/withAndroidStoreAudioManifest"
     ],
     "experiments": {
       "typedRoutes": true
