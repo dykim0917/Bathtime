@@ -15,12 +15,22 @@ outputs/
 *.apk
 
 # Project documentation, reports, and generated review assets
+.agents/
+agents/
+Developer/
+.idea/
+.bkit/
 docs/
 output/
 .audit-shots/
 .gstack/
 .codex-*.png
 BathSommelier_*.docx
+_workspace/
+db/
+input/
+apps/
+assets/readme/
 
 # Tooling/cache files not needed by EAS Build
 .expo/
@@ -35,6 +45,8 @@ yarn-error.*
 
 # Local high-resolution source assets; the app uses optimized jpg files.
 assets/images/products/*.png
+assets/images/care/*_guide.png
+assets/images/care/*_hero.png
 
 # Secrets and credentials
 .env*.local
