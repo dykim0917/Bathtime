@@ -11,7 +11,7 @@
     "splash": {
       "image": "./assets/images/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#102629"
+      "backgroundColor": "#FFFFFF"
     },
     "ios": {
       "supportsTablet": true,
@@ -19,11 +19,11 @@
     },
     "android": {
       "package": "com.bathtimestudio.bathtime",
-      "versionCode": 13,
+      "versionCode": 14,
       "icon": "./assets/images/icon.png",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-foreground.png",
-        "backgroundColor": "#102629"
+        "backgroundColor": "#FFFFFF"
       },
       "edgeToEdgeEnabled": false,
       "predictiveBackGestureEnabled": false,
