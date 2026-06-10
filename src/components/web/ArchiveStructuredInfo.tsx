@@ -79,6 +79,11 @@ const ROW_ICONS: Record<string, PhosphorIcon> = {
   '비추천 대상': XCircle,
   주제: BookOpen,
   '관련 카테고리': SquaresFour,
+  '콘텐츠 성격': BookOpen,
+  '추천 여부': CheckCircle,
+  기준: ListChecks,
+  '출처 구분': SquaresFour,
+  대상: User,
 };
 
 function formatValue(value: unknown): string {
@@ -91,6 +96,10 @@ function formatValue(value: unknown): string {
 
 function getRows(content: ArchiveContent): Array<[string, unknown]> {
   const info = content.structuredInfo;
+  if (info.overviewRows?.length) {
+    return info.overviewRows.map((row) => [row.label, row.value]);
+  }
+
   if (content.category === 'BATH_PLACES') {
     return [
       ['지역', 'region' in info ? info.region : undefined],

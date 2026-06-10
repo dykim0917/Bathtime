@@ -3,7 +3,6 @@
     "name": "바스타임",
     "slug": "getbathtime",
     "version": "1.0.0",
-    "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "getbathtime",
     "userInterfaceStyle": "dark",
@@ -19,13 +18,13 @@
     },
     "android": {
       "package": "com.bathtimestudio.bathtime",
-      "versionCode": 15,
+      "versionCode": 16,
       "icon": "./assets/images/icon.png",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-foreground.png",
         "backgroundColor": "#FFFFFF"
       },
-      "edgeToEdgeEnabled": false,
+      "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
       "blockedPermissions": [
         "android.permission.RECORD_AUDIO"

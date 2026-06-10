@@ -52,6 +52,11 @@ const rowIconPaths: Record<string, string> = {
   '비추천 대상': 'M6 6l12 12 M18 6 6 18',
   주제: 'M5 4h10a4 4 0 0 1 4 4v12H9a4 4 0 0 0-4-4V4Z',
   '관련 카테고리': 'M4 4h7v7H4V4Z M13 4h7v7h-7V4Z M4 13h7v7H4v-7Z M13 13h7v7h-7v-7Z',
+  '콘텐츠 성격': 'M5 4h10a4 4 0 0 1 4 4v12H9a4 4 0 0 0-4-4V4Z',
+  '추천 여부': 'M20 7 9 18l-5-5',
+  기준: 'M7 7h10 M7 12h10 M7 17h6 M4 7h.01 M4 12h.01 M4 17h.01',
+  '출처 구분': 'M4 4h7v7H4V4Z M13 4h7v7h-7V4Z M4 13h7v7H4v-7Z M13 13h7v7h-7v-7Z',
+  대상: 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z M5 21a7 7 0 0 1 14 0',
 };
 
 function formatValue(value: unknown): string {
@@ -64,6 +69,9 @@ function formatValue(value: unknown): string {
 
 function getRows(content: ArchiveContent): Array<[string, unknown]> {
   const info = content.structuredInfo;
+  if (info.overviewRows?.length) {
+    return info.overviewRows.map((row) => [row.label, row.value]);
+  }
 
   if (content.category === 'BATH_PLACES') {
     return [
