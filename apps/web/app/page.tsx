@@ -37,7 +37,7 @@ const situationLinks = [
   },
   {
     title: '몸이 찬 날',
-    description: '오래 버티지 않는 온기 루틴을 찾습니다.',
+    description: '오래 버티지 않는 온기 의식을 고릅니다.',
     href: '/explore?query=%EC%9C%BC%EC%8A%AC%EC%9C%BC%EC%8A%AC',
     image: '/images/situations/cold-day.png',
     imageAlt: '추운 날 따뜻한 음료와 목도리로 몸을 녹이는 사람',
@@ -48,13 +48,6 @@ const situationLinks = [
     href: '/explore?category=BATH_ITEMS',
     image: '/images/situations/bathroom-items.png',
     imageAlt: '욕실 도구와 세면용품을 살펴보는 사람',
-  },
-  {
-    title: '좋은 공간 제보',
-    description: '알고 있는 사우나, 숙소, 세팅 단서를 남깁니다.',
-    href: '/submit',
-    image: '/images/situations/submit-place.png',
-    imageAlt: '좋은 목욕 공간을 휴대폰으로 제보하는 사람',
   },
 ];
 
@@ -77,6 +70,10 @@ const categoryIllustrations: Record<ContentCategory, { image: string; imageAlt: 
   },
 };
 
+function toDisplayCopy(text: string): string {
+  return text.replace(/루틴/g, '의식');
+}
+
 export default async function HomePage() {
   const contents = await getPublishedArchiveContents();
   const featured = getFeaturedContent(contents);
@@ -91,8 +88,7 @@ export default async function HomePage() {
       <section className="home-hero">
         <header className="page-header home-hero-copy">
           <p className="kicker">BATH TIME ARCHIVE</p>
-          <h1>오늘의 상태에 맞는 바스타임을 찾아보세요.</h1>
-          <p>웹에서는 홈케어, 욕실 아이템, 목욕 공간의 단서를 발견하고 저장합니다. 실제 의식은 앱에서 이어집니다.</p>
+          <h1>씻는 시간을 더 잘 쓰고 싶은 사람을 위한 아카이브입니다.</h1>
         </header>
         <div className="home-hero-actions" aria-label="메인 행동">
           <Link className="button-primary" href="/explore">
@@ -133,12 +129,27 @@ export default async function HomePage() {
           </div>
           <div className="feature-copy">
             <p className="kicker">오늘의 추천 아카이브</p>
-            <h2>{featured.title}</h2>
-            <p>{featured.subtitle ?? featured.summary}</p>
+            <h2>{toDisplayCopy(featured.title)}</h2>
+            <p>{toDisplayCopy(featured.subtitle ?? featured.summary)}</p>
             <Link className="button-primary" href={`/content/${featured.id}`}>기록 보기</Link>
           </div>
         </section>
       ) : null}
+
+      <section className="app-bridge">
+        <div className="app-bridge-icon" aria-hidden="true">
+          <PaperPlaneTilt size={22} weight="bold" />
+        </div>
+        <div>
+          <p className="kicker">SUBMIT A CLUE</p>
+          <h2>좋은 바스타임 단서를 남겨주세요.</h2>
+          <p>알고 있는 사우나, 숙소, 욕실 세팅, 아이템을 보내주시면 바스타임식 기록으로 정리합니다.</p>
+        </div>
+        <Link className="button-secondary" href="/submit">
+          <PaperPlaneTilt size={16} weight="bold" aria-hidden="true" />
+          제보하기
+        </Link>
+      </section>
 
       {visibleCategories.length > 0 ? (
         <section className="section">
@@ -176,7 +187,7 @@ export default async function HomePage() {
         <div>
           <p className="kicker">APP RITUAL FLOW</p>
           <h2>저장한 콘텐츠는 앱에서 의식으로 이어집니다.</h2>
-          <p>웹은 좋은 바스타임을 찾고 저장하는 곳입니다. 앱에서는 저장한 기록을 바탕으로 샤워, 족욕, 입욕 의식을 실행합니다.</p>
+          <p>찾는 건 여기서. 실행은 앱에서.</p>
         </div>
         <Link className="button-secondary" href="/app">
           <PaperPlaneTilt size={16} weight="bold" aria-hidden="true" />

@@ -86,6 +86,20 @@ export type ContentBodyBlock =
   | { type: 'paragraph'; text: string; legacyFallback?: boolean }
   | { type: 'heading'; text: string; legacyFallback?: boolean }
   | { type: 'image'; uri: string; caption?: string; aspectRatio?: number }
+  | {
+      type: 'productCandidates';
+      items: {
+        name: string;
+        brand: string;
+        imageUri: string;
+        purchaseUrl: string;
+        priceLabel: string;
+        priceCheckedAt: string;
+        summary: string;
+        watchOut: string;
+        sourceLabel?: string;
+      }[];
+    }
   | { type: 'quote'; text: string }
   | { type: 'list'; items: string[]; legacyFallback?: boolean }
   | { type: 'divider' }

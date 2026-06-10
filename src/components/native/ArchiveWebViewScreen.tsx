@@ -7,6 +7,7 @@ import { WebView, WebViewMessageEvent } from 'react-native-webview';
 import { archiveColors, archiveRadius } from '@/src/theme/archiveTheme';
 import { luxuryFonts } from '@/src/theme/luxury';
 import { requestExpoPushTokenAsync } from '@/src/notifications/pushNotifications';
+import { getSupabaseClient } from '@/src/auth/supabase';
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -29,16 +30,14 @@ const APP_SHELL_INJECTION = `
     (document.head || document.documentElement).appendChild(style);
   }
 
-  function markAppShell() {
+  function prepareAppShell() {
     window.__BATHTIME_NATIVE_AUTH__ = true;
-    document.documentElement.dataset.bathtimeSurface = 'app';
-    if (document.body) document.body.classList.add('bathtime-app-shell');
     injectAppShellStyle();
   }
 
   injectAppShellStyle();
-  markAppShell();
-  document.addEventListener('DOMContentLoaded', markAppShell);
+  prepareAppShell();
+  document.addEventListener('DOMContentLoaded', prepareAppShell);
 })();
 true;
 `;
@@ -134,6 +133,35 @@ export function ArchiveWebViewScreen({ path }: { path: string }) {
 
   const postBridgeMessage = useCallback((payload: Record<string, unknown>) => {
     webViewRef.current?.postMessage(JSON.stringify({ source: 'bathtime-native', ...payload }));
+  }, []);
+
+  const injectNativeAuthSession = useCallback(async () => {
+    const supabase = getSupabaseClient();
+    if (!supabase) return;
+
+    const { data } = await supabase.auth.getSession();
+    const session = data.session;
+    if (!session?.access_token || !session.refresh_token) return;
+
+    const payload = JSON.stringify({
+      source: 'bathtime-native',
+      type: 'bathtime:auth:session',
+      accessToken: session.access_token,
+      refreshToken: session.refresh_token,
+    });
+
+    webViewRef.current?.injectJavaScript(`
+      (function () {
+        var payload = ${JSON.stringify(payload)};
+        function sendNativeSession() {
+          window.dispatchEvent(new MessageEvent('message', { data: payload }));
+        }
+        sendNativeSession();
+        setTimeout(sendNativeSession, 250);
+        setTimeout(sendNativeSession, 1000);
+      })();
+      true;
+    `);
   }, []);
 
   const openOAuthSession = useCallback(
@@ -239,7 +267,10 @@ export function ArchiveWebViewScreen({ path }: { path: string }) {
           setLoading(true);
           setFailed(false);
         }}
-        onLoadEnd={() => setLoading(false)}
+        onLoadEnd={() => {
+          setLoading(false);
+          void injectNativeAuthSession();
+        }}
         onLoadProgress={({ nativeEvent }) => {
           if (nativeEvent.progress >= 0.96) setLoading(false);
         }}

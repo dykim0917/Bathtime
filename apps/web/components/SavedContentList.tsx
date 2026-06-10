@@ -62,7 +62,7 @@ export function SavedContentList({ contents }: { contents: ArchiveContent[] }) {
     return (
       <section className="body-panel saved-empty-panel">
         <h2>로그인하면 저장한 콘텐츠를 이어서 볼 수 있어요.</h2>
-        <p>공간, 아이템, 루틴 기록을 계정에 연결해두고 다시 찾아볼 수 있습니다.</p>
+        <p>공간, 아이템, 의식 기록을 계정에 연결해두고 다시 꺼내볼 수 있습니다.</p>
         <Link className="button-primary" href="/auth/login?source=saved&next=/saved">Google로 로그인</Link>
       </section>
     );

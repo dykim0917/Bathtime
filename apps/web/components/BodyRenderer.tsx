@@ -5,9 +5,13 @@ function isExternalUrl(value: string | undefined): value is string {
   return Boolean(value?.startsWith('http://') || value?.startsWith('https://'));
 }
 
+function isPublicAssetPath(value: string | undefined): value is string {
+  return Boolean(value?.startsWith('/'));
+}
+
 function getBodyImageSrc(uri: string): string | null {
   if (uri.startsWith('care-guide:')) return getCareGuideImageSrc(uri.replace('care-guide:', ''));
-  return isExternalUrl(uri) ? uri : null;
+  return isExternalUrl(uri) || isPublicAssetPath(uri) ? uri : null;
 }
 
 function getImageAspectRatio(uri: string, explicitAspectRatio?: number): number | undefined {
@@ -86,6 +90,35 @@ export function BodyRenderer({ blocks }: { blocks: ContentBodyBlock[] }) {
               {imageSrc ? <img src={imageSrc} alt={block.caption ?? '바스타임 콘텐츠 이미지'} loading="lazy" /> : null}
               {block.caption ? <figcaption>{block.caption}</figcaption> : null}
             </figure>
+          );
+        }
+
+        if (block.type === 'productCandidates') {
+          return (
+            <div key={index} className="product-candidate-list">
+              {block.items.map((item) => {
+                const imageSrc = getBodyImageSrc(item.imageUri);
+                return (
+                  <article key={`${item.brand}-${item.name}`} className="product-candidate-card">
+                    <a className="product-candidate-image" href={item.purchaseUrl} target="_blank" rel="noreferrer">
+                      {imageSrc ? <img src={imageSrc} alt={`${item.brand} ${item.name}`} loading="lazy" /> : null}
+                    </a>
+                    <div className="product-candidate-copy">
+                      <p className="product-candidate-brand">{item.brand}</p>
+                      <h3>{item.name}</h3>
+                      <p className="product-candidate-meta">
+                        {item.priceLabel} · {item.priceCheckedAt} 확인{item.sourceLabel ? ` · ${item.sourceLabel}` : ''}
+                      </p>
+                      <p>{item.summary}</p>
+                      <p className="product-candidate-watch">{item.watchOut}</p>
+                      <a className="inline-source-link" href={item.purchaseUrl} target="_blank" rel="noreferrer">
+                        {hostname(item.purchaseUrl)}에서 보기
+                      </a>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
           );
         }
 
