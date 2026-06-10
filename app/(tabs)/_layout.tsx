@@ -49,25 +49,23 @@ export default function TabLayout() {
   const bottomInset = Math.max(insets.bottom, 0);
   const { isAuthenticated, isConfigured, isLoading } = useAuth();
 
-  function showAuthRequiredAlert(source: 'submit' | 'saved') {
-    const isSubmit = source === 'submit';
+  function showAuthRequiredAlert(source: 'saved') {
     Alert.alert(
-      isConfigured ? (isSubmit ? '제보를 남기려면 로그인해주세요.' : '저장한 기록을 보려면 로그인해주세요.') : '로그인 설정이 필요합니다.',
+      isConfigured ? '저장한 기록을 보려면 로그인해주세요.' : '로그인 설정이 필요합니다.',
       isConfigured ? 'Google 계정으로 로그인한 뒤 이어서 사용할 수 있어요.' : 'Supabase 로그인 환경변수가 필요합니다.',
       [
         { text: '취소', style: 'cancel' },
         {
           text: '확인',
           onPress: () => {
-            const next = isSubmit ? '/(tabs)/submit' : '/(tabs)/my';
-            router.push({ pathname: '/auth/login', params: { source, next } } as Href);
+            router.push({ pathname: '/auth/login', params: { source, next: '/(tabs)/my' } } as Href);
           },
         },
       ]
     );
   }
 
-  function protectedTabListeners(source: 'submit' | 'saved') {
+  function protectedTabListeners(source: 'saved') {
     return {
       tabPress: (event: { preventDefault: () => void }) => {
         if (isAuthenticated) return;
@@ -103,7 +101,6 @@ export default function TabLayout() {
       <Tabs.Screen
         name="submit"
         options={{ title: '제보', tabBarIcon: ({ color, focused }) => <TabBarIcon name="submit" color={color} focused={focused} /> }}
-        listeners={protectedTabListeners('submit')}
       />
       <Tabs.Screen
         name="my"
