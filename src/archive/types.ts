@@ -143,11 +143,23 @@ export type TipsStructuredInfo = {
   difficulty?: 'low' | 'medium' | 'high';
 };
 
+export type StructuredInfoOverviewRow = {
+  label: string;
+  value: string | string[] | number | boolean | null;
+};
+
+type StructuredInfoOverrides = {
+  overviewRows?: StructuredInfoOverviewRow[];
+};
+
 export type StructuredInfo =
-  | HomeBathStructuredInfo
-  | PlaceStructuredInfo
-  | ItemStructuredInfo
-  | TipsStructuredInfo;
+  (
+    | HomeBathStructuredInfo
+    | PlaceStructuredInfo
+    | ItemStructuredInfo
+    | TipsStructuredInfo
+  ) &
+    StructuredInfoOverrides;
 
 export type ContentSeoMetadata = {
   seoTitle?: string;
