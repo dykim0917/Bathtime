@@ -27,7 +27,7 @@ export default function LoginPage() {
           <ul>
             <li>관심 있는 콘텐츠 저장</li>
             <li>제보 내용 계정 연결</li>
-            <li>나중에 앱 루틴과 이어보기</li>
+            <li>나중에 앱 의식과 이어보기</li>
           </ul>
         </aside>
       </div>

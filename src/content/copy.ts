@@ -43,12 +43,12 @@ export const copy = {
     },
   },
   home: {
-    title: '오늘의 바스타임',
+    title: '오늘 볼 만한 바스타임',
     subtitlePrefix: '오늘 상태:',
     modeHint: {
       sleep: '수면 준비에 맞춘 쉬는 시간',
-      recovery: '몸 상태에 맞춘 회복 의식',
-      reset: '기분 전환을 돕는 바스타임',
+      recovery: '몸 상태에 맞춰 가볍게 이어가는 의식',
+      reset: '하루의 결을 바꾸는 바스타임',
     },
     lateNightBadge: '늦은 시간이라 수면 준비 의식을 먼저 보여드려요.',
     conflictBadge: '조건이 겹쳐서 가장 안전한 의식 1개를 먼저 추천해요.',
@@ -70,7 +70,7 @@ export const copy = {
       secondary_2: '가벼운 대안이에요',
     },
     resetSafeHint: '냉수 단계는 안전을 위해 자동으로 제외됐어요.',
-    noCommerceNotice: '지금은 상품 대신 의식부터 바로 시작할 수 있어요.',
+    noCommerceNotice: '지금은 구매보다 오늘 가능한 의식부터 볼 수 있어요.',
     beginnerGuide: '처음 시작이라 무리 없이 쉬기 좋은 기본 의식부터 보여드려요.',
     safetyPriorityBadge: '안전 우선 적용',
     streakTitle: '이번주 의식 기록',
@@ -81,7 +81,7 @@ export const copy = {
     weeklyStreak: (weeks: number) => `${weeks}주 연속`,
   },
   suggestion: {
-    titleCare: '오늘 맞춘 의식 자세히 보기',
+    titleCare: '오늘 해볼 수 있는 의식 자세히 보기',
     titleTrip: '무드 의식 자세히 보기',
     labels: {
       state: '현재 상태',
@@ -103,7 +103,7 @@ export const copy = {
     primarySectionTitle: '먼저 보기 좋은 제품',
     alternativeSectionTitle: '비슷하게 볼 제품',
     guideSectionTitle: '함께 찾기 좋은 제품군',
-    pickBadge: 'BEST 추천',
+    pickBadge: '먼저 보기 좋아요',
     cta: {
       detail: '제품 보기',
       purchase: '판매처 보기',
@@ -145,7 +145,7 @@ export const copy = {
       trip: (themeTitle: string) => `${themeTitle} 테마에 맞춘 무드 의식으로 구성했어요.`,
         care: (personaLabel: string) => `${personaLabel} 기준으로 현재 상태에 맞췄어요.`,
         params: (bathTypeLabel: string, temperature: number, durationLabel: string) =>
-          `${bathTypeLabel} 기준 ${temperature}°C · ${durationLabel}으로 최적화했어요.`,
+          `${bathTypeLabel} 기준 ${temperature}°C · ${durationLabel}으로 무리 없이 맞췄어요.`,
       },
     },
     checklist: {
@@ -223,7 +223,7 @@ export const copy = {
     feedbackTitleDefault: '오늘 바스타임은 어떠셨나요?',
     feedbackTitleWithThemePrefix: '오늘의',
     feedbackTitleWithThemeSuffix: '분위기는 어떠셨나요?',
-    summaryTitle: '잘 쉬었습니다',
+    summaryTitle: '오늘 몸에 맞게 마무리했어요',
     monthlyLabel: '이번 달 기록',
     shareCta: '오늘 바스타임 공유',
     shareSheetTitle: '오늘 바스타임',

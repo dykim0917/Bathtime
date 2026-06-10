@@ -11,7 +11,7 @@ type SubmissionType = Submission['type'];
 const submissionTypes: Array<{ value: SubmissionType; label: string; icon: Icon }> = [
   { value: 'sauna_spa', label: '목욕 공간', icon: MapTrifold },
   { value: 'bathtub_stay', label: '욕조 숙소', icon: Bed },
-  { value: 'home_spa', label: '홈스파 루틴', icon: Sparkle },
+  { value: 'home_spa', label: '홈스파 의식', icon: Sparkle },
   { value: 'item', label: '욕실 아이템', icon: Package },
   { value: 'topic', label: '다뤘으면 하는 주제', icon: ChatCircleDots },
 ];

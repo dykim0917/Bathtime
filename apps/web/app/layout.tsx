@@ -5,10 +5,10 @@ import './globals.css';
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_WEB_URL?.trim() || 'https://www.getbathtime.com'),
   title: {
-    default: '바스타임 - 좋은 바스타임을 발견하는 아카이브',
+    default: '바스타임 - 씻고 쉬는 시간 아카이브',
     template: '%s | 바스타임',
   },
-  description: '집 안팎의 씻고 쉬는 시간을 더 좋게 만드는 콘텐츠, 장소, 아이템, 의식을 정리합니다.',
+  description: '사우나, 홈케어, 족욕, 욕실 아이템을 같은 기준으로 정리한 바스타임 아카이브. 찾고, 저장하고, 실행합니다.',
   openGraph: {
     siteName: '바스타임',
     locale: 'ko_KR',

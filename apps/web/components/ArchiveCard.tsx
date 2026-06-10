@@ -34,6 +34,10 @@ function summaryMeta(content: ArchiveContent): CardMeta[] {
   return [{ icon: FileText, label: '정리 글' }];
 }
 
+function toDisplayCopy(text: string): string {
+  return text.replace(/루틴/g, '의식');
+}
+
 export function ArchiveCard({ content }: { content: ArchiveContent }) {
   return (
     <article className="archive-card-shell">
@@ -41,8 +45,8 @@ export function ArchiveCard({ content }: { content: ArchiveContent }) {
         <ArchiveVisual content={content} />
         <div className="archive-card-body">
           <p className="kicker">{CATEGORY_LABELS[content.category]} · {CONTENT_TYPE_LABELS[content.contentType]}</p>
-          <h3>{content.title}</h3>
-          <p>{content.summary}</p>
+          <h3>{toDisplayCopy(content.title)}</h3>
+          <p>{toDisplayCopy(content.summary)}</p>
         </div>
         <div className="meta-row">
           {summaryMeta(content).map(({ icon: IconComponent, label }) => (

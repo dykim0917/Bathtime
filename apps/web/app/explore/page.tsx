@@ -34,7 +34,7 @@ export default async function ExplorePage({
     <div className="page-stack">
       <header className="page-header compact">
         <h1>아카이브 탐색</h1>
-        <p>카테고리와 태그로 지금 필요한 바스타임 기록을 찾아보세요.</p>
+        <p>카테고리와 태그로 지금 필요한 기록을 골라보세요.</p>
       </header>
 
       <ExploreFilters contents={contents} initialCategory={category} query={query} />

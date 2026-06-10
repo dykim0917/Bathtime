@@ -4,7 +4,7 @@ import { SubmitForm } from '@web/components/SubmitForm';
 
 export const metadata: Metadata = {
   title: '제보',
-  description: '바스타임에서 다뤘으면 하는 목욕 공간, 욕실 아이템, 홈스파 주제를 제보해주세요.',
+  description: '바스타임에서 다뤘으면 하는 목욕 공간, 욕실 아이템, 홈스파 주제를 제보합니다.',
 };
 
 export default function SubmitPage() {
@@ -14,7 +14,7 @@ export default function SubmitPage() {
         <header className="page-header compact">
           <p className="kicker">BATH TIME SUBMIT</p>
           <h1>좋은 바스타임을 알려주세요.</h1>
-          <p>좋았던 목욕 공간, 욕실 아이템, 직접 해본 홈스파 루틴, 다뤘으면 하는 주제를 보내주세요.</p>
+          <p>좋았던 목욕 공간, 욕실 아이템, 직접 해본 홈스파 의식, 다뤘으면 하는 주제를 보내주세요.</p>
         </header>
       </section>
 

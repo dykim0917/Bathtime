@@ -24,6 +24,7 @@ function getUsableImageUri(content: ArchiveContent): string | null {
   const uri = content.heroImage?.uri;
   if (!uri || uri.startsWith('category-')) return null;
   if (uri.startsWith('care-hero:')) return getCareHeroImageSrc(uri.replace('care-hero:', ''));
+  if (uri.startsWith('/')) return uri;
   if (!uri.startsWith('http://') && !uri.startsWith('https://')) return null;
   return uri;
 }
@@ -34,7 +35,7 @@ export function ArchiveVisual({ content, priority = false }: { content: ArchiveC
 
   return (
     <div className="archive-visual" style={{ background: categoryGradients[content.category] }}>
-      {uri ? <img src={uri} alt={content.heroImage?.alt ?? content.title} loading={priority ? 'eager' : 'lazy'} /> : null}
+      {uri ? <img src={uri} alt="" aria-hidden="true" loading={priority ? 'eager' : 'lazy'} /> : null}
       <span>
         <IconComponent size={12} weight="bold" aria-hidden="true" />
         {CATEGORY_LABELS[content.category]}

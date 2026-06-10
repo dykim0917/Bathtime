@@ -15,7 +15,7 @@ export default function RoutinesPage() {
       <header className="page-header compact">
         <p className="kicker">BATH TIME RITUALS</p>
         <h1>바로 해볼 수 있는 의식</h1>
-        <p>웹에서는 흐름을 미리 보고, 앱에서는 타이머와 보관함으로 이어갈 수 있습니다.</p>
+        <p>필요한 흐름만 확인하고, 앱에서 타이머와 보관함으로 이어갈 수 있습니다.</p>
       </header>
       <div className="routine-grid">
         {routines.map((routine) => <RoutineCard key={routine.id} routine={routine} />)}

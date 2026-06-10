@@ -8,6 +8,13 @@ import brandSymbol from '@/assets/images/bathtime.svg';
 import logoImage from '@/assets/images/logo.png';
 import { getSupabaseClient } from '@web/lib/auth';
 
+type NativeAuthSessionMessage = {
+  source?: string;
+  type?: string;
+  accessToken?: string;
+  refreshToken?: string;
+};
+
 type IconName = 'bookmark' | 'compass' | 'house' | 'list' | 'plus' | 'search' | 'user';
 type IconWeight = 'thin' | 'light' | 'regular' | 'bold' | 'fill' | 'duotone';
 type PhosphorIcon = React.ComponentType<{
@@ -115,6 +122,49 @@ export function Shell({ children }: { children: React.ReactNode }) {
     });
 
     return () => data.subscription.unsubscribe();
+  }, []);
+
+  useEffect(() => {
+    const handleNativeAuthSession = (event: MessageEvent) => {
+      let payload: NativeAuthSessionMessage | null = null;
+
+      if (typeof event.data === 'string') {
+        try {
+          payload = JSON.parse(event.data) as NativeAuthSessionMessage;
+        } catch {
+          return;
+        }
+      } else if (event.data && typeof event.data === 'object') {
+        payload = event.data as NativeAuthSessionMessage;
+      }
+
+      if (
+        payload?.source !== 'bathtime-native' ||
+        payload.type !== 'bathtime:auth:session' ||
+        !payload.accessToken ||
+        !payload.refreshToken
+      ) {
+        return;
+      }
+
+      const supabase = getSupabaseClient();
+      if (!supabase) return;
+
+      void supabase.auth
+        .setSession({
+          access_token: payload.accessToken,
+          refresh_token: payload.refreshToken,
+        })
+        .then(({ data }) => {
+          setSignedIn(Boolean(data.session));
+          setAuthReady(true);
+          window.dispatchEvent(new CustomEvent('bathtime:saved-content-changed'));
+        })
+        .catch(() => undefined);
+    };
+
+    window.addEventListener('message', handleNativeAuthSession);
+    return () => window.removeEventListener('message', handleNativeAuthSession);
   }, []);
 
   useEffect(() => {
