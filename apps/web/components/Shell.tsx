@@ -33,7 +33,7 @@ type NavItem = {
 const navItems: NavItem[] = [
   { href: '/', label: '지금', icon: 'house' },
   { href: '/explore', label: '탐색', icon: 'compass' },
-  { href: '/submit', label: '제보', icon: 'plus', requiresAuth: true },
+  { href: '/submit', label: '제보', icon: 'plus' },
   { href: '/saved', label: '보관함', icon: 'bookmark', requiresAuth: true },
 ];
 
@@ -190,9 +190,9 @@ export function Shell({ children }: { children: React.ReactNode }) {
 
     event.preventDefault();
     setAuthGate({
-      source: item.href === '/submit' ? 'submit' : 'saved',
+      source: 'saved',
       next: item.href,
-      message: item.href === '/submit' ? '제보를 남기려면 로그인해주세요.' : '저장한 기록을 보려면 로그인해주세요.',
+      message: '저장한 기록을 보려면 로그인해주세요.',
     });
   };
 
@@ -236,6 +236,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
           })}
         </nav>
         <div className="sidebar-footer">
+          <Link href="/about">바스타임이란</Link>
           <Link href="/legal/privacy">개인정보처리방침</Link>
           <Link href="/legal/terms">이용약관</Link>
         </div>

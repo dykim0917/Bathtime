@@ -353,7 +353,7 @@ export type AdminSubmission = Awaited<ReturnType<typeof readP0Submissions>>[numb
 
 type SubmissionRow = {
   id: string;
-  user_id: string;
+  user_id: string | null;
   type: string;
   link_or_image: string | null;
   comment: string;
@@ -372,7 +372,7 @@ type SubmissionRow = {
 function mapSubmissionRow(row: SubmissionRow): AdminSubmission {
   return {
     id: row.id,
-    userId: row.user_id,
+    userId: row.user_id ?? undefined,
     type: row.type as AdminSubmission['type'],
     linkOrImage: row.link_or_image ?? undefined,
     comment: row.comment,

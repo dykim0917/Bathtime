@@ -15,7 +15,7 @@ type SubmissionInput = Omit<Submission, 'id' | 'status' | 'createdAt' | 'updated
 
 type SubmissionRow = {
   id: string;
-  user_id: string;
+  user_id: string | null;
   type: Submission['type'];
   link_or_image: string | null;
   comment: string;
@@ -200,7 +200,7 @@ export async function toggleSavedContent(id: string): Promise<boolean> {
 function mapSubmissionRow(row: SubmissionRow): Submission {
   return {
     id: row.id,
-    userId: row.user_id,
+    userId: row.user_id ?? undefined,
     type: row.type,
     linkOrImage: row.link_or_image ?? undefined,
     comment: row.comment,
@@ -213,18 +213,44 @@ function mapSubmissionRow(row: SubmissionRow): Submission {
 }
 
 export async function saveSubmission(input: SubmissionInput): Promise<Submission> {
-  const user = await getAuthenticatedUser({ ensureProfile: true });
   const supabase = requireClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (user) {
+    await getAuthenticatedUser({ ensureProfile: true });
+  }
+
+  const now = new Date().toISOString();
+  const submissionPayload = {
+    user_id: user?.id ?? null,
+    type: input.type,
+    link_or_image: input.linkOrImage ?? null,
+    comment: input.comment,
+    nickname: input.nickname ?? null,
+    can_publish: input.canPublish ?? null,
+  };
+
+  if (!user) {
+    const { error } = await supabase.from('submissions').insert(submissionPayload);
+    if (error) throw error;
+    return {
+      id: 'anonymous-submission',
+      type: input.type,
+      linkOrImage: input.linkOrImage,
+      comment: input.comment,
+      nickname: input.nickname,
+      canPublish: input.canPublish,
+      status: 'new',
+      createdAt: now,
+      updatedAt: now,
+    };
+  }
+
   const { data, error } = await supabase
     .from('submissions')
-    .insert({
-      user_id: user.id,
-      type: input.type,
-      link_or_image: input.linkOrImage ?? null,
-      comment: input.comment,
-      nickname: input.nickname ?? null,
-      can_publish: input.canPublish ?? null,
-    })
+    .insert(submissionPayload)
     .select('*')
     .single();
 

@@ -1,10 +1,9 @@
 'use client';
 
-import { FormEvent, useEffect, useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { Bed, ChatCircleDots, MapTrifold, Package, Sparkle, type Icon } from '@phosphor-icons/react';
 import type { Submission } from '@/src/archive/types';
-import { getSupabaseClient } from '@web/lib/auth';
-import { AuthRequiredError, redirectToLogin, saveSubmission } from '@web/lib/userContent';
+import { saveSubmission } from '@web/lib/userContent';
 
 type SubmissionType = Submission['type'];
 
@@ -22,17 +21,8 @@ export function SubmitForm() {
   const [comment, setComment] = useState('');
   const [nickname, setNickname] = useState('');
   const [canPublish, setCanPublish] = useState(false);
-  const [isSignedIn, setIsSignedIn] = useState(false);
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [message, setMessage] = useState('');
-
-  useEffect(() => {
-    const supabase = getSupabaseClient();
-    if (!supabase) return;
-    supabase.auth.getSession().then(({ data }) => setIsSignedIn(Boolean(data.session)));
-    const { data } = supabase.auth.onAuthStateChange((_event, session) => setIsSignedIn(Boolean(session)));
-    return () => data.subscription.unsubscribe();
-  }, []);
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -60,10 +50,6 @@ export function SubmitForm() {
       setNickname('');
       setCanPublish(false);
     } catch (error) {
-      if (error instanceof AuthRequiredError) {
-        redirectToLogin('submit');
-        return;
-      }
       setStatus('error');
       setMessage('제보를 저장하지 못했어요. 잠시 후 다시 시도해주세요.');
     }
@@ -76,9 +62,7 @@ export function SubmitForm() {
         <p>필수 입력은 제보 내용 하나예요. 이름이나 링크는 알고 있는 만큼만 적어도 됩니다.</p>
       </div>
 
-      {!isSignedIn ? (
-        <p className="auth-note">제보는 로그인 후 계정에 연결됩니다. 제출하면 Google 로그인으로 이동합니다.</p>
-      ) : null}
+      <p className="auth-note">로그인하지 않아도 제보할 수 있어요. 로그인 상태라면 제보가 계정에 함께 기록됩니다.</p>
 
       <fieldset className="submit-type-field">
         <legend>제보 유형</legend>

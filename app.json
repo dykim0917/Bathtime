@@ -58,6 +58,7 @@
       "expo-asset",
       "expo-font",
       "expo-web-browser",
+      "./plugins/withAndroidReleaseOptimization",
       "./plugins/withAndroidStoreAudioManifest"
     ],
     "experiments": {
