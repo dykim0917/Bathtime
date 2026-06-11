@@ -201,6 +201,8 @@ Prefer:
 - `같이 쓰면 좋은 의식`
 - `저장해둘 이유`
 
+`한 줄 판단` must be exactly one short sentence in one paragraph, ideally 35-55 Korean characters. Move any explanation into the next section.
+
 ### Internal research words are not allowed in public copy
 
 Do not use:
@@ -252,10 +254,12 @@ Each product example must preserve:
 - source or purchase URL
 - price checked date or explicit unavailable note
 - information-status wording such as `공개 정보 기준` or `브랜드 제공 정보 기준`
-- no unlicensed product image
+- official/public product-page image URL may be referenced in private drafts when the image is clearly tied to the candidate product and rights status says Bathtime does not own it
 - no ranking, popularity, or purchase-pressure wording
 
-If the final renderer only supports a plain list, use labeled list sentences. Do not remove source/date/status simply to make the line shorter.
+If the renderer supports `productCandidates`, use card-style product candidates for real product examples. If it only supports a plain list, use labeled list sentences. Do not remove source/date/status simply to make the line shorter.
+
+Keep public-publish image rights as a blocker unless ownership, license, or permission is clear.
 
 ## CTA and Action Rules
 

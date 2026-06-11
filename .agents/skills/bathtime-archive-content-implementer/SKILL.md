@@ -74,6 +74,7 @@ For this repo, `ContentBodyBlock` supports:
      5. `아쉬운 점`
      6. `가기 전에 확인할 것`
      7. `저장해둘 이유` or `문의 전 메모`
+   - `한 줄 판단` must render as exactly one short sentence in one paragraph, ideally 35-55 Korean characters. Move any extra explanation into the next section.
    - Insert at least two inline image blocks when supported:
      - first after the verdict or first practical paragraph;
      - second after `이런 날에 잘 맞아요` or before `가기 전에 확인할 것`.

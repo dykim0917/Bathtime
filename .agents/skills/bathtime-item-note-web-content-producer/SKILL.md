@@ -95,6 +95,15 @@ Use this order unless the seed or renderer requires otherwise:
 
 For a specific product, add source-scoped language near the top. For a category note, lead with the decision frame instead of a product recommendation.
 
+### One-Line Verdict Rule
+
+When using `한 줄 판단`, the content under that heading must be exactly one short paragraph with one sentence.
+
+- Aim for 35-55 Korean characters.
+- Do not use multiple paragraphs, bullets, or a long explanatory sentence.
+- If more context is needed, move it to the next section.
+- The line should answer the reader's immediate question, not summarize the whole article.
+
 ## Reader Verdict Rules
 
 The first body block must answer:

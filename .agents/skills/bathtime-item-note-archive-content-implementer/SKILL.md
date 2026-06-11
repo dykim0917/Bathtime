@@ -112,6 +112,8 @@ Use Korean reader-facing body headings in this order:
 8. `같이 쓰면 좋은 의식`
 9. `저장해둘 이유`
 
+`한 줄 판단` must render as exactly one short sentence in one paragraph, ideally 35-55 Korean characters. Move any extra explanation into the next section.
+
 Insert at least two inline image blocks when supported:
 
 - first after the verdict or ritual role section
