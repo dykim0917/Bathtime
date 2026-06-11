@@ -147,9 +147,27 @@ export const archiveContents: ArchiveContent[] = [
     body: [
       { type: 'paragraph', text: '집에 욕조가 없어도 씻는 순서를 조금 느리게 바꾸면 하루를 닫는 의식이 됩니다.' },
       { type: 'heading', text: '해보면 좋은 순서' },
-      { type: 'list', items: ['조명을 한 단계 낮춥니다.', '목과 어깨를 먼저 데웁니다.', '마지막 1분은 물소리만 듣습니다.'] },
+      { type: 'list', items: [
+        '조명: 욕실 밝기를 한 단계 낮춰 하루의 속도를 줄입니다.',
+        '온감: 목과 어깨를 먼저 데우며 몸이 집에 도착했다는 감각을 만듭니다.',
+        '마무리: 마지막 1분은 씻는 동작보다 물소리와 호흡에 둡니다.',
+      ] },
+      {
+        type: 'ctaGroup',
+        title: '바로 이어서 해볼 수 있어요',
+        items: [
+          { label: '퇴근 후 7분 샤워 시작', action: 'start_timer', targetId: 'shower-7', emphasis: 'primary' },
+          { label: '짧은 샤워 의식으로 저장하기', action: 'save', targetId: 'home-shower-reset-7', emphasis: 'secondary' },
+        ],
+      },
     ],
     structuredInfo: {
+      overviewRows: [
+        { label: '콘텐츠 성격', value: '홈케어 루틴' },
+        { label: '대상', value: '욕조 없이 하루를 닫고 싶은 사람' },
+        { label: '핵심 키워드', value: ['짧은 의식', '낮은 조명', '물소리'] },
+        { label: '바로 해볼 것', value: '7분 샤워 타이머' },
+      ],
       durationMinutes: 7,
       bathRequired: false,
       requiredItems: ['수건', '따뜻한 물', '조용한 조명'],
@@ -177,9 +195,27 @@ export const archiveContents: ArchiveContent[] = [
     heroImage: { uri: 'category-home-bath', alt: '따뜻한 족욕 물과 수건', sourceType: 'generated' },
     body: [
       { type: 'paragraph', text: '반복할 수 있는 족욕은 장비보다 준비와 정리 동선이 더 중요합니다.' },
-      { type: 'list', items: ['대야는 욕실 문 가까이에 둡니다.', '마실 물과 수건을 먼저 준비합니다.', '끝나면 바로 물을 버릴 수 있어야 합니다.'] },
+      { type: 'list', items: [
+        '자리: 대야는 욕실 문 가까이에 두어 옮기는 동선을 줄입니다.',
+        '준비물: 마실 물과 수건을 먼저 두어 중간에 일어나지 않게 합니다.',
+        '정리: 끝난 뒤 바로 물을 버릴 수 있는 위치에서 시작합니다.',
+      ] },
+      {
+        type: 'ctaGroup',
+        title: '비 오는 밤에 바로 이어가기',
+        items: [
+          { label: '10분 족욕 타이머 시작', action: 'start_timer', targetId: 'footbath-10', emphasis: 'primary' },
+          { label: '비 오는 날 족욕으로 저장하기', action: 'save', targetId: 'home-footbath-rainy-night', emphasis: 'secondary' },
+        ],
+      },
     ],
     structuredInfo: {
+      overviewRows: [
+        { label: '콘텐츠 성격', value: '홈케어 루틴' },
+        { label: '대상', value: '기구 없이 족욕을 시작하고 싶은 사람' },
+        { label: '핵심 키워드', value: ['대야', '정리 동선', '10분 족욕'] },
+        { label: '바로 해볼 것', value: '10분 족욕 타이머' },
+      ],
       durationMinutes: 10,
       bathRequired: false,
       requiredItems: ['대야', '수건', '따뜻한 물'],
@@ -203,9 +239,27 @@ export const archiveContents: ArchiveContent[] = [
     heroImage: { uri: 'category-home-bath', alt: '욕조와 따뜻한 물결', sourceType: 'generated' },
     body: [
       { type: 'paragraph', text: '입욕은 오래 버티는 시간이 아니라 나에게 맞는 온도와 길이를 찾는 일에 가깝습니다.' },
-      { type: 'list', items: ['처음에는 15분을 넘기지 않습니다.', '답답하면 반신욕으로 낮춥니다.', '끝난 뒤에는 바로 눕기보다 물을 마십니다.'] },
+      { type: 'list', items: [
+        '시간: 처음에는 15분을 넘기지 않고 몸의 반응을 봅니다.',
+        '강도: 답답하거나 더워지면 전신 입욕보다 반신욕으로 낮춥니다.',
+        '마무리: 끝난 뒤에는 바로 눕기보다 물을 마시고 천천히 식습니다.',
+      ] },
+      {
+        type: 'ctaGroup',
+        title: '무리하지 않는 입욕으로 이어가기',
+        items: [
+          { label: '기본 입욕 15분 시작', action: 'start_timer', targetId: 'bath-15', emphasis: 'primary' },
+          { label: '기본 입욕 기준으로 저장하기', action: 'save', targetId: 'home-bath-basic-15', emphasis: 'secondary' },
+        ],
+      },
     ],
     structuredInfo: {
+      overviewRows: [
+        { label: '콘텐츠 성격', value: '홈케어 기준' },
+        { label: '대상', value: '욕조가 있지만 오래 버티기보다 기준이 필요한 사람' },
+        { label: '핵심 키워드', value: ['15분', '온도 조절', '수분 보충'] },
+        { label: '바로 해볼 것', value: '기본 입욕 15분 타이머' },
+      ],
       durationMinutes: 15,
       bathRequired: true,
       requiredItems: ['욕조', '수건', '마실 물'],

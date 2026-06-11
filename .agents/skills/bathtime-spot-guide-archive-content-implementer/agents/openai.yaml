@@ -1,0 +1,7 @@
+interface:
+  display_name: "Bathtime Spot Guide ArchiveContent Implementer"
+  short_description: "스팟 가이드 웹 패키지를 ArchiveContent와 비공개 DB draft로 구현"
+  default_prompt: "Use $bathtime-spot-guide-archive-content-implementer to implement the humanized spot guide web package as ArchiveContent, generate DB artifacts, apply a private draft when allowed, and verify preview."
+
+policy:
+  allow_implicit_invocation: true

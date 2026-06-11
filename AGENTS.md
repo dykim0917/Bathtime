@@ -54,3 +54,7 @@ For multi-step tasks, state a brief plan:
 Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
 
 These guidelines are working if: fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.
+
+## Preserve Local Skills
+
+Do not move or archive `im-not-ai/`. It contains the local `humanize-korean` Codex skill and its reference files, which are required by Bathtime item-note and content publishing workflows.

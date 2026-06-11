@@ -84,6 +84,9 @@ const ROW_ICONS: Record<string, PhosphorIcon> = {
   기준: ListChecks,
   '출처 구분': SquaresFour,
   대상: User,
+  '핵심 키워드': ListChecks,
+  '읽고 나면': CheckCircle,
+  '바로 해볼 것': Sparkle,
 };
 
 function formatValue(value: unknown): string {

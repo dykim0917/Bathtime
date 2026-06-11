@@ -21,6 +21,8 @@ Use clear Korean labels such as:
 - `애매한 대상`
 - `같이 쓰면 좋은 것`
 
+Only show rows that help the reader decide. Do not keep default rows just because they are technically true. For example, remove or replace `전원 필요 없음` for non-electric items and `욕조 필요 없음` for bathroom accessories where that fact does not help selection.
+
 ### Forbidden values in user-facing structuredInfo
 
 Do not display:
@@ -97,6 +99,30 @@ Do not make generated images look like a specific brand, product listing, market
 
 If imagegen creates a local file but it is not uploaded or addressable by the app, keep the fallback `heroImage.uri` and record the local file path as an implementation note or publish blocker.
 
+### Reader-facing caption rules
+
+Captions are not production notes. They should explain what the image helps the reader understand.
+
+Avoid reader-facing wording such as:
+
+- `비브랜드 생성 이미지입니다`
+- `생성형 AI로 만든 이미지입니다`
+- `제작된 이미지입니다`
+- `실제 제품 사진이 아닙니다`
+
+Use message-focused captions instead:
+
+- `제품을 고를 때 놓치기 쉬운 기준을 시각적으로 정리한 이미지입니다.`
+- `샤워 후 정리 동선을 한눈에 떠올리게 하는 이미지입니다.`
+- `보관과 말릴 자리를 함께 확인해야 한다는 점을 보여주는 장면입니다.`
+- `욕실 크기와 사용 동선이 선택 기준이 되는 상황을 보여주는 이미지입니다.`
+
+Do not imply a generated or placeholder image is a real product photo, direct-use photo, or firsthand usage scene. If transparency is necessary, use a natural note such as:
+
+```text
+특정 제품을 가리키는 이미지는 아닙니다.
+```
+
 ### Inline image slots are required
 
 Every Item Note package must include at least two planned inline image slots.
@@ -125,7 +151,7 @@ If renderer support is similar to this, follow it:
 {
   type: 'image',
   uri: 'image-slot:footbath-bowl-vs-machine-decision-card',
-  caption: '족욕기와 족욕볼을 비교하는 설명형 카드 이미지. 실제 제품 사진이 아니라 구매 전 판단 기준을 보여주는 비주얼입니다.'
+  caption: '족욕기와 족욕볼을 고를 때 준비, 정리, 보관 부담을 함께 비교하게 돕는 이미지입니다.'
 }
 ```
 
@@ -182,6 +208,43 @@ Replace:
 
 Most paragraphs should be 1-2 sentences. Use lists for checks, fit/not-fit, alternatives, and connected rituals.
 
+### Make lists scannable
+
+Avoid long bare lists for criteria, specs, product types, source types, or comparison points.
+
+Bad:
+
+```text
+- 소재
+- 세탁
+- 건조
+- 보관
+```
+
+Good:
+
+```text
+- 소재: 물에 자주 닿는 물건이라 건조와 관리 난이도를 함께 봅니다.
+- 세탁: 세탁기 사용 가능 여부와 건조 방식을 먼저 확인합니다.
+- 보관: 매일 쓰려면 말릴 자리와 문 간섭을 같이 봅니다.
+```
+
+If a mini-card, icon chip, comparison table, or richer checklist UI would improve the page but is not supported by the renderer, record it as `UX follow-up` or `Publish Blockers`. Do not fake unsupported UI with awkward text.
+
+### Product examples keep source/date/status
+
+When real products appear in `비교해볼 만한 제품 예시`, keep them as sourced comparison examples, not recommendations.
+
+Each product example must preserve:
+
+- source or purchase URL
+- price checked date or explicit unavailable note
+- information-status wording such as `공개 정보 기준` or `브랜드 제공 정보 기준`
+- no unlicensed product image
+- no ranking, popularity, or purchase-pressure wording
+
+If the final renderer only supports a plain list, use labeled list sentences. Do not remove source/date/status simply to make the line shorter.
+
 ## CTA and Action Rules
 
 Each Item Note page should connect to at least one action.
@@ -200,6 +263,28 @@ Allowed CTA types:
 Do not output generic CTA suggestions as a brainstorming list. Convert them into actual CTA/link notes or implementation fields.
 
 Do not make a purchase link the only or primary CTA unless the user explicitly requested commerce and disclosure is ready.
+
+Do not render a button-like CTA unless the route or action actually exists. If a useful next action is not yet available, keep it as plain text or record it in `Publish Blockers`.
+
+## Structured Overview UX
+
+For concrete product/category item notes, the default item structured info is usually useful.
+
+For criteria, comparison, terminology, or insight-style item notes, review whether the `한눈에 보기` box helps the reader. If default fields feel like empty metadata, record:
+
+```text
+UX follow-up:
+이 글은 특정 제품 소개가 아닌 기준 콘텐츠이므로 기본 한눈에 보기 박스가 적합하지 않을 수 있음.
+권장 요약:
+- 카테고리: 아이템 선택 기준
+- 대상: 구매 전 확인 기준을 찾는 사람
+- 핵심 키워드: 관리 난이도, 보관, 소모품, 안전
+- 읽고 나면: 제품명보다 먼저 볼 조건을 알 수 있음
+```
+
+Use existing `overviewRows` only when the app/schema already supports it. Do not invent unsupported public fields.
+
+Remove or replace rows that are technically true but not useful for the item, such as `전원 필요 없음` for a non-electric item or `욕조 필요 없음` for a bathroom accessory where that fact does not affect selection.
 
 ## Source and Fact Discipline
 

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Bathtime Spot Guide Web Content Producer"
+  short_description: "스팟 가이드 시드를 웹 발행용 본문·이미지 계획·SEO 패키지로 제작"
+  default_prompt: "Use $bathtime-spot-guide-web-content-producer to create the web content package with Korean body blocks, source transparency, image/card plans, SEO, CTA, blockers, and quality gates."
+
+policy:
+  allow_implicit_invocation: true

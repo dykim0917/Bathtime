@@ -124,7 +124,15 @@ Use slot IDs such as:
 
 unless the web package specifies better slot IDs.
 
-Keep image captions as sourcing briefs for staff:
+Keep implemented image captions reader-facing:
+
+- explain what the image helps the reader understand
+- name the selection criterion, setup friction, comparison point, or ritual context
+- do not expose production wording such as `비브랜드 생성 이미지`, `생성 이미지입니다`, `생성형 AI`, or `제작된 이미지`
+- do not imply the image is a real product photo or direct-use photo when it is not
+- if transparency is needed, use a natural note such as `특정 제품을 가리키는 이미지는 아닙니다`
+
+Keep staff-only sourcing details in the web package, canonical quality notes, or publish blockers, not in public captions:
 
 - desired subject
 - acceptable source
@@ -166,6 +174,21 @@ Unknowns must be specific:
 - `직접 사용 전 장기 사용감 단정 불가`
 
 Keep `structuredInfo.priceRange` short and scan-friendly.
+
+For `overviewRows`, prefer rows that help the reader decide. Remove or replace default rows that are merely technically true, such as `전원 필요 없음` for a non-electric item or `욕조 필요 없음` for a bathroom accessory where that fact adds no selection value.
+
+### 4.5. Preserve product example metadata
+
+If `product_research/product-candidates.json` exists or the content has a `비교해볼 만한 제품 예시` section, keep product examples as sourced comparison examples.
+
+Every real product example in the final `ArchiveContent` should include:
+
+- a purchase/source URL or an explicit note that the source is unresolved
+- a price checked date or an explicit unavailable note
+- an information-status phrase such as `공개 정보 기준` or `브랜드 제공 정보 기준`
+- no ranking, recommendation, affiliate implication, or unsupported popularity claim
+
+If the renderer cannot support richer product cards, use labeled list lines. Do not drop source/date/status just because the final format is a plain list.
 
 ### 5. Preserve non-review framing
 
@@ -237,9 +260,15 @@ Verify:
 - headings match the standard Korean order
 - no product-review or English memo headings remain
 - at least two `image-slot:*` image blocks exist when supported
+- image captions explain reader value rather than production method
+- long criteria/product lists use labels or scannable structure where possible
+- `한눈에 보기` / structuredInfo is suitable for the item note type, or UX follow-up is recorded
+- `한눈에 보기` does not include technically true but useless rows for the item category
+- product examples preserve source URL, price checked date or unavailable note, and information-status wording when real products are named
 - structuredInfo is reader-facing Korean
 - subtitle, summary, and SEO description do not contain placeholders
 - no purchase-pressure language appears
+- CTA exists as text or a real supported action; unavailable routes are not presented as buttons
 
 ## Fail Conditions
 
@@ -251,13 +280,16 @@ Stop and revise before DB apply if any final `ArchiveContent` field contains:
 - placeholder copy such as `리서치 기반 시드 초안`, `seed draft`, `콘텐츠 초안`
 - raw enum/internal labels in user-facing fields
 - internal research words such as `신호`, `시그널`, or `signal` in user-facing body, subtitle, summary, SEO, CTA, or structuredInfo
+- production-method caption wording such as `비브랜드 생성 이미지`, `생성 이미지입니다`, `생성형 AI`, `제작된 이미지`, or `실제 제품 사진이 아닙니다`
 - unsupported medical, recovery, sleep-improvement, pain-relief, or skin-improvement claims
 - product specs or price claims without source/date boundary
+- real product examples without source URL, price checked date or unavailable note, or information-status wording
 - product image usage that lacks rights status
 - overly long `structuredInfo.priceRange` that reads like a paragraph
 - missing hero image
 - fewer than two inline image slots for item note pages when image blocks are supported
 - no CTA connected to save, ritual, timer, related content, or submission
+- button-like CTA for a route/link that is not actually available
 - `isPublished: true` while publish blockers remain
 
 ## Verification Commands
@@ -280,7 +312,7 @@ Preview API check pattern:
 
 ```bash
 curl -s 'https://admin.getbathtime.com/api/archive-preview/{id}?token={token}' \
-  | node -e "let d='';process.stdin.on('data',c=>d+=c);process.stdin.on('end',()=>{const j=JSON.parse(d);const body=j.content?.body||[];const headings=body.filter(b=>b.type==='heading').map(b=>b.text);const imageBlocks=body.filter(b=>b.type==='image').map(b=>b.uri);const badWords=['TOP','베스트','최고','필수템','인생템','구매각','신호','시그널','signal'];const text=JSON.stringify(j.content||{});console.log(JSON.stringify({id:j.content?.id,isPublished:j.content?.isPublished,headings,imageBlocks,badWords:badWords.filter(w=>text.includes(w)),structuredInfo:j.content?.structuredInfo},null,2));})"
+  | node -e "let d='';process.stdin.on('data',c=>d+=c);process.stdin.on('end',()=>{const j=JSON.parse(d);const body=j.content?.body||[];const headings=body.filter(b=>b.type==='heading').map(b=>b.text);const imageBlocks=body.filter(b=>b.type==='image').map(b=>b.uri);const badWords=['TOP','베스트','최고','필수템','인생템','구매각','신호','시그널','signal','비브랜드 생성 이미지','생성 이미지입니다','생성형 AI','제작된 이미지','실제 제품 사진이 아닙니다'];const text=JSON.stringify(j.content||{});console.log(JSON.stringify({id:j.content?.id,isPublished:j.content?.isPublished,headings,imageBlocks,badWords:badWords.filter(w=>text.includes(w)),structuredInfo:j.content?.structuredInfo},null,2));})"
 ```
 
 ## Final Response
