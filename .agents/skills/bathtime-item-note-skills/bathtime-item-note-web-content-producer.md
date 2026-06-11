@@ -177,6 +177,15 @@ For a category note, lead with the decision frame:
 이 글은 특정 제품 추천보다, 이 아이템 유형이 내 욕실과 생활에 들어올 수 있는지 판단하기 위한 노트입니다.
 ```
 
+### One-Line Verdict Rule
+
+When using `한 줄 판단`, the content under that heading must be exactly one short paragraph with one sentence.
+
+- Aim for 35-55 Korean characters.
+- Do not use multiple paragraphs, bullets, or a long explanatory sentence.
+- If more context is needed, move it to the next section.
+- The line should answer the reader's immediate question, not summarize the whole article.
+
 ## Reader Verdict Rules
 
 The first body block must answer:

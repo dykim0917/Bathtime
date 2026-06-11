@@ -76,6 +76,15 @@ For `candidate-frame`, recommended headings:
 - `가기 전 체크리스트`
 - `제보와 업데이트`
 
+### One-Line Verdict Rule
+
+When using `한 줄 판단`, the content under that heading must be exactly one short paragraph with one sentence.
+
+- Aim for 35-55 Korean characters.
+- Do not use multiple paragraphs, bullets, or a long explanatory sentence.
+- If more context is needed, move it to the next section.
+- The line should answer the reader's immediate question, not summarize the whole article.
+
 ## Source Transparency
 
 Near the top, make clear whether the content is based on:

@@ -20,12 +20,12 @@
 - Publish status:
 
 ## Reader Verdict
-- One-line verdict:
+- One-line verdict: one short sentence only, ideally 35-55 Korean characters.
 - Safest framing:
 - Main tradeoff:
 
 ## Body Blocks
-1. 한 줄 판단:
+1. 한 줄 판단: one short sentence only; move extra explanation to the next section.
 2. 어떤 의식을 돕나요:
 3. 사기 전에 먼저 볼 것:
 4. 좋게 볼 수 있는 점:

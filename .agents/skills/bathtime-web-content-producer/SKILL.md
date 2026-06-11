@@ -108,6 +108,8 @@ These may appear only in a private scratchpad. The user-facing page package must
 - `가기 전에 확인할 것`
 - `저장해둘 이유`
 
+`한 줄 판단` must be exactly one short sentence in one paragraph, ideally 35-55 Korean characters. Move supporting context into the next section.
+
 ### No markdown table as final page content
 
 Do not place a long markdown table in the final body copy. Tables are easy to break in app output and often scan poorly on mobile.
@@ -280,6 +282,8 @@ Use this order for researched hotel sauna/bath pages:
 5. `아쉬운 점`
 6. `가기 전에 확인할 것`
 7. `저장해둘 이유` or `문의 전 메모`
+
+`한 줄 판단` must stay one line: one short sentence, one paragraph, no bullets, and no extra explanatory paragraph under the same heading.
 
 ### First paragraph rule
 
@@ -559,6 +563,7 @@ When the source confirms a hotel bath facility but does not confirm standalone p
 ### 한 줄 판단
 도미인 서울 강남에 묵는 날, 객실 샤워 대신 함께 고려할 만한 호텔 대욕장입니다.
 
+### 가기 전에 확인할 것
 비투숙객 단독 이용 가능 여부와 단독 요금은 공식 정보만으로 확인되지 않았습니다. 사우나만 이용하러 가기보다는 숙박 일정에 포함된 시설로 보는 편이 안전합니다.
 
 ### 어떤 날에 맞을까

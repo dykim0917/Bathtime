@@ -332,6 +332,8 @@ Suggested item body order:
 8. `같이 쓰면 좋은 의식`
 9. `저장해둘 이유`
 
+`한 줄 판단` must contain exactly one short sentence in one paragraph, ideally 35-55 Korean characters. Move any extra explanation into the next section.
+
 ## Validation Checklist
 
 Before delivering seed artifacts, check:

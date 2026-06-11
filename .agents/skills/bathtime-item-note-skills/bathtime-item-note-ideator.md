@@ -329,6 +329,8 @@ Define expected page sections:
 7. 이런 사람에게는 애매해요
 8. 같이 쓰면 좋은 의식
 
+The `한 줄 판단` section must be one short sentence only, ideally 35-55 Korean characters. Put any explanation in the next section.
+
 ### Step 9. Plan images
 
 Prefer explanatory or owned visuals over product images.

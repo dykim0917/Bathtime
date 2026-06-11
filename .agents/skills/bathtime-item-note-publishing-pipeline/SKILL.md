@@ -209,7 +209,9 @@ Product examples:
 
 - If `bathtime-item-product-researcher` ran or the page includes real product examples, do not collapse product candidate metadata into vague bullets.
 - Every reader-facing product example must preserve a source or purchase URL, price checked date or explicit unavailable note, and an information-status phrase such as `공개 정보 기준` or `브랜드 제공 정보 기준`.
-- Product examples must remain comparison examples, not recommendations, rankings, product cards with unverified images, or purchase-pressure CTAs.
+- Product examples must remain comparison examples, not recommendations, rankings, or purchase-pressure CTAs.
+- If the renderer supports `productCandidates`, use card-style product candidates for real product examples.
+- Official/public product-page image URLs may be referenced in private draft cards when rights status says Bathtime does not own the image. Keep public-publish image rights as a blocker unless ownership, license, or permission is clear.
 - If the renderer cannot show proper product cards yet, use labeled list lines and record richer card UI as a UX follow-up rather than dropping source/date/status.
 
 Structured overview:
