@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Linking, Pressable, StyleSheet, Text, View } from 'react-native';
 import { ArchivePageContainer } from '@/src/components/web/ArchivePageContainer';
 import { SeoMetadata } from '@/src/components/web/SeoMetadata';
 import { WebShell, webStyles } from '@/src/components/web/WebShell';
 import { trackArchiveEvent } from '@/src/analytics/events';
 import { archiveColors, archiveRadius } from '@/src/theme/archiveTheme';
 import { luxuryFonts } from '@/src/theme/luxury';
+
+const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.bathtimestudio.bathtime';
 
 export default function AppDownloadPage() {
   useEffect(() => {
@@ -21,17 +23,20 @@ export default function AppDownloadPage() {
             <Text style={webStyles.eyebrow}>BATHTIME APP</Text>
             <Text style={webStyles.title}>앱에서 저장하고 실행하기</Text>
             <Text style={webStyles.lede}>
-              앱에서는 웹에서 발견한 콘텐츠를 보관하고, 연결된 의식을 타이머로 따라 할 수 있어요. 스토어 링크는 앱 출시 시 연결됩니다.
+              앱에서는 웹에서 발견한 콘텐츠를 보관하고, 연결된 의식을 타이머로 따라 할 수 있어요.
             </Text>
           </View>
           <View style={styles.card}>
-            <Text style={styles.cardTitle}>지금은 앱 열기를 준비 중입니다.</Text>
-            <Text style={styles.cardBody}>설치 링크가 준비되면 이 페이지에서 바로 안내할게요.</Text>
+            <Text style={styles.cardTitle}>바스타임 앱으로 이어가기</Text>
+            <Text style={styles.cardBody}>설치되어 있지 않다면 Play Store에서 바스타임을 받을 수 있습니다.</Text>
             <Pressable
               style={styles.button}
-              onPress={() => trackArchiveEvent('app_store_clicked', { platform: 'web', source: 'placeholder' })}
+              onPress={() => {
+                trackArchiveEvent('app_store_clicked', { platform: 'web', source: 'app_handoff_fallback' });
+                void Linking.openURL(PLAY_STORE_URL);
+              }}
             >
-              <Text style={styles.buttonText}>출시 안내 확인</Text>
+              <Text style={styles.buttonText}>Play Store에서 보기</Text>
             </Pressable>
           </View>
         </View>
