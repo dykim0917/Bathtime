@@ -114,7 +114,8 @@ Each product candidate must include:
   "watchOut": [],
   "evidenceBasis": [],
   "affiliateOrSponsorStatus": "none",
-  "imageRightsStatus": "do_not_use_marketplace_image"
+  "imageUrl": "",
+  "imageRightsStatus": "external_official_product_image_url_not_owned"
 }
 ```
 
@@ -207,7 +208,32 @@ If prices conflict or change quickly, use a range:
 - Do not scrape or reuse marketplace images.
 - Do not put affiliate links unless explicitly provided and disclosed.
 - If affiliate/sponsored status is unknown, set `affiliateOrSponsorStatus: none`.
-- Keep product images out of the content unless rights are owned, licensed, or brand permission is clear.
+- For private draft product candidate cards, official brand/product-page image URLs may be included when they are public, stable, and clearly tied to the candidate product.
+- Product images are allowed as `imageUrl`/`imageUri` references in product candidate data when `imageRightsStatus` clearly says the image is external and not owned by Bathtime.
+- Do not download, rehost, crop, edit, or remove surrounding context from external product images unless Bathtime owns, licenses, or has explicit permission for that asset.
+- Do not use marketplace review photos, user-uploaded images, event banners, detail-page decorative graphics, or images where the actual product is not the primary subject.
+- If the only available image is a retailer/marketplace product image, prefer official brand images first. Use the marketplace image URL only as a last-resort draft reference with `imageRightsStatus: external_marketplace_product_image_url_not_owned` and a publish blocker.
+- Before public publishing, unresolved external product image rights must remain visible in `quality.publish_blockers` or `purchase-link-checklist.md`.
+
+Allowed image rights labels:
+
+- `owned_or_licensed`
+- `official_brand_permission_clear`
+- `external_official_product_image_url_not_owned`
+- `external_product_page_image_url_not_owned`
+- `external_marketplace_product_image_url_not_owned`
+- `image_unavailable_use_category_fallback`
+
+Good product image handling:
+
+```json
+{
+  "imageUrl": "https://brand.example/product.jpg",
+  "imageRightsStatus": "external_official_product_image_url_not_owned"
+}
+```
+
+This means: acceptable for private draft comparison cards, not a claim of ownership, and still a public-publish review item.
 
 ## Research Workflow
 

@@ -89,7 +89,19 @@ Every web content package must include a hero image plan with:
 - optional `generatedLocalPath` after imagegen runs
 - final hosted/public URL or app-supported asset URI before replacing the fallback
 
-If no verified product image is available, use a category fallback and explain what owned/official image should replace it later.
+For ordinary hero/inline images, if no verified product image is available, use a category fallback and explain what owned/official image should replace it later.
+
+For real product candidate cards, official/public product image URLs may be used in private drafts when the image is clearly tied to that product and the rights status is explicit.
+
+Allowed private-draft labels include:
+
+- `external_official_product_image_url_not_owned`
+- `external_product_page_image_url_not_owned`
+- `external_marketplace_product_image_url_not_owned`
+
+These labels mean the image can help the draft/card feel concrete, but Bathtime does not own the asset and public publishing still needs an operating-policy check.
+
+Do not download, rehost, crop, edit, or use marketplace review photos. Avoid event banners and decorative detail-page graphics when the actual product is not the primary subject.
 
 Generated hero images are allowed when they are conceptual, rights-safe, and not brand-specific.
 

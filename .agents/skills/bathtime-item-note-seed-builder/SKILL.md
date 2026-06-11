@@ -269,11 +269,15 @@ If product examples are included:
 - include source and date
 - do not imply ranking
 - do not include affiliate links unless disclosure is available
-- do not use product images unless rights are verified
+- include product image URLs when useful and available, with explicit rights status
+- do not download, rehost, crop, edit, or imply ownership of external product images unless rights are verified
+- keep unresolved public-publish image rights in publish blockers
 
 ### Image mapping
 
 Use safe fallback images unless owned, official, or licensed images are available.
+
+For product candidate cards, official/public product-page image URLs may be referenced in private drafts when they are clearly tied to the candidate product and `imageRightsStatus` says Bathtime does not own the asset. This is different from downloading or rehosting a product photo.
 
 Suggested fallback tokens:
 

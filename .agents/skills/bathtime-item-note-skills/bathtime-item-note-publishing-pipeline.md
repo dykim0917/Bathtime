@@ -403,8 +403,10 @@ Do not use:
 - user review photos
 - map screenshots
 - marketplace screenshots
-- brand product photos without permission
+- downloaded/rehosted brand product photos without permission
 - AI images that look like a specific brand/product without rights
+
+For product candidate cards, official/public product image URLs may be referenced in private drafts when they are clearly tied to the candidate product and `imageRightsStatus` states that Bathtime does not own the asset. Keep unresolved public-publish rights in publish blockers.
 
 Every image plan must specify:
 

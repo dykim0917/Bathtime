@@ -186,7 +186,10 @@ Every real product example in the final `ArchiveContent` should include:
 - a purchase/source URL or an explicit note that the source is unresolved
 - a price checked date or an explicit unavailable note
 - an information-status phrase such as `공개 정보 기준` or `브랜드 제공 정보 기준`
+- an image URL when useful and available, with rights status recorded in canonical/product research
 - no ranking, recommendation, affiliate implication, or unsupported popularity claim
+
+Official/public product-page image URLs may be used in private draft product candidate cards when they are referenced by URL, not downloaded or rehosted, and the rights status clearly says Bathtime does not own the image. Keep public-publish image rights as a blocker unless ownership, license, or permission is clear.
 
 If the renderer cannot support richer product cards, use labeled list lines. Do not drop source/date/status just because the final format is a plain list.
 
