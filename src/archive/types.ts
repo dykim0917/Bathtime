@@ -96,6 +96,7 @@ export type ContentBodyBlock =
         priceLabel: string;
         priceCheckedAt: string;
         badge?: string;
+        metaSummary?: string;
         specSummary?: string;
         ctaLabel?: string;
         summary: string;
