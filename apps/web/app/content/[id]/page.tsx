@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { ArchiveVisual } from '@web/components/ArchiveVisual';
+import { AffiliateDisclosureBadge } from '@web/components/AffiliateDisclosureBadge';
 import { BodyRenderer } from '@web/components/BodyRenderer';
 import { StructuredInfo } from '@web/components/StructuredInfo';
 import { RoutineCard } from '@web/components/RoutineCard';
@@ -34,6 +35,22 @@ function splitLeadVerdict(blocks: ContentBodyBlock[]): { leadVerdict: string | n
     leadVerdict: nextBlock.text,
     bodyBlocks: blocks.filter((_, index) => index !== headingIndex && index !== headingIndex + 1),
   };
+}
+
+function hasAffiliateProductLinks(blocks: ContentBodyBlock[]): boolean {
+  return blocks.some((block) => {
+    if (block.type !== 'productCandidates') return false;
+    return block.items.some((item) => {
+      const link = item.purchaseUrl;
+      return (
+        link.includes('link.coupang.com') ||
+        link.includes('ozip.me') ||
+        link.includes('oy.run') ||
+        /제휴/.test(item.sourceLabel ?? '') ||
+        /제휴/.test(item.metaSummary ?? '')
+      );
+    });
+  });
 }
 
 async function resolveContent(id: string, previewToken?: string) {
@@ -104,6 +121,7 @@ export default async function ContentPage({
   const { content, isPreview } = resolved;
   const routines = getRelatedRoutinePresets(content);
   const { leadVerdict, bodyBlocks } = splitLeadVerdict(content.body);
+  const showAffiliateDisclosure = hasAffiliateProductLinks(content.body);
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -139,7 +157,10 @@ export default async function ContentPage({
       <div className="content-layout">
         <div className="content-main">
           <header className="content-header">
-            <p className="kicker">{CATEGORY_LABELS[content.category]} · {CONTENT_TYPE_LABELS[content.contentType]}</p>
+            <div className="content-kicker-row">
+              <p className="kicker">{CATEGORY_LABELS[content.category]} · {CONTENT_TYPE_LABELS[content.contentType]}</p>
+              {showAffiliateDisclosure ? <AffiliateDisclosureBadge /> : null}
+            </div>
             <h1>{content.title}</h1>
             {content.subtitle ? <p>{content.subtitle}</p> : null}
             {leadVerdict ? (
