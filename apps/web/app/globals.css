@@ -2039,6 +2039,12 @@ p {
   color: var(--primary-active);
 }
 
+.structured-info-icon-label {
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+}
+
 .structured-info-copy {
   display: grid;
   gap: 7px;

@@ -1,4 +1,4 @@
-import type { ArchiveContent } from '@/src/archive/types';
+import type { ArchiveContent, StructuredInfoOverviewRow } from '@/src/archive/types';
 
 const valueLabels: Record<string, string> = {
   available: '외부인 이용 가능',
@@ -46,9 +46,12 @@ const rowIconPaths: Record<string, string> = {
   업데이트: 'M20 12a8 8 0 1 1-2.3-5.7 M20 4v6h-6',
   '아이템 유형': 'M6 8h12l-1 12H7L6 8Z M9 8a3 3 0 0 1 6 0',
   '사용 상황': 'M7 7h10 M7 12h10 M7 17h6 M4 7h.01 M4 12h.01 M4 17h.01',
+  '먼저 볼 기준': 'M7 7h10 M7 12h10 M7 17h6 M4 7h.01 M4 12h.01 M4 17h.01',
+  '놓는 위치': 'M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11Z M12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z',
   '보관 난이도': 'M4 6h16 M8 6v14h8V6 M10 10h4',
   '관리 난이도': 'M14.7 6.3 17.7 3.3 20.7 6.3 17.7 9.3 M4 20l9-9',
   '추천 대상': 'M12 3l2.4 5 5.6.8-4 3.9.9 5.5L12 17.8 7 20l.9-5.5-4-3.9 5.6-.8L12 3Z',
+  '애매한 대상': 'M6 6l12 12 M18 6 6 18',
   '비추천 대상': 'M6 6l12 12 M18 6 6 18',
   주제: 'M5 4h10a4 4 0 0 1 4 4v12H9a4 4 0 0 0-4-4V4Z',
   '관련 카테고리': 'M4 4h7v7H4V4Z M13 4h7v7h-7V4Z M4 13h7v7H4v-7Z M13 13h7v7h-7v-7Z',
@@ -62,6 +65,8 @@ const rowIconPaths: Record<string, string> = {
   '바로 해볼 것': 'M12 3l2.4 5 5.6.8-4 3.9.9 5.5L12 17.8 7 20l.9-5.5-4-3.9 5.6-.8L12 3Z',
 };
 
+const fallbackIconPath = 'M7 7h10 M7 12h10 M7 17h6 M4 7h.01 M4 12h.01 M4 17h.01';
+
 function formatValue(value: unknown): string {
   if (Array.isArray(value)) return value.map((item) => formatValue(item)).join(', ');
   if (typeof value === 'boolean') return value ? '예' : '아니오';
@@ -70,65 +75,71 @@ function formatValue(value: unknown): string {
   return valueLabels[text] ?? text;
 }
 
-function getRows(content: ArchiveContent): Array<[string, unknown]> {
+function row(label: string, value: unknown): StructuredInfoOverviewRow {
+  return { label, value: value as StructuredInfoOverviewRow['value'] };
+}
+
+function getRows(content: ArchiveContent): StructuredInfoOverviewRow[] {
   const info = content.structuredInfo;
   if (info.overviewRows?.length) {
-    return info.overviewRows.map((row) => [row.label, row.value]);
+    return info.overviewRows;
   }
 
   if (content.category === 'BATH_PLACES') {
     return [
-      ['지역', 'region' in info ? info.region : undefined],
-      ['외부인 이용', 'publicAccess' in info ? info.publicAccess : undefined],
-      ['가격대', 'priceRange' in info ? info.priceRange : undefined],
-      ['예약 필요', 'reservationRequired' in info ? info.reservationRequired : undefined],
-      ['혼자 이용', 'suitableForSolo' in info ? info.suitableForSolo : undefined],
-      ['프라이빗', 'privateLevel' in info ? info.privateLevel : undefined],
-      ['시설', 'facilityTypes' in info ? info.facilityTypes : undefined],
-      ['업데이트', 'lastCheckedAt' in info ? info.lastCheckedAt : undefined],
+      row('지역', 'region' in info ? info.region : undefined),
+      row('외부인 이용', 'publicAccess' in info ? info.publicAccess : undefined),
+      row('가격대', 'priceRange' in info ? info.priceRange : undefined),
+      row('예약 필요', 'reservationRequired' in info ? info.reservationRequired : undefined),
+      row('혼자 이용', 'suitableForSolo' in info ? info.suitableForSolo : undefined),
+      row('프라이빗', 'privateLevel' in info ? info.privateLevel : undefined),
+      row('시설', 'facilityTypes' in info ? info.facilityTypes : undefined),
+      row('업데이트', 'lastCheckedAt' in info ? info.lastCheckedAt : undefined),
     ];
   }
 
   if (content.category === 'BATH_ITEMS') {
     return [
-      ['아이템 유형', 'itemType' in info ? info.itemType : undefined],
-      ['사용 상황', 'useCases' in info ? info.useCases : undefined],
-      ['욕조 필요', 'bathRequired' in info ? info.bathRequired : undefined],
-      ['보관 난이도', 'storageDifficulty' in info ? info.storageDifficulty : undefined],
-      ['관리 난이도', 'maintenanceDifficulty' in info ? info.maintenanceDifficulty : undefined],
-      ['가격대', 'priceRange' in info ? info.priceRange : undefined],
-      ['추천 대상', 'recommendedFor' in info ? info.recommendedFor : undefined],
-      ['비추천 대상', 'notRecommendedFor' in info ? info.notRecommendedFor : undefined],
+      row('아이템 유형', 'itemType' in info ? info.itemType : undefined),
+      row('사용 상황', 'useCases' in info ? info.useCases : undefined),
+      row('욕조 필요', 'bathRequired' in info ? info.bathRequired : undefined),
+      row('보관 난이도', 'storageDifficulty' in info ? info.storageDifficulty : undefined),
+      row('관리 난이도', 'maintenanceDifficulty' in info ? info.maintenanceDifficulty : undefined),
+      row('가격대', 'priceRange' in info ? info.priceRange : undefined),
+      row('추천 대상', 'recommendedFor' in info ? info.recommendedFor : undefined),
+      row('비추천 대상', 'notRecommendedFor' in info ? info.notRecommendedFor : undefined),
     ];
   }
 
   if (content.category === 'TIPS_CULTURE') {
     return [
-      ['주제', 'topic' in info ? info.topic : undefined],
-      ['관련 카테고리', 'relatedCategories' in info ? info.relatedCategories : undefined],
-      ['난이도', 'difficulty' in info ? info.difficulty : undefined],
+      row('주제', 'topic' in info ? info.topic : undefined),
+      row('관련 카테고리', 'relatedCategories' in info ? info.relatedCategories : undefined),
+      row('난이도', 'difficulty' in info ? info.difficulty : undefined),
     ];
   }
 
   return [
-    ['소요 시간', 'durationMinutes' in info ? `${info.durationMinutes}분` : undefined],
-    ['욕조 필요', 'bathRequired' in info ? info.bathRequired : undefined],
-    ['필요 아이템', 'requiredItems' in info ? info.requiredItems : undefined],
-    ['난이도', 'difficulty' in info ? info.difficulty : undefined],
-    ['추천 상황', 'recommendedSituations' in info ? info.recommendedSituations : undefined],
-    ['환경', 'environment' in info ? info.environment : undefined],
+    row('소요 시간', 'durationMinutes' in info ? `${info.durationMinutes}분` : undefined),
+    row('욕조 필요', 'bathRequired' in info ? info.bathRequired : undefined),
+    row('필요 아이템', 'requiredItems' in info ? info.requiredItems : undefined),
+    row('난이도', 'difficulty' in info ? info.difficulty : undefined),
+    row('추천 상황', 'recommendedSituations' in info ? info.recommendedSituations : undefined),
+    row('환경', 'environment' in info ? info.environment : undefined),
   ];
 }
 
-function RowIcon({ label }: { label: string }) {
-  const path = rowIconPaths[label];
+function RowIcon({ row }: { row: StructuredInfoOverviewRow }) {
+  const path = row.iconPath || rowIconPaths[row.label] || fallbackIconPath;
   return (
     <span className="structured-info-icon" aria-hidden="true">
-      {path ? (
+      {row.iconLabel ? (
+        <span className="structured-info-icon-label">{row.iconLabel.slice(0, 2)}</span>
+      ) : (
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
           <path d={path} stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
-      ) : null}
+      )}
     </span>
   );
 }
@@ -142,12 +153,12 @@ export function StructuredInfo({ content }: { content: ArchiveContent }) {
         <h2>한눈에 보기</h2>
       </header>
       <dl className="structured-info-grid">
-        {rows.map(([label, value]) => (
-          <div className="structured-info-row" key={label}>
-            <RowIcon label={label} />
+        {rows.map((row) => (
+          <div className="structured-info-row" key={row.label}>
+            <RowIcon row={row} />
             <div className="structured-info-copy">
-              <dt>{label}</dt>
-              <dd>{formatValue(value)}</dd>
+              <dt>{row.label}</dt>
+              <dd>{formatValue(row.value)}</dd>
             </div>
           </div>
         ))}
