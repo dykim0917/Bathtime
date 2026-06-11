@@ -542,6 +542,36 @@ p {
   transform: translateY(0);
 }
 
+.app-handoff-card {
+  display: grid;
+  gap: 18px;
+  max-width: 720px;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  padding: 22px;
+}
+
+.app-handoff-card h2 {
+  margin-top: 7px;
+  color: var(--ink);
+  font-size: 24px;
+  line-height: 1.3;
+}
+
+.app-handoff-card p:not(.kicker) {
+  margin-top: 8px;
+  color: var(--body);
+  font-size: 15px;
+  line-height: 1.72;
+}
+
+.app-handoff-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
 .section {
   display: grid;
   gap: 16px;
