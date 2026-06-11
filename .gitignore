@@ -64,3 +64,5 @@ fcm-service-account*.json
 /android
 supabase/.temp/
 .gstack/
+.seo-cache/
+seo-audit-getbathtime/

@@ -22,6 +22,12 @@ function getImageAspectRatio(uri: string, explicitAspectRatio?: number): number 
   return undefined;
 }
 
+function getImageDimensions(aspectRatio?: number): { width: number; height: number } {
+  const width = 1200;
+  const ratio = aspectRatio && Number.isFinite(aspectRatio) && aspectRatio > 0 ? aspectRatio : 4 / 3;
+  return { width, height: Math.round(width / ratio) };
+}
+
 function hostname(url: string): string {
   try {
     return new URL(url).hostname.replace(/^www\./, '');
@@ -85,9 +91,18 @@ export function BodyRenderer({ blocks }: { blocks: ContentBodyBlock[] }) {
         if (block.type === 'image') {
           const imageSrc = getBodyImageSrc(block.uri);
           const aspectRatio = getImageAspectRatio(block.uri, block.aspectRatio);
+          const dimensions = getImageDimensions(aspectRatio);
           return (
             <figure key={index} className="body-image" style={aspectRatio ? { aspectRatio: `${aspectRatio}` } : undefined}>
-              {imageSrc ? <img src={imageSrc} alt={block.caption ?? '바스타임 콘텐츠 이미지'} loading="lazy" /> : null}
+              {imageSrc ? (
+                <img
+                  src={imageSrc}
+                  alt={block.caption ?? '바스타임 콘텐츠 이미지'}
+                  width={dimensions.width}
+                  height={dimensions.height}
+                  loading="lazy"
+                />
+              ) : null}
               {block.caption ? <figcaption>{block.caption}</figcaption> : null}
             </figure>
           );
@@ -101,18 +116,16 @@ export function BodyRenderer({ blocks }: { blocks: ContentBodyBlock[] }) {
                 return (
                   <article key={`${item.brand}-${item.name}`} className="product-candidate-card">
                     <a className="product-candidate-image" href={item.purchaseUrl} target="_blank" rel="noreferrer">
-                      {imageSrc ? <img src={imageSrc} alt={`${item.brand} ${item.name}`} loading="lazy" /> : null}
+                      {imageSrc ? <img src={imageSrc} alt={`${item.brand} ${item.name}`} width={320} height={320} loading="lazy" /> : null}
                       {item.badge ? <span className="product-candidate-badge">{item.badge}</span> : null}
                     </a>
                     <div className="product-candidate-copy">
                       <p className="product-candidate-brand">{item.brand}</p>
                       <h3>{item.name}</h3>
-                      {item.specSummary ? <p className="product-candidate-spec">{item.specSummary}</p> : null}
                       <p className="product-candidate-meta">
-                        {item.priceLabel} · {item.priceCheckedAt} 확인{item.sourceLabel ? ` · ${item.sourceLabel}` : ''}
+                        {item.metaSummary ?? `${item.priceLabel} · ${item.priceCheckedAt} 확인`}
                       </p>
                       <p>{item.summary}</p>
-                      <p className="product-candidate-watch">{item.watchOut}</p>
                       <a className="product-candidate-cta" href={item.purchaseUrl} target="_blank" rel="noreferrer">
                         {item.ctaLabel ?? `${hostname(item.purchaseUrl)}에서 보기`}
                       </a>

@@ -211,10 +211,10 @@ export function Shell({ children }: { children: React.ReactNode }) {
           <Link className="brand" href="/" aria-label="Bathtime 홈">
             {collapsed ? (
               <span className="brand-symbol">
-                <img src={brandSymbol.src} alt="" aria-hidden="true" />
+                <img src={brandSymbol.src} alt="" width={34} height={34} aria-hidden="true" />
               </span>
             ) : (
-              <img className="brand-logo" src={logoImage.src} alt="Bathtime" />
+              <img className="brand-logo" src={logoImage.src} alt="바스타임" width={158} height={30} />
             )}
           </Link>
         </div>

@@ -37,7 +37,12 @@ export default function AboutPage() {
     <div className="page-stack about-page">
       <section className="about-hero">
         <div className="about-hero-visual">
-          <img src="/images/about/bathtime-about-hero.jpg" alt="사우나 공간과 집 욕실 홈케어가 하나의 장면으로 이어진 바스타임 이미지" />
+          <img
+            src="/images/about/bathtime-about-hero.jpg"
+            alt="사우나 공간과 집 욕실 홈케어가 하나의 장면으로 이어진 바스타임 이미지"
+            width={1280}
+            height={702}
+          />
         </div>
         <div className="about-hero-copy">
           <p className="kicker">ABOUT BATH TIME</p>
