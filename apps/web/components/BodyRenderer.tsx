@@ -102,17 +102,19 @@ export function BodyRenderer({ blocks }: { blocks: ContentBodyBlock[] }) {
                   <article key={`${item.brand}-${item.name}`} className="product-candidate-card">
                     <a className="product-candidate-image" href={item.purchaseUrl} target="_blank" rel="noreferrer">
                       {imageSrc ? <img src={imageSrc} alt={`${item.brand} ${item.name}`} loading="lazy" /> : null}
+                      {item.badge ? <span className="product-candidate-badge">{item.badge}</span> : null}
                     </a>
                     <div className="product-candidate-copy">
                       <p className="product-candidate-brand">{item.brand}</p>
                       <h3>{item.name}</h3>
+                      {item.specSummary ? <p className="product-candidate-spec">{item.specSummary}</p> : null}
                       <p className="product-candidate-meta">
                         {item.priceLabel} · {item.priceCheckedAt} 확인{item.sourceLabel ? ` · ${item.sourceLabel}` : ''}
                       </p>
                       <p>{item.summary}</p>
                       <p className="product-candidate-watch">{item.watchOut}</p>
-                      <a className="inline-source-link" href={item.purchaseUrl} target="_blank" rel="noreferrer">
-                        {hostname(item.purchaseUrl)}에서 보기
+                      <a className="product-candidate-cta" href={item.purchaseUrl} target="_blank" rel="noreferrer">
+                        {item.ctaLabel ?? `${hostname(item.purchaseUrl)}에서 보기`}
                       </a>
                     </div>
                   </article>
