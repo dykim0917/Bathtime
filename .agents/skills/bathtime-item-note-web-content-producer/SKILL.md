@@ -154,7 +154,17 @@ If the draft includes real product examples, keep the product-research guardrail
 - information-status wording such as `공개 정보 기준` or `브랜드 제공 정보 기준`
 - affiliate/sponsor status and image-rights status in research/canonical notes
 
-Do not turn product examples into rankings, recommendations, vague shopping bullets, or image-backed product cards unless image rights are clear.
+Do not turn product examples into rankings, recommendations, vague shopping bullets, or purchase-pressure cards.
+
+For product candidate cards, official/public product image URLs may be used in private drafts when all of the following are true:
+
+- the image URL comes from an official brand/product page or a clearly identified product page
+- the actual product is the primary subject, not an event banner or decorative detail image
+- the image is referenced by URL and not downloaded, rehosted, edited, or stripped of context
+- `imageRightsStatus` explicitly says Bathtime does not own the image, such as `external_official_product_image_url_not_owned`
+- unresolved public-publish rights remain in `Publish Blockers` or canonical `quality`
+
+If those conditions are not met, use a category fallback and record the missing image as a UX/publish follow-up.
 
 ### Structured overview
 
