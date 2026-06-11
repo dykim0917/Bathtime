@@ -287,6 +287,24 @@ Suggested fallback tokens:
 
 Do not use review photos, marketplace screenshots, or brand images without rights.
 
+Reader-facing image captions must explain the image's role in the content, not how it was produced.
+
+Avoid:
+
+- `비브랜드 생성 이미지입니다`
+- `생성 이미지입니다`
+- `생성형 AI로 만든 이미지입니다`
+- `제작된 이미지입니다`
+- `실제 제품 사진이 아닙니다`
+
+Prefer:
+
+- `제품을 고를 때 놓치기 쉬운 기준을 시각적으로 정리한 이미지입니다.`
+- `보관과 말릴 자리를 함께 확인해야 한다는 점을 보여주는 장면입니다.`
+- `샤워 후 정리 동선을 한눈에 떠올리게 하는 이미지입니다.`
+
+Keep source, rights, generated/local path, and forbidden-source notes in canonical `quality`, image plan notes, or publish blockers, not in public captions.
+
 ## Guardrails
 
 - Do not add factual claims beyond the research artifacts.
@@ -297,6 +315,7 @@ Do not use review photos, marketplace screenshots, or brand images without right
 - Do not silently choose a destructive SQL operation. Prefer upserts or draft inserts.
 - Do not write directly to production DBs. Generate files for review unless the user explicitly asks for execution.
 - Do not make purchase CTAs primary unless the user explicitly requested commerce and disclosure is handled.
+- Do not render CTA-like actions for missing routes or unavailable features. Record those as text notes or publish blockers.
 - Do not write `추천템`, `필수템`, `TOP`, `베스트`, `인생템` in canonical user-facing fields.
 
 ## ArchiveContent Guidance
@@ -341,7 +360,11 @@ Before delivering seed artifacts, check:
 - [ ] Product examples are not presented as ranked recommendations.
 - [ ] All unknowns remain visible and specific.
 - [ ] Image rights status is explicit.
+- [ ] Reader-facing image captions explain content value, not production method.
+- [ ] Long criteria/product lists are labeled or otherwise scannable.
+- [ ] `한눈에 보기` suitability is checked; weak cases record UX follow-up or use supported `overviewRows`.
 - [ ] CTA connects to save, ritual, timer, related content, or user submission.
+- [ ] CTA route/action exists when presented as an action; missing links are plain text or blockers.
 - [ ] `isPublished` remains false by default.
 - [ ] Generated files are UTF-8 clean.
 

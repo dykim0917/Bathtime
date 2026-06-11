@@ -1,0 +1,7 @@
+interface:
+  display_name: "Bathtime Spot Guide Researcher"
+  short_description: "공식 정보·지도·후기 패턴을 조사해 기준/후보 콘텐츠 근거를 정리"
+  default_prompt: "Use $bathtime-spot-guide-researcher to research official information, platform signals, review patterns, candidate evidence, verification gaps, and last-checked dates for this spot guide."
+
+policy:
+  allow_implicit_invocation: true

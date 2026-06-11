@@ -58,8 +58,9 @@ Load only the reference needed for the current step:
 3. Shape content into archive UI fields: title, subtitle, summary, body blocks, structuredInfo, image plan, SEO, CTA, blockers, and quality gate.
 4. Plan images explicitly. Images should clarify use, friction, comparison, storage, setup, cleanup, or ritual context.
 5. When generated images are requested, add image generation prompts and asset paths to the Hero Image Plan / Inline Image Blocks. Do not replace fallback URIs unless the generated asset is hosted or app-addressable.
-6. If implementing, update `item-seed.archive-content.ts`, then generate DB row/upsert artifacts with `npm run archive:item:upsert -- <seed-dir>`.
-7. Keep draft content unpublished unless the user explicitly asks to publish and the publish blockers are resolved.
+6. Run the UX polish check: image captions, list readability, structured overview fit, and CTA realism.
+7. If implementing, update `item-seed.archive-content.ts`, then generate DB row/upsert artifacts with `npm run archive:item:upsert -- <seed-dir>`.
+8. Keep draft content unpublished unless the user explicitly asks to publish and the publish blockers are resolved.
 
 ## Hard Output Contract
 
@@ -103,6 +104,92 @@ The first body block must answer:
 - What is the biggest practical tradeoff?
 - Who should keep reading?
 
+## UX Polish Rules
+
+### Image captions
+
+Reader-facing captions should explain what the image does for the page.
+
+Good:
+
+```text
+제품을 고를 때 놓치기 쉬운 기준을 시각적으로 정리한 이미지.
+샤워 후 정리 동선을 한눈에 떠올리게 하는 이미지.
+욕실 크기와 보관 공간을 함께 봐야 한다는 점을 보여주는 장면.
+```
+
+Avoid:
+
+```text
+비브랜드 생성 이미지입니다.
+생성형 AI로 만든 이미지입니다.
+제작된 이미지입니다.
+실제 제품 사진이 아닙니다.
+```
+
+If the visual could be mistaken for a real product or direct-use photo, add transparency only when needed and phrase it naturally:
+
+```text
+특정 제품을 가리키는 이미지는 아닙니다.
+```
+
+### Lists and checklists
+
+Do not let long criteria lists become plain item dumps. Prefer labeled lines:
+
+```text
+소재: 물에 자주 닿는 물건이라 건조와 관리 난이도를 함께 봅니다.
+보관: 매일 꺼내 쓰려면 말릴 자리와 문 간섭을 먼저 확인합니다.
+가격: 본체 가격보다 교체품이나 소모품 비용을 함께 봅니다.
+```
+
+When icon chips, mini tags, comparison cards, or richer checklist UI would materially improve readability but the renderer does not support it, record a `UX follow-up` in `Publish Blockers` or canonical `quality`.
+
+### Product examples
+
+If the draft includes real product examples, keep the product-research guardrails in the public package:
+
+- source or purchase URL
+- price checked date or explicit unavailable note
+- information-status wording such as `공개 정보 기준` or `브랜드 제공 정보 기준`
+- affiliate/sponsor status and image-rights status in research/canonical notes
+
+Do not turn product examples into rankings, recommendations, vague shopping bullets, or image-backed product cards unless image rights are clear.
+
+### Structured overview
+
+For concrete product/category item notes, use normal item structured info. For criteria, comparison, terminology, or insight-style item notes, check whether the default `한눈에 보기` helps.
+
+If it does not, record:
+
+```text
+UX follow-up:
+이 글은 특정 제품 소개가 아닌 기준 콘텐츠이므로 기본 한눈에 보기 박스가 적합하지 않을 수 있음.
+권장 요약:
+- 카테고리: 아이템 선택 기준
+- 대상: 구매 전 확인 기준을 찾는 사람
+- 핵심 키워드: 관리 난이도, 보관, 소모품, 안전
+- 읽고 나면: 제품명보다 먼저 볼 조건을 알 수 있음
+```
+
+Do not invent unsupported schema fields. Use existing `overviewRows` only if the renderer/schema already accepts them.
+
+Remove or replace rows that are technically true but not useful for the item, such as `전원 필요 없음` for a non-electric item or `욕조 필요 없음` for a bathroom accessory where that fact does not affect selection.
+
+### CTA
+
+Every item note needs a next action, but unavailable features must not look clickable.
+
+Allowed directions:
+
+- `이 기준으로 제품 후보 더 보기`
+- `써본 제품 제보하기`
+- `비슷한 아이템 노트 보기`
+- `관련 의식 보기`
+- `이 아이템 노트 저장하기`
+
+If the route or action exists, implement it as a CTA block/action. If it does not exist, keep it as text or record it in `Publish Blockers`.
+
 ## Implementation Notes
 
 When implementing `item-seed.archive-content.ts`:
@@ -119,6 +206,11 @@ Before finishing, verify:
 - The page reads like Bathtime, not a shopping article.
 - The structured info is reader-facing Korean, not raw database values.
 - Image roles, alt text, rights status, and fallback behavior are explicit.
+- Reader-facing image captions explain content value, not production method.
+- Long checklists or criteria lists use labels or other scannable structure where possible.
+- Real product examples preserve source URL, price checked date or unavailable note, and information-status wording.
+- Structured overview / `한눈에 보기` suitability is checked and recorded when weak.
+- CTA exists as text or a real supported action; unavailable routes are not presented as buttons.
 - Generated image prompt path, local asset path, and final hosted/app URI are separated when imagegen is used.
 - Price copy is short and scan-friendly.
 - Public copy does not use `신호`, `시그널`, or `signal`.

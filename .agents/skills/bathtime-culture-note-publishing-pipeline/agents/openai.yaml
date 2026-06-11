@@ -1,0 +1,4 @@
+interface:
+  display_name: "Bathtime Culture Note Publishing Pipeline"
+  short_description: "읽을거리/문화 콘텐츠 기획부터 private draft preview 검증까지 실행"
+  default_prompt: "Use $bathtime-culture-note-publishing-pipeline to classify the culture axis, define the reader question and Bathtime thesis, research facts when needed, create and humanize Korean web content, build TIPS_CULTURE ArchiveContent seed artifacts, apply as a private draft, and verify preview."

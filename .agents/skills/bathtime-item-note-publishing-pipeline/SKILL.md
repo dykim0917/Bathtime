@@ -187,6 +187,44 @@ The package must include:
 
 The final page must read as an Item Note, not a product review.
 
+### 5.5. UX Polish Gate
+
+Before humanization and implementation, review the draft as a web page, not just as text.
+
+Image captions:
+
+- Do not expose production wording such as `비브랜드 생성 이미지`, `생성 이미지입니다`, `생성형 AI`, or `제작된 이미지` in reader-facing captions.
+- Captions should explain what the image helps the reader understand, such as a selection criterion, setup friction, or comparison point.
+- If an image could be mistaken for a real product photo or direct-use photo, add a natural transparency note only when needed.
+
+Lists and checklists:
+
+- Avoid long bare bullet lists when they contain product criteria, specs, source types, or comparison points.
+- Prefer `short label: explanation` phrasing.
+- Example: `소재: 물에 자주 닿는 물건이라 건조와 관리 난이도를 함께 봅니다.`
+- If icon chips, mini tags, custom checklist UI, or richer product cards would improve the page but the renderer cannot support it yet, record it in `quality.publish_blockers`, `quality.ux_follow_up`, or the web package's `Publish Blockers`.
+
+Product examples:
+
+- If `bathtime-item-product-researcher` ran or the page includes real product examples, do not collapse product candidate metadata into vague bullets.
+- Every reader-facing product example must preserve a source or purchase URL, price checked date or explicit unavailable note, and an information-status phrase such as `공개 정보 기준` or `브랜드 제공 정보 기준`.
+- Product examples must remain comparison examples, not recommendations, rankings, product cards with unverified images, or purchase-pressure CTAs.
+- If the renderer cannot show proper product cards yet, use labeled list lines and record richer card UI as a UX follow-up rather than dropping source/date/status.
+
+Structured overview:
+
+- For concrete product/item notes, use the normal structured info.
+- For criteria, comparison, terminology, or insight-style item notes, decide whether the default `한눈에 보기` rows help the reader.
+- If the default metadata would feel like empty shell information, record an `UX follow-up` with a recommended custom summary such as category, audience, key terms, and what the reader learns.
+- Do not invent unsupported fields in the public app unless the schema/renderer already accepts them.
+- Remove or replace default rows that are technically true but useless for the item category, such as `전원 필요 없음` for a non-electric item or `욕조 필요 없음` for a bathroom accessory where that fact does not help selection.
+
+CTA:
+
+- Every item note should end with a next useful action: product candidates, user tip, next item note, or app/download reminder.
+- Do not render a button-like CTA unless the route/link exists.
+- If a CTA route is missing, include the CTA as text only or record it as a publish blocker.
+
 ### 6. `humanize-korean`
 
 Run this required review step before ArchiveContent implementation or DB apply.
@@ -468,10 +506,17 @@ Preview verification pattern:
 
 ```bash
 curl -s 'https://admin.getbathtime.com/api/archive-preview/{id}?token={token}' \
-  | node -e "let d='';process.stdin.on('data',c=>d+=c);process.stdin.on('end',()=>{const j=JSON.parse(d);const body=j.content?.body||[];const headings=body.filter(b=>b.type==='heading').map(b=>b.text);const imageBlocks=body.filter(b=>b.type==='image').map(b=>b.uri);const text=JSON.stringify(j.content||{});const badWords=['TOP','베스트','최고','필수템','인생템','구매각','신호','시그널','signal'];console.log(JSON.stringify({id:j.content?.id,isPublished:j.content?.isPublished,headings,imageBlocks,badWords:badWords.filter(w=>text.includes(w)),structuredInfo:j.content?.structuredInfo},null,2));})"
+  | node -e "let d='';process.stdin.on('data',c=>d+=c);process.stdin.on('end',()=>{const j=JSON.parse(d);const body=j.content?.body||[];const headings=body.filter(b=>b.type==='heading').map(b=>b.text);const imageBlocks=body.filter(b=>b.type==='image').map(b=>b.uri);const text=JSON.stringify(j.content||{});const badWords=['TOP','베스트','최고','필수템','인생템','구매각','신호','시그널','signal','비브랜드 생성 이미지','생성 이미지입니다','생성형 AI','제작된 이미지','실제 제품 사진이 아닙니다'];console.log(JSON.stringify({id:j.content?.id,isPublished:j.content?.isPublished,headings,imageBlocks,badWords:badWords.filter(w=>text.includes(w)),structuredInfo:j.content?.structuredInfo},null,2));})"
 ```
 
 If `--apply` returns `fetch failed` after generate-only succeeds, retry once.
+
+UX verification must also confirm:
+
+- image captions explain reader value, not production method
+- long criteria/product lists use labels or other scannable structure when possible
+- insight-style `한눈에 보기` suitability is recorded
+- CTA exists as text or a real link, without pretending unavailable routes exist
 
 ## Batch Processing
 

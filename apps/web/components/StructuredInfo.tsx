@@ -57,6 +57,9 @@ const rowIconPaths: Record<string, string> = {
   기준: 'M7 7h10 M7 12h10 M7 17h6 M4 7h.01 M4 12h.01 M4 17h.01',
   '출처 구분': 'M4 4h7v7H4V4Z M13 4h7v7h-7V4Z M4 13h7v7H4v-7Z M13 13h7v7h-7v-7Z',
   대상: 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z M5 21a7 7 0 0 1 14 0',
+  '핵심 키워드': 'M7 7h10 M7 12h10 M7 17h6 M4 7h.01 M4 12h.01 M4 17h.01',
+  '읽고 나면': 'M20 7 9 18l-5-5',
+  '바로 해볼 것': 'M12 3l2.4 5 5.6.8-4 3.9.9 5.5L12 17.8 7 20l.9-5.5-4-3.9 5.6-.8L12 3Z',
 };
 
 function formatValue(value: unknown): string {

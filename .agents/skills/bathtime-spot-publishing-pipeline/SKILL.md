@@ -41,6 +41,11 @@ Run these steps in order. Load each named skill when the step starts.
    - Create or update:
      - `spot-seed.web-content.md`
    - The package must include page content, reader verdict, body blocks, structured info, hero image plan, inline image blocks, SEO, CTA/links, publish blockers, and quality gate.
+   - Run the UX polish gate before implementation:
+     - reader-facing image captions must explain the image's meaning, not production method such as `비브랜드 생성 이미지` or `생성 이미지입니다`;
+     - criteria, source, facility, or access lists should use `short label: explanation` structure when possible;
+     - if the default `한눈에 보기` box is weak for the content type, record `quality.ux_follow_up` or a publish blocker with a better summary proposal;
+     - include a real CTA only when the route exists, otherwise keep it as text or a publish blocker.
 
 4. `bathtime-archive-content-implementer`
    - Convert the web package into the real app/DB source.
@@ -119,6 +124,10 @@ Final `spot-seed.archive-content.ts` must:
 - keep `structuredInfo.priceRange` as a short scan label, not a pricing paragraph;
 - include a hero image fallback;
 - include at least two inline image slots when image body blocks are supported;
+- keep reader-facing image captions focused on the content message, not asset production method;
+- make long criteria or source lists scannable with labels when possible;
+- record `한눈에 보기` UX follow-up when the default category metadata does not fit;
+- include a text CTA or real linked CTA without pretending missing routes exist;
 - make access, price, reservation, and policy uncertainty visible near the top;
 - preserve publish blockers rather than hiding uncertainty;
 - never claim firsthand experience unless source files prove it.

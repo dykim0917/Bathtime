@@ -1,0 +1,7 @@
+interface:
+  display_name: "Bathtime Spot Guide Publishing Pipeline"
+  short_description: "스팟 가이드 각도·리서치·시드·웹패키지·DB draft를 순차 실행"
+  default_prompt: "Use $bathtime-spot-guide-publishing-pipeline to run the full spot guide chain: define the mode and audience lens, research evidence and gaps, build seed files, produce and humanize web content, implement ArchiveContent as a private draft, and verify preview."
+
+policy:
+  allow_implicit_invocation: true

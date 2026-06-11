@@ -1,0 +1,7 @@
+interface:
+  display_name: "Bathtime Spot Guide Seed Builder"
+  short_description: "스팟 가이드 리서치를 canonical seed와 ArchiveContent 초안으로 변환"
+  default_prompt: "Use $bathtime-spot-guide-seed-builder to convert the guide angle and research artifacts into canonical JSON, ArchiveContent seed, and mapping notes while preserving uncertainty."
+
+policy:
+  allow_implicit_invocation: true

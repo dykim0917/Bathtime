@@ -1,0 +1,7 @@
+interface:
+  display_name: "Bathtime Spot Guide Ideator"
+  short_description: "스팟 가이드의 모드·타겟·리서치 경계선을 먼저 설계"
+  default_prompt: "Use $bathtime-spot-guide-ideator to define the guide mode, audience lens, reader question, Bathtime thesis, non-goals, and research plan before drafting."
+
+policy:
+  allow_implicit_invocation: true
