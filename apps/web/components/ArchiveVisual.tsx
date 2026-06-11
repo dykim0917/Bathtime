@@ -32,10 +32,20 @@ function getUsableImageUri(content: ArchiveContent): string | null {
 export function ArchiveVisual({ content, priority = false }: { content: ArchiveContent; priority?: boolean }) {
   const uri = getUsableImageUri(content);
   const IconComponent = categoryIcons[content.category];
+  const imageAlt = content.heroImage?.alt || `${content.title} 대표 이미지`;
 
   return (
     <div className="archive-visual" style={{ background: categoryGradients[content.category] }}>
-      {uri ? <img src={uri} alt="" aria-hidden="true" loading={priority ? 'eager' : 'lazy'} /> : null}
+      {uri ? (
+        <img
+          src={uri}
+          alt={imageAlt}
+          width={1200}
+          height={675}
+          loading={priority ? 'eager' : 'lazy'}
+          fetchPriority={priority ? 'high' : 'auto'}
+        />
+      ) : null}
       <span>
         <IconComponent size={12} weight="bold" aria-hidden="true" />
         {CATEGORY_LABELS[content.category]}

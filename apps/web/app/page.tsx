@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import { BookmarkSimple, DeviceMobile, MagnifyingGlass, PaperPlaneTilt } from '@phosphor-icons/react/ssr';
 import { ArchiveCard } from '@web/components/ArchiveCard';
 import { ArchiveVisual } from '@web/components/ArchiveVisual';
@@ -12,6 +13,11 @@ import { CATEGORIES, CATEGORY_LABELS } from '@web/lib/labels';
 import type { ContentCategory } from '@/src/archive/types';
 
 export const revalidate = 300;
+export const metadata: Metadata = {
+  alternates: {
+    canonical: '/',
+  },
+};
 
 const situationLinks = [
   {
@@ -89,6 +95,7 @@ export default async function HomePage() {
         <header className="page-header home-hero-copy">
           <p className="kicker">BATH TIME ARCHIVE</p>
           <h1>씻는 시간을 더 잘 쓰고 싶은 사람을 위한 아카이브입니다.</h1>
+          <p className="home-byline">바스타임 편집팀 · 업데이트 2026-06-11</p>
         </header>
         <div className="home-hero-actions" aria-label="메인 행동">
           <Link className="button-primary" href="/explore">
@@ -102,6 +109,16 @@ export default async function HomePage() {
         </div>
       </section>
 
+      <section className="home-answer-block" aria-labelledby="bathtime-answer-title">
+        <p className="kicker">WHAT IS BATHTIME</p>
+        <h2 id="bathtime-answer-title">바스타임은 무엇을 기록하나요?</h2>
+        <p>
+          바스타임은 사우나, 홈케어, 족욕, 욕실 아이템처럼 흩어져 있는 씻고 쉬는 시간을 한곳에 모아두는 아카이브입니다.
+          좋은 공간과 도구를 무조건 추천하기보다, 실제 이용 조건, 준비 부담, 관리 난이도, 혼자 쉬기 좋은지 같은 기준을 먼저 확인합니다.
+          웹에서는 기록을 찾고 저장하고, 앱에서는 저장한 기록을 오늘 가능한 샤워, 족욕, 입욕 의식으로 이어갑니다.
+        </p>
+      </section>
+
       <section className="section">
         <div className="section-heading-row">
           <h2>상황별로 찾기</h2>
@@ -111,7 +128,7 @@ export default async function HomePage() {
           {situationLinks.map((item) => (
             <Link key={item.title} className="situation-card" href={item.href}>
               <span className="situation-illustration">
-                <img src={item.image} alt={item.imageAlt} loading="lazy" />
+                <img src={item.image} alt={item.imageAlt} width={360} height={240} loading="lazy" />
               </span>
               <span className="situation-copy">
                 <strong>{item.title}</strong>
@@ -158,7 +175,13 @@ export default async function HomePage() {
             {visibleCategories.map(({ category, count }) => (
               <Link key={category} className="category-card" href={`/explore?category=${category}`}>
                 <span className="category-illustration">
-                  <img src={categoryIllustrations[category].image} alt={categoryIllustrations[category].imageAlt} loading="lazy" />
+                  <img
+                    src={categoryIllustrations[category].image}
+                    alt={categoryIllustrations[category].imageAlt}
+                    width={360}
+                    height={240}
+                    loading="lazy"
+                  />
                 </span>
                 <span className="category-copy">
                   <strong>{CATEGORY_LABELS[category]}</strong>
