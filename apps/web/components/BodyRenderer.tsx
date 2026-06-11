@@ -60,6 +60,22 @@ function ListItem({ item }: { item: string }) {
   );
 }
 
+function ProductCandidateMeta({ value }: { value: string }) {
+  const parts = value.split(' · ').map((part) => part.trim()).filter(Boolean);
+  if (parts.length < 2) return <>{value}</>;
+
+  return (
+    <>
+      {parts.map((part, index) => (
+        <span key={`${part}-${index}`} className={index === 1 ? 'product-candidate-price' : undefined}>
+          {index > 0 ? ' · ' : null}
+          {part}
+        </span>
+      ))}
+    </>
+  );
+}
+
 function ctaHref(cta: CareCTA): string {
   if (cta.action === 'open_article' && cta.targetId) return `/content/${cta.targetId}`;
   if (cta.action === 'open_item' && cta.targetId) return `/explore?query=${encodeURIComponent(cta.targetId)}`;
@@ -117,13 +133,13 @@ export function BodyRenderer({ blocks }: { blocks: ContentBodyBlock[] }) {
                   <article key={`${item.brand}-${item.name}`} className="product-candidate-card">
                     <a className="product-candidate-image" href={item.purchaseUrl} target="_blank" rel="noreferrer">
                       {imageSrc ? <img src={imageSrc} alt={`${item.brand} ${item.name}`} width={320} height={320} loading="lazy" /> : null}
-                      {item.badge ? <span className="product-candidate-badge">{item.badge}</span> : null}
                     </a>
                     <div className="product-candidate-copy">
+                      {item.badge ? <span className="product-candidate-badge">{item.badge}</span> : null}
                       <p className="product-candidate-brand">{item.brand}</p>
                       <h3>{item.name}</h3>
                       <p className="product-candidate-meta">
-                        {item.metaSummary ?? `${item.priceLabel} · ${item.priceCheckedAt} 확인`}
+                        <ProductCandidateMeta value={item.metaSummary ?? `${item.priceLabel} · ${item.priceCheckedAt} 확인`} />
                       </p>
                       <p>{item.summary}</p>
                       <a className="product-candidate-cta" href={item.purchaseUrl} target="_blank" rel="noreferrer">
