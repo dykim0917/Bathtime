@@ -146,6 +146,8 @@ export type TipsStructuredInfo = {
 export type StructuredInfoOverviewRow = {
   label: string;
   value: string | string[] | number | boolean | null;
+  iconPath?: string;
+  iconLabel?: string;
 };
 
 type StructuredInfoOverrides = {
