@@ -1267,14 +1267,29 @@ p {
   line-height: 1.35;
 }
 
-.affiliate-disclosure-dialog-header button {
+.affiliate-disclosure-close {
+  display: inline-flex;
+  width: 34px;
+  height: 34px;
+  align-items: center;
+  justify-content: center;
   border: 1px solid var(--hairline);
   border-radius: 999px;
   background: var(--surface-soft);
   color: var(--body);
-  font-size: 12px;
+  font-size: 20px;
   font-weight: 800;
-  padding: 7px 10px;
+  line-height: 1;
+  padding: 0;
+  cursor: pointer;
+}
+
+.affiliate-disclosure-close:hover,
+.affiliate-disclosure-close:focus-visible {
+  border-color: rgba(31, 102, 98, 0.28);
+  background: var(--primary-soft);
+  color: var(--primary-active);
+  outline: none;
 }
 
 .affiliate-disclosure-dialog-body {
