@@ -329,8 +329,9 @@ Suggested item body order:
 5. `아쉬운 점`
 6. `이런 사람에게 맞아요`
 7. `이런 사람에게는 애매해요`
-8. `같이 쓰면 좋은 의식`
-9. `저장해둘 이유`
+8. `같이 쓰면 좋은 의식` (only when a concrete follow-up ritual exists)
+
+Do not add `저장해둘 이유` as a fixed section. The article should make its own usefulness clear through the body. If a save action is genuinely useful, express it as a natural CTA only when the route/action exists.
 
 `한 줄 판단` must contain exactly one short sentence in one paragraph, ideally 35-55 Korean characters. Move any extra explanation into the next section.
 
@@ -363,3 +364,11 @@ Report:
 - whether implementation or DB upsert is ready
 
 Keep the report operational, not a second article draft.
+
+## Korean Register Consistency
+
+Reader-facing Korean copy must keep one honorific/register level across section headings, body paragraphs, lists, product cards, CTAs, and captions.
+
+Default for Bathtime Item Notes is warm `해요체`, because standard headings such as `이런 사람에게 맞아요` and `이런 사람에게는 애매해요` already use that register.
+
+Do not mix `~해요` headings with `~합니다` body copy. Either write the whole public draft in warm `해요체`, or intentionally convert headings and body to formal `합니다체`.

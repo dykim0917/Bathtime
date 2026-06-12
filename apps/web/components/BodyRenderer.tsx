@@ -119,7 +119,6 @@ export function BodyRenderer({ blocks }: { blocks: ContentBodyBlock[] }) {
                   loading="lazy"
                 />
               ) : null}
-              {block.caption ? <figcaption>{block.caption}</figcaption> : null}
             </figure>
           );
         }
