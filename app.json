@@ -18,7 +18,7 @@
     },
     "android": {
       "package": "com.bathtimestudio.bathtime",
-      "versionCode": 17,
+      "versionCode": 18,
       "icon": "./assets/images/icon.png",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-foreground.png",
