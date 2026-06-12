@@ -37,8 +37,8 @@ export function AffiliateDisclosureBadge() {
           >
             <div className="affiliate-disclosure-dialog-header">
               <h2 id={titleId}>제휴 링크 안내</h2>
-              <button type="button" aria-label="제휴 안내 닫기" onClick={() => setOpen(false)}>
-                닫기
+              <button type="button" className="affiliate-disclosure-close" aria-label="제휴 안내 닫기" onClick={() => setOpen(false)}>
+                <span aria-hidden="true">×</span>
               </button>
             </div>
             <div className="affiliate-disclosure-dialog-body">
