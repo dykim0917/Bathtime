@@ -76,6 +76,8 @@ For `candidate-frame`, recommended headings:
 - `가기 전 체크리스트`
 - `제보와 업데이트`
 
+Do not add `저장해둘 이유` as a fixed section. Spot guides should make their usefulness clear through criteria, source transparency, checklist value, and realistic next actions. If a save action is genuinely useful and supported, express it as a natural CTA only when the route/action exists.
+
 ### One-Line Verdict Rule
 
 When using `한 줄 판단`, the content under that heading must be exactly one short paragraph with one sentence.
@@ -138,6 +140,16 @@ Use:
 - `제보`
 - `마지막 확인 날짜`
 
+## Korean Register Consistency
+
+Reader-facing Korean copy must keep one honorific/register level across section headings, body paragraphs, lists, candidate cards, CTAs, and captions.
+
+Default for spot guides is warm `해요체` when the page uses headings such as `이런 사람에게 맞아요` or `이런 사람에게는 애매해요`.
+
+Do not mix `~해요` headings with `~합니다` body copy. If using `해요체`, rewrite endings such as `확인합니다`, `필요합니다`, `됩니다`, `좋습니다` to matching endings such as `확인해요`, `필요해요`, `돼요`, `좋아요`.
+
+If a spot guide intentionally uses formal `합니다체`, then headings must also avoid casual `~해요` endings. Pick one register and record it in the Quality Gate.
+
 ## Quality Gate
 
 Before implementation, confirm:
@@ -149,3 +161,4 @@ Before implementation, confirm:
 - no place is presented as verified unless it is
 - publish blockers are explicit
 - SEO title is clickable without becoming clickbait
+- Korean register is consistent across headings, body copy, lists, candidate cards, CTAs, and captions

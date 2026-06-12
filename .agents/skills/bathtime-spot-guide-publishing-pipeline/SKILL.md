@@ -304,6 +304,14 @@ CTA:
 - Every guide should end with a next useful action: tip submission, next guide, candidate review, or app/download reminder.
 - Do not render a button-like CTA unless the route/link exists.
 - If a CTA route is missing, include the CTA as text only or record it as a publish blocker.
+- Do not add `저장해둘 이유` as a fixed section. Spot guides should make their usefulness clear through criteria, source transparency, checklist value, and realistic next actions.
+
+Register:
+
+- Reader-facing Korean copy must keep one honorific/register level across headings, body copy, lists, candidate cards, CTAs, and captions.
+- Default for spot guides is warm `해요체` when the page uses headings such as `이런 사람에게 맞아요` or `이런 사람에게는 애매해요`.
+- Do not mix `~해요` headings with `~합니다` body copy. If using `해요체`, rewrite endings such as `확인합니다`, `필요합니다`, `됩니다`, `좋습니다` to matching endings such as `확인해요`, `필요해요`, `돼요`, `좋아요`.
+- If using formal `합니다체`, convert headings away from casual `~해요` as well.
 
 ### 6. `humanize-korean`
 
@@ -381,6 +389,7 @@ Verify:
 - no direct-visit claim appears unless proven
 - source transparency appears near the top
 - CTA invites tips or future candidate review when appropriate
+- Korean register is consistent across headings, body copy, lists, candidate cards, CTAs, and captions
 
 ## Required Public-Copy Rules
 
