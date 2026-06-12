@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { ActivityIndicator, Linking, StyleSheet, Text, View } from 'react-native';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { ActivityIndicator, BackHandler, Linking, Pressable, StyleSheet, Text, View } from 'react-native';
 import { router } from 'expo-router';
 import * as WebBrowser from 'expo-web-browser';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -107,7 +108,22 @@ export function ArchiveWebViewScreen({ path }: { path: string }) {
   const webViewRef = useRef<WebView>(null);
   const [loading, setLoading] = useState(true);
   const [failed, setFailed] = useState(false);
+  const [canGoBack, setCanGoBack] = useState(false);
   const uri = useMemo(() => buildArchiveUrl(path), [path]);
+
+  const handleBack = useCallback(() => {
+    if (canGoBack) {
+      webViewRef.current?.goBack();
+      return true;
+    }
+
+    if (router.canGoBack()) {
+      router.back();
+      return true;
+    }
+
+    return false;
+  }, [canGoBack]);
 
   const handleShouldStartLoad = useCallback((request: { url: string }) => {
     const routineIntent = getRoutineIntent(request.url);
@@ -130,6 +146,11 @@ export function ArchiveWebViewScreen({ path }: { path: string }) {
     const timeout = setTimeout(() => setLoading(false), 12000);
     return () => clearTimeout(timeout);
   }, [loading]);
+
+  useEffect(() => {
+    const subscription = BackHandler.addEventListener('hardwareBackPress', handleBack);
+    return () => subscription.remove();
+  }, [handleBack]);
 
   const postBridgeMessage = useCallback((payload: Record<string, unknown>) => {
     webViewRef.current?.postMessage(JSON.stringify({ source: 'bathtime-native', ...payload }));
@@ -274,6 +295,9 @@ export function ArchiveWebViewScreen({ path }: { path: string }) {
         onLoadProgress={({ nativeEvent }) => {
           if (nativeEvent.progress >= 0.96) setLoading(false);
         }}
+        onNavigationStateChange={(state) => {
+          setCanGoBack(state.canGoBack);
+        }}
         onError={() => {
           setLoading(false);
           setFailed(true);
@@ -285,6 +309,11 @@ export function ArchiveWebViewScreen({ path }: { path: string }) {
         onMessage={handleWebViewMessage}
         setSupportMultipleWindows={false}
       />
+      {canGoBack ? (
+        <Pressable accessibilityRole="button" accessibilityLabel="뒤로가기" style={[styles.backButton, { top: insets.top + 10 }]} onPress={handleBack}>
+          <FontAwesome name="angle-left" size={25} color={archiveColors.ink} />
+        </Pressable>
+      ) : null}
       {loading ? (
         <View style={styles.loadingOverlay} pointerEvents="none">
           <ActivityIndicator color={archiveColors.primaryActive} />
@@ -308,6 +337,24 @@ const styles = StyleSheet.create({
   webView: {
     flex: 1,
     backgroundColor: archiveColors.canvas,
+  },
+  backButton: {
+    position: 'absolute',
+    left: 14,
+    zIndex: 10,
+    width: 42,
+    height: 42,
+    borderRadius: 21,
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.72)',
+    backgroundColor: 'rgba(255, 255, 255, 0.94)',
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#0B1F1F',
+    shadowOpacity: 0.12,
+    shadowRadius: 10,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 4,
   },
   loadingOverlay: {
     ...StyleSheet.absoluteFillObject,
