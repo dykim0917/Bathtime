@@ -22,8 +22,8 @@ export function AffiliateDisclosureBadge() {
         aria-label="제휴 링크 안내 보기"
         onClick={() => setOpen(true)}
       >
-        <span>제휴 포함</span>
         <span aria-hidden="true" className="affiliate-disclosure-icon">!</span>
+        <span>제휴 포함</span>
       </button>
 
       {open ? (

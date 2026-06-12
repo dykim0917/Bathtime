@@ -1194,33 +1194,44 @@ p {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  border: 1px solid rgba(31, 102, 98, 0.22);
+  border: 1px solid var(--hairline);
   border-radius: 999px;
-  background: rgba(248, 250, 248, 0.94);
-  color: var(--primary-active);
+  background: var(--surface);
+  color: var(--primary);
   font-size: 11px;
-  font-weight: 800;
-  line-height: 1.2;
+  font-weight: 700;
+  line-height: 1;
   padding: 6px 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(31, 36, 48, 0.06);
 }
 
 .affiliate-disclosure-trigger:hover,
 .affiliate-disclosure-trigger:focus-visible {
-  border-color: rgba(31, 102, 98, 0.38);
+  border-color: rgba(31, 102, 98, 0.34);
   background: var(--surface);
+  color: var(--primary-active);
+  outline: none;
+  box-shadow: 0 8px 18px rgba(31, 102, 98, 0.14);
+  transform: translateY(-1px);
+}
+
+.affiliate-disclosure-trigger:active {
+  transform: translateY(0);
 }
 
 .affiliate-disclosure-icon {
   display: inline-flex;
-  width: 14px;
-  height: 14px;
+  width: 13px;
+  height: 13px;
   align-items: center;
   justify-content: center;
   border-radius: 999px;
-  background: var(--primary-active);
-  color: #fff;
-  font-size: 10px;
+  background: var(--primary-soft);
+  color: var(--primary-active);
+  font-size: 9px;
   font-weight: 900;
+  line-height: 1;
 }
 
 .affiliate-disclosure-backdrop {
