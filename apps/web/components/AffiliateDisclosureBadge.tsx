@@ -19,10 +19,10 @@ export function AffiliateDisclosureBadge() {
         className="affiliate-disclosure-trigger"
         aria-haspopup="dialog"
         aria-expanded={open}
-        aria-label="광고 및 제휴 링크 안내 보기"
+        aria-label="제휴 링크 안내 보기"
         onClick={() => setOpen(true)}
       >
-        <span>광고</span>
+        <span>제휴 포함</span>
         <span aria-hidden="true" className="affiliate-disclosure-icon">!</span>
       </button>
 
@@ -36,8 +36,8 @@ export function AffiliateDisclosureBadge() {
             onClick={(event) => event.stopPropagation()}
           >
             <div className="affiliate-disclosure-dialog-header">
-              <h2 id={titleId}>광고/제휴 링크 안내</h2>
-              <button type="button" aria-label="광고 안내 닫기" onClick={() => setOpen(false)}>
+              <h2 id={titleId}>제휴 링크 안내</h2>
+              <button type="button" aria-label="제휴 안내 닫기" onClick={() => setOpen(false)}>
                 닫기
               </button>
             </div>

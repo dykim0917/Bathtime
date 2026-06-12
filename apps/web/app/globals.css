@@ -512,10 +512,15 @@ p {
   transition: transform 180ms ease-out;
 }
 
-.archive-visual span {
+.archive-visual > span,
+.archive-visual-label-row {
   position: absolute;
   left: 12px;
   bottom: 12px;
+}
+
+.archive-visual > span,
+.archive-visual-label-row > span {
   display: inline-flex;
   align-items: center;
   gap: 5px;
@@ -526,6 +531,14 @@ p {
   font-size: 11px;
   font-weight: 700;
   padding: 6px 10px;
+}
+
+.archive-visual-label-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  right: 70px;
 }
 
 .button-primary,
@@ -1181,20 +1194,20 @@ p {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  border: 1px solid rgba(185, 74, 58, 0.26);
+  border: 1px solid rgba(31, 102, 98, 0.22);
   border-radius: 999px;
-  background: rgba(185, 74, 58, 0.08);
-  color: #9f3d31;
+  background: rgba(248, 250, 248, 0.94);
+  color: var(--primary-active);
   font-size: 11px;
   font-weight: 800;
   line-height: 1.2;
-  padding: 4px 8px;
+  padding: 6px 10px;
 }
 
 .affiliate-disclosure-trigger:hover,
 .affiliate-disclosure-trigger:focus-visible {
-  border-color: rgba(185, 74, 58, 0.42);
-  background: rgba(185, 74, 58, 0.12);
+  border-color: rgba(31, 102, 98, 0.38);
+  background: var(--surface);
 }
 
 .affiliate-disclosure-icon {
@@ -1204,7 +1217,7 @@ p {
   align-items: center;
   justify-content: center;
   border-radius: 999px;
-  background: #9f3d31;
+  background: var(--primary-active);
   color: #fff;
   font-size: 10px;
   font-weight: 900;
