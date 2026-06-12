@@ -81,7 +81,7 @@ If any section is missing, the output is incomplete and must be fixed before del
 
 ## Item Note Body Order
 
-Use this order unless the seed or renderer requires otherwise:
+Use this order as a starting shape, then remove or rename sections that feel forced for the article:
 
 1. `한 줄 판단`
 2. `어떤 의식을 돕나요`
@@ -90,8 +90,9 @@ Use this order unless the seed or renderer requires otherwise:
 5. `아쉬운 점`
 6. `이런 사람에게 맞아요`
 7. `이런 사람에게는 애매해요`
-8. `같이 쓰면 좋은 의식`
-9. `저장해둘 이유`
+8. `같이 쓰면 좋은 의식` (only when a concrete follow-up ritual exists)
+
+Do not add `저장해둘 이유` as a fixed section. The article should make its own usefulness clear through the body. If a save action is genuinely useful, express it as a natural CTA only when the route/action exists.
 
 For a specific product, add source-scoped language near the top. For a category note, lead with the decision frame instead of a product recommendation.
 
@@ -112,6 +113,30 @@ The first body block must answer:
 - What ritual does it support?
 - What is the biggest practical tradeoff?
 - Who should keep reading?
+
+## Korean Register Consistency
+
+Reader-facing Korean copy must keep one honorific/register level across section headings, body paragraphs, lists, product cards, CTAs, and captions.
+
+Default for Bathtime Item Notes is warm `해요체`, because standard headings such as `이런 사람에게 맞아요` and `이런 사람에게는 애매해요` already use that register.
+
+Do:
+
+- Use `해요`, `봐요`, `좋아요`, `필요해요`, `어려워요` consistently in public body copy.
+- Rewrite stiff `합니다/됩니다/필요합니다/확인합니다` endings to matching `해요체` unless the whole article intentionally uses formal `합니다체`.
+- Keep labels short, but make their surrounding sentence match the article register.
+
+Avoid mixing:
+
+- Heading: `이런 사람에게 맞아요`
+- Body: `구매 전 최신 정보를 확인해야 합니다.`
+
+Good:
+
+- Heading: `이런 사람에게 맞아요`
+- Body: `구매 전 판매처의 최신 정보를 다시 확인해요.`
+
+If a content type intentionally uses formal `합니다체`, then headings must also avoid casual `~해요` endings. Pick one register and record it in the Quality Gate.
 
 ## UX Polish Rules
 
@@ -205,7 +230,6 @@ Allowed directions:
 - `써본 제품 제보하기`
 - `비슷한 아이템 노트 보기`
 - `관련 의식 보기`
-- `이 아이템 노트 저장하기`
 
 If the route or action exists, implement it as a CTA block/action. If it does not exist, keep it as text or record it in `Publish Blockers`.
 
@@ -233,4 +257,5 @@ Before finishing, verify:
 - Generated image prompt path, local asset path, and final hosted/app URI are separated when imagegen is used.
 - Price copy is short and scan-friendly.
 - Public copy does not use `신호`, `시그널`, or `signal`.
+- Section headings, body copy, lists, product cards, CTAs, and captions use one Korean register level; no mixed `~해요` headings with `~합니다` body.
 - Publish blockers are explicit and draft status is preserved when needed.

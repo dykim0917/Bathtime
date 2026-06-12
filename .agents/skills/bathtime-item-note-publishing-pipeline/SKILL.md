@@ -432,6 +432,16 @@ When converting research into public copy, translate internal research language:
 - `공식 스펙 신호` -> `공식 스펙 기준`
 - `출처별 신호가 다르다` -> `출처별 안내가 다르다`
 
+## Korean Register Consistency
+
+Reader-facing Korean copy must keep one honorific/register level across section headings, body paragraphs, lists, product cards, CTAs, and captions.
+
+Default for Bathtime Item Notes is warm `해요체`, because standard headings such as `이런 사람에게 맞아요` and `이런 사람에게는 애매해요` already use that register.
+
+Do not mix `~해요` headings with `~합니다` body copy. If using `해요체`, rewrite endings such as `확인합니다`, `필요합니다`, `됩니다`, `좋습니다` to matching endings such as `확인해요`, `필요해요`, `돼요`, `좋아요`.
+
+Quality Gate must explicitly check register consistency before draft apply.
+
 ## Price Range Rule
 
 Use `structuredInfo.priceRange` for representative ranges only.

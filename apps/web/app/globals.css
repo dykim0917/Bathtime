@@ -1388,13 +1388,6 @@ p {
   object-fit: cover;
 }
 
-.body-image figcaption {
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.55;
-  padding: 12px 14px 14px;
-}
-
 .product-candidate-list {
   display: grid;
   gap: 12px;

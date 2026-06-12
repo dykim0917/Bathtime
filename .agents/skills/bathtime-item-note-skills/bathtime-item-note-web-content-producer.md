@@ -153,7 +153,7 @@ If any of these sections is missing, the output is incomplete and must be fixed 
 
 ## Item Note Body Order
 
-Use this order unless the seed or renderer requires otherwise:
+Use this order as a starting shape, then remove or rename sections that feel forced for the article:
 
 1. `한 줄 판단`
 2. `어떤 의식을 돕나요`
@@ -162,8 +162,9 @@ Use this order unless the seed or renderer requires otherwise:
 5. `아쉬운 점`
 6. `이런 사람에게 맞아요`
 7. `이런 사람에게는 애매해요`
-8. `같이 쓰면 좋은 의식`
-9. `저장해둘 이유`
+8. `같이 쓰면 좋은 의식` (only when a concrete follow-up ritual exists)
+
+Do not add `저장해둘 이유` as a fixed section. The article should make its own usefulness clear through the body. If a save action is genuinely useful, express it as a natural CTA only when the route/action exists.
 
 For a specific product, add a source-scoped line near the top:
 
@@ -194,6 +195,30 @@ The first body block must answer:
 - What ritual does it support?
 - What is the biggest practical tradeoff?
 - Who should keep reading?
+
+## Korean Register Consistency
+
+Reader-facing Korean copy must keep one honorific/register level across section headings, body paragraphs, lists, product cards, CTAs, and captions.
+
+Default for Bathtime Item Notes is warm `해요체`, because standard headings such as `이런 사람에게 맞아요` and `이런 사람에게는 애매해요` already use that register.
+
+Do:
+
+- Use `해요`, `봐요`, `좋아요`, `필요해요`, `어려워요` consistently in public body copy.
+- Rewrite stiff `합니다/됩니다/필요합니다/확인합니다` endings to matching `해요체` unless the whole article intentionally uses formal `합니다체`.
+- Keep labels short, but make their surrounding sentence match the article register.
+
+Avoid mixing:
+
+- Heading: `이런 사람에게 맞아요`
+- Body: `구매 전 최신 정보를 확인해야 합니다.`
+
+Good:
+
+- Heading: `이런 사람에게 맞아요`
+- Body: `구매 전 판매처의 최신 정보를 다시 확인해요.`
+
+If a content type intentionally uses formal `합니다체`, then headings must also avoid casual `~해요` endings. Pick one register and record it in the Quality Gate.
 
 Examples:
 
@@ -379,8 +404,9 @@ Prefer:
 - `아쉬운 점`
 - `이런 사람에게 맞아요`
 - `이런 사람에게는 애매해요`
-- `같이 쓰면 좋은 의식`
-- `저장해둘 이유`
+- `같이 쓰면 좋은 의식` (only when a concrete follow-up ritual exists)
+
+Do not add `저장해둘 이유` as a fixed section. The article should make its own usefulness clear through the body. If a save action is genuinely useful, express it as a natural CTA only when the route/action exists.
 
 ### Internal research words are not allowed in public copy
 
@@ -407,7 +433,6 @@ Each Item Note page should connect to at least one action.
 
 Allowed CTA types:
 
-- `이 아이템 노트 저장하기`
 - `관련 의식 보기`
 - `10분 족욕 타이머 시작하기`
 - `7분 샤워 타이머 시작하기`
@@ -510,8 +535,9 @@ Do not stop draft creation merely because image rights or exact prices are unres
 5. 아쉬운 점:
 6. 이런 사람에게 맞아요:
 7. 이런 사람에게는 애매해요:
-8. 같이 쓰면 좋은 의식:
-9. 저장해둘 이유:
+8. 같이 쓰면 좋은 의식: only when a concrete follow-up ritual exists
+
+Do not add `저장해둘 이유` as a fixed section. The article should make its own usefulness clear through the body. If a save action is genuinely useful, express it as a natural CTA only when the route/action exists.
 
 ## Structured Info
 - 사용 상황:
@@ -568,6 +594,7 @@ Do not stop draft creation merely because image rights or exact prices are unres
 - [ ] Price is dated or marked as variable
 - [ ] Product examples are examples, not rankings
 - [ ] Image rights are acceptable or fallback used
+- [ ] Korean register is consistent across headings, body copy, lists, product cards, CTAs, and captions
 - [ ] Connected ritual/timer exists
 - [ ] Korean copy is natural and scannable
 - [ ] ArchiveContent fields match renderer support

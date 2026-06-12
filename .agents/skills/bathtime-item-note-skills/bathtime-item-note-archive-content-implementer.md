@@ -109,8 +109,9 @@ Use Korean reader-facing body headings in this order:
 5. `아쉬운 점`
 6. `이런 사람에게 맞아요`
 7. `이런 사람에게는 애매해요`
-8. `같이 쓰면 좋은 의식`
-9. `저장해둘 이유`
+8. `같이 쓰면 좋은 의식` (only when a concrete follow-up ritual exists)
+
+Do not add `저장해둘 이유` as a fixed section. The article should make its own usefulness clear through the body. If a save action is genuinely useful, express it as a natural CTA only when the route/action exists.
 
 `한 줄 판단` must render as exactly one short sentence in one paragraph, ideally 35-55 Korean characters. Move any extra explanation into the next section.
 
@@ -185,6 +186,19 @@ It should read like:
 ```text
 이 도구가 어떤 의식을 가능하게 하는지, 어떤 번거로움이 있는지, 어떤 사람에게 맞는지 정리한 아이템 노트
 ```
+
+### 5.5. Keep Korean register consistent
+
+Reader-facing Korean copy must keep one honorific/register level across headings, body paragraphs, lists, product cards, CTAs, and captions.
+
+Default for Bathtime Item Notes is warm `해요체`, because standard headings such as `이런 사람에게 맞아요` and `이런 사람에게는 애매해요` already use that register.
+
+Before applying to DB, check for mixed endings:
+
+- Avoid: `이런 사람에게 맞아요` heading with `구매 전 최신 정보를 확인해야 합니다.` body.
+- Prefer: `이런 사람에게 맞아요` heading with `구매 전 판매처의 최신 정보를 다시 확인해요.` body.
+
+If the article intentionally uses formal `합니다체`, convert headings away from casual `~해요` as well. Do not mix the two.
 
 ### 6. Generate reviewable DB artifacts
 

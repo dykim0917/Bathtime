@@ -32,8 +32,9 @@
 5. 아쉬운 점:
 6. 이런 사람에게 맞아요:
 7. 이런 사람에게는 애매해요:
-8. 같이 쓰면 좋은 의식:
-9. 저장해둘 이유:
+8. 같이 쓰면 좋은 의식: only when a concrete follow-up ritual exists
+
+Do not add `저장해둘 이유` as a fixed section. The article should make its own usefulness clear through the body. If a save action is genuinely useful, express it as a natural CTA only when the route/action exists.
 
 ## Structured Info
 - 사용 상황:
@@ -160,5 +161,6 @@ Before creating or updating `item-seed.archive-content.ts`, check:
 - Are safety or sensitivity notes handled carefully?
 - Does every `확인 필요` explain what exactly must be checked?
 - Are paragraphs short enough to scan?
+- Is the Korean register consistent across headings, body copy, lists, product cards, CTAs, and captions? Default Item Note register is warm `해요체`; do not mix `~해요` headings with `~합니다` body.
 - Are `좋게 볼 수 있는 점`, `아쉬운 점`, `이런 사람에게 맞음`, and `이런 사람에게는 애매함` represented?
 - Is the page honest about whether the item was used firsthand, researched, or inferred from public information?
