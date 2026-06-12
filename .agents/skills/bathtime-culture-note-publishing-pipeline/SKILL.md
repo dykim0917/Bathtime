@@ -161,6 +161,16 @@ Avoid:
 
 Do not claim medical effects from bathing, showering, sauna, heat, cold exposure, scent, minerals, or sleep. Phrase cautiously when discussing body feel: `느껴질 수 있다`, `도움이 된다고 말하기보다`, `생활 리듬을 정리하는 감각에 가깝다`.
 
+## Korean Register Consistency
+
+Reader-facing Korean copy must keep one honorific/register level across section headings, body paragraphs, lists, CTAs, and captions.
+
+Culture notes may use warm `해요체` or calm formal `합니다체`, depending on the essay mode and subject. Pick one register before drafting and keep it consistent.
+
+Do not mix `~해요` headings with `~합니다` body copy. If using `해요체`, rewrite endings such as `확인합니다`, `필요합니다`, `됩니다`, `좋습니다` to matching endings such as `확인해요`, `필요해요`, `돼요`, `좋아요`.
+
+If using formal `합니다체`, headings should also avoid casual `~해요` endings. Record the chosen register in the Quality Gate.
+
 ## Seed And Web Package
 
 Create seed artifacts:
@@ -203,6 +213,8 @@ Body structure should usually be:
 3. the cultural or factual context, only as much as needed
 4. Bathtime's point of view
 5. `그래서 오늘의 바스타임에서는...` or an equivalent present-tense closing
+
+Do not add `저장해둘 이유` as a fixed section. Culture notes should make their usefulness clear through the essay, explanation, or closing thought itself. If a save action is genuinely useful and supported, express it as a natural CTA only when the route/action exists.
 
 ## Images
 
@@ -299,6 +311,7 @@ Before DB apply, verify the content as web content, not only as writing.
 - For culture, essay, insight, or terminology content, check whether the default structured info box is meaningful. Prefer `structuredInfo.overviewRows` when supported; otherwise record `UX follow-up` in quality, mapping, or publish blockers.
 - CTA must name a real next action for culture content, such as `다음 바스타임 이야기 읽기`, `나만의 바스타임 습관 제보하기`, or `관련 용어/가이드 이어서 보기`. Do not render missing routes as buttons. If a link is not confirmed, keep it as future CTA text and record the missing route in publish blockers.
 - The web package must include a culture UX check covering: image-caption message fit, no production-method captions, list readability, overview-box suitability, CTA route status, brand spelling `바스타임`, no product/place recommendation drift, and no unsupported health claims.
+- The Quality Gate must confirm Korean register consistency across headings, body copy, lists, CTAs, and captions.
 - If current schema or renderer cannot express the ideal culture summary or CTA, record it under `UX follow-up` instead of inventing unsupported fields.
 
 ## Final Report

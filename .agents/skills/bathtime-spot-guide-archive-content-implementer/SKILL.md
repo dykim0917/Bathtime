@@ -97,6 +97,16 @@ For candidate-frame content, also verify:
 - every candidate has source status
 - unresolved conditions remain visible
 
+## Korean Register Consistency
+
+Before DB apply, reader-facing Korean copy must keep one honorific/register level across headings, body paragraphs, lists, candidate cards, CTAs, and captions.
+
+Default for spot guides is warm `해요체` when the page uses headings such as `이런 사람에게 맞아요` or `이런 사람에게는 애매해요`.
+
+Avoid `~해요` headings with `~합니다` body copy. If a guide intentionally uses formal `합니다체`, convert headings away from casual `~해요` as well.
+
+Do not add `저장해둘 이유` as a fixed section. Spot guides should make their usefulness clear through criteria, source transparency, checklist value, and realistic next actions.
+
 ## Stop Conditions
 
 Stop before DB apply when:
