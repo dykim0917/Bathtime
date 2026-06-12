@@ -106,19 +106,19 @@ export function BodyRenderer({ blocks }: { blocks: ContentBodyBlock[] }) {
 
         if (block.type === 'image') {
           const imageSrc = getBodyImageSrc(block.uri);
+          if (!imageSrc) return null;
+
           const aspectRatio = getImageAspectRatio(block.uri, block.aspectRatio);
           const dimensions = getImageDimensions(aspectRatio);
           return (
             <figure key={index} className="body-image" style={aspectRatio ? { aspectRatio: `${aspectRatio}` } : undefined}>
-              {imageSrc ? (
-                <img
-                  src={imageSrc}
-                  alt={block.caption ?? '바스타임 콘텐츠 이미지'}
-                  width={dimensions.width}
-                  height={dimensions.height}
-                  loading="lazy"
-                />
-              ) : null}
+              <img
+                src={imageSrc}
+                alt={block.caption ?? '바스타임 콘텐츠 이미지'}
+                width={dimensions.width}
+                height={dimensions.height}
+                loading="lazy"
+              />
             </figure>
           );
         }
