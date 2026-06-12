@@ -343,51 +343,92 @@ p {
 }
 
 .home-hero {
+  position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 20px;
+  min-height: clamp(460px, 58vw, 640px);
   align-items: end;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: #102c2d;
+  padding: clamp(28px, 5vw, 56px);
+  isolation: isolate;
+}
+
+.home-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(8, 28, 28, 0.82) 0%, rgba(8, 28, 28, 0.56) 42%, rgba(8, 28, 28, 0.18) 100%),
+    linear-gradient(0deg, rgba(8, 28, 28, 0.42) 0%, rgba(8, 28, 28, 0) 46%);
+}
+
+.home-hero-image {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .home-hero-copy {
-  max-width: 760px;
+  max-width: 660px;
 }
 
-.home-byline {
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.5;
+.home-hero-copy .kicker {
+  color: #a8ddd1;
+}
+
+.home-hero-copy h1 {
+  color: #fffdf7;
+  font-size: clamp(40px, 6vw, 76px);
+  line-height: 1.05;
+  font-weight: 700;
+}
+
+.home-hero-copy p:not(.kicker) {
+  max-width: 560px;
+  color: rgba(255, 253, 247, 0.86);
+  font-size: clamp(17px, 2vw, 21px);
+  line-height: 1.7;
+  margin-top: 6px;
 }
 
 .home-hero-actions {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
   gap: 10px;
-  min-width: 280px;
+  justify-content: flex-start;
+  align-self: start;
+  margin-top: 22px;
 }
 
-.home-answer-block {
-  display: grid;
-  gap: 8px;
-  border: 1px solid var(--hairline);
-  border-radius: var(--radius-lg);
-  background: var(--surface);
-  padding: 20px;
+.home-hero .button-primary {
+  background: #fffdf7;
+  color: #0b3131;
 }
 
-.home-answer-block h2 {
-  color: var(--ink);
-  font-size: 22px;
-  line-height: 1.35;
-  font-weight: 600;
+.home-hero .button-primary:hover,
+.home-hero .button-primary:focus-visible {
+  background: #e8f5ef;
 }
 
-.home-answer-block p:not(.kicker) {
-  max-width: 860px;
-  color: var(--body);
-  font-size: 16px;
-  line-height: 1.75;
+.home-hero .button-secondary {
+  border-color: rgba(255, 253, 247, 0.34);
+  background: rgba(255, 253, 247, 0.12);
+  color: #fffdf7;
+}
+
+.home-hero .button-secondary:hover,
+.home-hero .button-secondary:focus-visible {
+  border-color: rgba(255, 253, 247, 0.72);
+  background: rgba(255, 253, 247, 0.2);
+}
+
+.home-about-link {
+  padding-inline: 14px;
 }
 
 .home-hero-actions a,
@@ -2360,6 +2401,12 @@ p {
   .app-bridge {
     grid-template-columns: 1fr;
     align-items: start;
+  }
+
+  .home-hero {
+    min-height: clamp(420px, 92vw, 560px);
+    align-items: end;
+    padding: 24px;
   }
 
   .home-hero-actions {
