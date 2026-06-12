@@ -92,10 +92,21 @@ export default async function HomePage() {
   return (
     <div className="page-stack home-stack">
       <section className="home-hero">
+        <img
+          className="home-hero-image"
+          src="/images/about/bathtime-about-hero.jpg"
+          alt="사우나와 홈케어의 분위기를 함께 보여주는 바스타임 소개 이미지"
+          width={1280}
+          height={702}
+          loading="eager"
+          fetchPriority="high"
+        />
         <header className="page-header home-hero-copy">
           <p className="kicker">BATH TIME ARCHIVE</p>
           <h1>씻는 시간을 더 잘 쓰고 싶은 사람을 위한 아카이브입니다.</h1>
-          <p className="home-byline">바스타임 편집팀 · 업데이트 2026-06-11</p>
+          <p>
+            사우나부터 홈케어까지, 오늘의 몸과 공간에 맞는 바스타임을 찾고 저장해요.
+          </p>
         </header>
         <div className="home-hero-actions" aria-label="메인 행동">
           <Link className="button-primary" href="/explore">
@@ -106,17 +117,10 @@ export default async function HomePage() {
             <BookmarkSimple size={16} weight="bold" aria-hidden="true" />
             저장한 기록 보기
           </Link>
+          <Link className="button-secondary home-about-link" href="/about">
+            바스타임이란
+          </Link>
         </div>
-      </section>
-
-      <section className="home-answer-block" aria-labelledby="bathtime-answer-title">
-        <p className="kicker">WHAT IS BATHTIME</p>
-        <h2 id="bathtime-answer-title">바스타임은 무엇을 기록하나요?</h2>
-        <p>
-          바스타임은 사우나, 홈케어, 족욕, 욕실 아이템처럼 흩어져 있는 씻고 쉬는 시간을 한곳에 모아두는 아카이브입니다.
-          좋은 공간과 도구를 무조건 추천하기보다, 실제 이용 조건, 준비 부담, 관리 난이도, 혼자 쉬기 좋은지 같은 기준을 먼저 확인합니다.
-          웹에서는 기록을 찾고 저장하고, 앱에서는 저장한 기록을 오늘 가능한 샤워, 족욕, 입욕 의식으로 이어갑니다.
-        </p>
       </section>
 
       <section className="section">
@@ -142,7 +146,7 @@ export default async function HomePage() {
       {featured ? (
         <section className="feature-band">
           <div>
-            <ArchiveVisual content={featured} priority />
+            <ArchiveVisual content={featured} />
           </div>
           <div className="feature-copy">
             <p className="kicker">오늘의 추천 아카이브</p>
