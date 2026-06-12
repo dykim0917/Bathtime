@@ -148,7 +148,7 @@ export default async function ContentPage({
       {isPreview ? <p className="preview-banner">비공개 미리보기입니다. 검색엔진에는 노출되지 않습니다.</p> : null}
 
       <div className="content-hero-wrap">
-        <ArchiveVisual content={content} priority />
+        <ArchiveVisual content={content} priority badge={showAffiliateDisclosure ? <AffiliateDisclosureBadge /> : null} />
         <div className="hero-save-button">
           <SaveButton contentId={content.id} size={42} />
         </div>
@@ -159,7 +159,6 @@ export default async function ContentPage({
           <header className="content-header">
             <div className="content-kicker-row">
               <p className="kicker">{CATEGORY_LABELS[content.category]} · {CONTENT_TYPE_LABELS[content.contentType]}</p>
-              {showAffiliateDisclosure ? <AffiliateDisclosureBadge /> : null}
             </div>
             <h1>{content.title}</h1>
             {content.subtitle ? <p>{content.subtitle}</p> : null}

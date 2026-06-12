@@ -1,4 +1,4 @@
-import type { ComponentType } from 'react';
+import type { ComponentType, ReactNode } from 'react';
 import { Bathtub, BookOpen, MapTrifold, Package } from '@phosphor-icons/react/ssr';
 import type { ArchiveContent, ContentCategory } from '@/src/archive/types';
 import { CATEGORY_LABELS } from '@web/lib/labels';
@@ -29,7 +29,15 @@ function getUsableImageUri(content: ArchiveContent): string | null {
   return uri;
 }
 
-export function ArchiveVisual({ content, priority = false }: { content: ArchiveContent; priority?: boolean }) {
+export function ArchiveVisual({
+  content,
+  priority = false,
+  badge,
+}: {
+  content: ArchiveContent;
+  priority?: boolean;
+  badge?: ReactNode;
+}) {
   const uri = getUsableImageUri(content);
   const IconComponent = categoryIcons[content.category];
   const imageAlt = content.heroImage?.alt || `${content.title} 대표 이미지`;
@@ -46,10 +54,20 @@ export function ArchiveVisual({ content, priority = false }: { content: ArchiveC
           fetchPriority={priority ? 'high' : 'auto'}
         />
       ) : null}
-      <span>
-        <IconComponent size={12} weight="bold" aria-hidden="true" />
-        {CATEGORY_LABELS[content.category]}
-      </span>
+      {badge ? (
+        <div className="archive-visual-label-row">
+          <span>
+            <IconComponent size={12} weight="bold" aria-hidden="true" />
+            {CATEGORY_LABELS[content.category]}
+          </span>
+          {badge}
+        </div>
+      ) : (
+        <span>
+          <IconComponent size={12} weight="bold" aria-hidden="true" />
+          {CATEGORY_LABELS[content.category]}
+        </span>
+      )}
     </div>
   );
 }
