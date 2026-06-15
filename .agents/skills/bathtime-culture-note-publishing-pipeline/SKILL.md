@@ -216,6 +216,51 @@ Body structure should usually be:
 
 Do not add `저장해둘 이유` as a fixed section. Culture notes should make their usefulness clear through the essay, explanation, or closing thought itself. If a save action is genuinely useful and supported, express it as a natural CTA only when the route/action exists.
 
+## Observer Essay Tone Gate
+
+Before `humanize-korean`, apply Bathtime's observer-essay body tone to culture-note narrative copy.
+
+Use it most strongly for:
+
+- `everyday-essay`
+- `perspective`
+- reflective openings and closings in `seasonal-note`
+
+Use it lightly for:
+
+- `explainer`
+- terminology or culture notes with important factual context
+
+Apply the tone to:
+
+- body paragraphs
+- concrete openings
+- transitions from information back to everyday life
+- reflective closing paragraphs
+
+Do not apply the tone to:
+
+- title, subtitle, summary, SEO metadata
+- structured info
+- source notes, last checked dates, factual disclaimers, publish blockers, or CTA labels
+
+Tone rules:
+
+- Prefer short Korean sentences with one action, observation, or thought per sentence.
+- Keep the chosen register consistent across the article.
+- Use concrete sensory details such as temperature, sound, towel, steam, water, breath, or bathroom light when they fit naturally.
+- Avoid lecture-like wording such as `~로 알려져 있습니다`, `~의 의의는`, `핵심은`, and unsupported certainty.
+- End with a small aftertaste rather than a lesson or grand conclusion.
+
+Experience honesty rules:
+
+- Never imply a firsthand visit, interview, product use, or cultural authority unless the source artifacts prove it.
+- For research-based culture notes, make the observing subject an editorial review flow: reading a term, comparing public explanations, noticing a daily scene, or returning the idea to today's bath/shower context.
+- Keep source boundaries, dates, and uncertainty visible outside the essay layer.
+- Do not add new facts, health claims, examples, or direct-experience claims during tone polishing.
+
+Stop before DB apply if the tone pass hides uncertainty, adds unsupported health effects, or makes a sourced explanation sound like personal experience.
+
 ## Images
 
 Use `imagegen` when the user asks for generated images or when the article needs original hero or inline visual assets and no licensed assets exist.

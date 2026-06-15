@@ -46,6 +46,13 @@ Run these steps in order. Load each named skill when the step starts.
      - criteria, source, facility, or access lists should use `short label: explanation` structure when possible;
      - if the default `한눈에 보기` box is weak for the content type, record `quality.ux_follow_up` or a publish blocker with a better summary proposal;
      - include a real CTA only when the route exists, otherwise keep it as text or a publish blocker.
+   - Run the observer-essay tone gate before implementation:
+     - apply Bathtime's observer-essay tone only to body paragraphs, scene-setting, transitions, and reflective closing copy;
+     - do not apply it to title, subtitle, summary, SEO, structured info, prices, operating hours, facility labels, source notes, dates, publish blockers, or CTA labels;
+     - use short Korean sentences, concrete checking actions, and restrained sensory details only when source artifacts support them;
+     - never write as if Bathtime visited the spot unless direct visit source files prove it;
+     - for public-source research, make the observing subject an editorial verification flow: checking official pages, comparing reservation/map information, reading repeated review patterns, and noting what still needs recheck;
+     - stop before DB apply if tone polishing hides uncertainty, adds visit claims, adds unsupported sensory claims, or turns the spot into a recommendation.
 
 4. `bathtime-archive-content-implementer`
    - Convert the web package into the real app/DB source.

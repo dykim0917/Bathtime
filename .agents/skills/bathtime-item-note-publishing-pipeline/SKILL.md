@@ -228,6 +228,41 @@ CTA:
 - Do not render a button-like CTA unless the route/link exists.
 - If a CTA route is missing, include the CTA as text only or record it as a publish blocker.
 
+### 5.6. Observer Essay Tone Gate
+
+Before `humanize-korean`, apply Bathtime's observer-essay body tone only to the narrative body layer.
+
+Apply the tone to:
+
+- body paragraphs
+- introductory scene-setting
+- transition paragraphs
+- reflective closing paragraphs
+
+Do not apply the tone to:
+
+- title, subtitle, summary, SEO metadata
+- `Reader Verdict`
+- `Structured Info`
+- product candidate cards
+- prices, specs, source notes, safety notes, URLs, dates, publish blockers, or CTA labels
+
+Tone rules:
+
+- Prefer short Korean sentences with one action or thought per sentence.
+- Prefer calm endings such as `~해요`, `~같아요`, `~에 가까워요`, or the chosen page register.
+- Use concrete life friction and sensory details instead of abstract praise.
+- Avoid guidebook phrasing such as `~할 수 있습니다`, `~로 알려져 있습니다`, and unsupported certainty.
+
+Experience honesty rules:
+
+- Never write as if Bathtime directly used the item unless source artifacts prove direct use.
+- For research-based item notes, make the observing subject an editorial review flow: checking specs, comparing use burden, reading public information, or imagining a realistic home setup.
+- Do not add new facts, products, examples, sensory claims, or direct-use claims during tone polishing.
+- Preserve uncertainty phrases such as `공개 정보 기준`, `후기 기반 참고`, `브랜드 제공 정보 기준`, `가격 확인일`, and unresolved image-right notes.
+
+Stop before DB apply if the tone pass makes the page feel like a firsthand review, hides uncertainty, or turns product candidates into recommendations.
+
 ### 6. `humanize-korean`
 
 Run this required review step before ArchiveContent implementation or DB apply.

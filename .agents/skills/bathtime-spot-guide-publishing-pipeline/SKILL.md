@@ -313,6 +313,40 @@ Register:
 - Do not mix `~해요` headings with `~합니다` body copy. If using `해요체`, rewrite endings such as `확인합니다`, `필요합니다`, `됩니다`, `좋습니다` to matching endings such as `확인해요`, `필요해요`, `돼요`, `좋아요`.
 - If using formal `합니다체`, convert headings away from casual `~해요` as well.
 
+### 5.6. Observer Essay Tone Gate
+
+Before `humanize-korean`, apply Bathtime's observer-essay body tone only to the narrative body layer.
+
+Apply the tone to:
+
+- principle openings
+- criteria setup paragraphs
+- source-transparency explanations
+- reflective closing paragraphs
+
+Do not apply the tone to:
+
+- title, subtitle, summary, SEO metadata
+- `Structured Info`
+- candidate tables/cards
+- access conditions, price, operating hours, source labels, last checked dates, publish blockers, or CTA labels
+
+Tone rules:
+
+- Prefer short Korean sentences with one observation or thought per sentence.
+- Use concrete checking actions such as opening official notices, comparing map/reservation pages, reading repeated review patterns, and deciding what still needs confirmation.
+- Use sensory or spatial detail only when it is supported by source artifacts or clearly framed as a general reader situation.
+- Avoid guidebook wording such as `~할 수 있습니다`, `~로 알려져 있습니다`, `좋은 곳입니다`, and unsupported certainty.
+
+Experience honesty rules:
+
+- Never write as if Bathtime visited a place unless direct visit source files prove it.
+- For guide, principle, criteria, and candidate-frame content, make the observing subject an editorial verification flow, not a firsthand visit.
+- Keep source transparency near the top and preserve labels such as direct visit, official information, map/reservation information, review pattern, user tip, and needs recheck.
+- Do not add new facts, places, sensory claims, visit claims, or recommendation claims during tone polishing.
+
+Stop before DB apply if the tone pass hides uncertainty, turns criteria into a recommendation, or makes public-source research sound like a visit.
+
 ### 6. `humanize-korean`
 
 Run `humanize-korean` on reader-facing Korean copy before implementation.

@@ -36,13 +36,15 @@ const { chromium } = playwright.default ?? playwright;
 
 const ROOT_DIR = process.cwd();
 const SYMBOL_PATH = path.resolve(ROOT_DIR, 'assets/images/bathtime.svg');
+const CANVAS_COLOR = '#faf7f1';
 const OUTPUTS = [
-  { path: 'assets/images/icon.png', size: 1024, symbolWidth: 690, background: '#FFFFFF' },
-  { path: 'assets/images/adaptive-icon.png', size: 1024, symbolWidth: 690, background: '#FFFFFF' },
+  { path: 'assets/images/icon.png', size: 1024, symbolWidth: 690, background: CANVAS_COLOR },
+  { path: 'assets/images/adaptive-icon.png', size: 1024, symbolWidth: 690, background: CANVAS_COLOR },
   { path: 'assets/images/adaptive-foreground.png', size: 1024, symbolWidth: 600, background: 'transparent' },
-  { path: 'assets/images/splash-icon.png', size: 1024, symbolWidth: 520, background: '#FFFFFF' },
-  { path: 'assets/images/favicon.png', size: 48, symbolWidth: 32, background: '#FFFFFF' },
-  { path: 'tmp/store-assets/splash-preview.png', size: 1024, symbolWidth: 520, background: '#FFFFFF' },
+  { path: 'assets/images/splash-icon.png', size: 1024, symbolWidth: 520, background: CANVAS_COLOR },
+  { path: 'assets/images/favicon.png', size: 48, symbolWidth: 32, background: CANVAS_COLOR },
+  { path: 'apps/web/app/icon.png', size: 512, symbolWidth: 345, background: CANVAS_COLOR },
+  { path: 'tmp/store-assets/splash-preview.png', size: 1024, symbolWidth: 520, background: CANVAS_COLOR },
 ];
 
 function dataUrl(filepath) {
