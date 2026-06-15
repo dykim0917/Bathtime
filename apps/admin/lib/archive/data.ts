@@ -10,6 +10,19 @@ export type AdminContentCategory = 'HOME_BATH' | 'BATH_PLACES' | 'BATH_ITEMS' | 
 export type AdminContentType = 'TRIED' | 'RESEARCHED' | 'ORGANIZED' | 'VISITED' | 'SUBMITTED' | 'UPDATED';
 export type AdminContentStatus = 'active' | 'draft' | 'paused' | 'retired';
 export type SubmissionStatus = 'new' | 'reviewing' | 'accepted' | 'rejected';
+export type ContentFeedbackReason =
+  | 'missing_info'
+  | 'needs_images'
+  | 'conditions_unclear'
+  | 'needs_more_candidates'
+  | 'tone_unclear'
+  | 'other';
+
+export interface ContentFeedbackSummary {
+  helpful: number;
+  needsImprovement: number;
+  reasons: Partial<Record<ContentFeedbackReason, number>>;
+}
 
 export type AdminArchiveBodyBlock =
   | { type: 'paragraph'; text: string }
@@ -74,6 +87,15 @@ export const submissionTypeLabels: Record<string, string> = {
   home_spa: '홈스파 세팅',
   item: '아이템',
   topic: '다뤄줬으면 하는 주제',
+};
+
+export const contentFeedbackReasonLabels: Record<ContentFeedbackReason, string> = {
+  missing_info: '정보 부족',
+  needs_images: '사진 필요',
+  conditions_unclear: '조건 궁금',
+  needs_more_candidates: '후보 필요',
+  tone_unclear: '문장 아쉬움',
+  other: '기타',
 };
 
 export const adminArchiveContents: AdminArchiveContentRow[] = [
@@ -163,6 +185,12 @@ export interface ArchiveContentRecord {
   status: string;
   content_updated_at?: string | null;
   updated_at?: string | null;
+}
+
+interface ContentFeedbackRecord {
+  content_id: string;
+  feedback_type: 'helpful' | 'needs_improvement';
+  reason: ContentFeedbackReason | null;
 }
 
 const contentCategories: AdminContentCategory[] = [
@@ -270,6 +298,49 @@ export async function readAdminArchiveContents(): Promise<AdminArchiveContentRow
   });
 
   return rows.map(mapArchiveContentRecord);
+}
+
+function emptyFeedbackSummary(): ContentFeedbackSummary {
+  return { helpful: 0, needsImprovement: 0, reasons: {} };
+}
+
+export async function readAdminContentFeedbackSummaries(
+  contentIds: string[]
+): Promise<Record<string, ContentFeedbackSummary>> {
+  const config = await readAdminPostgrestSessionConfig();
+  if (!config || contentIds.length === 0) return {};
+
+  const uniqueIds = [...new Set(contentIds)].filter(Boolean);
+  if (uniqueIds.length === 0) return {};
+
+  let rows: ContentFeedbackRecord[];
+  try {
+    rows = await readPostgrestRows<ContentFeedbackRecord>(config, 'content_feedback', {
+      select: 'content_id,feedback_type,reason',
+      content_id: `in.(${uniqueIds.join(',')})`,
+    });
+  } catch {
+    return {};
+  }
+
+  return rows.reduce<Record<string, ContentFeedbackSummary>>((acc, row) => {
+    const summary = acc[row.content_id] ?? emptyFeedbackSummary();
+    if (row.feedback_type === 'helpful') {
+      summary.helpful += 1;
+    } else {
+      summary.needsImprovement += 1;
+      if (row.reason) {
+        summary.reasons[row.reason] = (summary.reasons[row.reason] ?? 0) + 1;
+      }
+    }
+    acc[row.content_id] = summary;
+    return acc;
+  }, {});
+}
+
+export async function readAdminContentFeedbackSummary(contentId: string): Promise<ContentFeedbackSummary> {
+  const summaries = await readAdminContentFeedbackSummaries([contentId]);
+  return summaries[contentId] ?? emptyFeedbackSummary();
 }
 
 export async function readAdminArchiveContent(

@@ -202,7 +202,7 @@ button {
 }
 
 .summaryGrid.compact {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
 }
 
 .summaryCard,
@@ -638,8 +638,8 @@ button {
 
 .contentArchiveTable .dataTableHeader,
 .contentArchiveTable .dataTableRow {
-  grid-template-columns: minmax(240px, 1.4fr) 112px 86px 118px 86px minmax(130px, 0.8fr) 112px;
-  min-width: 948px;
+  grid-template-columns: minmax(240px, 1.4fr) 112px 86px 118px 86px 120px minmax(130px, 0.8fr) 112px;
+  min-width: 1068px;
 }
 
 .submissionsTable .dataTableHeader,
@@ -718,6 +718,64 @@ button {
 
 .detailGrid .panel:first-child {
   grid-row: span 2;
+}
+
+.detailGrid .panel.feedbackPanel {
+  grid-row: auto;
+}
+
+.feedbackSummaryText {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.feedbackAdminSummary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.feedbackAdminSummary div {
+  display: grid;
+  gap: 6px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 14px;
+}
+
+.feedbackAdminSummary span {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.feedbackAdminSummary strong {
+  color: var(--text);
+  font-size: 24px;
+}
+
+.feedbackReasonList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.feedbackReasonList span {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--secondary);
+  font-size: 12px;
+  font-weight: 800;
+  padding: 7px 10px;
+}
+
+.emptyCopy {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 14px 0 0;
 }
 
 .detailList {

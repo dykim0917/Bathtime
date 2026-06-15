@@ -4,6 +4,7 @@ import { ArchiveVisual } from '@web/components/ArchiveVisual';
 import { AffiliateDisclosureBadge } from '@web/components/AffiliateDisclosureBadge';
 import { BodyRenderer } from '@web/components/BodyRenderer';
 import { StructuredInfo } from '@web/components/StructuredInfo';
+import { ContentFeedback } from '@web/components/ContentFeedback';
 import { RoutineCard } from '@web/components/RoutineCard';
 import { SaveButton } from '@web/components/SaveButton';
 import type { ContentBodyBlock } from '@/src/archive/types';
@@ -171,6 +172,8 @@ export default async function ContentPage({
           </header>
 
           <BodyRenderer blocks={bodyBlocks} />
+
+          {!isPreview ? <ContentFeedback contentId={content.id} /> : null}
 
           {routines.length > 0 ? (
             <section className="section related-routines-section">

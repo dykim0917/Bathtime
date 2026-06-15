@@ -4,9 +4,11 @@ import { AdminShell } from '../../../components/AdminShell';
 import { ArchiveBodyBlockEditor } from '../../../components/ArchiveBodyBlockEditor';
 import {
   categoryLabels,
+  contentFeedbackReasonLabels,
   contentStatusLabels,
   contentTypeLabels,
   readAdminArchiveContent,
+  readAdminContentFeedbackSummary,
 } from '../../../lib/archive/data';
 import {
   uploadArchiveContentImage,
@@ -57,6 +59,11 @@ export default async function ContentDetailPage({ params, searchParams }: PagePr
 
   if (!content) notFound();
 
+  const feedbackSummary = await readAdminContentFeedbackSummary(content.id);
+  const feedbackReasonEntries = Object.entries(feedbackSummary.reasons)
+    .filter(([, count]) => (count ?? 0) > 0)
+    .sort(([, a], [, b]) => (b ?? 0) - (a ?? 0));
+
   return (
     <AdminShell activePath="/content">
       <section className="workspace">
@@ -91,6 +98,10 @@ export default async function ContentDetailPage({ params, searchParams }: PagePr
             <span>Source</span>
             <strong className="smallValue">{content.source === 'database' ? 'DB' : 'Fallback'}</strong>
           </div>
+          <div className="summaryCard">
+            <span>Feedback</span>
+            <strong className="smallValue">도움 {feedbackSummary.helpful} · 아쉬움 {feedbackSummary.needsImprovement}</strong>
+          </div>
         </section>
 
         {statusMessage ? (
@@ -100,6 +111,33 @@ export default async function ContentDetailPage({ params, searchParams }: PagePr
         ) : null}
 
         <section className="detailGrid">
+          <section className="panel feedbackPanel">
+            <div className="panelHeader">
+              <h3>피드백 요약</h3>
+              <span>Content feedback</span>
+            </div>
+            <div className="feedbackAdminSummary">
+              <div>
+                <span>도움이 됐어요</span>
+                <strong>{feedbackSummary.helpful}</strong>
+              </div>
+              <div>
+                <span>조금 아쉬워요</span>
+                <strong>{feedbackSummary.needsImprovement}</strong>
+              </div>
+            </div>
+            {feedbackReasonEntries.length > 0 ? (
+              <div className="feedbackReasonList">
+                {feedbackReasonEntries.map(([reason, count]) => (
+                  <span key={reason}>
+                    {contentFeedbackReasonLabels[reason as keyof typeof contentFeedbackReasonLabels]} {count}
+                  </span>
+                ))}
+              </div>
+            ) : (
+              <p className="emptyCopy">아쉬운 사유는 아직 없습니다.</p>
+            )}
+          </section>
           <section className="panel">
             <div className="panelHeader">
               <h3>기본 정보</h3>
