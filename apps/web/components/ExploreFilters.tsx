@@ -19,6 +19,7 @@ import {
   type Icon,
 } from '@phosphor-icons/react';
 import type { ArchiveContent, ContentCategory } from '@/src/archive/types';
+import { trackWebEvent } from '@web/lib/analytics';
 import { ARCHIVE_TAGS, CATEGORIES, CATEGORY_LABELS } from '@web/lib/labels';
 import { ArchiveCard } from './ArchiveCard';
 
@@ -96,10 +97,15 @@ export function ExploreFilters({
   function selectCategory(next: ContentCategory | 'ALL') {
     setCategory(next);
     setSelectedTags((current) => current.filter((tag) => categoryTags[next].includes(tag as (typeof ARCHIVE_TAGS)[number])));
+    trackWebEvent('explore_filter_used', { filter_type: 'category', category: next });
   }
 
   function toggleTag(tag: string) {
-    setSelectedTags((current) => (current.includes(tag) ? current.filter((item) => item !== tag) : [...current, tag]));
+    setSelectedTags((current) => {
+      const selected = current.includes(tag);
+      trackWebEvent('explore_filter_used', { filter_type: 'tag', tag, selected: !selected });
+      return selected ? current.filter((item) => item !== tag) : [...current, tag];
+    });
   }
 
   return (

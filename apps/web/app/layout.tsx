@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
+import { GoogleAnalytics } from '@web/components/GoogleAnalytics';
 import { Shell } from '@web/components/Shell';
 import './globals.css';
 
 const siteUrl = process.env.NEXT_PUBLIC_WEB_URL?.trim() || 'https://www.getbathtime.com';
+const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim();
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -67,6 +69,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd).replace(/</g, '\\u003c') }}
         />
+        <GoogleAnalytics measurementId={gaMeasurementId} />
         <Shell>{children}</Shell>
       </body>
     </html>

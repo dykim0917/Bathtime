@@ -19,6 +19,7 @@
     "android": {
       "package": "com.bathtimestudio.bathtime",
       "versionCode": 18,
+      "googleServicesFile": "./app/google-services.json",
       "icon": "./assets/images/icon.png",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-foreground.png",
@@ -58,7 +59,9 @@
       "expo-font",
       "expo-web-browser",
       "./plugins/withAndroidReleaseOptimization",
-      "./plugins/withAndroidStoreAudioManifest"
+      "./plugins/withAndroidStoreAudioManifest",
+      "@react-native-firebase/app",
+      "@react-native-firebase/analytics"
     ],
     "experiments": {
       "typedRoutes": true

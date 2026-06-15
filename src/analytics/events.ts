@@ -1,3 +1,4 @@
+import { Platform } from 'react-native';
 import { ActiveState, BathEnvironment, FallbackStrategy, HomeSuggestionRank } from '@/src/engine/types';
 
 interface CommonEventProperties {
@@ -193,11 +194,43 @@ export interface ArchiveEventPayload {
   ts?: string;
 }
 
+function toSnakeCase(value: string): string {
+  return value.replace(/[A-Z]/g, (match) => `_${match.toLowerCase()}`);
+}
+
+function normalizeFirebaseParams(payload: ArchiveEventPayload): Record<string, string | number> {
+  return Object.fromEntries(
+    Object.entries(payload).flatMap(([key, value]) => {
+      if (value === undefined || value === null) return [];
+      if (Array.isArray(value)) return [[toSnakeCase(key), value.join(',')]];
+      if (typeof value === 'boolean') return [[toSnakeCase(key), value ? 'true' : 'false']];
+      return [[toSnakeCase(key), value]];
+    })
+  );
+}
+
+async function sendFirebaseArchiveEvent(eventName: ArchiveAnalyticsEventName, payload: ArchiveEventPayload) {
+  if (Platform.OS === 'web') return;
+
+  try {
+    const { getAnalytics, logEvent } = await import('@react-native-firebase/analytics');
+    await logEvent(getAnalytics(), eventName, normalizeFirebaseParams(payload));
+  } catch (error) {
+    if (__DEV__) {
+      console.warn('[analytics] failed to send firebase event', eventName, error);
+    }
+  }
+}
+
 export function trackArchiveEvent(eventName: ArchiveAnalyticsEventName, payload: ArchiveEventPayload = {}): void {
+  const eventPayload = {
+    ts: new Date().toISOString(),
+    ...payload,
+  };
+
+  void sendFirebaseArchiveEvent(eventName, eventPayload);
+
   if (__DEV__) {
-    console.log(`[analytics] ${eventName}`, {
-      ts: new Date().toISOString(),
-      ...payload,
-    });
+    console.log(`[analytics] ${eventName}`, eventPayload);
   }
 }
