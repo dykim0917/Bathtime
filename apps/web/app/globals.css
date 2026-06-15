@@ -2628,6 +2628,24 @@ p {
 
   .submit-form {
     max-width: none;
+    order: -1;
+  }
+
+  .submit-guide {
+    gap: 8px;
+  }
+
+  .submit-guide > div {
+    grid-template-columns: auto 1fr;
+    column-gap: 10px;
+    row-gap: 4px;
+    padding: 14px;
+  }
+
+  .submit-guide p {
+    grid-column: 2;
+    font-size: 13px;
+    line-height: 1.5;
   }
 
   .saved-header-row {
