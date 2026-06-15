@@ -317,6 +317,12 @@ Register:
 
 Before `humanize-korean`, apply Bathtime's observer-essay body tone only to the narrative body layer.
 
+First read and follow the Korean tone guide:
+
+```text
+docs/03-content/bathtime-observer-essay-tone-guide.md
+```
+
 Apply the tone to:
 
 - principle openings
