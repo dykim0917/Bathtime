@@ -47,6 +47,7 @@ Run these steps in order. Load each named skill when the step starts.
      - if the default `한눈에 보기` box is weak for the content type, record `quality.ux_follow_up` or a publish blocker with a better summary proposal;
      - include a real CTA only when the route exists, otherwise keep it as text or a publish blocker.
    - Run the observer-essay tone gate before implementation:
+     - first read and follow `docs/03-content/bathtime-observer-essay-tone-guide.md`;
      - apply Bathtime's observer-essay tone only to body paragraphs, scene-setting, transitions, and reflective closing copy;
      - do not apply it to title, subtitle, summary, SEO, structured info, prices, operating hours, facility labels, source notes, dates, publish blockers, or CTA labels;
      - use short Korean sentences, concrete checking actions, and restrained sensory details only when source artifacts support them;

@@ -220,6 +220,12 @@ Do not add `저장해둘 이유` as a fixed section. Culture notes should make t
 
 Before `humanize-korean`, apply Bathtime's observer-essay body tone to culture-note narrative copy.
 
+First read and follow the Korean tone guide:
+
+```text
+docs/03-content/bathtime-observer-essay-tone-guide.md
+```
+
 Use it most strongly for:
 
 - `everyday-essay`
