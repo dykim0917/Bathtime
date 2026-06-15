@@ -149,20 +149,23 @@ export function StructuredInfo({ content }: { content: ArchiveContent }) {
 
   return (
     <aside className="structured-info">
-      <header className="structured-info-header">
-        <h2>한눈에 보기</h2>
-      </header>
-      <dl className="structured-info-grid">
-        {rows.map((row) => (
-          <div className="structured-info-row" key={row.label}>
-            <RowIcon row={row} />
-            <div className="structured-info-copy">
-              <dt>{row.label}</dt>
-              <dd>{formatValue(row.value)}</dd>
+      <details className="structured-info-details" open>
+        <summary className="structured-info-header">
+          <h2>한눈에 보기</h2>
+          <span className="structured-info-toggle" aria-hidden="true" />
+        </summary>
+        <dl className="structured-info-grid">
+          {rows.map((row) => (
+            <div className="structured-info-row" key={row.label}>
+              <RowIcon row={row} />
+              <div className="structured-info-copy">
+                <dt>{row.label}</dt>
+                <dd>{formatValue(row.value)}</dd>
+              </div>
             </div>
-          </div>
-        ))}
-      </dl>
+          ))}
+        </dl>
+      </details>
     </aside>
   );
 }

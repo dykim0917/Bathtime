@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import { CheckCircle, Heart, WarningCircle } from '@phosphor-icons/react';
+import { trackWebEvent } from '@web/lib/analytics';
 import {
   type ContentFeedbackReason,
   type ContentFeedbackType,
@@ -75,6 +76,11 @@ export function ContentFeedback({ contentId }: { contentId: string }) {
       setStoredFeedback(contentId, type);
       setSelectedType(type);
       setReasonOpen(false);
+      trackWebEvent('content_feedback_submitted', {
+        content_id: contentId,
+        feedback_type: type,
+        reason,
+      });
     } catch (submitError) {
       console.error('Failed to submit content feedback', submitError);
       setError('의견 저장에 실패했어요. 잠시 후 다시 시도해주세요.');
@@ -92,6 +98,7 @@ export function ContentFeedback({ contentId }: { contentId: string }) {
       clearStoredFeedback(contentId);
       setSelectedType(null);
       setReasonOpen(false);
+      trackWebEvent('content_feedback_removed', { content_id: contentId });
     } catch (removeError) {
       console.error('Failed to remove content feedback', removeError);
       setError('의견 취소에 실패했어요. 잠시 후 다시 시도해주세요.');

@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import { BATHTIME_PLAY_STORE_URL, buildBathtimeAndroidIntent, buildBathtimeDeepLink } from '@web/lib/appLinks';
+import { trackWebEvent } from '@web/lib/analytics';
 
 type Props = {
   from?: string;
@@ -38,10 +39,20 @@ export function AppHandoffPanel({ from, routine }: Props) {
         </p>
       </div>
       <div className="app-handoff-actions">
-        <a className="button-primary" href={isAndroid ? androidIntentUrl : deepLinkUrl}>
+        <a
+          className="button-primary"
+          href={isAndroid ? androidIntentUrl : deepLinkUrl}
+          onClick={() => trackWebEvent('app_cta_clicked', { source: from, routine_id: routine })}
+        >
           앱 열기
         </a>
-        <a className="button-secondary" href={BATHTIME_PLAY_STORE_URL} target="_blank" rel="noreferrer">
+        <a
+          className="button-secondary"
+          href={BATHTIME_PLAY_STORE_URL}
+          target="_blank"
+          rel="noreferrer"
+          onClick={() => trackWebEvent('app_store_clicked', { source: from, routine_id: routine })}
+        >
           Play Store에서 보기
         </a>
       </div>

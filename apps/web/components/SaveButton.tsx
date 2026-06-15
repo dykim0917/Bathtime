@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { getSupabaseClient } from '@web/lib/auth';
+import { trackWebEvent } from '@web/lib/analytics';
 import { AuthRequiredError, isContentSaved, redirectToLogin, toggleSavedContent } from '@web/lib/userContent';
 
 export function SaveButton({
@@ -58,6 +59,7 @@ export function SaveButton({
         try {
           const nextSaved = await toggleSavedContent(contentId);
           setSaved(nextSaved);
+          trackWebEvent(nextSaved ? 'content_saved' : 'content_unsaved', { content_id: contentId });
           window.dispatchEvent(new CustomEvent('bathtime:saved-content-changed'));
         } catch (error) {
           if (error instanceof AuthRequiredError) {

@@ -2390,14 +2390,42 @@ p {
   overflow: hidden;
 }
 
+.structured-info-details {
+  display: grid;
+}
+
 .structured-info-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
   border-bottom: 1px solid var(--hairline);
   padding: 20px 24px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.structured-info-header::-webkit-details-marker {
+  display: none;
 }
 
 .structured-info h2 {
   font-size: 17px;
   font-weight: 800;
+}
+
+.structured-info-toggle {
+  width: 9px;
+  height: 9px;
+  border-right: 1.8px solid currentColor;
+  border-bottom: 1.8px solid currentColor;
+  color: var(--primary-active);
+  transform: rotate(45deg) translateY(-2px);
+  transition: transform 160ms ease;
+}
+
+.structured-info-details[open] .structured-info-toggle {
+  transform: rotate(225deg) translate(-2px, -1px);
 }
 
 .structured-info-grid {
@@ -2497,7 +2525,15 @@ p {
   }
 
   .main {
+    padding: 0 0 98px;
+  }
+
+  .main:has(> .page-stack:not(.home-stack)) {
     padding: 18px 16px 98px;
+  }
+
+  html[data-bathtime-surface='app'] .main {
+    padding-bottom: 28px;
   }
 
   .page-stack {
@@ -2575,6 +2611,14 @@ p {
   .auth-layout {
     gap: 18px;
     padding: 28px 0 0;
+  }
+
+  .content-layout {
+    padding: 28px 18px 0;
+  }
+
+  .structured-info {
+    order: -1;
   }
 
   .auth-box,
@@ -2669,11 +2713,6 @@ p {
 
   .category-illustration img {
     height: 86px;
-  }
-
-  .content-detail > .archive-visual,
-  .content-hero-wrap {
-    margin-inline: -16px;
   }
 
   .content-detail > .archive-visual,
