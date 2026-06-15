@@ -18,7 +18,7 @@
     },
     "android": {
       "package": "com.bathtimestudio.bathtime",
-      "versionCode": 18,
+      "versionCode": 19,
       "googleServicesFile": "./app/google-services.json",
       "icon": "./assets/images/icon.png",
       "adaptiveIcon": {
