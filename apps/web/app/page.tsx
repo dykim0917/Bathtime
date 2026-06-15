@@ -92,18 +92,25 @@ export default async function HomePage() {
   return (
     <div className="page-stack home-stack">
       <section className="home-hero">
-        <img
+        <video
           className="home-hero-image"
-          src="/images/about/bathtime-about-hero.jpg"
-          alt="사우나와 홈케어의 분위기를 함께 보여주는 바스타임 소개 이미지"
-          width={1280}
-          height={702}
-          loading="eager"
-          fetchPriority="high"
-        />
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster="/images/about/bathtime-about-hero.jpg"
+          aria-hidden="true"
+        >
+          <source src="/videos/home/bathtime-home-hero-loop.webm" type="video/webm" />
+          <source src="/videos/home/bathtime-home-hero-loop.mp4" type="video/mp4" />
+        </video>
         <header className="page-header home-hero-copy">
           <p className="kicker">BATH TIME ARCHIVE</p>
-          <h1>씻는 시간을 더 잘 쓰고 싶은 사람을 위한 아카이브입니다.</h1>
+          <h1>
+            <span>씻는 시간을 더 잘 쓰고 싶은 사람을 위한</span>
+            <span>아카이브입니다</span>
+          </h1>
           <p>
             사우나부터 홈케어까지, 오늘의 몸과 공간에 맞는 바스타임을 찾고 저장해요.
           </p>

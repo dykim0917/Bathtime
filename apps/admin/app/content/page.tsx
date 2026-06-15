@@ -4,6 +4,7 @@ import {
   categoryLabels,
   contentStatusLabels,
   contentTypeLabels,
+  readAdminContentFeedbackSummaries,
   readAdminArchiveContents,
 } from '../../lib/archive/data';
 import { updateArchiveContentStatusFromList } from '../../lib/archive/contentActions';
@@ -42,6 +43,7 @@ export default async function ContentPage({ searchParams }: ContentPageProps) {
     const matchesType = type === 'ALL' || content.contentType === type;
     return matchesCategory && matchesStatus && matchesType;
   });
+  const feedbackSummaries = await readAdminContentFeedbackSummaries(rows.map((content) => content.id));
   const statusMessage = getStatusMessage(error, updated);
 
   return (
@@ -95,6 +97,7 @@ export default async function ContentPage({ searchParams }: ContentPageProps) {
               <span>타입</span>
               <span>상태</span>
               <span>수정일</span>
+              <span>반응</span>
               <span>태그</span>
               <span>작업</span>
             </div>
@@ -122,6 +125,9 @@ export default async function ContentPage({ searchParams }: ContentPageProps) {
                   <button type="submit" className="srOnly">상태 저장</button>
                 </form>
                 <span>{content.updatedAt}</span>
+                <span className="feedbackSummaryText">
+                  도움 {feedbackSummaries[content.id]?.helpful ?? 0} · 아쉬움 {feedbackSummaries[content.id]?.needsImprovement ?? 0}
+                </span>
                 <span className="tagText" title={content.tags.join(', ')}>{content.tags.join(', ')}</span>
                 <div className="rowActions">
                   <Link className="textButton" href={`/content/${content.id}`}>상세</Link>

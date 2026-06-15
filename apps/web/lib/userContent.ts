@@ -12,6 +12,14 @@ export class AuthRequiredError extends Error {
 }
 
 type SubmissionInput = Omit<Submission, 'id' | 'status' | 'createdAt' | 'updatedAt' | 'userId'>;
+export type ContentFeedbackType = 'helpful' | 'needs_improvement';
+export type ContentFeedbackReason =
+  | 'missing_info'
+  | 'needs_images'
+  | 'conditions_unclear'
+  | 'needs_more_candidates'
+  | 'tone_unclear'
+  | 'other';
 
 type SubmissionRow = {
   id: string;
@@ -65,6 +73,19 @@ async function getAuthenticatedUser(options: { ensureProfile?: boolean } = {}): 
 
 function isUniqueViolation(error: { code?: string } | null): boolean {
   return error?.code === '23505';
+}
+
+function getOrCreateVisitorKey(): string {
+  const key = 'bathtime:visitor-key';
+  try {
+    const existing = window.localStorage.getItem(key);
+    if (existing) return existing;
+    const next = crypto.randomUUID();
+    window.localStorage.setItem(key, next);
+    return next;
+  } catch {
+    return crypto.randomUUID();
+  }
 }
 
 export async function getSavedContentIds(): Promise<string[]> {
@@ -195,6 +216,42 @@ export async function toggleSavedContent(id: string): Promise<boolean> {
 
   await saveContent(id);
   return true;
+}
+
+export async function saveContentFeedback(input: {
+  contentId: string;
+  type: ContentFeedbackType;
+  reason?: ContentFeedbackReason;
+}): Promise<void> {
+  const supabase = requireClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (user) {
+    await getAuthenticatedUser({ ensureProfile: true });
+  }
+
+  const { error } = await supabase.from('content_feedback').insert({
+    content_id: input.contentId,
+    user_id: user?.id ?? null,
+    visitor_key: getOrCreateVisitorKey(),
+    feedback_type: input.type,
+    reason: input.type === 'needs_improvement' ? input.reason ?? 'other' : null,
+  });
+
+  if (error) throw error;
+}
+
+export async function removeContentFeedback(contentId: string): Promise<void> {
+  const supabase = requireClient();
+  const { error } = await supabase
+    .from('content_feedback')
+    .delete()
+    .eq('content_id', contentId)
+    .eq('visitor_key', getOrCreateVisitorKey());
+
+  if (error) throw error;
 }
 
 function mapSubmissionRow(row: SubmissionRow): Submission {
