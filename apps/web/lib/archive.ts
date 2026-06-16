@@ -176,6 +176,92 @@ export function getRelatedRoutinePresets(content: ArchiveContent): RoutinePreset
   return routinePresets.filter((routine) => content.relatedRoutineIds?.includes(routine.id));
 }
 
+function getStructuredRelatedCategories(content: ArchiveContent): ContentCategory[] {
+  const info = content.structuredInfo;
+  if ('relatedCategories' in info && Array.isArray(info.relatedCategories)) {
+    return info.relatedCategories;
+  }
+  return [];
+}
+
+function scoreRelatedContent(current: ArchiveContent, candidate: ArchiveContent): number {
+  if (current.id === candidate.id) return -1;
+
+  const currentTags = new Set(current.tags);
+  const sharedTagCount = candidate.tags.filter((tag) => currentTags.has(tag)).length;
+  const relatedCategories = new Set(getStructuredRelatedCategories(current));
+  const candidateRelatedCategories = new Set(getStructuredRelatedCategories(candidate));
+  const hasLinkedRitual = (current.relatedRoutineIds?.length ?? 0) > 0;
+
+  let score = sharedTagCount * 3;
+  if (candidate.contentType === current.contentType) score += 1;
+  if (relatedCategories.has(candidate.category)) score += 4;
+  if (candidateRelatedCategories.has(current.category)) score += 2;
+
+  if (candidate.category === current.category) {
+    score += current.category === 'HOME_BATH' ? -3 : 1;
+  } else if (sharedTagCount > 0) {
+    score += 2;
+  }
+
+  if (current.category === 'HOME_BATH') {
+    if (candidate.category === 'BATH_ITEMS') score += 6;
+    if (candidate.category === 'TIPS_CULTURE') score += 4;
+    if (candidate.category === 'BATH_PLACES') score += 3;
+    if (candidate.category === 'HOME_BATH' && hasLinkedRitual) score -= 5;
+  }
+
+  return score;
+}
+
+function takeDiverseRelatedContents(
+  ranked: { content: ArchiveContent; score: number }[],
+  limit: number,
+  currentCategory: ContentCategory
+): ArchiveContent[] {
+  const selected: ArchiveContent[] = [];
+  const categoryCounts = new Map<ContentCategory, number>();
+
+  for (const item of ranked) {
+    if (selected.length >= limit) break;
+
+    const count = categoryCounts.get(item.content.category) ?? 0;
+    if (item.content.category === currentCategory && count >= 1) continue;
+    if (item.content.category !== currentCategory && count >= 2) continue;
+
+    selected.push(item.content);
+    categoryCounts.set(item.content.category, count + 1);
+  }
+
+  return selected;
+}
+
+export function getRelatedArchiveContents(
+  current: ArchiveContent,
+  contents: ArchiveContent[],
+  limit = 3
+): ArchiveContent[] {
+  const candidates = contents.filter((content) => content.id !== current.id);
+  const ranked = candidates
+    .map((content) => ({ content, score: scoreRelatedContent(current, content) }))
+    .filter(({ score }) => score > 0)
+    .sort((a, b) => b.score - a.score || b.content.updatedAt.localeCompare(a.content.updatedAt) || a.content.id.localeCompare(b.content.id));
+
+  const selected = takeDiverseRelatedContents(ranked, limit, current.category);
+  if (selected.length >= limit) return selected;
+
+  const selectedIds = new Set(selected.map((content) => content.id));
+  const fallback = sortByUpdatedAt(candidates)
+    .filter((content) => !selectedIds.has(content.id))
+    .map((content) => ({ content, score: 0 }));
+
+  return takeDiverseRelatedContents(
+    [...selected.map((content) => ({ content, score: 1 })), ...fallback],
+    limit,
+    current.category
+  );
+}
+
 export function getPublishedRoutinePresets(limit?: number): RoutinePreset[] {
   const published = routinePresets.filter((routine) => routine.isPublished);
   return typeof limit === 'number' ? published.slice(0, limit) : published;

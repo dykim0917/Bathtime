@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import {
   Bathtub,
@@ -149,7 +150,15 @@ export function ExploreFilters({
         })}
       </section>
 
-      {query ? <p className="result-note">검색어: {query}</p> : null}
+      {query ? (
+        <div className="search-active-note">
+          <p>
+            <span>검색어</span>
+            <strong>{query}</strong>
+          </p>
+          <Link href="/explore">전체 아카이브 보기</Link>
+        </div>
+      ) : null}
       {selectedTags.length > 0 ? <p className="result-note">선택한 태그: {selectedTags.join(', ')}</p> : null}
 
       <div className="card-grid">

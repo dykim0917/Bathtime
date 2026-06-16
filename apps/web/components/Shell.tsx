@@ -1,9 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { BookmarkSimple, Compass, House, List, MagnifyingGlass, PlusSquare, UserCircle, X } from '@phosphor-icons/react';
-import { useEffect, useMemo, useState, type MouseEvent } from 'react';
+import { Suspense, useEffect, useMemo, useState, type MouseEvent } from 'react';
 import brandSymbol from '@/assets/images/bathtime.svg';
 import logoImage from '@/assets/images/logo.png';
 import { getSupabaseClient } from '@web/lib/auth';
@@ -92,11 +92,56 @@ function AccountButton({ signedIn, ready, onSignedOut }: { signedIn: boolean; re
   );
 }
 
+function TopSearch() {
+  const pathname = usePathname();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const searchKey = searchParams.toString();
+  const [query, setQuery] = useState('');
+
+  useEffect(() => {
+    setQuery(searchParams.get('query') ?? '');
+  }, [searchKey, searchParams]);
+
+  return (
+    <form
+      className="top-search"
+      action="/explore"
+      onSubmit={(event) => {
+        event.preventDefault();
+        const value = query.trim();
+        router.push(value ? `/explore?query=${encodeURIComponent(value)}` : '/explore');
+      }}
+    >
+      <Icon name="search" size={17} />
+      <input
+        name="query"
+        value={query}
+        onChange={(event) => setQuery(event.target.value)}
+        placeholder="의식, 재료 또는 장소를 입력해주세요..."
+        aria-label="아카이브 검색어"
+      />
+      {query ? (
+        <button
+          className="top-search-clear"
+          type="button"
+          aria-label="검색어 지우기"
+          onClick={() => {
+            setQuery('');
+            if (pathname === '/explore') router.push('/explore');
+          }}
+        >
+          <X size={14} weight="bold" aria-hidden />
+        </button>
+      ) : null}
+    </form>
+  );
+}
+
 export function Shell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
   const [collapsed, setCollapsed] = useState(false);
-  const [query, setQuery] = useState('');
   const [signedIn, setSignedIn] = useState(false);
   const [authReady, setAuthReady] = useState(false);
   const [authGate, setAuthGate] = useState<{ source: string; next: string; message: string } | null>(null);
@@ -243,23 +288,9 @@ export function Shell({ children }: { children: React.ReactNode }) {
       </aside>
       <div className="content-area">
         <header className="top-bar">
-          <form
-            className="top-search"
-            action="/explore"
-            onSubmit={(event) => {
-              event.preventDefault();
-              const value = query.trim();
-              router.push(value ? `/explore?query=${encodeURIComponent(value)}` : '/explore');
-            }}
-          >
-            <Icon name="search" size={17} />
-            <input
-              name="query"
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-              placeholder="의식, 재료 또는 장소를 입력해주세요..."
-            />
-          </form>
+          <Suspense fallback={<div className="top-search" aria-hidden="true" />}>
+            <TopSearch />
+          </Suspense>
           <AccountButton signedIn={signedIn} ready={authReady} onSignedOut={() => setSignedIn(false)} />
         </header>
         <main className={pathname.startsWith('/content/') ? 'main content-route-main' : 'main'}>{children}</main>

@@ -1,5 +1,6 @@
 import type { RoutinePreset } from '@/src/archive/types';
 import { ROUTINE_ENVIRONMENT_LABELS } from '@web/lib/labels';
+import { RoutineAppLink } from './RoutineAppLink';
 
 export function RoutineCard({
   routine,
@@ -21,11 +22,7 @@ export function RoutineCard({
         <ol>
           {routine.steps.map((step) => <li key={step}>{step}</li>)}
         </ol>
-        {showCta ? (
-          <a className="button-primary routine-card-cta" href={`/app?from=related_routine&routine=${encodeURIComponent(routine.id)}`}>
-            앱에서 타이머로 이어가기
-          </a>
-        ) : null}
+        {showCta ? <RoutineAppLink routineId={routine.id} /> : null}
       </div>
     </article>
   );
