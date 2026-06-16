@@ -2,7 +2,7 @@
 name: bathtime-item-note-seed-builder
 description: Convert Bathtime Item Note research outputs into database-ready seed artifacts. Use when the user provides or references item_archive_record.json, item_content_draft.md, item_sns_summary.md, item_research_sources.md, item_missing_fields.md, item_verification_checklist.md, or item_angle_brief.md and wants canonical seed JSON, app ArchiveContent seed files, Prisma seed code, SQL/Postgres/Supabase seed files, or CMS import JSON for Bathtime item note content.
 metadata:
-  short-description: 배스타임 아이템 노트 시드 빌더
+  short-description: 바스타임 아이템 노트 시드 빌더
 ---
 
 # Bathtime Item Note Seed Builder
@@ -226,7 +226,7 @@ Map:
 
 - `bathtime_thesis` -> subtitle, reader verdict, and first quote/callout
 - `reader_question` -> SEO/question framing and opening paragraph
-- `ritual_job` -> `structuredInfo.ritualFit` and body section `어떤 의식을 돕나요`
+- `ritual_job` -> `structuredInfo.ritualFit` and body section `어떤 의식을 돕는가`
 - `non_goals` -> quality guardrails and web package QA
 
 ### Practical burden mapping
@@ -269,6 +269,8 @@ If product examples are included:
 - include source and date
 - do not imply ranking
 - do not include affiliate links unless disclosure is available
+- if a purchase link is only commission-based, label it as `제휴` rather than standalone `광고`
+- reserve `광고` wording for separate paid ad placements, sponsorships, or legally required platform phrasing
 - include product image URLs when useful and available, with explicit rights status
 - do not download, rehost, crop, edit, or imply ownership of external product images unless rights are verified
 - keep unresolved public-publish image rights in publish blockers
@@ -323,12 +325,12 @@ then convert item-specific structures into those blocks.
 Suggested item body order:
 
 1. `한 줄 판단`
-2. `어떤 의식을 돕나요`
+2. `어떤 의식을 돕는가`
 3. `사기 전에 먼저 볼 것`
 4. `좋게 볼 수 있는 점`
 5. `아쉬운 점`
-6. `이런 사람에게 맞아요`
-7. `이런 사람에게는 애매해요`
+6. `이런 사람에게 맞는다`
+7. `이런 사람에게는 애매하다`
 8. `같이 쓰면 좋은 의식` (only when a concrete follow-up ritual exists)
 
 Do not add `저장해둘 이유` as a fixed section. The article should make its own usefulness clear through the body. If a save action is genuinely useful, express it as a natural CTA only when the route/action exists.
@@ -369,6 +371,8 @@ Keep the report operational, not a second article draft.
 
 Reader-facing Korean copy must keep one honorific/register level across section headings, body paragraphs, lists, product cards, CTAs, and captions.
 
-Default for Bathtime Item Notes is warm `해요체`, because standard headings such as `이런 사람에게 맞아요` and `이런 사람에게는 애매해요` already use that register.
+Default for Bathtime Item Notes is calm observer-style `한다체`, matching the broader Bathtime content voice.
 
-Do not mix `~해요` headings with `~합니다` body copy. Either write the whole public draft in warm `해요체`, or intentionally convert headings and body to formal `합니다체`.
+Avoid headings such as `이런 사람에게 맞아요` and `이런 사람에게는 애매해요`; use `이런 사람에게 맞는다`, `이런 사람에게는 애매하다`, or shorter noun-phrase headings.
+
+Do not convert item notes to warm `해요체` during seed building unless the user explicitly asks for it.

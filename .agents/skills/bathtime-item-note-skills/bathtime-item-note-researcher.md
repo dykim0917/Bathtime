@@ -2,7 +2,7 @@
 name: bathtime-item-note-researcher
 description: Research bath-related item categories or products using an Item Angle Brief, then convert them into Bathtime structured item archive records, research notes, content drafts, source notes, and verification checklists. Use when the user wants to research, compare, verify, or write about bath items as ritual-support tools rather than generic product reviews.
 metadata:
-  short-description: 배스타임 아이템 노트 리서처
+  short-description: 바스타임 아이템 노트 리서처
 ---
 
 # Bathtime Item Note Researcher
@@ -605,7 +605,7 @@ Create a checklist for the operator:
 - confirm current price range
 - confirm product image usage rights
 - confirm safety notes
-- confirm affiliate/ad disclosure need
+- confirm affiliate or sponsorship disclosure need
 - confirm whether firsthand use is required before publishing
 - confirm whether example products should remain examples or be removed
 - decide publish, hold, or reject

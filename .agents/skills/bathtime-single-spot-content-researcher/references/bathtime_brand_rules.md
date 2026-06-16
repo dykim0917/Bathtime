@@ -38,11 +38,11 @@ The goal of Bathtime content is to help people discover, verify, save, and try b
 
 ### One-line definition
 
-배스타임은 씻는 시간을 의식으로 만드는 바스타임 아카이브입니다.
+바스타임은 씻는 시간을 의식으로 만드는 바스타임 아카이브입니다.
 
 ### Expanded definition
 
-배스타임은 샤워, 족욕, 입욕, 사우나, 스파, 홈스파 경험을 더 좋은 의식으로 만들기 위해 장소, 방법, 도구, 루틴을 기록하고 제안하는 아카이브 서비스입니다.
+바스타임은 샤워, 족욕, 입욕, 사우나, 스파, 홈스파 경험을 더 좋은 의식으로 만들기 위해 장소, 방법, 도구, 루틴을 기록하고 제안하는 아카이브 서비스입니다.
 
 ### Service definition
 
@@ -557,7 +557,7 @@ Use different wording based on source confidence.
 
 #### Inference
 
-- 배스타임 기준으로 보면
+- 바스타임 기준으로 보면
 - 혼자 이용하기에는 이렇게 판단됩니다
 - 조용히 쉬는 목적이라면
 - 정보만 놓고 보면
@@ -566,11 +566,11 @@ Use different wording based on source confidence.
 
 ## 12. Spot Content Rules
 
-Spot content must always prioritize practical decision-making.
+Single spot content must always prioritize practical decision-making.
 
 ### 12.1 Required spot information
 
-Every spot content should try to include:
+Every single spot content page should try to include:
 
 - 외부인 이용 가능 여부
 - 투숙객/회원 전용 여부
@@ -629,13 +629,13 @@ Evaluate every spot through these questions:
 - 조용히 쉬기 좋은가?
 - 시설이 바스타임 경험의 중심인가?
 - 방문 전 꼭 확인해야 할 정보는 무엇인가?
-- 배스타임 아카이브에 남길 가치가 있는가?
+- 바스타임 아카이브에 남길 가치가 있는가?
 
 ---
 
 ## 13. Product and Item Mention Rules
 
-Even in spot content, products or amenities may appear.
+Even in single spot content, products or amenities may appear.
 
 Do not treat products as shopping-first recommendations.
 
@@ -1003,5 +1003,5 @@ When in doubt, follow these rules:
 6. 광고처럼 추천하지 않는다.
 7. 좋은 점과 아쉬운 점을 함께 쓴다.
 8. 같은 포맷으로 반복해 신뢰를 만든다.
-9. 콘텐츠 원본은 배스타임 아카이브에 쌓는다는 전제로 쓴다.
+9. 콘텐츠 원본은 바스타임 아카이브에 쌓는다는 전제로 쓴다.
 10. 사용자가 저장하거나 방문 전 확인할 수 있게 만든다.

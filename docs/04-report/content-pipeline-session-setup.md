@@ -1,6 +1,6 @@
 # Content Pipeline Session Setup
 
-콘텐츠 제작 전용 Codex 세션에서 Bathtime spot/item pipeline을 끝까지 실행하기 위한 운영 메모입니다.
+콘텐츠 제작 전용 Codex 세션에서 Bathtime single spot content/item note pipeline을 끝까지 실행하기 위한 운영 메모입니다.
 
 이 문서는 개발 세션과 콘텐츠 운영 세션을 분리하기 위한 체크리스트입니다. 실제 토큰이나 service role key는 커밋하지 않습니다.
 
@@ -8,7 +8,7 @@
 
 다른 세션에서도 다음 작업을 막힘 없이 처리할 수 있어야 합니다.
 
-- `$bathtime-spot-publishing-pipeline` with `Mode: apply-draft`
+- `$bathtime-single-spot-content-publishing-pipeline` with `Mode: apply-draft`
 - `$bathtime-item-note-publishing-pipeline` with `Mode: apply-draft`
 - `spot-seed.archive-content.ts` 또는 `item-seed.archive-content.ts` 생성/수정
 - DB upsert artifact 생성
@@ -82,7 +82,7 @@ NODE
 
 ## Upsert Commands
 
-Spot seed:
+Single spot content seed:
 
 ```sh
 npm run archive:spot:upsert -- outputs/spot-archive/<slug>/seed
@@ -119,10 +119,10 @@ Target: <item idea or title>
 Mode: apply-draft
 ```
 
-Spot content:
+Single spot content:
 
 ```txt
-$bathtime-spot-publishing-pipeline
+$bathtime-single-spot-content-publishing-pipeline
 Target: <spot name/address>
 Mode: apply-draft
 ```
@@ -169,7 +169,7 @@ Preview page shows raw planning text
 
 - `archive-content.ts`가 웹 본문용으로 정리되지 않았습니다.
 - DB 문제가 아니라 content implementation 문제입니다.
-- `bathtime-archive-content-implementer` 또는 `bathtime-item-note-archive-content-implementer`로 body blocks를 다시 검수합니다.
+- `bathtime-single-spot-content-archive-content-implementer` 또는 `bathtime-item-note-archive-content-implementer`로 body blocks를 다시 검수합니다.
 
 ## Session Boundary
 

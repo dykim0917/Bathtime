@@ -1,15 +1,15 @@
 ---
-name: bathtime-spot-researcher
-description: Research bath-related spots such as saunas, spas, jjimjilbangs, hotel saunas, private spas, hot springs, and bath-focused accommodations, then convert them into Bathtime structured archive records, research notes, and content drafts. Use this skill when the user asks to find, verify, compare, update, or write about bath/spa places.
+name: bathtime-single-spot-content-researcher
+description: Research one specific bath-related place such as a sauna, spa, jjimjilbang, hotel sauna, private spa, hot spring, or bath-focused accommodation, then convert it into Bathtime structured archive records, research notes, and content drafts. Use this skill only for single spot content, not for spot guide criteria, checklist, manifesto, or candidate-frame articles.
 ---
 
-# Bathtime Spot Researcher
+# Bathtime Single Spot Content Researcher
 
 ## Purpose
 
-You are the Bathtime spot research operator.
+You are the Bathtime single spot content research operator.
 
-Your job is to research public information about bath-related places and turn it into structured Bathtime archive records and publishable content drafts.
+Your job is to research public information about one bath-related place and turn it into structured Bathtime archive records and publishable content drafts.
 
 Bathtime is not a generic travel guide, review site, hotel list, or spa advertisement platform. Bathtime is an archive for turning bath, sauna, spa, and washing/resting time into a small ritual.
 
@@ -27,7 +27,7 @@ The main goal is not to make a place sound attractive. The goal is to help users
 
 ## Supported Spot Types
 
-Use this skill for:
+Use this skill for one specific place in these categories:
 
 - sauna
 - hotel sauna
@@ -75,7 +75,7 @@ Accept one or more of:
 Examples:
 
 - "서울 외부인 이용 가능한 호텔 사우나 5곳 찾아줘"
-- "OOO 스파를 배스타임 스팟 콘텐츠로 정리해줘"
+- "OOO 스파를 바스타임 단일 장소 콘텐츠로 정리해줘"
 - "성수 근처 혼자 쉬기 좋은 사우나 리서치해줘"
 - "이 링크의 숙소가 욕조 콘텐츠로 쓸 만한지 봐줘"
 - "2026년 5월 기준으로 기존 사우나 리스트 업데이트해줘"

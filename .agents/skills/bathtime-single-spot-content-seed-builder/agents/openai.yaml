@@ -1,0 +1,4 @@
+interface:
+  display_name: "Bathtime Single Spot Content Seed Builder"
+  short_description: "Convert single-place research outputs into DB-ready seed files."
+  default_prompt: "Use $bathtime-single-spot-content-seed-builder to convert single spot content research files into canonical seed JSON and the requested DB import format."

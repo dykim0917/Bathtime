@@ -1,13 +1,13 @@
 ---
-name: bathtime-spot-seed-builder
-description: Convert Bathtime spot research outputs into database-ready seed artifacts. Use when the user provides or references bathtime-spot-researcher files such as archive_record.json, content_draft.md, sns_summary.md, research_sources.md, missing_fields.md, or verification_checklist.md and wants canonical seed JSON, Prisma seed code, SQL/Postgres/Supabase seed files, or CMS import JSON for bath/spa/sauna place content.
+name: bathtime-single-spot-content-seed-builder
+description: Convert Bathtime single spot content research outputs into database-ready seed artifacts. Use when the user provides or references bathtime-single-spot-content-researcher files such as archive_record.json, content_draft.md, sns_summary.md, research_sources.md, missing_fields.md, or verification_checklist.md and wants canonical seed JSON, Prisma seed code, SQL/Postgres/Supabase seed files, or CMS import JSON for one bath/spa/sauna place.
 ---
 
-# Bathtime Spot Seed Builder
+# Bathtime Single Spot Content Seed Builder
 
 ## Purpose
 
-Turn `bathtime-spot-researcher` outputs into insertion-ready seed artifacts without inventing facts or hiding uncertainty.
+Turn `bathtime-single-spot-content-researcher` outputs into insertion-ready seed artifacts without inventing facts or hiding uncertainty.
 
 The pipeline is:
 

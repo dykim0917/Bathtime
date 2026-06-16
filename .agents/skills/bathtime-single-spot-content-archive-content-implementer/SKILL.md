@@ -1,24 +1,26 @@
 ---
-name: bathtime-archive-content-implementer
-description: Implement Bathtime web content packages into ArchiveContent seed files and DB draft rows. Use when the user wants spot-seed.web-content.md or spot-seed.canonical.json turned into spot-seed.archive-content.ts, wants archive content upserted to Supabase/PostgREST, asks why draft content is showing internal memo text, or asks to verify Bathtime archive preview pages for bad headings, raw enum labels, image slots, structuredInfo readability, and draft/publish status.
+name: bathtime-single-spot-content-archive-content-implementer
+description: Implement Bathtime single spot content web packages into ArchiveContent seed files and DB draft rows. Use when the user wants spot-seed.web-content.md or spot-seed.canonical.json turned into spot-seed.archive-content.ts, wants archive content upserted to Supabase/PostgREST, asks why draft content is showing internal memo text, or asks to verify Bathtime archive preview pages for bad headings, raw enum labels, image slots, structuredInfo readability, and draft/publish status.
 metadata:
-  short-description: 배스타임 ArchiveContent 구현·DB 반영·미리보기 검증
+  short-description: 바스타임 단일 장소 ArchiveContent 구현·DB 반영
 ---
 
-# Bathtime Archive Content Implementer
+# Bathtime Single Spot Content ArchiveContent Implementer
 
-This skill is the final implementation step between `bathtime-web-content-producer` and the live Bathtime archive database.
+This skill is the final implementation step between `bathtime-single-spot-content-web-content-producer` and the live Bathtime archive database.
 
-Use it to convert a reviewed web content package into the actual `ArchiveContent` object that the app and DB use.
+Use it to convert a reviewed single spot content web package into the actual `ArchiveContent` object that the app and DB use.
 
 ## Position In The Pipeline
 
-1. `bathtime-spot-researcher`: researches the place and writes research artifacts.
-2. `bathtime-spot-seed-builder`: converts research artifacts into canonical seed files.
-3. `bathtime-web-content-producer`: writes the editorial web content package and image plan.
-4. `bathtime-archive-content-implementer`: updates `spot-seed.archive-content.ts`, generates DB upsert artifacts, optionally applies the upsert, and verifies preview output.
+1. `bathtime-single-spot-content-researcher`: researches the place and writes research artifacts.
+2. `bathtime-single-spot-content-seed-builder`: converts research artifacts into canonical seed files.
+3. `bathtime-single-spot-content-web-content-producer`: writes the editorial web content package and image plan.
+4. `humanize-korean`: removes AI-like Korean patterns without changing facts.
+5. Final Observer Essay Tone Pass: aligns reader-facing body copy to Bathtime's calm `한다체`.
+6. `bathtime-single-spot-content-archive-content-implementer`: updates `spot-seed.archive-content.ts`, generates DB upsert artifacts, optionally applies the upsert, and verifies preview output.
 
-Do not reuse facts, image plans, or assumptions from previous spots. Treat each seed directory as a fresh spot.
+Do not reuse facts, image plans, or assumptions from previous single spot content. Treat each seed directory as a fresh place.
 
 ## Inputs
 
@@ -29,7 +31,7 @@ Prefer a seed directory containing:
 - `spot-seed.archive-content.ts`
 - `spot-seed.mapping.md`
 
-If `spot-seed.web-content.md` is missing, either ask the user to run `bathtime-web-content-producer` first or make a clearly scoped implementation draft from the canonical JSON only.
+If `spot-seed.web-content.md` is missing, either ask the user to run `bathtime-single-spot-content-web-content-producer` first or make a clearly scoped implementation draft from the canonical JSON only.
 
 ## Required Repo Context
 
@@ -68,16 +70,19 @@ For this repo, `ContentBodyBlock` supports:
    - Preserve the repo's `ArchiveContent` shape.
    - Use Korean reader-facing body headings in this order:
      1. `한 줄 판단`
-     2. `어떤 곳인가요`
-     3. `이런 날에 잘 맞아요`
+     2. `어떤 곳인가`
+     3. `이런 날에 맞는다`
      4. `좋게 볼 수 있는 점`
      5. `아쉬운 점`
      6. `가기 전에 확인할 것`
      7. `저장해둘 이유` or `문의 전 메모`
    - `한 줄 판단` must render as exactly one short sentence in one paragraph, ideally 35-55 Korean characters. Move any extra explanation into the next section.
+   - Keep reader-facing Korean in calm `한다체` across headings, body paragraphs, lists, CTAs, and captions.
+   - Do not convert single spot content to warm `해요체` during implementation unless the user explicitly asks for it.
+   - Before DB apply, search final body copy for unintended casual endings such as `해요`, `돼요`, `예요`, `이에요`. Literal phone questions, actual button labels, or quoted user-copyable lines may remain as recorded exceptions.
    - Insert at least two inline image blocks when supported:
      - first after the verdict or first practical paragraph;
-     - second after `이런 날에 잘 맞아요` or before `가기 전에 확인할 것`.
+     - second after `이런 날에 맞는다` or before `가기 전에 확인할 것`.
    - Use `image-slot:{spot-slug}-atmosphere` and `image-slot:{spot-slug}-context` unless the existing web package specifies better slot IDs.
    - Keep image captions as sourcing briefs for staff: desired subject, acceptable source, rights requirement, and forbidden sources.
 

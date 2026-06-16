@@ -1,0 +1,7 @@
+interface:
+  display_name: "Bathtime Single Spot Content Web Content Producer"
+  short_description: "단일 장소 시드를 웹 게시용 원고와 이미지 배치 브리프로 정리"
+  default_prompt: "Use $bathtime-single-spot-content-web-content-producer to turn these single spot content seed files into a publish-ready Bathtime web archive content package."
+
+policy:
+  allow_implicit_invocation: true

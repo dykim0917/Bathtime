@@ -2,7 +2,7 @@
 name: bathtime-item-note-skills
 description: Entry point for Bathtime Item Note skills. Use when the user references the bathtime-item-note-skills folder or asks which Item Note skill to use. Route work to the appropriate dedicated skill: ideator, researcher, product-researcher, seed-builder, web-content-producer, archive-content-implementer, or publishing-pipeline.
 metadata:
-  short-description: 배스타임 아이템 노트 스킬 묶음 진입점
+  short-description: 바스타임 아이템 노트 스킬 묶음 진입점
 ---
 
 # Bathtime Item Note Skills

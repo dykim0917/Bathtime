@@ -61,8 +61,8 @@ For `criteria`, recommended headings:
 - `한 줄 판단`
 - `먼저 확인할 것`
 - `사진만으로 알기 어려운 것`
-- `이런 사람에게 맞아요`
-- `이런 사람에게는 애매해요`
+- `이런 사람에게 맞는다`
+- `이런 사람에게는 애매하다`
 - `예약 전 체크리스트`
 - `마지막으로 확인할 것`
 
@@ -72,7 +72,7 @@ For `candidate-frame`, recommended headings:
 - `후보를 보는 기준`
 - `확인해볼 만한 후보`
 - `아직 확인이 필요한 것`
-- `이런 사람에게 맞아요`
+- `이런 사람에게 맞는다`
 - `가기 전 체크리스트`
 - `제보와 업데이트`
 
@@ -144,11 +144,13 @@ Use:
 
 Reader-facing Korean copy must keep one honorific/register level across section headings, body paragraphs, lists, candidate cards, CTAs, and captions.
 
-Default for spot guides is warm `해요체` when the page uses headings such as `이런 사람에게 맞아요` or `이런 사람에게는 애매해요`.
+Default for spot guides is calm observer-style `한다체`, matching the broader Bathtime content voice.
 
-Do not mix `~해요` headings with `~합니다` body copy. If using `해요체`, rewrite endings such as `확인합니다`, `필요합니다`, `됩니다`, `좋습니다` to matching endings such as `확인해요`, `필요해요`, `돼요`, `좋아요`.
+Avoid headings such as `이런 사람에게 맞아요` and `이런 사람에게는 애매해요`; use `이런 사람에게 맞는다`, `이런 사람에게는 애매하다`, or shorter noun-phrase headings.
 
-If a spot guide intentionally uses formal `합니다체`, then headings must also avoid casual `~해요` endings. Pick one register and record it in the Quality Gate.
+Do not convert spot guides to warm `해요체` during UX polish or humanization unless the user explicitly asks for it.
+
+Quality Gate must check for unintended casual endings such as `해요`, `돼요`, `예요`, `이에요`, and record any exception such as literal phone questions.
 
 ## Quality Gate
 

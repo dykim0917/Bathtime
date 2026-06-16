@@ -1,0 +1,7 @@
+interface:
+  display_name: "Bathtime Single Spot Content ArchiveContent Implementer"
+  short_description: "단일 장소 웹 패키지를 ArchiveContent와 DB draft로 반영"
+  default_prompt: "Use $bathtime-single-spot-content-archive-content-implementer to update spot-seed.archive-content.ts from this seed directory, generate archive DB upsert artifacts, apply as draft if requested, and verify the preview output."
+
+policy:
+  allow_implicit_invocation: true

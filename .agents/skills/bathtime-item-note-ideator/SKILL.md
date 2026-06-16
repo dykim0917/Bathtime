@@ -2,7 +2,7 @@
 name: bathtime-item-note-ideator
 description: Create the editorial angle for Bathtime Item Note content before research begins. Use when the user wants to turn a bath-related item, product category, product link, or vague item idea into a Bathtime-style content concept that is not a generic review, ranking, shopping guide, or ad.
 metadata:
-  short-description: 배스타임 아이템 노트 아이디어/각도 설계
+  short-description: 바스타임 아이템 노트 아이디어/각도 설계
 ---
 
 # Bathtime Item Note Ideator
@@ -116,7 +116,7 @@ Examples:
 
 - "족욕기랑 족욕볼 콘텐츠로 만들고 싶어"
 - "반신욕조가 필요한 사람과 아닌 사람을 아이템 노트로 잡아줘"
-- "욕실 조명을 제품 리뷰 말고 배스타임스럽게 풀어줘"
+- "욕실 조명을 제품 리뷰 말고 바스타임스럽게 풀어줘"
 - "이 샤워필터 링크를 콘텐츠화할 수 있을까?"
 - "수건 하나로 바스타임 만족감이 달라진다는 글의 각도를 잡아줘"
 
@@ -321,12 +321,12 @@ Research should support:
 Define expected page sections:
 
 1. 한 줄 판단
-2. 어떤 의식을 돕나요
+2. 어떤 의식을 돕는가
 3. 사기 전에 먼저 볼 것
 4. 좋게 볼 수 있는 점
 5. 아쉬운 점
-6. 이런 사람에게 맞아요
-7. 이런 사람에게는 애매해요
+6. 이런 사람에게 맞는다
+7. 이런 사람에게는 애매하다
 8. 같이 쓰면 좋은 의식
 
 The `한 줄 판단` section must be one short sentence only, ideally 35-55 Korean characters. Put any explanation in the next section.

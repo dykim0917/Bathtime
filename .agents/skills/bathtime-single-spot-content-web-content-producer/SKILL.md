@@ -1,19 +1,19 @@
 ---
-name: bathtime-web-content-producer
-description: Use this skill when turning Bathtime spot seed artifacts into publish-ready web archive content. Trigger when the user references spot-seed.canonical.json, spot-seed.archive-content.ts, spot-seed.mapping.md, image placement, hero images, body content structure, SEO copy, publish blockers, or asks to prepare bath/spa/sauna place content for the actual Bathtime website.
+name: bathtime-single-spot-content-web-content-producer
+description: Use this skill when turning Bathtime single spot content seed artifacts into publish-ready web archive content. Trigger when the user references spot-seed.canonical.json, spot-seed.archive-content.ts, spot-seed.mapping.md, image placement, hero images, body content structure, SEO copy, publish blockers, or asks to prepare one bath/spa/sauna place for the actual Bathtime website.
 metadata:
-  short-description: 배스타임 웹 아카이브 콘텐츠 제작
+  short-description: 바스타임 단일 장소 웹 아카이브 콘텐츠 제작
 ---
 
-# Bathtime Web Content Producer
+# Bathtime Single Spot Content Web Content Producer
 
 Strict v2 update: this version enforces web-page output shape, image placement, structuredInfo readability, spot-boundary decisions, and Codex session hygiene.
 
 ## Purpose
 
-Turn seed artifacts into a web-ready content package for Bathtime archive pages without inventing facts or erasing uncertainty.
+Turn single spot content seed artifacts into a web-ready content package for Bathtime archive pages without inventing facts or erasing uncertainty.
 
-This skill starts after `bathtime-spot-seed-builder` has produced files such as:
+This skill starts after `bathtime-single-spot-content-seed-builder` has produced files such as:
 
 - `spot-seed.canonical.json`
 - `spot-seed.archive-content.ts`
@@ -101,8 +101,8 @@ Do not use raw analysis headings as final page sections:
 These may appear only in a private scratchpad. The user-facing page package must use Korean, reader-facing headings such as:
 
 - `한 줄 판단`
-- `어떤 곳인가요`
-- `이런 날에 잘 맞아요`
+- `어떤 곳인가`
+- `이런 날에 맞는다`
 - `좋게 볼 수 있는 점`
 - `아쉬운 점`
 - `가기 전에 확인할 것`
@@ -145,7 +145,6 @@ Examples:
 
 - `그랜드 워커힐 서울 사우나`
 - `비스타 워커힐 서울 웰니스 클럽`
-- `워커힐 서울 사우나 후보 비교`
 
 If Grand and Vista have different floors, prices, access rules, or membership policies, do not publish a single page titled `워커힐 서울 사우나` as though the policy is unified.
 
@@ -154,8 +153,9 @@ If Grand and Vista have different floors, prices, access rules, or membership po
 A page can mention related facilities only when one of these is true:
 
 - the source confirms they share the same access and pricing policy;
-- the page is explicitly framed as a comparison or candidate note, not a single spot;
 - the ambiguous facility is moved to `Publish Blockers` instead of being treated as confirmed content.
+
+If the page needs to become a comparison, criteria article, or candidate note, stop and switch to `bathtime-spot-guide-publishing-pipeline`.
 
 ### Publish decision
 
@@ -171,6 +171,18 @@ and state the exact reason in `Publish Blockers`.
 ## Image Implementation Contract
 
 Images are not optional decoration. They are part of the archive reading experience.
+
+## Korean Register Consistency
+
+Reader-facing Korean copy must keep one register across headings, body paragraphs, lists, spot cards, CTAs, and captions.
+
+Default for all Bathtime single spot content is calm observer-style `한다체`, matching the broader Bathtime content voice.
+
+Do not convert single spot content to warm `해요체` during UX polish or humanization unless the user explicitly asks for it.
+
+Avoid headings such as `이런 날에 잘 맞아요`; use `이런 날에 맞는다`, `이런 사람에게는 애매하다`, or shorter noun-phrase headings.
+
+Before implementation or DB apply, search final body copy for unintended casual endings such as `해요`, `돼요`, `예요`, `이에요`. Literal phone questions, actual button labels, or quoted user-copyable lines may remain as recorded exceptions.
 
 ### Hero image is required
 
@@ -189,7 +201,7 @@ If no verified image is available, use the category fallback and explain what ow
 Every researched spot package must include at least two planned inline image slots, even when the actual image is not ready.
 
 - Inline Image 1: appears after `한 줄 판단` or the first practical section. It should establish place/facility atmosphere.
-- Inline Image 2: appears after `이런 날에 잘 맞아요` or before `가기 전에 확인할 것`. It should help judge access, context, facility type, or visit fit.
+- Inline Image 2: appears after `이런 날에 맞는다` or before `가기 전에 확인할 것`. It should help judge access, context, facility type, or visit fit.
 
 Each inline image slot must specify:
 
@@ -211,7 +223,7 @@ Use the renderer’s actual shape after checking `src/archive/types.ts` and `src
 {
   type: 'image',
   src: 'category-place',
-  alt: '워커힐 서울 호텔 사우나 분위기를 대체하는 배스타임 기본 이미지',
+  alt: '워커힐 서울 호텔 사우나 분위기를 대체하는 바스타임 기본 이미지',
   caption: '실제 시설 이미지는 권리 확인 후 교체합니다.'
 }
 ```
@@ -276,8 +288,8 @@ The body should read like a Bathtime archive page, not an internal assessment.
 Use this order for researched hotel sauna/bath pages:
 
 1. `한 줄 판단`
-2. `어떤 곳인가요`
-3. `이런 날에 잘 맞아요`
+2. `어떤 곳인가`
+3. `이런 날에 맞는다`
 4. `좋게 볼 수 있는 점`
 5. `아쉬운 점`
 6. `가기 전에 확인할 것`
@@ -392,7 +404,7 @@ Long Codex chats can drift. Use these rules when processing many spots.
 ```md
 새 스팟으로 처리한다. 이전 장소의 정보, 이미지 계획, CTA, 구조화 정보 값을 재사용하지 않는다.
 
-Use `bathtime-web-content-producer` in strict mode.
+Use `bathtime-single-spot-content-web-content-producer` in strict mode.
 
 Target spot: {spot name}
 Seed directory: {path}

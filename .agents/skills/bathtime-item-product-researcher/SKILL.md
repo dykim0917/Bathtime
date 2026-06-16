@@ -2,7 +2,7 @@
 name: bathtime-item-product-researcher
 description: Research real product examples for Bathtime Item Note pages without turning the content into rankings, ads, or affiliate-style reviews. Use when the user wants to add actual products, purchase links, product candidates, representative product types, price/date notes, availability checks, or bottom-of-article "비교해볼 만한 후보" sections to Bathtime item content.
 metadata:
-  short-description: 배스타임 아이템 노트용 실제 제품 후보 리서치
+  short-description: 바스타임 아이템 노트용 실제 제품 후보 리서치
 ---
 
 # Bathtime Item Product Researcher
@@ -208,6 +208,10 @@ If prices conflict or change quickly, use a range:
 - Do not scrape or reuse marketplace images.
 - Do not put affiliate links unless explicitly provided and disclosed.
 - If affiliate/sponsored status is unknown, set `affiliateOrSponsorStatus: none`.
+- If Bathtime only receives a commission through a purchase link, use `제휴` as the reader-facing label instead of standalone `광고`.
+- Use labels such as `제휴 포함`, `제휴 링크 안내`, and `제휴 링크 / 공개 정보 정리` for affiliate-link contexts.
+- Do not call affiliate-link examples `광고 콘텐츠`, `광고 상품`, or `광고 포함` unless there is a separate paid ad placement, sponsorship, or brand-paid campaign.
+- If a platform requires exact advertising wording, keep the required wording in the disclosure note and record the platform requirement in `purchase-link-checklist.md`.
 - For private draft product candidate cards, official brand/product-page image URLs may be included when they are public, stable, and clearly tied to the candidate product.
 - Product images are allowed as `imageUrl`/`imageUri` references in product candidate data when `imageRightsStatus` clearly says the image is external and not owned by Bathtime.
 - Do not download, rehost, crop, edit, or remove surrounding context from external product images unless Bathtime owns, licenses, or has explicit permission for that asset.

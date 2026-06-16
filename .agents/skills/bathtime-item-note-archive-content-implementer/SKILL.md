@@ -2,7 +2,7 @@
 name: bathtime-item-note-archive-content-implementer
 description: Implement Bathtime Item Note web content packages into ArchiveContent seed files and DB draft rows. Use when the user wants item-seed.web-content.md or item-seed.canonical.json turned into item-seed.archive-content.ts, wants item notes upserted to Supabase/PostgREST, or asks to verify Bathtime archive preview pages for product-review drift, bad headings, raw enum labels, image slots, structuredInfo readability, and draft/publish status.
 metadata:
-  short-description: 배스타임 아이템 노트 ArchiveContent 구현·DB 반영·미리보기 검증
+  short-description: 바스타임 아이템 노트 ArchiveContent 구현·DB 반영·미리보기 검증
 ---
 
 # Bathtime Item Note Archive Content Implementer
@@ -103,12 +103,12 @@ Preserve the repo's `ArchiveContent` shape.
 Use Korean reader-facing body headings in this order:
 
 1. `한 줄 판단`
-2. `어떤 의식을 돕나요`
+2. `어떤 의식을 돕는가`
 3. `사기 전에 먼저 볼 것`
 4. `좋게 볼 수 있는 점`
 5. `아쉬운 점`
-6. `이런 사람에게 맞아요`
-7. `이런 사람에게는 애매해요`
+6. `이런 사람에게 맞는다`
+7. `이런 사람에게는 애매하다`
 8. `같이 쓰면 좋은 의식` (only when a concrete follow-up ritual exists)
 
 Do not add `저장해둘 이유` as a fixed section. The article should make its own usefulness clear through the body. If a save action is genuinely useful, express it as a natural CTA only when the route/action exists.
@@ -217,14 +217,18 @@ It should read like:
 
 Reader-facing Korean copy must keep one honorific/register level across headings, body paragraphs, lists, product cards, CTAs, and captions.
 
-Default for Bathtime Item Notes is warm `해요체`, because standard headings such as `이런 사람에게 맞아요` and `이런 사람에게는 애매해요` already use that register.
+Default for Bathtime Item Notes is calm observer-style `한다체`, matching the broader Bathtime content voice.
+
+Avoid headings such as `이런 사람에게 맞아요` and `이런 사람에게는 애매해요`; use `이런 사람에게 맞는다`, `이런 사람에게는 애매하다`, or shorter noun-phrase headings.
+
+Do not convert item notes to warm `해요체` during implementation unless the user explicitly asks for it. Before DB apply, search final body copy for unintended casual endings such as `해요`, `돼요`, `예요`, `이에요`.
 
 Before applying to DB, check for mixed endings:
 
 - Avoid: `이런 사람에게 맞아요` heading with `구매 전 최신 정보를 확인해야 합니다.` body.
-- Prefer: `이런 사람에게 맞아요` heading with `구매 전 판매처의 최신 정보를 다시 확인해요.` body.
+- Prefer: `이런 사람에게 맞는다` heading with `구매 전 판매처의 최신 정보를 다시 확인한다.` body.
 
-If the article intentionally uses formal `합니다체`, convert headings away from casual `~해요` as well. Do not mix the two.
+Do not convert the article to warm `해요체` unless explicitly requested. Do not mix register levels.
 
 ### 6. Generate reviewable DB artifacts
 
