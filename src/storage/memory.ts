@@ -20,7 +20,7 @@ function buildNarrativeRecallCard(rec: BathRecommendation): string {
   if (rec.themeTitle) {
     return `${rec.themeTitle} 여정을 ${ENV_LABELS[rec.environmentUsed] ?? '욕실'} 환경에서 마무리했어요.`;
   }
-  return `${ENV_LABELS[rec.environmentUsed] ?? '욕실'}에서 ${toReadableDuration(rec.durationMinutes)} 루틴을 완료했어요.`;
+  return `${ENV_LABELS[rec.environmentUsed] ?? '욕실'}에서 ${toReadableDuration(rec.durationMinutes)} 의식을 완료했어요.`;
 }
 
 function buildCompletionId(recommendationId: string, completedAt: string): string {

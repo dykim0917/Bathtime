@@ -33,7 +33,7 @@ export function PersonaCard({ recommendation }: PersonaCardProps) {
 
   const title = recommendation.mode === 'trip'
     ? recommendation.themeTitle ?? '무드 테마'
-    : persona?.nameKo ?? '맞춤 루틴';
+    : persona?.nameKo ?? '맞춤 의식';
 
   return (
     <View style={styles.container}>

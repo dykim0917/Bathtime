@@ -202,7 +202,7 @@ export default function ContentDetailPage() {
   const primaryCareCta: CareCTA | undefined = primaryTimerId
     ? {
         label: primaryRitual || primaryRitualBlock?.type === 'ritualTimer'
-          ? `${primaryRitual?.durationMinutes ?? primaryRitualBlock?.durationMinutes}분 ${CARE_ENVIRONMENT_LABELS[primaryRitual?.environment ?? primaryRitualBlock?.environment ?? ''] ?? '루틴'} 루틴 보기`
+          ? `${primaryRitual?.durationMinutes ?? primaryRitualBlock?.durationMinutes}분 ${CARE_ENVIRONMENT_LABELS[primaryRitual?.environment ?? primaryRitualBlock?.environment ?? ''] ?? '의식'} 의식 보기`
           : content.careArchive?.summaryCard.primaryCTA.label ?? '앱에서 따라 하기',
         action: 'start_timer',
         targetId: primaryTimerId,

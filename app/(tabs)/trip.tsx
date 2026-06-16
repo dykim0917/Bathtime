@@ -259,7 +259,7 @@ export default function TripScreen() {
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <OpenTabHeader
           eyebrow="무드 가이드"
-          title="무드 루틴"
+          title="무드 의식"
           subtitle="분위기를 바꾸고 싶은 날, 가능한 방식에 맞춰 골라보세요."
         />
 
@@ -281,7 +281,7 @@ export default function TripScreen() {
         </View>
 
         <View>
-          <Text style={styles.sectionTitle}>분위기별 루틴</Text>
+          <Text style={styles.sectionTitle}>분위기별 의식</Text>
           <View style={styles.tripList}>
             {tripCards.map((intent) => {
               const disabled = !intent.allowed_environments.includes(normalizedEnvironment);

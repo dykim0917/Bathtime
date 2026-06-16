@@ -77,7 +77,7 @@ jest.mock('@/src/data/tripImages', () => ({
 
 jest.mock('@/src/engine/explainability', () => ({
   buildRecipeEvidenceLines: () => ({
-    reasonLines: ['긴장을 낮추는 루틴이에요.', '39°C · 12분으로 진행해요.'],
+    reasonLines: ['긴장을 낮추는 의식이에요.', '39°C · 12분으로 진행해요.'],
     safetyLine: '권장 수온과 시간을 지키고, 불편하면 바로 중단하세요.',
   }),
 }));

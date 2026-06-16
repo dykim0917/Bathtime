@@ -33,7 +33,7 @@ describe('시나리오 테스트 — 8명 가상 페르소나', () => {
     it('P3_MUSCLE 페르소나 선택', () => expect(rec.persona).toBe('P3_MUSCLE'));
     it('권장 온도 41°C (고온 근육 이완)', () => expect(rec.temperature.recommended).toBe(41));
     it('욕조 → 전신욕(full)', () => expect(rec.bathType).toBe('full'));
-    it('15분 루틴', () => expect(rec.durationMinutes).toBe(15));
+    it('15분 의식', () => expect(rec.durationMinutes).toBe(15));
     it('안전 경고 없음', () => expect(rec.safetyWarnings).toHaveLength(0));
     it('epsom_salt 포함', () => expect(rec.ingredients.map(i => i.id)).toContain('epsom_salt'));
     it('유효한 ID 형식', () => expect(rec.id).toMatch(/^rec_\d+_[a-z0-9]+$/));
@@ -136,7 +136,7 @@ describe('시나리오 테스트 — 8명 가상 페르소나', () => {
     it('안전 경고 없음', () => expect(rec.safetyWarnings).toHaveLength(0));
   });
 
-  // ⑧ 윤태준 (55세, 중년) — 고혈압+당뇨 복합, 욕조, 트립 루틴 (교토)
+  // ⑧ 윤태준 (55세, 중년) — 고혈압+당뇨 복합, 욕조, 트립 의식 (교토)
   describe('P08 윤태준 — 고혈압+당뇨 / 욕조 / 트립 교토 숲', () => {
     const profile = makeProfile('bathtub', ['hypertension_heart', 'diabetes']);
     const rec = generateTripRecommendation(profile, 'kyoto_forest', 'bathtub');

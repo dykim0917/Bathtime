@@ -388,8 +388,8 @@ export default function CareScreen() {
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <OpenTabHeader
           eyebrow="컨디션 가이드"
-          title="컨디션 루틴"
-          subtitle="지금 몸 상태에 맞춰 무리 없는 루틴을 골라보세요."
+          title="컨디션 의식"
+          subtitle="지금 몸 상태에 맞춰 무리 없는 의식을 골라보세요."
         />
 
         <View>
@@ -410,7 +410,7 @@ export default function CareScreen() {
         </View>
 
         <View>
-          <Text style={styles.sectionTitle}>컨디션별 루틴</Text>
+          <Text style={styles.sectionTitle}>컨디션별 의식</Text>
           <Text style={styles.sectionIntro}>지금 컨디션에 맞는 추천을 바로 시작하고, 필요할 때만 세부 느낌을 더 골라보세요.</Text>
           <View style={[styles.gridWrap, { rowGap: CARD_GAP }]}> 
             {careCards.map((intent) => {

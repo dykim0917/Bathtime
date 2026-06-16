@@ -71,7 +71,7 @@ export default function NativeRoutinesScreen() {
   }, [profile, startingId]);
 
   return (
-    <NativeScreen eyebrow="ROUTINES" title="저장하고 실행하는 의식" subtitle="짧은 샤워, 족욕, 입욕 루틴을 기존 앱 타이머로 이어갑니다.">
+    <NativeScreen eyebrow="ROUTINES" title="저장하고 실행하는 의식" subtitle="짧은 샤워, 족욕, 입욕 의식을 기존 앱 타이머로 이어갑니다.">
       <View style={styles.list}>
         {routinePresets.filter((routine) => routine.isPublished).map((routine) => (
           <View key={routine.id} style={styles.card}>

@@ -80,7 +80,7 @@ export function HomeProfileSetupModal({
             <Text style={styles.eyebrow}>FIRST SETUP</Text>
             <Text style={styles.title}>오늘 가능한 방식만 알려주세요</Text>
             <Text style={styles.subtitle}>
-              건강정보는 받지 않고, 가능한 방식에 맞춰 바로 루틴을 준비할게요.
+              건강정보는 받지 않고, 가능한 방식에 맞춰 바로 의식을 준비할게요.
             </Text>
           </View>
 
@@ -137,7 +137,7 @@ export function HomeProfileSetupModal({
               onPress={completeSetup}
             >
               <Text style={[ui.primaryButtonTextV2, !canComplete && styles.completeButtonTextDisabled]}>
-                루틴 준비하기
+                의식 준비하기
               </Text>
             </Pressable>
             <Pressable style={styles.closeButton} onPress={requestClose}>

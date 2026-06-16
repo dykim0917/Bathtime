@@ -33,7 +33,7 @@ export const CARE_INTENT_CARDS: IntentCard[] = [
     intent_id: 'sleep_ready',
     mapped_mode: 'sleep',
     allowed_environments: ['bathtub', 'partial_bath', 'shower'],
-    copy_title: '잠들기 어려울 때 좋은 루틴',
+    copy_title: '잠들기 어려울 때 좋은 의식',
     copy_subtitle_by_environment: {
       shower: '샤워 6분으로 잠들기 전 긴장을 낮춰요.',
       bathtub: '욕조 15분으로 수면 준비를 도와요.',
@@ -231,7 +231,7 @@ export const CARE_SUBPROTOCOL_OPTIONS: Record<string, SubProtocolOption[]> = {
       id: 'muscle_whole_body',
       intent_id: 'muscle_relief',
       label: '전신이 무거워요',
-      hint: '전신을 고르게 풀어주는 기본 루틴이에요.',
+      hint: '전신을 고르게 풀어주는 기본 의식이에요.',
       is_default: true,
       partialOverrides: {
         behavior_blocks: ['전신 이완 동작 1회'],
@@ -271,7 +271,7 @@ export const CARE_SUBPROTOCOL_OPTIONS: Record<string, SubProtocolOption[]> = {
       hint: '짧고 부드럽게 진행해요.',
       is_default: true,
       partialOverrides: {
-        behavior_blocks: ['짧은 안정 루틴'],
+        behavior_blocks: ['짧은 안정 의식'],
         duration_delta: -2,
         environment_bias: 'partial_bath',
       },
@@ -332,7 +332,7 @@ export const CARE_SUBPROTOCOL_OPTIONS: Record<string, SubProtocolOption[]> = {
       hint: '자극 없이 순하게 진행해요.',
       is_default: false,
       partialOverrides: {
-        behavior_blocks: ['순한 안정 루틴'],
+        behavior_blocks: ['순한 안정 의식'],
         duration_delta: -2,
       },
     },
@@ -357,7 +357,7 @@ export const CARE_SUBPROTOCOL_OPTIONS: Record<string, SubProtocolOption[]> = {
       hint: '순하게 이완하며 피로를 풀어요.',
       is_default: false,
       partialOverrides: {
-        behavior_blocks: ['순한 이완 루틴'],
+        behavior_blocks: ['순한 이완 의식'],
       },
     },
   ],
@@ -405,7 +405,7 @@ export const CARE_SUBPROTOCOL_OPTIONS: Record<string, SubProtocolOption[]> = {
       hint: '조금 더 활기차게 시작해요.',
       is_default: false,
       partialOverrides: {
-        behavior_blocks: ['활성화 루틴 1회'],
+        behavior_blocks: ['활성화 의식 1회'],
         duration_delta: 1,
       },
     },
@@ -451,7 +451,7 @@ const BASE_TRIP_SUBPROTOCOL_OPTIONS: Record<string, SubProtocolOption[]> = {
       id: 'trip_nordic_quick',
       intent_id: 'nordic_sauna',
       label: '빠른 전환',
-      hint: '짧게 리듬을 바꾸는 루틴.',
+      hint: '짧게 리듬을 바꾸는 의식.',
       is_default: false,
       partialOverrides: {
         behavior_blocks: ['짧은 리듬 전환'],
@@ -464,7 +464,7 @@ const BASE_TRIP_SUBPROTOCOL_OPTIONS: Record<string, SubProtocolOption[]> = {
       id: 'trip_rainy_balanced',
       intent_id: 'rainy_camping',
       label: '기본 휴식',
-      hint: '빗소리 중심의 안정 루틴.',
+      hint: '빗소리 중심의 안정 의식.',
       is_default: true,
       partialOverrides: {
         behavior_blocks: ['안정 구간 유지'],
