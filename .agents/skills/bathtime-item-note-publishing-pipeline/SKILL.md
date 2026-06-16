@@ -493,6 +493,13 @@ Final `item-seed.archive-content.ts` must:
 - never claim firsthand experience unless source files prove it
 - never present product examples as ranked recommendations unless explicitly asked and clearly disclosed
 
+Series rule:
+
+- If the item note is part of a planned editorial sequence, put the sequence metadata in `structuredInfo.series`.
+- Use shape `{ id, title, order, description? }`.
+- Do not use a body `ctaGroup` as a manual series list. The public content page renders series panels from `structuredInfo.series`.
+- Keep the same series `id`, `title`, and `description` across all articles in the same series.
+
 When converting research into public copy, translate internal research language:
 
 - `후기 신호` -> `후기에서 반복적으로 언급된다`
