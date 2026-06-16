@@ -108,8 +108,8 @@ function buildPrimarySuggestion(
       id: 'home_primary_starter',
       rank: 'primary',
       mode: 'care',
-      title: '기본 케어 루틴',
-      subtitle: '처음이라 안전한 기본 루틴부터 시작해요.',
+      title: '기본 케어 의식',
+      subtitle: '처음이라 안전한 기본 의식부터 시작해요.',
       dailyTags: ['stress'],
     };
   }
@@ -119,8 +119,8 @@ function buildPrimarySuggestion(
       id: 'home_primary_safe_only',
       rank: 'primary',
       mode: 'care',
-      title: '안전 우선 루틴',
-      subtitle: '현재 상태를 고려해 안전한 루틴만 보여드려요.',
+      title: '안전 우선 의식',
+      subtitle: '현재 상태를 고려해 안전한 의식만 보여드려요.',
       dailyTags: ['stress'],
     };
   }
@@ -130,7 +130,7 @@ function buildPrimarySuggestion(
       id: 'home_primary_reset_safe',
       rank: 'primary',
       mode: 'care',
-      title: '전환 케어 루틴',
+      title: '전환 케어 의식',
       subtitle: '안전을 위해 냉수 단계 없이 진행해요.',
       dailyTags: ['stress'],
     };
@@ -141,8 +141,8 @@ function buildPrimarySuggestion(
       id: 'home_primary_sleep',
       rank: 'primary',
       mode: 'care',
-      title: '수면 준비 케어 루틴',
-      subtitle: '긴장을 낮추고 취침 전 루틴을 준비해요.',
+      title: '수면 준비 케어 의식',
+      subtitle: '긴장을 낮추고 취침 전 의식을 준비해요.',
       dailyTags: TAGS_BY_MODE.sleep,
     };
   }
@@ -152,8 +152,8 @@ function buildPrimarySuggestion(
       id: 'home_primary_reset',
       rank: 'primary',
       mode: 'care',
-      title: '전환 케어 루틴',
-      subtitle: '짧은 집중 전환 루틴으로 리듬을 바꿔요.',
+      title: '전환 케어 의식',
+      subtitle: '짧은 집중 전환 의식으로 리듬을 바꿔요.',
       dailyTags: TAGS_BY_MODE.reset,
     };
   }
@@ -162,8 +162,8 @@ function buildPrimarySuggestion(
     id: 'home_primary_recovery',
     rank: 'primary',
     mode: 'care',
-    title: '회복 케어 루틴',
-    subtitle: '몸의 피로를 줄이는 기본 회복 루틴이에요.',
+    title: '회복 케어 의식',
+    subtitle: '몸의 피로를 줄이는 기본 회복 의식이에요.',
     dailyTags: TAGS_BY_MODE.recovery,
   };
 }
@@ -176,8 +176,8 @@ function buildAlternativeCare(mode: 'sleep' | 'recovery' | 'reset'): HomeSuggest
     id: `home_secondary_care_${alternativeMode}`,
     rank: 'secondary_2',
     mode: 'care',
-    title: alternativeMode === 'sleep' ? '가벼운 수면 루틴' : '가벼운 회복 루틴',
-    subtitle: '오늘 컨디션에 맞춘 부드러운 대안 루틴입니다.',
+    title: alternativeMode === 'sleep' ? '가벼운 수면 의식' : '가벼운 회복 의식',
+    subtitle: '오늘 컨디션에 맞춘 부드러운 대안 의식입니다.',
     dailyTags: TAGS_BY_MODE[alternativeMode],
   };
 }
@@ -187,7 +187,7 @@ function buildTripSecondary(selectedThemeId: ThemeId): HomeSuggestion {
     id: `home_secondary_trip_${selectedThemeId}`,
     rank: 'secondary_1',
     mode: 'trip',
-    title: '무드 루틴',
+    title: '무드 의식',
     subtitle: '테마에 맞춰 분위기를 전환해요.',
     themeId: selectedThemeId,
   };
@@ -195,21 +195,21 @@ function buildTripSecondary(selectedThemeId: ThemeId): HomeSuggestion {
 
 function buildInsightStrip(fallback: FallbackStrategy, timeContext: TimeContext): string {
   if (fallback === 'DEFAULT_STARTER_RITUAL') {
-    return '처음이라 기본 루틴을 먼저 보여드려요.';
+    return '처음이라 기본 의식을 먼저 보여드려요.';
   }
   if (fallback === 'SAFE_ROUTINE_ONLY') {
-    return '안전을 위해 보수적인 루틴만 보여드려요.';
+    return '안전을 위해 보수적인 의식만 보여드려요.';
   }
   if (fallback === 'RESET_WITHOUT_COLD') {
     return '안전을 위해 냉수 단계는 자동으로 제외됐어요.';
   }
   if (fallback === 'ROUTINE_ONLY_NO_COMMERCE') {
-    return '준비물 없이 루틴부터 시작할 수 있어요.';
+    return '준비물 없이 의식부터 시작할 수 있어요.';
   }
   if (timeContext === 'late_night') {
-    return '늦은 시간이라 수면 준비 루틴을 먼저 추천해요.';
+    return '늦은 시간이라 수면 준비 의식을 먼저 추천해요.';
   }
-  return '오늘 상태에 맞춰 루틴을 추천했어요.';
+  return '오늘 상태에 맞춰 의식을 추천했어요.';
 }
 
 export function buildHomeOrchestration(
@@ -247,7 +247,7 @@ export function buildHomeOrchestration(
     secondarySuggestions: secondarySuggestions.slice(0, 2),
     quickActions: ['바로 시작', '기록 보기', '환경 바꾸기'],
     insightStrip: engineConflictResolved
-      ? '조건이 겹칠 때는 더 안전한 루틴을 먼저 추천해요.'
+      ? '조건이 겹칠 때는 더 안전한 의식을 먼저 추천해요.'
       : buildInsightStrip(fallbackStrategy, input.timeContext),
     fallbackStrategy,
     priorityResolution: 'CARE_PRIMARY__TRIP_SECONDARY',
@@ -272,10 +272,10 @@ export function buildSuggestionExplanation(
     const themeTitle = theme?.title ?? '오늘의 테마';
     return {
       stateLabel: stateLabelMap[activeState],
-      whySummary: '현재 상태에서 분위기 전환이 도움이 될 것 같아 무드 루틴을 함께 제안해요.',
-      routineParams: '테마 중심 루틴으로, 환경에 맞춰 강도와 길이를 조절해요.',
+      whySummary: '현재 상태에서 분위기 전환이 도움이 될 것 같아 무드 의식을 함께 제안해요.',
+      routineParams: '테마 중심 의식으로, 환경에 맞춰 강도와 길이를 조절해요.',
       expectedGoal: '짧은 시간 안에 분위기를 바꾸고 감각을 다시 정리하는 데 도움을 줘요.',
-      alternativeRoutine: '원하면 컨디션 루틴으로 바꿔 더 무난하게 시작할 수도 있어요.',
+      alternativeRoutine: '원하면 컨디션 의식으로 바꿔 더 무난하게 시작할 수도 있어요.',
       narrativeHeadline: `오늘은 ${themeTitle} 분위기로 쉬어가요.`,
       atmosphereChips: [
         theme ? `향: ${theme.recScent}` : '향: 테마 추천',
@@ -288,20 +288,20 @@ export function buildSuggestionExplanation(
   const paramsByMode: Record<typeof selectedMode, string> = {
     sleep: '38~41°C, 10~15분, 저자극 중심',
     recovery: '40~42°C(고위험군 <=40°C), 10~15분',
-    reset: '기본 non-cold activation, 짧은 전환 루틴',
+    reset: '기본 non-cold activation, 짧은 전환 의식',
   };
 
   const whyByMode: Record<typeof selectedMode, string> = {
     sleep: '심야/수면 준비 신호를 우선 해석해 긴장 완화를 목표로 구성했습니다.',
     recovery: '신체 피로 신호를 우선 해석해 회복 중심 파라미터로 구성했습니다.',
-    reset: '빠른 리듬 전환 신호를 반영해 짧고 안전한 리셋 루틴으로 구성했습니다.',
+    reset: '빠른 리듬 전환 신호를 반영해 짧고 안전한 리셋 의식으로 구성했습니다.',
   };
 
   return {
     stateLabel: stateLabelMap[activeState],
     whySummary: whyByMode[selectedMode],
     routineParams: paramsByMode[selectedMode],
-    expectedGoal: '오늘 컨디션에서 실행 가능한 루틴 완주를 최우선 목표로 합니다.',
-    alternativeRoutine: selectedMode === 'sleep' ? '가벼운 회복 루틴' : '가벼운 수면 준비 루틴',
+    expectedGoal: '오늘 컨디션에서 실행 가능한 의식 완주를 최우선 목표로 합니다.',
+    alternativeRoutine: selectedMode === 'sleep' ? '가벼운 회복 의식' : '가벼운 수면 준비 의식',
   };
 }

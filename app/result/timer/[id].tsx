@@ -37,13 +37,13 @@ function getTimerRoutineName(recommendation: BathRecommendation): string {
     return (
       recommendation.themeTitle ??
       getTripIntentCards().find((card) => card.intent_id === recommendation.intentId)?.copy_title ??
-      '무드 루틴'
+      '무드 의식'
     );
   }
 
   return (
     getCareIntentCards().find((card) => card.intent_id === recommendation.intentId)?.copy_title ??
-    '컨디션 루틴'
+    '컨디션 의식'
   );
 }
 
@@ -286,7 +286,7 @@ export default function TimerScreen() {
   })();
   const progressPercent = totalSeconds > 0 ? 1 - remainingSeconds / totalSeconds : 0;
   const routineName = getTimerRoutineName(recommendation);
-  const modeLabel = recommendation.mode === 'trip' ? '무드 루틴' : '컨디션 루틴';
+  const modeLabel = recommendation.mode === 'trip' ? '무드 의식' : '컨디션 의식';
   const audioSummary = `${recommendation.music.title} · ${recommendation.ambience.title}`;
   const introDetail = buildRoutineIntroDetail();
   const fillLevel = getRoutineFillLevel({

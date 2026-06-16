@@ -76,7 +76,7 @@ describe('contentRuntime', () => {
 
   test('hydrates remote content when a content API URL is configured', async () => {
     const payload = cloneStaticPayload();
-    payload.care.intents[0].copy_title = '원격 수면 루틴';
+    payload.care.intents[0].copy_title = '원격 수면 의식';
     process.env.EXPO_PUBLIC_CONTENT_API_URL = 'https://example.test/api/content-snapshot';
     jest.spyOn(global, 'fetch').mockResolvedValue({
       ok: true,
@@ -85,6 +85,6 @@ describe('contentRuntime', () => {
 
     const bundle = await hydrateContentFromApi();
 
-    expect(bundle.care.intents[0].copy_title).toBe('원격 수면 루틴');
+    expect(bundle.care.intents[0].copy_title).toBe('원격 수면 의식');
   });
 });

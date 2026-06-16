@@ -37,8 +37,8 @@ export function buildPreBathChecklist(
   if (options.source === 'history') {
     items.push({
       id: 'history-replay',
-      title: '이전에 저장한 루틴이라도 오늘 몸 상태 기준으로 다시 볼게요.',
-      body: '같은 루틴이어도 지금 컨디션에 무리가 없는지 한 번 더 확인하고 시작할게요.',
+      title: '이전에 저장한 의식이라도 오늘 몸 상태 기준으로 다시 볼게요.',
+      body: '같은 의식이어도 지금 컨디션에 무리가 없는지 한 번 더 확인하고 시작할게요.',
       source: 'history',
     });
   }
@@ -48,7 +48,7 @@ export function buildPreBathChecklist(
       {
         id: 'contrast-gentle-cool',
         title: '차가운 단계는 짧고 부드럽게만 진행할게요.',
-        body: '노르딕 루틴은 갑자기 차가운 물에 들어가지 않고 손발부터 짧게 식히는 방식으로 진행해요.',
+        body: '노르딕 의식은 갑자기 차가운 물에 들어가지 않고 손발부터 짧게 식히는 방식으로 진행해요.',
         source: 'warning',
       },
       {

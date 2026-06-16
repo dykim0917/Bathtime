@@ -47,7 +47,7 @@ const GUIDE_LIBRARY: Record<string, ProductGuideTemplate[]> = {
   epsom_salt: [
     {
       title: '무향 마그네슘 솔트',
-      description: '향을 더하고 싶지 않은 회복 루틴에는 마그네슘 계열 엡섬 솔트가 잘 맞아요.',
+      description: '향을 더하고 싶지 않은 회복 의식에는 마그네슘 계열 엡섬 솔트가 잘 맞아요.',
       tags: ['마그네슘', '무향', '회복'],
     },
     {
@@ -98,7 +98,7 @@ const FALLBACK_GUIDES: Record<'bathtub' | 'shower', ProductGuideTemplate[]> = {
   bathtub: [
     {
       title: '기본 바스솔트',
-      description: '향이 거의 없는 바스솔트는 어떤 루틴에도 무난하게 더하기 좋아요.',
+      description: '향이 거의 없는 바스솔트는 어떤 의식에도 무난하게 더하기 좋아요.',
       tags: ['바스솔트', '기본', '저향'],
     },
     {
@@ -110,7 +110,7 @@ const FALLBACK_GUIDES: Record<'bathtub' | 'shower', ProductGuideTemplate[]> = {
   shower: [
     {
       title: '릴랙싱 바디워시',
-      description: '샤워 루틴에는 향이 편안하고 씻은 뒤 건조감이 적은 바디워시가 잘 맞아요.',
+      description: '샤워 의식에는 향이 편안하고 씻은 뒤 건조감이 적은 바디워시가 잘 맞아요.',
       tags: ['바디워시', '릴랙스', '샤워'],
     },
     {
@@ -239,7 +239,7 @@ export function buildProductMatchingSlots(
       ingredient: item.ingredient,
       mechanism: item.mechanism,
       reason: index === 0
-        ? item.mechanism === 'magnesium' ? '몸을 쉬게 하는 제품' : item.mechanism === 'bicarbonate' ? '가볍게 입욕하기 좋은 제품' : '루틴에 먼저 맞는 제품'
+        ? item.mechanism === 'magnesium' ? '몸을 쉬게 하는 제품' : item.mechanism === 'bicarbonate' ? '가볍게 입욕하기 좋은 제품' : '의식에 먼저 맞는 제품'
         : index === 1
           ? '향을 바꿔볼 수 있는 제품'
           : '함께 비교하기 좋은 제품',

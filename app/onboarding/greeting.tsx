@@ -63,7 +63,7 @@ export default function OnboardingGreeting() {
               </View>
               <Text style={styles.welcome}>설정 완료</Text>
               <Text style={styles.title}>환영합니다</Text>
-              <Text style={styles.subtitle}>{'오늘 상태에 맞는\n루틴을 시작해볼게요'}</Text>
+              <Text style={styles.subtitle}>{'오늘 상태에 맞는\n의식을 시작해볼게요'}</Text>
               <Text style={styles.description}>이제 가능한 환경과 현재 상태에 맞춰 무리 없는 순서로 안내할게요.</Text>
             </Animated.View>
           </View>

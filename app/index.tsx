@@ -162,9 +162,9 @@ function WebHomeContent() {
           </View>
           <AppHandoffCard
             source="routine_preview"
-            title="앱에서 루틴으로 저장하고 실행하기"
+            title="앱에서 의식으로 저장하고 실행하기"
             body="웹에서는 의식을 미리 보고, 앱에서는 타이머와 보관함으로 이어갈 수 있어요."
-            ctaLabel="앱에서 루틴 열기"
+            ctaLabel="앱에서 의식 열기"
             deepLink="getbathtime://profile?saved=1"
             ctaType="routine_preview"
           />

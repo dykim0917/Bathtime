@@ -50,7 +50,7 @@ export const routinePresets: RoutinePreset[] = [
     durationMinutes: 6,
     environment: 'shower',
     situationTags: ['수면 전', '욕조 없음', '짧은 의식'],
-    description: '잠들기 전 몸이 다시 식을 시간을 남기는 따뜻한 샤워 루틴',
+    description: '잠들기 전 몸이 다시 식을 시간을 남기는 따뜻한 샤워 의식',
     steps: ['잠들기 60~90분 전에 시작합니다.', '목과 어깨를 따뜻한 물로 천천히 적십니다.', '마지막 1분은 물 온도를 살짝 낮추고 조명을 줄입니다.'],
     relatedContentIds: ['care-sleep-warm-shower-90'],
     isPublished: true,
@@ -61,7 +61,7 @@ export const routinePresets: RoutinePreset[] = [
     durationMinutes: 6,
     environment: 'shower',
     situationTags: ['스트레스', '욕조 없음', '짧은 의식'],
-    description: '물소리와 호흡에 집중해 몸의 경계심을 낮추는 짧은 루틴',
+    description: '물소리와 호흡에 집중해 몸의 경계심을 낮추는 짧은 의식',
     steps: ['샤워 전 조명을 한 단계 낮춥니다.', '어깨와 등 쪽을 따뜻한 물로 천천히 적십니다.', '마지막 2분은 씻는 동작을 줄이고 숨을 길게 내쉽니다.'],
     relatedContentIds: ['care-stress-warm-water'],
     isPublished: true,
@@ -72,7 +72,7 @@ export const routinePresets: RoutinePreset[] = [
     durationMinutes: 8,
     environment: 'shower',
     situationTags: ['운동 후', '근육', '짧은 의식'],
-    description: '뭉친 부위를 세게 누르기보다 온감과 가벼운 움직임으로 풀어내는 루틴',
+    description: '뭉친 부위를 세게 누르기보다 온감과 가벼운 움직임으로 풀어내는 의식',
     steps: ['뻐근한 부위를 따뜻한 물로 2분간 적십니다.', '목, 어깨, 종아리를 천천히 돌립니다.', '통증이 날카롭거나 붓기가 있으면 중단합니다.'],
     relatedContentIds: ['care-muscle-warm-shower'],
     isPublished: true,
@@ -83,7 +83,7 @@ export const routinePresets: RoutinePreset[] = [
     durationMinutes: 12,
     environment: 'footbath',
     situationTags: ['부종', '족욕', '혼자 쉬기'],
-    description: '하루 끝 답답한 발목을 따뜻한 물과 가벼운 움직임으로 정리하는 루틴',
+    description: '하루 끝 답답한 발목을 따뜻한 물과 가벼운 움직임으로 정리하는 의식',
     steps: ['발목이 잠길 정도의 따뜻한 물을 준비합니다.', '7분간 발을 담그고 어깨 힘을 뺍니다.', '마지막 3분은 발목을 천천히 돌리고 물기를 눌러 닦습니다.'],
     relatedContentIds: ['care-edema-footbath-evening'],
     isPublished: true,
@@ -94,7 +94,7 @@ export const routinePresets: RoutinePreset[] = [
     durationMinutes: 8,
     environment: 'footbath',
     situationTags: ['숙취', '족욕', '안전 우선'],
-    description: '음주 다음 날 전신 고온 입욕을 피하고 미지근하게 부담을 낮추는 루틴',
+    description: '음주 다음 날 전신 고온 입욕을 피하고 미지근하게 부담을 낮추는 의식',
     steps: ['미지근한 물과 마실 물을 먼저 준비합니다.', '8분을 넘기지 않고 발만 담급니다.', '어지럽거나 메스꺼우면 바로 멈추고 쉽니다.'],
     relatedContentIds: ['care-hangover-gentle-footbath'],
     isPublished: true,
@@ -105,7 +105,7 @@ export const routinePresets: RoutinePreset[] = [
     durationMinutes: 10,
     environment: 'footbath',
     situationTags: ['감기 기운', '족욕', '짧은 의식'],
-    description: '컨디션이 떨어진 날 오래 버티지 않고 짧은 온감으로 마무리하는 루틴',
+    description: '컨디션이 떨어진 날 오래 버티지 않고 짧은 온감으로 마무리하는 의식',
     steps: ['발목이 잠길 정도로 따뜻한 물을 준비합니다.', '몸이 답답해지지 않게 10분 안에서 마칩니다.', '끝난 뒤 물을 마시고 바로 쉬는 시간을 둡니다.'],
     relatedContentIds: ['care-cold-gentle-warmth'],
     isPublished: true,
@@ -116,8 +116,8 @@ export const routinePresets: RoutinePreset[] = [
     durationMinutes: 12,
     environment: 'footbath',
     situationTags: ['생리통', '족욕', '온기'],
-    description: '강한 열보다 편안한 온도와 짧은 안정감에 집중하는 루틴',
-    steps: ['편안한 온도의 물을 준비합니다.', '하복부와 허리에 힘이 들어가지 않게 앉습니다.', '통증이 심하거나 평소와 다르면 루틴보다 상담을 우선합니다.'],
+    description: '강한 열보다 편안한 온도와 짧은 안정감에 집중하는 의식',
+    steps: ['편안한 온도의 물을 준비합니다.', '하복부와 허리에 힘이 들어가지 않게 앉습니다.', '통증이 심하거나 평소와 다르면 의식보다 상담을 우선합니다.'],
     relatedContentIds: ['care-menstrual-gentle-heat'],
     isPublished: true,
   },
@@ -127,7 +127,7 @@ export const routinePresets: RoutinePreset[] = [
     durationMinutes: 5,
     environment: 'shower',
     situationTags: ['기분 전환', '욕조 없음', '짧은 의식'],
-    description: '큰 변화를 만들려 하기보다 물 온도와 작은 동작으로 하루의 결을 바꾸는 루틴',
+    description: '큰 변화를 만들려 하기보다 물 온도와 작은 동작으로 하루의 결을 바꾸는 의식',
     steps: ['물을 틀기 전 수건과 갈아입을 옷을 먼저 둡니다.', '처음 2분은 얼굴보다 목과 손부터 적십니다.', '마지막 1분은 좋아하는 향이나 음악 하나만 남깁니다.'],
     relatedContentIds: ['care-mood-small-shower'],
     isPublished: true,
@@ -163,7 +163,7 @@ export const archiveContents: ArchiveContent[] = [
     ],
     structuredInfo: {
       overviewRows: [
-        { label: '콘텐츠 성격', value: '홈케어 루틴' },
+        { label: '콘텐츠 성격', value: '홈케어 의식' },
         { label: '대상', value: '욕조 없이 하루를 닫고 싶은 사람' },
         { label: '핵심 키워드', value: ['짧은 의식', '낮은 조명', '물소리'] },
         { label: '바로 해볼 것', value: '7분 샤워 타이머' },
@@ -188,7 +188,7 @@ export const archiveContents: ArchiveContent[] = [
     id: 'home-footbath-rainy-night',
     title: '비 오는 날 대야 하나로 하는 족욕',
     subtitle: '기구 없이 시작하는 10분 홈스파',
-    summary: '비 오는 밤, 대야와 수건만으로 발을 따뜻하게 감싸는 간단한 족욕 루틴.',
+    summary: '비 오는 밤, 대야와 수건만으로 발을 따뜻하게 감싸는 간단한 족욕 의식.',
     category: 'HOME_BATH',
     contentType: 'TRIED',
     tags: ['욕조 없음', '비 오는 날', '혼자 쉬기'],
@@ -211,7 +211,7 @@ export const archiveContents: ArchiveContent[] = [
     ],
     structuredInfo: {
       overviewRows: [
-        { label: '콘텐츠 성격', value: '홈케어 루틴' },
+        { label: '콘텐츠 성격', value: '홈케어 의식' },
         { label: '대상', value: '기구 없이 족욕을 시작하고 싶은 사람' },
         { label: '핵심 키워드', value: ['대야', '정리 동선', '10분 족욕'] },
         { label: '바로 해볼 것', value: '10분 족욕 타이머' },
@@ -361,7 +361,7 @@ export const archiveContents: ArchiveContent[] = [
     id: 'item-footbath-basin-first',
     title: '족욕기를 사기 전 대야로 먼저 해보기',
     subtitle: '제품보다 먼저 확인할 것은 내 반복 가능성',
-    summary: '족욕기를 사기 전 대야로 10분 루틴을 먼저 시험해 생활에 맞는지 확인하는 방법.',
+    summary: '족욕기를 사기 전 대야로 10분 의식을 먼저 시험해 생활에 맞는지 확인하는 방법.',
     category: 'BATH_ITEMS',
     contentType: 'RESEARCHED',
     tags: ['욕조 없음', '비 오는 날', '짧은 의식'],
@@ -466,7 +466,7 @@ export const archiveContents: ArchiveContent[] = [
     id: 'tips-rainy-night-shower',
     title: '비 오는 밤에는 긴 의식보다 짧은 마무리',
     subtitle: '피곤한 날에도 부담 없는 바스타임 기준',
-    summary: '비 오는 밤처럼 몸이 무거운 날에는 준비가 긴 루틴보다 짧은 마무리가 오래 간다.',
+    summary: '비 오는 밤처럼 몸이 무거운 날에는 준비가 긴 의식보다 짧은 마무리가 오래 간다.',
     category: 'TIPS_CULTURE',
     contentType: 'TRIED',
     tags: ['비 오는 날', '수면 전', '짧은 의식'],
@@ -489,7 +489,7 @@ export const archiveContents: ArchiveContent[] = [
     id: 'care-sleep-warm-shower-90',
     title: '잠들기 90분 전, 따뜻한 샤워가 몸에 하는 일',
     subtitle: '잠이 안 오는 밤엔 뜨겁게가 아니라 식는 시간이 필요합니다',
-    summary: '따뜻한 샤워는 몸을 계속 데우기보다, 다시 식을 시간을 만들어 수면 준비를 돕는 짧은 전환 루틴.',
+    summary: '따뜻한 샤워는 몸을 계속 데우기보다, 다시 식을 시간을 만들어 수면 준비를 돕는 짧은 전환 의식.',
     category: 'HOME_BATH',
     contentType: 'RESEARCHED',
     tags: ['수면 전', '샤워', '족욕', '욕조 없음', '짧은 의식'],
@@ -532,7 +532,7 @@ export const archiveContents: ArchiveContent[] = [
             year: '2019',
             sourceType: 'paper',
             finding: '따뜻한 샤워나 목욕을 잠들기 1~2시간 전에 했을 때 수면의 질과 잠드는 시간에 긍정적 경향이 있었다고 정리한 메타분석.',
-            bathtimeTakeaway: '자기 직전보다, 몸이 식을 시간을 남기는 60~90분 전 루틴으로 해석합니다.',
+            bathtimeTakeaway: '자기 직전보다, 몸이 식을 시간을 남기는 60~90분 전 의식으로 해석합니다.',
             url: 'https://pubmed.ncbi.nlm.nih.gov/31102877/',
           },
           {
@@ -618,7 +618,7 @@ export const archiveContents: ArchiveContent[] = [
       { type: 'paragraph', text: '따뜻한 물은 피부와 손발 쪽 감각을 데우고, 손과 발 쪽으로 열이 이동하기 쉬운 상태를 만듭니다. 중요한 건 더 뜨겁게 버티는 것이 아니라, 그 뒤에 몸이 다시 식을 시간을 남기는 일입니다.', legacyFallback: true },
       { type: 'heading', text: '찾아본 자료와 바스타임의 해석', legacyFallback: true },
       { type: 'list', legacyFallback: true, items: [
-        'Sleep Medicine Reviews 2019: 잠들기 1~2시간 전 따뜻한 샤워나 목욕이 수면의 질과 잠드는 시간에 긍정적 경향을 보였다고 정리했습니다. 바스타임은 이를 잠들기 60~90분 전 짧은 루틴으로 해석합니다.',
+        'Sleep Medicine Reviews 2019: 잠들기 1~2시간 전 따뜻한 샤워나 목욕이 수면의 질과 잠드는 시간에 긍정적 경향을 보였다고 정리했습니다. 바스타임은 이를 잠들기 60~90분 전 짧은 의식으로 해석합니다.',
         'Nature 1999: 손과 발 쪽 혈관 확장과 열 손실이 빠른 수면 시작과 관련된 흐름으로 설명됩니다. 바스타임은 몸 전체를 오래 데우기보다 손발 온감과 식는 시간을 함께 봅니다.',
         'American Academy of Dermatology: 뜨거운 물보다 따뜻한 물, 긴 샤워보다 짧은 샤워를 권장합니다. 바스타임은 수면 전 샤워를 6분 정도로 짧게 제안합니다.',
       ] },
@@ -647,7 +647,7 @@ export const archiveContents: ArchiveContent[] = [
         situation: '생각이 많고 몸은 피곤한데 바로 잠들기 어려운 밤',
         recommendedFor: [
           '침대에 누워도 긴장이 쉽게 풀리지 않는 사람',
-          '욕조 없이 수면 전 루틴을 만들고 싶은 사람',
+          '욕조 없이 수면 전 의식을 만들고 싶은 사람',
           '발이 차갑고 몸이 덜 이완된 느낌이 드는 사람',
         ],
         duration: { minMinutes: 6, maxMinutes: 10, label: '6~10분' },
@@ -682,8 +682,8 @@ export const archiveContents: ArchiveContent[] = [
       ],
     },
     seo: {
-      seoTitle: '잠들기 90분 전 따뜻한 샤워 루틴',
-      seoDescription: '따뜻한 샤워가 몸을 다시 식게 해 수면 준비를 돕는 원리와 6분 샤워, 10분 족욕 루틴.',
+      seoTitle: '잠들기 90분 전 따뜻한 샤워 의식',
+      seoDescription: '따뜻한 샤워가 몸을 다시 식게 해 수면 준비를 돕는 원리와 6분 샤워, 10분 족욕 의식.',
     },
     isPublished: true,
     createdAt: '2026-05-11',
@@ -693,7 +693,7 @@ export const archiveContents: ArchiveContent[] = [
     id: 'care-stress-warm-water',
     title: '긴장이 몸에 남은 밤, 따뜻한 물이 바꾸는 것',
     subtitle: '강한 자극보다 물소리와 호흡으로 경계심을 낮추는 시간',
-    summary: '스트레스가 남은 날에는 강한 자극보다 물소리, 호흡, 낮은 조명으로 몸의 경계심을 낮추는 루틴.',
+    summary: '스트레스가 남은 날에는 강한 자극보다 물소리, 호흡, 낮은 조명으로 몸의 경계심을 낮추는 의식.',
     category: 'HOME_BATH',
     contentType: 'RESEARCHED',
     tags: ['스트레스', '샤워', '욕조 없음', '짧은 의식', '혼자 쉬기'],
@@ -736,7 +736,7 @@ export const archiveContents: ArchiveContent[] = [
             year: '2024',
             sourceType: 'medical_org',
             finding: '이완 기법은 호흡, 신체 감각, 근육 긴장을 알아차리며 스트레스 관리에 쓰일 수 있다고 안내합니다.',
-            bathtimeTakeaway: '샤워 시간을 긴장을 없애는 방법이 아니라, 호흡과 어깨 힘을 알아차리는 6분 루틴으로 봅니다.',
+            bathtimeTakeaway: '샤워 시간을 긴장을 없애는 방법이 아니라, 호흡과 어깨 힘을 알아차리는 6분 의식으로 봅니다.',
             url: 'https://www.mayoclinic.org/healthy-lifestyle/stress-management/in-depth/relaxation-technique/art-20045368',
           },
           {
@@ -874,8 +874,8 @@ export const archiveContents: ArchiveContent[] = [
       ],
     },
     seo: {
-      seoTitle: '스트레스가 남은 밤 따뜻한 샤워 루틴',
-      seoDescription: '긴장이 남은 밤, 물소리와 호흡, 낮은 조명으로 몸의 경계심을 낮추는 6분 샤워 루틴.',
+      seoTitle: '스트레스가 남은 밤 따뜻한 샤워 의식',
+      seoDescription: '긴장이 남은 밤, 물소리와 호흡, 낮은 조명으로 몸의 경계심을 낮추는 6분 샤워 의식.',
     },
     isPublished: true,
     createdAt: '2026-05-11',
@@ -885,7 +885,7 @@ export const archiveContents: ArchiveContent[] = [
     id: 'care-muscle-warm-shower',
     title: '오래 앉아 있던 날, 따뜻한 샤워가 뻐근함을 푸는 방식',
     subtitle: '세게 누르기보다 온감과 가벼운 움직임으로 시작합니다',
-    summary: '뭉친 부위를 무리하게 누르기보다 온감과 가벼운 움직임으로 긴장을 낮추는 회복 루틴.',
+    summary: '뭉친 부위를 무리하게 누르기보다 온감과 가벼운 움직임으로 긴장을 낮추는 회복 의식.',
     category: 'HOME_BATH',
     contentType: 'RESEARCHED',
     tags: ['운동 후', '근육', '샤워', '짧은 의식'],
@@ -934,7 +934,7 @@ export const archiveContents: ArchiveContent[] = [
             sourceName: 'Mayo Clinic',
             sourceType: 'medical_org',
             finding: '근육 손상 의심 상황에서는 초기 자가 관리로 휴식, 냉찜질, 압박, 올리기 등이 안내됩니다.',
-            bathtimeTakeaway: '삐끗한 직후, 붓기, 멍, 날카로운 통증이 있으면 따뜻한 샤워 루틴보다 손상 여부 확인을 우선합니다.',
+            bathtimeTakeaway: '삐끗한 직후, 붓기, 멍, 날카로운 통증이 있으면 따뜻한 샤워 의식보다 손상 여부 확인을 우선합니다.',
             url: 'https://www.mayoclinic.org/diseases-conditions/muscle-strains/diagnosis-treatment/drc-20450520',
           },
         ],
@@ -946,7 +946,7 @@ export const archiveContents: ArchiveContent[] = [
       {
         type: 'ritualTimer',
         title: '8분 뻐근함 샤워',
-        description: '온감과 작은 움직임으로 몸의 문턱을 낮추는 짧은 루틴입니다.',
+        description: '온감과 작은 움직임으로 몸의 문턱을 낮추는 짧은 의식입니다.',
         environment: 'shower',
         durationMinutes: 8,
         timerId: 'care-muscle-shower-8',
@@ -989,7 +989,7 @@ export const archiveContents: ArchiveContent[] = [
       { type: 'heading', text: '찾아본 자료와 바스타임의 해석', legacyFallback: true },
       { type: 'list', legacyFallback: true, items: [
         'Mayo Clinic: 근육 경련에는 따뜻한 목욕이나 샤워 물줄기, 부드러운 스트레칭이 도움이 될 수 있다고 안내합니다. 바스타임은 이를 따뜻한 물 뒤 작은 움직임을 붙이는 8분 샤워로 풀어 봅니다.',
-        'Mayo Clinic: 근육 손상 의심 상황에서는 초기 자가 관리로 휴식, 냉찜질, 압박, 올리기 등이 안내됩니다. 바스타임은 삐끗한 직후, 붓기, 멍, 날카로운 통증이 있으면 루틴보다 확인을 우선합니다.',
+        'Mayo Clinic: 근육 손상 의심 상황에서는 초기 자가 관리로 휴식, 냉찜질, 압박, 올리기 등이 안내됩니다. 바스타임은 삐끗한 직후, 붓기, 멍, 날카로운 통증이 있으면 의식보다 확인을 우선합니다.',
       ] },
       { type: 'heading', text: '오늘의 의식', legacyFallback: true },
       { type: 'list', legacyFallback: true, items: [
@@ -1048,7 +1048,7 @@ export const archiveContents: ArchiveContent[] = [
       ],
       sources: [
         { title: 'Mayo Clinic: Muscle cramp diagnosis and treatment', type: 'medical_org', url: 'https://www.mayoclinic.org/diseases-conditions/muscle-cramp/diagnosis-treatment/drc-20350825', note: '근육 경련 상황의 따뜻한 물과 부드러운 움직임 참고.' },
-        { title: 'Mayo Clinic: Muscle strains diagnosis and treatment', type: 'medical_org', url: 'https://www.mayoclinic.org/diseases-conditions/muscle-strains/diagnosis-treatment/drc-20450520', note: '급성 손상 의심 상황에서 따뜻한 루틴을 피해야 하는 기준 참고.' },
+        { title: 'Mayo Clinic: Muscle strains diagnosis and treatment', type: 'medical_org', url: 'https://www.mayoclinic.org/diseases-conditions/muscle-strains/diagnosis-treatment/drc-20450520', note: '급성 손상 의심 상황에서 따뜻한 의식을 피해야 하는 기준 참고.' },
       ],
       disclaimers: [
         '이 콘텐츠는 질병의 진단이나 치료를 위한 의학 정보가 아닙니다.',
@@ -1056,8 +1056,8 @@ export const archiveContents: ArchiveContent[] = [
       ],
     },
     seo: {
-      seoTitle: '뻐근한 몸을 위한 따뜻한 샤워 루틴',
-      seoDescription: '오래 앉아 있던 날, 온감과 가벼운 움직임으로 몸의 긴장을 낮추는 8분 샤워 루틴.',
+      seoTitle: '뻐근한 몸을 위한 따뜻한 샤워 의식',
+      seoDescription: '오래 앉아 있던 날, 온감과 가벼운 움직임으로 몸의 긴장을 낮추는 8분 샤워 의식.',
     },
     isPublished: true,
     createdAt: '2026-05-11',
@@ -1067,7 +1067,7 @@ export const archiveContents: ArchiveContent[] = [
     id: 'care-edema-footbath-evening',
     title: '발목이 답답한 저녁, 족욕이 먼저 하는 일',
     subtitle: '하루 끝 무거운 하체를 부드럽게 전환합니다',
-    summary: '하루 끝 하체가 무겁게 느껴질 때, 따뜻한 족욕과 발목 움직임으로 부드럽게 전환하는 루틴.',
+    summary: '하루 끝 하체가 무겁게 느껴질 때, 따뜻한 족욕과 발목 움직임으로 부드럽게 전환하는 의식.',
     category: 'HOME_BATH',
     contentType: 'RESEARCHED',
     tags: ['부종', '족욕', '혼자 쉬기', '짧은 의식'],
@@ -1103,7 +1103,7 @@ export const archiveContents: ArchiveContent[] = [
       {
         type: 'evidenceCard',
         title: '찾아본 자료',
-        intro: '다리나 발목이 붓는 느낌은 원인이 다양할 수 있어, 가벼운 저녁 루틴과 확인이 필요한 상황을 분리해야 합니다.',
+        intro: '다리나 발목이 붓는 느낌은 원인이 다양할 수 있어, 가벼운 저녁 의식과 확인이 필요한 상황을 분리해야 합니다.',
         items: [
           {
             sourceName: 'Cleveland Clinic',
@@ -1116,7 +1116,7 @@ export const archiveContents: ArchiveContent[] = [
             sourceName: 'Mayo Clinic',
             sourceType: 'medical_org',
             finding: '다리 붓기가 갑자기 나타나거나 한쪽만 심하거나, 통증·호흡곤란·가슴 통증 등이 함께 있으면 의료적 확인이 필요할 수 있다고 안내합니다.',
-            bathtimeTakeaway: '한쪽 다리, 통증, 호흡 관련 증상이 있으면 족욕 루틴보다 확인을 우선하도록 안전 블록을 앞세웁니다.',
+            bathtimeTakeaway: '한쪽 다리, 통증, 호흡 관련 증상이 있으면 족욕 의식보다 확인을 우선하도록 안전 블록을 앞세웁니다.',
             url: 'https://www.mayoclinic.org/symptoms/leg-swelling/basics/definition/sym-20050910',
           },
         ],
@@ -1201,7 +1201,7 @@ export const archiveContents: ArchiveContent[] = [
         recommendedFor: [
           '하루 끝 발목과 종아리가 무겁게 느껴지는 사람',
           '잠들기 전 하체 감각을 가볍게 정리하고 싶은 사람',
-          '전신 입욕보다 낮은 강도의 루틴이 필요한 사람',
+          '전신 입욕보다 낮은 강도의 의식이 필요한 사람',
         ],
         duration: { minMinutes: 12, maxMinutes: 12, label: '12분' },
         environments: ['footbath'],
@@ -1238,8 +1238,8 @@ export const archiveContents: ArchiveContent[] = [
       ],
     },
     seo: {
-      seoTitle: '발목이 답답한 저녁 족욕 루틴',
-      seoDescription: '하루 끝 하체가 무겁게 느껴질 때 따뜻한 족욕과 발목 움직임으로 정리하는 12분 루틴.',
+      seoTitle: '발목이 답답한 저녁 족욕 의식',
+      seoDescription: '하루 끝 하체가 무겁게 느껴질 때 따뜻한 족욕과 발목 움직임으로 정리하는 12분 의식.',
     },
     isPublished: true,
     createdAt: '2026-05-11',
@@ -1248,8 +1248,8 @@ export const archiveContents: ArchiveContent[] = [
   {
     id: 'care-hangover-gentle-footbath',
     title: '술 마신 다음 날, 뜨거운 목욕보다 미지근한 족욕',
-    subtitle: '숙취 루틴은 회복보다 안전을 먼저 봅니다',
-    summary: '음주 다음 날에는 전신 고온 입욕보다 짧고 미지근한 족욕으로 부담을 줄이는 안전 우선 루틴.',
+    subtitle: '숙취 의식은 회복보다 안전을 먼저 봅니다',
+    summary: '음주 다음 날에는 전신 고온 입욕보다 짧고 미지근한 족욕으로 부담을 줄이는 안전 우선 의식.',
     category: 'HOME_BATH',
     contentType: 'RESEARCHED',
     tags: ['숙취', '족욕', '안전 우선', '짧은 의식'],
@@ -1389,7 +1389,7 @@ export const archiveContents: ArchiveContent[] = [
         recommendedFor: [
           '숙취가 있는 날 뜨거운 목욕을 피하고 싶은 사람',
           '전신 입욕보다 낮은 강도의 정리가 필요한 사람',
-          '물을 마시고 바로 쉬는 짧은 루틴이 필요한 사람',
+          '물을 마시고 바로 쉬는 짧은 의식이 필요한 사람',
         ],
         duration: { minMinutes: 8, maxMinutes: 8, label: '8분' },
         environments: ['footbath'],
@@ -1428,7 +1428,7 @@ export const archiveContents: ArchiveContent[] = [
     },
     seo: {
       seoTitle: '숙취에는 뜨거운 목욕보다 미지근한 족욕',
-      seoDescription: '음주 다음 날 전신 고온 입욕을 피하고 미지근한 족욕으로 부담을 낮추는 안전 우선 루틴.',
+      seoDescription: '음주 다음 날 전신 고온 입욕을 피하고 미지근한 족욕으로 부담을 낮추는 안전 우선 의식.',
     },
     isPublished: true,
     createdAt: '2026-05-11',
@@ -1436,7 +1436,7 @@ export const archiveContents: ArchiveContent[] = [
   },
   {
     id: 'care-cold-gentle-warmth',
-    title: '으슬으슬한 날, 몸을 오래 데우지 않는 온기 루틴',
+    title: '으슬으슬한 날, 몸을 오래 데우지 않는 온기 의식',
     subtitle: '컨디션이 떨어진 날엔 오래 버티지 말고 짧게 마칩니다',
     summary: '컨디션이 떨어진 날에는 오래 이어가는 목욕보다 짧은 온감과 휴식으로 몸의 부담을 낮춘다.',
     category: 'HOME_BATH',
@@ -1447,7 +1447,7 @@ export const archiveContents: ArchiveContent[] = [
       {
         type: 'heroIntro',
         eyebrow: '으슬으슬한 날의 의식',
-        title: '으슬으슬한 날, 몸을 오래 데우지 않는 온기 루틴',
+        title: '으슬으슬한 날, 몸을 오래 데우지 않는 온기 의식',
         intro: [
           '으슬으슬한 날에는 뜨거운 물에 오래 있고 싶어집니다.',
           '하지만 컨디션이 떨어진 날의 목표는 땀을 내는 것이 아니라, 몸을 더 지치게 하지 않는 것입니다.',
@@ -1474,7 +1474,7 @@ export const archiveContents: ArchiveContent[] = [
       {
         type: 'evidenceCard',
         title: '찾아본 자료',
-        intro: '감기 기운이 있는 날의 온기 루틴은 증상 확인과 열 노출 주의를 먼저 두는 편이 안전합니다.',
+        intro: '감기 기운이 있는 날의 온기 의식은 증상 확인과 열 노출 주의를 먼저 두는 편이 안전합니다.',
         items: [
           {
             sourceName: 'Mayo Clinic',
@@ -1487,7 +1487,7 @@ export const archiveContents: ArchiveContent[] = [
             sourceName: 'CDC',
             sourceType: 'public_health',
             finding: '임신 중에는 더위와 열 노출에 더 취약할 수 있어 주의가 필요하다고 안내합니다.',
-            bathtimeTakeaway: '임신 중이거나 열 노출에 주의가 필요한 경우에는 뜨거운 목욕이나 족욕 루틴보다 전문가 안내를 우선합니다.',
+            bathtimeTakeaway: '임신 중이거나 열 노출에 주의가 필요한 경우에는 뜨거운 목욕이나 족욕 의식보다 전문가 안내를 우선합니다.',
             url: 'https://www.cdc.gov/heat-health/risk-factors/heat-and-pregnancy.html',
           },
           {
@@ -1506,7 +1506,7 @@ export const archiveContents: ArchiveContent[] = [
       {
         type: 'ritualTimer',
         title: '10분 으슬으슬한 날 족욕',
-        description: '몸을 오래 데우지 않고 발만 짧게 따뜻하게 한 뒤 쉬는 루틴입니다.',
+        description: '몸을 오래 데우지 않고 발만 짧게 따뜻하게 한 뒤 쉬는 의식입니다.',
         environment: 'footbath',
         durationMinutes: 10,
         timerId: 'care-cold-footbath-10',
@@ -1524,7 +1524,7 @@ export const archiveContents: ArchiveContent[] = [
       },
       {
         type: 'safetyBox',
-        title: '이런 날에는 온기 루틴을 건너뛰세요',
+        title: '이런 날에는 온기 의식을 건너뛰세요',
         tone: 'medical',
         items: [
           '고열, 심한 몸살, 탈수감이 있는 날',
@@ -1557,7 +1557,7 @@ export const archiveContents: ArchiveContent[] = [
         '7분: 몸이 답답해지지 않는 선에서 발만 담급니다.',
         '2분: 물기를 닦고 양말이나 수건으로 온기를 유지한 뒤 바로 쉽니다.',
       ] },
-      { type: 'heading', text: '이런 날에는 온기 루틴을 건너뛰세요', legacyFallback: true },
+      { type: 'heading', text: '이런 날에는 온기 의식을 건너뛰세요', legacyFallback: true },
       { type: 'list', legacyFallback: true, items: ['고열, 심한 몸살, 탈수감이 있는 날', '호흡곤란, 흉통, 쌕쌕거림이 있는 경우', '임신 중이거나 심혈관 질환 등 열 노출에 주의가 필요한 경우', '증상이 오래 지속되거나 악화되는 경우'] },
       { type: 'heading', text: '참고한 자료' },
       { type: 'list', items: ['Mayo Clinic: Common cold symptoms and causes - https://www.mayoclinic.org/diseases-conditions/common-cold/symptoms-causes/syc-20351605', 'CDC: Heat and pregnancy - https://www.cdc.gov/heat-health/risk-factors/heat-and-pregnancy.html', 'ACOG: Sauna or hot tub early in pregnancy - https://www.acog.org/womens-health/experts-and-stories/ask-acog/can-i-use-a-sauna-or-hot-tub-early-in-pregnancy'] },
@@ -1616,8 +1616,8 @@ export const archiveContents: ArchiveContent[] = [
       ],
     },
     seo: {
-      seoTitle: '으슬으슬한 날 짧은 온기 족욕 루틴',
-      seoDescription: '컨디션이 떨어진 날 오래 뜨겁게 버티지 않고 짧은 온감과 휴식으로 몸의 부담을 낮추는 루틴.',
+      seoTitle: '으슬으슬한 날 짧은 온기 족욕 의식',
+      seoDescription: '컨디션이 떨어진 날 오래 뜨겁게 버티지 않고 짧은 온감과 휴식으로 몸의 부담을 낮추는 의식.',
     },
     isPublished: true,
     createdAt: '2026-05-11',
@@ -1627,7 +1627,7 @@ export const archiveContents: ArchiveContent[] = [
     id: 'care-menstrual-gentle-heat',
     title: '아랫배가 무거운 날, 따뜻한 물을 조심스럽게 쓰는 법',
     subtitle: '강한 열보다 편안한 온도와 짧은 안정감에 집중합니다',
-    summary: '생리통이 있는 날에는 강한 열보다 편안한 온도와 짧은 루틴으로 긴장을 덜어내는 방향이 좋다.',
+    summary: '생리통이 있는 날에는 강한 열보다 편안한 온도와 짧은 의식으로 긴장을 덜어내는 방향이 좋다.',
     category: 'HOME_BATH',
     contentType: 'RESEARCHED',
     tags: ['생리통', '족욕', '온기', '안전 우선'],
@@ -1639,7 +1639,7 @@ export const archiveContents: ArchiveContent[] = [
         title: '아랫배가 무거운 날, 따뜻한 물을 조심스럽게 쓰는 법',
         intro: [
           '아랫배가 무거운 날에는 뜨거운 물로 참아내기보다 편안한 온도와 자세를 먼저 찾는 편이 좋습니다.',
-          '이 루틴은 통증을 해결한다고 말하지 않습니다.',
+          '이 의식은 통증을 해결한다고 말하지 않습니다.',
           '오늘의 족욕은 강한 열을 견디는 시간이 아니라, 몸에 힘이 덜 들어가는 자세와 낮은 강도의 온감을 찾는 의식입니다.',
         ],
       },
@@ -1676,21 +1676,21 @@ export const archiveContents: ArchiveContent[] = [
             sourceName: 'NHS',
             sourceType: 'medical_org',
             finding: '통증이 심하거나 평소와 다르거나 갑자기 악화되는 경우에는 의료적 확인이 필요할 수 있다고 안내합니다.',
-            bathtimeTakeaway: '통증이 평소와 다르거나 일상생활이 어려우면 족욕 루틴보다 상담과 휴식을 우선합니다.',
+            bathtimeTakeaway: '통증이 평소와 다르거나 일상생활이 어려우면 족욕 의식보다 상담과 휴식을 우선합니다.',
             url: 'https://www.nhs.uk/symptoms/period-pain/',
           },
           {
             sourceName: 'CDC',
             sourceType: 'public_health',
             finding: '임신 중에는 더위와 열 노출에 더 취약할 수 있어 주의가 필요하다고 안내합니다.',
-            bathtimeTakeaway: '임신 가능성이 있거나 임신 중이라면 열 노출 루틴보다 전문가 안내를 먼저 확인합니다.',
+            bathtimeTakeaway: '임신 가능성이 있거나 임신 중이라면 열 노출 의식보다 전문가 안내를 먼저 확인합니다.',
             url: 'https://www.cdc.gov/heat-health/risk-factors/heat-and-pregnancy.html',
           },
         ],
       },
       {
         type: 'paragraph',
-        text: '바스타임은 생리통이 있는 날에 루틴을 이겨내려 하지 않는 쪽을 권합니다. 편안한 온도의 족욕 12분으로 몸을 낮은 강도로 안정시키고, 통증이 심하면 의식보다 상담과 휴식을 우선합니다.',
+        text: '바스타임은 생리통이 있는 날에 의식을 이겨내려 하지 않는 쪽을 권합니다. 편안한 온도의 족욕 12분으로 몸을 낮은 강도로 안정시키고, 통증이 심하면 의식보다 상담과 휴식을 우선합니다.',
       },
       {
         type: 'ritualTimer',
@@ -1714,7 +1714,7 @@ export const archiveContents: ArchiveContent[] = [
       },
       {
         type: 'safetyBox',
-        title: '이런 날에는 루틴보다 확인이 먼저입니다',
+        title: '이런 날에는 의식보다 확인이 먼저입니다',
         tone: 'medical',
         items: [
           '통증이 갑자기 심해졌거나 평소와 다른 경우',
@@ -1738,7 +1738,7 @@ export const archiveContents: ArchiveContent[] = [
       { type: 'heading', text: '찾아본 자료와 바스타임의 해석', legacyFallback: true },
       { type: 'list', legacyFallback: true, items: [
         'NHS: 생리통이 있을 때 따뜻한 목욕이나 샤워, 온찜질 등이 도움이 될 수 있다고 안내합니다. 바스타임은 이를 강한 열이 아니라 편안한 온도의 족욕과 안정된 자세로 풀어 봅니다.',
-        'NHS: 통증이 심하거나 평소와 다르거나 갑자기 악화되는 경우에는 의료적 확인이 필요할 수 있다고 안내합니다. 바스타임은 이런 날에는 루틴보다 상담과 휴식을 우선합니다.',
+        'NHS: 통증이 심하거나 평소와 다르거나 갑자기 악화되는 경우에는 의료적 확인이 필요할 수 있다고 안내합니다. 바스타임은 이런 날에는 의식보다 상담과 휴식을 우선합니다.',
         'CDC: 임신 중에는 더위와 열 노출에 더 취약할 수 있어 주의가 필요하다고 안내합니다. 바스타임은 임신 가능성이 있거나 임신 중이면 전문가 안내를 먼저 확인하도록 제안합니다.',
       ] },
       { type: 'heading', text: '오늘의 의식', legacyFallback: true },
@@ -1748,7 +1748,7 @@ export const archiveContents: ArchiveContent[] = [
         '2분: 통증을 참지 말고 발목만 천천히 움직입니다.',
         '1분: 물기를 눌러 닦고 따뜻한 옷이나 담요로 마무리합니다.',
       ] },
-      { type: 'heading', text: '이런 날에는 루틴보다 확인이 먼저입니다', legacyFallback: true },
+      { type: 'heading', text: '이런 날에는 의식보다 확인이 먼저입니다', legacyFallback: true },
       { type: 'list', legacyFallback: true, items: ['통증이 갑자기 심해졌거나 평소와 다른 경우', '출혈 양상이나 발열 등 다른 증상이 함께 있는 경우', '임신 가능성이 있거나 임신 중인 경우', '일상생활이 어려울 정도로 통증이 반복되는 경우'] },
       { type: 'heading', text: '참고한 자료' },
       { type: 'list', items: ['NHS: Period pain - https://www.nhs.uk/symptoms/period-pain/', 'ACOG: Sauna or hot tub early in pregnancy - https://www.acog.org/womens-health/experts-and-stories/ask-acog/can-i-use-a-sauna-or-hot-tub-early-in-pregnancy', 'CDC: Heat and pregnancy - https://www.cdc.gov/heat-health/risk-factors/heat-and-pregnancy.html'] },
@@ -1807,8 +1807,8 @@ export const archiveContents: ArchiveContent[] = [
       ],
     },
     seo: {
-      seoTitle: '생리통이 있는 날 편안한 족욕 루틴',
-      seoDescription: '아랫배가 무거운 날 강한 열보다 편안한 온도와 짧은 안정감에 집중하는 12분 족욕 루틴.',
+      seoTitle: '생리통이 있는 날 편안한 족욕 의식',
+      seoDescription: '아랫배가 무거운 날 강한 열보다 편안한 온도와 짧은 안정감에 집중하는 12분 족욕 의식.',
     },
     isPublished: true,
     createdAt: '2026-05-11',
@@ -1818,7 +1818,7 @@ export const archiveContents: ArchiveContent[] = [
     id: 'care-mood-small-shower',
     title: '기분이 가라앉은 날, 샤워를 작은 전환점으로 쓰는 법',
     subtitle: '큰 변화를 만들려 하지 말고 하루의 결만 조금 바꿉니다',
-    summary: '큰 변화를 만들려 하기보다 물 온도, 향, 조명, 짧은 동작으로 하루의 결을 바꾸는 루틴.',
+    summary: '큰 변화를 만들려 하기보다 물 온도, 향, 조명, 짧은 동작으로 하루의 결을 바꾸는 의식.',
     category: 'HOME_BATH',
     contentType: 'RESEARCHED',
     tags: ['기분 전환', '샤워', '욕조 없음', '짧은 의식'],
@@ -1830,7 +1830,7 @@ export const archiveContents: ArchiveContent[] = [
         title: '기분이 가라앉은 날, 샤워를 작은 전환점으로 쓰는 법',
         intro: [
           '기분이 가라앉은 날에는 무엇이든 크게 바꿔야 할 것처럼 느껴집니다.',
-          '하지만 그런 날일수록 크고 긴 루틴보다 작고 끝낼 수 있는 행동이 더 현실적입니다.',
+          '하지만 그런 날일수록 크고 긴 의식보다 작고 끝낼 수 있는 행동이 더 현실적입니다.',
           '오늘의 샤워는 기분을 고치는 시간이 아니라, 다음 장면으로 넘어가는 작은 표시를 만드는 의식입니다.',
         ],
       },
@@ -1854,7 +1854,7 @@ export const archiveContents: ArchiveContent[] = [
       {
         type: 'evidenceCard',
         title: '찾아본 자료',
-        intro: '기분이 가라앉은 날의 루틴은 기분을 해결한다기보다, 일상 리듬과 안전 신호를 함께 보는 편이 안전합니다.',
+        intro: '기분이 가라앉은 날의 의식은 기분을 해결한다기보다, 일상 리듬과 안전 신호를 함께 보는 편이 안전합니다.',
         items: [
           {
             sourceName: 'Mayo Clinic',
@@ -1867,7 +1867,7 @@ export const archiveContents: ArchiveContent[] = [
             sourceName: 'Mayo Clinic',
             sourceType: 'medical_org',
             finding: '우울 증상이 지속되거나 일상 기능을 방해하거나 자해 생각이 있으면 전문가의 도움이 중요하다고 안내합니다.',
-            bathtimeTakeaway: '무기력이나 우울감이 오래가거나 안전 문제가 있으면 샤워 루틴보다 도움 요청을 먼저 두는 안전 블록으로 연결합니다.',
+            bathtimeTakeaway: '무기력이나 우울감이 오래가거나 안전 문제가 있으면 샤워 의식보다 도움 요청을 먼저 두는 안전 블록으로 연결합니다.',
             url: 'https://www.mayoclinic.org/health/depression/DS00175',
           },
           {
@@ -1905,7 +1905,7 @@ export const archiveContents: ArchiveContent[] = [
       },
       {
         type: 'safetyBox',
-        title: '이런 날에는 작은 루틴보다 도움 요청이 먼저입니다',
+        title: '이런 날에는 작은 의식보다 도움 요청이 먼저입니다',
         tone: 'medical',
         items: [
           '우울감이 오래 지속되거나 일상 기능을 방해하는 경우',
@@ -1929,7 +1929,7 @@ export const archiveContents: ArchiveContent[] = [
       { type: 'heading', text: '찾아본 자료와 바스타임의 해석', legacyFallback: true },
       { type: 'list', legacyFallback: true, items: [
         'Mayo Clinic: 우울감이 있을 때 규칙적인 일과, 수면, 활동 계획 같은 자기 돌봄이 언급됩니다. 바스타임은 샤워를 기분을 끌어올리는 방법이 아니라 작고 끝낼 수 있는 행동으로 봅니다.',
-        'Mayo Clinic: 우울 증상이 지속되거나 일상 기능을 방해하거나 자해 생각이 있으면 전문가의 도움이 중요하다고 안내합니다. 바스타임은 이런 경우 샤워 루틴보다 도움 요청을 먼저 둡니다.',
+        'Mayo Clinic: 우울 증상이 지속되거나 일상 기능을 방해하거나 자해 생각이 있으면 전문가의 도움이 중요하다고 안내합니다. 바스타임은 이런 경우 샤워 의식보다 도움 요청을 먼저 둡니다.',
         'Mayo Clinic: 이완 기법은 호흡, 신체 감각, 근육 긴장을 알아차리는 방식으로 스트레스 관리에 쓰일 수 있다고 안내합니다. 바스타임은 향, 물소리, 손의 감각처럼 하나의 감각만 남기는 방식으로 제안합니다.',
       ] },
       { type: 'heading', text: '오늘의 의식', legacyFallback: true },
@@ -1939,7 +1939,7 @@ export const archiveContents: ArchiveContent[] = [
         '1분: 좋아하는 향이나 음악 하나에만 집중합니다.',
         '1분: 몸을 닦고 바로 앉을 자리를 정합니다.',
       ] },
-      { type: 'heading', text: '이런 날에는 작은 루틴보다 도움 요청이 먼저입니다', legacyFallback: true },
+      { type: 'heading', text: '이런 날에는 작은 의식보다 도움 요청이 먼저입니다', legacyFallback: true },
       { type: 'list', legacyFallback: true, items: ['우울감이 오래 지속되거나 일상 기능을 방해하는 경우', '자해 생각이나 안전 문제가 있는 경우', '샤워 자체가 큰 부담이 되는 컨디션인 경우', '식사, 수면, 출근이나 등교가 계속 어려운 경우'] },
       { type: 'heading', text: '참고한 자료' },
       { type: 'list', items: ['Mayo Clinic: Depression support and routine - https://www.mayoclinic.org/health/depression/MH00016', 'Mayo Clinic: Depression symptoms and causes - https://www.mayoclinic.org/health/depression/DS00175', 'Mayo Clinic: Relaxation techniques - https://www.mayoclinic.org/healthy-lifestyle/stress-management/in-depth/relaxation-technique/art-20045368'] },
@@ -1956,9 +1956,9 @@ export const archiveContents: ArchiveContent[] = [
     careArchive: {
       templateVersion: 'care-archive.v1',
       summaryCard: {
-        situation: '기분이 가라앉고 긴 루틴이 부담스러운 날',
+        situation: '기분이 가라앉고 긴 의식이 부담스러운 날',
         recommendedFor: [
-          '무기력해서 긴 루틴이 부담스러운 사람',
+          '무기력해서 긴 의식이 부담스러운 사람',
           '외출 전 작은 전환이 필요한 사람',
           '하루를 다시 시작하는 표시가 필요한 사람',
         ],
@@ -1988,7 +1988,7 @@ export const archiveContents: ArchiveContent[] = [
         { label: '작은 전환 의식으로 저장하기', action: 'save', targetId: 'care-mood-small-shower', emphasis: 'secondary' },
       ],
       sources: [
-        { title: 'Mayo Clinic: Depression support and routine', type: 'medical_org', url: 'https://www.mayoclinic.org/health/depression/MH00016', note: '우울감이 있을 때 일상 루틴과 자기 돌봄 참고.' },
+        { title: 'Mayo Clinic: Depression support and routine', type: 'medical_org', url: 'https://www.mayoclinic.org/health/depression/MH00016', note: '우울감이 있을 때 일상 의식과 자기 돌봄 참고.' },
         { title: 'Mayo Clinic: Depression symptoms and causes', type: 'medical_org', url: 'https://www.mayoclinic.org/health/depression/DS00175', note: '전문가 도움이 필요한 우울 증상과 안전 신호 참고.' },
         { title: 'Mayo Clinic: Relaxation techniques', type: 'medical_org', url: 'https://www.mayoclinic.org/healthy-lifestyle/stress-management/in-depth/relaxation-technique/art-20045368', note: '호흡과 신체 감각을 활용하는 이완 기법 참고.' },
       ],
@@ -1998,8 +1998,8 @@ export const archiveContents: ArchiveContent[] = [
       ],
     },
     seo: {
-      seoTitle: '기분이 가라앉은 날 5분 샤워 루틴',
-      seoDescription: '기분을 해결하려 하기보다 물 온도와 향, 짧은 동작으로 하루의 결을 바꾸는 샤워 루틴.',
+      seoTitle: '기분이 가라앉은 날 5분 샤워 의식',
+      seoDescription: '기분을 해결하려 하기보다 물 온도와 향, 짧은 동작으로 하루의 결을 바꾸는 샤워 의식.',
     },
     isPublished: true,
     createdAt: '2026-05-11',

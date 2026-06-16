@@ -38,7 +38,7 @@ export function ProductDetailModal({
   onOpenCatalog,
   onPurchasePress,
   secondaryActionLabel = '제품 탭에서 전체 보기',
-  closeActionLabel = '루틴으로 돌아가기',
+  closeActionLabel = '의식으로 돌아가기',
 }: ProductDetailModalProps) {
   if (!product) return null;
   const categoryTone = getProductCategoryBadgeTone(product.category);

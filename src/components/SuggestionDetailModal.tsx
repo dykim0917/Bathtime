@@ -60,7 +60,7 @@ export function SuggestionDetailModal({
             {isTrip ? (
               <>
                 <Text style={styles.label}>{copy.suggestion.labels.narrative}</Text>
-                <Text style={styles.value}>{explanation.narrativeHeadline ?? '오늘의 테마 분위기로 쉬어가는 루틴이에요.'}</Text>
+                <Text style={styles.value}>{explanation.narrativeHeadline ?? '오늘의 테마 분위기로 쉬어가는 의식이에요.'}</Text>
 
                 <Text style={styles.label}>{copy.suggestion.labels.atmosphere}</Text>
                 <View style={styles.chipsRow}>

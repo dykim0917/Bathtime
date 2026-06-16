@@ -4,13 +4,13 @@ import { FallbackStrategy, HomeModeType, HomeSuggestionRank } from './types';
 export function toUserFacingFallbackLabel(fallback: FallbackStrategy): string {
   switch (fallback) {
     case 'DEFAULT_STARTER_RITUAL':
-      return '처음이라 무난한 기본 루틴을 먼저 추천해요.';
+      return '처음이라 무난한 기본 의식을 먼저 추천해요.';
     case 'SAFE_ROUTINE_ONLY':
-      return '안전을 위해 보수적인 루틴만 보여드려요.';
+      return '안전을 위해 보수적인 의식만 보여드려요.';
     case 'RESET_WITHOUT_COLD':
       return '안전을 위해 냉수 단계 없이 진행해요.';
     case 'ROUTINE_ONLY_NO_COMMERCE':
-      return '지금은 준비물 없이 루틴부터 시작할 수 있어요.';
+      return '지금은 준비물 없이 의식부터 시작할 수 있어요.';
     case 'none':
     default:
       return '오늘 상태에 맞춰 추천했어요.';
