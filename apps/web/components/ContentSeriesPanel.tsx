@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, Books } from '@phosphor-icons/react/ssr';
+import { ArrowRight, Books, Check } from '@phosphor-icons/react/ssr';
 import type { ArchiveContent } from '@/src/archive/types';
 import { getContentSeriesInfo } from '@web/lib/archive';
 
@@ -35,19 +35,23 @@ export function ContentSeriesPanel({
         {contents.map((content) => {
           const itemSeries = getContentSeriesInfo(content);
           const isCurrent = content.id === currentContentId;
+          const title = toDisplayCopy(content.title);
+
+          const inner = (
+            <>
+              <span>{itemSeries?.order ?? '-'}</span>
+              <strong>{title}</strong>
+              {isCurrent ? (
+                <Check size={15} weight="bold" aria-label="현재 글" />
+              ) : (
+                <ArrowRight size={15} weight="bold" aria-hidden="true" />
+              )}
+            </>
+          );
 
           return (
             <li key={content.id} className={isCurrent ? 'current' : undefined}>
-              <span>{itemSeries?.order ?? '-'}</span>
-              <div>
-                {isCurrent ? (
-                  <strong>{toDisplayCopy(content.title)}</strong>
-                ) : (
-                  <Link href={`/content/${content.id}`}>{toDisplayCopy(content.title)}</Link>
-                )}
-                <p>{toDisplayCopy(content.summary)}</p>
-              </div>
-              {isCurrent ? <em>읽는 중</em> : <ArrowRight size={15} weight="bold" aria-hidden="true" />}
+              {isCurrent ? inner : <Link className="content-series-card-link" href={`/content/${content.id}`}>{inner}</Link>}
             </li>
           );
         })}
