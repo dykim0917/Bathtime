@@ -125,7 +125,7 @@ export default async function ContentPage({
 
   const { content, isPreview } = resolved;
   const routines = getRelatedRoutinePresets(content);
-  const publishedContents = await getPublishedArchiveContents();
+  const publishedContents = await getPublishedArchiveContents({ noStore: true });
   const seriesContents = getSeriesArchiveContents(content, publishedContents);
   const relatedContents = getRelatedArchiveContents(content, publishedContents, 3);
   const { leadVerdict, bodyBlocks } = splitLeadVerdict(content.body);

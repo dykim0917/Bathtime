@@ -89,7 +89,7 @@ async function fetchArchiveRows(query: URLSearchParams, options?: { noStore?: bo
   return rows.map(mapArchiveContentDbRow).filter((content) => content.isPublished);
 }
 
-export async function getPublishedArchiveContents(): Promise<ArchiveContent[]> {
+export async function getPublishedArchiveContents(options?: { noStore?: boolean }): Promise<ArchiveContent[]> {
   const query = new URLSearchParams({
     select: archiveContentDbSelect,
     status: 'eq.active',
@@ -97,7 +97,7 @@ export async function getPublishedArchiveContents(): Promise<ArchiveContent[]> {
     order: 'content_updated_at.desc,id.asc',
   });
 
-  const contents = await fetchArchiveRows(query);
+  const contents = await fetchArchiveRows(query, options);
   return sortByUpdatedAt(contents);
 }
 

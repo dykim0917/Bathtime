@@ -1923,6 +1923,7 @@ p {
 
 .content-series-panel {
   gap: 16px;
+  margin-top: 34px;
 }
 
 .content-series-heading {
