@@ -101,9 +101,13 @@ For candidate-frame content, also verify:
 
 Before DB apply, reader-facing Korean copy must keep one honorific/register level across headings, body paragraphs, lists, candidate cards, CTAs, and captions.
 
-Default for spot guides is warm `해요체` when the page uses headings such as `이런 사람에게 맞아요` or `이런 사람에게는 애매해요`.
+Default for spot guides is calm observer-style `한다체`, matching the broader Bathtime content voice.
 
-Avoid `~해요` headings with `~합니다` body copy. If a guide intentionally uses formal `합니다체`, convert headings away from casual `~해요` as well.
+Avoid headings such as `이런 사람에게 맞아요` and `이런 사람에게는 애매해요`; use `이런 사람에게 맞는다`, `이런 사람에게는 애매하다`, or shorter noun-phrase headings.
+
+Do not convert spot guides to warm `해요체` during implementation unless the user explicitly asks for it.
+
+Before DB apply, search final body copy for unintended casual endings such as `해요`, `돼요`, `예요`, `이에요`. Literal phone questions or button labels may remain as recorded exceptions.
 
 Do not add `저장해둘 이유` as a fixed section. Spot guides should make their usefulness clear through criteria, source transparency, checklist value, and realistic next actions.
 

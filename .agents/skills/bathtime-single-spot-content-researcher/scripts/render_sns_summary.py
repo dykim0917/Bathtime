@@ -116,7 +116,7 @@ def render(record: dict[str, Any]) -> str:
     app_card = f"{short_summary} 방문 전에는 {external_access}, {price}, {reservation}를 다시 확인하는 것이 좋습니다."
 
     threads_post = (
-        f"{name}을 배스타임 기준으로 정리해봤습니다.\n\n"
+        f"{name}을 바스타임 기준으로 정리해봤습니다.\n\n"
         f"- 위치: {location}\n"
         f"- 이용: {external_access}\n"
         f"- 가격: {price}\n"
@@ -135,7 +135,7 @@ def render(record: dict[str, Any]) -> str:
     seo_title = f"{name} 방문 전 확인할 것 | {location} 바스타임 스팟"
     meta_description = (
         f"{name}의 외부인 이용 가능 여부, 가격대, 예약 필요 여부, 시설 구성, "
-        f"혼자 이용 적합도를 배스타임 기준으로 정리했습니다."
+        f"혼자 이용 적합도를 바스타임 기준으로 정리했습니다."
     )
 
     markdown = f"""# App Card

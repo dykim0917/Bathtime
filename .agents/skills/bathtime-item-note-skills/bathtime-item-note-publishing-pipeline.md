@@ -2,7 +2,7 @@
 name: bathtime-item-note-publishing-pipeline
 description: Run the full Bathtime Item Note content publishing pipeline through private draft DB apply. Use when the user wants to take a bath-related item, item category, comparison, or item idea from editorial angle to draft preview in one cycle: angle brief, research artifacts, canonical seed, web content package, Korean humanization review, ArchiveContent implementation, DB upsert artifacts, optional Supabase/PostgREST draft apply, and preview verification. This skill orchestrates bathtime-item-note-ideator, bathtime-item-note-researcher, bathtime-item-note-seed-builder, bathtime-item-note-web-content-producer, humanize-korean, and bathtime-item-note-archive-content-implementer. It never publishes publicly by default.
 metadata:
-  short-description: 배스타임 아이템 노트 아이디어부터 비공개 draft 반영까지 전체 파이프라인
+  short-description: 바스타임 아이템 노트 아이디어부터 비공개 draft 반영까지 전체 파이프라인
 ---
 
 # Bathtime Item Note Publishing Pipeline
@@ -162,7 +162,7 @@ The final page must read as an Item Note, not a product review.
 
 ### 6. `humanize-korean`
 
-Run this required review step before ArchiveContent implementation or DB apply.
+Run this required review step before the final Observer Essay Tone Pass and before ArchiveContent implementation or DB apply.
 
 Input:
 
@@ -193,6 +193,21 @@ Preserve exactly:
 - facts, claims, prices, dates, source uncertainty, safety notes
 - product names, brand names, URLs, slugs, IDs, image URIs, asset paths
 - JSON/TypeScript field names and block type names
+
+### 6.5. Final Observer Essay Tone Pass
+
+After `humanize-korean`, run the Bathtime observer-essay tone pass as the final voice and register check.
+
+- Default all Bathtime item-note public body copy, product cards, captions, and CTAs to calm `한다체`.
+- Preserve product names, prices, specs, image-right notes, source uncertainty, and candidate boundaries.
+- Do not convert item notes to warm `해요체` unless the user explicitly asks for it.
+- Search the final body for unintended casual endings:
+
+```bash
+rg "해요|돼요|좋아요|예요|이에요|거예요|했어요|봤어요" <output-files>
+```
+
+Allow exceptions only for literal quoted user copy, actual button labels, or intentionally user-copyable questions. Record any exception in the quality gate.
 - publish blockers and implementation notes
 - the no-ranking/no-recommendation stance
 
@@ -276,7 +291,7 @@ Examples:
 
 - "족욕기와 족욕볼을 아이템 노트로 만들어줘"
 - "반신욕조가 필요한 사람과 아닌 사람 파이프라인 돌려줘"
-- "이 샤워필터 링크를 배스타임 콘텐츠로 만들 수 있을까?"
+- "이 샤워필터 링크를 바스타임 콘텐츠로 만들 수 있을까?"
 - "욕실 조명은 꼭 사야 할까?를 아이템 노트로 제작해줘"
 - "입욕제는 언제 쓰면 만족감이 높을까? 콘텐츠화해줘"
 
@@ -325,7 +340,7 @@ Stop before DB apply and report the blocker when:
 - official specs are conflicting and decision-critical
 - safety risk appears and cannot be framed responsibly
 - product image rights are unresolved and no safe fallback exists
-- affiliate/ad disclosure is required but unavailable
+- affiliate or sponsorship disclosure is required but unavailable
 - the required humanize review is missing, failed, or changed meaning
 - `item-seed.archive-content.ts` fails implementer fail conditions
 - the upsert generation command fails
@@ -368,9 +383,11 @@ When converting research into public copy, translate internal research language:
 
 Reader-facing Korean copy must keep one honorific/register level across section headings, body paragraphs, lists, product cards, CTAs, and captions.
 
-Default for Bathtime Item Notes is warm `해요체`, because standard headings such as `이런 사람에게 맞아요` and `이런 사람에게는 애매해요` already use that register.
+Default for Bathtime Item Notes is calm observer-style `한다체`, matching the broader Bathtime content voice.
 
-Do not mix `~해요` headings with `~합니다` body copy. If using `해요체`, rewrite endings such as `확인합니다`, `필요합니다`, `됩니다`, `좋습니다` to matching endings such as `확인해요`, `필요해요`, `돼요`, `좋아요`.
+Avoid headings such as `이런 사람에게 맞아요` and `이런 사람에게는 애매해요`; use `이런 사람에게 맞는다`, `이런 사람에게는 애매하다`, or shorter noun-phrase headings.
+
+Do not convert item notes to warm `해요체` during UX polish or humanization unless the user explicitly asks for it.
 
 Quality Gate must explicitly check register consistency before draft apply.
 

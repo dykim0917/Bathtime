@@ -1,13 +1,13 @@
 ---
-name: bathtime-spot-publishing-pipeline
-description: Run the full Bathtime spot content publishing pipeline through private draft DB apply. Use when the user wants to take a bath/spa/sauna spot from research to draft preview in one cycle: research artifacts, canonical seed, web content package, ArchiveContent implementation, DB upsert artifacts, Supabase/PostgREST draft apply, and preview verification. This skill orchestrates bathtime-spot-researcher, bathtime-spot-seed-builder, bathtime-web-content-producer, and bathtime-archive-content-implementer. It never publishes publicly by default.
+name: bathtime-single-spot-content-publishing-pipeline
+description: Run the full Bathtime single spot content publishing pipeline through private draft DB apply. Use when the user wants to take one bath/spa/sauna place from research to draft preview in one cycle: research artifacts, canonical seed, web content package, Korean humanization review, final observer-tone pass, ArchiveContent implementation, DB upsert artifacts, Supabase/PostgREST draft apply, and preview verification. This skill orchestrates bathtime-single-spot-content-researcher, bathtime-single-spot-content-seed-builder, bathtime-single-spot-content-web-content-producer, humanize-korean, and bathtime-single-spot-content-archive-content-implementer. It never publishes publicly by default.
 metadata:
-  short-description: 배스타임 스팟 조사부터 비공개 draft 반영까지 전체 파이프라인
+  short-description: 바스타임 단일 장소 조사부터 비공개 draft 반영까지
 ---
 
-# Bathtime Spot Publishing Pipeline
+# Bathtime Single Spot Content Publishing Pipeline
 
-This is the one-cycle orchestrator for Bathtime spot content.
+This is the one-cycle orchestrator for Bathtime single spot content.
 
 Default outcome: a private draft archive page applied to the DB and verified by preview API.
 
@@ -17,8 +17,8 @@ Never publish publicly by default. The pipeline stops at `isPublished: false` / 
 
 Run these steps in order. Load each named skill when the step starts.
 
-1. `bathtime-spot-researcher`
-   - Research the target spot.
+1. `bathtime-single-spot-content-researcher`
+   - Research the target place.
    - When an official page URL is known but browser/web fetch fails, retry with local `curl -L -A 'Mozilla/5.0'` before treating the fact as unknown.
    - If search results expose a specific official page such as pricing, opening hours, reservation, or facilities, open or curl that exact page and extract the original table/text.
    - Create or update:
@@ -29,14 +29,14 @@ Run these steps in order. Load each named skill when the step starts.
      - `verification_checklist.md`
      - `missing_fields.md`
 
-2. `bathtime-spot-seed-builder`
+2. `bathtime-single-spot-content-seed-builder`
    - Convert research outputs into seed artifacts.
    - Create or update:
      - `spot-seed.canonical.json`
      - `spot-seed.archive-content.ts` initial app seed
      - `spot-seed.mapping.md`
 
-3. `bathtime-web-content-producer`
+3. `bathtime-single-spot-content-web-content-producer`
    - Create the web-facing editorial package.
    - Create or update:
      - `spot-seed.web-content.md`
@@ -46,16 +46,32 @@ Run these steps in order. Load each named skill when the step starts.
      - criteria, source, facility, or access lists should use `short label: explanation` structure when possible;
      - if the default `한눈에 보기` box is weak for the content type, record `quality.ux_follow_up` or a publish blocker with a better summary proposal;
      - include a real CTA only when the route exists, otherwise keep it as text or a publish blocker.
-   - Run the observer-essay tone gate before implementation:
+   - Do not run the observer-essay tone gate as the first draft style pass. It runs after `humanize-korean` as the final Bathtime voice pass.
+
+4. `humanize-korean`
+   - Run this required review step before the final Observer Essay Tone Pass and before ArchiveContent implementation.
+   - Input:
+     - `spot-seed.web-content.md`
+   - Create or update:
+     - `spot-seed.web-content.humanized.md`
+     - `spot-seed.web-content.humanize-summary.md`
+   - Preserve source boundaries, prices, dates, access uncertainty, image-right notes, and no-fake-visit stance.
+
+5. Final Observer Essay Tone Pass
+   - Run the observer-essay tone gate after `humanize-korean` and before implementation:
      - first read and follow `docs/03-content/bathtime-observer-essay-tone-guide.md`;
      - apply Bathtime's observer-essay tone only to body paragraphs, scene-setting, transitions, and reflective closing copy;
      - do not apply it to title, subtitle, summary, SEO, structured info, prices, operating hours, facility labels, source notes, dates, publish blockers, or CTA labels;
+     - default all Bathtime single-spot public body copy, captions, and CTAs to calm `한다체`;
      - use short Korean sentences, concrete checking actions, and restrained sensory details only when source artifacts support them;
      - never write as if Bathtime visited the spot unless direct visit source files prove it;
      - for public-source research, make the observing subject an editorial verification flow: checking official pages, comparing reservation/map information, reading repeated review patterns, and noting what still needs recheck;
      - stop before DB apply if tone polishing hides uncertainty, adds visit claims, adds unsupported sensory claims, or turns the spot into a recommendation.
+   - Before implementation, search final body copy for unintended casual endings:
+     `rg "해요|돼요|좋아요|예요|이에요|거예요|했어요|봤어요" <output-files>`.
+   - Allow exceptions only for literal quoted user copy, actual button labels, or intentionally user-copyable questions. Record any exception in the quality gate.
 
-4. `bathtime-archive-content-implementer`
+6. `bathtime-single-spot-content-archive-content-implementer`
    - Convert the web package into the real app/DB source.
    - Update:
      - `spot-seed.archive-content.ts`

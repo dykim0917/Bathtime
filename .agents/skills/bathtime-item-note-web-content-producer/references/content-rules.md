@@ -139,8 +139,8 @@ Do not imply a generated or placeholder image is a real product photo, direct-us
 
 Every Item Note package must include at least two planned inline image slots.
 
-- Inline Image 1: appears after `한 줄 판단` or `어떤 의식을 돕나요`. It should clarify ritual context or the item’s role.
-- Inline Image 2: appears after `사기 전에 먼저 볼 것` or before `이런 사람에게 맞아요`. It should clarify practical friction, comparison, storage, or setup/cleanup.
+- Inline Image 1: appears after `한 줄 판단` or `어떤 의식을 돕는가`. It should clarify ritual context or the item’s role.
+- Inline Image 2: appears after `사기 전에 먼저 볼 것` or before `이런 사람에게 맞는다`. It should clarify practical friction, comparison, storage, or setup/cleanup.
 
 Each inline image slot must specify:
 
@@ -192,12 +192,12 @@ Do not use as final body headings:
 Prefer:
 
 - `한 줄 판단`
-- `어떤 의식을 돕나요`
+- `어떤 의식을 돕는가`
 - `사기 전에 먼저 볼 것`
 - `좋게 볼 수 있는 점`
 - `아쉬운 점`
-- `이런 사람에게 맞아요`
-- `이런 사람에게는 애매해요`
+- `이런 사람에게 맞는다`
+- `이런 사람에게는 애매하다`
 - `같이 쓰면 좋은 의식` (only when a concrete follow-up ritual exists)
 
 Do not add `저장해둘 이유` as a fixed section. The article should make its own usefulness clear through the body. If a save action is genuinely useful, express it as a natural CTA only when the route/action exists.
@@ -223,12 +223,11 @@ Replace:
 
 Reader-facing Korean copy must keep one honorific/register level across section headings, body paragraphs, lists, product cards, CTAs, and captions.
 
-Default for Bathtime Item Notes is warm `해요체`, because standard headings such as `이런 사람에게 맞아요` and `이런 사람에게는 애매해요` already use that register.
+Default for Bathtime Item Notes is calm observer-style `한다체`, matching the broader Bathtime content voice.
 
 Do:
 
-- Use `해요`, `봐요`, `좋아요`, `필요해요`, `어려워요` consistently in public body copy.
-- Rewrite stiff `합니다/됩니다/필요합니다/확인합니다` endings to matching `해요체` unless the whole article intentionally uses formal `합니다체`.
+- Rewrite casual `해요체` or stiff `합니다체` endings into the chosen Bathtime `한다체` unless the user explicitly asks for another register.
 - Keep labels short, but make their surrounding sentence match the article register.
 
 Avoid mixing:
@@ -238,10 +237,12 @@ Avoid mixing:
 
 Good:
 
-- Heading: `이런 사람에게 맞아요`
-- Body: `구매 전 판매처의 최신 정보를 다시 확인해요.`
+- Heading: `이런 사람에게 맞는다`
+- Body: `구매 전 판매처의 최신 정보를 다시 확인한다.`
 
-If a content type intentionally uses formal `합니다체`, then headings must also avoid casual `~해요` endings. Pick one register and record it in the Quality Gate.
+Avoid headings such as `이런 사람에게 맞아요` and `이런 사람에게는 애매해요`; use `이런 사람에게 맞는다`, `이런 사람에게는 애매하다`, or shorter noun-phrase headings.
+
+Do not convert item notes to warm `해요체` during UX polish or humanization unless the user explicitly asks for it. Pick one register and record it in the Quality Gate.
 
 ### Keep paragraphs short
 
@@ -351,7 +352,7 @@ Bad:
 Good:
 
 ```text
-샤워필터는 제품별 필터 구조와 교체 주기가 다릅니다. 피부 변화는 개인차가 커서 배스타임에서는 구매 전 확인할 조건 중심으로만 정리합니다.
+샤워필터는 제품별 필터 구조와 교체 주기가 다릅니다. 피부 변화는 개인차가 커서 바스타임에서는 구매 전 확인할 조건 중심으로만 정리합니다.
 ```
 
 ### Candidate / draft language
@@ -379,7 +380,7 @@ when:
 - product image rights are unresolved
 - safety claims need review
 - specific product comparison could be misleading
-- affiliate/ad disclosure is needed but absent
+- affiliate or sponsorship disclosure is needed but absent
 - the draft sounds like an ad
 
 Do not stop draft creation merely because image rights or exact prices are unresolved. Use fallback images and explicit publish blockers.

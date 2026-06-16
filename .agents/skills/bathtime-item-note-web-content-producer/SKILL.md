@@ -2,7 +2,7 @@
 name: bathtime-item-note-web-content-producer
 description: Turn Bathtime Item Note seed artifacts into publish-ready web archive content. Use when the user references item-seed.canonical.json, item-seed.archive-content.ts, item-seed.mapping.md, image placement, item note body structure, SEO copy, publish blockers, or asks to prepare bath item content for the actual Bathtime website.
 metadata:
-  short-description: 배스타임 아이템 노트 웹 콘텐츠 제작
+  short-description: 바스타임 아이템 노트 웹 콘텐츠 제작
 ---
 # Bathtime Item Note Web Content Producer
 
@@ -84,12 +84,12 @@ If any section is missing, the output is incomplete and must be fixed before del
 Use this order as a starting shape, then remove or rename sections that feel forced for the article:
 
 1. `한 줄 판단`
-2. `어떤 의식을 돕나요`
+2. `어떤 의식을 돕는가`
 3. `사기 전에 먼저 볼 것`
 4. `좋게 볼 수 있는 점`
 5. `아쉬운 점`
-6. `이런 사람에게 맞아요`
-7. `이런 사람에게는 애매해요`
+6. `이런 사람에게 맞는다`
+7. `이런 사람에게는 애매하다`
 8. `같이 쓰면 좋은 의식` (only when a concrete follow-up ritual exists)
 
 Do not add `저장해둘 이유` as a fixed section. The article should make its own usefulness clear through the body. If a save action is genuinely useful, express it as a natural CTA only when the route/action exists.
@@ -118,12 +118,11 @@ The first body block must answer:
 
 Reader-facing Korean copy must keep one honorific/register level across section headings, body paragraphs, lists, product cards, CTAs, and captions.
 
-Default for Bathtime Item Notes is warm `해요체`, because standard headings such as `이런 사람에게 맞아요` and `이런 사람에게는 애매해요` already use that register.
+Default for Bathtime Item Notes is calm observer-style `한다체`, matching the broader Bathtime content voice.
 
 Do:
 
-- Use `해요`, `봐요`, `좋아요`, `필요해요`, `어려워요` consistently in public body copy.
-- Rewrite stiff `합니다/됩니다/필요합니다/확인합니다` endings to matching `해요체` unless the whole article intentionally uses formal `합니다체`.
+- Rewrite casual `해요체` or stiff `합니다체` endings into the chosen Bathtime `한다체` unless the user explicitly asks for another register.
 - Keep labels short, but make their surrounding sentence match the article register.
 
 Avoid mixing:
@@ -133,10 +132,12 @@ Avoid mixing:
 
 Good:
 
-- Heading: `이런 사람에게 맞아요`
-- Body: `구매 전 판매처의 최신 정보를 다시 확인해요.`
+- Heading: `이런 사람에게 맞는다`
+- Body: `구매 전 판매처의 최신 정보를 다시 확인한다.`
 
-If a content type intentionally uses formal `합니다체`, then headings must also avoid casual `~해요` endings. Pick one register and record it in the Quality Gate.
+Avoid headings such as `이런 사람에게 맞아요` and `이런 사람에게는 애매해요`; use `이런 사람에게 맞는다`, `이런 사람에게는 애매하다`, or shorter noun-phrase headings.
+
+Do not convert item notes to warm `해요체` during UX polish or humanization unless the user explicitly asks for it. Pick one register and record it in the Quality Gate.
 
 ## UX Polish Rules
 
@@ -187,6 +188,14 @@ If the draft includes real product examples, keep the product-research guardrail
 - price checked date or explicit unavailable note
 - information-status wording such as `공개 정보 기준` or `브랜드 제공 정보 기준`
 - affiliate/sponsor status and image-rights status in research/canonical notes
+
+For affiliate-link wording:
+
+- If Bathtime only receives commission through a purchase link, use reader-facing labels based on `제휴`, not standalone `광고`.
+- Preferred page label: `제휴 포함`.
+- Preferred dialog/notice title: `제휴 링크 안내`.
+- Preferred body note: `이 글의 제품 링크는 제휴 링크다. 링크를 통해 구매가 발생하면 바스타임에 수수료가 지급된다.`
+- Do not use `광고 포함`, `광고 상품`, or `광고 콘텐츠` unless there is a separate paid ad placement, sponsorship, or brand-paid campaign.
 
 Do not turn product examples into rankings, recommendations, vague shopping bullets, or purchase-pressure cards.
 

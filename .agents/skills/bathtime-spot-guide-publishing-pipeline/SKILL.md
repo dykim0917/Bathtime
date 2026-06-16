@@ -38,7 +38,7 @@ Use it for content like:
 - why good sauna information is hard to verify
 - candidate-list framing before researching individual spots
 
-Do not use it when the user wants to research and draft one specific place end to end. Use `bathtime-spot-publishing-pipeline` for that.
+Do not use it when the user wants to research and draft one specific place end to end. Use `bathtime-single-spot-content-publishing-pipeline` for that.
 
 ## Temporary Homecare Coverage
 
@@ -206,7 +206,7 @@ For `criteria`, collect public examples of common uncertainty:
 - facility-photo uncertainty
 - review signals about crowding, cleanliness, quietness, or rest area
 
-For `candidate-frame`, use web research heavily and optionally reference `bathtime-spot-researcher` for candidate discovery. Do not turn candidates into verified recommendations.
+For `candidate-frame`, use web research heavily and optionally reference `bathtime-single-spot-content-researcher` for candidate discovery. Do not turn candidates into verified recommendations.
 
 Create or update:
 
@@ -273,7 +273,7 @@ The package must include:
 9. Publish Blockers
 10. Quality Gate
 
-Reader-facing copy should use `바스타임`, not `배스타임`.
+Reader-facing copy should use `바스타임`, not `바스타임`.
 
 ### 5.5. UX Polish Gate
 
@@ -309,13 +309,14 @@ CTA:
 Register:
 
 - Reader-facing Korean copy must keep one honorific/register level across headings, body copy, lists, candidate cards, CTAs, and captions.
-- Default for spot guides is warm `해요체` when the page uses headings such as `이런 사람에게 맞아요` or `이런 사람에게는 애매해요`.
-- Do not mix `~해요` headings with `~합니다` body copy. If using `해요체`, rewrite endings such as `확인합니다`, `필요합니다`, `됩니다`, `좋습니다` to matching endings such as `확인해요`, `필요해요`, `돼요`, `좋아요`.
-- If using formal `합니다체`, convert headings away from casual `~해요` as well.
+- Default for all Bathtime public content, including spot guides, is calm observer-style `한다체`.
+- Do not use warm `해요체` as the default just because a checklist, CTA, or section label feels friendly.
+- Avoid headings such as `이런 사람에게 맞아요`; use register-neutral headings such as `이런 사람에게 맞는다`, `이런 사람에게는 애매하다`, or a shorter noun phrase.
+- Literal phone questions, button labels, or user-copyable inquiry scripts may use natural question endings when that is the function of the block.
 
 ### 5.6. Observer Essay Tone Gate
 
-Before `humanize-korean`, apply Bathtime's observer-essay body tone only to the narrative body layer.
+Move this gate after `humanize-korean`. Treat it as the final Bathtime voice and register pass, not as a first-draft writing rule.
 
 First read and follow the Korean tone guide:
 
@@ -340,6 +341,7 @@ Do not apply the tone to:
 Tone rules:
 
 - Prefer short Korean sentences with one observation or thought per sentence.
+- Default to `한다체` for spot-guide body copy and captions unless the user explicitly asks for another register.
 - Use concrete checking actions such as opening official notices, comparing map/reservation pages, reading repeated review patterns, and deciding what still needs confirmation.
 - Use sensory or spatial detail only when it is supported by source artifacts or clearly framed as a general reader situation.
 - Avoid guidebook wording such as `~할 수 있습니다`, `~로 알려져 있습니다`, `좋은 곳입니다`, and unsupported certainty.
@@ -355,7 +357,7 @@ Stop before DB apply if the tone pass hides uncertainty, turns criteria into a r
 
 ### 6. `humanize-korean`
 
-Run `humanize-korean` on reader-facing Korean copy before implementation.
+Run `humanize-korean` on reader-facing Korean copy before the final Observer Essay Tone Pass and before implementation.
 
 Create:
 
@@ -374,6 +376,25 @@ Preserve:
 - title and brand spelling
 
 Stop before DB apply if the humanized copy changes facts, removes uncertainty, or turns criteria into recommendation.
+
+### 6.5. Final Observer Essay Tone Pass
+
+After `humanize-korean`, re-run the Observer Essay Tone Gate on the humanized reader-facing body.
+
+Purpose:
+
+- remove any accidental `해요체`, `합니다체`, or guidebook voice introduced during drafting or humanization
+- align all Bathtime content to calm `한다체`
+- preserve checklist labels, phone questions, structured info, source lists, dates, and factual uncertainty
+- keep the observing subject as editorial verification, not firsthand visit
+
+Before ArchiveContent implementation or DB apply, search the final body for unintended casual endings:
+
+```bash
+rg "해요|돼요|좋아요|예요|이에요|거예요|했어요|봤어요" <output-files>
+```
+
+Allow exceptions only for literal phone questions, button labels, or intentionally quoted user-facing copy. Record any exception in the quality gate.
 
 ### 7. `bathtime-spot-guide-archive-content-implementer`
 

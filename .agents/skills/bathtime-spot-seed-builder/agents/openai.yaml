@@ -1,4 +1,0 @@
-interface:
-  display_name: "Bathtime Spot Seed Builder"
-  short_description: "Convert spot research outputs into DB-ready seed files."
-  default_prompt: "Use $bathtime-spot-seed-builder to convert spot research files into canonical seed JSON and the requested DB import format."

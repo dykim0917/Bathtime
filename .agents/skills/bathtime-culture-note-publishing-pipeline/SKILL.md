@@ -150,7 +150,7 @@ Use:
 
 Avoid:
 
-- `배스타임`
+- `바스타임`
 - `추천 TOP`
 - `최고`
 - `무조건`
@@ -165,11 +165,11 @@ Do not claim medical effects from bathing, showering, sauna, heat, cold exposure
 
 Reader-facing Korean copy must keep one honorific/register level across section headings, body paragraphs, lists, CTAs, and captions.
 
-Culture notes may use warm `해요체` or calm formal `합니다체`, depending on the essay mode and subject. Pick one register before drafting and keep it consistent.
+Default for Bathtime culture/reading notes is calm observer-style `한다체`, matching the broader Bathtime content voice.
 
-Do not mix `~해요` headings with `~합니다` body copy. If using `해요체`, rewrite endings such as `확인합니다`, `필요합니다`, `됩니다`, `좋습니다` to matching endings such as `확인해요`, `필요해요`, `돼요`, `좋아요`.
+Do not convert culture notes to warm `해요체` during UX polish or humanization unless the user explicitly asks for it.
 
-If using formal `합니다체`, headings should also avoid casual `~해요` endings. Record the chosen register in the Quality Gate.
+Avoid headings such as `이런 사람에게 맞아요`; use `이런 사람에게 맞는다`, `이런 사람에게는 애매하다`, or shorter noun-phrase headings when needed. Record the chosen register in the Quality Gate.
 
 ## Seed And Web Package
 
@@ -218,7 +218,7 @@ Do not add `저장해둘 이유` as a fixed section. Culture notes should make t
 
 ## Observer Essay Tone Gate
 
-Before `humanize-korean`, apply Bathtime's observer-essay body tone to culture-note narrative copy.
+Move this gate after `humanize-korean`. Treat it as the final Bathtime voice and register pass, not as a first-draft writing rule.
 
 First read and follow the Korean tone guide:
 
@@ -253,7 +253,7 @@ Do not apply the tone to:
 Tone rules:
 
 - Prefer short Korean sentences with one action, observation, or thought per sentence.
-- Keep the chosen register consistent across the article.
+- Keep the chosen register consistent across the article. Default to `한다체`.
 - Use concrete sensory details such as temperature, sound, towel, steam, water, breath, or bathroom light when they fit naturally.
 - Avoid lecture-like wording such as `~로 알려져 있습니다`, `~의 의의는`, `핵심은`, and unsupported certainty.
 - End with a small aftertaste rather than a lesson or grand conclusion.
@@ -295,7 +295,7 @@ Captions should describe desired subject, rights requirement, and forbidden sour
 
 ## Humanize Korean
 
-Run `humanize-korean` before ArchiveContent implementation or DB apply.
+Run `humanize-korean` before the final Observer Essay Tone Pass and before ArchiveContent implementation or DB apply.
 
 Input:
 
@@ -309,6 +309,25 @@ Create:
 outputs/culture-archive/{culture-slug}/seed/culture-seed.web-content.humanized.md
 outputs/culture-archive/{culture-slug}/seed/culture-seed.web-content.humanize-summary.md
 ```
+
+## Final Observer Essay Tone Pass
+
+After `humanize-korean`, re-run the Observer Essay Tone Gate on the humanized reader-facing body.
+
+Purpose:
+
+- remove accidental `해요체`, `합니다체`, lecture voice, or generic essay polish introduced during drafting or humanization
+- align culture notes to Bathtime's calm `한다체`
+- preserve source boundaries, dates, factual uncertainty, and health/safety limits
+- keep the ending as a small observation rather than a lesson
+
+Before ArchiveContent implementation or DB apply, search the final body for unintended casual endings:
+
+```bash
+rg "해요|돼요|좋아요|예요|이에요|거예요|했어요|봤어요" <output-files>
+```
+
+Allow exceptions only for literal quoted user copy, actual button labels, or intentionally conversational quoted lines. Record any exception in the quality gate.
 
 Humanize only reader-facing Korean copy. Preserve facts, dates, uncertainty, source boundaries, image URIs, slugs, IDs, field names, and publish blockers.
 

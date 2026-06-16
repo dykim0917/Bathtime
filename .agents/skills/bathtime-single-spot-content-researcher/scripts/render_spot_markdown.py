@@ -177,7 +177,7 @@ def render(record: dict[str, Any]) -> str:
 
 {bullet_list(bathtime_context.get("things_to_check_before_visit"))}
 
-## 배스타임 노트
+## 바스타임 노트
 
 {text(get_nested(record, "bathtime_context.ritual_angle"))}
 

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Bathtime Single Spot Content Publishing Pipeline"
+  short_description: "단일 장소 조사부터 비공개 DB draft와 preview 검증까지 실행"
+  default_prompt: "Use $bathtime-single-spot-content-publishing-pipeline to research this single Bathtime place, build seed files, create the web content package, implement ArchiveContent, apply it as a private draft, and verify the preview."
+
+policy:
+  allow_implicit_invocation: true
