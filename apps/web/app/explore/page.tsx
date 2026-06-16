@@ -37,7 +37,7 @@ export default async function ExplorePage({
         <p>카테고리와 태그로 지금 필요한 기록을 골라보세요.</p>
       </header>
 
-      <ExploreFilters contents={contents} initialCategory={category} query={query} />
+      <ExploreFilters key={`${category}:${query}`} contents={contents} initialCategory={category} query={query} />
     </div>
   );
 }

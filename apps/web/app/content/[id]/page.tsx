@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { ArchiveVisual } from '@web/components/ArchiveVisual';
 import { AffiliateDisclosureBadge } from '@web/components/AffiliateDisclosureBadge';
 import { BodyRenderer } from '@web/components/BodyRenderer';
+import { ContentContinuation } from '@web/components/ContentContinuation';
 import { StructuredInfo } from '@web/components/StructuredInfo';
 import { ContentFeedback } from '@web/components/ContentFeedback';
 import { RoutineCard } from '@web/components/RoutineCard';
@@ -13,6 +14,7 @@ import {
   getPreviewArchiveContent,
   getPublishedArchiveContent,
   getPublishedArchiveContents,
+  getRelatedArchiveContents,
   getRelatedRoutinePresets,
 } from '@web/lib/archive';
 import { CATEGORY_LABELS, CONTENT_TYPE_LABELS } from '@web/lib/labels';
@@ -121,6 +123,7 @@ export default async function ContentPage({
 
   const { content, isPreview } = resolved;
   const routines = getRelatedRoutinePresets(content);
+  const relatedContents = getRelatedArchiveContents(content, await getPublishedArchiveContents(), 3);
   const { leadVerdict, bodyBlocks } = splitLeadVerdict(content.body);
   const showAffiliateDisclosure = hasAffiliateProductLinks(content.body);
   const jsonLd = {
@@ -173,19 +176,20 @@ export default async function ContentPage({
 
           <BodyRenderer blocks={bodyBlocks} />
 
-          {!isPreview ? <ContentFeedback contentId={content.id} /> : null}
-
           {routines.length > 0 ? (
             <section className="section related-routines-section">
               <div className="section-heading-row">
                 <h2>연결된 의식</h2>
-                <a href="/routines">전체 보기</a>
               </div>
               <div className="routine-grid">
                 {routines.map((routine) => <RoutineCard key={routine.id} routine={routine} showCta />)}
               </div>
             </section>
           ) : null}
+
+          {!isPreview ? <ContentFeedback contentId={content.id} /> : null}
+
+          <ContentContinuation contents={relatedContents} />
         </div>
 
         <StructuredInfo content={content} />
