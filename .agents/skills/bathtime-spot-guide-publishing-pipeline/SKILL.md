@@ -52,6 +52,7 @@ Act as a UX/content polish owner for existing homecare archive pages:
 - prefer existing routine timers and real app actions for CTA groups
 - for short legacy homecare posts, improve bare lists into `short label: explanation` items
 - use `structuredInfo.overviewRows` when the default `한눈에 보기` rows would be less helpful than a content-specific summary
+- use `structuredInfo.series` for planned editorial sequences instead of manually listing series articles in a body `ctaGroup`
 - keep `category: 'HOME_BATH'` and avoid moving homecare content into spot categories
 
 ## Core Position

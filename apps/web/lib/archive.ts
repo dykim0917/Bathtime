@@ -6,7 +6,7 @@ import {
   type ArchiveContentDbRow,
 } from '@/src/archive/archiveContentMapper';
 import { archiveContents, routinePresets } from '@/src/archive/seed';
-import type { ArchiveContent, ContentCategory, RoutinePreset } from '@/src/archive/types';
+import type { ArchiveContent, ContentCategory, ContentSeriesInfo, RoutinePreset } from '@/src/archive/types';
 
 export const archiveRevalidateSeconds = 300;
 
@@ -174,6 +174,41 @@ export function getContentsByCategory(contents: ArchiveContent[], category: Cont
 
 export function getRelatedRoutinePresets(content: ArchiveContent): RoutinePreset[] {
   return routinePresets.filter((routine) => content.relatedRoutineIds?.includes(routine.id));
+}
+
+export function getContentSeriesInfo(content: ArchiveContent): ContentSeriesInfo | null {
+  const series = content.structuredInfo.series;
+  if (!series || typeof series.id !== 'string' || typeof series.title !== 'string') return null;
+  if (!Number.isFinite(series.order)) return null;
+
+  return {
+    id: series.id,
+    title: series.title,
+    order: series.order,
+    description: typeof series.description === 'string' ? series.description : undefined,
+  };
+}
+
+export function getSeriesArchiveContents(current: ArchiveContent, contents: ArchiveContent[]): ArchiveContent[] {
+  const currentSeries = getContentSeriesInfo(current);
+  if (!currentSeries) return [];
+
+  const byId = new Map<string, ArchiveContent>();
+  [...contents, current].forEach((content) => {
+    const series = getContentSeriesInfo(content);
+    if (series?.id === currentSeries.id) byId.set(content.id, content);
+  });
+
+  return [...byId.values()].sort((a, b) => {
+    const aSeries = getContentSeriesInfo(a);
+    const bSeries = getContentSeriesInfo(b);
+    return (
+      (aSeries?.order ?? Number.MAX_SAFE_INTEGER) -
+        (bSeries?.order ?? Number.MAX_SAFE_INTEGER) ||
+      a.updatedAt.localeCompare(b.updatedAt) ||
+      a.id.localeCompare(b.id)
+    );
+  });
 }
 
 function getStructuredRelatedCategories(content: ArchiveContent): ContentCategory[] {

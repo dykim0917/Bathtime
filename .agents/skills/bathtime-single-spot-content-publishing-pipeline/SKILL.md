@@ -156,6 +156,13 @@ Final `spot-seed.archive-content.ts` must:
 - preserve publish blockers rather than hiding uncertainty;
 - never claim firsthand experience unless source files prove it.
 
+Series rule:
+
+- If the single spot content belongs to a planned editorial sequence, put the sequence metadata in `structuredInfo.series`.
+- Use shape `{ id, title, order, description? }`.
+- Do not use a body `ctaGroup` as a manual series list. The public content page renders series panels from `structuredInfo.series`.
+- Keep the same series `id`, `title`, and `description` across all articles in the same series.
+
 When converting research into public copy, translate internal research language:
 
 - `24시간 영업 신호` -> `24시간 영업으로 안내된 자료가 있다` or `공식/플랫폼 정보에서 24시간 영업으로 안내된다`

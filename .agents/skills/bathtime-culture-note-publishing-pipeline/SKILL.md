@@ -206,6 +206,23 @@ The web package must include:
 9. `Publish Blockers`
 10. `Quality Gate`
 
+## Series Metadata
+
+When a culture note belongs to an editorial sequence, use `structuredInfo.series` instead of a body `ctaGroup` for the series list.
+
+Required shape:
+
+```ts
+series: {
+  id: 'stable-series-id',
+  title: 'reader-facing series title',
+  order: 1,
+  description: 'optional one-sentence series description'
+}
+```
+
+Use the same `id`, `title`, and `description` across every article in the series. Increment `order` according to the intended reading sequence. Keep body CTAs for real actions only, such as app handoff, submit, save, or a single explicit related link.
+
 Body structure should usually be:
 
 1. a concrete everyday opening

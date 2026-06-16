@@ -154,8 +154,16 @@ export type StructuredInfoOverviewRow = {
   iconLabel?: string;
 };
 
+export type ContentSeriesInfo = {
+  id: string;
+  title: string;
+  order: number;
+  description?: string;
+};
+
 type StructuredInfoOverrides = {
   overviewRows?: StructuredInfoOverviewRow[];
+  series?: ContentSeriesInfo;
 };
 
 export type StructuredInfo =

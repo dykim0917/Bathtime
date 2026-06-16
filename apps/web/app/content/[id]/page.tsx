@@ -6,6 +6,7 @@ import { BodyRenderer } from '@web/components/BodyRenderer';
 import { ContentContinuation } from '@web/components/ContentContinuation';
 import { StructuredInfo } from '@web/components/StructuredInfo';
 import { ContentFeedback } from '@web/components/ContentFeedback';
+import { ContentSeriesPanel } from '@web/components/ContentSeriesPanel';
 import { RoutineCard } from '@web/components/RoutineCard';
 import { SaveButton } from '@web/components/SaveButton';
 import type { ContentBodyBlock } from '@/src/archive/types';
@@ -16,6 +17,7 @@ import {
   getPublishedArchiveContents,
   getRelatedArchiveContents,
   getRelatedRoutinePresets,
+  getSeriesArchiveContents,
 } from '@web/lib/archive';
 import { CATEGORY_LABELS, CONTENT_TYPE_LABELS } from '@web/lib/labels';
 
@@ -123,7 +125,9 @@ export default async function ContentPage({
 
   const { content, isPreview } = resolved;
   const routines = getRelatedRoutinePresets(content);
-  const relatedContents = getRelatedArchiveContents(content, await getPublishedArchiveContents(), 3);
+  const publishedContents = await getPublishedArchiveContents();
+  const seriesContents = getSeriesArchiveContents(content, publishedContents);
+  const relatedContents = getRelatedArchiveContents(content, publishedContents, 3);
   const { leadVerdict, bodyBlocks } = splitLeadVerdict(content.body);
   const showAffiliateDisclosure = hasAffiliateProductLinks(content.body);
   const jsonLd = {
@@ -175,6 +179,8 @@ export default async function ContentPage({
           </header>
 
           <BodyRenderer blocks={bodyBlocks} />
+
+          <ContentSeriesPanel currentContentId={content.id} contents={seriesContents} />
 
           {routines.length > 0 ? (
             <section className="section related-routines-section">
