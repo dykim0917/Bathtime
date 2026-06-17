@@ -11,6 +11,7 @@ import { getSupabaseClient } from '@web/lib/auth';
 type NativeAuthSessionMessage = {
   source?: string;
   type?: string;
+  nonce?: string;
   accessToken?: string;
   refreshToken?: string;
 };
@@ -171,6 +172,13 @@ export function Shell({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const handleNativeAuthSession = (event: MessageEvent) => {
+      const nativeNonce = (window as any).__BATHTIME_NATIVE_NONCE__;
+      const isNativeAppShell =
+        (window as any).__BATHTIME_NATIVE_AUTH__ === true &&
+        (Boolean((window as any).ReactNativeWebView) || window.navigator.userAgent.includes('BathtimeApp'));
+
+      if (!isNativeAppShell || typeof nativeNonce !== 'string') return;
+
       let payload: NativeAuthSessionMessage | null = null;
 
       if (typeof event.data === 'string') {
@@ -186,6 +194,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
       if (
         payload?.source !== 'bathtime-native' ||
         payload.type !== 'bathtime:auth:session' ||
+        payload.nonce !== nativeNonce ||
         !payload.accessToken ||
         !payload.refreshToken
       ) {

@@ -15,6 +15,7 @@ WebBrowser.maybeCompleteAuthSession();
 const DEFAULT_ARCHIVE_WEB_BASE_URL = 'https://www.getbathtime.com';
 const BATHTIME_HOSTS = new Set(['getbathtime.com', 'www.getbathtime.com']);
 const APP_SHELL_STYLE_ID = 'bathtime-app-shell-style';
+const nativeBridgeNonce = Math.random().toString(36).slice(2) + Date.now().toString(36);
 const APP_SHELL_INJECTION = `
 (function () {
   var css = [
@@ -33,6 +34,7 @@ const APP_SHELL_INJECTION = `
 
   function prepareAppShell() {
     window.__BATHTIME_NATIVE_AUTH__ = true;
+    window.__BATHTIME_NATIVE_NONCE__ = '${nativeBridgeNonce}';
     injectAppShellStyle();
   }
 
@@ -167,6 +169,7 @@ export function ArchiveWebViewScreen({ path }: { path: string }) {
     const payload = JSON.stringify({
       source: 'bathtime-native',
       type: 'bathtime:auth:session',
+      nonce: nativeBridgeNonce,
       accessToken: session.access_token,
       refreshToken: session.refresh_token,
     });

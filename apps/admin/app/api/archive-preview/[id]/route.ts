@@ -10,11 +10,25 @@ interface RouteContext {
   }>;
 }
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'GET, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type',
-};
+const allowedPreviewOrigins = new Set([
+  'https://getbathtime.com',
+  'https://www.getbathtime.com',
+  'https://admin.getbathtime.com',
+  'http://localhost:3200',
+  'http://localhost:3000',
+]);
+
+function getCorsHeaders(request: NextRequest): Record<string, string> {
+  const origin = request.headers.get('origin');
+  const allowedOrigin = origin && allowedPreviewOrigins.has(origin) ? origin : 'https://www.getbathtime.com';
+
+  return {
+    'Access-Control-Allow-Origin': allowedOrigin,
+    Vary: 'Origin',
+    'Access-Control-Allow-Methods': 'GET, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+  };
+}
 
 function toArchiveContent(content: Awaited<ReturnType<typeof readPreviewArchiveContent>>): ArchiveContent | null {
   if (!content) return null;
@@ -56,14 +70,15 @@ function toArchiveContent(content: Awaited<ReturnType<typeof readPreviewArchiveC
   };
 }
 
-export function OPTIONS(): Response {
+export function OPTIONS(request: NextRequest): Response {
   return new Response(null, {
     status: 204,
-    headers: corsHeaders,
+    headers: getCorsHeaders(request),
   });
 }
 
 export async function GET(request: NextRequest, { params }: RouteContext): Promise<Response> {
+  const corsHeaders = getCorsHeaders(request);
   const token = request.nextUrl.searchParams.get(previewTokenParam);
   if (!isValidPreviewToken(token)) {
     return Response.json({ error: 'Invalid preview token' }, { status: 401, headers: corsHeaders });
