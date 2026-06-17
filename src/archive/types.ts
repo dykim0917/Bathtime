@@ -123,6 +123,28 @@ export type ContentBodyBlock =
       }[];
     }
   | {
+      type: 'spotCandidateGroups';
+      groups: {
+        title: string;
+        description?: string;
+        items: {
+          name: string;
+          region: string;
+          typeLabel: string;
+          iconLabel?: string;
+          lat?: number;
+          lng?: number;
+          mapUrl?: string;
+          naverMapUrl?: string;
+          confirmed: string;
+          needsCheck: string;
+          soloNote?: string;
+          lastCheckedAt?: string;
+          sourceLabel?: string;
+        }[];
+      }[];
+    }
+  | {
       type: 'spotMap';
       title?: string;
       description?: string;
