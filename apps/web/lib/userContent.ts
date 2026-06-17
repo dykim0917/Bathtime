@@ -245,11 +245,10 @@ export async function saveContentFeedback(input: {
 
 export async function removeContentFeedback(contentId: string): Promise<void> {
   const supabase = requireClient();
-  const { error } = await supabase
-    .from('content_feedback')
-    .delete()
-    .eq('content_id', contentId)
-    .eq('visitor_key', getOrCreateVisitorKey());
+  const { error } = await supabase.rpc('delete_content_feedback', {
+    p_content_id: contentId,
+    p_visitor_key: getOrCreateVisitorKey(),
+  });
 
   if (error) throw error;
 }

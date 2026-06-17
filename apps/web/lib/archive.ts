@@ -24,17 +24,15 @@ function getSupabaseConfig(): RequestConfig | null {
   const explicitRestUrl = process.env.CONTENT_DB_REST_URL?.trim();
   const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_URL?.trim() ?? process.env.NEXT_PUBLIC_SUPABASE_URL?.trim();
   const anonKey = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY?.trim() ?? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY?.trim();
-  const serviceKey = process.env.CONTENT_DB_SERVICE_ROLE_KEY?.trim();
-  const key = serviceKey || anonKey;
   const baseUrl = explicitRestUrl || (supabaseUrl ? `${supabaseUrl.replace(/\/+$/, '')}/rest/v1` : '');
 
-  if (!baseUrl || !key) return null;
+  if (!baseUrl || !anonKey) return null;
 
   return {
     url: `${baseUrl.replace(/\/+$/, '')}/archive_content`,
     headers: {
-      apikey: key,
-      authorization: `Bearer ${key}`,
+      apikey: anonKey,
+      authorization: `Bearer ${anonKey}`,
     },
   };
 }
