@@ -133,6 +133,58 @@ Primary job:
 - avoid "TOP" or definitive recommendation language
 - prepare for later spot-by-spot research
 
+For actual place candidate archives, the page should not read like a photo-less recommendation post.
+Use information cards, map links, and a candidate distribution block as the primary structure.
+
+Candidate archive rules:
+
+- If the title already says `후보 아카이브`, do not repeat defensive disclaimers such as `추천이 아니다`, `방문하지 않았다`, or `전화 확인하지 않았다` in the opening.
+- Lead with what candidates are being divided by which criteria.
+- Keep uncertainty inside each candidate card as structured fields: `확인된 정보`, `확인할 것`, and `마지막 확인 날짜`.
+- Use `spotMap` before or near the candidate cards to show nationwide or regional distribution.
+- Use `spotCandidates` for actual place candidates instead of long heading/list repetition.
+- Do not force generated images for each candidate when there are no usable place photos.
+- Do not use unlicensed place photos or map screenshots.
+
+Each candidate card should include:
+
+- 후보명
+- 지역
+- 후보 유형
+- 확인된 정보
+- 확인할 것
+- 혼자 쉬기 관점
+- 마지막 확인 날짜
+- 주요 출처
+- 카카오맵 장소 링크
+- 네이버지도 장소 링크
+
+Candidate type icons should be real icons in the UI, not Korean text badges:
+
+- 해수찜질형: heat/fire icon
+- 해수탕형: wave icon
+- 해수온천형: thermometer icon
+- 관광지형: map icon
+- 지역 생활형: building icon
+- 복합형: grid icon
+
+Map link rules:
+
+- Search keyword links are temporary draft values only.
+- Before public publish, replace each map URL with an actual place detail URL.
+- Prefer `https://place.map.kakao.com/{placeId}` or an equivalent Kakao place detail URL.
+- Prefer `https://naver.me/...` or a Naver place detail URL.
+- Verify that the place name and address match on both maps.
+- Leave a map-link checked date or publish blocker when detailed links are not verified.
+
+Map block rules:
+
+- Add a `전국 후보 분포` or equivalent map block before the cards.
+- The map block replaces missing photos with visual information.
+- It should show candidate distribution and distinguish candidate types.
+- Kakao Map JS API is the preferred production map for Korean place content when the API key, local/map service activation, and JavaScript SDK domain registration are available.
+- If API setup is missing, use the app-supported `spotMap` block and record the Kakao JS API setup as a publish/development follow-up.
+
 ### 4. `visited-review-gate`
 
 Use when deciding whether a draft can claim firsthand experience.
@@ -208,6 +260,26 @@ For `criteria`, collect public examples of common uncertainty:
 - review signals about crowding, cleanliness, quietness, or rest area
 
 For `candidate-frame`, use web research heavily and optionally reference `bathtime-single-spot-content-researcher` for candidate discovery. Do not turn candidates into verified recommendations.
+For candidate archives, run a wider discovery sweep before deciding the candidate count:
+
+- official/local web search
+- Kakao/Naver/Google map search
+- local government and tourism pages
+- Instagram, YouTube, Naver Blog, Naver Cafe/community snippets, and local news
+- keyword variants such as old names, colloquial names, region + facility type, and nearby landmark phrases
+
+For archive-style content, optimize for recall first and confidence labeling second.
+Do not limit research to a representative sample when the title promises an archive.
+Build the widest candidate universe available within the session, then bucket it:
+
+- `main_candidate`: supported enough for cards
+- `needs_more_info`: plausible, but still thin or social/community-led
+- `probably_out_of_scope`: discovered but not a good fit
+- `closed_or_historical`: useful archive signal, but not a current visit candidate
+
+Use SNS/community to discover candidates, not to verify them.
+Promote a discovered place into the main archive only after official/local/map/reservation evidence supports its identity and location.
+Keep SNS-only or weakly supported places under `정보가 더 필요한 후보`.
 
 Create or update:
 
@@ -292,6 +364,13 @@ Lists and checklists:
 - Prefer `short label: explanation` phrasing.
 - Example: `공식 안내: 이용 자격, 운영 시간, 휴관 여부를 먼저 확인합니다.`
 - If icon chips, mini tags, custom checklist UI, or richer layout would improve the page but the renderer cannot support it yet, record it in `quality.publish_blockers`, `quality.ux_follow_up`, or the web package's `Publish Blockers`.
+
+Reader-facing wording:
+
+- Do not expose internal workflow terms in public body copy.
+- Avoid reader-facing headings or paragraphs such as `후보별로 추가 확인할 것`, `공개 전`, `초안`, `임시값`, `publish blocker`, `DB`, `seed`, `단일 스팟 기록`, or `보류 후보`.
+- Rewrite them as reader-useful language, such as `방문 전에 마지막으로 볼 것`, `정보가 더 필요한 후보`, `다음에는 더 좁게 살펴본다`, or `한 장소씩 자세히 살펴본다`.
+- Internal status, temporary map-link notes, and publish blockers belong in quality notes or web package `Publish Blockers`, not in public copy.
 
 Structured overview:
 

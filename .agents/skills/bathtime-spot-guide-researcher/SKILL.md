@@ -66,6 +66,51 @@ Collect practical examples of uncertainty:
 
 Use web research heavily, but keep candidates as candidates.
 
+For candidate archive content, maximize recall before selection.
+Do not cap the research to a small representative set just because the article can be written with fewer examples.
+An archive should first build the widest candidate universe the agent can reasonably find, then sort candidates by evidence strength.
+
+Run candidate discovery in three passes.
+
+Wide discovery sweep:
+
+- Search official/local web first, but do not stop there.
+- Search SNS and community channels for place names that may not be well indexed on normal web search.
+- Use keyword variants, including old facility names, colloquial names, region + facility type, and nearby landmark phrases.
+- For Korean bath-place topics, include Instagram, YouTube, Naver Blog, Naver Cafe/community snippets, local news, regional tourism pages, map search, and reservation/travel platforms when accessible.
+- Treat SNS/community as discovery sources, not verification sources.
+- Record discovered-but-not-yet-verified names separately in `candidate_research/candidate-verification-gaps.md`.
+- Do not decide the candidate count until after the wide discovery sweep.
+- Do not discard a weak candidate only because it is not ready for the main card list. Keep it in a lower-confidence bucket.
+
+Query expansion sweep:
+
+- Search by exact concept keywords: `해수찜`, `해수탕`, `해수온천`, `해수사우나`, `해수찜질방`, `해수방`.
+- Search by facility-composition keywords: `해수탕 찜질방`, `해수사우나 찜질방`, `해수온천 사우나`, `프라이빗 해수찜`.
+- Search by region + concept, especially coastal regions and islands.
+- Search by social phrasing: `새로 생긴`, `오픈`, `대형 찜질방`, `오션뷰 스파`, `공항 근처 찜질방`, `해수 스파`.
+- Search for historical/old names that may survive in local memory.
+
+Deduplication and bucket sweep:
+
+- Merge renamed, rebranded, or nearby-name duplicates only after checking address or operator.
+- Separate the universe into:
+  - `main_candidate`: identity/location supported by official, local-government, map/place, or reservation evidence
+  - `needs_more_info`: discovered through social/community/old web or thin listings, but still plausible
+  - `probably_out_of_scope`: spa/onsen/sauna content where seawater or bath/rest fit is not supported
+  - `closed_or_historical`: meaningful archive signal, but current operation is unlikely or unconfirmed
+
+Verification ladder:
+
+1. Official facility site, official notice, local government/tourism page, or public institution page.
+2. Map/place detail page with address, phone, operating status, and recent activity.
+3. Reservation/travel platform with current listing signals.
+4. Repeated review/SNS/community signals.
+5. Phone confirmation or direct visit, only when actually performed and documented.
+
+Promote a discovered place into a main candidate only when at least one strong source from steps 1-3 supports its current identity and location.
+If a place is visible mainly on SNS/community but lacks official/map support, keep it as `정보가 더 필요한 후보`.
+
 For each candidate, record:
 
 - name
@@ -98,6 +143,13 @@ Then use:
 - booking or reservation platforms
 - long-form blogs
 - public community/social posts
+
+Source role labels:
+
+- `discovery`: useful for finding a candidate name or new facility
+- `identity`: confirms name, address, phone, or official operator
+- `condition`: helps check operating hours, pricing, access, reservation, facility composition, or recent changes
+- `experience_signal`: repeated user impressions only; never enough by itself for a verified claim
 
 When web fetch fails for an official URL, retry once with local HTTP fallback such as:
 

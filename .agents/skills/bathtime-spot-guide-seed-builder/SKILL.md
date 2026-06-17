@@ -76,6 +76,25 @@ For candidate-frame content, every candidate must remain a candidate. Include:
 - `last_checked_at`
 - `verification_gaps`
 
+For actual place candidate archives, also preserve card/map fields:
+
+- `name`
+- `region`
+- `typeLabel`
+- `lat`
+- `lng`
+- `kakaoMapUrl` or `mapUrl`
+- `naverMapUrl`
+- `confirmed`
+- `needsCheck`
+- `soloNote`
+- `lastCheckedAt`
+- `sourceLabel`
+
+Use candidate cards as the information structure. Do not flatten actual candidates into repeated headings and plain lists when `spotCandidates` and `spotMap` are available in the renderer.
+
+If map URLs are search links rather than place detail links, mark them as draft-only and add a publish blocker requiring verified Kakao/Naver place detail URLs and address/name matching before public publish.
+
 ## Mapping Rules
 
 Prefer:

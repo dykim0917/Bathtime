@@ -1,5 +1,19 @@
+import type { ComponentType } from 'react';
+import { Buildings, Fire, MapTrifold, SquaresFour, Thermometer, Waves } from '@phosphor-icons/react/ssr';
 import type { CareCTA, ContentBodyBlock } from '@/src/archive/types';
 import { careGuideAspectRatios, getCareGuideImageSrc } from '@web/lib/careImages';
+import { KakaoSpotMap } from './KakaoSpotMap';
+
+type CandidateIcon = ComponentType<{ size?: number; weight?: 'regular' | 'bold' | 'fill'; 'aria-hidden'?: boolean | 'true' | 'false' }>;
+
+function getSpotCandidateIcon(typeLabel: string): CandidateIcon {
+  if (typeLabel.includes('찜질')) return Fire;
+  if (typeLabel.includes('해수탕')) return Waves;
+  if (typeLabel.includes('온천')) return Thermometer;
+  if (typeLabel.includes('관광')) return MapTrifold;
+  if (typeLabel.includes('생활')) return Buildings;
+  return SquaresFour;
+}
 
 function isExternalUrl(value: string | undefined): value is string {
   return Boolean(value?.startsWith('http://') || value?.startsWith('https://'));
@@ -149,6 +163,82 @@ export function BodyRenderer({ blocks }: { blocks: ContentBodyBlock[] }) {
                 );
               })}
             </div>
+          );
+        }
+
+        if (block.type === 'spotCandidates') {
+          return (
+            <div key={index} className="spot-candidate-list">
+              {block.items.map((item) => {
+                const Icon = getSpotCandidateIcon(item.typeLabel);
+                return (
+                  <article key={`${item.region}-${item.name}`} className="spot-candidate-card">
+                    <div className="spot-candidate-icon" aria-hidden="true">
+                      <Icon size={24} weight="bold" aria-hidden="true" />
+                    </div>
+                    <div className="spot-candidate-copy">
+                      <div className="spot-candidate-kicker">
+                        <span>{item.typeLabel}</span>
+                        <span>{item.region}</span>
+                      </div>
+                      <h3>{item.name}</h3>
+                      <dl className="spot-candidate-facts">
+                        <div>
+                          <dt>확인된 정보</dt>
+                          <dd>{item.confirmed}</dd>
+                        </div>
+                        <div>
+                          <dt>확인할 것</dt>
+                          <dd>{item.needsCheck}</dd>
+                        </div>
+                        {item.soloNote ? (
+                          <div>
+                            <dt>혼자 쉬기 관점</dt>
+                            <dd>{item.soloNote}</dd>
+                          </div>
+                        ) : null}
+                      </dl>
+                      {(item.lastCheckedAt || item.sourceLabel) ? (
+                        <p className="spot-candidate-meta">
+                          {[item.lastCheckedAt ? `${item.lastCheckedAt} 확인` : null, item.sourceLabel].filter(Boolean).join(' · ')}
+                        </p>
+                      ) : null}
+                      {(item.mapUrl || item.naverMapUrl) ? (
+                        <div className="spot-candidate-map-actions">
+                          {item.mapUrl ? (
+                            <a className="spot-candidate-map-link kakao" href={item.mapUrl} target="_blank" rel="noreferrer">
+                              <span className="map-provider-badge">
+                                <img src="/brand/kakao-map-icon.png" alt="" width={20} height={20} loading="lazy" />
+                              </span>
+                              카카오맵에서 보기
+                            </a>
+                          ) : null}
+                          {item.naverMapUrl ? (
+                            <a className="spot-candidate-map-link naver" href={item.naverMapUrl} target="_blank" rel="noreferrer">
+                              <span className="map-provider-badge">
+                                <img src="/brand/naver-map-icon.png" alt="" width={20} height={20} loading="lazy" />
+                              </span>
+                              네이버지도에서 보기
+                            </a>
+                          ) : null}
+                        </div>
+                      ) : null}
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          );
+        }
+
+        if (block.type === 'spotMap') {
+          return (
+            <KakaoSpotMap
+              key={index}
+              title={block.title}
+              description={block.description}
+              items={block.items}
+            />
           );
         }
 
