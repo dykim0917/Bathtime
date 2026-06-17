@@ -21,12 +21,22 @@ const nextConfig = {
   outputFileTracingRoot: repoRoot,
   reactStrictMode: true,
   async headers() {
+    const scriptSources = [
+      "'self'",
+      "'unsafe-inline'",
+      ...(process.env.NODE_ENV === 'development' ? ["'unsafe-eval'"] : []),
+      'https://www.googletagmanager.com',
+      'https://www.google-analytics.com',
+      'https://dapi.kakao.com',
+      'https://t1.daumcdn.net',
+    ].join(' ');
+
     const csp = [
       "default-src 'self'",
       "base-uri 'self'",
       "object-src 'none'",
       "frame-ancestors 'none'",
-      "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://dapi.kakao.com",
+      `script-src ${scriptSources}`,
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' https: data: blob:",
       "font-src 'self' data:",
