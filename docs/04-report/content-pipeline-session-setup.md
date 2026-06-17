@@ -26,6 +26,7 @@ CONTENT_DB_REST_URL=https://<project>.supabase.co/rest/v1
 CONTENT_DB_SERVICE_ROLE_KEY=<service-role-key>
 ADMIN_PREVIEW_TOKEN=<admin-preview-token>
 ARCHIVE_PREVIEW_API_BASE=https://admin.getbathtime.com
+NEXT_PUBLIC_KAKAO_MAP_JS_KEY=<kakao-map-default-js-key>
 ```
 
 `CONTENT_DB_REST_URL`은 현재 upsert script 내부에서는 Supabase URL로 대체할 수 있지만, pipeline skill과 다른 세션의 preflight는 이 값을 명시적으로 요구할 수 있습니다. 콘텐츠 운영 세션에서는 항상 넣어둡니다.
@@ -42,7 +43,9 @@ Admin preview/API는 같은 값을 `token` query로 검사합니다.
 
 - `CONTENT_DB_SERVICE_ROLE_KEY`는 DB draft apply에 필요합니다.
 - `ADMIN_PREVIEW_TOKEN`은 draft preview 검증에 필요합니다.
+- `NEXT_PUBLIC_KAKAO_MAP_JS_KEY`는 후보아카이브형 스팟가이드의 카카오맵 분포 블록에 필요합니다.
 - service role key는 절대 `EXPO_PUBLIC_` 또는 `NEXT_PUBLIC_` 접두사로 만들지 않습니다.
+- 카카오맵 JS 키는 브라우저에서 쓰는 공개 키이므로 `NEXT_PUBLIC_` 접두사를 사용하되, 카카오 개발자 콘솔에서 JavaScript SDK 도메인 등록과 지도/로컬 서비스 활성화를 확인합니다.
 - `.env.local`, `.env`는 git에 커밋하지 않습니다.
 - anon key만으로는 `--apply`가 실패합니다.
 
@@ -72,6 +75,7 @@ for (const key of [
   'CONTENT_DB_SERVICE_ROLE_KEY',
   'ADMIN_PREVIEW_TOKEN',
   'ARCHIVE_PREVIEW_API_BASE',
+  'NEXT_PUBLIC_KAKAO_MAP_JS_KEY',
 ]) {
   console.log(key, env[key] ? 'set' : 'missing');
 }

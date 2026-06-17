@@ -39,6 +39,8 @@ const nextConfig = {
       process.env.NEXT_PUBLIC_SUPABASE_URL || readRootEnvValue('EXPO_PUBLIC_SUPABASE_URL'),
     NEXT_PUBLIC_SUPABASE_ANON_KEY:
       process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || readRootEnvValue('EXPO_PUBLIC_SUPABASE_ANON_KEY'),
+    NEXT_PUBLIC_KAKAO_MAP_JS_KEY:
+      process.env.NEXT_PUBLIC_KAKAO_MAP_JS_KEY || readRootEnvValue('NEXT_PUBLIC_KAKAO_MAP_JS_KEY'),
   },
   images: {
     remotePatterns: [

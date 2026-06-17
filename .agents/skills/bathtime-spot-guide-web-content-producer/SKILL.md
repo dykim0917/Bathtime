@@ -76,6 +76,16 @@ For `candidate-frame`, recommended headings:
 - `가기 전 체크리스트`
 - `제보와 업데이트`
 
+For actual place candidate archives, use a card-and-map layout:
+
+- Put a `전국 후보 분포` or equivalent map block before the candidate cards.
+- Use candidate information cards instead of repeating each place as a normal heading plus bullet list.
+- Each card should carry `후보명`, `지역`, `후보 유형`, `확인된 정보`, `확인할 것`, `혼자 쉬기 관점`, `마지막 확인 날짜`, `주요 출처`, `카카오맵 장소 링크`, and `네이버지도 장소 링크`.
+- Do not fill missing place photos with per-candidate generated images.
+- If the title already establishes `후보 아카이브`, avoid repeating defensive copy such as `추천이 아니다`, `방문하지 않았다`, or `전화 확인하지 않았다` in the opening.
+- Put uncertainty in each card's structured fields rather than as a long opening disclaimer.
+- Treat search-map links as draft-only and list verified place detail links as a publish blocker when they are not ready.
+
 Do not add `저장해둘 이유` as a fixed section. Spot guides should make their usefulness clear through criteria, source transparency, checklist value, and realistic next actions. If a save action is genuinely useful and supported, express it as a natural CTA only when the route/action exists.
 
 ### One-Line Verdict Rule
@@ -114,6 +124,8 @@ For candidate-frame content:
 - avoid scraping or reusing facility images unless rights are clear
 - plan candidate cards using text first
 - use official image URLs only when rights/source policy is explicitly acceptable
+- prefer `spotMap` and `spotCandidates` blocks when the ArchiveContent renderer supports them
+- use real icons for candidate types instead of Korean text badges when implementing cards
 
 ## Language Rules
 

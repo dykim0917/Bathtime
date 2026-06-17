@@ -64,6 +64,17 @@ Use renderer-supported blocks only. Typical supported blocks:
 { type: 'divider' }
 ```
 
+When supported by `src/archive/types.ts` and the renderer, actual place candidate archives should also use:
+
+```ts
+{ type: 'spotMap'; title?: string; description?: string; items: [...] }
+{ type: 'spotCandidates'; items: [...] }
+```
+
+Use these blocks for candidate archives instead of repeated heading/list sections.
+Each candidate should include region, type label, verified/currently known information, what remains to check, solo-rest notes, last checked date, source label, and both Kakao/Naver map links.
+If map links are search links, keep the draft private and record a publish blocker to replace them with verified place detail URLs before public release.
+
 For principle or criteria content, checklist-card image blocks are useful but not mandatory when no asset exists. If image generation is requested, use generated non-branded images and record rights status.
 
 ## DB Artifact And Apply
@@ -96,6 +107,10 @@ For candidate-frame content, also verify:
 - candidate count
 - every candidate has source status
 - unresolved conditions remain visible
+- candidate cards render as cards, not plain fallback paragraphs
+- map/distribution block renders before or near candidate cards
+- Kakao/Naver buttons render when links exist
+- temporary search links are recorded as publish blockers before public release
 
 ## Korean Register Consistency
 

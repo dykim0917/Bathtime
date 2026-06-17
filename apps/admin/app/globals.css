@@ -1082,6 +1082,14 @@ button {
   font-weight: 800;
 }
 
+.previewBodyImage {
+  display: block;
+  width: 100%;
+  max-height: 520px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
 .webPreviewBody figcaption {
   margin-top: 8px;
   color: #6c7d7a;

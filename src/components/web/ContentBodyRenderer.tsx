@@ -2,7 +2,17 @@ import React from 'react';
 import { Image, Linking, Pressable, StyleSheet, Text, View } from 'react-native';
 import { CareCTA, ContentBodyBlock } from '@/src/archive/types';
 import { getCareGuideImage } from '@/src/data/careImages';
-import { FileText } from '@/src/components/web/phosphorIcons';
+import {
+  Buildings,
+  FileText,
+  Fire,
+  MapPin,
+  MapTrifold,
+  SquaresFour,
+  Thermometer,
+  Waves,
+  type PhosphorIcon,
+} from '@/src/components/web/phosphorIcons';
 import { archiveColors, archiveRadius } from '@/src/theme/archiveTheme';
 import { luxuryFonts } from '@/src/theme/luxury';
 
@@ -40,6 +50,41 @@ function getImageAspectRatio(uri: string, explicitAspectRatio?: number): number 
 function getImageBackgroundColor(uri: string): string {
   if (uri.startsWith('care-guide:')) return '#F5EFE7';
   return archiveColors.canvas;
+}
+
+const KOREA_MAP_BOUNDS = {
+  minLat: 33,
+  maxLat: 38.6,
+  minLng: 124.5,
+  maxLng: 130.2,
+};
+
+function getSpotTypeIcon(typeLabel?: string, iconLabel?: string): PhosphorIcon {
+  const key = `${typeLabel ?? ''} ${iconLabel ?? ''}`;
+  if (key.includes('찜질')) return Fire;
+  if (key.includes('해수탕')) return Waves;
+  if (key.includes('온천')) return Thermometer;
+  if (key.includes('관광')) return MapTrifold;
+  if (key.includes('생활')) return Buildings;
+  if (key.includes('복합')) return SquaresFour;
+  return MapPin;
+}
+
+function getMapMarkerPosition(lat: number, lng: number) {
+  const left =
+    ((lng - KOREA_MAP_BOUNDS.minLng) / (KOREA_MAP_BOUNDS.maxLng - KOREA_MAP_BOUNDS.minLng)) * 100;
+  const top =
+    (1 - (lat - KOREA_MAP_BOUNDS.minLat) / (KOREA_MAP_BOUNDS.maxLat - KOREA_MAP_BOUNDS.minLat)) * 100;
+
+  return {
+    left: `${Math.min(94, Math.max(6, left))}%` as `${number}%`,
+    top: `${Math.min(88, Math.max(8, top))}%` as `${number}%`,
+  };
+}
+
+function openExternalUrl(url?: string) {
+  if (!url) return;
+  void Linking.openURL(url);
 }
 
 export function ContentBodyRenderer({
@@ -230,6 +275,104 @@ export function ContentBodyRenderer({
         if (block.type === 'quote') {
           return <Text key={index} style={styles.quote}>{block.text}</Text>;
         }
+        if (block.type === 'spotMap') {
+          return (
+            <View key={index} style={styles.spotMapPanel}>
+              <View style={styles.spotMapHeader}>
+                <Text style={styles.cardTitle}>{block.title ?? '후보 분포'}</Text>
+                {block.description ? <Text style={styles.cardSubtitle}>{block.description}</Text> : null}
+              </View>
+              <View style={styles.spotMapCanvas}>
+                <View style={styles.spotMapLandmass} />
+                {block.items.map((item) => {
+                  const IconComponent = getSpotTypeIcon(item.typeLabel, item.iconLabel);
+                  return (
+                    <Pressable
+                      key={`${item.name}-${item.region}`}
+                      onPress={() => openExternalUrl(item.mapUrl ?? item.naverMapUrl)}
+                      style={[styles.spotMapMarker, getMapMarkerPosition(item.lat, item.lng)]}
+                    >
+                      <IconComponent size={14} color={archiveColors.onPrimary} weight="bold" />
+                    </Pressable>
+                  );
+                })}
+              </View>
+              <View style={styles.spotMapLegend}>
+                {block.items.map((item) => {
+                  const IconComponent = getSpotTypeIcon(item.typeLabel, item.iconLabel);
+                  return (
+                    <View key={`${item.name}-legend`} style={styles.spotLegendItem}>
+                      <View style={styles.spotLegendIcon}>
+                        <IconComponent size={13} color={archiveColors.primaryActive} weight="regular" />
+                      </View>
+                      <Text style={styles.spotLegendText}>{item.region} · {item.name}</Text>
+                    </View>
+                  );
+                })}
+              </View>
+            </View>
+          );
+        }
+        if (block.type === 'spotCandidates') {
+          return (
+            <View key={index} style={styles.spotCandidateStack}>
+              {block.items.map((item) => {
+                const IconComponent = getSpotTypeIcon(item.typeLabel, item.iconLabel);
+                return (
+                  <View key={`${item.name}-${item.region}`} style={styles.spotCandidateCard}>
+                    <View style={styles.spotCandidateHeader}>
+                      <View style={styles.spotCandidateIcon}>
+                        <IconComponent size={18} color={archiveColors.primaryActive} weight="regular" />
+                      </View>
+                      <View style={styles.stepContent}>
+                        <Text style={styles.spotCandidateName}>{item.name}</Text>
+                        <Text style={styles.spotCandidateMeta}>{item.region} · {item.typeLabel}</Text>
+                      </View>
+                    </View>
+                    <View style={styles.spotCandidateRows}>
+                      <View style={styles.spotCandidateRow}>
+                        <Text style={styles.spotCandidateLabel}>확인된 정보</Text>
+                        <Text style={styles.spotCandidateText}>{item.confirmed}</Text>
+                      </View>
+                      <View style={styles.spotCandidateRow}>
+                        <Text style={styles.spotCandidateLabel}>확인할 것</Text>
+                        <Text style={styles.spotCandidateText}>{item.needsCheck}</Text>
+                      </View>
+                      {item.soloNote ? (
+                        <View style={styles.spotCandidateRow}>
+                          <Text style={styles.spotCandidateLabel}>혼자 쉬기 관점</Text>
+                          <Text style={styles.spotCandidateText}>{item.soloNote}</Text>
+                        </View>
+                      ) : null}
+                      <View style={styles.spotCandidateMetaRow}>
+                        {item.lastCheckedAt ? (
+                          <Text style={styles.spotCandidateFootnote}>마지막 확인 {item.lastCheckedAt}</Text>
+                        ) : null}
+                        {item.sourceLabel ? (
+                          <Text style={styles.spotCandidateFootnote}>주요 출처 {item.sourceLabel}</Text>
+                        ) : null}
+                      </View>
+                    </View>
+                    <View style={styles.spotCandidateButtons}>
+                      {item.mapUrl ? (
+                        <Pressable onPress={() => openExternalUrl(item.mapUrl)} style={styles.mapButton}>
+                          <MapTrifold size={14} color={archiveColors.primaryActive} weight="regular" />
+                          <Text style={styles.mapButtonText}>카카오맵에서 보기</Text>
+                        </Pressable>
+                      ) : null}
+                      {item.naverMapUrl ? (
+                        <Pressable onPress={() => openExternalUrl(item.naverMapUrl)} style={styles.mapButton}>
+                          <MapPin size={14} color={archiveColors.primaryActive} weight="regular" />
+                          <Text style={styles.mapButtonText}>네이버지도에서 보기</Text>
+                        </Pressable>
+                      ) : null}
+                    </View>
+                  </View>
+                );
+              })}
+            </View>
+          );
+        }
         if (block.type === 'divider') {
           return <View key={index} style={styles.divider} />;
         }
@@ -417,6 +560,173 @@ const styles = StyleSheet.create({
     color: archiveColors.body,
     fontSize: 13,
     lineHeight: 20,
+    fontFamily: luxuryFonts.sans,
+  },
+  spotMapPanel: {
+    gap: 14,
+    borderWidth: 1,
+    borderColor: archiveColors.hairline,
+    borderRadius: archiveRadius.lg,
+    backgroundColor: archiveColors.surface,
+    padding: 18,
+  },
+  spotMapHeader: {
+    gap: 6,
+  },
+  spotMapCanvas: {
+    height: 260,
+    borderRadius: archiveRadius.md,
+    overflow: 'hidden',
+    backgroundColor: archiveColors.primarySoft,
+    position: 'relative',
+  },
+  spotMapLandmass: {
+    position: 'absolute',
+    left: '28%',
+    top: '7%',
+    width: '48%',
+    height: '82%',
+    borderRadius: 120,
+    backgroundColor: archiveColors.canvas,
+    borderWidth: 1,
+    borderColor: archiveColors.hairline,
+    transform: [{ rotate: '16deg' }],
+  },
+  spotMapMarker: {
+    position: 'absolute',
+    width: 30,
+    height: 30,
+    marginLeft: -15,
+    marginTop: -15,
+    borderRadius: 15,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: archiveColors.primaryActive,
+    borderWidth: 2,
+    borderColor: archiveColors.surface,
+  },
+  spotMapLegend: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+  },
+  spotLegendItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    borderWidth: 1,
+    borderColor: archiveColors.hairlineSoft,
+    borderRadius: archiveRadius.sm,
+    backgroundColor: archiveColors.canvas,
+    paddingHorizontal: 9,
+    paddingVertical: 7,
+  },
+  spotLegendIcon: {
+    width: 22,
+    height: 22,
+    borderRadius: 11,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: archiveColors.primarySoft,
+  },
+  spotLegendText: {
+    color: archiveColors.body,
+    fontSize: 12,
+    lineHeight: 17,
+    fontFamily: luxuryFonts.sans,
+  },
+  spotCandidateStack: {
+    gap: 14,
+  },
+  spotCandidateCard: {
+    gap: 14,
+    borderWidth: 1,
+    borderColor: archiveColors.hairline,
+    borderRadius: archiveRadius.lg,
+    backgroundColor: archiveColors.surface,
+    padding: 16,
+  },
+  spotCandidateHeader: {
+    flexDirection: 'row',
+    gap: 12,
+    alignItems: 'flex-start',
+  },
+  spotCandidateIcon: {
+    width: 38,
+    height: 38,
+    borderRadius: 19,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: archiveColors.primarySoft,
+  },
+  spotCandidateName: {
+    color: archiveColors.ink,
+    fontSize: 17,
+    lineHeight: 23,
+    fontWeight: '800',
+    fontFamily: luxuryFonts.sans,
+  },
+  spotCandidateMeta: {
+    color: archiveColors.primaryActive,
+    fontSize: 13,
+    lineHeight: 19,
+    fontWeight: '800',
+    fontFamily: luxuryFonts.sans,
+  },
+  spotCandidateRows: {
+    gap: 11,
+  },
+  spotCandidateRow: {
+    gap: 4,
+    borderTopWidth: 1,
+    borderTopColor: archiveColors.hairlineSoft,
+    paddingTop: 11,
+  },
+  spotCandidateLabel: {
+    color: archiveColors.ink,
+    fontSize: 13,
+    lineHeight: 18,
+    fontWeight: '800',
+    fontFamily: luxuryFonts.sans,
+  },
+  spotCandidateText: {
+    color: archiveColors.body,
+    fontSize: 14,
+    lineHeight: 22,
+    fontFamily: luxuryFonts.sans,
+  },
+  spotCandidateMetaRow: {
+    gap: 3,
+    borderTopWidth: 1,
+    borderTopColor: archiveColors.hairlineSoft,
+    paddingTop: 11,
+  },
+  spotCandidateFootnote: {
+    color: archiveColors.muted,
+    fontSize: 12,
+    lineHeight: 18,
+    fontFamily: luxuryFonts.sans,
+  },
+  spotCandidateButtons: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+  },
+  mapButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    borderWidth: 1,
+    borderColor: archiveColors.primaryDisabled,
+    borderRadius: archiveRadius.sm,
+    paddingHorizontal: 11,
+    paddingVertical: 9,
+  },
+  mapButtonText: {
+    color: archiveColors.primaryActive,
+    fontSize: 13,
+    lineHeight: 18,
+    fontWeight: '800',
     fontFamily: luxuryFonts.sans,
   },
   externalMark: {

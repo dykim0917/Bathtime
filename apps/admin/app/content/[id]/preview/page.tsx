@@ -127,7 +127,11 @@ function renderBodyBlock(block: AdminArchiveBodyBlock, index: number) {
   if (block.type === 'image') {
     return (
       <figure key={index}>
-        <div className="previewImageFallback">{block.uri || '이미지 URI 없음'}</div>
+        {block.uri ? (
+          <img className="previewBodyImage" src={block.uri} alt={block.caption ?? '콘텐츠 이미지'} />
+        ) : (
+          <div className="previewImageFallback">이미지 URI 없음</div>
+        )}
         {block.caption ? <figcaption>{block.caption}</figcaption> : null}
       </figure>
     );
