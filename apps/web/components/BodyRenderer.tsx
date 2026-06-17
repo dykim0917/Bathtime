@@ -5,6 +5,7 @@ import { careGuideAspectRatios, getCareGuideImageSrc } from '@web/lib/careImages
 import { KakaoSpotMap } from './KakaoSpotMap';
 
 type CandidateIcon = ComponentType<{ size?: number; weight?: 'regular' | 'bold' | 'fill'; 'aria-hidden'?: boolean | 'true' | 'false' }>;
+type SpotCandidateItem = Extract<ContentBodyBlock, { type: 'spotCandidates' }>['items'][number];
 
 function getSpotCandidateIcon(typeLabel: string): CandidateIcon {
   if (typeLabel.includes('찜질')) return Fire;
@@ -90,6 +91,66 @@ function ProductCandidateMeta({ value }: { value: string }) {
   );
 }
 
+function SpotCandidateCard({ item }: { item: SpotCandidateItem }) {
+  const Icon = getSpotCandidateIcon(item.typeLabel);
+
+  return (
+    <article className="spot-candidate-card">
+      <div className="spot-candidate-icon" aria-hidden="true">
+        <Icon size={24} weight="bold" aria-hidden="true" />
+      </div>
+      <div className="spot-candidate-copy">
+        <div className="spot-candidate-kicker">
+          <span>{item.typeLabel}</span>
+          <span>{item.region}</span>
+        </div>
+        <h3>{item.name}</h3>
+        <dl className="spot-candidate-facts">
+          <div>
+            <dt>확인된 정보</dt>
+            <dd>{item.confirmed}</dd>
+          </div>
+          <div>
+            <dt>확인할 것</dt>
+            <dd>{item.needsCheck}</dd>
+          </div>
+          {item.soloNote ? (
+            <div>
+              <dt>혼자 쉬기 관점</dt>
+              <dd>{item.soloNote}</dd>
+            </div>
+          ) : null}
+        </dl>
+        {(item.lastCheckedAt || item.sourceLabel) ? (
+          <p className="spot-candidate-meta">
+            {[item.lastCheckedAt ? `${item.lastCheckedAt} 확인` : null, item.sourceLabel].filter(Boolean).join(' · ')}
+          </p>
+        ) : null}
+        {(item.mapUrl || item.naverMapUrl) ? (
+          <div className="spot-candidate-map-actions">
+            {item.mapUrl ? (
+              <a className="spot-candidate-map-link kakao" href={item.mapUrl} target="_blank" rel="noreferrer">
+                <span className="map-provider-badge">
+                  <img src="/brand/kakao-map-icon.png" alt="" width={20} height={20} loading="lazy" />
+                </span>
+                카카오맵에서 보기
+              </a>
+            ) : null}
+            {item.naverMapUrl ? (
+              <a className="spot-candidate-map-link naver" href={item.naverMapUrl} target="_blank" rel="noreferrer">
+                <span className="map-provider-badge">
+                  <img src="/brand/naver-map-icon.png" alt="" width={20} height={20} loading="lazy" />
+                </span>
+                네이버지도에서 보기
+              </a>
+            ) : null}
+          </div>
+        ) : null}
+      </div>
+    </article>
+  );
+}
+
 function ctaHref(cta: CareCTA): string {
   if (cta.action === 'open_article' && cta.targetId) return `/content/${cta.targetId}`;
   if (cta.action === 'open_item' && cta.targetId) return `/explore?query=${encodeURIComponent(cta.targetId)}`;
@@ -169,64 +230,28 @@ export function BodyRenderer({ blocks }: { blocks: ContentBodyBlock[] }) {
         if (block.type === 'spotCandidates') {
           return (
             <div key={index} className="spot-candidate-list">
-              {block.items.map((item) => {
-                const Icon = getSpotCandidateIcon(item.typeLabel);
-                return (
-                  <article key={`${item.region}-${item.name}`} className="spot-candidate-card">
-                    <div className="spot-candidate-icon" aria-hidden="true">
-                      <Icon size={24} weight="bold" aria-hidden="true" />
-                    </div>
-                    <div className="spot-candidate-copy">
-                      <div className="spot-candidate-kicker">
-                        <span>{item.typeLabel}</span>
-                        <span>{item.region}</span>
-                      </div>
-                      <h3>{item.name}</h3>
-                      <dl className="spot-candidate-facts">
-                        <div>
-                          <dt>확인된 정보</dt>
-                          <dd>{item.confirmed}</dd>
-                        </div>
-                        <div>
-                          <dt>확인할 것</dt>
-                          <dd>{item.needsCheck}</dd>
-                        </div>
-                        {item.soloNote ? (
-                          <div>
-                            <dt>혼자 쉬기 관점</dt>
-                            <dd>{item.soloNote}</dd>
-                          </div>
-                        ) : null}
-                      </dl>
-                      {(item.lastCheckedAt || item.sourceLabel) ? (
-                        <p className="spot-candidate-meta">
-                          {[item.lastCheckedAt ? `${item.lastCheckedAt} 확인` : null, item.sourceLabel].filter(Boolean).join(' · ')}
-                        </p>
-                      ) : null}
-                      {(item.mapUrl || item.naverMapUrl) ? (
-                        <div className="spot-candidate-map-actions">
-                          {item.mapUrl ? (
-                            <a className="spot-candidate-map-link kakao" href={item.mapUrl} target="_blank" rel="noreferrer">
-                              <span className="map-provider-badge">
-                                <img src="/brand/kakao-map-icon.png" alt="" width={20} height={20} loading="lazy" />
-                              </span>
-                              카카오맵에서 보기
-                            </a>
-                          ) : null}
-                          {item.naverMapUrl ? (
-                            <a className="spot-candidate-map-link naver" href={item.naverMapUrl} target="_blank" rel="noreferrer">
-                              <span className="map-provider-badge">
-                                <img src="/brand/naver-map-icon.png" alt="" width={20} height={20} loading="lazy" />
-                              </span>
-                              네이버지도에서 보기
-                            </a>
-                          ) : null}
-                        </div>
-                      ) : null}
-                    </div>
-                  </article>
-                );
-              })}
+              {block.items.map((item) => <SpotCandidateCard key={`${item.region}-${item.name}`} item={item} />)}
+            </div>
+          );
+        }
+
+        if (block.type === 'spotCandidateGroups') {
+          return (
+            <div key={index} className="spot-candidate-groups">
+              {block.groups.map((group, groupIndex) => (
+                <details key={group.title} className="spot-candidate-group" open={groupIndex === 0}>
+                  <summary className="spot-candidate-group-summary">
+                    <span>
+                      <strong>{group.title}</strong>
+                      {group.description ? <em>{group.description}</em> : null}
+                    </span>
+                    <span className="spot-candidate-group-count">{group.items.length}곳</span>
+                  </summary>
+                  <div className="spot-candidate-list">
+                    {group.items.map((item) => <SpotCandidateCard key={`${item.region}-${item.name}`} item={item} />)}
+                  </div>
+                </details>
+              ))}
             </div>
           );
         }

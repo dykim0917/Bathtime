@@ -49,6 +49,14 @@ Admin preview/API는 같은 값을 `token` query로 검사합니다.
 - `.env.local`, `.env`는 git에 커밋하지 않습니다.
 - anon key만으로는 `--apply`가 실패합니다.
 
+카카오맵 SDK 요청이 `403`이고 응답에 아래 메시지가 나오면 키가 빠진 것이 아니라 카카오 개발자 콘솔의 지도/로컬 서비스가 꺼진 상태입니다.
+
+```txt
+App(<app-name>) disabled OPEN_MAP_AND_LOCAL service.
+```
+
+이 경우 카카오 개발자 콘솔에서 해당 앱의 `지도/로컬` 또는 `OPEN_MAP_AND_LOCAL` 서비스를 활성화하고, `https://www.getbathtime.com` 등 실제 배포 도메인을 JavaScript SDK 플랫폼 도메인에 등록합니다.
+
 ## Quick Environment Check
 
 새 세션에서 pipeline을 돌리기 전에 아래 명령으로 shell env와 `.env.local`을 합쳐 확인합니다.

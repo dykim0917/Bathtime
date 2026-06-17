@@ -1902,6 +1902,82 @@ p {
   gap: 12px;
 }
 
+.spot-candidate-groups {
+  display: grid;
+  gap: 12px;
+}
+
+.spot-candidate-group {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.spot-candidate-group-summary {
+  display: flex;
+  cursor: pointer;
+  list-style: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px;
+}
+
+.spot-candidate-group-summary::-webkit-details-marker {
+  display: none;
+}
+
+.spot-candidate-group-summary::after {
+  content: "";
+  flex: 0 0 auto;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--primary-active);
+  border-bottom: 2px solid var(--primary-active);
+  transform: rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+.spot-candidate-group[open] .spot-candidate-group-summary::after {
+  transform: rotate(225deg);
+}
+
+.spot-candidate-group-summary span:first-child {
+  display: grid;
+  min-width: 0;
+  gap: 4px;
+}
+
+.spot-candidate-group-summary strong {
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.35;
+}
+
+.spot-candidate-group-summary em {
+  color: var(--muted);
+  font-size: 13px;
+  font-style: normal;
+  line-height: 1.55;
+}
+
+.spot-candidate-group-count {
+  display: inline-flex;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: var(--primary-soft);
+  color: var(--primary-active);
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.25;
+  padding: 6px 9px;
+}
+
+.spot-candidate-group > .spot-candidate-list {
+  padding: 0 16px 16px;
+}
+
 .spot-candidate-card {
   display: grid;
   grid-template-columns: 52px minmax(0, 1fr);

@@ -16,6 +16,8 @@ import {
 import { archiveColors, archiveRadius } from '@/src/theme/archiveTheme';
 import { luxuryFonts } from '@/src/theme/luxury';
 
+type SpotCandidateItem = Extract<ContentBodyBlock, { type: 'spotCandidates' }>['items'][number];
+
 function getBodyImageSource(uri: string) {
   if (uri.startsWith('care-guide:')) {
     return getCareGuideImage(uri.replace('care-guide:', ''));
@@ -85,6 +87,62 @@ function getMapMarkerPosition(lat: number, lng: number) {
 function openExternalUrl(url?: string) {
   if (!url) return;
   void Linking.openURL(url);
+}
+
+function SpotCandidateCard({ item }: { item: SpotCandidateItem }) {
+  const IconComponent = getSpotTypeIcon(item.typeLabel, item.iconLabel);
+
+  return (
+    <View style={styles.spotCandidateCard}>
+      <View style={styles.spotCandidateHeader}>
+        <View style={styles.spotCandidateIcon}>
+          <IconComponent size={18} color={archiveColors.primaryActive} weight="regular" />
+        </View>
+        <View style={styles.stepContent}>
+          <Text style={styles.spotCandidateName}>{item.name}</Text>
+          <Text style={styles.spotCandidateMeta}>{item.region} · {item.typeLabel}</Text>
+        </View>
+      </View>
+      <View style={styles.spotCandidateRows}>
+        <View style={styles.spotCandidateRow}>
+          <Text style={styles.spotCandidateLabel}>확인된 정보</Text>
+          <Text style={styles.spotCandidateText}>{item.confirmed}</Text>
+        </View>
+        <View style={styles.spotCandidateRow}>
+          <Text style={styles.spotCandidateLabel}>확인할 것</Text>
+          <Text style={styles.spotCandidateText}>{item.needsCheck}</Text>
+        </View>
+        {item.soloNote ? (
+          <View style={styles.spotCandidateRow}>
+            <Text style={styles.spotCandidateLabel}>혼자 쉬기 관점</Text>
+            <Text style={styles.spotCandidateText}>{item.soloNote}</Text>
+          </View>
+        ) : null}
+        <View style={styles.spotCandidateMetaRow}>
+          {item.lastCheckedAt ? (
+            <Text style={styles.spotCandidateFootnote}>마지막 확인 {item.lastCheckedAt}</Text>
+          ) : null}
+          {item.sourceLabel ? (
+            <Text style={styles.spotCandidateFootnote}>주요 출처 {item.sourceLabel}</Text>
+          ) : null}
+        </View>
+      </View>
+      <View style={styles.spotCandidateButtons}>
+        {item.mapUrl ? (
+          <Pressable onPress={() => openExternalUrl(item.mapUrl)} style={styles.mapButton}>
+            <MapTrifold size={14} color={archiveColors.primaryActive} weight="regular" />
+            <Text style={styles.mapButtonText}>카카오맵에서 보기</Text>
+          </Pressable>
+        ) : null}
+        {item.naverMapUrl ? (
+          <Pressable onPress={() => openExternalUrl(item.naverMapUrl)} style={styles.mapButton}>
+            <MapPin size={14} color={archiveColors.primaryActive} weight="regular" />
+            <Text style={styles.mapButtonText}>네이버지도에서 보기</Text>
+          </Pressable>
+        ) : null}
+      </View>
+    </View>
+  );
 }
 
 export function ContentBodyRenderer({
@@ -316,60 +374,25 @@ export function ContentBodyRenderer({
         if (block.type === 'spotCandidates') {
           return (
             <View key={index} style={styles.spotCandidateStack}>
-              {block.items.map((item) => {
-                const IconComponent = getSpotTypeIcon(item.typeLabel, item.iconLabel);
-                return (
-                  <View key={`${item.name}-${item.region}`} style={styles.spotCandidateCard}>
-                    <View style={styles.spotCandidateHeader}>
-                      <View style={styles.spotCandidateIcon}>
-                        <IconComponent size={18} color={archiveColors.primaryActive} weight="regular" />
-                      </View>
-                      <View style={styles.stepContent}>
-                        <Text style={styles.spotCandidateName}>{item.name}</Text>
-                        <Text style={styles.spotCandidateMeta}>{item.region} · {item.typeLabel}</Text>
-                      </View>
-                    </View>
-                    <View style={styles.spotCandidateRows}>
-                      <View style={styles.spotCandidateRow}>
-                        <Text style={styles.spotCandidateLabel}>확인된 정보</Text>
-                        <Text style={styles.spotCandidateText}>{item.confirmed}</Text>
-                      </View>
-                      <View style={styles.spotCandidateRow}>
-                        <Text style={styles.spotCandidateLabel}>확인할 것</Text>
-                        <Text style={styles.spotCandidateText}>{item.needsCheck}</Text>
-                      </View>
-                      {item.soloNote ? (
-                        <View style={styles.spotCandidateRow}>
-                          <Text style={styles.spotCandidateLabel}>혼자 쉬기 관점</Text>
-                          <Text style={styles.spotCandidateText}>{item.soloNote}</Text>
-                        </View>
-                      ) : null}
-                      <View style={styles.spotCandidateMetaRow}>
-                        {item.lastCheckedAt ? (
-                          <Text style={styles.spotCandidateFootnote}>마지막 확인 {item.lastCheckedAt}</Text>
-                        ) : null}
-                        {item.sourceLabel ? (
-                          <Text style={styles.spotCandidateFootnote}>주요 출처 {item.sourceLabel}</Text>
-                        ) : null}
-                      </View>
-                    </View>
-                    <View style={styles.spotCandidateButtons}>
-                      {item.mapUrl ? (
-                        <Pressable onPress={() => openExternalUrl(item.mapUrl)} style={styles.mapButton}>
-                          <MapTrifold size={14} color={archiveColors.primaryActive} weight="regular" />
-                          <Text style={styles.mapButtonText}>카카오맵에서 보기</Text>
-                        </Pressable>
-                      ) : null}
-                      {item.naverMapUrl ? (
-                        <Pressable onPress={() => openExternalUrl(item.naverMapUrl)} style={styles.mapButton}>
-                          <MapPin size={14} color={archiveColors.primaryActive} weight="regular" />
-                          <Text style={styles.mapButtonText}>네이버지도에서 보기</Text>
-                        </Pressable>
-                      ) : null}
-                    </View>
+              {block.items.map((item) => <SpotCandidateCard key={`${item.name}-${item.region}`} item={item} />)}
+            </View>
+          );
+        }
+        if (block.type === 'spotCandidateGroups') {
+          return (
+            <View key={index} style={styles.spotCandidateStack}>
+              {block.groups.map((group) => (
+                <View key={group.title} style={styles.spotCandidateGroupPanel}>
+                  <View style={styles.spotCandidateGroupHeader}>
+                    <Text style={styles.cardTitle}>{group.title}</Text>
+                    <Text style={styles.spotCandidateGroupCount}>{group.items.length}곳</Text>
                   </View>
-                );
-              })}
+                  {group.description ? <Text style={styles.cardSubtitle}>{group.description}</Text> : null}
+                  <View style={styles.spotCandidateStack}>
+                    {group.items.map((item) => <SpotCandidateCard key={`${item.name}-${item.region}`} item={item} />)}
+                  </View>
+                </View>
+              ))}
             </View>
           );
         }
@@ -637,6 +660,32 @@ const styles = StyleSheet.create({
   },
   spotCandidateStack: {
     gap: 14,
+  },
+  spotCandidateGroupPanel: {
+    gap: 12,
+    borderWidth: 1,
+    borderColor: archiveColors.hairline,
+    borderRadius: archiveRadius.lg,
+    backgroundColor: archiveColors.surface,
+    padding: 16,
+  },
+  spotCandidateGroupHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 12,
+  },
+  spotCandidateGroupCount: {
+    overflow: 'hidden',
+    borderRadius: archiveRadius.sm,
+    backgroundColor: archiveColors.primarySoft,
+    color: archiveColors.primaryActive,
+    fontSize: 12,
+    lineHeight: 18,
+    fontWeight: '900',
+    fontFamily: luxuryFonts.sans,
+    paddingHorizontal: 9,
+    paddingVertical: 5,
   },
   spotCandidateCard: {
     gap: 14,
