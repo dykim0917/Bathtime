@@ -642,6 +642,12 @@ button {
   min-width: 1068px;
 }
 
+.onsenTable .dataTableHeader,
+.onsenTable .dataTableRow {
+  grid-template-columns: minmax(240px, 1.3fr) 92px 116px 92px 150px 56px 72px 64px;
+  min-width: 884px;
+}
+
 .submissionsTable .dataTableHeader,
 .submissionsTable .dataTableRow {
   grid-template-columns: 110px minmax(160px, 0.8fr) minmax(260px, 1.4fr) 100px 80px 90px 64px;
@@ -718,6 +724,39 @@ button {
 
 .detailGrid .panel:first-child {
   grid-row: span 2;
+}
+
+.onsenDetailGrid .panel:first-child {
+  grid-row: span 3;
+}
+
+.formGridTwo {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.formGridTwo label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.seedSourceBox {
+  display: grid;
+  gap: 10px;
+  padding-top: 16px;
+}
+
+.seedSourceBox strong {
+  color: var(--accent);
+  overflow-wrap: anywhere;
+}
+
+.seedSourceBox p {
+  color: var(--secondary);
+  line-height: 1.65;
+  margin: 0;
 }
 
 .detailGrid .panel.feedbackPanel {

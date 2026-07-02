@@ -106,13 +106,13 @@ export default async function HomePage() {
           <source src="/videos/home/bathtime-home-hero-loop.mp4" type="video/mp4" />
         </video>
         <header className="page-header home-hero-copy">
-          <p className="kicker">BATH TIME ARCHIVE</p>
+          <p className="kicker">바스타임 아카이브</p>
           <h1>
-            <span>씻는 시간을 더 잘 쓰고 싶은 사람을 위한</span>
-            <span>아카이브입니다</span>
+            <span>물에 닿는 시간을</span>
+            <span>조금 더 좋은 의식으로</span>
           </h1>
           <p>
-            사우나부터 홈케어까지, 오늘의 몸과 공간에 맞는 바스타임을 찾고 저장해요.
+            사우나, 온천, 홈케어, 욕실 아이템을 같은 기준으로 정리합니다. 오늘의 몸과 공간에 맞는 바스타임을 천천히 찾아보세요.
           </p>
         </header>
         <div className="home-hero-actions" aria-label="메인 행동">
@@ -128,6 +128,16 @@ export default async function HomePage() {
             바스타임이란
           </Link>
         </div>
+      </section>
+
+      <section className="home-intro">
+        <div>
+          <p className="kicker">읽고 저장하는 목욕 안내서</p>
+          <h2>큰 욕조가 없어도, 좋은 바스타임은 충분히 만들 수 있습니다.</h2>
+        </div>
+        <p>
+          바스타임은 화려한 스파 목록보다 실제로 따라 해볼 수 있는 조건을 먼저 봅니다. 집에서 가능한 샤워와 족욕, 혼자 가기 좋은 사우나, 다시 살펴볼 만한 아이템을 기록처럼 모아둡니다.
+        </p>
       </section>
 
       <section className="section">
@@ -156,7 +166,7 @@ export default async function HomePage() {
             <ArchiveVisual content={featured} />
           </div>
           <div className="feature-copy">
-            <p className="kicker">오늘의 추천 아카이브</p>
+            <p className="kicker">오늘의 추천 기록</p>
             <h2>{toDisplayCopy(featured.title)}</h2>
             <p>{toDisplayCopy(featured.subtitle ?? featured.summary)}</p>
             <Link className="button-primary" href={`/content/${featured.id}`}>기록 보기</Link>
@@ -169,7 +179,7 @@ export default async function HomePage() {
           <PaperPlaneTilt size={22} weight="bold" />
         </div>
         <div>
-          <p className="kicker">SUBMIT A CLUE</p>
+          <p className="kicker">좋은 단서 제보</p>
           <h2>좋은 바스타임 단서를 남겨주세요.</h2>
           <p>알고 있는 사우나, 숙소, 욕실 세팅, 아이템을 보내주시면 바스타임식 기록으로 정리합니다.</p>
         </div>
@@ -219,7 +229,7 @@ export default async function HomePage() {
           <DeviceMobile size={22} weight="bold" />
         </div>
         <div>
-          <p className="kicker">APP RITUAL FLOW</p>
+          <p className="kicker">앱에서 이어가기</p>
           <h2>저장한 콘텐츠는 앱에서 의식으로 이어집니다.</h2>
           <p>찾는 건 여기서. 실행은 앱에서.</p>
         </div>

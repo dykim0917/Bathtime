@@ -5,6 +5,7 @@ import { getCurrentAdminEmail } from '../lib/auth/server';
 const navItems = [
   { href: '/', label: 'Dashboard' },
   { href: '/content', label: 'Archive Content' },
+  { href: '/onsen', label: 'Onsen Data' },
   { href: '/submissions', label: 'Submissions' },
   { href: '/routines', label: 'Routine Presets' },
   { href: '/publish', label: 'Publish' },
