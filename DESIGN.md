@@ -29,11 +29,11 @@
 
 ### Direction
 
-**Warm Archive + Soft Water Accent**
+**Quiet Onsen Archive + Hinoki Water Accent**
 
-바스타임은 고급 호텔 스파처럼 무겁게 보이면 안 되고, 건강관리 앱처럼 차갑게 보여서도 안 된다.
+바스타임은 고급 호텔 스파처럼 무겁게 보이면 안 되고, 건강관리 앱처럼 차갑게 보여서도 안 된다. 이번 웹 개편의 표정은 일본 로컬 온천/관광 사이트처럼 사진이 먼저 호흡하고, 글은 낮은 목소리로 장소성과 쓰임을 정리하는 편집형 아카이브다.
 
-화면은 밝고, 정돈되어 있고, 오래 다시 찾아볼 수 있는 기록처럼 보여야 한다. 동시에 물, 온기, 조용한 회복의 감각이 아주 약하게 남아 있어야 한다.
+화면은 밝고, 정돈되어 있고, 오래 다시 찾아볼 수 있는 기록처럼 보여야 한다. 동시에 물, 온기, 숲, 조용한 회복의 감각이 아주 약하게 남아 있어야 한다.
 
 ### Mood
 
@@ -45,6 +45,8 @@
 - 따라 해볼 수 있다
 - 물과 온기가 느껴진다
 - 정보가 잘 정리되어 있다
+- 관광 안내서처럼 장소의 결이 있다
+- 흰 여백보다 옅은 안개와 종이 질감에 가깝다
 
 ### Reference Cues
 
@@ -54,6 +56,9 @@
 - 과하지 않은 매거진형 리스트
 - 장소/아이템/루틴 정보를 비교하기 쉬운 카드
 - 저장과 실행으로 이어지는 명확한 CTA
+- 첫 화면의 큰 자연/물 이미지와 짧은 문장
+- 얇은 구분선, 낮은 채도, 세로로 긴 섹션 호흡
+- 사진 옆에 붙는 작은 정보보다 넉넉한 캡션형 문단
 
 ### Design Principle
 
@@ -65,7 +70,54 @@ Airbnb식 디자인에서 참고할 것은 강한 포인트 컬러가 아니라 
 - 그림자와 장식은 최소화한다.
 - 정보는 작은 카드 안에 조용하지만 명확하게 정리한다.
 
-바스타임의 차이는 컬러와 톤이다. 쨍한 소비자 마켓 컬러 대신 **Deep Ritual Teal**을 절제해서 사용한다.
+바스타임의 차이는 컬러와 톤이다. 쨍한 소비자 마켓 컬러 대신 **Hinoki Teal**과 **Mist Green**을 절제해서 사용한다.
+
+### Frontend Token Contract
+
+이 섹션은 `apps/web`의 전역 CSS와 공통 컴포넌트가 따라야 하는 최신 토큰 계약이다.
+
+#### Color
+
+- Canvas: `#fbfaf6`, CSS `--canvas`, 초록기 없는 따뜻한 백지 배경.
+- Surface: `#fffdf8`, CSS `--surface`, 사진과 글을 받치는 백지.
+- Surface Soft: `#f1efe8`, CSS `--surface-soft`, 필터/보조 블록 배경.
+- Ink: `#1f2b28`, CSS `--ink`, 순검정 대신 쓰는 본문 전경.
+- Body: `#43504b`, CSS `--body`, 긴 설명문.
+- Muted: `#6f7a75`, CSS `--muted`, 메타 정보.
+- Primary: `#2f7871`, CSS `--primary`, 물과 히노키 사이의 포인트.
+- Primary Active: `#245f59`, CSS `--primary-active`, CTA와 활성 상태.
+- Primary Soft: `#d8ebe5`, CSS `--primary-soft`, 선택/호버 배경.
+- Reed: `#e7dcc1`, CSS `--reed`, 종이와 나무 사이의 보조 포인트.
+- Mist: `#f3f1e9`, CSS `--mist`, 섹션 톤.
+- Hairline: `#ded8ca`, CSS `--hairline`, 기본 경계선.
+- Hairline Soft: `#ebe6db`, CSS `--hairline-soft`, 약한 구분선.
+- Border Strong: `#c3b9a5`, CSS `--border-strong`, 입력/중요 경계.
+
+#### Typography
+
+- Sans: `Pretendard, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`, CSS `--bt-font-sans`.
+- Editorial: `"Noto Serif KR", "Nanum Myeongjo", "Apple SD Gothic Neo", serif`, CSS `--bt-font-editorial`.
+- Data: `ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace`, CSS `--bt-font-data`.
+- Hero: `clamp(42px, 6.6vw, 82px)`, weight `500`, line-height `1.15`, letter-spacing `0`.
+- Page title: `clamp(30px, 4.6vw, 52px)`, weight `500`, line-height `1.18`, letter-spacing `0`.
+- Section title: `clamp(24px, 3.1vw, 38px)`, weight `500`, line-height `1.2`, letter-spacing `0`.
+- Card title: `clamp(18px, 2vw, 22px)`, weight `600`, line-height `1.35`, letter-spacing `0`.
+
+#### Spacing, Radius, Depth
+
+- Spacing remains on the 4px scale: `--bt-space-1` through `--bt-space-24`.
+- Section rhythm uses `clamp(56px, 8vw, 104px)` vertical spacing on the home surface.
+- Radius scale is restrained: `4px`, `6px`, `8px`, plus pill only for controls.
+- Depth uses tonal borders and rare soft shadows: `--bt-shadow-soft` and `--bt-shadow-lifted`.
+
+#### Component Rules
+
+- Home hero is full-bleed media with overlaid editorial copy, no card around the hero text.
+- Home sections use varied layouts: editorial intro grid, horizontal feature band, list/card grid, compact callout.
+- Cards keep an 8px maximum radius and use real imagery where available.
+- Onsen result cards use one image slot, one sentence-level water decision, one inline fact row, and one caution sentence. Do not nest multiple boxed panels inside the card body unless the content needs comparison.
+- Buttons use the same pill treatment on the home hero and the same 8px treatment elsewhere.
+- Motion is limited to transform, opacity, and filter with reduced-motion support.
 
 ---
 
@@ -935,4 +987,3 @@ Style: 조용한 아카이브 + 물의 청결함 + 약간의 온기
 ```
 
 색은 적게 쓰고, 사진과 정보 구조가 화면의 중심이 되어야 한다.
-

@@ -20,6 +20,8 @@ export type ContentFeedbackReason =
   | 'needs_more_candidates'
   | 'tone_unclear'
   | 'other';
+export type OnsenReviewBathType = 'room_bath' | 'private_bath' | 'public_bath' | 'other';
+export type OnsenReviewWaterFeel = 'clear' | 'soft' | 'strong' | 'unclear';
 
 type SubmissionRow = {
   id: string;
@@ -248,6 +250,27 @@ export async function removeContentFeedback(contentId: string): Promise<void> {
   const { error } = await supabase.rpc('delete_content_feedback', {
     p_content_id: contentId,
     p_visitor_key: getOrCreateVisitorKey(),
+  });
+
+  if (error) throw error;
+}
+
+export async function saveOnsenReview(input: {
+  accommodationSlug: string;
+  bathType: OnsenReviewBathType;
+  waterFeel: OnsenReviewWaterFeel;
+  visitSeason?: string;
+  body: string;
+}): Promise<void> {
+  const user = await getAuthenticatedUser({ ensureProfile: true });
+  const supabase = requireClient();
+  const { error } = await supabase.from('onsen_reviews').insert({
+    accommodation_slug: input.accommodationSlug,
+    user_id: user.id,
+    bath_type: input.bathType,
+    water_feel: input.waterFeel,
+    visit_season: input.visitSeason?.trim() || null,
+    body: input.body,
   });
 
   if (error) throw error;

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { BookmarkSimple, Compass, House, List, MagnifyingGlass, PlusSquare, UserCircle, X } from '@phosphor-icons/react';
+import { BookmarkSimple, Compass, House, MagnifyingGlass, Thermometer, UserCircle, X } from '@phosphor-icons/react';
 import { Suspense, useEffect, useMemo, useState, type MouseEvent } from 'react';
 import brandSymbol from '@/assets/images/bathtime.svg';
 import logoImage from '@/assets/images/logo.png';
@@ -16,7 +16,7 @@ type NativeAuthSessionMessage = {
   refreshToken?: string;
 };
 
-type IconName = 'bookmark' | 'compass' | 'house' | 'list' | 'plus' | 'search' | 'user';
+type IconName = 'bookmark' | 'compass' | 'house' | 'search' | 'thermometer' | 'user';
 type IconWeight = 'thin' | 'light' | 'regular' | 'bold' | 'fill' | 'duotone';
 type PhosphorIcon = React.ComponentType<{
   size?: number;
@@ -34,19 +34,16 @@ type NavItem = {
 const navItems: NavItem[] = [
   { href: '/', label: '지금', icon: 'house' },
   { href: '/explore', label: '탐색', icon: 'compass' },
-  { href: '/submit', label: '제보', icon: 'plus' },
+  { href: '/onsen', label: '온천', icon: 'thermometer' },
   { href: '/saved', label: '보관함', icon: 'bookmark', requiresAuth: true },
 ];
-
-const sidebarCollapsedStorageKey = 'bathtime:web-sidebar-collapsed';
 
 const icons: Record<IconName, PhosphorIcon> = {
   bookmark: BookmarkSimple,
   compass: Compass,
   house: House,
-  list: List,
-  plus: PlusSquare,
   search: MagnifyingGlass,
+  thermometer: Thermometer,
   user: UserCircle,
 };
 
@@ -59,11 +56,6 @@ function isActive(pathname: string, href: string): boolean {
   const activePath = pathname.startsWith('/content/') ? '/explore' : pathname;
   if (href === '/') return activePath === '/';
   return activePath.startsWith(href);
-}
-
-function getStoredCollapsed(): boolean {
-  if (typeof window === 'undefined') return false;
-  return window.localStorage.getItem(sidebarCollapsedStorageKey) === 'true';
 }
 
 function AccountButton({ signedIn, ready, onSignedOut }: { signedIn: boolean; ready: boolean; onSignedOut: () => void }) {
@@ -142,14 +134,10 @@ function TopSearch() {
 export function Shell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
-  const [collapsed, setCollapsed] = useState(false);
+  const isOnsenRoute = pathname.startsWith('/onsen');
   const [signedIn, setSignedIn] = useState(false);
   const [authReady, setAuthReady] = useState(false);
   const [authGate, setAuthGate] = useState<{ source: string; next: string; message: string } | null>(null);
-
-  useEffect(() => {
-    setCollapsed(getStoredCollapsed());
-  }, []);
 
   useEffect(() => {
     const supabase = getSupabaseClient();
@@ -222,10 +210,6 @@ export function Shell({ children }: { children: React.ReactNode }) {
   }, []);
 
   useEffect(() => {
-    window.localStorage.setItem(sidebarCollapsedStorageKey, String(collapsed));
-  }, [collapsed]);
-
-  useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search);
     const isAppShell =
       searchParams.get('appShell') === '1' ||
@@ -238,7 +222,12 @@ export function Shell({ children }: { children: React.ReactNode }) {
     document.body.classList.add('bathtime-app-shell');
   }, [pathname]);
 
-  const shellClassName = useMemo(() => (collapsed ? 'site-shell sidebar-collapsed' : 'site-shell'), [collapsed]);
+  const shellClassName = useMemo(() => {
+    const classes = ['site-shell'];
+    if (isOnsenRoute) classes.push('onsen-shell');
+    if (pathname === '/') classes.push('home-shell');
+    return classes.join(' ');
+  }, [isOnsenRoute, pathname]);
   const handleProtectedNav = (event: MouseEvent<HTMLAnchorElement>, item: NavItem) => {
     if (!item.requiresAuth || signedIn) return;
 
@@ -254,22 +243,11 @@ export function Shell({ children }: { children: React.ReactNode }) {
     <div className={shellClassName}>
       <aside className="sidebar">
         <div className="brand-block">
-          <button
-            className="sidebar-toggle"
-            type="button"
-            aria-label={collapsed ? '사이드바 펼치기' : '사이드바 접기'}
-            onClick={() => setCollapsed((current) => !current)}
-          >
-            <Icon name="list" size={21} />
-          </button>
           <Link className="brand" href="/" aria-label="Bathtime 홈">
-            {collapsed ? (
-              <span className="brand-symbol">
-                <img src={brandSymbol.src} alt="" width={34} height={34} aria-hidden="true" />
-              </span>
-            ) : (
-              <img className="brand-logo" src={logoImage.src} alt="바스타임" width={158} height={30} />
-            )}
+            <span className="brand-symbol">
+              <img src={brandSymbol.src} alt="" width={30} height={30} aria-hidden="true" />
+            </span>
+            <img className="brand-logo" src={logoImage.src} alt="바스타임" width={158} height={30} />
           </Link>
         </div>
         <nav className="nav-list" aria-label="주요 메뉴">
@@ -280,7 +258,6 @@ export function Shell({ children }: { children: React.ReactNode }) {
                 key={item.href}
                 className={active ? 'nav-link active' : 'nav-link'}
                 href={item.href}
-                title={collapsed ? item.label : undefined}
                 onClick={(event) => handleProtectedNav(event, item)}
               >
                 <Icon name={item.icon} active={active} />
@@ -289,20 +266,17 @@ export function Shell({ children }: { children: React.ReactNode }) {
             );
           })}
         </nav>
-        <div className="sidebar-footer">
-          <Link href="/about">바스타임이란</Link>
-          <Link href="/legal/privacy">개인정보처리방침</Link>
-          <Link href="/legal/terms">이용약관</Link>
-        </div>
-      </aside>
-      <div className="content-area">
-        <header className="top-bar">
+        <div className="header-actions">
           <Suspense fallback={<div className="top-search" aria-hidden="true" />}>
             <TopSearch />
           </Suspense>
           <AccountButton signedIn={signedIn} ready={authReady} onSignedOut={() => setSignedIn(false)} />
-        </header>
-        <main className={pathname.startsWith('/content/') ? 'main content-route-main' : 'main'}>{children}</main>
+        </div>
+      </aside>
+      <div className="content-area">
+        <main className={pathname.startsWith('/content/') ? 'main content-route-main' : isOnsenRoute ? 'main onsen-route-main' : 'main'}>
+          {children}
+        </main>
       </div>
       <nav className="bottom-nav" aria-label="모바일 메뉴">
         {navItems.map((item) => {

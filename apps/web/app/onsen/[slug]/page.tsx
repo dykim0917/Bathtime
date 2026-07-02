@@ -1,0 +1,220 @@
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import { CheckCircle, ImagesSquare, LinkSimple, WarningCircle, Waves } from '@phosphor-icons/react/ssr';
+import { OnsenReviewForm } from '@web/components/OnsenReviewForm';
+import { getOnsenCandidate, getOnsenCandidates, statusLabels } from '@web/lib/onsenCatalog';
+import { normalizeOnsenPublicCopy, normalizeOnsenSourceLabel } from '@web/lib/onsenCopy';
+import { readOnsenReviewCounts } from '@web/lib/onsenReviews';
+
+type PageProps = {
+  params: Promise<{ slug: string }>;
+};
+
+type OnsenFact = NonNullable<ReturnType<typeof getOnsenCandidate>>['facts'][number];
+
+const facilityFactLabels = new Set(['대욕장', '가족탕', '객실탕', '프라이빗탕']);
+
+export function generateStaticParams() {
+  return getOnsenCandidates().map((candidate) => ({ slug: candidate.slug }));
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const candidate = getOnsenCandidate(slug);
+
+  if (!candidate) {
+    return {
+      title: '온천 정보 없음',
+    };
+  }
+
+  return {
+    title: `${candidate.name} 온천 근거`,
+    description: `${candidate.name}의 객실탕, 대욕장, 온천수 체감과 확인해둘 점을 정리했습니다.`,
+    alternates: {
+      canonical: `/onsen/${candidate.slug}`,
+    },
+  };
+}
+
+function getGalleryItems(candidate: NonNullable<ReturnType<typeof getOnsenCandidate>>) {
+  if (candidate.imageUrl) {
+    return [
+      {
+        src: candidate.imageUrl,
+        alt: candidate.imageAlt ?? `${candidate.name} 온천 이미지`,
+      },
+    ];
+  }
+
+  return [
+    { label: '외관 또는 입구 사진' },
+    { label: '온천탕 사진' },
+    { label: '객실 또는 동선 사진' },
+  ];
+}
+
+function getFacilityFacts(facts: OnsenFact[]) {
+  return facts.filter((fact) => facilityFactLabels.has(fact.label));
+}
+
+function getOperationFact(candidate: NonNullable<ReturnType<typeof getOnsenCandidate>>) {
+  return candidate.facts.find((fact) => fact.label.includes('온천 운용') || fact.label.includes('온천수')) ?? null;
+}
+
+export default async function OnsenDetailPage({ params }: PageProps) {
+  const { slug } = await params;
+  const candidate = getOnsenCandidate(slug);
+
+  if (!candidate) {
+    notFound();
+  }
+
+  const reviewCounts = await readOnsenReviewCounts([candidate.slug]);
+  const siteReviewCount = reviewCounts[candidate.slug] ?? 0;
+  const galleryItems = getGalleryItems(candidate);
+  const facilityFacts = getFacilityFacts(candidate.facts);
+  const operationFact = getOperationFact(candidate);
+
+  return (
+    <article className="onsen-detail-page">
+      <div className="onsen-detail-layout">
+        <section className="onsen-stay-card" aria-labelledby="onsen-detail-title">
+          <div className="onsen-detail-gallery" aria-label={`${candidate.name} 사진 슬라이드`}>
+            <div className="onsen-gallery-track">
+              {galleryItems.map((item, index) => (
+                <figure key={`${candidate.slug}-gallery-${index}`} className="onsen-gallery-slide">
+                  {'src' in item ? (
+                    <img src={item.src} alt={item.alt} loading={index === 0 ? 'eager' : 'lazy'} />
+                  ) : (
+                    <div className="onsen-gallery-placeholder">
+                      <ImagesSquare size={30} weight="bold" aria-hidden="true" />
+                      <span>{item.label}</span>
+                    </div>
+                  )}
+                </figure>
+              ))}
+            </div>
+            <div className="onsen-gallery-dots" aria-hidden="true">
+              {galleryItems.map((_, index) => (
+                <span key={`${candidate.slug}-dot-${index}`} />
+              ))}
+            </div>
+          </div>
+
+          <header className="onsen-stay-head">
+            <div>
+              <p className="onsen-detail-kicker">온천 아카이브</p>
+              <h1 id="onsen-detail-title">{candidate.name}</h1>
+              <span>{candidate.jaName}</span>
+            </div>
+          </header>
+
+          <dl className="onsen-detail-scorecard" aria-label="온천수 요약">
+            <div>
+              <dt>온천수</dt>
+              <dd>{candidate.waterDecision.springType}</dd>
+            </div>
+            <div>
+              <dt>객실탕</dt>
+              <dd>{candidate.waterDecision.roomBath}</dd>
+            </div>
+            <div>
+              <dt>운용</dt>
+              <dd>{candidate.waterDecision.operation}</dd>
+            </div>
+            <div>
+              <dt>바스타임 리뷰</dt>
+              <dd>{siteReviewCount}</dd>
+            </div>
+          </dl>
+
+          <section className="onsen-compact-section" aria-labelledby="onsen-fit-title">
+            <div className="onsen-compact-head">
+              <CheckCircle size={19} weight="bold" aria-hidden="true" />
+              <h2 id="onsen-fit-title">이럴 때 맞아요</h2>
+            </div>
+            <div className="onsen-fit-row">
+              {candidate.fit.map((item) => (
+                <span key={item}>{normalizeOnsenPublicCopy(item)}</span>
+              ))}
+            </div>
+          </section>
+
+          <section className="onsen-compact-section" aria-labelledby="onsen-facts-title">
+            <div className="onsen-compact-head">
+              <Waves size={19} weight="bold" aria-hidden="true" />
+              <h2 id="onsen-facts-title">온천 정보</h2>
+            </div>
+            <div className="onsen-fact-list">
+              {facilityFacts.length > 0 ? (
+                <div className="onsen-facility-summary" aria-label="탕 구성">
+                  {facilityFacts.map((fact) => (
+                    <div key={fact.label} className="onsen-facility-item">
+                      <span>{fact.label}</span>
+                      <strong>{normalizeOnsenPublicCopy(fact.value)}</strong>
+                      <em data-status={fact.status}>{statusLabels[fact.status]}</em>
+                    </div>
+                  ))}
+                </div>
+              ) : null}
+
+              <div className="onsen-operation-card">
+                <div>
+                  <span>온천 운용</span>
+                  <strong>{normalizeOnsenPublicCopy(candidate.waterDecision.operation)}</strong>
+                </div>
+                <p>{normalizeOnsenPublicCopy(operationFact?.detail ?? candidate.waterDecision.summary)}</p>
+                <span className="onsen-status-badge" data-status={operationFact?.status ?? 'needs_check'}>
+                  {statusLabels[operationFact?.status ?? 'needs_check']}
+                </span>
+              </div>
+            </div>
+          </section>
+
+          <section className="onsen-compact-section" aria-labelledby="onsen-cautions-title">
+            <div className="onsen-compact-head">
+              <WarningCircle size={19} weight="bold" aria-hidden="true" />
+              <h2 id="onsen-cautions-title">확인해둘 점</h2>
+            </div>
+            <div className="onsen-caution-list">
+              {candidate.cautions.map((caution) => (
+                <div key={caution.issue}>
+                  <strong>{caution.issue}</strong>
+                  <p>{normalizeOnsenPublicCopy(caution.summary)}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="onsen-compact-section" aria-labelledby="onsen-sources-title">
+            <div className="onsen-compact-head">
+              <LinkSimple size={19} weight="bold" aria-hidden="true" />
+              <h2 id="onsen-sources-title">확인한 정보</h2>
+            </div>
+            <div className="onsen-source-list">
+              {candidate.sources.map((source) => (
+                <div key={source.label}>
+                  <span>{normalizeOnsenSourceLabel(source.label)}</span>
+                  <p>{normalizeOnsenPublicCopy(source.note)}</p>
+                </div>
+              ))}
+            </div>
+            <div className="onsen-official-links">
+              {candidate.officialLinks.map((link) => (
+                <a key={link.href} href={link.href} target="_blank" rel="noreferrer">
+                  <LinkSimple size={16} weight="bold" aria-hidden="true" />
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </section>
+        </section>
+
+        <aside className="onsen-review-column" aria-label="바스타임 리뷰">
+          <OnsenReviewForm accommodationSlug={candidate.slug} accommodationName={candidate.name} reviewCount={siteReviewCount} />
+        </aside>
+      </div>
+    </article>
+  );
+}

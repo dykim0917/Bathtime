@@ -7,10 +7,10 @@ import { getCareHeroImageSrc } from '@web/lib/careImages';
 type PhosphorIcon = ComponentType<{ size?: number; weight?: 'regular' | 'bold' | 'fill'; 'aria-hidden'?: boolean | 'true' | 'false' }>;
 
 const categoryGradients: Record<ContentCategory, string> = {
-  HOME_BATH: 'linear-gradient(135deg, #DFF0ED, #F4E7C8)',
-  BATH_PLACES: 'linear-gradient(135deg, #D9E8EA, #EDE2D1)',
-  BATH_ITEMS: 'linear-gradient(135deg, #E8EFEA, #D9E8EA)',
-  TIPS_CULTURE: 'linear-gradient(135deg, #F4E7C8, #DFF0ED)',
+  HOME_BATH: 'linear-gradient(135deg, var(--primary-soft), var(--mist))',
+  BATH_PLACES: 'linear-gradient(135deg, var(--mist), var(--surface-soft))',
+  BATH_ITEMS: 'linear-gradient(135deg, var(--surface-soft), var(--primary-soft))',
+  TIPS_CULTURE: 'linear-gradient(135deg, var(--brass-soft), var(--mist))',
 };
 
 const categoryIcons: Record<ContentCategory, PhosphorIcon> = {

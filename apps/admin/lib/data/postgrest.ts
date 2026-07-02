@@ -116,3 +116,28 @@ export async function insertPostgrestRow(
     throw new Error(`PostgREST ${tableName} insert failed with status ${response.status}`);
   }
 }
+
+export async function upsertPostgrestRow(
+  config: AdminPostgrestConfig,
+  tableName: string,
+  body: Record<string, unknown>,
+  onConflict: string
+): Promise<void> {
+  const url = new URL(`${config.restUrl}/${tableName}`);
+  url.searchParams.set('on_conflict', onConflict);
+
+  const response = await fetch(url.toString(), {
+    method: 'POST',
+    headers: {
+      apikey: config.apiKey,
+      authorization: `Bearer ${config.authorizationToken}`,
+      'content-type': 'application/json',
+      prefer: 'resolution=merge-duplicates,return=minimal',
+    },
+    body: JSON.stringify(body),
+  });
+
+  if (!response.ok) {
+    throw new Error(`PostgREST ${tableName} upsert failed with status ${response.status}`);
+  }
+}
