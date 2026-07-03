@@ -1,9 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { BookmarkSimple, Compass, House, MagnifyingGlass, Thermometer, UserCircle, X } from '@phosphor-icons/react';
-import { Suspense, useEffect, useMemo, useState, type MouseEvent } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+import { BookmarkSimple, CaretDown, SignOut, UserCircle, X } from '@phosphor-icons/react';
+import { useEffect, useMemo, useState } from 'react';
 import brandSymbol from '@/assets/images/bathtime.svg';
 import logoImage from '@/assets/images/logo.png';
 import { getSupabaseClient } from '@web/lib/auth';
@@ -16,7 +16,7 @@ type NativeAuthSessionMessage = {
   refreshToken?: string;
 };
 
-type IconName = 'bookmark' | 'compass' | 'house' | 'search' | 'thermometer' | 'user';
+type IconName = 'bookmark' | 'user';
 type IconWeight = 'thin' | 'light' | 'regular' | 'bold' | 'fill' | 'duotone';
 type PhosphorIcon = React.ComponentType<{
   size?: number;
@@ -24,26 +24,8 @@ type PhosphorIcon = React.ComponentType<{
   'aria-hidden'?: boolean;
 }>;
 
-type NavItem = {
-  href: string;
-  label: string;
-  icon: IconName;
-  requiresAuth?: boolean;
-};
-
-const navItems: NavItem[] = [
-  { href: '/', label: '지금', icon: 'house' },
-  { href: '/explore', label: '탐색', icon: 'compass' },
-  { href: '/onsen', label: '온천', icon: 'thermometer' },
-  { href: '/saved', label: '보관함', icon: 'bookmark', requiresAuth: true },
-];
-
 const icons: Record<IconName, PhosphorIcon> = {
   bookmark: BookmarkSimple,
-  compass: Compass,
-  house: House,
-  search: MagnifyingGlass,
-  thermometer: Thermometer,
   user: UserCircle,
 };
 
@@ -52,13 +34,9 @@ function Icon({ name, size = 20, active = false }: { name: IconName; size?: numb
   return <IconComponent size={size} weight={active ? 'fill' : 'regular'} aria-hidden />;
 }
 
-function isActive(pathname: string, href: string): boolean {
-  const activePath = pathname.startsWith('/content/') ? '/explore' : pathname;
-  if (href === '/') return activePath === '/';
-  return activePath.startsWith(href);
-}
-
 function AccountButton({ signedIn, ready, onSignedOut }: { signedIn: boolean; ready: boolean; onSignedOut: () => void }) {
+  const [open, setOpen] = useState(false);
+
   if (!ready || !signedIn) {
     return (
       <Link className="account-button" href="/auth/login">
@@ -69,72 +47,40 @@ function AccountButton({ signedIn, ready, onSignedOut }: { signedIn: boolean; re
   }
 
   return (
-    <button
-      className="account-button"
-      type="button"
-      onClick={async () => {
-        const supabase = getSupabaseClient();
-        await supabase?.auth.signOut();
-        window.dispatchEvent(new CustomEvent('bathtime:saved-content-changed'));
-        onSignedOut();
-      }}
-    >
-      <Icon name="user" size={16} />
-      <span>로그아웃</span>
-    </button>
-  );
-}
-
-function TopSearch() {
-  const pathname = usePathname();
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const searchKey = searchParams.toString();
-  const [query, setQuery] = useState('');
-
-  useEffect(() => {
-    setQuery(searchParams.get('query') ?? '');
-  }, [searchKey, searchParams]);
-
-  return (
-    <form
-      className="top-search"
-      action="/explore"
-      onSubmit={(event) => {
-        event.preventDefault();
-        const value = query.trim();
-        router.push(value ? `/explore?query=${encodeURIComponent(value)}` : '/explore');
-      }}
-    >
-      <Icon name="search" size={17} />
-      <input
-        name="query"
-        value={query}
-        onChange={(event) => setQuery(event.target.value)}
-        placeholder="의식, 재료 또는 장소를 입력해주세요..."
-        aria-label="아카이브 검색어"
-      />
-      {query ? (
+    <div className={open ? 'account-menu-wrap is-open' : 'account-menu-wrap'}>
+      <button className="account-button" type="button" aria-haspopup="menu" aria-expanded={open} onClick={() => setOpen((value) => !value)}>
+        <Icon name="user" size={17} />
+        <span>프로필</span>
+        <CaretDown size={13} weight="bold" aria-hidden />
+      </button>
+      <div className="account-menu" role="menu">
+        <Link href="/saved" role="menuitem" onClick={() => setOpen(false)}>
+          <BookmarkSimple size={17} aria-hidden />
+          찜한 온천
+        </Link>
         <button
-          className="top-search-clear"
           type="button"
-          aria-label="검색어 지우기"
-          onClick={() => {
-            setQuery('');
-            if (pathname === '/explore') router.push('/explore');
+          role="menuitem"
+          onClick={async () => {
+            const supabase = getSupabaseClient();
+            await supabase?.auth.signOut();
+            window.dispatchEvent(new CustomEvent('bathtime:saved-content-changed'));
+            setOpen(false);
+            onSignedOut();
           }}
         >
-          <X size={14} weight="bold" aria-hidden />
+          <SignOut size={17} aria-hidden />
+          로그아웃
         </button>
-      ) : null}
-    </form>
+      </div>
+    </div>
   );
 }
 
 export function Shell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
-  const isOnsenRoute = pathname.startsWith('/onsen');
+  const isOnsenRoute = pathname === '/' || pathname.startsWith('/onsen');
   const [signedIn, setSignedIn] = useState(false);
   const [authReady, setAuthReady] = useState(false);
   const [authGate, setAuthGate] = useState<{ source: string; next: string; message: string } | null>(null);
@@ -225,20 +171,8 @@ export function Shell({ children }: { children: React.ReactNode }) {
   const shellClassName = useMemo(() => {
     const classes = ['site-shell'];
     if (isOnsenRoute) classes.push('onsen-shell');
-    if (pathname === '/') classes.push('home-shell');
     return classes.join(' ');
-  }, [isOnsenRoute, pathname]);
-  const handleProtectedNav = (event: MouseEvent<HTMLAnchorElement>, item: NavItem) => {
-    if (!item.requiresAuth || signedIn) return;
-
-    event.preventDefault();
-    setAuthGate({
-      source: 'saved',
-      next: item.href,
-      message: '저장한 기록을 보려면 로그인해주세요.',
-    });
-  };
-
+  }, [isOnsenRoute]);
   return (
     <div className={shellClassName}>
       <aside className="sidebar">
@@ -250,26 +184,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
             <img className="brand-logo" src={logoImage.src} alt="바스타임" width={158} height={30} />
           </Link>
         </div>
-        <nav className="nav-list" aria-label="주요 메뉴">
-          {navItems.map((item) => {
-            const active = isActive(pathname, item.href);
-            return (
-              <Link
-                key={item.href}
-                className={active ? 'nav-link active' : 'nav-link'}
-                href={item.href}
-                onClick={(event) => handleProtectedNav(event, item)}
-              >
-                <Icon name={item.icon} active={active} />
-                <span>{item.label}</span>
-              </Link>
-            );
-          })}
-        </nav>
         <div className="header-actions">
-          <Suspense fallback={<div className="top-search" aria-hidden="true" />}>
-            <TopSearch />
-          </Suspense>
           <AccountButton signedIn={signedIn} ready={authReady} onSignedOut={() => setSignedIn(false)} />
         </div>
       </aside>
@@ -277,18 +192,16 @@ export function Shell({ children }: { children: React.ReactNode }) {
         <main className={pathname.startsWith('/content/') ? 'main content-route-main' : isOnsenRoute ? 'main onsen-route-main' : 'main'}>
           {children}
         </main>
+        <footer className="site-footer" aria-label="서비스 정보">
+          <div>
+            <span>© 2026 Bathtime</span>
+          </div>
+          <nav aria-label="정책 링크">
+            <Link href="/legal/privacy">개인정보처리방침</Link>
+            <Link href="/legal/terms">이용약관</Link>
+          </nav>
+        </footer>
       </div>
-      <nav className="bottom-nav" aria-label="모바일 메뉴">
-        {navItems.map((item) => {
-          const active = isActive(pathname, item.href);
-          return (
-            <Link key={item.href} className={active ? 'active' : ''} href={item.href} onClick={(event) => handleProtectedNav(event, item)}>
-              <Icon name={item.icon} size={24} active={active} />
-              <span>{item.label}</span>
-            </Link>
-          );
-        })}
-      </nav>
       {authGate ? (
         <div className="modal-backdrop" role="presentation">
           <section className="auth-gate-modal" role="alertdialog" aria-modal="true" aria-labelledby="auth-gate-title">

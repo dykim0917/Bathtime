@@ -1,0 +1,51 @@
+kind,queue_rank,slug,name_ja,area_slug,prefecture,initial_tier,initial_signals,source_basis,verification_status,source_files
+accommodation,151,nozawa-sakaya,野沢温泉 旅館さかや,nozawa,長野県,Tier 1,자가원천과 전통 대욕장 후보,regional high-demand source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,152,shirahonet-onsen-awano-yu,白骨温泉 泡の湯,shirahonet,長野県,Tier 1,대형 혼욕 노천과 백탁 온천 신호,regional high-demand source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,153,shirahonet-sasaya,白骨温泉 湯元齋藤旅館,shirahonet,長野県,Tier 1,백탁 원천과 고급 료칸 후보,regional OTA source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,154,shibu-kanaguya,渋温泉 歴史の宿 金具屋,yudanaka-shibu,長野県,Tier 1,역사 건축과 다욕장 온천 후보,regional high-demand source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,155,shibu-kokuya,渋温泉 古久屋,yudanaka-shibu,長野県,Tier 1,다원천 내탕과 객실탕 후보,regional high-value source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,156,shibu-sakaeya,渋温泉 春蘭の宿さかえや,yudanaka-shibu,長野県,Tier 1,객실 노천탕과 외탕 순례 후보,regional OTA source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,157,yudanaka-aburaya-tousen,湯田中温泉 あぶらや燈千,yudanaka-shibu,長野県,Tier 1,객실 노천탕과 옥상 노천탕 후보,regional OTA source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,158,yudanaka-tsubakino,湯田中温泉 ホテル椿野,yudanaka-shibu,長野県,Tier 1,객실 노천탕과 전망 대욕장 후보,Jalan Nagano keyword source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,159,misasa-izanro-iwasaki,三朝温泉 依山楼岩崎,misasa,鳥取県,Tier 1,라듐 온천과 대형 회유식 대욕장 후보,Jalan Chugoku/Shikoku source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,160,misasa-mansuirou,三朝温泉 万翆楼,misasa,鳥取県,Tier 1,객실 노천탕과 라듐 온천 후보,regional OTA source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,161,kirishima-aubegio-kanko,霧島観光ホテル,kirishima,鹿児島県,Tier 1,객실 노천탕과 전망 대욕장 후보,Rakuten Kirishima room-open-air source,needs_official_crosscheck,nationwide_accommodation_batch_d_v0_5_2026-07-03.csv
+accommodation,162,kirishima-gajoen,忘れの里 雅叙苑,kirishima,鹿児島県,Tier 1,묘켄 온천 고급 객실탕 후보,regional high-end source,needs_official_crosscheck,nationwide_accommodation_batch_d_v0_5_2026-07-03.csv
+accommodation,163,kirishima-hotel,霧島ホテル,kirishima,鹿児島県,Tier 1,대형 황산 계열 대욕장과 명물 온천 후보,regional high-demand source,needs_official_crosscheck,nationwide_accommodation_batch_d_v0_5_2026-07-03.csv
+accommodation,164,kirishima-lavista,ラビスタ霧島ヒルズ,kirishima,鹿児島県,Tier 1,객실 노천탕 인기 신호,Rakuten rotsuki ranking historic/source follow-up,needs_official_crosscheck,nationwide_accommodation_seed_v0_1_2026-07-03.csv
+accommodation,165,kirishima-myoken-ishiharaso,妙見石原荘,kirishima,鹿児島県,Tier 1,계류 노천과 원천가케나가시 고급 후보,Ikkyu Kirishima source,needs_official_crosscheck,nationwide_accommodation_batch_d_v0_5_2026-07-03.csv
+accommodation,166,kirishima-ryokojin-sanso,旅行人山荘,kirishima,鹿児島県,Tier 1,전망 노천과 대절 노천탕 후보,regional OTA source,needs_official_crosscheck,nationwide_accommodation_batch_d_v0_5_2026-07-03.csv
+accommodation,167,kirishima-tenku-no-mori,天空の森,kirishima,鹿児島県,Tier 1,초고급 빌라형 노천탕 후보,Ikkyu Kirishima source,needs_official_crosscheck,nationwide_accommodation_batch_d_v0_5_2026-07-03.csv
+accommodation,168,kirishima-yuyuan,霧島温泉郷 鳥遊ぶ森の宿 ふたり静,kirishima,鹿児島県,Tier 1,전실 별동 노천탕 후보,regional OTA source,needs_official_crosscheck,nationwide_accommodation_batch_d_v0_5_2026-07-03.csv
+accommodation,169,jozankei-grand-blissen,グランドブリッセンホテル定山渓,jozankei,北海道,Tier 1,"Rakuten 가족 온천 랭킹 고평점, 대욕장/객실탕 후보",Rakuten Jozankei family bath ranking,needs_bath_detail_crosscheck,nationwide_accommodation_batch_b_v0_3_2026-07-03.csv
+accommodation,170,noboribetsu-mahoroba,ホテルまほろば,noboribetsu,北海道,Tier 1,대형 대욕장·다양한 욕조·객실 노천탕 후보,Jalan Noboribetsu room-open-air page,needs_bath_detail_crosscheck,nationwide_accommodation_batch_b_v0_3_2026-07-03.csv
+accommodation,171,yunokawa-chikuba,Tabist 竹葉新葉亭,yunokawa-hakodate,北海道,Tier 1,"순수 일본식 료칸, 온천/식사 고평가 후보",Jalan Yunokawa room-open-air page,needs_bath_detail_crosscheck,nationwide_accommodation_batch_b_v0_3_2026-07-03.csv
+accommodation,172,yunokawa-heiseikan-shiosaitei,平成館 しおさい亭,yunokawa-hakodate,北海道,Tier 1,"절경 바다 전망 온천숙소, 객실 노천탕 플랜 후보",Jalan Yunokawa room-open-air page,needs_bath_detail_crosscheck,nationwide_accommodation_batch_b_v0_3_2026-07-03.csv
+accommodation,173,jozankei-suizantei,定山渓第一寶亭留 翠山亭,jozankei,北海道,Tier 1,"조잔케이 대형 온천숙소, 객실탕 후보",Rakuten Top20 area seed,needs_source_crosscheck,nationwide_accommodation_seed_v0_1_2026-07-03.csv;nationwide_accommodation_batch_b_v0_3_2026-07-03.csv
+accommodation,174,noboribetsu-bourou-noguchi,望楼NOGUCHI登別,noboribetsu,北海道,Tier 1,노보리베쓰 고급 객실탕/대욕장 후보,regional high-demand seed,needs_source_crosscheck,nationwide_accommodation_seed_v0_1_2026-07-03.csv;nationwide_accommodation_batch_b_v0_3_2026-07-03.csv
+accommodation,175,ginzan-kosekiya,銀山温泉 古勢起屋別館,ginzan,山形県,Tier 1,온천가 중심 전통 료칸 후보,regional OTA source,needs_source_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,176,tamatsukuri-konya,玉造温泉 曲水の庭 ホテル玉泉,tamatsukuri,島根県,Tier 1,대형 대욕장과 정원 온천 후보,regional OTA source,needs_source_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,177,echigo-yuzawa-hatago-isen,越後湯澤 HATAGO井仙,echigo-yuzawa,新潟県,Tier 1,역앞 온천숙소와 대욕장 후보,regional OTA source,needs_source_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,178,wakura-niji-to-umi,和倉温泉 虹と海,wakura,石川県,Tier 1,바다 전망 대욕장과 현대형 료칸 후보,regional OTA source,needs_source_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,179,misasa-saiki-bekkan,三朝温泉 斉木別館,misasa,鳥取県,Tier 1,정원 대욕장과 전통 료칸 후보,regional OTA source,needs_source_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,180,toba-kisara,季さら,toba,三重県,Tier 1,객실 노천탕·프라이빗 숙소 후보,Toba room-open-air exposure,needs_official_crosscheck,nationwide_accommodation_batch_c_v0_4_2026-07-03.csv
+accommodation,181,toba-kisara-bettei-toki,季さら別邸 刻,toba,三重県,Tier 1,고급 별저형 객실탕 후보,Toba luxury exposure,needs_official_crosscheck,nationwide_accommodation_batch_c_v0_4_2026-07-03.csv
+accommodation,182,toyako-lake-suite-konosisu,ザ・レイクスイート湖の栖,hokkaido-toyako,北海道,Tier 1,호수 전망 객실 노천탕 후보,Rakuten rotsuki ranking historic/source follow-up,needs_official_crosscheck,nationwide_accommodation_seed_v0_1_2026-07-03.csv
+accommodation,183,tokachigawa-seijakubou,全室源泉かけ流し露天風呂付きの宿 清寂房《十勝川モール温泉》,tokachigawa,北海道,Tier 1,전실 원천가케나가시 노천풍로 신호,Ikkyu nationwide onsen ranking snippet,needs_official_crosscheck,nationwide_accommodation_seed_v0_1_2026-07-03.csv
+accommodation,184,shirahama-kachofugetsu,南紀白浜 和みの湯 花鳥風月,shirahama,和歌山県,Tier 1,객실 노천탕/온천 숙소 후보,Jalan Shirahama room-open-air page,needs_official_crosscheck,nationwide_accommodation_batch_c_v0_4_2026-07-03.csv
+accommodation,185,shirahama-kaishu,白浜温泉 浜千鳥の湯 海舟,shirahama,和歌山県,Tier 1,바다 전망 노천/객실탕 인기 신호,Rakuten rotsuki ranking historic/source follow-up,needs_official_crosscheck,nationwide_accommodation_seed_v0_1_2026-07-03.csv;nationwide_accommodation_batch_c_v0_4_2026-07-03.csv
+accommodation,186,shirahama-sanrakuso,白浜温泉 ホテル三楽荘,shirahama,和歌山県,Tier 1,객실 노천탕 인기 신호,Rakuten rotsuki ranking historic/source follow-up,needs_official_crosscheck,nationwide_accommodation_seed_v0_1_2026-07-03.csv;nationwide_accommodation_batch_c_v0_4_2026-07-03.csv
+accommodation,187,shirahama-xyz-speciale,海絶景とギネス認定の宿 全室露天風呂付離れ XYZスペチアーレ,shirahama,和歌山県,Tier 1,"전실 노천풍로離れ, 해절경·미라바스 신호",Ikkyu Shirahama room-open-air ranking,needs_official_crosscheck,nationwide_accommodation_batch_c_v0_4_2026-07-03.csv
+accommodation,188,akiu-sakurareikyu,仙台 秋保温泉 迎賓館 櫻離宮,akiu,宮城県,Tier 1,노천풍로 객실 인기 신호,Rakuten rotsuki ranking historic/source follow-up,needs_official_crosscheck,nationwide_accommodation_seed_v0_1_2026-07-03.csv;nationwide_accommodation_batch_c_v0_4_2026-07-03.csv
+accommodation,189,zao-daikon-no-hana,温泉山荘 だいこんの花,miyagi-zao,宮城県,Tier 1,노천풍로 객실 추천 숙소 신호,Jalan 2026 rotsuki article,needs_official_crosscheck,nationwide_accommodation_seed_v0_1_2026-07-03.csv
+accommodation,190,amaharashi-iso-hanabi,雨晴温泉 磯はなび,amaharashi,富山県,Tier 1,바다 전망 노천탕과 도야마만 조망 후보,Ikkyu Hokuriku source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,191,unazuki-suginoi,宇奈月温泉 やまのは,unazuki,富山県,Tier 1,협곡 전망 대형 온천호텔 후보,regional OTA source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,192,unazuki-yamanoi,宇奈月温泉 延楽,unazuki,富山県,Tier 1,구로베 협곡 전망 노천탕 후보,regional OTA source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,193,yuda-matsudaya,湯田温泉 松田屋ホテル,yuda,山口県,Tier 1,정원 노천탕과 역사 료칸 후보,regional high-value source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,194,kaminoyama-koyo,かみのやま温泉 日本の宿 古窯,kaminoyama,山形県,Tier 1,대형 고급 료칸과 전망 대욕장 후보,regional OTA source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,195,kaminoyama-meigetsuso,かみのやま温泉 名月荘,kaminoyama,山形県,Tier 1,고급 객실 노천탕 후보,regional high-end source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,196,isawa-fujinoya,シャトレーゼホテル 旅館 富士野屋,isawa,山梨県,Tier 1,"객실탕도 온천, 최대 7개 탕巡り 신호",Rakuten/Jalan Isawa room-open-air,needs_official_crosscheck,nationwide_accommodation_batch_c_v0_4_2026-07-03.csv
+accommodation,197,isawa-itoyanagi,石和名湯館 糸柳,isawa,山梨県,Tier 1,"石和 명탕관, 객실 노천탕 후보",Jalan Isawa room-open-air page,needs_official_crosscheck,nationwide_accommodation_batch_c_v0_4_2026-07-03.csv
+accommodation,198,isawa-itoyanagi-yuwa,糸柳こやど ゆわ,isawa,山梨県,Tier 1,소형 객실탕/온천숙소 후보,Jalan Isawa room-open-air page,needs_official_crosscheck,nationwide_accommodation_batch_c_v0_4_2026-07-03.csv
+accommodation,199,isawa-kagetsu,銘石の宿 かげつ,isawa,山梨県,Tier 1,객실 노천/반노천·별저 The ONE 신호,Jalan Isawa room-open-air page,needs_official_crosscheck,nationwide_accommodation_batch_c_v0_4_2026-07-03.csv
+accommodation,200,isawa-keizan,石和温泉 華やぎの章 慶山,isawa,山梨県,Tier 1,"Rakuten 1900건급 리뷰풀, 객실 노천탕 후보",Rakuten Isawa room-open-air page,needs_official_crosscheck,nationwide_accommodation_batch_c_v0_4_2026-07-03.csv

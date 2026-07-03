@@ -1,0 +1,283 @@
+{
+  "accommodation_name": "榎屋旅館 / 由布院温泉 榎屋旅館 / 유후인 에노키야 료칸 / Enokiya Ryokan",
+  "research_date": "2026-07-01",
+  "status": "preliminary_structured_sampling",
+  "identity": {
+    "canonical_name_ja": "榎屋旅館",
+    "aliases": [
+      "由布院温泉 榎屋旅館",
+      "Enokiya Ryokan",
+      "에노키야 료칸",
+      "유후인 에노키야 료칸"
+    ],
+    "official_url": "https://www.yufuin-enokiya.jp/",
+    "official_hotspring_url": "https://www.yufuin-enokiya.jp/hotspring/",
+    "rakuten_hotel_id": "28502",
+    "jalan_id": "yad348760",
+    "yahoo_id": "00909740",
+    "booking_slug": "enokiya-ryokan"
+  },
+  "collection_briefing": {
+    "visible_review_pool": {
+      "rakuten_current_page": 234,
+      "rakuten_api_total": 191,
+      "jalan": 19,
+      "booking": 172,
+      "agoda_surface": "available",
+      "yahoo_review_page": "available"
+    },
+    "direct_structured_reviews": {
+      "total": 59,
+      "rakuten_api": 40,
+      "jalan_latest": 19,
+      "onsen_related": 50
+    },
+    "snippet_or_search_evidence": {
+      "booking_search_snippets": 3,
+      "agoda_search_snippets": 2,
+      "yahoo_search_snippets": 2,
+      "official_and_ota_facility_pages": 4
+    },
+    "aside_status": "attempted, local port timeout",
+    "data_quality_grade": "C",
+    "note": "Rakuten API opened for 40 reviews but DNS failed at offset 40. Jalan has only 19 visible reviews. Booking/Agoda/Yahoo were used as snippet/surface evidence only."
+  },
+  "official_facts": [
+    {
+      "source": "official hotspring page",
+      "url": "https://www.yufuin-enokiya.jp/hotspring/",
+      "fact": "All onsen baths are private-use rental baths. Three baths named Hiyodori, Mejiro, and Kawasemi can be used without reservation; vacancy is checked on an in-room tablet."
+    },
+    {
+      "source": "official hotspring page",
+      "url": "https://www.yufuin-enokiya.jp/hotspring/",
+      "fact": "All three rental baths are source-flow. The page claims metasilicic acid 206mg/kg, more than twice the common beauty-spring threshold; simple spring, pH 8.4; effects include beauty skin, shoulder stiffness, fatigue recovery."
+    },
+    {
+      "source": "official hotspring page",
+      "url": "https://www.yufuin-enokiya.jp/hotspring/",
+      "fact": "Bathing hours are 15:00 to next morning 09:00, free for hotel guests, pets cannot bathe, reservation is not required, and two of three rental baths include open-air baths."
+    },
+    {
+      "source": "Yukoyuko bath page",
+      "url": "https://www.yukoyuko.net/5398/bath",
+      "fact": "Yukoyuko states there is no large public bath and no guest-room bath; all facility onsen is offered as three private rental baths. Hiyodori is indoor only, Mejiro has indoor and open-air, and Kawasemi has indoor/open-air but is marked as not hot spring on this source."
+    },
+    {
+      "source": "Rakuten facility page",
+      "url": "https://travel.rakuten.co.jp/HOTEL/28502/28502.html",
+      "fact": "Rakuten lists the lodging as renovated in May 2023, pet-friendly, near Yunotsubo street, with source-flow open-air baths/private-use baths and no reservation system for private baths."
+    }
+  ],
+  "signals": [
+    {
+      "bath_area": "private_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "positive",
+      "mention_count": 38,
+      "source_count": 38,
+      "platform_count": 4,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "family_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "positive",
+      "mention_count": 28,
+      "source_count": 28,
+      "platform_count": 4,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "private_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "crowding",
+      "signal_direction": "mixed",
+      "mention_count": 9,
+      "source_count": 9,
+      "platform_count": 3,
+      "contradiction_level": "medium",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "private_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "neutral",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient"
+    },
+    {
+      "bath_area": "room_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "neutral",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient"
+    },
+    {
+      "bath_area": "private_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 3,
+      "source_count": 3,
+      "platform_count": 2,
+      "contradiction_level": "none",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "unclear",
+      "bath_area_confidence": "unclear",
+      "signal_type": "weak_onsen_feeling",
+      "signal_direction": "neutral",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient"
+    },
+    {
+      "bath_area": "unclear",
+      "bath_area_confidence": "unclear",
+      "signal_type": "chlorine_smell",
+      "signal_direction": "neutral",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient"
+    },
+    {
+      "bath_area": "private_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "booking_confusion",
+      "signal_direction": "mixed",
+      "mention_count": 5,
+      "source_count": 5,
+      "platform_count": 3,
+      "contradiction_level": "medium",
+      "review_signal_status": "weak_signal"
+    }
+  ],
+  "attention_signals": [
+    {
+      "issue": "not_room_bath_lodging",
+      "bath_area": "room_bath",
+      "sample_count": 1,
+      "summary": "Official/current facility evidence indicates no guest-room baths. Do not classify as room bath or room open-air bath lodging."
+    },
+    {
+      "issue": "no_large_public_bath",
+      "bath_area": "public_bath",
+      "sample_count": 3,
+      "summary": "Yahoo/Yukoyuko evidence says baths are private/rental only and there is no large public bath. Users expecting a public bath may be surprised."
+    },
+    {
+      "issue": "private_bath_availability_timing",
+      "bath_area": "private_bath",
+      "sample_count": 4,
+      "summary": "Tablet vacancy checking and no-reservation system are praised, but a few reviews worry that timing shifts may make baths unavailable."
+    },
+    {
+      "issue": "morning_bath_temperature",
+      "bath_area": "private_bath",
+      "sample_count": 1,
+      "summary": "One Jalan review says morning bath temperature felt lower than at night."
+    },
+    {
+      "issue": "soundproofing_pet_noise",
+      "bath_area": "facility_wide",
+      "sample_count": 8,
+      "summary": "Not a bath signal, but repeated enough to matter: walls/floors, dogs barking, sliding doors, or children running can be heard."
+    },
+    {
+      "issue": "pet_bath_limit",
+      "bath_area": "private_bath",
+      "sample_count": 1,
+      "summary": "Official page says pets cannot bathe."
+    }
+  ],
+  "evidence_examples": [
+    {
+      "signal_type": "private_bath_experience",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad348760/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "3개 대여탕 중 2개가 노천 포함이고 넓게 쉴 수 있었다는 후기.",
+      "original_keyword": "貸切湯が3つ",
+      "review_date": "2026/5/27"
+    },
+    {
+      "signal_type": "private_bath_experience",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad348760/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "온천을 대여탕으로 이용할 수 있어 재방문하고 싶다는 후기.",
+      "original_keyword": "温泉は貸切利用",
+      "review_date": "2026/4/22"
+    },
+    {
+      "signal_type": "crowding",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad348760/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "타이밍이 조금 어긋나면 대여탕을 못 쓸 수 있을 것 같다는 불안.",
+      "original_keyword": "少しズレると入れなく",
+      "review_date": "2025/12/1"
+    },
+    {
+      "signal_type": "private_bath_experience",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad348760/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "태블릿으로 탕 비어 있는지 확인해 사용하기 편했다는 후기.",
+      "original_keyword": "タブレットから確認",
+      "review_date": "2025/11/19"
+    },
+    {
+      "signal_type": "water_texture",
+      "source_type": "Rakuten API",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/28502/review.html",
+      "language": "ja",
+      "short_paraphrase": "3곳 대여탕을 언제든 이용했고 설비와 수질을 높게 평가.",
+      "original_keyword": "泉質も最高",
+      "review_date": "2026-04-27"
+    },
+    {
+      "signal_type": "private_bath_experience",
+      "source_type": "Booking search snippet",
+      "source_url": "https://www.booking.com/reviews/jp/hotel/enokiya-ryokan.ja.html",
+      "language": "ja",
+      "short_paraphrase": "3개 대여탕이 좋고 천천히 쉴 수 있었다는 후기 스니펫.",
+      "original_keyword": "3つある貸切風呂",
+      "review_date": "visible snippet"
+    },
+    {
+      "signal_type": "private_bath_experience",
+      "source_type": "Agoda search snippet",
+      "source_url": "https://www.agoda.com/ko-kr/enokiya-ryokan/hotel/yufu-jp.html",
+      "language": "ko",
+      "short_paraphrase": "가족탕 3개가 거의 겹치지 않아 원하는 때 이용했다는 한국어 스니펫.",
+      "original_keyword": "가족탕은 3개",
+      "review_date": "visible snippet"
+    }
+  ],
+  "gaps": [
+    "Aside Browser failed with localhost port timeout, so Google Maps and Naver dynamic panels need retry.",
+    "Rakuten API reached 40 reviews but DNS failed at offset 40; full 191 API review extraction would improve confidence.",
+    "Booking page DNS timed out in local fetch; Booking evidence is search-snippet level only.",
+    "Agoda and Yahoo review bodies were not directly extracted this pass; snippets support the same pattern but are not counted as direct structured reviews.",
+    "300+ direct review target was not reached; direct structured sample is 59 due current accessible source limits."
+  ]
+}

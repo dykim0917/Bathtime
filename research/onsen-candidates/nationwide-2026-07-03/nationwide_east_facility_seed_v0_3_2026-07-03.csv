@@ -1,0 +1,32 @@
+slug,name_ja,name_ko_or_en,area_slug,prefecture,facility_type,initial_tier,initial_onsen_facility_signals,source_basis,verification_status
+noboribetsu-sagiriyu,夢元さぎり湯,유모토 사기리유,noboribetsu,北海道,public_bath_facility,Tier 1,"登別 대표 일일온천銭湯, 9:00-21:00, 성인 500엔, 주차 신호","Official Sagiriyu access page, Noboribetsu tourism day-use page",needs_review_pool_crosscheck
+noboribetsu-daiichi-dayuse,第一滝本館 日帰り入浴,다이이치 타키모토칸 당일입욕,noboribetsu,北海道,large_day_use_complex,Tier 1,"대형 호텔 온천 당일입욕, 접수시간·요금 확인 필요","Noboribetsu tourism day-use page",needs_official_detail_crosscheck
+noboribetsu-grand-dayuse,登別グランドホテル 日帰り温泉,노보리베쓰 그랜드호텔 당일온천,noboribetsu,北海道,large_day_use_complex,Tier 1,"日帰り 2,000엔, 접수마감/혼잡시 단축 신호, 鬼サウナ","Official Noboribetsu Grand hot spring/news pages",needs_review_pool_crosscheck
+noboribetsu-sekisuitei-dayuse,登別石水亭 日帰り入浴,노보리베쓰 세키스이테이 당일입욕,noboribetsu,北海道,large_day_use_complex,Tier 2,"대형 호텔 당일입욕, 접수마감 신호","Noboribetsu tourism day-use page",needs_official_detail_crosscheck
+noboribetsu-manseikaku-dayuse,登別万世閣 日帰り入浴,노보리베쓰 만세이카쿠 당일입욕,noboribetsu,北海道,large_day_use_complex,Tier 2,"아침/오후 당일입욕 시간 분리, 요금/접수마감 신호","Noboribetsu tourism day-use page",needs_official_detail_crosscheck
+noboribetsu-suzuki-karurusu,カルルス温泉 鈴木旅館,가루루스온천 스즈키료칸,noboribetsu,北海道,public_bath_facility,Tier 2,"가루루스 온천권 당일입욕 후보","Noboribetsu tourism day-use page",needs_review_pool_crosscheck
+jozankei-hoheikyo,豊平峡温泉,호헤이쿄온천,jozankei,北海道,open_air_public_bath,Tier 1,"대자연 대노천탕, 조망/접근성/혼잡 신호 후보","Jozankei Tourism official day-use page",needs_review_pool_crosscheck
+jozankei-yunohana,湯の花 定山渓殿,유노하나 조잔케이덴,jozankei,北海道,large_day_use_complex,Tier 1,"대중형 당일온천, 10:00-21:00/접수 20:30 노출, 셔틀 후보","Jozankei day-use search result",needs_official_crosscheck
+jozankei-morino-uta-dayuse,定山渓鶴雅リゾートスパ森の謌 日帰り,모리노우타 당일온천,jozankei,北海道,wellness_spa,Tier 1,"스파 리조트형 당일 플랜, 식사세트 요금 신호","Official Mori no Uta, Jozankei Tourism day-use page",needs_review_pool_crosscheck
+jozankei-shogetsu-dayuse,章月グランドホテル 日帰り,쇼게쓰 그랜드호텔 당일온천,jozankei,北海道,hotel_dayuse_bath,Tier 2,"식사세트형 고가 당일온천, 예약/가격 신호 후보","Jozankei Tourism day-use page",needs_official_detail_crosscheck
+jozankei-hanakaede-dayuse,鹿の湯・花もみじ 日帰り候補,시카노유/하나모미지 당일온천,jozankei,北海道,hotel_dayuse_bath,Tier 2,"호텔 대욕장 당일이용 후보, 운영일 확인 필요","Jozankei day-use seed",needs_source_crosscheck
+yunokawa-yumeguri-butai,湯の川温泉足湯「湯巡り舞台」,유노카와 족탕 유메구리부타이,yunokawa-hakodate,北海道,footbath,Tier 1,"무료 족탕, 9:00-21:00, 타월 지참 신호","Hakodate Yunokawa official spot page",needs_review_pool_crosscheck
+yunokawa-tropical-footbath,函館市熱帯植物園足湯,하코다테시 열대식물원 족탕,yunokawa-hakodate,北海道,footbath,Tier 1,"열대식물원 내 원천 족탕, 원숭이 온천 계절성 신호","Hakobura and official botanical garden pages",needs_review_pool_crosscheck
+hakodate-yachigashira,谷地頭温泉,야치가시라온천,yunokawa-hakodate,北海道,public_bath_facility,Tier 1,"하코다테 시내 공중온천, 로컬탕/갈색온천 신호 후보","Hakobura Hakodate onsen list",needs_source_crosscheck
+hakodate-hiromesou,ホテル函館ひろめ荘,하코다테 히로메소,yunokawa-hakodate,北海道,hotel_dayuse_bath,Tier 2,"函館 근교 일일온천/숙박 겸용 후보","Hakobura onsen list",needs_source_crosscheck
+nasu-shikanoyu,那須温泉 鹿の湯,나스온천 시카노유,nasu,栃木県,historic_public_bath,Tier 1,"1300년 역사, 성인 500엔, 탕치권, 강산성 유황천 후보","Official Shikanoyu, Nasu tourism day-use page",needs_review_pool_crosscheck
+nasu-kitamoyu,那須高原 ゆの香しおばら / 北温泉旅館候補,Nasu historic bath candidates,nasu,栃木県,historic_public_bath,Tier 2,"비경/역사형 당일입욕 후보, 명칭 보강 필요","Nasu facility seed",needs_identity_crosscheck
+nasu-nakafujiya-dayuse,那須・鹿の湯源泉 中藤屋旅館 日帰り,나카후지야료칸 당일입욕,nasu,栃木県,hotel_dayuse_bath,Tier 2,"11:00-15:00 당일입욕, 鹿の湯源泉 백탁 유황천","Official Nakafujiya site",needs_review_pool_crosscheck
+nasu-shimizuya-dayuse,旅館 清水屋 日帰り入浴,시미즈야료칸 당일입욕,nasu,栃木県,hotel_dayuse_bath,Tier 2,"鹿の湯 원천 무가수 사용 신호","Nasu tourism day-use page",needs_review_pool_crosscheck
+nasu-jizaiso-dayuse,こころのおやど 自在荘 日帰り入浴,지자이소 당일입욕,nasu,栃木県,hotel_dayuse_bath,Tier 2,"나스 관광협회 일일입욕 노출, 접객/대욕장 후보","Nasu tourism day-use page",needs_review_pool_crosscheck
+kinugawa-nikko-yumoto-onsenji,日光山温泉寺,닛코산 온천사,nikko-yumoto,栃木県,historic_public_bath,Tier 1,"사찰 온천/탕치형, 유황천·운영시즌 후보","Nikko/Kinugawa regional facility seed",needs_source_crosscheck
+kinugawa-kinutaki,鬼怒川公園岩風呂,기누가와공원 이와부로,kinugawa,栃木県,public_bath_facility,Tier 1,"공원 내 당일온천, 로컬/관광객 이용 신호 후보","Kinugawa day-use seed",needs_source_crosscheck
+kinugawa-yudokoro-suzukaze,湯處すず風,유도코로 스즈카제,kinugawa,栃木県,public_bath_facility,Tier 2,"기누가와 당일온천 후보, 접근성/요금 확인 필요","Kinugawa day-use seed",needs_source_crosscheck
+nikko-edoyado-onsen,日光市温泉保養センター やしおの湯,야시오노유,kinugawa,栃木県,public_bath_facility,Tier 2,"닛코 공공온천, 가격형/로컬 시설 후보","Nikko regional public bath seed",needs_source_crosscheck
+ito-tokaikan,東海館,도카이칸,ito-izu,静岡県,historic_public_bath,Tier 1,"伊東 역사건축, 주말/공휴일 입욕 운영 신호 후보","Ito tourism facility seed",needs_source_crosscheck
+ito-marine-town-seaside-spa,伊東マリンタウン シーサイドスパ,이토 마린타운 시사이드스파,ito-izu,静岡県,wellness_spa,Tier 1,"해변/도로역 온천시설, 조망·장거리 이동자 수요 후보","Ito day-use facility seed",needs_review_pool_crosscheck
+ito-akazawa-day-spa,赤沢日帰り温泉館,아카자와 일일온천관,ito-izu,静岡県,large_day_use_complex,Tier 1,"태평양 조망 대노천, 스파/식음 복합 후보","Izu Kogen day-use seed",needs_review_pool_crosscheck
+ito-kawana-irukahama,川奈いるか浜公園 足湯候補,가와나 이루카하마 족탕 후보,ito-izu,静岡県,footbath,Tier 3,"해변 관광동선형 족탕 후보, 현존/운영 확인 필요","Ito facility seed",needs_source_crosscheck
+ito-hokkawa-kuroane,黒根岩風呂,구로네이와부로,ito-izu,静岡県,open_air_public_bath,Tier 1,"바다 바로 앞 노천탕, 조망/운영시간/혼욕규칙 후보","Higashi-Izu day-use seed",needs_review_pool_crosscheck
+ito-atagawa-takayuso,熱川高磯の湯,아타가와 다카이소노유,ito-izu,静岡県,open_air_public_bath,Tier 2,"해안 노천탕, 계절/운영조건 확인 후보","Izu day-use seed",needs_source_crosscheck
+ito-izu-kogen-taiyokan,伊豆高原の湯,이즈고원노유,ito-izu,静岡県,large_day_use_complex,Tier 2,"이즈고원 당일온천, 泥パック/휴게 신호 후보","Izu Kogen day-use seed",needs_review_pool_crosscheck

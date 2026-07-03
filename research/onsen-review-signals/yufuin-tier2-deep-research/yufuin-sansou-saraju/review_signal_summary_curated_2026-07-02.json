@@ -1,0 +1,151 @@
+{
+  "accommodation_name": "山荘紗羅樹",
+  "research_date": "2026-07-02",
+  "official_facts": {
+    "official_url": "",
+    "jalan_url": "https://www.jalan.net/yad322004/",
+    "facts": [
+      "Jalan 설명 기준 전 객실에 원천가케나가시 프라이빗 온천 욕실을 갖춘 자연 속 별채형 숙소."
+    ]
+  },
+  "collection_briefing": [
+    {
+      "source": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/168291/review.html",
+      "visible_review_count": 11,
+      "rating": "4.00 overall; 温泉・お風呂 5.00",
+      "directly_read_reviews": 10,
+      "onsen_related_reviews": 9,
+      "access_status": "aside_review_tab_read",
+      "notes": "Rakuten public review body visible."
+    },
+    {
+      "source": "Jalan",
+      "source_url": "https://www.jalan.net/yad322004/kuchikomi/",
+      "visible_review_count": null,
+      "rating": null,
+      "directly_read_reviews": 0,
+      "onsen_related_reviews": 0,
+      "access_status": "error_information_preparing",
+      "notes": "Aside showed Jalan error: ただいま、情報の準備中です。"
+    }
+  ],
+  "review_signal_summary": [
+    {
+      "bath_area": "room_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "mixed",
+      "mention_count": 3,
+      "source_count": 3,
+      "platform_count": 1,
+      "contradiction_level": "medium",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "room_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "mixed",
+      "mention_count": 2,
+      "source_count": 2,
+      "platform_count": 1,
+      "contradiction_level": "medium",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "room_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 1,
+      "source_count": 1,
+      "platform_count": 1,
+      "contradiction_level": "none",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "room_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "booking_confusion",
+      "signal_direction": "mixed",
+      "mention_count": 1,
+      "source_count": 1,
+      "platform_count": 1,
+      "contradiction_level": "medium",
+      "review_signal_status": "weak_signal"
+    }
+  ],
+  "attention_signals": [
+    {
+      "issue": "Aside Browser 동적 보강 완료",
+      "bath_area": "facility_wide",
+      "evidence_level": "direct_body_addendum",
+      "summary": "동적/OTA 공개 본문에서 10건 직접 확인, 온천 관련 9건을 보강함.",
+      "sample_count": 10
+    }
+  ],
+  "evidence_examples": [
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Rakuten Travel via Aside Browser",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/168291/review.html",
+      "language": "ja",
+      "short_paraphrase": "온천 딸린 독립동 4실 구조, 객실이 넓고 조용해 만족도가 높았다고 함.",
+      "original_keyword": "温泉付き/独立した建物",
+      "review_date": "2026/4/3",
+      "bath_area": "room_bath",
+      "signal_direction": "positive"
+    },
+    {
+      "signal_type": "room_bath_hot_spring;private_bath_experience",
+      "source_type": "Rakuten Travel via Aside Browser",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/168291/review.html",
+      "language": "ja",
+      "short_paraphrase": "객실에서 언제든 온천에 들어갈 수 있는 점을 사치스럽게 느꼈다고 함.",
+      "original_keyword": "いつでも温泉",
+      "review_date": "2023/9/22",
+      "bath_area": "room_bath",
+      "signal_direction": "positive"
+    },
+    {
+      "signal_type": "water_texture",
+      "source_type": "Rakuten Travel via Aside Browser",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/168291/review.html",
+      "language": "ja",
+      "short_paraphrase": "피부에 물이 튕기는 듯한 온천감과 열감 조절을 언급.",
+      "original_keyword": "肌弾きます",
+      "review_date": "2022/9/8",
+      "bath_area": "room_bath",
+      "signal_direction": "positive"
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Rakuten Travel via Aside Browser",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/168291/review.html",
+      "language": "ja",
+      "short_paraphrase": "가정 욕조 같은 인상이지만 가케나가시를 물로 조절해 여러 번 이용.",
+      "original_keyword": "家庭の風呂/温泉掛け流し",
+      "review_date": "2022/3/28",
+      "bath_area": "room_bath",
+      "signal_direction": "mixed"
+    },
+    {
+      "signal_type": "private_bath_experience;booking_confusion",
+      "source_type": "Rakuten Travel via Aside Browser",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/168291/review.html",
+      "language": "ja",
+      "short_paraphrase": "위치는 찾기 어려웠지만 24시간 언제든 들어갈 수 있는 온천에는 크게 만족.",
+      "original_keyword": "24時間",
+      "review_date": "2019/4/23",
+      "bath_area": "room_bath",
+      "signal_direction": "mixed"
+    }
+  ],
+  "bathtime_interpretation": "Jalan 확인 기준 직접 읽은 본문은 0건입니다. 공식/OTA 설명상 객실탕 또는 전용 온천 설비 경쟁력은 있으나, 후기 표본만으로는 강한 일반화가 어렵습니다. Bathtime에는 우선 시설형 후보로 올리고 Google/Naver/글로벌 OTA 보강 후 최종 신호 강도를 확정하는 편이 좋습니다.",
+  "gaps": [
+    "Jalan 리뷰 본문 풀이 작거나 리뷰 수가 seed에서 확인되지 않음.",
+    "Google Maps/Naver/글로벌 OTA 보강 필요.",
+    "공식 사이트 세부 온천 페이지 확인 필요."
+  ]
+}

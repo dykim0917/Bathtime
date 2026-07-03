@@ -10,6 +10,7 @@ import {
   redirectToLogin,
   saveOnsenReview,
 } from '@web/lib/userContent';
+import type { OnsenReview } from '@web/lib/onsenReviews';
 
 const bathTypeOptions: { value: OnsenReviewBathType; label: string }[] = [
   { value: 'room_bath', label: '객실탕' },
@@ -25,14 +26,30 @@ const waterFeelOptions: { value: OnsenReviewWaterFeel; label: string }[] = [
   { value: 'unclear', label: '잘 모르겠어요' },
 ];
 
+const bathTypeLabels: Record<OnsenReview['bathType'], string> = {
+  room_bath: '객실탕',
+  private_bath: '가족탕/대절탕',
+  public_bath: '대욕장',
+  other: '그 외',
+};
+
+const waterFeelLabels: Record<OnsenReview['waterFeel'], string> = {
+  clear: '깔끔한 물 느낌',
+  soft: '부드러운 물 느낌',
+  strong: '온천감 뚜렷함',
+  unclear: '체감 미확인',
+};
+
 export function OnsenReviewForm({
   accommodationSlug,
   accommodationName,
   reviewCount,
+  reviews = [],
 }: {
   accommodationSlug: string;
   accommodationName: string;
   reviewCount: number;
+  reviews?: OnsenReview[];
 }) {
   const [open, setOpen] = useState(false);
   const [bathType, setBathType] = useState<OnsenReviewBathType>('room_bath');
@@ -89,8 +106,23 @@ export function OnsenReviewForm({
       </div>
 
       <div className="onsen-review-list">
-        {reviewCount > 0 ? (
-          <p>검수된 온천 리뷰를 준비하고 있어요.</p>
+        {reviews.length > 0 ? (
+          reviews.map((review) => {
+            const isSample = review.body.startsWith('[샘플]');
+            const body = isSample ? review.body.replace(/^\[샘플\]\s*/, '') : review.body;
+
+            return (
+              <article className="onsen-review-card" key={review.id}>
+                <div className="onsen-review-card-meta">
+                  {isSample ? <span data-tone="sample">샘플</span> : null}
+                  <span>{bathTypeLabels[review.bathType]}</span>
+                  <span>{waterFeelLabels[review.waterFeel]}</span>
+                  {review.visitSeason ? <span>{review.visitSeason}</span> : null}
+                </div>
+                <p>{body}</p>
+              </article>
+            );
+          })
         ) : (
           <p>아직 등록된 리뷰가 없습니다. 이 온천을 다녀왔다면 첫 리뷰를 남겨주세요.</p>
         )}

@@ -30,6 +30,34 @@ The user should think:
 5. Include a clear test participation or landing/profile-link CTA when recruitment is relevant.
 6. Before finalizing copy, check it against the copy safety rules below.
 
+## Benchmark-Informed Direction
+
+Use this benchmark mix when planning or revising 바스타임 social content:
+
+- Open like Newneek: make the title immediately understandable, start from a reader's concrete confusion, and answer "why this matters" quickly.
+- Build trust like Wirecutter: lead with judgment criteria, tradeoffs, and what to check before buying, visiting, or trying. Do not drift into ranking, scoring, or lab-test theater.
+- Frame places like The Infatuation: present spots as situation-based candidates, not universal recommendations. Clarify region, purpose, mood, and conditions.
+- Borrow from sauna accounts selectively:
+  - Othership: use first-timer guidance, safety, hot/cold context, and class/event structure. Avoid emotional wellness hype.
+  - Sun Home Saunas: use home setup and object-focused visuals for item notes. Avoid influencer commerce pressure and health claims.
+  - Sauna from Finland: use culture, glossary, tradition, and quality criteria for educational notes. Avoid stiff B2B association tone.
+  - Loyly Helsinki: use place identity, seasonality, time-of-day, and location mood for spot guides. Avoid party-led hospitality promotion.
+  - Therme Bucuresti: use seasonal programming and facility category framing only when useful. Avoid resort spectacle.
+
+Default 바스타임 formula:
+
+1. 도입: 질문형 or 상황형으로 쉽게 연다.
+2. 본문: 구매/방문/시도 전에 볼 기준을 먼저 제시한다.
+3. 확장: 관련 후보, 상황, 원문 가이드, 아카이브로 연결한다.
+4. CTA: 프로필 링크, 웹 원문, 저장, 제보 중 하나로 가볍게 닫는다.
+
+Format guidance:
+
+- Prefer a strong single Instagram image plus a criteria-rich caption for early account posts.
+- Use carousel only when each card has clear save value, such as checklist, step-by-step criteria, or candidate archive.
+- Do not force dense card-news layouts when the caption can carry the explanation.
+- For first-impression posts, make 바스타임's point of view explicit: "광고 문구보다 오래 쓸 수 있는 기준을 먼저 본다."
+
 ## Standard Outputs
 
 For a weekly SNS request, provide:

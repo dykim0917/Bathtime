@@ -2,25 +2,28 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { CheckCircle, ImagesSquare, LinkSimple, WarningCircle, Waves } from '@phosphor-icons/react/ssr';
 import { OnsenReviewForm } from '@web/components/OnsenReviewForm';
-import { getOnsenCandidate, getOnsenCandidates, statusLabels } from '@web/lib/onsenCatalog';
+import { OnsenSaveButton } from '@web/components/OnsenSaveButton';
+import { statusLabels, type OnsenCandidate } from '@web/lib/onsenCatalog';
 import { normalizeOnsenPublicCopy, normalizeOnsenSourceLabel } from '@web/lib/onsenCopy';
-import { readOnsenReviewCounts } from '@web/lib/onsenReviews';
+import { readOnsenCandidate, readOnsenCandidates } from '@web/lib/onsenData';
+import { readOnsenReviewCounts, readOnsenReviews } from '@web/lib/onsenReviews';
 
 type PageProps = {
   params: Promise<{ slug: string }>;
 };
 
-type OnsenFact = NonNullable<ReturnType<typeof getOnsenCandidate>>['facts'][number];
+type OnsenFact = OnsenCandidate['facts'][number];
 
 const facilityFactLabels = new Set(['대욕장', '가족탕', '객실탕', '프라이빗탕']);
 
-export function generateStaticParams() {
-  return getOnsenCandidates().map((candidate) => ({ slug: candidate.slug }));
+export async function generateStaticParams() {
+  const candidates = await readOnsenCandidates();
+  return candidates.map((candidate) => ({ slug: candidate.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const candidate = getOnsenCandidate(slug);
+  const candidate = await readOnsenCandidate(slug);
 
   if (!candidate) {
     return {
@@ -37,7 +40,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-function getGalleryItems(candidate: NonNullable<ReturnType<typeof getOnsenCandidate>>) {
+function getGalleryItems(candidate: OnsenCandidate) {
   if (candidate.imageUrl) {
     return [
       {
@@ -58,19 +61,19 @@ function getFacilityFacts(facts: OnsenFact[]) {
   return facts.filter((fact) => facilityFactLabels.has(fact.label));
 }
 
-function getOperationFact(candidate: NonNullable<ReturnType<typeof getOnsenCandidate>>) {
+function getOperationFact(candidate: OnsenCandidate) {
   return candidate.facts.find((fact) => fact.label.includes('온천 운용') || fact.label.includes('온천수')) ?? null;
 }
 
 export default async function OnsenDetailPage({ params }: PageProps) {
   const { slug } = await params;
-  const candidate = getOnsenCandidate(slug);
+  const candidate = await readOnsenCandidate(slug);
 
   if (!candidate) {
     notFound();
   }
 
-  const reviewCounts = await readOnsenReviewCounts([candidate.slug]);
+  const [reviewCounts, siteReviews] = await Promise.all([readOnsenReviewCounts([candidate.slug]), readOnsenReviews(candidate.slug)]);
   const siteReviewCount = reviewCounts[candidate.slug] ?? 0;
   const galleryItems = getGalleryItems(candidate);
   const facilityFacts = getFacilityFacts(candidate.facts);
@@ -108,6 +111,7 @@ export default async function OnsenDetailPage({ params }: PageProps) {
               <h1 id="onsen-detail-title">{candidate.name}</h1>
               <span>{candidate.jaName}</span>
             </div>
+            <OnsenSaveButton slug={candidate.slug} />
           </header>
 
           <dl className="onsen-detail-scorecard" aria-label="온천수 요약">
@@ -212,7 +216,12 @@ export default async function OnsenDetailPage({ params }: PageProps) {
         </section>
 
         <aside className="onsen-review-column" aria-label="바스타임 리뷰">
-          <OnsenReviewForm accommodationSlug={candidate.slug} accommodationName={candidate.name} reviewCount={siteReviewCount} />
+          <OnsenReviewForm
+            accommodationSlug={candidate.slug}
+            accommodationName={candidate.name}
+            reviewCount={siteReviewCount}
+            reviews={siteReviews}
+          />
         </aside>
       </div>
     </article>

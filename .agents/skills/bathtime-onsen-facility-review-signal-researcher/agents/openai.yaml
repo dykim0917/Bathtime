@@ -1,0 +1,4 @@
+interface:
+  display_name: "Bathtime Onsen Facility Researcher"
+  short_description: "온천시설 후보·후기 신호를 시설형 기준으로 가공"
+  default_prompt: "Use $bathtime-onsen-facility-review-signal-researcher to research a Japanese onsen facility, classify its facility model, and produce Bathtime-ready candidate or review signals."

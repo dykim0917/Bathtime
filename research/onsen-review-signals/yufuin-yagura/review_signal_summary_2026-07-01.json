@@ -1,0 +1,321 @@
+{
+  "accommodation_name": {
+    "ko": "유후인 온주쿠 야구라",
+    "ja": "御宿 八遇來",
+    "en_aliases": ["Onjuku Yagura", "Onjuku Yagura Ryokan"]
+  },
+  "research_date": "2026-07-01",
+  "identity": {
+    "official_url": "http://onjukuyagura.com/",
+    "rakuten_hotel_id": "44895",
+    "jalan_yad_id": "331808",
+    "address": "大分県由布市湯布院町川上1270-81"
+  },
+  "collection_brief": {
+    "direct_structured_review_sample": {
+      "total": 221,
+      "platforms": {
+        "Jalan": 209,
+        "Rakuten Travel": 12
+      },
+      "onsen_related_rows_auto": 211,
+      "note": "Jalan latest + archive pages covered the visible 209-review lodging pool. Rakuten page showed 146 visible voices, but the current text API exposed 12 review bodies."
+    },
+    "visible_review_counts_checked": {
+      "Jalan": 209,
+      "Rakuten Travel": 146,
+      "Agoda_search_result": 1205,
+      "Tripadvisor": 40,
+      "Trip.com": 43,
+      "KAYAK": 308,
+      "Yahoo Travel": "below display threshold / limited review body visible"
+    },
+    "auxiliary_surfaces_checked": [
+      "Official site",
+      "Rakuten official/onsen/custom pages",
+      "Jalan listing/latest/archive pages",
+      "Yahoo Travel search/open result",
+      "Agoda search/open result",
+      "Tripadvisor search/open result",
+      "Trip.com search/open result",
+      "KAYAK search/open result",
+      "Naver/Korean web search snippets"
+    ],
+    "aside_browser_status": "Tried Google Maps via Aside Browser, but the Maps snapshot hung. Google Maps review body/count was not used as evidence in this pass.",
+    "data_quality": "B: 221 direct review bodies across 2 Japanese OTA surfaces, including all visible Jalan lodging reviews. 300+ target was not reached because the directly readable text pool found in core Japanese OTA sources was under 300."
+  },
+  "official_facts": {
+    "official_urls": [
+      "http://onjukuyagura.com/",
+      "https://travel.rakuten.co.jp/HOTEL/44895/44895.html",
+      "https://travel.rakuten.co.jp/HOTEL/44895/44895_onsen.html",
+      "https://travel.rakuten.co.jp/HOTEL/44895/CUSTOM/P4489570219171510.html",
+      "https://www.jalan.net/yad331808/"
+    ],
+    "summary_ko": [
+      "공식 사이트는 객실마다 전용 온천이 있고, 남녀 대욕장 온천도 있다고 안내한다.",
+      "Rakuten/Jalan 공식 정보는 전 객실 노천탕, 24시간 객실 노천 이용, 대욕장 내탕+노천, 알칼리 단순천을 안내한다.",
+      "Jalan은 유후인온천(가수), 온천가케나가시, 남녀 노천풍로 있음, 대절 불가로 표기한다.",
+      "Rakuten 커스텀 온천 페이지는 남성탕 월의 탕, 여성탕 꽃의 탕에 각각 내탕과 노천이 있고 수용인원 10명이라고 설명한다."
+    ]
+  },
+  "review_signal_summary": [
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 184,
+      "source_count": 184,
+      "platform_count": 2,
+      "snippet_platform_support": ["Yahoo Travel", "Agoda", "Trip.com", "KAYAK", "Tripadvisor", "Korean web"],
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal",
+      "interpretation_ko": "직접 표본에서 객실 노천탕 언급이 압도적으로 많다. 이 숙소는 객실 노천탕 중심형으로 분류하는 것이 타당하다."
+    },
+    {
+      "bath_area": "public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "mixed",
+      "mention_count": 22,
+      "source_count": 22,
+      "platform_count": 1,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal",
+      "interpretation_ko": "대욕장도 공식적으로 있고 후기에서도 확인된다. 다만 객실 노천탕이 워낙 중심이라 대욕장은 보조 시설로 소비되며, 일부는 대욕장 상태나 계절감을 아쉬워한다."
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 73,
+      "source_count": 73,
+      "platform_count": 2,
+      "snippet_platform_support": ["Nifty Onsen", "Rakuten", "Jalan"],
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal",
+      "interpretation_ko": "湯質が良い, 柔らかい, いい湯, 美人湯 계열 표현이 반복된다. 다만 물성보다 객실 노천탕의 프라이빗성과 조망이 더 강한 구매 신호다."
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "unclear",
+      "signal_type": "weak_onsen_feeling",
+      "signal_direction": "neutral",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient",
+      "interpretation_ko": "직접 표본에서 온천감이 약하다거나 일반 물 같다는 반복 신호는 확인되지 않았다."
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "chlorine_smell",
+      "signal_direction": "neutral",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient",
+      "interpretation_ko": "塩素, カルキ 계열 신호는 직접 표본에서 발견되지 않았다."
+    },
+    {
+      "bath_area": "private_bath",
+      "bath_area_confidence": "unclear",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "neutral",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient",
+      "interpretation_ko": "이 숙소의 프라이빗 경험은 공용 대절탕이 아니라 객실 노천탕에서 발생한다. 공식 정보상 대절탕은 없는 것으로 보는 편이 안전하다."
+    },
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "crowding",
+      "signal_direction": "positive",
+      "mention_count": 7,
+      "source_count": 7,
+      "platform_count": 1,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal",
+      "interpretation_ko": "객실 노천탕 덕분에 다른 투숙객을 신경 쓰지 않는다는 저혼잡/프라이빗 체감이 일부 반복된다. 대욕장은 평일에 거의 전세처럼 썼다는 사례가 있다."
+    },
+    {
+      "bath_area": "unclear",
+      "bath_area_confidence": "unclear",
+      "signal_type": "booking_confusion",
+      "signal_direction": "neutral",
+      "mention_count": 1,
+      "source_count": 1,
+      "platform_count": 1,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient",
+      "interpretation_ko": "목욕 예약 혼선은 반복되지 않는다. 다만 송영은 시간대와 사전 연락 조건이 있어 별도 운영 정보로 표시할 가치가 있다."
+    }
+  ],
+  "operational_cautions": [
+    {
+      "issue": "room_open_air_bath_temperature",
+      "bath_area": "room_open_air_bath",
+      "evidence_level": "weak_to_moderate",
+      "sample_count": 5,
+      "summary_ko": "객실 노천탕이 뜨겁다는 언급이 일부 있고, 반대로 가수로 취향에 맞게 조정 가능하다는 긍정 후기도 있다."
+    },
+    {
+      "issue": "winter_cold",
+      "bath_area": "room_open_air_bath",
+      "evidence_level": "moderate",
+      "sample_count": 10,
+      "summary_ko": "겨울 객실 노천탕은 추워서 이용 횟수가 줄었다는 계절성 신호가 반복된다."
+    },
+    {
+      "issue": "insects_nature",
+      "bath_area": "room_open_air_bath",
+      "evidence_level": "moderate",
+      "sample_count": 11,
+      "summary_ko": "산속/자연 환경 특성상 벌레, 모기, 지네류 언급이 반복된다. 노천탕형 숙소의 현실적 주의점이다."
+    },
+    {
+      "issue": "cleanliness_or_age",
+      "bath_area": "room_open_air_bath",
+      "evidence_level": "weak_to_moderate",
+      "sample_count": 7,
+      "summary_ko": "객실 노천탕 주변 청소, 노후감, 먼지/거미줄, 설비 낡음 신호가 일부 반복된다."
+    },
+    {
+      "issue": "bath_size_or_layout",
+      "bath_area": "room_open_air_bath",
+      "evidence_level": "weak",
+      "sample_count": 6,
+      "summary_ko": "객실 노천탕이 1인은 충분하지만 2인 이상은 좁다는 평가가 일부 있다."
+    }
+  ],
+  "evidence_examples": [
+    {
+      "signal_type": "official_facts",
+      "source_type": "official_site",
+      "source_url": "http://onjukuyagura.com/",
+      "language": "ja",
+      "short_paraphrase": "객실마다 전용 온천이 있고 남녀 대욕장 온천도 있다고 안내.",
+      "original_keyword": "お部屋にはそれぞれ専用の温泉 / 大浴場の温泉",
+      "review_date": null
+    },
+    {
+      "signal_type": "official_facts",
+      "source_type": "Rakuten_official",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/44895/CUSTOM/P4489570219171510.html",
+      "language": "ja",
+      "short_paraphrase": "남녀 대욕장에 각각 내탕과 노천, 객실 노천, 알칼리 단순천을 안내.",
+      "original_keyword": "内湯と露天 / 客室露天 / アルカリ単純泉",
+      "review_date": null
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Jalan_review",
+      "source_url": "https://www.jalan.net/yad331808/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "객실에 노천탕이 있어 여유롭게 입욕했다는 최신권 후기.",
+      "original_keyword": "露天風呂がお部屋についている / のんびり入浴",
+      "review_date": "2025/3/31"
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Jalan_review",
+      "source_url": "https://www.jalan.net/yad331808/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "객실 노천탕에서 경치가 좋고 만족했다는 가족 여행 후기.",
+      "original_keyword": "部屋の露天風呂からの景色 / 最高",
+      "review_date": "2023/8/15"
+    },
+    {
+      "signal_type": "water_texture",
+      "source_type": "Jalan_review",
+      "source_url": "https://www.jalan.net/yad331808/kuchikomi/archive/",
+      "language": "ja",
+      "short_paraphrase": "객실 노천탕 수질은 좋았지만 청소가 아쉬웠다는 혼합 후기.",
+      "original_keyword": "湯質は良かった / 掃除",
+      "review_date": "2023/7/17"
+    },
+    {
+      "signal_type": "public_bath_hot_spring",
+      "source_type": "Jalan_review",
+      "source_url": "https://www.jalan.net/yad331808/kuchikomi/archive/",
+      "language": "ja",
+      "short_paraphrase": "겨울엔 객실 노천은 추웠지만 대욕장은 좋은 물이었다는 후기.",
+      "original_keyword": "部屋の露天は寒さ / 大浴場はいいお湯",
+      "review_date": "2021/12/21"
+    },
+    {
+      "signal_type": "crowding",
+      "source_type": "Jalan_review",
+      "source_url": "https://www.jalan.net/yad331808/kuchikomi/archive/",
+      "language": "ja",
+      "short_paraphrase": "평일이라 대욕장을 거의 전세 상태로 이용했다는 후기.",
+      "original_keyword": "大浴場は貸し切り状態",
+      "review_date": "2022/11/6"
+    },
+    {
+      "signal_type": "room_bath_temperature_caution",
+      "source_type": "Rakuten_review",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/44895/review.html",
+      "language": "ja",
+      "short_paraphrase": "객실 노천탕은 약간 뜨거웠지만 산 전망을 보며 기분 좋게 이용했다는 후기.",
+      "original_keyword": "露天風呂は熱め / 山の景色",
+      "review_date": "2026-04-13"
+    },
+    {
+      "signal_type": "room_bath_temperature_caution",
+      "source_type": "Rakuten_review",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/44895/review.html",
+      "language": "ja",
+      "short_paraphrase": "아래에서 온천이 들어오고 위에서 가수해 원하는 온도로 조절 가능했다는 후기.",
+      "original_keyword": "加水 / 好みの温度",
+      "review_date": "2026-01-24"
+    },
+    {
+      "signal_type": "room_bath_cleanliness_caution",
+      "source_type": "Yahoo_Travel_snippet",
+      "source_url": "https://travel.yahoo.co.jp/00905580/review/",
+      "language": "ja",
+      "short_paraphrase": "객실 노천탕에 벌레가 있었으나 직원이 청소와 물 교체를 해줬다는 리뷰 스니펫.",
+      "original_keyword": "ムカデ / 清掃 / お湯かえ",
+      "review_date": null
+    },
+    {
+      "signal_type": "room_bath_size_caution",
+      "source_type": "Tripadvisor_snippet",
+      "source_url": "https://www.tripadvisor.jp/Hotel_Review-g1023445-d1092546-Reviews-Onjuku_Yagura-Yufu_Oita_Prefecture_Kyushu.html",
+      "language": "ja",
+      "short_paraphrase": "객실 노천탕이 작고 난방/먼지 문제가 있었다는 낮은 평가 스니펫.",
+      "original_keyword": "露天風呂が小さい / 埃",
+      "review_date": "2017/3"
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Korean_web_snippet",
+      "source_url": "https://hotelonsen.com/ryokan/read.php?hno=409",
+      "language": "ko",
+      "short_paraphrase": "전 객실 노천탕과 객실 내 온천수 사용, 퍼블릭 대욕장/노천탕을 소개.",
+      "original_keyword": "모든 객실에 노천탕 / 온천수사용 / 퍼블릭 대욕장",
+      "review_date": null
+    }
+  ],
+  "bathtime_interpretation_ko": [
+    "온주쿠 야구라는 객실 노천탕 중심형 숙소라는 신호가 뚜렷하게 확인됩니다. 직접 확인한 221건 중 객실탕/객실 노천탕 관련 언급이 184건으로, 구매 이유 자체가 '방에서 바로 온천'에 가까운 숙소입니다.",
+    "대욕장도 존재하고 좋은 물이라는 후기가 있지만, 후기의 무게중심은 대욕장이 아니라 객실 노천탕의 프라이빗함과 전망입니다. Bathtime에서는 '전 객실 노천탕형, 대욕장 보조, 대절탕 없음'으로 정리하는 것이 적합합니다.",
+    "염소 냄새나 약한 온천감은 반복 신호가 없고, 대신 겨울 추위·벌레·청소/노후감·탕온 조절 같은 객실 노천탕 운영성 주의 신호를 함께 표시하는 편이 데이터 가치가 높습니다."
+  ],
+  "gaps": [
+    "Google Maps was attempted in Aside Browser, but snapshot did not return. Google Maps review count and individual bodies are not included.",
+    "Agoda shows a large visible review pool in search results, but full individual review bodies were not directly structured in this pass.",
+    "Trip.com/Tripadvisor/Yahoo/KAYAK were used as auxiliary web/search/open-result signals, not full direct-review datasets.",
+    "Rakuten visible review count is 146, but the accessible current API returned 12 text reviews. Older star-only/non-text voices were not counted as directly read reviews.",
+    "300+ direct target was not reached; core directly readable Jalan+Rakuten text pool found here was 221."
+  ]
+}

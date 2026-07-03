@@ -1,0 +1,304 @@
+{
+  "accommodation_name": {
+    "ko": "오야도 유라쿠",
+    "ja": "お宿 有楽",
+    "en": "Oyado Uraku / Yufuin Onsen Oyado Uraku"
+  },
+  "research_date": "2026-07-01",
+  "official_facts": {
+    "official_site": "https://www.urak.jp/",
+    "official_room_url": "https://www.urak.jp/room",
+    "official_onsen_url": "https://www.urak.jp/hot_spring",
+    "facts": [
+      "총 10실: 본관 7실, 별채 3실.",
+      "공식 객실 설명 기준 별채 3실 전체와 본관 2층 2실, 총 5실에 전용 노천탕/반노천탕이 있음.",
+      "전용 노천탕 객실은 24시간 온천 이용 가능으로 설명됨.",
+      "객실 내탕/내풍로는 여러 객실에서 제공되지만 공식 안내상 온천이 아니며, 물을 받아 쓰는 타입 또는 일반 내탕으로 명시됨.",
+      "공식 온천 페이지 기준 온천은 단순온천, 이용처는 남녀별 반노천 대욕장과 전용 노천탕 객실의 노천탕.",
+      "공식 온천 정보상 공용 욕장은 노천 남 1/여 1, 내탕 0, 사우나 0, 대욕장 이용 시간 15:00-24:00 / 6:00-10:00."
+    ]
+  },
+  "collection_briefing": {
+    "visible_review_pool_notes": [
+      "Jalan 표기 총 1,028건, 그중 아카이브 990건 및 최신 후기 페이지 본문 접근 가능.",
+      "Rakuten 표기 58건 중 PRELOADED_STATE/페이지 1-3에서 실질 본문 48건 직접 추출.",
+      "Trip.com 한국 페이지는 약 52건 노출 신호가 있으나 정적 본문 추출은 실패하여 직접 표본에는 미산입.",
+      "Google/Naver는 Aside/검색 스니펫에서 한국어 수요와 객실 노천탕 신호를 확인했으나, 직접 본문 표본과 분리."
+    ],
+    "sources": [
+      {
+        "source": "Jalan",
+        "visible_review_count": 1028,
+        "rating": "4.1",
+        "directly_read_reviews": 398,
+        "onsen_related_reviews": 371,
+        "access_status": "direct_fetch_full_read_partial_archive",
+        "notes": "최신/아카이브 14개 페이지, 페이지당 30건 중심. 전체 1,028건 중 398건 표본."
+      },
+      {
+        "source": "Rakuten Travel",
+        "visible_review_count": 58,
+        "rating": "4.83",
+        "directly_read_reviews": 48,
+        "onsen_related_reviews": 29,
+        "access_status": "direct_fetch_partial_read",
+        "notes": "페이지 1-3 PRELOADED_STATE에서 본문 추출."
+      },
+      {
+        "source": "Official review page",
+        "visible_review_count": null,
+        "rating": null,
+        "directly_read_reviews": 24,
+        "onsen_related_reviews": 24,
+        "access_status": "direct_fetch_partial_read",
+        "notes": "공식 사이트 내 Jalan 리뷰 컴포넌트. Jalan 최신과 중복 가능성이 있어 보조 근거 취급."
+      },
+      {
+        "source": "Google/Naver search via Aside",
+        "visible_review_count": null,
+        "rating": null,
+        "directly_read_reviews": 0,
+        "onsen_related_reviews": 0,
+        "access_status": "aside_search_snapshot_read",
+        "notes": "한국어 수요/객실노천탕 스니펫 확인. 직접 본문 표본 아님."
+      },
+      {
+        "source": "Trip.com",
+        "visible_review_count": 52,
+        "rating": null,
+        "directly_read_reviews": 0,
+        "onsen_related_reviews": 0,
+        "access_status": "snippet_only_or_unreadable_static",
+        "notes": "검색/페이지상 리뷰 풀은 있으나 본문 구조 추출 실패."
+      }
+    ],
+    "directly_read_total": 470,
+    "onsen_related_total": 424,
+    "platforms_with_direct_body_text": [
+      "Jalan",
+      "Rakuten Travel",
+      "Official review page/Jalan component"
+    ],
+    "data_quality_grade": "A- / B+",
+    "grade_reason": "300건 이상 직접 읽었고 Rakuten 보강까지 했으나, 본문 표본은 여전히 Jalan 계열 편중이 커서 순수 A보다는 A-로 둠."
+  },
+  "review_signal_summary": [
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 87,
+      "source_count": 87,
+      "platform_count": 2,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "public_bath / open_air_public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "mixed",
+      "mention_count": 55,
+      "source_count": 55,
+      "platform_count": 2,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "probable",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 24,
+      "source_count": 24,
+      "platform_count": 2,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "room_bath / room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "weak_onsen_feeling",
+      "signal_direction": "mixed",
+      "mention_count": 10,
+      "source_count": 10,
+      "platform_count": 1,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "unclear",
+      "signal_type": "chlorine_smell",
+      "signal_direction": "neutral",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient"
+    },
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "positive",
+      "mention_count": 18,
+      "source_count": 18,
+      "platform_count": 2,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "crowding",
+      "signal_direction": "mixed",
+      "mention_count": 10,
+      "source_count": 10,
+      "platform_count": 2,
+      "contradiction_level": "medium",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "room_bath / room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "booking_confusion",
+      "signal_direction": "negative",
+      "mention_count": 4,
+      "source_count": 4,
+      "platform_count": 1,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal"
+    }
+  ],
+  "attention_signals": [
+    {
+      "issue": "객실 노천탕 온도 편차",
+      "bath_area": "room_open_air_bath",
+      "evidence_level": "moderate",
+      "summary": "뜨겁다/미지근하다/물을 섞어야 한다는 신호가 반복됨. 장점 신호를 뒤집을 정도는 아니지만 주의 표기로 충분함.",
+      "sample_count": 45
+    },
+    {
+      "issue": "객실 내탕은 온천 아님",
+      "bath_area": "room_bath",
+      "evidence_level": "official + review",
+      "summary": "공식 정보가 명확하고, 일부 후기는 이 점을 뒤늦게 인지해 아쉬움으로 언급.",
+      "sample_count": 4
+    },
+    {
+      "issue": "대욕장은 반노천 중심, 규모/동선 주의",
+      "bath_area": "public_bath",
+      "evidence_level": "moderate",
+      "summary": "대욕장 자체는 좋다는 언급이 있으나 작다, 세면대/씻는 자리 제한, 외부 이동으로 춥다는 신호가 일부 반복.",
+      "sample_count": 10
+    },
+    {
+      "issue": "노천탕 청소/벌레/낙엽",
+      "bath_area": "room_open_air_bath / public_bath",
+      "evidence_level": "weak",
+      "summary": "노천 특성상 벌레·낙엽·이물 관련 불만이 소수 반복.",
+      "sample_count": 6
+    }
+  ],
+  "evidence_examples": [
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad398280/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "객실 노천탕을 조건으로 예약했고, 객실 내탕과 객실 노천탕을 함께 이용했다고 언급.",
+      "original_keyword": "部屋付き露天風呂 / 内湯",
+      "review_date": "2025/10/28"
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Rakuten review",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/104780/review.html",
+      "language": "ja",
+      "short_paraphrase": "노천탕이 딸린 객실과 객실식 식사를 조합해 편하게 머물렀다는 평가.",
+      "original_keyword": "露天風呂付き / 部屋食",
+      "review_date": "2026-03-22"
+    },
+    {
+      "signal_type": "public_bath_hot_spring",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad398280/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "공용 대욕장이 사실상 노천 중심이고, 객실탕이 좋아 대욕장을 쓰지 않았다는 맥락.",
+      "original_keyword": "大浴場が露天風呂しかない",
+      "review_date": "2025/11/9"
+    },
+    {
+      "signal_type": "water_texture",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad398280/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "노천탕 뒤 피부가 매끈해졌다는 온천 질감 평가.",
+      "original_keyword": "肌もツルツル",
+      "review_date": "2026/5/30"
+    },
+    {
+      "signal_type": "water_texture",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad398280/kuchikomi/archive/",
+      "language": "ja",
+      "short_paraphrase": "유후인다운 부드럽고 매끈한 물이라고 표현.",
+      "original_keyword": "柔らかくツルツル",
+      "review_date": "2022/7/3"
+    },
+    {
+      "signal_type": "weak_onsen_feeling",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad398280/kuchikomi/archive/",
+      "language": "ja",
+      "short_paraphrase": "내탕이 온천이 아니라 일반 물을 받는 방식이라 아쉬웠다고 언급.",
+      "original_keyword": "内風呂が温泉ではなく",
+      "review_date": "2025/2/21"
+    },
+    {
+      "signal_type": "weak_onsen_feeling",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad398280/kuchikomi/archive/",
+      "language": "ja",
+      "short_paraphrase": "노천탕이 가케나가시가 아니라 순환식이었다고 지적하되, 분위기와 넓이는 긍정.",
+      "original_keyword": "掛け流しではなく循環型",
+      "review_date": "2018/10/22"
+    },
+    {
+      "signal_type": "crowding",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad398280/kuchikomi/archive/",
+      "language": "ja",
+      "short_paraphrase": "대욕장 세면 공간이 적고 여러 명이 동시에 쓰기 어렵다고 언급.",
+      "original_keyword": "洗い場は3ヵ所",
+      "review_date": "2024/2/6"
+    },
+    {
+      "signal_type": "booking_confusion",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad398280/kuchikomi/archive/",
+      "language": "ja",
+      "short_paraphrase": "객실 욕조가 온천이 아니라는 점을 확인하지 않고 예약해 손해 본 느낌이었다는 반응.",
+      "original_keyword": "確認せず予約",
+      "review_date": "2025/5/28"
+    },
+    {
+      "signal_type": "chlorine_smell",
+      "source_type": "negative keyword check",
+      "source_url": "combined local sample",
+      "language": "ja/ko/en",
+      "short_paraphrase": "직접 확인 표본에서 염소/칼키 냄새 키워드는 발견되지 않음.",
+      "original_keyword": "塩素 / カルキ 0",
+      "review_date": "2026-07-01 sample"
+    }
+  ],
+  "bathtime_interpretation": "공식 정보와 후기 표본을 함께 보면, 오야도 유라쿠는 “객실 노천탕이 있는 방을 정확히 고르면 만족도가 강한 소형 료칸”으로 분류하는 것이 타당합니다. 직접 확인 470건 중 온천 관련 424건, 객실 노천탕 신호 87건이 반복되어 프라이빗 온천 체감은 충분히 데이터화할 가치가 있습니다. 다만 객실 내탕은 온천이 아니고 대욕장은 반노천 소규모 구조라, Bathtime에는 객실 타입별 온천 여부와 온도 편차 주의를 전면에 표시해야 합니다.",
+  "gaps": [
+    "Jalan 전체 1,028건 중 398건 표본으로 충분히 크지만 전수는 아님.",
+    "Google Maps 실제 리뷰 탭 본문은 이번 저장 표본에 포함하지 못함.",
+    "Trip.com/Agoda/Booking은 리뷰 풀 신호는 있으나 본문 직접 추출이 제한적이어서 미산입.",
+    "공식 리뷰 페이지는 Jalan 컴포넌트 중복 가능성이 있어 독립 플랫폼으로 과대평가하지 않음."
+  ]
+}

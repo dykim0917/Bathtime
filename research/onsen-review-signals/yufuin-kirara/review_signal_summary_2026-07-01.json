@@ -1,0 +1,94 @@
+{
+  "accommodation_name": "由布岳一望の宿 美星〜きらら〜 / 유후인 키라라",
+  "collection_date": "2026-07-01",
+  "visible_review_counts": {
+    "Jalan": 750,
+    "Rakuten_total_feedback": 178,
+    "Rakuten_direct_api_text_total": 9,
+    "Trip.com_KR_visible": 86,
+    "Google_Maps_visible": 240
+  },
+  "directly_structured_sample": {
+    "Jalan": 300,
+    "Rakuten": 9,
+    "Trip.com": 3,
+    "Trip.com KR": 15
+  },
+  "directly_structured_total": 327,
+  "signal_counts": {
+    "room_bath_hot_spring": {
+      "mention_count": 210,
+      "source_count": 210,
+      "platform_count": 4,
+      "platforms": [
+        "Jalan",
+        "Rakuten",
+        "Trip.com",
+        "Trip.com KR"
+      ]
+    },
+    "room_open_air_bath": {
+      "mention_count": 87,
+      "source_count": 87,
+      "platform_count": 3,
+      "platforms": [
+        "Jalan",
+        "Rakuten",
+        "Trip.com KR"
+      ]
+    },
+    "water_texture": {
+      "mention_count": 60,
+      "source_count": 60,
+      "platform_count": 1,
+      "platforms": [
+        "Jalan"
+      ]
+    },
+    "temperature_operation": {
+      "mention_count": 28,
+      "source_count": 28,
+      "platform_count": 3,
+      "platforms": [
+        "Jalan",
+        "Rakuten",
+        "Trip.com KR"
+      ]
+    },
+    "private_bath_experience": {
+      "mention_count": 24,
+      "source_count": 24,
+      "platform_count": 2,
+      "platforms": [
+        "Jalan",
+        "Trip.com KR"
+      ]
+    },
+    "booking_confusion": {
+      "mention_count": 23,
+      "source_count": 23,
+      "platform_count": 2,
+      "platforms": [
+        "Jalan",
+        "Trip.com KR"
+      ]
+    },
+    "chlorine_smell": {
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "platforms": []
+    },
+    "weak_onsen_feeling": {
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "platforms": []
+    }
+  },
+  "notes": [
+    "Rakuten cumulative feedback/review count is 178, but the current Rakuten review API returned total=9 directly readable text reviews for provider 80661.",
+    "Jalan archive pages 1-10 were parsed at 30 reviews per page, giving 300 structured Jalan reviews.",
+    "Weak onsen feeling and chlorine smell did not appear as meaningful direct review signals in the structured sample; automatic weak matches were manually reviewed as false positives."
+  ]
+}

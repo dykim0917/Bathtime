@@ -1,0 +1,23 @@
+{
+  "checkedAt": "2026-06-30",
+  "input_rows": 239,
+  "deduped_rows": 213,
+  "duplicate_groups": 26,
+  "source_counts": {
+    "official": 77,
+    "rakuten": 31,
+    "jalan": 193,
+    "merged": 239
+  },
+  "preliminary_counts": {
+    "core_ota_onsen_candidate": 73,
+    "secondary_onsen_lodging": 28,
+    "low_priority_non_ryokan_review": 14,
+    "manual_review_needed": 21,
+    "core_official_ryokan_association": 77
+  },
+  "files": {
+    "deduped_csv": "/Users/exem/DK/BathSommelier/research/onsen-candidates/yufuin_candidates_v0_2.deduped.csv",
+    "duplicate_groups_csv": "/Users/exem/DK/BathSommelier/research/onsen-candidates/yufuin_candidates_v0_2.duplicate_groups.csv"
+  }
+}

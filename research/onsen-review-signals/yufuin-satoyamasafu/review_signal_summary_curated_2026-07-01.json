@@ -1,0 +1,312 @@
+{
+  "accommodation_name": {
+    "ko": "유후인 바스 사토야마사후",
+    "ja": "ゆふいんバース 里山茶風",
+    "en": "Yufuin Bath Satoyamasafu"
+  },
+  "research_date": "2026-07-01",
+  "identity_notes": {
+    "official_url_current": "https://www.satoyamasafu.jp/",
+    "candidate_url_old_or_redirected": "https://www.satoyamasafu.com/spa/index.html",
+    "note": "후보 CSV의 .com/spa 경로는 현재 .jp로 리다이렉트되며 spa/index.html은 404. 공식 온천 페이지는 /onsen."
+  },
+  "official_facts": {
+    "official_home": "https://www.satoyamasafu.jp/",
+    "official_onsen_url": "https://www.satoyamasafu.jp/onsen",
+    "official_room_url": "https://www.satoyamasafu.jp/room",
+    "facts": [
+      "공식 온천 페이지는 이 숙소의 온천을 “이 지역에서 수가 적은 원천 중 하나”라고 설명함.",
+      "공식 온천 페이지 기준 시설은 대욕장, 대여 노천탕, 객실 노천탕으로 나뉨.",
+      "대여 노천탕은 대/소 2개로 보이며, 숙박객은 무료로 자유 이용 가능하다고 안내.",
+      "대욕장 이용 시간은 15:00-다음날 9:30, 대여 노천탕은 15:00-24:00 / 7:00-9:30.",
+      "공식 기본 정보 기준泉質은 알칼리 단순천, 욕장 종류는 천연온천/대욕장/노천탕/대여탕.",
+      "객실 페이지 기준 모던 스위트, 주니어 스위트, 브루클린 스타일, 노천탕付き 트윈 등 노천탕付き 객실의 객실 온천은 “源泉かけ流し”로 반복 명시됨."
+    ]
+  },
+  "collection_briefing": {
+    "sources": [
+      {
+        "source": "Booking.com",
+        "visible_review_count": 621,
+        "rating": null,
+        "directly_read_reviews": 120,
+        "onsen_related_reviews": 83,
+        "access_status": "direct_fetch_partial_read",
+        "notes": "리뷰 전용 페이지 및 KO/JA/ZH/EN 언어별 페이지에서 본문 추출. 페이지 2-10은 실질 중복이 많아 중복 제거."
+      },
+      {
+        "source": "Jalan",
+        "visible_review_count": 83,
+        "rating": "4.3",
+        "directly_read_reviews": 83,
+        "onsen_related_reviews": 73,
+        "access_status": "direct_fetch_full_read",
+        "notes": "최신 10건 + archive 73건 전량에 가까운 표본."
+      },
+      {
+        "source": "Rakuten Travel",
+        "visible_review_count": null,
+        "rating": null,
+        "directly_read_reviews": 18,
+        "onsen_related_reviews": 12,
+        "access_status": "direct_fetch_partial_read",
+        "notes": "호텔 ID 158635 리뷰 페이지 PRELOADED_STATE 본문 추출."
+      },
+      {
+        "source": "Google hotel panel via Aside",
+        "visible_review_count": 225,
+        "rating": "4.3",
+        "directly_read_reviews": 0,
+        "onsen_related_reviews": 0,
+        "access_status": "aside_search_snapshot_read",
+        "notes": "Google 호텔 패널 및 검색 스니펫 확인. 직접 본문 표본 아님."
+      },
+      {
+        "source": "Agoda via Google/Aside",
+        "visible_review_count": 1819,
+        "rating": "4.5",
+        "directly_read_reviews": 0,
+        "onsen_related_reviews": 0,
+        "access_status": "snippet_only",
+        "notes": "검색 표면에서 온천/스태프 긍정 요약 확인. 본문 정적 추출은 제한적."
+      },
+      {
+        "source": "Expedia/Hotels.com via Aside",
+        "visible_review_count": 96,
+        "rating": "4.5",
+        "directly_read_reviews": 0,
+        "onsen_related_reviews": 0,
+        "access_status": "snippet_only",
+        "notes": "Expedia 96, Hotels.com 92 노출. 본문 직접 표본에는 미산입."
+      }
+    ],
+    "directly_read_total": 221,
+    "onsen_related_total": 168,
+    "platforms_with_direct_body_text": [
+      "Booking.com",
+      "Jalan",
+      "Rakuten Travel"
+    ],
+    "data_quality_grade": "B+",
+    "grade_reason": "직접 확인 221건, 3개 플랫폼 본문 확보. 300건 목표에는 못 미치지만 Booking/Jalan/Rakuten으로 플랫폼 다양성은 양호함. Booking 전체 621건 중 정적 페이지네이션은 중복 반환이 많아 추가 확장 제한."
+  },
+  "review_signal_summary": [
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 33,
+      "source_count": 33,
+      "platform_count": 3,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "private_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "positive",
+      "mention_count": 48,
+      "source_count": 48,
+      "platform_count": 3,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "mixed",
+      "mention_count": 21,
+      "source_count": 21,
+      "platform_count": 3,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "probable",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 5,
+      "source_count": 5,
+      "platform_count": 2,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "unclear",
+      "signal_type": "weak_onsen_feeling",
+      "signal_direction": "neutral",
+      "mention_count": 5,
+      "source_count": 5,
+      "platform_count": 2,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "unclear",
+      "signal_type": "chlorine_smell",
+      "signal_direction": "neutral",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient"
+    },
+    {
+      "bath_area": "private_bath / public_bath / room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "crowding",
+      "signal_direction": "mixed",
+      "mention_count": 2,
+      "source_count": 2,
+      "platform_count": 2,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "unclear",
+      "signal_type": "booking_confusion",
+      "signal_direction": "neutral",
+      "mention_count": 16,
+      "source_count": 16,
+      "platform_count": 3,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal"
+    }
+  ],
+  "attention_signals": [
+    {
+      "issue": "온도 편차",
+      "bath_area": "private_bath / room_open_air_bath / public_bath",
+      "evidence_level": "moderate",
+      "summary": "너무 뜨겁다, 미지근하다, 온도 조절이 아쉽다는 신호가 Booking/Jalan/Rakuten에서 반복됨.",
+      "sample_count": 8
+    },
+    {
+      "issue": "대욕장/공용탕 이용 매너 및 설명 필요",
+      "bath_area": "public_bath",
+      "evidence_level": "weak",
+      "summary": "Booking 일본어 표본에서 대욕장 이용 매너와 안내 부족을 지적한 사례 확인.",
+      "sample_count": 1
+    },
+    {
+      "issue": "방음/소음",
+      "bath_area": "room_open_air_bath",
+      "evidence_level": "weak",
+      "summary": "객실 전용 노천탕 인접 소음이나 옆방/윗층 소음 언급이 일부 있음.",
+      "sample_count": 3
+    },
+    {
+      "issue": "청결/냄새",
+      "bath_area": "facility_wide",
+      "evidence_level": "weak",
+      "summary": "벌레·냄새·청결 관련 신호는 소수이며 온천 특화 불만으로 강하게 반복되지는 않음.",
+      "sample_count": 15
+    }
+  ],
+  "evidence_examples": [
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Booking.com review",
+      "source_url": "https://www.booking.com/reviews/jp/hotel/yufuin-mall-yufu.html",
+      "language": "en",
+      "short_paraphrase": "객실 실내/노천 프라이빗 온천을 모두 좋게 평가.",
+      "original_keyword": "indoor and outdoor private onsens",
+      "review_date": "2026-04-02"
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad306578/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "객실 노천탕에서 유후다케 조망과 온천을 여러 번 즐겼다고 평가.",
+      "original_keyword": "部屋付き露天風呂",
+      "review_date": "2022/8/16"
+    },
+    {
+      "signal_type": "private_bath_experience",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad306578/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "대여 노천탕을 시간 제한 없이 즐겼다는 반응.",
+      "original_keyword": "貸切露天風呂",
+      "review_date": "2024/11/29"
+    },
+    {
+      "signal_type": "private_bath_experience",
+      "source_type": "Booking.com review",
+      "source_url": "https://www.booking.com/reviews/jp/hotel/yufuin-mall-yufu.html",
+      "language": "en",
+      "short_paraphrase": "프라이빗 온천과 가족탕을 긍정적으로 언급.",
+      "original_keyword": "Private onsen and family one",
+      "review_date": "2026-06-06"
+    },
+    {
+      "signal_type": "public_bath_hot_spring",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad306578/kuchikomi/archive/",
+      "language": "ja",
+      "short_paraphrase": "대욕장과 대여탕을 모두 이용했지만 큰 대여탕이 뜨거워 아쉬웠다고 언급.",
+      "original_keyword": "大浴場 / 貸切風呂",
+      "review_date": "2020/10/25"
+    },
+    {
+      "signal_type": "water_texture",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad306578/kuchikomi/archive/",
+      "language": "ja",
+      "short_paraphrase": "온천 수질이 좋았고 서비스도 따뜻했다고 평가.",
+      "original_keyword": "良い泉質",
+      "review_date": "2022/8/28"
+    },
+    {
+      "signal_type": "weak_onsen_feeling",
+      "source_type": "Rakuten review",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/158635/review.html",
+      "language": "ja",
+      "short_paraphrase": "객실 가케나가시 노천탕이 매우 좋아 대욕장/대여탕은 가지 않았다고 언급. 약한 온천감이 아니라 원천성 긍정 사례.",
+      "original_keyword": "かけ流しの露店風呂",
+      "review_date": "2024-01-03"
+    },
+    {
+      "signal_type": "crowding",
+      "source_type": "Booking.com review",
+      "source_url": "https://www.booking.com/reviews/jp/hotel/yufuin-mall-yufu.html",
+      "language": "ko",
+      "short_paraphrase": "개별탕 없는 객실도 대욕장과 가족탕 2개를 쓸 수 있다고 설명.",
+      "original_keyword": "남/여 대욕장 / 가족탕 2",
+      "review_date": ""
+    },
+    {
+      "signal_type": "booking_confusion",
+      "source_type": "Booking.com review",
+      "source_url": "https://www.booking.com/reviews/jp/hotel/yufuin-mall-yufu.html",
+      "language": "ko",
+      "short_paraphrase": "개별 욕탕이 딸린 방과 그렇지 않은 방의 배정 차이를 설명.",
+      "original_keyword": "개별 욕탕이 딸린 방",
+      "review_date": ""
+    },
+    {
+      "signal_type": "chlorine_smell",
+      "source_type": "negative keyword check",
+      "source_url": "combined local sample",
+      "language": "multi",
+      "short_paraphrase": "직접 표본에서 염소/칼키 냄새 키워드는 발견되지 않음.",
+      "original_keyword": "塩素 / カルキ / chlorine 0",
+      "review_date": "2026-07-01 sample"
+    }
+  ],
+  "bathtime_interpretation": "공식 정보와 후기 표본을 함께 보면, 사토야마사후는 객실 원천가케나가시 노천탕과 무료 대여 노천탕이 동시에 강점으로 반복되는 숙소입니다. 직접 확인 221건 중 온천 관련 168건, 프라이빗/대여탕 신호 48건, 객실 노천탕 신호 33건이 확인되어 B+급 데이터로 활용 가능합니다. 다만 온도 편차와 공용탕 이용 매너/안내 문제는 일부 반복되므로, “프라이빗 온천 강점 + 온도 주의”를 함께 표시하는 편이 좋습니다.",
+  "gaps": [
+    "300건 목표에는 미달. Booking 전체 621건이 보이나 정적 페이지네이션이 중복 반환되어 120건 본문 표본에 그침.",
+    "Agoda 1,819건, Google 225건, Expedia 96건은 Aside/Google 표면에서 확인했으나 본문 직접 표본은 미산입.",
+    "Trip.com 정적 페이지는 본문 추출 품질이 낮아 직접 표본에서 제외.",
+    "공식 URL이 .com에서 .jp로 변경/리다이렉트된 점은 후보 DB 정정 필요."
+  ]
+}

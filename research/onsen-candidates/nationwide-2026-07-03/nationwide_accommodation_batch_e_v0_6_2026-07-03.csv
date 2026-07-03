@@ -1,0 +1,92 @@
+slug,name_ja,name_ko_or_en,area_slug,prefecture,property_type,initial_tier,initial_bath_signals,source_basis,verification_status
+nozawa-grand-hotel,野沢温泉 野沢グランドホテル,Nozawa Grand Hotel,nozawa,長野県,ryokan hotel,Tier 1,전망 노천과 객실 노천탕 후보,Jalan Nagano/Nozawa ranking source,needs_official_crosscheck
+nozawa-sakaya,野沢温泉 旅館さかや,Ryokan Sakaya,nozawa,長野県,ryokan,Tier 1,자가원천과 전통 대욕장 후보,regional high-demand source,needs_official_crosscheck
+nozawa-kiriya-ryokan,野沢温泉 桐屋旅館,Kiriya Ryokan,nozawa,長野県,ryokan,Tier 2,외탕 순례와 전통 료칸 후보,regional OTA source,needs_source_crosscheck
+nozawa-kawamotoya,野沢温泉 河一屋旅館,Kawamotoya,nozawa,長野県,ryokan,Tier 1,객실 노천탕과 외탕 접근성 후보,regional OTA source,needs_official_crosscheck
+nozawa-sumiyosiya,野沢温泉 住吉屋,Sumiyosiya,nozawa,長野県,ryokan,Tier 2,역사 료칸과 원천 대욕장 후보,regional OTA source,needs_source_crosscheck
+yudanaka-tsubakino,湯田中温泉 ホテル椿野,Hotel Tsubakino,yudanaka-shibu,長野県,ryokan hotel,Tier 1,객실 노천탕과 전망 대욕장 후보,Jalan Nagano keyword source,needs_official_crosscheck
+yudanaka-aburaya-tousen,湯田中温泉 あぶらや燈千,Aburaya Tousen,yudanaka-shibu,長野県,ryokan,Tier 1,객실 노천탕과 옥상 노천탕 후보,regional OTA source,needs_official_crosscheck
+shibu-kokuya,渋温泉 古久屋,Kokuya,yudanaka-shibu,長野県,ryokan,Tier 1,다원천 내탕과 객실탕 후보,regional high-value source,needs_official_crosscheck
+shibu-kanaguya,渋温泉 歴史の宿 金具屋,Kanaguya,yudanaka-shibu,長野県,historic ryokan,Tier 1,역사 건축과 다욕장 온천 후보,regional high-demand source,needs_official_crosscheck
+shibu-sakaeya,渋温泉 春蘭の宿さかえや,Sakaeya,yudanaka-shibu,長野県,ryokan,Tier 1,객실 노천탕과 외탕 순례 후보,regional OTA source,needs_official_crosscheck
+shibu-ichinoyu-katei,渋温泉 一乃湯 果亭,Ichinoyu Katei,yudanaka-shibu,長野県,ryokan,Tier 2,전통 료칸과 외탕 순례 후보,regional OTA source,needs_source_crosscheck
+bessho-nakamatsuya,別所温泉 旅館中松屋,Nakamatsuya,bessho,長野県,ryokan,Tier 1,전망 대욕장과 가족 수요 후보,regional OTA source,needs_source_crosscheck
+bessho-nanjo-ryokan,別所温泉 旅館花屋,Ryokan Hanaya,bessho,長野県,historic ryokan,Tier 1,문화재급 목조 료칸과 원천탕 후보,regional high-value source,needs_official_crosscheck
+bessho-kashiwaya-honten,別所温泉 かしわや本店,Kashiwaya Honten,bessho,長野県,ryokan,Tier 1,객실 노천탕과 전통 료칸 후보,regional OTA source,needs_official_crosscheck
+shirahonet-onsen-awano-yu,白骨温泉 泡の湯,Awanoyu,shirahonet,長野県,ryokan,Tier 1,대형 혼욕 노천과 백탁 온천 신호,regional high-demand source,needs_official_crosscheck
+shirahonet-sasaya,白骨温泉 湯元齋藤旅館,Yumoto Saito Ryokan,shirahonet,長野県,ryokan,Tier 1,백탁 원천과 고급 료칸 후보,regional OTA source,needs_official_crosscheck
+shirahonet-tsuruya,白骨温泉 白船荘新宅旅館,Shirafuneso Shintaku Ryokan,shirahonet,長野県,ryokan,Tier 2,백탁 대욕장과 산악 온천 후보,regional OTA source,needs_source_crosscheck
+echigo-yuzawa-nakaya,越後湯沢温泉 一望千里 御湯宿 中屋,Oyado Nakaya,echigo-yuzawa,新潟県,ryokan,Tier 1,객실 노천탕과 전망 온천 후보,Rakuten Echigo Yuzawa room-open-air source,needs_official_crosscheck
+echigo-yuzawa-ryugon,ryugon,ryugon,echigo-yuzawa,新潟県,luxury ryokan,Tier 1,설국 고택형 료칸과 온천 체류 후보,Rakuten Echigo Yuzawa source,needs_official_crosscheck
+echigo-yuzawa-quattro,四季Yuzawa QUATTRO,Shiki Yuzawa Quattro,echigo-yuzawa,新潟県,luxury suite ryokan,Tier 1,전실 원천가케나가시 노천과 내탕 후보,Rakuten MyTrip Niigata source,needs_official_crosscheck
+echigo-yuzawa-hatago-isen,越後湯澤 HATAGO井仙,HATAGO Isen,echigo-yuzawa,新潟県,ryokan hotel,Tier 1,역앞 온천숙소와 대욕장 후보,regional OTA source,needs_source_crosscheck
+echigo-yuzawa-takahan,越後湯沢温泉 雪国の宿 高半,Takahan,echigo-yuzawa,新潟県,historic ryokan,Tier 1,원천가케나가시와 설국 문학성 후보,regional high-demand source,needs_official_crosscheck
+tsukioka-kahou,月岡温泉 白玉の湯 華鳳,Kahou,tsukioka,新潟県,luxury ryokan,Tier 1,에메랄드 온천과 대형 고급 대욕장 후보,regional OTA source,needs_official_crosscheck
+tsukioka-senkei,月岡温泉 摩周,Mashu,tsukioka,新潟県,ryokan,Tier 1,황화수소계 미인탕과 고급 료칸 후보,regional OTA source,needs_official_crosscheck
+tsukioka-seifuen,月岡温泉 ホテル清風苑,Hotel Seifuen,tsukioka,新潟県,ryokan hotel,Tier 2,대형 온천호텔과 가족 수요 후보,regional OTA source,needs_source_crosscheck
+tsukioka-hisagoso,月岡温泉 ひさご荘,Hisagoso,tsukioka,新潟県,ryokan,Tier 2,소규모 료칸과 월오카 온천 후보,regional OTA source,needs_source_crosscheck
+senami-haginoya,瀬波温泉 瀬波グランドホテル はぎのや,Haginoya,senami,新潟県,ryokan hotel,Tier 1,객실 노천탕 다수와 일본해 해안 온천 후보,Rakuten Kaetsu source,needs_official_crosscheck
+senami-taikanso,瀬波温泉 大観荘せなみの湯,Taikanso Senami no Yu,senami,新潟県,large ryokan,Tier 1,일본해 전망 노천탕 후보,regional OTA source,needs_official_crosscheck
+senami-seiunsou,瀬波温泉 くつろぎの宿 旅館 静雲荘,Seiunsou,senami,新潟県,ryokan,Tier 1,해변 객실 노천탕 후보,Rakuten Niigata rotsuki source,needs_official_crosscheck
+yamashiro-araya-totoan,山代温泉 あらや滔々庵,Araya Totoan,yamashiro,石川県,luxury ryokan,Tier 1,야마시로 대표 고급 료칸과 원천 후보,Ikkyu Yamashiro ranking source,needs_official_crosscheck
+yamashiro-beniya-mukayu,山代温泉 べにや無何有,Beniya Mukayu,yamashiro,石川県,luxury ryokan,Tier 1,객실 노천탕과 고급 온천 체류 후보,Ikkyu Yamashiro ranking source,needs_official_crosscheck
+yamashiro-yunokuni-tensyo,山代温泉 ゆのくに天祥,Yunokuni Tensyo,yamashiro,石川県,large ryokan,Tier 1,복수 대욕장과 객실 노천탕 후보,Ikkyu Yamashiro ranking source,needs_official_crosscheck
+yamashiro-rurikoh,山代温泉 瑠璃光,Rurikoh,yamashiro,石川県,ryokan hotel,Tier 1,대욕장과 노천 객실 후보,Ikkyu Yamashiro ranking source,needs_official_crosscheck
+yamashiro-hatori,山代温泉 葉渡莉,Hatori,yamashiro,石川県,ryokan,Tier 2,대욕장과 야마시로 온천가 접근성 후보,Ikkyu Yamashiro ranking source,needs_source_crosscheck
+yamanaka-kayotei,山中温泉 花紫,Hanamurasaki,yamanaka,石川県,luxury ryokan,Tier 1,계곡 전망 고급 료칸과 객실 노천탕 후보,regional OTA source,needs_official_crosscheck
+yamanaka-kissho-yamanaka,山中温泉 吉祥やまなか,Kissho Yamanaka,yamanaka,石川県,ryokan,Tier 1,대욕장과 대절탕 후보,regional OTA source,needs_official_crosscheck
+yamanaka-kagari-kisshotei,山中温泉 かがり吉祥亭,Kagari Kisshotei,yamanaka,石川県,ryokan,Tier 1,계곡 노천탕과 가족 수요 후보,regional OTA source,needs_official_crosscheck
+yamanaka-ohanami-kyubei,山中温泉 お花見久兵衛,Ohanami Kyubei,yamanaka,石川県,ryokan,Tier 2,대욕장과 노천탕 후보,Ikkyu Hokuriku open-air source,needs_source_crosscheck
+wakura-kagaya,和倉温泉 加賀屋,Kagaya,wakura,石川県,luxury ryokan,Tier 1,전국 인지도 높은 대형 고급 온천 료칸 후보,regional high-demand source,needs_official_crosscheck
+wakura-niji-to-umi,和倉温泉 虹と海,Niji to Umi,wakura,石川県,ryokan hotel,Tier 1,바다 전망 대욕장과 현대형 료칸 후보,regional OTA source,needs_source_crosscheck
+wakura-notoraku,和倉温泉 ホテル海望,Hotel Kaibo,wakura,石川県,ryokan hotel,Tier 2,바다 전망 대욕장 후보,regional OTA source,needs_source_crosscheck
+katayamazu-morimoto,片山津温泉 湖畔の宿 森本,Kohan no Yado Morimoto,katayamazu,石川県,ryokan,Tier 1,호수 전망 온천과 객실 후보,Ikkyu Hokuriku open-air source,needs_official_crosscheck
+katayamazu-kasuisou,片山津温泉 季がさね,Toki Kasane,katayamazu,石川県,ryokan,Tier 2,시바야마가타 전망 대욕장 후보,regional OTA source,needs_source_crosscheck
+unazuki-yamanoi,宇奈月温泉 延楽,Enraku,unazuki,富山県,luxury ryokan,Tier 1,구로베 협곡 전망 노천탕 후보,regional OTA source,needs_official_crosscheck
+unazuki-suginoi,宇奈月温泉 やまのは,Yamanoha,unazuki,富山県,ryokan hotel,Tier 1,협곡 전망 대형 온천호텔 후보,regional OTA source,needs_official_crosscheck
+unazuki-kurobe-unazukionsen-yamanoi,黒部・宇奈月温泉 桃源,Togen,unazuki,富山県,ryokan,Tier 2,구로베 강변 온천 후보,regional OTA source,needs_source_crosscheck
+amaharashi-iso-hanabi,雨晴温泉 磯はなび,Iso Hanabi,amaharashi,富山県,ryokan hotel,Tier 1,바다 전망 노천탕과 도야마만 조망 후보,Ikkyu Hokuriku source,needs_official_crosscheck
+misasa-izanro-iwasaki,三朝温泉 依山楼岩崎,Izanro Iwasaki,misasa,鳥取県,ryokan,Tier 1,라듐 온천과 대형 회유식 대욕장 후보,Jalan Chugoku/Shikoku source,needs_official_crosscheck
+misasa-mansuirou,三朝温泉 万翆楼,Mansuirou,misasa,鳥取県,ryokan,Tier 1,객실 노천탕과 라듐 온천 후보,regional OTA source,needs_official_crosscheck
+misasa-saiki-bekkan,三朝温泉 斉木別館,Saiki Bekkan,misasa,鳥取県,ryokan,Tier 1,정원 대욕장과 전통 료칸 후보,regional OTA source,needs_source_crosscheck
+misasa-kouraku,三朝温泉 後楽,Kouraku,misasa,鳥取県,ryokan,Tier 2,라듐 온천 숙박 후보,regional OTA source,needs_source_crosscheck
+kaike-shiontei,皆生温泉 やど紫苑亭,Yado Shiontei,kaike,鳥取県,luxury ryokan,Tier 1,고급 객실탕과 해안 온천 후보,Jalan Chugoku/Shikoku source,needs_official_crosscheck
+kaike-kasuitei,皆生温泉 華水亭,Kasuitei,kaike,鳥取県,ryokan hotel,Tier 1,바다 전망 대욕장과 객실 노천탕 후보,regional OTA source,needs_official_crosscheck
+kaike-yurari,皆生温泉 海色・湯の宿 松月,Shogetsu,kaike,鳥取県,ryokan,Tier 1,해안 객실탕과 전망 온천 후보,regional OTA source,needs_official_crosscheck
+tamatsukuri-kasuien-minami,玉造温泉 佳翠苑皆美,Kasuien Minami,tamatsukuri,島根県,luxury ryokan,Tier 1,옥상 노천탕과 미인탕 후보,Jalan Chugoku room-open-air source,needs_official_crosscheck
+tamatsukuri-hoseikan,玉造温泉 保性館,Hoseikan,tamatsukuri,島根県,ryokan,Tier 2,역사 료칸과 대욕장 후보,regional OTA source,needs_source_crosscheck
+tamatsukuri-chorakuen,玉造温泉 湯之助の宿 長楽園,Chorakuen,tamatsukuri,島根県,ryokan,Tier 1,대형 혼욕 노천과 미인탕 후보,regional high-demand source,needs_official_crosscheck
+tamatsukuri-konya,玉造温泉 曲水の庭 ホテル玉泉,Hotel Gyokusen,tamatsukuri,島根県,large ryokan,Tier 1,대형 대욕장과 정원 온천 후보,regional OTA source,needs_source_crosscheck
+tamatsukuri-yunosuke,玉造グランドホテル長生閣,Choseikaku,tamatsukuri,島根県,ryokan hotel,Tier 1,메노우 욕조와 미인탕 후보,regional OTA source,needs_official_crosscheck
+yubara-kikunoyu,湯原温泉 湯原国際観光ホテル菊之湯,Kikunoyu,yubara,岡山県,ryokan hotel,Tier 2,스나유 접근성과 대욕장 후보,regional OTA source,needs_source_crosscheck
+yubara-aburaya,湯原温泉 八景,Hakkei,yubara,岡山県,ryokan,Tier 1,강변 노천과 스나유 접근성 후보,regional OTA source,needs_official_crosscheck
+yubara-yubaranoyado-komeya,湯原温泉 湯原の宿 米屋,Komeya,yubara,岡山県,ryokan,Tier 2,전통 료칸과 온천가 후보,regional OTA source,needs_source_crosscheck
+yuda-matsudaya,湯田温泉 松田屋ホテル,Matsudaya Hotel,yuda,山口県,historic ryokan,Tier 1,정원 노천탕과 역사 료칸 후보,regional high-value source,needs_official_crosscheck
+yuda-kamefuku,湯田温泉 ユウベルホテル松政,Yubell Hotel Matsumasa,yuda,山口県,ryokan hotel,Tier 1,대욕장과 도심 온천 접근성 후보,regional OTA source,needs_source_crosscheck
+yuda-nishinomiyabi-tokiwa,湯田温泉 西の雅 常盤,Nishi no Miyabi Tokiwa,yuda,山口県,ryokan hotel,Tier 2,대형 온천호텔과 쇼 요소 후보,regional OTA source,needs_source_crosscheck
+ureshino-wataya-besso,嬉野温泉 和多屋別荘,Wataya Besso,ureshino,佐賀県,large ryokan,Tier 1,미인탕과 대형 료칸 후보,regional OTA source,needs_official_crosscheck
+ureshino-oyado-nonoka,嬉野温泉 大正屋,Taishoya,ureshino,佐賀県,ryokan,Tier 1,우레시노 대표 료칸과 대욕장 후보,regional high-demand source,needs_official_crosscheck
+ureshino-shiibasanso,嬉野温泉 椎葉山荘,Shiibasanso,ureshino,佐賀県,ryokan,Tier 1,계곡 노천탕과 조용한 체류 후보,regional OTA source,needs_official_crosscheck
+ureshino-hamilton,嬉野温泉 ハミルトン宇礼志野,Hamilton Ureshino,ureshino,佐賀県,hotel ryokan,Tier 2,양관형 온천호텔과 미인탕 후보,regional OTA source,needs_source_crosscheck
+takeo-koyokaku,武雄温泉 懐石宿 扇屋,Kaiseki Yado Ogiya,takeo,佐賀県,luxury ryokan,Tier 1,요리 료칸과 온천 체류 후보,regional OTA source,needs_official_crosscheck
+takeo-mifuneyama-rakuen,御船山楽園ホテル,Mifuneyama Rakuen Hotel,takeo,佐賀県,hotel ryokan,Tier 1,사우나와 온천 리조트 수요 후보,regional high-demand source,needs_official_crosscheck
+takeo-kyotoya,武雄温泉 京都屋,Kyotoya,takeo,佐賀県,ryokan,Tier 2,레트로 료칸과 대욕장 후보,regional OTA source,needs_source_crosscheck
+ginzan-fujiya,銀山温泉 藤屋,Fujiya,ginzan,山形県,luxury ryokan,Tier 1,건축성 높은 온천료칸과 객실탕 후보,regional high-demand source,needs_official_crosscheck
+ginzan-notoya,銀山温泉 能登屋旅館,Notoya Ryokan,ginzan,山形県,historic ryokan,Tier 1,상징적 목조 료칸과 온천가 후보,regional high-demand source,needs_official_crosscheck
+ginzan-kosekiya,銀山温泉 古勢起屋別館,Kosekiya Bekkan,ginzan,山形県,ryokan,Tier 1,온천가 중심 전통 료칸 후보,regional OTA source,needs_source_crosscheck
+zao-miyagiya,蔵王温泉 深山荘高見屋,Miyamaso Takamiya,zao-yamagata,山形県,ryokan,Tier 1,강산성 유황천과 전통 료칸 후보,regional OTA source,needs_official_crosscheck
+zao-lucent,蔵王温泉 蔵王国際ホテル,Zao Kokusai Hotel,zao-yamagata,山形県,ryokan hotel,Tier 1,백탁 유황 대욕장과 스키 수요 후보,regional OTA source,needs_official_crosscheck
+zao-wakamatsuya,蔵王温泉 堺屋森のホテルヴァルトベルク,Wald Berg,zao-yamagata,山形県,ryokan hotel,Tier 2,고지대 유황천과 노천탕 후보,regional OTA source,needs_source_crosscheck
+kaminoyama-koyo,かみのやま温泉 日本の宿 古窯,Koyo,kaminoyama,山形県,large ryokan,Tier 1,대형 고급 료칸과 전망 대욕장 후보,regional OTA source,needs_official_crosscheck
+kaminoyama-meigetsuso,かみのやま温泉 名月荘,Meigetsuso,kaminoyama,山形県,luxury ryokan,Tier 1,고급 객실 노천탕 후보,regional high-end source,needs_official_crosscheck
+sukayu-onsen,酸ヶ湯温泉旅館,Sukayu Onsen Ryokan,sukayu,青森県,historic ryokan,Tier 1,히바센닌부로와 강산성 온천 후보,regional high-demand source,needs_official_crosscheck
+asamushi-kaisenkaku,浅虫温泉 南部屋・海扇閣,Kaisenkaku,asamushi,青森県,ryokan hotel,Tier 1,무쓰만 전망 대욕장 후보,regional OTA source,needs_official_crosscheck
+asamushi-tatsumikan,浅虫温泉 椿館,Tsubakikan,asamushi,青森県,ryokan,Tier 2,전통 료칸과 대욕장 후보,regional OTA source,needs_source_crosscheck
+hanamaki-yusen-shidate,志戸平温泉 游泉志だて,Yusen Shidate,hanamaki,岩手県,luxury ryokan,Tier 1,전실 노천탕과 계류 온천 후보,regional OTA source,needs_official_crosscheck
+hanamaki-kashoen,花巻温泉 佳松園,Kashoen,hanamaki,岩手県,luxury ryokan,Tier 1,고급 료칸과 대욕장 후보,regional OTA source,needs_official_crosscheck
+hanamaki-osawa-onsen,大沢温泉 山水閣,Osawa Onsen Sansuikaku,hanamaki,岩手県,ryokan,Tier 1,자취부 병설 탕치와 강변 노천 후보,regional high-demand source,needs_official_crosscheck
+tsunagi-shikitei,つなぎ温泉 四季亭,Shikitei,tsunagi,岩手県,ryokan,Tier 1,모리오카 접근성과 전통 료칸 후보,regional OTA source,needs_official_crosscheck
+higashiyama-mukaitaki,会津東山温泉 向瀧,Mukaitaki,higashiyama,福島県,historic ryokan,Tier 1,문화재급 목조 료칸과 원천탕 후보,regional high-value source,needs_official_crosscheck
+higashiyama-shosuke,会津東山温泉 庄助の宿 瀧の湯,Takinoyu,higashiyama,福島県,ryokan,Tier 1,폭포 전망 노천탕과 대욕장 후보,regional OTA source,needs_official_crosscheck
+iizaka-yoshikawaya,飯坂温泉 摺上亭大鳥,Surikamitei Ohtori,iizaka,福島県,ryokan hotel,Tier 1,대형 대욕장과 후쿠시마 접근성 후보,regional OTA source,needs_source_crosscheck
+iizaka-horikiri,飯坂温泉 祭屋湯左衛門,Matsuriya Yuzaemon,iizaka,福島県,ryokan,Tier 2,지역 온천가와 대욕장 후보,regional OTA source,needs_source_crosscheck

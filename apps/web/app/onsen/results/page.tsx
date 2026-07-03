@@ -5,16 +5,24 @@ import {
   FunnelSimple,
   ChatCircleText,
   MagnifyingGlass,
-  Mountains,
   SealCheck,
-  Thermometer,
   ThermometerHot,
   Warning,
   Waves,
 } from '@phosphor-icons/react/ssr';
-import { getOnsenCandidates } from '@web/lib/onsenCatalog';
 import { normalizeOnsenPublicCopy } from '@web/lib/onsenCopy';
+import { readOnsenCandidates } from '@web/lib/onsenData';
 import { readOnsenReviewCounts } from '@web/lib/onsenReviews';
+import {
+  bathContextFilters,
+  getFilterLabel,
+  getFilterLabels,
+  onsenAreaFilters,
+  regionGroupFilters,
+  splitLegacySignals,
+  travelContextFilters,
+  waterCriterionFilters,
+} from '@web/lib/onsenTaxonomy';
 
 export const metadata: Metadata = {
   title: '온천 검색 결과',
@@ -23,22 +31,6 @@ export const metadata: Metadata = {
     canonical: '/onsen/results',
   },
 };
-
-const regionFilters = [
-  { label: '유후인', value: 'yufuin' },
-  { label: '벳푸', value: 'beppu', disabled: true },
-  { label: '쿠로카와', value: 'kurokawa', disabled: true },
-  { label: '하코네', value: 'hakone', disabled: true },
-  { label: '노보리베츠', value: 'noboribetsu', disabled: true },
-];
-
-const pointFilters = [
-  { label: '객실탕 중심', value: 'room-bath', icon: Waves },
-  { label: '가족탕/대절탕 있음', value: 'private-bath', icon: Drop },
-  { label: '대욕장 중심', value: 'public-bath', icon: Mountains },
-  { label: '부드러운 물 느낌', value: 'water-texture', icon: Thermometer },
-  { label: '겨울 주의', value: 'winter-caution', icon: Warning },
-];
 
 function normalizeParam(value: string | string[] | undefined) {
   return Array.isArray(value) ? value[0] ?? '' : value ?? '';
@@ -49,29 +41,31 @@ function normalizeParams(value: string | string[] | undefined) {
   return values.flatMap((item) => item.split(',')).map((item) => item.trim()).filter(Boolean);
 }
 
-function getFilterLabels<T extends { label: string; value: string }>(items: T[], values: string[]) {
-  return values
-    .map((value) => items.find((item) => item.value === value)?.label)
-    .filter((label): label is string => Boolean(label));
-}
-
-function getFilterLabel<T extends { label: string; value: string }>(items: T[], value: string) {
-  return items.find((item) => item.value === value)?.label;
-}
-
-function buildResultsHref(params: { query?: string; region?: string; signals?: string[] }) {
+function buildResultsHref(params: { query?: string; regionGroup?: string; area?: string; travel?: string[]; bath?: string[]; water?: string[] }) {
   const nextParams = new URLSearchParams();
 
   if (params.query) {
     nextParams.set('query', params.query);
   }
 
-  if (params.region) {
-    nextParams.set('region', params.region);
+  if (params.regionGroup) {
+    nextParams.set('regionGroup', params.regionGroup);
   }
 
-  for (const signal of params.signals ?? []) {
-    nextParams.append('signal', signal);
+  if (params.area) {
+    nextParams.set('area', params.area);
+  }
+
+  for (const travel of params.travel ?? []) {
+    nextParams.append('travel', travel);
+  }
+
+  for (const bath of params.bath ?? []) {
+    nextParams.append('bath', bath);
+  }
+
+  for (const water of params.water ?? []) {
+    nextParams.append('water', water);
   }
 
   const queryString = nextParams.toString();
@@ -81,31 +75,71 @@ function buildResultsHref(params: { query?: string; region?: string; signals?: s
 export default async function OnsenPage({
   searchParams,
 }: {
-  searchParams: Promise<{ query?: string | string[]; region?: string | string[]; signal?: string | string[] }>;
+  searchParams: Promise<{
+    query?: string | string[];
+    region?: string | string[];
+    regionGroup?: string | string[];
+    area?: string | string[];
+    travel?: string | string[];
+    bath?: string | string[];
+    water?: string | string[];
+    signal?: string | string[];
+  }>;
 }) {
   const params = await searchParams;
   const query = normalizeParam(params.query).trim().toLowerCase();
-  const region = normalizeParam(params.region);
-  const signals = normalizeParams(params.signal);
-  const candidates = getOnsenCandidates();
+  const legacyRegion = normalizeParam(params.region);
+  const regionGroup = normalizeParam(params.regionGroup);
+  const area = normalizeParam(params.area || params.region);
+  const legacySignals = splitLegacySignals(normalizeParams(params.signal));
+  const travel = normalizeParams(params.travel);
+  const bath = [...normalizeParams(params.bath), ...legacySignals.bath];
+  const water = [...normalizeParams(params.water), ...legacySignals.water];
+  const candidates = await readOnsenCandidates();
   const reviewCounts = await readOnsenReviewCounts(candidates.map((candidate) => candidate.slug));
   const filtered = candidates.filter((candidate) => {
-    const regionMatch = !region || candidate.region === region;
-    const signalMatch = signals.every((signal) => candidate.tags.includes(signal));
-    const queryText = [candidate.name, candidate.jaName, candidate.area, candidate.primaryBath, candidate.summary, ...candidate.fit, ...candidate.tags]
+    const location = candidate.location;
+    const contexts = candidate.contexts;
+    const regionGroupMatch = !regionGroup || location?.regionGroup === regionGroup;
+    const areaMatch = !area || location?.onsenArea === area || candidate.region === area;
+    const travelMatch = travel.every((item) => contexts?.travel.some((value) => value === item));
+    const bathMatch = bath.every((item) => contexts?.bath.some((value) => value === item));
+    const waterMatch = water.every((item) => contexts?.water.some((value) => value === item));
+    const queryText = [
+      candidate.name,
+      candidate.jaName,
+      candidate.area,
+      location?.display,
+      location?.regionGroupLabel,
+      location?.prefectureLabel,
+      location?.cityLabel,
+      location?.onsenAreaLabel,
+      candidate.primaryBath,
+      candidate.summary,
+      ...candidate.fit,
+      ...candidate.tags,
+    ]
       .join(' ')
       .toLowerCase();
     const queryMatch = !query || queryText.includes(query);
-    return regionMatch && signalMatch && queryMatch;
+    return regionGroupMatch && areaMatch && travelMatch && bathMatch && waterMatch && queryMatch;
   });
-  const activeRegionLabel = getFilterLabel(regionFilters, region);
-  const activeSignalLabels = getFilterLabels(pointFilters, signals);
-  const hasActiveFilter = Boolean(query || region || signals.length > 0);
-  const currentResultsHref = buildResultsHref({ query, region, signals });
-  const selectedSignal = signals[0] ?? '';
+  const activeRegionGroupLabel = getFilterLabel(regionGroupFilters, regionGroup);
+  const activeAreaLabel = getFilterLabel(onsenAreaFilters, area);
+  const activeTravelLabels = getFilterLabels(travelContextFilters, travel);
+  const activeBathLabels = getFilterLabels(bathContextFilters, bath);
+  const activeWaterLabels = getFilterLabels(waterCriterionFilters, water);
+  const hasActiveFilter = Boolean(query || regionGroup || area || travel.length > 0 || bath.length > 0 || water.length > 0);
+  const currentResultsHref = buildResultsHref({ query, regionGroup, area, travel, bath, water });
+  const selectedTravel = travel[0] ?? '';
+  const selectedBath = bath[0] ?? '';
+  const selectedWater = water[0] ?? '';
   const conditionSummary = [
-    activeRegionLabel ?? '전체 지역',
-    ...activeSignalLabels,
+    activeRegionGroupLabel ?? '전체 지역',
+    activeAreaLabel,
+    ...activeTravelLabels,
+    ...activeBathLabels,
+    ...activeWaterLabels,
     query ? `"${query}"` : null,
   ].filter(Boolean).join(' · ');
 
@@ -119,10 +153,10 @@ export default async function OnsenPage({
           </div>
 
           <label className="onsen-filter-select">
-            <span>지역</span>
-            <select name="region" defaultValue={region}>
+            <span>지역 범위</span>
+            <select name="regionGroup" defaultValue={regionGroup}>
               <option value="">전체 지역</option>
-              {regionFilters.map((item) => (
+              {regionGroupFilters.map((item) => (
                 <option key={item.value} value={item.value} disabled={item.disabled}>
                   {item.label}
                 </option>
@@ -131,10 +165,46 @@ export default async function OnsenPage({
           </label>
 
           <label className="onsen-filter-select">
-            <span>확인 포인트</span>
-            <select name="signal" defaultValue={selectedSignal}>
-              <option value="">전체 포인트</option>
-              {pointFilters.map((item) => (
+            <span>온천지/도시</span>
+            <select name="area" defaultValue={area || legacyRegion}>
+              <option value="">전체 온천지</option>
+              {onsenAreaFilters.map((item) => (
+                <option key={item.value} value={item.value} disabled={item.disabled}>
+                  {item.label}
+                </option>
+              ))}
+            </select>
+          </label>
+
+          <label className="onsen-filter-select">
+            <span>이용 방식</span>
+            <select name="travel" defaultValue={selectedTravel}>
+              <option value="">전체 방식</option>
+              {travelContextFilters.map((item) => (
+                <option key={item.value} value={item.value} disabled={item.disabled}>
+                  {item.label}
+                </option>
+              ))}
+            </select>
+          </label>
+
+          <label className="onsen-filter-select">
+            <span>탕 구성</span>
+            <select name="bath" defaultValue={selectedBath}>
+              <option value="">전체 구성</option>
+              {bathContextFilters.map((item) => (
+                <option key={item.value} value={item.value}>
+                  {item.label}
+                </option>
+              ))}
+            </select>
+          </label>
+
+          <label className="onsen-filter-select">
+            <span>온천 기준</span>
+            <select name="water" defaultValue={selectedWater}>
+              <option value="">전체 기준</option>
+              {waterCriterionFilters.map((item) => (
                 <option key={item.value} value={item.value}>
                   {item.label}
                 </option>
@@ -153,7 +223,7 @@ export default async function OnsenPage({
         <aside className="onsen-filter-panel">
           <div className="onsen-filter-panel-head">
             <FunnelSimple size={18} weight="bold" aria-hidden="true" />
-            <span>예약 전 체크</span>
+            <span>온천 기준</span>
           </div>
           <dl className="onsen-summary-metrics">
             <div>
@@ -161,20 +231,20 @@ export default async function OnsenPage({
               <dd>{filtered.length}곳</dd>
             </div>
             <div>
-              <dt>먼저 볼 것</dt>
-              <dd>온천수</dd>
+              <dt>기본 축</dt>
+              <dd>지역 · 방식</dd>
             </div>
             <div>
-              <dt>현재 지역</dt>
-              <dd>{region ? '유후인' : '유후인 중심'}</dd>
+              <dt>현재 온천지</dt>
+              <dd>{activeAreaLabel ?? '유후인 중심'}</dd>
             </div>
           </dl>
           <div className="onsen-check-list">
             <p>같이 봐야 할 항목</p>
-            <span>객실탕에도 온천수가 들어오는지</span>
-            <span>직수 온천인지</span>
-            <span>물 추가나 온도 조정이 있는지</span>
-            <span>탕과 풀 조건이 섞여 있지 않은지</span>
+            <span>료칸 숙박인지, 당일온천인지</span>
+            <span>객실탕, 대절탕, 대욕장 중 무엇이 중심인지</span>
+            <span>온천수 운용과 직수 여부</span>
+            <span>겨울, 동선, 예약 조건처럼 놓치기 쉬운 점</span>
           </div>
         </aside>
 
@@ -213,7 +283,7 @@ export default async function OnsenPage({
                   <div>
                     <p className="onsen-card-area">{candidate.area}</p>
                     <h3>{candidate.name}</h3>
-                    <span>{candidate.jaName}</span>
+                    <span>{candidate.location?.display ?? candidate.jaName}</span>
                   </div>
                 </div>
 

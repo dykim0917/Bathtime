@@ -1,0 +1,312 @@
+{
+  "accommodation_name": {
+    "ko": "료소 유후인 야마다야",
+    "ja": "旅想ゆふいん やまだ屋",
+    "en": "Ryoso Yufuin Yamadaya",
+    "aliases": [
+      "由布院温泉 旅想 ゆふいん やまだ屋",
+      "旅想 ゆふいん やまだ屋"
+    ]
+  },
+  "research_date": "2026-07-01",
+  "official_facts": {
+    "official_urls": [
+      "https://yufuin-yamadaya.com/",
+      "https://yufuin-yamadaya.com/lp/room/",
+      "https://yufuin-yamadaya.com/lp/onsen/"
+    ],
+    "summary_ko": "공식 사이트 기준 1층 객실은 노천탕 또는 노천+내탕이 붙은 객실이고, 일부 2층 객실에는 내탕이 있다. 온천 페이지는 유후다케 조망 노천탕, 1층 내탕, 정원 내 예약형/대여형 노천탕 2곳을 안내한다. 공식 메인 문구는 알칼리성 단순온천, 풍부한 탕량, 원천가케나가시, 객실 수 대비 많은 온천 수를 강조한다. 객실탕과 가족/대여탕은 별개 시설로 분리해야 한다."
+  },
+  "collection_briefing": [
+    {
+      "source": "Official site",
+      "visible_review_count": null,
+      "rating": null,
+      "directly_read_reviews": 0,
+      "onsen_related_reviews": 0,
+      "access_status": "direct_fetch_full_read",
+      "notes": "객실 노천/내탕, 공용 노천·내탕, 대여 노천탕, 원천가케나가시 주장 확인. 리뷰 아님."
+    },
+    {
+      "source": "Jalan lodging",
+      "visible_review_count": 503,
+      "rating": null,
+      "directly_read_reviews": 96,
+      "onsen_related_reviews": 87,
+      "access_status": "direct_fetch_partial_read",
+      "notes": "최신 6건 + archive 3페이지 90건. 객실탕/대여탕/대욕장 신호가 모두 포함됨."
+    },
+    {
+      "source": "Rakuten Travel",
+      "visible_review_count": 359,
+      "rating": 3.33,
+      "directly_read_reviews": 20,
+      "onsen_related_reviews": 20,
+      "access_status": "direct_fetch_partial_read",
+      "notes": "웹 HTML의 PRELOADED_STATE에서 최신 20건과 내부 total 317 확인. 별도 API 엔드포인트는 404."
+    },
+    {
+      "source": "Booking.com KO",
+      "visible_review_count": 431,
+      "rating": null,
+      "directly_read_reviews": 24,
+      "onsen_related_reviews": 22,
+      "access_status": "direct_fetch_partial_read",
+      "notes": "정적 페이지에서 24건만 직접 확인. page=2 이후는 같은 첫 페이지 반복 반환되어 직접 카운트 제외."
+    },
+    {
+      "source": "Agoda API",
+      "visible_review_count": 1043,
+      "rating": 9.2,
+      "directly_read_reviews": 146,
+      "onsen_related_reviews": 88,
+      "access_status": "direct_fetch_partial_read",
+      "notes": "BelowFold JSON과 ReviewComments API에서 Agoda/Booking provider 댓글 146건 유니크 확보. pageNo 확장은 첫 묶음 반복 또는 DNS 오류."
+    },
+    {
+      "source": "Trip.com / Hotels.com / Korean web snippets",
+      "visible_review_count": 31,
+      "rating": 9.2,
+      "directly_read_reviews": 0,
+      "onsen_related_reviews": 0,
+      "access_status": "snippet_only",
+      "notes": "Trip.com HTML에는 일부 리뷰 스니펫이 보였지만 구조화 직접 카운트에는 포함하지 않음. Hotels.com은 DNS 실패, 검색 스니펫만 참고."
+    },
+    {
+      "source": "Aside Browser",
+      "visible_review_count": null,
+      "rating": null,
+      "directly_read_reviews": 0,
+      "onsen_related_reviews": 0,
+      "access_status": "blocked_or_unreadable",
+      "notes": "aside repl 실행 시 localhost 연결 타임아웃. 이번 산출물은 Aside 본문 확인 없이 정적 fetch/API/web search 기반."
+    }
+  ],
+  "sampling_totals": {
+    "directly_read_reviews": 286,
+    "onsen_related_reviews": 217,
+    "platforms_direct": 5,
+    "data_quality_grade": "B+",
+    "sampling_note": "300건 목표에는 14건 미달. 다만 5개 직접 플랫폼, 일본 OTA+한국어 글로벌 OTA+Agoda API가 섞인 표본이라 신호 해석에는 충분히 유의미하다."
+  },
+  "review_signal_summary": [
+    {
+      "bath_area": "public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 188,
+      "source_count": 184,
+      "platform_count": 5,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "private_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "positive",
+      "mention_count": 85,
+      "source_count": 83,
+      "platform_count": 5,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 14,
+      "source_count": 13,
+      "platform_count": 4,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "crowding",
+      "signal_direction": "positive",
+      "mention_count": 13,
+      "source_count": 13,
+      "platform_count": 4,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "booking_confusion",
+      "signal_direction": "mixed",
+      "mention_count": 35,
+      "source_count": 35,
+      "platform_count": 5,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 6,
+      "source_count": 6,
+      "platform_count": 3,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "unclear",
+      "bath_area_confidence": "unclear",
+      "signal_type": "weak_onsen_feeling",
+      "signal_direction": "negative",
+      "mention_count": 1,
+      "source_count": 1,
+      "platform_count": 1,
+      "contradiction_level": "low",
+      "review_signal_status": "insufficient"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "chlorine_smell",
+      "signal_direction": "neutral",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient"
+    }
+  ],
+  "negative_attention_signals": [
+    {
+      "issue": "객실 노천탕 온도 조절",
+      "bath_area": "room_open_air_bath",
+      "evidence_level": "weak but concrete",
+      "summary": "객실 노천탕 온도가 너무 높거나 물 조절 장치가 있으면 좋겠다는 구체 후기가 일부 있다. 객실탕 자체 평가는 강하지만, 온도 조절은 주의점으로 남길 만하다.",
+      "sample_count": 2
+    },
+    {
+      "issue": "가족/대여탕 예약·선점",
+      "bath_area": "private_bath",
+      "evidence_level": "moderate",
+      "summary": "대여탕이 많고 만족도는 높지만, 인기 가족탕은 늦게 도착하면 이미 예약되어 있거나 체크인 후 예약해야 한다는 운영 신호가 반복된다.",
+      "sample_count": 35
+    },
+    {
+      "issue": "소음/목조건물",
+      "bath_area": "facility_wide",
+      "evidence_level": "weak",
+      "summary": "한국어 블로그/일부 후기에서 독채가 아니어서 층간·벽간 소음 가능성이 언급된다. 온천 신호는 아니지만 객실탕 숙박 경험에는 영향을 줄 수 있다.",
+      "sample_count": 2
+    },
+    {
+      "issue": "염소 냄새",
+      "bath_area": "facility_wide",
+      "evidence_level": "none in direct sample",
+      "summary": "직접 확인 286건에서는 염소/칼키 냄새 신호가 잡히지 않았다.",
+      "sample_count": 0
+    }
+  ],
+  "evidence_examples": [
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "OTA full review",
+      "source_url": "https://www.jalan.net/yad303690/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "대여 노천탕, 내탕, 객실 노천탕을 모두 이용했고 특히 아침 객실 노천탕이 좋았다고 평가.",
+      "original_keyword": "お部屋の露天風呂 / ツルツル",
+      "review_date": "2026/5/16"
+    },
+    {
+      "signal_type": "private_bath_experience",
+      "source_type": "OTA full review",
+      "source_url": "https://www.jalan.net/yad303690/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "GW에도 객실 수가 적어 대욕장·식당이 붐비지 않았고 대여탕이 많다고 언급.",
+      "original_keyword": "貸し切り風呂も沢山",
+      "review_date": "2026/5/5"
+    },
+    {
+      "signal_type": "private_bath_experience",
+      "source_type": "OTA preloaded full review",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/54128/review.html",
+      "language": "ja",
+      "short_paraphrase": "온천과 유후다케 조망을 칭찬하며 예약제 가족탕이 있어 여러 세대에 좋다고 언급.",
+      "original_keyword": "予約制の家族風呂",
+      "review_date": "2026-03-17"
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "OTA full review",
+      "source_url": "https://www.jalan.net/yad303690/kuchikomi/archive/",
+      "language": "ja",
+      "short_paraphrase": "객실 노천탕은 좋지만 온도가 높아 천천히 들어가기 어려웠다는 구체 불만.",
+      "original_keyword": "55度 / 客室露天",
+      "review_date": "2017/6/11"
+    },
+    {
+      "signal_type": "private_bath_experience",
+      "source_type": "Booking full review",
+      "source_url": "https://www.booking.com/reviews/jp/hotel/ryoso-yufuin-yamadaya.ko.html",
+      "language": "ko",
+      "short_paraphrase": "공유 온천과 프라이빗 온천 모두 만족스럽고 식사·친절도 좋았다고 평가.",
+      "original_keyword": "공유 온천 / 프라이빗 온천",
+      "review_date": "2026년 5월"
+    },
+    {
+      "signal_type": "private_bath_experience",
+      "source_type": "Agoda API full review",
+      "source_url": "https://www.agoda.com/ko-kr/ryoso-yufuin-yamadaya-hotel/hotel/yufu-jp.html",
+      "language": "ko/en/auto",
+      "short_paraphrase": "개인탕·프라이빗탕이 많아 커플/가족이 함께 온천을 즐기기 좋다는 한국어 후기가 반복.",
+      "original_keyword": "개인탕 / private bath",
+      "review_date": "various"
+    },
+    {
+      "signal_type": "water_texture",
+      "source_type": "OTA full review",
+      "source_url": "https://www.jalan.net/yad303690/kuchikomi/archive/",
+      "language": "ja",
+      "short_paraphrase": "여러 가족탕을 편하게 이용했고 물이 피부를 매끈하게 했다는 평가.",
+      "original_keyword": "お肌がツルツル",
+      "review_date": "2021/8/12"
+    },
+    {
+      "signal_type": "crowding",
+      "source_type": "OTA full review",
+      "source_url": "https://www.jalan.net/yad303690/kuchikomi/archive/",
+      "language": "ja",
+      "short_paraphrase": "객실 수 대비 대여탕이 많아 다른 손님을 신경 쓰지 않고 쓸 수 있었다는 신호.",
+      "original_keyword": "他のお客さんを気にせず",
+      "review_date": "2021/12/4"
+    },
+    {
+      "signal_type": "booking_confusion",
+      "source_type": "OTA full review",
+      "source_url": "https://www.jalan.net/yad303690/kuchikomi/archive/",
+      "language": "ja",
+      "short_paraphrase": "인기 대여탕은 체크인 후 예약해야 하고 빨리 도착하는 편이 좋다는 운영 조언.",
+      "original_keyword": "50分毎の予約制",
+      "review_date": "2023/5/4"
+    },
+    {
+      "signal_type": "weak_onsen_feeling",
+      "source_type": "OTA full review",
+      "source_url": "https://www.jalan.net/yad303690/kuchikomi/archive/",
+      "language": "ja",
+      "short_paraphrase": "전반 기대가 커서 약간 부족했다는 단독 평가. 온천 자체에 대한 반복 불만은 아님.",
+      "original_keyword": "物足りない",
+      "review_date": "2022/10/25"
+    }
+  ],
+  "bathtime_interpretation_ko": "직접 확인 286건 기준으로, 야마다야는 “객실 노천탕도 있지만 핵심은 다수의 공용/대여 온천을 조용히 돌려 쓰는 소규모 료칸”으로 보는 편이 정확합니다. 대욕장·노천탕·가족/대여탕 만족은 5개 직접 플랫폼에서 뚜렷하게 반복되고, 객실 노천탕은 특정 1층 객실 선택 시 강점으로 확인됩니다. 다만 인기 대여탕 예약/선점과 객실 노천탕 온도 조절은 Bathtime에서 주의 신호로 함께 보여주는 것이 좋습니다.",
+  "gaps": [
+    "300건 목표에는 14건 미달. Agoda API는 첫 140건 이후 pageNo가 반복되거나 DNS 오류가 발생했고, Booking.com은 page=2 이후 첫 페이지 반복 반환.",
+    "Aside Browser는 localhost 연결 타임아웃으로 Google/Naver 동적 확인 실패.",
+    "Google Maps 본문은 직접 카운트에 포함하지 못함.",
+    "Hotels.com은 DNS 실패로 검색 스니펫만 확인.",
+    "Trip.com은 31개 리뷰 노출 및 일부 스니펫 확인, 구조화 직접 카운트 제외."
+  ]
+}

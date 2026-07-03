@@ -1,0 +1,298 @@
+{
+  "accommodation_name": "おやど 二本の葦束",
+  "normalized_identity": {
+    "korean_name": "오야도 니혼노아시타바 / 오야도 니혼노 아시타바",
+    "japanese_name": "おやど 二本の葦束",
+    "english_names": ["Oyado Nihon no Ashitaba", "Nihon-no-Ashitaba"],
+    "aliases_or_old_names": ["限定1日13組・全室離れ 大露天も貸し切り おやど 二本の葦束"],
+    "official_site": "https://www.2hon-no-ashitaba.co.jp/",
+    "major_ids": {
+      "rakuten_hotel_id": "54542",
+      "jalan_yad": "338096",
+      "ikkyu_yahoo_id": "00001426",
+      "tripcom_hotel_detail": "3288765"
+    }
+  },
+  "official_facts": [
+    {
+      "source_url": "https://www.2hon-no-ashitaba.co.jp/",
+      "fact": "공식 사이트는 4500평 부지에 모옥과 13동의 독채 객실이 있으며, 온천은 '모두 대절'이라고 설명한다.",
+      "bath_area": "facility_wide",
+      "official_keywords": ["全室離れの13棟", "すべてが貸切"]
+    },
+    {
+      "source_url": "https://www.2hon-no-ashitaba.co.jp/onsen/onsen.html",
+      "fact": "공식 온천 페이지는 대노천풍로, 죽림풍로, 쇼와노유도코로 1~7번탕 중 6개 대절탕을 소개한다.",
+      "bath_area": "private_bath",
+      "official_keywords": ["大露天風呂", "竹林風呂", "貸切風呂が6つ"]
+    },
+    {
+      "source_url": "https://www.2hon-no-ashitaba.co.jp/onsen/onsen.html",
+      "fact": "공식 온천 정보의 泉質은 단순온천・단순천・약알칼리 단순천으로 표기된다.",
+      "bath_area": "facility_wide",
+      "official_keywords": ["単純温泉", "単純泉", "弱アルカリ単純泉"]
+    },
+    {
+      "source_url": "https://www.2hon-no-ashitaba.co.jp/room/room.html",
+      "fact": "일부 객실은 전용 내탕, 전용 반노천, 전용 내탕+노천을 갖추며, 모든 객실에 객실탕이 있는 구조는 아니다.",
+      "bath_area": "room_bath",
+      "official_keywords": ["専用風呂（内湯・露天）", "専用風呂（半露天）", "専用風呂（内湯）"]
+    }
+  ],
+  "collection_briefing": {
+    "date": "2026-07-01",
+    "total_visible_review_pool_observed": "Rakuten 197, Jalan 168, Trip.com 97, Yahoo/Ikkyu 25 observed. Platform totals may overlap and were not summed as unique travelers.",
+    "directly_read_reviews": 184,
+    "signal_rows": 354,
+    "onsen_related_directly_read_reviews": 184,
+    "data_quality_grade": "B",
+    "sampling_strata": ["Rakuten API full body 152", "Jalan latest/archive static body", "Trip.com JSON-LD global reviews", "Ikkyu/Yahoo visible body examples", "latest", "room-type specific", "negative/attention keywords"],
+    "aside_browser_status": "Aside Browser successfully opened Google search surface and confirmed review-source leads; Google AI/search snippets were used only for source discovery, not as direct evidence counts.",
+    "notes": "300+ direct review target was not reached, but 184 independent onsen-related reviews across 5 platforms provide a meaningful B-grade sample."
+  },
+  "platforms": [
+    {
+      "source": "Rakuten Travel",
+      "visible_review_count": 197,
+      "rating": 4.88,
+      "directly_read_reviews": 152,
+      "onsen_related_reviews": 152,
+      "access_status": "direct_fetch_full_read",
+      "notes": "Rakuten API exposed full review bodies."
+    },
+    {
+      "source": "Jalan",
+      "visible_review_count": 168,
+      "rating": null,
+      "directly_read_reviews": 23,
+      "onsen_related_reviews": 23,
+      "access_status": "direct_fetch_partial_read",
+      "notes": "Latest and archive pages were readable; sampled visible static page bodies."
+    },
+    {
+      "source": "Trip.com",
+      "visible_review_count": 97,
+      "rating": 9.5,
+      "directly_read_reviews": 16,
+      "onsen_related_reviews": 16,
+      "access_status": "direct_fetch_partial_read",
+      "notes": "JSON-LD exposed selected multilingual review bodies."
+    },
+    {
+      "source": "Ikkyu/Yahoo Travel",
+      "visible_review_count": 25,
+      "rating": 4.58,
+      "directly_read_reviews": 6,
+      "onsen_related_reviews": 6,
+      "access_status": "web_visible_partial_read",
+      "notes": "Web view exposed representative review bodies; local direct fetch returned 403."
+    },
+    {
+      "source": "Google/Naver",
+      "visible_review_count": null,
+      "rating": null,
+      "directly_read_reviews": 0,
+      "onsen_related_reviews": 0,
+      "access_status": "aside_search_snapshot_read",
+      "notes": "Google search surface opened in Aside; Naver full review body sampling not completed in this pass."
+    }
+  ],
+  "review_signal_summary": [
+    {
+      "bath_area": "private_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "positive",
+      "mention_count": 107,
+      "source_count": 88,
+      "platform_count": 5,
+      "contradiction_level": "medium",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 122,
+      "source_count": 82,
+      "platform_count": 5,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 11,
+      "source_count": 10,
+      "platform_count": 3,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "private_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "booking_confusion",
+      "signal_direction": "mixed",
+      "mention_count": 91,
+      "source_count": 55,
+      "platform_count": 5,
+      "contradiction_level": "medium",
+      "review_signal_status": "conflicting"
+    },
+    {
+      "bath_area": "private_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "crowding",
+      "signal_direction": "positive",
+      "mention_count": 9,
+      "source_count": 8,
+      "platform_count": 3,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "weak_onsen_feeling",
+      "signal_direction": "negative",
+      "mention_count": 1,
+      "source_count": 1,
+      "platform_count": 1,
+      "contradiction_level": "low",
+      "review_signal_status": "insufficient"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "chlorine_smell",
+      "signal_direction": "neutral",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient"
+    }
+  ],
+  "negative_or_attention_signals": [
+    {
+      "issue": "대노천풍로 예약/시간 제한",
+      "bath_area": "private_bath",
+      "evidence_level": "repeated",
+      "summary": "대노천 자체는 강하게 호평되지만, 예약제·30~40분·밝은 시간 예약 실패 같은 운영 기대 차이가 반복된다.",
+      "sample_count": 12
+    },
+    {
+      "issue": "객실 타입별 욕실 차이",
+      "bath_area": "room_bath",
+      "evidence_level": "repeated",
+      "summary": "공식상 모든 객실에 객실탕이 있는 구조가 아니며, 후기에서도 내탕/노천 없음 객실을 예약한 뒤 공용 대절탕을 이용했다는 맥락이 나온다.",
+      "sample_count": 8
+    },
+    {
+      "issue": "동선/계단/거리",
+      "bath_area": "facility_wide",
+      "evidence_level": "repeated",
+      "summary": "넓은 부지와 경사·계단이 매력인 동시에 고령자/거동 불편자에게는 부담이라는 신호가 반복된다.",
+      "sample_count": 27
+    },
+    {
+      "issue": "청소/자연물/벌레",
+      "bath_area": "private_bath",
+      "evidence_level": "minor_repeat",
+      "summary": "자연 속 노천 특성상 벌레·잎, 드물게 청소/물 상태 불만이 나온다.",
+      "sample_count": 12
+    },
+    {
+      "issue": "수압/샤워 사용성",
+      "bath_area": "room_bath",
+      "evidence_level": "weak_repeat",
+      "summary": "일부 객실 또는 탕에서 수압이 약하거나 샤워 사용성이 떨어진다는 불만이 소수 확인된다.",
+      "sample_count": 3
+    }
+  ],
+  "evidence_examples": [
+    {
+      "signal_type": "private_bath_experience",
+      "source_type": "Rakuten review",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/54542/review.html",
+      "language": "ja",
+      "short_paraphrase": "Reviewer entered all 8 baths and the large open-air bath twice; praised each as atmospheric and relaxing because all were private-use.",
+      "original_keyword": "8つあるお風呂 / 大露天風呂 / 貸切り",
+      "review_date": "2026-02-24"
+    },
+    {
+      "signal_type": "water_texture",
+      "source_type": "Rakuten review",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/54542/review.html",
+      "language": "ja",
+      "short_paraphrase": "Repeat guest says simple spring still felt slick, temperature was right, and many private baths could be used freely.",
+      "original_keyword": "単純泉 / トロトロ / 24時間入り放題",
+      "review_date": "2026-03-30"
+    },
+    {
+      "signal_type": "private_bath_experience",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad338096/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "Guest says the mountaintop bath was wide and excellent after many Yufuin stays.",
+      "original_keyword": "山の頂上のお風呂 / 広く最高",
+      "review_date": "2026-05-24"
+    },
+    {
+      "signal_type": "booking_confusion",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad338096/kuchikomi/archive/",
+      "language": "ja",
+      "short_paraphrase": "Bathless room stay was mostly fine because many private baths were available, but the reservable large bath had leaves and insects and weak hot-water pressure.",
+      "original_keyword": "貸切風呂 / 葉っぱや虫 / 水圧",
+      "review_date": "2025-04-29"
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Trip.com review",
+      "source_url": "https://jp.trip.com/hotels/yufu-hotel-detail-3288765/oyado-nihon-no-ashitaba/review.html",
+      "language": "en",
+      "short_paraphrase": "Guest praised a private in-room onsen and the five private baths in the public bath building.",
+      "original_keyword": "private in-room onsen / 5 private onsen",
+      "review_date": "2026-04-19"
+    },
+    {
+      "signal_type": "booking_confusion",
+      "source_type": "Trip.com review",
+      "source_url": "https://jp.trip.com/hotels/yufu-hotel-detail-3288765/oyado-nihon-no-ashitaba/review.html",
+      "language": "zh",
+      "short_paraphrase": "Guest found the large reservable open-air bath excellent but a non-reservable bamboo bath too small, and room/bath distance inconvenient for an elderly parent.",
+      "original_keyword": "大露天風呂 / 竹林風呂 / 較遠",
+      "review_date": "2025-10-29"
+    },
+    {
+      "signal_type": "private_bath_experience",
+      "source_type": "Yahoo Travel review",
+      "source_url": "https://travel.yahoo.co.jp/00001426/review/",
+      "language": "ja",
+      "short_paraphrase": "Guest says all baths are private-use, allowing relaxed bathing during an anniversary stay.",
+      "original_keyword": "すべて貸切風呂",
+      "review_date": "2025-03-22"
+    },
+    {
+      "signal_type": "booking_confusion",
+      "source_type": "Ikkyu review",
+      "source_url": "https://www.ikyu.com/00001426/review/",
+      "language": "ja",
+      "short_paraphrase": "Guest notes bathless-room stay and says the large reservable bath can be used up to two times; very hot source water at shower startup needs caution.",
+      "original_keyword": "内風呂なし / ２回まで / 非常に熱い",
+      "review_date": "2025-10-01"
+    }
+  ],
+  "bathtime_interpretation_ko": "후기 184건을 직접 읽어보면, 니혼노아시타바는 객실탕 단일 매력이 아니라 '여러 대절탕을 순회하는 숙소'라는 신호가 강하게 반복됩니다. 대노천풍로와 죽림/쇼와 계열 대절탕의 프라이빗성은 강점으로 충분히 서비스화할 가치가 있지만, 예약 시간·객실 타입별 욕실 유무·경사/계단·자연물 유입은 반드시 주의 정보로 함께 보여줘야 합니다. Bathtime에서는 '전 객실 객실탕'으로 오해시키면 안 되고, '일부 객실탕 + 전 시설 대절탕 중심'으로 분류하는 것이 맞습니다.",
+  "gaps": [
+    "Google Maps full review tab was not sampled directly; Aside opened Google search surface only.",
+    "Naver Blog/Cafe full-body sampling was not completed in this pass.",
+    "Expedia returned HTTP 429 during direct fetch.",
+    "300+ direct review target was not reached; current directly read unique review count is 184.",
+    "Jalan visible total is 168, but static latest/archive pages exposed only a subset in this pass."
+  ]
+}

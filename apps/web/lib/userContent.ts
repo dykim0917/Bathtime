@@ -104,6 +104,20 @@ export async function getSavedContentIds(): Promise<string[]> {
   return (data ?? []).map((item) => item.target_id as string);
 }
 
+export async function getSavedOnsenSlugs(): Promise<string[]> {
+  const user = await getAuthenticatedUser();
+  const supabase = requireClient();
+  const { data, error } = await supabase
+    .from('saved_items')
+    .select('target_id')
+    .eq('user_id', user.id)
+    .eq('target_type', 'place')
+    .order('created_at', { ascending: false });
+
+  if (error) throw error;
+  return (data ?? []).map((item) => item.target_id as string);
+}
+
 export async function getNotificationPreference(): Promise<boolean> {
   const user = await getAuthenticatedUser();
   const supabase = requireClient();
@@ -184,6 +198,21 @@ export async function isContentSaved(id: string): Promise<boolean> {
   return Boolean(data);
 }
 
+export async function isOnsenSaved(slug: string): Promise<boolean> {
+  const user = await getAuthenticatedUser();
+  const supabase = requireClient();
+  const { data, error } = await supabase
+    .from('saved_items')
+    .select('id')
+    .eq('user_id', user.id)
+    .eq('target_type', 'place')
+    .eq('target_id', slug)
+    .maybeSingle();
+
+  if (error) throw error;
+  return Boolean(data);
+}
+
 export async function saveContent(id: string): Promise<void> {
   const user = await getAuthenticatedUser({ ensureProfile: true });
   const supabase = requireClient();
@@ -191,6 +220,18 @@ export async function saveContent(id: string): Promise<void> {
     user_id: user.id,
     target_type: 'content',
     target_id: id,
+  });
+
+  if (error && !isUniqueViolation(error)) throw error;
+}
+
+export async function saveOnsen(slug: string): Promise<void> {
+  const user = await getAuthenticatedUser({ ensureProfile: true });
+  const supabase = requireClient();
+  const { error } = await supabase.from('saved_items').insert({
+    user_id: user.id,
+    target_type: 'place',
+    target_id: slug,
   });
 
   if (error && !isUniqueViolation(error)) throw error;
@@ -209,6 +250,19 @@ export async function removeSavedContent(id: string): Promise<void> {
   if (error) throw error;
 }
 
+export async function removeSavedOnsen(slug: string): Promise<void> {
+  const user = await getAuthenticatedUser();
+  const supabase = requireClient();
+  const { error } = await supabase
+    .from('saved_items')
+    .delete()
+    .eq('user_id', user.id)
+    .eq('target_type', 'place')
+    .eq('target_id', slug);
+
+  if (error) throw error;
+}
+
 export async function toggleSavedContent(id: string): Promise<boolean> {
   const saved = await isContentSaved(id);
   if (saved) {
@@ -217,6 +271,17 @@ export async function toggleSavedContent(id: string): Promise<boolean> {
   }
 
   await saveContent(id);
+  return true;
+}
+
+export async function toggleSavedOnsen(slug: string): Promise<boolean> {
+  const saved = await isOnsenSaved(slug);
+  if (saved) {
+    await removeSavedOnsen(slug);
+    return false;
+  }
+
+  await saveOnsen(slug);
   return true;
 }
 

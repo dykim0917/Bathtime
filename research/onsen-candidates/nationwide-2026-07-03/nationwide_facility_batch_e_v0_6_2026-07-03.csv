@@ -1,0 +1,59 @@
+slug,name_ja,name_ko_or_en,area_slug,prefecture,facility_type,initial_tier,initial_onsen_facility_signals,source_basis,verification_status
+nozawa-ogama,野沢温泉 麻釜,Ogama,nozawa,長野県,food_steam,Tier 1,온천마을 상징 조리 원천과 관광 동선 후보,regional tourism source,needs_official_crosscheck
+nozawa-oyu,野沢温泉 大湯,Oyu,nozawa,長野県,historic_public_bath,Tier 1,노자와 대표 외탕과 고온탕 기대차 후보,regional tourism source,needs_official_crosscheck
+nozawa-sotoyu-route,野沢温泉 外湯めぐり,Nozawa Sotoyu Route,nozawa,長野県,historic_public_bath,Tier 1,13개 공동탕 순례와 현지 목욕문화 신호,regional tourism source,needs_official_crosscheck
+nozawa-furusato-no-yu,野沢温泉 ふるさとの湯,Furusato no Yu,nozawa,長野県,public_bath_facility,Tier 1,관광객 친화적 유료 당일온천 후보,regional tourism source,needs_official_crosscheck
+yudanaka-kaede-no-yu,湯田中駅前温泉 楓の湯,Kaede no Yu,yudanaka-shibu,長野県,public_bath_facility,Tier 1,역앞 당일온천과 접근성 강한 후보,regional tourism source,needs_official_crosscheck
+shibu-kyuto-route,渋温泉 九湯めぐり,Shibu Kyu-to Meguri,yudanaka-shibu,長野県,historic_public_bath,Tier 1,숙박자 중심 9외탕 순례와 이용조건 신호,regional tourism source,needs_official_crosscheck
+shibu-oinoyu,渋温泉 大湯,Shibu Oyu,yudanaka-shibu,長野県,historic_public_bath,Tier 1,일부 일반개방 외탕과 고온탕 후보,regional tourism source,needs_official_crosscheck
+bessho-ishiyu,別所温泉 石湯,Ishiyu,bessho,長野県,historic_public_bath,Tier 1,별소온천 공동탕과 역사 신호,regional tourism source,needs_source_crosscheck
+bessho-otsukai-yu,別所温泉 大師湯,Daishiyu,bessho,長野県,historic_public_bath,Tier 1,공동탕 순례와 현지형 이용 후보,regional tourism source,needs_source_crosscheck
+bessho-ainome-yu,別所温泉 あいそめの湯,Aisome no Yu,bessho,長野県,public_bath_facility,Tier 1,관광객 이용 쉬운 공공 당일온천 후보,regional tourism source,needs_official_crosscheck
+shirahonet-public-openair,白骨温泉 公共野天風呂,Shirahone Public Open-Air Bath,shirahonet,長野県,open_air_public_bath,Tier 1,백탁 노천 공공탕과 계절 운영 후보,regional tourism source,needs_official_crosscheck
+echigo-yuzawa-yama-no-yu,越後湯沢温泉 山の湯,Yama no Yu,echigo-yuzawa,新潟県,historic_public_bath,Tier 1,원천 공동탕과 현지 이용 신호,regional tourism source,needs_source_crosscheck
+echigo-yuzawa-komako-no-yu,越後湯沢温泉 駒子の湯,Komako no Yu,echigo-yuzawa,新潟県,public_bath_facility,Tier 1,설국 문학 연계 당일온천 후보,regional tourism source,needs_source_crosscheck
+echigo-yuzawa-ponshukan-sakebath,ぽんしゅ館 酒風呂 湯の沢,Ponshukan Sake Bath,echigo-yuzawa,新潟県,wellness_spa,Tier 1,역내 술목욕 체험과 관광 동선 후보,regional tourism source,needs_source_crosscheck
+tsukioka-bijin-no-izumi,月岡温泉 美人の泉,Bijin no Izumi,tsukioka,新潟県,public_bath_facility,Tier 1,월오카 미인탕 당일온천 대표 후보,regional tourism source,needs_official_crosscheck
+tsukioka-ashiyu-yuashibi,月岡温泉 足湯 湯足美,Yuashibi Footbath,tsukioka,新潟県,footbath,Tier 1,온천가 중심 무료 족욕과 산책 동선 후보,regional tourism source,needs_source_crosscheck
+senami-ryusen,瀬波温泉 龍泉,Ryusen,senami,新潟県,public_bath_facility,Tier 2,당일온천과 해안 관광 동선 후보,regional tourism source,needs_source_crosscheck
+senami-footbath,瀬波温泉 噴湯公園 足湯,Senami Footbath,senami,新潟県,footbath,Tier 2,분탕공원 족욕과 원천 관찰 후보,regional tourism source,needs_source_crosscheck
+yamashiro-soyu,山代温泉 総湯,Yamashiro Soyu,yamashiro,石川県,historic_public_bath,Tier 1,야마시로 대표 공동탕과 온천가 중심 신호,regional tourism source,needs_official_crosscheck
+yamashiro-ko-soyu,山代温泉 古総湯,Yamashiro Ko-Soyu,yamashiro,石川県,historic_public_bath,Tier 1,메이지풍 복원 공동탕과 관광객 기대차 후보,regional tourism source,needs_official_crosscheck
+yamanaka-kikunoyu,山中温泉 菊の湯,Kiku no Yu,yamanaka,石川県,historic_public_bath,Tier 1,야마나카 대표 총탕과 현지 목욕문화 후보,regional tourism source,needs_official_crosscheck
+yamanaka-kakusenkei-footbath,山中温泉 鶴仙渓川床・足湯,Kakusenkei Footbath,yamanaka,石川県,footbath,Tier 2,계곡 산책과 족욕 동선 후보,regional tourism source,needs_source_crosscheck
+wakura-soyu,和倉温泉 総湯,Wakura Soyu,wakura,石川県,public_bath_facility,Tier 1,와쿠라 대표 당일온천과 고염천 후보,regional tourism source,needs_official_crosscheck
+wakura-yuttari-park-footbath,和倉温泉 湯っ足りパーク,Wakura Yuttari Park Footbath,wakura,石川県,footbath,Tier 1,바다 전망 족욕과 산책 동선 후보,regional tourism source,needs_source_crosscheck
+katayamazu-machiyu,片山津温泉 総湯,Katayamazu Soyu Machiyu,katayamazu,石川県,public_bath_facility,Tier 1,호수 전망 현대 공중탕 후보,regional tourism source,needs_official_crosscheck
+unazuki-soyu-yumedokoro,宇奈月温泉 総湯 湯めどころ宇奈月,Yumedokoro Unazuki,unazuki,富山県,public_bath_facility,Tier 1,구로베 협곡 동선의 대표 당일온천 후보,regional tourism source,needs_official_crosscheck
+unazuki-omokage-footbath,宇奈月温泉 おもかげ足湯,Omokage Footbath,unazuki,富山県,footbath,Tier 2,역전 족욕과 관광 동선 후보,regional tourism source,needs_source_crosscheck
+misasa-kabuyu,三朝温泉 株湯,Kabuyu,misasa,鳥取県,historic_public_bath,Tier 1,미사사 원천 공동탕과 라듐 온천 신호,regional tourism source,needs_official_crosscheck
+misasa-kawara-buro,三朝温泉 河原風呂,Kawara-buro,misasa,鳥取県,open_air_public_bath,Tier 1,강변 노천 공동탕과 이용난이도 후보,regional tourism source,needs_source_crosscheck
+misasa-radium-nettaiki,三朝温泉 ラドン熱気浴,River radon steam experience,misasa,鳥取県,steam_bath_facility,Tier 1,라돈 열기욕 체험과 기대차 후보,regional tourism source,needs_source_crosscheck
+kaike-ou-land,皆生温泉 おーゆ・ランド,OU Land,kaike,鳥取県,large_day_use_complex,Tier 1,대형 당일온천과 가족탕 후보,regional tourism source,needs_official_crosscheck
+kaike-shio-no-yu-footbath,皆生温泉 潮風の足湯,Kaike Footbath,kaike,鳥取県,footbath,Tier 2,해안 족욕과 산책 동선 후보,regional tourism source,needs_source_crosscheck
+tamatsukuri-yu-yu,玉造温泉 ゆーゆ,Yu-yu,tamatsukuri,島根県,public_bath_facility,Tier 1,옥조온천 대표 당일온천과 미인탕 후보,regional tourism source,needs_official_crosscheck
+tamatsukuri-himegami-hiroba,玉造温泉 姫神広場 足湯,Himegami Footbath,tamatsukuri,島根県,footbath,Tier 1,온천가 중심 족욕과 산책 동선 후보,regional tourism source,needs_source_crosscheck
+matsue-shinjiko-chidori-yu,松江しんじ湖温泉 ちどり湯,Chidori-yu,matsue-shinjiko,島根県,public_bath_facility,Tier 2,신지호 온천 공중탕과 도심 접근성 후보,regional tourism source,needs_source_crosscheck
+yubara-sunayu,湯原温泉 砂湯,Sunayu,yubara,岡山県,open_air_public_bath,Tier 1,강변 무료 노천탕과 혼욕 기대차 후보,regional tourism source,needs_official_crosscheck
+yubara-yumoto-onsenkan,湯原温泉 湯本温泉館,Yumoto Onsenkan,yubara,岡山県,public_bath_facility,Tier 1,스나유 인근 공공 당일온천 후보,regional tourism source,needs_official_crosscheck
+yuda-kitsune-no-ashiato,湯田温泉 狐の足あと,Kitsune no Ashiato,yuda,山口県,footbath,Tier 1,카페형 족욕과 도심 관광 동선 후보,regional tourism source,needs_official_crosscheck
+yuda-kame-no-yu,湯田温泉 亀乃湯,Kame no Yu,yuda,山口県,public_bath_facility,Tier 1,도심형 공동탕과 현지 이용 후보,regional tourism source,needs_source_crosscheck
+ureshino-siebold-no-yu,嬉野温泉 シーボルトの湯,Siebold no Yu,ureshino,佐賀県,historic_public_bath,Tier 1,우레시노 대표 공중탕과 미인탕 후보,regional tourism source,needs_official_crosscheck
+ureshino-hyotan-onsen,嬉野温泉 百年の湯,Hyakunen no Yu,ureshino,佐賀県,public_bath_facility,Tier 1,가족탕과 당일온천 후보,regional tourism source,needs_official_crosscheck
+ureshino-footbath,嬉野温泉 湯宿広場 足湯,Ureshino Footbath,ureshino,佐賀県,footbath,Tier 2,온천가 족욕과 산책 동선 후보,regional tourism source,needs_source_crosscheck
+takeo-motonoyu,武雄温泉 元湯,Takeo Motoyu,takeo,佐賀県,historic_public_bath,Tier 1,무형문화재급 누문 인근 역사 공중탕 후보,regional tourism source,needs_official_crosscheck
+takeo-saginoyu,武雄温泉 鷺乃湯,Saginoyu,takeo,佐賀県,public_bath_facility,Tier 1,노천탕 있는 당일온천 후보,regional tourism source,needs_official_crosscheck
+ginzan-shirogane-yu,銀山温泉 しろがね湯,Shirogane-yu,ginzan,山形県,public_bath_facility,Tier 1,온천가 중심 소형 공중탕 후보,regional tourism source,needs_official_crosscheck
+ginzan-warashiyu,銀山温泉 和楽足湯,Warashi-yu,ginzan,山形県,footbath,Tier 1,상징 온천가 무료 족욕과 야경 동선 후보,regional tourism source,needs_source_crosscheck
+zao-dai-rotenburo,蔵王温泉 大露天風呂,Zao Dai Rotenburo,zao-yamagata,山形県,open_air_public_bath,Tier 1,강산성 유황 대노천과 계절 운영 후보,regional tourism source,needs_official_crosscheck
+zao-shinzaemon-no-yu,蔵王温泉 新左衛門の湯,Shinzaemon no Yu,zao-yamagata,山形県,public_bath_facility,Tier 1,관광객 친화적 당일 유황온천 후보,regional tourism source,needs_official_crosscheck
+kaminoyama-shimo-oyu,かみのやま温泉 下大湯,Shimo-Oyu,kaminoyama,山形県,historic_public_bath,Tier 1,가미노야마 대표 공동탕과 현지 이용 후보,regional tourism source,needs_source_crosscheck
+kaminoyama-yumachi-footbath,かみのやま温泉 足湯めぐり,Kaminoyama Footbath Route,kaminoyama,山形県,footbath,Tier 2,온천가 족욕 순례와 산책 동선 후보,regional tourism source,needs_source_crosscheck
+sukayu-hiba-sennin-buro,酸ヶ湯温泉 ヒバ千人風呂,Hiba Sennin-buro,sukayu,青森県,historic_public_bath,Tier 1,혼욕 대욕장과 강산성 온천 기대차 후보,regional tourism source,needs_official_crosscheck
+asamushi-yu-sa-asamushi,道の駅 ゆ～さ浅虫,Yu-sa Asamushi,asamushi,青森県,public_bath_facility,Tier 1,역/도로휴게소형 전망 온천 후보,regional tourism source,needs_official_crosscheck
+hanamaki-seirei-no-yu,花巻温泉 精霊の湯,Seirei no Yu,hanamaki,岩手県,public_bath_facility,Tier 2,대형 온천지 당일온천 후보,regional tourism source,needs_source_crosscheck
+osawa-onsen-tojiya,大沢温泉 湯治屋,Osawa Onsen Tojiya,hanamaki,岩手県,historic_public_bath,Tier 1,탕치 문화와 강변 노천탕 후보,regional tourism source,needs_official_crosscheck
+tsunagi-aishinkan-dayuse,つなぎ温泉 愛真館 日帰り入浴,Aishinkan day-use,tsunagi,岩手県,public_bath_facility,Tier 2,모리오카 근교 당일온천 후보,regional tourism source,needs_source_crosscheck
+higashiyama-sarusuberi-no-yu,会津東山温泉 足湯処,Aizu Higashiyama Footbath,higashiyama,福島県,footbath,Tier 2,온천가 산책과 족욕 후보,regional tourism source,needs_source_crosscheck
+iizaka-sabako-yu,飯坂温泉 鯖湖湯,Sabako-yu,iizaka,福島県,historic_public_bath,Tier 1,이이자카 대표 공동탕과 고온탕 기대차 후보,regional tourism source,needs_official_crosscheck
+iizaka-horikiri-yu,飯坂温泉 波来湯,Hakoyu,iizaka,福島県,public_bath_facility,Tier 1,역 인근 현대 공중탕과 당일 이용 후보,regional tourism source,needs_source_crosscheck

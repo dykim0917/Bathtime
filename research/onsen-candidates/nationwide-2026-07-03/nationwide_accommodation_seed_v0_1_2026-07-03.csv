@@ -1,0 +1,48 @@
+slug,name_ja,name_ko_or_en,area_slug,prefecture,property_type,initial_tier,initial_bath_signals,source_basis,verification_status
+tokachigawa-seijakubou,全室源泉かけ流し露天風呂付きの宿 清寂房《十勝川モール温泉》,세이자쿠보 / Seijakubou,tokachigawa,北海道,luxury ryokan,Tier 1,"전실 원천가케나가시 노천풍로 신호","Ikkyu nationwide onsen ranking snippet",needs_official_crosscheck
+toyako-lake-suite-konosisu,ザ・レイクスイート湖の栖,The Lake Suite Ko no Sumika,hokkaido-toyako,北海道,lake resort ryokan,Tier 1,"호수 전망 객실 노천탕 후보","Rakuten rotsuki ranking historic/source follow-up",needs_official_crosscheck
+noboribetsu-bourou-noguchi,望楼NOGUCHI登別,Bourou Noguchi Noboribetsu,noboribetsu,北海道,luxury ryokan,Tier 1,"노보리베쓰 고급 객실탕/대욕장 후보","regional high-demand seed",needs_source_crosscheck
+jozankei-suizantei,定山渓第一寶亭留 翠山亭,Jozankei Daiichi Hotel Suizantei,jozankei,北海道,ryokan hotel,Tier 1,"조잔케이 대형 온천숙소, 객실탕 후보","Rakuten Top20 area seed",needs_source_crosscheck
+yunokawa-nagisatei,湯の川プリンスホテル渚亭,Yunokawa Prince Hotel Nagisatei,yunokawa-hakodate,北海道,onsen hotel,Tier 1,"객실 노천탕 수량이 큰 유노카와 대표 후보","Rakuten Top20 area seed",needs_official_crosscheck
+akiu-saryo-soen,茶寮宗園,Saryo Soen,akiu,宮城県,luxury ryokan,Tier 1,"아키우 고급 료칸, 객실 노천탕 후보","Rakuten Top20 area seed",needs_source_crosscheck
+akiu-sakurareikyu,仙台 秋保温泉 迎賓館 櫻離宮,Sakurareikyu,akiu,宮城県,large ryokan hotel,Tier 1,"노천풍로 객실 인기 신호","Rakuten rotsuki ranking historic/source follow-up",needs_official_crosscheck
+zao-daikon-no-hana,温泉山荘 だいこんの花,Daikon-no-Hana,miyagi-zao,宮城県,detached ryokan,Tier 1,"노천풍로 객실 추천 숙소 신호","Jalan 2026 rotsuki article",needs_official_crosscheck
+kusatsu-tokino-niwa,湯宿 季の庭,Yuyado Tokinoniwa,kusatsu,群馬県,ryokan,Tier 1,"객실 노천탕/대욕장/유황천 후보","Jalan 2026 top area, 5-star ryokan list",needs_official_crosscheck
+kusatsu-naraya,草津温泉 奈良屋,Naraya,kusatsu,群馬県,traditional ryokan,Tier 1,"구사쓰 노포 료칸, 유황천/대욕장 신호","Jalan 2026 top area, 5-star ryokan list",needs_bath_detail_crosscheck
+kusatsu-hotel-ichii,草津温泉 ホテル一井,Hotel Ichii,kusatsu,群馬県,large ryokan hotel,Tier 1,"湯畑 인접 대형 숙소, 대욕장 리뷰풀 후보","Jalan 2026 top area, 5-star ryokan list",needs_bath_detail_crosscheck
+ikaho-kaichoro,奥伊香保 旅邸 諧暢楼,Kaichoro,ikaho,群馬県,luxury ryokan,Tier 1,"이카호 고급 객실탕 후보","Ikkyu nationwide onsen ranking snippet",needs_official_crosscheck
+minakami-senjuan,別邸 仙寿庵,Bettei Senjuan,minakami,群馬県,luxury ryokan,Tier 1,"객실 노천탕 추천 숙소 신호","Jalan 2026 rotsuki article",needs_official_crosscheck
+nasu-bettei-kai,那須別邸 回,Nasu Bettei Kai,nasu,栃木県,luxury ryokan,Tier 1,"나스 고급 온천 숙소 후보","Rakuten Top20 area seed",needs_source_crosscheck
+kinugawa-kanaya,鬼怒川金谷ホテル,Kinugawa Kanaya Hotel,kinugawa,栃木県,luxury hotel ryokan,Tier 1,"기누가와 고급 온천호텔 후보","Rakuten/YuKoyuko top area seed",needs_source_crosscheck
+hakone-ginyu,箱根吟遊,Hakone Ginyu,hakone,神奈川県,luxury ryokan,Tier 1,"객실 노천탕/전망형 대표 후보","Jalan 2026 top area seed",needs_official_crosscheck
+hakone-suisyoen,箱根・翠松園,Hakone Suishoen,hakone,神奈川県,luxury ryokan,Tier 1,"전 객실 스위트·객실 노천탕 후보","Ikkyu/Hakone luxury seed",needs_official_crosscheck
+hakone-gora-kadan,強羅花壇,Gora Kadan,hakone,神奈川県,luxury ryokan,Tier 1,"하코네 고급 료칸 대표, 객실탕/대욕장 후보","Jalan/Ikkyu top area seed",needs_official_crosscheck
+hakone-gen-gora,玄 箱根強羅,Gen Hakone Gora,hakone,神奈川県,luxury ryokan,Tier 1,"객실 노천탕 추천 숙소 신호","Jalan 2026 rotsuki article",needs_official_crosscheck
+hakone-matsuzakaya,箱根の名湯 松坂屋本店,Matsuzakaya Honten,hakone,神奈川県,traditional ryokan,Tier 1,"하코네 명탕·원천 신호 강함","Ikkyu nationwide onsen ranking snippet",needs_official_crosscheck
+yugawara-ashikari,懐石旅庵 阿しか里,Ashikari,yugawara,神奈川県,kaiseki ryokan,Tier 1,"전실 원천가케나가시 객실 노천탕 신호","Ikkyu rotsuki snippet",needs_official_crosscheck
+atami-fufu,ふふ 熱海,Fufu Atami,atami,静岡県,luxury ryokan,Tier 1,"고급 객실탕/대욕장 후보","Rakuten/YuKoyuko top area seed",needs_source_crosscheck
+atami-sekaie,ATAMI せかいえ,ATAMI Sekaie,atami,静岡県,luxury ryokan,Tier 1,"바다 전망 객실 노천탕 후보","Rakuten/YuKoyuko top area seed",needs_official_crosscheck
+ito-futarikomorebi,ホテルふたり木もれ陽,Hotel Futari Komorebi,ito-izu,静岡県,luxury hotel,Tier 1,"이토 고평점 온천 숙소, 객실탕 후보","Ikkyu nationwide onsen ranking snippet",needs_official_crosscheck
+izu-yumotokan,全室半露天付 離れ御宿 夢のや,Yume no Ya,ito-izu,静岡県,detached ryokan,Tier 1,"전실 반노천 객실 후보","Ikkyu nationwide ranking snippet",needs_official_crosscheck
+gero-suimeikan,下呂温泉 水明館,Suimeikan,gero,岐阜県,large ryokan hotel,Tier 1,"게로 대표 대형 숙소, 대욕장 리뷰풀 후보","Rakuten Top20 area seed",needs_bath_detail_crosscheck
+gero-ogawaya,下呂温泉 小川屋,Ogawaya,gero,岐阜県,large ryokan,Tier 1,"게로 대형 료칸, 대욕장/객실탕 후보","Rakuten Top20 area seed",needs_bath_detail_crosscheck
+kawaguchiko-fufu,ふふ 河口湖,Fufu Kawaguchiko,kawaguchiko,山梨県,luxury resort ryokan,Tier 1,"후지산/숲 전망 객실탕 후보","Ikkyu rotsuki theme snippet, Rakuten Top20 area",needs_official_crosscheck
+kawaguchiko-kukuna,THE KUKUNA,The Kukuna,kawaguchiko,山梨県,resort hotel,Tier 1,"전망 테라스/후지산 조망 온천 후보","Ikkyu rotsuki theme snippet",needs_bath_detail_crosscheck
+fujiyoshida-kaneyamaen,庭園と感動の宿 富士山温泉 ホテル鐘山苑,Hotel Kaneyamaen,kawaguchiko,山梨県,large ryokan hotel,Tier 1,"후지산 온천·정원·객실탕 후보","Ikkyu rotsuki theme snippet",needs_official_crosscheck
+matsumoto-jujo,松本十帖,Matsumoto Jujo,matsumoto,長野県,design ryokan,Tier 1,"전실 노천풍로 계열 신호","Ikkyu rotsuki theme snippet",needs_official_crosscheck
+myoko-akakura-kanko,赤倉観光ホテル,Akakura Kanko Hotel,myoko,新潟県,mountain resort,Tier 1,"묘코 고원 절경 온천 리조트, 객실탕 후보","Ikkyu rotsuki theme snippet",needs_official_crosscheck
+tobira-myojinkan,扉温泉 明神館,Tobira Onsen Myojinkan,matsumoto,長野県,luxury ryokan,Tier 1,"비경 온천 고급숙, 대욕장/객실탕 후보","Ikkyu rotsuki theme snippet",needs_official_crosscheck
+katakura-silk,湖畔の洋館かたくらシルクホテル,Katakura Silk Hotel,suwa,長野県,luxury hotel,Tier 1,"원천가케나가시 객실 노천탕 신호","Ikkyu rotsuki theme snippet",needs_official_crosscheck
+arima-kinzan,有馬温泉 欽山,Kinzan,arima,兵庫県,luxury ryokan,Tier 1,"아리마 고급 료칸, 금천/은천 후보","Rakuten Top20 area seed",needs_official_crosscheck
+arima-goshobessho,有馬山叢 御所別墅,Goshobessho,arima,兵庫県,luxury villa ryokan,Tier 1,"아리마 고급 빌라형 온천 후보","Rakuten Top20 area seed",needs_source_crosscheck
+arima-grand-hotel,有馬グランドホテル,Arima Grand Hotel,arima,兵庫県,large ryokan hotel,Tier 1,"대형 아리마 온천호텔, 대욕장/전망탕 후보","Rakuten Top20 area seed",needs_bath_detail_crosscheck
+shirahama-kaishu,白浜温泉 浜千鳥の湯 海舟,Hamachidori no Yu Kaishu,shirahama,和歌山県,seaside ryokan,Tier 1,"바다 전망 노천/객실탕 인기 신호","Rakuten rotsuki ranking historic/source follow-up",needs_official_crosscheck
+shirahama-sanrakuso,白浜温泉 ホテル三楽荘,Hotel Sanrakuso,shirahama,和歌山県,seaside hotel ryokan,Tier 1,"객실 노천탕 인기 신호","Rakuten rotsuki ranking historic/source follow-up",needs_official_crosscheck
+dogo-yachiyo,道後温泉 八千代,Yachiyo,dogo,愛媛県,ryokan,Tier 1,"객실 노천탕 인기 신호","Rakuten rotsuki ranking historic/source follow-up",needs_official_crosscheck
+dogo-funaya,道後温泉 ふなや,Funaya,dogo,愛媛県,traditional ryokan,Tier 1,"도고 노포 료칸, 대욕장/역사형 수요","Jalan/Rakuten top area seed",needs_bath_detail_crosscheck
+kaike-yugetsu,皆生游月,Kaike Yugetsu,kaike,鳥取県,seaside ryokan,Tier 1,"객실 노천탕 인기 신호","Rakuten rotsuki ranking historic/source follow-up",needs_official_crosscheck
+kurokawa-yamamizuki,黒川温泉 山みず木,Yamamizuki,kurokawa,熊本県,ryokan,Tier 1,"노천탕/자연형 온천 신호 강함","regional high-value seed",needs_source_crosscheck
+kurokawa-takefue,竹ふえ,Takefue,kurokawa,熊本県,luxury ryokan,Tier 1,"고급 객실탕/대절탕 후보","regional high-value seed",needs_official_crosscheck
+kirishima-lavista,ラビスタ霧島ヒルズ,La Vista Kirishima Hills,kirishima,鹿児島県,resort hotel,Tier 1,"객실 노천탕 인기 신호","Rakuten rotsuki ranking historic/source follow-up",needs_official_crosscheck
+ibusuki-hakusuikan,指宿白水館,Ibusuki Hakusuikan,ibusuki,鹿児島県,large ryokan hotel,Tier 1,"이부스키 대표 대형 숙소, 모래찜질/대욕장 후보","regional facility/accommodation seed",needs_official_crosscheck
+unzen-kyushu-hotel,雲仙九州ホテル,Unzen Kyushu Hotel,unzen,長崎県,luxury hotel,Tier 1,"운젠 유황천 고급 숙소 후보","regional high-value seed",needs_official_crosscheck

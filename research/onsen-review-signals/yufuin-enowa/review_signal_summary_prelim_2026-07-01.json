@@ -1,0 +1,329 @@
+{
+  "accommodation_name": "ENOWA YUFUIN",
+  "normalized_identity": {
+    "korean_name": "에노와 유후인",
+    "japanese_name": "ENOWA YUFUIN",
+    "english_names": ["ENOWA", "ENOWA YUFUIN"],
+    "aliases_or_old_names": ["二本の葦束 계열/구 후보 URL와 혼동 가능"],
+    "official_site": "https://enowa-yufuin.jp/",
+    "major_ids": {
+      "rakuten_hotel_id": "187963",
+      "ikkyu_id": "00002995",
+      "jalan_yad": "350146",
+      "tripadvisor_id": "d26491779"
+    }
+  },
+  "official_facts": [
+    {
+      "source_url": "https://enowa-yufuin.jp/experience?locale=ko",
+      "fact": "공식 Experience 페이지는 ENOWA의 온천을 각 객실에서 즐길 수 있다고 설명하며, 계절에 따라 코발트블루로 변하고 촉촉하고 부드러운 온천이라고 소개한다.",
+      "bath_area": "room_open_air_bath",
+      "official_keywords": ["각 객실", "코발트블루", "촉촉하고 부드러운 온천"]
+    },
+    {
+      "source_url": "https://enowa-yufuin.jp/experience?locale=ko",
+      "fact": "공식 온천 성분은 나트륨-염화물・황산염 온천, 저장성 알칼리성 고온천으로 표기된다.",
+      "bath_area": "facility_wide",
+      "official_keywords": ["나트륨 - 염화물・황산염 온천", "저장성 알칼리성 고온천"]
+    },
+    {
+      "source_url": "https://enowa-yufuin.jp/room?locale=en",
+      "fact": "공식 객실 페이지는 객실/빌라별 outdoor hot spring bath, infinity pool, private bath 등을 설명하며 일부 객실의 외부 온천욕/풀 이용 시 수영복 착용 권고를 적고 있다.",
+      "bath_area": "room_open_air_bath",
+      "official_keywords": ["outdoor hot spring bath", "Infinity Pool", "room bath"]
+    },
+    {
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/187963/187963_onsen.html",
+      "fact": "Rakuten 온천 정보는 온천 종류를 온천/노천풍로로,泉質을 황산염천・나트륨염화물천으로 표기한다.",
+      "bath_area": "facility_wide",
+      "official_keywords": ["硫酸塩泉", "ナトリウム塩化物泉", "露天風呂"]
+    }
+  ],
+  "collection_briefing": {
+    "date": "2026-07-01",
+    "total_visible_review_pool_observed": "Ikkyu/Yahoo 37, Rakuten API 5, Trip.com 13, plus Tripadvisor/Expedia/Agoda/Booking/Google snippets observed. Cross-platform totals may overlap and were not summed as unique reviews.",
+    "directly_read_reviews": 31,
+    "onsen_related_directly_read_or_tagged": 26,
+    "search_or_snippet_only_signals": 6,
+    "data_quality_grade": "D",
+    "sampling_strata": ["latest Ikkyu/Yahoo", "lower-rated Ikkyu", "room-type-specific villa/The Rooms", "Rakuten API metadata", "Korean blog", "Japanese blogs", "global OTA snippets"],
+    "aside_browser_status": "Aside Browser attempted earlier in this run for Google/Naver but local port timed out; therefore Google Maps and Naver Blog/Cafe are not treated as fully checked.",
+    "notes": "New/luxury property with small visible review pool on Japanese OTA. Direct body-level review count is far below 300, but the room-onsen facility signal repeats across official pages, Ikkyu/Yahoo, Trip.com, Tripadvisor, Expedia, Korean blog, and Japanese blogs."
+  },
+  "platforms": [
+    {
+      "source": "Official",
+      "visible_review_count": null,
+      "rating": null,
+      "directly_read_reviews": 0,
+      "onsen_related_reviews": 0,
+      "access_status": "official_fact_read",
+      "notes": "Official Experience/Room pages checked through web view; local curl had DNS timeout."
+    },
+    {
+      "source": "Ikkyu/Yahoo Travel",
+      "visible_review_count": 37,
+      "rating": 4.80,
+      "directly_read_reviews": 18,
+      "onsen_related_reviews": 14,
+      "access_status": "direct_fetch_partial_read",
+      "notes": "Review pages readable in web view; direct curl saved anti-bot/minimal pages."
+    },
+    {
+      "source": "Rakuten Travel",
+      "visible_review_count": 5,
+      "rating": null,
+      "directly_read_reviews": 5,
+      "onsen_related_reviews": 5,
+      "access_status": "direct_fetch_partial_read",
+      "notes": "API exposed room type and bath scores but comments were null for the 5 reviews."
+    },
+    {
+      "source": "Jalan",
+      "visible_review_count": null,
+      "rating": null,
+      "directly_read_reviews": 0,
+      "onsen_related_reviews": 0,
+      "access_status": "blocked_or_unreadable",
+      "notes": "Candidate page exists, but static saved review page was only 3.3KB and contained no readable review bodies."
+    },
+    {
+      "source": "Trip.com",
+      "visible_review_count": 13,
+      "rating": null,
+      "directly_read_reviews": 3,
+      "onsen_related_reviews": 1,
+      "access_status": "direct_fetch_partial_read",
+      "notes": "Korean page displayed several visible reviews; one directly mentions private hot spring bath."
+    },
+    {
+      "source": "Tripadvisor",
+      "visible_review_count": null,
+      "rating": null,
+      "directly_read_reviews": 2,
+      "onsen_related_reviews": 2,
+      "access_status": "direct_fetch_partial_read",
+      "notes": "Public page/snippets show private hot spring bath and best-onsen-experience language."
+    },
+    {
+      "source": "Expedia",
+      "visible_review_count": null,
+      "rating": null,
+      "directly_read_reviews": 1,
+      "onsen_related_reviews": 1,
+      "access_status": "direct_fetch_partial_read",
+      "notes": "One verified 2026 review visible and mentions private onsen."
+    },
+    {
+      "source": "Korean/Japanese blogs",
+      "visible_review_count": null,
+      "rating": null,
+      "directly_read_reviews": 4,
+      "onsen_related_reviews": 4,
+      "access_status": "direct_fetch_partial_read",
+      "notes": "Tistory, AVENIORA, NextTrip provided room-bath experience and caution details."
+    }
+  ],
+  "review_signal_summary": [
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 18,
+      "source_count": 18,
+      "platform_count": 6,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 6,
+      "source_count": 6,
+      "platform_count": 3,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "positive",
+      "mention_count": 11,
+      "source_count": 11,
+      "platform_count": 5,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "weak_onsen_feeling",
+      "signal_direction": "mixed",
+      "mention_count": 2,
+      "source_count": 2,
+      "platform_count": 2,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "booking_confusion",
+      "signal_direction": "mixed",
+      "mention_count": 3,
+      "source_count": 3,
+      "platform_count": 2,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "chlorine_smell",
+      "signal_direction": "neutral",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient"
+    },
+    {
+      "bath_area": "public_bath",
+      "bath_area_confidence": "unclear",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "neutral",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "crowding",
+      "signal_direction": "positive",
+      "mention_count": 2,
+      "source_count": 2,
+      "platform_count": 1,
+      "contradiction_level": "none",
+      "review_signal_status": "weak_signal"
+    }
+  ],
+  "negative_or_attention_signals": [
+    {
+      "issue": "The Rooms semi-open-air bath privacy/view limitation",
+      "bath_area": "room_open_air_bath",
+      "evidence_level": "weak_repeat",
+      "summary": "Some The Rooms layouts may require lowering shades because of sightlines from opposite villas, reducing open-view bathing.",
+      "sample_count": 2
+    },
+    {
+      "issue": "Room bath/shower flow",
+      "bath_area": "room_open_air_bath",
+      "evidence_level": "weak",
+      "summary": "A villa review reports shower room and tub flow felt awkward because washing and entering the tub required moving outside.",
+      "sample_count": 1
+    },
+    {
+      "issue": "Temperature expectation split",
+      "bath_area": "room_open_air_bath",
+      "evidence_level": "weak",
+      "summary": "Most comments are positive or hot-enough; one Korean blog notes some local reviews found the water not hot enough.",
+      "sample_count": 2
+    },
+    {
+      "issue": "Booking/expectation mismatch for room choice",
+      "bath_area": "room_open_air_bath",
+      "evidence_level": "weak",
+      "summary": "Blogs recommend careful room/category selection if expecting open views, pool, or fully open bathing.",
+      "sample_count": 3
+    }
+  ],
+  "evidence_examples": [
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Ikkyu review",
+      "source_url": "https://www.ikyu.com/00002995/review/",
+      "language": "ja",
+      "short_paraphrase": "The Rooms stay described as all 19 rooms having source-flow hot spring and relaxing in-room onsen.",
+      "original_keyword": "源泉かけ流し / 温泉が完備",
+      "review_date": "2026-06-10"
+    },
+    {
+      "signal_type": "water_texture",
+      "source_type": "Ikkyu review",
+      "source_url": "https://www.ikyu.com/00002995/review/",
+      "language": "ja",
+      "short_paraphrase": "Villa guest praised abundant hot water volume, large bath, and repeated hot/cold bathing with pool.",
+      "original_keyword": "お湯の量が半端じゃない",
+      "review_date": "2026-05-31"
+    },
+    {
+      "signal_type": "private_bath_experience",
+      "source_type": "Ikkyu review",
+      "source_url": "https://www.ikyu.com/00002995/review/p2/",
+      "language": "ja",
+      "short_paraphrase": "Guest normally does not bathe repeatedly at onsen, but entered four times because it felt good.",
+      "original_keyword": "４回も入って",
+      "review_date": "2024-08-14"
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Trip.com review",
+      "source_url": "https://kr.trip.com/hotels/yufu-hotel-detail-112316228/enowa-yufuin/",
+      "language": "ko",
+      "short_paraphrase": "Visible Korean Trip.com review describes spacious rooms with private hot spring bath.",
+      "original_keyword": "개인 온천탕",
+      "review_date": "2026-05-19"
+    },
+    {
+      "signal_type": "private_bath_experience",
+      "source_type": "Tripadvisor review",
+      "source_url": "https://www.tripadvisor.com/Hotel_Review-g1023445-d26491779-Reviews-Enowa_Yufuin-Yufu_Oita_Prefecture_Kyushu.html",
+      "language": "en",
+      "short_paraphrase": "Guest says all rooms have private hot spring baths and morning town-view bathing was memorable.",
+      "original_keyword": "private hot spring baths",
+      "review_date": "unknown"
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Korean blog",
+      "source_url": "https://julesenvoyage.tistory.com/entry/%EA%B7%9C%EC%8A%88%EC%97%AC%ED%96%89-1%EC%9D%BC%EC%B0%A8-%EA%B3%A0%EA%B8%89-%EC%98%A8%EC%B2%9C%ED%98%B8%ED%85%94-%EC%B6%94%EC%B2%9C-ENOWA-YUFUIN-%EC%97%90%EB%85%B8%EC%99%80-%EC%9C%A0%ED%9B%84%EC%9D%B8-%EC%9E%90%EC%97%B0-%EC%86%8D-%EA%B3%A0%EC%9A%94%ED%95%9C-%EA%B2%A8%EC%9A%B8-%ED%9C%B4%EC%8B%9D%EC%B2%98-%EB%AF%B8%EC%89%90%EB%A6%B0-%ED%98%B8%ED%85%94",
+      "language": "ko",
+      "short_paraphrase": "Korean blogger highlights private in-room open-air onsen with 100% natural source water.",
+      "original_keyword": "프라이빗 노천온천 / 100% 천연 원천수",
+      "review_date": "2025"
+    },
+    {
+      "signal_type": "booking_confusion",
+      "source_type": "Japanese blog",
+      "source_url": "https://aveniora.com/202604_enowa_room_standard/",
+      "language": "ja",
+      "short_paraphrase": "The Rooms bath atmosphere is attractive, but sightlines can force bathing with shade closed.",
+      "original_keyword": "半露天風呂 / 視線 / シェード",
+      "review_date": "2026-04"
+    },
+    {
+      "signal_type": "booking_confusion",
+      "source_type": "Japanese blog",
+      "source_url": "https://nexttrip791.com/enowa-yufuin/",
+      "language": "ja",
+      "short_paraphrase": "Blog notes indoor area is shower-only because room has open-air bath, useful for room-layout expectation.",
+      "original_keyword": "露天風呂 / 屋内はシャワールームのみ",
+      "review_date": "2024"
+    }
+  ],
+  "bathtime_interpretation_ko": "공식 정보와 직접 확인 표본을 함께 보면, ENOWA YUFUIN은 대욕장 중심이 아니라 객실 온천/객실 노천탕 중심의 럭셔리 오베르주로 분류하는 것이 타당합니다. 직접 태깅 표본은 31건으로 작아 데이터 등급은 D지만, 객실 프라이빗 온천 신호는 Ikkyu/Yahoo, Trip.com, Tripadvisor, Expedia, 한국/일본 블로그에서 반복되어 시설 성격 자체는 강하게 보입니다. 다만 The Rooms는 반노천탕의 시선·차광·전망 기대치가 갈릴 수 있어 Bathtime에는 장점과 주의점을 함께 보여주는 편이 좋습니다.",
+  "gaps": [
+    "Google Maps review tab was not fully checked because Aside Browser local port timed out.",
+    "Naver Blog/Cafe full search was not fully checked because Aside Browser local port timed out and robots blocked direct access.",
+    "Agoda/Booking review bodies were not fully opened; search snippets only used directionally.",
+    "Jalan review body was not readable from saved static page.",
+    "300+ direct review target was not reached; this appears partly due to new/luxury property review-pool size and partly due dynamic-source access gaps."
+  ]
+}

@@ -6,12 +6,20 @@ import { redirect } from 'next/navigation';
 import { readAdminPostgrestSessionConfig, upsertPostgrestRow } from '../data/postgrest';
 import {
   bathScopeLabels,
+  bathContextLabels,
   onsenStatusLabels,
+  regionGroupLabels,
+  travelContextLabels,
+  waterCriterionLabels,
   waterSourceTypeLabels,
   waterUseStatusLabels,
   type OnsenAdminStatus,
+  type OnsenBathContext,
   type OnsenBathScope,
   type OnsenEvidenceCounts,
+  type OnsenRegionGroup,
+  type OnsenTravelContext,
+  type OnsenWaterCriterion,
   type OnsenWaterSourceType,
   type OnsenWaterUseStatus,
 } from './data';
@@ -29,6 +37,10 @@ function parseListField(value: FormDataEntryValue | null): string[] {
     .split(',')
     .map((item) => item.trim())
     .filter(Boolean);
+}
+
+function parseEnumList<T extends Record<string, unknown>>(record: T, value: FormDataEntryValue | null): Array<Extract<keyof T, string>> {
+  return parseListField(value).filter((item): item is Extract<keyof T, string> => isRecordKey(record, item));
 }
 
 function parseNullableNumber(value: FormDataEntryValue | null): number | null {
@@ -56,6 +68,11 @@ export async function updateOnsenAccommodation(formData: FormData) {
   const jaName = String(formData.get('jaName') ?? '').trim();
   const region = String(formData.get('region') ?? '').trim();
   const area = String(formData.get('area') ?? '').trim();
+  const country = String(formData.get('country') ?? 'JP').trim() || 'JP';
+  const regionGroup = String(formData.get('regionGroup') ?? '').trim();
+  const prefecture = String(formData.get('prefecture') ?? '').trim();
+  const city = String(formData.get('city') ?? '').trim();
+  const onsenArea = String(formData.get('onsenArea') ?? '').trim();
   const summary = String(formData.get('summary') ?? '').trim();
   const primaryBath = String(formData.get('primaryBath') ?? '').trim();
   const waterUseStatus = String(formData.get('waterUseStatus') ?? '').trim();
@@ -65,12 +82,17 @@ export async function updateOnsenAccommodation(formData: FormData) {
   const evidenceGrade = String(formData.get('evidenceGrade') ?? '').trim();
   const evidenceNote = String(formData.get('evidenceNote') ?? '').trim();
   const operationNotes = parseListField(formData.get('operationNotes'));
+  const travelContexts = parseEnumList(travelContextLabels, formData.get('travelContexts'));
+  const bathContexts = parseEnumList(bathContextLabels, formData.get('bathContexts'));
+  const waterCriteria = parseEnumList(waterCriterionLabels, formData.get('waterCriteria'));
+  const normalizedTravelContexts: OnsenTravelContext[] = travelContexts.length > 0 ? travelContexts : ['ryokan_stay'];
   const evidenceCounts = parseEvidenceCounts(formData);
 
   if (
     !slug ||
     !name ||
     !region ||
+    !isRecordKey(regionGroupLabels, regionGroup) ||
     !summary ||
     !isRecordKey(waterUseStatusLabels, waterUseStatus) ||
     !isRecordKey(waterSourceTypeLabels, waterSourceType) ||
@@ -96,6 +118,14 @@ export async function updateOnsenAccommodation(formData: FormData) {
         ja_name: jaName || null,
         region,
         area: area || null,
+        country,
+        region_group: regionGroup satisfies OnsenRegionGroup,
+        prefecture: prefecture || null,
+        city: city || null,
+        onsen_area: onsenArea || region,
+        travel_contexts: normalizedTravelContexts,
+        bath_contexts: bathContexts satisfies OnsenBathContext[],
+        water_criteria: waterCriteria satisfies OnsenWaterCriterion[],
         summary,
         primary_bath: primaryBath || null,
         water_use_status: waterUseStatus satisfies OnsenWaterUseStatus,

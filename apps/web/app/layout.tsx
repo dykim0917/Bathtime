@@ -9,10 +9,10 @@ const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim();
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: '바스타임 - 씻고 쉬는 시간 아카이브',
+    default: '바스타임 - 온천 검색기',
     template: '%s | 바스타임',
   },
-  description: '사우나, 홈케어, 족욕, 욕실 아이템을 같은 기준으로 정리한 바스타임 아카이브. 찾고, 저장하고, 실행합니다.',
+  description: '일본 료칸 이용 전 객실탕, 가족탕, 대욕장, 온천수 사용 범위와 확인할 점을 정리하는 온천 검색기입니다.',
   openGraph: {
     siteName: '바스타임',
     locale: 'ko_KR',
@@ -40,19 +40,19 @@ const siteJsonLd = {
       publisher: { '@id': `${siteUrl}/#organization` },
       potentialAction: {
         '@type': 'SearchAction',
-        target: `${siteUrl}/explore?query={search_term_string}`,
+        target: `${siteUrl}/onsen/results?query={search_term_string}`,
         'query-input': 'required name=search_term_string',
       },
     },
     {
       '@type': 'WebPage',
       '@id': `${siteUrl}/#webpage`,
-      name: '바스타임 - 씻고 쉬는 시간 아카이브',
+      name: '바스타임 - 온천 검색기',
       url: siteUrl,
       inLanguage: 'ko-KR',
       isPartOf: { '@id': `${siteUrl}/#website` },
       about: { '@id': `${siteUrl}/#organization` },
-      description: '사우나, 홈케어, 족욕, 욕실 아이템을 같은 기준으로 정리한 바스타임 아카이브입니다.',
+      description: '일본 료칸 이용 전 객실탕, 가족탕, 대욕장, 온천수 사용 범위와 확인할 점을 정리하는 온천 검색기입니다.',
     },
   ],
 };

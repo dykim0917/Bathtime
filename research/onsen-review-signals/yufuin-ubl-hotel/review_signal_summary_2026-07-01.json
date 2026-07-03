@@ -1,0 +1,320 @@
+{
+  "accommodation_name": "由布院ユウベルホテル / 유후인 유벨 호텔 / Yufuin Ubl Hotel",
+  "checked_at": "2026-07-01",
+  "identity": {
+    "korean_name": "유후인 유벨 호텔 / 유후인 유우베루 호텔 / 유후인 유베루 호텔",
+    "japanese_name": "由布院ユウベルホテル",
+    "english_name": "Yufuin Ubl Hotel / Yufuin UBL Hotel",
+    "aliases": [
+      "Yufuin Ubl Hotel",
+      "Yufuin UBL Hotel",
+      "유후인유벨호텔",
+      "유후인 유우베르",
+      "由布院ユウベルホテル"
+    ],
+    "official_url": "http://yufuin-ublhotel.jp/",
+    "official_hot_spring_url": "http://yufuin-ublhotel.jp/hotspa/",
+    "jalan_url": "https://www.jalan.net/yad336879/",
+    "jalan_review_url": "https://www.jalan.net/yad336879/kuchikomi/",
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Yufuin%20Ubl%20Hotel",
+    "naver_exact_query_url": "https://search.naver.com/search.naver?query=%E7%94%B1%E5%B8%83%E9%99%A2%E3%83%A6%E3%82%A6%E3%83%99%E3%83%AB%E3%83%9B%E3%83%86%E3%83%AB%20%ED%9B%84%EA%B8%B0"
+  },
+  "official_facts": [
+    {
+      "fact": "공식 온천 페이지는 별관 ‘こだちの湯’에 대욕장 내탕, 노천탕, 사우나가 1·2층 각각 갖춰져 있고 아침/저녁 남녀탕이 교체된다고 안내한다.",
+      "bath_area": "public_bath / open_air_public_bath",
+      "source_url": "http://yufuin-ublhotel.jp/hotspa/",
+      "keyword": "別館 こだちの湯 / 大浴場（内湯） / サウナ / 露天風呂 / 入れ替え"
+    },
+    {
+      "fact": "공식 온천 페이지는 노천탕을 100% 가케나가시 천연온천으로 설명한다.",
+      "bath_area": "open_air_public_bath",
+      "source_url": "http://yufuin-ublhotel.jp/hotspa/",
+      "keyword": "100％掛け流しの天然温泉露天風呂"
+    },
+    {
+      "fact": "공식 온천 페이지는 천질을 단순천으로 표시한다.",
+      "bath_area": "facility_wide",
+      "source_url": "http://yufuin-ublhotel.jp/hotspa/",
+      "keyword": "単純泉"
+    },
+    {
+      "fact": "관광/OTA 기초 정보상 객실은 총 33실 규모이며, 이 중 내탕 포함 객실이 10실로 표시된다. 객실탕은 전 객실 속성이 아니라 객실 타입 조건으로 봐야 한다.",
+      "bath_area": "room_bath",
+      "source_url": "https://www.jalan.net/yad336879/",
+      "keyword": "和27・和洋2・洋4（内湯付10）"
+    }
+  ],
+  "collection_briefing": [
+    {
+      "source": "Jalan",
+      "visible_review_count": 596,
+      "rating": 4.2,
+      "directly_read_reviews": 314,
+      "onsen_related_reviews": 276,
+      "access_status": "direct_fetch_partial_read + archive_read",
+      "notes": "최신 30건과 archive 10페이지를 구조화. 표본 범위 2013/6/29~2026/5/5. 욕실 점수는 5점 151건, 4점 123건, 3점 32건, 2점 8건."
+    },
+    {
+      "source": "Google Maps / Google hotel panel",
+      "visible_review_count": 644,
+      "rating": 4.3,
+      "directly_read_reviews": 9,
+      "onsen_related_reviews": 8,
+      "access_status": "aside_review_panel_read",
+      "notes": "Aside Browser로 장소 패널과 리뷰/OTA 카드 확인. 별점 분포 5성 347, 4성 204, 3성 58, 2성 13, 1성 22. 한국어 리뷰와 Trip.com 카드 일부가 노출됨."
+    },
+    {
+      "source": "Trip.com cards in Google panel",
+      "visible_review_count": 118,
+      "rating": null,
+      "directly_read_reviews": 3,
+      "onsen_related_reviews": 3,
+      "access_status": "visible_card_read",
+      "notes": "Google 호텔 패널에 노출된 Trip.com 카드 기준. 온천/송영/동선 관련 짧은 리뷰 신호만 확인."
+    },
+    {
+      "source": "Naver Search / Blog / Cafe",
+      "visible_review_count": null,
+      "rating": null,
+      "directly_read_reviews": 0,
+      "onsen_related_reviews": 0,
+      "access_status": "aside_search_snapshot_read",
+      "notes": "검색 스니펫과 결과 구조 확인. 유후인 유벨 검색은 후쿠오카 U-Bell, 구마모토 U-Bell 등과 섞여 정확한 일본어명 병행 검색이 필요함."
+    }
+  ],
+  "data_quality": {
+    "grade": "A-",
+    "directly_read_total": 326,
+    "directly_read_full_or_structured": 314,
+    "snippet_or_visible_card_count": 12,
+    "platforms_with_read_text": 3,
+    "reason": "Jalan 구조화 표본만 300건을 넘고, Google/Trip/Naver로 한국어 수요와 혼선 신호를 보강했다. 다만 본문 대량 표본은 Jalan 편중이므로 A가 아니라 A-로 둔다."
+  },
+  "review_signal_summary": [
+    {
+      "bath_area": "public_bath / open_air_public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 210,
+      "source_count": 210,
+      "platform_count": 3,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "room_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 48,
+      "source_count": 48,
+      "platform_count": 3,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "unclear",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "mixed",
+      "mention_count": 5,
+      "source_count": 5,
+      "platform_count": 1,
+      "contradiction_level": "medium",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 10,
+      "source_count": 10,
+      "platform_count": 2,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "weak_onsen_feeling",
+      "signal_direction": "negative",
+      "mention_count": 2,
+      "source_count": 2,
+      "platform_count": 1,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "chlorine_smell",
+      "signal_direction": "neutral",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient"
+    },
+    {
+      "bath_area": "public_bath / open_air_public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "crowding",
+      "signal_direction": "mixed",
+      "mention_count": 8,
+      "source_count": 8,
+      "platform_count": 2,
+      "contradiction_level": "medium",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "room_bath / facility_wide",
+      "bath_area_confidence": "probable",
+      "signal_type": "booking_confusion",
+      "signal_direction": "mixed",
+      "mention_count": 12,
+      "source_count": 12,
+      "platform_count": 3,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal"
+    }
+  ],
+  "negative_or_caution_signals": [
+    {
+      "issue": "객실탕은 일부 객실 옵션",
+      "bath_area": "room_bath",
+      "evidence_level": "moderate_signal",
+      "summary": "후기에는 객실 내 온천/방 욕조 만족이 반복되지만, 공식·OTA 기초 정보상 내탕 객실은 일부로 보인다. 전 객실 객실탕 숙소처럼 표시하면 예약 기대치 오류가 생긴다.",
+      "sample_count": 48
+    },
+    {
+      "issue": "대욕장 이동 동선과 겨울 체감",
+      "bath_area": "public_bath / open_air_public_bath",
+      "evidence_level": "moderate_signal",
+      "summary": "별관 대욕장까지 이동하거나 일부 외부 동선을 거치는 점, 겨울에 춥다는 체감이 저평점/중립 후기에 반복된다.",
+      "sample_count": 12
+    },
+    {
+      "issue": "온도 편차",
+      "bath_area": "room_bath / public_bath / open_air_public_bath",
+      "evidence_level": "weak_signal",
+      "summary": "대부분은 적온/만족으로 보지만, 객실탕·대욕장 모두에서 미지근함 또는 너무 뜨거움이 소수 반복된다.",
+      "sample_count": 15
+    },
+    {
+      "issue": "청결·노후감 점검 필요",
+      "bath_area": "room_bath / public_bath",
+      "evidence_level": "moderate_signal",
+      "summary": "전반 만족과 별개로 오래된 시설감, 대욕장 비품 곰팡이, 의자/욕장 청소, 객실탕 미급수·낙엽 같은 관리 불만이 과거 저평점에서 확인된다.",
+      "sample_count": 8
+    },
+    {
+      "issue": "한국어 검색명 혼선",
+      "bath_area": "facility_wide",
+      "evidence_level": "moderate_signal",
+      "summary": "Naver에서 유후인 유벨/유베루 검색 시 후쿠오카·구마모토·교토 U-Bell 계열 결과가 섞인다. 정확한 일본어명 또는 Yufuin 병기 검색이 필요하다.",
+      "sample_count": 1
+    }
+  ],
+  "evidence_examples": [
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad336879/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "객실탕 유무가 선택 이유였고, 방 안 온천을 만족스럽게 사용했다.",
+      "original_keyword": "部屋風呂が決めて / お部屋で温泉",
+      "review_date": "2026/4/17"
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad336879/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "객실의 원천가케나가시 방 욕조가 넓고 만족스러웠다고 언급했다.",
+      "original_keyword": "源泉掛け流しの部屋のお風呂",
+      "review_date": "2025/9/22"
+    },
+    {
+      "signal_type": "public_bath_hot_spring",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad336879/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "객실탕과 대욕장을 모두 사용했고 온도와 만족도가 좋았다고 평가했다.",
+      "original_keyword": "部屋風呂 / 大浴場 / 何度も入った",
+      "review_date": "2025/7/30"
+    },
+    {
+      "signal_type": "public_bath_hot_spring",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad336879/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "이른 아침 대욕장을 거의 전세처럼 이용했고 노천탕도 좋았다고 적었다.",
+      "original_keyword": "貸切状態 / 露天風呂",
+      "review_date": "2021/4/29"
+    },
+    {
+      "signal_type": "water_texture",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad336879/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "방 욕조에서 반복해서 온천을 즐겼고 물이 미끈한 질감이며 피부가 촉촉해졌다고 표현했다.",
+      "original_keyword": "泉質もトロトロ / しっとり",
+      "review_date": "2022/6/13"
+    },
+    {
+      "signal_type": "weak_onsen_feeling",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad336879/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "온천수에 미끈함이나 탁함이 없어 본인 취향은 아니었다는 소수 의견이 있었다.",
+      "original_keyword": "とろみもにごりもない",
+      "review_date": "2015/10/9"
+    },
+    {
+      "signal_type": "public_bath_hot_spring",
+      "source_type": "Google Maps visible review",
+      "source_url": "https://www.google.com/maps/search/?api=1&query=Yufuin%20Ubl%20Hotel",
+      "language": "ko",
+      "short_paraphrase": "대욕장과 노천탕, 산 공기, 조용한 분위기를 함께 긍정적으로 평가했다.",
+      "original_keyword": "대욕장 / 야외 온천 / 조용",
+      "review_date": "visible: edited 8 months ago"
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Google Maps visible review",
+      "source_url": "https://www.google.com/maps/search/?api=1&query=Yufuin%20Ubl%20Hotel",
+      "language": "ko",
+      "short_paraphrase": "객실 안 온천을 24시간 사용할 수 있어 밤에도 자유롭게 이용했다는 한국어 후기가 보였다.",
+      "original_keyword": "객실 안에 온천 / 24시간",
+      "review_date": "visible: 3 months ago"
+    },
+    {
+      "signal_type": "booking_confusion",
+      "source_type": "Naver search results",
+      "source_url": "https://search.naver.com/search.naver?query=%E7%94%B1%E5%B8%83%E9%99%A2%E3%83%A6%E3%82%A6%E3%83%99%E3%83%AB%E3%83%9B%E3%83%86%E3%83%AB%20%ED%9B%84%EA%B8%B0",
+      "language": "ko/ja",
+      "short_paraphrase": "한국어 검색에서 후쿠오카 U-Bell 등 동명이숙소가 섞여 정확한 일본어명 병기가 필요했다.",
+      "original_keyword": "유후인 유벨 / U-Bell / 由布院ユウベルホテル",
+      "review_date": "search checked 2026-07-01"
+    },
+    {
+      "signal_type": "chlorine_smell",
+      "source_type": "Jalan + Google keyword check",
+      "source_url": "https://www.jalan.net/yad336879/kuchikomi/",
+      "language": "ja/ko",
+      "short_paraphrase": "확인 표본에서 염소/카루키 냄새 신호는 발견되지 않았다.",
+      "original_keyword": "塩素 0 / カルキ 0 / 염소 미확인",
+      "review_date": "sample checked 2026-07-01"
+    }
+  ],
+  "bathtime_interpretation": "유후인 유벨 호텔은 객실탕 전면형 료칸이 아니라, 별관 대욕장·노천탕·사우나가 중심이고 일부 내탕 객실을 선택할 수 있는 혼합형 온천 호텔로 보입니다. 314건 Jalan 표본과 Google/Naver 표면 신호를 합치면 대욕장·노천탕 만족은 강하게 반복되고, 객실 내탕 만족도도 뚜렷하지만 객실 타입 선택이 전제입니다. Bathtime에서는 ‘대욕장형 + 일부 객실 내탕 옵션’으로 표시하고, 겨울철 대욕장 이동 동선·온도 편차·청결/노후·동명이숙소 검색 혼선을 주의 신호로 붙이는 편이 좋습니다.",
+  "gaps": [
+    "Rakuten Travel, Ikkyu, Yahoo Travel, Agoda/Booking.com 본문 리뷰는 이번 패스에서 대량 구조화하지 못했다.",
+    "Naver Blog/Cafe는 검색 결과와 스니펫 중심으로 확인했고, 개별 블로그 본문 대량 태깅은 하지 않았다.",
+    "Google Maps는 패널/노출 리뷰 중심으로 확인했으며 644건 전체를 스크롤 수집하지 않았다.",
+    "객실 노천탕 여부는 공식 기초 정보와 충돌 가능성이 있어 보수적으로 unclear 처리했다. 확인하려면 현재 판매 객실 타입별 페이지를 별도 대조해야 한다."
+  ]
+}

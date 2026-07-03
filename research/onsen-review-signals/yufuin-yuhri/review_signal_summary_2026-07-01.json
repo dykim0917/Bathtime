@@ -1,0 +1,343 @@
+{
+  "accommodation_name": "由布の癒 友里 / 유후인노 이야시 유리 / Yufuin Onsen Yufunoi Yuhri",
+  "checked_at": "2026-07-01",
+  "identity": {
+    "korean_name": "유후인노 이야시 유리 / 유후노이 유리 / 유후노 이야시 유리",
+    "japanese_name": "由布の癒 友里",
+    "english_name": "Yufuin Onsen Yufunoi Yuhri / YUHRI",
+    "aliases": [
+      "Yufunoi Yuhri",
+      "Yufuin Yuhri",
+      "由布の癒 友里 ～大人2名様限定の全室露天付き離れ宿～"
+    ],
+    "official_url": "https://hpdsp.jp/yuhri/",
+    "official_room_url": "https://hpdsp.jp/yuhri/room",
+    "official_facility_url": "https://hpdsp.jp/yuhri/facility",
+    "jalan_url": "https://www.jalan.net/yad382450/",
+    "rakuten_global_url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_oita_prefecture/cty_yufu_city/10123456794926",
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Yufuin%20Yuhri%20%E7%94%B1%E5%B8%83%E3%81%AE%E7%99%92%20%E5%8F%8B%E9%87%8C"
+  },
+  "official_facts": [
+    {
+      "fact": "공식 톱페이지는 전 10개 독채 객실이 각각 다른 구조이며, 내탕과 원천가케나가시 노천탕을 갖춘다고 설명한다.",
+      "bath_area": "room_bath / room_open_air_bath",
+      "source_url": "https://hpdsp.jp/yuhri/en/",
+      "keyword": "All 10 detached rooms / indoor baths / open-air baths / free-flowing hot springs"
+    },
+    {
+      "fact": "공식 객실 페이지는 모든 객실의 내탕에서 노천탕으로 이어지는 구조이며, 내풍로도 온천이라고 명시한다.",
+      "bath_area": "room_bath / room_open_air_bath",
+      "source_url": "https://hpdsp.jp/yuhri/room",
+      "keyword": "客室全室、内湯より露天へ / 内風呂も温泉"
+    },
+    {
+      "fact": "공식 객실 페이지는 전 객실이 노천탕이 붙은 독채 10동이고, 1실 성인 2명 한정이며 중학생 이하 이용 불가라고 안내한다.",
+      "bath_area": "room_open_air_bath",
+      "source_url": "https://hpdsp.jp/yuhri/room",
+      "keyword": "全て露天風呂付きの離れ戸建10棟 / 大人二人様限定"
+    },
+    {
+      "fact": "공식 공유시설 페이지는 유후인온천 천연온천 100%, 온천 가케나가시, 인공온천 아님을 표시한다.",
+      "bath_area": "facility_wide",
+      "source_url": "https://hpdsp.jp/yuhri/facility",
+      "keyword": "天然温泉100% / 温泉掛け流し / 人工温泉含まず"
+    },
+    {
+      "fact": "Rakuten Travel 글로벌 페이지도 모든 객실의 실내탕·노천탕, 객실 내 노천탕, 100% 천연 원천수의 프라이빗 노천온천을 안내한다.",
+      "bath_area": "room_bath / room_open_air_bath",
+      "source_url": "https://travel.rakuten.com/usa/en-us/hotel_info_item/cnt_japan/sub_oita_prefecture/cty_yufu_city/10123456794926",
+      "keyword": "indoor baths and open-air baths / Open-air bath in room / 100% natural spring water"
+    }
+  ],
+  "collection_briefing": [
+    {
+      "source": "Jalan",
+      "visible_review_count": 912,
+      "rating": 4.3,
+      "directly_read_reviews": 335,
+      "onsen_related_reviews": 300,
+      "access_status": "direct_fetch_partial_read + archive_read",
+      "notes": "최신 35건과 archive 10페이지 300건 구조화. 2017/8/27~2026/6/17 표본."
+    },
+    {
+      "source": "Google Maps / Google hotel panel",
+      "visible_review_count": 209,
+      "rating": 4.1,
+      "directly_read_reviews": 8,
+      "onsen_related_reviews": 6,
+      "access_status": "aside_review_tab_read",
+      "notes": "Aside Browser로 리뷰탭 확인. 별점 분포 5성 110, 4성 59, 3성 14, 2성 11, 1성 15. Google/Trip.com 카드 혼합 노출."
+    },
+    {
+      "source": "Rakuten Travel global",
+      "visible_review_count": 49,
+      "rating": 4.3,
+      "directly_read_reviews": 0,
+      "onsen_related_reviews": 0,
+      "access_status": "official/OTA facility page read",
+      "notes": "리뷰 본문보다 시설/플랜 정보 확인: 객실 내 노천탕, 내탕, 100% natural spring water."
+    },
+    {
+      "source": "Naver Search / Blog / Cafe",
+      "visible_review_count": null,
+      "rating": null,
+      "directly_read_reviews": 0,
+      "onsen_related_reviews": 0,
+      "access_status": "aside_search_snapshot_read",
+      "notes": "검색 스니펫 기준. 개별 온천, 개인탕, 개인 노천탕, 프라이빗 온천, 독채 료칸, 가성비, 치키서비스 신호 강함."
+    }
+  ],
+  "data_quality": {
+    "grade": "A-",
+    "directly_read_total": 343,
+    "directly_read_full_or_structured": 335,
+    "snippet_or_visible_card_count": 8,
+    "platforms_with_read_text": 3,
+    "reason": "Jalan에서 335건 구조화로 300+ 기준은 넘겼고 Google/Trip.com/Naver로 한국어/글로벌 표면을 보강했다. 다만 직접 구조화 본문이 Jalan에 편중되어 A-로 판정."
+  },
+  "review_signal_summary": [
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 170,
+      "source_count": 170,
+      "platform_count": 4,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "room_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 12,
+      "source_count": 12,
+      "platform_count": 2,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "room_open_air_bath / room_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 18,
+      "source_count": 18,
+      "platform_count": 2,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "positive",
+      "mention_count": 75,
+      "source_count": 75,
+      "platform_count": 4,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "unclear",
+      "signal_type": "weak_onsen_feeling",
+      "signal_direction": "negative",
+      "mention_count": 2,
+      "source_count": 2,
+      "platform_count": 1,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "chlorine_smell",
+      "signal_direction": "neutral",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient"
+    },
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "crowding",
+      "signal_direction": "positive",
+      "mention_count": 61,
+      "source_count": 61,
+      "platform_count": 3,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "room_open_air_bath / facility_wide",
+      "bath_area_confidence": "probable",
+      "signal_type": "booking_confusion",
+      "signal_direction": "mixed",
+      "mention_count": 8,
+      "source_count": 8,
+      "platform_count": 2,
+      "contradiction_level": "medium",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "public_bath",
+      "bath_area_confidence": "unclear",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "neutral",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient"
+    }
+  ],
+  "negative_or_caution_signals": [
+    {
+      "issue": "객실 노천탕 주변 벌레/낙엽/오버플로우·청소 체감",
+      "bath_area": "room_open_air_bath",
+      "evidence_level": "moderate_signal",
+      "summary": "자연 속 독채 노천탕의 장점과 함께 벌레, 낙엽, 욕조 내부 청소·관리 체감이 저평점에서 반복된다.",
+      "sample_count": 20
+    },
+    {
+      "issue": "내탕/욕실 노후감·곰팡이·물때",
+      "bath_area": "room_bath",
+      "evidence_level": "moderate_signal",
+      "summary": "내탕이 온천인 점은 장점이지만, 일부 후기는 내탕 타일·목재·유리·욕조의 물때/곰팡이/노후감을 지적한다.",
+      "sample_count": 12
+    },
+    {
+      "issue": "온도 조절",
+      "bath_area": "room_open_air_bath / room_bath",
+      "evidence_level": "weak_signal",
+      "summary": "대부분은 적온/뜨끈함을 긍정하지만, 일부는 뜨거움·미지근함·수전 문제로 온도 조절 불편을 언급한다.",
+      "sample_count": 5
+    },
+    {
+      "issue": "예약·명칭 혼동",
+      "bath_area": "facility_wide",
+      "evidence_level": "weak_signal",
+      "summary": "Naver에서 유후인노이야기유리 같은 오타 제안, 다른 유리 료칸과 혼동, Yufunoi Yuhri 표기 혼용이 보인다.",
+      "sample_count": 4
+    },
+    {
+      "issue": "염소 냄새",
+      "bath_area": "facility_wide",
+      "evidence_level": "no_negative_signal",
+      "summary": "직접 확인 표본에서는 염소/칼키 냄새 불만이 확인되지 않았다.",
+      "sample_count": 0
+    },
+    {
+      "issue": "대욕장 기대",
+      "bath_area": "public_bath",
+      "evidence_level": "insufficient",
+      "summary": "공식 핵심 구조는 객실탕 중심이며, 대욕장 이용 경험은 확인되지 않았다. 대욕장 기대 고객에게는 명시가 필요하다.",
+      "sample_count": 0
+    }
+  ],
+  "evidence_examples": [
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Official room page",
+      "source_url": "https://hpdsp.jp/yuhri/room",
+      "language": "ja",
+      "short_paraphrase": "모든 객실이 내탕에서 노천탕으로 이어지고 내풍로도 온천이라고 안내.",
+      "original_keyword": "内湯より露天へ / 内風呂も温泉",
+      "review_date": null
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad382450/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "방 노천탕 물이 좋아 여러 번 이용했고, 실내에도 세면장과 욕조가 있었다고 언급.",
+      "original_keyword": "部屋の露天風呂 / 何回も / 室内に洗い場と浴槽",
+      "review_date": "2026/6/17"
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad382450/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "객실 노천탕이 좋아 체크아웃 전까지 여러 번 들어갔다고 언급.",
+      "original_keyword": "お部屋にある露天風呂 / 何度も",
+      "review_date": "2026/3/9"
+    },
+    {
+      "signal_type": "water_texture",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad382450/kuchikomi/archive/",
+      "language": "ja",
+      "short_paraphrase": "온천이 매우 좋고 여러 번 ‘토로토로’한 물에 들어가며 쉬었다고 표현.",
+      "original_keyword": "とろとろの温泉",
+      "review_date": "2025/10/28"
+    },
+    {
+      "signal_type": "water_texture",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad382450/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "객실 가케나가시 노천탕 덕분에 언제든 온천에 들어갔고 피부가 매끈해진 느낌이라고 언급.",
+      "original_keyword": "肌もスベスベ",
+      "review_date": "2025/6/7"
+    },
+    {
+      "signal_type": "private_bath_experience",
+      "source_type": "Google/Trip.com visible review card",
+      "source_url": "https://www.google.com/maps/search/?api=1&query=Yufuin%20Yuhri%20%E7%94%B1%E5%B8%83%E3%81%AE%E7%99%92%20%E5%8F%8B%E9%87%8C",
+      "language": "ko",
+      "short_paraphrase": "각 방마다 개인 노천탕이 있어 오히려 만족했다는 한국어 카드.",
+      "original_keyword": "각 방마다 개인 노천탕 / 수질도 좋고",
+      "review_date": "4개월 전 visible on 2026-07-01"
+    },
+    {
+      "signal_type": "private_bath_experience",
+      "source_type": "Naver search snippet",
+      "source_url": "https://search.naver.com/search.naver?query=%EC%9C%A0%ED%9B%84%EC%9D%B8%EB%85%B8%20%EC%9D%B4%EC%95%BC%EC%8B%9C%20%EC%9C%A0%EB%A6%AC",
+      "language": "ko",
+      "short_paraphrase": "한국어 블로그 결과가 개별 온천, 개인탕, 프라이빗 바위 온천탕을 반복 노출.",
+      "original_keyword": "개별 온천 / 개인탕 / 프라이빗 바위 온천탕",
+      "review_date": "2025-09~2026-03 visible"
+    },
+    {
+      "signal_type": "crowding",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad382450/kuchikomi/archive/",
+      "language": "ja",
+      "short_paraphrase": "전 객실 독채라 다른 투숙객과 거의 마주치지 않아 프라이버시가 좋았다고 언급.",
+      "original_keyword": "他の宿泊客にほとんど会わない",
+      "review_date": "2022/11/6"
+    },
+    {
+      "signal_type": "weak_onsen_feeling",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad382450/kuchikomi/archive/",
+      "language": "ja",
+      "short_paraphrase": "온천 자체보다 요금 대비 관리·식사·욕조 상태가 기대에 못 미쳤다는 저평점.",
+      "original_keyword": "料金に見合わない / 露天風呂の湯舟に苔",
+      "review_date": "2023/6/7"
+    },
+    {
+      "signal_type": "chlorine_smell",
+      "source_type": "Jalan keyword check",
+      "source_url": "https://www.jalan.net/yad382450/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "335건 표본에서 염소/칼키 냄새 불만은 확인되지 않음.",
+      "original_keyword": "塩素 0 / カルキ 0",
+      "review_date": "2017-2026 sample"
+    }
+  ],
+  "bathtime_interpretation": "공식 정보와 후기 표본을 함께 보면, 유후인노 이야시 유리는 전 객실 독채에 내탕과 객실 노천탕이 붙은 객실탕 중심 숙소로 분류하는 것이 타당합니다. 직접 확인한 Jalan 335건과 Google/Naver 표면 신호에서 개인 노천탕, 프라이빗 온천, 24시간 반복 입욕 만족이 강하게 반복됩니다. 다만 노천탕 특성상 벌레·낙엽·청소 체감, 그리고 내탕 노후감은 저평점에서 반복되므로 장점과 주의점을 함께 표시해야 합니다.",
+  "gaps": [
+    "Jalan 912건 중 335건 구조화, 전량은 아님.",
+    "Google Maps 209건 중 Aside Browser로 visible review stream만 확인, 전체 스크롤 전량 수집은 미완료.",
+    "Naver Blog/Cafe는 검색 스니펫 중심이며 개별 블로그 본문 직접 열람은 다음 보강 필요.",
+    "Rakuten Travel global은 시설/플랜 정보와 리뷰 수만 확인, 리뷰 본문 구조화는 미완료.",
+    "Agoda/Booking.com/Trip.com 원사이트 전체 리뷰는 미확인이고 Google hotel panel에 노출된 Trip.com 카드만 일부 반영."
+  ]
+}

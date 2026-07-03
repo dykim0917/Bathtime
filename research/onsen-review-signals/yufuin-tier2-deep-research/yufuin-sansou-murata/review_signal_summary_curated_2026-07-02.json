@@ -1,0 +1,118 @@
+{
+  "accommodation_name": "山荘 無量塔 / 산소 무라타",
+  "research_date": "2026-07-02",
+  "official_facts": {
+    "official_url": "http://www.sansou-murata.com/",
+    "facts": [
+      "공식 노출 기준 각 객실에 전용 온천을 완비하고, 대욕장·노천탕은 없다고 명시됨.",
+      "후보 seed 기준 전 객실 풍로 포함 고급 별채형 숙소."
+    ]
+  },
+  "collection_briefing": [
+    {
+      "source": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00003248/review/",
+      "visible_review_count": "16 combined Yahoo/Ikyu",
+      "rating": "4.72 overall; 温泉・お風呂 4.81",
+      "directly_read_reviews": 5,
+      "onsen_related_reviews": 4,
+      "access_status": "aside_review_tab_read",
+      "notes": "Yahoo review body visible."
+    },
+    {
+      "source": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00003248/review/",
+      "visible_review_count": "16 combined Yahoo/Ikyu",
+      "rating": "4.72 overall; 温泉・お風呂 4.81",
+      "directly_read_reviews": 11,
+      "onsen_related_reviews": 3,
+      "access_status": "aside_review_tab_read",
+      "notes": "Ikkyu review body visible."
+    }
+  ],
+  "review_signal_summary": [
+    {
+      "bath_area": "room_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 4,
+      "source_count": 4,
+      "platform_count": 1,
+      "contradiction_level": "none",
+      "review_signal_status": "weak_signal"
+    }
+  ],
+  "attention_signals": [
+    {
+      "issue": "Aside Browser 동적 보강 완료",
+      "bath_area": "facility_wide",
+      "evidence_level": "direct_body_addendum",
+      "summary": "동적/OTA 공개 본문에서 16건 직접 확인, 온천 관련 7건을 보강함.",
+      "sample_count": 16
+    }
+  ],
+  "evidence_examples": [
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Yahoo Travel via Aside Browser",
+      "source_url": "https://travel.yahoo.co.jp/00003248/review/",
+      "language": "ja",
+      "short_paraphrase": "객실탕 창을 열면 거의 노천처럼 유후인 온천을 즐긴다는 언급.",
+      "original_keyword": "ほぼ露天風呂",
+      "review_date": "2026/6/9",
+      "bath_area": "room_bath",
+      "signal_direction": "positive"
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Yahoo Travel via Aside Browser",
+      "source_url": "https://travel.yahoo.co.jp/00003248/review/",
+      "language": "ja",
+      "short_paraphrase": "방에 욕실이 있어 원하는 때 들어갈 수 있고 청소상태도 좋았다고 함.",
+      "original_keyword": "部屋に風呂",
+      "review_date": "2026/2/2",
+      "bath_area": "room_bath",
+      "signal_direction": "positive"
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Yahoo Travel via Aside Browser",
+      "source_url": "https://travel.yahoo.co.jp/00003248/review/",
+      "language": "ja",
+      "short_paraphrase": "전망 좋은 객실탕이 가케나가시이고 적온이라 여러 번 이용.",
+      "original_keyword": "掛け流し/何度も",
+      "review_date": "2025/8/9",
+      "bath_area": "room_bath",
+      "signal_direction": "positive"
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Yahoo Travel via Aside Browser",
+      "source_url": "https://travel.yahoo.co.jp/00003248/review/",
+      "language": "ja",
+      "short_paraphrase": "객실탕 온도가 적온 관리되어 스트레스 없이 쉬었다고 함.",
+      "original_keyword": "適温に管理",
+      "review_date": "2024/10/12",
+      "bath_area": "room_bath",
+      "signal_direction": "positive"
+    },
+    {
+      "signal_type": "attention",
+      "source_type": "Ikkyu via Aside Browser",
+      "source_url": "https://www.ikyu.com/00003248/review/",
+      "language": "ja",
+      "short_paraphrase": "욕장 자체보다 목욕 타월 품질 개선 요청.",
+      "original_keyword": "バスタオル",
+      "review_date": "2025/7/13",
+      "bath_area": "facility_wide",
+      "signal_direction": "negative"
+    }
+  ],
+  "bathtime_interpretation": "무라타는 공식 정보만으로도 대욕장형이 아니라 전 객실 전용 온천형으로 강하게 분류됩니다. 후기 스니펫도 부屋風呂 만족에 집중되므로 Bathtime에서는 “객실 전용 온천, 대욕장 없음”을 핵심 구분자로 표시해야 합니다.",
+  "gaps": [
+    "Jalan seed URL 없음.",
+    "Yahoo/JTB/Ikkyu/Agoda 등에서 직접 본문 수집 보강 필요.",
+    "Aside Browser 또는 OTA 페이지별 동적 본문 확인 필요."
+  ]
+}

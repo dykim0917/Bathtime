@@ -1,3 +1,5 @@
+import type { OnsenLocation, OnsenStructuredContexts } from './onsenTaxonomy';
+
 export type OnsenStatus = 'confirmed' | 'needs_check' | 'review_signal' | 'attention';
 
 export type OnsenCandidate = {
@@ -7,7 +9,9 @@ export type OnsenCandidate = {
   imageUrl?: string;
   imageAlt?: string;
   area: string;
-  region: 'yufuin';
+  region: string;
+  location?: OnsenLocation;
+  contexts?: OnsenStructuredContexts;
   summary: string;
   fit: string[];
   primaryBath: string;

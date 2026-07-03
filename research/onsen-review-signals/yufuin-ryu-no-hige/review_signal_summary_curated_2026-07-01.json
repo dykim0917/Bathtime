@@ -1,0 +1,203 @@
+{
+  "accommodation_name": "草屋根の宿 龍のひげ／別邸 ゆむた / 쿠사야네노야도 류노히게・벳테이 유무타",
+  "generated_at": "2026-07-01",
+  "data_quality_grade": "A",
+  "collection_briefing": {
+    "directly_read_total": 979,
+    "onsen_related_total": 861,
+    "platforms": [
+      {
+        "source": "Jalan",
+        "visible_review_count": "982",
+        "rating": "5.0",
+        "directly_read_reviews": 933,
+        "onsen_related_reviews": 837,
+        "access_status": "direct_fetch_archive_read",
+        "notes": "현재 페이지+아카이브 33페이지 수집, 중복 제거 후 933건"
+      },
+      {
+        "source": "Rakuten Travel",
+        "visible_review_count": "372 visible / API text 12",
+        "rating": "5.00",
+        "directly_read_reviews": 12,
+        "onsen_related_reviews": 12,
+        "access_status": "direct_api_partial_read",
+        "notes": "공개 API total=12 본문만 수집"
+      },
+      {
+        "source": "Agoda",
+        "visible_review_count": "score count 66 / readable 34",
+        "rating": "9.4/10 approx",
+        "directly_read_reviews": 34,
+        "onsen_related_reviews": 12,
+        "access_status": "direct_api_partial_read",
+        "notes": "hotelId 287683 기준 34건 본문 수집; h10650250는 본문 API 없음"
+      },
+      {
+        "source": "Google hotel panel",
+        "visible_review_count": "288 Google reviews",
+        "rating": "4.7/5",
+        "directly_read_reviews": 0,
+        "onsen_related_reviews": 0,
+        "access_status": "aside_search_snapshot_read",
+        "notes": "Aside로 패널 및 검색 결과 확인, 본문 태깅 제외"
+      },
+      {
+        "source": "Naver search",
+        "visible_review_count": "정규명 검색 결과/OTA·예약 글 다수",
+        "rating": "n/a",
+        "directly_read_reviews": 0,
+        "onsen_related_reviews": 0,
+        "access_status": "aside_search_snapshot_read",
+        "notes": "한국어 수요 신호 확인, 직접 리뷰 카운트 제외"
+      }
+    ]
+  },
+  "curated_signal_summary": [
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 646,
+      "source_count": 646,
+      "platform_count": 3,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal",
+      "note": "전 객실 전용 반노천/객실 온천 구조가 후기에서 매우 강하게 반복. 원천가케나가시 직접 언급 22건."
+    },
+    {
+      "bath_area": "room_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 24,
+      "source_count": 24,
+      "platform_count": 1,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal",
+      "note": "내탕/부屋風呂 표현은 보조적으로 반복. 실제 핵심은 반노천 객실탕."
+    },
+    {
+      "bath_area": "public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "neutral",
+      "mention_count": 3,
+      "source_count": 3,
+      "platform_count": 1,
+      "contradiction_level": "none",
+      "review_signal_status": "weak_signal",
+      "note": "공용 대욕장은 없는 숙소라는 기대 차이 언급. 공식/유코유코 스니펫도 대욕장·대여탕 없음 쪽."
+    },
+    {
+      "bath_area": "private_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "neutral",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient",
+      "note": "공용 대여탕/가족탕 중심 숙소가 아니므로 객실탕과 분리. Rakuten 표기에는 가족풍로가 있으나 공식 핵심 구조와 후기 경험은 객실탕 중심."
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "water_texture",
+      "signal_direction": "mixed",
+      "mention_count": 161,
+      "source_count": 161,
+      "platform_count": 2,
+      "contradiction_level": "medium",
+      "review_signal_status": "strong_signal",
+      "note": "철분 많은 온천/금기 냄새/피부 매끈 표현이 강하게 반복. 대체로 개성 있는 좋은 물로 평가되나 냄새·색·침전물은 호불호와 트러블 신호가 함께 있음."
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "weak_onsen_feeling",
+      "signal_direction": "neutral",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient",
+      "note": "온천감 약함/그냥 물 계열 부정 반복 없음."
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "chlorine_smell",
+      "signal_direction": "neutral",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient",
+      "note": "염소 냄새 반복 없음. 1건은 소독제 추정 청소 문맥으로 냄새 신호가 아님."
+    },
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "crowding",
+      "signal_direction": "positive",
+      "mention_count": 143,
+      "source_count": 143,
+      "platform_count": 3,
+      "contradiction_level": "none",
+      "review_signal_status": "strong_signal",
+      "note": "사람 눈을 신경 쓰지 않고, 다른 투숙객과 마주치지 않는 프라이빗함이 강하게 반복. 혼잡 불만은 사실상 구조적으로 거의 없음."
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "booking_confusion",
+      "signal_direction": "mixed",
+      "mention_count": 25,
+      "source_count": 25,
+      "platform_count": 1,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal",
+      "note": "객실별 조망/방 타입 차이가 커서 방 선택·예약 착오·기대 차이가 일부 반복. OTA 예약 혼선 자체는 강한 신호 아님."
+    }
+  ],
+  "attention_signals": [
+    {
+      "issue": "bath_temperature",
+      "bath_area": "room_open_air_bath",
+      "evidence_level": "moderate",
+      "summary": "탕 온도 언급 27건. 대체로 “미지근해 오래 들어가기 좋다”가 많지만 낮다고 느낀 후기 일부 있음.",
+      "sample_count": 27
+    },
+    {
+      "issue": "iron_smell_or_deposit",
+      "bath_area": "facility_wide",
+      "evidence_level": "strong",
+      "summary": "철분 많은 물, 금기 냄새, 색/침전물 계열 언급 134건. 공식도 철분 함량을 명시.",
+      "sample_count": 134
+    },
+    {
+      "issue": "bath_insects",
+      "bath_area": "room_open_air_bath",
+      "evidence_level": "moderate",
+      "summary": "산속 반노천 구조상 벌레/모기 언급 25건. 여름 객실탕 주의 신호.",
+      "sample_count": 25
+    },
+    {
+      "issue": "onsen_supply_trouble",
+      "bath_area": "room_open_air_bath",
+      "evidence_level": "weak",
+      "summary": "2022년 온천 공급 트러블/침전물 불만이 1건 강하게 확인되나 반복 신호는 아님.",
+      "sample_count": 3
+    },
+    {
+      "issue": "no_public_bath_expectation",
+      "bath_area": "public_bath",
+      "evidence_level": "weak",
+      "summary": "대욕장 선호자에게는 아쉬울 수 있다는 후기 3건. Bathtime 표시상 “객실탕 중심, 대욕장 기대 금지”가 필요.",
+      "sample_count": 3
+    }
+  ]
+}

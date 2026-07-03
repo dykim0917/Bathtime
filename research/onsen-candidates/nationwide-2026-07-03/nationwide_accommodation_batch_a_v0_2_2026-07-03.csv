@@ -1,0 +1,89 @@
+slug,name_ja,name_ko_or_en,area_slug,prefecture,property_type,initial_tier,initial_bath_signals,source_basis,verification_status
+hakone-ginyu,箱根吟遊,Hakone Ginyu,hakone,神奈川県,luxury ryokan,Tier 1,"객실 노천탕·전망형 고급 료칸 대표 후보","Hakone Ikkyu/Jalan room-open-air lists",needs_official_crosscheck
+hakone-gora-kadan,強羅花壇,Gora Kadan,hakone,神奈川県,luxury ryokan,Tier 1,"하코네 최고급 료칸, 대욕장·객실탕 후보","Hakone Ikkyu/Jalan luxury exposure",needs_official_crosscheck
+hakone-suisyoen,箱根・翠松園,Hakone Suishoen,hakone,神奈川県,luxury ryokan,Tier 1,"스위트·객실 노천탕 중심 후보","Hakone Ikkyu room-open-air list",needs_official_crosscheck
+hakone-gora-karaku,箱根・強羅 佳ら久,Hakone Gora Karaku,hakone,神奈川県,luxury ryokan,Tier 1,"전실 온천 노천풍로 완비 신호, 리뷰풀 큼","Ikkyu Hakone room-open-air listing",needs_official_crosscheck
+hakone-gen-gora,玄 箱根強羅,Gen Hakone Gora,hakone,神奈川県,luxury ryokan,Tier 1,"객실 노천탕 추천 숙소 신호","Jalan/Ikkyu Hakone room-open-air exposure",needs_official_crosscheck
+hakone-matsuzakaya,箱根の名湯 松坂屋本店,Matsuzakaya Honten,hakone,神奈川県,traditional ryokan,Tier 1,"명탕·원천 신호 강한 노포 료칸","Ikkyu nationwide onsen ranking seed",needs_official_crosscheck
+hakone-kanaya-resort,KANAYA RESORT HAKONE,KANAYA RESORT HAKONE,hakone,神奈川県,luxury resort ryokan,Tier 1,"센고쿠하라 고급 객실 노천탕 후보","Ikkyu Hakone room-open-air list",needs_official_crosscheck
+hakone-fontainebleau,オーベルジュ 箱根フォンテーヌ・ブロー仙石亭,Hakone Fontaine Bleau Sengokutei,hakone,神奈川県,auberge ryokan,Tier 1,"전 13실 노천풍로 객실 신호, 음식 평가 강함","Ikkyu Hakone room-open-air dining list",needs_official_crosscheck
+hakone-yuyado-zen,箱根湯宿 然-ZEN-,Hakone Yuyado Zen,hakone,神奈川県,small ryokan,Tier 1,"전 10실 반노천 객실 신호, 후지산 조망 후보","Ikkyu Hakone room-open-air list",needs_official_crosscheck
+hakone-byakudan,箱根強羅 白檀,Hakone Gora Byakudan,hakone,神奈川県,luxury ryokan,Tier 1,"강라 고급 료칸, 객실 노천탕 후보","Ikkyu Hakone room-open-air list",needs_official_crosscheck
+hakone-kowakien-tenyu,箱根小涌園 天悠,Hakone Kowakien Ten-yu,hakone,神奈川県,large resort ryokan,Tier 1,"전 객실 온천 노천풍로 계열 신호, 대형 리뷰풀 후보","Hakone room-open-air lists",needs_official_crosscheck
+hakone-yama-no-chaya,山の茶屋,Yama no Chaya,hakone,神奈川県,traditional ryokan,Tier 1,"탑노사와 고급 료칸, 객실 노천탕 후보","Hakone luxury/room-open-air exposure",needs_official_crosscheck
+hakone-kai,星野リゾート 界 箱根,Hoshino Resorts KAI Hakone,hakone,神奈川県,brand ryokan,Tier 1,"하코네 브랜드 료칸, 대욕장·온천감 리뷰풀 후보","Jalan/Hakone lodging exposure",needs_bath_detail_crosscheck
+hakone-airu,箱根藍瑠,Hakone Airu,hakone,神奈川県,ryokan,Tier 2,"객실 노천탕 후보, 젊은 커플 수요 가능","Hakone room-open-air exposure",needs_official_crosscheck
+hakone-pax-yoshino,箱根パークス吉野,Hakone Pax Yoshino,hakone,神奈川県,hotel ryokan,Tier 2,"객실 노천탕·대욕장 후보, 가격형 비교군","Hakone accommodation exposure",needs_bath_detail_crosscheck
+hakone-hotel-okada,箱根湯本温泉 ホテルおかだ,Hotel Okada,hakone,神奈川県,large hotel ryokan,Tier 2,"대형 온천호텔, 대욕장·노천·리뷰풀 후보","Jalan Hakone lodging exposure",needs_bath_detail_crosscheck
+hakone-tenseien,箱根湯本温泉 天成園,Tenseien,hakone,神奈川県,large hotel ryokan,Tier 2,"객실 노천탕 목록 노출, 대형 온천시설형 숙소","MyBest/Jalan Hakone room-open-air exposure",needs_official_crosscheck
+hakone-nanpuso,箱根湯本温泉 ホテル南風荘,Hotel Nanpuso,hakone,神奈川県,large hotel ryokan,Tier 2,"객실 노천탕·대욕장 후보, 가족형 리뷰풀","Jalan Hakone lodging exposure",needs_bath_detail_crosscheck
+hakone-setsugetsuka,季の湯 雪月花,Tokinoyu Setsugetsuka,hakone,神奈川県,ryokan hotel,Tier 2,"강라역 접근, 객실탕/대욕장/대절탕 후보","Hakone accommodation exposure",needs_official_crosscheck
+hakone-mikawaya,箱根小涌園 三河屋旅館,Mikawaya Ryokan,hakone,神奈川県,traditional ryokan,Tier 2,"노포 료칸, 대욕장·객실탕 후보","Hakone accommodation exposure",needs_bath_detail_crosscheck
+hakone-oukyuan,源泉かけ流しの宿 櫻休庵,Oukyuan,hakone,神奈川県,small ryokan,Tier 2,"전실 전용 전망 노천온천풍로 신호","Jalan Hakone room-open-air page",needs_official_crosscheck
+hakone-oukyuan-rin,源泉かけ流しの宿 櫻休庵 別亭 凛,Oukyuan Bettei Rin,hakone,神奈川県,small ryokan,Tier 2,"전 객실 전망 노천온천풍로 신호","Jalan Hakone room-open-air page",needs_official_crosscheck
+kusatsu-tokino-niwa,湯宿 季の庭,Yuyado Tokinoniwa,kusatsu,群馬県,ryokan,Tier 1,"객실 노천탕·대욕장·대절탕 후보","Kusatsu popular ryokan/room-open-air lists",needs_official_crosscheck
+kusatsu-konoha,お宿 木の葉,Oyado Konoha,kusatsu,群馬県,ryokan,Tier 1,"대욕장·대절탕·탕 종류 다양성 후보","Kusatsu popular ryokan lists",needs_bath_detail_crosscheck
+kusatsu-naraya,草津温泉 奈良屋,Naraya,kusatsu,群馬県,traditional ryokan,Tier 1,"구사쓰 노포 료칸, 유황천/대욕장 신호","Kusatsu popular ryokan lists",needs_official_crosscheck
+kusatsu-ichii,草津温泉 ホテル一井,Hotel Ichii,kusatsu,群馬県,large ryokan hotel,Tier 1,"湯畑 인접 대형 숙소, 대욕장 리뷰풀 후보","Kusatsu popular ryokan lists",needs_bath_detail_crosscheck
+kusatsu-sakurai,草津温泉 ホテル櫻井,Hotel Sakurai,kusatsu,群馬県,large ryokan hotel,Tier 1,"객실 노천탕 목록 노출, 대형 리뷰풀 후보","MyBest/Rakuten Kusatsu room-open-air exposure",needs_official_crosscheck
+kusatsu-now-resort,草津ナウリゾートホテル,Kusatsu Now Resort Hotel,kusatsu,群馬県,resort hotel,Tier 1,"객실 노천탕 후보, 리조트형 온천 비교군","Kusatsu room-open-air ranking exposure",needs_official_crosscheck
+kusatsu-lavista-hills,ラビスタ草津ヒルズ,La Vista Kusatsu Hills,kusatsu,群馬県,resort ryokan,Tier 1,"전실 히노키 노천풍로, 대욕장·대절탕 신호","Rakuten Kusatsu room-open-air article",needs_official_crosscheck
+kusatsu-boun,草津温泉 望雲,Boun,kusatsu,群馬県,traditional ryokan,Tier 1,"구사쓰 대표 료칸, 다원천/대욕장 후보","Kusatsu popular ryokan exposure",needs_bath_detail_crosscheck
+kusatsu-kanemidori,草津温泉 金みどり,Kanemidori,kusatsu,群馬県,traditional ryokan,Tier 2,"湯畑 접근성, 대욕장·노천 후보","Kusatsu popular ryokan exposure",needs_bath_detail_crosscheck
+kusatsu-eidaya,草津温泉 源泉一乃湯 / 永田屋,Eidaya / Gensen Ichinoyu,kusatsu,群馬県,ryokan,Tier 2,"소형/가격형 숙소, 원천·객실탕 여부 확인 후보","Kusatsu accommodation exposure",needs_identity_crosscheck
+kusatsu-hotel-village,草津温泉 ホテルヴィレッジ,Kusatsu Onsen Hotel Village,kusatsu,群馬県,large resort hotel,Tier 2,"대형 리조트, 온천+가족형 수요 후보","Kusatsu popular lodging exposure",needs_bath_detail_crosscheck
+kusatsu-tsutsujitei,草津温泉 つつじ亭,Tsutsujitei,kusatsu,群馬県,luxury ryokan,Tier 1,"고급 료칸, 객실탕/대욕장 후보","Kusatsu luxury lodging exposure",needs_official_crosscheck
+kusatsu-osakaya,草津温泉 大阪屋,Osakaya,kusatsu,群馬県,traditional ryokan,Tier 2,"湯畑 인근 노포, 대욕장 후보","Kusatsu popular lodging exposure",needs_bath_detail_crosscheck
+kusatsu-kirishimaya,草津温泉 桐島屋旅館,Kirishimaya Ryokan,kusatsu,群馬県,small ryokan,Tier 3,"소형 료칸, 로컬/가격형 비교군","Kusatsu accommodation exposure",needs_source_crosscheck
+kusatsu-skyland,草津スカイランドホテル,Kusatsu Skyland Hotel,kusatsu,群馬県,hotel ryokan,Tier 3,"객실 노천탕 후보, 보강/가격형 비교군","Kusatsu accommodation exposure",needs_official_crosscheck
+atami-fufu,ふふ 熱海,Fufu Atami,atami,静岡県,luxury ryokan,Tier 1,"고급 객실탕/대욕장 후보","Atami Rakuten/Ikkyu high-end exposure",needs_source_crosscheck
+atami-sekaie,ATAMI せかいえ,ATAMI Sekaie,atami,静岡県,luxury ryokan,Tier 1,"바다 전망 객실 노천탕 후보, 리뷰풀 큼","Ikkyu Atami room-open-air list",needs_official_crosscheck
+atami-karaku,熱海・伊豆山 佳ら久,Atami Izusan Karaku,atami,静岡県,luxury ryokan,Tier 1,"객실 노천탕 인기 고급숙, 리뷰풀 큼","Ikkyu Atami room-open-air list",needs_official_crosscheck
+atami-kaihourou,ATAMI 海峯楼,ATAMI Kaihourou,atami,静岡県,luxury ryokan,Tier 1,"소형 초고급 숙소, 객실탕/온천 세부 확인 후보","Atami luxury exposure",needs_official_crosscheck
+atami-new-tomiyoshi,味と湯の宿 ニューとみよし,New Tomiyoshi,atami,静岡県,seaside ryokan,Tier 1,"객실 노천탕 많은 대중형 후보","MyBest Atami room-open-air ranking",needs_official_crosscheck
+atami-kamenoi,亀の井ホテル 熱海,Kamenoi Hotel Atami,atami,静岡県,large hotel ryokan,Tier 1,"객실 노천탕 목록 노출, 대형 리뷰풀 후보","MyBest Atami room-open-air ranking",needs_bath_detail_crosscheck
+atami-pearl-star,熱海パールスターホテル,Atami Pearl Star Hotel,atami,静岡県,luxury hotel,Tier 1,"전실 오션뷰·객실탕/온천 후보","Atami luxury exposure",needs_official_crosscheck
+atami-korakuen,熱海後楽園ホテル,Atami Korakuen Hotel,atami,静岡県,large resort hotel,Tier 1,"대형 리조트, Fuua 연계 온천시설 신호","Atami day-use/spa official exposure",needs_bath_detail_crosscheck
+atami-new-akao,ホテルニューアカオ,Hotel New Akao,atami,静岡県,large seaside hotel,Tier 1,"대형 바다 전망 온천호텔, 리뷰풀/부정신호 분석 가치","Atami lodging exposure",needs_bath_detail_crosscheck
+atami-watei-kazekomichi,WA亭 風こみち,Watei Kazekomichi,atami,静岡県,small luxury ryokan,Tier 1,"객실 노천탕 후보, 소형 고급숙","Atami room-open-air exposure",needs_official_crosscheck
+atami-taiseikan,源泉湯宿 大成館,Taiseikan,atami,静岡県,traditional ryokan,Tier 2,"원천·객실 노천탕 후보","Atami room-open-air exposure",needs_official_crosscheck
+atami-soki,SOKI ATAMI,SOKI Atami,atami,静岡県,modern ryokan,Tier 1,"현대형 온천 숙소, 객실탕/대욕장 후보","Atami luxury/new lodging exposure",needs_official_crosscheck
+atami-sekitei,あたみ石亭,Atami Sekitei,atami,静岡県,luxury ryokan,Tier 1,"노포 고급 료칸, 객실탕/대욕장 후보","Atami luxury exposure",needs_official_crosscheck
+atami-club-geihinkan,熱海倶楽部 迎賓館,Atami Club Geihinkan,atami,静岡県,luxury hotel,Tier 2,"고급 객실온천 후보, 골프/리조트형","Atami luxury exposure",needs_official_crosscheck
+atami-risonare,星野リゾート リゾナーレ熱海,Hoshino Resorts Risonare Atami,atami,静岡県,resort hotel,Tier 2,"가족형 리조트, 온천 대욕장 후보","Atami lodging exposure",needs_bath_detail_crosscheck
+atami-micuras,ホテルミクラス,Hotel Micuras,atami,静岡県,seaside hotel,Tier 2,"바다 전망 대욕장 후보, 접근성/호텔형","Atami lodging exposure",needs_bath_detail_crosscheck
+atami-yuyado-ichibanchi,熱海温泉 湯宿一番地,Yuyado Ichibanchi,atami,静岡県,ryokan hotel,Tier 2,"역 접근성, 노천/대욕장 후보","Atami lodging exposure",needs_bath_detail_crosscheck
+atami-uminohana,隠れ湯の宿 月のあかり / うみのホテル中田屋候補,Uminohana / related Atami small inn,atami,静岡県,small ryokan,Tier 3,"소형 객실탕 후보, 명칭 재확인 필요","Atami room-open-air exposure",needs_identity_crosscheck
+atami-sakuraya,熱海温泉 さくらや旅館,Sakuraya Ryokan,atami,静岡県,traditional ryokan,Tier 2,"역 인근 노포 료칸, 대욕장/노천 후보","Atami lodging exposure",needs_bath_detail_crosscheck
+gero-suimeikan,下呂温泉 水明館,Suimeikan,gero,岐阜県,large ryokan hotel,Tier 1,"대욕장·객실 노천탕·대형 리뷰풀 후보","Rakuten/Jalan/Ikkyu Gero room-open-air lists",needs_bath_detail_crosscheck
+gero-ogawaya,下呂温泉 小川屋,Ogawaya,gero,岐阜県,large ryokan,Tier 1,"객실 노천탕·대욕장·리뷰풀 후보","MyBest/Jalan Gero room-open-air lists",needs_bath_detail_crosscheck
+gero-yunoshimakan,下呂温泉 湯之島館,Yunoshimakan,gero,岐阜県,traditional ryokan,Tier 1,"역사형 노포, 객실 노천탕 후보","Ikkyu/Yahoo Gero room-open-air ranking",needs_official_crosscheck
+gero-miyako,下呂温泉 こころをなでる静寂 みやこ,Miyako,gero,岐阜県,small ryokan,Tier 1,"전 16실 중 노천풍로 객실/離れ 신호","Ikkyu Gero room-open-air list",needs_official_crosscheck
+gero-suihoen,下呂温泉 懐石宿 水鳳園,Suihoen,gero,岐阜県,kaiseki ryokan,Tier 1,"고평점, 객실 노천탕 충실 신호","Rakuten Gero listing, Ikkyu Gero ranking",needs_official_crosscheck
+gero-kawakamiya,下呂温泉 川上屋花水亭,Kawakamiya Kasuitei,gero,岐阜県,traditional ryokan,Tier 1,"소형 고급 료칸, 객실 노천탕 후보","Ikkyu Gero room-open-air ranking",needs_official_crosscheck
+gero-shogetsu,下呂温泉 今宵 天空に遊ぶ しょうげつ,Shogetsu,gero,岐阜県,small luxury ryokan,Tier 1,"고지대 전망형 료칸, 객실 노천탕 후보","Ikkyu/Jalan Gero room-open-air lists",needs_official_crosscheck
+gero-kanko-hotel,湯あそびの宿 下呂観光ホテル,Gero Kanko Hotel,gero,岐阜県,hotel ryokan,Tier 2,"전망·객실 노천탕 후보, 대중형 비교군","Jalan Gero room-open-air page",needs_bath_detail_crosscheck
+gero-sasara,下呂温泉 アートな館 紗々羅,Sasara,gero,岐阜県,ryokan,Tier 2,"객실 노천탕 후보, 여성/커플 수요 가능","Jalan Gero room-open-air page",needs_official_crosscheck
+gero-armeria,下呂温泉 ホテルくさかべアルメリア,Hotel Kusakabe Armeria,gero,岐阜県,large hotel ryokan,Tier 2,"Rakuten 리뷰풀 큼, 객실 노천탕/대욕장 후보","Rakuten Gero rotsuki page",needs_bath_detail_crosscheck
+gero-yamagataya,下呂温泉 山形屋,Yamagataya,gero,岐阜県,traditional ryokan,Tier 2,"객실 노천탕·대浴場·貸切風呂 신호","MyBest Gero room-open-air ranking",needs_official_crosscheck
+gero-tsukinoakari,下呂温泉 離れの宿 月のあかり,Tsuki no Akari,gero,岐阜県,detached ryokan,Tier 1,"전실 노천풍로離れ, 내탕·노천·족탕 신호","Rakuten Gero room-open-air article",needs_official_crosscheck
+gero-bosenkan,下呂温泉 望川館,Bosenkan,gero,岐阜県,large ryokan,Tier 2,"대욕장·노천·객실탕 후보, 대중형 리뷰풀","Gero lodging exposure",needs_bath_detail_crosscheck
+gero-miyabitei,下呂ロイヤルホテル雅亭,Gero Royal Hotel Miyabitei,gero,岐阜県,hotel ryokan,Tier 2,"객실 노천탕 후보, 가격형 비교군","Gero room-open-air exposure",needs_official_crosscheck
+gero-mutsumikan,下呂温泉 睦館,Mutsumikan,gero,岐阜県,traditional ryokan,Tier 3,"역 접근성·소형 료칸, 대浴場 후보","Gero lodging exposure",needs_bath_detail_crosscheck
+arima-kinzan,有馬温泉 欽山,Kinzan,arima,兵庫県,luxury ryokan,Tier 1,"아리마 고급 료칸, 금천/객실탕 후보","Ikkyu/Rakuten Arima room-open-air lists",needs_official_crosscheck
+arima-nakanobo,中の坊瑞苑,Nakanobo Zuien,arima,兵庫県,luxury ryokan,Tier 1,"아리마 최고급 숙소, 대욕장·객실탕 후보","MyBest/Ikkyu Arima exposure",needs_official_crosscheck
+arima-grand-hotel,有馬グランドホテル,Arima Grand Hotel,arima,兵庫県,large ryokan hotel,Tier 1,"대형 아리마 온천호텔, 대욕장·전망탕·객실탕 후보","MyBest/Arima popular exposure",needs_bath_detail_crosscheck
+arima-hyoe-koyokaku,兵衛向陽閣,Hyoe Koyokaku,arima,兵庫県,large ryokan hotel,Tier 1,"아리마 대형 노포, 금천 대욕장 리뷰풀 후보","Arima popular ryokan exposure",needs_bath_detail_crosscheck
+arima-gekkoen-korokan,月光園 鴻朧館,Gekkoen Korokan,arima,兵庫県,ryokan,Tier 1,"금천/노천/객실탕 후보, 리뷰풀 가치","Arima accommodation exposure",needs_official_crosscheck
+arima-gekkoen-yugetsusanso,月光園 游月山荘,Gekkoen Yugetsusanso,arima,兵庫県,ryokan,Tier 2,"아리마 산장형, 대욕장·노천 후보","Arima accommodation exposure",needs_bath_detail_crosscheck
+arima-goshobessho,有馬山叢 御所別墅,Goshobessho,arima,兵庫県,luxury villa ryokan,Tier 1,"고급 빌라형 온천 후보","Arima luxury exposure",needs_source_crosscheck
+arima-goshoboh,陶泉 御所坊,Tocen Goshoboh,arima,兵庫県,traditional ryokan,Tier 1,"노포 료칸, 금천/대욕장 후보","Arima luxury/traditional exposure",needs_bath_detail_crosscheck
+arima-maruyama,有馬温泉 竹取亭円山,Taketoritei Maruyama,arima,兵庫県,ryokan,Tier 1,"대절탕/객실탕 후보, 한국어 수요 가능성","Arima accommodation exposure",needs_official_crosscheck
+arima-hanamusubi,有馬温泉 御幸荘 花結び,Miyukiso Hanamusubi,arima,兵庫県,ryokan,Tier 1,"금천 객실 노천탕 5실 신호","Rakuten Arima room-open-air article",needs_official_crosscheck
+arima-okuno-hosomichi,天地の宿 奥の細道,Okuno Hosomichi,arima,兵庫県,luxury ryokan,Tier 1,"객실 노천탕·자가원천/금천 신호","Ikkyu Arima room-open-air ranking",needs_official_crosscheck
+arima-hatago,有馬温泉 四季の彩 旅篭,Shiki no Irodori Hatago,arima,兵庫県,luxury ryokan,Tier 1,"전실 금천 노천탕 신호","Ikkyu Arima room-open-air ranking",needs_official_crosscheck
+arima-shisui,SPA TERRACE紫翠,SPA TERRACE Shisui,arima,兵庫県,modern ryokan,Tier 1,"객실 노천탕 후보, 현대형 스파 숙소","MyBest Arima room-open-air ranking",needs_official_crosscheck
+arima-ryuusenkaku,元湯龍泉閣,Motoyu Ryuusenkaku,arima,兵庫県,ryokan,Tier 2,"가족형 온천 숙소, 대욕장/노천 후보","Arima lodging exposure",needs_bath_detail_crosscheck
+arima-royal-hotel,有馬ロイヤルホテル,Arima Royal Hotel,arima,兵庫県,hotel ryokan,Tier 2,"가격형 온천호텔, 대욕장/노천 후보","Arima lodging exposure",needs_bath_detail_crosscheck
+arima-kosenkaku,有馬温泉 元湯 古泉閣,Kosenkaku,arima,兵庫県,traditional ryokan,Tier 1,"자가원천/금천 후보, 로지·료칸 혼합형","Arima accommodation exposure",needs_official_crosscheck
+arima-negiya,ねぎや陵楓閣,Negiya Ryofukaku,arima,兵庫県,traditional ryokan,Tier 2,"아리마 산쪽 료칸, 대욕장/노천 후보","Arima lodging exposure",needs_bath_detail_crosscheck

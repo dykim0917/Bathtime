@@ -8,6 +8,10 @@ export type OnsenAdminStatus = 'active' | 'draft' | 'paused' | 'retired';
 export type OnsenWaterUseStatus = 'official_confirmed' | 'review_supported' | 'needs_official_check' | 'unclear';
 export type OnsenWaterSourceType = 'natural_100' | 'free_flowing_source' | 'hot_spring_confirmed' | 'needs_check';
 export type OnsenBathScope = 'all_rooms' | 'some_rooms' | 'room_signal_only' | 'public_bath_only' | 'unclear';
+export type OnsenRegionGroup = 'kyushu' | 'kanto' | 'kansai' | 'hokkaido' | 'tohoku' | 'chubu' | 'chugoku_shikoku';
+export type OnsenTravelContext = 'ryokan_stay' | 'day_trip' | 'city_bath' | 'hotel_public_bath';
+export type OnsenBathContext = 'room_bath' | 'private_bath' | 'public_bath';
+export type OnsenWaterCriterion = 'direct_source' | 'natural_100' | 'spring_confirmed' | 'water_texture' | 'temperature_adjustment' | 'winter_caution';
 
 export interface OnsenEvidenceCounts {
   directReviewCount: number | null;
@@ -25,6 +29,14 @@ export interface AdminOnsenAccommodation {
   jaName?: string;
   region: string;
   area: string;
+  country: string;
+  regionGroup: OnsenRegionGroup;
+  prefecture: string;
+  city: string;
+  onsenArea: string;
+  travelContexts: OnsenTravelContext[];
+  bathContexts: OnsenBathContext[];
+  waterCriteria: OnsenWaterCriterion[];
   summary: string;
   primaryBath: string;
   waterUseStatus: OnsenWaterUseStatus;
@@ -46,6 +58,14 @@ export interface OnsenAccommodationRecord {
   ja_name: string | null;
   region: string;
   area: string | null;
+  country: string | null;
+  region_group: string | null;
+  prefecture: string | null;
+  city: string | null;
+  onsen_area: string | null;
+  travel_contexts: unknown;
+  bath_contexts: unknown;
+  water_criteria: unknown;
   summary: string;
   primary_bath: string | null;
   water_use_status: string;
@@ -90,10 +110,46 @@ export const bathScopeLabels: Record<OnsenBathScope, string> = {
   unclear: '확인 필요',
 };
 
+export const regionGroupLabels: Record<OnsenRegionGroup, string> = {
+  kyushu: '규슈',
+  kanto: '간토',
+  kansai: '간사이',
+  hokkaido: '홋카이도',
+  tohoku: '도호쿠',
+  chubu: '주부',
+  chugoku_shikoku: '주고쿠/시코쿠',
+};
+
+export const travelContextLabels: Record<OnsenTravelContext, string> = {
+  ryokan_stay: '료칸 숙박',
+  day_trip: '당일온천',
+  city_bath: '도심 대욕장',
+  hotel_public_bath: '호텔 대욕장',
+};
+
+export const bathContextLabels: Record<OnsenBathContext, string> = {
+  room_bath: '객실탕 중심',
+  private_bath: '가족탕/대절탕 있음',
+  public_bath: '대욕장 중심',
+};
+
+export const waterCriterionLabels: Record<OnsenWaterCriterion, string> = {
+  direct_source: '직수 온천',
+  natural_100: '100% 천연온천',
+  spring_confirmed: '온천수 확인',
+  water_texture: '부드러운 물 느낌',
+  temperature_adjustment: '온도 조정 확인',
+  winter_caution: '겨울 주의',
+};
+
 const onsenStatuses = Object.keys(onsenStatusLabels) as OnsenAdminStatus[];
 const waterUseStatuses = Object.keys(waterUseStatusLabels) as OnsenWaterUseStatus[];
 const waterSourceTypes = Object.keys(waterSourceTypeLabels) as OnsenWaterSourceType[];
 const bathScopes = Object.keys(bathScopeLabels) as OnsenBathScope[];
+const regionGroups = Object.keys(regionGroupLabels) as OnsenRegionGroup[];
+const travelContexts = Object.keys(travelContextLabels) as OnsenTravelContext[];
+const bathContexts = Object.keys(bathContextLabels) as OnsenBathContext[];
+const waterCriteria = Object.keys(waterCriterionLabels) as OnsenWaterCriterion[];
 
 const reportPriority = [
   'agoda_enriched',
@@ -123,8 +179,18 @@ function normalizeBathScope(value: string | null | undefined): OnsenBathScope {
   return bathScopes.includes(value as OnsenBathScope) ? (value as OnsenBathScope) : 'unclear';
 }
 
+function normalizeRegionGroup(value: string | null | undefined): OnsenRegionGroup {
+  return regionGroups.includes(value as OnsenRegionGroup) ? (value as OnsenRegionGroup) : 'kyushu';
+}
+
 function normalizeStringList(value: unknown): string[] {
   return Array.isArray(value) ? value.filter((item): item is string => typeof item === 'string') : [];
+}
+
+function normalizeEnumList<T extends string>(value: unknown, allowedValues: readonly T[], fallback: T[]): T[] {
+  const allowed = new Set(allowedValues);
+  const normalized = normalizeStringList(value).filter((item): item is T => allowed.has(item as T));
+  return normalized.length > 0 ? normalized : fallback;
 }
 
 function normalizeEvidenceCounts(value: Partial<OnsenEvidenceCounts> | null | undefined): OnsenEvidenceCounts {
@@ -154,6 +220,14 @@ export function mapOnsenAccommodationRecord(row: OnsenAccommodationRecord): Admi
     jaName: row.ja_name ?? undefined,
     region: row.region,
     area: row.area ?? row.region,
+    country: row.country ?? 'JP',
+    regionGroup: normalizeRegionGroup(row.region_group),
+    prefecture: row.prefecture ?? 'oita',
+    city: row.city ?? 'yufu',
+    onsenArea: row.onsen_area ?? row.region,
+    travelContexts: normalizeEnumList(row.travel_contexts, travelContexts, ['ryokan_stay']),
+    bathContexts: normalizeEnumList(row.bath_contexts, bathContexts, deriveBathContexts(row.bath_scope, row.primary_bath ?? '', row.summary)),
+    waterCriteria: normalizeEnumList(row.water_criteria, waterCriteria, deriveWaterCriteria(row.water_use_status, row.water_source_type, row.summary, normalizeStringList(row.operation_notes))),
     summary: row.summary,
     primaryBath: row.primary_bath ?? '',
     waterUseStatus: normalizeWaterUseStatus(row.water_use_status),
@@ -252,6 +326,11 @@ async function readSeedReport(root: string, folder: string): Promise<AdminOnsenA
   const officialText = pickOfficialText(flat);
   const combinedText = `${officialText} ${refinedSummary ?? summaryText}`;
   const evidenceCounts = pickEvidenceCounts(flat);
+  const primaryBath = classifyPrimaryBath(combinedText);
+  const waterUseStatus = classifyWaterUseStatus(officialText, summaryText);
+  const waterSourceType = classifyWaterSourceType(combinedText);
+  const bathScope = classifyBathScope(combinedText);
+  const operationNotes = classifyOperationNotes(combinedText);
 
   return {
     slug: folder,
@@ -259,12 +338,20 @@ async function readSeedReport(root: string, folder: string): Promise<AdminOnsenA
     jaName: pickJapaneseName(raw),
     region: 'yufuin',
     area: '오이타 유후인',
+    country: 'JP',
+    regionGroup: 'kyushu',
+    prefecture: 'oita',
+    city: 'yufu',
+    onsenArea: 'yufuin',
+    travelContexts: ['ryokan_stay'],
+    bathContexts: deriveBathContexts(bathScope, primaryBath, combinedText),
+    waterCriteria: deriveWaterCriteria(waterUseStatus, waterSourceType, refinedSummary ?? summaryText, operationNotes),
     summary: refinedSummary ?? (summaryText || officialText || '온천 숙소 리서치 요약을 정리해야 합니다.'),
-    primaryBath: classifyPrimaryBath(combinedText),
-    waterUseStatus: classifyWaterUseStatus(officialText, summaryText),
-    waterSourceType: classifyWaterSourceType(combinedText),
-    bathScope: classifyBathScope(combinedText),
-    operationNotes: classifyOperationNotes(combinedText),
+    primaryBath,
+    waterUseStatus,
+    waterSourceType,
+    bathScope,
+    operationNotes,
     evidenceCounts,
     evidenceGrade: classifyEvidenceGrade(evidenceCounts),
     evidenceNote: createEvidenceNote(evidenceCounts),
@@ -378,6 +465,37 @@ function classifyOperationNotes(text: string): string[] {
   if (/(겨울|추위|냉기|雪|winter)/i.test(text)) notes.push('겨울 체감 주의');
   if (/(벌레|낙엽|虫|insect|자연물)/i.test(text)) notes.push('벌레/자연물 주의');
   return [...new Set(notes)];
+}
+
+function deriveBathContexts(bathScope: string | null | undefined, primaryBath: string, text: string): OnsenBathContext[] {
+  const values = new Set<OnsenBathContext>();
+  if (bathScope === 'all_rooms' || bathScope === 'some_rooms' || bathScope === 'room_signal_only' || /객실|전 객실|객실탕/.test(primaryBath)) {
+    values.add('room_bath');
+  }
+  if (/(가족탕|대절탕|대여탕|貸切|전세|프라이빗)/.test(`${primaryBath} ${text}`)) {
+    values.add('private_bath');
+  }
+  if (bathScope === 'public_bath_only' || /(대욕장|공용탕|大浴場)/.test(`${primaryBath} ${text}`)) {
+    values.add('public_bath');
+  }
+  return [...values];
+}
+
+function deriveWaterCriteria(
+  waterUseStatus: string | null | undefined,
+  waterSourceType: string | null | undefined,
+  summary: string,
+  notes: string[]
+): OnsenWaterCriterion[] {
+  const text = `${summary} ${notes.join(' ')}`;
+  const values = new Set<OnsenWaterCriterion>();
+  if (waterSourceType === 'free_flowing_source') values.add('direct_source');
+  if (waterSourceType === 'natural_100') values.add('natural_100');
+  if (waterUseStatus === 'official_confirmed' || waterUseStatus === 'review_supported' || waterSourceType === 'hot_spring_confirmed') values.add('spring_confirmed');
+  if (/(부드럽|매끈|수질|피부감|온천감|물 느낌)/.test(text)) values.add('water_texture');
+  if (/(물을 섞어|온도 조절|가온|가수)/.test(text)) values.add('temperature_adjustment');
+  if (/(겨울|추위|춥|냉기)/.test(text)) values.add('winter_caution');
+  return [...values];
 }
 
 function pickEvidenceCounts(flat: Array<[string, unknown]>): OnsenEvidenceCounts {

@@ -1,0 +1,246 @@
+{
+  "checkedAt": "2026-06-30",
+  "input_rows": 239,
+  "deduped_rows": 213,
+  "duplicate_groups": 26,
+  "source_counts": {
+    "official": 77,
+    "rakuten": 31,
+    "jalan": 193,
+    "merged": 239
+  },
+  "preliminary_counts": {
+    "core_ota_onsen_candidate": 73,
+    "secondary_onsen_lodging": 28,
+    "low_priority_non_ryokan_review": 14,
+    "manual_review_needed": 21,
+    "core_official_ryokan_association": 77
+  },
+  "priority_counts": {
+    "Tier 1 seed / 정밀조사 우선": 31,
+    "Tier 2 seed / 표준조사": 27,
+    "Tier 3 / 보류": 155
+  },
+  "top_30": [
+    {
+      "name": "楓の小舎",
+      "priority": "Tier 1 seed / 정밀조사 우선",
+      "score": 119,
+      "reasons": "official_ryokan_association | rakuten_presence | jalan_presence | review_pool_500_plus | all_or_many_room_bath_signal | private_or_family_bath_signal | public_bath_signal | luxury_or_specialty_signal",
+      "reviews": 907
+    },
+    {
+      "name": "湯布院別荘 四季彩ホテル",
+      "priority": "Tier 1 seed / 정밀조사 우선",
+      "score": 113,
+      "reasons": "official_ryokan_association | rakuten_presence | jalan_presence | review_pool_200_plus | all_or_many_room_bath_signal | private_or_family_bath_signal | public_bath_signal | source_flow_keyword",
+      "reviews": 324
+    },
+    {
+      "name": "由布の癒 友里",
+      "priority": "Tier 1 seed / 정밀조사 우선",
+      "score": 109,
+      "reasons": "official_ryokan_association | jalan_presence | review_pool_500_plus | all_or_many_room_bath_signal | public_bath_signal | source_flow_keyword | luxury_or_specialty_signal",
+      "reviews": 912
+    },
+    {
+      "name": "由布院ユウベルホテル",
+      "priority": "Tier 1 seed / 정밀조사 우선",
+      "score": 109,
+      "reasons": "official_ryokan_association | jalan_presence | review_pool_500_plus | all_or_many_room_bath_signal | public_bath_signal | source_flow_keyword | luxury_or_specialty_signal",
+      "reviews": 596
+    },
+    {
+      "name": "由布岳一望の宿 美星",
+      "priority": "Tier 1 seed / 정밀조사 우선",
+      "score": 105,
+      "reasons": "official_ryokan_association | rakuten_presence | jalan_presence | review_pool_50_plus | all_or_many_room_bath_signal | public_bath_signal | source_flow_keyword | luxury_or_specialty_signal",
+      "reviews": 178
+    },
+    {
+      "name": "草庵 秋桜",
+      "priority": "Tier 1 seed / 정밀조사 우선",
+      "score": 105,
+      "reasons": "official_ryokan_association | rakuten_presence | jalan_presence | review_pool_50_plus | all_or_many_room_bath_signal | private_or_family_bath_signal | public_bath_signal | luxury_or_specialty_signal",
+      "reviews": 195
+    },
+    {
+      "name": "御宿 八遇來",
+      "priority": "Tier 1 seed / 정밀조사 우선",
+      "score": 103,
+      "reasons": "official_ryokan_association | rakuten_presence | jalan_presence | review_pool_200_plus | all_or_many_room_bath_signal | public_bath_signal | source_flow_keyword",
+      "reviews": 209
+    },
+    {
+      "name": "由布院ZEN",
+      "priority": "Tier 1 seed / 정밀조사 우선",
+      "score": 101,
+      "reasons": "official_ryokan_association | jalan_presence | review_pool_200_plus | all_or_many_room_bath_signal | public_bath_signal | source_flow_keyword | luxury_or_specialty_signal",
+      "reviews": 261
+    },
+    {
+      "name": "御宿 由府両築",
+      "priority": "Tier 1 seed / 정밀조사 우선",
+      "score": 99,
+      "reasons": "official_ryokan_association | jalan_presence | review_pool_500_plus | some_room_bath_signal | private_or_family_bath_signal | public_bath_signal | source_flow_keyword",
+      "reviews": 650
+    },
+    {
+      "name": "旅の宿 ぽっぽ庵",
+      "priority": "Tier 1 seed / 정밀조사 우선",
+      "score": 99,
+      "reasons": "official_ryokan_association | jalan_presence | review_pool_500_plus | some_room_bath_signal | private_or_family_bath_signal | source_flow_keyword | luxury_or_specialty_signal",
+      "reviews": 707
+    },
+    {
+      "name": "旅館 冨季の舎",
+      "priority": "Tier 1 seed / 정밀조사 우선",
+      "score": 99,
+      "reasons": "official_ryokan_association | jalan_presence | all_or_many_room_bath_signal | private_or_family_bath_signal | public_bath_signal | source_flow_keyword | luxury_or_specialty_signal",
+      "reviews": ""
+    },
+    {
+      "name": "湯布院かほりの郷 はな村",
+      "priority": "Tier 1 seed / 정밀조사 우선",
+      "score": 99,
+      "reasons": "official_ryokan_association | rakuten_presence | jalan_presence | review_pool_500_plus | some_room_bath_signal | private_or_family_bath_signal | public_bath_signal",
+      "reviews": 742
+    },
+    {
+      "name": "草屋根の宿 龍のひげ",
+      "priority": "Tier 1 seed / 정밀조사 우선",
+      "score": 97,
+      "reasons": "official_ryokan_association | jalan_presence | review_pool_500_plus | some_room_bath_signal | private_or_family_bath_signal | public_bath_signal | luxury_or_specialty_signal",
+      "reviews": 982
+    },
+    {
+      "name": "すみか",
+      "priority": "Tier 1 seed / 정밀조사 우선",
+      "score": 93,
+      "reasons": "official_ryokan_association | rakuten_presence | review_pool_500_plus | all_or_many_room_bath_signal | public_bath_signal",
+      "reviews": 920
+    },
+    {
+      "name": "ゆふいんホテル秀峰館",
+      "priority": "Tier 1 seed / 정밀조사 우선",
+      "score": 93,
+      "reasons": "official_ryokan_association | rakuten_presence | jalan_presence | review_pool_200_plus | all_or_many_room_bath_signal | public_bath_signal",
+      "reviews": 245
+    },
+    {
+      "name": "ゆふいん旅庵 和山豊",
+      "priority": "Tier 1 seed / 정밀조사 우선",
+      "score": 93,
+      "reasons": "official_ryokan_association | rakuten_presence | review_pool_500_plus | all_or_many_room_bath_signal | public_bath_signal",
+      "reviews": 510
+    },
+    {
+      "name": "由布院別邸 樹",
+      "priority": "Tier 1 seed / 정밀조사 우선",
+      "score": 93,
+      "reasons": "official_ryokan_association | rakuten_presence | jalan_presence | review_pool_200_plus | all_or_many_room_bath_signal | luxury_or_specialty_signal",
+      "reviews": 335
+    },
+    {
+      "name": "御宿 のぎく",
+      "priority": "Tier 1 seed / 정밀조사 우선",
+      "score": 91,
+      "reasons": "official_ryokan_association | jalan_presence | all_or_many_room_bath_signal | private_or_family_bath_signal | public_bath_signal | source_flow_keyword",
+      "reviews": ""
+    },
+    {
+      "name": "柚富の郷 彩岳館",
+      "priority": "Tier 1 seed / 정밀조사 우선",
+      "score": 91,
+      "reasons": "official_ryokan_association | rakuten_presence | jalan_presence | review_pool_200_plus | some_room_bath_signal | private_or_family_bath_signal | public_bath_signal",
+      "reviews": 335
+    },
+    {
+      "name": "榎屋旅館",
+      "priority": "Tier 1 seed / 정밀조사 우선",
+      "score": 91,
+      "reasons": "official_ryokan_association | rakuten_presence | jalan_presence | review_pool_200_plus | some_room_bath_signal | private_or_family_bath_signal | public_bath_signal",
+      "reviews": 233
+    },
+    {
+      "name": "湯富里の宿 一壺天",
+      "priority": "Tier 1 seed / 정밀조사 우선",
+      "score": 91,
+      "reasons": "official_ryokan_association | jalan_presence | review_pool_200_plus | all_or_many_room_bath_signal | public_bath_signal | luxury_or_specialty_signal",
+      "reviews": 469
+    },
+    {
+      "name": "ENOWA",
+      "priority": "Tier 1 seed / 정밀조사 우선",
+      "score": 89,
+      "reasons": "official_ryokan_association | jalan_presence | all_or_many_room_bath_signal | private_or_family_bath_signal | public_bath_signal | luxury_or_specialty_signal",
+      "reviews": ""
+    },
+    {
+      "name": "おやど 二本の葦束",
+      "priority": "Tier 1 seed / 정밀조사 우선",
+      "score": 89,
+      "reasons": "official_ryokan_association | jalan_presence | all_or_many_room_bath_signal | private_or_family_bath_signal | public_bath_signal | luxury_or_specialty_signal",
+      "reviews": ""
+    },
+    {
+      "name": "別荘 今昔庵",
+      "priority": "Tier 1 seed / 정밀조사 우선",
+      "score": 89,
+      "reasons": "official_ryokan_association | jalan_presence | all_or_many_room_bath_signal | private_or_family_bath_signal | public_bath_signal | luxury_or_specialty_signal",
+      "reviews": ""
+    },
+    {
+      "name": "山のホテル 夢想園",
+      "priority": "Tier 1 seed / 정밀조사 우선",
+      "score": 89,
+      "reasons": "official_ryokan_association | rakuten_presence | jalan_presence | review_pool_500_plus | private_or_family_bath_signal | public_bath_signal | luxury_or_specialty_signal",
+      "reviews": 1205
+    },
+    {
+      "name": "旅想ゆふいん やまだ屋",
+      "priority": "Tier 1 seed / 정밀조사 우선",
+      "score": 89,
+      "reasons": "official_ryokan_association | jalan_presence | review_pool_500_plus | some_room_bath_signal | private_or_family_bath_signal | public_bath_signal",
+      "reviews": 503
+    },
+    {
+      "name": "由布院 梅園 GARDEN RESORT",
+      "priority": "Tier 1 seed / 정밀조사 우선",
+      "score": 89,
+      "reasons": "official_ryokan_association | rakuten_presence | jalan_presence | review_pool_500_plus | private_or_family_bath_signal | public_bath_signal | luxury_or_specialty_signal",
+      "reviews": 514
+    },
+    {
+      "name": "お宿 有楽",
+      "priority": "Tier 1 seed / 정밀조사 우선",
+      "score": 87,
+      "reasons": "official_ryokan_association | jalan_presence | review_pool_500_plus | some_room_bath_signal | public_bath_signal | luxury_or_specialty_signal",
+      "reviews": 1028
+    },
+    {
+      "name": "ゆふいんバース 里山茶風",
+      "priority": "Tier 1 seed / 정밀조사 우선",
+      "score": 85,
+      "reasons": "official_ryokan_association | jalan_presence | review_pool_50_plus | some_room_bath_signal | private_or_family_bath_signal | public_bath_signal | source_flow_keyword",
+      "reviews": 83
+    },
+    {
+      "name": "御宿 田 離宮",
+      "priority": "Tier 1 seed / 정밀조사 우선",
+      "score": 85,
+      "reasons": "official_ryokan_association | jalan_presence | review_pool_50_plus | all_or_many_room_bath_signal | public_bath_signal | luxury_or_specialty_signal",
+      "reviews": 127
+    }
+  ],
+  "files": {
+    "deduped_csv": "/Users/exem/DK/BathSommelier/research/onsen-candidates/yufuin_candidates_v0_2.deduped.csv",
+    "duplicate_groups_csv": "/Users/exem/DK/BathSommelier/research/onsen-candidates/yufuin_candidates_v0_2.duplicate_groups.csv",
+    "priority_seed_csv": "/Users/exem/DK/BathSommelier/research/onsen-candidates/yufuin_candidates_v0_2.priority_seed.csv"
+  },
+  "notes": [
+    "Priority is a research seed, not a final commercial tier.",
+    "Visible OTA review counts currently use extracted Rakuten/Jalan counts only; Google Maps, Naver, Tripadvisor are not yet integrated.",
+    "Blank or zero review count means not extracted from current source set, not confirmed absence of reviews."
+  ]
+}

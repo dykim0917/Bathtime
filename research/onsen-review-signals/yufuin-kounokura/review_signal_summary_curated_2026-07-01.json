@@ -1,0 +1,320 @@
+{
+  "accommodation_name": {
+    "ko": "하타고 코노쿠라",
+    "ja": "旅籠Hatago 香乃蔵",
+    "en": "Ryokan Hatago Konokura / Hatago Kounokura"
+  },
+  "research_date": "2026-07-01",
+  "identity_notes": {
+    "aliases": "美食懐石と露天風呂付き離れ宿 旅籠 hatago 香乃蔵 | 旅籠Hatago 香乃蔵",
+    "old_name": "湯亭 香乃蔵 appears on Rakuten as old name",
+    "official_site": "https://hatago-kounokura.com/"
+  },
+  "official_facts": {
+    "official_home": "https://hatago-kounokura.com/",
+    "official_room_url": "https://hatago-kounokura.com/room/",
+    "official_onsen_url": "https://hatago-kounokura.com/onsen",
+    "facts": [
+      "공식 사이트 기준 전 8실 별채, 전실 객실 노천탕付き.",
+      "객실 페이지 기준 객실 노천탕은 원천가케나가시로 안내.",
+      "공식 온천 페이지 기준 모든 온천은 원천가케나가시 천연온천으로 설명됨.",
+      "모야에는 대욕장과 노천탕이 있으며, 내탕과 외탕을 유리창 너머로 함께 즐길 수 있다고 안내.",
+      "대욕장은 20-30명 정도 들어갈 수 있는 규모로 안내되며, 샤워도 온천이라고 설명.",
+      "泉質은 알칼리성 단순온천, 효능은 만성피부병/만성부인병/상처/당뇨병/신경통/관절통/냉증 등으로 안내.",
+      "대욕장 이용 시간은 6:30-23:00.",
+      "12세 이하 어린이 숙박은 불가로 안내."
+    ]
+  },
+  "collection_briefing": {
+    "sources": [
+      {
+        "source": "Jalan",
+        "visible_review_count": 105,
+        "rating": "4.7",
+        "directly_read_reviews": 105,
+        "onsen_related_reviews": 88,
+        "access_status": "direct_fetch_full_read",
+        "notes": "최신 27건 + archive 78건. 후보표상 Jalan 105건 전량에 가까운 본문 확보."
+      },
+      {
+        "source": "Rakuten Travel",
+        "visible_review_count": 72,
+        "rating": "4.57",
+        "directly_read_reviews": 20,
+        "onsen_related_reviews": 19,
+        "access_status": "direct_fetch_partial_read",
+        "notes": "호텔 ID 129936 최신 PRELOADED_STATE 20건 추출. 페이지 2는 이번 fetch에서 파일 생성 실패."
+      },
+      {
+        "source": "Google hotel panel via Aside",
+        "visible_review_count": 138,
+        "rating": "4.6",
+        "directly_read_reviews": 0,
+        "onsen_related_reviews": 0,
+        "access_status": "aside_search_snapshot_read",
+        "notes": "Google 호텔 패널 및 검색 스니펫 확인. 직접 본문 표본 아님."
+      },
+      {
+        "source": "JTB",
+        "visible_review_count": 85,
+        "rating": "4.5",
+        "directly_read_reviews": 0,
+        "onsen_related_reviews": 0,
+        "access_status": "snippet_or_unparsed",
+        "notes": "페이지는 정적 저장됐으나 리뷰 본문 구조를 안정적으로 추출하지 못해 직접 표본 미산입."
+      },
+      {
+        "source": "Relux",
+        "visible_review_count": 45,
+        "rating": "4.8",
+        "directly_read_reviews": 0,
+        "onsen_related_reviews": 0,
+        "access_status": "snippet_or_unparsed",
+        "notes": "검색/페이지 표면에서 온천·미끄러움 신호 확인. 직접 본문 미산입."
+      },
+      {
+        "source": "Agoda/Rurubu/TripAdvisor snippets",
+        "visible_review_count": "Agoda 5 / Rurubu 17 / TripAdvisor 12",
+        "rating": null,
+        "directly_read_reviews": 0,
+        "onsen_related_reviews": 0,
+        "access_status": "snippet_only",
+        "notes": "수질·객실노천·도로소음·대욕장 관련 스니펫 확인."
+      }
+    ],
+    "directly_read_total": 125,
+    "onsen_related_total": 107,
+    "platforms_with_direct_body_text": [
+      "Jalan",
+      "Rakuten Travel"
+    ],
+    "data_quality_grade": "B",
+    "grade_reason": "100건 이상 직접 읽었고 Jalan 전체와 Rakuten 최신을 확보. 300건에는 미달하나 공개 본문 풀과 숙소 규모를 고려하면 B급 판단 가능."
+  },
+  "review_signal_summary": [
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 69,
+      "source_count": 69,
+      "platform_count": 2,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "public_bath / open_air_public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "mixed",
+      "mention_count": 26,
+      "source_count": 26,
+      "platform_count": 2,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "probable",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 15,
+      "source_count": 15,
+      "platform_count": 2,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "probable",
+      "signal_type": "weak_onsen_feeling",
+      "signal_direction": "positive",
+      "mention_count": 4,
+      "source_count": 4,
+      "platform_count": 2,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "unclear",
+      "signal_type": "chlorine_smell",
+      "signal_direction": "neutral",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient"
+    },
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "positive",
+      "mention_count": 4,
+      "source_count": 4,
+      "platform_count": 1,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "crowding",
+      "signal_direction": "positive",
+      "mention_count": 2,
+      "source_count": 2,
+      "platform_count": 1,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "unclear",
+      "signal_type": "booking_confusion",
+      "signal_direction": "neutral",
+      "mention_count": 72,
+      "source_count": 72,
+      "platform_count": 2,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal"
+    }
+  ],
+  "attention_signals": [
+    {
+      "issue": "온도 편차",
+      "bath_area": "room_open_air_bath / public_bath",
+      "evidence_level": "moderate",
+      "summary": "미지근함/뜨거움/잘 섞어야 함이 일부 반복. 객실 노천탕은 계절과 객실별 편차가 있어 보임.",
+      "sample_count": 18
+    },
+    {
+      "issue": "대욕장 추위",
+      "bath_area": "public_bath",
+      "evidence_level": "weak_to_moderate",
+      "summary": "대욕장은 좋다는 평가가 많지만, 겨울/초봄에는 씻는 공간이나 노천 구조가 춥다는 신호가 반복됨.",
+      "sample_count": 4
+    },
+    {
+      "issue": "도로 소음",
+      "bath_area": "room_open_air_bath",
+      "evidence_level": "weak",
+      "summary": "국도/도로변 방에서 차량 소음이 들린다는 스니펫 및 일부 후기 신호가 있음.",
+      "sample_count": 3
+    },
+    {
+      "issue": "미끄러움",
+      "bath_area": "room_open_air_bath",
+      "evidence_level": "weak",
+      "summary": "Relux 스니펫에서 온천 성분 때문으로 보이는 객실탕 미끄러움 신호 확인. 수질 장점과 안전 주의가 함께 존재.",
+      "sample_count": 1
+    },
+    {
+      "issue": "벌레/냄새/청결",
+      "bath_area": "facility_wide",
+      "evidence_level": "weak",
+      "summary": "벌레·냄새·청결 관련은 소수 과거 후기 위주. 현재 강한 반복 신호는 아님.",
+      "sample_count": 10
+    }
+  ],
+  "evidence_examples": [
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad362472/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "객실 노천탕이 있어 계속 들어갈 수 있었다고 평가.",
+      "original_keyword": "部屋に露天",
+      "review_date": "2026/5/26"
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Rakuten review",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/129936/review.html",
+      "language": "ja",
+      "short_paraphrase": "원천가케나가시 노천탕과 넓은 객실에서 새해를 보냈다는 평가.",
+      "original_keyword": "源泉掛け流しの露天風呂",
+      "review_date": "2026-01-04"
+    },
+    {
+      "signal_type": "public_bath_hot_spring",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad362472/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "8실 규모라 대욕장을 거의 대여탕처럼 이용했다는 평가.",
+      "original_keyword": "大浴場 / 貸し切り",
+      "review_date": "2026/6/2"
+    },
+    {
+      "signal_type": "public_bath_hot_spring",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad362472/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "대욕장이 좋았지만 초봄에는 춥게 느껴졌다는 반응.",
+      "original_keyword": "大浴場 / 寒かった",
+      "review_date": "2026/4/22"
+    },
+    {
+      "signal_type": "water_texture",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad362472/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "수질이 매우 좋고 피부가 매끈해졌다고 평가.",
+      "original_keyword": "とろっと / すべすべ",
+      "review_date": "2025/2/28"
+    },
+    {
+      "signal_type": "water_texture",
+      "source_type": "Agoda search snippet",
+      "source_url": "https://www.agoda.com/",
+      "language": "ja",
+      "short_paraphrase": "온천 질이 최고이고 피부가 촉촉/매끈해졌다는 검색 스니펫.",
+      "original_keyword": "肌はしっとり / ツルツル",
+      "review_date": "snippet"
+    },
+    {
+      "signal_type": "weak_onsen_feeling",
+      "source_type": "official facts",
+      "source_url": "https://hatago-kounokura.com/onsen",
+      "language": "ja",
+      "short_paraphrase": "공식 기준 전 온천이 원천가케나가시 천연온천으로 안내됨. 약한 온천감 반대 방향의 공식 사실.",
+      "original_keyword": "全て源泉かけ流し",
+      "review_date": "official"
+    },
+    {
+      "signal_type": "chlorine_smell",
+      "source_type": "negative keyword check",
+      "source_url": "combined local sample",
+      "language": "ja",
+      "short_paraphrase": "직접 표본에서 염소/칼키 냄새 키워드는 발견되지 않음.",
+      "original_keyword": "塩素 / カルキ 0",
+      "review_date": "2026-07-01 sample"
+    },
+    {
+      "signal_type": "crowding",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad362472/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "객실 수가 적어 대욕장을 조용히 썼다는 신호.",
+      "original_keyword": "全室8室 / 人が少なく",
+      "review_date": "2026/6/2"
+    },
+    {
+      "signal_type": "booking_confusion",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad362472/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "12세 이하 숙박 제한을 체크인 후 알게 된 사례. 온천 자체가 아니라 운영 조건 주의.",
+      "original_keyword": "12歳以下の子は不可",
+      "review_date": "2025/7/25"
+    }
+  ],
+  "bathtime_interpretation": "공식 정보와 직접 표본을 함께 보면, 旅籠Hatago 香乃蔵은 전실 별채 객실 노천탕과 모야 대욕장을 함께 가진 원천가케나가시형 숙소입니다. 직접 확인 125건 중 온천 관련 107건, 객실 노천탕 신호 69건, 대욕장 신호 26건으로 객실 프라이빗성과 공용탕 경험이 모두 뚜렷하게 확인됩니다. 다만 겨울철 대욕장/노천탕 추위와 객실탕 온도 편차, 일부 도로 소음은 Bathtime 주의 신호로 함께 표시하는 편이 좋습니다.",
+  "gaps": [
+    "직접 확인 125건으로 300건 목표에는 미달. 다만 Jalan 105건은 전량에 가깝게 확보.",
+    "Rakuten은 최신 20건만 확보했고 페이지 2는 이번 fetch에서 실패.",
+    "JTB 85건, Relux 45건, Google 138건은 Aside/검색 표면으로 확인했으나 직접 본문 표본에는 미산입.",
+    "한국어 블로그/카페 본문은 이번 턴에서 별도 직접 수집하지 못했고 검색 표면만 확인."
+  ]
+}

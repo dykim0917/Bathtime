@@ -1,0 +1,94 @@
+kind,queue_rank,slug,name_ja,area_slug,prefecture,initial_tier,initial_signals,source_basis,verification_status,source_files
+accommodation,101,yunokawa-bourou-noguchi,HAKODATE 海峡の風 / 望楼NOGUCHI函館候補,yunokawa-hakodate,北海道,Tier 1,"유노카와 고급 숙소군, 객실탕/대욕장 후보",Yunokawa luxury lodging exposure,needs_identity_crosscheck,nationwide_accommodation_batch_b_v0_3_2026-07-03.csv
+accommodation,102,takeo-koyokaku,武雄温泉 懐石宿 扇屋,takeo,佐賀県,Tier 1,요리 료칸과 온천 체류 후보,regional OTA source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,103,takeo-mifuneyama-rakuen,御船山楽園ホテル,takeo,佐賀県,Tier 1,사우나와 온천 리조트 수요 후보,regional high-demand source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,104,ureshino-oyado-nonoka,嬉野温泉 大正屋,ureshino,佐賀県,Tier 1,우레시노 대표 료칸과 대욕장 후보,regional high-demand source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,105,ureshino-shiibasanso,嬉野温泉 椎葉山荘,ureshino,佐賀県,Tier 1,계곡 노천탕과 조용한 체류 후보,regional OTA source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,106,ureshino-wataya-besso,嬉野温泉 和多屋別荘,ureshino,佐賀県,Tier 1,미인탕과 대형 료칸 후보,regional OTA source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,107,jozankei-chalet-ivy,シャレーアイビー定山渓,jozankei,北海道,Tier 1,"Ikkyu 고평점 고급숙, 객실탕 후보",Ikkyu Jozankei ranking,needs_official_crosscheck,nationwide_accommodation_batch_b_v0_3_2026-07-03.csv
+accommodation,108,jozankei-furukawa,ぬくもりの宿 ふる川,jozankei,北海道,Tier 1,객실 노천탕 추천·대욕장/온천감 후보,"MyBest Jozankei room-open-air, Rakuten ranking",needs_official_crosscheck,nationwide_accommodation_batch_b_v0_3_2026-07-03.csv
+accommodation,109,jozankei-morino-uta,定山渓鶴雅リゾートスパ 森の謌,jozankei,北海道,Tier 1,"스파 리조트형, 온천·식음·당일치기 신호","MyBest Jozankei room-open-air, official site",needs_official_crosscheck,nationwide_accommodation_batch_b_v0_3_2026-07-03.csv
+accommodation,110,jozankei-suigetsu,翠巌,jozankei,北海道,Tier 1,"고급 소형 숙소, 객실탕/온천 세부 확인 후보",Ikkyu Jozankei ranking,needs_official_crosscheck,nationwide_accommodation_batch_b_v0_3_2026-07-03.csv
+accommodation,111,noboribetsu-daiichi-takimotokan,第一滝本館,noboribetsu,北海道,Tier 1,"登別 대표 대형 온천호텔, 31湯めぐり/대욕장·객실 노천탕 후보","Jalan Noboribetsu room-open-air, Ikkyu couple list",needs_official_crosscheck,nationwide_accommodation_batch_b_v0_3_2026-07-03.csv
+accommodation,112,noboribetsu-grand,祝いの宿 登別グランドホテル,noboribetsu,北海道,Tier 1,"硫黄泉·食塩泉·鉄泉 3泉질, 객실 노천탕·鬼サウナ 신호","Ikkyu Noboribetsu room-open-air, official day-use page",needs_official_crosscheck,nationwide_accommodation_batch_b_v0_3_2026-07-03.csv
+accommodation,113,noboribetsu-hanayura,旅亭 花ゆら,noboribetsu,北海道,Tier 1,원천을 끌어온 히노키 객실 노천탕 신호,Ikkyu Noboribetsu room-open-air list,needs_official_crosscheck,nationwide_accommodation_batch_b_v0_3_2026-07-03.csv
+accommodation,114,noboribetsu-manseikaku,登別万世閣,noboribetsu,北海道,Tier 1,"객실 노천탕 목록 노출, 올인클루시브/대욕장 후보",Jalan Noboribetsu room-open-air page,needs_official_crosscheck,nationwide_accommodation_batch_b_v0_3_2026-07-03.csv
+accommodation,115,noboribetsu-takinoya,登別温泉郷 滝乃家,noboribetsu,北海道,Tier 1,"고급 료칸, 객실 노천탕·대욕장 후보",Ikkyu Noboribetsu room-open-air list,needs_official_crosscheck,nationwide_accommodation_batch_b_v0_3_2026-07-03.csv
+accommodation,116,yunokawa-hanabishi,函館・湯の川温泉 花びしホテル,yunokawa-hakodate,北海道,Tier 1,"리뉴얼 노천풍로 스위트 신호, 대욕장 후보",Jalan Yunokawa room-open-air page,needs_official_crosscheck,nationwide_accommodation_batch_b_v0_3_2026-07-03.csv
+accommodation,117,yunokawa-heiseikan-hanatsuki,平成館 しおさい亭 別館 花月,yunokawa-hakodate,北海道,Tier 1,전실 쓰가루해협 조망 객실 노천탕 신호,Jalan Yunokawa room-open-air page,needs_official_crosscheck,nationwide_accommodation_batch_b_v0_3_2026-07-03.csv
+accommodation,118,yunokawa-nagisatei,湯の川プリンスホテル渚亭,yunokawa-hakodate,北海道,Tier 1,객실 노천탕 수량이 큰 유노카와 대표 후보,Rakuten Top20 area seed,needs_official_crosscheck,nationwide_accommodation_seed_v0_1_2026-07-03.csv;nationwide_accommodation_batch_b_v0_3_2026-07-03.csv
+accommodation,119,ginzan-fujiya,銀山温泉 藤屋,ginzan,山形県,Tier 1,건축성 높은 온천료칸과 객실탕 후보,regional high-demand source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,120,ginzan-notoya,銀山温泉 能登屋旅館,ginzan,山形県,Tier 1,상징적 목조 료칸과 온천가 후보,regional high-demand source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,121,zao-lucent,蔵王温泉 蔵王国際ホテル,zao-yamagata,山形県,Tier 1,백탁 유황 대욕장과 스키 수요 후보,regional OTA source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,122,zao-miyagiya,蔵王温泉 深山荘高見屋,zao-yamagata,山形県,Tier 1,강산성 유황천과 전통 료칸 후보,regional OTA source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,123,tamatsukuri-chorakuen,玉造温泉 湯之助の宿 長楽園,tamatsukuri,島根県,Tier 1,대형 혼욕 노천과 미인탕 후보,regional high-demand source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,124,tamatsukuri-kasuien-minami,玉造温泉 佳翠苑皆美,tamatsukuri,島根県,Tier 1,옥상 노천탕과 미인탕 후보,Jalan Chugoku room-open-air source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,125,tamatsukuri-yunosuke,玉造グランドホテル長生閣,tamatsukuri,島根県,Tier 1,메노우 욕조와 미인탕 후보,regional OTA source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,126,echigo-yuzawa-nakaya,越後湯沢温泉 一望千里 御湯宿 中屋,echigo-yuzawa,新潟県,Tier 1,객실 노천탕과 전망 온천 후보,Rakuten Echigo Yuzawa room-open-air source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,127,echigo-yuzawa-quattro,四季Yuzawa QUATTRO,echigo-yuzawa,新潟県,Tier 1,전실 원천가케나가시 노천과 내탕 후보,Rakuten MyTrip Niigata source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,128,echigo-yuzawa-ryugon,ryugon,echigo-yuzawa,新潟県,Tier 1,설국 고택형 료칸과 온천 체류 후보,Rakuten Echigo Yuzawa source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,129,echigo-yuzawa-takahan,越後湯沢温泉 雪国の宿 高半,echigo-yuzawa,新潟県,Tier 1,원천가케나가시와 설국 문학성 후보,regional high-demand source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,130,senami-haginoya,瀬波温泉 瀬波グランドホテル はぎのや,senami,新潟県,Tier 1,객실 노천탕 다수와 일본해 해안 온천 후보,Rakuten Kaetsu source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,131,senami-seiunsou,瀬波温泉 くつろぎの宿 旅館 静雲荘,senami,新潟県,Tier 1,해변 객실 노천탕 후보,Rakuten Niigata rotsuki source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,132,senami-taikanso,瀬波温泉 大観荘せなみの湯,senami,新潟県,Tier 1,일본해 전망 노천탕 후보,regional OTA source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,133,tsukioka-kahou,月岡温泉 白玉の湯 華鳳,tsukioka,新潟県,Tier 1,에메랄드 온천과 대형 고급 대욕장 후보,regional OTA source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,134,tsukioka-senkei,月岡温泉 摩周,tsukioka,新潟県,Tier 1,황화수소계 미인탕과 고급 료칸 후보,regional OTA source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,135,wakura-kagaya,和倉温泉 加賀屋,wakura,石川県,Tier 1,전국 인지도 높은 대형 고급 온천 료칸 후보,regional high-demand source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,136,yamanaka-kagari-kisshotei,山中温泉 かがり吉祥亭,yamanaka,石川県,Tier 1,계곡 노천탕과 가족 수요 후보,regional OTA source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,137,yamanaka-kayotei,山中温泉 花紫,yamanaka,石川県,Tier 1,계곡 전망 고급 료칸과 객실 노천탕 후보,regional OTA source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,138,yamanaka-kissho-yamanaka,山中温泉 吉祥やまなか,yamanaka,石川県,Tier 1,대욕장과 대절탕 후보,regional OTA source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,139,yamashiro-araya-totoan,山代温泉 あらや滔々庵,yamashiro,石川県,Tier 1,야마시로 대표 고급 료칸과 원천 후보,Ikkyu Yamashiro ranking source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,140,yamashiro-beniya-mukayu,山代温泉 べにや無何有,yamashiro,石川県,Tier 1,객실 노천탕과 고급 온천 체류 후보,Ikkyu Yamashiro ranking source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,141,yamashiro-rurikoh,山代温泉 瑠璃光,yamashiro,石川県,Tier 1,대욕장과 노천 객실 후보,Ikkyu Yamashiro ranking source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,142,yamashiro-yunokuni-tensyo,山代温泉 ゆのくに天祥,yamashiro,石川県,Tier 1,복수 대욕장과 객실 노천탕 후보,Ikkyu Yamashiro ranking source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,143,nyuto-ganiba,乳頭温泉郷 蟹場温泉,nyuto,秋田県,Tier 1,숲속 노천탕과 탕순례 후보,Nyuto official source,needs_official_crosscheck,nationwide_accommodation_batch_d_v0_5_2026-07-03.csv
+accommodation,144,nyuto-kuroyu,乳頭温泉郷 黒湯温泉,nyuto,秋田県,Tier 1,비탕형 원천 온천과 계절 운영 후보,Nyuto official source,needs_official_crosscheck,nationwide_accommodation_batch_d_v0_5_2026-07-03.csv
+accommodation,145,nyuto-kyukamura,休暇村 乳頭温泉郷,nyuto,秋田県,Tier 1,두 종류 원천과 접근성 좋은 숙박 후보,Jalan and Qkamura source,needs_official_crosscheck,nationwide_accommodation_batch_d_v0_5_2026-07-03.csv
+accommodation,146,nyuto-taenoyu,乳頭温泉郷 妙乃湯,nyuto,秋田県,Tier 1,금탕은탕과 노천탕 순례 후보,Nyuto official source,needs_official_crosscheck,nationwide_accommodation_batch_d_v0_5_2026-07-03.csv
+accommodation,147,nyuto-tsurunoyu,乳頭温泉郷 鶴の湯温泉,nyuto,秋田県,Tier 1,상징적 혼욕 노천과 탕치형 온천 후보,Nyuto official and ranking sources,needs_official_crosscheck,nationwide_accommodation_batch_d_v0_5_2026-07-03.csv
+accommodation,148,nyuto-tsurunoyu-yamanoyado,鶴の湯別館 山の宿,nyuto,秋田県,Tier 1,츠루노유 계열 산장형 온천 체류 후보,Rakuten Nyuto nearby source,needs_official_crosscheck,nationwide_accommodation_batch_d_v0_5_2026-07-03.csv
+accommodation,149,nozawa-grand-hotel,野沢温泉 野沢グランドホテル,nozawa,長野県,Tier 1,전망 노천과 객실 노천탕 후보,Jalan Nagano/Nozawa ranking source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,150,nozawa-kawamotoya,野沢温泉 河一屋旅館,nozawa,長野県,Tier 1,객실 노천탕과 외탕 접근성 후보,regional OTA source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+facility,101,yubara-yumoto-onsenkan,湯原温泉 湯本温泉館,yubara,岡山県,Tier 1,스나유 인근 공공 당일온천 후보,regional tourism source,needs_official_crosscheck,nationwide_facility_batch_e_v0_6_2026-07-03.csv
+facility,102,osawa-onsen-tojiya,大沢温泉 湯治屋,hanamaki,岩手県,Tier 1,탕치 문화와 강변 노천탕 후보,regional tourism source,needs_official_crosscheck,nationwide_facility_batch_e_v0_6_2026-07-03.csv
+facility,103,dogo-asukanoyu,道後温泉別館 飛鳥乃湯泉,dogo,愛媛県,Tier 1,"도고 공중탕 별관, 이용방식/대기 신호 후보",Jalan 2026 top area seed,needs_official_crosscheck,nationwide_facility_seed_v0_1_2026-07-03.csv;nationwide_tourism_facility_seed_v0_2_2026-07-03.csv;nationwide_west_facility_seed_v0_4_2026-07-03.csv
+facility,104,dogo-honkan,道後温泉本館,dogo,愛媛県,Tier 1,"역사형 공중탕 대표, 관광객 기대치/혼잡 신호 후보",Jalan 2026 top area seed,needs_official_crosscheck,nationwide_facility_seed_v0_1_2026-07-03.csv;nationwide_tourism_facility_seed_v0_2_2026-07-03.csv;nationwide_west_facility_seed_v0_4_2026-07-03.csv
+facility,105,ryogoku-edoyu,両国湯屋江戸遊,tokyo-metro,東京都,Tier 1,도심 사우나·온욕·휴게/워크스페이스 복합,Nifty Onsen 2025 nationwide ranking,needs_official_crosscheck,nationwide_facility_seed_v0_1_2026-07-03.csv
+facility,106,tokyo-toyosu-manyoclub,東京豊洲 万葉倶楽部,tokyo-metro,東京都,Tier 1,"도요스 관광동선, 유가와라/하코네 원천 운반, 사우나/암반욕",Nifty Onsen 2025 nationwide ranking,needs_official_crosscheck,nationwide_facility_seed_v0_1_2026-07-03.csv
+facility,107,katayamazu-machiyu,片山津温泉 総湯,katayamazu,石川県,Tier 1,호수 전망 현대 공중탕 후보,regional tourism source,needs_official_crosscheck,nationwide_facility_batch_e_v0_6_2026-07-03.csv
+facility,108,mizonokuchi-kirari,溝口温泉 喜楽里,kanagawa-metro,神奈川県,Tier 1,"탄산수소염천 원천가케나가시, 성인형 시설",Nifty Onsen 2025 nationwide ranking,needs_official_crosscheck,nationwide_facility_seed_v0_1_2026-07-03.csv
+facility,109,shonan-ryusenji,湘南RESORT SPA 竜泉寺の湯,kanagawa-metro,神奈川県,Tier 1,12종 욕조·천연온천·사우나·암반욕,Nifty Onsen 2025 nationwide ranking,needs_official_crosscheck,nationwide_facility_seed_v0_1_2026-07-03.csv
+facility,110,manten-no-yu,天然温泉 満天の湯,yokohama,神奈川県,Tier 1,"역앞 천연온천+다양한 욕조, 반복 방문형 시설",Nifty Onsen 2025 nationwide ranking,needs_official_crosscheck,nationwide_facility_seed_v0_1_2026-07-03.csv
+facility,111,yokohama-aoba-kirari,横浜青葉温泉 喜楽里 別邸,yokohama,神奈川県,Tier 1,"노천·오토로우류·암반욕, 초등학생 이상 시설",Nifty Onsen 2025 nationwide ranking,needs_official_crosscheck,nationwide_facility_seed_v0_1_2026-07-03.csv
+facility,112,yokohama-manyoclub,横浜みなとみらい 万葉倶楽部,yokohama,神奈川県,Tier 1,"열해/유가와라 원천 운반, 24시간 도시형 온천시설",Nifty Onsen 2025 nationwide ranking,needs_official_crosscheck,nationwide_facility_seed_v0_1_2026-07-03.csv
+facility,113,yokohama-spa-hills-ryusenji,横濱スパヒルズ 竜泉寺の湯,yokohama,神奈川県,Tier 1,천연온천·탄산천·사우나·암반욕 복합시설,Nifty Onsen 2025 nationwide ranking,needs_official_crosscheck,nationwide_facility_seed_v0_1_2026-07-03.csv
+facility,114,yugawara-soyu,湯河原惣湯 Books and Retreat,yugawara,神奈川県,Tier 1,공원·족탕·카페/리트리트형 당일치기 시설,Rakuten Top20 area article snippet,needs_official_crosscheck,nationwide_facility_seed_v0_1_2026-07-03.csv;nationwide_west_facility_seed_v0_4_2026-07-03.csv
+facility,115,awara-ashiyu,芦湯,awara,福井県,Tier 1,무료 족욕과 역세권 체류 신호,Awara tourism source,needs_official_crosscheck,nationwide_kyushu_tohoku_facility_seed_v0_5_2026-07-03.csv
+facility,116,awara-saintpia,セントピアあわら,awara,福井県,Tier 1,아와라 대표 당일온천과 공공시설 수요 후보,Awara tourism source,needs_official_crosscheck,nationwide_kyushu_tohoku_facility_seed_v0_5_2026-07-03.csv
+facility,117,iizaka-sabako-yu,飯坂温泉 鯖湖湯,iizaka,福島県,Tier 1,이이자카 대표 공동탕과 고온탕 기대차 후보,regional tourism source,needs_official_crosscheck,nationwide_facility_batch_e_v0_6_2026-07-03.csv
+facility,118,obama-hot-foot-105,小浜温泉 ほっとふっと105,obama-unzen,長崎県,Tier 1,일본 최장급 족욕과 해안 관광 동선 후보,regional tourism source,needs_official_crosscheck,nationwide_kyushu_tohoku_facility_seed_v0_5_2026-07-03.csv
+facility,119,obama-naminoyu-akane,小浜温泉 波の湯 茜,obama-unzen,長崎県,Tier 1,바다 인접 노천탕과 조망형 당일온천 후보,regional tourism source,needs_official_crosscheck,nationwide_kyushu_tohoku_facility_seed_v0_5_2026-07-03.csv
+facility,120,bessho-ainome-yu,別所温泉 あいそめの湯,bessho,長野県,Tier 1,관광객 이용 쉬운 공공 당일온천 후보,regional tourism source,needs_official_crosscheck,nationwide_facility_batch_e_v0_6_2026-07-03.csv
+facility,121,asamushi-yu-sa-asamushi,道の駅 ゆ～さ浅虫,asamushi,青森県,Tier 1,역/도로휴게소형 전망 온천 후보,regional tourism source,needs_official_crosscheck,nationwide_facility_batch_e_v0_6_2026-07-03.csv
+facility,122,sukayu-hiba-sennin-buro,酸ヶ湯温泉 ヒバ千人風呂,sukayu,青森県,Tier 1,혼욕 대욕장과 강산성 온천 기대차 후보,regional tourism source,needs_official_crosscheck,nationwide_facility_batch_e_v0_6_2026-07-03.csv
+facility,123,kaike-ou-land,皆生温泉 おーゆ・ランド,kaike,鳥取県,Tier 1,대형 당일온천과 가족탕 후보,regional tourism source,needs_official_crosscheck,nationwide_facility_batch_e_v0_6_2026-07-03.csv
+facility,124,akiu-zuiho-dayuse,ホテル瑞鳳 日帰り温泉,akiu,宮城県,Tier 1,"대형 호텔 당일온천 후보, 운영일/혼잡 확인 필요",Akiu day-use seed,needs_official_detail_crosscheck,nationwide_west_facility_seed_v0_4_2026-07-03.csv
+facility,125,toba-toba-seaside-hotel-dayuse,鳥羽シーサイドホテル 日帰り温泉,toba,三重県,Tier 1,바다 전망 대형 호텔 당일온천 후보,Toba day-use seed,needs_review_pool_crosscheck,nationwide_west_facility_seed_v0_4_2026-07-03.csv
+facility,126,toba-todaya-dayuse,戸田家 日帰り温泉,toba,三重県,Tier 1,"도바 대형 숙소 당일온천, 탕종류/혼잡 신호 후보",Toba lodging/day-use seed,needs_review_pool_crosscheck,nationwide_west_facility_seed_v0_4_2026-07-03.csv
+facility,127,shirahama-toretore,とれとれの湯,shirahama,和歌山県,Tier 1,식음/시장 관광동선형 대형 당일온천 후보,Nanki Shirahama tourism onsen page,needs_review_pool_crosscheck,nationwide_west_facility_seed_v0_4_2026-07-03.csv
+facility,128,akiu-hananoyu-dayuse,ホテル華乃湯 日帰り温泉,akiu,宮城県,Tier 1,"아키우 당일온천 추천 노출, 노천/대욕장 후보",Jalan/Akiu day-use exposure,needs_review_pool_crosscheck,nationwide_west_facility_seed_v0_4_2026-07-03.csv
+facility,129,isawa-spaland,スパランドホテル内藤,isawa,山梨県,Tier 1,"대형 스파/사우나/숙박 겸용, 리뷰풀 후보",Isawa/Fuefuki facility seed,needs_review_pool_crosscheck,nationwide_west_facility_seed_v0_4_2026-07-03.csv
+facility,130,kawaguchiko-fujiyama-onsen,ふじやま温泉,kawaguchiko,山梨県,Tier 1,"후지큐 인접 대형 온천시설, 관광동선/혼잡 신호 후보",Kawaguchiko day-use seed,needs_review_pool_crosscheck,nationwide_west_facility_seed_v0_4_2026-07-03.csv
+facility,131,kawaguchiko-yurari,富士眺望の湯 ゆらり,kawaguchiko,山梨県,Tier 1,"후지산 조망 16종 욕조, 식음/휴게, 손빈방문 가능 신호",Official/Yamanashi tourism pages,needs_review_pool_crosscheck,nationwide_west_facility_seed_v0_4_2026-07-03.csv
+facility,132,nasu-shikanoyu,那須温泉 鹿の湯,nasu,栃木県,Tier 1,"1300년 역사, 성인 500엔, 탕치권, 강산성 유황천 후보","Official Shikanoyu, Nasu tourism day-use page",needs_review_pool_crosscheck,nationwide_east_facility_seed_v0_3_2026-07-03.csv
+facility,133,yugawara-kogomenoyu,こごめの湯,yugawara,神奈川県,Tier 1,"만요공원 입구 당일온천, 관광동선·공중탕 신호 후보",Official Kogome no Yu page,needs_review_pool_crosscheck,nationwide_west_facility_seed_v0_4_2026-07-03.csv
+facility,134,ikaho-ishidan-no-yu,石段の湯,ikaho,群馬県,Tier 1,"석단거리 공중탕, 황금탕/관광객 혼잡 신호 후보",Ikaho day-use seed,needs_review_pool_crosscheck,nationwide_west_facility_seed_v0_4_2026-07-03.csv
+facility,135,ikaho-rotenburo,伊香保露天風呂,ikaho,群馬県,Tier 1,"원천 근처 노천탕, 온천감/운영조건 후보",Ikaho day-use seed,needs_review_pool_crosscheck,nationwide_west_facility_seed_v0_4_2026-07-03.csv
+facility,136,toba-aquaignis-kataoka,アクアイグニス片岡温泉,toba,三重県,Tier 1,"미에권 스파/식음 복합시설, 도바·이세시마 보강 후보",Mie facility seed,needs_area_crosscheck,nationwide_west_facility_seed_v0_4_2026-07-03.csv
+facility,137,yuda-kame-no-yu,湯田温泉 亀乃湯,yuda,山口県,Tier 1,도심형 공동탕과 현지 이용 후보,regional tourism source,needs_source_crosscheck,nationwide_facility_batch_e_v0_6_2026-07-03.csv
+facility,138,kaminoyama-shimo-oyu,かみのやま温泉 下大湯,kaminoyama,山形県,Tier 1,가미노야마 대표 공동탕과 현지 이용 후보,regional tourism source,needs_source_crosscheck,nationwide_facility_batch_e_v0_6_2026-07-03.csv
+facility,139,kinugawa-kinutaki,鬼怒川公園岩風呂,kinugawa,栃木県,Tier 1,"공원 내 당일온천, 로컬/관광객 이용 신호 후보",Kinugawa day-use seed,needs_source_crosscheck,nationwide_east_facility_seed_v0_3_2026-07-03.csv
+facility,140,kinugawa-nikko-yumoto-onsenji,日光山温泉寺,nikko-yumoto,栃木県,Tier 1,"사찰 온천/탕치형, 유황천·운영시즌 후보",Nikko/Kinugawa regional facility seed,needs_source_crosscheck,nationwide_east_facility_seed_v0_3_2026-07-03.csv
+facility,141,iizaka-horikiri-yu,飯坂温泉 波来湯,iizaka,福島県,Tier 1,역 인근 현대 공중탕과 당일 이용 후보,regional tourism source,needs_source_crosscheck,nationwide_facility_batch_e_v0_6_2026-07-03.csv
+facility,142,bessho-ishiyu,別所温泉 石湯,bessho,長野県,Tier 1,별소온천 공동탕과 역사 신호,regional tourism source,needs_source_crosscheck,nationwide_facility_batch_e_v0_6_2026-07-03.csv
+facility,143,bessho-otsukai-yu,別所温泉 大師湯,bessho,長野県,Tier 1,공동탕 순례와 현지형 이용 후보,regional tourism source,needs_source_crosscheck,nationwide_facility_batch_e_v0_6_2026-07-03.csv

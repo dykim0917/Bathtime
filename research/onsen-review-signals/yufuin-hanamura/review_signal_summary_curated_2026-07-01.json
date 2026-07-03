@@ -1,0 +1,208 @@
+{
+  "accommodation_name": "湯布院かほりの郷 はな村 / 유후인 카호리노사토 하나무라",
+  "generated_at": "2026-07-01",
+  "data_quality_grade": "A",
+  "collection_briefing": {
+    "directly_read_total": 1257,
+    "onsen_related_total": 895,
+    "platforms": [
+      {
+        "source": "Jalan",
+        "visible_review_count": "518-519",
+        "rating": "4.8",
+        "directly_read_reviews": 504,
+        "onsen_related_reviews": 415,
+        "access_status": "direct_fetch_archive_read",
+        "notes": "최신+아카이브 18개 페이지 수집; 중복/비본문 제외 후 504건"
+      },
+      {
+        "source": "Rakuten Travel",
+        "visible_review_count": "745 visible / API total 613 text reviews",
+        "rating": "4.66",
+        "directly_read_reviews": 613,
+        "onsen_related_reviews": 404,
+        "access_status": "direct_api_full_read",
+        "notes": "공개 review API total=613 본문 수집; visible count와 본문 API count 분리"
+      },
+      {
+        "source": "Agoda",
+        "visible_review_count": "330 score count; provider readable 140",
+        "rating": "9.0/10",
+        "directly_read_reviews": 140,
+        "onsen_related_reviews": 76,
+        "access_status": "direct_api_partial_read",
+        "notes": "Agoda provider 140건 본문 수집; Booking 등 provider는 일부 별도 합산 가능성"
+      },
+      {
+        "source": "Google hotel panel",
+        "visible_review_count": "442 Google reviews",
+        "rating": "4.4/5",
+        "directly_read_reviews": 0,
+        "onsen_related_reviews": 0,
+        "access_status": "aside_search_snapshot_read",
+        "notes": "Aside snapshot으로 패널/검색 결과 확인, 본문 태깅에는 미포함"
+      },
+      {
+        "source": "Naver search/blog/cafe",
+        "visible_review_count": "검색 결과 다수, 동명 숙소 혼입 큼",
+        "rating": "n/a",
+        "directly_read_reviews": 0,
+        "onsen_related_reviews": 0,
+        "access_status": "aside_search_snapshot_read",
+        "notes": "정규명 검색 시 한국어 후기/예약 수요 확인; 스니펫은 직접 리뷰 카운트 제외"
+      }
+    ]
+  },
+  "curated_signal_summary": [
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 212,
+      "source_count": 212,
+      "platform_count": 3,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal",
+      "note": "객실 노천/노천풍로 객실 이용, 원천가케나가시·반복 입욕·조망 만족이 강하게 반복. 일부 프라이버시/시선 우려."
+    },
+    {
+      "bath_area": "room_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 30,
+      "source_count": 30,
+      "platform_count": 3,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal",
+      "note": "객실 내 욕실/부屋風呂 언급은 노천 객실보다 적지만 3개 플랫폼에서 반복."
+    },
+    {
+      "bath_area": "public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "mixed",
+      "mention_count": 92,
+      "source_count": 92,
+      "platform_count": 3,
+      "contradiction_level": "medium",
+      "review_signal_status": "strong_signal",
+      "note": "대욕장/노천은 24시간·청결·기분 좋음 평가가 많지만, 작다/좁다/혼잡 시 아쉽다는 표현도 반복."
+    },
+    {
+      "bath_area": "private_bath/family_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "positive",
+      "mention_count": 172,
+      "source_count": 172,
+      "platform_count": 3,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal",
+      "note": "가족탕/대여탕은 예약 없이 비어 있으면 무료 이용 가능하다는 장점이 매우 강하게 반복. 식후 시간대 대기 신호는 소수."
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 120,
+      "source_count": 120,
+      "platform_count": 3,
+      "contradiction_level": "none",
+      "review_signal_status": "strong_signal",
+      "note": "피부가 매끈/스베스베/미인탕/부드러운 물 표현이 강하게 반복."
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "weak_onsen_feeling",
+      "signal_direction": "neutral",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient",
+      "note": "부정적 의미의 온천감 약함 신호는 직접 표본에서 반복 없음. 한 건의 “보통 물처럼 보이지만 좋다”는 긍정 후기만 확인."
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "chlorine_smell",
+      "signal_direction": "neutral",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient",
+      "note": "염소/칼키/소독 냄새 반복 신호 없음."
+    },
+    {
+      "bath_area": "private_bath/family_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "crowding",
+      "signal_direction": "mixed",
+      "mention_count": 12,
+      "source_count": 12,
+      "platform_count": 2,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal",
+      "note": "대부분은 “비어 있으면 자유롭게”가 장점이나, 식후·피크 시간대에는 빈탕 대기/타이밍 신호가 일부 반복."
+    },
+    {
+      "bath_area": "public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "crowding",
+      "signal_direction": "mixed",
+      "mention_count": 45,
+      "source_count": 45,
+      "platform_count": 3,
+      "contradiction_level": "medium",
+      "review_signal_status": "strong_signal",
+      "note": "대욕장은 작다/좁다 신호가 반복. 다만 실제 혼잡 불만보다 “작지만 안 붐벼서 괜찮음”도 함께 많음."
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "booking_confusion",
+      "signal_direction": "mixed",
+      "mention_count": 8,
+      "source_count": 8,
+      "platform_count": 3,
+      "contradiction_level": "medium",
+      "review_signal_status": "weak_signal",
+      "note": "Agoda 문의 답변 없음, 객실 예약 난이도, 예약 만실 관련 언급은 있으나 온천 이용 방식 혼선으로 강하게 반복되지는 않음."
+    }
+  ],
+  "attention_signals": [
+    {
+      "issue": "bath_temperature",
+      "bath_area": "facility_wide",
+      "evidence_level": "moderate",
+      "summary": "뜨겁다/미지근하다/온도 적절 등 온도 언급 30건. 불만으로 한쪽 방향 반복되지는 않음.",
+      "sample_count": 30
+    },
+    {
+      "issue": "bath_insects",
+      "bath_area": "room_open_air_bath/open_air_public_bath",
+      "evidence_level": "weak_to_moderate",
+      "summary": "노천/욕장 주변 벌레·모기 언급 9건. 여름 객실 노천 이용 시 주의 신호.",
+      "sample_count": 9
+    },
+    {
+      "issue": "room_open_air_privacy",
+      "bath_area": "room_open_air_bath",
+      "evidence_level": "moderate",
+      "summary": "객실 노천탕이 외부/거리/인접 공간에서 보일 수 있다는 프라이버시 우려 12건. 객실별 차이 가능성 큼.",
+      "sample_count": 12
+    },
+    {
+      "issue": "facility_age",
+      "bath_area": "facility_wide",
+      "evidence_level": "moderate",
+      "summary": "건물/문/설비가 오래됐다는 언급 47건. 대체로 청결·서비스로 상쇄된다는 평가가 많음.",
+      "sample_count": 47
+    }
+  ]
+}
