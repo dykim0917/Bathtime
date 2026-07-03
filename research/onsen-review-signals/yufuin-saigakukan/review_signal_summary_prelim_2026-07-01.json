@@ -1,0 +1,263 @@
+{
+  "accommodation_name": "柚富の郷 彩岳館 / 유후인 사이가쿠칸 / Yufunogo Saigakukan",
+  "research_date": "2026-07-01",
+  "status": "preliminary_structured_sampling",
+  "identity": {
+    "canonical_name_ja": "柚富の郷 彩岳館",
+    "aliases": [
+      "由布院温泉 柚富の郷 彩岳館",
+      "由布岳を身近に感じる -柚富の郷 彩岳館-",
+      "Yufunogo Saigakukan",
+      "유후인 사이가쿠칸"
+    ],
+    "official_url": "https://www.saigakukan.co.jp/",
+    "rakuten_hotel_id": "20453",
+    "jalan_id": "yad334081",
+    "ikkyu_yahoo_id": "00030151",
+    "tripcom_hotel_id": "706154"
+  },
+  "collection_briefing": {
+    "visible_review_pool": {
+      "rakuten_candidate_count": 335,
+      "jalan_candidate_or_current_count": 276,
+      "tripcom": 41,
+      "tripadvisor_or_jtrip_surface": 133,
+      "yahoo_ikkyu_visible": 9,
+      "agoda_surface": 52
+    },
+    "direct_structured_reviews": {
+      "total": 48,
+      "rakuten_review_page": 14,
+      "jalan_latest_and_archive": 34,
+      "onsen_related": 46
+    },
+    "snippet_or_search_evidence": {
+      "tripcom_review_snippets": 6,
+      "tripadvisor_search_snippets": 2,
+      "agoda_google_surface": 2,
+      "yahoo_ikkyu_search_snippets": 4,
+      "official_and_ota_facility_pages": 4
+    },
+    "aside_status": "attempted, local port timeout",
+    "data_quality_grade": "C+",
+    "note": "Jalan archive was accessible and added 30 older reviews. Rakuten HTML was readable but structured extraction captured only latest visible block. Aside Google/Naver dynamic panels need retry."
+  },
+  "official_facts": [
+    {
+      "source": "official site search result",
+      "url": "https://www.saigakukan.co.jp/",
+      "fact": "Official site describes two spring sources, source-flow open-air baths, family baths, and local Oita cuisine."
+    },
+    {
+      "source": "Rakuten onsen page",
+      "url": "https://travel.rakuten.co.jp/HOTEL/20453/20453_onsen.html",
+      "fact": "100% source-flow scenic large open-air bath; two sources on the premises; alkaline simple spring; bath types include hot spring, public bath, open-air bath, family bath, natural hot spring; mountain view; bathing hours 15:00-24:00 and 06:00-10:00."
+    },
+    {
+      "source": "Yahoo/Ikkyu facility page",
+      "url": "https://travel.yahoo.co.jp/00030151/",
+      "fact": "100% source-flow onsen with views of Mount Yufu from dining area and open-air baths; room types include Yufudake-view open-air-bath suites/junior suites; indoor baths, open-air baths, and private family baths are described."
+    },
+    {
+      "source": "Selected Onsen Ryokan",
+      "url": "https://selected-ryokan.com/ryokan/yufunogou-saigakukan_yufuin_oita_kyushu.html",
+      "fact": "Rooms with open-air hot spring baths are available, but limited to some rooms; private-use hot spring baths outside guest rooms are also available."
+    }
+  ],
+  "signals": [
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 13,
+      "source_count": 13,
+      "platform_count": 3,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "open_air_public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 15,
+      "source_count": 15,
+      "platform_count": 5,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 11,
+      "source_count": 11,
+      "platform_count": 3,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "family_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "mixed",
+      "mention_count": 12,
+      "source_count": 12,
+      "platform_count": 4,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 4,
+      "source_count": 4,
+      "platform_count": 3,
+      "contradiction_level": "none",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "unclear",
+      "bath_area_confidence": "unclear",
+      "signal_type": "weak_onsen_feeling",
+      "signal_direction": "neutral",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient"
+    },
+    {
+      "bath_area": "unclear",
+      "bath_area_confidence": "unclear",
+      "signal_type": "chlorine_smell",
+      "signal_direction": "neutral",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "crowding",
+      "signal_direction": "positive",
+      "mention_count": 6,
+      "source_count": 6,
+      "platform_count": 2,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "family_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "booking_confusion",
+      "signal_direction": "mixed",
+      "mention_count": 9,
+      "source_count": 9,
+      "platform_count": 4,
+      "contradiction_level": "medium",
+      "review_signal_status": "weak_signal"
+    }
+  ],
+  "attention_signals": [
+    {
+      "issue": "do_not_overclassify_as_all_room_bath",
+      "bath_area": "facility_wide",
+      "sample_count": 1,
+      "summary": "Rooms with open-air baths exist, but not all rooms. Standard rooms rely more on public/open-air/family baths."
+    },
+    {
+      "issue": "family_private_bath_time_or_reservation_limit",
+      "bath_area": "family_bath",
+      "sample_count": 5,
+      "summary": "Family/private bath is praised, but time reservation, one-hour limit, key handoff, or desired time availability appear as friction."
+    },
+    {
+      "issue": "public_bath_distance_or_winter_cold",
+      "bath_area": "public_bath",
+      "sample_count": 3,
+      "summary": "Ikkyu/Jalan signals mention distance from room to bath and cold movement in winter."
+    },
+    {
+      "issue": "facility_age_or_steps",
+      "bath_area": "facility_wide",
+      "sample_count": 4,
+      "summary": "A few reviews mention older room/building impression, steps, or photo-expectation mismatch, while cleanliness is usually praised."
+    },
+    {
+      "issue": "access_pickup",
+      "bath_area": "facility_wide",
+      "sample_count": 5,
+      "summary": "Location is away from the center; pickup/drop-off is repeatedly useful and generally positive."
+    }
+  ],
+  "evidence_examples": [
+    {
+      "signal_type": "public_bath_hot_spring",
+      "source_type": "Jalan archive",
+      "source_url": "https://www.jalan.net/yad334081/kuchikomi/archive/",
+      "language": "ja",
+      "short_paraphrase": "대욕장 노천탕에서 유후다케가 잘 보인다는 긍정 후기.",
+      "original_keyword": "大浴場の露天風呂から見える由布岳",
+      "review_date": "2025/4/9"
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Jalan archive",
+      "source_url": "https://www.jalan.net/yad334081/kuchikomi/archive/",
+      "language": "ja",
+      "short_paraphrase": "객실 노천탕이 크고 유후다케 전망이 좋았다는 후기.",
+      "original_keyword": "部屋付き露天風呂",
+      "review_date": "2025/1/5"
+    },
+    {
+      "signal_type": "private_bath_experience",
+      "source_type": "Jalan latest",
+      "source_url": "https://www.jalan.net/yad334081/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "가족탕은 예약 필요하지만 원하는 시간에 이용 가능했다는 후기.",
+      "original_keyword": "貸し切りの家族風呂",
+      "review_date": "2026/5/8"
+    },
+    {
+      "signal_type": "water_texture",
+      "source_type": "Jalan archive",
+      "source_url": "https://www.jalan.net/yad334081/kuchikomi/archive/",
+      "language": "ja",
+      "short_paraphrase": "노천탕과 유후다케 전망, 매끄러운 수질을 함께 칭찬.",
+      "original_keyword": "泉質も滑らか",
+      "review_date": "2025/5/30"
+    },
+    {
+      "signal_type": "booking_confusion",
+      "source_type": "Trip.com snippet",
+      "source_url": "https://jp.trip.com/hotels/yufu-hotel-detail-706154/saigakukan/",
+      "language": "ja",
+      "short_paraphrase": "독립 온천실은 예약 시간과 키 전달 방식 때문에 만족도가 낮았다는 후기.",
+      "original_keyword": "予約いただいた時間内",
+      "review_date": "2025/5/24"
+    },
+    {
+      "signal_type": "public_bath_hot_spring",
+      "source_type": "TripAdvisor snippet",
+      "source_url": "https://www.tripadvisor.jp/Hotel_Review-g1023445-d1092519-Reviews-Yufunogo_Saigakukan-Yufu_Oita_Prefecture_Kyushu.html",
+      "language": "ja",
+      "short_paraphrase": "객실과 온천 모두에서 유후다케가 보이는 점이 강점이라는 후기.",
+      "original_keyword": "お部屋からも温泉からも由布岳",
+      "review_date": "2024/1"
+    }
+  ],
+  "gaps": [
+    "Aside Browser failed with localhost port timeout, so Google Maps and Naver dynamic panels need retry.",
+    "Official site direct fetch failed due DNS timeout, but search result and OTA facility pages confirm current official positioning.",
+    "Rakuten HTML was readable, but only latest visible block was cleanly structured. API/full historical extraction would improve sample size.",
+    "Agoda visible rating surface was found, but full review body was not extracted this pass.",
+    "300+ direct review target was not reached; direct structured sample is 48, plus cross-platform snippets."
+  ]
+}

@@ -1,0 +1,185 @@
+{
+  "accommodation_name": "湯布院旅館のぎく / 御宿 のぎく / 유후인 료칸 노기쿠 / Yufuin Ryokan Nogiku",
+  "research_date": "2026-07-01",
+  "status": "preliminary_cross_platform_sampling",
+  "identity": {
+    "canonical_name_ja": "湯布院旅館のぎく",
+    "candidate_name_ja": "御宿 のぎく",
+    "aliases": ["御宿 のぎく", "湯布院旅館のぎく", "Yufuin Ryokan Nogiku", "유후인 료칸 노기쿠"],
+    "official_url_candidate": "https://nogiku.hp.peraichi.com/",
+    "rakuten_hotel_id": "153349",
+    "jalan_id": "yad302784",
+    "tripcom_hotel_id": "7209056"
+  },
+  "collection_briefing": {
+    "visible_review_pool": {
+      "rakuten": 61,
+      "jalan": 68,
+      "tripcom": 16,
+      "hotels_expedia_visible_text_reviews": 20,
+      "agoda_surface": "available, body not fully opened in web snapshot",
+      "korean_blog": 1
+    },
+    "directly_read_or_snapshot_review_text_estimate": 95,
+    "onsen_related_read_estimate": 55,
+    "aside_status": "attempted, local port timeout",
+    "data_quality_grade": "C+",
+    "note": "Small 7-room inn; direct readable review pool is much smaller than large ryokan. Aside Browser failed this turn due localhost timeout, so Google/Naver dynamic panels need follow-up."
+  },
+  "official_and_property_supplied_facts": [
+    {
+      "source": "Rakuten facility page",
+      "url": "https://travel.rakuten.co.jp/HOTEL/153349/153349.html",
+      "fact": "7 rooms total; all-room hot spring bath positioning; alkaline simple spring / weak alkaline simple spring; individual room baths use source-flow water; private sauna with onsen open-air bath is available separately by reservation."
+    },
+    {
+      "source": "Jalan facility page",
+      "url": "https://www.jalan.net/yad302784/",
+      "fact": "Yufuin Onsen, natural hot spring 100%; source-flow; all 7 rooms have source-flow hot spring baths; paid sauna and bath facilities noted."
+    },
+    {
+      "source": "candidate official association row",
+      "url": "https://nogiku.hp.peraichi.com/",
+      "fact": "Japanese inn association-style listing described 4 Japanese rooms with bath and 3 detached rooms with bath; bath text: open-air 2, indoor 2, family/private 7."
+    }
+  ],
+  "signals": [
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 28,
+      "source_count": 28,
+      "platform_count": 5,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "room_bath",
+      "bath_area_confidence": "probable",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 18,
+      "source_count": 18,
+      "platform_count": 4,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "private_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "positive",
+      "mention_count": 10,
+      "source_count": 10,
+      "platform_count": 3,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 4,
+      "source_count": 4,
+      "platform_count": 2,
+      "contradiction_level": "none",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "open_air_public_bath",
+      "bath_area_confidence": "probable",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "mixed",
+      "mention_count": 6,
+      "source_count": 6,
+      "platform_count": 2,
+      "contradiction_level": "medium",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "unclear",
+      "bath_area_confidence": "unclear",
+      "signal_type": "weak_onsen_feeling",
+      "signal_direction": "neutral",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient"
+    },
+    {
+      "bath_area": "unclear",
+      "bath_area_confidence": "unclear",
+      "signal_type": "chlorine_smell",
+      "signal_direction": "neutral",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "crowding",
+      "signal_direction": "positive",
+      "mention_count": 12,
+      "source_count": 12,
+      "platform_count": 4,
+      "contradiction_level": "none",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "booking_confusion",
+      "signal_direction": "mixed",
+      "mention_count": 5,
+      "source_count": 5,
+      "platform_count": 3,
+      "contradiction_level": "medium",
+      "review_signal_status": "weak_signal"
+    }
+  ],
+  "attention_signals": [
+    {
+      "issue": "open_air_insects",
+      "bath_area": "room_open_air_bath",
+      "sample_count": 6,
+      "summary": "Spring-summer and night-time bugs appear repeatedly around private/open-air baths; usually manageable but clearly relevant."
+    },
+    {
+      "issue": "winter_cold_or_bath_not_available",
+      "bath_area": "open_air_public_bath",
+      "sample_count": 6,
+      "summary": "Korean Expedia/Hotels reviews repeatedly mention winter cold, public/open-air bath limitation, or cold room conditions."
+    },
+    {
+      "issue": "small_room_bath",
+      "bath_area": "room_open_air_bath",
+      "sample_count": 8,
+      "summary": "Several reviews praise the private bath but describe it as small or one-person-sized."
+    },
+    {
+      "issue": "water_fill_time",
+      "bath_area": "room_open_air_bath",
+      "sample_count": 3,
+      "summary": "A few Rakuten reviews say filling the bath takes time, though some later reviews say water was already prepared."
+    },
+    {
+      "issue": "access_map_confusion",
+      "bath_area": "facility_wide",
+      "sample_count": 4,
+      "summary": "Trip.com/Korean signals note Google Maps route can be confusing; local signs/bridge route may be better."
+    }
+  ],
+  "gaps": [
+    "Official Peraichi site was not directly opened by web tool in this pass; treat Rakuten/Jalan as property-supplied OTA facts, not pure official confirmation.",
+    "Aside Browser failed with localhost port timeout, so Google Maps and Naver dynamic panels need retry.",
+    "Agoda page surfaced but full review body was not extracted in this pass.",
+    "300+ direct review target is not feasible from current visible core pool; total visible Rakuten+Jalan+Trip.com pool is about 145 reviews."
+  ]
+}

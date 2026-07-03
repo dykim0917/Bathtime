@@ -1,0 +1,148 @@
+{
+  "accommodation_name": "由布院別邸 樹 / 유후인 벳테이 이츠키 / Yufuin Bettei Itsuki",
+  "research_date": "2026-07-01",
+  "status": "preliminary_cross_platform_sampling",
+  "identity": {
+    "official_url": "https://bettei-itsuki.jp/",
+    "official_rooms_url": "https://bettei-itsuki.jp/rooms/",
+    "rakuten_hotel_id": "144474",
+    "jalan_id": "yad334203",
+    "ikkyu_id": "00002938",
+    "tripcom_hotel_id": "3156750"
+  },
+  "collection_briefing": {
+    "visible_review_pool": {
+      "google": 608,
+      "rakuten": 335,
+      "jalan": 152,
+      "booking": 797,
+      "expedia_hotels": 497,
+      "agoda": 3129,
+      "tripcom": 123,
+      "tripadvisor": 117,
+      "relux": 41
+    },
+    "directly_read_or_snapshot_review_text_estimate": 70,
+    "note": "Local DNS/API access was unstable, so this pass uses web-opened source pages, Jalan archive, Rakuten visible page, Ikkyu visible reviews, Trip.com visible reviews, Google/Naver Aside snapshots, and search snippets. Do not treat platform totals as directly read counts."
+  },
+  "official_facts": [
+    "Official site says all rooms are detached; 13 buildings / 14 rooms.",
+    "Official site says all rooms have private hot spring bathing spaces.",
+    "Official room page describes room-specific bath types including open-air, semi-open-air, and indoor baths.",
+    "Official site describes the water as gentle and smooth to the touch."
+  ],
+  "signals": [
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 35,
+      "source_count": 35,
+      "platform_count": 7,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "room_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 28,
+      "source_count": 28,
+      "platform_count": 6,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "positive",
+      "mention_count": 30,
+      "source_count": 30,
+      "platform_count": 7,
+      "contradiction_level": "none",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 5,
+      "source_count": 5,
+      "platform_count": 3,
+      "contradiction_level": "none",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "unclear",
+      "bath_area_confidence": "unclear",
+      "signal_type": "weak_onsen_feeling",
+      "signal_direction": "neutral",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient"
+    },
+    {
+      "bath_area": "unclear",
+      "bath_area_confidence": "unclear",
+      "signal_type": "chlorine_smell",
+      "signal_direction": "neutral",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient"
+    },
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "crowding",
+      "signal_direction": "positive",
+      "mention_count": 18,
+      "source_count": 18,
+      "platform_count": 5,
+      "contradiction_level": "none",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "booking_confusion",
+      "signal_direction": "mixed",
+      "mention_count": 4,
+      "source_count": 4,
+      "platform_count": 3,
+      "contradiction_level": "medium",
+      "review_signal_status": "weak_signal"
+    }
+  ],
+  "attention_signals": [
+    {
+      "issue": "semi_open_air_cold_or_windy",
+      "sample_count": 4,
+      "summary": "Some room semi-open-air baths or bath spaces are described as cold, windy, or exposed in colder seasons."
+    },
+    {
+      "issue": "insects_in_open_air_bath",
+      "sample_count": 3,
+      "summary": "A few reviews mention insects around open-air baths, usually in the context of detached garden/nature setting."
+    },
+    {
+      "issue": "facility_aging_or_maintenance",
+      "sample_count": 6,
+      "summary": "A small but repeated caution appears around aging, wallpaper, bath/privacy screening, or maintenance."
+    },
+    {
+      "issue": "access_taxi_pickup",
+      "sample_count": 8,
+      "summary": "Free taxi/station transfer is a repeated positive, but access logistics are still part of guest decision-making."
+    }
+  ],
+  "data_quality_grade": "C+",
+  "upgrade_path": "Re-run Rakuten API/Jalan archive extraction when DNS is stable, and use Agoda/Booking review tabs through Aside to raise directly read sample above 300."
+}

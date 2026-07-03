@@ -1,0 +1,70 @@
+slug,name_ja,name_ko_or_en,area_slug,prefecture,property_type,initial_tier,initial_bath_signals,source_basis,verification_status
+noboribetsu-daiichi-takimotokan,第一滝本館,Dai-ichi Takimotokan,noboribetsu,北海道,large ryokan hotel,Tier 1,"登別 대표 대형 온천호텔, 31湯めぐり/대욕장·객실 노천탕 후보","Jalan Noboribetsu room-open-air, Ikkyu couple list",needs_official_crosscheck
+noboribetsu-mahoroba,ホテルまほろば,Hotel Mahoroba,noboribetsu,北海道,large ryokan hotel,Tier 1,"대형 대욕장·다양한 욕조·객실 노천탕 후보","Jalan Noboribetsu room-open-air page",needs_bath_detail_crosscheck
+noboribetsu-grand,祝いの宿 登別グランドホテル,Noboribetsu Grand Hotel,noboribetsu,北海道,large ryokan hotel,Tier 1,"硫黄泉·食塩泉·鉄泉 3泉질, 객실 노천탕·鬼サウナ 신호","Ikkyu Noboribetsu room-open-air, official day-use page",needs_official_crosscheck
+noboribetsu-manseikaku,登別万世閣,Noboribetsu Manseikaku,noboribetsu,北海道,large hotel ryokan,Tier 1,"객실 노천탕 목록 노출, 올인클루시브/대욕장 후보","Jalan Noboribetsu room-open-air page",needs_official_crosscheck
+noboribetsu-bourou-noguchi,望楼NOGUCHI登別,Bourou Noguchi Noboribetsu,noboribetsu,北海道,luxury ryokan,Tier 1,"전실 전망 온천 스위트룸 신호, 성인형 고급 숙소","Jalan Noboribetsu room-open-air page",needs_official_crosscheck
+noboribetsu-takinoya,登別温泉郷 滝乃家,Takinoya,noboribetsu,北海道,luxury ryokan,Tier 1,"고급 료칸, 객실 노천탕·대욕장 후보","Ikkyu Noboribetsu room-open-air list",needs_official_crosscheck
+noboribetsu-hanayura,旅亭 花ゆら,Ryotei Hanayura,noboribetsu,北海道,ryokan,Tier 1,"원천을 끌어온 히노키 객실 노천탕 신호","Ikkyu Noboribetsu room-open-air list",needs_official_crosscheck
+noboribetsu-sekisuitei,登別 石水亭,Noboribetsu Sekisuitei,noboribetsu,北海道,large hotel ryokan,Tier 2,"대형 온천호텔, 당일치기/대욕장 후보","Noboribetsu day-use association page",needs_bath_detail_crosscheck
+noboribetsu-yumoto,登別温泉 ホテルゆもと登別,Hotel Yumoto Noboribetsu,noboribetsu,北海道,hotel ryokan,Tier 2,"登別 온천호텔, 다원천 대욕장 후보","Noboribetsu lodging exposure",needs_source_crosscheck
+noboribetsu-izumi-villa,滝本イン / 登別温泉周辺ホテル候補,Takimoto Inn / Noboribetsu support lodging,noboribetsu,北海道,hotel,Tier 3,"대욕장 접근/제휴 가능성 확인 후보","Noboribetsu lodging exposure",needs_identity_crosscheck
+jozankei-suizantei,定山渓第一寶亭留 翠山亭,Jozankei Daiichi Hotel Suizantei,jozankei,北海道,ryokan hotel,Tier 1,"전 객실 온천 신호, 자가원천·대욕장·貸切風呂","Rakuten Jozankei listing",needs_official_crosscheck
+jozankei-furukawa,ぬくもりの宿 ふる川,Nukumori no Yado Furukawa,jozankei,北海道,traditional ryokan,Tier 1,"객실 노천탕 추천·대욕장/온천감 후보","MyBest Jozankei room-open-air, Rakuten ranking",needs_official_crosscheck
+jozankei-morino-uta,定山渓鶴雅リゾートスパ 森の謌,Jozankei Tsuruga Resort Spa Mori no Uta,jozankei,北海道,resort spa ryokan,Tier 1,"스파 리조트형, 온천·식음·당일치기 신호","MyBest Jozankei room-open-air, official site",needs_official_crosscheck
+jozankei-chalet-ivy,シャレーアイビー定山渓,Chalet Ivy Jozankei,jozankei,北海道,luxury ryokan,Tier 1,"Ikkyu 고평점 고급숙, 객실탕 후보","Ikkyu Jozankei ranking",needs_official_crosscheck
+jozankei-suigetsu,翠巌,Suigan,jozankei,北海道,luxury ryokan,Tier 1,"고급 소형 숙소, 객실탕/온천 세부 확인 후보","Ikkyu Jozankei ranking",needs_official_crosscheck
+jozankei-grand-blissen,グランドブリッセンホテル定山渓,Grand Blissen Hotel Jozankei,jozankei,北海道,hotel ryokan,Tier 1,"Rakuten 가족 온천 랭킹 고평점, 대욕장/객실탕 후보","Rakuten Jozankei family bath ranking",needs_bath_detail_crosscheck
+jozankei-view,定山渓ビューホテル,Jozankei View Hotel,jozankei,北海道,large resort hotel,Tier 2,"대형 온천호텔, 가족형 리뷰풀/대욕장 후보","Rakuten Jozankei listing",needs_bath_detail_crosscheck
+jozankei-shogetsu,章月グランドホテル,Shogetsu Grand Hotel,jozankei,北海道,traditional hotel ryokan,Tier 2,"日帰り湯施設 목록 노출, 대욕장/숙박 후보","Jozankei Tourism day-use page",needs_bath_detail_crosscheck
+jozankei-hanakaede,定山渓ホテル / 花もみじ候補,Hotel Shikanoyu Hanamomiji area,jozankei,北海道,hotel ryokan,Tier 2,"定山渓 대표 호텔군, 대욕장/객실탕 세부 확인 후보","Jozankei lodging exposure",needs_identity_crosscheck
+jozankei-exclamation,エクスクラメーションホテル,Exclamation Hotel,jozankei,北海道,new small hotel,Tier 3,"2025년 신규, 작은風呂屋/사우나 연계 신호","Ikkyu Jozankei ranking snippet",new_property_monitor
+yunokawa-nagisatei,湯の川プリンスホテル渚亭,Yunokawa Prince Hotel Nagisatei,yunokawa-hakodate,北海道,onsen hotel,Tier 1,"객실 노천탕 수량 큰 유노카와 대표 후보","Rakuten Top20 area seed",needs_official_crosscheck
+yunokawa-heiseikan-hanatsuki,平成館 しおさい亭 別館 花月,Heiseikan Shiosaitei Bettei Hanatsuki,yunokawa-hakodate,北海道,luxury ryokan hotel,Tier 1,"전실 쓰가루해협 조망 객실 노천탕 신호","Jalan Yunokawa room-open-air page",needs_official_crosscheck
+yunokawa-heiseikan-shiosaitei,平成館 しおさい亭,Heiseikan Shiosaitei,yunokawa-hakodate,北海道,seaside ryokan hotel,Tier 1,"절경 바다 전망 온천숙소, 객실 노천탕 플랜 후보","Jalan Yunokawa room-open-air page",needs_bath_detail_crosscheck
+yunokawa-hanabishi,函館・湯の川温泉 花びしホテル,Hanabishi Hotel,yunokawa-hakodate,北海道,large ryokan hotel,Tier 1,"리뉴얼 노천풍로 스위트 신호, 대욕장 후보","Jalan Yunokawa room-open-air page",needs_official_crosscheck
+yunokawa-chikuba,Tabist 竹葉新葉亭,Chikuba Shinyotei,yunokawa-hakodate,北海道,traditional ryokan,Tier 1,"순수 일본식 료칸, 온천/식사 고평가 후보","Jalan Yunokawa room-open-air page",needs_bath_detail_crosscheck
+yunokawa-kanko-shoen,湯の川観光ホテル祥苑,Yunokawa Kanko Hotel Shoen,yunokawa-hakodate,北海道,large hotel ryokan,Tier 2,"가격형/대형 온천호텔, 리뷰풀·부정신호 분석 후보","Jalan Yunokawa room-open-air page",needs_bath_detail_crosscheck
+yunokawa-bourou-noguchi,HAKODATE 海峡の風 / 望楼NOGUCHI函館候補,Bourou Noguchi Hakodate / Kaikyo no Kaze,yunokawa-hakodate,北海道,luxury hotel ryokan,Tier 1,"유노카와 고급 숙소군, 객실탕/대욕장 후보","Yunokawa luxury lodging exposure",needs_identity_crosscheck
+yunokawa-ichinomatsu,湯の川温泉 竹葉新葉亭 / 一乃松候補,Ichinomatsu / traditional Yunokawa ryokan,yunokawa-hakodate,北海道,traditional ryokan,Tier 2,"전통 료칸, 객실탕/대욕장 세부 확인 후보","Yunokawa lodging exposure",needs_identity_crosscheck
+yunokawa-century-marina,センチュリーマリーナ函館,Century Marina Hakodate,yunokawa-hakodate,北海道,city onsen hotel,Tier 2,"하코다테 시내형 온천호텔, 대욕장/항구 전망 후보","HIS Yunokawa onsen plan exposure",needs_bath_detail_crosscheck
+yunokawa-uminosora,イマジンホテル＆リゾート函館,Imagine Hotel & Resort Hakodate,yunokawa-hakodate,北海道,seaside hotel,Tier 2,"바다 전망 대욕장/온천호텔 후보","Yunokawa lodging exposure",needs_bath_detail_crosscheck
+nasu-bettei-kai,那須別邸 回,Nasu Bettei Kai,nasu,栃木県,luxury ryokan,Tier 1,"객실 노천탕 랭킹 상위, 고급 숙소","Ikkyu Nasu room-open-air ranking",needs_official_crosscheck
+nasu-sanraku,那須温泉 山楽,Nasu Onsen Sanraku,nasu,栃木県,luxury ryokan,Tier 1,"나스 노포 고급 료칸, 대욕장/객실탕 후보","Ikkyu Nasu room-open-air ranking",needs_official_crosscheck
+nasu-key-highland,THE KEY HIGHLAND NASU,THE KEY HIGHLAND NASU,nasu,栃木県,resort hotel,Tier 1,"객실 노천탕 인기, 올인클루시브/리조트형 후보","Ikkyu/MyBest Nasu room-open-air lists",needs_official_crosscheck
+nasu-sunvalley,ホテルサンバレー那須,Hotel Sunvalley Nasu,nasu,栃木県,large resort hotel,Tier 1,"대형 리조트, 다욕장/가족형 리뷰풀 후보","Ikkyu/MyBest Nasu exposure",needs_bath_detail_crosscheck
+nasu-hoshino-akari,ぬくもりに心なごむ湯宿 星のあかり,Hoshi no Akari,nasu,栃木県,ryokan,Tier 1,"전실 온천 노천풍로, にごり湯 가케나가시 대욕장 신호","Rakuten Nasu ranking snippet",needs_official_crosscheck
+nasu-towa-pure-cottage,TOWAピュアコテージ,TOWA Pure Cottages,nasu,栃木県,resort cottage,Tier 2,"객실 노천탕 후보, 가족형 코티지 리조트","MyBest Nasu room-open-air ranking",needs_bath_detail_crosscheck
+nasu-jizaiso,こころのおやど 自在荘,Jizaiso,nasu,栃木県,ryokan,Tier 2,"日帰り湯 노출, 대욕장/鹿の湯계열 신호 후보","Nasu tourism day-use page",needs_bath_detail_crosscheck
+nasu-nakafujiya,那須・鹿の湯源泉 中藤屋旅館,Nakafujiya Ryokan,nasu,栃木県,traditional ryokan,Tier 2,"鹿の湯源泉, 백탁 유황천 원천가케나가시 신호","Official Nakafujiya site",needs_review_pool_crosscheck
+nasu-shimizuya,旅館 清水屋,Shimizuya Ryokan,nasu,栃木県,traditional ryokan,Tier 2,"鹿の湯 원천 사용 신호, 로컬 온천감 후보","Nasu tourism day-use page",needs_bath_detail_crosscheck
+nasu-omaru,那須温泉 大丸温泉旅館,Omaru Onsen Ryokan,nasu,栃木県,mountain ryokan,Tier 1,"강을 막은 야천풍로 계열, 비경 온천 후보","Nasu high-value lodging exposure",needs_source_crosscheck
+nasu-epon,那須温泉 美肌名湯と憩いの宿 茜庵 / Epinard 후보,Nasu small ryokan/hotel seed,nasu,栃木県,ryokan,Tier 3,"나스 온천 숙소 보강 후보, 명칭 재확인 필요","Nasu room-open-air exposure",needs_identity_crosscheck
+kinugawa-asaya,鬼怒川温泉 あさや,Asaya,kinugawa,栃木県,large ryokan hotel,Tier 1,"공중정원 노천탕·객실 노천탕·대형 리뷰풀 신호","Jalan/Ikkyu Kinugawa room-open-air lists",needs_official_crosscheck
+kinugawa-mikazuki,日光きぬ川ホテル三日月,Nikko Kinugawa Hotel Mikazuki,kinugawa,栃木県,large resort hotel,Tier 1,"객실 노천탕 목록 노출, 대형 리조트형 온천","Jalan Kinugawa room-open-air page",needs_bath_detail_crosscheck
+kinugawa-fudotaki,きぬ川不動瀧,Kinugawa Fudotaki,kinugawa,栃木県,ryokan,Tier 1,"계곡 조망 객실 노천탕/요리 숙소 후보","Jalan Kinugawa room-open-air page",needs_official_crosscheck
+kinugawa-kai,星野リゾート 界 鬼怒川,Hoshino Resorts KAI Kinugawa,kinugawa,栃木県,brand ryokan,Tier 1,"브랜드 료칸, 객실 노천탕/대욕장 후보","Jalan Kinugawa room-open-air page",needs_bath_detail_crosscheck
+kinugawa-yumenotoki,鬼怒川グランドホテル 夢の季,Kinugawa Grand Hotel Yumenotoki,kinugawa,栃木県,large ryokan hotel,Tier 1,"9つの湯めぐり, 대욕장/객실탕 후보","Jalan Kinugawa room-open-air page",needs_bath_detail_crosscheck
+kinugawa-marukyo,鬼怒川温泉 ゆらら 丸京,Yurara Marukyo,kinugawa,栃木県,small ryokan,Tier 2,"미식·온천 소형 숙소, 객실탕 후보","Jalan Kinugawa room-open-air page",needs_official_crosscheck
+kinugawa-sunshine,ホテルサンシャイン鬼怒川,Hotel Sunshine Kinugawa,kinugawa,栃木県,large hotel ryokan,Tier 2,"대형 온천호텔, 접근성/리뷰풀 후보","Jalan Kinugawa room-open-air page",needs_bath_detail_crosscheck
+kinugawa-wakatake-sasane,鬼怒川温泉 旅館 若竹の庄 別邸笹音,Wakatake no Sho Bettei Sasane,kinugawa,栃木県,ryokan,Tier 1,"전실 계곡 조망, 객실 노천탕 후보","Jalan/Ikkyu Kinugawa room-open-air lists",needs_official_crosscheck
+kinugawa-wakatake,鬼怒川温泉 旅館 若竹の庄,Wakatake no Sho,kinugawa,栃木県,traditional ryokan,Tier 2,"계곡 조망 료칸, 대욕장/객실탕 후보","Kinugawa lodging exposure",needs_bath_detail_crosscheck
+kinugawa-matsuya,鬼怒川温泉 花の宿 松や,Hana no Yado Matsuya,kinugawa,栃木県,ryokan,Tier 2,"객실 온천 노천탕 타입 신호, 평점 갈림 가능성","Ikkyu Kinugawa room-open-air list",needs_review_pool_crosscheck
+kinugawa-nanaeyae,鬼怒川温泉 静寂とまごころの宿 七重八重,Nanaeyae,kinugawa,栃木県,ryokan,Tier 2,"객실 노천탕 후보, 정숙형 료칸","Oyutabi/Kinugawa exposure",needs_source_crosscheck
+kinugawa-kanaya,鬼怒川金谷ホテル,Kinugawa Kanaya Hotel,kinugawa,栃木県,luxury hotel ryokan,Tier 1,"기누가와 고급 온천호텔, 객실탕/대욕장 후보","Kinugawa luxury exposure",needs_official_crosscheck
+ito-futarikomorebi,ホテルふたり木もれ陽,Hotel Futari Komorebi,ito-izu,静岡県,luxury hotel,Tier 1,"이토 고평점 온천 숙소, 객실탕 후보","Ikkyu nationwide onsen ranking seed",needs_official_crosscheck
+ito-kazenokaori-umi,伊東温泉 ラグジュアリー 和 ホテル 風の薫UMI,Kaze no Kaori UMI,ito-izu,静岡県,luxury hotel ryokan,Tier 1,"Rakuten 1470건급 리뷰풀, 객실 노천탕 후보","Rakuten Ito room-open-air page",needs_official_crosscheck
+ito-gensen-tsuki,伊東温泉 源泉と離れのお宿 月,Gensen to Hanare no Oyado Tsuki,ito-izu,静岡県,detached ryokan,Tier 1,"전 9동 오션뷰 노천풍로離れ, Rakuten 1300건급 리뷰풀","Rakuten Ito lodging and room-open-air pages",needs_official_crosscheck
+ito-juraku,伊東ホテルジュラク,Ito Hotel Juraku,ito-izu,静岡県,large hotel ryokan,Tier 1,"伊東 온천 대형호텔, 객실 노천탕 목록 노출","Rakuten Ito room-open-air page",needs_bath_detail_crosscheck
+ito-morinoizumi,伊豆高原温泉ホテル 森の泉,Hotel Mori no Izumi,ito-izu,静岡県,resort hotel,Tier 2,"객실 노천탕 목록 노출, 이즈고원 리조트형","Rakuten Ito room-open-air page",needs_official_crosscheck
+ito-yumenoya,全室半露天付 離れ御宿 夢のや,Yume no Ya,ito-izu,静岡県,detached ryokan,Tier 1,"전실 반노천풍로離れ, 고평점 소형 숙소","Ikkyu Izu Kogen room-open-air page",needs_official_crosscheck
+ito-akazawa-geihinkan,赤沢迎賓館,Akazawa Geihinkan,ito-izu,静岡県,luxury ryokan,Tier 1,"이즈고원 고급 숙소, 객실탕/대욕장 후보","Ikkyu Izu Kogen room-open-air page",needs_official_crosscheck
+ito-uchiyama,お宿うち山 伊豆高原 全室露天風呂付き隠れ宿,Oyado Uchiyama,ito-izu,静岡県,luxury ryokan,Tier 1,"전실 노천풍로離れ, Rakuten 고평점/리뷰풀 신호","Rakuten Izu Kogen ranking",needs_official_crosscheck
+ito-kamenoi-izukogen,亀の井ホテル 伊豆高原,Kamenoi Hotel Izu Kogen,ito-izu,静岡県,resort hotel,Tier 1,"전실 오션뷰, 객실 노천탕 플랜·대욕장 후보","Jalan Izu Kogen room-open-air page",needs_bath_detail_crosscheck
+ito-anda-resort,ホテル＆スパ アンダリゾート伊豆高原,Anda Resort Izu Kogen,ito-izu,静岡県,wellness resort hotel,Tier 1,"Jalan 4475건급 리뷰풀, 해변 조망 노천·반노천 객실 후보","Jalan Anda Resort page",needs_bath_detail_crosscheck
+ito-fugetsumuhen,御宿 風月無辺,Fugaku Muhen / Fugetsu Muhen,ito-izu,静岡県,luxury ryokan,Tier 1,"전실 자가원천 노천풍로, 바다 조망 후보","Rakuten Izu luxury room-open-air article",needs_official_crosscheck
+ito-kissho-carens,吉祥CAREN,Kissho Caren,ito-izu,静岡県,luxury ryokan,Tier 1,"이즈 북천/열천계 고급숙, 노천/객실탕 후보","Izu luxury exposure",needs_source_crosscheck
+ito-zagyo-so,ABBA RESORTS IZU - 坐漁荘,ABBA Resorts Izu Zagyosoh,ito-izu,静岡県,luxury ryokan,Tier 1,"이즈 고급 료칸, 객실 노천탕 후보","Relux Izu room-open-air exposure",needs_official_crosscheck
+ito-il-azzurri,il azzurri,Il Azzurri,ito-izu,静岡県,seaside hotel,Tier 1,"이즈 객실 노천탕 랭킹 노출, 바다 전망 후보","Ikkyu Izu room-open-air ranking",needs_official_crosscheck
+ito-atagawa-suiko,伊豆リトリート 熱川粋光 by 温故知新,Izu Retreat Atagawa Suiko,ito-izu,静岡県,luxury ryokan,Tier 1,"자가원천·정원형 고급숙, 객실 노천탕 후보","Ikkyu Izu room-open-air ranking",needs_official_crosscheck
+ito-nipponia-yumemizuki,伊豆高原温泉 海望む露天風呂付き客室 ニッポニア高原宿夢海月,Nipponia Kogenyado Yumemizuki,ito-izu,静岡県,small ryokan,Tier 2,"바다 조망 노천풍로 객실 후보","Jalan Izu Kogen exposure",needs_official_crosscheck

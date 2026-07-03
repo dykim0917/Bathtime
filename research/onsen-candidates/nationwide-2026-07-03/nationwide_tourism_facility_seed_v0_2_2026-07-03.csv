@@ -1,0 +1,35 @@
+slug,name_ja,name_ko_or_en,area_slug,prefecture,facility_type,initial_tier,initial_onsen_facility_signals,source_basis,verification_status
+kusatsu-ohtakinoyu,大滝乃湯,오타키노유,kusatsu,群馬県,large_day_use_complex,Tier 1,"대욕장·노천탕·合わせ湯·貸切風呂, 煮川源泉 신호","Official Kusatsu Sanyu site",needs_review_pool_crosscheck
+kusatsu-gozanoyu,御座之湯,고자노유,kusatsu,群馬県,historic_public_bath,Tier 1,"草津三湯, 관광동선형 공중탕","Official Kusatsu Sanyu site",needs_official_detail_crosscheck
+kusatsu-sainokawara,西の河原露天風呂,사이노카와라 노천탕,kusatsu,群馬県,open_air_public_bath,Tier 1,"대형 노천탕, 조망/혼잡/온천감 후보","Official Kusatsu Sanyu site",needs_review_pool_crosscheck
+kusatsu-shirahata,白旗の湯,시라하타노유,kusatsu,群馬県,historic_public_bath,Tier 2,"공동탕형, 강한 로컬 이용 규칙 후보","Kusatsu public bath seed",needs_source_crosscheck
+kusatsu-jizonoyu,地蔵の湯,지조노유,kusatsu,群馬県,historic_public_bath,Tier 2,"공동탕형, 온천감/로컬 규칙 후보","Kusatsu public bath seed",needs_source_crosscheck
+kusatsu-chiyonoyu,千代の湯,치요노유,kusatsu,群馬県,historic_public_bath,Tier 2,"시간탕/공동탕 문화 신호 후보","Kusatsu public bath seed",needs_source_crosscheck
+hakone-yuryo,箱根湯寮,하코네유료,hakone,神奈川県,large_day_use_complex,Tier 1,"일일온천, 대욕장·貸切個室露天風呂·식음·무료송영·문신 허용 신호","Official Hakone Yuryo site",needs_review_pool_crosscheck
+hakone-tenzan,天山湯治郷,텐잔토지쿄,hakone,神奈川県,public_bath_facility,Tier 1,"奥湯本 탕치형 당일치기, 원천욕/노천 후보","Official Tenzan site",needs_review_pool_crosscheck
+hakone-yunessun-morinoyu,箱根小涌園ユネッサン 森の湯,유넷상 모리노유,hakone,神奈川県,wellness_spa,Tier 1,"일일온천, 노천·내탕·사우나, 가족형 복합시설","Official Yunessun Mori no Yu site",needs_review_pool_crosscheck
+hakone-kappa-tengoku,かっぱ天国,갓파텐고쿠,hakone,神奈川県,public_bath_facility,Tier 2,"하코네유모토 역근처 당일치기 노천 후보","Hakone day-use seed",needs_source_crosscheck
+hakone-no-yu,箱根の湯,하코네노유,hakone,神奈川県,public_bath_facility,Tier 2,"당일치기 온천, 가족/휴게 이용 후보","Hakone day-use seed",needs_source_crosscheck
+atami-fuua,オーシャンスパ Fuua,오션스파 후아,atami,静岡県,wellness_spa,Tier 1,"상모만 조망 노천立ち湯, 암반욕·로우류·카페 복합","Official Atami Bay Resort Fuua site",needs_review_pool_crosscheck
+atami-nikkotei,日航亭・大湯,닛코테이 오유,atami,静岡県,historic_public_bath,Tier 1,"熱海七湯 계열, 역사형 당일치기 온천 후보","Atami day-use seed",needs_source_crosscheck
+atami-marinespa,マリンスパあたみ,마린스파 아타미,atami,静岡県,wellness_spa,Tier 2,"수영장/스파형 가족시설, 온천시설 후보","Atami tourism/day-use seed",needs_source_crosscheck
+atami-ekimae-onsen,熱海駅前温泉浴場（田原浴場）,아타미역앞 온천욕장,atami,静岡県,historic_public_bath,Tier 2,"역앞 공동욕장, 수건/비누 지참 가능성 등 준비물 신호 후보","Atami City day-use facility list",needs_official_detail_crosscheck
+atami-yamadayu,山田湯,야마다유,atami,静岡県,historic_public_bath,Tier 2,"공동욕장, 로컬 규칙/어메니티 신호 후보","Atami City day-use facility list",needs_official_detail_crosscheck
+gero-kua-garden,クアガーデン露天風呂,쿠아가든 노천탕,gero,岐阜県,open_air_public_bath,Tier 1,"6종 온천욕, 히다강 조망, 공식 가격/주차 정보 확인","Gero City official day-use page",needs_review_pool_crosscheck
+gero-shirasagi,白鷺の湯,시라사기노유,gero,岐阜県,historic_public_bath,Tier 1,"레트로 공중탕, 下呂 온천시설 비교 핵심","Gero City official day-use page",needs_review_pool_crosscheck
+gero-sachinoyu,幸乃湯,사치노유,gero,岐阜県,public_bath_facility,Tier 1,"천연온천, 노천·사우나·가족탕 신호, 가족탕 휴지 공지 중요","Official Sachinoyu site",needs_review_pool_crosscheck
+gero-onsen-museum,下呂発温泉博物館,게로 온천박물관,gero,岐阜県,footbath,Tier 3,"온천 학습+족탕/관광동선 후보","Gero official set-ticket exposure",needs_source_crosscheck
+arima-taikounoyu,有馬温泉 太閤の湯,아리마온천 타이코노유,arima,兵庫県,large_day_use_complex,Tier 1,"금천·은천·혼합탕·탄산천·증기탕·사우나 복합","Nifty ranking, Arima day-use seed",needs_review_pool_crosscheck
+arima-kin-no-yu,有馬本温泉 金の湯,아리마 금탕,arima,兵庫県,historic_public_bath,Tier 1,"금천 공중탕, 관광객 혼잡/온천감 신호 후보","Arima day-use seed",needs_review_pool_crosscheck
+arima-gin-no-yu,有馬温泉 銀の湯,아리마 은탕,arima,兵庫県,historic_public_bath,Tier 2,"은천 공중탕, 금탕과 비교 가치","Arima day-use seed",needs_review_pool_crosscheck
+dogo-honkan,道後温泉本館,도고온천 본관,dogo,愛媛県,historic_public_bath,Tier 1,"역사형 공중탕 대표, 관광객 기대치/혼잡 신호 후보","Dogo tourism seed",needs_review_pool_crosscheck
+dogo-asukanoyu,道後温泉別館 飛鳥乃湯泉,도고온천 별관 아스카노유,dogo,愛媛県,historic_public_bath,Tier 1,"도고 공중탕 별관, 이용 방식/대기 신호 후보","Dogo tourism seed",needs_review_pool_crosscheck
+dogo-tsubakinoyu,椿の湯,츠바키노유,dogo,愛媛県,historic_public_bath,Tier 2,"도고 로컬 공중탕, 가격/로컬 문화 신호 후보","Dogo tourism seed",needs_review_pool_crosscheck
+shirahama-sakinoyu,崎の湯,사키노유,shirahama,和歌山県,open_air_public_bath,Tier 1,"바다 바로 앞 노천탕, 조망/운영조건 신호 후보","Shirahama day-use seed",needs_review_pool_crosscheck
+shirahama-muronoyu,牟婁の湯,무로노유,shirahama,和歌山県,historic_public_bath,Tier 2,"공중탕, 두 원천 비교 신호 후보","Shirahama day-use seed",needs_source_crosscheck
+shirahama-shirasuna,しらすな,시라스나,shirahama,和歌山県,open_air_public_bath,Tier 2,"수영복형 노천/해변 관광동선 후보","Shirahama day-use seed",needs_source_crosscheck
+shirahama-choseinoyu,長生の湯,초세이노유,shirahama,和歌山県,public_bath_facility,Tier 2,"당일치기 온천, 원천/노천 후보","Shirahama day-use seed",needs_source_crosscheck
+ibusuki-saraku,砂むし会館 砂楽,이부스키 모래찜질회관 사라쿠,ibusuki,鹿児島県,sand_bath_facility,Tier 1,"모래찜질 대표 시설, 대기/복장/가격/체험 신호 후보","Ibusuki facility seed",needs_review_pool_crosscheck
+ibusuki-sayuri,山川砂むし温泉 砂湯里,야마가와 모래찜질온천 사유리,ibusuki,鹿児島県,sand_bath_facility,Tier 1,"해변 모래찜질형, 운영/날씨 변수 후보","Ibusuki facility seed",needs_source_crosscheck
+ibusuki-tamatebako,ヘルシーランド 露天風呂 たまて箱温泉,타마테바코온천,ibusuki,鹿児島県,open_air_public_bath,Tier 1,"절경 노천탕, 조망/접근성 신호 후보","Ibusuki facility seed",needs_review_pool_crosscheck
+noboribetsu-sagiriyu,登別温泉 さぎり湯,노보리베쓰 사기리유,noboribetsu,北海道,public_bath_facility,Tier 1,"노보리베쓰 공중탕, 유황천/로컬탕 신호 후보","Noboribetsu facility seed",needs_review_pool_crosscheck

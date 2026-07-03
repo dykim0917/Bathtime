@@ -1,0 +1,389 @@
+{
+  "accommodation_name": "旅館 冨季の舎 / 료칸 후키노야 / Ryokan Fukinoya",
+  "aliases": [
+    "由布院温泉 旅館 冨季の舎",
+    "旅館 冨季の舎",
+    "유후인 후키노야",
+    "료칸 후키노야",
+    "Ryokan Fukinoya"
+  ],
+  "data_quality_grade": "A- (650 directly read reviews, 3 direct platforms; Google/Naver checked directionally, Booking direct page not separately parsed)",
+  "collection_briefing": {
+    "collection_date": "2026-07-01",
+    "direct_read_total": 650,
+    "direct_read_by_platform": {
+      "Jalan": 176,
+      "Rakuten Travel": 105,
+      "Agoda": 369
+    },
+    "onsen_related_direct_total": 529,
+    "onsen_related_by_platform": {
+      "Jalan": 175,
+      "Rakuten Travel": 95,
+      "Agoda": 259
+    },
+    "visible_counts": {
+      "Jalan": {
+        "visible_review_count": 176,
+        "direct_read_count": 176,
+        "onsen_related_direct_count": 175,
+        "url": "https://www.jalan.net/yad324644/"
+      },
+      "Rakuten Travel": {
+        "visible_review_count": 124,
+        "api_text_count": 105,
+        "direct_read_count": 105,
+        "onsen_related_direct_count": 95,
+        "url": "https://travel.rakuten.co.jp/HOTEL/32186/review.html"
+      },
+      "Agoda": {
+        "visible_review_count": 1050,
+        "visible_comment_pool": 455,
+        "unique_api_comments_read": 369,
+        "onsen_related_direct_count": 259,
+        "tabs": [
+          {
+            "providerId": 332,
+            "reviewCount": 837,
+            "tabName": "이용후기 - Agoda (837)",
+            "ratingViaProvider": "이용객 평점 | 아고다"
+          },
+          {
+            "providerId": 3038,
+            "reviewCount": 133,
+            "tabName": "이용후기 - Booking.com (133)",
+            "ratingViaProvider": "이용객 평점 | Booking.com"
+          },
+          {
+            "providerId": -999,
+            "reviewCount": 80,
+            "tabName": "이용후기 - 기타 (80)",
+            "ratingViaProvider": "이용객 평점 | 기타 공급업체"
+          }
+        ],
+        "url": "https://www.agoda.com/ko-kr/ryokan-fukinoya/hotel/yufu-jp.html"
+      },
+      "Google Hotel": {
+        "visible_review_count": 198,
+        "direct_read_count": 0,
+        "note": "Aside Google search/hotel panel confirmed 4.4 rating and 198 Google reviews; snippets only, not direct count."
+      },
+      "Booking.com": {
+        "visible_review_count": 133,
+        "direct_read_count": 0,
+        "note": "Agoda tab/search snippet visible; direct Booking page not yet parsed separately"
+      },
+      "Naver Search": {
+        "visible_review_count": "not numeric; many blog/cafe/OTA results visible",
+        "direct_read_count": 0,
+        "note": "Aside snapshot confirms Korean demand terms: 프라이빗 온천탕, 객실 내부 개인 노천탕, 예약제 전세탕, 가족탕, 송영 안 됨, 택시 권장."
+      }
+    }
+  },
+  "official_facts": [
+    {
+      "source_url": "https://www.fukinoya.com/ko/rooms/",
+      "fact": "별채 객실은 노천탕과 내탕을 갖추며, 유후인 온천수를 원천수 방류 방식으로 즐길 수 있다고 안내한다."
+    },
+    {
+      "source_url": "https://www.fukinoya.com/ko/onsen/",
+      "fact": "총 5개 대절탕: 3개 전세 노천탕, 2개 예약제 대절탕. 예약제 대절탕은 체크인 시 선착순 예약, 히나타노유만 노천탕이라고 안내한다."
+    },
+    {
+      "source_url": "https://www.fukinoya.com/onsen/",
+      "fact": "일본어 공식 온천 기본정보는 泉質을 단純温泉（加水）・温泉掛け流し로 표기한다. 즉 원천가케나가시 주장은 있으나 가수 표기가 함께 있다."
+    },
+    {
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/32186/32186_onsen.html",
+      "fact": "라쿠텐 온천 페이지는 부드럽고 무색투명한 단순온천, 2개 예약제 대절탕과 3개 자유 이용형 대절 노천탕을 안내한다."
+    }
+  ],
+  "review_signal_summary": [
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "booking_confusion",
+      "signal_direction": "negative",
+      "mention_count": 3,
+      "source_count": 3,
+      "platform_count": 2,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 9,
+      "source_count": 9,
+      "platform_count": 3,
+      "contradiction_level": "none",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "private_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "crowding",
+      "signal_direction": "mixed",
+      "mention_count": 11,
+      "source_count": 11,
+      "platform_count": 2,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "private_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "positive",
+      "mention_count": 162,
+      "source_count": 162,
+      "platform_count": 3,
+      "contradiction_level": "none",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "public_bath",
+      "bath_area_confidence": "probable",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "mixed",
+      "mention_count": 46,
+      "source_count": 46,
+      "platform_count": 3,
+      "contradiction_level": "medium",
+      "review_signal_status": "conflicting"
+    },
+    {
+      "bath_area": "room_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 1,
+      "source_count": 1,
+      "platform_count": 1,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient"
+    },
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 179,
+      "source_count": 179,
+      "platform_count": 3,
+      "contradiction_level": "none",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "weak_onsen_feeling",
+      "signal_direction": "negative",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "chlorine_smell",
+      "signal_direction": "negative",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient"
+    }
+  ],
+  "attention_signal_counts": {
+    "access": 112,
+    "bath_temperature": 49,
+    "crowding": 5,
+    "bath_insects": 7
+  },
+  "evidence_examples": [
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Jalan",
+      "source_url": "https://www.jalan.net/yad324644/kuchikomi/",
+      "language": "ja",
+      "review_id": "jalan:そんくんさん:2026/4/22:母の米寿と私の還暦祝い旅行",
+      "short_paraphrase": "후기 본문에서 room_bath_hot_spring 관련 경험을 언급",
+      "original_keyword": "",
+      "review_date": "2026/4/22"
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/32186/review.html",
+      "language": "ja",
+      "review_id": "rakuten:33123472577390",
+      "short_paraphrase": "후기 본문에서 room_bath_hot_spring 관련 경험을 언급",
+      "original_keyword": "",
+      "review_date": "2025-08-14T06:23:46Z"
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Agoda",
+      "source_url": "https://www.agoda.com/ko-kr/ryokan-fukinoya/hotel/yufu-jp.html",
+      "language": "ko",
+      "review_id": "agoda:1109292399",
+      "short_paraphrase": "후기 본문에서 프라이빗/가족 온천 관련 경험을 언급",
+      "original_keyword": "프라이빗 / 가족 온천",
+      "review_date": "2026년 4월 22일"
+    },
+    {
+      "signal_type": "private_bath_experience",
+      "source_type": "Jalan",
+      "source_url": "https://www.jalan.net/yad324644/kuchikomi/",
+      "language": "ja",
+      "review_id": "jalan:dajiubaoさん:2025/12/29:お風呂が最高でした。",
+      "short_paraphrase": "후기 본문에서 部屋の露天/貸切 관련 경험을 언급",
+      "original_keyword": "部屋の露天 / 貸切",
+      "review_date": "2025/12/29"
+    },
+    {
+      "signal_type": "private_bath_experience",
+      "source_type": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/32186/review.html",
+      "language": "ja",
+      "review_id": "rakuten:33123460180701",
+      "short_paraphrase": "후기 본문에서 private_bath_experience 관련 경험을 언급",
+      "original_keyword": "",
+      "review_date": "2020-12-12T01:54:34Z"
+    },
+    {
+      "signal_type": "private_bath_experience",
+      "source_type": "Agoda",
+      "source_url": "https://www.agoda.com/ko-kr/ryokan-fukinoya/hotel/yufu-jp.html",
+      "language": "ko",
+      "review_id": "agoda:1109292399",
+      "short_paraphrase": "후기 본문에서 프라이빗/가족 온천 관련 경험을 언급",
+      "original_keyword": "프라이빗 / 가족 온천",
+      "review_date": "2026년 4월 22일"
+    },
+    {
+      "signal_type": "water_texture",
+      "source_type": "Jalan",
+      "source_url": "https://www.jalan.net/yad324644/kuchikomi/archive/",
+      "language": "ja",
+      "review_id": "jalan:マサさん:2011/9/19:マサさんの由布院温泉 旅館 冨季の舎のクチコミ",
+      "short_paraphrase": "후기 본문에서 water_texture 관련 경험을 언급",
+      "original_keyword": "",
+      "review_date": "2011/9/19"
+    },
+    {
+      "signal_type": "water_texture",
+      "source_type": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/32186/review.html",
+      "language": "ja",
+      "review_id": "rakuten:33123460198782",
+      "short_paraphrase": "후기 본문에서 water_texture 관련 경험을 언급",
+      "original_keyword": "",
+      "review_date": "2020-12-21T06:51:25Z"
+    },
+    {
+      "signal_type": "water_texture",
+      "source_type": "Agoda",
+      "source_url": "https://www.agoda.com/ko-kr/ryokan-fukinoya/hotel/yufu-jp.html",
+      "language": "ko",
+      "review_id": "agoda:1042857635",
+      "short_paraphrase": "후기 본문에서 貸切 관련 경험을 언급",
+      "original_keyword": "貸切",
+      "review_date": "2025년 10월 22일"
+    },
+    {
+      "signal_type": "public_bath_hot_spring",
+      "source_type": "Jalan",
+      "source_url": "https://www.jalan.net/yad324644/kuchikomi/archive/",
+      "language": "ja",
+      "review_id": "jalan:ゆりこさん:2014/8/28:ぜひ普通のお風呂にも入ってほしいです",
+      "short_paraphrase": "후기 본문에서 普通のお風呂/普通のお風呂 관련 경험을 언급",
+      "original_keyword": "普通のお風呂 / 普通のお風呂",
+      "review_date": "2014/8/28"
+    },
+    {
+      "signal_type": "public_bath_hot_spring",
+      "source_type": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/32186/review.html",
+      "language": "ja",
+      "review_id": "rakuten:33123461374372",
+      "short_paraphrase": "후기 본문에서 大浴場/部屋と大浴場の露天/大浴場 관련 경험을 언급",
+      "original_keyword": "大浴場 / 部屋と大浴場の露天 / 大浴場",
+      "review_date": "2022-09-27T15:56:34Z"
+    },
+    {
+      "signal_type": "public_bath_hot_spring",
+      "source_type": "Agoda",
+      "source_url": "https://www.agoda.com/ko-kr/ryokan-fukinoya/hotel/yufu-jp.html",
+      "language": "ko",
+      "review_id": "agoda:1130661891",
+      "short_paraphrase": "후기 본문에서 대욕장 관련 경험을 언급",
+      "original_keyword": "대욕장",
+      "review_date": "2026년 6월 10일"
+    },
+    {
+      "signal_type": "crowding",
+      "source_type": "Jalan",
+      "source_url": "https://www.jalan.net/yad324644/kuchikomi/archive/",
+      "language": "ja",
+      "review_id": "jalan:ヨーチンさん:2013/11/27:ヨーチンさんの由布院温泉 旅館 冨季の舎のクチコミ",
+      "short_paraphrase": "후기 본문에서 家族風呂 관련 경험을 언급",
+      "original_keyword": "家族風呂",
+      "review_date": "2013/11/27"
+    },
+    {
+      "signal_type": "crowding",
+      "source_type": "Agoda",
+      "source_url": "https://www.agoda.com/ko-kr/ryokan-fukinoya/hotel/yufu-jp.html",
+      "language": "ko",
+      "review_id": "agoda:1073604232",
+      "short_paraphrase": "후기 본문에서 crowding 관련 경험을 언급",
+      "original_keyword": "",
+      "review_date": "2026년 2월 9일"
+    }
+  ],
+  "negative_verification": {
+    "searched_patterns": [
+      "塩素/カルキ/염소/chlorine",
+      "温泉感/普通のお湯/그냥 물",
+      "混雑/待ち/붐빔",
+      "ぬるい/熱い/温度/춥다",
+      "予約/先着順/체크인 예약",
+      "虫/벌레"
+    ],
+    "notes": "자동 태깅 후 검증에서 예약제/선착순 같은 운영 설명은 booking_confusion에서 제외했다. 실제 반복 주의 신호는 객실/대절탕 온도 조절, 일부 노천탕 벌레, 접근/픽업, 제한적 예약 시간대 불가로 정리된다. 염소 냄새와 약한 온천감은 반복 신호 없음."
+  },
+  "gaps": [
+    "Google Maps/Google Hotel: 4.4점/Google 리뷰 198건 노출은 확인했지만, 개별 리뷰 본문 대량 수집은 하지 않았다.",
+    "Booking.com 직접 페이지: 131~133건 노출은 Google/Agoda/Naver에서 확인했지만, 별도 본문 파싱은 미수행. Agoda API는 Booking 탭을 보여주지만 댓글 API는 동일 369건 풀로 반환했다.",
+    "Naver Blog/Cafe: 검색 결과와 스니펫에서 한국어 수요·용어 신호는 확인했지만, 각 블로그 본문을 열어 독립 리뷰로 계수하지 않았다.",
+    "Yahoo/Ikkyu/Expedia/Trip.com/JTB/4travel/Tripadvisor는 검색 스니펫 또는 노출 수 확인 수준이며, 이번 직접 표본에는 포함하지 않았다."
+  ],
+  "aside_browser_addendum": {
+    "google_search": {
+      "query": "旅館 冨季の舎 口コミ 温泉",
+      "visible_signals": [
+        "Google 호텔 패널: 4.4점 / Google 리뷰 198개",
+        "Agoda 830건대, Booking 131건, Expedia 107건, Trip.com 32건 등 검색 결과 노출",
+        "검색 스니펫에서 객실/대절탕 긍정, 온도 미지근함, 접근성 이슈가 보임"
+      ],
+      "direct_review_count_added": 0,
+      "status": "snippet/directional only"
+    },
+    "naver_search": {
+      "query": "유후인 후키노야 후기 객실 노천탕",
+      "visible_signals": [
+        "한국어 블로그/카페/OTA 결과 다수 노출",
+        "프라이빗 온천탕, 객실 내부 개인 노천탕, 예약제 전세탕, 가족탕 표현 반복",
+        "유후인역 도보 15분, 택시 권장, 송영 안 됨/픽업 없음 표현 반복"
+      ],
+      "direct_review_count_added": 0,
+      "status": "search-result snippets and demand-language check only"
+    }
+  }
+}

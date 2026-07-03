@@ -1,0 +1,35 @@
+slug,name_ja,name_ko_or_en,area_slug,prefecture,facility_type,initial_tier,initial_onsen_facility_signals,source_basis,verification_status
+dogo-honkan,道後温泉本館,도고온천 본관,dogo,愛媛県,historic_public_bath,Tier 1,"역사형 공중탕 대표, 요금/영업시간/예약 가능 구역 분리 신호","Dogo official honkan and time pages",needs_review_pool_crosscheck
+dogo-asukanoyu,道後温泉別館 飛鳥乃湯泉,도고온천 별관 아스카노유,dogo,愛媛県,historic_public_bath,Tier 1,"신탕 콘셉트 외탕, 특별욕실/예약 신호 후보","Dogo official Asuka no Yu page",needs_review_pool_crosscheck
+dogo-tsubakinoyu,道後温泉 椿の湯,도고온천 츠바키노유,dogo,愛媛県,historic_public_bath,Tier 1,"시민 친화 공중탕, 무가온·무가수 원천가케나가시 신호","Dogo official Tsubaki no Yu page",needs_review_pool_crosscheck
+shirahama-sakinoyu,崎の湯,사키노유,shirahama,和歌山県,open_air_public_bath,Tier 1,"바다 바로 앞 최고 조망 노천, 샴푸/비누 사용 불가, 계절별 시간","Shirahama town official page",needs_review_pool_crosscheck
+shirahama-muronoyu,牟婁の湯,무로노유,shirahama,和歌山県,historic_public_bath,Tier 1,"외탕巡り 핵심 공중탕, 두 원천 비교 후보","Nanki Shirahama tourism onsen page",needs_review_pool_crosscheck
+shirahama-shirasunayu,露天風呂しらすな / しらすな足湯,시라스나 노천탕/족탕,shirahama,和歌山県,open_air_public_bath,Tier 2,"해변형 노천/족탕, 계절성·수영복 여부 확인 후보","Nanki Shirahama tourism onsen page",needs_official_detail_crosscheck
+shirahama-shirarayu,白良湯,시라라유,shirahama,和歌山県,historic_public_bath,Tier 2,"시라하마 외탕, 관광객/로컬 공중탕 신호 후보","Nanki Shirahama tourism onsen page",needs_review_pool_crosscheck
+shirahama-matsunoyu,松乃湯,마쓰노유,shirahama,和歌山県,historic_public_bath,Tier 2,"시라하마 외탕, 가격/어메니티 신호 후보","Nanki Shirahama tourism onsen page",needs_review_pool_crosscheck
+shirahama-toretore,とれとれの湯,토레토레노유,shirahama,和歌山県,large_day_use_complex,Tier 1,"식음/시장 관광동선형 대형 당일온천 후보","Nanki Shirahama tourism onsen page",needs_review_pool_crosscheck
+shirahama-tsubaki-hananoyu,道の駅 椿はなの湯,쓰바키 하나노유,shirahama,和歌山県,public_bath_facility,Tier 2,"도노에키 온천, 족탕/당일입욕 후보","Nanki Shirahama tourism onsen page",needs_review_pool_crosscheck
+yugawara-soyu,湯河原惣湯 Books and Retreat,유가와라 소유,yugawara,神奈川県,wellness_spa,Tier 1,"사전예약제 소유테라스, 원천가케나가시, 2025-10-14부터 휴업 예정 공지","Yugawara tourism and official pages",needs_current_operation_crosscheck
+yugawara-kogomenoyu,こごめの湯,코고메노유,yugawara,神奈川県,public_bath_facility,Tier 1,"만요공원 입구 당일온천, 관광동선·공중탕 신호 후보","Official Kogome no Yu page",needs_review_pool_crosscheck
+yugawara-mamane,湯河原温泉 ままねの湯,마마네노유,yugawara,神奈川県,historic_public_bath,Tier 2,"로컬 공동탕/원천 신호 후보","Yugawara day-use seed",needs_source_crosscheck
+yugawara-izuminoyu,ニューウェルシティ湯河原 いずみの湯,이즈미노유,yugawara,神奈川県,large_day_use_complex,Tier 2,"대형 당일온천·숙박 겸용 시설 후보","Yugawara day-use seed",needs_source_crosscheck
+kawaguchiko-yurari,富士眺望の湯 ゆらり,후지조망탕 유라리,kawaguchiko,山梨県,large_day_use_complex,Tier 1,"후지산 조망 16종 욕조, 식음/휴게, 손빈방문 가능 신호","Official/Yamanashi tourism pages",needs_review_pool_crosscheck
+kawaguchiko-kaiun,河口湖温泉 寺露天風呂の宿 夢殿 日帰り候補,카와구치코 고급숙 당일입욕 후보,kawaguchiko,山梨県,hotel_dayuse_bath,Tier 3,"고급숙 일일입욕 가능성 확인 후보","Kawaguchiko lodging exposure",needs_source_crosscheck
+kawaguchiko-tensui,野天風呂天水 / 河口湖日帰り温泉候補,Tensui day-use seed,kawaguchiko,山梨県,open_air_public_bath,Tier 2,"야천풍로형 당일온천 후보, 운영현황 확인 필요","Kawaguchiko day-use seed",needs_current_operation_crosscheck
+kawaguchiko-fujiyama-onsen,ふじやま温泉,Fujiyama Onsen,kawaguchiko,山梨県,large_day_use_complex,Tier 1,"후지큐 인접 대형 온천시설, 관광동선/혼잡 신호 후보","Kawaguchiko day-use seed",needs_review_pool_crosscheck
+akiu-sato-center,秋保・里センター 足湯,아키우 사토센터 족탕,akiu,宮城県,footbath,Tier 2,"관광안내소 족탕, 무료/짧은 체류형 후보","Akiu day-use seed",needs_source_crosscheck
+akiu-hananoyu-dayuse,ホテル華乃湯 日帰り温泉,호텔 하나노유 당일온천,akiu,宮城県,hotel_dayuse_bath,Tier 1,"아키우 당일온천 추천 노출, 노천/대욕장 후보","Jalan/Akiu day-use exposure",needs_review_pool_crosscheck
+akiu-zuiho-dayuse,ホテル瑞鳳 日帰り温泉,호텔 즈이호 당일온천,akiu,宮城県,hotel_dayuse_bath,Tier 1,"대형 호텔 당일온천 후보, 운영일/혼잡 확인 필요","Akiu day-use seed",needs_official_detail_crosscheck
+akiu-ryokusuitei-dayuse,篝火の湯 緑水亭 日帰り,료쿠스이테이 당일온천,akiu,宮城県,hotel_dayuse_bath,Tier 2,"정원형 노천/대욕장 당일온천 후보","Akiu day-use seed",needs_review_pool_crosscheck
+ikaho-ishidan-no-yu,石段の湯,이카호 이시단노유,ikaho,群馬県,historic_public_bath,Tier 1,"석단거리 공중탕, 황금탕/관광객 혼잡 신호 후보","Ikaho day-use seed",needs_review_pool_crosscheck
+ikaho-rotenburo,伊香保露天風呂,이카호 노천탕,ikaho,群馬県,open_air_public_bath,Tier 1,"원천 근처 노천탕, 온천감/운영조건 후보","Ikaho day-use seed",needs_review_pool_crosscheck
+ikaho-kogane-no-yu,黄金の湯館,고가네노유칸,ikaho,群馬県,large_day_use_complex,Tier 2,"대형 당일온천, 가격/혼잡/가족형 수요 후보","Ikaho day-use seed",needs_source_crosscheck
+ikaho-ikaho-onsen-drink,飲泉所・足湯候補,이카호 음천/족탕 후보,ikaho,群馬県,footbath,Tier 3,"석단거리 짧은 체류/무료 시설 후보","Ikaho tourist seed",needs_source_crosscheck
+toba-toba-seaside-hotel-dayuse,鳥羽シーサイドホテル 日帰り温泉,도바 시사이드호텔 당일온천,toba,三重県,hotel_dayuse_bath,Tier 1,"바다 전망 대형 호텔 당일온천 후보","Toba day-use seed",needs_review_pool_crosscheck
+toba-todaya-dayuse,戸田家 日帰り温泉,토다야 당일온천,toba,三重県,hotel_dayuse_bath,Tier 1,"도바 대형 숙소 당일온천, 탕종류/혼잡 신호 후보","Toba lodging/day-use seed",needs_review_pool_crosscheck
+toba-toba-grand-dayuse,鳥羽グランドホテル 日帰り温泉,도바 그랜드호텔 당일온천,toba,三重県,hotel_dayuse_bath,Tier 2,"바다 전망 호텔온천 후보","Toba day-use seed",needs_source_crosscheck
+toba-aquaignis-kataoka,アクアイグニス片岡温泉,아쿠아이그니스 가타오카온천,toba,三重県,wellness_spa,Tier 1,"미에권 스파/식음 복합시설, 도바·이세시마 보강 후보","Mie facility seed",needs_area_crosscheck
+isawa-yamanami,やまなしフルーツ温泉ぷくぷく / ほったらかし温泉候補,Yamanashi view onsen seed,isawa,山梨県,open_air_public_bath,Tier 2,"이사와/후에후키권 조망형 온천 후보, 지역 정확도 보강 필요","Yamanashi facility seed",needs_area_crosscheck
+isawa-nadeshiko,石和温泉駅前公園あしゆ,이사와온천역 앞 족탕,isawa,山梨県,footbath,Tier 2,"역 앞 무료 족탕 후보, 짧은 체류형 시설","Isawa tourist seed",needs_source_crosscheck
+isawa-spaland,スパランドホテル内藤,스파랜드 호텔 나이토,isawa,山梨県,wellness_spa,Tier 1,"대형 스파/사우나/숙박 겸용, 리뷰풀 후보","Isawa/Fuefuki facility seed",needs_review_pool_crosscheck
+isawa-yamanashi-kotsu,石和健康ランド,이사와 건강랜드,isawa,山梨県,wellness_spa,Tier 2,"건강랜드형 대형 온욕시설 후보","Isawa facility seed",needs_source_crosscheck

@@ -1,0 +1,75 @@
+slug,name_ja,name_ko_or_en,area_slug,prefecture,property_type,initial_tier,initial_bath_signals,source_basis,verification_status
+dogo-miyu,道後御湯,Dogo Miyu,dogo,愛媛県,luxury ryokan,Tier 1,"도고 고급 숙소, 온천 노천풍로 객실 후보","Ikkyu Dogo room-open-air list",needs_official_crosscheck
+dogo-kotononiwa,道後温泉 琴の庭,Koto no Niwa,dogo,愛媛県,luxury ryokan,Tier 1,"전 객실 원천가케나가시 노천풍로 신호","Ikkyu Dogo room-open-air list",needs_official_crosscheck
+dogo-dogokan,道後舘,Dogo Kan,dogo,愛媛県,large ryokan,Tier 1,"도고 대표 료칸, 객실 노천탕/대욕장 후보","Ikkyu Dogo room-open-air list",needs_bath_detail_crosscheck
+dogo-oborozukiyo,別邸 朧月夜,Bettei Oborozukiyo,dogo,愛媛県,luxury ryokan,Tier 1,"고급 소형 숙소, 객실 노천탕 후보","Ikkyu Dogo room-open-air list",needs_official_crosscheck
+dogo-funaya,道後温泉 ふなや,Funaya,dogo,愛媛県,traditional ryokan,Tier 1,"도고 노포 료칸, 대욕장/객실탕 후보","Ikkyu station ranking, existing seed",needs_bath_detail_crosscheck
+dogo-kowakuen-haruka,ホテル古湧園 遥,Hotel Kowakuen Haruka,dogo,愛媛県,hotel ryokan,Tier 1,"도고 대형 현대형 숙소, 대욕장/객실탕 후보","Ikkyu station ranking",needs_bath_detail_crosscheck
+dogo-yachiyo,道後温泉 八千代,Yachiyo,dogo,愛媛県,ryokan,Tier 1,"객실 노천탕 인기 신호","Rakuten/MyBest Dogo room-open-air",needs_official_crosscheck
+dogo-hakuro,道後hakuro,Dogo Hakuro,dogo,愛媛県,modern hotel ryokan,Tier 2,"현대형 도고 숙소, 대욕장/온천 후보","Ikkyu station ranking",needs_bath_detail_crosscheck
+dogo-chaharu,道後温泉 茶玻瑠,Chaharu,dogo,愛媛県,hotel ryokan,Tier 2,"도고 접근성·대욕장/노천 후보","Dogo lodging exposure",needs_bath_detail_crosscheck
+dogo-okudogo-ichiyunomori,奥道後 壱湯の守,Okudogo Ichiyu no Mori,dogo,愛媛県,large ryokan hotel,Tier 2,"오쿠도고 대형 노천/대욕장 후보","Dogo/Okudogo lodging exposure",needs_bath_detail_crosscheck
+shirahama-kaishu,浜千鳥の湯 海舟（共立リゾート）,Hamachidori no Yu Kaishu,shirahama,和歌山県,seaside ryokan,Tier 1,"바다 전망 노천·객실탕 인기 신호","Ikkyu Shirahama room-open-air list",needs_official_crosscheck
+shirahama-xyz-speciale,海絶景とギネス認定の宿 全室露天風呂付離れ XYZスペチアーレ,XYZ Speciale,shirahama,和歌山県,detached ryokan,Tier 1,"전실 노천풍로離れ, 해절경·미라바스 신호","Ikkyu Shirahama room-open-air ranking",needs_official_crosscheck
+shirahama-kawakyu,ホテル川久,Hotel Kawakyu,shirahama,和歌山県,luxury resort hotel,Tier 1,"객실 노천탕 인기, 대형 리조트형 후보","MyBest/Jalan Shirahama room-open-air",needs_bath_detail_crosscheck
+shirahama-kachofugetsu,南紀白浜 和みの湯 花鳥風月,Kachofugetsu,shirahama,和歌山県,ryokan,Tier 1,"객실 노천탕/온천 숙소 후보","Jalan Shirahama room-open-air page",needs_official_crosscheck
+shirahama-yanagiya,白浜温泉 家族とすごす白浜の宿 柳屋,Yanagiya,shirahama,和歌山県,traditional ryokan,Tier 1,"가족형 료칸, 객실 노천탕 후보","Jalan Shirahama room-open-air page",needs_bath_detail_crosscheck
+shirahama-sanrakuso,ホテル三楽荘,Hotel Sanrakuso,shirahama,和歌山県,seaside hotel ryokan,Tier 1,"객실 노천탕 인기 신호, 바다 전망 후보","Jalan/Rakuten Shirahama room-open-air",needs_official_crosscheck
+shirahama-tengoku,ホテル天山閣 海ゆぅ庭 / ホテル天山閣候補,Hotel Tenzankaku seed,shirahama,和歌山県,hotel ryokan,Tier 2,"객실 노천탕 후보, 명칭/계열 확인 필요","Jalan Shirahama room-open-air page",needs_identity_crosscheck
+shirahama-key-terrace,SHIRAHAMA KEY TERRACE HOTEL SEAMORE,Hotel Seamore,shirahama,和歌山県,large resort hotel,Tier 1,"바다 전망 대형 리조트, 온천·족탕·당일이용 후보","Nanki Shirahama tourism onsen page",needs_bath_detail_crosscheck
+shirahama-koganoi,白浜古賀の井リゾート＆スパ,Koganoi Resort & Spa,shirahama,和歌山県,resort hotel,Tier 2,"대형 리조트, 온천·스파·당일입욕 노출","Nanki Shirahama tourism onsen page",needs_bath_detail_crosscheck
+shirahama-ohedo-premium,大江戸温泉物語 Premium 白浜御苑,Ooedo Onsen Premium Shirahama Gyoen,shirahama,和歌山県,large hotel ryokan,Tier 2,"대형 온천호텔, 가격형/리뷰풀 후보","MyBest Shirahama room-open-air",needs_bath_detail_crosscheck
+yugawara-ashikari,懐石旅庵 阿しか里,Ashikari,yugawara,神奈川県,kaiseki ryokan,Tier 1,"원천가케나가시 노천풍로 객실 신호","Ikkyu Yugawara room-open-air list",needs_official_crosscheck
+yugawara-miwa,三輪 湯河原,Miwa Yugawara,yugawara,神奈川県,luxury ryokan,Tier 1,"고평점 현대형 숙소, 객실 노천탕 후보","Ikkyu Yugawara room-open-air list",needs_official_crosscheck
+yugawara-tsubaki,海石榴 つばき,Tsubaki,yugawara,神奈川県,luxury ryokan,Tier 1,"오쿠유가와라 고급 료칸, 객실 노천탕 후보","Rakuten Yugawara room-open-air page",needs_official_crosscheck
+yugawara-sansuirou,山翠楼SANSUIROU,Sansuirou,yugawara,神奈川県,luxury ryokan,Tier 1,"전망 노천/고급 료칸, 리뷰풀 후보","Rakuten Yugawara listings",needs_bath_detail_crosscheck
+yugawara-zuisyo,御宿瑞鷹,Zuisyo,yugawara,神奈川県,ryokan,Tier 2,"객실 노천탕 목록 노출, 리뷰풀 후보","Rakuten Yugawara room-open-air page",needs_bath_detail_crosscheck
+yugawara-fuga,ゆがわら風雅,Yugawara Fuga,yugawara,神奈川県,ryokan,Tier 2,"리뷰풀 큰 유가와라 숙소, 대욕장/객실탕 후보","Rakuten Yugawara room-open-air page",needs_bath_detail_crosscheck
+yugawara-manyoso,湯河原温泉 万葉の里 白雲荘 / 万葉荘候補,Yugawara Manyo area seed,yugawara,神奈川県,ryokan,Tier 2,"유가와라 온천숙소 보강 후보, 명칭 확인 필요","Yugawara lodging exposure",needs_identity_crosscheck
+yugawara-yugawara-retreat-goenno-mori,湯河原リトリート ご縁の杜,Goen no Mori,yugawara,神奈川県,small hotel ryokan,Tier 3,"리트리트형 온천숙소 후보","Yugawara lodging exposure",needs_bath_detail_crosscheck
+yugawara-okuyugawara-yui,奥湯河原 結唯,Yui Okuyugawara,yugawara,神奈川県,luxury ryokan,Tier 1,"오쿠유가와라 고급숙, 객실탕/원천 세부 확인 후보","Yugawara luxury exposure",needs_official_crosscheck
+yugawara-greenpal,湯河原温泉 グリーンパル湯河原,Green Pal Yugawara,yugawara,神奈川県,hotel ryokan,Tier 3,"가격형 온천호텔, 대욕장/리뷰풀 후보","Yugawara lodging exposure",needs_bath_detail_crosscheck
+kawaguchiko-fuji-lake,FUJI LAKE HOTEL / 富士レークホテル,Fuji Lake Hotel,kawaguchiko,山梨県,lake hotel,Tier 1,"Rakuten 리뷰풀 큼, 객실 노천탕/후지산·호수 조망 후보","Rakuten Kawaguchiko room-open-air page",needs_bath_detail_crosscheck
+kawaguchiko-sunnide,Sunnide Resort ＜ホテル＆湖畔別邸 千一景＞,Sunnide Resort,kawaguchiko,山梨県,lake resort hotel,Tier 1,"호반 별저, 객실 노천탕 후보","Rakuten Kawaguchiko room-open-air page",needs_official_crosscheck
+kawaguchiko-ooya,富士河口湖温泉 花水庭 おおや,Kasuitei Ooya,kawaguchiko,山梨県,ryokan hotel,Tier 1,"후지카와구치코 온천, 객실 노천탕 후보","Rakuten Kawaguchiko room-open-air page",needs_bath_detail_crosscheck
+kawaguchiko-konanso,富士河口湖温泉 湖南荘,Konanso,kawaguchiko,山梨県,ryokan hotel,Tier 1,"후지산/호수 조망, 객실 노천탕 후보","Rakuten keyword result",needs_official_crosscheck
+kawaguchiko-yumedono,河口湖温泉寺 露天風呂の宿 夢殿,Yumedono,kawaguchiko,山梨県,luxury ryokan,Tier 1,"노천풍로 숙소, 고급 료칸 후보","Rakuten keyword result",needs_official_crosscheck
+kawaguchiko-kaneyamaen,庭園と感動の宿 富士山温泉 ホテル鐘山苑,Hotel Kaneyamaen,kawaguchiko,山梨県,large ryokan hotel,Tier 1,"후지산 온천·정원·객실 노천탕 후보","Ikkyu Yamanashi room-open-air ranking",needs_official_crosscheck
+kawaguchiko-fufu,ふふ 河口湖,Fufu Kawaguchiko,kawaguchiko,山梨県,luxury resort ryokan,Tier 1,"고급 리조트, 객실 노천탕 후보","Ikkyu Yamanashi room-open-air ranking",needs_official_crosscheck
+kawaguchiko-kukuna,THE KUKUNA,The Kukuna,kawaguchiko,山梨県,resort hotel,Tier 1,"후지산/호수 조망 온천리조트 후보","existing seed, Ikkyu/Yamanashi exposure",needs_bath_detail_crosscheck
+kawaguchiko-ufuji-no-yado-oike,富士河口湖温泉 若草の宿 丸栄 / 湖楽おんやど富士吟景候補,Kawaguchiko ryokan seed,kawaguchiko,山梨県,ryokan,Tier 2,"후지산 조망 온천숙소 보강 후보, 명칭 확인 필요","Kawaguchiko lodging exposure",needs_identity_crosscheck
+kawaguchiko-hotel-koryu,河口湖温泉 ホテル湖龍,Hotel Koryu,kawaguchiko,山梨県,hotel ryokan,Tier 2,"객실 노천탕 목록 노출, 가격형 비교군","Rakuten keyword result",needs_bath_detail_crosscheck
+akiu-saryo-soen,茶寮宗園,Saryo Soen,akiu,宮城県,luxury ryokan,Tier 1,"아키우 고급 료칸, 객실 노천탕 후보","Ikkyu Akiu room-open-air list",needs_official_crosscheck
+akiu-sakurareikyu,仙台 秋保温泉 迎賓館 櫻離宮,Sakurareikyu,akiu,宮城県,detached luxury ryokan,Tier 1,"전 14실離れ, 온천 노천풍로 객실 중심 신호","Ikkyu Akiu room-open-air list",needs_official_crosscheck
+akiu-ryokusuitei,仙台 秋保温泉 篝火の湯 緑水亭,Ryokusuitei,akiu,宮城県,ryokan hotel,Tier 1,"객실 노천탕 인기, 대정원/대욕장 후보","Ikkyu/MyBest Akiu room-open-air",needs_bath_detail_crosscheck
+akiu-hotel-zuiho,仙台 秋保温泉 ホテル瑞鳳,Hotel Zuiho,akiu,宮城県,large ryokan hotel,Tier 1,"대형 온천호텔, 櫻離宮 연계/대욕장 리뷰풀 후보","Ikkyu Akiu exposure",needs_bath_detail_crosscheck
+akiu-hananoyu,仙台・秋保温泉 ホテル華乃湯,Hotel Hananoyu,akiu,宮城県,hotel ryokan,Tier 2,"천연온천 노천풍로 객실 신호","Jalan Hananoyu page",needs_official_crosscheck
+akiu-iwanumaya,秋保温泉 岩沼屋,Iwanumaya,akiu,宮城県,large ryokan,Tier 2,"아키우 대형 료칸, 대욕장/객실탕 후보","Akiu lodging exposure",needs_bath_detail_crosscheck
+akiu-rantei,仙台 秋保温泉 蘭亭,Rantei,akiu,宮城県,ryokan hotel,Tier 2,"가족형 온천숙소, 대욕장/노천 후보","Akiu lodging exposure",needs_bath_detail_crosscheck
+akiu-ichinobo,仙台・作並温泉 ゆづくしSalon一の坊,Yudukushi Salon Ichinobo,akiu,宮城県,wellness ryokan,Tier 2,"작나미/아키우권, 온천살롱형 후보","Ikkyu Akiu room-open-air related list",needs_area_crosscheck
+ikaho-kaichoro,奥伊香保 旅邸 諧暢楼,Kaichoro,ikaho,群馬県,luxury ryokan,Tier 1,"전 8실 노천풍로 객실, 고급 숙소","Ikkyu Ikaho room-open-air list",needs_official_crosscheck
+ikaho-kogure,ホテル木暮,Hotel Kogure,ikaho,群馬県,large ryokan hotel,Tier 1,"고평점, 객실 노천탕·대욕장 후보","Ikkyu/MyBest Ikaho room-open-air",needs_bath_detail_crosscheck
+ikaho-kokuya,伊香保温泉 心に咲く花 古久家,Kokuya,ikaho,群馬県,traditional ryokan,Tier 1,"黄金の湯 원천가케나가시 노천풍로 객실 신호","Rakuten Ikaho room-open-air article",needs_official_crosscheck
+ikaho-chigira,千明仁泉亭,Chigira Jinsentei,ikaho,群馬県,traditional ryokan,Tier 1,"이카호 노포, 객실 노천탕 후보","Rakuten Ikaho room-open-air article",needs_bath_detail_crosscheck
+ikaho-oyado-tamaki,お宿玉樹,Oyado Tamaki,ikaho,群馬県,ryokan,Tier 1,"객실 노천탕/식사 고평가 후보","Ikkyu Ikaho room-open-air dinner list",needs_official_crosscheck
+ikaho-kanouya,伊香保温泉 かのうや,Kanouya,ikaho,群馬県,ryokan,Tier 1,"露天風呂付客室 인기, 리뷰풀 큼","Rakuten Ikaho hotel list",needs_official_crosscheck
+ikaho-moriaki,森秋旅館,Moriaki Ryokan,ikaho,群馬県,traditional ryokan,Tier 2,"黄金の湯 대욕장 후보, 대중형 숙소","Ikaho lodging exposure",needs_bath_detail_crosscheck
+ikaho-fukuichi,福一,Fukuichi,ikaho,群馬県,large ryokan,Tier 2,"이카호 대형 료칸, 대욕장/객실탕 후보","Ikaho lodging exposure",needs_bath_detail_crosscheck
+toba-toba-kokusai,鳥羽国際ホテル 潮路亭,Toba Hotel International Shiojitei,toba,三重県,seaside ryokan hotel,Tier 1,"도바 바다 전망 온천숙소, 진주온천/대욕장 후보","Toba top area seed",needs_source_crosscheck
+toba-todaya,戸田家,Todaya,toba,三重県,large ryokan hotel,Tier 1,"대형 온천호텔, 다양한 욕장/리뷰풀 후보","Toba lodging exposure",needs_bath_detail_crosscheck
+toba-kisara,季さら,Kisara,toba,三重県,private ryokan,Tier 1,"객실 노천탕·프라이빗 숙소 후보","Toba room-open-air exposure",needs_official_crosscheck
+toba-kisara-bettei-toki,季さら別邸 刻,Toki Kisara Bettei,toba,三重県,luxury ryokan,Tier 1,"고급 별저형 객실탕 후보","Toba luxury exposure",needs_official_crosscheck
+toba-senpokaku,扇芳閣,Senpokaku,toba,三重県,ryokan hotel,Tier 2,"도바 전망 온천숙소 후보","Toba lodging exposure",needs_bath_detail_crosscheck
+toba-hamanomiyabitei,浜の雅亭 一井,Hamanomiyabitei Ichii,toba,三重県,seaside ryokan,Tier 2,"해변 숙소, 온천/객실탕 후보","Toba/Shima lodging exposure",needs_bath_detail_crosscheck
+toba-taoya-shima,TAOYA志摩,TAOYA Shima,toba,三重県,resort hotel,Tier 2,"이세시마 리조트형 온천숙소 후보","Toba/Shima lodging exposure",needs_area_crosscheck
+toba-exiv,グランドエクシブ鳥羽,Grand XIV Toba,toba,三重県,resort hotel,Tier 3,"대형 리조트, 온천/스파 후보","Toba resort exposure",needs_source_crosscheck
+isawa-keizan,石和温泉 華やぎの章 慶山,Keizan,isawa,山梨県,large ryokan,Tier 1,"Rakuten 1900건급 리뷰풀, 객실 노천탕 후보","Rakuten Isawa room-open-air page",needs_official_crosscheck
+isawa-fujinoya,シャトレーゼホテル 旅館 富士野屋,Fujinoya,isawa,山梨県,ryokan hotel,Tier 1,"객실탕도 온천, 최대 7개 탕巡り 신호","Rakuten/Jalan Isawa room-open-air",needs_official_crosscheck
+isawa-koshien,銘庭の宿 ホテル甲子園,Hotel Koshien,isawa,山梨県,ryokan hotel,Tier 1,"객실 노천/반노천 리뉴얼 신호, 리뷰풀 후보","Rakuten/Jalan Isawa room-open-air",needs_official_crosscheck
+isawa-kimiyoshi,石和温泉 ホテル君佳,Hotel Kimiyoshi,isawa,山梨県,hotel ryokan,Tier 2,"객실 노천탕 목록 노출, 가격형 비교군","Rakuten Isawa room-open-air page",needs_bath_detail_crosscheck
+isawa-itoyanagi,石和名湯館 糸柳,Itoyanagi,isawa,山梨県,traditional ryokan,Tier 1,"石和 명탕관, 객실 노천탕 후보","Jalan Isawa room-open-air page",needs_official_crosscheck
+isawa-itoyanagi-yuwa,糸柳こやど ゆわ,Itoyanagi Koyado Yuwa,isawa,山梨県,small ryokan,Tier 1,"소형 객실탕/온천숙소 후보","Jalan Isawa room-open-air page",needs_official_crosscheck
+isawa-hotel-fuji,ホテルふじ,Hotel Fuji,isawa,山梨県,large hotel ryokan,Tier 1,"현내 최대급 대암풍로, 대형 리뷰풀 후보","Jalan Isawa room-open-air page",needs_bath_detail_crosscheck
+isawa-hanaisawa,石和温泉 ホテル花いさわ,Hotel Hana Isawa,isawa,山梨県,hotel ryokan,Tier 2,"자분원천 보유, 역접근성·대욕장 후보","Jalan Isawa room-open-air page",needs_bath_detail_crosscheck
+isawa-kagetsu,銘石の宿 かげつ,Kagetsu,isawa,山梨県,traditional ryokan,Tier 1,"객실 노천/반노천·별저 The ONE 신호","Jalan Isawa room-open-air page",needs_official_crosscheck
+isawa-wajoen,糸柳別館 離れの邸 和穣苑,Wajoen,isawa,山梨県,detached ryokan,Tier 1,"離れ 숙소, 객실탕/고급숙 후보","Jalan Isawa room-open-air page",needs_official_crosscheck

@@ -1,0 +1,487 @@
+{
+  "accommodation_name": "楓の小舎 / 카에데노쇼자 / Yufuin Kaede no Shoja",
+  "checked_at": "2026-06-30",
+  "identity": {
+    "korean_name": "카에데노쇼자",
+    "japanese_name": "由布院温泉 楓の小舎",
+    "aliases": [
+      "楓の小舎",
+      "由布院温泉 楓の小舎",
+      "Yufuin Kaede no Shoja"
+    ],
+    "official_url": "https://www.yufuin-kaede.com/",
+    "rakuten_url": "https://travel.rakuten.co.jp/HOTEL/72793/review.html",
+    "jalan_url": "https://www.jalan.net/yad332520/kuchikomi/"
+  },
+  "official_facts": [
+    {
+      "fact": "공식 사이트 타이틀/메인에서 전 객실 노천탕이 있는 독채형 숙소로 설명한다.",
+      "bath_area": "room_open_air_bath",
+      "source_url": "https://www.yufuin-kaede.com/",
+      "keyword": "全室露天風呂付き離れ"
+    },
+    {
+      "fact": "객실 페이지 예시에서 객실 노천탕, 내탕, 암반욕 이용 가능을 설명한다.",
+      "bath_area": "room_open_air_bath / room_bath",
+      "source_url": "https://www.yufuin-kaede.com/room/index.html",
+      "keyword": "露天風呂 / 内湯 / 岩盤浴"
+    },
+    {
+      "fact": "공식 메인에는 원천가케나가시 대여 노천탕 문구가 있으나, 공지상 시설 점검으로 휴지 중이라는 맥락이 함께 보인다.",
+      "bath_area": "private_bath",
+      "source_url": "https://www.yufuin-kaede.com/",
+      "keyword": "源泉掛け流し / 貸切露天風呂 / 休止"
+    }
+  ],
+  "collection_briefing": [
+    {
+      "source": "Rakuten Travel",
+      "visible_review_count": 230,
+      "rating": 4.61,
+      "directly_read_reviews": 230,
+      "onsen_related_reviews": 229,
+      "access_status": "public_html_structured_json_read",
+      "notes": "리뷰 페이지 PRELOADED_STATE 기준 전량 직접 확인. 후보 CSV의 과거 추출값 275와 차이 있음."
+    },
+    {
+      "source": "Jalan",
+      "visible_review_count": 907,
+      "rating": 4.7,
+      "directly_read_reviews": 31,
+      "onsen_related_reviews": 27,
+      "access_status": "public_html_latest_and_archive_partial_read",
+      "notes": "Aside Browser로 1년 이상 경과 후기 archive와 페이지네이션 접근 가능 확인. 현재 파일화 표본은 최신 11건+아카이브 약 20건 수준, 전량 확장 가능."
+    },
+    {
+      "source": "Yahoo Travel",
+      "visible_review_count": 6,
+      "rating": null,
+      "directly_read_reviews": 6,
+      "onsen_related_reviews": 6,
+      "access_status": "public_html_read",
+      "notes": "노출 후기 6건. 객실 노천/내탕/암반욕 객실명 및 온천·프라이빗 휴식 신호 확인."
+    },
+    {
+      "source": "Hotels.com / Expedia group",
+      "visible_review_count": 67,
+      "rating": 9.2,
+      "directly_read_reviews": 23,
+      "onsen_related_reviews": 14,
+      "access_status": "public_html_partial_read",
+      "notes": "Expedia/Hotels.com 계열 67건 중 페이지 노출 본문 일부 확인. 한국어/중국어/영어 후기 포함."
+    },
+    {
+      "source": "HotelsCombined",
+      "visible_review_count": 72,
+      "rating": 9.1,
+      "directly_read_reviews": 1,
+      "onsen_related_reviews": 1,
+      "access_status": "public_html_summary_read",
+      "notes": "집계 페이지. 본문 노출은 1건만 확인, 검증 리뷰 수와 평점은 플랫폼 풀로만 기록."
+    },
+    {
+      "source": "Tripadvisor",
+      "visible_review_count": 52,
+      "rating": null,
+      "directly_read_reviews": 1,
+      "onsen_related_reviews": 1,
+      "access_status": "public_html_single_review_read",
+      "notes": "검색/개별 후기 접근 기준. 방 온천 반복 이용과 인원 변경 요금 혼선 신호 확인."
+    },
+    {
+      "source": "Agoda",
+      "visible_review_count": null,
+      "rating": null,
+      "directly_read_reviews": 1,
+      "onsen_related_reviews": 1,
+      "access_status": "search_snippet_only",
+      "notes": "검색 결과 스니펫 기준. 본문 페이지는 JS/빈 페이지에 가까워 직접 표본에는 낮은 가중치."
+    },
+    {
+      "source": "Korean blog / Tistory",
+      "visible_review_count": 1,
+      "rating": null,
+      "directly_read_reviews": 1,
+      "onsen_related_reviews": 1,
+      "access_status": "public_blog_read",
+      "notes": "한국어 숙박기. 프라이빗 노천탕 선택 이유, 송영/예약 방식 확인."
+    },
+    {
+      "source": "Japanese blogs / Hatena / Ameblo",
+      "visible_review_count": 3,
+      "rating": null,
+      "directly_read_reviews": 3,
+      "onsen_related_reviews": 3,
+      "access_status": "public_blog_read",
+      "notes": "일본어 장문 숙박기. 전 객실 내탕·노천·암반욕, 대욕장 없음/족욕, 암반욕 긍정 신호 확인."
+    },
+    {
+      "source": "Google Maps / Google Hotels",
+      "visible_review_count": 283,
+      "rating": 4.6,
+      "directly_read_reviews": 10,
+      "onsen_related_reviews": 7,
+      "access_status": "aside_browser_review_tab_partial_read",
+      "notes": "Aside Browser로 리뷰 탭과 최신 한국어/Google/Tripadvisor 리뷰 본문 일부 직접 확인. 정적 web 접근 때보다 개선됨."
+    },
+    {
+      "source": "Naver Search / Blog / Cafe",
+      "visible_review_count": null,
+      "rating": null,
+      "directly_read_reviews": 20,
+      "onsen_related_reviews": 15,
+      "access_status": "aside_browser_search_snapshot_read",
+      "notes": "네이버 검색에서 카페/블로그/가격비교/공식 결과 다수 확인. 개별노천탕, 개인탕, 대욕탕 부재, 송영 문의 등 한국어 수요 신호 강함."
+    }
+  ],
+  "data_quality": {
+    "grade": "A-feasible / current A-",
+    "directly_read_total": 326,
+    "platforms_with_read_text": 9,
+    "reason": "기존 277건에 Aside로 Google Maps 최신 표본, Naver 한국어 검색 표본, Jalan archive 표본을 추가 확인. 다만 Google/Jalan/Naver 추가분은 아직 CSV 전량 구조화 전이라 현 단계는 A- 유지, 전량 추출하면 A 등급 가능."
+  },
+  "review_signal_summary": [
+    {
+      "bath_area": "room_open_air_bath / room_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 267,
+      "source_count": 267,
+      "platform_count": 7,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "private_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "positive",
+      "mention_count": 91,
+      "source_count": 91,
+      "platform_count": 7,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "room_open_air_bath / room_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 31,
+      "source_count": 31,
+      "platform_count": 3,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "room_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "weak_onsen_feeling",
+      "signal_direction": "negative",
+      "mention_count": 6,
+      "source_count": 6,
+      "platform_count": 2,
+      "contradiction_level": "medium",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "chlorine_smell",
+      "signal_direction": "neutral",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient"
+    },
+    {
+      "bath_area": "private_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "booking_confusion",
+      "signal_direction": "negative",
+      "mention_count": 4,
+      "source_count": 4,
+      "platform_count": 3,
+      "contradiction_level": "medium",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "public_bath",
+      "bath_area_confidence": "unclear",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "neutral",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "probable",
+      "signal_type": "crowding",
+      "signal_direction": "negative",
+      "mention_count": 1,
+      "source_count": 1,
+      "platform_count": 1,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal"
+    }
+  ],
+  "negative_or_caution_signals": [
+    {
+      "issue": "암반욕이 충분히 따뜻하지 않거나 기대와 다르다는 불만이 반복된다.",
+      "bath_area": "room_bath_adjacent_岩盤浴",
+      "evidence_level": "weak_to_moderate",
+      "sample_count": 8,
+      "keywords": [
+        "岩盤浴",
+        "暖かくなく",
+        "寒い",
+        "熱くない"
+      ]
+    },
+    {
+      "issue": "일부 저평점에서 객실탕 구조, 단차, 욕실/탈의 공간의 추위, 청소/냄새 문제가 보인다.",
+      "bath_area": "room_bath / room_open_air_bath",
+      "evidence_level": "weak_signal",
+      "sample_count": 19,
+      "keywords": [
+        "段差",
+        "脱衣所",
+        "寒い",
+        "掃除",
+        "匂い"
+      ]
+    },
+    {
+      "issue": "염소/칼키 냄새 불만은 직접 표본에서 확인되지 않았다.",
+      "bath_area": "facility_wide",
+      "evidence_level": "no_observed_signal",
+      "sample_count": 0,
+      "keywords": [
+        "塩素",
+        "カルキ"
+      ]
+    }
+  ],
+  "evidence_examples": [
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Rakuten Travel review",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/72793/review.html",
+      "language": "ja",
+      "short_paraphrase": "객실에 내탕과 노천탕이 있어 좋았다는 최신 후기.",
+      "original_keyword": "内風呂 / 露天風呂",
+      "review_date": "2026-02-02"
+    },
+    {
+      "signal_type": "private_bath_experience",
+      "source_type": "Rakuten Travel review",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/72793/review.html",
+      "language": "ja",
+      "short_paraphrase": "방 안에서 노천, 내탕, 암반욕을 즐겼다는 후기.",
+      "original_keyword": "露天 / 内湯 / 岩盤浴",
+      "review_date": "2025-11-19"
+    },
+    {
+      "signal_type": "water_texture",
+      "source_type": "Rakuten Travel review",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/72793/review.html",
+      "language": "ja",
+      "short_paraphrase": "가케나가시 온천이 피부를 매끈하게 하고 몸이 잘 데워졌다는 후기.",
+      "original_keyword": "掛け流し / 肌がつるつる",
+      "review_date": "2024-03-29"
+    },
+    {
+      "signal_type": "private_bath_experience",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad332520/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "방에서 거의 나가지 않고 넓은 노천탕을 여러 번 이용했다는 후기.",
+      "original_keyword": "部屋から出る事なく / 何度も",
+      "review_date": "2026/5/19"
+    },
+    {
+      "signal_type": "weak_onsen_feeling",
+      "source_type": "Rakuten Travel review",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/72793/review.html",
+      "language": "ja",
+      "short_paraphrase": "무색무취라 온천감이 약하다고 느낀 후기.",
+      "original_keyword": "温泉感なしかな",
+      "review_date": "2021-04-09"
+    },
+    {
+      "signal_type": "weak_onsen_feeling",
+      "source_type": "Rakuten Travel review",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/72793/review.html",
+      "language": "ja",
+      "short_paraphrase": "싱글 객실에서 기대한 가케나가시 느낌과 달랐다는 저평점 후기.",
+      "original_keyword": "期待はずれ",
+      "review_date": "2018-07-25"
+    },
+    {
+      "signal_type": "booking_confusion",
+      "source_type": "Rakuten Travel review",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/72793/review.html",
+      "language": "ja",
+      "short_paraphrase": "대여 노천탕의 사용중 표시/운영 방식이 맞지 않았다는 후기.",
+      "original_keyword": "使用中ランプ / 札",
+      "review_date": "2019-06-23"
+    },
+    {
+      "signal_type": "chlorine_smell",
+      "source_type": "sample finding",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/72793/review.html",
+      "language": "ja",
+      "short_paraphrase": "직접 표본에서 염소 또는 칼키 냄새 불만은 발견하지 못함.",
+      "original_keyword": "塩素 / カルキ",
+      "review_date": "sample through 2026-06-30"
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Yahoo Travel review",
+      "source_url": "https://travel.yahoo.co.jp/00902310/review/",
+      "language": "ja",
+      "short_paraphrase": "싱글 객실명에 전망 노천·내탕·암반욕이 명시되고 온천/욕실 점수 4점 후기.",
+      "original_keyword": "展望露天・内湯・岩盤浴",
+      "review_date": "2025/4/25"
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Hotels.com review",
+      "source_url": "https://jp.hotels.com/ho574202/you-bu-yuan-wen-quan-fengno-xiao-she-you-bu-ri-ben/",
+      "language": "en",
+      "short_paraphrase": "객실 전용 야외 온천, 실내 목욕, 온열 암반 침대가 있었다는 영어 후기.",
+      "original_keyword": "private outdoor onsen / indoor wooden bath",
+      "review_date": "2020-07-22"
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Hotels.com review",
+      "source_url": "https://jp.hotels.com/ho574202/you-bu-yuan-wen-quan-fengno-xiao-she-you-bu-ri-ben/",
+      "language": "ko",
+      "short_paraphrase": "각 방마다 별도 온천이 있어 좋았다는 한국어 후기.",
+      "original_keyword": "각방마다 별도의 온천",
+      "review_date": "2019-06-03"
+    },
+    {
+      "signal_type": "crowding",
+      "source_type": "Hotels.com review",
+      "source_url": "https://jp.hotels.com/ho574202/you-bu-yuan-wen-quan-fengno-xiao-she-you-bu-ri-ben/",
+      "language": "ko",
+      "short_paraphrase": "다른 투숙객 소음과 야간 프론트 부재를 불만으로 적은 한국어 후기.",
+      "original_keyword": "새벽 1시까지 / 프론트",
+      "review_date": "2019-04-14"
+    },
+    {
+      "signal_type": "booking_confusion",
+      "source_type": "Tripadvisor review",
+      "source_url": "https://www.tripadvisor.jp/ShowUserReviews-g1023445-d1238708-r204060487-Kaede_no_Shoja-Yufu_Oita_Prefecture_Kyushu.html",
+      "language": "ja",
+      "short_paraphrase": "갑작스러운 2인 투숙 변경 후 요금 설명에 불만을 남긴 후기.",
+      "original_keyword": "部屋の変更 / ３倍の料金",
+      "review_date": "2013-06"
+    },
+    {
+      "signal_type": "private_bath_experience",
+      "source_type": "Korean blog",
+      "source_url": "https://book-e-nalgae.tistory.com/entry/%EC%9D%BC%EB%B3%B8-%ED%9B%84%EC%BF%A0%EC%98%A4%EC%B9%B4-%EC%97%AC%ED%96%89-%EC%9C%A0%ED%9B%84%EC%9D%B8-%ED%94%84%EB%9D%BC%EC%9D%B4%EB%B9%97-%EC%98%A8%EC%B2%9C-%EB%A3%8C%EC%B9%B8-%EC%B9%B4%EC%97%90%EB%8D%B0%EB%85%B8%EC%87%BC%EC%9E%90-%ED%9B%84%EA%B8%B0-%EC%98%88%EC%95%BD%EB%B0%A9%EB%B2%95",
+      "language": "ko",
+      "short_paraphrase": "프라이빗 노천탕과 객실 크기를 숙소 선택 이유로 언급한 한국어 숙박기.",
+      "original_keyword": "프라이빗 노천 온천탕",
+      "review_date": "2024-03-16"
+    },
+    {
+      "signal_type": "public_bath_hot_spring",
+      "source_type": "Japanese blog",
+      "source_url": "https://www.frostmoonweb.com/entry/2021kaedenokosha",
+      "language": "ja",
+      "short_paraphrase": "대욕장은 없고 객실탕 중심이며 족욕이 있다는 장문 숙박기.",
+      "original_keyword": "大浴場はない / 足湯",
+      "review_date": "2021-11-28"
+    },
+    {
+      "signal_type": "private_bath_experience",
+      "source_type": "Japanese blog",
+      "source_url": "https://www.encourageofclimb.com/entry/Kaedenokoya",
+      "language": "ja",
+      "short_paraphrase": "독채·객실식·온천 포함이라 1인 여행자가 타인 시선을 신경 쓰지 않아도 된다는 숙박기.",
+      "original_keyword": "離れ / 部屋食 / 温泉付き",
+      "review_date": "visible page, date not extracted"
+    },
+    {
+      "signal_type": "private_bath_experience",
+      "source_type": "Ameblo blog",
+      "source_url": "https://ameblo.jp/sakuramochi-2019/entry-12891123399.html",
+      "language": "ja",
+      "short_paraphrase": "암반욕이 너무 뜨겁지 않고 계속 누워있기 좋았다는 최근 숙박기.",
+      "original_keyword": "暑すぎず / ずっと寝転んで",
+      "review_date": "2025 approx."
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Google Maps review snapshot",
+      "source_url": "https://www.google.com/maps/search/?api=1&query=%E6%A5%93%E3%81%AE%E5%B0%8F%E8%88%8E%20Yufu",
+      "language": "ko",
+      "short_paraphrase": "코즈에룸 이용자가 노천탕에 찬물을 섞어 온도 조절이 가능하고 암반욕이 좋았다고 언급.",
+      "original_keyword": "노천탕 / 찬물 / 암반석",
+      "review_date": "3주 전 visible on 2026-06-30"
+    },
+    {
+      "signal_type": "private_bath_experience",
+      "source_type": "Google Maps review snapshot",
+      "source_url": "https://www.google.com/maps/search/?api=1&query=%E6%A5%93%E3%81%AE%E5%B0%8F%E8%88%8E%20Yufu",
+      "language": "ko",
+      "short_paraphrase": "프라이빗 온천에서 풍경을 보며 편하게 힐링했다는 한국어 후기.",
+      "original_keyword": "프라이빗 온천",
+      "review_date": "5개월 전 visible on 2026-06-30"
+    },
+    {
+      "signal_type": "private_bath_experience",
+      "source_type": "Naver Search snapshot",
+      "source_url": "https://search.naver.com/search.naver?query=%EC%B9%B4%EC%97%90%EB%8D%B0%EB%85%B8%EC%87%BC%EC%9E%90%20%ED%9B%84%EA%B8%B0",
+      "language": "ko",
+      "short_paraphrase": "네이버 카페/블로그 결과에서 객실마다 개인탕, 개별 노천탕, 실내 샤워실을 숙소 선택 조건으로 반복 언급.",
+      "original_keyword": "객실마다 개인탕 / 개별노천탕",
+      "review_date": "search snapshot 2026-06-30"
+    },
+    {
+      "signal_type": "public_bath_hot_spring",
+      "source_type": "Naver Search snapshot",
+      "source_url": "https://search.naver.com/search.naver?query=%EC%B9%B4%EC%97%90%EB%8D%B0%EB%85%B8%EC%87%BC%EC%9E%90%20%ED%9B%84%EA%B8%B0",
+      "language": "ko",
+      "short_paraphrase": "한국어 블로그 스니펫에서 개별 노천탕이 있어 대욕탕 부재를 크게 느끼지 않았다고 언급.",
+      "original_keyword": "대욕탕의 부재",
+      "review_date": "2025-11-27 visible result"
+    },
+    {
+      "signal_type": "weak_onsen_feeling",
+      "source_type": "Jalan archive snapshot",
+      "source_url": "https://www.jalan.net/yad332520/kuchikomi/archive/?screenId=UWW3701&smlCd=440602&dateUndecided=1&yadNo=332520&distCd=01",
+      "language": "ja",
+      "short_paraphrase": "싱글룸 후기에서 암반욕 온도가 낮아 충분히 활용하지 못했다는 지적.",
+      "original_keyword": "岩盤浴 / 温度が低く",
+      "review_date": "2025/3/24 visible archive page"
+    },
+    {
+      "signal_type": "water_texture",
+      "source_type": "Jalan archive snapshot",
+      "source_url": "https://www.jalan.net/yad332520/kuchikomi/archive/?screenId=UWW3701&smlCd=440602&dateUndecided=1&yadNo=332520&distCd=01",
+      "language": "ja",
+      "short_paraphrase": "객실탕을 24시간 원천가케나가시로 원하는 만큼 이용했다는 후기.",
+      "original_keyword": "24時間源泉掛け流し",
+      "review_date": "2023/8/5 visible archive page"
+    }
+  ],
+  "bathtime_interpretation": "Aside Browser 보강까지 포함하면, 카에데노쇼자는 한국어·일본어·글로벌 OTA 전반에서 객실 노천탕/내탕 중심의 프라이빗 온천 숙소라는 신호가 강하게 반복됩니다. 특히 Google Maps와 Naver에서 한국인 이용자의 최신 수요와 객실탕 만족 신호가 뚜렷하게 확인되어, 한국 시장 우선 조사 대상으로도 충분합니다. 다만 암반욕 온도 편차, 객실/욕실 노후·청소, 접근 경사와 송영 의존도는 주의 신호로 함께 태깅하는 편이 좋습니다.",
+  "gaps": [
+    "Google Maps는 최신 표본 본문은 열렸지만 283건 전량 스크롤 추출은 아직 미완료",
+    "Jalan archive는 접근 가능하나 907건 전량 페이지 추출/CSV화는 아직 미완료",
+    "Naver Cafe는 검색 스니펫은 보이나 카페 본문 일부는 로그인/가입/등업에 따라 추가 제한 가능",
+    "Agoda/Booking/Trip.com 동적 후기 본문은 아직 Aside로 깊게 재확인하지 않음",
+    "Aside로 확인한 추가분은 이번 단계에서는 addendum으로 보관, 메인 CSV 구조화는 다음 작업 필요"
+  ]
+}

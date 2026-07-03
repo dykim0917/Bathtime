@@ -1,0 +1,35 @@
+kind,queue_rank,slug,name_ja,area_slug,prefecture,initial_tier,initial_signals,source_basis,verification_status,source_files
+accommodation,251,izu-nagaoka-yoshiharu,湯めぐりの宿 吉春,izu-nagaoka,静岡県,Tier 1,복수 대절 노천과 객실 노천탕 강한 후보,Rakuten Izu Nagaoka room-open-air source,needs_official_crosscheck,nationwide_accommodation_batch_d_v0_5_2026-07-03.csv
+accommodation,252,kaike-kasuitei,皆生温泉 華水亭,kaike,鳥取県,Tier 1,바다 전망 대욕장과 객실 노천탕 후보,regional OTA source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,253,kaike-shiontei,皆生温泉 やど紫苑亭,kaike,鳥取県,Tier 1,고급 객실탕과 해안 온천 후보,Jalan Chugoku/Shikoku source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,254,kaike-yugetsu,皆生游月,kaike,鳥取県,Tier 1,객실 노천탕 인기 신호,Rakuten rotsuki ranking historic/source follow-up,needs_official_crosscheck,nationwide_accommodation_seed_v0_1_2026-07-03.csv
+accommodation,255,kaike-yurari,皆生温泉 海色・湯の宿 松月,kaike,鳥取県,Tier 1,해안 객실탕과 전망 온천 후보,regional OTA source,needs_official_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,256,toba-todaya,戸田家,toba,三重県,Tier 1,"대형 온천호텔, 다양한 욕장/리뷰풀 후보",Toba lodging exposure,needs_bath_detail_crosscheck,nationwide_accommodation_batch_c_v0_4_2026-07-03.csv
+accommodation,257,shirahama-kawakyu,ホテル川久,shirahama,和歌山県,Tier 1,"객실 노천탕 인기, 대형 리조트형 후보",MyBest/Jalan Shirahama room-open-air,needs_bath_detail_crosscheck,nationwide_accommodation_batch_c_v0_4_2026-07-03.csv
+accommodation,258,shirahama-key-terrace,SHIRAHAMA KEY TERRACE HOTEL SEAMORE,shirahama,和歌山県,Tier 1,"바다 전망 대형 리조트, 온천·족탕·당일이용 후보",Nanki Shirahama tourism onsen page,needs_bath_detail_crosscheck,nationwide_accommodation_batch_c_v0_4_2026-07-03.csv
+accommodation,259,shirahama-yanagiya,白浜温泉 家族とすごす白浜の宿 柳屋,shirahama,和歌山県,Tier 1,"가족형 료칸, 객실 노천탕 후보",Jalan Shirahama room-open-air page,needs_bath_detail_crosscheck,nationwide_accommodation_batch_c_v0_4_2026-07-03.csv
+accommodation,260,akiu-hotel-zuiho,仙台 秋保温泉 ホテル瑞鳳,akiu,宮城県,Tier 1,"대형 온천호텔, 櫻離宮 연계/대욕장 리뷰풀 후보",Ikkyu Akiu exposure,needs_bath_detail_crosscheck,nationwide_accommodation_batch_c_v0_4_2026-07-03.csv
+accommodation,261,akiu-ryokusuitei,仙台 秋保温泉 篝火の湯 緑水亭,akiu,宮城県,Tier 1,"객실 노천탕 인기, 대정원/대욕장 후보",Ikkyu/MyBest Akiu room-open-air,needs_bath_detail_crosscheck,nationwide_accommodation_batch_c_v0_4_2026-07-03.csv
+accommodation,262,isawa-hotel-fuji,ホテルふじ,isawa,山梨県,Tier 1,"현내 최대급 대암풍로, 대형 리뷰풀 후보",Jalan Isawa room-open-air page,needs_bath_detail_crosscheck,nationwide_accommodation_batch_c_v0_4_2026-07-03.csv
+accommodation,263,kawaguchiko-fuji-lake,FUJI LAKE HOTEL / 富士レークホテル,kawaguchiko,山梨県,Tier 1,"Rakuten 리뷰풀 큼, 객실 노천탕/후지산·호수 조망 후보",Rakuten Kawaguchiko room-open-air page,needs_bath_detail_crosscheck,nationwide_accommodation_batch_c_v0_4_2026-07-03.csv
+accommodation,264,kawaguchiko-kukuna,THE KUKUNA,kawaguchiko,山梨県,Tier 1,전망 테라스/후지산 조망 온천 후보,Ikkyu rotsuki theme snippet,needs_bath_detail_crosscheck,nationwide_accommodation_seed_v0_1_2026-07-03.csv;nationwide_accommodation_batch_c_v0_4_2026-07-03.csv
+accommodation,265,kawaguchiko-ooya,富士河口湖温泉 花水庭 おおや,kawaguchiko,山梨県,Tier 1,"후지카와구치코 온천, 객실 노천탕 후보",Rakuten Kawaguchiko room-open-air page,needs_bath_detail_crosscheck,nationwide_accommodation_batch_c_v0_4_2026-07-03.csv
+accommodation,266,dogo-dogokan,道後舘,dogo,愛媛県,Tier 1,"도고 대표 료칸, 객실 노천탕/대욕장 후보",Ikkyu Dogo room-open-air list,needs_bath_detail_crosscheck,nationwide_accommodation_batch_c_v0_4_2026-07-03.csv
+accommodation,267,dogo-funaya,道後温泉 ふなや,dogo,愛媛県,Tier 1,"도고 노포 료칸, 대욕장/역사형 수요",Jalan/Rakuten top area seed,needs_bath_detail_crosscheck,nationwide_accommodation_seed_v0_1_2026-07-03.csv;nationwide_accommodation_batch_c_v0_4_2026-07-03.csv
+accommodation,268,dogo-kowakuen-haruka,ホテル古湧園 遥,dogo,愛媛県,Tier 1,"도고 대형 현대형 숙소, 대욕장/객실탕 후보",Ikkyu station ranking,needs_bath_detail_crosscheck,nationwide_accommodation_batch_c_v0_4_2026-07-03.csv
+accommodation,269,kinugawa-kai,星野リゾート 界 鬼怒川,kinugawa,栃木県,Tier 1,"브랜드 료칸, 객실 노천탕/대욕장 후보",Jalan Kinugawa room-open-air page,needs_bath_detail_crosscheck,nationwide_accommodation_batch_b_v0_3_2026-07-03.csv
+accommodation,270,kinugawa-mikazuki,日光きぬ川ホテル三日月,kinugawa,栃木県,Tier 1,"객실 노천탕 목록 노출, 대형 리조트형 온천",Jalan Kinugawa room-open-air page,needs_bath_detail_crosscheck,nationwide_accommodation_batch_b_v0_3_2026-07-03.csv
+accommodation,271,kinugawa-yumenotoki,鬼怒川グランドホテル 夢の季,kinugawa,栃木県,Tier 1,"9つの湯めぐり, 대욕장/객실탕 후보",Jalan Kinugawa room-open-air page,needs_bath_detail_crosscheck,nationwide_accommodation_batch_b_v0_3_2026-07-03.csv
+accommodation,272,nasu-sunvalley,ホテルサンバレー那須,nasu,栃木県,Tier 1,"대형 리조트, 다욕장/가족형 리뷰풀 후보",Ikkyu/MyBest Nasu exposure,needs_bath_detail_crosscheck,nationwide_accommodation_batch_b_v0_3_2026-07-03.csv
+accommodation,273,yugawara-sansuirou,山翠楼SANSUIROU,yugawara,神奈川県,Tier 1,"전망 노천/고급 료칸, 리뷰풀 후보",Rakuten Yugawara listings,needs_bath_detail_crosscheck,nationwide_accommodation_batch_c_v0_4_2026-07-03.csv
+accommodation,274,ikaho-chigira,千明仁泉亭,ikaho,群馬県,Tier 1,"이카호 노포, 객실 노천탕 후보",Rakuten Ikaho room-open-air article,needs_bath_detail_crosscheck,nationwide_accommodation_batch_c_v0_4_2026-07-03.csv
+accommodation,275,ikaho-kogure,ホテル木暮,ikaho,群馬県,Tier 1,"고평점, 객실 노천탕·대욕장 후보",Ikkyu/MyBest Ikaho room-open-air,needs_bath_detail_crosscheck,nationwide_accommodation_batch_c_v0_4_2026-07-03.csv
+accommodation,276,toba-toba-kokusai,鳥羽国際ホテル 潮路亭,toba,三重県,Tier 1,"도바 바다 전망 온천숙소, 진주온천/대욕장 후보",Toba top area seed,needs_source_crosscheck,nationwide_accommodation_batch_c_v0_4_2026-07-03.csv
+accommodation,277,akiu-saryo-soen,茶寮宗園,akiu,宮城県,Tier 1,"아키우 고급 료칸, 객실 노천탕 후보",Rakuten Top20 area seed,needs_source_crosscheck,nationwide_accommodation_seed_v0_1_2026-07-03.csv;nationwide_accommodation_batch_c_v0_4_2026-07-03.csv
+accommodation,278,yuda-kamefuku,湯田温泉 ユウベルホテル松政,yuda,山口県,Tier 1,대욕장과 도심 온천 접근성 후보,regional OTA source,needs_source_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,279,kinugawa-kanaya,鬼怒川金谷ホテル,kinugawa,栃木県,Tier 1,기누가와 고급 온천호텔 후보,Rakuten/YuKoyuko top area seed,needs_source_crosscheck,nationwide_accommodation_seed_v0_1_2026-07-03.csv;nationwide_accommodation_batch_b_v0_3_2026-07-03.csv
+accommodation,280,nasu-bettei-kai,那須別邸 回,nasu,栃木県,Tier 1,나스 고급 온천 숙소 후보,Rakuten Top20 area seed,needs_source_crosscheck,nationwide_accommodation_seed_v0_1_2026-07-03.csv;nationwide_accommodation_batch_b_v0_3_2026-07-03.csv
+accommodation,281,nasu-omaru,那須温泉 大丸温泉旅館,nasu,栃木県,Tier 1,"강을 막은 야천풍로 계열, 비경 온천 후보",Nasu high-value lodging exposure,needs_source_crosscheck,nationwide_accommodation_batch_b_v0_3_2026-07-03.csv
+accommodation,282,awara-seifuso,あわら温泉 清風荘,awara,福井県,Tier 1,극장형 뷔페와 대형 온천 수요 후보,Rakuten Awara ranking source,needs_source_crosscheck,nationwide_accommodation_batch_d_v0_5_2026-07-03.csv
+accommodation,283,iizaka-yoshikawaya,飯坂温泉 摺上亭大鳥,iizaka,福島県,Tier 1,대형 대욕장과 후쿠시마 접근성 후보,regional OTA source,needs_source_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv
+accommodation,284,bessho-nakamatsuya,別所温泉 旅館中松屋,bessho,長野県,Tier 1,전망 대욕장과 가족 수요 후보,regional OTA source,needs_source_crosscheck,nationwide_accommodation_batch_e_v0_6_2026-07-03.csv

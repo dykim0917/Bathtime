@@ -1,0 +1,278 @@
+{
+  "accommodation_name": "別荘 今昔庵",
+  "normalized_identity": {
+    "korean_name": "벳소 콘자쿠안 / 별장 금석암",
+    "japanese_name": "別荘 今昔庵",
+    "english_names": ["Bessou Konjakuan", "Besso Konjakuan"],
+    "official_site": "https://konjakuan.co.jp/",
+    "major_ids": {
+      "rakuten_hotel_id": "74758",
+      "jalan_yad": "313965",
+      "yahoo_id": "00918936",
+      "tripcom_hotel_detail": "21829614",
+      "booking_slug": "bie-zhuang-jin-xi-an"
+    }
+  },
+  "official_facts": [
+    {
+      "source_url": "https://konjakuan.co.jp/",
+      "fact": "공식 사이트는 2024년 2월 리뉴얼 오픈, 총 9객실, 별채 4실과 모옥 5실 구조라고 설명한다.",
+      "bath_area": "facility_wide",
+      "official_keywords": ["2024年2月リニューアルOPEN", "9つの客室", "離れに4室と母屋に5室"]
+    },
+    {
+      "source_url": "https://konjakuan.co.jp/",
+      "fact": "공식 사이트는 별채 객실에 전용 노천탕이 있으며, 객실탕과 노천/내탕 2개의 대절 가족탕에서 유후인 온천을 즐길 수 있다고 설명한다.",
+      "bath_area": "room_open_air_bath",
+      "official_keywords": ["専用露天風呂", "客室風呂", "貸切家族風呂"]
+    },
+    {
+      "source_url": "https://konjakuan.co.jp/",
+      "fact": "공식 사이트는 객실 노천탕이 별채 4실과 모옥 4실에 제공된다고 적는다.",
+      "bath_area": "room_open_air_bath",
+      "official_keywords": ["離れ4室、母屋4室には温泉露天風呂"]
+    },
+    {
+      "source_url": "https://www.jalan.net/yad313965/",
+      "fact": "Jalan 시설 정보는 천연온천 100%, 가케나가시, 노천풍로/대절풍로 있음, 모든 목욕탕은 가족탕이라고 표기한다.",
+      "bath_area": "facility_wide",
+      "official_keywords": ["天然温泉100%", "温泉掛け流し", "お風呂はすべて家族風呂"]
+    }
+  ],
+  "collection_briefing": {
+    "date": "2026-07-01",
+    "total_visible_review_pool_observed": "Jalan 821, Booking.com 398, Trip.com visible reviews, Yahoo visible reviews, Rakuten API total 6. Platform totals may overlap and were not summed as unique travelers.",
+    "directly_read_reviews": 61,
+    "signal_rows": 101,
+    "onsen_related_directly_read_reviews": 61,
+    "data_quality_grade": "C",
+    "sampling_strata": ["Jalan latest/archive static bodies", "Booking.com latest visible reviews", "Trip.com global/Korean/Chinese reviews", "Rakuten API", "Yahoo snippets/body via web", "negative keywords"],
+    "aside_browser_status": "Aside Browser opened Google search surface; Google/Naver full review tabs were not deeply sampled.",
+    "notes": "Visible review pool is large, but this pass directly read 61 independent onsen-related reviews. Useful C-grade sampling; 300+ target not reached."
+  },
+  "platforms": [
+    {
+      "source": "Jalan",
+      "visible_review_count": 821,
+      "rating": null,
+      "directly_read_reviews": 38,
+      "onsen_related_reviews": 38,
+      "access_status": "direct_fetch_partial_read",
+      "notes": "Latest and archive pages saved; static pages exposed a subset."
+    },
+    {
+      "source": "Booking.com",
+      "visible_review_count": 398,
+      "rating": null,
+      "directly_read_reviews": 16,
+      "onsen_related_reviews": 16,
+      "access_status": "web_visible_partial_read",
+      "notes": "Web view exposed latest 25 reviews; 16 onsen-related examples tagged."
+    },
+    {
+      "source": "Trip.com",
+      "visible_review_count": null,
+      "rating": null,
+      "directly_read_reviews": 7,
+      "onsen_related_reviews": 7,
+      "access_status": "web_visible_partial_read",
+      "notes": "Visible Korean/Chinese/Japanese translated reviews used for global traveler layer."
+    },
+    {
+      "source": "Rakuten Travel",
+      "visible_review_count": 6,
+      "rating": null,
+      "directly_read_reviews": 6,
+      "onsen_related_reviews": 6,
+      "access_status": "direct_fetch_full_read",
+      "notes": "Rakuten API total was only 6."
+    },
+    {
+      "source": "Yahoo Travel",
+      "visible_review_count": null,
+      "rating": null,
+      "directly_read_reviews": 2,
+      "onsen_related_reviews": 2,
+      "access_status": "web_visible_partial_read",
+      "notes": "Used mainly as supporting evidence from search/web-visible reviews."
+    }
+  ],
+  "review_signal_summary": [
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 39,
+      "source_count": 32,
+      "platform_count": 5,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "family_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "positive",
+      "mention_count": 16,
+      "source_count": 14,
+      "platform_count": 4,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 12,
+      "source_count": 12,
+      "platform_count": 4,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "booking_confusion",
+      "signal_direction": "mixed",
+      "mention_count": 27,
+      "source_count": 22,
+      "platform_count": 4,
+      "contradiction_level": "medium",
+      "review_signal_status": "conflicting"
+    },
+    {
+      "bath_area": "open_air_public_bath",
+      "bath_area_confidence": "probable",
+      "signal_type": "weak_onsen_feeling",
+      "signal_direction": "mixed",
+      "mention_count": 4,
+      "source_count": 4,
+      "platform_count": 3,
+      "contradiction_level": "medium",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "chlorine_smell",
+      "signal_direction": "neutral",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient"
+    }
+  ],
+  "negative_or_attention_signals": [
+    {
+      "issue": "객실/공용탕 온도 과열",
+      "bath_area": "open_air_public_bath",
+      "evidence_level": "weak_repeat",
+      "summary": "Booking 등에서 노천탕이 너무 뜨겁거나 식히기 어렵다는 후기가 소수 반복된다.",
+      "sample_count": 2
+    },
+    {
+      "issue": "Booking 예약 내용 착오",
+      "bath_area": "unclear",
+      "evidence_level": "single_but_clear",
+      "summary": "자녀 식사/침구 예약 내용이 숙소에 제대로 반영되지 않았다는 Booking.com 후기 1건이 확인된다.",
+      "sample_count": 1
+    },
+    {
+      "issue": "벌레/프라이버시",
+      "bath_area": "room_open_air_bath",
+      "evidence_level": "weak_repeat",
+      "summary": "객실 노천탕 또는 탈의 공간 동선에서 벌레와 외부 시선이 신경 쓰인다는 후기가 있다.",
+      "sample_count": 2
+    },
+    {
+      "issue": "탕 크기 기대 차이",
+      "bath_area": "family_bath",
+      "evidence_level": "weak_repeat",
+      "summary": "가족탕/노천탕이 편하다는 호평 속에서도 생각보다 작거나 평범했다는 글로벌 후기 신호가 일부 있다.",
+      "sample_count": 4
+    },
+    {
+      "issue": "계단/객실 구조",
+      "bath_area": "facility_wide",
+      "evidence_level": "weak",
+      "summary": "다리가 불편한 투숙객에게 계단이 부담스럽고, 일부 객실은 인원 대비 좁게 느껴질 수 있다는 후기가 있다.",
+      "sample_count": 1
+    }
+  ],
+  "evidence_examples": [
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Booking.com review",
+      "source_url": "https://www.booking.com/reviews/jp/hotel/bie-zhuang-jin-xi-an.ja.html",
+      "language": "ja",
+      "short_paraphrase": "Room bath stayed at a suitable temperature and guest used it several times.",
+      "original_keyword": "お部屋のお風呂 / 常に適温 / 数回",
+      "review_date": "2025-12-25"
+    },
+    {
+      "signal_type": "water_texture",
+      "source_type": "Booking.com review",
+      "source_url": "https://www.booking.com/reviews/jp/hotel/bie-zhuang-jin-xi-an.ja.html",
+      "language": "ja",
+      "short_paraphrase": "Guest praised location, spring quality, and temperature of the in-room bath.",
+      "original_keyword": "内風呂 / 泉質 / 温度",
+      "review_date": "2026-01-07"
+    },
+    {
+      "signal_type": "private_bath_experience",
+      "source_type": "Booking.com review",
+      "source_url": "https://www.booking.com/reviews/jp/hotel/bie-zhuang-jin-xi-an.ja.html",
+      "language": "ja",
+      "short_paraphrase": "Family baths were not huge, but multiple baths made the stay comfortable.",
+      "original_keyword": "家族風呂がいくつもあり快適",
+      "review_date": "2025-11-19"
+    },
+    {
+      "signal_type": "booking_confusion",
+      "source_type": "Booking.com review",
+      "source_url": "https://www.booking.com/reviews/jp/hotel/bie-zhuang-jin-xi-an.ja.html",
+      "language": "ja",
+      "short_paraphrase": "Child meal and bedding reservation was not reflected at first, though bedding was later prepared.",
+      "original_keyword": "予約内容に手違い",
+      "review_date": "2025-11-19"
+    },
+    {
+      "signal_type": "weak_onsen_feeling",
+      "source_type": "Trip.com review",
+      "source_url": "https://jp.trip.com/hotels/yufu-hotel-detail-21829614/besso-konjakuan/",
+      "language": "ko",
+      "short_paraphrase": "Korean review says the open-air bath was smaller and more ordinary than expected.",
+      "original_keyword": "露天風呂 / 思ったより小さい / 普通",
+      "review_date": "2025-01-16"
+    },
+    {
+      "signal_type": "private_bath_experience",
+      "source_type": "Trip.com review",
+      "source_url": "https://jp.trip.com/hotels/yufu-hotel-detail-21829614/besso-konjakuan/",
+      "language": "zh",
+      "short_paraphrase": "Outdoor and indoor family baths were free, no reservation needed, and available 24 hours.",
+      "original_keyword": "家庭風呂 / 不需提前預約 / 二十四小時",
+      "review_date": "2025-09-25"
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Yahoo Travel review",
+      "source_url": "https://travel.yahoo.co.jp/00918936/review/",
+      "language": "ja",
+      "short_paraphrase": "Guest chose the inn for a room with open-air bath and enjoyed entering whenever they wanted.",
+      "original_keyword": "部屋に露天風呂 / 何度でも",
+      "review_date": "2026-03-07"
+    }
+  ],
+  "bathtime_interpretation_ko": "공식 정보와 후기 표본을 함께 보면, 今昔庵은 객실 노천탕 만족 신호가 뚜렷한 소규모 료칸입니다. 직접 확인 61건 기준으로 객실탕은 '언제든 여러 번 들어갈 수 있다', '적온', '원천가케나가시/피부감' 쪽 긍정이 반복됩니다. 다만 가족탕·노천탕 크기 기대 차이, 벌레/탈의 동선, Booking 예약 전달 오류, 일부 노천탕 온도 과열은 주의 정보로 함께 표시하는 편이 좋습니다.",
+  "gaps": [
+    "300+ direct review target was not reached; directly read unique reviews are 61.",
+    "Jalan visible pool is 821, but static latest/archive pages exposed only a subset.",
+    "Booking.com visible pool is 398; only latest visible page examples were directly tagged in this pass.",
+    "Google Maps full review tab and Naver Blog/Cafe full-body sampling were not completed.",
+    "Official site direct local fetch failed once due DNS, but official page was readable via web view."
+  ]
+}

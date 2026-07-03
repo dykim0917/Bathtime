@@ -1,0 +1,272 @@
+{
+  "accommodation_name": "湯富里の宿 一壺天 / 由布院温泉 湯富里の宿 一壷天 / 유후인 잇코텐 / Ikkoten",
+  "research_date": "2026-07-01",
+  "status": "curated_large_jalan_sample_with_cross_platform_snippets",
+  "identity": {
+    "canonical_name_ja": "湯富里の宿 一壺天",
+    "aliases": [
+      "由布院温泉 湯富里の宿 一壷天",
+      "湯富里の宿 一壷天",
+      "Ikkoten",
+      "잇코텐",
+      "유후인 잇코텐"
+    ],
+    "official_url": "https://www.ikkoten.com/",
+    "official_ko_url": "https://www.ikkoten.com/ko/index.html",
+    "rakuten_hotel_id": "72871",
+    "jalan_id": "yad333628",
+    "ikkyu_yahoo_id": "00001442",
+    "booking_slug": "ikkoten"
+  },
+  "collection_briefing": {
+    "visible_review_pool": {
+      "jalan": 468,
+      "rakuten": "available",
+      "yahoo_ikkyu": 25,
+      "booking": 89,
+      "agoda": "available",
+      "expedia": "available"
+    },
+    "direct_structured_reviews": {
+      "total": 470,
+      "jalan_latest_and_archive_1_to_16": 470,
+      "onsen_related": 457
+    },
+    "snippet_or_search_evidence": {
+      "rakuten_search_snippets": 1,
+      "yahoo_ikkyu_search_snippets": 5,
+      "booking_search_snippets": 2,
+      "agoda_search_snippets": 3,
+      "korean_travel_agency_snippet": 1,
+      "instagram_search_snippet": 1
+    },
+    "aside_status": "attempted, local port timeout",
+    "data_quality_grade": "A-",
+    "note": "Direct structured body is almost entirely Jalan, but volume is high and current/archived pages include latest, old, low-rated, room-bath, family-bath, and temperature/booking-risk examples. Platform diversity is supported by snippets, not full structured bodies."
+  },
+  "official_facts": [
+    {
+      "source": "official Japanese site",
+      "url": "https://www.ikkoten.com/",
+      "fact": "The site positions the inn as a Yufuin onsen ryokan surrounded by Mount Yufu nature; guest rooms are detached and have open-air baths; pets can stay."
+    },
+    {
+      "source": "official Korean site",
+      "url": "https://www.ikkoten.com/ko/index.html",
+      "fact": "Korean page says the property has only 10 detached rooms on about 2,300 tsubo, and all rooms are detached with free-flowing semi-open-air baths."
+    },
+    {
+      "source": "Jalan facility page",
+      "url": "https://www.jalan.net/yad333628/",
+      "fact": "Jalan describes all 10 detached rooms as having semi-open-air baths."
+    },
+    {
+      "source": "Yahoo/Ikkyu facility and review snippets",
+      "url": "https://travel.yahoo.co.jp/00001442/",
+      "fact": "Yahoo/Ikkyu surface confirms rooms with open-air baths and a 25-review score with onsen/bath rating 5.00."
+    }
+  ],
+  "signals": [
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 432,
+      "source_count": 432,
+      "platform_count": 6,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "family_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "positive",
+      "mention_count": 77,
+      "source_count": 77,
+      "platform_count": 3,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "public_bath",
+      "bath_area_confidence": "probable",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 11,
+      "source_count": 11,
+      "platform_count": 1,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 147,
+      "source_count": 147,
+      "platform_count": 5,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "weak_onsen_feeling",
+      "signal_direction": "neutral",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient"
+    },
+    {
+      "bath_area": "unclear",
+      "bath_area_confidence": "unclear",
+      "signal_type": "chlorine_smell",
+      "signal_direction": "neutral",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient"
+    },
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "crowding",
+      "signal_direction": "positive",
+      "mention_count": 72,
+      "source_count": 72,
+      "platform_count": 4,
+      "contradiction_level": "none",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "booking_confusion",
+      "signal_direction": "mixed",
+      "mention_count": 89,
+      "source_count": 89,
+      "platform_count": 2,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal"
+    }
+  ],
+  "attention_signals": [
+    {
+      "issue": "booking_or_price_explanation_conflict",
+      "bath_area": "facility_wide",
+      "sample_count": 6,
+      "summary": "Low-rated latest Jalan review reports person-count change and price/explanation mismatch. Booking/price confusion is not dominant but important because this is a high-price inn."
+    },
+    {
+      "issue": "winter_cold_or_heating",
+      "bath_area": "room_open_air_bath",
+      "sample_count": 12,
+      "summary": "Cold season comments include room/heating discomfort or open-air bath coldness, though many still praise the bath once soaking."
+    },
+    {
+      "issue": "temperature_comfort",
+      "bath_area": "room_open_air_bath",
+      "sample_count": 35,
+      "summary": "Most temperature mentions are positive or neutral, but hot/cold/long-soak comfort varies by season and room."
+    },
+    {
+      "issue": "pet_lodging_context",
+      "bath_area": "facility_wide",
+      "sample_count": 80,
+      "summary": "Many reviews are from pet travelers. Bath satisfaction is strong, but pet-related value and private dining heavily shape overall scores."
+    },
+    {
+      "issue": "jalan_score_split",
+      "bath_area": "facility_wide",
+      "sample_count": 1,
+      "summary": "Jalan overall score is lower than Yahoo/Ikkyu. Recent low-rated reviews are about service/price/food, not weak onsen water."
+    }
+  ],
+  "evidence_examples": [
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad333628/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "객실 노천탕에서 유후다케를 보며 치유됐다는 후기.",
+      "original_keyword": "部屋で入る露天風呂",
+      "review_date": "2026/5/18"
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad333628/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "객실과 정원, 가족탕에서 유후다케 전망을 즐겼다는 후기.",
+      "original_keyword": "部屋やお庭、家族湯",
+      "review_date": "2026/6/30"
+    },
+    {
+      "signal_type": "private_bath_experience",
+      "source_type": "Jalan archive",
+      "source_url": "https://www.jalan.net/yad333628/kuchikomi/archive/1.HTML",
+      "language": "ja",
+      "short_paraphrase": "가족탕 2곳과 객실 노천탕 모두 좋았다는 후기.",
+      "original_keyword": "貸し切りの家族風呂",
+      "review_date": "2022/5/17"
+    },
+    {
+      "signal_type": "water_texture",
+      "source_type": "Jalan archive",
+      "source_url": "https://www.jalan.net/yad333628/kuchikomi/archive/1.HTML",
+      "language": "ja",
+      "short_paraphrase": "객실 노천탕이 원천가케나가시라 온천과 식사를 함께 즐겼다는 후기.",
+      "original_keyword": "源泉かけ流し",
+      "review_date": "2022/4/26"
+    },
+    {
+      "signal_type": "booking_confusion",
+      "source_type": "Jalan latest low-rated review",
+      "source_url": "https://www.jalan.net/yad333628/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "인원 변경 후 사전 설명과 요금 안내가 달랐다는 강한 불만.",
+      "original_keyword": "人数変更",
+      "review_date": "2026/2/23"
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Ikkyu/Yahoo snippet",
+      "source_url": "https://www.ikyu.com/00001442/review/",
+      "language": "ja",
+      "short_paraphrase": "식후 객실 반노천탕에서 가족과 여유롭게 보냈다는 후기.",
+      "original_keyword": "お部屋の半露天風呂",
+      "review_date": "visible snippet"
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Booking Korean snippet",
+      "source_url": "https://www.booking.com/reviews/jp/hotel/ikkoten.ko.html",
+      "language": "ko",
+      "short_paraphrase": "온천을 개별적으로 프라이빗하게 할 수 있어 좋았다는 한국어 후기.",
+      "original_keyword": "개별적으로 프라이빗",
+      "review_date": "visible snippet"
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Agoda Korean snippet",
+      "source_url": "https://www.agoda.com/ko-kr/ikkoten/hotel/yufu-jp.html",
+      "language": "ko",
+      "short_paraphrase": "방 안에서 온천을 프라이빗하게 즐기는 점을 만족한 후기.",
+      "original_keyword": "방안에서 온천",
+      "review_date": "visible snippet"
+    }
+  ],
+  "gaps": [
+    "Aside Browser failed with localhost port timeout, so Google Maps and Naver dynamic panels need retry.",
+    "Direct structured body is dominated by Jalan; Rakuten, Booking, Agoda, Ikkyu/Yahoo were not fully parsed this pass.",
+    "Jalan archive pages 17-47 were not fetched because 470 structured reviews already exceeded the 300+ target.",
+    "Official Japanese page has limited extractable text but Korean page clearly states all detached rooms have flowing semi-open-air baths.",
+    "Public bath signal may reflect older large/private shared baths and family baths; current official emphasis should be rechecked before presenting it as a major current facility feature."
+  ]
+}

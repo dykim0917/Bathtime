@@ -1,0 +1,4 @@
+facility_slug,korean_name,japanese_name,facility_type,official_url,visible_review_pool_min,sampled_visible_examples_estimate,core_positive_signal,core_negative_or_caution_signal,model_lesson
+hyotan-onsen,효탄온천,ひょうたん温泉,large_day_use_complex,https://www.hyotan-onsen.com/,7049,11+,탕 종류와 체험 다양성이 강함,혼잡/추가요금/현금결제/모래탕 기대차,대형시설은 탕 품질뿐 아니라 동선·결제·체험상품 분리가 핵심
+takegawara-onsen,타케가와라온천,竹瓦温泉,historic_public_bath,https://www.city.beppu.oita.jp/sisetu/shieionsen/detail4.html,6655,11+,역사성·모래탕·저가 공중탕 경험이 강함,샤워시설 없음/어메니티 별도/대기·예약 혼동,역사형 공중탕은 쾌적성보다 기대치 관리 데이터가 핵심
+beppu-sakura-yu,벳푸 사쿠라유,別府桜湯,family_private_bath_facility,https://www.sakurayu.net/,1092,10+,가족탕 프라이버시와 매회 온천수 교체 신호가 강함,만실/대기/예약조건/차량 접근성,가족탕 전문시설은 객실탕과 별도 상품으로 모델링해야 함

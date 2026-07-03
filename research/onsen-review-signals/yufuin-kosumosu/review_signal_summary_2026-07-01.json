@@ -1,0 +1,258 @@
+{
+  "accommodation_name": {
+    "ko": "유후인 소안 코스모스",
+    "ja": "草庵 秋桜",
+    "en_aliases": ["Yufuin Souan Kosumosu", "Soan Kosumosu"]
+  },
+  "research_date": "2026-07-01",
+  "collection_brief": {
+    "direct_structured_review_sample": {
+      "total": 452,
+      "platforms": {
+        "Jalan": 295,
+        "Rakuten Travel": 157
+      },
+      "onsen_related_rows_auto": 297,
+      "note": "Jalan/Rakuten review text was directly read and auto-tagged, then manually interpreted for bath signals."
+    },
+    "visible_review_counts_checked": {
+      "Google Maps": 331,
+      "Rakuten Travel": 196,
+      "Jalan": 299,
+      "Trip.com": 127,
+      "Tripadvisor": 60,
+      "Booking.com_search_snippet": 185,
+      "Agoda_search_snippet": 881,
+      "KAYAK_search_snippet": 442,
+      "Priviatravel_search_snippet": 155
+    },
+    "auxiliary_surfaces_checked": [
+      "Official site",
+      "Rakuten official/onsen pages",
+      "Google Maps",
+      "Trip.com",
+      "Naver View/blog/cafe search snippets",
+      "Google search snippets for Agoda, Booking.com, KAYAK, Tripadvisor"
+    ],
+    "data_quality": "A-: 300+ direct review rows across 2 core Japanese OTA platforms, plus Korean/search/Google/Trip surface checks. Some global OTA counts were visible as snippets but not fully read."
+  },
+  "official_facts": {
+    "official_urls": [
+      "https://www.yufuin-kosumosu.jp/",
+      "https://www.yufuin-kosumosu.jp/hotspring/",
+      "https://www.yufuin-kosumosu.jp/room/",
+      "https://www.yufuin-kosumosu.jp/room/villa/",
+      "https://travel.rakuten.co.jp/HOTEL/139452/139452_onsen.html",
+      "https://travel.rakuten.co.jp/HOTEL/139452/CUSTOM/GW139452180416163200.html",
+      "https://travel.rakuten.co.jp/HOTEL/139452/CUSTOM/GW139452180416163101.html"
+    ],
+    "summary_ko": [
+      "공식 정보 기준으로 남녀별 대욕장, 무료 대절탕/가족탕 2곳, 별채 객실 노천탕을 보유한다.",
+      "대절탕은 내탕과 노천탕 구성이며, 현재 공식 안내는 예약 불필요/선착순 이용이다.",
+      "별채 객실은 객실 노천탕이 있으며 24시간 이용 가능한 원천가케나가시 온천으로 안내된다. 본관 객실은 일부 내탕 보유로 보이며 모든 객실 노천탕으로 해석하면 안 된다.",
+      "온천은 약알칼리성 단순온천 pH 8.2, 메타규산이 풍부한 부드러운 물성, 원천가케나가시로 안내된다. 고온 원천이라 필요 시 탕량 등으로 온도 조정한다는 설명이 있다."
+    ]
+  },
+  "review_signal_summary": [
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 185,
+      "source_count": null,
+      "platform_count": 4,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal",
+      "interpretation_ko": "객실 노천탕은 별채 투숙 후기와 OTA 객실명에서 반복적으로 강하게 잡힌다. 단, 본관 객실까지 모두 객실 노천탕이라고 일반화하면 안 된다."
+    },
+    {
+      "bath_area": "private_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "positive",
+      "mention_count": 79,
+      "source_count": null,
+      "platform_count": 4,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal",
+      "interpretation_ko": "가족탕/대절탕은 한국어 검색 표면과 일본 OTA 후기 양쪽에서 반복된다. '공용탕을 거의 개인탕처럼 이용'했다는 저밀도 체감도 함께 보인다."
+    },
+    {
+      "bath_area": "public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 67,
+      "source_count": null,
+      "platform_count": 3,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal",
+      "interpretation_ko": "대욕장 이용 만족 신호는 충분하지만, 코로나 시기 예약제/시간제와 일부 '대욕장 없음' 오인 후기가 섞인다. 현재 공식 운영과 역사적 후기를 분리해야 한다."
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 69,
+      "source_count": null,
+      "platform_count": 3,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal",
+      "interpretation_ko": "물성은 공식의 '메타규산/부드러움' 설명과 후기의 '泉質が良い', 한국어 스니펫의 '스킨로션처럼 부드럽고 촉촉' 신호가 맞물린다. 다만 자동 태그 69건에는 단순 탕온/기분 좋음 표현도 포함된다."
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "unclear",
+      "signal_type": "weak_onsen_feeling",
+      "signal_direction": "negative",
+      "mention_count": 3,
+      "source_count": null,
+      "platform_count": 1,
+      "contradiction_level": "high",
+      "review_signal_status": "insufficient",
+      "interpretation_ko": "2012년의 '미끌/누루누루 없음, 평범한 목욕 느낌'과 2025년 '평범해서 기대 이하' 정도가 보이나 반복 신호는 아니다."
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "chlorine_smell",
+      "signal_direction": "neutral",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient",
+      "interpretation_ko": "직접 표본과 한국어 검색 표면에서 염소 냄새 반복 신호는 확인되지 않았다."
+    },
+    {
+      "bath_area": "public_bath",
+      "bath_area_confidence": "probable",
+      "signal_type": "crowding",
+      "signal_direction": "positive",
+      "mention_count": 26,
+      "source_count": null,
+      "platform_count": 3,
+      "contradiction_level": "medium",
+      "review_signal_status": "weak_signal",
+      "interpretation_ko": "목욕탕 혼잡 자체보다는 '대욕장이 붐비지 않았다', '가족탕/공용탕을 거의 개인탕처럼 썼다'는 저혼잡 신호가 더 유의미하다. 자동 태그에는 유후인 거리 혼잡 표현도 섞인다."
+    },
+    {
+      "bath_area": "private_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "booking_confusion",
+      "signal_direction": "mixed",
+      "mention_count": 51,
+      "source_count": null,
+      "platform_count": 2,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal",
+      "interpretation_ko": "예약제/50분 제한 불만은 주로 코로나 시기 운영 신호다. 현재 공식 정보와 한국어 최신 스니펫은 예약 불필요/선착순에 가깝다."
+    }
+  ],
+  "evidence_examples": [
+    {
+      "signal_type": "official_facts",
+      "source_type": "official_site",
+      "source_url": "https://www.yufuin-kosumosu.jp/hotspring/",
+      "language": "ja",
+      "short_paraphrase": "대욕장과 내탕+노천탕 구조의 대절탕 2곳, 약알칼리성 단순온천 pH8.2, 원천가케나가시를 안내.",
+      "original_keyword": "男女別浴場 / 貸切風呂 / 源泉掛け流し / pH8.2",
+      "review_date": null
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "official_site",
+      "source_url": "https://www.yufuin-kosumosu.jp/room/villa/",
+      "language": "ja",
+      "short_paraphrase": "별채 객실에는 온천 노천탕이 있으며 24시간 프라이빗 이용 가능하다고 안내.",
+      "original_keyword": "温泉露天風呂 / 24時間",
+      "review_date": null
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Jalan_review",
+      "source_url": "https://www.jalan.net/yad316085/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "객실 노천탕의 온도와 수질이 좋았다는 별채 투숙 후기.",
+      "original_keyword": "部屋にある露天風呂 / 湯加減 / 泉質",
+      "review_date": "2023/9/18"
+    },
+    {
+      "signal_type": "private_bath_experience",
+      "source_type": "Jalan_review",
+      "source_url": "https://www.jalan.net/yad316085/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "객실탕, 대욕장, 가족탕을 모두 이용했고 탕온이 적당했다는 후기.",
+      "original_keyword": "部屋風呂 / 大浴場 / 家族風呂 / 湯加減",
+      "review_date": "2025/5/28"
+    },
+    {
+      "signal_type": "crowding",
+      "source_type": "Jalan_review",
+      "source_url": "https://www.jalan.net/yad316085/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "대욕장이 붐비지 않았고 대절탕까지 포함해 여러 번 온천을 즐겼다는 후기.",
+      "original_keyword": "大浴場も混み合うことなく / 貸切風呂",
+      "review_date": "2023/5/29"
+    },
+    {
+      "signal_type": "booking_confusion",
+      "source_type": "Jalan_review",
+      "source_url": "https://www.jalan.net/yad316085/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "코로나 시기 예약제와 50분 제한 때문에 원하는 시간에 입욕하지 못했다는 불만.",
+      "original_keyword": "予約制 / 50分 / 入浴を制限",
+      "review_date": "2022/12/11"
+    },
+    {
+      "signal_type": "booking_confusion",
+      "source_type": "Jalan_review",
+      "source_url": "https://www.jalan.net/yad316085/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "예약제로 안심하고 들어갔지만, 즉흥적으로 들어가지 못한 점은 아쉬웠다는 후기.",
+      "original_keyword": "四つのお風呂は予約制 / 思い立ったときに入れない",
+      "review_date": "2022/5/30"
+    },
+    {
+      "signal_type": "weak_onsen_feeling",
+      "source_type": "Jalan_review",
+      "source_url": "https://www.jalan.net/yad316085/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "오래된 후기에서 내탕은 평범한 목욕 느낌이고 미끌거림은 없었다고 언급.",
+      "original_keyword": "滑々 / ぬるぬるはなく / 普通のお風呂",
+      "review_date": "2012/10/28"
+    },
+    {
+      "signal_type": "private_bath_experience",
+      "source_type": "Naver_search_snippet",
+      "source_url": "https://blog.naver.com/mangdonee/224134163861",
+      "language": "ko",
+      "short_paraphrase": "가족탕 2개와 대욕탕이 있고 예약 없이 이용한다고 소개한 한국어 후기 스니펫.",
+      "original_keyword": "가족탕 두개 / 대욕탕 / 예약은 필요 없다고",
+      "review_date": "2026/01/04"
+    },
+    {
+      "signal_type": "water_texture",
+      "source_type": "Naver_search_snippet",
+      "source_url": "https://blog.naver.com/annatomo/224059055651",
+      "language": "ko",
+      "short_paraphrase": "메타규산이 풍부해 스킨로션처럼 부드럽고 촉촉한 느낌이라고 설명한 한국어 스니펫.",
+      "original_keyword": "메타규산 / 스킨로션처럼 부드럽고 촉촉",
+      "review_date": null
+    }
+  ],
+  "bathtime_interpretation_ko": [
+    "소안 코스모스는 온천 설비 신호가 꽤 강한 숙소입니다. 별채 객실 노천탕, 남녀 대욕장, 무료 가족탕/대절탕이 모두 확인되고, 후기에서도 객실탕·대욕장·가족탕을 함께 이용했다는 경험이 반복됩니다.",
+    "특히 한국인 관점에서는 '객실에 노천탕이 없어도 가족탕으로 프라이빗하게 보완 가능'하다는 메시지가 유효합니다. 다만 객실 타입별 차이가 크므로, 모든 객실에 노천탕이 있다고 말하면 위험합니다.",
+    "염소 냄새나 약한 온천감은 반복 데이터가 거의 없고, 예약제/50분 제한 불만은 코로나 시기 운영에 묶인 역사적 신호로 보는 편이 맞습니다."
+  ],
+  "gaps": [
+    "Google Maps individual review bodies were not fully extracted; visible rating/count and snippets were checked.",
+    "Agoda, Booking.com, KAYAK review bodies were not directly read in this pass; search-result counts/snippets only used as auxiliary surface signals.",
+    "Tripadvisor individual review text was not fully read; count/rating and Google Maps blended snippet were checked.",
+    "Naver Cafe content may require login; accessible search snippets were used, not full cafe bodies.",
+    "Jalan latest 4 visible reviews were not included in the structured CSV because archive pages already supplied 295 rows and the latest-page markup differed."
+  ]
+}

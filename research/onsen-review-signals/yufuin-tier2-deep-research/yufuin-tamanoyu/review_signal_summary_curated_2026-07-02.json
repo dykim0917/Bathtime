@@ -1,0 +1,162 @@
+{
+  "accommodation_name": "由布院 玉の湯 / 유후인 타마노유",
+  "research_date": "2026-07-02",
+  "official_facts": {
+    "official_url": "http://www.tamanoyu.co.jp/",
+    "facts": [
+      "후보 seed 기준 전 객실 풍로 포함, 공용 내탕/노천탕 신호가 있는 유후인 대표 고급 숙소.",
+      "공개 OTA 리뷰 노출에서 대욕장과 부屋風呂 양쪽 이용 신호가 확인됨."
+    ]
+  },
+  "collection_briefing": [
+    {
+      "source": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002536/review/",
+      "visible_review_count": "41 combined Yahoo/Ikyu",
+      "rating": "4.66 overall; 温泉・お風呂 4.76",
+      "directly_read_reviews": 14,
+      "onsen_related_reviews": 4,
+      "access_status": "aside_review_tab_read",
+      "notes": "Yahoo review body visible."
+    },
+    {
+      "source": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00002536/review/",
+      "visible_review_count": "41 combined Yahoo/Ikyu",
+      "rating": "4.66 overall; 温泉・お風呂 4.76",
+      "directly_read_reviews": 24,
+      "onsen_related_reviews": 8,
+      "access_status": "aside_review_tab_read",
+      "notes": "Ikkyu body and pagination visible."
+    }
+  ],
+  "review_signal_summary": [
+    {
+      "bath_area": "room_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 3,
+      "source_count": 3,
+      "platform_count": 2,
+      "contradiction_level": "none",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "mixed",
+      "mention_count": 2,
+      "source_count": 2,
+      "platform_count": 2,
+      "contradiction_level": "medium",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "weak_onsen_feeling",
+      "signal_direction": "mixed",
+      "mention_count": 2,
+      "source_count": 2,
+      "platform_count": 2,
+      "contradiction_level": "medium",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "room_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 2,
+      "source_count": 2,
+      "platform_count": 1,
+      "contradiction_level": "none",
+      "review_signal_status": "weak_signal"
+    }
+  ],
+  "attention_signals": [
+    {
+      "issue": "Aside Browser 동적 보강 완료",
+      "bath_area": "facility_wide",
+      "evidence_level": "direct_body_addendum",
+      "summary": "동적/OTA 공개 본문에서 38건 직접 확인, 온천 관련 12건을 보강함.",
+      "sample_count": 38
+    }
+  ],
+  "evidence_examples": [
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Yahoo Travel via Aside Browser",
+      "source_url": "https://travel.yahoo.co.jp/00002536/review/",
+      "language": "ja",
+      "short_paraphrase": "내탕 만족도가 높을 것이라고 직접 추천.",
+      "original_keyword": "内湯",
+      "review_date": "2026/2/2",
+      "bath_area": "room_bath",
+      "signal_direction": "positive"
+    },
+    {
+      "signal_type": "public_bath_hot_spring;weak_onsen_feeling",
+      "source_type": "Yahoo Travel via Aside Browser",
+      "source_url": "https://travel.yahoo.co.jp/00002536/review/",
+      "language": "ja",
+      "short_paraphrase": "대욕장은 특출난 개성은 없지만 개방감 있고 여유롭게 이용 가능.",
+      "original_keyword": "特筆すべきものはない/開放感",
+      "review_date": "2021/8/13",
+      "bath_area": "public_bath",
+      "signal_direction": "mixed"
+    },
+    {
+      "signal_type": "room_bath_hot_spring;water_texture",
+      "source_type": "Ikkyu via Aside Browser",
+      "source_url": "https://www.ikyu.com/00002536/review/",
+      "language": "ja",
+      "short_paraphrase": "가족이 놀랄 만큼 느긋한 수질 좋은 객실탕이었다고 언급.",
+      "original_keyword": "泉質がいいお風呂",
+      "review_date": "2026/5/5",
+      "bath_area": "room_bath",
+      "signal_direction": "positive"
+    },
+    {
+      "signal_type": "weak_onsen_feeling",
+      "source_type": "Ikkyu via Aside Browser",
+      "source_url": "https://www.ikyu.com/00002536/review/",
+      "language": "ja",
+      "short_paraphrase": "내탕은 별 특징이 없고 외탕도 굳이 갈 정도는 아니라 객실탕으로 끝냈다고 평가.",
+      "original_keyword": "特に特徴はなかった",
+      "review_date": "2026/3/25",
+      "bath_area": "public_bath;open_air_public_bath",
+      "signal_direction": "negative"
+    },
+    {
+      "signal_type": "room_bath_hot_spring;public_bath_hot_spring",
+      "source_type": "Ikkyu via Aside Browser",
+      "source_url": "https://www.ikyu.com/00002536/review/",
+      "language": "ja",
+      "short_paraphrase": "내탕은 원천가케나가시, 외탕도 적당한 넓이라고 함.",
+      "original_keyword": "源泉掛け流し",
+      "review_date": "2025/12/8",
+      "bath_area": "room_bath;open_air_public_bath",
+      "signal_direction": "positive"
+    },
+    {
+      "signal_type": "water_texture",
+      "source_type": "Ikkyu via Aside Browser",
+      "source_url": "https://www.ikyu.com/00002536/review/",
+      "language": "ja",
+      "short_paraphrase": "히노키 향 온천에서 보온감과 피부 매끈함을 느꼈다고 함.",
+      "original_keyword": "ひのき/すべすべ",
+      "review_date": "2025/1/14",
+      "bath_area": "room_bath",
+      "signal_direction": "positive"
+    }
+  ],
+  "bathtime_interpretation": "타마노유는 객실 풍로와 대욕장이 모두 보이는 고급 복합형이지만, 후기 신호는 숙소 전체 경험에 많이 분산됩니다. 온천만 놓고 보면 긍정과 기대치 조정 신호가 함께 있어, Bathtime에는 “고급 숙소지만 온천 임팩트는 객실/대욕장별로 나눠 확인 필요”로 표시하는 편이 안전합니다.",
+  "gaps": [
+    "Jalan seed URL 없음.",
+    "Yahoo/JTB/Ikkyu/Agoda 등에서 직접 본문 수집 보강 필요.",
+    "Aside Browser 또는 OTA 페이지별 동적 본문 확인 필요."
+  ]
+}

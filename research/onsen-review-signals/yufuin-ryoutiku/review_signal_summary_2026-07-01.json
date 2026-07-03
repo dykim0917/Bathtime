@@ -1,0 +1,427 @@
+{
+  "accommodation_name": "御宿 由府両築 / 유후 료치쿠",
+  "identity": {
+    "ja": "御宿 由府両築",
+    "ko_aliases": [
+      "유후 료치쿠",
+      "오야도 유후 료치쿠",
+      "유후인 료칸 유후료치쿠"
+    ],
+    "en_aliases": [
+      "Yufu Ryochiku",
+      "Oyado Yufu Ryochiku",
+      "Onjuku Yufuryochiku"
+    ],
+    "official_current": "https://www.ryoutiku.jp/",
+    "old_candidate_official": "https://hpdsp.jp/yufuin-ryoutiku/",
+    "rakuten_provider_id": "68226",
+    "jalan_yad": "309147",
+    "agoda_hotel_id": "287706"
+  },
+  "quality": {
+    "visible_review_counts": {
+      "Jalan": 649,
+      "Rakuten Travel": 211,
+      "Agoda_combined": 2077,
+      "Agoda_comment_count": 936,
+      "Agoda_direct_default_provider_comments": 809
+    },
+    "directly_read_reviews_by_platform": {
+      "Jalan": 649,
+      "Rakuten Travel": 178,
+      "Agoda": 809
+    },
+    "onsen_related_reviews_by_platform": {
+      "Jalan": 485,
+      "Rakuten Travel": 125,
+      "Agoda": 412
+    },
+    "total_directly_read_reviews": 1636,
+    "agoda_meta": {
+      "hotelId": 287706,
+      "hotelName": "유후 료치쿠 (Yufu Ryochiku)",
+      "score": {
+        "maxScore": 10,
+        "providerId": -1,
+        "reviewCommentsCount": 936,
+        "reviewCount": 2077,
+        "score": 9.1,
+        "demographic": "전체 이용후기",
+        "formattedReviewCount": "2,077",
+        "formattedScore": "9.1",
+        "scoreText": "최고"
+      },
+      "providerList": [
+        {
+          "id": 332,
+          "isDefaultProvider": true,
+          "totalIndex": 809
+        }
+      ]
+    },
+    "language_counts": {
+      "ja": 887,
+      "ko": 481,
+      "th": 4,
+      "en": 80,
+      "zh-TW": 177,
+      "sv": 1,
+      "zh-CN": 6
+    },
+    "negative_attention_counts": {
+      "insects_or_bugs": 13,
+      "old_building_steps_facility": 109,
+      "temperature_too_hot": 7,
+      "winter_cold_wash_or_room": 30,
+      "temperature_lukewarm_or_cold_water": 3
+    },
+    "false_positive_notes": [
+      "weak_onsen_feeling에서 薄い(벽/유리 얇음) 오탐 제거",
+      "booking_confusion에서 단순 예약/업그레이드 감사 표현 제거",
+      "Agoda room_type만으로 객실탕 경험 카운트하지 않음",
+      "weak_onsen_feeling의 not.*onsen 영어 오탐 제거: 실제 약한 온천감 반복 없음"
+    ],
+    "aside_browser_checks": {
+      "google_search_and_hotel_panel": {
+        "status": "checked_with_aside_snapshot",
+        "visible_google_reviews": 293,
+        "signals": [
+          "Google AI/검색결과에서 객실 8개 대비 4개 가족/대절탕, 무료/예약없음/여러 번 이용 가능 신호 확인",
+          "검색결과에서 Jalan 649, Tripadvisor 61, Expedia/Hotels/JTB 등 외부 풀 확인"
+        ]
+      },
+      "naver_search": {
+        "status": "checked_with_aside_snapshot",
+        "signals": [
+          "한국어 검색에서 유후료치쿠 후기/가족탕/프라이빗 온천/개인탕/객실 온천 혼용 신호 확인",
+          "블로그·카페·Agoda·Trip.com·Hotels.com 노출 확인"
+        ]
+      }
+    },
+    "manual_adjustments": [
+      "room_bath_hot_spring: Agoda room_type 단독 카운트 및 장거리 정규식 오탐 제거 후 119건으로 보수 조정",
+      "crowding negative: “기다리지 않았다” 문맥 오탐 제거 후 실제 대기/혼잡 불만 3건으로 조정",
+      "weak_onsen_feeling: 영어 not...onsen 및 薄い 오탐 제거 후 0건 처리"
+    ]
+  },
+  "review_signal_summary": [
+    {
+      "bath_area": "unclear",
+      "bath_area_confidence": "unclear",
+      "signal_type": "booking_confusion",
+      "signal_direction": "mixed",
+      "mention_count": 15,
+      "source_count": 15,
+      "platform_count": 3,
+      "platforms": [
+        "Agoda",
+        "Jalan",
+        "Rakuten Travel"
+      ],
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal",
+      "note": "단순 예약 언급 제거 후 사진/대욕장-가족탕 인식/객실 노천탕 기대 불일치 중심."
+    },
+    {
+      "bath_area": "private_bath",
+      "bath_area_confidence": "probable",
+      "signal_type": "crowding",
+      "signal_direction": "positive",
+      "mention_count": 119,
+      "source_count": 119,
+      "platform_count": 3,
+      "platforms": [
+        "Agoda",
+        "Jalan",
+        "Rakuten Travel"
+      ],
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "private_bath",
+      "bath_area_confidence": "probable",
+      "signal_type": "crowding",
+      "signal_direction": "negative",
+      "mention_count": 3,
+      "source_count": 3,
+      "platform_count": 2,
+      "platforms": [
+        "Agoda",
+        "Jalan",
+        "Rakuten Travel"
+      ],
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal",
+      "note": "초기 자동집계 42건은 대부분 “기다리지 않았다” 긍정 문맥 오탐. 실제 대기/혼잡 불만은 소수."
+    },
+    {
+      "bath_area": "private_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "positive",
+      "mention_count": 275,
+      "source_count": 275,
+      "platform_count": 3,
+      "platforms": [
+        "Agoda",
+        "Jalan",
+        "Rakuten Travel"
+      ],
+      "contradiction_level": "none",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "family_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "positive",
+      "mention_count": 117,
+      "source_count": 117,
+      "platform_count": 3,
+      "platforms": [
+        "Agoda",
+        "Jalan",
+        "Rakuten Travel"
+      ],
+      "contradiction_level": "none",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "negative",
+      "mention_count": 3,
+      "source_count": 3,
+      "platform_count": 2,
+      "platforms": [
+        "Agoda",
+        "Jalan"
+      ],
+      "contradiction_level": "none",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 119,
+      "source_count": 119,
+      "platform_count": 3,
+      "platforms": [
+        "Agoda",
+        "Jalan",
+        "Rakuten Travel"
+      ],
+      "contradiction_level": "none",
+      "review_signal_status": "strong_signal",
+      "note": "보수 재검증 후 본문 내 객실/방+노천/온천 근접 표현 중심으로 조정. 공식상 일부 객실에 한정."
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 446,
+      "source_count": 446,
+      "platform_count": 3,
+      "platforms": [
+        "Agoda",
+        "Jalan",
+        "Rakuten Travel"
+      ],
+      "contradiction_level": "none",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "chlorine_smell",
+      "signal_direction": "neutral",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "platforms": [],
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "weak_onsen_feeling",
+      "signal_direction": "neutral",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "platforms": [],
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient"
+    }
+  ],
+  "evidence_examples": [
+    {
+      "signal_type": "water_texture",
+      "source_type": "Jalan",
+      "source_url": "https://www.jalan.net/yad309147/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "湯布院の観光地近くの宿です 他の方の口コミで接客のマイナス評価が見られますが、全くそんなことはなく、とても気持ちの良い接客をしてくださいました。 食事も美味しかったです。 1点だけ、露天風呂が部屋についている関係上仕方がないのかもしれません",
+      "original_keyword": "湯布院の観光地近くの宿です 他の方の口コミで接客のマイナス評価が見られますが、全くそんなことはなく、とても気持ちの良い接客をしてくださいました。 食事も美味しかったです。 1点だけ、露天風呂が部屋についている関係上仕方がないのかもしれませんが、部屋に虫が2匹出ました。見つけたのもフロント対応時間をギリギリ過ぎた頃だったので、自分で対処する羽目に。 ですが、これを踏まえても総合的に良",
+      "review_date": "2026/6/25"
+    },
+    {
+      "signal_type": "water_texture",
+      "source_type": "Jalan",
+      "source_url": "https://www.jalan.net/yad309147/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "温泉が24時間いつでも入れる 久しぶりの夫婦2人での旅行で利用させてもらいました。メイン通りが近く年末とあってすごい人でした。チェックイン前に到着し、チェックイン前から駐車場を案内していただけて助かりました。散策しながら食べ歩きをしてチェッ",
+      "original_keyword": "温泉が24時間いつでも入れる 久しぶりの夫婦2人での旅行で利用させてもらいました。メイン通りが近く年末とあってすごい人でした。チェックイン前に到着し、チェックイン前から駐車場を案内していただけて助かりました。散策しながら食べ歩きをしてチェックインして24時間入れるお風呂へ。2人で入るには十分な広さでとてもリラックス出来て良かったです。お酒も飲み放題でお風呂上がりから日本酒いただきました。囲炉裏もありゆっくり座りながらくつろいで食事もとてもボリューミーで大満足",
+      "review_date": "2026/1/8"
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Jalan",
+      "source_url": "https://www.jalan.net/yad309147/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "湯布院の観光地近くの宿です 他の方の口コミで接客のマイナス評価が見られますが、全くそんなことはなく、とても気持ちの良い接客をしてくださいました。 食事も美味しかったです。 1点だけ、露天風呂が部屋についている関係上仕方がないのかもしれません",
+      "original_keyword": "露天風呂が部屋についている関係上仕方がないのかもしれませんが、部屋",
+      "review_date": "2026/6/25"
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Jalan",
+      "source_url": "https://www.jalan.net/yad309147/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "子供の卒業祝い。２泊しました。 街並みのメイン通りからすぐのとても便利な場所ですが、緑の中に佇む趣きのある建物です。玄関から中に入ると囲炉裏もある広間です。和風モダンの素敵なお部屋で子供達も大満足でした。朝食も豪華な和食で名物料理も堪能でき",
+      "original_keyword": "部屋で子供達も大満足でした。朝食も豪華な和食で名物料理も堪能でき感激しました。 そしてお風呂は幾つかの家族風呂で露天風呂",
+      "review_date": "2026/5/1"
+    },
+    {
+      "signal_type": "private_bath_experience",
+      "source_type": "Jalan",
+      "source_url": "https://www.jalan.net/yad309147/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "娘2人と素泊まり食い倒れ満喫旅 日帰り温泉&食い倒れ満喫をしようと湯布院に行く計画中に素泊まりでも良いよね？って娘達と話して探した時立地条件的に良さげなこちらの旅館を予約しました。 色々食べ歩きをしたいので駐車場を教えてもらい車を置いてから",
+      "original_keyword": "貸切",
+      "review_date": "2025/8/14"
+    },
+    {
+      "signal_type": "private_bath_experience",
+      "source_type": "Jalan",
+      "source_url": "https://www.jalan.net/yad309147/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "おもてなしが最高 コロナで結婚20周年をお祝いできなかったのでその代わりに行きましたコメント欄で結婚20周年の代わりですと書いてたら食事の時はワインのサ-ビスがありデザートの後にケ-キを用意してくれたりとても嬉しかったです。 お風呂も貸し切",
+      "original_keyword": "貸し切",
+      "review_date": "2021/11/27"
+    },
+    {
+      "signal_type": "crowding",
+      "source_type": "Jalan",
+      "source_url": "https://www.jalan.net/yad309147/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "娘2人と素泊まり食い倒れ満喫旅 日帰り温泉&食い倒れ満喫をしようと湯布院に行く計画中に素泊まりでも良いよね？って娘達と話して探した時立地条件的に良さげなこちらの旅館を予約しました。 色々食べ歩きをしたいので駐車場を教えてもらい車を置いてから",
+      "original_keyword": "空いてれば24時間いつでも入",
+      "review_date": "2025/8/14"
+    },
+    {
+      "signal_type": "crowding",
+      "source_type": "Jalan",
+      "source_url": "https://www.jalan.net/yad309147/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "全部が最高の宿！！ 由布院旅行で宿泊させていただきました！館内・食事・スタッフさん・立地全て最高でした！！ 到着してから、甘味と緑茶を出していただきバタバタせず、到着して囲炉裏でホッと一息つくことが出来ました！ 心身落ち着いてからお部屋やお",
+      "original_keyword": "貸切家族風呂は、部屋のお風呂よりも温度が低く露天では夜風に当たりながら…内湯は湯気で保湿しながら…ゆっくり",
+      "review_date": "2021/7/5"
+    },
+    {
+      "signal_type": "private_bath_experience",
+      "source_type": "Jalan",
+      "source_url": "https://www.jalan.net/yad309147/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "子供の卒業祝い。２泊しました。 街並みのメイン通りからすぐのとても便利な場所ですが、緑の中に佇む趣きのある建物です。玄関から中に入ると囲炉裏もある広間です。和風モダンの素敵なお部屋で子供達も大満足でした。朝食も豪華な和食で名物料理も堪能でき",
+      "original_keyword": "家族風呂",
+      "review_date": "2026/5/1"
+    },
+    {
+      "signal_type": "private_bath_experience",
+      "source_type": "Jalan",
+      "source_url": "https://www.jalan.net/yad309147/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "全部が最高の宿！！ 由布院旅行で宿泊させていただきました！館内・食事・スタッフさん・立地全て最高でした！！ 到着してから、甘味と緑茶を出していただきバタバタせず、到着して囲炉裏でホッと一息つくことが出来ました！ 心身落ち着いてからお部屋やお",
+      "original_keyword": "貸切",
+      "review_date": "2021/7/5"
+    },
+    {
+      "signal_type": "crowding",
+      "source_type": "Jalan",
+      "source_url": "https://www.jalan.net/yad309147/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "娘2人と素泊まり食い倒れ満喫旅 日帰り温泉&食い倒れ満喫をしようと湯布院に行く計画中に素泊まりでも良いよね？って娘達と話して探した時立地条件的に良さげなこちらの旅館を予約しました。 色々食べ歩きをしたいので駐車場を教えてもらい車を置いてから",
+      "original_keyword": "空いてれば24時間いつでも入れるのがとても良かったです。 フリードリンクも21：00までではありますが飲めるのも有り難いですね。チェックアウト後の荷物預かりやゴミを捨てて頂けたり車も置かせてもらえてまた観光も出来て本当にお世話になりました。ただ部屋に行く動線に食事処を通らないと行けなくて気まずい思いをしながらなのはちょっと残念ポイントです。貸切湯も温泉はとても良いのですが四つあるのに同じ造りなのと露天の脱衣所の狭さ、カゴの汚れ？と臭いが気になって楽しめなかった",
+      "review_date": "2025/8/14"
+    },
+    {
+      "signal_type": "crowding",
+      "source_type": "Jalan",
+      "source_url": "https://www.jalan.net/yad309147/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "想像以上に素敵なお宿です^^* 食事の口コミが良かったのと、湯の坪街道に近い宿をと選びました。食事は口コミ通り！もぅお腹いっぱいになり、とても美味しかったです。 お部屋は綺麗に清掃されており、畳のいい匂いで、とても癒されました^^* 建物は",
+      "original_keyword": "風呂は熱すぎて、なかなか入れなかったです^^; 家族風呂が4つありましたが、特に待",
+      "review_date": "2019/8/27"
+    },
+    {
+      "signal_type": "booking_confusion",
+      "source_type": "Jalan",
+      "source_url": "https://www.jalan.net/yad309147/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "食事のバリエーションが豊富で最高のおもてなしでした。 今回息子が11ヶ月になり４月から保育園、私は社会復帰する為、家族３人初旅行を計画しました。息子にとっては初めての旅行...不安もありクチコミを見て子連れでも安心できるところをと思いこちら",
+      "original_keyword": "部屋はやはり築94年という古さは否めない感じでしたが、家族でゆっくり過ごすには十分な空間でした。特に良かったところは夕食で、プラス料金でステーキを選択していたのですがステーキはもちろんお刺身や地鶏鍋どれも本当に美味しく、 お腹いっぱいになりました。子どもがいた為、部屋食プランにしていたのですが、18時半から始まりちょうど子どもの機嫌が悪い時間帯に重なり、食べ終えたのが20時半過ぎだったので少し疲れてしまいました。お食事を持ってきてくださったスタッフの方に、お腹の膨らみを見て2人目を妊娠中かと聞かれ、(私がふんわりしたワンピースを着ていたせいもあったのですが)違",
+      "review_date": "2018/3/31"
+    },
+    {
+      "signal_type": "booking_confusion",
+      "source_type": "Jalan",
+      "source_url": "https://www.jalan.net/yad309147/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "これ以上の宿があるでしょうか。 大人2名、子供4名で宿泊させていただきました。きめ細やかなサービスで最高の時間を過ごせました。特に家族の写真を何枚も撮影していただけたのが嬉しかったです。お料理も最高です。最近は色々食べ飽きていたので、夜のお",
+      "original_keyword": "写真を何枚も撮影していただけたのが嬉しかったです。お料理も最高です。最近は色々食べ飽きていたので、夜のお鍋料理が最高でした。昼から夜は町の散策、早朝は金鱗湖まで散歩して、家族で楽しく過ごせました。駐車場が離れたところにあるお宿が多いところで、宿の前に停めることができて良かったです。特別な車をお持ちの方にはお勧めです。高低差もありません。（自然の中なので鳥の糞がついてしまうのが難点ですが。）お布団、シーツを衛生的に管理されているのを見て",
+      "review_date": "2017/9/5"
+    },
+    {
+      "signal_type": "weak_onsen_feeling",
+      "source_type": "Agoda",
+      "source_url": "https://www.agoda.com/ko-kr/oyado-yufu-ryochiku/hotel/yufu-jp.html",
+      "language": "ko",
+      "short_paraphrase": "엄마가 너무 좋아했어요 ㅎㅎ 일단 제일 중요하다 생각한 거는 위치, 온천, 가이세키 였어요 위치 자체는 유후인 역에서 10분 내외로 걸렸던 거 같고 위치 자체가 유후인 상점가에서 꺾으면 바로 있어서 엄청 좋았음! 다",
+      "original_keyword": "온천, 가이세키 였어요 위치 자체는 유후인 역에서 10분 내외로 걸렸던 거 같고 위치 자체가 유후인 상점가에서 꺾으면 바로 있어서 엄청 좋았음! 다른 료칸들은 택시 타고 가야하는데 부모님이랑 가서 위치가 정말 중요했는데 위치가 제일 베스트였어용 온천은 4개로 실내2, 실외2 였는데 방 다 차서 못 간 적은 없었고 실내탕 실외탕은 똑같이 생겼어요 수건도 온천 입구쪽에 제공돼서 모자랄 일 없었어요 석식, 조식 신청했는데 석식은 코스로 나왔고 양이 너무 많았어요 조식은 한 테이블? 느낌으로 나오고 다 맛있었고 여자 둘이 먹기에 양도 진짜 많았어요,, 조금 짠 느낌은 있으나 일본이니까 ㅎㅎ.. 인정 1박에 두 명이서 47000엔정도에 예약했는데 온천 자체도 너무 좋았고 엄마가 제일 좋아했어요 온천 다녀와서 낮잠 2번 잤어요 ㅋㅋ 밤에는 어둡기도 하고 주변에 할 거 없을 거 같아서 안 나갔는데 한 5분? 거리에 편의점 있고 방에 커피포트 있어요 전자레인지는 없",
+      "review_date": "2025년 6월 26일"
+    },
+    {
+      "signal_type": "weak_onsen_feeling",
+      "source_type": "Agoda",
+      "source_url": "https://www.agoda.com/ko-kr/oyado-yufu-ryochiku/hotel/yufu-jp.html",
+      "language": "th",
+      "short_paraphrase": "one of the best Ryokan! The room is very big and comfortable. Even there is no bathroom in the room , it is not an issue",
+      "original_keyword": "not an issue at all. The onsen room seems to be a bit dirty as there is a stain on the floor but it is ok. The onsen",
+      "review_date": "2025년 4월 17일"
+    },
+    {
+      "signal_type": "public_bath_hot_spring",
+      "source_type": "Jalan",
+      "source_url": "https://www.jalan.net/yad309147/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "よかったです。 宿と食事は大変良かったです。 観光地からもとても近くてよかったです。 ただ、大浴場があればもっとよかったです。",
+      "original_keyword": "大浴場があれば",
+      "review_date": "2025/3/12"
+    },
+    {
+      "signal_type": "public_bath_hot_spring",
+      "source_type": "Jalan",
+      "source_url": "https://www.jalan.net/yad309147/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "ママちゃんさんの大正ロマンの宿 御宿 由府両築のクチコミ 友人と２人で利用させていただきました。 当日、翌日と由布岳頂上の見える、寒いながらも良いお天気に恵まれ、思い出に残るいい宿とお料理に大満足でした。 古民家を改装しての宿ということでし",
+      "original_keyword": "大浴場風でもいいのではないかと思いました。 タオル（枚数）やアメニティ関係をもう少し欲しかったですね。 でも宿の場所も良く、機会があれば",
+      "review_date": "2012/3/13"
+    }
+  ]
+}

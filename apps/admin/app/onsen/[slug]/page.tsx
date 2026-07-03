@@ -4,9 +4,13 @@ import { notFound } from 'next/navigation';
 import { AdminShell } from '../../../components/AdminShell';
 import { updateOnsenAccommodation } from '../../../lib/onsen/actions';
 import {
+  bathContextLabels,
   bathScopeLabels,
   onsenStatusLabels,
   readAdminOnsenAccommodation,
+  regionGroupLabels,
+  travelContextLabels,
+  waterCriterionLabels,
   waterSourceTypeLabels,
   waterUseStatusLabels,
 } from '../../../lib/onsen/data';
@@ -112,6 +116,49 @@ export default async function OnsenDetailPage({ params, searchParams }: OnsenDet
               <label htmlFor="area">지역 표시</label>
               <input id="area" name="area" defaultValue={accommodation.area} />
 
+              <label htmlFor="country">국가 코드</label>
+              <input id="country" name="country" defaultValue={accommodation.country} />
+
+              <label htmlFor="regionGroup">여행 권역</label>
+              <select id="regionGroup" name="regionGroup" defaultValue={accommodation.regionGroup}>
+                {Object.entries(regionGroupLabels).map(([value, label]) => (
+                  <option key={value} value={value}>{label}</option>
+                ))}
+              </select>
+
+              <label htmlFor="prefecture">도도부현 코드</label>
+              <input id="prefecture" name="prefecture" defaultValue={accommodation.prefecture} />
+
+              <label htmlFor="city">도시 코드</label>
+              <input id="city" name="city" defaultValue={accommodation.city} />
+
+              <label htmlFor="onsenArea">온천지/도시 코드</label>
+              <input id="onsenArea" name="onsenArea" defaultValue={accommodation.onsenArea} />
+
+              <label htmlFor="travelContexts">이용 방식</label>
+              <input
+                id="travelContexts"
+                name="travelContexts"
+                defaultValue={accommodation.travelContexts.join(', ')}
+                placeholder={Object.entries(travelContextLabels).map(([value, label]) => `${value}=${label}`).join(', ')}
+              />
+
+              <label htmlFor="bathContexts">탕 구성</label>
+              <input
+                id="bathContexts"
+                name="bathContexts"
+                defaultValue={accommodation.bathContexts.join(', ')}
+                placeholder={Object.entries(bathContextLabels).map(([value, label]) => `${value}=${label}`).join(', ')}
+              />
+
+              <label htmlFor="waterCriteria">온천 기준</label>
+              <input
+                id="waterCriteria"
+                name="waterCriteria"
+                defaultValue={accommodation.waterCriteria.join(', ')}
+                placeholder={Object.entries(waterCriterionLabels).map(([value, label]) => `${value}=${label}`).join(', ')}
+              />
+
               <label htmlFor="summary">요약</label>
               <textarea id="summary" name="summary" rows={6} defaultValue={accommodation.summary} />
 
@@ -169,6 +216,14 @@ export default async function OnsenDetailPage({ params, searchParams }: OnsenDet
               <input type="hidden" name="jaName" value={accommodation.jaName ?? ''} />
               <input type="hidden" name="region" value={accommodation.region} />
               <input type="hidden" name="area" value={accommodation.area} />
+              <input type="hidden" name="country" value={accommodation.country} />
+              <input type="hidden" name="regionGroup" value={accommodation.regionGroup} />
+              <input type="hidden" name="prefecture" value={accommodation.prefecture} />
+              <input type="hidden" name="city" value={accommodation.city} />
+              <input type="hidden" name="onsenArea" value={accommodation.onsenArea} />
+              <input type="hidden" name="travelContexts" value={accommodation.travelContexts.join(', ')} />
+              <input type="hidden" name="bathContexts" value={accommodation.bathContexts.join(', ')} />
+              <input type="hidden" name="waterCriteria" value={accommodation.waterCriteria.join(', ')} />
               <input type="hidden" name="summary" value={accommodation.summary} />
               <input type="hidden" name="primaryBath" value={accommodation.primaryBath} />
               <input type="hidden" name="waterUseStatus" value={accommodation.waterUseStatus} />

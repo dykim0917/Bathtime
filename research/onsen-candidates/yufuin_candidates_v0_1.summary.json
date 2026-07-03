@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-06-29",
+  "source_counts": {
+    "official": 77,
+    "rakuten": 31,
+    "jalan": 193,
+    "merged": 239
+  },
+  "preliminary_counts": {
+    "include_onsen_signal": 125,
+    "low_priority_or_exclude_review": 11,
+    "needs_manual_review": 26,
+    "include_official_association": 77
+  },
+  "files": {
+    "raw_json": "/Users/exem/DK/BathSommelier/research/onsen-candidates/yufuin_candidates_v0_1.raw.json",
+    "all_csv": "/Users/exem/DK/BathSommelier/research/onsen-candidates/yufuin_candidates_v0_1.csv",
+    "filtered_csv": "/Users/exem/DK/BathSommelier/research/onsen-candidates/yufuin_candidates_v0_1.filtered.csv"
+  }
+}

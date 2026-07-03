@@ -86,12 +86,40 @@ Airbnb식 디자인에서 참고할 것은 강한 포인트 컬러가 아니라 
 - Muted: `#6f7a75`, CSS `--muted`, 메타 정보.
 - Primary: `#2f7871`, CSS `--primary`, 물과 히노키 사이의 포인트.
 - Primary Active: `#245f59`, CSS `--primary-active`, CTA와 활성 상태.
+- Primary Pressed: `#174f4b`, CSS `--bt-color-primary-pressed`, CTA hover/press 상태.
 - Primary Soft: `#d8ebe5`, CSS `--primary-soft`, 선택/호버 배경.
+- On Primary: `#ffffff`, CSS `--bt-color-on-primary`, primary 위 텍스트.
 - Reed: `#e7dcc1`, CSS `--reed`, 종이와 나무 사이의 보조 포인트.
 - Mist: `#f3f1e9`, CSS `--mist`, 섹션 톤.
 - Hairline: `#ded8ca`, CSS `--hairline`, 기본 경계선.
 - Hairline Soft: `#ebe6db`, CSS `--hairline-soft`, 약한 구분선.
 - Border Strong: `#c3b9a5`, CSS `--border-strong`, 입력/중요 경계.
+
+#### Semantic Status
+
+Atlassian식 구조에서 가져오는 것은 컬러가 아니라 의미 체계다. 바스타임의 상태 색은 아래 의미 토큰으로만 표현한다.
+
+- Confirmed: CSS `--bt-status-confirmed-*`, 공식 안내나 바스타임이 확인한 정보.
+- Needed: CSS `--bt-status-needed-*`, 객실 타입, 시즌, 플랜에 따라 다시 봐야 하는 정보.
+- Reference: CSS `--bt-status-reference-*`, 판단을 보조하는 참고 정보.
+- Attention: CSS `--bt-status-attention-*`, 예약·이용 전에 놓치면 문제가 생길 수 있는 정보.
+- Success: CSS `--bt-status-success-*`, 저장, 제출, 완료 상태.
+- Danger: CSS `--bt-status-danger-*`, 저장 실패, 폼 오류, 위험 상태.
+
+사용자 노출 문구에서 `후기 신호`, `반복 신호`처럼 내부 근거 언어를 쓰지 않는다. 상태는 `확인됨`, `확인 필요`, `참고`, `주의`처럼 짧게 표시하고, 근거는 설명 문장에서 바스타임의 판단으로 정리한다.
+
+#### Surface / Interaction / Form
+
+- Surface Default: CSS `--bt-surface-default`, 기본 카드와 패널.
+- Surface Subtle: CSS `--bt-surface-subtle`, 필터, 보조 정보, 빈 상태.
+- Surface Raised: CSS `--bt-surface-raised`, hover 가능한 카드.
+- Surface Overlay: CSS `--bt-surface-overlay`, 모달, 팝오버.
+- Input Border: CSS `--bt-form-border`, 기본 입력 경계.
+- Input Focus: CSS `--bt-form-focus-border`, `--bt-focus-ring`, 포커스 상태.
+- Input Invalid: CSS `--bt-form-invalid-*`, 폼 오류.
+- Disabled: CSS `--bt-disabled-*`, 클릭 불가 또는 준비 중 상태.
+
+새 UI는 raw 상태색이나 임의 hover 값을 만들지 말고, 위 토큰을 먼저 추가하거나 재사용한다.
 
 #### Typography
 
@@ -110,6 +138,14 @@ Airbnb식 디자인에서 참고할 것은 강한 포인트 컬러가 아니라 
 - Radius scale is restrained: `4px`, `6px`, `8px`, plus pill only for controls.
 - Depth uses tonal borders and rare soft shadows: `--bt-shadow-soft` and `--bt-shadow-lifted`.
 
+#### Motion
+
+- Fast: CSS `--bt-motion-fast`, 100ms. Pressed, tiny icon feedback.
+- Base: CSS `--bt-motion-base`, 150ms. Button, chip, card hover.
+- Slow: CSS `--bt-motion-slow`, 220ms. Modal and larger surface transitions.
+- Easing: CSS `--bt-ease-out`, `--bt-ease-inout`.
+- Motion is limited to `transform`, `opacity`, and `filter`. Reduced motion must remove transform-based movement.
+
 #### Component Rules
 
 - Home hero is full-bleed media with overlaid editorial copy, no card around the hero text.
@@ -118,6 +154,10 @@ Airbnb식 디자인에서 참고할 것은 강한 포인트 컬러가 아니라 
 - Onsen result cards use one image slot, one sentence-level water decision, one inline fact row, and one caution sentence. Do not nest multiple boxed panels inside the card body unless the content needs comparison.
 - Buttons use the same pill treatment on the home hero and the same 8px treatment elsewhere.
 - Motion is limited to transform, opacity, and filter with reduced-motion support.
+- Status badges must use semantic status tokens. Do not create one-off badge colors in component CSS.
+- Forms must use form tokens for border, focus, invalid, disabled, helper, and error states.
+- Overlays must use the overlay surface, lifted shadow, and shared scrim token.
+- Future UI work starts from this token contract. If a value is missing, add it here first and then use it in CSS.
 
 ---
 

@@ -1,0 +1,93 @@
+{
+  "accommodation_name": "湯らり 六妙",
+  "research_date": "2026-07-02",
+  "official_facts": {
+    "official_url": "",
+    "jalan_url": "https://www.jalan.net/yad345269/",
+    "facts": [
+      "Jalan 설명 기준 5동 한정, 전 객실 노천탕 포함 별채, 원천 100% 가케나가시 숙소."
+    ]
+  },
+  "collection_briefing": [
+    {
+      "source": "Jalan",
+      "visible_review_count": 0,
+      "rating": "not_visible_in_seed",
+      "directly_read_reviews": 301,
+      "onsen_related_reviews": 301,
+      "access_status": "direct_fetch_probe_current_archive",
+      "notes": "Current/archive pages 1-10 probed. Review pool appears small or not visible in seed."
+    },
+    {
+      "source": "Google/Naver/Rakuten/Global OTA",
+      "visible_review_count": "pending",
+      "rating": "pending",
+      "directly_read_reviews": 0,
+      "onsen_related_reviews": 0,
+      "access_status": "pending_aside_or_direct_search",
+      "notes": "리뷰풀이 작아 동적/검색 보강 필요."
+    }
+  ],
+  "review_signal_summary": [
+    {
+      "bath_area": "room_bath/room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 190,
+      "source_count": 190,
+      "platform_count": 1,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 13,
+      "source_count": 13,
+      "platform_count": 1,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "positive",
+      "mention_count": 46,
+      "source_count": 46,
+      "platform_count": 1,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "booking_confusion",
+      "signal_direction": "positive",
+      "mention_count": 98,
+      "source_count": 98,
+      "platform_count": 1,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal"
+    }
+  ],
+  "attention_signals": [
+    {
+      "issue": "표본 부족",
+      "bath_area": "facility_wide",
+      "evidence_level": "data_gap",
+      "summary": "Jalan 본문 풀이 작거나 seed에서 리뷰 수가 보이지 않아 추가 플랫폼 보강이 필요함.",
+      "sample_count": 301
+    }
+  ],
+  "evidence_examples": [],
+  "bathtime_interpretation": "Jalan 확인 기준 직접 읽은 본문은 301건입니다. 공식/OTA 설명상 객실탕 또는 전용 온천 설비 경쟁력은 있으나, 후기 표본만으로는 강한 일반화가 어렵습니다. Bathtime에는 우선 시설형 후보로 올리고 Google/Naver/글로벌 OTA 보강 후 최종 신호 강도를 확정하는 편이 좋습니다.",
+  "gaps": [
+    "Jalan 리뷰 본문 풀이 작거나 리뷰 수가 seed에서 확인되지 않음.",
+    "Google Maps/Naver/글로벌 OTA 보강 필요.",
+    "공식 사이트 세부 온천 페이지 확인 필요."
+  ]
+}

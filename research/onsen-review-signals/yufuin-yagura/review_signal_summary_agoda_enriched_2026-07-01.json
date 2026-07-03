@@ -1,0 +1,224 @@
+{
+  "accommodation_name": {
+    "ko": "유후인 온주쿠 야구라",
+    "ja": "御宿 八遇來",
+    "en_aliases": ["Onjuku Yagura", "Onjuku Yagura Ryokan"]
+  },
+  "research_date": "2026-07-01",
+  "enrichment_reason": "Agoda review API was identified after the initial report. Agoda adds a large global/Korean-heavy review layer and should not be treated as snippet-only for this property.",
+  "collection_brief": {
+    "direct_structured_review_sample_total": 678,
+    "platforms": {
+      "Agoda": 457,
+      "Jalan": 209,
+      "Rakuten Travel": 12
+    },
+    "onsen_related_rows_auto": 432,
+    "visible_or_api_review_counts": {
+      "Agoda_combined_review_count": 1214,
+      "Agoda_review_comments_count": 477,
+      "Jalan_visible_reviews": 209,
+      "Rakuten_visible_reviews": 146
+    },
+    "agoda_language_mix": {
+      "ko": 287,
+      "zh-TW": 125,
+      "en": 36,
+      "ja": 6,
+      "zh-CN": 3
+    },
+    "data_quality": "A-: 678 directly structured review rows across Agoda, Jalan, and Rakuten. Japanese OTA remains the onsen-native baseline, while Agoda adds a strong Korean/global traveler layer."
+  },
+  "key_revision_from_initial_report": [
+    "Initial report classified Agoda as auxiliary/snippet-only. This is corrected: Agoda API exposed 457 directly readable comments out of 477 comment-count pool.",
+    "The property moves from B-grade to A-grade sampling for Bathtime purposes.",
+    "Room open-air bath remains the dominant signal, now confirmed across Japanese OTA and global OTA layers.",
+    "Agoda adds strong Korean-user operational signals: shuttle/pickup, distance from station, room assignment, cold season comfort, cleanliness, and private onsen purchase motivation."
+  ],
+  "combined_signal_counts_auto": {
+    "room_bath_hot_spring": 308,
+    "room_open_air_bath": 299,
+    "booking_confusion": 213,
+    "water_texture": 109,
+    "room_bath_operational_caution": 80,
+    "public_bath_hot_spring": 46,
+    "temperature_or_room_bath_caution": 37,
+    "crowding": 9,
+    "private_bath_experience": 4,
+    "weak_onsen_feeling": 2
+  },
+  "review_signal_summary": [
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 308,
+      "source_count": 308,
+      "platform_count": 3,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal",
+      "interpretation_ko": "객실 노천탕/객실 온천은 일본 OTA와 Agoda 양쪽에서 강하게 반복된다. 이 숙소의 핵심 구매 이유는 대욕장이 아니라 객실에서 바로 쓰는 프라이빗 온천이다."
+    },
+    {
+      "bath_area": "public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "mixed",
+      "mention_count": 46,
+      "source_count": 46,
+      "platform_count": 3,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal",
+      "interpretation_ko": "대욕장도 확인되지만 보조 시설 성격이 강하다. Agoda에서는 추운 날 객실 노천/샤워 대신 공용탕을 이용하라는 실용 신호도 보인다."
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 109,
+      "source_count": 109,
+      "platform_count": 3,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal",
+      "interpretation_ko": "좋은 물, 온천수, 탕온, 편안함 계열 표현이 충분히 반복된다. 다만 물성 자체보다 객실 노천탕의 조망/프라이빗성이 더 강한 의사결정 신호다."
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "unclear",
+      "signal_type": "weak_onsen_feeling",
+      "signal_direction": "negative",
+      "mention_count": 2,
+      "source_count": 2,
+      "platform_count": 1,
+      "contradiction_level": "high",
+      "review_signal_status": "insufficient",
+      "interpretation_ko": "온천감이 약하다는 반복 신호는 아니다. 다수의 긍정 온천 신호에 비해 단발적이다."
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "chlorine_smell",
+      "signal_direction": "neutral",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient",
+      "interpretation_ko": "Jalan/Rakuten/Agoda 통합 표본에서 염소/칼키 냄새 반복 신호는 확인되지 않았다."
+    },
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "crowding",
+      "signal_direction": "positive",
+      "mention_count": 9,
+      "source_count": 9,
+      "platform_count": 2,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal",
+      "interpretation_ko": "객실 노천탕 중심이라 타인과 마주치지 않는 저혼잡/프라이빗 체감이 있다. 일반적인 대욕장 혼잡 이슈는 크게 보이지 않는다."
+    },
+    {
+      "bath_area": "unclear",
+      "bath_area_confidence": "unclear",
+      "signal_type": "booking_confusion",
+      "signal_direction": "mixed",
+      "mention_count": 49,
+      "source_count": 49,
+      "platform_count": 2,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal",
+      "interpretation_ko": "자동 태그 총 213건 중 상당수는 플랜명/송영 언급이므로 실제 혼선으로 보지 않는다. 수동 해석상 유의미한 것은 송영 조건, 역과의 거리, 일부 객실 배정 불만이다."
+    }
+  ],
+  "agoda_specific_findings": [
+    {
+      "topic": "korean_demand_signal",
+      "summary_ko": "Agoda 본문 457건 중 언어 신호는 한국어 287건으로 가장 크다. 이 숙소는 글로벌 OTA 중에서도 한국인 체감 데이터가 특히 풍부하다."
+    },
+    {
+      "topic": "private_onsen_purchase_reason",
+      "summary_ko": "한국어/영어 후기에서 private onsen, 객실 노천탕, 개인탕이 반복된다. 일본 OTA의 객실 노천탕 신호를 글로벌 여행자도 같은 방식으로 소비하고 있다."
+    },
+    {
+      "topic": "shuttle_and_location",
+      "summary_ko": "역에서 거리가 있지만 송영/픽업으로 보완된다는 긍정 신호가 많다. 반대로 송영 조건이 유연하지 않았다는 부정도 일부 있어 운영 정보로 분리할 가치가 있다."
+    },
+    {
+      "topic": "room_assignment_confusion",
+      "summary_ko": "Agoda 한국어 후기에서 예약한 방과 다른 방을 배정받았다고 느낀 강한 부정 사례가 1건 확인된다. 반복 신호는 아니지만 Agoda 예약 화면/객실 타입 표기와 연결된 주의 신호다."
+    },
+    {
+      "topic": "seasonal_cold_and_oldness",
+      "summary_ko": "겨울 추위, 실내/복도 냉기, 오래된 시설, 청소/위생 관련 신호가 일본 OTA보다 Agoda에서 더 선명하게 보인다."
+    }
+  ],
+  "evidence_examples": [
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Agoda_review",
+      "source_url": "https://www.agoda.com/ko-kr/onjuku-yagura-ryokan/hotel/yufu-jp.html",
+      "language": "ko",
+      "short_paraphrase": "프라이빗 온천과 가이세키가 있어 다른 숙소를 취소하고 예약했다는 한국어 후기.",
+      "original_keyword": "private onsen / picked me up",
+      "review_date": "September 2024"
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Agoda_review",
+      "source_url": "https://www.agoda.com/ko-kr/onjuku-yagura-ryokan/hotel/yufu-jp.html",
+      "language": "en",
+      "short_paraphrase": "객실에 실내 온천과 야외 온천이 모두 있어 좋았다는 영어 후기.",
+      "original_keyword": "2 private onsen / indoor / outdoor",
+      "review_date": "May 2023"
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Agoda_review",
+      "source_url": "https://www.agoda.com/ko-kr/onjuku-yagura-ryokan/hotel/yufu-jp.html",
+      "language": "ko",
+      "short_paraphrase": "객실 내 노천탕이 매우 좋았고 송영으로 편하게 이동했다는 한국어 후기.",
+      "original_keyword": "객실 내의 노천탕 / 송영서비스",
+      "review_date": "November 2024"
+    },
+    {
+      "signal_type": "public_bath_hot_spring",
+      "source_type": "Agoda_review",
+      "source_url": "https://www.agoda.com/ko-kr/onjuku-yagura-ryokan/hotel/yufu-jp.html",
+      "language": "ko",
+      "short_paraphrase": "추운 날 객실 야외탕/샤워가 부담되면 공용탕을 이용하라는 실용 후기.",
+      "original_keyword": "weather is cold / separate public bath",
+      "review_date": "February 2026"
+    },
+    {
+      "signal_type": "booking_confusion",
+      "source_type": "Agoda_review",
+      "source_url": "https://www.agoda.com/ko-kr/onjuku-yagura-ryokan/hotel/yufu-jp.html",
+      "language": "ko",
+      "short_paraphrase": "예약한 다다미+오픈온천 객실과 다른 방을 배정받았다고 느낀 강한 불만.",
+      "original_keyword": "예약한 방과 다른 방 배정",
+      "review_date": "April 2025"
+    },
+    {
+      "signal_type": "room_bath_operational_caution",
+      "source_type": "Agoda_review",
+      "source_url": "https://www.agoda.com/ko-kr/onjuku-yagura-ryokan/hotel/yufu-jp.html",
+      "language": "ko",
+      "short_paraphrase": "자연과 가까워 벌레 시체가 조금 있었지만 개인탕은 매우 좋았다는 후기.",
+      "original_keyword": "죽은 벌레 / 개인탕",
+      "review_date": "August 2023"
+    }
+  ],
+  "bathtime_interpretation_ko": [
+    "아고다를 편입하면 온주쿠 야구라는 객실 노천탕 중심형이라는 결론이 더 강해집니다. 일본 OTA의 온천 숙련자 신호와 Agoda의 한국인/글로벌 여행자 신호가 같은 방향으로 겹칩니다.",
+    "서비스 표기에서는 '전 객실 노천탕형, 대욕장 보조, 대절탕 없음'을 기본으로 두고, '송영으로 위치 보완', '겨울 추위·벌레·노후감·객실 타입 확인 주의'를 함께 보여주는 것이 가장 유용합니다.",
+    "Agoda는 단순 보조 표본이 아니라 한국인 구매 언어를 직접 담는 큰 레이어입니다. 앞으로 유후인/벳푸 숙소 리서치에서는 Agoda API 가능 여부를 초반에 확인하는 쪽으로 기준을 바꾸는 것이 좋습니다."
+  ],
+  "files": {
+    "agoda_reviews_csv": "research/onsen-review-signals/yufuin-yagura/agoda_reviews_2026-07-01.csv",
+    "combined_csv": "research/onsen-review-signals/yufuin-yagura/combined_review_sample_with_agoda_2026-07-01.csv",
+    "agoda_raw_pages": "research/onsen-review-signals/yufuin-yagura/raw/agoda_hotelreviews_pages_raw.json"
+  }
+}

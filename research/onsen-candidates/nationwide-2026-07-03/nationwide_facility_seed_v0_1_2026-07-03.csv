@@ -1,0 +1,42 @@
+slug,name_ja,name_ko_or_en,area_slug,prefecture,facility_type,initial_tier,initial_onsen_facility_signals,source_basis,verification_status
+spa-herbs,美楽温泉 SPA-HERBS,미라쿠온천 SPA-HERBS,saitama-metro,埼玉県,wellness_spa,Tier 1,"천연온천+암반욕+식음/휴게 복합시설, Nifty 전국 1위","Nifty Onsen 2025 nationwide ranking",needs_official_crosscheck
+ryusenji-soka-yatsuka,竜泉寺の湯 草加谷塚店,류센지노유 소카야쓰카점,saitama-metro,埼玉県,wellness_spa,Tier 1,"천연온천·탄산천·사우나·휴게공간, Nifty 전국 상위","Nifty Onsen 2025 nationwide ranking",needs_official_crosscheck
+yokohama-spa-hills-ryusenji,横濱スパヒルズ 竜泉寺の湯,요코하마 스파힐즈 류센지노유,yokohama,神奈川県,wellness_spa,Tier 1,"천연온천·탄산천·사우나·암반욕 복합시설","Nifty Onsen 2025 nationwide ranking",needs_official_crosscheck
+kumagaya-hanayuspa,熊谷天然温泉 花湯スパリゾート,구마가야 하나유 스파리조트,saitama-metro,埼玉県,large_day_use_complex,Tier 1,"생원천·정원 노천·암반욕/휴게 신호","Nifty Onsen 2025 nationwide ranking",needs_official_crosscheck
+sugito-utano-yu,杉戸天然温泉 雅楽の湯,스기토 우타노유,saitama-metro,埼玉県,large_day_use_complex,Tier 1,"가온/가수 없는 생원천 내탕, 대노천, 식사 신호","Nifty Onsen 2025 nationwide ranking",needs_official_crosscheck
+shonan-ryusenji,湘南RESORT SPA 竜泉寺の湯,쇼난 리조트 스파 류센지노유,kanagawa-metro,神奈川県,wellness_spa,Tier 1,"12종 욕조·천연온천·사우나·암반욕","Nifty Onsen 2025 nationwide ranking",needs_official_crosscheck
+arima-taikounoyu,有馬温泉 太閤の湯,아리마 온천 타이코노유,arima,兵庫県,large_day_use_complex,Tier 1,"금천·은천·혼합탕·탄산천·증기탕·사우나","Nifty Onsen 2025 nationwide ranking",needs_official_crosscheck
+yokohama-aoba-kirari,横浜青葉温泉 喜楽里 別邸,요코하마 아오바온천 키라리 벳테이,yokohama,神奈川県,large_day_use_complex,Tier 1,"노천·오토로우류·암반욕, 초등학생 이상 시설","Nifty Onsen 2025 nationwide ranking",needs_official_crosscheck
+mizonokuchi-kirari,溝口温泉 喜楽里,미조노쿠치온천 키라리,kanagawa-metro,神奈川県,public_bath_facility,Tier 1,"탄산수소염천 원천가케나가시, 성인형 시설","Nifty Onsen 2025 nationwide ranking",needs_official_crosscheck
+ryogoku-edoyu,両国湯屋江戸遊,료고쿠 유야 에도유,tokyo-metro,東京都,wellness_spa,Tier 1,"도심 사우나·온욕·휴게/워크스페이스 복합","Nifty Onsen 2025 nationwide ranking",needs_official_crosscheck
+yokohama-manyoclub,横浜みなとみらい 万葉倶楽部,요코하마 미나토미라이 만요클럽,yokohama,神奈川県,wellness_spa,Tier 1,"열해/유가와라 원천 운반, 24시간 도시형 온천시설","Nifty Onsen 2025 nationwide ranking",needs_official_crosscheck
+tokyo-toyosu-manyoclub,東京豊洲 万葉倶楽部,도쿄 도요스 만요클럽,tokyo-metro,東京都,wellness_spa,Tier 1,"도요스 관광동선, 유가와라/하코네 원천 운반, 사우나/암반욕","Nifty Onsen 2025 nationwide ranking",needs_official_crosscheck
+manten-no-yu,天然温泉 満天の湯,만텐노유,yokohama,神奈川県,public_bath_facility,Tier 1,"역앞 천연온천+다양한 욕조, 반복 방문형 시설","Nifty Onsen 2025 nationwide ranking",needs_official_crosscheck
+arima-suzurannoyu,有馬街道温泉すずらんの湯,아리마가도온천 스즈란노유,arima,兵庫県,large_day_use_complex,Tier 1,"대형 노천, 원천가케나가시, 허브욕/요모기찜","Nifty Onsen 2025 nationwide ranking",needs_official_crosscheck
+yao-kitanoyu,八尾温泉 喜多の湯,야오온천 기타노유,osaka-metro,大阪府,wellness_spa,Tier 2,"탄산탕·수소탕·암반욕·사우나 복합","Nifty Onsen 2025 nationwide ranking",needs_official_crosscheck
+tsukuba-kirari,つくば温泉 喜楽里 別邸,쓰쿠바온천 키라리 벳테이,ibaraki,茨城県,large_day_use_complex,Tier 2,"노천·암반욕·성인형/초등학생 이상 시설","Nifty Onsen 2025 nationwide ranking",needs_official_crosscheck
+hanatyoufugetsu,天然温泉 花鳥風月,천연온천 화조풍월,saitama-metro,埼玉県,large_day_use_complex,Tier 2,"사이보쿠 내 온천, 노천·식음 결합","Nifty Onsen 2025 nationwide ranking",needs_official_crosscheck
+heiwajima-onsen,天然温泉平和島,천연온천 헤이와지마,tokyo-metro,東京都,wellness_spa,Tier 2,"도심 온천·암반욕·로우류, 공항/심야 수요 후보","Nifty Onsen 2025 nationwide ranking",needs_official_crosscheck
+miurayu,黒湯天然温泉みうら湯,구로유 천연온천 미우라유,yokohama,神奈川県,public_bath_facility,Tier 2,"흑탕·탄산천·사우나·나노수 신호","Nifty Onsen 2025 nationwide ranking",needs_official_crosscheck
+hitachinaka-kirari,ひたちなか温泉 喜楽里 別邸,히타치나카온천 키라리 벳테이,ibaraki,茨城県,large_day_use_complex,Tier 2,"전원풍경 노천·식음 신호","Nifty Onsen 2025 nationwide ranking",needs_official_crosscheck
+shisui-yurari,酒々井温泉 湯楽の里,시스이온천 유라노사토,chiba,千葉県,large_day_use_complex,Tier 2,"아울렛 인접, 원천가케나가시 노천·사우나","Nifty Onsen 2025 nationwide ranking",needs_official_crosscheck
+yorimichi-no-yu,山梨泊まれる温泉 より道の湯,야마나시 요리미치노유,yamanashi,山梨県,wellness_spa,Tier 2,"숙박 가능 온천시설, 증기욕/객실 노천 후보","Nifty Onsen 2025 nationwide ranking",needs_official_crosscheck
+sagano-tenzannoyu,さがの温泉 天山の湯,사가노온천 텐잔노유,kyoto,京都府,public_bath_facility,Tier 2,"교토시 천연온천, 사우나/아우프구스/식음 신호","Nifty Onsen 2025 nationwide ranking",needs_official_crosscheck
+raku-spa-tsurumi,RAKU SPA 鶴見,라쿠스파 쓰루미,yokohama,神奈川県,wellness_spa,Tier 2,"욕조 15종·사우나·암반욕·이벤트 복합시설","Nifty Onsen 2025 nationwide ranking",needs_official_crosscheck
+yokosuka-yurari,横須賀温泉 湯楽の里,요코스카온천 유라노사토,yokosuka,神奈川県,large_day_use_complex,Tier 2,"도쿄만 전망 노천·원천가케나가시·암반욕","Nifty Onsen 2025 nationwide ranking",needs_official_crosscheck
+makuhari-yurari,JFA夢フィールド 幕張温泉 湯楽の里,마쿠하리온천 유라노사토,chiba,千葉県,large_day_use_complex,Tier 2,"바다 조망 리조트형 노천·사우나·암반욕","Nifty Onsen 2025 nationwide ranking",needs_official_crosscheck
+kusatsu-otakinoyu,大滝乃湯,오타키노유,kusatsu,群馬県,public_bath_facility,Tier 1,"구사쓰 대표 당일치기, 맞춤탕/유황천 후보","Jalan 2026 top area seed",needs_source_crosscheck
+kusatsu-sainokawara,西の河原露天風呂,사이노카와라 노천탕,kusatsu,群馬県,open_air_public_bath,Tier 1,"대형 노천탕·관광동선 신호","Jalan 2026 top area seed",needs_source_crosscheck
+hakone-yuryo,箱根湯寮,하코네유료,hakone,神奈川県,large_day_use_complex,Tier 1,"하코네 당일치기, 대욕장/대절탕 후보","Jalan 2026 top area seed",needs_source_crosscheck
+hakone-tenzan,天山湯治郷,텐잔토지쿄,hakone,神奈川県,public_bath_facility,Tier 1,"하코네 탕치형 당일치기 시설, 노천/온천감 후보","Jalan 2026 top area seed",needs_source_crosscheck
+yugawara-soyu,湯河原惣湯 Books and Retreat,유가와라 소유,yugawara,神奈川県,wellness_spa,Tier 1,"공원·족탕·카페/리트리트형 당일치기 시설","Rakuten Top20 area article snippet",needs_official_crosscheck
+dogo-honkan,道後温泉本館,도고온천 본관,dogo,愛媛県,historic_public_bath,Tier 1,"역사형 공중탕 대표, 관광객 기대치/혼잡 신호 후보","Jalan 2026 top area seed",needs_official_crosscheck
+dogo-asukanoyu,道後温泉別館 飛鳥乃湯泉,도고온천 별관 아스카노유,dogo,愛媛県,historic_public_bath,Tier 1,"도고 공중탕 별관, 이용방식/대기 신호 후보","Jalan 2026 top area seed",needs_official_crosscheck
+arima-kin-no-yu,有馬本温泉 金の湯,아리마 금탕,arima,兵庫県,historic_public_bath,Tier 1,"금천 공중탕, 온천감/혼잡 신호 후보","Rakuten Top20 area seed",needs_official_crosscheck
+arima-gin-no-yu,有馬温泉 銀の湯,아리마 은탕,arima,兵庫県,historic_public_bath,Tier 2,"은천 공중탕, 금탕과 비교 가치","Rakuten Top20 area seed",needs_official_crosscheck
+shirahama-sakinoyu,崎の湯,사키노유,shirahama,和歌山県,open_air_public_bath,Tier 1,"바다 바로 앞 노천탕, 조망/운영조건 신호 후보","Rakuten Top20 area seed",needs_official_crosscheck
+ibusuki-saraku,砂むし会館 砂楽,이부스키 모래찜질회관 사라쿠,ibusuki,鹿児島県,sand_bath_facility,Tier 1,"모래찜질 대표 시설, 대기/체험/복장 신호 후보","facility model regional seed",needs_official_crosscheck
+noboribetsu-sagiriyu,登別温泉 さぎり湯,노보리베쓰 사기리유,noboribetsu,北海道,public_bath_facility,Tier 1,"노보리베쓰 공중탕, 유황천/로컬탕 신호 후보","regional high-value seed",needs_source_crosscheck
+beppu-hyotan,ひょうたん温泉,효탄온천,beppu,大分県,large_day_use_complex,Tier 1,"원천 100% 가케나가시, 가족탕·모래탕·무시유·식음 복합","existing facility sample, official site, Google/Jalan",sample_done_needs_deep_tagging
+beppu-takegawara,竹瓦温泉,타케가와라온천,beppu,大分県,historic_public_bath,Tier 1,"역사형 공중탕+모래탕, 예약/샤워/대기 신호 강함","existing facility sample, Beppu city official, Google/Jalan",sample_done_needs_deep_tagging
+beppu-sakurayu,別府桜湯,벳푸 사쿠라유,beppu,大分県,family_private_bath_facility,Tier 1,"가족탕 20종, 코인타이머식 온천수 교체 신호","existing facility sample, official site, Google/Jalan",sample_done_needs_deep_tagging

@@ -66,3 +66,15 @@ supabase/.temp/
 .gstack/
 .seo-cache/
 seo-audit-getbathtime/
+
+# local agent / visual QA outputs
+.codex-pet-runs/
+.superloopy/
+
+# raw onsen review exports are large local research inputs
+research/onsen-review-signals/**/*.csv
+research/onsen-review-signals/.DS_Store
+research/onsen-review-signals/**
+!research/onsen-review-signals/
+!research/onsen-review-signals/**/
+!research/onsen-review-signals/**/review_signal_summary*.json

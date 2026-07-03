@@ -1,0 +1,265 @@
+{
+  "accommodation_name": {
+    "ko": "유후인 ZEN",
+    "ja": "由布院ZEN",
+    "en_aliases": ["Yufuin ZEN", "Hanare-no-Yado Yufuin ZEN", "Yufuin ZEN - Adults only"]
+  },
+  "research_date": "2026-07-01",
+  "collection_brief": {
+    "direct_structured_review_sample_total": 298,
+    "platforms": {
+      "Jalan": 261,
+      "Agoda": 37
+    },
+    "onsen_related_rows_auto": 281,
+    "visible_or_api_review_counts": {
+      "Jalan": 261,
+      "Agoda_comments": 37
+    },
+    "data_quality": "B+: 298 directly structured review rows across Jalan and Agoda. It narrowly misses the 300+ A-grade threshold, but Jalan appears to cover the visible lodging review pool and signals are very concentrated.",
+    "note": "Agoda is accessible but small for this property. Unlike Onjuku Yagura, the core sample is Japanese OTA/Jalan."
+  },
+  "official_facts": {
+    "official_urls": [
+      "https://www.hanare-yufuin-zen.com/",
+      "https://www.hanare-yufuin-zen.com/en/",
+      "https://www.hanare-yufuin-zen.com/rooms/",
+      "https://www.jalan.net/yad348816/"
+    ],
+    "summary_ko": [
+      "공식 사이트와 Jalan 모두 전 객실이 독채/별채형이며, 전 객실에 100% 원천가케나가시 반노천탕이 있다고 안내한다.",
+      "공식 사이트는 유후인 분지 전망, 객실 반노천탕, 사라리한 피부 친화적 탕촉을 강조한다.",
+      "Jalan은 유후인온천(천연온천 100%), 온천가케나가시, 원천이라 조금 뜨거울 수 있고 지하수로 원하는 온도 조절 가능하다고 안내한다.",
+      "대욕장/가족탕 중심 숙소가 아니라 객실 반노천탕 중심 숙소로 보는 것이 안전하다."
+    ]
+  },
+  "review_signal_summary": [
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 179,
+      "source_count": 179,
+      "platform_count": 2,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal",
+      "interpretation_ko": "객실 반노천탕/객실 온천 신호가 매우 강하게 반복된다. ZEN은 전형적인 객실탕 중심형 숙소다."
+    },
+    {
+      "bath_area": "public_bath",
+      "bath_area_confidence": "unclear",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "neutral",
+      "mention_count": 3,
+      "source_count": 3,
+      "platform_count": 1,
+      "contradiction_level": "medium",
+      "review_signal_status": "insufficient",
+      "interpretation_ko": "대욕장이 있으면 좋겠다는 식의 언급은 있으나, 숙소의 핵심 경험은 대욕장이 아니라 객실 반노천탕이다."
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 212,
+      "source_count": 212,
+      "platform_count": 2,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal",
+      "interpretation_ko": "源泉, かけ流し, 泉質, ツルツル, 湯ざわり 계열 표현이 강하게 반복된다. 물성/원천 신호가 객실탕 신호와 결합되어 있다."
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "unclear",
+      "signal_type": "weak_onsen_feeling",
+      "signal_direction": "negative",
+      "mention_count": 2,
+      "source_count": 2,
+      "platform_count": 1,
+      "contradiction_level": "high",
+      "review_signal_status": "insufficient",
+      "interpretation_ko": "온천감 약함은 반복 신호가 아니다. 원천/탕질 긍정 신호가 압도적으로 많다."
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "chlorine_smell",
+      "signal_direction": "neutral",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient",
+      "interpretation_ko": "塩素, カルキ, chlorine, 염소 계열 반복 신호는 확인되지 않았다."
+    },
+    {
+      "bath_area": "private_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "positive",
+      "mention_count": 11,
+      "source_count": 11,
+      "platform_count": 2,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal",
+      "interpretation_ko": "프라이빗 경험은 공용 대절탕이 아니라 객실 반노천탕에서 나온다. Agoda 글로벌 후기에서도 private bath/in-room onsen 표현이 반복된다."
+    },
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "crowding",
+      "signal_direction": "positive",
+      "mention_count": 20,
+      "source_count": 20,
+      "platform_count": 2,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal",
+      "interpretation_ko": "자동 태그의 crowding 225건은 個室/プライベート 표현 때문에 과대 집계되었다. 수동 해석상 유의미한 신호는 '독채 객실과 객실탕으로 타인과 분리되는 체감'이다."
+    },
+    {
+      "bath_area": "unclear",
+      "bath_area_confidence": "unclear",
+      "signal_type": "booking_confusion",
+      "signal_direction": "mixed",
+      "mention_count": 12,
+      "source_count": 12,
+      "platform_count": 2,
+      "contradiction_level": "medium",
+      "review_signal_status": "weak_signal",
+      "interpretation_ko": "예약 혼선 자체보다는 택시/역 접근, 식사 추가, 현금 결제/입탕세, 체크인 안내 같은 운영성 신호가 일부 보인다."
+    }
+  ],
+  "operational_cautions": [
+    {
+      "issue": "source_temperature_adjustment",
+      "bath_area": "room_open_air_bath",
+      "evidence_level": "moderate",
+      "sample_count": 20,
+      "summary_ko": "원천이라 다소 뜨겁고 지하수/물로 조절한다는 신호가 공식과 후기에 함께 보인다."
+    },
+    {
+      "issue": "winter_cold",
+      "bath_area": "room_open_air_bath",
+      "evidence_level": "weak_to_moderate",
+      "sample_count": 7,
+      "summary_ko": "겨울 객실/욕실 냉기, 눈 오는 날 외탕 미사용 등 계절성 신호가 있다."
+    },
+    {
+      "issue": "insects",
+      "bath_area": "room_open_air_bath",
+      "evidence_level": "weak",
+      "sample_count": 3,
+      "summary_ko": "객실/야외 공간 벌레 언급이 일부 있으나 강한 반복 신호는 아니다."
+    },
+    {
+      "issue": "public_bath_absence_expectation",
+      "bath_area": "public_bath",
+      "evidence_level": "weak",
+      "sample_count": 3,
+      "summary_ko": "대욕장이 있으면 좋겠다는 언급이 일부 있다. 대욕장 기대 고객에게는 객실탕 중심 숙소임을 표시해야 한다."
+    }
+  ],
+  "evidence_examples": [
+    {
+      "signal_type": "official_facts",
+      "source_type": "official_site",
+      "source_url": "https://www.hanare-yufuin-zen.com/",
+      "language": "ja",
+      "short_paraphrase": "전 객실 독채, 전 객실 원천가케나가시 반노천탕과 유후인 분지 전망을 안내.",
+      "original_keyword": "源泉かけ流し / 客室半露天風呂 / 全室一戸建て離れ",
+      "review_date": null
+    },
+    {
+      "signal_type": "official_facts",
+      "source_type": "Jalan_official",
+      "source_url": "https://www.jalan.net/yad348816/",
+      "language": "ja",
+      "short_paraphrase": "전 객실 100% 원천가케나가시, 객실 온천, 원천이 조금 뜨거워 지하수로 조절 가능하다고 안내.",
+      "original_keyword": "全室１００％源泉かけ流し / 地下水 / お好きな温度",
+      "review_date": null
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Jalan_review",
+      "source_url": "https://www.jalan.net/yad348816/kuchikomi/archive/",
+      "language": "ja",
+      "short_paraphrase": "객실 반노천탕에 매우 만족했다는 커플 여행 후기.",
+      "original_keyword": "半露天風呂がいい / とても満足",
+      "review_date": "2025/5/1"
+    },
+    {
+      "signal_type": "water_texture",
+      "source_type": "Jalan_review",
+      "source_url": "https://www.jalan.net/yad348816/kuchikomi/archive/",
+      "language": "ja",
+      "short_paraphrase": "원천가케나가시 온천과 객실, 서비스 모두 만족했다는 재방문 후기.",
+      "original_keyword": "源泉掛け流しの温泉 / 全て大満足",
+      "review_date": "2025/4/9"
+    },
+    {
+      "signal_type": "water_texture",
+      "source_type": "Jalan_review",
+      "source_url": "https://www.jalan.net/yad348816/kuchikomi/archive/",
+      "language": "ja",
+      "short_paraphrase": "원천가케나가시이며 수질이 좋았다고 언급한 후기.",
+      "original_keyword": "源泉かけ流し / 泉質もよかった",
+      "review_date": "2025/3/24"
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Jalan_review",
+      "source_url": "https://www.jalan.net/yad348816/kuchikomi/archive/",
+      "language": "ja",
+      "short_paraphrase": "내탕과 노천탕이 있는 객실로 업그레이드되어 두 탕을 즐겼고 피부가 매끈해졌다는 후기.",
+      "original_keyword": "内風呂と露天風呂 / ツルツル",
+      "review_date": "2025/3/6"
+    },
+    {
+      "signal_type": "source_temperature_adjustment",
+      "source_type": "Jalan_review",
+      "source_url": "https://www.jalan.net/yad348816/kuchikomi/archive/",
+      "language": "ja",
+      "short_paraphrase": "원천은 뜨겁지만 지하수로 조절 가능하고 욕조가 넓었다는 후기.",
+      "original_keyword": "源泉 / 熱め / 地下水で調整",
+      "review_date": "2023/6/29"
+    },
+    {
+      "signal_type": "public_bath_hot_spring",
+      "source_type": "Jalan_review",
+      "source_url": "https://www.jalan.net/yad348816/kuchikomi/archive/",
+      "language": "ja",
+      "short_paraphrase": "대욕장이 있으면 좋겠지만 객실탕은 넓고 만족했다는 후기.",
+      "original_keyword": "大浴場があれば / 部屋のお風呂は広くて満足",
+      "review_date": "2023/8/12"
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Agoda_review",
+      "source_url": "https://www.agoda.com/en-za/hanare-no-yado-yufuin-zen/hotel/yufu-jp.html",
+      "language": "en",
+      "short_paraphrase": "객실 내 온천이 경험의 하이라이트였고 직원 응대가 좋았다는 글로벌 후기.",
+      "original_keyword": "in-room onsen / exceptional customer service",
+      "review_date": "September 2024"
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Agoda_review",
+      "source_url": "https://www.agoda.com/en-za/hanare-no-yado-yufuin-zen/hotel/yufu-jp.html",
+      "language": "ko",
+      "short_paraphrase": "객실에 private bath가 있어 혼자 온천을 즐기기 좋았다는 한국어 계열 후기.",
+      "original_keyword": "private bath / hot springs alone",
+      "review_date": "October 2024"
+    }
+  ],
+  "bathtime_interpretation_ko": [
+    "유후인 ZEN은 객실 반노천탕 중심형이라는 신호가 매우 강하게 반복됩니다. 공식 정보와 Jalan 후기 모두 전 객실 원천가케나가시 반노천탕, 독채형 객실, 프라이빗 이용성을 같은 방향으로 보여줍니다.",
+    "온천감은 '원천', '가케나가시', '泉質', 'ツルツル' 표현이 충분히 반복되어 강한 긍정 신호로 볼 수 있습니다. 다만 원천이 뜨거워 지하수로 온도 조절한다는 점은 장점이자 사용 팁으로 함께 표시하는 편이 좋습니다.",
+    "대욕장/가족탕을 기대하는 고객에게는 맞지 않을 수 있습니다. Bathtime에는 '전 객실 반노천 원천가케나가시, 대욕장 중심 아님, 겨울 냉기와 벌레 일부 주의'로 보여주는 것이 적합합니다."
+  ],
+  "files": {
+    "combined_csv": "research/onsen-review-signals/yufuin-zen/combined_review_sample_2026-07-01.csv",
+    "agoda_raw_pages": "research/onsen-review-signals/yufuin-zen/raw/agoda_hotelreviews_pages_raw.json"
+  }
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Bathtime Onsen Review Signal Researcher"
+  short_description: "온천 후기 신호를 정밀 표본조사로 가공"
+  default_prompt: "Use $bathtime-onsen-review-signal-researcher to research one Japanese ryokan or hotel and produce Bathtime-ready onsen review signals."

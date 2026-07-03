@@ -1,0 +1,49 @@
+slug,name_ja,name_ko_or_en,area_slug,prefecture,facility_type,initial_tier,initial_onsen_facility_signals,source_basis,verification_status
+kurokawa-nyuto-tegata,黒川温泉 入湯手形,Kurokawa Onsen Nyuto Tegata,kurokawa,熊本県,open_air_bath_route,Tier 1,25개 료칸 노천 중 3곳 선택형 탕순례 상품,Kurokawa official tegata source,official_checked
+kurokawa-day-use-status,黒川温泉 日帰り入浴情報,Kurokawa day-use bath status,kurokawa,熊本県,open_air_bath_route,Tier 1,혼잡과 휴업 상태를 공식 표시하는 노천 순례 허브,Kurokawa official day-use status source,official_checked
+kurokawa-kounoyu-dayuse,こうの湯 日帰り入浴,Kounoyu day-use bath,kurokawa,熊本県,public_bath_facility,Tier 1,노천탕 당일입욕과 탕순례 후보,Kurokawa official day-use status source,needs_official_crosscheck
+kurokawa-senomoto-kogen-dayuse,瀬の本高原ホテル 日帰り入浴,Senomoto Kogen Hotel day-use bath,kurokawa,熊本県,public_bath_facility,Tier 1,고원 전망 노천 당일온천 후보,Kurokawa official day-use status source,needs_official_crosscheck
+kurokawa-yamamizuki-dayuse,山みず木 日帰り入浴,Yamamizuki day-use bath,kurokawa,熊本県,open_air_public_bath,Tier 1,자연형 노천탕 체험 후보,Kurokawa regional source,needs_source_crosscheck
+kurokawa-ikoi-dayuse,いこい旅館 日帰り入浴,Ikoi Ryokan day-use bath,kurokawa,熊本県,open_air_public_bath,Tier 1,명물 노천탕 탕순례 후보,Kurokawa regional source,needs_source_crosscheck
+kurokawa-kurokawaso-dayuse,黒川荘 日帰り入浴,Kurokawaso day-use bath,kurokawa,熊本県,open_air_public_bath,Tier 1,대형 노천탕과 휴업 정보 확인 필요,Kurokawa official day-use status source,needs_official_crosscheck
+kurokawa-okunoyu-dayuse,旅館奥の湯 日帰り入浴,Okunoyu day-use bath,kurokawa,熊本県,open_air_public_bath,Tier 2,당일입욕 가능 여부 변동성이 큰 노천 후보,Kurokawa official day-use status source,needs_official_crosscheck
+ibusuki-healthyland,ヘルシーランド温泉保養館,Healthy Land Onsen Hoyo-kan,ibusuki,鹿児島県,public_bath_facility,Tier 2,대중 온천 보양관과 절경 노천 연계 후보,Ibusuki tourism source,needs_official_crosscheck
+ibusuki-kokoro-no-yu,指宿こころの湯,Ibusuki Kokoro no Yu,ibusuki,鹿児島県,large_day_use_complex,Tier 1,대욕장 암반욕 가족탕 병설형 대형 시설 후보,regional facility source,needs_official_crosscheck
+ibusuki-muranoyu,村之湯温泉,Muranoyu Onsen,ibusuki,鹿児島県,historic_public_bath,Tier 2,지역 공동탕과 옛 온천문화 후보,regional tourism source,needs_source_crosscheck
+ibusuki-yajigayu,弥次ヶ湯温泉,Yajigayu Onsen,ibusuki,鹿児島県,historic_public_bath,Tier 2,현지형 공중탕과 관광객 기대차 검증 후보,regional tourism source,needs_source_crosscheck
+unzen-kojigoku-onsenkan,小地獄温泉館,Kojigoku Onsenkan,unzen,長崎県,public_bath_facility,Tier 1,백탁 유황 원천 직접 이용과 낮은 요금 신호,official Kojigoku source,official_checked
+unzen-yokayuu,雲仙よか湯,Unzen Yokayu,unzen,長崎県,public_bath_facility,Tier 1,가족탕과 당일온천 후보,Unzen tourism daytrip source,needs_official_crosscheck
+unzen-shinyu-kyodoyokujo,新湯共同浴場,Shinyu Public Bath,unzen,長崎県,historic_public_bath,Tier 2,운젠 공동탕과 현지형 이용 신호,Unzen tourism daytrip source,needs_source_crosscheck
+unzen-kojigoku-footbath,雲仙地獄 足蒸し,Unzen Jigoku foot steam,unzen,長崎県,steam_bath_facility,Tier 2,지옥지대 연계 족증기 체험 후보,Unzen tourism source,needs_source_crosscheck
+unzen-seiunso-dayuse,青雲荘 日帰り入浴,Seiunso day-use bath,unzen,長崎県,public_bath_facility,Tier 2,소지옥 인근 백탁 유황 당일온천 후보,Unzen tourism daytrip source,needs_official_crosscheck
+nyuto-tsurunoyu-dayuse,鶴の湯温泉 日帰り入浴,Tsurunoyu day-use bath,nyuto,秋田県,historic_public_bath,Tier 1,뉴토 상징 노천탕과 혼욕 기대차 후보,Nyuto official source,needs_official_crosscheck
+nyuto-taenoyu-dayuse,妙乃湯 日帰り入浴,Taenoyu day-use bath,nyuto,秋田県,open_air_public_bath,Tier 1,금탕은탕과 여성친화 노천탕 후보,Nyuto official source,needs_official_crosscheck
+nyuto-kuroyu-dayuse,黒湯温泉 日帰り入浴,Kuroyu day-use bath,nyuto,秋田県,historic_public_bath,Tier 1,계절형 비탕 원천과 접근성 변수 후보,Nyuto official source,needs_official_crosscheck
+nyuto-ganiba-dayuse,蟹場温泉 日帰り入浴,Ganiba day-use bath,nyuto,秋田県,open_air_public_bath,Tier 1,숲속 노천탕과 탕순례 후보,Nyuto official source,needs_official_crosscheck
+nyuto-ogama-dayuse,大釜温泉 日帰り入浴,Ogama day-use bath,nyuto,秋田県,historic_public_bath,Tier 2,학교 건물 재활용 공동탕 문화 후보,Nyuto official source,needs_official_crosscheck
+nyuto-magoroku-dayuse,孫六温泉 日帰り入浴,Magoroku day-use bath,nyuto,秋田県,historic_public_bath,Tier 2,탕치형 다욕장과 접근성 후보,Nyuto official source,needs_official_crosscheck
+nyuto-kyukamura-dayuse,休暇村乳頭温泉郷 日帰り入浴,Kyukamura Nyuto day-use bath,nyuto,秋田県,public_bath_facility,Tier 1,두 원천과 현대적 편의성을 가진 당일온천,Qkamura travel magazine source,needs_official_crosscheck
+nyuto-yumeguri-cho,乳頭温泉郷 湯めぐり帖,Nyuto Yumeguri Pass,nyuto,秋田県,open_air_bath_route,Tier 1,숙박자 한정 탕순례 패스와 이용 조건 신호,Qkamura official yumeguri source,official_checked
+izu-nagaoka-kobonoyu-nagaoka,弘法の湯 長岡店,Kobo no Yu Nagaoka,izu-nagaoka,静岡県,public_bath_facility,Tier 2,암반욕 대욕장 휴게형 온천시설 후보,regional facility source,needs_source_crosscheck
+izu-nagaoka-kobonoyu-honten,弘法の湯 本店,Kobo no Yu Honten,izu-nagaoka,静岡県,public_bath_facility,Tier 2,라돈 온천과 휴게형 당일이용 후보,regional facility source,needs_source_crosscheck
+izu-nagaoka-yurakkusu,湯らっくすのゆ,Yurakkusu no Yu,izu-nagaoka,静岡県,public_bath_facility,Tier 3,지역형 당일온천과 접근성 후보,regional source,needs_source_crosscheck
+awara-saintpia,セントピアあわら,Saintpia Awara,awara,福井県,public_bath_facility,Tier 1,아와라 대표 당일온천과 공공시설 수요 후보,Awara tourism source,needs_official_crosscheck
+awara-ashiyu,芦湯,Ashiyu,awara,福井県,footbath,Tier 1,무료 족욕과 역세권 체류 신호,Awara tourism source,needs_official_crosscheck
+awara-yukemuri-yokocho,あわら温泉屋台村 湯けむり横丁,Yukemuri Yokocho,awara,福井県,food_steam,Tier 2,온천가 야타이와 야간 체류 수요 후보,Awara tourism source,needs_source_crosscheck
+kinosaki-satono-yu,城崎温泉 さとの湯,Satono-yu,kinosaki,兵庫県,historic_public_bath,Tier 1,기노사키 외탕 순례의 역앞 대형탕,Kinosaki tourism source,needs_official_crosscheck
+kinosaki-jizou-yu,城崎温泉 地蔵湯,Jizo-yu,kinosaki,兵庫県,historic_public_bath,Tier 1,기노사키 칠외탕 중 가족형 상징탕,Kinosaki tourism source,needs_official_crosscheck
+kinosaki-yanagi-yu,城崎温泉 柳湯,Yanagi-yu,kinosaki,兵庫県,historic_public_bath,Tier 1,소형 외탕과 온천가 순례 후보,Kinosaki tourism source,needs_official_crosscheck
+kinosaki-ichino-yu,城崎温泉 一の湯,Ichino-yu,kinosaki,兵庫県,historic_public_bath,Tier 1,동굴탕과 대표 외탕 순례 신호,Kinosaki tourism source,needs_official_crosscheck
+kinosaki-goshono-yu,城崎温泉 御所の湯,Goshono-yu,kinosaki,兵庫県,historic_public_bath,Tier 1,노천과 정원 이미지가 강한 대표 외탕,Kinosaki tourism source,needs_official_crosscheck
+kinosaki-mandara-yu,城崎温泉 まんだら湯,Mandara-yu,kinosaki,兵庫県,historic_public_bath,Tier 1,칠외탕 순례와 작은 탕 기대차 후보,Kinosaki tourism source,needs_official_crosscheck
+kinosaki-kouno-yu,城崎温泉 鴻の湯,Kouno-yu,kinosaki,兵庫県,historic_public_bath,Tier 1,기노사키 발상지 전승과 노천탕 후보,Kinosaki tourism source,needs_official_crosscheck
+kirishima-sakura-sakura-dayuse,さくらさくら温泉 日帰り入浴,Sakura Sakura Onsen day-use,kirishima,鹿児島県,public_bath_facility,Tier 1,천연 진흙팩 노천탕이라는 체험형 신호,regional facility source,needs_official_crosscheck
+kirishima-maeda-onsen,前田温泉 カジロが湯,Maeda Onsen Kajiroga-yu,kirishima,鹿児島県,public_bath_facility,Tier 1,기리시마 온천시장 인근 당일온천 후보,regional tourism source,needs_source_crosscheck
+kirishima-shinyu-onsen,新湯温泉 新燃荘,Shinmoe-so day-use,kirishima,鹿児島県,public_bath_facility,Tier 1,강한 유황천과 비탕형 당일온천 후보,regional tourism source,needs_official_crosscheck
+kirishima-maruo-taki-footbath,丸尾滝周辺 足湯,Maruo area footbath,kirishima,鹿児島県,footbath,Tier 3,폭포와 온천가 산책 연계 족욕 후보,regional tourism source,needs_source_crosscheck
+kirishima-hinata-no-yu,日当山温泉郷 家族湯,Hinata-yama family baths,kirishima,鹿児島県,family_private_bath_facility,Tier 1,가족탕 밀집 지역과 프라이빗탕 수요 후보,regional tourism source,needs_source_crosscheck
+obama-hot-foot-105,小浜温泉 ほっとふっと105,Hot Foot 105,obama-unzen,長崎県,footbath,Tier 1,일본 최장급 족욕과 해안 관광 동선 후보,regional tourism source,needs_official_crosscheck
+obama-naminoyu-akane,小浜温泉 波の湯 茜,Nami no Yu Akane,obama-unzen,長崎県,open_air_public_bath,Tier 1,바다 인접 노천탕과 조망형 당일온천 후보,regional tourism source,needs_official_crosscheck
+obama-wakihama-kyodoyokujo,小浜温泉 脇浜共同浴場,Wakihama Public Bath,obama-unzen,長崎県,historic_public_bath,Tier 2,지역 공동탕과 관광객 기대차 검증 후보,regional tourism source,needs_source_crosscheck
+ibusuki-ekimae-ashiyu,指宿駅前足湯,Ibusuki Station Footbath,ibusuki,鹿児島県,footbath,Tier 3,역앞 무료 족욕과 이동 동선 후보,regional tourism source,needs_source_crosscheck
+kirishima-onsen-ichiba-footbath,霧島温泉市場 足湯,Kirishima Onsen Market Footbath,kirishima,鹿児島県,footbath,Tier 2,온천시장 중심 족욕과 먹거리 동선 후보,regional tourism source,needs_source_crosscheck

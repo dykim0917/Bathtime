@@ -100,7 +100,7 @@ export function LoginPanel() {
     <section className="auth-box">
       <div className="auth-copy">
         <h2>Google 계정으로 계속하기</h2>
-        <p>저장한 콘텐츠와 제보를 계정에 연결합니다.</p>
+        <p>찜한 온천과 숙소 후보를 계정에 연결합니다.</p>
       </div>
       {!supabase ? <p className="auth-warning">Supabase 로그인 환경변수가 필요합니다.</p> : null}
       {message ? <p className={status === 'error' ? 'auth-warning' : 'auth-note'}>{message}</p> : null}

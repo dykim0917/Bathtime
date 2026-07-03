@@ -1,0 +1,177 @@
+{
+  "accommodation_name": "湯布院山荘 吾亦紅 / 유후인 산소 와레모코우",
+  "research_date": "2026-07-02",
+  "official_facts": {
+    "official_url": "not_confirmed_in_this_pass",
+    "jalan_url": "https://www.jalan.net/yad398805/",
+    "facts": [
+      "Jalan 기준 페ット 동반 가능 숙소로 소개됨.",
+      "Jalan 설명 기준 전실 별채, 원천 100%의 히노키와 바위 노천탕 포함으로 소개됨.",
+      "객실 노천탕 중심형 숙소로 1차 분류됨. 공식 사이트 별도 확인은 보강 필요."
+    ]
+  },
+  "collection_briefing": [
+    {
+      "source": "Jalan",
+      "visible_review_count": 557,
+      "rating": "4.2",
+      "directly_read_reviews": 557,
+      "onsen_related_reviews": 549,
+      "access_status": "direct_fetch_full_or_near_full_read + archive_probe",
+      "notes": "Current pages 1-20 and archive pages 1-20 parsed; unique review bodies match visible pool seed 557."
+    },
+    {
+      "source": "Google/Naver/Global OTA",
+      "visible_review_count": "pending",
+      "rating": "pending",
+      "directly_read_reviews": 0,
+      "onsen_related_reviews": 0,
+      "access_status": "pending_aside_or_direct_search",
+      "notes": "1차 산출물에는 미포함."
+    }
+  ],
+  "review_signal_summary": [
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 414,
+      "source_count": 414,
+      "platform_count": 1,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 38,
+      "source_count": 38,
+      "platform_count": 1,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "unclear",
+      "signal_type": "weak_onsen_feeling",
+      "signal_direction": "negative",
+      "mention_count": 3,
+      "source_count": 3,
+      "platform_count": 1,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "unclear",
+      "signal_type": "chlorine_smell",
+      "signal_direction": "negative",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 1,
+      "contradiction_level": "low",
+      "review_signal_status": "insufficient"
+    },
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "positive",
+      "mention_count": 13,
+      "source_count": 13,
+      "platform_count": 1,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "booking_confusion",
+      "signal_direction": "mixed",
+      "mention_count": 329,
+      "source_count": 329,
+      "platform_count": 1,
+      "contradiction_level": "medium",
+      "review_signal_status": "strong_signal"
+    }
+  ],
+  "attention_signals": [
+    {
+      "issue": "반려견/펫 동반 운영 맥락",
+      "bath_area": "facility_wide",
+      "evidence_level": "repeated",
+      "summary": "펫 동반 목적 후기가 많아 온천 평가와 반려견 동반 편의 평가가 섞임.",
+      "sample_count": 304
+    },
+    {
+      "issue": "객실 노천탕 온도/계절 편의",
+      "bath_area": "room_open_air_bath",
+      "evidence_level": "repeated",
+      "summary": "노천탕 특성상 온도, 추위, 벌레, 비 관련 주의가 반복됨.",
+      "sample_count": 77
+    },
+    {
+      "issue": "예약/안내/펫 관련 혼동",
+      "bath_area": "facility_wide",
+      "evidence_level": "repeated",
+      "summary": "예약, 안내, 펫 동반 조건 관련 표현이 반복되어 운영 정보 확인 가치가 큼.",
+      "sample_count": 326
+    }
+  ],
+  "evidence_examples": [
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad398805/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "객실 노천탕을 반복 이용하며 만족했다는 후기.",
+      "original_keyword": "部屋 / 露天風呂",
+      "review_date": "2025/11/5"
+    },
+    {
+      "signal_type": "private_bath_experience",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad398805/kuchikomi/archive/",
+      "language": "ja",
+      "short_paraphrase": "객실/별채에서 프라이빗하게 쉬었다는 후기.",
+      "original_keyword": "ゆっくり / 気にせず",
+      "review_date": "2024/9/24"
+    },
+    {
+      "signal_type": "water_texture",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad398805/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "물 질감이나 피부감에 대한 긍정 표현이 있는 후기.",
+      "original_keyword": "肌 / 泉質",
+      "review_date": "2026/4/1"
+    },
+    {
+      "signal_type": "booking_confusion",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad398805/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "반려견 동반 조건과 숙소 선택 맥락이 드러나는 후기.",
+      "original_keyword": "犬 / ペット",
+      "review_date": "2025/12/19"
+    },
+    {
+      "signal_type": "weak_onsen_feeling",
+      "source_type": "Jalan review",
+      "source_url": "https://www.jalan.net/yad398805/kuchikomi/",
+      "language": "ja",
+      "short_paraphrase": "온천/목욕 기대치가 맞지 않았다는 소수 후기.",
+      "original_keyword": "期待外れ",
+      "review_date": "2025/11/5"
+    }
+  ],
+  "bathtime_interpretation": "Jalan 557건 본문 기준으로 와레모코우는 객실 노천탕 중심성이 강하게 반복됩니다. 온천 신호는 객실의 히노키/바위 노천탕과 프라이빗 이용성에 집중되며, 반려견 동반 숙소 특성상 온천 만족과 펫 동반 편의가 함께 평가되는 구조입니다. Bathtime에는 “객실 노천탕 강점”과 “펫 동반/계절 노천탕 주의”를 함께 분리 표기하는 편이 좋습니다.",
+  "gaps": [
+    "공식 사이트 별도 확인 필요.",
+    "Google/Naver/Agoda/TripAdvisor 직접 본문 보강 필요.",
+    "Jalan 단일 플랫폼 기반이므로 platform_count는 낮게 유지."
+  ]
+}
