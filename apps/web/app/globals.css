@@ -100,6 +100,7 @@
   --bt-space-16: 64px;
   --bt-space-20: 80px;
   --bt-space-24: 96px;
+  --bt-mobile-header-height: 72px;
   --bt-radius-xs: 4px;
   --bt-radius-sm: 6px;
   --bt-radius-md: 8px;
@@ -976,19 +977,42 @@ p {
 }
 
 .onsen-home {
+  position: relative;
   display: grid;
   min-height: calc(100vh - 84px);
   align-items: start;
-  padding: clamp(30px, 4vw, 52px) clamp(24px, 6vw, 92px) clamp(42px, 6vw, 82px);
+  overflow: visible;
+  padding: 0 clamp(24px, 6vw, 92px) clamp(42px, 6vw, 82px);
+}
+
+.onsen-home::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: clamp(96px, 10vw, 116px);
+  background:
+    linear-gradient(180deg, rgba(31, 43, 40, 0.2), rgba(31, 43, 40, 0.1)),
+    url('/images/about/bathtime-about-hero.jpg') center 48% / cover;
+}
+
+.onsen-home::after {
+  content: '';
+  position: absolute;
+  inset: clamp(62px, 7vw, 78px) 0 auto;
+  height: clamp(36px, 5vw, 56px);
+  background: linear-gradient(180deg, rgba(251, 250, 246, 0), var(--bt-color-canvas));
 }
 
 .onsen-search-hero {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   align-items: center;
-  gap: clamp(28px, 4vw, 48px);
+  gap: var(--bt-space-3);
   width: min(980px, 100%);
   margin-inline: auto;
+  padding-top: clamp(18px, 3vw, 26px);
   text-align: center;
 }
 
@@ -998,10 +1022,16 @@ p {
   display: grid;
   justify-items: center;
   min-width: 0;
+  min-height: 100px;
+  align-content: start;
 }
 
 .onsen-hero-copy-block:has(.onsen-mobile-search-sheet) {
   z-index: 90;
+}
+
+.onsen-search-hero:has(.onsen-mobile-search-sheet) {
+  z-index: 130;
 }
 
 .onsen-search-hero .onsen-filter-stack,
@@ -1132,6 +1162,27 @@ p {
   line-height: var(--bt-leading-body);
 }
 
+.onsen-search-hero > .onsen-hero-copy-block > .onsen-kicker {
+  color: rgba(255, 253, 248, 0.86);
+  font-size: 13px;
+  font-weight: var(--bt-weight-semibold);
+  margin-bottom: var(--bt-space-2);
+}
+
+.onsen-search-hero > .onsen-hero-copy-block > h1 {
+  max-width: min(720px, calc(100vw - 48px));
+  color: var(--bt-color-on-primary);
+  font-family: var(--bt-font-sans);
+  font-size: clamp(24px, 3.2vw, 34px);
+  font-weight: var(--bt-weight-semibold);
+  line-height: 1.18;
+  text-shadow: 0 2px 18px rgba(31, 43, 40, 0.28);
+}
+
+.onsen-search-hero .onsen-search-box-airbnb {
+  margin-top: clamp(14px, 2.2vw, 22px);
+}
+
 .onsen-results-page,
 .onsen-detail-page {
   display: grid;
@@ -1139,6 +1190,54 @@ p {
   width: min(1180px, calc(100% - clamp(32px, 7vw, 112px)));
   margin: 0 auto;
   padding: clamp(28px, 4vw, 54px) 0 96px;
+}
+
+.onsen-detail-search {
+  position: relative;
+  z-index: 8;
+  display: grid;
+  justify-items: center;
+  width: 100%;
+}
+
+.onsen-detail-search:has(.onsen-mobile-search-sheet) {
+  z-index: 130;
+}
+
+.onsen-detail-search .onsen-search-box-airbnb {
+  width: min(760px, 100%);
+  margin-top: 0;
+}
+
+.onsen-detail-filter-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1fr) minmax(0, 1.12fr);
+  gap: var(--bt-space-4);
+  align-items: start;
+  border: 1px solid var(--bt-color-border);
+  border-radius: var(--bt-radius-lg);
+  background: var(--bt-surface-default);
+  padding: var(--bt-space-4);
+  box-shadow: var(--bt-shadow-soft);
+}
+
+.onsen-detail-filter-group {
+  display: grid;
+  gap: var(--bt-space-3);
+  min-width: 0;
+}
+
+.onsen-detail-filter-group > span {
+  color: var(--bt-color-muted);
+  font-size: var(--bt-text-meta);
+  font-weight: var(--bt-weight-semibold);
+  line-height: var(--bt-leading-ui);
+}
+
+.onsen-detail-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bt-space-2);
 }
 
 .onsen-results-hero {
@@ -6187,6 +6286,10 @@ p {
     grid-template-columns: 1fr;
   }
 
+  .onsen-detail-filter-panel {
+    grid-template-columns: 1fr;
+  }
+
   .onsen-home-visual {
     min-height: 420px;
   }
@@ -6305,12 +6408,13 @@ p {
 
   .onsen-home {
     min-height: calc(100svh - 72px);
-    padding: 34px 18px 56px;
+    padding: 0 18px 56px;
   }
 
   .onsen-search-hero {
     grid-template-columns: 1fr;
-    gap: var(--bt-space-6);
+    gap: var(--bt-space-3);
+    padding-top: var(--bt-space-5);
   }
 
   .onsen-home-visual {
@@ -6355,6 +6459,29 @@ p {
   .onsen-source-list,
   .onsen-review-choice-grid {
     grid-template-columns: 1fr;
+  }
+
+  .onsen-detail-search .onsen-search-box-airbnb {
+    width: 100%;
+  }
+
+  .onsen-detail-filter-panel {
+    grid-template-columns: 1fr;
+    gap: var(--bt-space-5);
+    border-radius: var(--bt-radius-md);
+    padding: var(--bt-space-4);
+  }
+
+  .onsen-detail-filter-row {
+    flex-wrap: nowrap;
+    margin-inline: calc(var(--bt-space-4) * -1);
+    overflow-x: auto;
+    padding-inline: var(--bt-space-4);
+    scrollbar-width: none;
+  }
+
+  .onsen-detail-filter-row::-webkit-scrollbar {
+    display: none;
   }
 
   .onsen-results-titlebar {
@@ -6498,7 +6625,10 @@ p {
   }
 
   .onsen-mobile-search-sheet {
+    inset: 0;
+    z-index: 120;
     display: block;
+    padding-top: max(var(--bt-space-4), env(safe-area-inset-top));
   }
 
   .onsen-mobile-search-sheet .onsen-search-panel-content {
