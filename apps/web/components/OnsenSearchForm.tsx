@@ -4,13 +4,9 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { ClockCounterClockwise, MagnifyingGlass, MapPin, X } from '@phosphor-icons/react';
 import { useEffect, useMemo, useRef, useState } from 'react';
+import type { OnsenSearchSuggestion } from '@web/lib/onsenSearch';
 
-export type OnsenSearchSuggestion = {
-  label: string;
-  href: string;
-  description?: string;
-  kind: 'region' | 'stay' | 'keyword';
-};
+export type { OnsenSearchSuggestion } from '@web/lib/onsenSearch';
 
 type PopularSearch = {
   label: string;
