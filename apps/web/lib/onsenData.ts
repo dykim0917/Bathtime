@@ -6,6 +6,10 @@ import {
   deriveOnsenContexts,
   enrichOnsenCandidate,
   getDefaultOnsenLocation,
+  getOnsenAreaLabel,
+  getOnsenCityLabel,
+  getOnsenPrefectureLabel,
+  getOnsenRegionGroupLabel,
   normalizeOnsenContexts,
   type OnsenLocation,
 } from './onsenTaxonomy';
@@ -170,20 +174,24 @@ function createNotice(row: OnsenAccommodationRow, notes: string[]) {
 
 function mapLocation(row: OnsenAccommodationRow): OnsenLocation {
   const fallback = getDefaultOnsenLocation(row.onsen_area ?? row.region, row.area);
-  const regionGroupLabel = row.region_group === 'kyushu' ? '규슈' : fallback.regionGroupLabel;
-  const prefectureLabel = row.prefecture === 'oita' ? '오이타현' : fallback.prefectureLabel;
-  const cityLabel = row.city === 'yufu' ? '유후시' : fallback.cityLabel;
-  const onsenAreaLabel = row.onsen_area === 'yufuin' ? '유후인' : fallback.onsenAreaLabel;
+  const regionGroup = row.region_group ?? fallback.regionGroup;
+  const prefecture = row.prefecture ?? fallback.prefecture;
+  const city = row.city ?? fallback.city;
+  const onsenArea = row.onsen_area ?? fallback.onsenArea;
+  const regionGroupLabel = getOnsenRegionGroupLabel(regionGroup);
+  const prefectureLabel = getOnsenPrefectureLabel(prefecture);
+  const cityLabel = getOnsenCityLabel(city);
+  const onsenAreaLabel = getOnsenAreaLabel(onsenArea);
 
   return {
     country: row.country === 'JP' ? 'JP' : fallback.country,
-    regionGroup: row.region_group === 'kyushu' ? 'kyushu' : fallback.regionGroup,
+    regionGroup: fallback.regionGroup === regionGroup ? fallback.regionGroup : (regionGroup as OnsenLocation['regionGroup']),
     regionGroupLabel,
-    prefecture: row.prefecture ?? fallback.prefecture,
+    prefecture,
     prefectureLabel,
-    city: row.city ?? fallback.city,
+    city,
     cityLabel,
-    onsenArea: row.onsen_area ?? fallback.onsenArea,
+    onsenArea,
     onsenAreaLabel,
     display: `${regionGroupLabel} · ${prefectureLabel} · ${onsenAreaLabel}`,
   };
