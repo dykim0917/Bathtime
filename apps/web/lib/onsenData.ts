@@ -86,13 +86,16 @@ function readSupabaseServerConfig() {
   const env = readServerEnv();
   const supabaseUrl = env.NEXT_PUBLIC_SUPABASE_URL?.trim() ?? env.EXPO_PUBLIC_SUPABASE_URL?.trim();
   const restUrl = env.CONTENT_DB_REST_URL?.trim() ?? (supabaseUrl ? `${supabaseUrl.replace(/\/+$/, '')}/rest/v1` : '');
-  const serviceKey = env.CONTENT_DB_SERVICE_ROLE_KEY?.trim();
+  const apiKey =
+    env.CONTENT_DB_SERVICE_ROLE_KEY?.trim() ??
+    env.NEXT_PUBLIC_SUPABASE_ANON_KEY?.trim() ??
+    env.EXPO_PUBLIC_SUPABASE_ANON_KEY?.trim();
 
-  if (!restUrl || !serviceKey) return null;
+  if (!restUrl || !apiKey) return null;
 
   return {
     restUrl: restUrl.replace(/\/+$/, ''),
-    serviceKey,
+    apiKey,
   };
 }
 
@@ -307,14 +310,14 @@ export async function readOnsenCandidates(): Promise<OnsenCandidate[]> {
     'select',
     'slug,name,ja_name,region,area,country,region_group,prefecture,city,onsen_area,travel_contexts,bath_contexts,water_criteria,summary,primary_bath,water_use_status,water_source_type,bath_scope,operation_notes,evidence_counts,evidence_grade,evidence_note,status,content_updated_at,updated_at'
   );
-  url.searchParams.set('status', 'neq.retired');
+  url.searchParams.set('status', 'eq.active');
   url.searchParams.set('order', 'region.asc,name.asc');
 
   try {
     const response = await fetch(url, {
       headers: {
-        apikey: config.serviceKey,
-        authorization: `Bearer ${config.serviceKey}`,
+        apikey: config.apiKey,
+        authorization: `Bearer ${config.apiKey}`,
       },
       next: { revalidate: 60, tags: ['onsen-accommodations'] },
     });
