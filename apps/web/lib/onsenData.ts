@@ -82,6 +82,7 @@ const platformLabels: Record<string, string> = {
   tripadvisor: '트립어드바이저',
   agoda: '아고다',
   yahoo_travel: '야후 트래블',
+  relux: '리럭스',
 };
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -131,15 +132,28 @@ function normalizeVerdictItem(value: unknown): OnsenVerdictItem | null {
   };
 }
 
+function getVerdictDenominator(item: OnsenVerdictItem, briefing: OnsenVerdict['briefing']) {
+  return item.counts.denominator === 'experiences_read' ? briefing.experiencesRead : briefing.onsenRelated;
+}
+
 function normalizeVerdict(row: OnsenVerdictRow): OnsenVerdict | null {
   if (row.level === 'draft') return null;
 
   const briefing = isRecord(row.briefing) ? row.briefing : {};
+  const normalizedBriefing = {
+    experiencesRead: normalizeNumber(briefing.experiences_read ?? briefing.experiencesRead),
+    onsenRelated: normalizeNumber(briefing.onsen_related ?? briefing.onsenRelated),
+    platforms: normalizeStringArray(briefing.platforms).map((platform) => platformLabels[platform] ?? platform),
+  };
   const platforms = normalizeStringArray(briefing.platforms).map((platform) => platformLabels[platform] ?? platform);
   const items = Array.isArray(row.items)
     ? row.items
         .map(normalizeVerdictItem)
         .filter((item): item is OnsenVerdictItem => Boolean(item))
+        .filter((item) => {
+          const denominator = getVerdictDenominator(item, normalizedBriefing);
+          return typeof denominator !== 'number' || item.counts.mentions <= denominator;
+        })
         .sort((a, b) => a.order - b.order)
     : [];
 
@@ -147,8 +161,7 @@ function normalizeVerdict(row: OnsenVerdictRow): OnsenVerdict | null {
     level: row.level,
     headline: row.headline,
     briefing: {
-      experiencesRead: normalizeNumber(briefing.experiences_read ?? briefing.experiencesRead),
-      onsenRelated: normalizeNumber(briefing.onsen_related ?? briefing.onsenRelated),
+      ...normalizedBriefing,
       platforms,
     },
     items,
@@ -228,8 +241,8 @@ function operationLabel(sourceType: OnsenWaterSourceType, notes: string[]) {
   if (notes.some((note) => note.includes('순환') || note.includes('여과'))) return '재사용 온천(순환식)';
   if (sourceType === 'free_flowing_source') return '직수 온천';
   if (sourceType === 'natural_100') return '천연온천';
-  if (sourceType === 'hot_spring_confirmed') return '온천수 확인';
-  return notes[0] ?? '예약 전 확인';
+  if (sourceType === 'hot_spring_confirmed') return '원천 방식 이용 전 확인';
+  return notes[0] ?? '이용 전 확인';
 }
 
 function buildTags(row: OnsenAccommodationRow, notes: string[]) {
@@ -270,7 +283,7 @@ function createFit(row: OnsenAccommodationRow, tags: string[]) {
 function createNotice(row: OnsenAccommodationRow, notes: string[]) {
   if (notes.some((note) => note.includes('겨울'))) return '겨울 이용이라면 노천탕 온도와 동선을 함께 확인하세요.';
   if (notes.some((note) => note.includes('벌레') || note.includes('자연물'))) return '노천탕은 계절에 따라 벌레나 자연물 유입이 있을 수 있습니다.';
-  if (notes.some((note) => note.includes('대절탕'))) return '대절탕은 예약제나 선착순 조건을 확인하는 편이 좋습니다.';
+  if (notes.some((note) => note.includes('대절탕'))) return '대절탕은 예약제나 선착순 조건을 확인하세요.';
   if (row.water_use_status === 'needs_official_check' || row.water_source_type === 'needs_check') return '온천수 사용 범위는 상세 조건에서 다시 확인하세요.';
   return undefined;
 }
@@ -301,7 +314,10 @@ function mapLocation(row: OnsenAccommodationRow): OnsenLocation {
 }
 
 function operationDetailLabel(operation: string, notes: string[]) {
-  const base = operation === '온천수 확인' ? '온천수 사용 여부를 확인한 숙소입니다.' : `${operation}으로 정리했습니다.`;
+  const base =
+    operation === '원천 방식 이용 전 확인'
+      ? '온천수 사용은 확인했지만, 직수 온천인지 재사용 온천인지는 추가 확인이 필요합니다.'
+      : `${operation}으로 정리했습니다.`;
   if (notes.length === 0) return `${base} 객실 타입과 플랜별 세부 조건을 함께 확인합니다.`;
   const noteText = notes
     .map((note) => note.trim())
@@ -322,9 +338,9 @@ function publicBathFact(tags: string[], primaryBath: string) {
 
   if (/객실|프라이빗|전 객실|노천/.test(primaryBath)) {
     return {
-      value: '중심 항목 아님',
-      status: 'review_signal' as OnsenStatus,
-      detail: '현재 정리 기준은 객실 내 프라이빗탕 중심입니다. 대욕장 이용을 원하면 별도 시설 안내를 확인하세요.',
+      value: '예약 전 확인',
+      status: 'needs_check' as OnsenStatus,
+      detail: '현재 정리된 핵심은 객실 내 프라이빗탕입니다. 대욕장 이용을 원하면 숙소 시설 안내를 확인하세요.',
     };
   }
 
@@ -346,9 +362,9 @@ function privateBathFact(tags: string[], primaryBath: string) {
 
   if (/객실|프라이빗|전 객실|노천/.test(primaryBath)) {
     return {
-      value: '중심 항목 아님',
-      status: 'review_signal' as OnsenStatus,
-      detail: '이 숙소는 대절탕보다 객실 내 프라이빗탕을 중심으로 보는 편이 좋습니다.',
+      value: '예약 전 확인',
+      status: 'needs_check' as OnsenStatus,
+      detail: '현재 정리된 핵심은 객실 내 프라이빗탕입니다. 대절탕 이용을 원하면 별도 운영 여부를 확인하세요.',
     };
   }
 
@@ -420,7 +436,7 @@ function mapOnsenAccommodation(row: OnsenAccommodationRow, verdict?: OnsenVerdic
         detail: privateBath.detail,
       },
       {
-        label: '온천 운용',
+        label: '온천수 방식',
         value: operation,
         status: statusFor(row.water_source_type),
         detail: operationDetail,
@@ -435,7 +451,7 @@ function mapOnsenAccommodation(row: OnsenAccommodationRow, verdict?: OnsenVerdic
       {
         issue: createNotice(row, notes) ? '이용 전 확인' : '예약 전 확인',
         count: cautionCount,
-        summary: createNotice(row, notes) ?? '객실 타입과 온천수 사용 범위를 함께 확인하는 편이 좋습니다.',
+        summary: createNotice(row, notes) ?? '객실 타입과 온천수 사용 범위를 함께 확인하세요.',
       },
     ],
     sources: [

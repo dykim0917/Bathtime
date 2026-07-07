@@ -1,5 +1,5 @@
 export function normalizeOnsenPublicCopy(text: string) {
-  return text
+  const normalized = text
     .replaceAll('예약 화면에서', '상세 조건에서')
     .replaceAll('예약 단계에서', '상세 조건에서')
     .replaceAll('예약 전', '이용 전')
@@ -20,7 +20,7 @@ export function normalizeOnsenPublicCopy(text: string) {
     .replaceAll('흡연 객실 관련 확인 신호가 있어', '흡연 객실 관련 조건이 있어')
     .replaceAll('최근 후기를 같이 보는', '최근 이용 조건을 함께 보는')
     .replaceAll('겨울 여행이면 노천탕 온도 후기를 더 확인하세요.', '겨울 여행이면 노천탕 온도를 더 확인하세요.')
-    .replaceAll('냉감 확인을 권장합니다', '냉감을 함께 확인하는 편이 좋습니다')
+    .replaceAll('냉감 확인을 권장합니다', '냉감을 함께 확인하세요')
     .replaceAll('객실 노천탕 경험에 대한 직접 후기가 강합니다.', '객실 노천탕 이용 만족도가 뚜렷합니다.')
     .replaceAll('객실 온천에 대한 긍정 신호가 있으나 표본은 작습니다.', '객실 온천 이용 만족도는 보이지만, 아직 확인 정보는 적습니다.')
     .replaceAll('확인 신호', '확인할 조건')
@@ -35,6 +35,15 @@ export function normalizeOnsenPublicCopy(text: string) {
     .replaceAll('언급을 함께 확인했습니다', '내용을 함께 확인했습니다')
     .replaceAll('언급이 확인됩니다', '내용이 확인됩니다')
     .replaceAll('언급 있음', '예약 전 확인');
+
+  return normalized
+    .replace(/보는 편이 맞습니다/g, '보는 것이 맞습니다')
+    .replace(/보는 편이 정확합니다/g, '보는 것이 정확합니다')
+    .replace(/보는 편이 자연스럽습니다/g, '보는 것이 자연스럽습니다')
+    .replace(/확인하는 편이 좋습니다/g, '확인하세요')
+    .replace(/확인하는 편이 안전합니다/g, '확인하세요')
+    .replace(/확인하는 편이 필요합니다/g, '확인하세요')
+    .replace(/확인하는 편이 낫습니다/g, '확인하세요');
 }
 
 export function normalizeOnsenSourceLabel(label: string) {

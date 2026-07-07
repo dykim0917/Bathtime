@@ -58,7 +58,7 @@ function getFacilityFacts(facts: OnsenFact[]) {
 }
 
 function getOperationFact(candidate: OnsenCandidate) {
-  return candidate.facts.find((fact) => fact.label.includes('온천 운용') || fact.label.includes('온천수')) ?? null;
+  return candidate.facts.find((fact) => fact.label.includes('온천수 방식') || fact.label.includes('온천수')) ?? null;
 }
 
 function getReviewSummary(candidate: OnsenCandidate) {
@@ -99,6 +99,20 @@ function formatBriefing(candidate: OnsenCandidate) {
   ].filter(Boolean);
 
   return parts.length > 0 ? parts.join(' · ') : null;
+}
+
+function formatVerdictMentionCount(candidate: OnsenCandidate, item: NonNullable<OnsenCandidate['verdict']>['items'][number]) {
+  const denominator =
+    item.counts.denominator === 'experiences_read'
+      ? candidate.verdict?.briefing.experiencesRead
+      : candidate.verdict?.briefing.onsenRelated;
+  const denominatorLabel = item.counts.denominator === 'experiences_read' ? '직접 읽은 이용 경험' : '온천 관련';
+
+  if (typeof denominator !== 'number') {
+    return `${item.counts.mentions}건`;
+  }
+
+  return `${denominatorLabel} ${denominator}건 중 ${item.counts.mentions}건`;
 }
 
 export default async function OnsenDetailPage({ params }: PageProps) {
@@ -159,7 +173,7 @@ export default async function OnsenDetailPage({ params }: PageProps) {
               <h2 id="onsen-review-summary-title">{candidate.verdict ? '바스타임 판정' : '이런 점이 좋았어요'}</h2>
               <span>
                 <Sparkle size={15} weight="fill" aria-hidden="true" />
-                {candidate.verdict ? (candidate.verdict.level === 'full' ? 'Full' : 'Lite') : 'AI 요약'}
+                {candidate.verdict ? '이용 경험으로 확인' : '요약'}
               </span>
             </div>
             <p>{reviewSummary.body}</p>
@@ -188,7 +202,7 @@ export default async function OnsenDetailPage({ params }: PageProps) {
                     <dl>
                       <div>
                         <dt>관련 언급</dt>
-                        <dd>{item.counts.mentions}건</dd>
+                        <dd>{formatVerdictMentionCount(candidate, item)}</dd>
                       </div>
                       <div>
                         <dt>부정 항목</dt>
@@ -236,12 +250,12 @@ export default async function OnsenDetailPage({ params }: PageProps) {
 
               <div className="onsen-operation-card">
                 <div>
-                  <span>온천 운용</span>
+                  <span>온천수 방식</span>
                   <strong>{normalizeOnsenPublicCopy(candidate.waterDecision.operation)}</strong>
                 </div>
                 <p>{normalizeOnsenPublicCopy(operationFact?.detail ?? candidate.waterDecision.summary)}</p>
                 <span className="onsen-status-badge" data-status={operationFact?.status ?? 'needs_check'}>
-                  온천 운용 {statusLabels[operationFact?.status ?? 'needs_check']}
+                  온천수 방식 {statusLabels[operationFact?.status ?? 'needs_check']}
                 </span>
               </div>
             </div>
