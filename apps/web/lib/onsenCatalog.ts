@@ -2,6 +2,35 @@ import type { OnsenLocation, OnsenStructuredContexts } from './onsenTaxonomy';
 
 export type OnsenStatus = 'confirmed' | 'needs_check' | 'review_signal' | 'attention';
 
+export type OnsenVerdictLevel = 'full' | 'lite' | 'draft';
+
+export type OnsenVerdictItem = {
+  order: number;
+  type: 'positive' | 'conditional' | 'minor';
+  headline: string;
+  counts: {
+    mentions: number;
+    negative: number;
+    denominator: 'experiences_read' | 'onsen_related';
+  };
+  body: string;
+  verdict: string;
+  chipLabel?: string;
+  seasonMonths?: number[] | null;
+};
+
+export type OnsenVerdict = {
+  level: OnsenVerdictLevel;
+  headline: string;
+  briefing: {
+    experiencesRead?: number;
+    onsenRelated?: number;
+    platforms: string[];
+  };
+  items: OnsenVerdictItem[];
+  verifiedAt?: string;
+};
+
 export type OnsenCandidate = {
   slug: string;
   name: string;
@@ -34,12 +63,13 @@ export type OnsenCandidate = {
   cautions: { issue: string; count: number; summary: string }[];
   sources: { label: string; direct: number; onsenRelated: number; note: string }[];
   officialLinks: { label: string; href: string }[];
+  verdict?: OnsenVerdict;
 };
 
 export const statusLabels: Record<OnsenStatus, string> = {
   confirmed: '확인됨',
-  needs_check: '확인 필요',
-  review_signal: '참고',
+  needs_check: '예약 전 확인',
+  review_signal: '이용 경험 기준',
   attention: '주의',
 };
 
@@ -50,12 +80,12 @@ export const onsenCandidates: OnsenCandidate[] = [
     jaName: '由布院 梅園 GARDEN RESORT',
     area: '오이타 유후인',
     region: 'yufuin',
-    summary: '대욕장과 대여 가족탕의 체감 후기가 강하고, 원천 온도가 높아 물 추가 여부를 같이 봐야 하는 숙소입니다.',
-    fit: ['대욕장도 중요함', '가족탕을 따로 쓰고 싶음', '객실탕보다 전체 온천 동선 확인'],
-    primaryBath: '대욕장 + 대여 가족탕 중심',
+    summary: '대욕장과 대절탕의 체감 후기가 강하고, 원천 온도가 높아 물 추가 여부를 같이 봐야 하는 숙소입니다.',
+    fit: ['대욕장도 중요함', '대절탕을 따로 쓰고 싶음', '객실 내 프라이빗탕보다 전체 온천 동선 확인'],
+    primaryBath: '대욕장 + 대절탕 중심',
     waterDecision: {
       label: '온천수 사용 확인',
-      summary: '대욕장과 가족탕은 온천수 사용이 확인됩니다. 객실탕은 객실 타입별로 다시 봐야 합니다.',
+      summary: '대욕장과 대절탕은 온천수 사용이 확인됩니다. 객실 내 프라이빗탕은 객실 타입별로 다시 봐야 합니다.',
       springType: '원천 사용',
       roomBath: '객실 타입별 확인',
       operation: '직수 온천 + 물을 섞어 식힘',
@@ -68,7 +98,7 @@ export const onsenCandidates: OnsenCandidate[] = [
     tags: ['room-bath', 'private-bath', 'public-bath', 'water-texture'],
     badges: [
       { label: '대욕장 강함', status: 'review_signal' },
-      { label: '가족탕 대기 주의', status: 'attention' },
+      { label: '대절탕 대기 주의', status: 'attention' },
       { label: '물을 섞어 식힘', status: 'confirmed' },
     ],
     facts: [
@@ -79,13 +109,13 @@ export const onsenCandidates: OnsenCandidate[] = [
         detail: '공식 정보와 후기 모두에서 대욕장 언급이 많습니다.',
       },
       {
-        label: '가족탕',
-        value: '대여 가족탕 2동',
+        label: '대절탕',
+        value: '대절탕 2동',
         status: 'confirmed',
-        detail: '넓은 대여 가족탕이 확인되지만 선착순 대기 후기가 반복됩니다.',
+        detail: '넓은 대절탕이 확인되지만 선착순 대기 후기가 반복됩니다.',
       },
       {
-        label: '객실탕',
+        label: '객실 내 프라이빗탕',
         value: '별채 객실 선택지',
         status: 'needs_check',
         detail: '객실 타입별 노천탕 포함 여부를 예약 화면에서 다시 확인해야 합니다.',
@@ -99,16 +129,16 @@ export const onsenCandidates: OnsenCandidate[] = [
     ],
     signals: [
       { label: '대욕장 체감', count: 171, status: 'review_signal', summary: '넓은 탕과 풍경에 대한 반복 후기가 많습니다.' },
-      { label: '가족탕 체감', count: 96, status: 'review_signal', summary: '프라이빗하게 쓰기 좋다는 후기와 대기 언급이 함께 나옵니다.' },
+      { label: '대절탕 체감', count: 96, status: 'review_signal', summary: '프라이빗하게 쓰기 좋다는 후기와 대기 언급이 함께 나옵니다.' },
       { label: '온천수 질감', count: 43, status: 'review_signal', summary: '물이 부드럽다는 표현이 중간 강도로 반복됩니다.' },
     ],
     cautions: [
-      { issue: '가족탕 선착순/대기', count: 42, summary: '원하는 시간대 이용 가능 여부를 체크하는 편이 좋습니다.' },
+      { issue: '대절탕 선착순/대기', count: 42, summary: '원하는 시간대 이용 가능 여부를 체크하는 편이 좋습니다.' },
       { issue: '프라이빗 노천탕 객실 혼동', count: 8, summary: '객실 노천탕 포함 상품인지 예약 전 확인이 필요합니다.' },
       { issue: '대욕장 접근 동선', count: 5, summary: '동선 민감도가 높다면 객실 위치를 함께 봐야 합니다.' },
     ],
     sources: [
-      { label: '공식 정보', direct: 1, onsenRelated: 1, note: '대욕장, 가족탕, 직수 온천, 물을 섞어 식힘 설명 확인' },
+      { label: '공식 정보', direct: 1, onsenRelated: 1, note: '대욕장, 대절탕, 직수 온천, 물을 섞어 식힘 설명 확인' },
       { label: '이용자 확인', direct: 458, onsenRelated: 411, note: '온천 관련 언급을 함께 확인했습니다.' },
     ],
     officialLinks: [{ label: '공식 사이트', href: 'https://www.yufuin-baien.com/' }],
@@ -123,9 +153,9 @@ export const onsenCandidates: OnsenCandidate[] = [
     fit: ['객실 노천탕이 핵심', '대욕장 혼잡을 피하고 싶음', '프라이버시 우선'],
     primaryBath: '객실 노천탕 중심',
     waterDecision: {
-      label: '객실 온천수 확인 필요',
+      label: '객실 온천수 예약 전 확인',
       summary: '객실 노천탕 중심 숙소입니다. 온천수 운용 표기는 예약 전 공식 정보에서 한 번 더 확인하세요.',
-      springType: '온천수 표기 확인 필요',
+      springType: '온천수 표기 예약 전 확인',
       roomBath: '객실 노천탕 중심',
       operation: '직수 온천 언급',
       notice: '객실 타입과 금연 여부도 같이 확인하는 편이 좋습니다.',
@@ -136,13 +166,13 @@ export const onsenCandidates: OnsenCandidate[] = [
     updatedAt: '2026-07-01',
     tags: ['room-bath', 'private-bath', 'water-texture'],
     badges: [
-      { label: '객실탕 강함', status: 'review_signal' },
+      { label: '객실 내 프라이빗탕 강함', status: 'review_signal' },
       { label: '프라이버시 강함', status: 'review_signal' },
       { label: '흡연 객실 확인', status: 'attention' },
     ],
     facts: [
       {
-        label: '객실탕',
+        label: '객실 내 프라이빗탕',
         value: '객실 노천탕 중심',
         status: 'review_signal',
         detail: '객실 노천탕 긍정 신호가 전체 후기에서 매우 강하게 잡힙니다.',
@@ -167,7 +197,7 @@ export const onsenCandidates: OnsenCandidate[] = [
       },
     ],
     signals: [
-      { label: '객실 노천탕 긍정', count: 460, status: 'review_signal', summary: '객실탕 체감이 이 숙소의 가장 강한 판단 근거입니다.' },
+      { label: '객실 노천탕 긍정', count: 460, status: 'review_signal', summary: '객실 내 프라이빗탕 체감이 이 숙소의 가장 강한 판단 근거입니다.' },
       { label: '프라이버시/혼잡 회피', count: 82, status: 'review_signal', summary: '대욕장 대신 방 안에서 조용히 쓰는 만족감이 반복됩니다.' },
       { label: '직수 온천 언급', count: 28, status: 'review_signal', summary: '온천 운용에 대한 긍정 참고 정보가 확인됩니다.' },
     ],
@@ -205,16 +235,16 @@ export const onsenCandidates: OnsenCandidate[] = [
     updatedAt: '2026-07-01',
     tags: ['room-bath', 'winter-caution', 'water-texture'],
     badges: [
-      { label: '객실탕 강함', status: 'review_signal' },
+      { label: '객실 내 프라이빗탕 강함', status: 'review_signal' },
       { label: '직수 온천', status: 'confirmed' },
       { label: '겨울 온도 주의', status: 'attention' },
     ],
     facts: [
       {
-        label: '객실탕',
+        label: '객실 내 프라이빗탕',
         value: '전 객실 실내탕 + 노천탕',
         status: 'confirmed',
-        detail: '공식 정보상 7개 객실 모두 독채, 객실탕 구성이 확인됩니다.',
+        detail: '공식 정보상 7개 객실 모두 독채, 객실 내 프라이빗탕 구성이 확인됩니다.',
       },
       {
         label: '대욕장',
@@ -241,13 +271,13 @@ export const onsenCandidates: OnsenCandidate[] = [
       { label: '온천수 질감', count: 11, status: 'review_signal', summary: '물 체감 표현은 중간 이하 강도입니다.' },
     ],
     cautions: [
-      { issue: '객실탕 온도 편차', count: 21, summary: '방문 계절과 당일 기온에 따라 체감 차이가 날 수 있습니다.' },
+      { issue: '객실 내 프라이빗탕 온도 편차', count: 21, summary: '방문 계절과 당일 기온에 따라 체감 차이가 날 수 있습니다.' },
       { issue: '겨울 노천탕/유량', count: 5, summary: '겨울 여행이면 노천탕 온도 후기를 더 확인하세요.' },
       { issue: '자연 환경', count: 3, summary: '독채와 노천탕 특성상 벌레 언급이 일부 있습니다.' },
     ],
     sources: [
       { label: '공식 정보', direct: 1, onsenRelated: 1, note: '전 객실 독채, 실내탕, 노천탕, 직수 온천 확인' },
-      { label: '이용자 확인', direct: 147, onsenRelated: 141, note: '객실탕 중심으로 확인할 수 있는 언급이 있습니다.' },
+      { label: '이용자 확인', direct: 147, onsenRelated: 141, note: '객실 내 프라이빗탕 중심으로 확인할 수 있는 언급이 있습니다.' },
     ],
     officialLinks: [{ label: '공식 사이트', href: 'https://www.yufuin-den-rikyu.jp/' }],
   },
@@ -276,11 +306,11 @@ export const onsenCandidates: OnsenCandidate[] = [
     badges: [
       { label: '표본 적음', status: 'needs_check' },
       { label: '객실 온천 공식 확인', status: 'confirmed' },
-      { label: '수영복 조건 확인', status: 'attention' },
+      { label: '수영복 예약 전 확인', status: 'attention' },
     ],
     facts: [
       {
-        label: '객실탕',
+        label: '객실 내 프라이빗탕',
         value: '각 객실 온천 이용',
         status: 'confirmed',
         detail: '공식 정보에서 객실별 온천 이용을 확인할 수 있습니다.',
@@ -305,7 +335,7 @@ export const onsenCandidates: OnsenCandidate[] = [
       },
     ],
     signals: [
-      { label: '객실탕 긍정', count: 18, status: 'review_signal', summary: '객실 온천에 대한 긍정 신호가 있으나 표본은 작습니다.' },
+      { label: '객실 내 프라이빗탕 긍정', count: 18, status: 'review_signal', summary: '객실 온천에 대한 긍정 신호가 있으나 표본은 작습니다.' },
       { label: '프라이빗 체감', count: 11, status: 'review_signal', summary: '개별 이용 감각에 대한 언급이 확인됩니다.' },
       { label: '물빛/질감', count: 6, status: 'review_signal', summary: '물빛과 온천수 인상은 보조 신호로 보는 편이 좋습니다.' },
     ],
