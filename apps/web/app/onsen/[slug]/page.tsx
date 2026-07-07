@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { CheckCircle, ImagesSquare, LinkSimple, WarningCircle, Waves } from '@phosphor-icons/react/ssr';
 import { OnsenReviewForm } from '@web/components/OnsenReviewForm';
@@ -8,9 +7,6 @@ import { statusLabels, type OnsenCandidate } from '@web/lib/onsenCatalog';
 import { normalizeOnsenPublicCopy, normalizeOnsenSourceLabel } from '@web/lib/onsenCopy';
 import { readOnsenCandidate, readOnsenCandidates } from '@web/lib/onsenData';
 import { readOnsenReviewCounts, readOnsenReviews } from '@web/lib/onsenReviews';
-import { buildOnsenSearchSuggestions, popularOnsenSearches, recommendedOnsenPlaces } from '@web/lib/onsenSearch';
-import { bathContextFilters, onsenAreaFilters, waterCriterionFilters } from '@web/lib/onsenTaxonomy';
-import { OnsenSearchForm } from '@web/components/OnsenSearchForm';
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -71,7 +67,7 @@ function getOperationFact(candidate: OnsenCandidate) {
 
 export default async function OnsenDetailPage({ params }: PageProps) {
   const { slug } = await params;
-  const [candidate, candidates] = await Promise.all([readOnsenCandidate(slug), readOnsenCandidates()]);
+  const candidate = await readOnsenCandidate(slug);
 
   if (!candidate) {
     notFound();
@@ -82,73 +78,9 @@ export default async function OnsenDetailPage({ params }: PageProps) {
   const galleryItems = getGalleryItems(candidate);
   const facilityFacts = getFacilityFacts(candidate.facts);
   const operationFact = getOperationFact(candidate);
-  const suggestions = buildOnsenSearchSuggestions(candidates);
-  const currentArea = candidate.location?.onsenArea ?? candidate.region;
-  const currentBathContexts = new Set(candidate.contexts?.bath ?? []);
-  const currentWaterContexts = new Set(candidate.contexts?.water ?? []);
 
   return (
     <article className="onsen-detail-page">
-      <section className="onsen-detail-search" aria-label="온천 다시 검색">
-        <OnsenSearchForm suggestions={suggestions} recommendedPlaces={recommendedOnsenPlaces} popularSearches={popularOnsenSearches} />
-      </section>
-
-      <section className="onsen-detail-filter-panel" aria-label="비슷한 온천 필터">
-        <div className="onsen-detail-filter-group">
-          <span>지역</span>
-          <div className="onsen-detail-filter-row">
-            {onsenAreaFilters.map((area) => (
-              <Link
-                key={area.value}
-                className="bt-chip"
-                data-size="md"
-                data-tone={area.value === currentArea ? 'active' : 'soft'}
-                data-state={area.value === currentArea ? 'active' : undefined}
-                href={area.disabled ? `/onsen/results?query=${encodeURIComponent(area.label)}` : `/onsen/results?area=${area.value}`}
-              >
-                {area.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        <div className="onsen-detail-filter-group">
-          <span>탕 기준</span>
-          <div className="onsen-detail-filter-row">
-            {bathContextFilters.map((filter) => (
-              <Link
-                key={filter.value}
-                className="bt-chip"
-                data-size="md"
-                data-tone={currentBathContexts.has(filter.value) ? 'active' : 'soft'}
-                data-state={currentBathContexts.has(filter.value) ? 'active' : undefined}
-                href={`/onsen/results?bath=${filter.value}`}
-              >
-                {filter.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        <div className="onsen-detail-filter-group">
-          <span>온천수</span>
-          <div className="onsen-detail-filter-row">
-            {waterCriterionFilters.slice(0, 5).map((filter) => (
-              <Link
-                key={filter.value}
-                className="bt-chip"
-                data-size="md"
-                data-tone={currentWaterContexts.has(filter.value) ? 'active' : 'soft'}
-                data-state={currentWaterContexts.has(filter.value) ? 'active' : undefined}
-                href={`/onsen/results?water=${filter.value}`}
-              >
-                {filter.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <div className="onsen-detail-layout">
         <section className="onsen-stay-card" aria-labelledby="onsen-detail-title">
           <div className="onsen-detail-gallery" aria-label={`${candidate.name} 사진 슬라이드`}>

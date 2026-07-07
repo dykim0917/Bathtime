@@ -17,6 +17,8 @@ type Props = {
   suggestions: OnsenSearchSuggestion[];
   recommendedPlaces: OnsenSearchSuggestion[];
   popularSearches: PopularSearch[];
+  initialQuery?: string;
+  variant?: 'default' | 'header';
 };
 
 const recentStorageKey = 'bathtime:onsen-recent-searches';
@@ -37,11 +39,11 @@ function writeRecentSearch(value: string) {
   window.localStorage.setItem(recentStorageKey, JSON.stringify(next));
 }
 
-export function OnsenSearchForm({ suggestions, recommendedPlaces, popularSearches }: Props) {
+export function OnsenSearchForm({ suggestions, recommendedPlaces, popularSearches, initialQuery = '', variant = 'default' }: Props) {
   const router = useRouter();
   const formRef = useRef<HTMLFormElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState(initialQuery);
   const [open, setOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [recentSearches, setRecentSearches] = useState<string[]>([]);
@@ -49,6 +51,10 @@ export function OnsenSearchForm({ suggestions, recommendedPlaces, popularSearche
   useEffect(() => {
     setRecentSearches(readRecentSearches());
   }, []);
+
+  useEffect(() => {
+    setQuery(initialQuery);
+  }, [initialQuery]);
 
   useEffect(() => {
     function handlePointerDown(event: PointerEvent) {
@@ -84,33 +90,47 @@ export function OnsenSearchForm({ suggestions, recommendedPlaces, popularSearche
   };
 
   const closeMobile = () => setMobileOpen(false);
+  const isHeaderVariant = variant === 'header';
+  const formClassName = [
+    'onsen-search-box',
+    'onsen-search-box-airbnb',
+    isHeaderVariant ? 'onsen-search-box-header' : '',
+    open ? 'is-open' : '',
+  ]
+    .filter(Boolean)
+    .join(' ');
 
   return (
     <>
       <form
         ref={formRef}
-        className={open ? 'onsen-search-box onsen-search-box-airbnb is-open' : 'onsen-search-box onsen-search-box-airbnb'}
+        className={formClassName}
         action="/onsen/results"
         onSubmit={(event) => {
           event.preventDefault();
           submitQuery();
         }}
       >
-        <button
-          className="onsen-search-field onsen-search-field-main"
-          type="button"
-          onClick={() => {
-            if (window.matchMedia('(max-width: 767px)').matches) {
-              setMobileOpen(true);
-              return;
-            }
-            setOpen(true);
-            window.setTimeout(() => inputRef.current?.focus(), 0);
-          }}
-        >
+        <label className="onsen-search-field onsen-search-field-main">
           <span>어디로</span>
-          <strong>{query || '유후인, 벳푸, 서울 근교 온천'}</strong>
-        </button>
+          <input
+            ref={inputRef}
+            name="query"
+            type="search"
+            value={query}
+            onFocus={() => {
+              if (window.matchMedia('(max-width: 767px)').matches) {
+                setMobileOpen(true);
+                return;
+              }
+              setOpen(true);
+            }}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder={isHeaderVariant ? '온천지, 숙소 이름' : '유후인, 벳푸, 서울 근교 온천'}
+            aria-label="온천 검색어"
+            autoComplete="off"
+          />
+        </label>
 
         <button type="submit" aria-label="온천 검색">
           <MagnifyingGlass size={20} weight="bold" aria-hidden="true" />
@@ -118,20 +138,6 @@ export function OnsenSearchForm({ suggestions, recommendedPlaces, popularSearche
         </button>
 
         <div className="onsen-search-popover" aria-label="온천 검색 제안">
-          <div className="onsen-popover-search-row">
-            <MagnifyingGlass size={18} aria-hidden="true" />
-            <input
-              ref={inputRef}
-              name="query"
-              type="search"
-              value={query}
-              onFocus={() => setOpen(true)}
-              onChange={(event) => setQuery(event.target.value)}
-              placeholder="온천지, 지역, 숙소 이름을 입력하세요"
-              aria-label="온천 검색어"
-              autoComplete="off"
-            />
-          </div>
           <SearchPanelContent
             query={query}
             autocompleteItems={autocompleteItems}

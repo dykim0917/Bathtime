@@ -1,12 +1,15 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { BookmarkSimple, CaretDown, SignOut, UserCircle, X } from '@phosphor-icons/react';
 import { useEffect, useMemo, useState } from 'react';
 import brandSymbol from '@/assets/images/bathtime.svg';
 import logoImage from '@/assets/images/logo.png';
+import { OnsenSearchForm } from '@web/components/OnsenSearchForm';
 import { getSupabaseClient } from '@web/lib/auth';
+import { onsenCandidates } from '@web/lib/onsenCatalog';
+import { buildOnsenSearchSuggestions, popularOnsenSearches, recommendedOnsenPlaces } from '@web/lib/onsenSearch';
 
 type NativeAuthSessionMessage = {
   source?: string;
@@ -80,10 +83,14 @@ function AccountButton({ signedIn, ready, onSignedOut }: { signedIn: boolean; re
 export function Shell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
+  const searchParams = useSearchParams();
   const isOnsenRoute = pathname === '/' || pathname.startsWith('/onsen');
+  const showOnsenHeaderSearch = pathname.startsWith('/onsen') && pathname !== '/onsen';
   const [signedIn, setSignedIn] = useState(false);
   const [authReady, setAuthReady] = useState(false);
   const [authGate, setAuthGate] = useState<{ source: string; next: string; message: string } | null>(null);
+  const onsenSearchSuggestions = useMemo(() => buildOnsenSearchSuggestions(onsenCandidates), []);
+  const onsenQuery = searchParams.get('query') ?? '';
 
   useEffect(() => {
     const supabase = getSupabaseClient();
@@ -184,6 +191,17 @@ export function Shell({ children }: { children: React.ReactNode }) {
             <img className="brand-logo" src={logoImage.src} alt="바스타임" width={158} height={30} />
           </Link>
         </div>
+        {showOnsenHeaderSearch ? (
+          <div className="onsen-header-search-slot">
+            <OnsenSearchForm
+              suggestions={onsenSearchSuggestions}
+              recommendedPlaces={recommendedOnsenPlaces}
+              popularSearches={popularOnsenSearches}
+              initialQuery={onsenQuery}
+              variant="header"
+            />
+          </div>
+        ) : null}
         <div className="header-actions">
           <AccountButton signedIn={signedIn} ready={authReady} onSignedOut={() => setSignedIn(false)} />
         </div>
