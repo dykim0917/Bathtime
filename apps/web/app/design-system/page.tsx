@@ -36,14 +36,14 @@ const colorTokens = [
 const typeRows = [
   { name: 'Page title', className: 'bt-page-title', sample: '온천 검색기' },
   { name: 'Section title', className: 'bt-section-title', sample: '예약 전에 확인할 온천 포인트' },
-  { name: 'Body', className: 'bt-body-copy', sample: '객실탕, 가족탕, 대욕장 중 어디에서 온천 경험이 분명한지 먼저 확인합니다.' },
+  { name: 'Body', className: 'bt-body-copy', sample: '객실 내 프라이빗탕, 대절탕, 대욕장 중 어디에서 온천 경험이 분명한지 먼저 확인합니다.' },
   { name: 'Meta', className: 'bt-meta', sample: '업데이트 2026-07-01 · 바스타임 정리' },
   { name: 'Data', className: 'bt-data', sample: '41.5°C · 10분 · 2026-07-01' },
 ];
 
 const statusItems = [
   { label: '확인됨', body: '공식 안내나 바스타임 기준으로 확인한 정보', status: 'confirmed', icon: SealCheck },
-  { label: '확인 필요', body: '객실 타입, 시즌, 플랜에 따라 달라질 수 있는 정보', status: 'needs_check', icon: Info },
+  { label: '예약 전 확인', body: '객실 타입, 시즌, 플랜에 따라 달라질 수 있는 정보', status: 'needs_check', icon: Info },
   { label: '참고', body: '판단을 보조하는 이용 정보', status: 'review_signal', icon: Drop },
   { label: '주의', body: '예약 전에 반드시 확인해야 하는 정보', status: 'attention', icon: Warning },
 ];
@@ -169,7 +169,7 @@ export default function DesignSystemPage() {
               </span>
               <span className="bt-chip" data-size="md" data-tone="point">
                 <Drop size={16} weight="bold" aria-hidden="true" />
-                가족탕/대절탕 있음
+                대절탕 있음
               </span>
             </div>
           </article>
@@ -177,10 +177,10 @@ export default function DesignSystemPage() {
           <article className="bt-card bt-card-interactive ds-archive-sample">
             <span className="bt-eyebrow">ARCHIVE CARD</span>
             <h3>조용히 쉬고 싶은 날의 온천 숙소</h3>
-            <p>객실탕과 대욕장 중 어디에서 온천 경험이 또렷한지 먼저 확인합니다.</p>
+            <p>객실 내 프라이빗탕과 대욕장 중 어디에서 온천 경험이 또렷한지 먼저 확인합니다.</p>
             <div className="ds-card-meta">
               <span className="bt-data">바스타임 정리</span>
-              <span className="bt-chip">확인 필요</span>
+              <span className="bt-chip">예약 전 확인</span>
             </div>
           </article>
 
@@ -202,7 +202,7 @@ export default function DesignSystemPage() {
             <div className="ds-onsen-card-head">
               <div>
                 <p className="bt-eyebrow">YUFUIN · RYOKAN</p>
-                <h3>객실탕 중심 온천 경험</h3>
+                <h3>객실 내 프라이빗탕 중심 온천 경험</h3>
               </div>
               <span className="bt-chip" data-state="active">
                 확인됨
@@ -214,7 +214,7 @@ export default function DesignSystemPage() {
                   <Drop size={17} weight="bold" aria-hidden="true" />
                   온천수
                 </dt>
-                <dd>객실탕 온천수 확인 필요</dd>
+                <dd>객실 내 프라이빗탕 온천수 예약 전 확인</dd>
               </div>
               <div>
                 <dt>
@@ -228,7 +228,7 @@ export default function DesignSystemPage() {
                   <Clock size={17} weight="bold" aria-hidden="true" />
                   이용 조건
                 </dt>
-                <dd>객실 타입별 차이 확인 필요</dd>
+                <dd>객실 타입별 차이 예약 전 확인</dd>
               </div>
             </dl>
           </article>

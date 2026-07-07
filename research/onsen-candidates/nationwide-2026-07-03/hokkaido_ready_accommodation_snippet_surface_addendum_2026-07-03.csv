@@ -1,0 +1,16 @@
+slug,platform,url,access_status,visible_review_count,rating,bath_signal_preview,next_action
+tokachigawa-seijakubou,Ikkyu,https://www.ikyu.com/00003001/review/,source_preview_snippet_only,,,"객실 노천탕이 넓고 차갈색/모르 온천 체감, 입욕 후 보온감 언급이 보임. 직접 본문 표본은 아님.",Aside/Ikkyu page direct read needed
+toyako-lake-suite-konosisu,Yahoo Travel,https://travel.yahoo.co.jp/00002637/review/,source_preview_snippet_only,,,객실 노천탕/대욕장 조망 긍정과 식사 기대차 신호가 보임. 직접 본문 표본은 아님.,Aside/Yahoo review tab direct read needed
+toyako-lake-suite-konosisu,Ikkyu,https://www.ikyu.com/00002637/,source_preview_snippet_only,,,"객실 온천과 대욕장에서 洞爺湖 조망, 겨울 테라스 추위, 식사 기대차 언급이 보임.",Ikkyu review page direct read needed
+toyako-lake-suite-konosisu,Relux,https://rlx.jp/23830/review/,source_preview_snippet_only,,,객실 노천탕 긍정과 대욕장 외국인 소음/혼잡성 신호가 보임.,Relux body access check
+noboribetsu-bourou-noguchi,Ikkyu,https://www.ikyu.com/00001211/review/,source_preview_snippet_only,147,4.45,"部屋風呂 온천, 대욕장, 泉質, 단차/경년감, 샤워룸 동선 신호가 보임.",Ikkyu direct body read with browser
+noboribetsu-bourou-noguchi,Yahoo Travel,https://travel.yahoo.co.jp/00001211/review/,source_preview_snippet_only,,,"객실 온천의 질과 넓이, 샤워 수압 만족 신호가 보임.",Yahoo review tab direct read
+noboribetsu-bourou-noguchi,Agoda,https://www.agoda.com/ja-jp/boro-noguchi-noboribetsu-hotel/hotel/noboribetsu-jp.html,source_preview_snippet_only,,,영문/일문 글로벌 OTA 표면에서 시설·온천 고평가 신호가 보임.,Agoda body access check
+jozankei-suizantei,Jalan,https://www.jalan.net/yad319212/kuchikomi/,source_preview_snippet_only,,,隣接湯/온천 사우나/장시간 스테이 신호가 보임. 직접 수집 대상으로 남김.,Jalan direct fetch parse
+jozankei-suizantei,JTB,https://www.jtb.co.jp/kokunai-hotel/htl/1533009/review/,source_preview_snippet_only,,,"라운지, 대욕장, 객실 노천탕 만족 신호가 보임.",JTB static parser check
+jozankei-suizantei,Agoda,https://www.agoda.com/ja-jp/jozankei-daiichi-hotel-suizantei/hotel/sapporo-jp.html,source_preview_snippet_only,,,"객실 온천 선택 필요성, 대욕장/가족탕 긍정 신호가 보임.",Agoda body access check
+yunokawa-nagisatei,Yahoo Travel,https://travel.yahoo.co.jp/00000746/review/,source_preview_snippet_only,,,"해변 객실 노천탕, 대욕장 넓이, 바다 전망 노천탕 긍정 신호가 보임.",Yahoo direct read
+yunokawa-nagisatei,Ikkyu,https://www.ikyu.com/00000746/review/,source_preview_snippet_only,,,객실 노천탕 수질/전망 긍정과 기계화/서비스 기대차 부정 신호가 보임.,Ikkyu direct read
+noboribetsu-daiichi-takimotokan,Yahoo Travel,https://travel.yahoo.co.jp/00000587/review/,source_preview_snippet_only,,,"대욕장까지 거리, 다양한泉質, 지옥谷 접근 신호가 보임.",Yahoo direct read
+noboribetsu-daiichi-takimotokan,JTB,https://www.jtb.co.jp/kokunai-hotel/htl/1558001/review/,source_preview_snippet_only,,,"1500坪 대욕장, 5泉質, 源泉掛け流し 공식/리뷰풀 표면이 보임.",JTB static parser check
+noboribetsu-daiichi-takimotokan,Japanese blog,https://www.sunflower08.work/noboribetsu-daiichitakimotokan1,source_preview_snippet_only,,,"대욕장 규모, 5개 원천, 본관에서 대욕장 거리/동선 신호가 보임.",blog direct article extraction if used as qualitative source

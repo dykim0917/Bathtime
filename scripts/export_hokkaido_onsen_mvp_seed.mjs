@@ -1,10 +1,13 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
+import { applyOnsenNameQa } from './onsen_name_qa_overrides.mjs';
+import { applyOnsenCopyQa } from './onsen_copy_qa_overrides.mjs';
 
 const repoRoot = process.cwd();
 const researchDir = path.join(repoRoot, 'research', 'onsen-candidates', 'nationwide-2026-07-03');
 const outputDir = path.join(repoRoot, 'output');
-const snapshotDate = '2026-07-04';
+const snapshotDate = '2026-07-07';
 
 const sourcePaths = {
   accommodationMapping: path.join(researchDir, 'hokkaido_ready_accommodation_platform_mapping_2026-07-03.json'),
@@ -20,7 +23,122 @@ const accommodationSqlPath = path.join(outputDir, 'hokkaido-onsen-mvp-accommodat
 const facilityJsonPath = path.join(outputDir, 'hokkaido-onsen-mvp-facilities.v1.pending-schema.json');
 const placeCsvPath = path.join(outputDir, 'hokkaido-onsen-mvp-places.v1.csv');
 const signalCsvPath = path.join(outputDir, 'hokkaido-onsen-mvp-review-signals.v1.csv');
-const reportPath = path.join(researchDir, 'hokkaido_mvp_db_load_report_2026-07-04.md');
+const reportPath = path.join(researchDir, 'hokkaido_mvp_db_load_report_2026-07-07.md');
+
+const curatedCopy = {
+  'tokachigawa-seijakubou': {
+    summary: '도카치가와 몰온천을 객실 노천탕으로 조용히 즐기는 고급 숙소다. 후기 표본에서는 객실 안에서 몰온천 특유의 부드러운 물성을 체감했다는 반응이 강하게 반복되어, 대욕장보다 객실탕 중심으로 보는 편이 맞다.',
+    primary_bath: '전 객실 몰온천 노천탕 중심',
+    bath_scope: 'all_rooms',
+    bath_contexts: ['room_bath'],
+    operation_notes: ['객실탕 중심 숙소로 안내', '몰온천 물성 기대치가 핵심'],
+  },
+  'toyako-lake-suite-konosisu': {
+    summary: '도야호 전망과 객실 노천탕, 공용 대욕장을 함께 기대하는 리조트형 숙소다. 후기에서는 객실탕 만족과 전망 대욕장 경험이 모두 반복되지만, 객실 타입과 날씨에 따라 체감 차이가 있어 두 축을 나눠 보여주는 편이 좋다.',
+    primary_bath: '객실 노천탕 + 전망 대욕장',
+    bath_scope: 'some_rooms',
+    bath_contexts: ['room_bath', 'public_bath'],
+    operation_notes: ['객실 타입별 노천탕 여부 확인 필요', '도야호 전망은 날씨 영향 있음'],
+  },
+  'noboribetsu-bourou-noguchi': {
+    summary: '노보리베츠에서 객실 온천과 조용한 성인형 체류를 기대하는 숙소다. 후기 표본에서는 객실탕의 프라이빗함과 온천 수질 만족이 반복되며, 대형 대욕장형 숙소보다 객실 단위 온천 체류에 가깝게 읽힌다.',
+    primary_bath: '객실 온천탕 중심',
+    bath_scope: 'some_rooms',
+    bath_contexts: ['room_bath', 'public_bath'],
+    operation_notes: ['객실 타입별 욕장 구성 확인 필요', '고가 숙소 기대치 관리 필요'],
+  },
+  'jozankei-suizantei': {
+    summary: '조잔케이의 전통 료칸형 숙소로 객실탕, 대욕장, 대절탕 신호가 함께 확인된다. 후기에서는 객실에서 온천을 즐기는 반응과 공용 온천 만족이 모두 보여, 욕장별로 분리해 안내할 때 선택 기준이 선명해진다.',
+    primary_bath: '객실탕 + 대욕장/대절탕',
+    bath_scope: 'some_rooms',
+    bath_contexts: ['room_bath', 'private_bath', 'public_bath'],
+    operation_notes: ['객실 타입별 욕장 구성 확인 필요', '대절탕 운영 조건 확인 필요'],
+  },
+  'yunokawa-nagisatei': {
+    summary: '하코다테 유노카와에서 바다 전망 객실 노천탕으로 강하게 인식되는 숙소다. 후기 표본에서는 객실에서 바다를 보며 온천을 쓰는 경험이 반복되지만, 객실 배정과 전망 기대치가 만족도에 영향을 준다.',
+    primary_bath: '바다 전망 객실 노천탕 중심',
+    bath_scope: 'some_rooms',
+    bath_contexts: ['room_bath', 'public_bath'],
+    operation_notes: ['객실 전망/타입 확인 필요', '예약·객실 배정 기대치 관리 필요'],
+  },
+  'noboribetsu-daiichi-takimotokan': {
+    summary: '노보리베츠를 대표하는 대형 대욕장형 온천 숙소다. 후기에서는 여러 종류의 온천탕과 넓은 대욕장을 즐겼다는 반응이 반복되어, 객실탕보다 온천 시설 규모와 탕 다양성을 중심에 두는 편이 맞다.',
+    primary_bath: '대형 대욕장/탕 다양성 중심',
+    bath_scope: 'public_bath_only',
+    bath_contexts: ['public_bath'],
+    operation_notes: ['대형 시설형 숙소로 안내', '혼잡과 동선 기대치 확인 필요'],
+  },
+  'noboribetsu-mahoroba': {
+    summary: '노보리베츠의 대형 온천호텔로, 다양한 탕과 대욕장 경험이 핵심이다. 후기 표본에서는 온천 규모에 대한 만족과 함께 혼잡·시설 연식 신호도 반복되어, 대욕장형 숙소로 기대치를 잡는 것이 적합하다.',
+    primary_bath: '대욕장/탕 다양성 중심',
+    bath_scope: 'public_bath_only',
+    bath_contexts: ['public_bath'],
+    operation_notes: ['혼잡 신호 있음', '대형 온천호텔형으로 안내'],
+  },
+  'noboribetsu-grand': {
+    summary: '노보리베츠의 전통 대형 호텔형 온천 숙소다. 표본에서는 대욕장과 노천탕, 사우나형 시설 경험이 함께 언급되며, 객실탕보다 공용 온천 시설을 중심으로 비교하는 편이 맞다.',
+    primary_bath: '대욕장/사우나형 온천 중심',
+    bath_scope: 'public_bath_only',
+    bath_contexts: ['public_bath'],
+    operation_notes: ['시설형 온천 경험 중심', '객실/예약 혼동 신호 일부 있음'],
+  },
+  'noboribetsu-manseikaku': {
+    summary: '노보리베츠의 접근성 좋은 대형 온천호텔이다. 후기에서는 대욕장과 온천 수질 만족이 반복되지만, 시설 연식과 혼잡감도 함께 나타나 실속형 대욕장 숙소로 보는 편이 자연스럽다.',
+    primary_bath: '실속형 대욕장 중심',
+    bath_scope: 'public_bath_only',
+    bath_contexts: ['public_bath'],
+    operation_notes: ['시설 연식/혼잡 신호 일부 있음', '대욕장 중심으로 안내'],
+  },
+  'noboribetsu-takinoya': {
+    summary: '노보리베츠에서 조용한 고급 료칸 체류와 객실 노천탕을 기대하는 숙소다. 후기 표본에서는 객실탕 만족과 고급스러운 체류감이 반복되지만, 객실 타입과 예약 조건에 따른 기대차도 함께 확인된다.',
+    primary_bath: '객실 노천탕 중심',
+    bath_scope: 'some_rooms',
+    bath_contexts: ['room_bath', 'public_bath'],
+    operation_notes: ['객실 타입별 노천탕 여부 확인 필요', '예약/객실 조건 기대치 관리 필요'],
+  },
+  'noboribetsu-hanayura': {
+    summary: '노보리베츠에서 객실 노천탕과 료칸형 접객을 함께 기대하는 숙소다. 후기에서는 객실에서 온천을 즐기는 만족과 물성 긍정 신호가 반복되어, 대형 호텔보다 객실탕형 료칸으로 분류하는 편이 좋다.',
+    primary_bath: '객실 노천탕 중심',
+    bath_scope: 'some_rooms',
+    bath_contexts: ['room_bath', 'public_bath'],
+    operation_notes: ['객실 타입별 욕장 구성 확인 필요', '계절성 벌레/온도 신호 일부 있음'],
+  },
+  'jozankei-chalet-ivy': {
+    summary: '조잔케이의 소형 럭셔리 숙소로, 객실 온천과 프라이빗한 체류감이 중심이다. 후기 표본에서는 객실탕과 조용한 서비스 경험이 반복되어 대욕장 규모보다 개인 온천 체류를 중시하는 여행자에게 맞다.',
+    primary_bath: '객실 온천탕 중심',
+    bath_scope: 'some_rooms',
+    bath_contexts: ['room_bath'],
+    operation_notes: ['객실탕 중심 고급 숙소로 안내', '프라이버시/유리 욕실 구조 신호 일부 있음'],
+  },
+  'jozankei-grand-blissen': {
+    summary: '조잔케이의 신식 호텔형 온천 숙소로 객실탕과 공용 대욕장 신호가 함께 확인된다. 후기에서는 객실 욕조 만족이 반복되지만 대욕장 경험도 분명해, 객실탕형 호텔과 공용 온천을 나눠 보여주는 것이 좋다.',
+    primary_bath: '객실탕 + 공용 대욕장',
+    bath_scope: 'some_rooms',
+    bath_contexts: ['room_bath', 'public_bath'],
+    operation_notes: ['객실 타입별 욕장 구성 확인 필요', '신식 호텔형 체류로 안내'],
+  },
+  'yunokawa-heiseikan-hanatsuki': {
+    summary: '유노카와 해안가에서 객실 노천탕과 바다 전망을 함께 기대하는 별관형 숙소다. 후기에서는 객실에서 온천을 쓰는 만족이 강하게 반복되며, 대욕장보다 객실 단위의 조용한 온천 경험을 앞세우는 편이 맞다.',
+    primary_bath: '바다 전망 객실 노천탕 중심',
+    bath_scope: 'some_rooms',
+    bath_contexts: ['room_bath', 'public_bath'],
+    operation_notes: ['객실 전망/욕장 타입 확인 필요', '시설 연식/온도 신호 일부 있음'],
+  },
+  'yunokawa-heiseikan-shiosaitei': {
+    summary: '유노카와의 바다 전망 호텔형 온천 숙소다. 후기 표본에서는 객실 노천탕과 공용탕 경험이 모두 확인되며, 객실탕은 일부 객실 축으로 보고 대욕장과 분리해 안내하는 편이 정확하다.',
+    primary_bath: '객실 노천탕 + 공용탕',
+    bath_scope: 'some_rooms',
+    bath_contexts: ['room_bath', 'public_bath'],
+    operation_notes: ['객실 타입별 노천탕 여부 확인 필요', 'Google 표면의 숙소 정체성 혼재 주의'],
+  },
+  'yunokawa-hanabishi': {
+    summary: '하코다테 유노카와의 대욕장 중심 온천호텔이다. 후기에서는 공용 대욕장 만족과 일부 객실탕 신호가 함께 보이지만, 전체적으로는 대욕장과 온천호텔 체류감을 중심으로 보는 편이 맞다.',
+    primary_bath: '대욕장 중심',
+    bath_scope: 'public_bath_only',
+    bath_contexts: ['public_bath', 'room_bath'],
+    operation_notes: ['대욕장 중심 호텔로 안내', '객실탕은 객실 타입별 확인 필요'],
+  },
+};
 
 function parseCsv(text) {
   const rows = [];
@@ -67,6 +185,29 @@ function parseCsv(text) {
   );
 }
 
+function parseEnvFile(filePath) {
+  if (!existsSync(filePath)) return {};
+  const env = {};
+  for (const line of readFileSync(filePath, 'utf8').split(/\n/)) {
+    const match = line.match(/^\s*([A-Z0-9_]+)=(.*)\s*$/);
+    if (!match) continue;
+    let value = match[2].trim();
+    if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
+      value = value.slice(1, -1);
+    }
+    env[match[1]] = value;
+  }
+  return env;
+}
+
+function readLocalEnv() {
+  return {
+    ...parseEnvFile(path.join(repoRoot, '.env.local')),
+    ...parseEnvFile(path.join(repoRoot, 'apps/admin/.env.local')),
+    ...process.env,
+  };
+}
+
 function stringifyCsv(rows, headers) {
   const escape = (value) => {
     const text = value == null ? '' : String(value);
@@ -85,6 +226,11 @@ function sqlString(value) {
 
 function sqlJson(value) {
   return `${sqlString(JSON.stringify(value))}::jsonb`;
+}
+
+function sqlTextArray(value) {
+  const items = Array.isArray(value) ? value.filter(Boolean) : [];
+  return `ARRAY[${items.map(sqlString).join(', ')}]::text[]`;
 }
 
 function toInt(value) {
@@ -196,6 +342,7 @@ function pickVisibleReviewPool(item) {
 }
 
 function createAccommodationRow(item, qualityBySlug, signalsBySlug) {
+  const copy = curatedCopy[item.slug];
   const quality = qualityBySlug.get(item.slug);
   const signalRows = signalsBySlug.get(item.slug) ?? [];
   const directReviewCount = toInt(quality?.direct_reviews_checked) ?? item.direct_reviews_checked ?? 0;
@@ -207,10 +354,10 @@ function createAccommodationRow(item, qualityBySlug, signalsBySlug) {
   const officialText = JSON.stringify(facts, null, 0);
   const signalText = [...(item.review_signal_keywords ?? []), ...(item.caution_keywords ?? [])].join(' ');
   const area = areaFromSlug(item.slug, quality);
-  const bathScope = deriveBathScope(axis, item.name_ja, signalRows);
-  const primaryBath = derivePrimaryBath(axis, signalRows);
+  const bathScope = copy?.bath_scope ?? deriveBathScope(axis, item.name_ja, signalRows);
+  const primaryBath = copy?.primary_bath ?? derivePrimaryBath(axis, signalRows);
   const waterSourceType = deriveWaterSourceType(`${officialText} ${signalText}`);
-  const bathContexts = deriveBathContexts(bathScope, signalRows);
+  const bathContexts = copy?.bath_contexts ?? deriveBathContexts(bathScope, signalRows);
   const waterCriteria = deriveWaterCriteria(waterSourceType, signalRows, `${officialText} ${signalText}`);
   const topSignals = signalRows
     .slice()
@@ -218,10 +365,19 @@ function createAccommodationRow(item, qualityBySlug, signalsBySlug) {
     .slice(0, 3)
     .map((row) => `${row.signal_type}:${row.signal_direction}(${row.mention_count})`);
 
-  return {
+  return applyOnsenCopyQa(applyOnsenNameQa({
     slug: item.slug,
     name: item.name_ja,
     ja_name: item.name_ja,
+    display_name_ko: item.name_ko || item.name_ja,
+    name_ja: item.name_ja,
+    name_en: item.name_en ?? null,
+    name_romaji: item.name_romaji ?? null,
+    aliases_ko: item.name_ko ? [item.name_ko] : [],
+    aliases_ja: [item.name_ja].filter(Boolean),
+    aliases_en: item.name_en ? [item.name_en] : [],
+    name_verification_status: 'needs_review',
+    name_source_note: 'Hokkaido MVP seed에서 자동 이관. 한국어 대표명은 별도 이름 QA 필요.',
     region: area,
     area: `홋카이도 ${area}`,
     country: 'JP',
@@ -232,12 +388,13 @@ function createAccommodationRow(item, qualityBySlug, signalsBySlug) {
     travel_contexts: ['ryokan_stay'],
     bath_contexts: bathContexts.length > 0 ? bathContexts : ['public_bath'],
     water_criteria: waterCriteria,
-    summary: `홋카이도 MVP 온천숙소 표본. 직접 확인 리뷰 ${directReviewCount}건 중 온천 관련 ${onsenReviewCount}건을 분리 집계했고, 주요 신호는 ${topSignals.join(', ') || '온천 경험 신호 추가 정리 필요'}로 요약된다.`,
+    summary: copy?.summary ?? `직접 확인 리뷰 ${directReviewCount}건 중 온천 관련 ${onsenReviewCount}건을 분리 집계했고, 주요 신호는 ${topSignals.join(', ') || '온천 경험 신호 추가 정리 필요'}로 요약된다.`,
     primary_bath: primaryBath,
     water_use_status: 'official_confirmed',
     water_source_type: waterSourceType,
     bath_scope: bathScope,
     operation_notes: unique([
+      ...(copy?.operation_notes ?? []),
       signalRows.some((row) => row.signal_type === 'booking_confusion') ? '예약/객실타입 혼동 신호 있음' : '',
       signalRows.some((row) => row.signal_type === 'crowding') ? '혼잡 신호 있음' : '',
       signalRows.some((row) => row.signal_type === 'weak_onsen_feeling') ? '온천감 약함 신호 일부 있음' : '',
@@ -260,7 +417,31 @@ function createAccommodationRow(item, qualityBySlug, signalsBySlug) {
     status: 'active',
     source_file: 'research/onsen-candidates/nationwide-2026-07-03/hokkaido_ready_accommodation_platform_mapping_2026-07-03.json',
     content_updated_at: snapshotDate,
-  };
+  }));
+}
+
+async function upsertAccommodationRows(rows) {
+  const env = readLocalEnv();
+  const restUrl = (env.CONTENT_DB_REST_URL || `${env.NEXT_PUBLIC_SUPABASE_URL || env.EXPO_PUBLIC_SUPABASE_URL}/rest/v1`).replace(/\/+$/, '');
+  const serviceKey = env.CONTENT_DB_SERVICE_ROLE_KEY;
+  if (!restUrl || !serviceKey || restUrl.startsWith('undefined')) {
+    throw new Error('Missing CONTENT_DB_REST_URL/SUPABASE_URL or CONTENT_DB_SERVICE_ROLE_KEY.');
+  }
+  const url = new URL(`${restUrl}/onsen_accommodations`);
+  url.searchParams.set('on_conflict', 'slug');
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      apikey: serviceKey,
+      authorization: `Bearer ${serviceKey}`,
+      'content-type': 'application/json',
+      prefer: 'resolution=merge-duplicates,return=minimal',
+    },
+    body: JSON.stringify(rows),
+  });
+  if (!response.ok) {
+    throw new Error(`onsen_accommodations upsert failed: ${response.status} ${await response.text()}`);
+  }
 }
 
 function createFacilityRow(item, signalsBySlug) {
@@ -410,6 +591,15 @@ function buildAccommodationSql(rows) {
     'slug',
     'name',
     'ja_name',
+    'display_name_ko',
+    'name_ja',
+    'name_en',
+    'name_romaji',
+    'aliases_ko',
+    'aliases_ja',
+    'aliases_en',
+    'name_verification_status',
+    'name_source_note',
     'region',
     'area',
     'summary',
@@ -437,6 +627,15 @@ function buildAccommodationSql(rows) {
     sqlString(row.slug),
     sqlString(row.name),
     sqlString(row.ja_name),
+    sqlString(row.display_name_ko),
+    sqlString(row.name_ja),
+    sqlString(row.name_en),
+    sqlString(row.name_romaji),
+    sqlTextArray(row.aliases_ko),
+    sqlTextArray(row.aliases_ja),
+    sqlTextArray(row.aliases_en),
+    sqlString(row.name_verification_status),
+    sqlString(row.name_source_note),
     sqlString(row.region),
     sqlString(row.area),
     sqlString(row.summary),
@@ -478,6 +677,7 @@ function buildAccommodationSql(rows) {
 }
 
 async function main() {
+  const shouldApply = process.argv.includes('--apply');
   await mkdir(outputDir, { recursive: true });
   const [
     accommodationMapping,
@@ -543,6 +743,7 @@ async function main() {
     'contradiction_level',
     'review_signal_status',
   ]));
+  if (shouldApply) await upsertAccommodationRows(accommodationRows);
 
   const accommodationDirectTotal = accommodationRows.reduce((sum, row) => sum + row.evidence_counts.directReviewCount, 0);
   const facilityDirectTotal = facilityRowsForMvp.reduce((sum, row) => sum + row.direct_reviews_checked, 0);
@@ -552,6 +753,7 @@ async function main() {
     `- 생성일: ${snapshotDate}`,
     '- 범위: 홋카이도 MVP 숙소 A 16곳 + 온천시설 A 3곳',
     '- 숙소 DB 상태: 기존 `onsen_accommodations` 테이블에 업서트 가능',
+    `- DB 적용 여부: ${shouldApply ? 'applied via PostgREST upsert' : 'export only'}`,
     '- 시설 DB 상태: 현재 시설 전용 테이블이 없어 `pending-schema` JSON/CSV로 분리 보관',
     '',
     '## 적재 대상',
@@ -586,6 +788,7 @@ async function main() {
   await writeFile(reportPath, report);
 
   console.log(`Exported ${accommodationRows.length} accommodation rows and ${facilityRowsForMvp.length} facility rows.`);
+  if (shouldApply) console.log(`Upserted ${accommodationRows.length} accommodation rows.`);
   console.log(path.relative(repoRoot, accommodationSqlPath));
   console.log(path.relative(repoRoot, facilityJsonPath));
 }

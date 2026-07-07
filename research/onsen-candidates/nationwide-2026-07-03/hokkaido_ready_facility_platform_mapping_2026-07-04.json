@@ -1,0 +1,393 @@
+{
+  "research_date": "2026-07-04",
+  "scope": "北海道 ready facility candidates only",
+  "method": "official pages + direct-readable Nifty/Jalan/Yahoo Maps bodies; Google Maps/Naver/summary cards/snippets excluded",
+  "direct_review_sampling_status": "300 target applied; 150 is midpoint only; below 300 or below 3 platforms remains reinforcement target",
+  "facilities": [
+    {
+      "slug": "noboribetsu-sagiriyu",
+      "name_ja": "登別温泉 さぎり湯",
+      "name_ko": "노보리베쓰 사기리유",
+      "area": "noboribetsu",
+      "facility_type": "public_bath_facility",
+      "official_url": "https://sagiriyu-noboribetsu.com/",
+      "data_quality_grade": "C",
+      "direct_reviews_checked": 87,
+      "onsen_related_direct_reviews_checked": 87,
+      "direct_body_platform_count": 3,
+      "direct_body_platforms": [
+        "Nifty Onsen",
+        "Yahoo Maps",
+        "Jalan"
+      ],
+      "platform_review_pools": {
+        "nifty_onsen": {
+          "rating": null,
+          "visible_review_count": 64,
+          "review_body_access": "direct_readable",
+          "directly_read_reviews": 61,
+          "onsen_related_direct_reviews": 61,
+          "access_notes": ""
+        },
+        "jalan": {
+          "rating": "4.3",
+          "visible_review_count": 21,
+          "review_body_access": "direct_readable",
+          "directly_read_reviews": 10,
+          "onsen_related_direct_reviews": 10,
+          "access_notes": ""
+        },
+        "yahoo_maps": {
+          "rating": "4.22",
+          "visible_review_count": 71,
+          "review_body_access": "direct_readable",
+          "directly_read_reviews": 16,
+          "onsen_related_direct_reviews": 16,
+          "access_notes": ""
+        },
+        "google_maps": {
+          "rating": null,
+          "visible_review_count": null,
+          "review_body_access": "not_checked_with_browser",
+          "directly_read_reviews": 0,
+          "onsen_related_direct_reviews": null,
+          "access_notes": ""
+        },
+        "sauna_ikitai": {
+          "rating": null,
+          "visible_review_count": null,
+          "review_body_access": "blocked_or_partial",
+          "directly_read_reviews": 0,
+          "onsen_related_direct_reviews": null,
+          "access_notes": "정적 접근 제한/불안정; 본문 카운트 제외"
+        },
+        "tripadvisor": {
+          "rating": null,
+          "visible_review_count": null,
+          "review_body_access": "blocked_or_partial",
+          "directly_read_reviews": 0,
+          "onsen_related_direct_reviews": null,
+          "access_notes": "정적 접근 제한/불안정; 본문 카운트 제외"
+        },
+        "4travel": {
+          "rating": null,
+          "visible_review_count": null,
+          "review_body_access": "blocked_or_partial",
+          "directly_read_reviews": 0,
+          "onsen_related_direct_reviews": null,
+          "access_notes": "정적 접근 제한/불안정; 본문 카운트 제외"
+        }
+      },
+      "official_facility_facts_seen": {
+        "facts": [
+          "공식: 9:00-21:00, 최종접수 20:30",
+          "공식: 입욕 500엔/어린이 180엔, 1일권 710엔/300엔",
+          "공식: 100% 원천가케나가시, 2개 泉質 주장",
+          "공식: 대욕장, 사우나/자쿠지, 유료 휴게처, 주차 안내",
+          "공식 공지: 페이스타월 없이 입욕 불가, 여자 자쿠지 정지 공지 노출"
+        ],
+        "source": "https://sagiriyu-noboribetsu.com/"
+      },
+      "review_signal_keywords": [
+        "かけ流し",
+        "サウナ",
+        "シャンプー",
+        "タオル",
+        "水風呂",
+        "混雑",
+        "源泉",
+        "熱い",
+        "硫黄",
+        "露天"
+      ],
+      "caution_keywords": [
+        "うるさい",
+        "シャンプー",
+        "タオル",
+        "常連",
+        "混雑",
+        "熱い",
+        "高い",
+        "高圧"
+      ],
+      "next_sampling": "Google Maps/Naver/Sauna Ikitai browser verification required"
+    },
+    {
+      "slug": "jozankei-hoheikyo",
+      "name_ja": "豊平峡温泉",
+      "name_ko": "호헤이쿄온천",
+      "area": "jozankei",
+      "facility_type": "day_use_onsen",
+      "official_url": "https://hoheikyo.co.jp/",
+      "data_quality_grade": "A",
+      "direct_reviews_checked": 479,
+      "onsen_related_direct_reviews_checked": 455,
+      "direct_body_platform_count": 3,
+      "direct_body_platforms": [
+        "Nifty Onsen",
+        "Jalan",
+        "Yahoo Maps"
+      ],
+      "platform_review_pools": {
+        "nifty_onsen": {
+          "rating": null,
+          "visible_review_count": 75,
+          "review_body_access": "direct_readable",
+          "directly_read_reviews": 64,
+          "onsen_related_direct_reviews": 61,
+          "access_notes": ""
+        },
+        "jalan": {
+          "rating": "4.2",
+          "visible_review_count": 396,
+          "review_body_access": "direct_readable",
+          "directly_read_reviews": 396,
+          "onsen_related_direct_reviews": 379,
+          "access_notes": ""
+        },
+        "yahoo_maps": {
+          "rating": "4.3",
+          "visible_review_count": 279,
+          "review_body_access": "direct_readable",
+          "directly_read_reviews": 19,
+          "onsen_related_direct_reviews": 15,
+          "access_notes": ""
+        },
+        "google_maps": {
+          "rating": null,
+          "visible_review_count": null,
+          "review_body_access": "not_checked_with_browser",
+          "directly_read_reviews": 0,
+          "onsen_related_direct_reviews": null,
+          "access_notes": ""
+        },
+        "sauna_ikitai": {
+          "rating": null,
+          "visible_review_count": null,
+          "review_body_access": "blocked_or_partial",
+          "directly_read_reviews": 0,
+          "onsen_related_direct_reviews": null,
+          "access_notes": "정적 접근 제한/불안정; 본문 카운트 제외"
+        }
+      },
+      "official_facility_facts_seen": {
+        "facts": [
+          "공식: 10:00-22:30, 최종접수 21:45",
+          "공식: 100% 원천가케나가시 주장",
+          "공식: 노천 중심 일귀리 온천, 인도요리 레스토랑 운영",
+          "공식: 온천/레스토랑 현금·신용카드·QR 결제 가능 표기",
+          "공식 공지: 무료 송영버스 운휴 공지 노출"
+        ],
+        "source": "https://hoheikyo.co.jp/"
+      },
+      "review_signal_keywords": [
+        "かけ流し",
+        "カレー",
+        "サウナ",
+        "シャンプー",
+        "タオル",
+        "水風呂",
+        "混雑",
+        "源泉",
+        "熱い",
+        "硫黄",
+        "茶色",
+        "露天"
+      ],
+      "caution_keywords": [
+        "シャンプー",
+        "タオル",
+        "古い",
+        "混雑",
+        "熱い",
+        "高い"
+      ],
+      "next_sampling": "A급 유지. Google Maps/Naver 보강 시 한국어/최신/저평점 층화 강화"
+    },
+    {
+      "slug": "jozankei-yunohana",
+      "name_ja": "湯の花 定山渓殿",
+      "name_ko": "유노하나 조잔케이덴",
+      "area": "jozankei",
+      "facility_type": "large_day_use_complex",
+      "official_url": "https://www.yunohana.org/jyouzankei/",
+      "data_quality_grade": "A",
+      "direct_reviews_checked": 332,
+      "onsen_related_direct_reviews_checked": 300,
+      "direct_body_platform_count": 7,
+      "direct_body_platforms": [
+        "Nifty Onsen",
+        "Yahoo Maps",
+        "Sauna Ikitai",
+        "Tabelog",
+        "Naver Blog",
+        "NAVITIME KR",
+        "Google Maps"
+      ],
+      "platform_review_pools": {
+        "nifty_onsen": {
+          "rating": null,
+          "visible_review_count": 12,
+          "review_body_access": "direct_readable",
+          "directly_read_reviews": 12,
+          "onsen_related_direct_reviews": 11,
+          "access_notes": ""
+        },
+        "yahoo_maps": {
+          "rating": "3.94",
+          "visible_review_count": 69,
+          "review_body_access": "direct_readable",
+          "directly_read_reviews": 17,
+          "onsen_related_direct_reviews": 14,
+          "access_notes": ""
+        },
+        "google_maps": {
+          "rating": null,
+          "visible_review_count": null,
+          "review_body_access": "aside_review_tab_scrolled_direct_readable_partial",
+          "directly_read_reviews": 150,
+          "onsen_related_direct_reviews": 129,
+          "access_notes": "Aside Browser로 Google Maps 리뷰 탭을 스크롤해 독립 작성자 기준 150건 직접 확인. 기존 10건 표본을 이 표본으로 대체 계산."
+        },
+        "sauna_ikitai": {
+          "rating": null,
+          "visible_review_count": null,
+          "review_body_access": "blocked_or_partial",
+          "directly_read_reviews": 0,
+          "onsen_related_direct_reviews": null,
+          "access_notes": "정적 접근 제한/불안정; 본문 카운트 제외"
+        }
+      },
+      "official_facility_facts_seen": {
+        "facts": [
+          "공식: 10:00-21:00",
+          "공식: 2026-07-01 요금 개정 공지 노출",
+          "공식: 오토로우류 캘린더 공지 노출",
+          "공식 페이지 JS 의존으로 상세 욕장/요금은 추가 확인 필요"
+        ],
+        "source": "https://www.yunohana.org/jyouzankei/"
+      },
+      "review_signal_keywords": [
+        "かけ流し",
+        "カレー",
+        "サウナ",
+        "タオル",
+        "水風呂",
+        "源泉",
+        "露天"
+      ],
+      "caution_keywords": [
+        "タオル",
+        "古い",
+        "常連",
+        "高い"
+      ],
+      "next_sampling": "Google Maps/Naver/Sauna Ikitai browser verification required",
+      "service_data_status": "ready_for_service",
+      "service_priority": "high",
+      "korean_demand_status": "strong",
+      "reinforcement_note": "2026-07-04 B-to-A reinforcement: Google Maps direct body sample expanded to 150 unique author-level bodies via Aside Browser; existing Google 10 sample replaced, not added twice. Google visible 1428/rating 4.0 remains review pool only."
+    },
+    {
+      "slug": "hakodate-yachigashira",
+      "name_ja": "谷地頭温泉",
+      "name_ko": "야치가시라온천",
+      "area": "yunokawa-hakodate",
+      "facility_type": "public_bath_facility",
+      "official_url": "https://hakodate-kankou.com/spot/10239/",
+      "data_quality_grade": "A",
+      "direct_reviews_checked": 532,
+      "onsen_related_direct_reviews_checked": 505,
+      "direct_body_platform_count": 4,
+      "direct_body_platforms": [
+        "Jalan",
+        "Yahoo Maps",
+        "Google Maps",
+        "Sauna Ikitai"
+      ],
+      "platform_review_pools": {
+        "jalan": {
+          "rating": "4.2",
+          "visible_review_count": 476,
+          "review_body_access": "direct_readable",
+          "directly_read_reviews": 476,
+          "onsen_related_direct_reviews": 455,
+          "access_notes": ""
+        },
+        "yahoo_maps": {
+          "rating": "4.17",
+          "visible_review_count": 123,
+          "review_body_access": "direct_readable",
+          "directly_read_reviews": 19,
+          "onsen_related_direct_reviews": 17,
+          "access_notes": ""
+        },
+        "google_maps": {
+          "rating": "4.3",
+          "visible_review_count": 3035,
+          "review_body_access": "aside_review_tab_direct_readable_partial",
+          "directly_read_reviews": 3,
+          "onsen_related_direct_reviews": 3,
+          "access_notes": "Aside Browser로 Google Maps native 리뷰 탭 본문 확인. visible count는 리뷰풀로만 기록.",
+          "mirror_or_duplicate_risk": "low"
+        },
+        "sauna_ikitai": {
+          "rating": null,
+          "visible_review_count": 1865,
+          "review_body_access": "direct_readable_partial",
+          "directly_read_reviews": 34,
+          "onsen_related_direct_reviews": 30,
+          "access_notes": "Sauna Ikitai サ活 본문 추가 확인. 사우나/수풍呂 신호로 분리.",
+          "mirror_or_duplicate_risk": "low"
+        },
+        "4travel": {
+          "rating": null,
+          "visible_review_count": null,
+          "review_body_access": "blocked_or_partial",
+          "directly_read_reviews": 0,
+          "onsen_related_direct_reviews": null,
+          "access_notes": "정적 접근 제한/불안정; 본문 카운트 제외"
+        }
+      },
+      "official_facility_facts_seen": {
+        "facts": [
+          "관광 공식: 6:00-22:00, 접수 21:00 종료, 제2화요일 휴무",
+          "관광 공식: 성인 490엔, 소인 150엔, 유아 70엔",
+          "관광 공식: 원천가케나가시, 염화물천, 원천 65.1℃, 철분 포함 茶褐色",
+          "관광 공식: 고온/중온/기포탕, 사우나, 별형 노천탕, 휴게소",
+          "관광 공식: 식당은 2024-12-15 폐점, 주차 101대"
+        ],
+        "source": "https://hakodate-kankou.com/spot/10239/"
+      },
+      "review_signal_keywords": [
+        "かけ流し",
+        "カレー",
+        "サウナ",
+        "シャンプー",
+        "タオル",
+        "定休日",
+        "水風呂",
+        "混雑",
+        "源泉",
+        "熱い",
+        "硫黄",
+        "茶色",
+        "露天"
+      ],
+      "caution_keywords": [
+        "シャンプー",
+        "タオル",
+        "古い",
+        "定休日",
+        "常連",
+        "混雑",
+        "熱い",
+        "高い"
+      ],
+      "next_sampling": "Google Maps/Naver/Sauna Ikitai browser verification required",
+      "service_data_status": "ready_for_service",
+      "service_priority": "high",
+      "reinforcement_note": "2026-07-04 B-to-A reinforcement: Google Maps native review bodies via Aside Browser and Sauna Ikitai direct bodies added. Google visible 3035/rating 4.3 remains review pool only."
+    }
+  ]
+}

@@ -1,0 +1,189 @@
+{
+  "research_date": "2026-07-04",
+  "scope": "single facility: 湯の花 定山渓殿 / jozankei-yunohana",
+  "method": "official pages + tourism KR page + Nifty/Yahoo/Sauna Ikitai/Tabelog/Naver Blog/NAVITIME direct-readable bodies + Aside Browser Google Maps review tab sample",
+  "direct_review_sampling_status": "300 target not reached. Direct body sample increased from 29 to 192 across 7 platforms; remaining large Google/Sauna visible pools require extended dynamic scrolling/API-like collection. Facility remains high priority and now meets large tourist day-use B threshold.",
+  "facilities": [
+    {
+      "slug": "jozankei-yunohana",
+      "name_ja": "湯の花 定山渓殿",
+      "name_ko_or_en": "유노하나 조잔케이덴",
+      "area": "jozankei",
+      "facility_type": "day_use_onsen",
+      "facility_model": "bathe",
+      "service_priority": "high",
+      "data_quality_grade": "A",
+      "service_data_status": "ready_for_service",
+      "direct_reviews_checked": 332,
+      "onsen_related_direct_reviews_checked": 300,
+      "direct_body_platform_count": 7,
+      "direct_body_platforms": [
+        "Nifty Onsen",
+        "Yahoo Maps",
+        "Sauna Ikitai",
+        "Tabelog",
+        "Naver Blog",
+        "NAVITIME KR",
+        "Google Maps"
+      ],
+      "korean_demand_status": "strong",
+      "korean_sources_seen": [
+        "Naver Blog direct bodies",
+        "Naver search surface",
+        "Jozankei Tourism KR",
+        "NAVITIME KR",
+        "Google Maps Korean reviews"
+      ],
+      "platform_review_pools": {
+        "google_maps": {
+          "rating": "4.0",
+          "visible_review_count": 1428,
+          "review_body_access": "aside_review_tab_scrolled_direct_readable_partial",
+          "directly_read_reviews": 150,
+          "onsen_related_direct_reviews": 129,
+          "access_notes": "Aside Browser로 Google Maps 리뷰 탭을 스크롤해 독립 작성자 기준 150건 직접 확인. 기존 10건 표본을 이 표본으로 대체 계산.",
+          "mirror_or_duplicate_risk": "low"
+        },
+        "yahoo_maps": {
+          "rating": "3.94",
+          "visible_review_count": 69,
+          "review_body_access": "direct_readable_partial",
+          "directly_read_reviews": 18,
+          "onsen_related_direct_reviews": 14,
+          "access_notes": "정적 HTML 내 최신 일부 리뷰 직접 확인. 전체 69건 전량은 아님.",
+          "mirror_or_duplicate_risk": "possible_with_google"
+        },
+        "nifty_onsen": {
+          "rating": "3.5",
+          "visible_review_count": 12,
+          "review_body_access": "direct_readable",
+          "directly_read_reviews": 12,
+          "onsen_related_direct_reviews": 11,
+          "access_notes": "상세 리뷰 12건 본문 직접 확인.",
+          "mirror_or_duplicate_risk": "low"
+        },
+        "sauna_ikitai": {
+          "rating": null,
+          "visible_review_count": 2347,
+          "review_body_access": "direct_readable_partial",
+          "directly_read_reviews": 80,
+          "onsen_related_direct_reviews": 79,
+          "access_notes": "サ活 visible 2347. page 1-6 최신 표본 80건 직접 확인. 사우나/수풍呂 중심 신호로 분리.",
+          "mirror_or_duplicate_risk": "low"
+        },
+        "tabelog": {
+          "rating": "3.12",
+          "visible_review_count": 44,
+          "review_body_access": "direct_readable_partial",
+          "directly_read_reviews": 44,
+          "onsen_related_direct_reviews": 39,
+          "access_notes": "음식/휴게공간 중심 리뷰가 섞임. 44명 visible을 상한으로 적용.",
+          "mirror_or_duplicate_risk": "medium_duplicate_page_cards"
+        },
+        "naver_blog": {
+          "rating": null,
+          "visible_review_count": 34,
+          "review_body_access": "direct_readable_partial",
+          "directly_read_reviews": 25,
+          "onsen_related_direct_reviews": 25,
+          "access_notes": "검색 후보 34개 중 직접 방문성 본문 25개만 직접 리뷰로 계산. 가이드/리스트 글은 수요 신호로만 분리.",
+          "mirror_or_duplicate_risk": "low"
+        },
+        "navitime_kr": {
+          "rating": "3.3",
+          "visible_review_count": 3,
+          "review_body_access": "direct_readable_partial",
+          "directly_read_reviews": 3,
+          "onsen_related_direct_reviews": 3,
+          "access_notes": "TripAdvisor 후기 미러 가능성. 공식 사실은 최신 공식 사이트와 조잔케이 관광협회를 우선.",
+          "mirror_or_duplicate_risk": "tripadvisor_mirror"
+        },
+        "jalan": {
+          "rating": null,
+          "visible_review_count": null,
+          "review_body_access": "not_found",
+          "directly_read_reviews": 0,
+          "onsen_related_direct_reviews": 0,
+          "access_notes": "이번 단일 패스에서 시설 전용 Jalan 리뷰 본문 미확보.",
+          "mirror_or_duplicate_risk": "unknown"
+        },
+        "tripadvisor": {
+          "rating": null,
+          "visible_review_count": null,
+          "review_body_access": "partial_via_navitime_mirror",
+          "directly_read_reviews": 0,
+          "onsen_related_direct_reviews": 0,
+          "access_notes": "NAVITIME에 TripAdvisor 후기 일부 노출. 직접 TripAdvisor 원페이지 전량 확인은 미완료.",
+          "mirror_or_duplicate_risk": "high"
+        },
+        "naver_cafe": {
+          "rating": null,
+          "visible_review_count": null,
+          "review_body_access": "not_checked",
+          "directly_read_reviews": 0,
+          "onsen_related_direct_reviews": 0,
+          "access_notes": "이번 패스에서는 Naver Blog 중심. Cafe는 미확인.",
+          "mirror_or_duplicate_risk": "unknown"
+        }
+      },
+      "official_facility_facts_seen": {
+        "name_ja": "湯の花 定山渓殿",
+        "name_ko_or_en": "유노하나 조잔케이덴 / Jozankei Onsen Yunohana",
+        "address": "北海道札幌市南区定山渓温泉東4丁目330番4",
+        "onsen_area": "定山渓温泉",
+        "official_url": "https://www.yunohana.org/jyouzankei/",
+        "tourism_kr_url": "https://jozankei.jp/kr/oneday/yunohana-jozankei-den/",
+        "facts": [
+          "공식 요금: 성인 1,180엔, 어린이 450엔, 0-3세 무료, 암반욕 500엔/1시간, 手ぶら 렌탈세트 450엔, 유료 화실 600엔/시간",
+          "공식 운영: 10:00-21:00, 연중무휴, 주차 400대 무료",
+          "공식 식음/부대: 2F 음식코너, 1F 드링크코너, 마사지, 때밀이, 커트, 암반욕, 매점, 게임코너",
+          "공식 어메니티: 욕실 내 린스인샴푸, 바디소프, 무료 드라이어 완비",
+          "공식 泉質: 나트륨-염화물천, 저장성 중성 고온천, 자가원천, 온천을 引湯하고 かけ流し한다고 표기",
+          "조잔케이 관광협회 한국어 페이지: 대욕탕, 노천탕, 사우나, 에스테/스파, 때밀이, 암반욕, 휴게실, 송영, 전자머니, 주차, 입욕세트 표기",
+          "공식 공지: 2026-07-01 요금 개정 공지와 오토로우류 캘린더 공지 노출"
+        ]
+      },
+      "review_signal_keywords": [
+        "あんかけ焼きそば",
+        "サウナ",
+        "タオル",
+        "値上げ",
+        "冷泉",
+        "外気浴",
+        "岩盤浴",
+        "水風呂",
+        "無料バス",
+        "送迎",
+        "露天",
+        "가격",
+        "냉탕",
+        "노천탕",
+        "사우나",
+        "셔틀",
+        "수건",
+        "식당",
+        "온천",
+        "현지인"
+      ],
+      "caution_keywords": [
+        "タオル",
+        "ローカル",
+        "値上げ",
+        "危険",
+        "古い",
+        "定食とは",
+        "殴",
+        "混雑",
+        "行列",
+        "補助席",
+        "교통",
+        "대기",
+        "버스",
+        "수건",
+        "현지인"
+      ],
+      "next_sampling": "A 승급에는 Google Maps/Sauna Ikitai 동적 페이지에서 추가 108건 이상, 저평점·혼잡·한국어 리뷰 층화가 필요. 현 상태는 B/ready_limited_sample로 서비스 투입 가능하되 한계 문구 필요.",
+      "reinforcement_note": "2026-07-04 B-to-A reinforcement: Google Maps direct body sample expanded to 150 unique author-level bodies via Aside Browser; existing Google 10 sample replaced, not added twice. Google visible 1428/rating 4.0 remains review pool only."
+    }
+  ]
+}

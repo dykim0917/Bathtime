@@ -6,6 +6,7 @@ import { updateOnsenAccommodation } from '../../../lib/onsen/actions';
 import {
   bathContextLabels,
   bathScopeLabels,
+  nameVerificationStatusLabels,
   onsenStatusLabels,
   readAdminOnsenAccommodation,
   regionGroupLabels,
@@ -104,11 +105,42 @@ export default async function OnsenDetailPage({ params, searchParams }: OnsenDet
               <input type="hidden" name="evidenceGrade" value={accommodation.evidenceGrade} />
               <input type="hidden" name="evidenceNote" value={accommodation.evidenceNote} />
 
-              <label htmlFor="name">숙소명</label>
+              <label htmlFor="displayNameKo">한국어 대표명</label>
+              <input id="displayNameKo" name="displayNameKo" defaultValue={accommodation.displayNameKo} />
+
+              <label htmlFor="name">호환 숙소명</label>
               <input id="name" name="name" defaultValue={accommodation.name} />
 
-              <label htmlFor="jaName">일본어명</label>
+              <label htmlFor="nameJa">일본 공식명</label>
+              <input id="nameJa" name="nameJa" defaultValue={accommodation.nameJa ?? accommodation.jaName ?? ''} />
+
+              <label htmlFor="jaName">호환 일본어명</label>
               <input id="jaName" name="jaName" defaultValue={accommodation.jaName ?? ''} />
+
+              <label htmlFor="nameEn">영문명</label>
+              <input id="nameEn" name="nameEn" defaultValue={accommodation.nameEn ?? ''} />
+
+              <label htmlFor="nameRomaji">로마자명</label>
+              <input id="nameRomaji" name="nameRomaji" defaultValue={accommodation.nameRomaji ?? ''} />
+
+              <label htmlFor="aliasesKo">한국어 별칭</label>
+              <input id="aliasesKo" name="aliasesKo" defaultValue={accommodation.aliasesKo.join(', ')} />
+
+              <label htmlFor="aliasesJa">일본어 별칭</label>
+              <input id="aliasesJa" name="aliasesJa" defaultValue={accommodation.aliasesJa.join(', ')} />
+
+              <label htmlFor="aliasesEn">영문 별칭</label>
+              <input id="aliasesEn" name="aliasesEn" defaultValue={accommodation.aliasesEn.join(', ')} />
+
+              <label htmlFor="nameVerificationStatus">이름 검수 상태</label>
+              <select id="nameVerificationStatus" name="nameVerificationStatus" defaultValue={accommodation.nameVerificationStatus}>
+                {Object.entries(nameVerificationStatusLabels).map(([value, label]) => (
+                  <option key={value} value={value}>{label}</option>
+                ))}
+              </select>
+
+              <label htmlFor="nameSourceNote">이름 출처/메모</label>
+              <input id="nameSourceNote" name="nameSourceNote" defaultValue={accommodation.nameSourceNote} />
 
               <label htmlFor="region">지역 코드</label>
               <input id="region" name="region" defaultValue={accommodation.region} />
@@ -214,6 +246,15 @@ export default async function OnsenDetailPage({ params, searchParams }: OnsenDet
               <input type="hidden" name="slug" value={accommodation.slug} />
               <input type="hidden" name="name" value={accommodation.name} />
               <input type="hidden" name="jaName" value={accommodation.jaName ?? ''} />
+              <input type="hidden" name="displayNameKo" value={accommodation.displayNameKo} />
+              <input type="hidden" name="nameJa" value={accommodation.nameJa ?? accommodation.jaName ?? ''} />
+              <input type="hidden" name="nameEn" value={accommodation.nameEn ?? ''} />
+              <input type="hidden" name="nameRomaji" value={accommodation.nameRomaji ?? ''} />
+              <input type="hidden" name="aliasesKo" value={accommodation.aliasesKo.join(', ')} />
+              <input type="hidden" name="aliasesJa" value={accommodation.aliasesJa.join(', ')} />
+              <input type="hidden" name="aliasesEn" value={accommodation.aliasesEn.join(', ')} />
+              <input type="hidden" name="nameVerificationStatus" value={accommodation.nameVerificationStatus} />
+              <input type="hidden" name="nameSourceNote" value={accommodation.nameSourceNote} />
               <input type="hidden" name="region" value={accommodation.region} />
               <input type="hidden" name="area" value={accommodation.area} />
               <input type="hidden" name="country" value={accommodation.country} />

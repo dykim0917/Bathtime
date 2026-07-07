@@ -1,0 +1,18 @@
+slug,name_ja,issue_type,issue_detail,recommended_action
+tokachigawa-seijakubou,全室源泉かけ流し露天風呂付きの宿 清寂房《十勝川モール温泉》,metadata_or_source_cleanup,Google partner/provider card 분리 필요; mirror 리뷰 중복 가능성; snippet_only 직접 수 제외 확인; OTA/AI 요약 직접 수 제외 확인,서비스 행 반영 가능
+toyako-lake-suite-konosisu,ザ・レイクスイート湖の栖,metadata_or_source_cleanup,Ikkyu/Yahoo 또는 OTA overlap 가능성; snippet_only 직접 수 제외 확인,서비스 행 반영 가능
+noboribetsu-bourou-noguchi,望楼NOGUCHI登別,metadata_or_source_cleanup,google summary field conflicts with pool row; operational signal_type extensions: cleanliness_maintenance; Ikkyu/Yahoo 또는 OTA overlap 가능성; snippet_only 직접 수 제외 확인; OTA/AI 요약 직접 수 제외 확인,Google/Naver/중복·운영신호 메타데이터 정리 후 반영
+jozankei-suizantei,定山渓第一寶亭留 翠山亭,metadata_or_source_cleanup,Google partner/provider card 분리 필요; Ikkyu/Yahoo 또는 OTA overlap 가능성; snippet_only 직접 수 제외 확인,서비스 행 반영 가능
+yunokawa-nagisatei,湯の川プリンスホテル渚亭,metadata_or_source_cleanup,Google partner/provider card 분리 필요; Google/숙소 정체성 혼재 주의; snippet_only 직접 수 제외 확인,서비스 행 반영 가능
+noboribetsu-daiichi-takimotokan,第一滝本館,metadata_or_source_cleanup,Google partner/provider card 분리 필요; Google/숙소 정체성 혼재 주의; snippet_only 직접 수 제외 확인,서비스 행 반영 가능
+noboribetsu-mahoroba,ホテルまほろば,metadata_or_source_cleanup,naver status not recorded,Google/Naver/중복·운영신호 메타데이터 정리 후 반영
+noboribetsu-grand,祝いの宿 登別グランドホテル,metadata_or_source_cleanup,naver status not recorded; Google partner/provider card 분리 필요,Google/Naver/중복·운영신호 메타데이터 정리 후 반영
+noboribetsu-manseikaku,登別万世閣,metadata_or_source_cleanup,Google/숙소 정체성 혼재 주의; snippet_only 직접 수 제외 확인,서비스 행 반영 가능
+noboribetsu-takinoya,登別温泉郷 滝乃家,metadata_or_source_cleanup,google summary field conflicts with pool row; naver status not recorded; operational signal_type extensions: insects; Google partner/provider card 분리 필요,Google/Naver/중복·운영신호 메타데이터 정리 후 반영
+noboribetsu-hanayura,旅亭 花ゆら,metadata_or_source_cleanup,"google summary field conflicts with pool row; naver status not recorded; operational signal_type extensions: insects,temperature_control; Google partner/provider card 분리 필요; mirror 리뷰 중복 가능성",Google/Naver/중복·운영신호 메타데이터 정리 후 반영
+jozankei-chalet-ivy,シャレーアイビー定山渓,metadata_or_source_cleanup,google summary field conflicts with pool row; operational signal_type extensions: privacy_or_glass_bath; Google partner/provider card 분리 필요; Ikkyu/Yahoo 또는 OTA overlap 가능성; snippet_only 직접 수 제외 확인,Google/Naver/중복·운영신호 메타데이터 정리 후 반영
+jozankei-grand-blissen,グランドブリッセンホテル定山渓,metadata_or_source_cleanup,google status incomplete; naver status not recorded,Google/Naver/중복·운영신호 메타데이터 정리 후 반영
+yunokawa-heiseikan-hanatsuki,平成館 しおさい亭 別館 花月,metadata_or_source_cleanup,"naver status not recorded; operational signal_type extensions: aged_facility,temperature_control; Ikkyu/Yahoo 또는 OTA overlap 가능성; Google/숙소 정체성 혼재 주의; OTA/AI 요약 직접 수 제외 확인",Google/Naver/중복·운영신호 메타데이터 정리 후 반영
+yunokawa-heiseikan-shiosaitei,平成館 しおさい亭,metadata_or_source_cleanup,Google/숙소 정체성 혼재 주의; snippet_only 직접 수 제외 확인; OTA/AI 요약 직접 수 제외 확인,서비스 행 반영 가능
+yunokawa-hanabishi,函館・湯の川温泉 花びしホテル,metadata_or_source_cleanup,google status incomplete; naver status not recorded,Google/Naver/중복·운영신호 메타데이터 정리 후 반영
+__report__,review_signal_summary,report_structure,공식 사실 섹션 이후에 리뷰 신호 행이 섞인 구조 깨짐 흔적이 있음,서비스용 리포트 export 전 공식 사실 표와 리뷰 신호 표를 분리 정리

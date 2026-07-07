@@ -12,6 +12,7 @@ export type OnsenRegionGroup = 'kyushu' | 'kanto' | 'kansai' | 'hokkaido' | 'toh
 export type OnsenTravelContext = 'ryokan_stay' | 'day_trip' | 'city_bath' | 'hotel_public_bath';
 export type OnsenBathContext = 'room_bath' | 'private_bath' | 'public_bath';
 export type OnsenWaterCriterion = 'direct_source' | 'natural_100' | 'spring_confirmed' | 'water_texture' | 'temperature_adjustment' | 'winter_caution';
+export type OnsenNameVerificationStatus = 'verified' | 'needs_review' | 'conflicting';
 
 export interface OnsenEvidenceCounts {
   directReviewCount: number | null;
@@ -27,6 +28,15 @@ export interface AdminOnsenAccommodation {
   slug: string;
   name: string;
   jaName?: string;
+  displayNameKo: string;
+  nameJa?: string;
+  nameEn?: string;
+  nameRomaji?: string;
+  aliasesKo: string[];
+  aliasesJa: string[];
+  aliasesEn: string[];
+  nameVerificationStatus: OnsenNameVerificationStatus;
+  nameSourceNote: string;
   region: string;
   area: string;
   country: string;
@@ -56,6 +66,15 @@ export interface OnsenAccommodationRecord {
   slug: string;
   name: string;
   ja_name: string | null;
+  display_name_ko: string | null;
+  name_ja: string | null;
+  name_en: string | null;
+  name_romaji: string | null;
+  aliases_ko: unknown;
+  aliases_ja: unknown;
+  aliases_en: unknown;
+  name_verification_status: string | null;
+  name_source_note: string | null;
   region: string;
   area: string | null;
   country: string | null;
@@ -142,6 +161,12 @@ export const waterCriterionLabels: Record<OnsenWaterCriterion, string> = {
   winter_caution: '겨울 주의',
 };
 
+export const nameVerificationStatusLabels: Record<OnsenNameVerificationStatus, string> = {
+  verified: '검수 완료',
+  needs_review: '검수 필요',
+  conflicting: '표기 충돌',
+};
+
 const onsenStatuses = Object.keys(onsenStatusLabels) as OnsenAdminStatus[];
 const waterUseStatuses = Object.keys(waterUseStatusLabels) as OnsenWaterUseStatus[];
 const waterSourceTypes = Object.keys(waterSourceTypeLabels) as OnsenWaterSourceType[];
@@ -150,6 +175,7 @@ const regionGroups = Object.keys(regionGroupLabels) as OnsenRegionGroup[];
 const travelContexts = Object.keys(travelContextLabels) as OnsenTravelContext[];
 const bathContexts = Object.keys(bathContextLabels) as OnsenBathContext[];
 const waterCriteria = Object.keys(waterCriterionLabels) as OnsenWaterCriterion[];
+const nameVerificationStatuses = Object.keys(nameVerificationStatusLabels) as OnsenNameVerificationStatus[];
 
 const reportPriority = [
   'agoda_enriched',
@@ -213,11 +239,26 @@ function normalizeGrade(value: string | null | undefined): 'A' | 'B' | 'C' | 'D'
   return value === 'A' || value === 'B' || value === 'C' || value === 'D' ? value : 'D';
 }
 
+function normalizeNameVerificationStatus(value: string | null | undefined): OnsenNameVerificationStatus {
+  return nameVerificationStatuses.includes(value as OnsenNameVerificationStatus) ? (value as OnsenNameVerificationStatus) : 'needs_review';
+}
+
 export function mapOnsenAccommodationRecord(row: OnsenAccommodationRecord): AdminOnsenAccommodation {
+  const displayNameKo = row.display_name_ko?.trim() || row.name;
+  const nameJa = row.name_ja?.trim() || row.ja_name || undefined;
   return {
     slug: row.slug,
-    name: row.name,
-    jaName: row.ja_name ?? undefined,
+    name: displayNameKo,
+    jaName: nameJa,
+    displayNameKo,
+    nameJa,
+    nameEn: row.name_en ?? undefined,
+    nameRomaji: row.name_romaji ?? undefined,
+    aliasesKo: normalizeStringList(row.aliases_ko),
+    aliasesJa: normalizeStringList(row.aliases_ja),
+    aliasesEn: normalizeStringList(row.aliases_en),
+    nameVerificationStatus: normalizeNameVerificationStatus(row.name_verification_status),
+    nameSourceNote: row.name_source_note ?? '',
     region: row.region,
     area: row.area ?? row.region,
     country: row.country ?? 'JP',
@@ -336,6 +377,13 @@ async function readSeedReport(root: string, folder: string): Promise<AdminOnsenA
     slug: folder,
     name: pickName(raw, folder),
     jaName: pickJapaneseName(raw),
+    displayNameKo: pickName(raw, folder),
+    nameJa: pickJapaneseName(raw),
+    aliasesKo: [],
+    aliasesJa: [],
+    aliasesEn: [],
+    nameVerificationStatus: 'needs_review',
+    nameSourceNote: 'Seed fallback에서 자동 추출',
     region: 'yufuin',
     area: '오이타 유후인',
     country: 'JP',

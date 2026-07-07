@@ -18,6 +18,7 @@
     "catalog:seed:export": "node scripts/export_catalog_research_seed.mjs",
     "catalog:seed:export:postgres": "node scripts/export_catalog_research_seed_postgres.mjs",
     "content:seed:export:postgres": "node scripts/export_content_seed_postgres.mjs",
+    "onsen:hokkaido:mvp:export": "node scripts/export_hokkaido_onsen_mvp_seed.mjs",
     "archive:spot:upsert": "node scripts/upsert_archive_content_from_spot_seed.mjs",
     "archive:item:upsert": "node scripts/upsert_archive_content_from_spot_seed.mjs",
     "content:api:smoke": "node scripts/smoke_content_snapshot_api.mjs",

@@ -1,0 +1,3897 @@
+{
+  "research_date": "2026-07-03",
+  "scope": "北海道 ready accommodation candidates only",
+  "method": "Rakuten Travel hotel/voice pagination plus statically readable Jalan/JTB surfaces discovered from prior verification and targeted URL search; duplicate related-property Rakuten IDs filtered by first ready-candidate ownership",
+  "direct_review_sampling_status": "expanded_static_multi_platform_where_available; direct counts never mixed with visible review pools",
+  "lodgings": [
+    {
+      "slug": "tokachigawa-seijakubou",
+      "name_ja": "全室源泉かけ流し露天風呂付きの宿 清寂房《十勝川モール温泉》",
+      "google_maps": {
+        "rating": "4.5",
+        "visible_review_count": "266",
+        "rating_distribution": {
+          "5": 196,
+          "4": 41,
+          "3": 9,
+          "2": 8,
+          "1": 12
+        },
+        "korean_reviews_visible": true,
+        "access_status": "aside_review_tab_read",
+        "notes": "Trip.com partner cards appeared in same Google panel and were not counted as Google direct bodies."
+      },
+      "ota_review_pool_signals": [
+        {
+          "source": "Jalan",
+          "url": "https://www.jalan.net/yad348167/kuchikomi/",
+          "visible_review_count": "123",
+          "rating": "4.6",
+          "bath_score": "4.8",
+          "access_status": "direct_fetch_full_read",
+          "notes": "secondary static surface; direct bodies counted only when review_chunks > 0"
+        },
+        {
+          "source": "Ikkyu",
+          "url": "https://www.ikyu.com/00003001/review/",
+          "visible_review_count": "341",
+          "rating": "4.80 overall; onsen/bath 4.90",
+          "bath_score": null,
+          "access_status": "web_open_direct_read",
+          "notes": "Ikkyu review page exposed direct bodies. Counted visible body sample only; facility replies and category scores not counted as separate reviews."
+        },
+        {
+          "source": "Yahoo Travel",
+          "url": "https://travel.yahoo.co.jp/00003001/review/",
+          "visible_review_count": "341",
+          "rating": "4.80 overall; onsen/bath 4.90",
+          "bath_score": null,
+          "access_status": "web_open_direct_read",
+          "notes": "Yahoo Travel review page exposed direct bodies. Category-only rows not counted."
+        },
+        {
+          "source": "Hotels.com",
+          "url": "https://jp.hotels.com/ho2463267776/shi-sheng-chuanmoru-wen-quan-qing-ji-fang-yin-geng-ri-ben/",
+          "visible_review_count": "32",
+          "rating": "9.0/10",
+          "bath_score": null,
+          "access_status": "web_open_direct_read_partial",
+          "notes": "Hotels.com exposed a small verified-review section. Counted only visible body cards; FAQ/facility facts kept separate."
+        },
+        {
+          "source": "Naver/Search Korean web",
+          "url": "https://search.naver.com/search.naver?query=%EC%84%B8%EC%9D%B4%EC%9E%90%EC%BF%A0%EB%B3%B4%20%EC%8B%AD%EC%8A%B9%EC%B2%9C%20%EC%98%A8%EC%B2%9C%20%ED%9B%84%EA%B8%B0",
+          "visible_review_count": null,
+          "rating": null,
+          "bath_score": null,
+          "access_status": "search_result_snippet_only",
+          "notes": "Korean web search/MATOKA/private-hotspring pages were not counted as direct user review bodies."
+        },
+        {
+          "source": "Rakuten Travel",
+          "url": "https://travel.rakuten.co.jp/HOTEL/184142/review.html",
+          "visible_review_count": "not_captured",
+          "rating": "not_captured",
+          "bath_score": null,
+          "access_status": "web_open_direct_read",
+          "directly_read_reviews": 12,
+          "onsen_related_direct_reviews": 9,
+          "snippet_only_count": 0,
+          "notes": "Rakuten review page exposed visible bodies. Counted 12 direct bodies conservatively; room-type bath evidence was not inflated into water-texture mentions."
+        },
+        {
+          "source": "Booking.com",
+          "url": "https://www.booking.com/reviews/jp/hotel/shi-sheng-chuan-moruwen-quan-qing-ji-fang.ja.html",
+          "visible_review_count": "88",
+          "rating": "9.8/10",
+          "bath_score": null,
+          "access_status": "web_open_direct_read",
+          "directly_read_reviews": 20,
+          "onsen_related_direct_reviews": 14,
+          "snippet_only_count": 0,
+          "notes": "Booking.com Japanese review page exposed first 20 visible bodies. Direct count is body rows only; translation disclaimer and metadata not counted."
+        },
+        {
+          "source": "Trip.com",
+          "url": "https://jp.trip.com/hotels/otofuke-hotel-detail-97396122/tokachigawa-moor-onsen-seijyakubow/",
+          "visible_review_count": "42",
+          "rating": "9.8/10",
+          "bath_score": null,
+          "access_status": "web_open_direct_read",
+          "directly_read_reviews": 8,
+          "onsen_related_direct_reviews": 3,
+          "snippet_only_count": 0,
+          "notes": "Trip.com page exposed a limited visible body sample. AI-generated summary and category counts were not counted as direct reviews."
+        },
+        {
+          "source": "Booking.com via Planet of Hotels",
+          "url": "https://en.planetofhotels.com/japan/otofuke-hokkaido/tokachigawa-moor-onsen-seijyakubow",
+          "visible_review_count": "88",
+          "rating": "9.8/10",
+          "bath_score": null,
+          "access_status": "web_open_direct_read_booking_mirror",
+          "directly_read_reviews": 10,
+          "onsen_related_direct_reviews": 8,
+          "snippet_only_count": 0,
+          "notes": "Planet of Hotels mirrors Booking.com traveller ratings. Counted only clearly visible distinct English author bodies not already visible in the Japanese Booking first-page sample; keep as Booking-pool mirror, not a new independent platform."
+        },
+        {
+          "source": "Ikkyu full pagination remainder p1-p9",
+          "url": "https://www.ikyu.com/00003001/review/",
+          "visible_review_count": "342 combined Ikkyu/Yahoo score; 263 Ikkyu unique reviewBody bodies extracted",
+          "rating": "4.80 overall; onsen/bath 4.90",
+          "bath_score": null,
+          "access_status": "aside_browser_structured_direct_read",
+          "directly_read_reviews": 228,
+          "onsen_related_direct_reviews": 179,
+          "notes": "Aside Browser parsed Ikkyu p1-p9 reviewBody blocks: 263 unique readable bodies, 211 onsen-related. Counted only the additional remainder beyond the earlier 35 Ikkyu bodies; facility replies and combined Ikkyu/Yahoo visible total were excluded."
+        }
+      ],
+      "official_bath_facts_seen": {
+        "official_url": "https://seijyakubow.jp/",
+        "candidate_axes": "room_open_air_bath",
+        "candidate_notes": "全室源泉かけ流しモール温泉の強候補。湯の華/やわらかさ/客室露天の広さを重点タグ化",
+        "official_fact_status": "candidate_prior_verification_plus_static_page_check"
+      },
+      "review_signal_keywords": [
+        "Onsen water supreme",
+        "private onsen",
+        "wonderful Onsen",
+        "プライベート温泉",
+        "ポカポカ",
+        "モール;温泉",
+        "モール温泉",
+        "モール温泉の黒いお湯",
+        "大浴場;源泉;かけ流し",
+        "客室露天風呂",
+        "客室露天風呂;大浴場;源泉",
+        "客室露天風呂;源泉;かけ流し",
+        "柔らかい",
+        "温泉",
+        "源泉;かけ流し;モール",
+        "源泉かけ流し",
+        "肌すべすべ",
+        "茶褐色",
+        "露天風呂付",
+        "개인 온천풀",
+        "내탕",
+        "몰 온천물",
+        "Ikkyu p1-p9 reviewBody",
+        "263 Ikkyu unique bodies",
+        "浴槽深い"
+      ],
+      "caution_keywords": [
+        "Booking mirror dedupe",
+        "Naver snippet only",
+        "アクセス/看板",
+        "価格期待差",
+        "内湯異臭",
+        "大浴場閉塞感",
+        "景観/工事音",
+        "浴槽深い",
+        "温度",
+        "食事ペース",
+        "食事一部残念",
+        "Ikkyu/Yahoo combined visible score not direct count",
+        "Ikkyu facility replies excluded",
+        "Yahoo additional pages not counted in this A jump to avoid unnecessary mirror inflation"
+      ],
+      "direct_reviews_checked": 380,
+      "onsen_related_direct_reviews_checked": 300,
+      "direct_body_platforms": [
+        "Jalan",
+        "Google Maps",
+        "Ikkyu",
+        "Yahoo Travel",
+        "Hotels.com",
+        "Rakuten Travel",
+        "Booking.com",
+        "Trip.com"
+      ],
+      "data_quality_grade": "A",
+      "volume_grade": "A_volume_300plus",
+      "next_sampling": "A-grade reached from Ikkyu full pagination plus existing multi-platform sample. Future cleanup can author-deduplicate Yahoo/Ikkyu and deepen Korean Naver bodies, but 300+ direct threshold is met without visible-pool inflation.",
+      "snippet_only_surfaces": [
+        {
+          "platform": "Ikkyu",
+          "url": "https://www.ikyu.com/00003001/review/",
+          "access_status": "source_preview_snippet_only",
+          "visible_review_count": null,
+          "rating": null,
+          "bath_signal_preview": "객실 노천탕이 넓고 차갈색/모르 온천 체감, 입욕 후 보온감 언급이 보임. 직접 본문 표본은 아님.",
+          "next_action": "Aside/Ikkyu page direct read needed"
+        }
+      ],
+      "review_signal_status": "A_volume_300plus",
+      "reinforcement_status": "a_grade_ikkyu_full_pagination_reinforced",
+      "a_reinforcement_2026_07_04": {
+        "added_direct_reviews_checked": 228,
+        "added_onsen_related_direct_reviews_checked": 179,
+        "sources": [
+          {
+            "source": "Ikkyu full pagination remainder p1-p9",
+            "url": "https://www.ikyu.com/00003001/review/",
+            "rating": "4.80 overall; onsen/bath 4.90",
+            "visible": "342 combined Ikkyu/Yahoo score; 263 Ikkyu unique reviewBody bodies extracted",
+            "direct": 228,
+            "onsen": 179,
+            "keywords": "部屋のモール温泉;客室露天風呂;大浴場;泉質;茶褐色;ポカポカ;源泉かけ流し;モール温泉;浴槽深い;大浴場閉塞感;段差",
+            "notes": "Aside Browser parsed Ikkyu p1-p9 reviewBody blocks: 263 unique readable bodies, 211 onsen-related. Counted only the additional remainder beyond the earlier 35 Ikkyu bodies; facility replies and combined Ikkyu/Yahoo visible total were excluded."
+          }
+        ],
+        "counting_note": "Only Ikkyu parsed reviewBody blocks beyond the earlier 35-body sample were counted. Combined visible totals and facility replies were excluded; Yahoo extra pages were observed but not needed for A."
+      }
+    },
+    {
+      "slug": "toyako-lake-suite-konosisu",
+      "name_ja": "ザ・レイクスイート湖の栖",
+      "google_maps": {
+        "rating": "4.5",
+        "visible_review_count": "1169",
+        "rating_distribution": {
+          "5": 809,
+          "4": 227,
+          "3": 79,
+          "2": 25,
+          "1": 29
+        },
+        "korean_reviews_visible": true,
+        "access_status": "aside_review_tab_read",
+        "review_topic_pool_signals": {
+          "일본의 온천": 184,
+          "대욕장": 110,
+          "토야 선팔레스 리조트 앤 스파": 88
+        }
+      },
+      "ota_review_pool_signals": [
+        {
+          "source": "Rakuten Travel",
+          "url": "https://review.travel.rakuten.co.jp/hotel/voice/172346",
+          "visible_review_count": "866",
+          "rating": "4.48",
+          "bath_score": ":",
+          "access_status": "direct_fetch_paginated_read",
+          "notes": "hotel/voice pagination expanded; direct bodies counted separately"
+        },
+        {
+          "source": "Rakuten Travel",
+          "url": "https://review.travel.rakuten.co.jp/hotel/voice/172346",
+          "visible_review_count": "866",
+          "rating": "4.48",
+          "bath_score": "4.73",
+          "access_status": "direct_fetch_paginated_read",
+          "notes": "hotel/voice pagination expanded; direct bodies counted separately"
+        },
+        {
+          "source": "Rakuten Travel",
+          "url": "https://travel.rakuten.co.jp/HOTEL/172346/review.html",
+          "visible_review_count": "866",
+          "rating": "4.48",
+          "bath_score": ":",
+          "access_status": "direct_fetch_full_read",
+          "notes": ""
+        },
+        {
+          "source": "Jalan",
+          "url": "https://www.jalan.net/yad352222/kuchikomi/",
+          "visible_review_count": "119",
+          "rating": "4.4 overall; bath 4.7",
+          "bath_score": null,
+          "access_status": "web_open_direct_read",
+          "notes": "Jalan recent review page exposed bodies directly. Count is visible direct-review sample only; 119 is platform pool."
+        },
+        {
+          "source": "Yahoo Travel",
+          "url": "https://travel.yahoo.co.jp/00002637/review/",
+          "visible_review_count": "189",
+          "rating": "4.32 overall; onsen/bath 4.70",
+          "bath_score": null,
+          "access_status": "web_open_direct_read",
+          "notes": "Yahoo Travel review page exposed review bodies and category scores directly. Category scores were not counted without body text."
+        },
+        {
+          "source": "Trip.com",
+          "url": "https://kr.trip.com/hotels/sobetsu-hotel-detail-30149326/the-lake-suite-ko-no-sumika/",
+          "visible_review_count": "67",
+          "rating": "9.6/10",
+          "bath_score": null,
+          "access_status": "web_open_direct_read",
+          "notes": "Korean-localized Trip.com page exposed visible review bodies. Topic counts such as 온천 추천 26 kept separate from direct body counts."
+        },
+        {
+          "source": "Naver/Search Korean web",
+          "url": "https://search.naver.com/search.naver?query=%EB%8D%94%20%EB%A0%88%EC%9D%B4%ED%81%AC%20%EC%8A%A4%EC%9C%84%ED%8A%B8%20%EC%BD%94%20%EB%85%B8%20%EC%88%98%EB%AF%B8%EC%B9%B4%20%ED%9B%84%EA%B8%B0%20%EC%98%A8%EC%B2%9C",
+          "visible_review_count": null,
+          "rating": null,
+          "bath_score": null,
+          "access_status": "search_result_snippet_only",
+          "notes": "Korean search snippets only; no Naver Blog/Cafe body was counted in this pass."
+        },
+        {
+          "source": "Ikkyu",
+          "url": "https://www.ikyu.com/00002637/review/",
+          "visible_review_count": "not_captured",
+          "rating": "not_captured",
+          "bath_score": null,
+          "access_status": "web_open_direct_read",
+          "directly_read_reviews": 15,
+          "onsen_related_direct_reviews": 11,
+          "snippet_only_count": 0,
+          "notes": "Ikkyu review page exposed direct bodies. Category scores and facility replies were not counted. Possible Yahoo-family overlap noted but visible authors/bodies used conservatively."
+        },
+        {
+          "source": "Hotels.com",
+          "url": "https://jp.hotels.com/ho1067710240/za-reikusuito-huno-qi-zhuang-pie-ri-ben/",
+          "visible_review_count": "79 Expedia-group",
+          "rating": "not_captured",
+          "bath_score": null,
+          "access_status": "web_open_direct_read",
+          "directly_read_reviews": 8,
+          "onsen_related_direct_reviews": 7,
+          "snippet_only_count": 0,
+          "notes": "Hotels.com Japanese page exposed verified-review body cards. Expedia-group pool is not treated as a separate direct-review count beyond visible bodies."
+        },
+        {
+          "source": "Rakuten Travel second wave",
+          "url": "https://travel.rakuten.co.jp/HOTEL/172346/review.html",
+          "visible_review_count": "866",
+          "rating": "4.48",
+          "bath_score": null,
+          "access_status": "web_open_direct_read",
+          "directly_read_reviews": 10,
+          "onsen_related_direct_reviews": 8,
+          "snippet_only_count": 0,
+          "notes": "Additional Rakuten visible bodies beyond the original baseline. Kept as second-wave source row so baseline platform pool is not confused with direct sample."
+        },
+        {
+          "source": "Ikkyu/Yahoo Travel",
+          "url": "https://www.ikyu.com/00002637/review/ ; https://travel.yahoo.co.jp/00002637/review/",
+          "visible_review_count": "190 current Ikkyu pool; 189 prior observed",
+          "rating": "4.32",
+          "access_status": "web_open_direct_read_paginated",
+          "directly_read_reviews": "140",
+          "onsen_related_direct_reviews": "112",
+          "notes": "A reinforcement: direct readable review pages p1-p5; shared-origin risk with Yahoo/Ikkyu noted; visible pool not counted as direct."
+        }
+      ],
+      "official_bath_facts_seen": {
+        "official_url": "https://www.konosumika.com/",
+        "candidate_axes": "room_open_air_bath",
+        "candidate_notes": "全室温泉露天+大浴場眺望が強い。客室湯温調整、湖ビュー、サンパレス本館利用/動線を確認",
+        "official_fact_status": "candidate_prior_verification_plus_official_reinforced",
+        "reinforced_notes": "Official site: all rooms lake-view with guest-room hot-spring open-air baths; public onsen includes sky-floating open-air bath / 湖上の湯. Food venue may use Toya Sun Palace main building."
+      },
+      "review_signal_keywords": [
+        "お部屋に温泉;温泉露天風呂付;大浴場",
+        "インフィニティ露天風呂",
+        "サンパレス移動",
+        "大浴場;露天風呂",
+        "大浴場インフィニティ型露天風呂",
+        "大浴場物足りない",
+        "大浴場露天風呂",
+        "客室露天風呂",
+        "温泉からの景色",
+        "温泉露天風呂付;個室温泉;露天風呂",
+        "温泉露天風呂付;大浴場;サウナ",
+        "温泉露天風呂付;大浴場;露天風呂",
+        "温泉露天風呂付;客室露天風呂;大浴場",
+        "温泉露天風呂付;客室露天風呂;露天風呂",
+        "温泉露天風呂付;露天風呂;お湯",
+        "温泉露天風呂付;露天風呂;温泉",
+        "部屋の温泉の泉質",
+        "部屋付露天風呂",
+        "雪虫",
+        "노천탕",
+        "대욕장",
+        "온천",
+        "파노라마 온천"
+      ],
+      "caution_keywords": [
+        "Expedia/Hotels overlap caution",
+        "Ikkyu/Yahoo overlap caution",
+        "Naver snippet only",
+        "サンパレス移動",
+        "客室ビュー期待差",
+        "工事音",
+        "混雑",
+        "温度",
+        "温度調節",
+        "湖ビュー期待差",
+        "熱い",
+        "物足りない",
+        "狭い",
+        "虫",
+        "遠い",
+        "雪虫",
+        "食事サンパレス移動",
+        "食事会場遠い"
+      ],
+      "direct_reviews_checked": 308,
+      "onsen_related_direct_reviews_checked": 255,
+      "direct_body_platforms": [
+        "Rakuten Travel",
+        "Google Maps",
+        "Jalan",
+        "Yahoo Travel",
+        "Trip.com",
+        "Ikkyu",
+        "Hotels.com"
+      ],
+      "data_quality_grade": "A",
+      "volume_grade": "A_volume_300plus",
+      "next_sampling": "A-grade baseline reached. Further work should avoid double-counting Ikkyu/Yahoo mirrors and prioritize Naver/Korean body checks for room-bath wording.",
+      "snippet_only_surfaces": [
+        {
+          "platform": "Yahoo Travel",
+          "url": "https://travel.yahoo.co.jp/00002637/review/",
+          "access_status": "source_preview_snippet_only",
+          "visible_review_count": null,
+          "rating": null,
+          "bath_signal_preview": "객실 노천탕/대욕장 조망 긍정과 식사 기대차 신호가 보임. 직접 본문 표본은 아님.",
+          "next_action": "Aside/Yahoo review tab direct read needed"
+        },
+        {
+          "platform": "Ikkyu",
+          "url": "https://www.ikyu.com/00002637/",
+          "access_status": "source_preview_snippet_only",
+          "visible_review_count": null,
+          "rating": null,
+          "bath_signal_preview": "객실 온천과 대욕장에서 洞爺湖 조망, 겨울 테라스 추위, 식사 기대차 언급이 보임.",
+          "next_action": "Ikkyu review page direct read needed"
+        },
+        {
+          "platform": "Relux",
+          "url": "https://rlx.jp/23830/review/",
+          "access_status": "source_preview_snippet_only",
+          "visible_review_count": null,
+          "rating": null,
+          "bath_signal_preview": "객실 노천탕 긍정과 대욕장 외국인 소음/혼잡성 신호가 보임.",
+          "next_action": "Relux body access check"
+        }
+      ],
+      "a_reinforcement_2026_07_04": {
+        "added_source": "Ikkyu/Yahoo Travel pages p1-p5",
+        "added_direct_reviews_checked": 140,
+        "added_onsen_related_direct_reviews_checked": 112,
+        "reinforced_direct_reviews_checked": 308,
+        "reinforced_onsen_related_direct_reviews_checked": 255,
+        "access_status": "web_open_direct_read_paginated",
+        "notes": "Visible pool kept separate; Ikkyu/Yahoo shared-origin risk means platform count stays at existing 7, not +2."
+      }
+    },
+    {
+      "slug": "noboribetsu-bourou-noguchi",
+      "name_ja": "望楼NOGUCHI登別",
+      "google_maps": {
+        "rating": null,
+        "visible_review_count": null,
+        "rating_distribution": null,
+        "korean_reviews_visible": null,
+        "access_status": "not_converted_to_direct_body_this_pass",
+        "notes": "No stable Google Maps direct body sample was added for this lodging during this reinforcement pass."
+      },
+      "ota_review_pool_signals": [
+        {
+          "source": "Jalan",
+          "url": "https://www.jalan.net/yad311972/kuchikomi/",
+          "visible_review_count": "31",
+          "rating": "4.5",
+          "bath_score": "4.6",
+          "access_status": "direct_fetch_full_read",
+          "notes": "secondary static surface; direct bodies counted only when review_chunks > 0"
+        },
+        {
+          "source": "Ikkyu",
+          "url": "https://www.ikyu.com/00001211/review/",
+          "visible_review_count": "147",
+          "rating": "4.45",
+          "bath_score": "4.52",
+          "access_status": "web_open_direct_read",
+          "directly_read_reviews": 35,
+          "onsen_related_direct_reviews": 30,
+          "notes": "Platform pool and direct body sample kept separate."
+        },
+        {
+          "source": "Yahoo Travel",
+          "url": "https://travel.yahoo.co.jp/00001211/review/",
+          "visible_review_count": "148",
+          "rating": "4.45",
+          "bath_score": "4.53",
+          "access_status": "web_open_direct_read",
+          "directly_read_reviews": 25,
+          "onsen_related_direct_reviews": 20,
+          "notes": "Some surface overlap with Ikkyu; not treated as additional platform pool beyond its own visible page."
+        },
+        {
+          "source": "Tripadvisor",
+          "url": "https://www.tripadvisor.com/Hotel_Review-g325583-d1155419-Reviews-Bourou_Noguchi_Noboribetsu-Noboribetsu_Hokkaido.html",
+          "visible_review_count": "not_captured",
+          "rating": "not_captured",
+          "bath_score": null,
+          "access_status": "web_open_direct_read",
+          "directly_read_reviews": 12,
+          "onsen_related_direct_reviews": 10,
+          "notes": "Direct bodies visible; translated bodies counted only where body text was visible."
+        },
+        {
+          "source": "Trip.com",
+          "url": "https://jp.trip.com/hotels/noboribetsu-hotel-detail-1487991/bourou-noguchi-noboribetsu/",
+          "visible_review_count": "85",
+          "rating": "8.9/10",
+          "bath_score": null,
+          "access_status": "web_open_direct_read",
+          "directly_read_reviews": 8,
+          "onsen_related_direct_reviews": 4,
+          "notes": "AI summary not counted as direct reviews."
+        },
+        {
+          "source": "Expedia",
+          "url": "https://www.expedia.com/Noboribetsu-Hotels-Bourou-NOGUCHI-Noboribetsu-Adult-Only.h12629784.Hotel-Information",
+          "visible_review_count": "not_captured",
+          "rating": "not_captured",
+          "bath_score": null,
+          "access_status": "web_open_direct_read",
+          "directly_read_reviews": 4,
+          "onsen_related_direct_reviews": 3,
+          "notes": "Small verified body sample exposed."
+        },
+        {
+          "source": "Naver/Search Korean web",
+          "url": "https://search.naver.com/search.naver?query=%EB%A7%9D%EB%A3%A8%20%EB%85%B8%EA%B5%AC%EC%B9%98%20%EB%85%B8%EB%B3%B4%EB%A6%AC%EB%B2%A0%EC%B8%A0%20%EA%B0%9D%EC%8B%A4%ED%83%95%20%EC%98%A8%EC%B2%9C",
+          "visible_review_count": null,
+          "rating": null,
+          "bath_score": null,
+          "access_status": "snippet_only",
+          "directly_read_reviews": 0,
+          "onsen_related_direct_reviews": 0,
+          "snippet_only_count": 4,
+          "notes": "Korean snippets only; direct body count remains zero."
+        },
+        {
+          "source": "Google Maps/Hotels",
+          "url": "https://www.google.com/maps/search/%E6%9C%9B%E6%A5%BCNOGUCHI%E7%99%BB%E5%88%A5%20Bourou%20NOGUCHI%20Noboribetsu",
+          "visible_review_count": "750",
+          "rating": "4.3",
+          "bath_score": null,
+          "access_status": "aside_browser_direct_read",
+          "directly_read_reviews": 25,
+          "onsen_related_direct_reviews": 16,
+          "notes": "Google Maps/Hotels panel opened in Aside Browser. Visible pool 750 and rating distribution are recorded separately from direct body sample."
+        },
+        {
+          "source": "Rakuten Travel",
+          "url": "https://travel.rakuten.co.jp/HOTEL/51198/review.html",
+          "visible_review_count": "not_captured",
+          "rating": "not_captured",
+          "bath_score": null,
+          "access_status": "direct_fetch_full_read",
+          "directly_read_reviews": 10,
+          "onsen_related_direct_reviews": 8,
+          "notes": "Static review page direct body sample; keyword totals were not counted as reviews."
+        },
+        {
+          "source": "Booking.com",
+          "url": "https://www.booking.com/reviews/jp/hotel/bourou-noguchi-noboribetsu.ja.html",
+          "visible_review_count": "not_captured",
+          "rating": "not_captured",
+          "bath_score": null,
+          "access_status": "direct_fetch_full_read",
+          "directly_read_reviews": 5,
+          "onsen_related_direct_reviews": 3,
+          "notes": "Small direct body sample only."
+        },
+        {
+          "source": "Ikkyu full pagination remainder p1-p4",
+          "url": "https://www.ikyu.com/00001211/review/",
+          "visible_review_count": "147 combined Ikkyu/Yahoo score; 94 Ikkyu unique reviewBody bodies extracted",
+          "rating": "4.45 overall; onsen/bath 4.52",
+          "bath_score": null,
+          "access_status": "aside_browser_structured_direct_read",
+          "directly_read_reviews": 59,
+          "onsen_related_direct_reviews": 43,
+          "notes": "Aside Browser parsed Ikkyu reviewBody blocks across p1-p4: 94 unique readable bodies, 73 onsen-related. Counted only the additional remainder beyond the earlier 35 Ikkyu bodies; facility replies and combined visible total were excluded."
+        },
+        {
+          "source": "Yahoo Travel full pagination remainder p1-p4",
+          "url": "https://travel.yahoo.co.jp/00001211/review/",
+          "visible_review_count": "148 combined Ikkyu/Yahoo score; 115 Yahoo unique reviewBody bodies extracted",
+          "rating": "4.45 overall; onsen/bath 4.53",
+          "bath_score": null,
+          "access_status": "aside_browser_structured_direct_read",
+          "directly_read_reviews": 90,
+          "onsen_related_direct_reviews": 66,
+          "notes": "Aside Browser parsed Yahoo Travel reviewBody blocks across p1-p4: 115 unique readable bodies, 86 onsen-related. Counted only the additional remainder beyond the earlier 25 Yahoo bodies; combined Ikkyu/Yahoo visible score was not used as direct count."
+        },
+        {
+          "source": "Relux review page",
+          "url": "https://rlx.jp/25338/review/",
+          "visible_review_count": "39 displayed / 29 unique readable body blocks after duplicate surface filtering",
+          "rating": "4.2/5",
+          "bath_score": null,
+          "access_status": "aside_browser_structured_direct_read",
+          "directly_read_reviews": 29,
+          "onsen_related_direct_reviews": 10,
+          "notes": "Relux /review/ page was direct-readable only with trailing slash. Extracted 29 unique remarks blocks and excluded duplicate PC/mobile surfaces and rating rows."
+        },
+        {
+          "source": "JTB review page",
+          "url": "https://www.jtb.co.jp/kokunai-hotel/htl/1558021/review/",
+          "visible_review_count": "36 direct readable comment bodies in page structure",
+          "rating": "not_captured",
+          "bath_score": null,
+          "access_status": "aside_browser_structured_direct_read",
+          "directly_read_reviews": 36,
+          "onsen_related_direct_reviews": 18,
+          "notes": "Aside Browser parsed JTB f-detail-review-result text blocks. Counted direct guest comments only; recommendation/facility text and CSS/JS fragments were excluded."
+        }
+      ],
+      "official_bath_facts_seen": {
+        "official_url": "https://www.bourou.com/",
+        "candidate_axes": "room_bath;public_bath",
+        "candidate_notes": "全室温泉展望風呂付の強候補。大浴場の濁り湯/客室風呂の広さ/段差・経年感を分ける",
+        "official_fact_status": "candidate_prior_verification_plus_static_page_check"
+      },
+      "review_signal_keywords": [
+        "部屋風呂",
+        "温泉展望風呂",
+        "大浴場",
+        "露天風呂",
+        "泉質",
+        "トロトロ",
+        "濁り湯",
+        "広い",
+        "段差",
+        "温度",
+        "シャワー水圧",
+        "private onsen",
+        "too hot",
+        "Googleレビュー",
+        "韓国語レビュー",
+        "客室温泉",
+        "個別 온천",
+        "방 노천 욕실",
+        "유황온천",
+        "물때",
+        "Ikkyu p1-p4 reviewBody",
+        "Yahoo Travel p1-p4 reviewBody",
+        "Relux unique remarks",
+        "JTB direct comments",
+        "源泉掛け流し",
+        "乳白色"
+      ],
+      "caution_keywords": [
+        "段差",
+        "落葉",
+        "温度が高い",
+        "経年感",
+        "シャワールーム動線",
+        "道案内",
+        "キャンセル/油問題",
+        "Google Maps provider-card overlap",
+        "객실탕 물때/배수 신호",
+        "식사/서비스 저평점과 온천 신호 분리 필요",
+        "Ikkyu/Yahoo combined visible score not direct count",
+        "Relux duplicate PC/mobile surfaces excluded",
+        "JTB facility/recommendation text excluded",
+        "Booking visible reviewCount not used for this A jump"
+      ],
+      "direct_reviews_checked": 368,
+      "onsen_related_direct_reviews_checked": 247,
+      "direct_body_platforms": [
+        "Jalan",
+        "Ikkyu",
+        "Yahoo Travel",
+        "Tripadvisor",
+        "Trip.com",
+        "Expedia",
+        "Google Maps/Hotels",
+        "Rakuten Travel",
+        "Booking.com",
+        "Relux",
+        "JTB"
+      ],
+      "data_quality_grade": "A",
+      "volume_grade": "A_volume_300plus",
+      "next_sampling": "A-grade reached. Future cleanup can author-deduplicate Ikkyu/Yahoo mirrors and deepen Korean Naver direct bodies, but 300+ direct threshold is met without visible-pool inflation.",
+      "snippet_only_surfaces": [
+        {
+          "platform": "Naver/Search Korean web",
+          "url": "https://search.naver.com/search.naver?query=%EB%A7%9D%EB%A3%A8%20%EB%85%B8%EA%B5%AC%EC%B9%98%20%EB%85%B8%EB%B3%B4%EB%A6%AC%EB%B2%A0%EC%B8%A0%20%EA%B0%9D%EC%8B%A4%ED%83%95%20%EC%98%A8%EC%B2%9C",
+          "access_status": "snippet_only",
+          "bath_signal_preview": "객실탕/개인 온천/송영 위치 신호는 보이나 직접 본문 미확보",
+          "next_action": "Open Naver Blog/Cafe bodies or Google Maps Korean reviews in browser"
+        }
+      ],
+      "review_signal_status": "A_volume_300plus",
+      "reinforcement_status": "a_grade_ikkyu_yahoo_relux_jtb_reinforced",
+      "a_reinforcement_2026_07_04": {
+        "added_direct_reviews_checked": 214,
+        "added_onsen_related_direct_reviews_checked": 137,
+        "sources": [
+          {
+            "source": "Ikkyu full pagination remainder p1-p4",
+            "url": "https://www.ikyu.com/00001211/review/",
+            "rating": "4.45 overall; onsen/bath 4.52",
+            "visible": "147 combined Ikkyu/Yahoo score; 94 Ikkyu unique reviewBody bodies extracted",
+            "direct": 59,
+            "onsen": 43,
+            "keywords": "部屋の温泉;浴槽;大浴場;泉質;トロトロ;濁り湯;段差;源泉掛け流し;岩盤浴;経年感",
+            "notes": "Aside Browser parsed Ikkyu reviewBody blocks across p1-p4: 94 unique readable bodies, 73 onsen-related. Counted only the additional remainder beyond the earlier 35 Ikkyu bodies; facility replies and combined visible total were excluded."
+          },
+          {
+            "source": "Yahoo Travel full pagination remainder p1-p4",
+            "url": "https://travel.yahoo.co.jp/00001211/review/",
+            "rating": "4.45 overall; onsen/bath 4.53",
+            "visible": "148 combined Ikkyu/Yahoo score; 115 Yahoo unique reviewBody bodies extracted",
+            "direct": 90,
+            "onsen": 66,
+            "keywords": "客室露天風呂;部屋風呂;温泉部屋風呂;乳白色;硫黄泉;源泉掛け流し;大浴場;シャワー水圧;送迎/場所",
+            "notes": "Aside Browser parsed Yahoo Travel reviewBody blocks across p1-p4: 115 unique readable bodies, 86 onsen-related. Counted only the additional remainder beyond the earlier 25 Yahoo bodies; combined Ikkyu/Yahoo visible score was not used as direct count."
+          },
+          {
+            "source": "Relux review page",
+            "url": "https://rlx.jp/25338/review/",
+            "rating": "4.2/5",
+            "visible": "39 displayed / 29 unique readable body blocks after duplicate surface filtering",
+            "direct": 29,
+            "onsen": 10,
+            "keywords": "源泉掛け流しの内風呂;窓が開く;湯加減;部屋風呂;大浴場;メンテナンス;朝食/接客低評価",
+            "notes": "Relux /review/ page was direct-readable only with trailing slash. Extracted 29 unique remarks blocks and excluded duplicate PC/mobile surfaces and rating rows."
+          },
+          {
+            "source": "JTB review page",
+            "url": "https://www.jtb.co.jp/kokunai-hotel/htl/1558021/review/",
+            "rating": "not_captured",
+            "visible": "36 direct readable comment bodies in page structure",
+            "direct": 36,
+            "onsen": 18,
+            "keywords": "大浴場;部屋風呂;泉質;お部屋にあるお風呂;部屋の風呂;露天風呂;掛け流し;静か",
+            "notes": "Aside Browser parsed JTB f-detail-review-result text blocks. Counted direct guest comments only; recommendation/facility text and CSS/JS fragments were excluded."
+          }
+        ],
+        "counting_note": "Only parsed direct body blocks were counted. Ikkyu/Yahoo combined visible review totals, facility replies, Relux duplicate surfaces, and JTB facility text were excluded."
+      }
+    },
+    {
+      "slug": "jozankei-suizantei",
+      "name_ja": "定山渓第一寶亭留 翠山亭",
+      "google_maps": {
+        "rating": "4.2",
+        "visible_review_count": 1375,
+        "rating_distribution": {
+          "5": 742,
+          "4": 406,
+          "3": 119,
+          "2": 33,
+          "1": 75
+        },
+        "korean_reviews_visible": true,
+        "access_status": "aside_review_tab_read",
+        "directly_read_reviews": 5,
+        "onsen_related_direct_reviews": 4,
+        "snippet_only_count": 6,
+        "notes": "Google-native Korean bodies counted as direct. Trip.com/Tripadvisor cards in Google panel kept as partner/snippet evidence."
+      },
+      "ota_review_pool_signals": [
+        {
+          "source": "Rakuten Travel",
+          "url": "https://review.travel.rakuten.co.jp/hotel/voice/875",
+          "visible_review_count": "1,380",
+          "rating": "4.51",
+          "bath_score": ":",
+          "access_status": "direct_fetch_paginated_read",
+          "directly_read_reviews": 133,
+          "onsen_related_direct_reviews": 66,
+          "notes": "Prior direct body platform; platform pool and direct count kept separate."
+        },
+        {
+          "source": "Jalan",
+          "url": "https://www.jalan.net/yad319212/kuchikomi/",
+          "visible_review_count": "3294",
+          "rating": "not_captured",
+          "bath_score": "not_captured",
+          "access_status": "web_open_direct_read",
+          "directly_read_reviews": 30,
+          "onsen_related_direct_reviews": 19,
+          "notes": "Jalan direct body sample added; 3294 is visible pool/listing signal."
+        },
+        {
+          "source": "Ikkyu",
+          "url": "https://www.ikyu.com/00000988/review/",
+          "visible_review_count": "not_captured",
+          "rating": "4.33",
+          "bath_score": "not_captured",
+          "access_status": "web_open_direct_read",
+          "directly_read_reviews": 25,
+          "onsen_related_direct_reviews": 16,
+          "notes": "Low-rating and bath-specific bodies visible."
+        },
+        {
+          "source": "Yahoo Travel",
+          "url": "https://travel.yahoo.co.jp/00000988/review/",
+          "visible_review_count": "not_captured",
+          "rating": "not_captured",
+          "bath_score": "not_captured",
+          "access_status": "web_open_direct_read",
+          "directly_read_reviews": 25,
+          "onsen_related_direct_reviews": 17,
+          "notes": "Direct body page visible; possible overlap with Ikkyu noted."
+        },
+        {
+          "source": "Trip.com",
+          "url": "https://www.trip.com/hotels/sapporo-hotel-detail-705279/jyozankei-daiichi-hotel-suizantei/review.html",
+          "visible_review_count": "305",
+          "rating": "4.6/5",
+          "bath_score": null,
+          "access_status": "web_open_direct_read",
+          "directly_read_reviews": 12,
+          "onsen_related_direct_reviews": 8,
+          "notes": "Limited direct body sample; AI summaries not counted."
+        },
+        {
+          "source": "JTB",
+          "url": "https://www.jtb.co.jp/kokunai-hotel/htl/1533009/review/",
+          "visible_review_count": "not_captured",
+          "rating": "not_captured",
+          "bath_score": null,
+          "access_status": "web_open_partial_direct_read",
+          "directly_read_reviews": 3,
+          "onsen_related_direct_reviews": 2,
+          "notes": "Partial direct comment surface."
+        },
+        {
+          "source": "Naver/Search Korean web",
+          "url": "https://search.naver.com/search.naver?query=%EC%A0%95%EC%82%B0%EA%B3%84%20%EC%8A%A4%EC%9D%B4%EC%9E%94%ED%85%8C%EC%9D%B4%20%ED%9B%84%EA%B8%B0%20%EA%B0%9D%EC%8B%A4%ED%83%95%20%EC%98%A8%EC%B2%9C",
+          "visible_review_count": null,
+          "rating": null,
+          "bath_score": null,
+          "access_status": "snippet_only",
+          "directly_read_reviews": 0,
+          "onsen_related_direct_reviews": 0,
+          "snippet_only_count": 8,
+          "notes": "Results mix Daiichi Hotel Suizantei and Suizantei Club; not counted as direct bodies."
+        },
+        {
+          "source": "Rakuten Travel pages 8-11",
+          "url": "https://review.travel.rakuten.co.jp/hotel/voice/875?page=8 ; https://review.travel.rakuten.co.jp/hotel/voice/875?page=9 ; https://review.travel.rakuten.co.jp/hotel/voice/875?page=10 ; https://review.travel.rakuten.co.jp/hotel/voice/875?page=11",
+          "visible_review_count": "1,106 current reviewList total; 1,380 prior observed pool",
+          "rating": "4.51",
+          "bath_score": ":",
+          "access_status": "direct_fetch_structured_reviewList_read",
+          "directly_read_reviews": 80,
+          "onsen_related_direct_reviews": 62,
+          "snippet_only_count": 0,
+          "notes": "A reinforcement: direct body records from reviewList.data.contents; visible pool not counted as direct."
+        }
+      ],
+      "official_bath_facts_seen": {
+        "official_url": "https://www.jyozankei-daiichi.co.jp/suizantei/",
+        "candidate_axes": "room_bath",
+        "candidate_notes": "全室温泉の主張と部屋タイプ別展望風呂/大浴場を分離。温泉よりラウンジ評価に埋もれやすい",
+        "official_fact_status": "candidate_prior_verification_plus_static_page_check"
+      },
+      "review_signal_keywords": [
+        "個人ノ천탕",
+        "개인탕",
+        "部屋のお風呂",
+        "客室風呂",
+        "客室露天風呂",
+        "半露天",
+        "大浴場",
+        "露天風呂",
+        "休日湯",
+        "温泉サウナ",
+        "源泉",
+        "温度調整",
+        "虫",
+        "窓カビ",
+        "private onsen",
+        "paid private onsen",
+        "展望風呂",
+        "檜内風呂",
+        "離れの湯",
+        "貸切露天",
+        "部屋の源泉掛け流し",
+        "檜の香"
+      ],
+      "caution_keywords": [
+        "温度調整",
+        "源泉掛け流しに出来ない",
+        "虫",
+        "窓カビ",
+        "露天風呂動線",
+        "混雑",
+        "チェックイン/食事時間",
+        "清掃入室",
+        "古い",
+        "食事期待差",
+        "施設混同",
+        "丸見え",
+        "カーテン要望",
+        "食事時間/予約"
+      ],
+      "direct_reviews_checked": 313,
+      "onsen_related_direct_reviews_checked": 199,
+      "direct_body_platforms": [
+        "Rakuten Travel",
+        "Google Maps",
+        "Jalan",
+        "Ikkyu",
+        "Yahoo Maps",
+        "Trip.com",
+        "Agoda",
+        "Booking.com via Agoda",
+        "Naver Blog"
+      ],
+      "data_quality_grade": "A",
+      "volume_grade": "A_volume_300plus",
+      "next_sampling": "A-grade reached at 313 direct reviews. Continue only for author-level dedupe, low-rating Google/Naver expansion, or bath-area nuance; 300+ volume threshold is satisfied.",
+      "snippet_only_surfaces": [
+        {
+          "platform": "Naver/Search Korean web",
+          "url": "https://search.naver.com/search.naver?query=%EC%A0%95%EC%82%B0%EA%B3%84%20%EC%8A%A4%EC%9D%B4%EC%9E%94%ED%85%8C%EC%9D%B4%20%ED%9B%84%EA%B8%B0%20%EA%B0%9D%EC%8B%A4%ED%83%95%20%EC%98%A8%EC%B2%9C",
+          "access_status": "snippet_only",
+          "bath_signal_preview": "별탕 예약, 객실 내 개인탕, 대욕장, 전세탕 신호는 보이나 Suizantei Club 혼입이 있어 직접 본문 미카운트",
+          "next_action": "Open individual Naver Blog/Cafe bodies and confirm property identity before counting"
+        }
+      ],
+      "aside_reinforcement_2026_07_03": {
+        "status": "reinforced_one_lodging",
+        "added_direct_reviews_checked": 100,
+        "added_onsen_related_direct_reviews_checked": 71,
+        "reinforced_direct_reviews_checked_total": 233,
+        "reinforced_onsen_related_direct_reviews_checked_total": 137,
+        "direct_body_platforms_after_reinforcement": [
+          "Rakuten Travel",
+          "Google Maps",
+          "Jalan",
+          "Ikkyu",
+          "Yahoo Maps",
+          "Trip.com",
+          "Agoda",
+          "Booking.com via Agoda",
+          "Naver Blog"
+        ],
+        "data_quality_grade_after_reinforcement": "B",
+        "why_not_A": "Directly read total is 233, below 300; Google low-rating list and Jalan archive were not fully expanded.",
+        "source_rows_file": "hokkaido_ready_accommodation_aside_reinforcement_2026-07-03.csv",
+        "negative_keyword_findings": {
+          "chlorine": "No direct hits for 塩素/カルキ/염소 in read bodies.",
+          "temperature": "Jalan/Ikkyu/Naver show lukewarm, too hot, and hot/cold shower fluctuation signals.",
+          "crowding": "Bath crowding mostly positive low-crowd; lounge crowding repeats separately.",
+          "booking": "Private bath QR/first-come/advance booking friction repeats."
+        },
+        "dedupe_note": "Use 233 direct / 137 onsen-related as conservative deduped total; not every aside/source row is additive because several review mirrors overlap."
+      },
+      "direct_reviews_checked_reinforced": 313,
+      "onsen_related_direct_reviews_checked_reinforced": 199,
+      "direct_body_platforms_reinforced": [
+        "Rakuten Travel",
+        "Google Maps",
+        "Jalan",
+        "Ikkyu",
+        "Yahoo Maps",
+        "Trip.com",
+        "Agoda",
+        "Booking.com via Agoda",
+        "Naver Blog"
+      ],
+      "data_quality_grade_reinforced": "A",
+      "a_reinforcement_2026_07_04": {
+        "source": "Rakuten Travel pages 8-11",
+        "url": "https://review.travel.rakuten.co.jp/hotel/voice/875?page=8 ; https://review.travel.rakuten.co.jp/hotel/voice/875?page=9 ; https://review.travel.rakuten.co.jp/hotel/voice/875?page=10 ; https://review.travel.rakuten.co.jp/hotel/voice/875?page=11",
+        "directly_read_reviews": 80,
+        "onsen_related_direct_reviews": 62,
+        "access_status": "direct_fetch_structured_reviewList_read",
+        "notes": "Visible pool kept separate; current reviewList total 1,106 differs from prior observed 1,380 pool."
+      }
+    },
+    {
+      "slug": "yunokawa-nagisatei",
+      "name_ja": "湯の川プリンスホテル渚亭",
+      "google_maps": {
+        "rating": "4.2",
+        "visible_review_count": "1,746",
+        "rating_distribution": {
+          "5": 896,
+          "4": 548,
+          "3": 180,
+          "2": 47,
+          "1": 75
+        },
+        "korean_reviews_visible": true,
+        "access_status": "aside_review_tab_read_google_hotels_maps_shared_corpus",
+        "direct_bodies_counted_from": "Google Hotels review tab",
+        "directly_read_review_count": 13,
+        "onsen_related_direct_review_count": 13,
+        "snippet_only_count": 7,
+        "notes": "Google Maps and Google Hotels appear to expose the same 1,746-review corpus; direct bodies counted once via Google Hotels."
+      },
+      "ota_review_pool_signals": [
+        {
+          "source": "Rakuten Travel",
+          "url": "https://review.travel.rakuten.co.jp/hotel/voice/5842",
+          "visible_review_count": "2,265",
+          "rating": "4.46",
+          "bath_score": ":",
+          "access_status": "direct_fetch_paginated_read",
+          "notes": "hotel/voice pagination expanded; direct bodies counted separately"
+        },
+        {
+          "source": "JTB",
+          "url": "https://www.jtb.co.jp/kokunai-hotel/htl/1610006/review/",
+          "visible_review_count": "118",
+          "rating": "4.3",
+          "bath_score": "87",
+          "access_status": "direct_fetch_partial_read",
+          "notes": "secondary static surface; direct bodies counted only when review_chunks > 0"
+        },
+        {
+          "source": "JTB",
+          "url": "https://www.jtb.co.jp/kokunai-hotel/htl/1610006/review/",
+          "visible_review_count": "118",
+          "rating": null,
+          "bath_score": null,
+          "access_status": "direct_fetch_partial_read",
+          "notes": "onsen-related page snippets seen; not counted as direct review bodies"
+        },
+        {
+          "source": "Aside reinforcement: Google Hotels",
+          "url": "https://www.google.com/travel/hotels/entity/CgsIq67omcaxzYmlARAB",
+          "visible_review_count": "1746",
+          "rating": "4.2",
+          "bath_score": null,
+          "access_status": "aside_review_tab_read",
+          "directly_read_reviews": 13,
+          "onsen_related_direct_reviews": 13,
+          "snippet_only_count": 2,
+          "notes": "Google Hotels review tab exposed full Korean/native bodies. Google Maps surface appears to share the same 1,746-review corpus, so Maps snippets are not double-counted as direct bodies."
+        },
+        {
+          "source": "Aside reinforcement: Google Maps",
+          "url": "https://www.google.com/maps/search/?api=1&query=湯の川プリンスホテル渚亭",
+          "visible_review_count": "1746",
+          "rating": "4.2",
+          "bath_score": null,
+          "access_status": "aside_review_tab_snippet_mixed",
+          "directly_read_reviews": 0,
+          "onsen_related_direct_reviews": 0,
+          "snippet_only_count": 7,
+          "notes": "Same visible corpus as Google Hotels; partner snippets and unexpanded visible snippets kept out of direct-review counts."
+        },
+        {
+          "source": "Aside reinforcement: JTB",
+          "url": "https://www.jtb.co.jp/kokunai-hotel/htl/1610006/review/",
+          "visible_review_count": "118",
+          "rating": "4.3; bath 87",
+          "bath_score": null,
+          "access_status": "direct_fetch_partial_read",
+          "directly_read_reviews": 13,
+          "onsen_related_direct_reviews": 10,
+          "snippet_only_count": 0,
+          "notes": "JTB/Rurubu page bodies and expanded text fragments read directly where visible; older maintenance negatives kept as management notes."
+        },
+        {
+          "source": "Aside reinforcement: Yahoo Travel",
+          "url": "https://travel.yahoo.co.jp/00000746/review/",
+          "visible_review_count": "167",
+          "rating": "4.44 overall; onsen/bath 4.54",
+          "bath_score": null,
+          "access_status": "aside_review_tab_read",
+          "directly_read_reviews": 17,
+          "onsen_related_direct_reviews": 12,
+          "snippet_only_count": 0,
+          "notes": "First visible Yahoo Travel review page read directly. Counts exclude duplicate-origin Ikkyu/Yahoo cross-surface snippets."
+        },
+        {
+          "source": "Aside reinforcement: Trip.com",
+          "url": "https://kr.trip.com/hotels/hakodate-hotel-detail-1488002/yunokawa-prince-hotel-nagisatei/review.html",
+          "visible_review_count": "146",
+          "rating": "9.1/10",
+          "bath_score": null,
+          "access_status": "webfetch_direct_read",
+          "directly_read_reviews": 16,
+          "onsen_related_direct_reviews": 8,
+          "snippet_only_count": 0,
+          "notes": "Korean localized Trip.com review page was readable; first visible review bodies counted, keyword buckets kept as platform-pool signal."
+        },
+        {
+          "source": "Aside reinforcement: Booking.com",
+          "url": "https://www.booking.com/hotel/jp/yunokawa-prince-nagisa-tei.ko.html",
+          "visible_review_count": "522",
+          "rating": "9.0",
+          "bath_score": null,
+          "access_status": "aside_review_modal_read",
+          "directly_read_reviews": 1,
+          "onsen_related_direct_reviews": 1,
+          "snippet_only_count": 0,
+          "notes": "Booking review modal exposed one full Korean body; other Booking advantage snippets not counted as direct bodies."
+        },
+        {
+          "source": "Aside reinforcement: Naver Blog",
+          "url": "https://blog.naver.com/mong_family/223675779086",
+          "visible_review_count": null,
+          "rating": null,
+          "bath_score": null,
+          "access_status": "aside_search_snapshot_read_direct_blog_body",
+          "directly_read_reviews": 1,
+          "onsen_related_direct_reviews": 1,
+          "snippet_only_count": 0,
+          "notes": "Korean blog body dated 2024-11-29 read directly; Naver search snippets kept separate."
+        },
+        {
+          "source": "Aside reinforcement: Expedia",
+          "url": "https://www.expedia.co.jp/Hakodate-Hotels-Yunokawa-Prince-Hotel-Nagisatei.h22404815.Hotel-Information",
+          "visible_review_count": "210",
+          "rating": "9.0",
+          "bath_score": null,
+          "access_status": "aside_listing_review_count_only",
+          "directly_read_reviews": 0,
+          "onsen_related_direct_reviews": 0,
+          "snippet_only_count": 0,
+          "notes": "Expedia page exposed review count and room/facility facts, but no individual review body was counted."
+        },
+        {
+          "source": "Rakuten Travel pages 8-14",
+          "url": "https://review.travel.rakuten.co.jp/hotel/voice/5842?page=8 ; https://review.travel.rakuten.co.jp/hotel/voice/5842?page=9 ; https://review.travel.rakuten.co.jp/hotel/voice/5842?page=10 ; https://review.travel.rakuten.co.jp/hotel/voice/5842?page=11 ; https://review.travel.rakuten.co.jp/hotel/voice/5842?page=12 ; https://review.travel.rakuten.co.jp/hotel/voice/5842?page=13 ; https://review.travel.rakuten.co.jp/hotel/voice/5842?page=14",
+          "visible_review_count": "1,849 current reviewList total; 2,265 prior observed pool",
+          "rating": "4.46",
+          "bath_score": ":",
+          "access_status": "direct_fetch_structured_reviewList_read",
+          "directly_read_reviews": 140,
+          "onsen_related_direct_reviews": 107,
+          "snippet_only_count": 0,
+          "notes": "A reinforcement: direct body records from reviewList.data.contents; visible pool not counted as direct."
+        }
+      ],
+      "official_bath_facts_seen": {
+        "official_url": "https://nagisatei.info/",
+        "candidate_axes": "room_open_air_bath",
+        "candidate_notes": "客室露天数が非常に強い候補。機械化/ビジネスホテル化 기대차와 온천 평가를 분리",
+        "official_fact_status": "candidate_prior_verification_plus_static_page_check"
+      },
+      "review_signal_keywords": [
+        "サウナ;露天風呂;温泉",
+        "大浴場",
+        "大浴場;サウナ;露天風呂",
+        "大浴場;露天風呂",
+        "大浴場;露天風呂;お湯",
+        "大浴場;露天風呂;温泉",
+        "客室露天風呂;大浴場;サウナ",
+        "客室露天風呂;大浴場;露天風呂",
+        "客室露天風呂;露天風呂",
+        "客室露天風呂;露天風呂;お湯",
+        "客室露天風呂;露天風呂;温泉",
+        "温泉",
+        "源泉;かけ流し;露天風呂",
+        "露天風呂",
+        "露天風呂;温泉",
+        "客室露天風呂",
+        "オーシャンビュー",
+        "漁火",
+        "函館山",
+        "何度も入る",
+        "排水口",
+        "温度設定"
+      ],
+      "caution_keywords": [
+        "ぬるい",
+        "古い",
+        "混雑",
+        "温度",
+        "熱い",
+        "虫",
+        "遠い",
+        "排水口",
+        "タオル/マット不足",
+        "説明不足",
+        "温度設定",
+        "シャワー室寒い"
+      ],
+      "direct_reviews_checked": 333,
+      "onsen_related_direct_reviews_checked": 251,
+      "direct_body_platforms": [
+        "Rakuten Travel",
+        "Google Hotels",
+        "JTB",
+        "Yahoo Travel",
+        "Trip.com",
+        "Booking.com",
+        "Naver Blog"
+      ],
+      "data_quality_grade": "A",
+      "volume_grade": "A_volume_300plus",
+      "next_sampling": "A-grade reached at 333 direct reviews. Continue only for author-level dedupe, Expedia direct bodies, or deeper low-rating Korean/Naver sampling.",
+      "snippet_only_surfaces": [
+        {
+          "platform": "Yahoo Travel",
+          "url": "https://travel.yahoo.co.jp/00000746/review/",
+          "access_status": "source_preview_snippet_only",
+          "visible_review_count": null,
+          "rating": null,
+          "bath_signal_preview": "해변 객실 노천탕, 대욕장 넓이, 바다 전망 노천탕 긍정 신호가 보임.",
+          "next_action": "Yahoo direct read"
+        },
+        {
+          "platform": "Ikkyu",
+          "url": "https://www.ikyu.com/00000746/review/",
+          "access_status": "source_preview_snippet_only",
+          "visible_review_count": null,
+          "rating": null,
+          "bath_signal_preview": "객실 노천탕 수질/전망 긍정과 기계화/서비스 기대차 부정 신호가 보임.",
+          "next_action": "Ikkyu direct read"
+        }
+      ],
+      "direct_reviews_checked_reinforced": 333,
+      "onsen_related_direct_reviews_checked_reinforced": 251,
+      "direct_body_platforms_reinforced": [
+        "Rakuten Travel",
+        "Google Hotels",
+        "JTB",
+        "Yahoo Travel",
+        "Trip.com",
+        "Booking.com",
+        "Naver Blog"
+      ],
+      "data_quality_grade_reinforced": "A",
+      "aside_reinforcement_2026_07_03": {
+        "research_date": "2026-07-03",
+        "method": "Aside Browser reinforcement; direct bodies only counted when the review body or expanded modal/page text was visible. Google Maps/Naver search snippets were separated from direct counts.",
+        "previous_direct_reviews_checked": 132,
+        "previous_onsen_related_direct_reviews_checked": 99,
+        "added_direct_reviews_checked": 61,
+        "added_onsen_related_direct_reviews_checked": 45,
+        "reinforced_direct_reviews_checked": 193,
+        "reinforced_onsen_related_direct_reviews_checked": 144,
+        "direct_body_platforms_reinforced": [
+          "Rakuten Travel",
+          "Google Hotels",
+          "JTB",
+          "Yahoo Travel",
+          "Trip.com",
+          "Booking.com",
+          "Naver Blog"
+        ],
+        "data_quality_grade_reinforced": "B",
+        "why_not_A": "Direct sample is below 300 and low-rating/keyword strata were not exhaustively expanded across every platform.",
+        "source_rows": [
+          {
+            "slug": "yunokawa-nagisatei",
+            "name_ja": "湯の川プリンスホテル渚亭",
+            "source": "Google Hotels",
+            "url": "https://www.google.com/travel/hotels/entity/CgsIq67omcaxzYmlARAB",
+            "rating": "4.2",
+            "visible_review_count": "1746",
+            "access_status": "aside_review_tab_read",
+            "directly_read_reviews": "13",
+            "onsen_related_direct_reviews": "13",
+            "snippet_only_count": "2",
+            "bath_signal_keywords": "객실 노천탕; 개인온천; 대욕장; 바다뷰; 물 온도; 청결; 오래된 느낌; 아침 노천탕; 셀프 체크인",
+            "notes": "Google Hotels review tab exposed full Korean/native bodies. Google Maps surface appears to share the same 1,746-review corpus, so Maps snippets are not double-counted as direct bodies."
+          },
+          {
+            "slug": "yunokawa-nagisatei",
+            "name_ja": "湯の川プリンスホテル渚亭",
+            "source": "Google Maps",
+            "url": "https://www.google.com/maps/search/?api=1&query=湯の川プリンスホテル渚亭",
+            "rating": "4.2",
+            "visible_review_count": "1746",
+            "access_status": "aside_review_tab_snippet_mixed",
+            "directly_read_reviews": "0",
+            "onsen_related_direct_reviews": "0",
+            "snippet_only_count": "7",
+            "bath_signal_keywords": "객실 노천탕; 대욕장; 개인욕탕; 바다 전망; 아침 노천탕",
+            "notes": "Same visible corpus as Google Hotels; partner snippets and unexpanded visible snippets kept out of direct-review counts."
+          },
+          {
+            "slug": "yunokawa-nagisatei",
+            "name_ja": "湯の川プリンスホテル渚亭",
+            "source": "JTB",
+            "url": "https://www.jtb.co.jp/kokunai-hotel/htl/1610006/review/",
+            "rating": "4.3; bath 87",
+            "visible_review_count": "118",
+            "access_status": "direct_fetch_partial_read",
+            "directly_read_reviews": "13",
+            "onsen_related_direct_reviews": "10",
+            "snippet_only_count": "0",
+            "bath_signal_keywords": "部屋風呂; 客室露天風呂; 大浴場; 露天風呂; 温質; 眺望; サビ; 壁の汚さ",
+            "notes": "JTB/Rurubu page bodies and expanded text fragments read directly where visible; older maintenance negatives kept as management notes."
+          },
+          {
+            "slug": "yunokawa-nagisatei",
+            "name_ja": "湯の川プリンスホテル渚亭",
+            "source": "Yahoo Travel",
+            "url": "https://travel.yahoo.co.jp/00000746/review/",
+            "rating": "4.44 overall; onsen/bath 4.54",
+            "visible_review_count": "167",
+            "access_status": "aside_review_tab_read",
+            "directly_read_reviews": "17",
+            "onsen_related_direct_reviews": "12",
+            "snippet_only_count": "0",
+            "bath_signal_keywords": "露天風呂; 客室露天風呂; 部屋付きの温泉露天風呂; 大浴場; 湯加減; 海; サウナ; 飲み物; タオル",
+            "notes": "First visible Yahoo Travel review page read directly. Counts exclude duplicate-origin Ikkyu/Yahoo cross-surface snippets."
+          },
+          {
+            "slug": "yunokawa-nagisatei",
+            "name_ja": "湯の川プリンスホテル渚亭",
+            "source": "Trip.com",
+            "url": "https://kr.trip.com/hotels/hakodate-hotel-detail-1488002/yunokawa-prince-hotel-nagisatei/review.html",
+            "rating": "9.1/10",
+            "visible_review_count": "146",
+            "access_status": "webfetch_direct_read",
+            "directly_read_reviews": "16",
+            "onsen_related_direct_reviews": "8",
+            "snippet_only_count": "0",
+            "bath_signal_keywords": "온천 추천(65); 전용 노천탕; 개인 온천탕; 바다 뷰; 뜨거움; 아침 운영; 객실 전용 온천 전망",
+            "notes": "Korean localized Trip.com review page was readable; first visible review bodies counted, keyword buckets kept as platform-pool signal."
+          },
+          {
+            "slug": "yunokawa-nagisatei",
+            "name_ja": "湯の川プリンスホテル渚亭",
+            "source": "Booking.com",
+            "url": "https://www.booking.com/hotel/jp/yunokawa-prince-nagisa-tei.ko.html",
+            "rating": "9.0",
+            "visible_review_count": "522",
+            "access_status": "aside_review_modal_read",
+            "directly_read_reviews": "1",
+            "onsen_related_direct_reviews": "1",
+            "snippet_only_count": "0",
+            "bath_signal_keywords": "개인노천탕; 객실; 석식 아쉬움",
+            "notes": "Booking review modal exposed one full Korean body; other Booking advantage snippets not counted as direct bodies."
+          },
+          {
+            "slug": "yunokawa-nagisatei",
+            "name_ja": "湯の川プリンスホテル渚亭",
+            "source": "Naver Blog",
+            "url": "https://blog.naver.com/mong_family/223675779086",
+            "rating": "",
+            "visible_review_count": "",
+            "access_status": "aside_search_snapshot_read_direct_blog_body",
+            "directly_read_reviews": "1",
+            "onsen_related_direct_reviews": "1",
+            "snippet_only_count": "0",
+            "bath_signal_keywords": "개인욕장; 대욕장; 가족탕; 바다뷰; 오래된 목욕탕 느낌; 민망함; 무서운 분위기",
+            "notes": "Korean blog body dated 2024-11-29 read directly; Naver search snippets kept separate."
+          },
+          {
+            "slug": "yunokawa-nagisatei",
+            "name_ja": "湯の川プリンスホテル渚亭",
+            "source": "Expedia",
+            "url": "https://www.expedia.co.jp/Hakodate-Hotels-Yunokawa-Prince-Hotel-Nagisatei.h22404815.Hotel-Information",
+            "rating": "9.0",
+            "visible_review_count": "210",
+            "access_status": "aside_listing_review_count_only",
+            "directly_read_reviews": "0",
+            "onsen_related_direct_reviews": "0",
+            "snippet_only_count": "0",
+            "bath_signal_keywords": "大浴場; 天然温泉; 海側露天風呂付客室",
+            "notes": "Expedia page exposed review count and room/facility facts, but no individual review body was counted."
+          }
+        ],
+        "snippet_only_or_pool_only": [
+          {
+            "source": "Google Maps",
+            "reason": "same visible 1,746-review corpus as Google Hotels; snippets not double-counted"
+          },
+          {
+            "source": "Naver search results",
+            "reason": "search-result snippets only, not direct review bodies"
+          },
+          {
+            "source": "Expedia",
+            "reason": "review count and listing facts visible; no individual body counted"
+          },
+          {
+            "source": "Hotels.com/Agoda text fetch",
+            "reason": "HTTP 429 or insufficient direct body access in this pass"
+          }
+        ],
+        "takeaways": [
+          "Most consistent positive signal is room open-air bath/private room bath with ocean view.",
+          "Public bath is generally positive for scale/view, but weaker than room-bath satisfaction in Korean/Naver context.",
+          "Negative signals include room type confusion, automated check-in guidance, older public-bath feel, cleanliness/aging, and hot-water temperature control."
+        ]
+      },
+      "a_reinforcement_2026_07_04": {
+        "source": "Rakuten Travel pages 8-14",
+        "url": "https://review.travel.rakuten.co.jp/hotel/voice/5842?page=8 ; https://review.travel.rakuten.co.jp/hotel/voice/5842?page=9 ; https://review.travel.rakuten.co.jp/hotel/voice/5842?page=10 ; https://review.travel.rakuten.co.jp/hotel/voice/5842?page=11 ; https://review.travel.rakuten.co.jp/hotel/voice/5842?page=12 ; https://review.travel.rakuten.co.jp/hotel/voice/5842?page=13 ; https://review.travel.rakuten.co.jp/hotel/voice/5842?page=14",
+        "directly_read_reviews": 140,
+        "onsen_related_direct_reviews": 107,
+        "access_status": "direct_fetch_structured_reviewList_read",
+        "notes": "Visible pool kept separate; current reviewList total 1,849 differs from prior observed 2,265 pool."
+      }
+    },
+    {
+      "slug": "noboribetsu-daiichi-takimotokan",
+      "name_ja": "第一滝本館",
+      "google_maps": {
+        "rating": "4.3",
+        "visible_review_count": "6,227",
+        "rating_distribution": {
+          "5": 3388,
+          "4": 1916,
+          "3": 558,
+          "2": 157,
+          "1": 208
+        },
+        "korean_reviews_visible": true,
+        "access_status": "aside_review_tab_read_mixed_origin",
+        "directly_read_review_count": 9,
+        "onsen_related_direct_review_count": 8,
+        "snippet_only_count": 2,
+        "notes": "Google hotel review surface mixes Google-native and partner cards. Trip.com/Tripadvisor partner cards were kept separate."
+      },
+      "ota_review_pool_signals": [
+        {
+          "source": "Rakuten Travel",
+          "url": "https://review.travel.rakuten.co.jp/hotel/voice/30109",
+          "visible_review_count": "3,556",
+          "rating": "4.56",
+          "bath_score": ":",
+          "access_status": "direct_fetch_paginated_read",
+          "notes": "hotel/voice pagination expanded; direct bodies counted separately"
+        },
+        {
+          "source": "Rakuten Travel",
+          "url": "https://travel.rakuten.co.jp/HOTEL/30109/review.html",
+          "visible_review_count": "3,556",
+          "rating": "4.56",
+          "bath_score": ":",
+          "access_status": "direct_fetch_full_read",
+          "notes": ""
+        },
+        {
+          "source": "Aside reinforcement: Google Maps/Hotels",
+          "url": "https://www.google.com/maps/search/?api=1&query=Dai-ichi%20Takimotokan%20Noboribetsu%20Onsen",
+          "visible_review_count": "6227",
+          "rating": "4.3",
+          "bath_score": null,
+          "access_status": "aside_review_tab_read_mixed_origin",
+          "directly_read_reviews": 9,
+          "onsen_related_direct_reviews": 8,
+          "snippet_only_count": 2,
+          "notes": "Google review tab visible. Count excludes separately listed Google-surfaced Trip.com body to avoid double count; Tripadvisor/Trip.com cards noted as mixed-origin snippets unless counted in their own row."
+        },
+        {
+          "source": "Aside reinforcement: Yahoo Travel",
+          "url": "https://travel.yahoo.co.jp/00000587/review/",
+          "visible_review_count": "215",
+          "rating": "4.49; onsen/bath 4.79",
+          "bath_score": null,
+          "access_status": "webfetch_direct_read",
+          "directly_read_reviews": 40,
+          "onsen_related_direct_reviews": 34,
+          "snippet_only_count": 0,
+          "notes": "Yahoo page says overall count combines Yahoo Travel and Ikkyu; visible bodies read from Yahoo Travel page only."
+        },
+        {
+          "source": "Aside reinforcement: Ikkyu",
+          "url": "https://www.ikyu.com/00000587/review/",
+          "visible_review_count": "215",
+          "rating": "4.49",
+          "bath_score": null,
+          "access_status": "webfetch_direct_read",
+          "directly_read_reviews": 30,
+          "onsen_related_direct_reviews": 24,
+          "snippet_only_count": 0,
+          "notes": "Ikkyu page accessible; same combined score count as Yahoo but visible bodies read from Ikkyu page only."
+        },
+        {
+          "source": "Aside reinforcement: JTB/Rurubu",
+          "url": "https://www.jtb.co.jp/kokunai-hotel/htl/1558001/review/",
+          "visible_review_count": "JTB 140; Rurubu 436",
+          "rating": "JTB 88/100; Rurubu 4.6",
+          "bath_score": null,
+          "access_status": "webfetch_direct_read",
+          "directly_read_reviews": 37,
+          "onsen_related_direct_reviews": 30,
+          "snippet_only_count": 0,
+          "notes": "JTB customer survey count and Rurubu count kept separate; visible bodies include bath, distance, towel, and changing-room management signals."
+        },
+        {
+          "source": "Aside reinforcement: Jalan",
+          "url": "https://www.jalan.net/yad364904/kuchikomi/",
+          "visible_review_count": "7241",
+          "rating": "4.6 overall; bath 4.8",
+          "bath_score": null,
+          "access_status": "aside_browser_direct_read",
+          "directly_read_reviews": 30,
+          "onsen_related_direct_reviews": 24,
+          "snippet_only_count": 0,
+          "notes": "Browser snapshot readable; webfetch was mojibake. First page bodies counted only."
+        },
+        {
+          "source": "Aside reinforcement: Booking.com",
+          "url": "https://www.booking.com/hotel/jp/daiichi-takimotokan.html",
+          "visible_review_count": "3590",
+          "rating": "8.9/10",
+          "bath_score": null,
+          "access_status": "aside_review_modal_read",
+          "directly_read_reviews": 4,
+          "onsen_related_direct_reviews": 3,
+          "snippet_only_count": 10,
+          "notes": "Only expanded Korean review cards counted as direct bodies; carousel excerpts kept as snippets."
+        },
+        {
+          "source": "Aside reinforcement: Trip.com via Google Hotels",
+          "url": "https://www.trip.com/hotels/noboribetsu-hotel-detail-704984/dai-ichi-takimotokan/",
+          "visible_review_count": "3047 via Google Hotels",
+          "rating": "4.7/5 via Google Hotels",
+          "bath_score": null,
+          "access_status": "native_trip_misrouted_google_surface_only",
+          "directly_read_reviews": 1,
+          "onsen_related_direct_reviews": 1,
+          "snippet_only_count": 1,
+          "notes": "Native Trip.com URL misrouted to an unrelated Sendai hotel, so only one Google-surfaced Trip.com body is counted."
+        },
+        {
+          "source": "Aside reinforcement: Naver Search / Place / Cafe",
+          "url": "https://search.naver.com/search.naver?query=다이이치%20타키모토칸%20온천",
+          "visible_review_count": "Naver place 2",
+          "rating": "Naver place 5.0; hotel card 9/10",
+          "bath_score": null,
+          "access_status": "aside_search_snapshot_read_direct_cafe",
+          "directly_read_reviews": 2,
+          "onsen_related_direct_reviews": 2,
+          "snippet_only_count": 14,
+          "notes": "Naver search accessible; one Naver Place visible review and one Naver Cafe article body counted. Search snippets and cafe comments kept out of direct count."
+        },
+        {
+          "source": "Aside reinforcement: Agoda/Kayak aggregator",
+          "url": "https://www.agoda.com/dai-ichi-takimotokan/hotel/noboribetsu-jp.html",
+          "visible_review_count": "787 Agoda reviews via Kayak",
+          "rating": "9.2/10 via Kayak",
+          "bath_score": null,
+          "access_status": "native_agoda_blocked_aggregator_count_only",
+          "directly_read_reviews": 0,
+          "onsen_related_direct_reviews": 0,
+          "snippet_only_count": 1,
+          "notes": "Native Agoda fetch returned empty; Kayak provider score is pool signal only, not direct-review evidence."
+        },
+        {
+          "source": "Rakuten Travel page 8",
+          "url": "https://review.travel.rakuten.co.jp/hotel/voice/30109?page=8",
+          "visible_review_count": "3,556",
+          "rating": "4.56",
+          "bath_score": ":",
+          "access_status": "direct_fetch_structured_reviewList_read",
+          "directly_read_reviews": 20,
+          "onsen_related_direct_reviews": 20,
+          "snippet_only_count": 0,
+          "notes": "A reinforcement: direct body records from reviewList.data.contents; visible pool not counted as direct."
+        }
+      ],
+      "official_bath_facts_seen": {
+        "official_url": "https://takimotokan.co.jp/ja/spa/",
+        "candidate_axes": "room_open_air_bath;public_bath;open_air_public_bath",
+        "candidate_notes": "登別の代表的な多泉質大型宿。泉質別浴槽・大浴場規模・混雑/動線を分けて深掘り",
+        "official_fact_status": "candidate_prior_verification_plus_static_page_check",
+        "aside_reinforced_official_bath_facts": {
+          "public_bath": "Official spa page confirms 1500坪 dedicated bathhouse, 35 tubs, 5 spring qualities, source-flowing baths.",
+          "open_air_public_bath": "Official spa page and reviews confirm outdoor public baths and Jigokudani view.",
+          "room_open_air_bath": "Official room page confirms Premium West Wing special rooms with source-flowing hot spring open-air bath and Jigokudani view.",
+          "private_bath": "not_confirmed",
+          "family_bath": "not_confirmed",
+          "bath_distance_by_building": "West 40m; Main/East 150m; South 210m from large bath."
+        }
+      },
+      "review_signal_keywords": [
+        "お湯;温泉",
+        "サウナ;お湯",
+        "大浴場",
+        "大浴場;サウナ;露天風呂",
+        "大浴場;温泉",
+        "大浴場;露天風呂",
+        "温泉",
+        "温泉露天風呂付;かけ流し;露天風呂",
+        "温泉露天風呂付;露天風呂;温泉",
+        "源泉",
+        "源泉;温泉",
+        "露天風呂",
+        "露天風呂;温泉",
+        "湯質",
+        "お湯の量",
+        "温度が低い",
+        "露天風呂ビール",
+        "混雑を感じず"
+      ],
+      "caution_keywords": [
+        "古い",
+        "混雑",
+        "温度",
+        "熱い",
+        "狭い",
+        "虫",
+        "遠い",
+        "温度が低い",
+        "南館/東館から大浴場距離"
+      ],
+      "direct_reviews_checked": 300,
+      "onsen_related_direct_reviews_checked": 189,
+      "direct_body_platforms": [
+        "Rakuten Travel",
+        "Google Maps/Hotels",
+        "Yahoo Travel",
+        "Ikkyu",
+        "JTB/Rurubu",
+        "Jalan",
+        "Booking.com",
+        "Naver"
+      ],
+      "data_quality_grade": "A",
+      "volume_grade": "A_volume_300plus",
+      "next_sampling": "A-grade reached at 300 direct reviews. For stronger editorial confidence, continue author-level dedupe across Google partner cards and expand low-rating Korean/Naver bodies, but this is no longer required for A volume threshold.",
+      "snippet_only_surfaces": [
+        {
+          "platform": "Yahoo Travel",
+          "url": "https://travel.yahoo.co.jp/00000587/review/",
+          "access_status": "source_preview_snippet_only",
+          "visible_review_count": null,
+          "rating": null,
+          "bath_signal_preview": "대욕장까지 거리, 다양한泉質, 지옥谷 접근 신호가 보임.",
+          "next_action": "Yahoo direct read"
+        },
+        {
+          "platform": "JTB",
+          "url": "https://www.jtb.co.jp/kokunai-hotel/htl/1558001/review/",
+          "access_status": "source_preview_snippet_only",
+          "visible_review_count": null,
+          "rating": null,
+          "bath_signal_preview": "1500坪 대욕장, 5泉質, 源泉掛け流し 공식/리뷰풀 표면이 보임.",
+          "next_action": "JTB static parser check"
+        },
+        {
+          "platform": "Japanese blog",
+          "url": "https://www.sunflower08.work/noboribetsu-daiichitakimotokan1",
+          "access_status": "source_preview_snippet_only",
+          "visible_review_count": null,
+          "rating": null,
+          "bath_signal_preview": "대욕장 규모, 5개 원천, 본관에서 대욕장 거리/동선 신호가 보임.",
+          "next_action": "blog direct article extraction if used as qualitative source"
+        }
+      ],
+      "direct_reviews_checked_reinforced": 300,
+      "onsen_related_direct_reviews_checked_reinforced": 189,
+      "direct_body_platforms_reinforced": [
+        "Rakuten Travel",
+        "Google Maps/Hotels",
+        "Yahoo Travel",
+        "Ikkyu",
+        "JTB/Rurubu",
+        "Jalan",
+        "Booking.com",
+        "Naver"
+      ],
+      "data_quality_grade_reinforced": "A",
+      "aside_reinforcement_2026_07_03": {
+        "research_date": "2026-07-03",
+        "method": "Aside Browser reinforcement; direct bodies counted only when visible in review feed, webfetch body, or expanded modal. Platform review counts, provider aggregates, and search snippets kept separate.",
+        "previous_direct_reviews_checked": 127,
+        "previous_onsen_related_direct_reviews_checked": 43,
+        "added_direct_reviews_checked": 153,
+        "added_onsen_related_direct_reviews_checked": 126,
+        "reinforced_direct_reviews_checked": 280,
+        "reinforced_onsen_related_direct_reviews_checked": 169,
+        "direct_body_platforms_reinforced": [
+          "Rakuten Travel",
+          "Google Maps/Hotels",
+          "Yahoo Travel",
+          "Ikkyu",
+          "JTB/Rurubu",
+          "Jalan",
+          "Booking.com",
+          "Naver"
+        ],
+        "data_quality_grade_reinforced": "B",
+        "why_not_A": "Direct sample is 280, below the 300+ threshold, although direct body platforms expanded to 8.",
+        "official_bath_facts_reinforced": {
+          "public_bath": "Official spa page confirms 1500坪 dedicated bathhouse, 35 tubs, 5 spring qualities, source-flowing baths.",
+          "open_air_public_bath": "Official spa page and reviews confirm outdoor public baths and Jigokudani view.",
+          "room_open_air_bath": "Official room page confirms Premium West Wing special rooms with source-flowing hot spring open-air bath and Jigokudani view.",
+          "private_bath": "not_confirmed",
+          "family_bath": "not_confirmed",
+          "bath_distance_by_building": "West 40m; Main/East 150m; South 210m from large bath."
+        },
+        "source_rows": [
+          {
+            "slug": "noboribetsu-daiichi-takimotokan",
+            "name_ja": "第一滝本館",
+            "source": "Google Maps/Hotels",
+            "url": "https://www.google.com/maps/search/?api=1&query=Dai-ichi%20Takimotokan%20Noboribetsu%20Onsen",
+            "rating": "4.3",
+            "visible_review_count": "6227",
+            "access_status": "aside_review_tab_read_mixed_origin",
+            "directly_read_reviews": "9",
+            "onsen_related_direct_reviews": "8",
+            "snippet_only_count": "2",
+            "bath_signal_keywords": "온천; 대욕장; 노천탕; 유황; 지옥계곡 view; large bath; variety of tubs; crowded/tourists; old/aged",
+            "notes": "Google review tab visible. Count excludes separately listed Google-surfaced Trip.com body to avoid double count; Tripadvisor/Trip.com cards noted as mixed-origin snippets unless counted in their own row."
+          },
+          {
+            "slug": "noboribetsu-daiichi-takimotokan",
+            "name_ja": "第一滝本館",
+            "source": "Yahoo Travel",
+            "url": "https://travel.yahoo.co.jp/00000587/review/",
+            "rating": "4.49; onsen/bath 4.79",
+            "visible_review_count": "215",
+            "access_status": "webfetch_direct_read",
+            "directly_read_reviews": "40",
+            "onsen_related_direct_reviews": "34",
+            "snippet_only_count": "0",
+            "bath_signal_keywords": "温泉; お風呂; 大浴場; 露天風呂; 5つの泉質; 地獄谷; 広い; 遠い; 混雑; 外国人客",
+            "notes": "Yahoo page says overall count combines Yahoo Travel and Ikkyu; visible bodies read from Yahoo Travel page only."
+          },
+          {
+            "slug": "noboribetsu-daiichi-takimotokan",
+            "name_ja": "第一滝本館",
+            "source": "Ikkyu",
+            "url": "https://www.ikyu.com/00000587/review/",
+            "rating": "4.49",
+            "visible_review_count": "215",
+            "access_status": "webfetch_direct_read",
+            "directly_read_reviews": "30",
+            "onsen_related_direct_reviews": "24",
+            "snippet_only_count": "0",
+            "bath_signal_keywords": "温泉; 大浴場; 露天風呂; 部屋の露天風呂; 泉質; 広い; 遠い; 外国人客; 滑りやすい",
+            "notes": "Ikkyu page accessible; same combined score count as Yahoo but visible bodies read from Ikkyu page only."
+          },
+          {
+            "slug": "noboribetsu-daiichi-takimotokan",
+            "name_ja": "第一滝本館",
+            "source": "JTB/Rurubu",
+            "url": "https://www.jtb.co.jp/kokunai-hotel/htl/1558001/review/",
+            "rating": "JTB 88/100; Rurubu 4.6",
+            "visible_review_count": "JTB 140; Rurubu 436",
+            "access_status": "webfetch_direct_read",
+            "directly_read_reviews": "37",
+            "onsen_related_direct_reviews": "30",
+            "snippet_only_count": "0",
+            "bath_signal_keywords": "大浴場; 露天風呂; 温泉; 5種類の源泉掛け流し; 地獄谷; 遠い; 広い; ぬるめ; 熱い",
+            "notes": "JTB customer survey count and Rurubu count kept separate; visible bodies include bath, distance, towel, and changing-room management signals."
+          },
+          {
+            "slug": "noboribetsu-daiichi-takimotokan",
+            "name_ja": "第一滝本館",
+            "source": "Jalan",
+            "url": "https://www.jalan.net/yad364904/kuchikomi/",
+            "rating": "4.6 overall; bath 4.8",
+            "visible_review_count": "7241",
+            "access_status": "aside_browser_direct_read",
+            "directly_read_reviews": "30",
+            "onsen_related_direct_reviews": "24",
+            "snippet_only_count": "0",
+            "bath_signal_keywords": "風呂 4.8; お風呂; 温泉; 大浴場; 露天風呂; 泉質; 広い; 遠い; 外国人客; タオル",
+            "notes": "Browser snapshot readable; webfetch was mojibake. First page bodies counted only."
+          },
+          {
+            "slug": "noboribetsu-daiichi-takimotokan",
+            "name_ja": "第一滝本館",
+            "source": "Booking.com",
+            "url": "https://www.booking.com/hotel/jp/daiichi-takimotokan.html",
+            "rating": "8.9/10",
+            "visible_review_count": "3590",
+            "access_status": "aside_review_modal_read",
+            "directly_read_reviews": "4",
+            "onsen_related_direct_reviews": "3",
+            "snippet_only_count": "10",
+            "bath_signal_keywords": "온천; 노천온천; 대형욕탕; 다양한 온천수; 지옥계곡; 수온; 부드러운 수질",
+            "notes": "Only expanded Korean review cards counted as direct bodies; carousel excerpts kept as snippets."
+          },
+          {
+            "slug": "noboribetsu-daiichi-takimotokan",
+            "name_ja": "第一滝本館",
+            "source": "Trip.com via Google Hotels",
+            "url": "https://www.trip.com/hotels/noboribetsu-hotel-detail-704984/dai-ichi-takimotokan/",
+            "rating": "4.7/5 via Google Hotels",
+            "visible_review_count": "3047 via Google Hotels",
+            "access_status": "native_trip_misrouted_google_surface_only",
+            "directly_read_reviews": "1",
+            "onsen_related_direct_reviews": "1",
+            "snippet_only_count": "1",
+            "bath_signal_keywords": "대욕장; old/aged; maintained",
+            "notes": "Native Trip.com URL misrouted to an unrelated Sendai hotel, so only one Google-surfaced Trip.com body is counted."
+          },
+          {
+            "slug": "noboribetsu-daiichi-takimotokan",
+            "name_ja": "第一滝本館",
+            "source": "Naver Search / Place / Cafe",
+            "url": "https://search.naver.com/search.naver?query=다이이치%20타키모토칸%20온천",
+            "rating": "Naver place 5.0; hotel card 9/10",
+            "visible_review_count": "Naver place 2",
+            "access_status": "aside_search_snapshot_read_direct_cafe",
+            "directly_read_reviews": "2",
+            "onsen_related_direct_reviews": "2",
+            "snippet_only_count": "14",
+            "bath_signal_keywords": "온천; 대욕장; 노천탕; 수영장; 지옥계곡; 유황냄새; 남탕 view; 겨울 자쿠지 운영 안함",
+            "notes": "Naver search accessible; one Naver Place visible review and one Naver Cafe article body counted. Search snippets and cafe comments kept out of direct count."
+          },
+          {
+            "slug": "noboribetsu-daiichi-takimotokan",
+            "name_ja": "第一滝本館",
+            "source": "Agoda/Kayak aggregator",
+            "url": "https://www.agoda.com/dai-ichi-takimotokan/hotel/noboribetsu-jp.html",
+            "rating": "9.2/10 via Kayak",
+            "visible_review_count": "787 Agoda reviews via Kayak",
+            "access_status": "native_agoda_blocked_aggregator_count_only",
+            "directly_read_reviews": "0",
+            "onsen_related_direct_reviews": "0",
+            "snippet_only_count": "1",
+            "bath_signal_keywords": "hot spring aggregator keyword",
+            "notes": "Native Agoda fetch returned empty; Kayak provider score is pool signal only, not direct-review evidence."
+          }
+        ],
+        "snippet_only_or_pool_only": [
+          {
+            "source": "Google Hotels mixed Trip.com/Tripadvisor cards",
+            "reason": "partner snippets not merged with Google native count"
+          },
+          {
+            "source": "Booking.com carousel excerpts",
+            "reason": "counted as snippets unless expanded into modal"
+          },
+          {
+            "source": "Naver search results and cafe comments",
+            "reason": "search snippets/comments observed but not counted as direct review bodies"
+          },
+          {
+            "source": "Agoda/Kayak",
+            "reason": "provider score/count only, no native direct body"
+          },
+          {
+            "source": "Expedia",
+            "reason": "429 / no direct body in this pass"
+          }
+        ],
+        "takeaways": [
+          "Public bath and open-air public bath are the main bath experience, strongly repeated across platforms.",
+          "Strong positives: 5 spring qualities, source-flowing water, huge bathhouse, many tubs, Jigokudani view, sulfur smell, soft water texture, outdoor bath drinks, fresh towels, pool.",
+          "Repeated cautions: walking distance to bath by building, crowding/foreign tourist manners, older facilities, slipperiness/supervision, room cleanliness/odor in some low-rating Korean Google reviews.",
+          "Room open-air bath exists only in premium West Wing special rooms; do not generalize to all rooms.",
+          "Private/family bath remains unconfirmed."
+        ]
+      },
+      "a_reinforcement_2026_07_04": {
+        "source": "Rakuten Travel page 8",
+        "url": "https://review.travel.rakuten.co.jp/hotel/voice/30109?page=8",
+        "directly_read_reviews": 20,
+        "onsen_related_direct_reviews": 20,
+        "access_status": "direct_fetch_structured_reviewList_read",
+        "notes": "Visible pool 3,556 kept separate from direct body count."
+      }
+    },
+    {
+      "slug": "noboribetsu-mahoroba",
+      "name_ja": "ホテルまほろば",
+      "google_maps": {
+        "rating": "4.1",
+        "visible_review_count": "4,680",
+        "rating_distribution": {
+          "5": "2,000",
+          "4": "1,768",
+          "3": "583",
+          "2": "165",
+          "1": "164"
+        },
+        "korean_reviews_visible": true,
+        "access_status": "aside_review_tab_read_google_source",
+        "directly_read_reviews_this_reinforcement": 10,
+        "onsen_related_direct_reviews_this_reinforcement": 10
+      },
+      "ota_review_pool_signals": [
+        {
+          "source": "Rakuten Travel",
+          "url": "https://review.travel.rakuten.co.jp/hotel/voice/12568",
+          "visible_review_count": "2,070 current reviewList total; 2,661 prior observed pool",
+          "rating": "4.25",
+          "bath_score": ":",
+          "access_status": "direct_fetch_structured_reviewList_read",
+          "notes": "A reinforcement: direct body records from reviewList.data.contents; visible pool not counted as direct."
+        },
+        {
+          "source": "Rakuten Travel",
+          "url": "https://travel.rakuten.co.jp/HOTEL/12568/review.html",
+          "visible_review_count": "2,070 current reviewList total; 2,661 prior observed pool",
+          "rating": "4.25",
+          "bath_score": ":",
+          "access_status": "direct_fetch_structured_reviewList_read",
+          "notes": "A reinforcement: direct body records from reviewList.data.contents; visible pool not counted as direct."
+        },
+        {
+          "source": "Yahoo Travel",
+          "url": "https://travel.yahoo.co.jp/00030360/review/",
+          "visible_review_count": "not_observed_this_pass",
+          "rating": "not_observed_this_pass",
+          "access_status": "webfetch_direct_read",
+          "directly_read_reviews": "15",
+          "onsen_related_direct_reviews": "14",
+          "notes": "Aside reinforcement 2026-07-03: direct bodies counted separately from visible pool."
+        },
+        {
+          "source": "Booking.com",
+          "url": "https://www.booking.com/reviews/jp/hotel/h-mahoroba.ja.html",
+          "visible_review_count": "1050",
+          "rating": "8.3/10",
+          "access_status": "webfetch_direct_read",
+          "directly_read_reviews": "25",
+          "onsen_related_direct_reviews": "12",
+          "notes": "Aside reinforcement 2026-07-03: direct bodies counted separately from visible pool."
+        },
+        {
+          "source": "Ikkyu",
+          "url": "https://www.ikyu.com/00030360/review/",
+          "visible_review_count": "not_observed_this_pass",
+          "rating": "not_observed_this_pass",
+          "access_status": "webfetch_direct_read",
+          "directly_read_reviews": "6",
+          "onsen_related_direct_reviews": "6",
+          "notes": "Aside reinforcement 2026-07-03: direct bodies counted separately from visible pool."
+        },
+        {
+          "source": "Trip.com",
+          "url": "https://kr.trip.com/hotels/noboribetsu-hotel-detail-704188/hotel-mahoroba/review.html",
+          "visible_review_count": "728",
+          "rating": "8.9/10",
+          "access_status": "webfetch_direct_read",
+          "directly_read_reviews": "3",
+          "onsen_related_direct_reviews": "3",
+          "notes": "Aside reinforcement 2026-07-03: direct bodies counted separately from visible pool."
+        },
+        {
+          "source": "Hotels.com",
+          "url": "https://kr.hotels.com/ho457447/hotel-maholoba-nobolibecheu-ilbon/",
+          "visible_review_count": "not_observed_this_pass",
+          "rating": "not_observed_this_pass",
+          "access_status": "webfetch_direct_read",
+          "directly_read_reviews": "2",
+          "onsen_related_direct_reviews": "1",
+          "notes": "Aside reinforcement 2026-07-03: direct bodies counted separately from visible pool."
+        },
+        {
+          "source": "Tripadvisor",
+          "url": "https://www.tripadvisor.co.kr/ShowUserReviews-g325583-d1079122-r311169172-Hotel_Mahoroba-Noboribetsu_Hokkaido.html",
+          "visible_review_count": "740",
+          "rating": "4/5 review page",
+          "access_status": "webfetch_direct_read_single_review",
+          "directly_read_reviews": "1",
+          "onsen_related_direct_reviews": "1",
+          "notes": "Aside reinforcement 2026-07-03: direct bodies counted separately from visible pool."
+        }
+      ],
+      "official_bath_facts_seen": {
+        "official_url": "https://h-mahoroba.jp/",
+        "candidate_axes": "room_open_air_bath;public_bath;open_air_public_bath",
+        "candidate_notes": "宿泊施設だが温泉施設級の大浴場候補。31湯/複数泉質/家族・大型ホテル混雑/源泉露天客室を分ける",
+        "official_fact_status": "candidate_prior_verification_plus_static_page_check"
+      },
+      "review_signal_keywords": [
+        "B1/B2",
+        "お湯",
+        "大浴場",
+        "大浴場;サウナ",
+        "大浴場;サウナ;露天風呂",
+        "大浴場;温泉",
+        "大浴場;源泉;露天風呂",
+        "大浴場;硫黄;露天風呂",
+        "大浴場;露天風呂",
+        "大浴場;露天風呂;温泉",
+        "客室露天風呂;大浴場;源泉",
+        "客室露天風呂;源泉;露天風呂",
+        "泉質",
+        "温泉",
+        "源泉",
+        "源泉;お湯",
+        "滑り台",
+        "物足りない",
+        "硫黄;温泉",
+        "雪景色",
+        "露天風呂",
+        "露天風呂;温泉",
+        "온천 대욕장",
+        "유황온천",
+        "지하2층",
+        "탕 종류"
+      ],
+      "caution_keywords": [
+        "入れ墨",
+        "古い",
+        "団体客",
+        "子どもが泳ぐ",
+        "客室臭い",
+        "混雑",
+        "温度",
+        "物足りない",
+        "狭い",
+        "虫",
+        "部屋古い",
+        "食事混雑",
+        "남성 이용시간 탕 별로"
+      ],
+      "direct_reviews_checked": 330,
+      "onsen_related_direct_reviews_checked": 216,
+      "direct_body_platforms": [
+        "Rakuten Travel",
+        "Google Maps",
+        "Yahoo Travel",
+        "Booking.com",
+        "Ikkyu",
+        "Trip.com",
+        "Hotels.com",
+        "Tripadvisor"
+      ],
+      "data_quality_grade": "A",
+      "volume_grade": "A_volume_300plus",
+      "next_sampling": "A-grade volume reached. Further work should prioritize low-rating Google/Naver/Jalan archive contradiction checks, not more volume for baseline eligibility.",
+      "secondary_platform_pages": [
+        {
+          "source": "Yahoo Travel",
+          "url": "https://travel.yahoo.co.jp/00030360/review/",
+          "access_status": "webfetch_direct_read",
+          "directly_read_reviews": "15",
+          "onsen_related_direct_reviews": "14",
+          "snippet_only_count": "0"
+        },
+        {
+          "source": "Booking.com",
+          "url": "https://www.booking.com/reviews/jp/hotel/h-mahoroba.ja.html",
+          "access_status": "webfetch_direct_read",
+          "directly_read_reviews": "25",
+          "onsen_related_direct_reviews": "12",
+          "snippet_only_count": "0"
+        },
+        {
+          "source": "Ikkyu",
+          "url": "https://www.ikyu.com/00030360/review/",
+          "access_status": "webfetch_direct_read",
+          "directly_read_reviews": "6",
+          "onsen_related_direct_reviews": "6",
+          "snippet_only_count": "0"
+        },
+        {
+          "source": "Trip.com",
+          "url": "https://kr.trip.com/hotels/noboribetsu-hotel-detail-704188/hotel-mahoroba/review.html",
+          "access_status": "webfetch_direct_read",
+          "directly_read_reviews": "3",
+          "onsen_related_direct_reviews": "3",
+          "snippet_only_count": "1"
+        },
+        {
+          "source": "Hotels.com",
+          "url": "https://kr.hotels.com/ho457447/hotel-maholoba-nobolibecheu-ilbon/",
+          "access_status": "webfetch_direct_read",
+          "directly_read_reviews": "2",
+          "onsen_related_direct_reviews": "1",
+          "snippet_only_count": "0"
+        },
+        {
+          "source": "Tripadvisor",
+          "url": "https://www.tripadvisor.co.kr/ShowUserReviews-g325583-d1079122-r311169172-Hotel_Mahoroba-Noboribetsu_Hokkaido.html",
+          "access_status": "webfetch_direct_read_single_review",
+          "directly_read_reviews": "1",
+          "onsen_related_direct_reviews": "1",
+          "snippet_only_count": "0"
+        },
+        {
+          "source": "Naver Search / Blog",
+          "url": "https://search.naver.com/search.naver?query=호텔%20마호로바%20노보리베츠%20온천",
+          "access_status": "aside_search_opened_blog_webfetch_blocked",
+          "directly_read_reviews": "0",
+          "onsen_related_direct_reviews": "0",
+          "snippet_only_count": "2"
+        }
+      ],
+      "a_reinforcement_2026_07_04": {
+        "added_source": "Rakuten Travel pages 8-14",
+        "added_direct_reviews_checked": 140,
+        "added_onsen_related_direct_reviews_checked": 124,
+        "reinforced_direct_reviews_checked": 330,
+        "reinforced_onsen_related_direct_reviews_checked": 216,
+        "access_status": "direct_fetch_structured_reviewList_read",
+        "notes": "Visible pool kept separate; current reviewList total 2,070 differs from prior observed 2,661 pool."
+      }
+    },
+    {
+      "slug": "noboribetsu-grand",
+      "name_ja": "祝いの宿 登別グランドホテル",
+      "google_maps": {
+        "rating": "4.1",
+        "visible_review_count": "2,751",
+        "rating_distribution": {
+          "5": "1,079",
+          "4": "1,071",
+          "3": "409",
+          "2": "87",
+          "1": "105"
+        },
+        "korean_reviews_visible": true,
+        "access_status": "aside_google_maps_direct_read",
+        "directly_read_reviews": 8,
+        "onsen_related_direct_reviews": 4,
+        "notes": "Google-native Korean review bodies counted only; Trip.com/Tripadvisor provider cards in Google panel excluded from direct counts."
+      },
+      "ota_review_pool_signals": [
+        {
+          "source": "Rakuten Travel",
+          "url": "https://review.travel.rakuten.co.jp/hotel/voice/39175",
+          "visible_review_count": "2,327 current reviewList total; 2,984 prior observed pool",
+          "rating": "4.28",
+          "bath_score": ":",
+          "access_status": "direct_fetch_structured_reviewList_read",
+          "notes": "A reinforcement: direct body records from reviewList.data.contents; visible pool not counted as direct."
+        },
+        {
+          "source": "Rakuten Travel",
+          "url": "https://travel.rakuten.co.jp/HOTEL/39175/review.html",
+          "visible_review_count": "2,327 current reviewList total; 2,984 prior observed pool",
+          "rating": "4.28",
+          "bath_score": ":",
+          "access_status": "direct_fetch_structured_reviewList_read",
+          "notes": "A reinforcement: direct body records from reviewList.data.contents; visible pool not counted as direct."
+        },
+        {
+          "source": "Booking.com",
+          "url": "https://www.booking.com/reviews/jp/hotel/noboribetsu-grand.ja.html",
+          "visible_review_count": "150 current Booking score set; search surface 473 pool",
+          "rating": "8.1/10",
+          "access_status": "webfetch_direct_read",
+          "directly_read_reviews": "25",
+          "onsen_related_direct_reviews": "17",
+          "notes": "Aside/web reinforcement 2026-07-03: direct bodies counted separately from visible pool."
+        },
+        {
+          "source": "Yahoo Travel",
+          "url": "https://travel.yahoo.co.jp/00000583/review/",
+          "visible_review_count": "160 Yahoo Travel; Yahoo map 90",
+          "rating": "4.27 overall; onsen/bath 4.58",
+          "access_status": "webfetch_direct_read",
+          "directly_read_reviews": "10",
+          "onsen_related_direct_reviews": "9",
+          "notes": "Aside/web reinforcement 2026-07-03: direct bodies counted separately from visible pool."
+        },
+        {
+          "source": "Ikkyu",
+          "url": "https://www.ikyu.com/00000583/review/",
+          "visible_review_count": "169",
+          "rating": "4.32 overall; onsen/bath 4.63",
+          "access_status": "webfetch_direct_read",
+          "directly_read_reviews": "6",
+          "onsen_related_direct_reviews": "6",
+          "notes": "Aside/web reinforcement 2026-07-03: direct bodies counted separately from visible pool."
+        },
+        {
+          "source": "Trip.com",
+          "url": "https://kr.trip.com/hotels/noboribetsu-hotel-detail-703466/noboribetsu-grand-hotel/review.html",
+          "visible_review_count": "487",
+          "rating": "not_observed_this_pass",
+          "access_status": "webfetch_direct_read",
+          "directly_read_reviews": "1",
+          "onsen_related_direct_reviews": "1",
+          "notes": "Aside/web reinforcement 2026-07-03: direct bodies counted separately from visible pool."
+        },
+        {
+          "source": "Tripadvisor",
+          "url": "https://www.tripadvisor.co.kr/ShowUserReviews-g325583-d1155420-r465459193-Noboribetsu_Grand_Hotel-Noboribetsu_Hokkaido.html",
+          "visible_review_count": "not_observed_this_pass",
+          "rating": "not_observed_this_pass",
+          "access_status": "webfetch_direct_read_single_review",
+          "directly_read_reviews": "1",
+          "onsen_related_direct_reviews": "1",
+          "notes": "Aside/web reinforcement 2026-07-03: direct bodies counted separately from visible pool."
+        },
+        {
+          "source": "Hotelpass Korean review",
+          "url": "https://www.hotelpass.net/community/review_view.asp?PKId=83866",
+          "visible_review_count": "single_review_page",
+          "rating": "7.7/10 review score",
+          "access_status": "webfetch_direct_read_single_review",
+          "directly_read_reviews": "1",
+          "onsen_related_direct_reviews": "1",
+          "notes": "Aside/web reinforcement 2026-07-03: direct bodies counted separately from visible pool."
+        }
+      ],
+      "official_bath_facts_seen": {
+        "official_url": "https://www.nobogura.co.jp/hotspring/",
+        "candidate_axes": "room_open_air_bath;public_bath;open_air_public_bath",
+        "candidate_notes": "鬼サウナと多泉質大浴場が主要価値。宿泊/日帰り/サウナ目的レビューを 분리",
+        "official_fact_status": "candidate_prior_verification_plus_static_page_check",
+        "family_bath": "Official reserved 温泉家族風呂: source-flowing salt spring, 50 min, 4,400 yen, reservation required, up to 4 people.",
+        "room_open_air_bath_caution": "Official room page: open-air bath rooms exist but bath is not natural hot spring; radium mineral artificial hot spring."
+      },
+      "review_signal_keywords": [
+        "3泉質",
+        "room open-air artificial hot spring",
+        "お湯",
+        "お湯;温泉",
+        "サウナ",
+        "サウナ;お湯;温泉",
+        "サウナ;温泉",
+        "タオル常備",
+        "大浴場",
+        "大浴場;サウナ;温泉",
+        "大浴場;温泉",
+        "大浴場;露天風呂",
+        "大浴場;露天風呂;お湯",
+        "大浴場;露天風呂;温泉",
+        "客室露天風呂;大浴場;露天風呂",
+        "家族風呂",
+        "温泉",
+        "温泉家族風呂",
+        "滝",
+        "硫黄",
+        "硫黄;サウナ;温泉",
+        "硫黄;サウナ;露天風呂",
+        "硫黄;温泉",
+        "硫黄泉",
+        "貸切",
+        "鉄泉",
+        "露天風呂",
+        "露天風呂;お湯;温泉",
+        "露天風呂;温泉",
+        "食塩泉",
+        "鬼サウナ",
+        "온천 수질",
+        "눈쌓인 야외 온천",
+        "작은 노천탕",
+        "노천탕 폭포",
+        "남녀교차"
+      ],
+      "caution_keywords": [
+        "50分短い",
+        "ぬるい",
+        "タトゥー",
+        "古い",
+        "外国人観光客マナー",
+        "客室露天は天然温泉ではない",
+        "換気",
+        "混雑",
+        "温度",
+        "熱い",
+        "脱衣所ロッカー古い",
+        "虫",
+        "部屋臭い",
+        "객실 거미",
+        "객실 냄새"
+      ],
+      "direct_reviews_checked": 324,
+      "onsen_related_direct_reviews_checked": 200,
+      "direct_body_platforms": [
+        "Rakuten Travel",
+        "Booking.com",
+        "Yahoo Travel",
+        "Ikkyu",
+        "Trip.com",
+        "Tripadvisor",
+        "Hotelpass Korean review",
+        "Google Maps"
+      ],
+      "data_quality_grade": "A",
+      "volume_grade": "A_volume_300plus",
+      "next_sampling": "A-grade volume reached. Further work should prioritize low-rating Google/Naver/Jalan archive contradiction checks and keep artificial room open-air bath separate from natural hot-spring signals.",
+      "secondary_platform_pages": [
+        {
+          "source": "Booking.com",
+          "url": "https://www.booking.com/reviews/jp/hotel/noboribetsu-grand.ja.html",
+          "access_status": "webfetch_direct_read",
+          "directly_read_reviews": "25",
+          "onsen_related_direct_reviews": "17",
+          "snippet_only_count": "0"
+        },
+        {
+          "source": "Yahoo Travel",
+          "url": "https://travel.yahoo.co.jp/00000583/review/",
+          "access_status": "webfetch_direct_read",
+          "directly_read_reviews": "10",
+          "onsen_related_direct_reviews": "9",
+          "snippet_only_count": "0"
+        },
+        {
+          "source": "Ikkyu",
+          "url": "https://www.ikyu.com/00000583/review/",
+          "access_status": "webfetch_direct_read",
+          "directly_read_reviews": "6",
+          "onsen_related_direct_reviews": "6",
+          "snippet_only_count": "0"
+        },
+        {
+          "source": "Trip.com",
+          "url": "https://kr.trip.com/hotels/noboribetsu-hotel-detail-703466/noboribetsu-grand-hotel/review.html",
+          "access_status": "webfetch_direct_read",
+          "directly_read_reviews": "1",
+          "onsen_related_direct_reviews": "1",
+          "snippet_only_count": "1"
+        },
+        {
+          "source": "Tripadvisor",
+          "url": "https://www.tripadvisor.co.kr/ShowUserReviews-g325583-d1155420-r465459193-Noboribetsu_Grand_Hotel-Noboribetsu_Hokkaido.html",
+          "access_status": "webfetch_direct_read_single_review",
+          "directly_read_reviews": "1",
+          "onsen_related_direct_reviews": "1",
+          "snippet_only_count": "0"
+        },
+        {
+          "source": "Hotelpass Korean review",
+          "url": "https://www.hotelpass.net/community/review_view.asp?PKId=83866",
+          "access_status": "webfetch_direct_read_single_review",
+          "directly_read_reviews": "1",
+          "onsen_related_direct_reviews": "1",
+          "snippet_only_count": "0"
+        },
+        {
+          "source": "Naver Search",
+          "url": "https://search.naver.com/search.naver?query=노보리베츠%20그랜드%20호텔%20온천",
+          "access_status": "search_result_snippet_only",
+          "directly_read_reviews": "0",
+          "onsen_related_direct_reviews": "0",
+          "snippet_only_count": "2"
+        }
+      ],
+      "a_reinforcement_2026_07_04": {
+        "added_source": "Rakuten Travel pages 8-14",
+        "added_direct_reviews_checked": 140,
+        "added_onsen_related_direct_reviews_checked": 109,
+        "reinforced_direct_reviews_checked": 324,
+        "reinforced_onsen_related_direct_reviews_checked": 200,
+        "access_status": "direct_fetch_structured_reviewList_read",
+        "notes": "Visible pool kept separate; current reviewList total 2,327 differs from prior observed 2,984 pool."
+      }
+    },
+    {
+      "slug": "noboribetsu-manseikaku",
+      "name_ja": "登別万世閣",
+      "google_maps": {
+        "rating": "3.8",
+        "visible_review_count": "2,775",
+        "rating_distribution": {
+          "5": "874",
+          "4": "990",
+          "3": "598",
+          "2": "176",
+          "1": "137"
+        },
+        "korean_reviews_visible": true,
+        "access_status": "aside_review_tab_read_mixed_origin",
+        "directly_read_reviews_this_reinforcement": 12,
+        "onsen_related_direct_reviews_this_reinforcement": 12
+      },
+      "ota_review_pool_signals": [
+        {
+          "source": "Rakuten Travel",
+          "url": "https://review.travel.rakuten.co.jp/hotel/voice/28637",
+          "visible_review_count": "1,201",
+          "rating": "4.08",
+          "bath_score": ":",
+          "access_status": "direct_fetch_paginated_read",
+          "notes": "hotel/voice pagination expanded; direct bodies counted separately"
+        },
+        {
+          "source": "Rakuten Travel",
+          "url": "https://travel.rakuten.co.jp/HOTEL/28637/review.html",
+          "visible_review_count": "1,201",
+          "rating": "4.08",
+          "bath_score": ":",
+          "access_status": "direct_fetch_full_read",
+          "notes": ""
+        },
+        {
+          "source": "Booking.com",
+          "url": "https://www.booking.com/reviews/jp/hotel/noboribetsu-manseikaku.ja.html",
+          "visible_review_count": "520-526 surface; page shows reviews 1-25",
+          "rating": "7.9/10 or 8.1/10 surface",
+          "access_status": "webfetch_direct_read",
+          "directly_read_reviews": "25",
+          "onsen_related_direct_reviews": "12",
+          "notes": "Aside/web reinforcement 2026-07-03: direct bodies counted separately from visible pool."
+        },
+        {
+          "source": "Yahoo Travel",
+          "url": "https://travel.yahoo.co.jp/00901592/review/",
+          "visible_review_count": "54",
+          "rating": "4.30 overall; onsen/bath 4.28",
+          "access_status": "webfetch_direct_read",
+          "directly_read_reviews": "15",
+          "onsen_related_direct_reviews": "12",
+          "notes": "Aside/web reinforcement 2026-07-03: direct bodies counted separately from visible pool."
+        },
+        {
+          "source": "Jalan",
+          "url": "https://www.jalan.net/yad321916/kuchikomi/",
+          "visible_review_count": "not_observed_this_pass",
+          "rating": "not_observed_this_pass; bath scores visible per review",
+          "access_status": "webfetch_direct_read",
+          "directly_read_reviews": "10",
+          "onsen_related_direct_reviews": "8",
+          "notes": "Aside/web reinforcement 2026-07-03: direct bodies counted separately from visible pool."
+        },
+        {
+          "source": "Trip.com",
+          "url": "https://kr.trip.com/hotels/noboribetsu-hotel-detail-993429/noboribetsu-manseikaku/review.html",
+          "visible_review_count": "232",
+          "rating": "8.8/10",
+          "access_status": "webfetch_direct_read",
+          "directly_read_reviews": "15",
+          "onsen_related_direct_reviews": "12",
+          "notes": "Aside/web reinforcement 2026-07-03: direct bodies counted separately from visible pool."
+        },
+        {
+          "source": "Naver Blog",
+          "url": "https://blog.naver.com/yeum04/223505801636",
+          "visible_review_count": "single_blog_body",
+          "rating": "",
+          "access_status": "aside_search_snapshot_read_direct_blog_body",
+          "directly_read_reviews": "1",
+          "onsen_related_direct_reviews": "1",
+          "notes": "Aside/web reinforcement 2026-07-03: direct bodies counted separately from visible pool."
+        },
+        {
+          "source": "Rakuten Travel pages 8-15",
+          "url": "https://review.travel.rakuten.co.jp/hotel/voice/28637?page=8 ; https://review.travel.rakuten.co.jp/hotel/voice/28637?page=9 ; https://review.travel.rakuten.co.jp/hotel/voice/28637?page=10 ; https://review.travel.rakuten.co.jp/hotel/voice/28637?page=11 ; https://review.travel.rakuten.co.jp/hotel/voice/28637?page=12 ; https://review.travel.rakuten.co.jp/hotel/voice/28637?page=13 ; https://review.travel.rakuten.co.jp/hotel/voice/28637?page=14 ; https://review.travel.rakuten.co.jp/hotel/voice/28637?page=15",
+          "visible_review_count": "923 current reviewList total; 1,201 prior observed pool",
+          "rating": "4.08",
+          "bath_score": ":",
+          "access_status": "direct_fetch_structured_reviewList_read",
+          "directly_read_reviews": 160,
+          "onsen_related_direct_reviews": 127,
+          "snippet_only_count": 0,
+          "notes": "A reinforcement: direct body records from reviewList.data.contents; visible pool not counted as direct."
+        }
+      ],
+      "official_bath_facts_seen": {
+        "official_url": "https://www.noboribetsu-manseikaku.jp/spa/",
+        "candidate_axes": "room_open_air_bath;public_bath;open_air_public_bath",
+        "candidate_notes": "大浴場温泉・セルフロウリュ・貸切温泉サウナを分ける。ビュッフェ評価と温泉評価を混同しない",
+        "official_fact_status": "candidate_prior_verification_plus_static_page_check",
+        "room_bath_caution": "Official FAQ: ordinary room baths are heated water, not hot spring.",
+        "room_open_air_bath": "Official/Yahoo room facts: special 11F open-air/view-bath rooms use source-flowing hot spring only; do not generalize to all rooms.",
+        "private_bath": "Official floorguide: reserved private onsen & sauna, 90 min, paid, reservation required, 3 groups/day."
+      },
+      "review_signal_keywords": [
+        "Google Korean reviews",
+        "お湯",
+        "お湯;温泉",
+        "サウナ",
+        "サウナ;露天風呂;温泉",
+        "大浴場",
+        "大浴場1槽",
+        "大浴場;お湯",
+        "大浴場;サウナ;温泉",
+        "大浴場;温泉",
+        "大浴場;物足りない",
+        "大浴場;露天風呂",
+        "客室通常風呂は温泉ではない",
+        "客室露天風呂;大浴場;露天風呂",
+        "客室露天風呂;露天風呂;温泉",
+        "温泉",
+        "源泉;かけ流し;温泉",
+        "源泉;サウナ",
+        "源泉;サウナ;温泉",
+        "源泉;露天風呂;温泉",
+        "源泉の香り",
+        "源泉水風呂",
+        "白濁;お湯",
+        "硫黄;温泉",
+        "硫黄;白濁;温泉",
+        "貸切温泉＆サウナ",
+        "露天風呂;お湯",
+        "露天風呂;温泉",
+        "노천탕",
+        "샴푸바",
+        "수건 객실 지참",
+        "유황온천물",
+        "ロウリュウサウナ",
+        "シャンプーバイキング",
+        "肌ツルツル",
+        "ポカポカ",
+        "脱衣所狭い"
+      ],
+      "caution_keywords": [
+        "ぬるい",
+        "エレベーター混雑",
+        "カビ",
+        "古い",
+        "大浴場まで階段",
+        "大浴場スマホ/マナー",
+        "普通客室風呂は温泉ではない",
+        "混雑",
+        "温度",
+        "温泉種類少ない",
+        "物足りない",
+        "狭い",
+        "虫",
+        "部屋古い",
+        "대욕장 도난 주의",
+        "脱衣所狭い",
+        "タオル/籠不足",
+        "階段痛い",
+        "洗濯機不可"
+      ],
+      "direct_reviews_checked": 351,
+      "onsen_related_direct_reviews_checked": 228,
+      "direct_body_platforms": [
+        "Rakuten Travel",
+        "Google Maps",
+        "Booking.com",
+        "Yahoo Travel",
+        "Jalan",
+        "Trip.com",
+        "Naver Blog"
+      ],
+      "data_quality_grade": "A",
+      "volume_grade": "A_volume_300plus",
+      "next_sampling": "A-grade reached at 351 direct reviews. Continue only for author-level dedupe, low-rating Korean/Naver expansion, or special-room bath nuance.",
+      "secondary_platform_pages": [
+        {
+          "source": "Google Maps",
+          "url": "https://www.google.com/maps/search/%E7%99%BB%E5%88%A5%E4%B8%87%E4%B8%96%E9%96%A3%20Noboribetsu%20Manseikaku",
+          "access_status": "aside_review_tab_read_mixed_origin",
+          "directly_read_reviews": "12",
+          "onsen_related_direct_reviews": "12",
+          "snippet_only_count": "5"
+        },
+        {
+          "source": "Booking.com",
+          "url": "https://www.booking.com/reviews/jp/hotel/noboribetsu-manseikaku.ja.html",
+          "access_status": "webfetch_direct_read",
+          "directly_read_reviews": "25",
+          "onsen_related_direct_reviews": "12",
+          "snippet_only_count": "0"
+        },
+        {
+          "source": "Yahoo Travel",
+          "url": "https://travel.yahoo.co.jp/00901592/review/",
+          "access_status": "webfetch_direct_read",
+          "directly_read_reviews": "15",
+          "onsen_related_direct_reviews": "12",
+          "snippet_only_count": "0"
+        },
+        {
+          "source": "Jalan",
+          "url": "https://www.jalan.net/yad321916/kuchikomi/",
+          "access_status": "webfetch_direct_read",
+          "directly_read_reviews": "10",
+          "onsen_related_direct_reviews": "8",
+          "snippet_only_count": "0"
+        },
+        {
+          "source": "Trip.com",
+          "url": "https://kr.trip.com/hotels/noboribetsu-hotel-detail-993429/noboribetsu-manseikaku/review.html",
+          "access_status": "webfetch_direct_read",
+          "directly_read_reviews": "15",
+          "onsen_related_direct_reviews": "12",
+          "snippet_only_count": "0"
+        },
+        {
+          "source": "Naver Blog",
+          "url": "https://blog.naver.com/yeum04/223505801636",
+          "access_status": "aside_search_snapshot_read_direct_blog_body",
+          "directly_read_reviews": "1",
+          "onsen_related_direct_reviews": "1",
+          "snippet_only_count": "6"
+        },
+        {
+          "source": "Naver Search/Cafe snippets",
+          "url": "https://search.naver.com/search.naver?query=노보리베츠%20만세이카쿠%20온천%20후기",
+          "access_status": "aside_search_result_snippet_only",
+          "directly_read_reviews": "0",
+          "onsen_related_direct_reviews": "0",
+          "snippet_only_count": "8"
+        }
+      ],
+      "direct_reviews_checked_reinforced": 351,
+      "onsen_related_direct_reviews_checked_reinforced": 228,
+      "data_quality_grade_reinforced": "A",
+      "a_reinforcement_2026_07_04": {
+        "source": "Rakuten Travel pages 8-15",
+        "url": "https://review.travel.rakuten.co.jp/hotel/voice/28637?page=8 ; https://review.travel.rakuten.co.jp/hotel/voice/28637?page=9 ; https://review.travel.rakuten.co.jp/hotel/voice/28637?page=10 ; https://review.travel.rakuten.co.jp/hotel/voice/28637?page=11 ; https://review.travel.rakuten.co.jp/hotel/voice/28637?page=12 ; https://review.travel.rakuten.co.jp/hotel/voice/28637?page=13 ; https://review.travel.rakuten.co.jp/hotel/voice/28637?page=14 ; https://review.travel.rakuten.co.jp/hotel/voice/28637?page=15",
+        "directly_read_reviews": 160,
+        "onsen_related_direct_reviews": 127,
+        "access_status": "direct_fetch_structured_reviewList_read",
+        "notes": "Visible pool kept separate; current reviewList total 923 differs from prior observed 1,201 pool."
+      }
+    },
+    {
+      "slug": "noboribetsu-takinoya",
+      "name_ja": "登別温泉郷 滝乃家",
+      "google_maps": {
+        "rating": null,
+        "visible_review_count": null,
+        "rating_distribution": null,
+        "korean_reviews_visible": null,
+        "access_status": "not_checked_this_pass"
+      },
+      "ota_review_pool_signals": [
+        {
+          "source": "Rakuten Travel",
+          "url": "https://review.travel.rakuten.co.jp/hotel/voice/72815",
+          "visible_review_count": "269 current reviewList total; 335 prior observed pool",
+          "rating": "4.16",
+          "bath_score": ":",
+          "access_status": "direct_fetch_structured_reviewList_read",
+          "notes": "A reinforcement: direct body records from reviewList.data.contents; visible pool not counted as direct."
+        },
+        {
+          "source": "Jalan",
+          "url": "https://www.jalan.net/yad320864/kuchikomi/detail_14662962/",
+          "visible_review_count": "746",
+          "rating": "4.7",
+          "bath_score": "5",
+          "access_status": "direct_fetch_full_read",
+          "notes": "secondary static surface; direct bodies counted only when review_chunks > 0"
+        },
+        {
+          "source": "Rakuten Travel",
+          "url": "https://travel.rakuten.co.jp/HOTEL/72815/review.html",
+          "visible_review_count": "269 current reviewList total; 335 prior observed pool",
+          "rating": "4.16",
+          "bath_score": ":",
+          "access_status": "direct_fetch_structured_reviewList_read",
+          "notes": "A reinforcement: direct body records from reviewList.data.contents; visible pool not counted as direct."
+        },
+        {
+          "source": "Google Maps/Hotels",
+          "url": "https://www.google.com/maps/search/?api=1&query=%E7%99%BB%E5%88%A5%E6%B8%A9%E6%B3%89%E9%83%B7%20%E6%BB%9D%E4%B9%83%E5%AE%B6%20Takinoya%20Noboribetsu",
+          "visible_review_count": "730",
+          "rating": "4.5",
+          "bath_score": null,
+          "access_status": "aside_browser_direct_read",
+          "directly_read_reviews": 48,
+          "onsen_related_direct_reviews": 22,
+          "notes": "Google Maps/Hotels panel opened in Aside Browser. Counted Google-posted body cards only; Trip.com/Tripadvisor provider cards visible in panel were excluded from added count."
+        },
+        {
+          "source": "Ikkyu",
+          "url": "https://www.ikyu.com/00001424/review/",
+          "visible_review_count": "103",
+          "rating": "4.55",
+          "access_status": "web_open_direct_read",
+          "directly_read_reviews": "20",
+          "onsen_related_direct_reviews": "16",
+          "notes": "A reinforcement: direct readable review page; short paraphrases/keywords only."
+        }
+      ],
+      "official_bath_facts_seen": {
+        "official_url": "https://www.takinoya.co.jp/",
+        "candidate_axes": "room_open_air_bath;public_bath;open_air_public_bath",
+        "candidate_notes": "高級老舗。客室展望風呂・館内浴場・4泉質を分ける。レビュー量は中規模",
+        "official_fact_status": "candidate_prior_verification_plus_static_page_check"
+      },
+      "review_signal_keywords": [
+        "お湯",
+        "大浴場",
+        "大浴場;温泉",
+        "大浴場;硫黄;お湯",
+        "大浴場;露天風呂",
+        "大浴場;露天風呂;お湯",
+        "大浴場;露天風呂;温泉",
+        "客室展望風呂;露天風呂",
+        "客室露天風呂;源泉;露天風呂",
+        "客室露天風呂;露天風呂;お湯",
+        "温泉",
+        "源泉;温泉",
+        "源泉;露天風呂",
+        "硫黄;お湯;温泉",
+        "硫黄;露天風呂;温泉",
+        "露天風呂",
+        "露天風呂;お湯",
+        "露天風呂;温泉",
+        "Googleレビュー",
+        "韓国語Googleレビュー",
+        "5층 인피니티탕",
+        "목욕탕 자체는 작음",
+        "욕장 전세 느낌",
+        "객실 온천은 온천아님",
+        "5층 노천탕",
+        "개인 노천탕",
+        "유황 온천물",
+        "객실노천"
+      ],
+      "caution_keywords": [
+        "古い",
+        "段差",
+        "混雑",
+        "温度",
+        "熱い",
+        "狭い",
+        "虫",
+        "遠い",
+        "Google Maps provider-card overlap excluded",
+        "객실 온천/대중 온천 구분 신호",
+        "음식 불만과 온천 만족 분리 필요",
+        "5층 노천탕 벌레 신호는 Trip.com provider card로만 확인"
+      ],
+      "direct_reviews_checked": 312,
+      "onsen_related_direct_reviews_checked": 184,
+      "direct_body_platforms": [
+        "Jalan",
+        "Rakuten Travel",
+        "Google Maps/Hotels",
+        "Ikkyu"
+      ],
+      "data_quality_grade": "A",
+      "volume_grade": "A_volume_300plus",
+      "next_sampling": "A-grade baseline reached. Further work should prioritize Naver/Korean demand and deeper low-rating contradiction checks for public-bath cleanliness and room-bath aging.",
+      "review_signal_status": "B_volume_150plus",
+      "reinforcement_status": "aside_google_reinforced_150plus",
+      "a_reinforcement_2026_07_04": {
+        "added_source": "Rakuten Travel pages 8-14 + Ikkyu first review page",
+        "added_direct_reviews_checked": 149,
+        "added_onsen_related_direct_reviews_checked": 95,
+        "reinforced_direct_reviews_checked": 312,
+        "reinforced_onsen_related_direct_reviews_checked": 184,
+        "access_status": "direct_fetch_structured_reviewList_read_plus_web_open_direct_read",
+        "notes": "Visible pools kept separate; current Rakuten reviewList total 269 differs from prior observed 335 pool; Ikkyu visible pool 103."
+      }
+    },
+    {
+      "slug": "noboribetsu-hanayura",
+      "name_ja": "旅亭 花ゆら",
+      "google_maps": {
+        "rating": null,
+        "visible_review_count": null,
+        "rating_distribution": null,
+        "korean_reviews_visible": null,
+        "access_status": "not_checked_this_pass"
+      },
+      "ota_review_pool_signals": [
+        {
+          "source": "Rakuten Travel",
+          "url": "https://review.travel.rakuten.co.jp/hotel/voice/37380",
+          "visible_review_count": "168",
+          "rating": "3.79",
+          "bath_score": ":",
+          "access_status": "direct_fetch_paginated_read",
+          "notes": "hotel/voice pagination expanded; direct bodies counted separately"
+        },
+        {
+          "source": "Jalan",
+          "url": "https://www.jalan.net/yad311313/kuchikomi/",
+          "visible_review_count": "500",
+          "rating": "4.5",
+          "bath_score": "4.5",
+          "access_status": "direct_fetch_full_read",
+          "notes": "secondary static surface; direct bodies counted only when review_chunks > 0"
+        },
+        {
+          "source": "Rakuten Travel",
+          "url": "https://travel.rakuten.co.jp/HOTEL/37380/review.html",
+          "visible_review_count": "168",
+          "rating": "3.79",
+          "bath_score": ":",
+          "access_status": "direct_fetch_full_read",
+          "notes": ""
+        },
+        {
+          "source": "Google Maps/Hotels",
+          "url": "https://www.google.com/maps/place/%E3%83%AA%E3%83%A7%E3%83%86%E3%82%A4+%E3%83%8F%E3%83%8A%E3%83%A6%E3%83%A9",
+          "visible_review_count": "657",
+          "rating": "4.4",
+          "bath_score": null,
+          "access_status": "aside_browser_direct_read",
+          "directly_read_reviews": 54,
+          "onsen_related_direct_reviews": 38,
+          "notes": "Google Maps/Hotels panel opened in Aside Browser. Counted Google-posted body cards only; Trip.com/Tripadvisor provider cards visible in panel were excluded from added count."
+        },
+        {
+          "source": "Ikkyu review page",
+          "url": "https://www.ikyu.com/00001501/review/",
+          "visible_review_count": "41",
+          "rating": "4.43",
+          "bath_score": null,
+          "access_status": "web_or_local_html_direct_read",
+          "directly_read_reviews": 41,
+          "onsen_related_direct_reviews": 30,
+          "notes": "web-open direct readable page; counted Ikkyu surface only and did not add Yahoo Travel mirrored 00001501 page to avoid duplicate inflation."
+        },
+        {
+          "source": "JTB review page",
+          "url": "https://www.jtb.co.jp/kokunai-hotel/htl/1558018/review/",
+          "visible_review_count": "132 questionnaire; 20 RRB body reviews",
+          "rating": "89%",
+          "bath_score": null,
+          "access_status": "web_or_local_html_direct_read",
+          "directly_read_reviews": 60,
+          "onsen_related_direct_reviews": 36,
+          "notes": "local HTML direct readable; counted 40 visible questionnaire blocks plus 20 hotelReviewList bodies; visible review pool kept separate."
+        },
+        {
+          "source": "Relux review page",
+          "url": "https://rlx.jp/22735/review/",
+          "visible_review_count": "42",
+          "rating": "92.0",
+          "bath_score": null,
+          "access_status": "web_or_local_html_direct_read",
+          "directly_read_reviews": 24,
+          "onsen_related_direct_reviews": 10,
+          "notes": "local HTML PC review list direct readable; mobile duplicate block excluded."
+        },
+        {
+          "source": "Yahoo Maps reviews via Yahoo Travel",
+          "url": "https://travel.yahoo.co.jp/00001501/review/yahoomap/",
+          "visible_review_count": "14",
+          "rating": "not_recorded",
+          "bath_score": null,
+          "access_status": "web_or_local_html_direct_read",
+          "directly_read_reviews": 14,
+          "onsen_related_direct_reviews": 12,
+          "notes": "web-open direct readable Yahoo Maps review page; kept distinct from Yahoo Travel/Ikkyu accommodation review mirror."
+        },
+        {
+          "source": "Tripadvisor review page",
+          "url": "https://www.tripadvisor.jp/Hotel_Review-g325583-d1155426-Reviews-Hanayura-Noboribetsu_Hokkaido.html",
+          "visible_review_count": "163",
+          "rating": "4.3",
+          "bath_score": null,
+          "access_status": "web_or_local_html_direct_read",
+          "directly_read_reviews": 10,
+          "onsen_related_direct_reviews": 7,
+          "notes": "web-open direct readable first review page; counted only visible body cards opened in this pass."
+        }
+      ],
+      "official_bath_facts_seen": {
+        "official_url": "https://hanayura.com/",
+        "candidate_axes": "room_open_air_bath",
+        "candidate_notes": "客室温泉付き部屋と大浴場を分ける。高級小規模宿として混雑少なめ 신호 확인 가치",
+        "official_fact_status": "candidate_prior_verification_plus_static_page_check"
+      },
+      "review_signal_keywords": [
+        "Googleレビュー",
+        "Ikkyu",
+        "JTB",
+        "Relux",
+        "Tripadvisor",
+        "Yahoo Maps",
+        "お湯",
+        "お湯;温泉",
+        "お部屋に温泉;大浴場;温泉",
+        "お部屋に温泉;大浴場;露天風呂",
+        "サウナ;露天風呂;温泉",
+        "大浴場",
+        "大浴場;かけ流し;露天風呂",
+        "大浴場;源泉;露天風呂",
+        "大浴場;硫黄;温泉",
+        "大浴場;硫黄;露天風呂",
+        "大浴場;露天風呂",
+        "大浴場;露天風呂;お湯",
+        "客室露天風呂",
+        "客室露天風呂;かけ流し;露天風呂",
+        "客室露天風呂;大浴場;硫黄",
+        "客室露天風呂;大浴場;露天風呂",
+        "客室露天風呂;硫黄;露天風呂",
+        "客室露天風呂;露天風呂",
+        "客室露天風呂;露天風呂;お湯",
+        "客室露天風呂;露天風呂;温泉",
+        "混雑少ない",
+        "温泉",
+        "源泉;露天風呂",
+        "源泉;露天風呂;温泉",
+        "源泉掛け流し",
+        "白いお湯",
+        "硫黄",
+        "硫黄;お湯;温泉",
+        "硫黄;白濁;温泉",
+        "硫黄;露天風呂",
+        "硫黄;露天風呂;温泉",
+        "羽根アリ",
+        "露天風呂",
+        "露天風呂;お湯;温泉",
+        "露天風呂;温泉",
+        "韓国語Googleレビュー",
+        "개인 온천",
+        "개인노천탕",
+        "개인탕",
+        "객실 노천탕",
+        "객실 안 개인 욕탕",
+        "대욕탕",
+        "대중온천",
+        "유황 온천수"
+      ],
+      "caution_keywords": [
+        "Google Maps provider-card overlap excluded",
+        "Ikkyu/Yahoo accommodation review mirror not double-counted",
+        "JTB questionnaire and hotelReviewList counted as direct readable bodies",
+        "Relux mobile duplicate excluded",
+        "Tripadvisor first-page only",
+        "ぬるい",
+        "混雑",
+        "温度",
+        "熱い",
+        "狭い",
+        "虫",
+        "遠い",
+        "객실탕/개인탕 한국어 표현 정규화 필요",
+        "대중온천/마호로바 대욕장 이용권 혼동 가능"
+      ],
+      "direct_reviews_checked": 306,
+      "onsen_related_direct_reviews_checked": 211,
+      "direct_body_platforms": [
+        "Jalan",
+        "Rakuten Travel",
+        "Google Maps/Hotels",
+        "Ikkyu",
+        "JTB",
+        "Relux",
+        "Yahoo Maps",
+        "Tripadvisor"
+      ],
+      "data_quality_grade": "A",
+      "volume_grade": "A_volume_300plus",
+      "next_sampling": "A-grade reached. Further work should de-duplicate author overlap across Ikkyu/Yahoo mirrors and deepen Korean/Naver body sampling, not inflate visible pools.",
+      "review_signal_status": "A_volume_300plus",
+      "reinforcement_status": "a_grade_multi_platform_web_reinforced",
+      "a_reinforcement_2026_07_04": {
+        "added_direct_reviews_checked": 149,
+        "added_onsen_related_direct_reviews_checked": 95,
+        "sources": [
+          {
+            "source": "Ikkyu review page",
+            "url": "https://www.ikyu.com/00001501/review/",
+            "rating": "4.43",
+            "visible": "41",
+            "direct": 41,
+            "onsen": 30,
+            "keywords": "お部屋の温泉;露天風呂付和室;泉質;大浴場;系列温泉;水漏れ;眺望",
+            "notes": "web-open direct readable page; counted Ikkyu surface only and did not add Yahoo Travel mirrored 00001501 page to avoid duplicate inflation."
+          },
+          {
+            "source": "JTB review page",
+            "url": "https://www.jtb.co.jp/kokunai-hotel/htl/1558018/review/",
+            "rating": "89%",
+            "visible": "132 questionnaire; 20 RRB body reviews",
+            "direct": 60,
+            "onsen": 36,
+            "keywords": "客室露天風呂;源泉掛け流し;大浴場;硫黄;混雑少ない;部屋眺望",
+            "notes": "local HTML direct readable; counted 40 visible questionnaire blocks plus 20 hotelReviewList bodies; visible review pool kept separate."
+          },
+          {
+            "source": "Relux review page",
+            "url": "https://rlx.jp/22735/review/",
+            "rating": "92.0",
+            "visible": "42",
+            "direct": 24,
+            "onsen": 10,
+            "keywords": "部屋の露天風呂;大浴場;白いお湯;泉質;熱い;温泉付き部屋",
+            "notes": "local HTML PC review list direct readable; mobile duplicate block excluded."
+          },
+          {
+            "source": "Yahoo Maps reviews via Yahoo Travel",
+            "url": "https://travel.yahoo.co.jp/00001501/review/yahoomap/",
+            "rating": "not_recorded",
+            "visible": "14",
+            "direct": 14,
+            "onsen": 12,
+            "keywords": "露天風呂付き和洋室;硫黄の香り;大浴場;空いている;肌ツルツル",
+            "notes": "web-open direct readable Yahoo Maps review page; kept distinct from Yahoo Travel/Ikkyu accommodation review mirror."
+          },
+          {
+            "source": "Tripadvisor review page",
+            "url": "https://www.tripadvisor.jp/Hotel_Review-g325583-d1155426-Reviews-Hanayura-Noboribetsu_Hokkaido.html",
+            "rating": "4.3",
+            "visible": "163",
+            "direct": 10,
+            "onsen": 7,
+            "keywords": "大浴場;硫黄風呂;個室露天風呂;混み合わない;羽根アリ;食事予約混乱",
+            "notes": "web-open direct readable first review page; counted only visible body cards opened in this pass."
+          }
+        ],
+        "counting_note": "Visible pools remain separate from direct reads; Yahoo Travel mirror was not added beyond Ikkyu."
+      }
+    },
+    {
+      "slug": "jozankei-chalet-ivy",
+      "name_ja": "シャレーアイビー定山渓",
+      "google_maps": {
+        "rating": null,
+        "visible_review_count": null,
+        "rating_distribution": null,
+        "korean_reviews_visible": null,
+        "access_status": "not_converted_to_direct_body_this_pass",
+        "notes": "No stable Google Maps direct body sample was added for this lodging during this pass."
+      },
+      "ota_review_pool_signals": [
+        {
+          "source": "Rakuten Travel",
+          "url": "https://review.travel.rakuten.co.jp/hotel/voice/176809",
+          "visible_review_count": "9",
+          "rating": "5.00",
+          "bath_score": ":",
+          "access_status": "direct_fetch_paginated_read",
+          "notes": "hotel/voice pagination expanded; direct bodies counted separately"
+        },
+        {
+          "source": "Rakuten Travel",
+          "url": "https://review.travel.rakuten.co.jp/hotel/voice/176809",
+          "visible_review_count": "9",
+          "rating": "5.00",
+          "bath_score": "4.00",
+          "access_status": "direct_fetch_paginated_read",
+          "notes": "hotel/voice pagination expanded; direct bodies counted separately"
+        },
+        {
+          "source": "Rakuten Travel",
+          "url": "https://travel.rakuten.co.jp/HOTEL/176809/review.html",
+          "visible_review_count": "9",
+          "rating": "5.00",
+          "bath_score": ":",
+          "access_status": "direct_fetch_full_read",
+          "notes": ""
+        },
+        {
+          "source": "Ikkyu",
+          "url": "https://www.ikyu.com/00002679/review/",
+          "visible_review_count": "30",
+          "rating": "4.61",
+          "bath_score": "4.47",
+          "access_status": "web_open_direct_read",
+          "directly_read_reviews": 20,
+          "onsen_related_direct_reviews": 8,
+          "notes": "Pool and direct sample separated."
+        },
+        {
+          "source": "Yahoo Travel",
+          "url": "https://travel.yahoo.co.jp/00002679/review/",
+          "visible_review_count": "30",
+          "rating": "4.61",
+          "bath_score": "4.47",
+          "access_status": "web_open_direct_read",
+          "directly_read_reviews": 20,
+          "onsen_related_direct_reviews": 7,
+          "notes": "Some overlap with Ikkyu possible."
+        },
+        {
+          "source": "Booking.com",
+          "url": "https://www.booking.com/reviews/jp/hotel/chalet-ivy-jozankei.html",
+          "visible_review_count": "164",
+          "rating": "not_captured",
+          "bath_score": null,
+          "access_status": "web_open_direct_read",
+          "directly_read_reviews": 25,
+          "onsen_related_direct_reviews": 5,
+          "notes": "First page direct bodies counted only."
+        },
+        {
+          "source": "Trip.com",
+          "url": "https://jp.trip.com/hotels/sapporo-hotel-detail-41629389/chalet-ivy-jozenkei/review.html",
+          "visible_review_count": "167",
+          "rating": "not_captured",
+          "bath_score": null,
+          "access_status": "web_open_direct_read",
+          "directly_read_reviews": 20,
+          "onsen_related_direct_reviews": 8,
+          "notes": "AI summaries not counted."
+        },
+        {
+          "source": "Expedia",
+          "url": "https://www.expedia.com/Sapporo-Hotels-Chalet-Ivy-Jozankei.h37127917.Hotel-Information",
+          "visible_review_count": "101",
+          "rating": "9.8/10",
+          "bath_score": null,
+          "access_status": "web_open_direct_read",
+          "directly_read_reviews": 15,
+          "onsen_related_direct_reviews": 5,
+          "notes": "Verified body sample counted."
+        },
+        {
+          "source": "Hotels.com",
+          "url": "https://www.hotels.com/ho1189093344/chalet-ivy-jozankei-sapporo-japan/",
+          "visible_review_count": "101",
+          "rating": "not_captured",
+          "bath_score": null,
+          "access_status": "web_open_direct_read",
+          "directly_read_reviews": 8,
+          "onsen_related_direct_reviews": 2,
+          "notes": "Expedia group overlap noted."
+        },
+        {
+          "source": "Jalan archive",
+          "url": "https://www.jalan.net/yad394824/kuchikomi/archive/",
+          "visible_review_count": "archive_page",
+          "rating": "not_captured",
+          "bath_score": null,
+          "access_status": "web_open_direct_read",
+          "directly_read_reviews": 2,
+          "onsen_related_direct_reviews": 1,
+          "notes": "Old archive sample only."
+        },
+        {
+          "source": "JTB",
+          "url": "https://www.jtb.co.jp/kokunai-hotel/htl/1533021/review/",
+          "visible_review_count": "not_captured",
+          "rating": "not_captured",
+          "bath_score": null,
+          "access_status": "web_open_partial_direct_read",
+          "directly_read_reviews": 5,
+          "onsen_related_direct_reviews": 2,
+          "notes": "Partial direct surface."
+        },
+        {
+          "source": "Naver/Search Korean web",
+          "url": "https://search.naver.com/search.naver?query=%EC%83%AC%EB%A0%88%EC%95%84%EC%9D%B4%EB%B9%84%20%EC%A0%95%EC%82%B0%EA%B3%84%20%EC%98%A8%EC%B2%9C%20%EA%B0%9D%EC%8B%A4%ED%83%95",
+          "visible_review_count": null,
+          "rating": null,
+          "bath_score": null,
+          "access_status": "snippet_only",
+          "directly_read_reviews": 0,
+          "onsen_related_direct_reviews": 0,
+          "snippet_only_count": 4,
+          "notes": "Korean snippets only."
+        },
+        {
+          "source": "Google Maps/Hotels",
+          "url": "https://www.google.com/maps/search/?api=1&query=%E3%82%B7%E3%83%A3%E3%83%AC%E3%83%BC%E3%82%A2%E3%82%A4%E3%83%93%E3%83%BC%E5%AE%9A%E5%B1%B1%E6%B8%93%20Chalet%20Ivy%20Jozankei",
+          "visible_review_count": "125",
+          "rating": "4.5",
+          "bath_score": null,
+          "access_status": "aside_browser_direct_read",
+          "directly_read_reviews": 33,
+          "onsen_related_direct_reviews": 14,
+          "notes": "Google Maps/Hotels panel opened in Aside Browser. Trip.com/Tripadvisor provider cards were visible but excluded from added direct count to avoid overlap."
+        },
+        {
+          "source": "Booking.com all-language loaded pages",
+          "url": "https://www.booking.com/reviews/jp/hotel/chalet-ivy-jozankei.html",
+          "visible_review_count": "164 displayed / Korean page 23",
+          "rating": "9.5",
+          "bath_score": null,
+          "access_status": "aside_browser_direct_read",
+          "directly_read_reviews": 48,
+          "onsen_related_direct_reviews": 15,
+          "notes": "Aside Browser rechecked Booking pagination and filtered duplicate/no-content/rating-only cards. Counted only additional written bodies beyond the earlier first-page sample."
+        },
+        {
+          "source": "Trip.com load-more pages after first20",
+          "url": "https://jp.trip.com/hotels/sapporo-hotel-detail-41629389/chalet-ivy-jozenkei/review.html",
+          "visible_review_count": "167",
+          "rating": "9.6/10",
+          "bath_score": null,
+          "access_status": "aside_browser_loadmore_direct_read",
+          "directly_read_reviews": 55,
+          "onsen_related_direct_reviews": 16,
+          "notes": "Aside Browser loaded Trip.com review batches to 75 visible review-date bodies. Counted only additional bodies after the already-counted first 20; AI/theme counts such as ゆっくりできる温泉(40) were not counted as direct reviews."
+        },
+        {
+          "source": "Hotels.com review modal additional bodies",
+          "url": "https://www.hotels.com/ho1189093344/chalet-ivy-jozankei-sapporo-japan/",
+          "visible_review_count": "101 displayed in modal",
+          "rating": "not_captured",
+          "bath_score": null,
+          "access_status": "aside_browser_direct_read",
+          "directly_read_reviews": 37,
+          "onsen_related_direct_reviews": 11,
+          "notes": "Aside Browser opened the Hotels.com review modal and excluded rating-only records. Counted additional bodies beyond the earlier 8-body Hotels.com sample; Expedia-group overlap remains a caution."
+        },
+        {
+          "source": "Tripadvisor review page",
+          "url": "https://www.tripadvisor.com/Hotel_Review-g298560-d18816190-Reviews-Chalet_Ivy_Jozankei-Sapporo_Hokkaido.html",
+          "visible_review_count": "12 displayed / 7 readable in accessible page",
+          "rating": "not_captured",
+          "bath_score": null,
+          "access_status": "aside_browser_direct_read",
+          "directly_read_reviews": 7,
+          "onsen_related_direct_reviews": 6,
+          "notes": "Aside Browser/webfetch found 7 directly readable bodies on the public Tripadvisor page. Tripadvisor visible pool kept separate from direct count."
+        },
+        {
+          "source": "Relux review page",
+          "url": "https://rlx.jp/24158/review/",
+          "visible_review_count": "11 displayed",
+          "rating": "4.6/5",
+          "bath_score": null,
+          "access_status": "aside_browser_direct_read",
+          "directly_read_reviews": 9,
+          "onsen_related_direct_reviews": 3,
+          "notes": "Relux page repeats reviews in two sections; counted unique readable bodies only and excluded rating-only rows."
+        }
+      ],
+      "official_bath_facts_seen": {
+        "official_url": "https://chaletivy.com/ja/jozankei/",
+        "candidate_axes": "room_bath",
+        "candidate_notes": "全室客室温泉型。客室風呂・大浴場・高価格期待差を分ける",
+        "official_fact_status": "candidate_prior_verification_plus_static_page_check"
+      },
+      "review_signal_keywords": [
+        "Googleレビュー",
+        "Trip.com load-more",
+        "balcony onsen",
+        "in-room onsen",
+        "private Onsen bath inside the room",
+        "spa hot spring feed tub",
+        "お部屋のお風呂",
+        "プライバシー",
+        "プライバシー不足",
+        "大浴場",
+        "客室展望風呂",
+        "客室温泉",
+        "室内の温泉",
+        "専用温泉",
+        "水風呂なし",
+        "渓流",
+        "温泉",
+        "貸切風呂",
+        "韓国語Googleレビュー",
+        "개인온천",
+        "객실 내 온천",
+        "노천탕 아님",
+        "방 욕실 문 10cm",
+        "온센",
+        "완전한 야외 아님",
+        "전 실온천",
+        "퍼블릭 온센 그물망",
+        "Booking filtered body count",
+        "Hotels.com modal",
+        "Tripadvisor direct bodies",
+        "Relux unique bodies"
+      ],
+      "caution_keywords": [
+        "Booking no-content cards excluded",
+        "Google Maps provider-card overlap excluded",
+        "Trip.com AI/theme chips not counted",
+        "Trip.com original/translated duplicate risk noted",
+        "ガラス張り",
+        "プライバシー不足",
+        "料理提供ペース",
+        "日本語わかる",
+        "水風呂なし",
+        "眺望期待差",
+        "窓開閉サイズ",
+        "객실탕 반노천 기대차",
+        "퍼블릭 온센 개방감 기대차",
+        "Booking duplicate/no-content cards excluded",
+        "Hotels.com/Expedia group overlap caution",
+        "Relux duplicate section excluded",
+        "Tripadvisor visible pool not direct count"
+      ],
+      "direct_reviews_checked": 312,
+      "onsen_related_direct_reviews_checked": 103,
+      "direct_body_platforms": [
+        "Rakuten Travel",
+        "Ikkyu",
+        "Yahoo Travel",
+        "Booking.com",
+        "Trip.com",
+        "Expedia",
+        "Hotels.com",
+        "Jalan archive",
+        "JTB",
+        "Google Maps/Hotels",
+        "Tripadvisor",
+        "Relux"
+      ],
+      "data_quality_grade": "A",
+      "volume_grade": "A_volume_300plus",
+      "next_sampling": "A-grade reached with conservative Aside Browser recount. Future cleanup should author-deduplicate Expedia/Hotels.com group bodies and deepen Naver direct bodies.",
+      "snippet_only_surfaces": [
+        {
+          "platform": "Naver/Search Korean web",
+          "url": "https://search.naver.com/search.naver?query=%EC%83%AC%EB%A0%88%EC%95%84%EC%9D%B4%EB%B9%84%20%EC%A0%95%EC%82%B0%EA%B3%84%20%EC%98%A8%EC%B2%9C%20%EA%B0%9D%EC%8B%A4%ED%83%95",
+          "access_status": "snippet_only",
+          "bath_signal_preview": "객실탕/프라이빗 온천 표현은 보이나 직접 본문 미확보",
+          "next_action": "Open Naver Blog/Cafe bodies or Google Maps Korean reviews in browser"
+        }
+      ],
+      "review_signal_status": "A_volume_300plus",
+      "reinforcement_status": "a_grade_conservative_aside_recount_reinforced",
+      "a_reinforcement_2026_07_04": {
+        "added_direct_reviews_checked": 156,
+        "added_onsen_related_direct_reviews_checked": 51,
+        "sources": [
+          {
+            "source": "Booking.com all-language loaded pages",
+            "url": "https://www.booking.com/reviews/jp/hotel/chalet-ivy-jozankei.html",
+            "rating": "9.5",
+            "visible": "164 displayed / Korean page 23",
+            "direct": 48,
+            "onsen": 15,
+            "keywords": "private onsen;in-room onsen;public bath;room bath;대욕탕;개인온천;온센;계곡뷰",
+            "notes": "Aside Browser rechecked Booking pagination and filtered duplicate/no-content/rating-only cards. Counted only additional written bodies beyond the earlier first-page sample."
+          },
+          {
+            "source": "Trip.com load-more pages after first20",
+            "url": "https://jp.trip.com/hotels/sapporo-hotel-detail-41629389/chalet-ivy-jozenkei/review.html",
+            "rating": "9.6/10",
+            "visible": "167",
+            "direct": 55,
+            "onsen": 16,
+            "keywords": "温泉;室内の温泉;専用温泉;貸切風呂;大浴場;温泉ホテル;プライバシー不足;完全な屋外ではない",
+            "notes": "Aside Browser loaded Trip.com review batches to 75 visible review-date bodies. Counted only additional bodies after the already-counted first 20; AI/theme counts such as ゆっくりできる温泉(40) were not counted as direct reviews."
+          },
+          {
+            "source": "Hotels.com review modal additional bodies",
+            "url": "https://www.hotels.com/ho1189093344/chalet-ivy-jozankei-sapporo-japan/",
+            "rating": "not_captured",
+            "visible": "101 displayed in modal",
+            "direct": 37,
+            "onsen": 11,
+            "keywords": "in-room onsen;spa;public bath;private Onsen bath inside the room;room;staff",
+            "notes": "Aside Browser opened the Hotels.com review modal and excluded rating-only records. Counted additional bodies beyond the earlier 8-body Hotels.com sample; Expedia-group overlap remains a caution."
+          },
+          {
+            "source": "Tripadvisor review page",
+            "url": "https://www.tripadvisor.com/Hotel_Review-g298560-d18816190-Reviews-Chalet_Ivy_Jozankei-Sapporo_Hokkaido.html",
+            "rating": "not_captured",
+            "visible": "12 displayed / 7 readable in accessible page",
+            "direct": 7,
+            "onsen": 6,
+            "keywords": "private onsen;spring bath;rotenburo;in-room onsen;food issues",
+            "notes": "Aside Browser/webfetch found 7 directly readable bodies on the public Tripadvisor page. Tripadvisor visible pool kept separate from direct count."
+          },
+          {
+            "source": "Relux review page",
+            "url": "https://rlx.jp/24158/review/",
+            "rating": "4.6/5",
+            "visible": "11 displayed",
+            "direct": 9,
+            "onsen": 3,
+            "keywords": "お部屋のお風呂;お風呂が適温;温泉;露天風呂;すだれ;価格期待差",
+            "notes": "Relux page repeats reviews in two sections; counted unique readable bodies only and excluded rating-only rows."
+          }
+        ],
+        "counting_note": "Conservative Aside Browser recount: Booking duplicate/no-content/rating-only cards, Trip.com AI/theme chips, Relux duplicate sections, and visible review pools are excluded from direct counts."
+      }
+    },
+    {
+      "slug": "jozankei-grand-blissen",
+      "name_ja": "グランドブリッセンホテル定山渓",
+      "google_maps": {
+        "rating": null,
+        "visible_review_count": null,
+        "rating_distribution": null,
+        "korean_reviews_visible": null,
+        "access_status": "not_checked_this_pass"
+      },
+      "ota_review_pool_signals": [
+        {
+          "source": "Rakuten Travel",
+          "url": "https://review.travel.rakuten.co.jp/hotel/voice/182458",
+          "visible_review_count": "270 current reviewList total; 375 prior observed pool",
+          "rating": "4.53",
+          "bath_score": ":",
+          "access_status": "direct_fetch_structured_reviewList_read",
+          "notes": "A reinforcement: direct body records from reviewList.data.contents; visible pool not counted as direct."
+        },
+        {
+          "source": "Jalan",
+          "url": "https://www.jalan.net/yad372594/kuchikomi/",
+          "visible_review_count": "473",
+          "rating": "4.5",
+          "bath_score": "4.6",
+          "access_status": "direct_fetch_full_read",
+          "notes": "secondary static surface; direct bodies counted only when review_chunks > 0"
+        },
+        {
+          "source": "Rakuten Travel",
+          "url": "https://travel.rakuten.co.jp/HOTEL/182458/review.html",
+          "visible_review_count": "270 current reviewList total; 375 prior observed pool",
+          "rating": "4.53",
+          "bath_score": ":",
+          "access_status": "direct_fetch_structured_reviewList_read",
+          "notes": "A reinforcement: direct body records from reviewList.data.contents; visible pool not counted as direct."
+        },
+        {
+          "source": "Ikkyu/Yahoo Travel",
+          "url": "https://www.ikyu.com/00002896/review/ ; https://travel.yahoo.co.jp/00002896/review/",
+          "visible_review_count": "not_merged",
+          "rating": "direct surface",
+          "access_status": "web_open_direct_read",
+          "directly_read_reviews": "10",
+          "onsen_related_direct_reviews": "8",
+          "notes": "A reinforcement: direct readable review pages; short paraphrases/keywords only."
+        }
+      ],
+      "official_bath_facts_seen": {
+        "official_url": "https://www.grandblissen.jp/",
+        "candidate_axes": "room_bath;public_bath;private_bath_or_family_bath_unclear",
+        "candidate_notes": "定山渓の客室温泉展望風呂候補。全室か多数かの部屋タイプ確認と大浴場/客室風呂分離が必要",
+        "official_fact_status": "candidate_prior_verification_plus_static_page_check"
+      },
+      "review_signal_keywords": [
+        "お部屋に温泉;温泉",
+        "かけ流し;露天風呂;温泉",
+        "サウナ;温泉",
+        "大浴場",
+        "大浴場;お湯",
+        "大浴場;サウナ;温泉",
+        "大浴場;サウナ;露天風呂",
+        "大浴場;温泉",
+        "大浴場;源泉;かけ流し",
+        "大浴場;源泉;露天風呂",
+        "大浴場;露天風呂",
+        "大浴場;露天風呂;温泉",
+        "客室展望風呂;温泉",
+        "客室露天風呂;大浴場;露天風呂",
+        "客室露天風呂;露天風呂;温泉",
+        "温泉",
+        "物足りない;温泉",
+        "物足りない;露天風呂",
+        "露天風呂;温泉"
+      ],
+      "caution_keywords": [
+        "段差",
+        "混雑",
+        "温度",
+        "物足りない",
+        "虫",
+        "遠い"
+      ],
+      "direct_reviews_checked": 305,
+      "onsen_related_direct_reviews_checked": 216,
+      "direct_body_platforms": [
+        "Jalan",
+        "Rakuten Travel",
+        "Ikkyu/Yahoo Travel"
+      ],
+      "data_quality_grade": "A",
+      "volume_grade": "A_volume_300plus",
+      "next_sampling": "A-grade baseline reached. Further work should split room view bath satisfaction from public-bath chlorine/weak-onsen contradiction checks.",
+      "a_reinforcement_2026_07_04": {
+        "added_source": "Rakuten Travel pages 8-14 + Ikkyu/Yahoo direct pages",
+        "added_direct_reviews_checked": 140,
+        "added_onsen_related_direct_reviews_checked": 90,
+        "reinforced_direct_reviews_checked": 305,
+        "reinforced_onsen_related_direct_reviews_checked": 216,
+        "access_status": "direct_fetch_structured_reviewList_read_plus_web_open_direct_read",
+        "notes": "Visible pools kept separate; current Rakuten reviewList total 270 differs from prior observed 375 pool."
+      }
+    },
+    {
+      "slug": "yunokawa-heiseikan-hanatsuki",
+      "name_ja": "平成館 しおさい亭 別館 花月",
+      "google_maps": {
+        "rating": null,
+        "visible_review_count": null,
+        "rating_distribution": null,
+        "korean_reviews_visible": null,
+        "access_status": "not_checked_this_pass"
+      },
+      "ota_review_pool_signals": [
+        {
+          "source": "Rakuten Travel",
+          "url": "https://review.travel.rakuten.co.jp/hotel/voice/37469",
+          "visible_review_count": "155",
+          "rating": "4.33",
+          "bath_score": ":",
+          "access_status": "direct_fetch_paginated_read",
+          "notes": "hotel/voice pagination expanded; direct bodies counted separately"
+        },
+        {
+          "source": "Rakuten Travel",
+          "url": "https://review.travel.rakuten.co.jp/hotel/voice/37469",
+          "visible_review_count": "155",
+          "rating": "4.33",
+          "bath_score": "4.33",
+          "access_status": "direct_fetch_paginated_read",
+          "notes": "hotel/voice pagination expanded; direct bodies counted separately"
+        },
+        {
+          "source": "Jalan",
+          "url": "https://www.jalan.net/yad355230/kuchikomi/",
+          "visible_review_count": "421",
+          "rating": "4.6",
+          "bath_score": "4.6",
+          "access_status": "direct_fetch_full_read",
+          "notes": "secondary static surface; direct bodies counted only when review_chunks > 0"
+        },
+        {
+          "source": "Rakuten Travel",
+          "url": "https://travel.rakuten.co.jp/HOTEL/37469/review.html",
+          "visible_review_count": "155",
+          "rating": "4.33",
+          "bath_score": ":",
+          "access_status": "direct_fetch_full_read",
+          "notes": ""
+        },
+        {
+          "source": "Booking.com",
+          "url": "https://www.booking.com/reviews/jp/hotel/siosaiting-bie-guan-hua-yue.ja.html",
+          "visible_review_count": "17 body reviews",
+          "rating": "8.7",
+          "bath_score": null,
+          "access_status": "web_open_direct_read",
+          "directly_read_reviews": 17,
+          "onsen_related_direct_reviews": 8,
+          "notes": "Direct review page body rows only."
+        },
+        {
+          "source": "Trip.com",
+          "url": "https://jp.trip.com/hotels/hakodate-hotel-detail-3118049/heiseikan-shiosaitei-hanatsuki-annex/",
+          "visible_review_count": "not_captured",
+          "rating": "not_captured",
+          "bath_score": null,
+          "access_status": "web_open_direct_read",
+          "directly_read_reviews": 10,
+          "onsen_related_direct_reviews": 9,
+          "notes": "Direct body rows only; AI summary counts not counted."
+        },
+        {
+          "source": "Ikkyu",
+          "url": "https://www.ikyu.com/00002445/review/",
+          "visible_review_count": "not_captured",
+          "rating": "not_captured",
+          "bath_score": null,
+          "access_status": "web_open_direct_read",
+          "directly_read_reviews": 5,
+          "onsen_related_direct_reviews": 5,
+          "notes": "Compact visible body sample."
+        },
+        {
+          "source": "Yahoo Travel",
+          "url": "https://travel.yahoo.co.jp/00002445/",
+          "visible_review_count": "10",
+          "rating": "4.62",
+          "bath_score": "4.8",
+          "access_status": "web_open_direct_read",
+          "directly_read_reviews": 6,
+          "onsen_related_direct_reviews": 6,
+          "notes": "Direct body sample; overlap with Ikkyu possible."
+        },
+        {
+          "source": "Google Maps/Hotels",
+          "url": "not_counted",
+          "visible_review_count": null,
+          "rating": null,
+          "bath_score": null,
+          "access_status": "checked_but_not_counted_name_surface_mixed",
+          "directly_read_reviews": 0,
+          "onsen_related_direct_reviews": 0,
+          "notes": "Google surface risk: main Heiseikan Shiosaitei and annex Hanatsuki signals can mix; not counted in direct totals for this pass."
+        },
+        {
+          "source": "Jalan archive",
+          "url": "https://www.jalan.net/yad355230/kuchikomi/archive/",
+          "visible_review_count": "397 archive reviews within Jalan total 421",
+          "rating": "4.6",
+          "bath_score": "4.6",
+          "access_status": "direct_fetch_archive_pages_1_to_5_read",
+          "directly_read_reviews": 150,
+          "onsen_related_direct_reviews": 118,
+          "notes": "Archive pages 1-5 read as guest review bodies. Hotel replies and rating metadata were not counted as onsen-related body signals."
+        }
+      ],
+      "official_bath_facts_seen": {
+        "official_url": "https://www.hanatuki.com/",
+        "candidate_axes": "room_open_air_bath",
+        "candidate_notes": "客室露天眺望が主価値。大浴場より客室露天重視レビュー가 많아 room_open_air_bath 중심 태깅",
+        "official_fact_status": "candidate_prior_verification_plus_static_page_check"
+      },
+      "review_signal_keywords": [
+        "かけ流し;露天風呂;温泉",
+        "大浴場;サウナ;露天風呂",
+        "大浴場;温泉",
+        "大浴場;露天風呂",
+        "大浴場;露天風呂;温泉",
+        "客室露天風呂;露天風呂",
+        "温泉",
+        "温泉露天風呂付;大浴場;露天風呂",
+        "温泉露天風呂付;客室露天風呂;大浴場",
+        "温泉露天風呂付;客室露天風呂;露天風呂",
+        "温泉露天風呂付;露天風呂;お湯",
+        "温泉露天風呂付;露天風呂;温泉",
+        "露天風呂",
+        "露天風呂;お湯;温泉",
+        "露天風呂;温泉",
+        "Booking.comレビュー",
+        "Trip.comレビュー",
+        "Ikkyuレビュー",
+        "Yahoo Travelレビュー",
+        "客室露天が最高",
+        "部屋の露天風呂",
+        "semi-open-air",
+        "ocean view private bath",
+        "花月専用ラウンジ",
+        "Jalan archive",
+        "厳選かけながし",
+        "湯温調節",
+        "ぬるめ"
+      ],
+      "caution_keywords": [
+        "ぬるい",
+        "古い",
+        "温度",
+        "虫",
+        "遠い",
+        "Google Maps main/annex name-mix not counted",
+        "Ikkyu/Yahoo overlap possible",
+        "施設老朽化 Trip.com caution"
+      ],
+      "direct_reviews_checked": 300,
+      "onsen_related_direct_reviews_checked": 246,
+      "direct_body_platforms": [
+        "Jalan",
+        "Rakuten Travel",
+        "Booking.com",
+        "Trip.com",
+        "Ikkyu",
+        "Yahoo Travel"
+      ],
+      "data_quality_grade": "A",
+      "volume_grade": "A_volume_300plus",
+      "next_sampling": "Optional: add Naver Blog/Cafe Korean demand signals and only use Google reviews when Hanatsuki annex identity is explicit.",
+      "review_signal_status": "A_grade_300plus",
+      "reinforcement_status": "a_grade_jalan_archive_reinforced_google_mixed_not_counted"
+    },
+    {
+      "slug": "yunokawa-heiseikan-shiosaitei",
+      "name_ja": "平成館 しおさい亭",
+      "google_maps": {
+        "rating": "4.2",
+        "visible_review_count": "1627",
+        "rating_distribution": {
+          "5": 784,
+          "4": 576,
+          "3": 172,
+          "2": 41,
+          "1": 54
+        },
+        "korean_reviews_visible": true,
+        "access_status": "aside_review_tab_read_mixed_identity_risk",
+        "notes": "Place title surfaced as Korean Annex Hanatsuki while Japanese heading/address/site matched main Shiosaitei; direct Google bodies counted conservatively."
+      },
+      "ota_review_pool_signals": [
+        {
+          "source": "Rakuten Travel",
+          "url": "https://review.travel.rakuten.co.jp/hotel/voice/37513",
+          "visible_review_count": "659",
+          "rating": "4.18",
+          "bath_score": ":",
+          "access_status": "direct_fetch_paginated_read",
+          "notes": "hotel/voice pagination expanded; direct bodies counted separately"
+        },
+        {
+          "source": "Rakuten Travel",
+          "url": "https://travel.rakuten.co.jp/HOTEL/37513/review.html",
+          "visible_review_count": "659",
+          "rating": "4.18",
+          "bath_score": ":",
+          "access_status": "direct_fetch_full_read",
+          "notes": ""
+        },
+        {
+          "source": "Jalan",
+          "url": "https://www.jalan.net/yad342256/kuchikomi/",
+          "visible_review_count": "1469",
+          "rating": "4.2 overall; bath 4.1",
+          "bath_score": null,
+          "access_status": "web_open_direct_read",
+          "notes": "Jalan review page exposed recent first-page bodies directly. Count is visible body sample only; 1,469 is platform pool."
+        },
+        {
+          "source": "Yahoo Travel",
+          "url": "https://travel.yahoo.co.jp/00900119/review/",
+          "visible_review_count": "55",
+          "rating": "4.26 overall; onsen/bath 4.18",
+          "bath_score": null,
+          "access_status": "web_open_direct_read",
+          "notes": "Yahoo Travel review page exposed review bodies and category scores directly. Counted body rows, not category-score rows alone."
+        },
+        {
+          "source": "Booking.com",
+          "url": "https://www.booking.com/reviews/jp/hotel/shiosaitei.ja.html",
+          "visible_review_count": "124-228 surface; page shows reviews 1-25",
+          "rating": "8.1/10",
+          "bath_score": null,
+          "access_status": "web_open_direct_read",
+          "notes": "Booking review page exposed visible bodies 1-25. Platform pool and page score kept separate from direct count."
+        },
+        {
+          "source": "Trip.com",
+          "url": "https://kr.trip.com/hotels/hakodate-hotel-detail-1488016/heiseikan-shiosaitei/",
+          "visible_review_count": "208",
+          "rating": "9.1/10",
+          "bath_score": null,
+          "access_status": "web_open_direct_read",
+          "notes": "Korean-localized Trip.com page exposed recent review bodies. AI review summary and topic counts were not counted as direct bodies."
+        },
+        {
+          "source": "Hotels.com",
+          "url": "https://kr.hotels.com/ho540721/heiseikan-siosaitei-hakodate-ilbon/",
+          "visible_review_count": "225",
+          "rating": "8.8/10",
+          "bath_score": null,
+          "access_status": "web_open_partial_pool_and_room_type_surface",
+          "notes": "Pool count/room-type/facility surface only; not counted as direct review bodies."
+        },
+        {
+          "source": "Naver/Search Korean web",
+          "url": "https://search.naver.com/search.naver?query=%ED%97%A4%EC%9D%B4%EC%84%B8%EC%9D%B4%EC%B9%B8%20%EC%8B%9C%EC%98%A4%EC%82%AC%EC%9D%B4%ED%85%8C%EC%9D%B4%20%EC%98%A8%EC%B2%9C%20%ED%9B%84%EA%B8%B0",
+          "visible_review_count": null,
+          "rating": null,
+          "bath_score": null,
+          "access_status": "search_result_snippet_only",
+          "notes": "Korean web search surfaced OTA/blog-like snippets, but no Naver Blog/Cafe body was opened and read in this pass. Kept out of direct count."
+        },
+        {
+          "source": "Rakuten Travel pages 8-12",
+          "url": "https://review.travel.rakuten.co.jp/hotel/voice/37513?page=8 ; https://review.travel.rakuten.co.jp/hotel/voice/37513?page=9 ; https://review.travel.rakuten.co.jp/hotel/voice/37513?page=10 ; https://review.travel.rakuten.co.jp/hotel/voice/37513?page=11 ; https://review.travel.rakuten.co.jp/hotel/voice/37513?page=12",
+          "visible_review_count": "486 current reviewList total; 659 prior observed pool",
+          "rating": "4.18",
+          "bath_score": ":",
+          "access_status": "direct_fetch_structured_reviewList_read",
+          "directly_read_reviews": 100,
+          "onsen_related_direct_reviews": 78,
+          "snippet_only_count": 0,
+          "notes": "A reinforcement: direct body records from reviewList.data.contents; visible pool not counted as direct."
+        }
+      ],
+      "official_bath_facts_seen": {
+        "official_url": "https://www.heiseikan-shiosaitei.jp/",
+        "candidate_axes": "room_open_air_bath",
+        "candidate_notes": "本館/別館花月を分ける。客室露天の広さ・海景色・価格期待ギャップを重点確認",
+        "official_fact_status": "candidate_prior_verification_plus_static_page_check"
+      },
+      "review_signal_keywords": [
+        "7階大浴場",
+        "お湯",
+        "お湯;温泉",
+        "お湯の温度",
+        "サウナ;露天風呂",
+        "サウナ;露天風呂;お湯",
+        "大浴場",
+        "大浴場;お湯",
+        "大浴場;温泉",
+        "客室露天風呂",
+        "客室露天風呂;大浴場;サウナ",
+        "客室露天風呂;大浴場;露天風呂",
+        "客室露天風呂;源泉;露天風呂",
+        "客室露天風呂;露天風呂",
+        "客室露天風呂;露天風呂;お湯",
+        "客室露天風呂;露天風呂;温泉",
+        "浴槽小さい",
+        "温泉",
+        "露天風呂;お湯",
+        "대욕장",
+        "방에 딸린 온천",
+        "온천",
+        "海側眺望",
+        "湯加減",
+        "貸切状態",
+        "波の音",
+        "プランと違う部屋"
+      ],
+      "caution_keywords": [
+        "Google identity mixed",
+        "Naver snippet only",
+        "古い",
+        "本館/別館混同",
+        "浴槽小さい",
+        "温度",
+        "温度低い",
+        "狭い",
+        "虫",
+        "遠い",
+        "風呂数少ない",
+        "プランと違う部屋",
+        "温度確認",
+        "脱衣場ドライヤーなし",
+        "客室古さ/臭い"
+      ],
+      "direct_reviews_checked": 318,
+      "onsen_related_direct_reviews_checked": 199,
+      "direct_body_platforms": [
+        "Rakuten Travel",
+        "Google Maps",
+        "Jalan",
+        "Yahoo Travel",
+        "Booking.com",
+        "Trip.com"
+      ],
+      "data_quality_grade": "A",
+      "volume_grade": "A_volume_300plus",
+      "next_sampling": "A-grade reached at 318 direct reviews. Continue only for author-level dedupe, Naver/Hotels.com direct bodies, or identity-risk audit between main Heiseikan Shiosaitei and Hanatsuki annex.",
+      "direct_reviews_checked_reinforced": 318,
+      "onsen_related_direct_reviews_checked_reinforced": 199,
+      "data_quality_grade_reinforced": "A",
+      "a_reinforcement_2026_07_04": {
+        "source": "Rakuten Travel pages 8-12",
+        "url": "https://review.travel.rakuten.co.jp/hotel/voice/37513?page=8 ; https://review.travel.rakuten.co.jp/hotel/voice/37513?page=9 ; https://review.travel.rakuten.co.jp/hotel/voice/37513?page=10 ; https://review.travel.rakuten.co.jp/hotel/voice/37513?page=11 ; https://review.travel.rakuten.co.jp/hotel/voice/37513?page=12",
+        "directly_read_reviews": 100,
+        "onsen_related_direct_reviews": 78,
+        "access_status": "direct_fetch_structured_reviewList_read",
+        "notes": "Visible pool kept separate; current reviewList total 486 differs from prior observed 659 pool. Main-building identity only."
+      }
+    },
+    {
+      "slug": "yunokawa-hanabishi",
+      "name_ja": "函館・湯の川温泉 花びしホテル",
+      "google_maps": {
+        "rating": null,
+        "visible_review_count": null,
+        "rating_distribution": null,
+        "korean_reviews_visible": null,
+        "access_status": "not_checked_this_pass"
+      },
+      "ota_review_pool_signals": [
+        {
+          "source": "Rakuten Travel",
+          "url": "https://review.travel.rakuten.co.jp/hotel/voice/29275",
+          "visible_review_count": "1,300 current reviewList total; 1,713 prior observed pool",
+          "rating": "4.48",
+          "bath_score": ":",
+          "access_status": "direct_fetch_structured_reviewList_read",
+          "notes": "A reinforcement: direct body records from reviewList.data.contents; visible pool not counted as direct."
+        },
+        {
+          "source": "Jalan",
+          "url": "https://www.jalan.net/yad312243/kuchikomi/",
+          "visible_review_count": null,
+          "rating": "4.4",
+          "bath_score": "4.3",
+          "access_status": "direct_fetch_full_read",
+          "notes": "secondary static surface; direct bodies counted only when review_chunks > 0"
+        },
+        {
+          "source": "Rakuten Travel",
+          "url": "https://travel.rakuten.co.jp/HOTEL/29275/review.html",
+          "visible_review_count": "1,300 current reviewList total; 1,713 prior observed pool",
+          "rating": "4.48",
+          "bath_score": ":",
+          "access_status": "direct_fetch_structured_reviewList_read",
+          "notes": "A reinforcement: direct body records from reviewList.data.contents; visible pool not counted as direct."
+        },
+        {
+          "source": "Ikkyu",
+          "url": "https://www.ikyu.com/00000765/review/",
+          "visible_review_count": "134",
+          "rating": "4.39",
+          "access_status": "web_open_direct_read",
+          "directly_read_reviews": "10",
+          "onsen_related_direct_reviews": "7",
+          "notes": "A reinforcement: direct readable review page; short paraphrases/keywords only."
+        }
+      ],
+      "official_bath_facts_seen": {
+        "official_url": "https://www.hanabishihotel.com/",
+        "candidate_axes": "public_bath;open_air_public_bath",
+        "candidate_notes": "高レビュー量。1階/7階浴場・循環/一部源泉かけ流し表現・眺望差を浴場別に確認",
+        "official_fact_status": "candidate_prior_verification_plus_static_page_check"
+      },
+      "review_signal_keywords": [
+        "お湯",
+        "サウナ;温泉",
+        "大浴場",
+        "大浴場;お湯;温泉",
+        "大浴場;サウナ",
+        "大浴場;サウナ;温泉",
+        "大浴場;サウナ;露天風呂",
+        "大浴場;温泉",
+        "大浴場;源泉;温泉",
+        "大浴場;露天風呂",
+        "大浴場;露天風呂;お湯",
+        "大浴場;露天風呂;温泉",
+        "客室露天風呂;大浴場;露天風呂",
+        "客室露天風呂;露天風呂",
+        "客室露天風呂;露天風呂;温泉",
+        "温泉",
+        "物足りない",
+        "硫黄;露天風呂;温泉",
+        "露天風呂",
+        "露天風呂;温泉"
+      ],
+      "caution_keywords": [
+        "古い",
+        "段差",
+        "混雑",
+        "温度",
+        "熱い",
+        "物足りない",
+        "狭い",
+        "遠い"
+      ],
+      "direct_reviews_checked": 310,
+      "onsen_related_direct_reviews_checked": 168,
+      "direct_body_platforms": [
+        "Jalan",
+        "Rakuten Travel",
+        "Ikkyu"
+      ],
+      "data_quality_grade": "A",
+      "volume_grade": "A_volume_300plus",
+      "next_sampling": "A-grade baseline reached. Further work should prioritize Google/Naver Korean demand and low-rating contradiction checks.",
+      "a_reinforcement_2026_07_04": {
+        "added_source": "Rakuten Travel pages 8-14 + Ikkyu first review page",
+        "added_direct_reviews_checked": 150,
+        "added_onsen_related_direct_reviews_checked": 94,
+        "reinforced_direct_reviews_checked": 310,
+        "reinforced_onsen_related_direct_reviews_checked": 168,
+        "access_status": "direct_fetch_structured_reviewList_read_plus_web_open_direct_read",
+        "notes": "Visible pools kept separate; current Rakuten reviewList total 1,300 differs from prior observed 1,713 pool; Ikkyu visible pool 134."
+      }
+    }
+  ]
+}
