@@ -19,6 +19,7 @@ type Props = {
   popularSearches: PopularSearch[];
   initialQuery?: string;
   variant?: 'default' | 'header';
+  panelMode?: 'full' | 'autocomplete';
 };
 
 const recentStorageKey = 'bathtime:onsen-recent-searches';
@@ -39,7 +40,7 @@ function writeRecentSearch(value: string) {
   window.localStorage.setItem(recentStorageKey, JSON.stringify(next));
 }
 
-export function OnsenSearchForm({ suggestions, recommendedPlaces, popularSearches, initialQuery = '', variant = 'default' }: Props) {
+export function OnsenSearchForm({ suggestions, recommendedPlaces, popularSearches, initialQuery = '', variant = 'default', panelMode = 'full' }: Props) {
   const router = useRouter();
   const formRef = useRef<HTMLFormElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -91,10 +92,14 @@ export function OnsenSearchForm({ suggestions, recommendedPlaces, popularSearche
 
   const closeMobile = () => setMobileOpen(false);
   const isHeaderVariant = variant === 'header';
+  const isAutocompleteMode = panelMode === 'autocomplete';
+  const hasQuery = query.trim().length > 0;
+  const desktopPanelMode = isAutocompleteMode && hasQuery ? 'autocomplete' : 'full';
   const formClassName = [
     'onsen-search-box',
     'onsen-search-box-airbnb',
     isHeaderVariant ? 'onsen-search-box-header' : '',
+    desktopPanelMode === 'autocomplete' ? 'onsen-search-box-autocomplete' : '',
     open ? 'is-open' : '',
   ]
     .filter(Boolean)
@@ -125,8 +130,12 @@ export function OnsenSearchForm({ suggestions, recommendedPlaces, popularSearche
               }
               setOpen(true);
             }}
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder={isHeaderVariant ? '온천지, 숙소 이름' : '유후인, 벳푸, 서울 근교 온천'}
+            onChange={(event) => {
+              const nextQuery = event.target.value;
+              setQuery(nextQuery);
+              setOpen(true);
+            }}
+            placeholder={isHeaderVariant ? '온천지, 숙소 이름' : '유후인, 벳푸, 하코네'}
             aria-label="온천 검색어"
             autoComplete="off"
           />
@@ -144,6 +153,7 @@ export function OnsenSearchForm({ suggestions, recommendedPlaces, popularSearche
             recommendedPlaces={recommendedPlaces}
             popularSearches={popularSearches}
             recentSearches={recentSearches}
+            mode={desktopPanelMode}
             onPick={(label) => {
               writeRecentSearch(label);
               setRecentSearches(readRecentSearches());
@@ -187,6 +197,7 @@ export function OnsenSearchForm({ suggestions, recommendedPlaces, popularSearche
             recommendedPlaces={recommendedPlaces}
             popularSearches={popularSearches}
             recentSearches={recentSearches}
+            mode="full"
             onPick={(label) => {
               writeRecentSearch(label);
               setRecentSearches(readRecentSearches());
@@ -205,6 +216,7 @@ function SearchPanelContent({
   recommendedPlaces,
   popularSearches,
   recentSearches,
+  mode,
   onPick,
 }: {
   query: string;
@@ -212,6 +224,7 @@ function SearchPanelContent({
   recommendedPlaces: OnsenSearchSuggestion[];
   popularSearches: PopularSearch[];
   recentSearches: string[];
+  mode: 'full' | 'autocomplete';
   onPick: (label: string) => void;
 }) {
   return (
@@ -242,12 +255,12 @@ function SearchPanelContent({
         </section>
       ) : null}
 
-      <section className="onsen-popover-section" aria-labelledby="onsen-recent-title">
-        <div className="onsen-popover-section-head">
-          <ClockCounterClockwise size={18} weight="bold" aria-hidden="true" />
-          <strong id="onsen-recent-title">최근 검색어</strong>
-        </div>
-        {recentSearches.length > 0 ? (
+      {mode === 'full' && recentSearches.length > 0 ? (
+        <section className="onsen-popover-section" aria-labelledby="onsen-recent-title">
+          <div className="onsen-popover-section-head">
+            <ClockCounterClockwise size={18} weight="bold" aria-hidden="true" />
+            <strong id="onsen-recent-title">최근 검색어</strong>
+          </div>
           <div className="onsen-recent-list">
             {recentSearches.map((item) => (
               <Link key={item} href={`/onsen/results?query=${encodeURIComponent(item)}`} onClick={() => onPick(item)}>
@@ -255,45 +268,47 @@ function SearchPanelContent({
               </Link>
             ))}
           </div>
-        ) : (
-          <p className="onsen-empty-recent">최근 검색어가 없습니다.</p>
-        )}
-      </section>
+        </section>
+      ) : null}
 
-      <section className="onsen-popover-section" aria-labelledby="onsen-recommend-title">
-        <div className="onsen-popover-section-head">
-          <MapPin size={18} weight="bold" aria-hidden="true" />
-          <strong id="onsen-recommend-title">추천 지역</strong>
-        </div>
-        <div className="onsen-place-suggestion-list">
-          {recommendedPlaces.map((item) => (
-            <Link key={item.label} href={item.href} onClick={() => onPick(item.label)}>
-              <span className="onsen-place-icon" aria-hidden="true">
-                <MapPin size={18} weight="bold" />
-              </span>
-              <span>
-                <strong>{item.label}</strong>
-                {item.description ? <small>{item.description}</small> : null}
-              </span>
-            </Link>
-          ))}
-        </div>
-      </section>
+      {mode === 'full' ? (
+        <section className="onsen-popover-section" aria-labelledby="onsen-recommend-title">
+          <div className="onsen-popover-section-head">
+            <MapPin size={18} weight="bold" aria-hidden="true" />
+            <strong id="onsen-recommend-title">추천 지역</strong>
+          </div>
+          <div className="onsen-place-suggestion-list">
+            {recommendedPlaces.map((item) => (
+              <Link key={item.label} href={item.href} onClick={() => onPick(item.label)}>
+                <span className="onsen-place-icon" aria-hidden="true">
+                  <MapPin size={18} weight="bold" />
+                </span>
+                <span>
+                  <strong>{item.label}</strong>
+                  {item.description ? <small>{item.description}</small> : null}
+                </span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      ) : null}
 
-      <section className="onsen-popover-section" aria-labelledby="onsen-popular-title">
-        <div className="onsen-popover-section-head">
-          <MagnifyingGlass size={18} weight="bold" aria-hidden="true" />
-          <strong id="onsen-popular-title">인기 검색어</strong>
-        </div>
-        <div className="onsen-popular-search-list">
-          {popularSearches.map((item, index) => (
-            <Link key={item.label} href={item.href} onClick={() => onPick(item.label)}>
-              <span>{index + 1}</span>
-              {item.label}
-            </Link>
-          ))}
-        </div>
-      </section>
+      {mode === 'full' ? (
+        <section className="onsen-popover-section" aria-labelledby="onsen-popular-title">
+          <div className="onsen-popover-section-head">
+            <MagnifyingGlass size={18} weight="bold" aria-hidden="true" />
+            <strong id="onsen-popular-title">인기 검색어</strong>
+          </div>
+          <div className="onsen-popular-search-list">
+            {popularSearches.map((item, index) => (
+              <Link key={item.label} href={item.href} onClick={() => onPick(item.label)}>
+                <span>{index + 1}</span>
+                {item.label}
+              </Link>
+            ))}
+          </div>
+        </section>
+      ) : null}
     </div>
   );
 }

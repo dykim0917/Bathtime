@@ -331,6 +331,27 @@ DB enum/코드 값과 UI 라벨 매핑을 단일 소스로 관리합니다.
 이 지역 42곳 중 직수 온천 확인 7곳
 ```
 
+### 2.5 글로벌 확장 준비 필드
+
+글로벌 출시는 한국어 판정 모델이 먼저 검증된 뒤 진행합니다. 다만 지금부터 스키마는 언어와 시장을 분리해 둡니다.
+
+`onsen_verdicts.localized_copy`
+
+- 선택 JSONB 필드입니다.
+- `ko`, `en`처럼 locale 키를 둡니다.
+- `headline`, `items[].headline/body/verdict/chip_label` 같은 문장 레이어만 넣습니다.
+- `briefing`, `items[].counts`, `fact_statuses`는 복제하지 않습니다. 카운트와 구조화 팩트는 언어 중립 canonical 데이터로 유지합니다.
+
+`onsen_accommodations.global_travel_facts`
+
+- 선택 JSONB 필드입니다.
+- 한국어 MVP에는 당장 노출하지 않더라도 영어권 파일럿에서 필요한 여행자 질문을 담습니다.
+- 권장 키는 `tattoo_policy`, `gender_policy`, `english_support`, `couple_private_bath`입니다.
+- 값에는 `status`, `label_ko`, `label_en`, `source`, `updated_at`을 둡니다.
+- 원문 이용 경험이나 의역 문장은 넣지 않습니다.
+
+상세 기준은 [온천 검색기 글로벌 확장 준비 메모](../../03-content/onsen-global-readiness.md)를 따릅니다.
+
 ## 6. 관리자 입력 명세
 
 관리자 화면은 사람이 문장을 자유 입력하는 곳이 아니라, 판정 데이터를 안전하게 입력하고 검수하는 곳이어야 합니다.
