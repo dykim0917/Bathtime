@@ -19,7 +19,7 @@ export const popularOnsenSearches = [
   { label: '유후인 객실탕', href: '/onsen/results?area=yufuin&bath=room_bath' },
   { label: '유후인 가족탕', href: '/onsen/results?area=yufuin&bath=private_bath' },
   { label: '직수 온천 료칸', href: '/onsen/results?travel=ryokan_stay&water=direct_source' },
-  { label: '온천수 확인', href: '/onsen/results?water=spring_confirmed' },
+  { label: '100% 천연온천', href: '/onsen/results?water=natural_100' },
 ];
 
 export function buildOnsenSearchSuggestions(candidates: OnsenCandidate[]): OnsenSearchSuggestion[] {

@@ -90,6 +90,8 @@ Airbnb식 디자인에서 참고할 것은 강한 포인트 컬러가 아니라 
 - Primary Soft: `#d8ebe5`, CSS `--primary-soft`, 선택/호버 배경.
 - On Primary: `#ffffff`, CSS `--bt-color-on-primary`, primary 위 텍스트.
 - Reed: `#e7dcc1`, CSS `--reed`, 종이와 나무 사이의 보조 포인트.
+- Water Spotlight Gold: `#c89431`, CSS `--bt-water-spotlight-text`, 직수·천연온천 리본의 월계수형 강조.
+- Water Spotlight Soft: `rgba(231, 220, 193, 0.28)`, CSS `--bt-water-spotlight-bg`, 월계수형 강조 뒤의 낮은 채도 배경.
 - Mist: `#f3f1e9`, CSS `--mist`, 섹션 톤.
 - Hairline: `#ded8ca`, CSS `--hairline`, 기본 경계선.
 - Hairline Soft: `#ebe6db`, CSS `--hairline-soft`, 약한 구분선.
@@ -100,6 +102,8 @@ Airbnb식 디자인에서 참고할 것은 강한 포인트 컬러가 아니라 
 Atlassian식 구조에서 가져오는 것은 컬러가 아니라 의미 체계다. 바스타임의 상태 색은 아래 의미 토큰으로만 표현한다.
 
 - Confirmed: CSS `--bt-status-confirmed-*`, 공식 안내나 바스타임이 확인한 정보.
+- Official: CSS `--bt-status-official-*`, 공식 출처 확인을 나타내는 작은 신뢰 마크. CTA나 선택 상태에는 쓰지 않는다.
+- Water Spotlight: CSS `--bt-water-spotlight-*`, 직수·천연온천처럼 카드에서 먼저 읽혀야 하는 온천수 단서. 필터 칩이나 등급 표시에 쓰지 않는다.
 - Needed: CSS `--bt-status-needed-*`, 객실 타입, 시즌, 플랜에 따라 다시 봐야 하는 정보.
 - Reference: CSS `--bt-status-reference-*`, 판단을 보조하는 참고 정보.
 - Attention: CSS `--bt-status-attention-*`, 예약·이용 전에 놓치면 문제가 생길 수 있는 정보.
