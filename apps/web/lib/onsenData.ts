@@ -327,6 +327,11 @@ function operationDetailLabel(operation: string, notes: string[]) {
   return `${base} ${noteText}`;
 }
 
+function operationStatusFor(sourceType: OnsenWaterSourceType): OnsenStatus {
+  if (sourceType === 'free_flowing_source' || sourceType === 'natural_100') return 'confirmed';
+  return 'needs_check';
+}
+
 function publicBathFact(tags: string[], primaryBath: string) {
   if (tags.includes('public-bath')) {
     return {
@@ -338,14 +343,14 @@ function publicBathFact(tags: string[], primaryBath: string) {
 
   if (/객실|프라이빗|전 객실|노천/.test(primaryBath)) {
     return {
-      value: '예약 전 확인',
+      value: '예약 시 확인: 대욕장 운영 여부',
       status: 'needs_check' as OnsenStatus,
       detail: '현재 정리된 핵심은 객실 내 프라이빗탕입니다. 대욕장 이용을 원하면 숙소 시설 안내를 확인하세요.',
     };
   }
 
   return {
-    value: '예약 전 확인',
+    value: '예약 시 확인: 대욕장 운영 여부',
     status: 'needs_check' as OnsenStatus,
     detail: '대욕장 운영 여부는 객실 타입이나 플랜보다 숙소 시설 안내에서 확인하는 항목입니다.',
   };
@@ -362,17 +367,32 @@ function privateBathFact(tags: string[], primaryBath: string) {
 
   if (/객실|프라이빗|전 객실|노천/.test(primaryBath)) {
     return {
-      value: '예약 전 확인',
+      value: '예약 시 확인: 대절탕 운영 여부',
       status: 'needs_check' as OnsenStatus,
       detail: '현재 정리된 핵심은 객실 내 프라이빗탕입니다. 대절탕 이용을 원하면 별도 운영 여부를 확인하세요.',
     };
   }
 
   return {
-    value: '예약 전 확인',
+    value: '예약 시 확인: 대절탕 운영 여부',
     status: 'needs_check' as OnsenStatus,
     detail: '대절탕은 예약제, 선착순, 유료 운영 여부가 달라질 수 있어 숙소 안내에서 확인합니다.',
   };
+}
+
+function sourceNoteFor(row: OnsenAccommodationRow, verdict?: OnsenVerdict) {
+  const briefing = verdict?.briefing;
+  if (briefing) {
+    const parts = [
+      typeof briefing.experiencesRead === 'number' ? `직접 읽은 이용 경험 ${briefing.experiencesRead}건` : null,
+      typeof briefing.onsenRelated === 'number' ? `온천 관련 ${briefing.onsenRelated}건` : null,
+      briefing.platforms.length > 0 ? `본문 확인 플랫폼 ${briefing.platforms.length}개` : null,
+    ].filter(Boolean);
+
+    if (parts.length > 0) return parts.join(', ');
+  }
+
+  return row.evidence_note ?? '공식 안내와 이용 조건을 바탕으로 정리했습니다.';
 }
 
 function mapOnsenAccommodation(row: OnsenAccommodationRow, verdict?: OnsenVerdict): OnsenCandidate {
@@ -438,7 +458,7 @@ function mapOnsenAccommodation(row: OnsenAccommodationRow, verdict?: OnsenVerdic
       {
         label: '온천수 방식',
         value: operation,
-        status: statusFor(row.water_source_type),
+        status: operationStatusFor(row.water_source_type),
         detail: operationDetail,
       },
     ],
@@ -459,7 +479,7 @@ function mapOnsenAccommodation(row: OnsenAccommodationRow, verdict?: OnsenVerdic
         label: '온천 정보 정리',
         direct: counts.directReviewCount ?? 0,
         onsenRelated: counts.onsenReviewCount ?? 0,
-        note: row.evidence_note ?? '공식 안내와 이용 조건을 바탕으로 정리했습니다.',
+        note: sourceNoteFor(row, verdict),
       },
     ],
     officialLinks: [],
