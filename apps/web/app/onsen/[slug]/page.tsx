@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { CheckCircle, ImagesSquare, LinkSimple, WarningCircle, Waves } from '@phosphor-icons/react/ssr';
+import { CheckCircle, ImagesSquare, LinkSimple, Sparkle, WarningCircle, Waves } from '@phosphor-icons/react/ssr';
 import { OnsenReviewForm } from '@web/components/OnsenReviewForm';
 import { OnsenSaveButton } from '@web/components/OnsenSaveButton';
+import { OnsenShareButton } from '@web/components/OnsenShareButton';
 import { statusLabels, type OnsenCandidate } from '@web/lib/onsenCatalog';
 import { normalizeOnsenPublicCopy, normalizeOnsenSourceLabel } from '@web/lib/onsenCopy';
 import { readOnsenCandidate, readOnsenCandidates } from '@web/lib/onsenData';
@@ -65,6 +66,21 @@ function getOperationFact(candidate: OnsenCandidate) {
   return candidate.facts.find((fact) => fact.label.includes('온천 운용') || fact.label.includes('온천수')) ?? null;
 }
 
+function getReviewSummary(candidate: OnsenCandidate) {
+  const bodyParts = [candidate.summary, ...candidate.signals.map((signal) => signal.summary)]
+    .map((value) => normalizeOnsenPublicCopy(value))
+    .filter((value, index, values) => value.length >= 24 && values.indexOf(value) === index);
+  const body = bodyParts.slice(0, 2).join(' ') || normalizeOnsenPublicCopy(candidate.summary);
+  const highlights = [
+    normalizeOnsenPublicCopy(candidate.primaryBath),
+    normalizeOnsenPublicCopy(candidate.waterDecision.operation),
+    normalizeOnsenPublicCopy(candidate.fit[0] ?? ''),
+    normalizeOnsenPublicCopy(candidate.waterDecision.roomBath),
+  ].filter((value, index, values) => value && value !== '온천수 확인' && values.indexOf(value) === index);
+
+  return { body, highlights };
+}
+
 export default async function OnsenDetailPage({ params }: PageProps) {
   const { slug } = await params;
   const candidate = await readOnsenCandidate(slug);
@@ -78,6 +94,7 @@ export default async function OnsenDetailPage({ params }: PageProps) {
   const galleryItems = getGalleryItems(candidate);
   const facilityFacts = getFacilityFacts(candidate.facts);
   const operationFact = getOperationFact(candidate);
+  const reviewSummary = getReviewSummary(candidate);
 
   return (
     <article className="onsen-detail-page">
@@ -111,27 +128,27 @@ export default async function OnsenDetailPage({ params }: PageProps) {
               <h1 id="onsen-detail-title">{candidate.name}</h1>
               <span>{candidate.jaName}</span>
             </div>
-            <OnsenSaveButton slug={candidate.slug} />
+            <div className="onsen-detail-actions" aria-label="온천 액션">
+              <OnsenSaveButton slug={candidate.slug} />
+              <OnsenShareButton title={candidate.name} summary={normalizeOnsenPublicCopy(candidate.summary)} />
+            </div>
           </header>
 
-          <dl className="onsen-detail-scorecard" aria-label="온천수 요약">
-            <div>
-              <dt>온천수</dt>
-              <dd>{candidate.waterDecision.springType}</dd>
+          <section className="onsen-review-summary-card" aria-labelledby="onsen-review-summary-title">
+            <div className="onsen-review-summary-head">
+              <h2 id="onsen-review-summary-title">이런 점이 좋았어요</h2>
+              <span>
+                <Sparkle size={15} weight="fill" aria-hidden="true" />
+                AI 요약
+              </span>
             </div>
-            <div>
-              <dt>객실탕</dt>
-              <dd>{candidate.waterDecision.roomBath}</dd>
+            <p>{reviewSummary.body}</p>
+            <div className="onsen-review-summary-tags" aria-label="요약 포인트">
+              {reviewSummary.highlights.map((highlight) => (
+                <span key={highlight}>{highlight}</span>
+              ))}
             </div>
-            <div>
-              <dt>운용</dt>
-              <dd>{candidate.waterDecision.operation}</dd>
-            </div>
-            <div>
-              <dt>바스타임 리뷰</dt>
-              <dd>{siteReviewCount}</dd>
-            </div>
-          </dl>
+          </section>
 
           <section className="onsen-compact-section" aria-labelledby="onsen-fit-title">
             <div className="onsen-compact-head">

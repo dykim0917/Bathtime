@@ -32,6 +32,15 @@ type OnsenAccommodationRow = {
   slug: string;
   name: string;
   ja_name: string | null;
+  display_name_ko?: string | null;
+  name_ja?: string | null;
+  name_en?: string | null;
+  name_romaji?: string | null;
+  aliases_ko?: string[] | null;
+  aliases_ja?: string[] | null;
+  aliases_en?: string[] | null;
+  name_verification_status?: string | null;
+  name_source_note?: string | null;
   region: string;
   area: string | null;
   country?: string | null;
@@ -213,8 +222,8 @@ function mapOnsenAccommodation(row: OnsenAccommodationRow): OnsenCandidate {
 
   const candidate: OnsenCandidate = {
     slug: row.slug,
-    name: row.name,
-    jaName: row.ja_name ?? '',
+    name: row.display_name_ko?.trim() || row.name,
+    jaName: row.name_ja?.trim() || row.ja_name || '',
     area: row.area ?? row.region,
     region: row.region,
     location: mapLocation(row),
@@ -308,10 +317,10 @@ export async function readOnsenCandidates(): Promise<OnsenCandidate[]> {
   const url = new URL(`${config.restUrl}/onsen_accommodations`);
   url.searchParams.set(
     'select',
-    'slug,name,ja_name,region,area,country,region_group,prefecture,city,onsen_area,travel_contexts,bath_contexts,water_criteria,summary,primary_bath,water_use_status,water_source_type,bath_scope,operation_notes,evidence_counts,evidence_grade,evidence_note,status,content_updated_at,updated_at'
+    'slug,name,ja_name,display_name_ko,name_ja,name_en,name_romaji,aliases_ko,aliases_ja,aliases_en,name_verification_status,name_source_note,region,area,country,region_group,prefecture,city,onsen_area,travel_contexts,bath_contexts,water_criteria,summary,primary_bath,water_use_status,water_source_type,bath_scope,operation_notes,evidence_counts,evidence_grade,evidence_note,status,content_updated_at,updated_at'
   );
   url.searchParams.set('status', 'eq.active');
-  url.searchParams.set('order', 'region.asc,name.asc');
+  url.searchParams.set('order', 'region.asc,display_name_ko.asc,name.asc');
 
   try {
     const response = await fetch(url, {

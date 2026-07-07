@@ -218,7 +218,6 @@ export const bathContextFilters: OnsenTaxonomyFilter<OnsenBathContext>[] = [
 export const waterCriterionFilters: OnsenTaxonomyFilter<OnsenWaterCriterion>[] = [
   { label: '직수 온천', value: 'direct_source' },
   { label: '100% 천연온천', value: 'natural_100' },
-  { label: '온천수 확인', value: 'spring_confirmed' },
   { label: '부드러운 물 느낌', value: 'water_texture' },
   { label: '온도 조정 확인', value: 'temperature_adjustment' },
   { label: '겨울 주의', value: 'winter_caution' },
