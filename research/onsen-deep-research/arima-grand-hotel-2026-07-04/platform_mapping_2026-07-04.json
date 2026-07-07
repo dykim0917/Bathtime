@@ -1,0 +1,193 @@
+{
+  "research_date": "2026-07-04",
+  "scope": "arima-grand-hotel ready 숙소 딥리서치",
+  "method": "Rakuten/Jalan/JTB 정적 본문을 수집·태깅하고, Google Hotels/Maps와 Naver Search/Blog를 Aside Browser로 직접 확인했다. OTA 공급자 카드, Naver 검색 스니펫, AI/요약 문구는 직접 리뷰 수에서 제외했다.",
+  "direct_review_sampling_status": {
+    "target_direct_reviews": 300,
+    "direct_reviews_read": 402,
+    "onsen_related_direct_reviews": 189,
+    "direct_body_platform_count": 5,
+    "data_quality_grade": "A"
+  },
+  "lodgings": [
+    {
+      "slug": "arima-grand-hotel",
+      "name_ja": "有馬グランドホテル",
+      "name_ko_or_en": "Arima Grand Hotel / 아리마 그랜드 호텔",
+      "identity": {
+        "official_name_ja": "有馬グランドホテル",
+        "common_ko": "아리마 그랜드 호텔",
+        "english_name": "Arima Grand Hotel",
+        "ota_names": [
+          "有馬温泉 有馬グランドホテル",
+          "Arima Grand Hotel",
+          "아리마 그랜드 호텔"
+        ],
+        "former_or_rebrand_names": [],
+        "official_site_url": "https://www.arima-gh.jp/",
+        "address": "兵庫県神戸市北区有馬町1304-1",
+        "onsen_area": "有馬温泉"
+      },
+      "google_maps": {
+        "rating": 4.4,
+        "visible_review_count": 3226,
+        "rating_distribution": "Google Hotels review tab에 별점별 행은 노출되었으나 숫자별 분포는 텍스트로 직접 추출되지 않음",
+        "korean_reviews_visible": true,
+        "review_body_access": "partial",
+        "direct_google_native_reviews_read": 8,
+        "onsen_related_direct_google_native_reviews": 5,
+        "ota_provider_cards_seen": [
+          "Trip.com 4.8/5, 199 reviews",
+          "Tripadvisor 4.4/5, 449 reviews"
+        ],
+        "access_notes": "Aside Browser로 Google 검색 패널과 Google Travel review tab을 직접 확인. 공급자 리뷰는 Google-native 직접 리뷰 수에서 제외."
+      },
+      "ota_review_pool_signals": [
+        {
+          "platform": "Rakuten Travel",
+          "rating": null,
+          "visible_review_count": 154,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 154,
+          "onsen_related_direct_reviews": 74,
+          "source_url": "https://travel.rakuten.co.jp/HOTEL/25128/review.html"
+        },
+        {
+          "platform": "Jalan",
+          "rating": 4.8,
+          "visible_review_count": 1954,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 88,
+          "onsen_related_direct_reviews": 53,
+          "source_url": "https://www.jalan.net/yad313952/kuchikomi/",
+          "access_notes": "현재 숙박 리뷰 88건은 직접 본문 확인. page source상 pastKuchiCnt 1866 노출이나 archive 경로는 404라 직접 수에는 미포함."
+        },
+        {
+          "platform": "JTB",
+          "rating": "customer questionnaire 93; Rurubu 3.4 surface",
+          "visible_review_count": 151,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 151,
+          "onsen_related_direct_reviews": 56,
+          "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/6435003/review/"
+        },
+        {
+          "platform": "Trip.com",
+          "rating": "4.8/5 on Google provider card; 9.6/10 on Naver result",
+          "visible_review_count": 199,
+          "review_body_access": "snippet_only",
+          "direct_reviews_read": 0,
+          "onsen_related_direct_reviews": 0,
+          "access_notes": "Google Hotels provider card and Naver result only. Body not opened."
+        },
+        {
+          "platform": "Tripadvisor",
+          "rating": 4.4,
+          "visible_review_count": 449,
+          "review_body_access": "blocked",
+          "direct_reviews_read": 0,
+          "onsen_related_direct_reviews": 0,
+          "access_notes": "정적 접근 403; Google provider card/snippet only seen."
+        },
+        {
+          "platform": "Ikkyu",
+          "rating": null,
+          "visible_review_count": null,
+          "review_body_access": "blocked",
+          "direct_reviews_read": 0,
+          "onsen_related_direct_reviews": 0,
+          "access_notes": "정적 접근 403."
+        },
+        {
+          "platform": "Yahoo Travel",
+          "rating": null,
+          "visible_review_count": null,
+          "review_body_access": "blocked",
+          "direct_reviews_read": 0,
+          "onsen_related_direct_reviews": 0,
+          "access_notes": "정적 접근 403."
+        },
+        {
+          "platform": "Expedia",
+          "rating": null,
+          "visible_review_count": null,
+          "review_body_access": "blocked",
+          "direct_reviews_read": 0,
+          "onsen_related_direct_reviews": 0,
+          "access_notes": "정적 접근 시 인간 인증."
+        }
+      ],
+      "korean_web_and_naver": [
+        {
+          "platform": "Naver Blog",
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 1,
+          "onsen_related_direct_reviews": 1,
+          "source_urls": [
+            "https://m.blog.naver.com/omrchoi/224226813921"
+          ],
+          "access_notes": "Aside Browser로 모바일 본문 직접 확인. 9층 雲海, 지하 ゆらり, 금탕/은탕, 혼잡도 QR, 셔틀 언급 확인."
+        },
+        {
+          "platform": "Naver Search",
+          "review_body_access": "snippet_only",
+          "direct_reviews_read": 0,
+          "onsen_related_direct_reviews": 0,
+          "access_notes": "블로그/카페/OTA 검색 결과 스니펫은 직접 리뷰 수에서 제외. 네일동 카페 당일온천 신호는 스니펫으로만 기록."
+        }
+      ],
+      "official_bath_facts_seen": {
+        "room_bath": "일반 객실 욕실은 존재하나 온천 객실탕 여부는 객실 타입별 확인 필요.",
+        "room_open_air_bath": "公式 room page와 JTB/Rakuten 표면에서 金泉露天風呂付き/銀泉露天風呂付き 객실 타입 확인. 전 객실 아님.",
+        "public_bath": "9층 展望大浴苑「雲海」와 지하 大浴場「ゆらり」 확인.",
+        "open_air_public_bath": "雲海・ゆらり에 露天風呂 표면 확인.",
+        "private_bath": "公式/Rakuten/JTB 표면에서 貸切風呂・プライベートスパ 표면 확인.",
+        "family_bath": "JTB 욕장 페이지에 家族風呂3ヶ所 표면 확인.",
+        "day_use": "公式 사이트와 Naver 후기 신호에서 日帰り温泉/런치 플랜 표면 확인. 숙박 경험과 분리 필요.",
+        "source_claims": [
+          "公式: 金泉と銀泉을 즐길 수 있는 온천 시설 표면",
+          "JTB: 温泉（放流・循環併用式、加温している）",
+          "JTB: 赤茶色(褐色), 湯の華あり, 塩味・鉄味, 湧出口泉温37.1℃ 표면"
+        ],
+        "official_discrepancies_to_recheck": [
+          "공식 사이트 본문에서는 가수/가온/순환/소독 세부 표기가 명확히 고정되지 않아 JTB 표면과 교차 재검증 필요",
+          "日帰り 플랜 가격·이용 가능일·9층 이용 조건은 계절/영업 공지 변동 가능성이 있어 operation_recheck 필요"
+        ],
+        "official_sources": [
+          "https://www.arima-gh.jp/",
+          "https://www.arima-gh.jp/room/",
+          "https://travel.rakuten.co.jp/HOTEL/25128/25128.html",
+          "https://www.jtb.co.jp/kokunai-hotel/htl/6435003/bath/"
+        ]
+      },
+      "review_signal_keywords": [
+        "温泉",
+        "金泉",
+        "銀泉",
+        "大浴場",
+        "展望大浴苑",
+        "雲海",
+        "ゆらり",
+        "露天風呂",
+        "貸切風呂",
+        "アクアテラス",
+        "대욕장",
+        "노천탕",
+        "금탕",
+        "은탕",
+        "셔틀"
+      ],
+      "caution_keywords": [
+        "送迎",
+        "坂",
+        "日帰り",
+        "混雑",
+        "予約",
+        "객실 타입",
+        "당일온천",
+        "식사 플랜"
+      ],
+      "next_sampling": "A등급 기준은 충족. 다음 보강 시 Google 낮은 점수순 스크롤과 Ikkyu/Yahoo 동적 브라우저 확인을 추가하면 고가 객실/저평점 표본을 더 두껍게 만들 수 있다."
+    }
+  ]
+}

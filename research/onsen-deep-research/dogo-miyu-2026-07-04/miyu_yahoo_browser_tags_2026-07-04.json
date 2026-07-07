@@ -1,0 +1,1512 @@
+{
+  "summary": {
+    "generated_at": "2026-07-04T04:05:00.524Z",
+    "lodging": "道後御湯",
+    "platform": "Yahoo Travel via Aside Browser",
+    "visible_review_count": 210,
+    "total_direct_browser": 76,
+    "onsen_related_body": 54,
+    "page_stats": {
+      "https://travel.yahoo.co.jp/00002500/review/": 40,
+      "https://travel.yahoo.co.jp/00002500/review/p2/": 30,
+      "https://travel.yahoo.co.jp/00002500/review/p3/": 9,
+      "https://travel.yahoo.co.jp/00002500/review/p4/": 0,
+      "https://travel.yahoo.co.jp/00002500/review/p5/": 0,
+      "https://travel.yahoo.co.jp/00002500/review/p6/": 0,
+      "https://travel.yahoo.co.jp/00002500/review/p7/": 0,
+      "https://travel.yahoo.co.jp/00002500/review/p8/": 0
+    },
+    "bath_area_tags": {
+      "room_open_air_bath": 18,
+      "room_bath": 23,
+      "public_bath": 15,
+      "open_air_public_bath": 7
+    },
+    "signal_type_tags": {
+      "room_bath_hot_spring": 31,
+      "public_bath_hot_spring": 15,
+      "crowding": 2,
+      "temperature_control": 5,
+      "operations_note": 11,
+      "water_texture": 14
+    },
+    "note": "Bodies not stored; Aside Browser rendered text was reduced to hashes, metadata, short keywords and tags."
+  },
+  "reviews": [
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/",
+      "review_hash": "f678313d5b3c1020",
+      "review_date": "2026-05-26",
+      "score": 5,
+      "body_char_count": 785,
+      "body_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "大浴場",
+        "屋上",
+        "湯",
+        "風呂",
+        "ラウンジ",
+        "温度",
+        "清潔",
+        "コンパクト"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "public_bath",
+        "open_air_public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring",
+        "crowding",
+        "temperature_control",
+        "operations_note"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/",
+      "review_hash": "749694ffc5314de9",
+      "review_date": "2026-05-21",
+      "score": 5,
+      "body_char_count": 151,
+      "body_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/",
+      "review_hash": "89eba501e6bf1f11",
+      "review_date": "2026-04-08",
+      "score": 5,
+      "body_char_count": 154,
+      "body_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/",
+      "review_hash": "86ce97916b191925",
+      "review_date": "2026-03-30",
+      "score": 5,
+      "body_char_count": 95,
+      "body_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/",
+      "review_hash": "f28e59bc14cd5531",
+      "review_date": "2026-03-25",
+      "score": 5,
+      "body_char_count": 148,
+      "body_keywords": [
+        "温泉",
+        "露天",
+        "風呂",
+        "温度"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "temperature_control"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/",
+      "review_hash": "8dbab7bb72120e56",
+      "review_date": "2026-03-04",
+      "score": 5,
+      "body_char_count": 192,
+      "body_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/",
+      "review_hash": "d7a1385f7141b734",
+      "review_date": "2026-02-23",
+      "score": 5,
+      "body_char_count": 40,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/",
+      "review_hash": "d56c99cd5093ab84",
+      "review_date": "2025-12-30",
+      "score": 5,
+      "body_char_count": 33,
+      "body_keywords": [
+        "風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/",
+      "review_hash": "e32a896a295ad33c",
+      "review_date": "2025-12-13",
+      "score": 5,
+      "body_char_count": 143,
+      "body_keywords": [
+        "温泉",
+        "お部屋のお風呂",
+        "大浴場",
+        "風呂",
+        "ラウンジ"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_bath",
+        "public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring",
+        "operations_note"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/",
+      "review_hash": "f0cd0de84d39f15e",
+      "review_date": "2025-10-24",
+      "score": 4.83,
+      "body_char_count": 138,
+      "body_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/",
+      "review_hash": "f504c98d8d323fd9",
+      "review_date": "2025-10-20",
+      "score": 5,
+      "body_char_count": 347,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "露天",
+        "露天風呂",
+        "展望風呂",
+        "湯",
+        "風呂",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "public_bath",
+        "open_air_public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring",
+        "water_texture"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/",
+      "review_hash": "a0e0d68c14e49c13",
+      "review_date": "2025-10-15",
+      "score": 5,
+      "body_char_count": 235,
+      "body_keywords": [
+        "温泉",
+        "大浴場",
+        "湯",
+        "風呂",
+        "ラウンジ",
+        "スカイラウンジ",
+        "温度",
+        "高い"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_bath",
+        "public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring",
+        "water_texture",
+        "temperature_control",
+        "operations_note"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/",
+      "review_hash": "7f9eb68428003115",
+      "review_date": "2025-10-05",
+      "score": 5,
+      "body_char_count": 204,
+      "body_keywords": [
+        "商店街"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/",
+      "review_hash": "bd788cf623ba0662",
+      "review_date": "2025-08-18",
+      "score": 5,
+      "body_char_count": 258,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "大浴場",
+        "松山城"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "public_bath"
+      ],
+      "signal_type_tags": [
+        "public_bath_hot_spring",
+        "water_texture"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/",
+      "review_hash": "27368dcf3f56638d",
+      "review_date": "2025-08-17",
+      "score": 5,
+      "body_char_count": 352,
+      "body_keywords": [
+        "温泉",
+        "道後温泉"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [
+        "water_texture"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/",
+      "review_hash": "b8a5b670f86b1ad8",
+      "review_date": "2025-08-16",
+      "score": 5,
+      "body_char_count": 154,
+      "body_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "屋上",
+        "湯",
+        "風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "public_bath",
+        "open_air_public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring",
+        "operations_note"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/",
+      "review_hash": "3c273a62e92f209e",
+      "review_date": "2025-07-27",
+      "score": 5,
+      "body_char_count": 61,
+      "body_keywords": [
+        "風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/",
+      "review_hash": "2104522df57b6ed1",
+      "review_date": "2025-06-11",
+      "score": 5,
+      "body_char_count": 10,
+      "body_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/",
+      "review_hash": "9ee5ecec56814cb3",
+      "review_date": "2025-06-08",
+      "score": 5,
+      "body_char_count": 137,
+      "body_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/",
+      "review_hash": "cc386d038c8c6677",
+      "review_date": "2025-06-04",
+      "score": 4.83,
+      "body_char_count": 106,
+      "body_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/",
+      "review_hash": "4743045ff5617e97",
+      "review_date": "2025-05-22",
+      "score": 5,
+      "body_char_count": 78,
+      "body_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/",
+      "review_hash": "5a8672a0a28111f1",
+      "review_date": "2025-05-18",
+      "score": 5,
+      "body_char_count": 206,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "客室露天",
+        "客室露天風呂",
+        "風呂",
+        "高い"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/",
+      "review_hash": "27e6ad0b556bf016",
+      "review_date": "2025-04-21",
+      "score": 4.83,
+      "body_char_count": 224,
+      "body_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/",
+      "review_hash": "dea45c36aabfb89e",
+      "review_date": "2025-03-01",
+      "score": 5,
+      "body_char_count": 279,
+      "body_keywords": [
+        "温泉"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/",
+      "review_hash": "8d32b2d0dffa964f",
+      "review_date": "2025-02-24",
+      "score": 5,
+      "body_char_count": 49,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [
+        "water_texture"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/",
+      "review_hash": "4d1bfdb8ded67a68",
+      "review_date": "2025-02-13",
+      "score": 5,
+      "body_char_count": 217,
+      "body_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/",
+      "review_hash": "af22d57b6a7ea15f",
+      "review_date": "2025-01-20",
+      "score": 5,
+      "body_char_count": 241,
+      "body_keywords": [
+        "湯"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/",
+      "review_hash": "4bf7dab55f229888",
+      "review_date": "2025-01-20",
+      "score": 5,
+      "body_char_count": 250,
+      "body_keywords": [
+        "お部屋のお風呂",
+        "展望風呂",
+        "風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_bath",
+        "public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/",
+      "review_hash": "4683fb20f41d413c",
+      "review_date": "2025-01-14",
+      "score": 5,
+      "body_char_count": 91,
+      "body_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/",
+      "review_hash": "57036942b2ab1c09",
+      "review_date": "2024-12-01",
+      "score": 5,
+      "body_char_count": 239,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "高い"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [
+        "water_texture"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/",
+      "review_hash": "e1c4a0366ffd190a",
+      "review_date": "2023-06-05",
+      "score": 5,
+      "body_char_count": 64,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "大浴場",
+        "風呂",
+        "ラウンジ"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "public_bath",
+        "open_air_public_bath"
+      ],
+      "signal_type_tags": [
+        "public_bath_hot_spring",
+        "operations_note"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/",
+      "review_hash": "349b32f121dd6dea",
+      "review_date": "2023-02-20",
+      "score": 5,
+      "body_char_count": 115,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/",
+      "review_hash": "ededb409c132c0ff",
+      "review_date": "2023-02-02",
+      "score": 4,
+      "body_char_count": 56,
+      "body_keywords": [
+        "大浴場"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "public_bath"
+      ],
+      "signal_type_tags": [
+        "public_bath_hot_spring"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/",
+      "review_hash": "28492adfa6c924bb",
+      "review_date": "2023-01-28",
+      "score": 4,
+      "body_char_count": 53,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "風呂",
+        "温度"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [
+        "temperature_control"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/",
+      "review_hash": "f291f1b8932f7a56",
+      "review_date": "2023-01-20",
+      "score": 5,
+      "body_char_count": 127,
+      "body_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/",
+      "review_hash": "20bdd4e2cfd63bab",
+      "review_date": "2023-01-02",
+      "score": 5,
+      "body_char_count": 58,
+      "body_keywords": [
+        "温泉"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/",
+      "review_hash": "07f540b3b82b40e8",
+      "review_date": "2022-12-14",
+      "score": 5,
+      "body_char_count": 56,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "湯",
+        "駐車場"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [
+        "water_texture"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/",
+      "review_hash": "7ed3db4bac3e8989",
+      "review_date": "2022-11-22",
+      "score": 5,
+      "body_char_count": 76,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "風呂",
+        "ラウンジ",
+        "松山城"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [
+        "water_texture",
+        "operations_note"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/",
+      "review_hash": "efa296f118ad7956",
+      "review_date": "2022-11-17",
+      "score": 4,
+      "body_char_count": 71,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "客室露天",
+        "客室露天風呂",
+        "大浴場",
+        "風呂",
+        "高い"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "public_bath",
+        "open_air_public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/",
+      "review_hash": "c62a0d829c78a7ca",
+      "review_date": "2022-11-06",
+      "score": 5,
+      "body_char_count": 66,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/p2/",
+      "review_hash": "ae7aece50ec628d3",
+      "review_date": "2024-09-01",
+      "score": 5,
+      "body_char_count": 192,
+      "body_keywords": [
+        "温泉"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/p2/",
+      "review_hash": "9ab8188d1f168815",
+      "review_date": "2024-08-05",
+      "score": 5,
+      "body_char_count": 223,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "湯"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [
+        "water_texture"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/p2/",
+      "review_hash": "cbf0a28639735df1",
+      "review_date": "2021-08-17",
+      "score": 5,
+      "body_char_count": 173,
+      "body_keywords": [
+        "風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/p2/",
+      "review_hash": "c48b3d02b397e8e9",
+      "review_date": "2021-08-01",
+      "score": 5,
+      "body_char_count": 116,
+      "body_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/p2/",
+      "review_hash": "67a04f0419f99db3",
+      "review_date": "2021-06-29",
+      "score": 4.75,
+      "body_char_count": 95,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "客室露天",
+        "客室露天風呂",
+        "風呂",
+        "温度"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "temperature_control"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/p2/",
+      "review_hash": "09547422343ec968",
+      "review_date": "2021-05-26",
+      "score": 5,
+      "body_char_count": 245,
+      "body_keywords": [
+        "温泉",
+        "湯"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/p2/",
+      "review_hash": "867097e6db82fd09",
+      "review_date": "2021-03-13",
+      "score": 5,
+      "body_char_count": 82,
+      "body_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/p2/",
+      "review_hash": "0bf3cd570cec20bb",
+      "review_date": "2021-03-06",
+      "score": 4.6,
+      "body_char_count": 223,
+      "body_keywords": [
+        "源泉",
+        "風呂",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/p2/",
+      "review_hash": "c3eee7b33e657bd6",
+      "review_date": "2020-11-20",
+      "score": 4.75,
+      "body_char_count": 157,
+      "body_keywords": [
+        "温泉",
+        "風呂",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/p2/",
+      "review_hash": "026cd52d0dd6c61f",
+      "review_date": "2020-11-11",
+      "score": 5,
+      "body_char_count": 153,
+      "body_keywords": [
+        "風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/p2/",
+      "review_hash": "b8911e746b9fc9b4",
+      "review_date": "2020-10-23",
+      "score": 4.6,
+      "body_char_count": 106,
+      "body_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/p2/",
+      "review_hash": "e69398fd9a6d260a",
+      "review_date": "2020-10-22",
+      "score": 4.8,
+      "body_char_count": 185,
+      "body_keywords": [
+        "部屋風呂",
+        "展望浴場",
+        "湯",
+        "風呂",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_bath",
+        "public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/p2/",
+      "review_hash": "b91601024a02618b",
+      "review_date": "2020-10-11",
+      "score": 4.2,
+      "body_char_count": 359,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "露天",
+        "露天風呂",
+        "風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/p2/",
+      "review_hash": "a556c0057475747a",
+      "review_date": "2020-10-11",
+      "score": 4.8,
+      "body_char_count": 161,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "風呂",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/p2/",
+      "review_hash": "0c21f950e07f739a",
+      "review_date": "2020-07-06",
+      "score": 5,
+      "body_char_count": 316,
+      "body_keywords": [
+        "風呂",
+        "ラウンジ",
+        "小さい"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [
+        "operations_note"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/p2/",
+      "review_hash": "d95fc491251d3b68",
+      "review_date": "2020-06-29",
+      "score": 4.6,
+      "body_char_count": 128,
+      "body_keywords": [
+        "風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/p2/",
+      "review_hash": "41f434cdc7decdbc",
+      "review_date": "2020-03-15",
+      "score": 5,
+      "body_char_count": 129,
+      "body_keywords": [
+        "広い"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/p2/",
+      "review_hash": "9f9e2025e66eec23",
+      "review_date": "2020-03-10",
+      "score": 4,
+      "body_char_count": 420,
+      "body_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "露天風呂付き",
+        "露天風呂付",
+        "大浴場",
+        "風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "public_bath",
+        "open_air_public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/p2/",
+      "review_hash": "64dfc89b2886e464",
+      "review_date": "2020-02-20",
+      "score": 4.8,
+      "body_char_count": 186,
+      "body_keywords": [
+        "大浴場",
+        "風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "public_bath"
+      ],
+      "signal_type_tags": [
+        "public_bath_hot_spring",
+        "crowding"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/p2/",
+      "review_hash": "62a6aebeb701e661",
+      "review_date": "2020-01-08",
+      "score": 5,
+      "body_char_count": 238,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/p2/",
+      "review_hash": "7eb076f5777278d6",
+      "review_date": "2019-12-13",
+      "score": 5,
+      "body_char_count": 398,
+      "body_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "大浴場",
+        "風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "public_bath",
+        "open_air_public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/p2/",
+      "review_hash": "de770d65cac742c6",
+      "review_date": "2019-12-12",
+      "score": 4.6,
+      "body_char_count": 358,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "湯",
+        "風呂",
+        "ラウンジ"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture",
+        "operations_note"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/p2/",
+      "review_hash": "8b1f8cdcf87460b3",
+      "review_date": "2019-12-07",
+      "score": 5,
+      "body_char_count": 384,
+      "body_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "湯",
+        "風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/p2/",
+      "review_hash": "cb83e725e1084016",
+      "review_date": "2019-10-31",
+      "score": 5,
+      "body_char_count": 225,
+      "body_keywords": [
+        "温泉",
+        "清潔",
+        "高い"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/p2/",
+      "review_hash": "420b75791bee3cd1",
+      "review_date": "2019-08-27",
+      "score": 5,
+      "body_char_count": 259,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "露天",
+        "露天風呂",
+        "風呂",
+        "ラウンジ",
+        "駐車場"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture",
+        "operations_note"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/p2/",
+      "review_hash": "0ea49cf1630fa7c8",
+      "review_date": "2019-07-30",
+      "score": 5,
+      "body_char_count": 240,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/p2/",
+      "review_hash": "1576b067aaac9652",
+      "review_date": "2019-07-27",
+      "score": 5,
+      "body_char_count": 193,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "湯",
+        "風呂",
+        "小さい"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/p3/",
+      "review_hash": "df3a8f164f105e17",
+      "review_date": "2019-06-25",
+      "score": 5,
+      "body_char_count": 157,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "露天風呂付き",
+        "露天風呂付",
+        "風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/p3/",
+      "review_hash": "1a6421ec1108d30e",
+      "review_date": "2019-05-21",
+      "score": 4,
+      "body_char_count": 168,
+      "body_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [
+        "operations_note"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/p3/",
+      "review_hash": "6b6a82c6a4aa66b3",
+      "review_date": "2019-04-14",
+      "score": 4.8,
+      "body_char_count": 78,
+      "body_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/p3/",
+      "review_hash": "cc47a53bc7f545f8",
+      "review_date": "2019-03-24",
+      "score": 4.6,
+      "body_char_count": 191,
+      "body_keywords": [
+        "温泉"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/p3/",
+      "review_hash": "71472705819464c7",
+      "review_date": "2019-03-05",
+      "score": 4.4,
+      "body_char_count": 235,
+      "body_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/p3/",
+      "review_hash": "bd7b61f5c0fb330b",
+      "review_date": "2019-01-07",
+      "score": 5,
+      "body_char_count": 414,
+      "body_keywords": [
+        "お部屋のお風呂",
+        "風呂",
+        "松山城"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/p3/",
+      "review_hash": "2c1c4bc1abfd8470",
+      "review_date": "2018-12-06",
+      "score": 4.8,
+      "body_char_count": 197,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "露天風呂付き",
+        "露天風呂付",
+        "湯",
+        "風呂",
+        "ラウンジ"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "operations_note"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/p3/",
+      "review_hash": "3058ba20e0d7cce1",
+      "review_date": "2018-11-27",
+      "score": 5,
+      "body_char_count": 255,
+      "body_keywords": [
+        "部屋風呂",
+        "大浴場",
+        "風呂",
+        "高い"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_bath",
+        "public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Yahoo Travel",
+      "source_url": "https://travel.yahoo.co.jp/00002500/review/p3/",
+      "review_hash": "0e6f66d36deba80d",
+      "review_date": "2018-11-13",
+      "score": 4.2,
+      "body_char_count": 318,
+      "body_keywords": [
+        "風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "language": "ja"
+    }
+  ]
+}

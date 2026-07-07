@@ -1,0 +1,134 @@
+{
+  "research_date": "2026-07-04",
+  "scope": "ready lodging deep research: toba-kisara-bettei-toki / 季さら別邸 刻",
+  "method": "Rakuten, Jalan, and Relux were parsed from directly readable public pages. Ikkyu, Yahoo Travel, Google Hotels, and Naver Search were checked with Aside Browser. Search snippets and AI summaries are excluded from direct review counts.",
+  "direct_review_sampling_status": {
+    "data_quality_grade": "B",
+    "directly_read_reviews": 256,
+    "onsen_related_direct_reviews": 174,
+    "direct_body_platform_count": 6,
+    "platforms_counted_as_direct_body": [
+      "Rakuten Travel",
+      "Jalan",
+      "Relux",
+      "Ikkyu",
+      "Yahoo Travel",
+      "Google-native"
+    ],
+    "why_not_300": "Visible pool is small across OTAs, and accessible static/browser-read bodies reached 256. Google has 140 visible reviews, but Aside Browser review panel exposed only the current useful/low-score surface reliably; repeated scroll attempts did not load enough additional Google-native bodies for direct counting.",
+    "narrative_status": "150-299 direct reviews with multi-platform evidence; B grade with explicit termination reason."
+  },
+  "lodgings": [
+    {
+      "slug": "toba-kisara-bettei-toki",
+      "name_ja": "伊勢志摩・鳥羽 季さら別邸 刻",
+      "name_ko_or_en": "키사라 벳테이 토키 / Toki Kisara Bettei / Kisara Bettei Toki",
+      "address": "三重県鳥羽市安楽島町1075-7",
+      "onsen_area": "社宮司温泉 / 七栗の湯 source claim",
+      "identity_cautions": [
+        "季さら 본관은 1075-11, 刻은 1075-7",
+        "Kisara Oneness and Nostalgic Romance Renewal Inn appear as nearby related properties in Google Hotels and must remain separate"
+      ],
+      "google_maps": {
+        "rating": 4.5,
+        "visible_review_count": 140,
+        "rating_distribution": "star rows visible but numeric counts not exposed in Aside text snapshot",
+        "korean_reviews_visible": false,
+        "review_body_access": "partial_direct_readable",
+        "directly_read_reviews": 20,
+        "onsen_related_direct_reviews": 8,
+        "ota_provider_cards": [
+          "Official site price card",
+          "Ikyu.com price card",
+          "Booking.com and Agoda nearby/sponsored cards separated from Google-native reviews"
+        ],
+        "access_note": "Aside Browser opened Google Hotels review tab. Useful and low-score surfaces were read; scroll attempts did not reliably expose enough additional Google-native bodies."
+      },
+      "ota_review_pool_signals": {
+        "rakuten_travel": {
+          "rating": 4.40,
+          "visible_review_count": 62,
+          "extractable_review_count_seen": 48,
+          "review_body_access": "direct_readable",
+          "directly_read_reviews": 48,
+          "onsen_related_direct_reviews": 32,
+          "url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html"
+        },
+        "jalan": {
+          "visible_review_count": 19,
+          "review_body_access": "direct_readable",
+          "directly_read_reviews": 19,
+          "onsen_related_direct_reviews": 11,
+          "url": "https://www.jalan.net/yad389295/kuchikomi/",
+          "wrong_url_caution": "yad353540 is 品川プリンスホテル イーストタワー and must not be used for this lodging."
+        },
+        "relux": {
+          "rating": 4.6,
+          "visible_review_count": 44,
+          "bath_subrating": 4.8,
+          "review_body_access": "direct_readable",
+          "directly_read_reviews": 44,
+          "onsen_related_direct_reviews": 29,
+          "url": "https://rlx.jp/23788/review/"
+        },
+        "ikkyu": {
+          "rating": 4.56,
+          "visible_review_count": 125,
+          "review_body_access": "direct_readable_via_aside",
+          "directly_read_reviews": 100,
+          "onsen_related_direct_reviews": 74,
+          "url": "https://www.ikyu.com/00002691/review/",
+          "note": "Page states 125 combined with Yahoo Travel; Ikkyu pages p1-p4 exposed 100 direct review markers."
+        },
+        "yahoo_travel": {
+          "rating": 4.56,
+          "visible_review_count": 125,
+          "review_body_access": "direct_readable_via_aside",
+          "directly_read_reviews": 25,
+          "onsen_related_direct_reviews": 20,
+          "url": "https://travel.yahoo.co.jp/00002691/review/",
+          "note": "Yahoo and Ikkyu share combined count surface; Yahoo-only body pages were counted separately and not added to visible pool again."
+        },
+        "naver_search": {
+          "review_body_access": "snippet_only_or_not_found_direct",
+          "directly_read_reviews": 0,
+          "onsen_related_direct_reviews": 0,
+          "notes": "Korean/Japanese-name queries surfaced Naver AI briefing, Jalan Korean page, unrelated ryokan blogs, and Kisara main building signals. No direct Naver Blog/Cafe stay report for Toki was opened."
+        }
+      },
+      "official_bath_facts_seen": {
+        "official_site_url": "https://www.toba-kisara.com/toki/",
+        "room_open_air_bath": "official homepage says all rooms have open-air bath",
+        "room_bath": "official homepage says all rooms have indoor bath",
+        "footbath": "official room page filter shows footbath-equipped rooms among 10 rooms",
+        "public_bath": "not confirmed as shared public bath",
+        "private_bath_or_family_bath": "no official shared reservable/family bath confirmation; in-room private bath context dominates",
+        "source_claim": "社宮司温泉 / 七栗の湯 / alkaline, almost colorless and odorless claim seen on Rakuten and official surfaces"
+      },
+      "review_signal_keywords": [
+        "露天風呂",
+        "内風呂",
+        "足湯",
+        "温泉",
+        "トロトロ",
+        "すべすべ",
+        "つるつる",
+        "泉質",
+        "プライベート露天風呂"
+      ],
+      "caution_keywords": [
+        "かけ流しではありません",
+        "虫",
+        "蚊",
+        "カルキ",
+        "滑り",
+        "寒い",
+        "説明",
+        "配膳",
+        "ラウンジ",
+        "忘れ物"
+      ],
+      "next_sampling": "A급으로 올리려면 추가 44건 이상이 필요하다. Google Hotels 리뷰 패널을 실제 브라우저에서 장시간 스크롤하거나, Ikkyu/Yahoo 개별 상세 리뷰 URL의 추가 본문/중복 여부를 더 정밀 확인하는 것이 우선이다."
+    }
+  ]
+}

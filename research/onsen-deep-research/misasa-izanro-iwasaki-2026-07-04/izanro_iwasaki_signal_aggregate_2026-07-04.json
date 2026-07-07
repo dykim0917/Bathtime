@@ -1,0 +1,241 @@
+{
+  "research_date": "2026-07-04",
+  "slug": "misasa-izanro-iwasaki",
+  "accommodation_name": "三朝温泉 依山楼岩崎",
+  "name_ko_or_en": "Izanro Iwasaki / 이잔로 이와사키",
+  "data_quality_grade": "A",
+  "grade_reason": "직접 확인 372건, 온천 관련 직접 리뷰 253건, 직접 본문 플랫폼 7개. Rakuten/Jalan 정적 대량 표본에 Google Maps와 Naver Blog, Trip.com, Tripadvisor, Ikkyu 브라우저 표본을 보강했다.",
+  "identity_normalization": {
+    "official_name_ja": "三朝温泉 依山楼岩崎",
+    "name_ko_common": "이잔로 이와사키",
+    "name_en": "Izanro Iwasaki",
+    "ota_names": [
+      "三朝温泉　依山楼　岩崎",
+      "依山楼 岩崎",
+      "Izanro Iwasaki"
+    ],
+    "official_url": "https://izanro.co.jp/",
+    "address": "鳥取県東伯郡三朝町三朝365-1",
+    "onsen_area": "三朝温泉",
+    "id_correction_note": "후보 행에는 Rakuten 5847 / Jalan 322113 표면이 적혀 있었으나, 현 공개 표면은 Rakuten 5840 / Jalan 347748로 정규화했다."
+  },
+  "visible_review_pool_raw_platform_sum": 3807,
+  "visible_review_pool_dedup_caution": "Google 패널의 Trip.com/Tripadvisor 공급자 카드, Ikkyu/Yahoo 70건 계열, Expedia/Hotels 계열은 중복 가능성이 있어 raw sum을 실제 독립 리뷰풀로 해석하면 안 된다.",
+  "direct_review_counts": {
+    "total_direct_reviews_read": 372,
+    "onsen_related_direct_reviews": 253,
+    "direct_body_platform_count": 7,
+    "direct_body_platforms": [
+      "Rakuten Travel",
+      "Jalan",
+      "Google Maps native",
+      "Naver Blog",
+      "Trip.com",
+      "Tripadvisor",
+      "Ikkyu"
+    ]
+  },
+  "platform_direct_counts": {
+    "Rakuten Travel": {
+      "visible_review_count": 189,
+      "direct_reviews_read": 189,
+      "onsen_related_direct_reviews": 107,
+      "review_body_access": "direct_readable"
+    },
+    "Jalan": {
+      "visible_review_count": 1938,
+      "direct_reviews_read": 144,
+      "onsen_related_direct_reviews": 111,
+      "review_body_access": "direct_readable"
+    },
+    "Google Maps native": {
+      "visible_review_count": 1332,
+      "direct_reviews_read": 5,
+      "onsen_related_direct_reviews": 4,
+      "review_body_access": "partial"
+    },
+    "Naver Blog": {
+      "visible_review_count": null,
+      "direct_reviews_read": 1,
+      "onsen_related_direct_reviews": 1,
+      "review_body_access": "direct_readable"
+    },
+    "Trip.com": {
+      "visible_review_count": 31,
+      "direct_reviews_read": 3,
+      "onsen_related_direct_reviews": 3,
+      "review_body_access": "direct_readable"
+    },
+    "Tripadvisor": {
+      "visible_review_count": 156,
+      "direct_reviews_read": 10,
+      "onsen_related_direct_reviews": 9,
+      "review_body_access": "direct_readable"
+    },
+    "Ikkyu": {
+      "visible_review_count": 70,
+      "direct_reviews_read": 20,
+      "onsen_related_direct_reviews": 18,
+      "review_body_access": "direct_readable"
+    },
+    "Yahoo Travel": {
+      "visible_review_count": 70,
+      "direct_reviews_read": 0,
+      "onsen_related_direct_reviews": 0,
+      "review_body_access": "direct_readable",
+      "not_counted_reason": "Ikkyu와 같은 70건 계열로 보여 직접 리뷰 총량에는 중복 합산하지 않음"
+    },
+    "Expedia/Hotels.com": {
+      "visible_review_count": 20,
+      "direct_reviews_read": 0,
+      "onsen_related_direct_reviews": 0,
+      "review_body_access": "partial"
+    },
+    "Naver Cafe": {
+      "visible_review_count": null,
+      "direct_reviews_read": 0,
+      "onsen_related_direct_reviews": 0,
+      "review_body_access": "blocked"
+    }
+  },
+  "official_bath_facts": {
+    "official_url": "https://izanro.co.jp/onsen/",
+    "public_bath": "공식/시설 주장: 회유식 대정원풍로 山の湯, 左の湯/右の湯. 숙박 입욕 시간 체크인-24:00, 05:00-10:00.",
+    "open_air_public_bath": "공식/시설 주장: 山の湯의 정원 노천탕/대정원 노천탕 계열.",
+    "room_open_air_bath": "공식/시설 주장: 일부 특별실/귀빈실/露天風呂付き客室에 원천가케나가시 객실 노천탕.",
+    "room_bath": "일부 객실 내 욕실/반노천 객실 신호. 전 객실 시설로 보지 않음.",
+    "private_bath": "후기 및 일부 표면에서 貸切湯/貸切風呂 신호 있음. 공식 세부 확인은 추가 필요.",
+    "family_bath": "가족탕 명칭은 후기 신호에서만 제한적으로 등장. 객실탕과 합치지 않음.",
+    "source_flow_claim": "공식 객실 페이지와 오른쪽 탕 설명에 源泉かけ流し 표면 확인.",
+    "radium_related_claim": "공식/시설 주장: 三朝温泉 라듐 온천, 飲泉, ラジウム蒸気風呂/ミストサウナ, 現代湯治 계열 표면.",
+    "operating_notes": "左の湯・右の湯는 오전 5시에 남녀 교체. 미스트사우나 이용 시간은 체크인-24:00."
+  },
+  "review_signal_tags": [
+    {
+      "accommodation_name": "三朝温泉 依山楼岩崎",
+      "bath_area": "public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 92,
+      "source_count": 92,
+      "platform_count": 7,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal",
+      "note": "大浴場, 庭園風呂, 回遊式, 山の湯, 右の湯/左の湯가 여러 플랫폼에서 반복된다."
+    },
+    {
+      "accommodation_name": "三朝温泉 依山楼岩崎",
+      "bath_area": "open_air_public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 37,
+      "source_count": 37,
+      "platform_count": 6,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal",
+      "note": "노천탕, 정원 노천, 풍경과 함께 대욕장 회유 경험으로 언급된다."
+    },
+    {
+      "accommodation_name": "三朝温泉 依山楼岩崎",
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 210,
+      "source_count": 210,
+      "platform_count": 7,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal",
+      "note": "三朝温泉, ラジウム, ラドン, 泉質, 湯治, 温まる 계열 신호가 강하게 반복된다."
+    },
+    {
+      "accommodation_name": "三朝温泉 依山楼岩崎",
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 55,
+      "source_count": 55,
+      "platform_count": 5,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal",
+      "note": "飲泉, ラジウム蒸気風呂, ミスト, 吸入 등 라듐 건강/탕치 프레이밍이 반복된다. 이는 공식 효능 주장과 후기 기대 신호를 분리해 표시해야 한다."
+    },
+    {
+      "accommodation_name": "三朝温泉 依山楼岩崎",
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 58,
+      "source_count": 58,
+      "platform_count": 5,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal",
+      "note": "일부 반노천/객실 노천 객실 신호가 반복된다. 전 객실 신호가 아니므로 객실 타입 축에서 분리해야 한다."
+    },
+    {
+      "accommodation_name": "三朝温泉 依山楼岩崎",
+      "bath_area": "private_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "positive",
+      "mention_count": 6,
+      "source_count": 6,
+      "platform_count": 3,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal",
+      "note": "貸切湯/대절탕/가족탕 신호는 있으나 주 신호는 아니다. 객실탕과 합치지 않는다."
+    },
+    {
+      "accommodation_name": "三朝温泉 依山楼岩崎",
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "chlorine_smell",
+      "signal_direction": "negative",
+      "mention_count": 3,
+      "source_count": 3,
+      "platform_count": 1,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal",
+      "note": "塩素/匂い 신호는 소수이며 주류 신호는 아니다."
+    },
+    {
+      "accommodation_name": "三朝温泉 依山楼岩崎",
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "crowding",
+      "signal_direction": "mixed",
+      "mention_count": 8,
+      "source_count": 8,
+      "platform_count": 3,
+      "contradiction_level": "medium",
+      "review_signal_status": "weak_signal",
+      "note": "混雑/空いている/貸切状態가 모두 보이며 시간대·시즌 영향으로 보인다."
+    }
+  ],
+  "management_notes": [
+    "노후감, 청소, 시설 관리 신호가 반복된다. 온천 자체 긍정과 분리해야 한다.",
+    "겨울 또는 이동 동선에서 寒い/온도/노천 이동 불편 신호가 있다.",
+    "대욕장 타월 비치, 객실/대욕장 이동, 송영/예약 안내 관련 운영 신호가 반복된다.",
+    "2025년 左の湯 리뉴얼 이후 긍정 신호와 기존 노후 신호가 함께 남아 있어 시점 분리가 필요하다."
+  ],
+  "grade_completion": {
+    "meets_300_direct_reviews": true,
+    "meets_3_direct_platforms": true,
+    "google_checked_with_aside": true,
+    "naver_checked_with_aside": true,
+    "strata_covered": [
+      "latest reviews",
+      "low-rating reviews",
+      "onsen keyword reviews",
+      "Korean reviews",
+      "room-type-visible reviews",
+      "Japanese OTA reviews",
+      "Google-native reviews",
+      "Naver Blog direct body"
+    ]
+  }
+}

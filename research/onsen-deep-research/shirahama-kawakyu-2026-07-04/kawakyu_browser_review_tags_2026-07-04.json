@@ -1,0 +1,105 @@
+{
+  "research_date": "2026-07-04",
+  "slug": "shirahama-kawakyu",
+  "aside_browser_checked": true,
+  "browser_platforms": {
+    "google_maps": {
+      "source_url": "https://www.google.com/maps/search/?api=1&query=%E3%83%9B%E3%83%86%E3%83%AB%E5%B7%9D%E4%B9%85%20%E7%99%BD%E6%B5%9C",
+      "review_body_access": "partial_direct_readable_via_aside",
+      "rating": 4.2,
+      "visible_review_count": 2348,
+      "rating_distribution": {
+        "5": 1256,
+        "4": 686,
+        "3": 209,
+        "2": 95,
+        "1": 102
+      },
+      "direct_google_native_reviews_read": 9,
+      "onsen_related_google_native_reviews_read": 4,
+      "korean_reviews_visible": "yes; Korean Google-native reviews visible in review tab",
+      "provider_cards_seen": [
+        {
+          "provider": "Rakuten Travel",
+          "rating": null,
+          "visible_review_count": null
+        },
+        {
+          "provider": "Trip.com",
+          "rating": null,
+          "visible_review_count": null
+        },
+        {
+          "provider": "JAPANiCAN.com",
+          "rating": null,
+          "visible_review_count": null
+        },
+        {
+          "provider": "Ikyu.com",
+          "rating": null,
+          "visible_review_count": null
+        },
+        {
+          "provider": "Relux",
+          "rating": null,
+          "visible_review_count": null
+        }
+      ],
+      "short_keywords_seen": [
+        "온천향",
+        "2층 대욕장",
+        "1층 대욕장",
+        "탕의 꽃",
+        "1층과 2층 바뀜",
+        "방 실내 목욕",
+        "Tripadvisor 공급자 카드"
+      ],
+      "notes": "Google-native reviews were opened in the review tab. One Tripadvisor supplier card snippet was visible and was not counted as Google-native direct review."
+    },
+    "naver_search": {
+      "source_url": "https://search.naver.com/search.naver?query=%ED%98%B8%ED%85%94%20%EC%B9%B4%EC%99%80%ED%81%90%20%ED%9B%84%EA%B8%B0%20%EC%8B%9C%EB%9D%BC%ED%95%98%EB%A7%88",
+      "review_body_access": "direct_readable_plus_snippet_only_surfaces",
+      "direct_read_reviews": 1,
+      "onsen_related_direct_reviews": 1,
+      "direct_body_urls": [
+        "https://blog.naver.com/PostView.naver?blogId=rebirth324&logNo=223948015990&redirect=Dlog&widgetTypeCall=true&directAccess=false"
+      ],
+      "snippet_only_surfaces": [
+        "Trip.com Korea 7.1/10, 29 reviews",
+        "Hotels.com/Expedia 9.2/10, 24 reviews",
+        "Naver Cafe promotional-looking result not counted as direct review"
+      ],
+      "short_keywords_seen": [
+        "대욕장 두 군데",
+        "매일 남탕 여탕 바뀜",
+        "규모도 꽤 크고",
+        "사우나 시설",
+        "노천이 기분좋은 계절",
+        "방 안 욕조",
+        "먼지냄새"
+      ],
+      "notes": "One exact Korean Naver Blog body was opened and counted. Search snippets, OTA summaries, and cafe promotional-looking surfaces were not counted as direct reviews."
+    },
+    "yahoo_travel": {
+      "source_url": "https://travel.yahoo.co.jp/00000557/review/",
+      "review_body_access": "snippet_only_in_web_surface_this_pass",
+      "rating": 4.51,
+      "visible_review_count": 601,
+      "direct_read_reviews": 0,
+      "onsen_related_direct_reviews": 0,
+      "short_keywords_seen": [
+        "お風呂は混み合わなければ",
+        "温泉・お風呂 4.58"
+      ],
+      "notes": "Yahoo review surface was identified, but not added to direct-read count in this pass because direct bodies were already secured from Rakuten, Jalan, JTB, Google, and Naver."
+    },
+    "trip_com_korea": {
+      "source_url": "https://kr.trip.com/hotels/shirahama-hotel-detail-704509/hotel-kawakyu/",
+      "review_body_access": "snippet_only",
+      "rating": "7.1/10",
+      "visible_review_count": 29,
+      "direct_read_reviews": 0,
+      "onsen_related_direct_reviews": 0
+    }
+  }
+}

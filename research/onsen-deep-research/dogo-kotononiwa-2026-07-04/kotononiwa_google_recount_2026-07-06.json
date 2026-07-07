@@ -1,0 +1,130 @@
+{
+  "research_date": "2026-07-06",
+  "slug": "dogo-kotononiwa",
+  "name_ja": "道後温泉 葛城 琴の庭",
+  "source": "Google Maps / Google-native reviews",
+  "method": "Aside Browser long-scroll recount; replaces the earlier 16-review Google line rather than adding to it",
+  "rating": 4.3,
+  "visible_review_count": 94,
+  "rating_distribution": {
+    "5_star": 64,
+    "4_star": 11,
+    "3_star": 10,
+    "2_star": 1,
+    "1_star": 8
+  },
+  "keyword_pools_seen": {
+    "목욕": 15,
+    "요리": 10,
+    "음료": 9,
+    "가격": 8,
+    "맛": 6,
+    "도고 온천 본관": 5,
+    "어메니티": 5,
+    "온천 마을": 4,
+    "화물": 3,
+    "유카타": 3
+  },
+  "counting_policy": {
+    "counted_as_direct": "Google-native author cards where a review body, translated body, or body-level signal text was visible in Aside Browser",
+    "excluded_from_direct": [
+      "rating-only cards without review body",
+      "Google provider cards or OTA cards",
+      "Google review keyword chips without opened body",
+      "search snippets"
+    ],
+    "dedupe_note": "This recount replaces the earlier Google-native 16 direct / 14 onsen line. It is not cumulative with the earlier Google line."
+  },
+  "recount_result": {
+    "directly_read_reviews": 55,
+    "onsen_related_direct_reviews": 39,
+    "review_body_access": "partial_direct_readable_via_aside",
+    "google_provider_reviews_counted": 0,
+    "rating_only_or_no_body_cards_excluded": 39
+  },
+  "author_keyword_samples": [
+    {
+      "author": "K Suzuki",
+      "original_keyword": "방이있는 노천탕",
+      "bath_area": "room_open_air_bath",
+      "onsen_related": true
+    },
+    {
+      "author": "まじめんたる",
+      "original_keyword": "방의 목욕",
+      "bath_area": "room_bath",
+      "onsen_related": true
+    },
+    {
+      "author": "masa kata",
+      "original_keyword": "노천탕",
+      "bath_area": "room_open_air_bath",
+      "onsen_related": true
+    },
+    {
+      "author": "Chi.",
+      "original_keyword": "客室露天탕",
+      "bath_area": "room_open_air_bath",
+      "onsen_related": true
+    },
+    {
+      "author": "つとむ",
+      "original_keyword": "源泉掛け流しの半露天湯",
+      "bath_area": "room_open_air_bath",
+      "onsen_related": true
+    },
+    {
+      "author": "わわわりりり",
+      "original_keyword": "露天탕の温泉質",
+      "bath_area": "room_open_air_bath",
+      "onsen_related": true
+    },
+    {
+      "author": "saya",
+      "original_keyword": "温泉, 도고 원천, 온도 조정",
+      "bath_area": "room_bath",
+      "onsen_related": true
+    },
+    {
+      "author": "ちゃき",
+      "original_keyword": "방에 있는 온泉탕 뜨겁고",
+      "bath_area": "room_bath",
+      "onsen_related": true
+    },
+    {
+      "author": "nobutana",
+      "original_keyword": "방에 온천이 있는 것만 좋은 점",
+      "bath_area": "room_bath",
+      "onsen_related": true
+    },
+    {
+      "author": "m M",
+      "original_keyword": "객실 내 노천탕",
+      "bath_area": "room_open_air_bath",
+      "onsen_related": true
+    },
+    {
+      "author": "Yu-De Liao",
+      "original_keyword": "실내 온천탕",
+      "bath_area": "room_bath",
+      "onsen_related": true
+    },
+    {
+      "author": "濱谷忠樹",
+      "original_keyword": "좋은 물",
+      "bath_area": "facility_wide",
+      "onsen_related": true
+    }
+  ],
+  "updated_total_if_applied": {
+    "previous_total_direct": 211,
+    "previous_total_onsen": 161,
+    "previous_google_direct": 16,
+    "previous_google_onsen": 14,
+    "new_total_direct": 250,
+    "new_total_onsen": 186,
+    "still_needed_for_300": 50,
+    "data_quality_grade_after_recount": "B"
+  },
+  "access_gap": "Google visible pool remains 94, but the long-scroll surface still includes rating-only/no-body cards. Those were not counted as direct review bodies."
+}

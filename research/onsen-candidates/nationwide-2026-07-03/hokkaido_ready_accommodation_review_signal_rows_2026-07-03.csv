@@ -1,0 +1,147 @@
+slug,accommodation_name,bath_area,bath_area_confidence,signal_type,signal_direction,mention_count,source_count,platform_count,contradiction_level,review_signal_status
+toyako-lake-suite-konosisu,ザ・レイクスイート湖の栖,room_open_air_bath,specific,room_bath_hot_spring,mixed,205,205,7,low,strong_signal
+toyako-lake-suite-konosisu,ザ・レイクスイート湖の栖,open_air_public_bath,specific,public_bath_hot_spring,positive,102,102,7,low,strong_signal
+toyako-lake-suite-konosisu,ザ・レイクスイート湖の栖,public_bath,specific,public_bath_hot_spring,mixed,81,81,7,low,strong_signal
+toyako-lake-suite-konosisu,ザ・レイクスイート湖の栖,room_open_air_bath,specific,water_texture,mixed,52,52,7,medium,strong_signal
+toyako-lake-suite-konosisu,ザ・レイクスイート湖の栖,room_open_air_bath,specific,booking_confusion,negative,56,56,7,medium,strong_signal
+toyako-lake-suite-konosisu,ザ・レイクスイート湖の栖,facility_wide,facility_wide,crowding,negative,34,34,6,medium,strong_signal
+toyako-lake-suite-konosisu,ザ・レイクスイート湖の栖,room_open_air_bath,specific,weak_onsen_feeling,negative,11,11,4,medium,weak_signal
+toyako-lake-suite-konosisu,ザ・レイクスイート湖の栖,facility_wide,facility_wide,booking_confusion,negative,45,45,6,medium,strong_signal
+jozankei-suizantei,定山渓第一寶亭留 翠山亭,room_bath,specific,room_bath_hot_spring,positive,112,112,6,low,strong_signal
+jozankei-suizantei,定山渓第一寶亭留 翠山亭,public_bath,specific,public_bath_hot_spring,positive,68,68,6,low,strong_signal
+jozankei-suizantei,定山渓第一寶亭留 翠山亭,room_open_air_bath,specific,room_bath_hot_spring,mixed,39,39,5,medium,strong_signal
+jozankei-suizantei,定山渓第一寶亭留 翠山亭,private_bath,probable,private_bath_experience,mixed,21,21,3,medium,moderate_signal
+jozankei-suizantei,定山渓第一寶亭留 翠山亭,room_bath,specific,weak_onsen_feeling,negative,11,11,3,medium,weak_signal
+jozankei-suizantei,定山渓第一寶亭留 翠山亭,room_bath,specific,crowding,mixed,18,18,4,low,moderate_signal
+jozankei-suizantei,定山渓第一寶亭留 翠山亭,room_bath,specific,booking_confusion,negative,17,17,4,low,moderate_signal
+jozankei-suizantei,定山渓第一寶亭留 翠山亭,room_bath,specific,water_texture,positive,28,28,4,low,moderate_signal
+jozankei-grand-blissen,グランドブリッセンホテル定山渓,room_bath,specific,room_bath_hot_spring,mixed,216,216,3,medium,strong_signal
+jozankei-grand-blissen,グランドブリッセンホテル定山渓,room_bath,specific,public_bath_hot_spring,mixed,114,114,3,medium,strong_signal
+jozankei-grand-blissen,グランドブリッセンホテル定山渓,room_open_air_bath,specific,room_bath_hot_spring,mixed,95,95,3,medium,strong_signal
+jozankei-grand-blissen,グランドブリッセンホテル定山渓,room_open_air_bath,specific,public_bath_hot_spring,mixed,18,18,2,medium,moderate_signal
+jozankei-grand-blissen,グランドブリッセンホテル定山渓,facility_wide,facility_wide,water_texture,positive,28,28,3,none,moderate_signal
+jozankei-grand-blissen,グランドブリッセンホテル定山渓,public_bath,specific,public_bath_hot_spring,mixed,43,43,3,medium,strong_signal
+jozankei-grand-blissen,グランドブリッセンホテル定山渓,public_bath,specific,water_texture,mixed,3,3,1,medium,weak_signal
+jozankei-grand-blissen,グランドブリッセンホテル定山渓,public_bath,specific,crowding,negative,32,32,3,none,strong_signal
+jozankei-grand-blissen,グランドブリッセンホテル定山渓,room_bath,specific,booking_confusion,negative,88,88,3,none,strong_signal
+jozankei-grand-blissen,グランドブリッセンホテル定山渓,room_bath,specific,crowding,negative,4,4,1,none,weak_signal
+jozankei-grand-blissen,グランドブリッセンホテル定山渓,room_bath,specific,water_texture,mixed,6,6,1,medium,weak_signal
+jozankei-grand-blissen,グランドブリッセンホテル定山渓,room_open_air_bath,specific,booking_confusion,negative,2,2,2,none,moderate_signal
+jozankei-grand-blissen,グランドブリッセンホテル定山渓,room_open_air_bath,specific,water_texture,mixed,2,2,1,medium,weak_signal
+jozankei-grand-blissen,グランドブリッセンホテル定山渓,unclear,unclear,booking_confusion,negative,2,2,2,none,moderate_signal
+jozankei-grand-blissen,グランドブリッセンホテル定山渓,room_open_air_bath,specific,crowding,negative,3,3,2,none,moderate_signal
+jozankei-grand-blissen,グランドブリッセンホテル定山渓,room_bath,specific,weak_onsen_feeling,negative,6,6,2,none,weak_signal
+jozankei-grand-blissen,グランドブリッセンホテル定山渓,facility_wide,facility_wide,weak_onsen_feeling,negative,1,1,1,none,insufficient
+yunokawa-hanabishi,函館・湯の川温泉 花びしホテル,room_open_air_bath,specific,room_bath_hot_spring,mixed,38,38,3,medium,strong_signal
+yunokawa-hanabishi,函館・湯の川温泉 花びしホテル,public_bath,specific,public_bath_hot_spring,mixed,105,105,3,medium,strong_signal
+yunokawa-hanabishi,函館・湯の川温泉 花びしホテル,room_bath,specific,room_bath_hot_spring,mixed,35,35,3,medium,strong_signal
+yunokawa-hanabishi,函館・湯の川温泉 花びしホテル,room_bath,specific,public_bath_hot_spring,mixed,4,4,2,medium,moderate_signal
+yunokawa-hanabishi,函館・湯の川温泉 花びしホテル,room_bath,specific,water_texture,mixed,3,3,2,medium,moderate_signal
+yunokawa-hanabishi,函館・湯の川温泉 花びしホテル,unclear,unclear,booking_confusion,negative,7,7,1,none,weak_signal
+yunokawa-hanabishi,函館・湯の川温泉 花びしホテル,room_open_air_bath,specific,booking_confusion,neutral,2,2,1,none,weak_signal
+yunokawa-hanabishi,函館・湯の川温泉 花びしホテル,room_open_air_bath,specific,public_bath_hot_spring,mixed,6,6,2,medium,moderate_signal
+yunokawa-hanabishi,函館・湯の川温泉 花びしホテル,facility_wide,facility_wide,booking_confusion,negative,24,24,3,none,moderate_signal
+yunokawa-hanabishi,函館・湯の川温泉 花びしホテル,public_bath,specific,water_texture,mixed,2,2,1,medium,weak_signal
+yunokawa-hanabishi,函館・湯の川温泉 花びしホテル,public_bath,specific,crowding,negative,1,1,1,none,insufficient
+yunokawa-hanabishi,函館・湯の川温泉 花びしホテル,facility_wide,facility_wide,water_texture,mixed,31,31,2,medium,strong_signal
+yunokawa-hanabishi,函館・湯の川温泉 花びしホテル,room_bath,specific,booking_confusion,negative,12,12,2,none,moderate_signal
+yunokawa-hanabishi,函館・湯の川温泉 花びしホテル,room_open_air_bath,specific,water_texture,mixed,2,2,1,medium,weak_signal
+yunokawa-hanabishi,函館・湯の川温泉 花びしホテル,unclear,unclear,weak_onsen_feeling,negative,1,1,1,none,insufficient
+yunokawa-hanabishi,函館・湯の川温泉 花びしホテル,facility_wide,facility_wide,crowding,negative,16,16,2,none,moderate_signal
+yunokawa-nagisatei,湯の川プリンスホテル渚亭,room_open_air_bath,specific,room_bath_hot_spring,mixed,198,198,7,medium,strong_signal
+yunokawa-nagisatei,湯の川プリンスホテル渚亭,public_bath,specific,public_bath_hot_spring,mixed,30,30,6,low,strong_signal
+yunokawa-nagisatei,湯の川プリンスホテル渚亭,room_open_air_bath,specific,water_texture,mixed,74,74,5,medium,strong_signal
+yunokawa-nagisatei,湯の川プリンスホテル渚亭,room_open_air_bath,specific,booking_confusion,negative,45,45,5,low,strong_signal
+yunokawa-nagisatei,湯の川プリンスホテル渚亭,room_open_air_bath,specific,crowding,mixed,18,18,3,low,moderate_signal
+yunokawa-nagisatei,湯の川プリンスホテル渚亭,public_bath,specific,crowding,positive,8,8,3,low,weak_signal
+yunokawa-nagisatei,湯の川プリンスホテル渚亭,public_bath,specific,weak_onsen_feeling,negative,8,8,3,medium,weak_signal
+yunokawa-nagisatei,湯の川プリンスホテル渚亭,room_open_air_bath,specific,weak_onsen_feeling,negative,8,8,3,medium,weak_signal
+yunokawa-nagisatei,湯の川プリンスホテル渚亭,room_bath,specific,room_bath_hot_spring,positive,4,4,2,low,weak_signal
+noboribetsu-daiichi-takimotokan,第一滝本館,public_bath,specific,public_bath_hot_spring,mixed,138,138,8,low,strong_signal
+noboribetsu-daiichi-takimotokan,第一滝本館,open_air_public_bath,specific,public_bath_hot_spring,positive,63,63,7,low,strong_signal
+noboribetsu-daiichi-takimotokan,第一滝本館,facility_wide,facility_wide,water_texture,positive,53,53,7,low,strong_signal
+noboribetsu-daiichi-takimotokan,第一滝本館,public_bath,specific,water_texture,positive,45,45,7,low,strong_signal
+noboribetsu-daiichi-takimotokan,第一滝本館,public_bath,specific,crowding,mixed,32,32,6,medium,moderate_signal
+noboribetsu-daiichi-takimotokan,第一滝本館,facility_wide,facility_wide,booking_confusion,negative,14,14,5,low,moderate_signal
+noboribetsu-daiichi-takimotokan,第一滝本館,room_open_air_bath,specific,room_bath_hot_spring,positive,8,8,3,low,weak_signal
+noboribetsu-daiichi-takimotokan,第一滝本館,room_bath,specific,room_bath_hot_spring,mixed,8,8,1,medium,weak_signal
+noboribetsu-daiichi-takimotokan,第一滝本館,facility_wide,facility_wide,weak_onsen_feeling,negative,11,11,5,medium,weak_signal
+noboribetsu-mahoroba,ホテルまほろば,public_bath,specific,public_bath_hot_spring,mixed,138,138,8,low,strong_signal
+noboribetsu-mahoroba,ホテルまほろば,open_air_public_bath,specific,public_bath_hot_spring,positive,43,43,8,low,strong_signal
+noboribetsu-mahoroba,ホテルまほろば,facility_wide,facility_wide,water_texture,mixed,72,72,8,medium,strong_signal
+noboribetsu-mahoroba,ホテルまほろば,public_bath,specific,crowding,mixed,51,51,6,medium,strong_signal
+noboribetsu-mahoroba,ホテルまほろば,room_open_air_bath,specific,room_bath_hot_spring,positive,29,29,4,low,moderate_signal
+noboribetsu-mahoroba,ホテルまほろば,facility_wide,facility_wide,weak_onsen_feeling,negative,6,6,3,medium,weak_signal
+noboribetsu-mahoroba,ホテルまほろば,facility_wide,facility_wide,booking_confusion,neutral,28,28,4,low,moderate_signal
+noboribetsu-grand,祝いの宿 登別グランドホテル,public_bath,specific,public_bath_hot_spring,mixed,157,157,8,low,strong_signal
+noboribetsu-grand,祝いの宿 登別グランドホテル,open_air_public_bath,specific,public_bath_hot_spring,positive,29,29,7,low,moderate_signal
+noboribetsu-grand,祝いの宿 登別グランドホテル,facility_wide,facility_wide,water_texture,mixed,69,69,8,medium,strong_signal
+noboribetsu-grand,祝いの宿 登別グランドホテル,public_bath,specific,crowding,mixed,27,27,6,medium,moderate_signal
+noboribetsu-grand,祝いの宿 登別グランドホテル,family_bath,specific,private_bath_experience,mixed,5,5,2,low,weak_signal
+noboribetsu-grand,祝いの宿 登別グランドホテル,room_open_air_bath,specific,booking_confusion,negative,34,34,4,medium,strong_signal
+noboribetsu-grand,祝いの宿 登別グランドホテル,facility_wide,facility_wide,weak_onsen_feeling,negative,6,6,3,medium,weak_signal
+noboribetsu-manseikaku,登別万世閣,public_bath,specific,public_bath_hot_spring,mixed,148,148,7,low,strong_signal
+noboribetsu-manseikaku,登別万世閣,open_air_public_bath,specific,public_bath_hot_spring,mixed,47,47,6,medium,strong_signal
+noboribetsu-manseikaku,登別万世閣,facility_wide,facility_wide,water_texture,mixed,88,88,7,medium,strong_signal
+noboribetsu-manseikaku,登別万世閣,public_bath,specific,crowding,mixed,43,43,5,medium,strong_signal
+noboribetsu-manseikaku,登別万世閣,private_bath,specific,private_bath_experience,neutral,2,2,1,none,insufficient
+noboribetsu-manseikaku,登別万世閣,room_open_air_bath,specific,room_bath_hot_spring,positive,5,5,2,low,weak_signal
+noboribetsu-manseikaku,登別万世閣,room_bath,specific,booking_confusion,negative,8,8,3,medium,weak_signal
+noboribetsu-manseikaku,登別万世閣,facility_wide,facility_wide,weak_onsen_feeling,negative,14,14,4,medium,moderate_signal
+yunokawa-heiseikan-shiosaitei,平成館 しおさい亭,room_open_air_bath,specific,room_bath_hot_spring,mixed,101,101,6,medium,strong_signal
+yunokawa-heiseikan-shiosaitei,平成館 しおさい亭,public_bath,specific,public_bath_hot_spring,mixed,47,47,6,medium,strong_signal
+yunokawa-heiseikan-shiosaitei,平成館 しおさい亭,open_air_public_bath,probable,public_bath_hot_spring,mixed,22,22,5,medium,moderate_signal
+yunokawa-heiseikan-shiosaitei,平成館 しおさい亭,room_open_air_bath,specific,water_texture,mixed,42,42,5,medium,strong_signal
+yunokawa-heiseikan-shiosaitei,平成館 しおさい亭,public_bath,specific,water_texture,mixed,19,19,5,medium,moderate_signal
+yunokawa-heiseikan-shiosaitei,平成館 しおさい亭,room_open_air_bath,specific,booking_confusion,negative,19,19,4,medium,moderate_signal
+yunokawa-heiseikan-shiosaitei,平成館 しおさい亭,facility_wide,facility_wide,crowding,negative,16,16,4,low,moderate_signal
+yunokawa-heiseikan-shiosaitei,平成館 しおさい亭,facility_wide,facility_wide,booking_confusion,negative,16,16,4,low,moderate_signal
+yunokawa-heiseikan-shiosaitei,平成館 しおさい亭,room_bath,specific,room_bath_hot_spring,mixed,5,1,1,medium,weak_signal
+yunokawa-heiseikan-shiosaitei,平成館 しおさい亭,unclear,unclear,weak_onsen_feeling,negative,8,8,2,medium,weak_signal
+noboribetsu-takinoya,登別温泉郷 滝乃家,room_open_air_bath,specific,room_bath_hot_spring,mixed,92,92,4,medium,strong_signal
+noboribetsu-takinoya,登別温泉郷 滝乃家,room_bath,specific,room_bath_hot_spring,mixed,124,124,4,medium,strong_signal
+noboribetsu-takinoya,登別温泉郷 滝乃家,public_bath,specific,public_bath_hot_spring,mixed,46,46,4,medium,strong_signal
+noboribetsu-takinoya,登別温泉郷 滝乃家,open_air_public_bath,specific,public_bath_hot_spring,positive,20,20,4,low,moderate_signal
+noboribetsu-takinoya,登別温泉郷 滝乃家,facility_wide,facility_wide,water_texture,positive,62,62,4,low,strong_signal
+noboribetsu-takinoya,登別温泉郷 滝乃家,public_bath,specific,crowding,positive,32,32,4,low,strong_signal
+noboribetsu-takinoya,登別温泉郷 滝乃家,room_bath,specific,booking_confusion,negative,87,87,4,medium,strong_signal
+noboribetsu-takinoya,登別温泉郷 滝乃家,room_bath,specific,weak_onsen_feeling,negative,8,8,4,medium,weak_signal
+noboribetsu-takinoya,登別温泉郷 滝乃家,open_air_public_bath,specific,insects,negative,3,3,2,medium,insufficient
+noboribetsu-hanayura,旅亭 花ゆら,room_open_air_bath,specific,room_bath_hot_spring,positive,151,151,8,medium,strong_signal
+noboribetsu-hanayura,旅亭 花ゆら,room_bath,specific,room_bath_hot_spring,positive,60,60,8,medium,strong_signal
+noboribetsu-hanayura,旅亭 花ゆら,public_bath,specific,public_bath_hot_spring,mixed,49,49,8,medium,strong_signal
+noboribetsu-hanayura,旅亭 花ゆら,open_air_public_bath,specific,public_bath_hot_spring,positive,46,46,7,low,strong_signal
+noboribetsu-hanayura,旅亭 花ゆら,facility_wide,facility_wide,water_texture,positive,57,57,8,low,strong_signal
+noboribetsu-hanayura,旅亭 花ゆら,room_open_air_bath,specific,booking_confusion,negative,18,18,6,medium,moderate_signal
+noboribetsu-hanayura,旅亭 花ゆら,room_open_air_bath,specific,crowding,mixed,15,15,6,low,moderate_signal
+noboribetsu-hanayura,旅亭 花ゆら,room_open_air_bath,specific,temperature_control,mixed,13,13,5,medium,weak_signal
+noboribetsu-hanayura,旅亭 花ゆら,room_open_air_bath,specific,insects,negative,7,7,3,medium,weak_signal
+yunokawa-heiseikan-hanatsuki,平成館 しおさい亭 別館 花月,room_open_air_bath,specific,room_bath_hot_spring,positive,206,206,6,low,strong_signal
+yunokawa-heiseikan-hanatsuki,平成館 しおさい亭 別館 花月,room_open_air_bath,specific,public_bath_hot_spring,mixed,22,22,5,medium,moderate_signal
+yunokawa-heiseikan-hanatsuki,平成館 しおさい亭 別館 花月,room_open_air_bath,specific,water_texture,mixed,31,31,6,medium,strong_signal
+yunokawa-heiseikan-hanatsuki,平成館 しおさい亭 別館 花月,room_open_air_bath,specific,booking_confusion,negative,15,15,4,low,moderate_signal
+yunokawa-heiseikan-hanatsuki,平成館 しおさい亭 別館 花月,public_bath,specific,public_bath_hot_spring,mixed,37,37,5,medium,strong_signal
+yunokawa-heiseikan-hanatsuki,平成館 しおさい亭 別館 花月,room_open_air_bath,specific,temperature_control,mixed,34,34,5,medium,strong_signal
+yunokawa-heiseikan-hanatsuki,平成館 しおさい亭 別館 花月,facility_wide,facility_wide,aged_facility,negative,17,17,3,medium,moderate_signal
+jozankei-chalet-ivy,シャレーアイビー定山渓,room_bath,specific,room_bath_hot_spring,positive,92,92,12,low,strong_signal
+jozankei-chalet-ivy,シャレーアイビー定山渓,room_open_air_bath,probable,room_bath_hot_spring,mixed,34,34,9,medium,strong_signal
+jozankei-chalet-ivy,シャレーアイビー定山渓,public_bath,specific,public_bath_hot_spring,positive,32,32,9,medium,strong_signal
+jozankei-chalet-ivy,シャレーアイビー定山渓,room_bath,specific,water_texture,positive,34,34,9,low,strong_signal
+jozankei-chalet-ivy,シャレーアイビー定山渓,room_bath,specific,booking_confusion,negative,20,20,8,medium,moderate_signal
+jozankei-chalet-ivy,シャレーアイビー定山渓,room_bath,specific,weak_onsen_feeling,negative,12,12,6,medium,weak_signal
+jozankei-chalet-ivy,シャレーアイビー定山渓,room_bath,specific,privacy_or_glass_bath,negative,18,18,8,medium,moderate_signal
+noboribetsu-bourou-noguchi,望楼NOGUCHI登別,room_bath,specific,room_bath_hot_spring,positive,176,176,11,low,strong_signal
+noboribetsu-bourou-noguchi,望楼NOGUCHI登別,room_bath,specific,water_texture,positive,104,104,10,low,strong_signal
+noboribetsu-bourou-noguchi,望楼NOGUCHI登別,public_bath,specific,public_bath_hot_spring,mixed,70,70,9,medium,strong_signal
+noboribetsu-bourou-noguchi,望楼NOGUCHI登別,room_open_air_bath,probable,room_bath_hot_spring,mixed,39,39,7,medium,strong_signal
+noboribetsu-bourou-noguchi,望楼NOGUCHI登別,public_bath,specific,water_texture,positive,48,48,8,low,strong_signal
+noboribetsu-bourou-noguchi,望楼NOGUCHI登別,room_bath,specific,crowding,negative,13,13,5,low,moderate_signal
+noboribetsu-bourou-noguchi,望楼NOGUCHI登別,room_bath,specific,booking_confusion,negative,12,12,5,low,moderate_signal
+noboribetsu-bourou-noguchi,望楼NOGUCHI登別,room_bath,specific,weak_onsen_feeling,negative,9,9,4,medium,weak_signal
+noboribetsu-bourou-noguchi,望楼NOGUCHI登別,room_bath,specific,cleanliness_maintenance,negative,12,12,5,medium,moderate_signal
+tokachigawa-seijakubou,全室源泉かけ流し露天風呂付きの宿 清寂房《十勝川モール温泉》,room_open_air_bath,specific,room_bath_hot_spring,positive,250,250,8,low,strong_signal
+tokachigawa-seijakubou,全室源泉かけ流し露天風呂付きの宿 清寂房《十勝川モール温泉》,room_open_air_bath,specific,water_texture,positive,210,210,8,low,strong_signal
+tokachigawa-seijakubou,全室源泉かけ流し露天風呂付きの宿 清寂房《十勝川モール温泉》,public_bath,specific,public_bath_hot_spring,mixed,55,55,6,medium,strong_signal
+tokachigawa-seijakubou,全室源泉かけ流し露天風呂付きの宿 清寂房《十勝川モール温泉》,room_bath,specific,room_bath_hot_spring,positive,38,38,6,low,strong_signal
+tokachigawa-seijakubou,全室源泉かけ流し露天風呂付きの宿 清寂房《十勝川モール温泉》,room_open_air_bath,specific,booking_confusion,negative,18,18,6,medium,moderate_signal
+tokachigawa-seijakubou,全室源泉かけ流し露天風呂付きの宿 清寂房《十勝川モール温泉》,room_open_air_bath,specific,weak_onsen_feeling,negative,8,8,4,medium,weak_signal

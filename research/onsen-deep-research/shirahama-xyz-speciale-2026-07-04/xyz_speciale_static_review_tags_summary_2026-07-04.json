@@ -1,0 +1,95 @@
+{
+  "research_date": "2026-07-04",
+  "slug": "shirahama-xyz-speciale",
+  "total_direct_extracted_static": 37,
+  "onsen_related_body_static": 23,
+  "direct_body_platforms_static": 2,
+  "by_platform": {
+    "Rakuten Travel": {
+      "direct": 20,
+      "onsen_body": 12
+    },
+    "Jalan": {
+      "direct": 17,
+      "onsen_body": 11
+    }
+  },
+  "visible_review_pool_static": {
+    "rakuten": 20,
+    "jalan": 77,
+    "jtb": null
+  },
+  "bath_area_tags": {
+    "room_open_air_bath": 24,
+    "room_bath": 25
+  },
+  "signal_type_tags": {
+    "room_bath_hot_spring": 28,
+    "water_texture": 20,
+    "booking_confusion": 25
+  },
+  "caution_tags": {
+    "view_privacy": 26,
+    "access_booking": 25,
+    "room_bath_operation": 3,
+    "price_expectation": 3,
+    "insects": 2,
+    "children_family": 6,
+    "cleanliness_aging": 2
+  },
+  "body_keywords_top": {
+    "レーザー": 19,
+    "温泉": 18,
+    "海": 18,
+    "露天": 15,
+    "露天風呂": 14,
+    "ロールスロイス": 12,
+    "絶景": 9,
+    "星空": 6,
+    "プライベート": 5,
+    "椿温泉": 5,
+    "開閉": 3,
+    "客室露天": 2,
+    "客室露天風呂": 2,
+    "部屋食": 2,
+    "高い": 2,
+    "ビーチ": 2,
+    "部屋風呂": 2,
+    "予約": 2,
+    "リモコン": 1,
+    "目隠し": 1,
+    "オーシャンビュー": 1,
+    "虫": 1,
+    "蚊": 1,
+    "値段": 1,
+    "ヌルヌル": 1,
+    "眺望": 1,
+    "湯質": 1,
+    "トロトロ": 1,
+    "カメムシ": 1,
+    "掃除": 1,
+    "送迎": 1,
+    "ミラバス": 1,
+    "内湯": 1,
+    "白浜温泉": 1,
+    "泉質": 1,
+    "価格": 1,
+    "露天風呂付": 1,
+    "露天風呂付き": 1
+  },
+  "scores": {
+    "3": 1,
+    "4": 2,
+    "5": 17,
+    "null": 17
+  },
+  "collection_stats": {
+    "rakuten_offset_0": 20,
+    "rakuten_offset_20": 0,
+    "jalan_1": 17,
+    "jalan_2": 17,
+    "jalan_3": 17,
+    "jalan_4": 17,
+    "jtb_blocks": 0
+  }
+}

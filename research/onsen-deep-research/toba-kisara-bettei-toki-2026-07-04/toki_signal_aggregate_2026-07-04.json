@@ -1,0 +1,98 @@
+[
+  {
+    "accommodation_name": "季さら別邸 刻",
+    "bath_area": "room_open_air_bath",
+    "bath_area_confidence": "specific",
+    "signal_type": "room_bath_hot_spring",
+    "signal_direction": "positive",
+    "mention_count": 172,
+    "source_count": 172,
+    "platform_count": 6,
+    "contradiction_level": "low",
+    "review_signal_status": "strong_signal"
+  },
+  {
+    "accommodation_name": "季さら別邸 刻",
+    "bath_area": "room_bath",
+    "bath_area_confidence": "specific",
+    "signal_type": "room_bath_hot_spring",
+    "signal_direction": "positive",
+    "mention_count": 91,
+    "source_count": 91,
+    "platform_count": 6,
+    "contradiction_level": "low",
+    "review_signal_status": "strong_signal"
+  },
+  {
+    "accommodation_name": "季さら別邸 刻",
+    "bath_area": "facility_wide",
+    "bath_area_confidence": "facility_wide",
+    "signal_type": "water_texture",
+    "signal_direction": "positive",
+    "mention_count": 86,
+    "source_count": 86,
+    "platform_count": 6,
+    "contradiction_level": "low",
+    "review_signal_status": "strong_signal"
+  },
+  {
+    "accommodation_name": "季さら別邸 刻",
+    "bath_area": "room_open_air_bath",
+    "bath_area_confidence": "specific",
+    "signal_type": "private_bath_experience",
+    "signal_direction": "positive",
+    "mention_count": 151,
+    "source_count": 151,
+    "platform_count": 6,
+    "contradiction_level": "low",
+    "review_signal_status": "strong_signal"
+  },
+  {
+    "accommodation_name": "季さら別邸 刻",
+    "bath_area": "facility_wide",
+    "bath_area_confidence": "facility_wide",
+    "signal_type": "booking_confusion",
+    "signal_direction": "mixed",
+    "mention_count": 44,
+    "source_count": 44,
+    "platform_count": 5,
+    "contradiction_level": "medium",
+    "review_signal_status": "strong_signal"
+  },
+  {
+    "accommodation_name": "季さら別邸 刻",
+    "bath_area": "room_open_air_bath",
+    "bath_area_confidence": "specific",
+    "signal_type": "weak_onsen_feeling",
+    "signal_direction": "negative",
+    "mention_count": 2,
+    "source_count": 2,
+    "platform_count": 2,
+    "contradiction_level": "low",
+    "review_signal_status": "weak_signal"
+  },
+  {
+    "accommodation_name": "季さら別邸 刻",
+    "bath_area": "room_open_air_bath",
+    "bath_area_confidence": "specific",
+    "signal_type": "chlorine_smell",
+    "signal_direction": "negative",
+    "mention_count": 2,
+    "source_count": 2,
+    "platform_count": 1,
+    "contradiction_level": "low",
+    "review_signal_status": "weak_signal"
+  },
+  {
+    "accommodation_name": "季さら別邸 刻",
+    "bath_area": "footbath",
+    "bath_area_confidence": "specific",
+    "signal_type": "private_bath_experience",
+    "signal_direction": "positive",
+    "mention_count": 18,
+    "source_count": 18,
+    "platform_count": 5,
+    "contradiction_level": "low",
+    "review_signal_status": "moderate_signal"
+  }
+]

@@ -1,0 +1,58 @@
+{
+  "summary": {
+    "generated_at": "2026-07-04T04:19:03.447Z",
+    "lodging": "道後温泉 琴の庭",
+    "data_quality_grade": "B",
+    "why_not_A": "Direct readable review bodies reached 184. Aside confirmed major accessible surfaces: Rakuten, Jalan latest/archive, Ikkyu, Yahoo Travel, Google Hotels, Naver Search. Remaining visible pools were Google-native 93 inaccessible for direct bodies, Naver mostly snippet/irrelevant, JTB 0 reviews, 4travel/Agoda not found or snippet only.",
+    "total_direct_reviews": 184,
+    "onsen_related_direct_reviews": 136,
+    "direct_body_platform_count": 5,
+    "by_platform": {
+      "Rakuten Travel": {
+        "direct": 18,
+        "onsen": 12
+      },
+      "Jalan": {
+        "direct": 15,
+        "onsen": 15
+      },
+      "Jalan Archive": {
+        "direct": 56,
+        "onsen": 42
+      },
+      "Ikkyu": {
+        "direct": 70,
+        "onsen": 47
+      },
+      "Yahoo Travel": {
+        "direct": 25,
+        "onsen": 20
+      }
+    },
+    "visible_review_pool_minimum": 350,
+    "visible_review_pool_basis": {
+      "google_hotels": 93,
+      "rakuten": 18,
+      "jalan": 71,
+      "ikkyu": 84,
+      "yahoo_travel": 84,
+      "jtb": 0
+    },
+    "bath_area_tags": {
+      "room_open_air_bath": 80,
+      "room_bath": 87,
+      "public_bath": 16,
+      "open_air_public_bath": 9
+    },
+    "signal_type_tags": {
+      "room_bath_hot_spring": 106,
+      "booking_confusion": 51,
+      "water_texture": 71,
+      "crowding": 4,
+      "public_bath_hot_spring": 18,
+      "operations_note": 35,
+      "temperature_control": 11
+    },
+    "caveat": "This small 10-room lodging appears to have a limited accessible review pool. Google-native individual review bodies were not accessible and Naver search results were mostly snippets or unrelated Dogo/Yufuin/Osaka results. Ikkyu and Yahoo Travel are related ecosystem surfaces; keep hashes for downstream dedupe."
+  }
+}

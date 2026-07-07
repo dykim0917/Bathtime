@@ -1,0 +1,137 @@
+{
+  "research_date": "2026-07-04",
+  "scope": "ready lodging deep research: dogo-kotononiwa only",
+  "method": "Static OTA extraction, Aside Browser for Jalan archive, Ikkyu/Yahoo/Google/Naver, and strict separation of official bath facts, visible review pool, direct readable reviews, snippets, and search summaries.",
+  "direct_review_sampling_status": {
+    "target_direct_reviews": 300,
+    "achieved_direct_reviews": 184,
+    "onsen_related_direct_reviews": 136,
+    "direct_body_platform_count": 5,
+    "data_quality_grade": "B",
+    "why_not_300": "10-room small lodging. Accessible body surfaces were exhausted or checked: Rakuten 18, Jalan latest/archive 71 visible with 71 readable surface but 71 latest/archive blocks reduced to 71 platform pool and 71-related direct split, Ikkyu 70 direct from 84 visible, Yahoo 25 direct from 84 visible, JTB 0 reviews. Google-native 93 visible but body unreadable in Aside; Naver mostly snippet or unrelated; 4travel/Agoda not found or snippet-only."
+  },
+  "lodgings": [
+    {
+      "slug": "dogo-kotononiwa",
+      "name_ja": "道後温泉 葛城 琴の庭",
+      "name_ko_or_en": "Kotononiwa / 카츠라기 코토노니와",
+      "official_site_url": "https://kotononiwa.jp/",
+      "address": "愛媛県松山市道後湯月町4-16",
+      "onsen_area": "道後温泉",
+      "google_maps": {
+        "rating": 4.3,
+        "visible_review_count": 93,
+        "rating_distribution": "not extracted",
+        "korean_reviews_visible": "Korean UI visible; no individual Google-native review body was readable in this pass",
+        "review_body_access": "partial",
+        "direct_read_reviews": 0,
+        "onsen_related_direct_reviews": 0,
+        "notes": "Google Search and Google Hotels checked with Aside Browser. Review pool and official/snippet surfaces recorded; no Google-native direct body counted."
+      },
+      "ota_review_pool_signals": [
+        {
+          "platform": "Rakuten Travel",
+          "rating": null,
+          "visible_review_count": 18,
+          "review_body_access": "direct_readable",
+          "direct_read_reviews": 18,
+          "onsen_related_direct_reviews": 12
+        },
+        {
+          "platform": "Jalan",
+          "rating": 4.6,
+          "visible_review_count": 71,
+          "review_body_access": "direct_readable via static latest plus Aside archive",
+          "direct_read_reviews": 71,
+          "onsen_related_direct_reviews": 57,
+          "notes": "Static fetch repeated latest 15 blocks; Aside opened archive and idx pages. The archive extraction added 56 direct bodies."
+        },
+        {
+          "platform": "JTB",
+          "rating": null,
+          "visible_review_count": 0,
+          "review_body_access": "not_found",
+          "direct_read_reviews": 0,
+          "onsen_related_direct_reviews": 0
+        },
+        {
+          "platform": "Ikkyu",
+          "rating": null,
+          "visible_review_count": 84,
+          "review_body_access": "direct_readable via Aside Browser",
+          "direct_read_reviews": 70,
+          "onsen_related_direct_reviews": 47
+        },
+        {
+          "platform": "Yahoo Travel",
+          "rating": null,
+          "visible_review_count": 84,
+          "review_body_access": "direct_readable via Aside Browser",
+          "direct_read_reviews": 25,
+          "onsen_related_direct_reviews": 20,
+          "notes": "Same corporate ecosystem as Ikkyu; fewer body blocks rendered on Yahoo page."
+        },
+        {
+          "platform": "Naver Blog/Search",
+          "rating": null,
+          "visible_review_count": null,
+          "review_body_access": "snippet_only",
+          "direct_read_reviews": 0,
+          "onsen_related_direct_reviews": 0,
+          "notes": "Search results were mostly OTA/agency pages or unrelated Dogo/Yufuin/Osaka posts. Snippets were not counted."
+        },
+        {
+          "platform": "4travel",
+          "rating": null,
+          "visible_review_count": null,
+          "review_body_access": "not_found",
+          "direct_read_reviews": 0,
+          "onsen_related_direct_reviews": 0
+        },
+        {
+          "platform": "Agoda",
+          "rating": null,
+          "visible_review_count": null,
+          "review_body_access": "not_found",
+          "direct_read_reviews": 0,
+          "onsen_related_direct_reviews": 0
+        }
+      ],
+      "official_bath_facts_seen": {
+        "room_bath": "Guest-room bath/tub axis is part of every room's private hot spring bathing experience; room names include stone-garden and sky open-air styles.",
+        "room_open_air_bath": "Official site and Google/OTA surfaces state every room has open-air/semi-open-air bath using source-flow Dogo Onsen.",
+        "public_bath": "JTB states no large public bath at this lodging. Reviews mentioning hotel bath or large bath are treated as sister-facility/external route unless clearly in-room.",
+        "open_air_public_bath": "not official for this lodging",
+        "private_bath": "JTB labels family/private bath available; in context this appears to refer to private room-bath style, but record as official wording only and do not merge with family bath reviews.",
+        "family_bath": "JTB official wording says 家族風呂あり/貸切可, but details are unclear; requires operation recheck.",
+        "source_claims": "Official/JTB: all rooms source-flow Dogo Onsen / 生湯 / 源泉かけ流し.",
+        "spring_quality": "JTB: simple spring; other detailed pH/source temperature not found in this pass.",
+        "use_time": "Some reviews note source flow stops late night; official operating time not found in this pass.",
+        "tattoo_policy": "not found in this pass"
+      },
+      "review_signal_keywords": [
+        "源泉かけ流し",
+        "生湯",
+        "客室露天風呂",
+        "半露天風呂",
+        "部屋風呂",
+        "大浴場までいけませんでした",
+        "ホテルお風呂遠い",
+        "足湯",
+        "道後温泉本館",
+        "객실 전용 온천시설"
+      ],
+      "caution_keywords": [
+        "使いづらい",
+        "案内不足",
+        "温泉が出なくなりました",
+        "シャワールームのお湯",
+        "寒すぎ",
+        "ホテルお風呂遠い",
+        "Naver snippet_only",
+        "Google-native body not accessible"
+      ],
+      "next_sampling": "A급 보강을 하려면 Google-native 본문, Trip.com/Agoda/Expedia 계열 실제 본문, 4travel 정확한 숙소 URL, 일본 개인 블로그 원문을 추가로 찾아야 한다. 현재 확인 가능한 주요 OTA 본문은 대부분 소진했다."
+    }
+  ]
+}

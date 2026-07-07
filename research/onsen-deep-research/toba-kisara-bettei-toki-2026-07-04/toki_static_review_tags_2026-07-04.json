@@ -1,0 +1,4017 @@
+{
+  "summary": {
+    "generated_at": "2026-07-04T02:57:17.109Z",
+    "lodging": "季さら別邸 刻",
+    "total_direct_extracted_static": 111,
+    "onsen_related_body_static": 72,
+    "direct_body_platforms_static": 3,
+    "by_platform": {
+      "Rakuten Travel": {
+        "direct": 48,
+        "onsen_body": 32
+      },
+      "Jalan": {
+        "direct": 19,
+        "onsen_body": 11
+      },
+      "Relux": {
+        "direct": 44,
+        "onsen_body": 29
+      }
+    },
+    "platform_page_stats": {
+      "rakuten_1": 20,
+      "rakuten_2": 20,
+      "rakuten_3": 8,
+      "jalan_1": 4,
+      "jalan_2": 15,
+      "relux_1": 44
+    },
+    "note": "Static/direct pages only. Browser-read Ikkyu/Yahoo/Google/Naver samples are recorded separately in platform_mapping and report."
+  },
+  "reviews": [
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123477099558",
+      "review_hash": "281b1cedb911fb2a",
+      "review_date": "2026-03-12",
+      "stay_date": "2026-03-10",
+      "score": 5,
+      "title": "妊娠中でも安心！部屋食と露天風呂で大満足",
+      "room_type": "群青（Gunjo）/天色（Amairo）【部屋食】",
+      "plan_name": "【多幸/お子さま連れのお客様専用】フルコース1泊2食付/お部屋食/客室露天風呂/全室離れ棟",
+      "body_char_count": 365,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "客室露天",
+        "部屋食"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "客室露天",
+        "部屋食"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [
+        "meal_operation",
+        "family_baby"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123476916602",
+      "review_hash": "d7470ac513e5c5c4",
+      "review_date": "2026-02-18",
+      "stay_date": "2026-02-04",
+      "score": 5,
+      "title": "誕生日旅行で感動！至れり尽くせりのホスピタリティ",
+      "room_type": "瑠璃（Ruri）‐足湯・内風呂・露天風呂付き離れ客室‐",
+      "plan_name": "【優美/美食を選ぶ自由な旅】オーシャンビュー/温泉/朝食付/選べる夕食",
+      "body_char_count": 499,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "客室露天",
+        "トロトロ",
+        "温度",
+        "説明"
+      ],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "足湯"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "footbath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "water_texture",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "temperature_control",
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123476657087",
+      "review_hash": "479035f0f12f6f57",
+      "review_date": "2026-01-14",
+      "stay_date": "2026-01-13",
+      "score": 5,
+      "title": "",
+      "room_type": "花紺青（Hanakonjo）‐内風呂・露天風呂付き離れ客室‐",
+      "plan_name": "【優美/美食を選ぶ自由な旅】オーシャンビュー/温泉/朝食付/選べる夕食",
+      "body_char_count": 237,
+      "body_keywords": [
+        "ラウンジ"
+      ],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "内風呂"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123476233792",
+      "review_hash": "96265f086d3f5d9f",
+      "review_date": "2025-11-29",
+      "stay_date": "2025-11-28",
+      "score": 5,
+      "title": "地元の食材満喫！部屋食と露天風呂が贅沢な宿",
+      "room_type": "群青（Gunjo）/天色（Amairo）【部屋食】",
+      "plan_name": "【至福】刻スタンダードプラン 《お部屋食 / 全室離れ棟 露天風呂・内風呂付》＜1泊2食付＞",
+      "body_char_count": 188,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "部屋食"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "部屋食"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123476221926",
+      "review_hash": "d6cdc939156031b1",
+      "review_date": "2025-11-28",
+      "stay_date": "2025-11-14",
+      "score": 5,
+      "title": "",
+      "room_type": "紺碧（Konpeki）−内風呂・露天風呂付・足湯付・離れ客室",
+      "plan_name": "【LUXDAYSセール】【至福】刻スタンダードプラン 《1泊2食付 / お部屋食 / 露天風呂付き》",
+      "body_char_count": 335,
+      "body_keywords": [
+        "泉質",
+        "眺め",
+        "海",
+        "部屋食",
+        "ラウンジ"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "足湯",
+        "部屋食"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "footbath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "water_texture"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123472933259",
+      "review_hash": "8e187f726db146fb",
+      "review_date": "2025-01-25",
+      "stay_date": "2025-01-22",
+      "score": 5,
+      "title": "",
+      "room_type": "群青（Gunjo）/天色（Amairo）【部屋食】",
+      "plan_name": "【至福】刻スタンダードプラン 《お部屋食 / 全室離れ棟 露天風呂・内風呂付》＜1泊2食付＞",
+      "body_char_count": 156,
+      "body_keywords": [],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "部屋食"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123472900348",
+      "review_hash": "0126d254f4f3f7c6",
+      "review_date": "2025-01-21",
+      "stay_date": "2025-01-17",
+      "score": 5,
+      "title": "",
+      "room_type": "群青（Gunjo）/天色（Amairo）【部屋食】",
+      "plan_name": "【秋冬SALE】＜1泊2食付＞【至福】刻スタンダードプラン 《お部屋食 / 全室離れ棟 露天風呂付》",
+      "body_char_count": 149,
+      "body_keywords": [],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "部屋食"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [
+        "family_baby"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123472572043",
+      "review_hash": "41f55977ead64451",
+      "review_date": "2024-11-25",
+      "stay_date": "2024-11-20",
+      "score": 4,
+      "title": "",
+      "room_type": "紺碧（Konpeki）−内風呂・露天風呂付・足湯付・離れ客室",
+      "plan_name": "【LUXDAYSセール】【至福】刻スタンダードプラン 《1泊2食付 / お部屋食 / 露天風呂付き》",
+      "body_char_count": 102,
+      "body_keywords": [
+        "温泉",
+        "トロトロ"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "足湯",
+        "部屋食"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "footbath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "water_texture"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123472425944",
+      "review_hash": "eb6ba063d3035af1",
+      "review_date": "2024-10-16",
+      "stay_date": "2024-10-13",
+      "score": 5,
+      "title": "",
+      "room_type": "瑠璃（Ruri）‐足湯・内風呂・露天風呂付き離れ客室‐",
+      "plan_name": "【ドリンクインクルーシブ】1泊2食付【優雅】《個室ダイニング食・オーシャンビュー露天風呂付》満喫の刻",
+      "body_char_count": 151,
+      "body_keywords": [
+        "眺め",
+        "海",
+        "ラウンジ"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "足湯"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "footbath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123472329674",
+      "review_hash": "c25db844404ff037",
+      "review_date": "2024-10-07",
+      "stay_date": "2024-10-06",
+      "score": 5,
+      "title": "",
+      "room_type": "花紺青（Hanakonjo）‐内風呂・露天風呂付き離れ客室‐",
+      "plan_name": "【優美】温泉と健康朝食で綺麗にリフレッシュ！≪1泊朝食付プラン≫★全室オーシャンビュー★",
+      "body_char_count": 119,
+      "body_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "客室露天",
+        "泉質"
+      ],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "内風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "water_texture"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123471614680",
+      "review_hash": "b7fd7633826f3b3e",
+      "review_date": "2024-05-06",
+      "stay_date": "2024-04-27",
+      "score": 4,
+      "title": "",
+      "room_type": "群青（Gunjo）/天色（Amairo）【部屋食】",
+      "plan_name": "【LUXDAYSセール】＜オールインクルーシブ＞1泊2食付【優雅】《お部屋食・露天風呂付》",
+      "body_char_count": 134,
+      "body_keywords": [
+        "露天",
+        "露天風呂"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "部屋食",
+        "オールインクルーシブ"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123471315870",
+      "review_hash": "b3cb12f05a508482",
+      "review_date": "2024-03-16",
+      "stay_date": "2024-03-14",
+      "score": 4,
+      "title": "",
+      "room_type": "み空（Misora)‐内風呂・露天風呂付き離れ客室‐",
+      "plan_name": "【楽天スーパーSALE】5％OFF【オールインクルーシブ】夕・朝食付【優雅】《ダイニング食》満喫の刻",
+      "body_char_count": 416,
+      "body_keywords": [
+        "温泉",
+        "説明"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "オールインクルーシブ"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "water_texture",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123470892729",
+      "review_hash": "d18b5e163a59f3c4",
+      "review_date": "2024-01-26",
+      "stay_date": "2024-01-18",
+      "score": 5,
+      "title": "",
+      "room_type": "瑠璃（Ruri）‐足湯・内風呂・露天風呂付き離れ客室‐",
+      "plan_name": "【記念日】アニバーサリープラン〜お誕生日、結婚記念日など〜思い出作りのお手伝い《個室ダイニング食》",
+      "body_char_count": 368,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "泉質"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "足湯"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "footbath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "water_texture"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123470714307",
+      "review_hash": "4678a20aff62ae1b",
+      "review_date": "2023-12-21",
+      "stay_date": "2023-12-16",
+      "score": 4,
+      "title": "",
+      "room_type": "紺碧（Konpeki）−内風呂・露天風呂付・足湯付・離れ客室",
+      "plan_name": "【記念日】アニバーサリープラン〜お誕生日、結婚記念日など〜思い出作りのお手伝い《お部屋食》",
+      "body_char_count": 927,
+      "body_keywords": [
+        "温泉",
+        "景色",
+        "予約",
+        "説明",
+        "部屋食"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "足湯",
+        "部屋食"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "footbath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123470538586",
+      "review_hash": "8ae1aa9fd7f9b042",
+      "review_date": "2023-11-17",
+      "stay_date": "2023-11-15",
+      "score": 5,
+      "title": "",
+      "room_type": "錆浅葱（Sabiasagi)‐内風呂・露天風呂付き離れ客室‐",
+      "plan_name": "【温泉SALE】【至福】刻スタンダードプラン 《個室ダイニング食》",
+      "body_char_count": 588,
+      "body_keywords": [
+        "景色",
+        "送迎",
+        "ラウンジ"
+      ],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "内風呂"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123470477640",
+      "review_hash": "d90d1ab788f82730",
+      "review_date": "2023-11-13",
+      "stay_date": "2023-11-10",
+      "score": 5,
+      "title": "",
+      "room_type": "瑠璃（Ruri）‐足湯・内風呂・露天風呂付き離れ客室‐",
+      "plan_name": "【記念日】アニバーサリープラン〜お誕生日、結婚記念日など〜思い出作りのお手伝い《個室ダイニング食》",
+      "body_char_count": 353,
+      "body_keywords": [
+        "温泉",
+        "足湯",
+        "すべすべ",
+        "温度"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "足湯"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "footbath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "water_texture",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "temperature_control",
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123472951177",
+      "review_hash": "a0a58ef45d7ee0e7",
+      "review_date": "2025-04-27",
+      "stay_date": "2025-04-20",
+      "score": 5,
+      "title": "",
+      "room_type": "群青（Gunjo）/天色（Amairo）【部屋食】",
+      "plan_name": "【至福】刻スタンダードプラン 《お部屋食 / 全室離れ棟 露天風呂・内風呂付》＜1泊2食付＞",
+      "body_char_count": 84,
+      "body_keywords": [
+        "温泉",
+        "海"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "部屋食"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123472814811",
+      "review_hash": "334abb1056b6807f",
+      "review_date": "2025-04-06",
+      "stay_date": "2025-03-15",
+      "score": 5,
+      "title": "",
+      "room_type": "群青（Gunjo）/天色（Amairo）【部屋食】",
+      "plan_name": "【至福】刻スタンダードプラン 《お部屋食 / 全室離れ棟 露天風呂・内風呂付》＜1泊2食付＞",
+      "body_char_count": 26,
+      "body_keywords": [
+        "温泉"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "部屋食"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123472425439",
+      "review_hash": "8ff00a28b33189bf",
+      "review_date": "2024-10-16",
+      "stay_date": "2024-10-14",
+      "score": 5,
+      "title": "",
+      "room_type": "縹（Hanada) /千草（Chigusa)【部屋食】",
+      "plan_name": "【至福】刻スタンダードプラン 《お部屋食 / 全室離れ棟 露天風呂・内風呂付》＜1泊2食付＞",
+      "body_char_count": 14,
+      "body_keywords": [
+        "露天",
+        "露天風呂"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "部屋食"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123471799530",
+      "review_hash": "9386f0a66bf1dabb",
+      "review_date": "2024-06-09",
+      "stay_date": "2024-04-28",
+      "score": 5,
+      "title": "",
+      "room_type": "群青（Gunjo）/天色（Amairo）【部屋食】",
+      "plan_name": "【LUXDAYSセール】＜オールインクルーシブ＞1泊2食付【優雅】《お部屋食・露天風呂付》",
+      "body_char_count": 46,
+      "body_keywords": [],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "部屋食",
+        "オールインクルーシブ"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123471171454",
+      "review_hash": "7861c7fecabdfe19",
+      "review_date": "2024-02-22",
+      "stay_date": "2024-02-19",
+      "score": 5,
+      "title": "",
+      "room_type": "錆浅葱（Sabiasagi)‐内風呂・露天風呂付き離れ客室‐",
+      "plan_name": "【楽天月末セール】【オールインクルーシブ】1泊2食付【優雅】《個室ダイニング食・海側・露天風呂付》",
+      "body_char_count": 47,
+      "body_keywords": [
+        "温泉",
+        "泉質"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "海",
+        "オールインクルーシブ"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "water_texture"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123469830758",
+      "review_hash": "66503c33f2084266",
+      "review_date": "2023-08-01",
+      "stay_date": "2023-07-26",
+      "score": 4,
+      "title": "",
+      "room_type": "錆浅葱（Sabiasagi)‐内風呂・露天風呂付き離れ客室‐",
+      "plan_name": "【LUXDAYSセール】【至福】刻スタンダードプラン 《個室ダイニング食》",
+      "body_char_count": 9,
+      "body_keywords": [],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123470145809",
+      "review_hash": "23a2dd915be1b578",
+      "review_date": "2023-09-26",
+      "stay_date": "2023-09-20",
+      "score": 3,
+      "title": "",
+      "room_type": "花紺青（Hanakonjo）‐内風呂・露天風呂付き離れ客室‐",
+      "plan_name": "【優美】温泉と健康朝食で綺麗にリフレッシュ！≪1泊朝食付プラン≫★全室オーシャンビュー★",
+      "body_char_count": 101,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "虫"
+      ],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "内風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [
+        "insects"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123468380183",
+      "review_hash": "f77f699a2fb62ebd",
+      "review_date": "2022-12-05",
+      "stay_date": "2022-12-02",
+      "score": 5,
+      "title": "",
+      "room_type": "縹（Hanada) /千草（Chigusa)【部屋食】",
+      "plan_name": "【記念日】アニバーサリープラン〜お誕生日、結婚記念日など〜思い出作りのお手伝い《お部屋食》",
+      "body_char_count": 200,
+      "body_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "景色"
+      ],
+      "context_keywords": [
+        "部屋食"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123461113307",
+      "review_hash": "b4e8e99aae2831f9",
+      "review_date": "2022-06-15",
+      "stay_date": "2022-06-05",
+      "score": 5,
+      "title": "",
+      "room_type": "白藍（Shiraai)‐内風呂・露天風呂付き離れ客室‐",
+      "plan_name": "【至福】刻スタンダードプラン 全室離れ棟 露天風呂・内風呂付",
+      "body_char_count": 346,
+      "body_keywords": [
+        "温泉",
+        "トロトロ",
+        "掃除",
+        "部屋食"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "water_texture"
+      ],
+      "caution_tags": [
+        "cleanliness_aging",
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123460958271",
+      "review_hash": "ed96712f93ed7db4",
+      "review_date": "2022-04-18",
+      "stay_date": "2022-04-16",
+      "score": 5,
+      "title": "",
+      "room_type": "白藍（Shiraai)‐内風呂・露天風呂付き離れ客室‐",
+      "plan_name": "【至福】刻スタンダードプラン 全室離れ棟 露天風呂・内風呂付",
+      "body_char_count": 146,
+      "body_keywords": [
+        "温泉",
+        "内湯",
+        "大浴場"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "public_bath_hot_spring"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123460397411",
+      "review_hash": "639b34df40c31c0f",
+      "review_date": "2021-05-03",
+      "stay_date": "2021-04-24",
+      "score": 5,
+      "title": "",
+      "room_type": "花紺青（Hanakonjo）‐内風呂・露天風呂付き離れ客室‐",
+      "plan_name": "【記念日】アニバーサリープラン 〜お誕生日、還暦祝い、結婚記念日etc.〜思い出作りのお手伝い",
+      "body_char_count": 212,
+      "body_keywords": [
+        "露天",
+        "露天風呂"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123460266507",
+      "review_hash": "d86c59879adb7d9b",
+      "review_date": "2021-03-01",
+      "stay_date": "2021-02-27",
+      "score": 5,
+      "title": "",
+      "room_type": "花紺青（Hanakonjo）‐内風呂・露天風呂付き離れ客室‐",
+      "plan_name": "【至福】刻スタンダードプラン 全室離れ棟 露天風呂・内風呂付",
+      "body_char_count": 123,
+      "body_keywords": [],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [
+        "meal_operation",
+        "family_baby"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123466012632",
+      "review_hash": "3b70dab4872fea15",
+      "review_date": "2020-11-20",
+      "stay_date": "2020-10-11",
+      "score": 5,
+      "title": "",
+      "room_type": "瑠璃（Ruri）‐足湯・内風呂・露天風呂付き離れ客室‐",
+      "plan_name": "【至福】刻スタンダードプラン 全室離れ棟 露天風呂・内風呂付",
+      "body_char_count": 324,
+      "body_keywords": [
+        "温泉",
+        "露天",
+        "内風呂",
+        "足湯",
+        "泉質",
+        "景色",
+        "予約"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "足湯"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "footbath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "water_texture",
+        "booking_confusion"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123465811867",
+      "review_hash": "e3d2894b5305d261",
+      "review_date": "2020-11-03",
+      "stay_date": "2020-11-01",
+      "score": 4,
+      "title": "",
+      "room_type": "み空（Misora)‐内風呂・露天風呂付き離れ客室‐",
+      "plan_name": "【至福】刻スタンダードプラン 全室離れ棟 露天風呂・内風呂付",
+      "body_char_count": 135,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "ラウンジ"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123465276118",
+      "review_hash": "330e9de9967ed8ee",
+      "review_date": "2020-08-11",
+      "stay_date": "2020-08-06",
+      "score": 4,
+      "title": "",
+      "room_type": "瑠璃（Ruri）‐足湯・内風呂・露天風呂付き離れ客室‐",
+      "plan_name": "【楽天トラベルセール】10％OFF！スタンダードプラン ”全室オーシャンビュー露天風呂付”",
+      "body_char_count": 126,
+      "body_keywords": [],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "足湯"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "footbath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123465114625",
+      "review_hash": "9be106d127f3ba1f",
+      "review_date": "2020-07-27",
+      "stay_date": "2020-07-25",
+      "score": 5,
+      "title": "",
+      "room_type": "群青（Gunjo）/天色（Amairo）【部屋食】",
+      "plan_name": "【楽天トラベルセール】10％OFF！スタンダードプラン ”全室オーシャンビュー露天風呂付”",
+      "body_char_count": 417,
+      "body_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "泉質",
+        "部屋食"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "部屋食"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "water_texture"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123465095050",
+      "review_hash": "c1a706d3117b09ff",
+      "review_date": "2020-07-24",
+      "stay_date": "2020-07-18",
+      "score": 5,
+      "title": "",
+      "room_type": "花紺青（Hanakonjo）‐内風呂・露天風呂付き離れ客室‐",
+      "plan_name": "【さき楽30】楽天トラベル掲載料金から10％オフ！全室内風呂/露天風呂完備（※天然温泉100％）",
+      "body_char_count": 112,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "貸切",
+        "ラウンジ"
+      ],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "内風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123460143020",
+      "review_hash": "1b1f6efe69ff388b",
+      "review_date": "2020-02-23",
+      "stay_date": "2020-02-15",
+      "score": 4,
+      "title": "",
+      "room_type": "群青（Gunjo）/天色（Amairo）【部屋食】",
+      "plan_name": "【至福】スタンダードプラン 〜2019年6月開業〜 ”まだ見ぬ鳥羽に出会う”",
+      "body_char_count": 549,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂"
+      ],
+      "context_keywords": [
+        "部屋食"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123463978500",
+      "review_hash": "e5867e32b899f8fc",
+      "review_date": "2019-12-15",
+      "stay_date": "2019-12-13",
+      "score": 5,
+      "title": "",
+      "room_type": "花紺青（Hanakonjo）‐内風呂・露天風呂付き離れ客室‐",
+      "plan_name": "【優美】温泉と健康朝食で綺麗にリフレッシュ！≪1泊朝食付プラン≫★全室オーシャンビュー★",
+      "body_char_count": 255,
+      "body_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "内風呂"
+      ],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "内風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123459988225",
+      "review_hash": "ac8d776498fd3747",
+      "review_date": "2019-12-03",
+      "stay_date": "2019-11-22",
+      "score": 5,
+      "title": "",
+      "room_type": "縹（Hanada) /千草（Chigusa)【部屋食】",
+      "plan_name": "【刻早割60】楽天トラベル掲載料金から12％オフ！全室内風呂/露天風呂完備（※天然温泉100％）",
+      "body_char_count": 227,
+      "body_keywords": [
+        "温泉",
+        "とろとろ",
+        "景色"
+      ],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "部屋食"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "water_texture"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123459826022",
+      "review_hash": "809f2722b963de40",
+      "review_date": "2019-08-10",
+      "stay_date": "2019-08-05",
+      "score": 5,
+      "title": "",
+      "room_type": "み空（Misora)‐内風呂・露天風呂付き離れ客室‐",
+      "plan_name": "【至福】オープニングプラン 〜2019年6月オープン！全室オーシャンビューの露天風呂付離れ客室〜",
+      "body_char_count": 211,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "景色",
+        "ラウンジ"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123459691023",
+      "review_hash": "78f9633b932b2f0a",
+      "review_date": "2019-06-16",
+      "stay_date": "2019-06-14",
+      "score": 5,
+      "title": "",
+      "room_type": "錆浅葱（Sabiasagi)",
+      "plan_name": "プロモーションプラン 〜通常料金からおひとり様につき2000円OFFのスペシャルプライス！",
+      "body_char_count": 104,
+      "body_keywords": [
+        "露天",
+        "露天風呂"
+      ],
+      "context_keywords": [],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [
+        "meal_operation",
+        "family_baby"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123459665616",
+      "review_hash": "ad7e04036e95d7b1",
+      "review_date": "2019-06-12",
+      "stay_date": "2019-06-09",
+      "score": 5,
+      "title": "",
+      "room_type": "縹（Hanada)、千草（Chigusa）",
+      "plan_name": "プロモーションプラン 〜通常料金からおひとり様につき2000円OFFのスペシャルプライス！",
+      "body_char_count": 454,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "部屋食"
+      ],
+      "context_keywords": [],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [
+        "meal_operation",
+        "family_baby"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123468572032",
+      "review_hash": "7c9f4d52b2cb9056",
+      "review_date": "2023-01-14",
+      "stay_date": "2023-01-12",
+      "score": 5,
+      "title": "",
+      "room_type": "縹（Hanada) /千草（Chigusa)【部屋食】",
+      "plan_name": "【至福】刻スタンダードプラン 《お部屋食》",
+      "body_char_count": 33,
+      "body_keywords": [],
+      "context_keywords": [
+        "部屋食"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123461407627",
+      "review_hash": "43c3234e8bcb5a8b",
+      "review_date": "2022-10-03",
+      "stay_date": "2022-10-01",
+      "score": 5,
+      "title": "",
+      "room_type": "花紺青（Hanakonjo）‐内風呂・露天風呂付き離れ客室‐",
+      "plan_name": "【至福】刻スタンダードプラン 全室離れ棟 露天風呂・内風呂付",
+      "body_char_count": 56,
+      "body_keywords": [],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [
+        "family_baby"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123465872478",
+      "review_hash": "190c462d2aba5bf0",
+      "review_date": "2020-11-09",
+      "stay_date": "2020-11-03",
+      "score": 5,
+      "title": "",
+      "room_type": "縹（Hanada) /千草（Chigusa)【部屋食】",
+      "plan_name": "【楽天スーパーSALE】10％OFF！スタンダードプラン ”全室オーシャンビュー露天風呂付”",
+      "body_char_count": 47,
+      "body_keywords": [],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "部屋食"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [
+        "family_baby"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123465669397",
+      "review_hash": "086acd411ea1805c",
+      "review_date": "2020-10-18",
+      "stay_date": "2020-10-16",
+      "score": 5,
+      "title": "",
+      "room_type": "花紺青（Hanakonjo）‐内風呂・露天風呂付き離れ客室‐",
+      "plan_name": "【さき楽30】楽天トラベル掲載料金から10％オフ！全室内風呂/露天風呂付（温泉100％）【返金不可】",
+      "body_char_count": 28,
+      "body_keywords": [],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "内風呂"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123460132561",
+      "review_hash": "ce29455e2c0b8877",
+      "review_date": "2020-03-01",
+      "stay_date": "2020-02-28",
+      "score": 5,
+      "title": "",
+      "room_type": "群青（Gunjo）/天色（Amairo）【部屋食】",
+      "plan_name": "【さき楽30】楽天トラベル掲載料金から10％オフ！全室内風呂/露天風呂完備（※天然温泉100％）",
+      "body_char_count": 86,
+      "body_keywords": [],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "部屋食"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123465884611",
+      "review_hash": "b3def0af93d1c2f4",
+      "review_date": "2020-11-11",
+      "stay_date": "2020-11-09",
+      "score": 3,
+      "title": "",
+      "room_type": "縹（Hanada) /千草（Chigusa)【部屋食】",
+      "plan_name": "【楽天スーパーSALE】10％OFF！スタンダードプラン ”全室オーシャンビュー露天風呂付”",
+      "body_char_count": 60,
+      "body_keywords": [
+        "景色"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "部屋食"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123476830809",
+      "review_hash": "77403b2a726dc2d3",
+      "review_date": "2026-02-08",
+      "stay_date": "2026-02-06",
+      "score": 2,
+      "title": "接客は良いけどラウンジが残念…",
+      "room_type": "白藍（Shiraai)‐内風呂・露天風呂付き離れ客室‐",
+      "plan_name": "【優美/美食を選ぶ自由な旅】オーシャンビュー/温泉/朝食付/選べる夕食",
+      "body_char_count": 475,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "予約",
+        "送迎",
+        "ラウンジ"
+      ],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "ラウンジ"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123461324793",
+      "review_hash": "7757f06d27cc11b0",
+      "review_date": "2022-08-22",
+      "stay_date": "2022-08-15",
+      "score": null,
+      "title": "",
+      "room_type": "群青（Gunjo）/天色（Amairo）【部屋食】",
+      "plan_name": "【至福】刻スタンダードプラン 全室離れ棟 露天風呂・内風呂付",
+      "body_char_count": 354,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "予約",
+        "ラウンジ"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "部屋食"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "meal_operation",
+        "family_baby"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html",
+      "review_id": "33123460946094",
+      "review_hash": "800004a1217f0bb9",
+      "review_date": "2022-04-12",
+      "stay_date": "2022-04-10",
+      "score": 1,
+      "title": "",
+      "room_type": "瑠璃（Ruri）‐足湯・内風呂・露天風呂付き離れ客室‐",
+      "plan_name": "【至福】刻スタンダードプラン 全室離れ棟 露天風呂・内風呂付",
+      "body_char_count": 310,
+      "body_keywords": [
+        "海",
+        "予約"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "足湯"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "footbath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "booking_confusion"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad389295/kuchikomi/",
+      "review_id": "8b50475f1a8e65b3",
+      "review_hash": "7fc80b47526b9715",
+      "review_date": "2026-05-07",
+      "stay_date": "2026-05",
+      "score": 4,
+      "title": "おこもりには、最適",
+      "room_type": "離れ",
+      "plan_name": "≪GW限定≫【至福】フルコース1泊2食付/お部屋食/客室露天風呂/全室離れ棟",
+      "body_char_count": 197,
+      "body_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "温度"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "客室露天",
+        "部屋食"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [
+        "temperature_control",
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad389295/kuchikomi/",
+      "review_id": "f51f0af3d0a93678",
+      "review_hash": "dfd5f303aff722fb",
+      "review_date": "2026-03-24",
+      "stay_date": "2026-03",
+      "score": 4,
+      "title": "のんびり鳥羽港を観ながら",
+      "room_type": "和洋室",
+      "plan_name": "【優美/美食を選ぶ自由な旅】オーシャンビュー/温泉/朝食付/選べる夕食",
+      "body_char_count": 183,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "寒い",
+        "眺め",
+        "海"
+      ],
+      "context_keywords": [
+        "温泉"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [
+        "temperature_control"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad389295/kuchikomi/",
+      "review_id": "86aa48b2270b7876",
+      "review_hash": "a4e639550be47903",
+      "review_date": "2026-01-03",
+      "stay_date": "2025-12",
+      "score": 2,
+      "title": "リピーターなのにとても残念",
+      "room_type": "和洋室",
+      "plan_name": "【年末年始限定】＜オールインクルーシブ＞1泊2食付【優雅】＜個室ダイニング食・客室露天風呂付＞",
+      "body_char_count": 180,
+      "body_keywords": [],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "客室露天",
+        "オールインクルーシブ"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [
+        "family_baby"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad389295/kuchikomi/",
+      "review_id": "7113f8fef663b958",
+      "review_hash": "0545719d01e07501",
+      "review_date": "2025-12-30",
+      "stay_date": "2025-11",
+      "score": 5,
+      "title": "フロントご対応がとても良かった",
+      "room_type": "離れ",
+      "plan_name": "【至福】刻スタンダードプラン ≪お部屋食≫ 全室離れ棟 露天風呂・内風呂付",
+      "body_char_count": 67,
+      "body_keywords": [],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "部屋食"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad389295/kuchikomi/archive/",
+      "review_id": "d1db5bc9002404db",
+      "review_hash": "8f3d0e79dbd4f841",
+      "review_date": "2023-12-23",
+      "stay_date": "2023-12",
+      "score": 4,
+      "title": "おもてなしが残念でした",
+      "room_type": "離れ",
+      "plan_name": "【じゃらんのお得な10日間】【至福】刻スタンダードプラン ≪個室ダイニング食≫ 全室離れ・露天風呂付",
+      "body_char_count": 174,
+      "body_keywords": [],
+      "context_keywords": [
+        "露天",
+        "露天風呂"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad389295/kuchikomi/archive/",
+      "review_id": "7760cbc7a7c9c2be",
+      "review_hash": "98395b6d8a7b98b1",
+      "review_date": "2023-12-07",
+      "stay_date": "2023-11",
+      "score": 5,
+      "title": "ゆったりした時間を過ごせます、贅沢な刻でした",
+      "room_type": "和洋室",
+      "plan_name": "【記念日】アニバーサリープラン～お誕生日、結婚記念日など～思い出作りのお手伝い《お部屋食》",
+      "body_char_count": 381,
+      "body_keywords": [
+        "露天",
+        "足湯",
+        "大浴場",
+        "景色",
+        "部屋食",
+        "ラウンジ"
+      ],
+      "context_keywords": [
+        "部屋食"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "footbath",
+        "public_bath"
+      ],
+      "signal_type_tags": [
+        "public_bath_hot_spring"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad389295/kuchikomi/archive/",
+      "review_id": "77b35b30db7ce7bb",
+      "review_hash": "d80bf29344b7cf87",
+      "review_date": "2020-10-07",
+      "stay_date": "2020-10",
+      "score": 5,
+      "title": "ゆっくりくつろぐには最高です",
+      "room_type": "離れ",
+      "plan_name": "【至福】刻スタンダードプラン 全室離れ棟 露天風呂・内風呂付",
+      "body_char_count": 315,
+      "body_keywords": [
+        "温泉",
+        "露天",
+        "予約"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad389295/kuchikomi/archive/",
+      "review_id": "abf97f5ee1803038",
+      "review_hash": "95abb29c1c5844b0",
+      "review_date": "2020-10-02",
+      "stay_date": "2020-10",
+      "score": 5,
+      "title": "最高の旅館でした",
+      "room_type": "離れ",
+      "plan_name": "【至福】刻スタンダードプラン 全室離れ棟 露天風呂・内風呂付",
+      "body_char_count": 332,
+      "body_keywords": [
+        "ラウンジ"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [
+        "meal_operation",
+        "family_baby"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad389295/kuchikomi/archive/",
+      "review_id": "f13914656b2e04dc",
+      "review_hash": "18bc2cc6b94739bf",
+      "review_date": "2020-06-22",
+      "stay_date": "2020-06",
+      "score": 5,
+      "title": "素敵なお宿でした",
+      "room_type": "和洋室",
+      "plan_name": "【至福】スタンダードプラン ～2019年6月開業～ ”まだ見ぬ鳥羽に出会う”",
+      "body_char_count": 203,
+      "body_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "景色"
+      ],
+      "context_keywords": [],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad389295/kuchikomi/archive/",
+      "review_id": "a0d48169ca12ea01",
+      "review_hash": "d2971d12dc81a808",
+      "review_date": "2020-06-19",
+      "stay_date": "2020-06",
+      "score": 5,
+      "title": "結婚記念日に２歳の娘と行きました",
+      "room_type": "和洋室",
+      "plan_name": "【記念日】アニバーサリープラン ～お誕生日、還暦祝い、結婚記念日etc.～最高の思い出作りのお手伝い",
+      "body_char_count": 141,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂"
+      ],
+      "context_keywords": [],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [
+        "family_baby"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad389295/kuchikomi/archive/",
+      "review_id": "2313c3577e8788fa",
+      "review_hash": "170cf7750e6b9514",
+      "review_date": "2020-03-16",
+      "stay_date": "2020-03",
+      "score": 5,
+      "title": "お世話になりました",
+      "room_type": "和洋室",
+      "plan_name": "【優美】温泉と健康朝食で綺麗にリフレッシュ！≪1泊朝食付プラン≫★全室オーシャンビュー★",
+      "body_char_count": 86,
+      "body_keywords": [],
+      "context_keywords": [
+        "温泉"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad389295/kuchikomi/archive/",
+      "review_id": "a8e2ef84e34d32ed",
+      "review_hash": "fcc4dabb42a43e7b",
+      "review_date": "2019-11-11",
+      "stay_date": "2019-11",
+      "score": 4,
+      "title": "心",
+      "room_type": "和洋室",
+      "plan_name": "【至福】スタンダードプラン ～2019年6月開業～ ”まだ見ぬ鳥羽に出会う”",
+      "body_char_count": 155,
+      "body_keywords": [],
+      "context_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad389295/kuchikomi/archive/",
+      "review_id": "b3935b0e1a55bdd8",
+      "review_hash": "76d225072a3ae321",
+      "review_date": "2019-10-24",
+      "stay_date": "2019-10",
+      "score": 5,
+      "title": "予想外でした",
+      "room_type": "和洋室",
+      "plan_name": "【優美】温泉と健康朝食で綺麗にリフレッシュ！≪1泊朝食付プラン≫★全室オーシャンビュー★",
+      "body_char_count": 379,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "内湯",
+        "かけ流し"
+      ],
+      "context_keywords": [
+        "温泉"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad389295/kuchikomi/archive/",
+      "review_id": "d018e639d694c587",
+      "review_hash": "71e3a2fc8c6b83aa",
+      "review_date": "2019-09-28",
+      "stay_date": "2019-09",
+      "score": 5,
+      "title": "ゆったりと落ち着ける隠れ家的な宿＾＾",
+      "room_type": "離れ",
+      "plan_name": "【至福】オープニングプラン～2019年6月オープン！全室オーシャンビューの露天風呂付離れ客室～",
+      "body_char_count": 339,
+      "body_keywords": [
+        "海",
+        "ラウンジ"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad389295/kuchikomi/archive/",
+      "review_id": "01e7d50f998d3d1f",
+      "review_hash": "5a201f4f17455ba8",
+      "review_date": "2019-09-24",
+      "stay_date": "2019-09",
+      "score": 5,
+      "title": "子ども連れでもゆっくりできる旅館",
+      "room_type": "離れ",
+      "plan_name": "【至福】オープニングプラン～2019年6月オープン！全室オーシャンビューの露天風呂付離れ客室～",
+      "body_char_count": 425,
+      "body_keywords": [],
+      "context_keywords": [
+        "露天",
+        "露天風呂"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "booking_confusion"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad389295/kuchikomi/archive/",
+      "review_id": "c58a57f958db728d",
+      "review_hash": "cfdc39fb632003e2",
+      "review_date": "2019-09-16",
+      "stay_date": "2019-09",
+      "score": 5,
+      "title": "素敵なお宿でした",
+      "room_type": "離れ",
+      "plan_name": "【至福】オープニングプラン～2019年6月オープン！全室オーシャンビューの露天風呂付離れ客室～",
+      "body_char_count": 431,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "海",
+        "ラウンジ"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad389295/kuchikomi/archive/",
+      "review_id": "2f703287649c42bf",
+      "review_hash": "239ba0393d1e5dac",
+      "review_date": "2019-08-24",
+      "stay_date": "2019-08",
+      "score": 5,
+      "title": "お魚料理満載",
+      "room_type": "離れ",
+      "plan_name": "【至福】オープニングプラン～2019年6月オープン！全室オーシャンビューの露天風呂付離れ客室～",
+      "body_char_count": 143,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "泉質",
+        "海"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "water_texture"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad389295/kuchikomi/archive/",
+      "review_id": "46519179414d3f23",
+      "review_hash": "fe458f7bccaa9fe4",
+      "review_date": "2019-08-09",
+      "stay_date": "2019-08",
+      "score": 5,
+      "title": "伊勢への旅",
+      "room_type": "和洋室",
+      "plan_name": "【記念日】アニバーサリープラン ～お誕生日、還暦祝い、結婚記念日etc.～最高の思い出作りのお手伝い",
+      "body_char_count": 198,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "海"
+      ],
+      "context_keywords": [],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad389295/kuchikomi/archive/",
+      "review_id": "cde3acb3b155460f",
+      "review_hash": "2c870345e2629b21",
+      "review_date": "2019-07-15",
+      "stay_date": "2019-07",
+      "score": 5,
+      "title": "ゆったりと過ごすにはオススメ",
+      "room_type": "和洋室",
+      "plan_name": "プロモーションプラン ～通常料金からおひとり様につき2000円OFFのスペシャルプライス！",
+      "body_char_count": 153,
+      "body_keywords": [
+        "温泉",
+        "泉質",
+        "海"
+      ],
+      "context_keywords": [],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [
+        "water_texture"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_1_d30c9a82a3d1584e",
+      "review_hash": "f4dee8f1266a11e0",
+      "review_date": null,
+      "stay_date": "2020-12-31",
+      "score": 4,
+      "title": "とても寛げました",
+      "room_type": "瑠璃（Ruri) ‐足湯・内風呂・露天風呂付き離れ客室‐",
+      "plan_name": "",
+      "body_char_count": 22,
+      "body_keywords": [],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "足湯"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "footbath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_2_d02a01187b8575e0",
+      "review_hash": "656ea442eb905600",
+      "review_date": null,
+      "stay_date": "2020-11-09",
+      "score": 4,
+      "title": "とてもお風呂が良かったです",
+      "room_type": "白藍(Shiraai) ‐内風呂・露天風呂付き離れ客室‐",
+      "plan_name": "",
+      "body_char_count": 194,
+      "body_keywords": [
+        "つるつる"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "water_texture"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_3_e60c38a4a8a395e3",
+      "review_hash": "5adb5c1279fbe8a8",
+      "review_date": null,
+      "stay_date": "2020-10-24",
+      "score": 5,
+      "title": "結婚記念日のお祝い旅行でお世話になりました",
+      "room_type": "紺碧（Konpeki）‐足湯・内風呂・露天風呂付き離れ客室‐【部屋食】",
+      "plan_name": "",
+      "body_char_count": 183,
+      "body_keywords": [],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "足湯",
+        "部屋食"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "footbath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [
+        "slippery_floor"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_4_4c205d15b1f2e885",
+      "review_hash": "483123e1fd202cba",
+      "review_date": null,
+      "stay_date": "2020-08-16",
+      "score": 5,
+      "title": "8月5日、6日で宿泊しました",
+      "room_type": "錆浅葱（Sabiasagi) ‐内風呂・露天風呂付き離れ客室‐",
+      "plan_name": "",
+      "body_char_count": 318,
+      "body_keywords": [
+        "内風呂",
+        "海"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_5_95463f47161d4675",
+      "review_hash": "d486c2b62eb19f1c",
+      "review_date": null,
+      "stay_date": "2020-08-08",
+      "score": 4,
+      "title": "何から何まで全てが良かったです",
+      "room_type": "み空（Misora) ‐内風呂・露天風呂付き離れ客室‐",
+      "plan_name": "",
+      "body_char_count": 179,
+      "body_keywords": [
+        "トロトロ",
+        "説明"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "water_texture",
+        "booking_confusion"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_6_4f1b4dfe8f96a3af",
+      "review_hash": "7c83c173fd0f3106",
+      "review_date": null,
+      "stay_date": "2020-08-03",
+      "score": 4,
+      "title": "コロナ禍の中，非日常を味わいたくて予約しました",
+      "room_type": "縹（Hanada)/千草（Chigusa) ‐足湯・内風呂・露天風呂付き離れ客室‐【部屋食】",
+      "plan_name": "",
+      "body_char_count": 82,
+      "body_keywords": [
+        "予約"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "足湯",
+        "予約",
+        "部屋食"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "footbath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "booking_confusion"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_7_bc422288088e2c23",
+      "review_hash": "bc173dbf19ef4246",
+      "review_date": null,
+      "stay_date": "2020-08-10",
+      "score": 4,
+      "title": "今回連泊したが、出来れば2泊目も和食にして欲しかったし、せめて選択出来ればと…",
+      "room_type": "み空（Misora) ‐内風呂・露天風呂付き離れ客室‐",
+      "plan_name": "",
+      "body_char_count": 126,
+      "body_keywords": [
+        "予約"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "booking_confusion"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_8_f71ff656d9fc55e5",
+      "review_hash": "86604695db603124",
+      "review_date": null,
+      "stay_date": "2020-07-31",
+      "score": 5,
+      "title": "温泉好きな私にとって部屋の内風呂・露天風呂・足湯は、いつでも入れてとても幸せでした",
+      "room_type": "瑠璃（Ruri) ‐足湯・内風呂・露天風呂付き離れ客室‐",
+      "plan_name": "",
+      "body_char_count": 189,
+      "body_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "足湯"
+      ],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "足湯"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "footbath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_9_b0c3217c621c4d34",
+      "review_hash": "a2e9bc7f9e147408",
+      "review_date": null,
+      "stay_date": "2020-07-19",
+      "score": 4,
+      "title": "3密を避ける為、部屋内食・露天風呂付客室のお部屋にして正解だったと思います",
+      "room_type": "群青（Gunjo)/天色（Amairo) ‐内風呂・露天風呂付き離れ客室‐【部屋食】",
+      "plan_name": "",
+      "body_char_count": 247,
+      "body_keywords": [
+        "露天",
+        "露天風呂"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "部屋食"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_10_e741ed0ce355f974",
+      "review_hash": "1e92bc4bf750ad7a",
+      "review_date": null,
+      "stay_date": "2020-07-18",
+      "score": 5,
+      "title": "妻が「温泉に入りたい」と言うので、我々の結婚記念日兼妻の誕生日で宿泊させていただきました",
+      "room_type": "錆浅葱（Sabiasagi) ‐内風呂・露天風呂付き離れ客室‐",
+      "plan_name": "",
+      "body_char_count": 286,
+      "body_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "泉質",
+        "循環"
+      ],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "内風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "water_texture",
+        "weak_onsen_feeling"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_11_680dff0e286a540e",
+      "review_hash": "a793127e0ed9c4fd",
+      "review_date": null,
+      "stay_date": "2020-07-12",
+      "score": 5,
+      "title": "天気に恵まれてとてもいい旅行となりました",
+      "room_type": "縹（Hanada)/千草（Chigusa) ‐足湯・内風呂・露天風呂付き離れ客室‐【部屋食】",
+      "plan_name": "",
+      "body_char_count": 313,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "足湯",
+        "トロトロ",
+        "すべすべ"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "足湯",
+        "部屋食"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "footbath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "water_texture"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_12_fd9dc51dc6bcdb50",
+      "review_hash": "5d489d70f34ade42",
+      "review_date": null,
+      "stay_date": "2020-06-21",
+      "score": 5,
+      "title": "とても寛げるお部屋でゆっくりと過ごさせて貰いました",
+      "room_type": "瑠璃（Ruri) ‐足湯・内風呂・露天風呂付き離れ客室‐",
+      "plan_name": "",
+      "body_char_count": 520,
+      "body_keywords": [
+        "内湯"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "足湯"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "footbath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_13_01bec22328cffe81",
+      "review_hash": "0ca579b21d8ac307",
+      "review_date": null,
+      "stay_date": "2020-03-18",
+      "score": 5,
+      "title": "全般にいいお宿です",
+      "room_type": "群青（Gunjo)/天色（Amairo) ‐内風呂・露天風呂付き離れ客室‐【部屋食】",
+      "plan_name": "",
+      "body_char_count": 127,
+      "body_keywords": [],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "部屋食"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_14_36fed5983e4f4fe2",
+      "review_hash": "fc2befc770cbedfe",
+      "review_date": null,
+      "stay_date": "2020-03-15",
+      "score": 5,
+      "title": "スタッフの皆さん、とても和かにおもてなしをして下さり有難うございました",
+      "room_type": "白藍(Shiraai) ‐内風呂・露天風呂付き離れ客室‐",
+      "plan_name": "",
+      "body_char_count": 527,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "大浴場",
+        "かけ流し",
+        "部屋食"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "public_bath_hot_spring"
+      ],
+      "caution_tags": [
+        "meal_operation",
+        "family_baby"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_15_057975032ad5d6d9",
+      "review_hash": "58d29df79fde9b07",
+      "review_date": null,
+      "stay_date": "2020-01-12",
+      "score": 5,
+      "title": "ゆっくり出来て、とても良かったです",
+      "room_type": "群青（Gunjo)/天色（Amairo) ‐内風呂・露天風呂付き離れ客室‐【部屋食】",
+      "plan_name": "",
+      "body_char_count": 18,
+      "body_keywords": [],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "部屋食"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_16_a2e9ea167815d83f",
+      "review_hash": "c747dd9214b4282f",
+      "review_date": null,
+      "stay_date": "2020-01-12",
+      "score": 4,
+      "title": "全体的には、すごくいいのですが、料理の説明が分かりづらかった",
+      "room_type": "み空（Misora) ‐内風呂・露天風呂付き離れ客室‐",
+      "plan_name": "",
+      "body_char_count": 101,
+      "body_keywords": [
+        "説明"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "説明"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "crowding",
+        "booking_confusion"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_17_82e6d83a84c92163",
+      "review_hash": "9d0babd6069775b4",
+      "review_date": null,
+      "stay_date": "2020-01-10",
+      "score": 5,
+      "title": "部屋、風呂、食事、景色、非常に満足しました",
+      "room_type": "縹（Hanada)/千草（Chigusa) ‐足湯・内風呂・露天風呂付き離れ客室‐【部屋食】",
+      "plan_name": "",
+      "body_char_count": 169,
+      "body_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "足湯",
+        "景色"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "足湯",
+        "景色",
+        "部屋食"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "footbath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_18_e59b8a66b21e8365",
+      "review_hash": "ebf59b2fcad3f0aa",
+      "review_date": null,
+      "stay_date": "2019-12-21",
+      "score": 3,
+      "title": "楽しく過ごせました",
+      "room_type": "瑠璃（Ruri) ‐足湯・内風呂・露天風呂付き離れ客室‐",
+      "plan_name": "",
+      "body_char_count": 298,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "足湯",
+        "眺め",
+        "部屋食"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "足湯"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "footbath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_19_7e450edff9d5494a",
+      "review_hash": "13236324398772b6",
+      "review_date": null,
+      "stay_date": "2019-12-31",
+      "score": 4,
+      "title": "再訪間違いなしと感じるお宿でした",
+      "room_type": "群青（Gunjo)/天色（Amairo) ‐内風呂・露天風呂付き離れ客室‐【部屋食】",
+      "plan_name": "",
+      "body_char_count": 498,
+      "body_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "ツルツル",
+        "景色",
+        "予約",
+        "部屋食"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "部屋食"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "water_texture",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_20_74c9e0bad027fc98",
+      "review_hash": "a238ba76b12060bf",
+      "review_date": null,
+      "stay_date": "2019-11-20",
+      "score": 5,
+      "title": "お部屋も綺麗で素敵でした、温泉も素晴らしいです",
+      "room_type": "縹（Hanada)/千草（Chigusa) ‐足湯・内風呂・露天風呂付き離れ客室‐【部屋食】",
+      "plan_name": "",
+      "body_char_count": 181,
+      "body_keywords": [
+        "温泉",
+        "景色"
+      ],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "足湯",
+        "部屋食"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "footbath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [
+        "meal_operation",
+        "family_baby"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_21_6f875794589cc7c6",
+      "review_hash": "5b7401368bac5c3e",
+      "review_date": null,
+      "stay_date": "2019-12-20",
+      "score": 4,
+      "title": "新しい所なので少し対応等に対して不安が ありましたが、到着してすぐに不安がかき消されるほど 対応よくして頂きました",
+      "room_type": "瑠璃（Ruri) ‐足湯・内風呂・露天風呂付き離れ客室‐",
+      "plan_name": "",
+      "body_char_count": 577,
+      "body_keywords": [
+        "温泉",
+        "温度",
+        "景色",
+        "海"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "足湯"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "footbath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [
+        "temperature_control",
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_22_5e89a1fa27e8a1e3",
+      "review_hash": "92426ffb813f6518",
+      "review_date": null,
+      "stay_date": "2019-11-27",
+      "score": 4,
+      "title": "間違えて本館の方へ行ってしまった時に 新館までの道案内を丁寧に車で案内して頂き ありがとうございました",
+      "room_type": "縹（Hanada)/千草（Chigusa) ‐足湯・内風呂・露天風呂付き離れ客室‐【部屋食】",
+      "plan_name": "",
+      "body_char_count": 85,
+      "body_keywords": [],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "足湯",
+        "部屋食"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "footbath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "booking_confusion"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_23_9b1995e9ff7865ee",
+      "review_hash": "4aec180142378b1d",
+      "review_date": null,
+      "stay_date": "2019-11-03",
+      "score": 5,
+      "title": "アレルギーにも対応してくださり、手違いがあった時もすごく丁寧に対応して頂いてとても嬉しかったです",
+      "room_type": "縹（Hanada)/千草（Chigusa) ‐足湯・内風呂・露天風呂付き離れ客室‐【部屋食】",
+      "plan_name": "",
+      "body_char_count": 151,
+      "body_keywords": [
+        "ラウンジ"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "足湯",
+        "部屋食"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "footbath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_24_14d008d03fd33981",
+      "review_hash": "5682f0bbdd1993e4",
+      "review_date": null,
+      "stay_date": "2019-10-26",
+      "score": 3,
+      "title": "大変ゆっくりさせていただきました",
+      "room_type": "み空（Misora) ‐内風呂・露天風呂付き離れ客室‐",
+      "plan_name": "",
+      "body_char_count": 396,
+      "body_keywords": [
+        "景色",
+        "海"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_25_8d4db50f88b6c38f",
+      "review_hash": "51d5368de18a88e9",
+      "review_date": null,
+      "stay_date": "2019-11-01",
+      "score": 5,
+      "title": "調度品の選定のセンスが良くて感心しました",
+      "room_type": "瑠璃（Ruri) ‐足湯・内風呂・露天風呂付き離れ客室‐",
+      "plan_name": "",
+      "body_char_count": 21,
+      "body_keywords": [],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "足湯"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "footbath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_26_55f220836d2fcb07",
+      "review_hash": "9c4c0b9b08f48db3",
+      "review_date": null,
+      "stay_date": "2019-10-28",
+      "score": 5,
+      "title": "夫婦でお世話になりました",
+      "room_type": "縹（Hanada)/千草（Chigusa) ‐足湯・内風呂・露天風呂付き離れ客室‐【部屋食】",
+      "plan_name": "",
+      "body_char_count": 572,
+      "body_keywords": [
+        "露天",
+        "内湯",
+        "足湯"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "足湯",
+        "部屋食"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "footbath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_27_1d3f92480d234db0",
+      "review_hash": "6f499e3ce40a20b9",
+      "review_date": null,
+      "stay_date": "2019-10-13",
+      "score": 4,
+      "title": "全体的には全く問題なかったです",
+      "room_type": "み空（Misora) ‐内風呂・露天風呂付き離れ客室‐",
+      "plan_name": "",
+      "body_char_count": 94,
+      "body_keywords": [],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_28_df830ac12c0034c3",
+      "review_hash": "23f268f3646abda6",
+      "review_date": null,
+      "stay_date": "2019-09-12",
+      "score": 4,
+      "title": "とてもくつろげました",
+      "room_type": "花紺青（Hanakonjo) ‐内風呂・露天風呂付き離れ客室‐",
+      "plan_name": "",
+      "body_char_count": 83,
+      "body_keywords": [],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_29_bad17fa1186b974f",
+      "review_hash": "f9b0f8999944e8f0",
+      "review_date": null,
+      "stay_date": "2020-12-31",
+      "score": null,
+      "title": "宿泊日 2020年12月31日 部屋タイプ 瑠璃（Ruri) ‐足湯・内風呂・露天風呂付き離れ客室‐ とても寛げました",
+      "room_type": "",
+      "plan_name": "",
+      "body_char_count": 73,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "足湯"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "足湯"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "footbath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_30_a53bee5c95a15608",
+      "review_hash": "9398f361f9d414ef",
+      "review_date": null,
+      "stay_date": "2020-11-09",
+      "score": null,
+      "title": "宿泊日 2020年11月9日 部屋タイプ 白藍(Shiraai) ‐内風呂・露天風呂付き離れ客室‐ とてもお風呂が良かったです",
+      "room_type": "",
+      "plan_name": "",
+      "body_char_count": 244,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "つるつる"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "water_texture"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_31_43f409651086dd22",
+      "review_hash": "6b1e9ae1cf9ee92a",
+      "review_date": null,
+      "stay_date": "2020-10-24",
+      "score": null,
+      "title": "宿泊日 2020年10月24日 部屋タイプ 紺碧（Konpeki）‐足湯・内風呂・露天風呂付き離れ客室‐【部屋食】 結婚記念日のお祝い旅行でお世話になりました",
+      "room_type": "",
+      "plan_name": "",
+      "body_char_count": 241,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "足湯",
+        "部屋食"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "足湯",
+        "部屋食"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "footbath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [
+        "slippery_floor"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_32_79fab7fe53507614",
+      "review_hash": "02ff9342dc131b91",
+      "review_date": null,
+      "stay_date": "2020-08-16",
+      "score": null,
+      "title": "宿泊日 2020年8月16日 部屋タイプ 錆浅葱（Sabiasagi) ‐内風呂・露天風呂付き離れ客室‐ 8月5日、6日で宿泊しました",
+      "room_type": "",
+      "plan_name": "",
+      "body_char_count": 371,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "海"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_33_1aa94a81befe4b30",
+      "review_hash": "c313dba80825949b",
+      "review_date": null,
+      "stay_date": "2020-08-08",
+      "score": null,
+      "title": "宿泊日 2020年8月8日 部屋タイプ み空（Misora) ‐内風呂・露天風呂付き離れ客室‐ 何から何まで全てが良かったです",
+      "room_type": "",
+      "plan_name": "",
+      "body_char_count": 227,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "トロトロ",
+        "説明"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "water_texture",
+        "booking_confusion"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_34_d552df1349ff5ed3",
+      "review_hash": "ffa914722a2dbc27",
+      "review_date": null,
+      "stay_date": "2020-08-03",
+      "score": null,
+      "title": "宿泊日 2020年8月3日 部屋タイプ 縹（Hanada)/千草（Chigusa) ‐足湯・内風呂・露天風呂付き離れ客室‐【部屋食】 コロナ禍の中，非日常を味わ",
+      "room_type": "",
+      "plan_name": "",
+      "body_char_count": 149,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "足湯",
+        "予約",
+        "部屋食"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "足湯",
+        "予約",
+        "部屋食"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "footbath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "booking_confusion"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_35_9d91058cd0a1bf2d",
+      "review_hash": "c057ae896a9e0421",
+      "review_date": null,
+      "stay_date": "2020-08-10",
+      "score": null,
+      "title": "宿泊日 2020年8月10日 部屋タイプ み空（Misora) ‐内風呂・露天風呂付き離れ客室‐ 今回連泊したが、出来れば2泊目も和食にして欲しかったし、せめて",
+      "room_type": "",
+      "plan_name": "",
+      "body_char_count": 175,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "予約"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "booking_confusion"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_36_2b3bb47d59737116",
+      "review_hash": "f506051e8b35840d",
+      "review_date": null,
+      "stay_date": "2020-07-31",
+      "score": null,
+      "title": "宿泊日 2020年7月31日 部屋タイプ 瑠璃（Ruri) ‐足湯・内風呂・露天風呂付き離れ客室‐ 温泉好きな私にとって部屋の内風呂・露天風呂・足湯は、いつでも",
+      "room_type": "",
+      "plan_name": "",
+      "body_char_count": 239,
+      "body_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "足湯"
+      ],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "足湯"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "footbath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_37_dd5eab197749ef32",
+      "review_hash": "b6fe008cf5626d08",
+      "review_date": null,
+      "stay_date": "2020-07-19",
+      "score": null,
+      "title": "宿泊日 2020年7月19日 部屋タイプ 群青（Gunjo)/天色（Amairo) ‐内風呂・露天風呂付き離れ客室‐【部屋食】 3密を避ける為、部屋内食・露天風",
+      "room_type": "",
+      "plan_name": "",
+      "body_char_count": 311,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "部屋食"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "部屋食"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_38_59fb4722688d8e1f",
+      "review_hash": "db93ba7e85193f01",
+      "review_date": null,
+      "stay_date": "2020-07-18",
+      "score": null,
+      "title": "宿泊日 2020年7月18日 部屋タイプ 錆浅葱（Sabiasagi) ‐内風呂・露天風呂付き離れ客室‐ 妻が「温泉に入りたい」と言うので、我々の結婚記念日兼妻",
+      "room_type": "",
+      "plan_name": "",
+      "body_char_count": 339,
+      "body_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "泉質",
+        "循環"
+      ],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "内風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "water_texture",
+        "weak_onsen_feeling"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_39_5d9c9923247c06ae",
+      "review_hash": "0b4d2de42b890914",
+      "review_date": null,
+      "stay_date": "2020-07-12",
+      "score": null,
+      "title": "宿泊日 2020年7月12日 部屋タイプ 縹（Hanada)/千草（Chigusa) ‐足湯・内風呂・露天風呂付き離れ客室‐【部屋食】 天気に恵まれてとてもいい",
+      "room_type": "",
+      "plan_name": "",
+      "body_char_count": 381,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "足湯",
+        "トロトロ",
+        "すべすべ",
+        "部屋食"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "足湯",
+        "部屋食"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "footbath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "water_texture"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_40_894670317e320b3a",
+      "review_hash": "ff134002f03d3ed9",
+      "review_date": null,
+      "stay_date": "2020-06-21",
+      "score": null,
+      "title": "宿泊日 2020年6月21日 部屋タイプ 瑠璃（Ruri) ‐足湯・内風呂・露天風呂付き離れ客室‐ とても寛げるお部屋でゆっくりと過ごさせて貰いました",
+      "room_type": "",
+      "plan_name": "",
+      "body_char_count": 570,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "内湯",
+        "足湯"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "足湯"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "footbath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_41_ca910ddb9365559d",
+      "review_hash": "ffd65d245d91b579",
+      "review_date": null,
+      "stay_date": "2020-03-18",
+      "score": null,
+      "title": "宿泊日 2020年3月18日 部屋タイプ 群青（Gunjo)/天色（Amairo) ‐内風呂・露天風呂付き離れ客室‐【部屋食】 全般にいいお宿です",
+      "room_type": "",
+      "plan_name": "",
+      "body_char_count": 191,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "部屋食"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "部屋食"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [
+        "meal_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_42_bc5e3aa7c1995ff0",
+      "review_hash": "1b25904464a3e1d7",
+      "review_date": null,
+      "stay_date": "2020-03-15",
+      "score": null,
+      "title": "宿泊日 2020年3月15日 部屋タイプ 白藍(Shiraai) ‐内風呂・露天風呂付き離れ客室‐ スタッフの皆さん、とても和かにおもてなしをして下さり有難うご",
+      "room_type": "白藍(Shiraai) ‐内風呂・露天風呂付き離れ客室‐ スタッフの皆さん、とても和かにおもてなしをして下さり有難うございました。 施設も新しくリネンも清潔感があり、清掃も行き届いていたと思います。 玄関脇のニッチに飾られたお花も素敵でした。 お料理の味付けは勿論、サービスのタイ",
+      "plan_name": "",
+      "body_char_count": 583,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "大浴場",
+        "かけ流し",
+        "部屋食"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "public_bath_hot_spring"
+      ],
+      "caution_tags": [
+        "meal_operation",
+        "family_baby"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_43_57f813d8f0676cb0",
+      "review_hash": "f2b3107c4692a4aa",
+      "review_date": null,
+      "stay_date": "2020-01-12",
+      "score": null,
+      "title": "宿泊日 2020年1月12日 部屋タイプ 群青（Gunjo)/天色（Amairo) ‐内風呂・露天風呂付き離れ客室‐【部屋食】 ゆっくり出来て、とても良かったで",
+      "room_type": "",
+      "plan_name": "",
+      "body_char_count": 82,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "部屋食"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "部屋食"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Relux",
+      "source_url": "https://rlx.jp/23788/review/",
+      "review_id": "relux_44_785fcca06fc8fb7d",
+      "review_hash": "40aa38d38cd9b6ab",
+      "review_date": null,
+      "stay_date": "2020-01-12",
+      "score": null,
+      "title": "宿泊日 2020年1月12日 部屋タイプ み空（Misora) ‐内風呂・露天風呂付き離れ客室‐ 全体的には、すごくいいのですが、料理の説明が分かりづらかった",
+      "room_type": "",
+      "plan_name": "",
+      "body_char_count": 150,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "説明"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "内風呂",
+        "説明"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "private_bath_experience",
+        "crowding",
+        "booking_confusion"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    }
+  ]
+}

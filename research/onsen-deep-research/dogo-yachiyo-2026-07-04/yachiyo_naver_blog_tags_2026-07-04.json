@@ -1,0 +1,100 @@
+{
+  "summary": {
+    "generated_at": "2026-07-04T03:57:58.438Z",
+    "lodging": "도고온천 야치요",
+    "platform": "Naver Blog via Aside Browser",
+    "searched_query": "도고온천 야치요 객실 노천탕 후기",
+    "direct_opened_urls": 3,
+    "total_direct_browser": 2,
+    "onsen_related_body": 2,
+    "bath_area_tags": {
+      "room_open_air_bath": 2,
+      "public_bath": 2
+    },
+    "signal_type_tags": {
+      "room_bath_hot_spring": 2,
+      "public_bath_hot_spring": 2,
+      "water_texture": 2
+    },
+    "snippet_only_search_results": [
+      "Naver search result snippets from Rakuten/Klook/Trip.com/Agoda/Expedia/MyRealTrip/Triple and Korean blogs were not counted as direct reviews."
+    ],
+    "note": "Bodies not stored; direct blog bodies reduced to hashes, metadata, short keywords and tags."
+  },
+  "reviews": [
+    {
+      "platform": "Naver Blog",
+      "source_url": "https://blog.naver.com/annatomo/224288947088",
+      "review_hash": "b67890bc0d21142d",
+      "review_date": null,
+      "body_char_count": 5436,
+      "body_keywords": [
+        "온천",
+        "노천탕",
+        "개인",
+        "프라이빗",
+        "대욕장",
+        "도고온천",
+        "야치요",
+        "객실",
+        "탕"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring",
+        "water_texture"
+      ],
+      "language": "ko",
+      "access": "direct_readable"
+    },
+    {
+      "platform": "Naver Blog",
+      "source_url": "https://blog.naver.com/yesyeess/224201620600",
+      "review_hash": "175f8ca1ce5e79ac",
+      "review_date": null,
+      "body_char_count": 2077,
+      "body_keywords": [
+        "온천",
+        "노천탕",
+        "개인",
+        "객실마다",
+        "온천수",
+        "도고온천",
+        "야치요",
+        "객실",
+        "탕",
+        "대중목욕탕"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring",
+        "water_texture"
+      ],
+      "language": "ko",
+      "access": "direct_readable"
+    },
+    {
+      "platform": "Naver Blog",
+      "source_url": "https://blog.naver.com/kolio",
+      "review_hash": "e3b0c44298fc1c14",
+      "review_date": null,
+      "body_char_count": 0,
+      "body_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ko",
+      "access": "partial_or_profile"
+    }
+  ]
+}

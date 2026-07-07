@@ -1,0 +1,168 @@
+{
+  "research_date": "2026-07-04",
+  "scope": "ready lodging deep research: dogo-funaya",
+  "method": "Rakuten/Jalan/JTB 정적 본문 파싱 후 Google Hotels/Maps 및 Naver Blog를 Aside Browser로 직접 확인. 검색 결과 스니펫과 OTA/AI 요약은 직접 리뷰 수에서 제외.",
+  "direct_review_sampling_status": {
+    "target_direct_reviews": 300,
+    "direct_reviews_read": 535,
+    "onsen_related_direct_reviews": 277,
+    "direct_body_platform_count": 5,
+    "data_quality_grade": "A"
+  },
+  "lodgings": [
+    {
+      "slug": "dogo-funaya",
+      "name_ja": "道後温泉 ふなや",
+      "google_maps": {
+        "rating": 4.4,
+        "visible_review_count": 1583,
+        "rating_distribution": {
+          "status": "partial",
+          "note": "Google Hotels 리뷰 탭에서 별점 막대는 보였으나 Aside 텍스트 스냅샷으로 별점별 숫자는 추출되지 않음"
+        },
+        "korean_reviews_visible": true,
+        "review_body_access": "partial",
+        "direct_read_reviews": 7,
+        "onsen_related_direct_reviews": 4,
+        "provider_cards_seen": [
+          {
+            "provider": "Trip.com",
+            "rating": 4.8,
+            "visible_review_count": 116,
+            "counted_as_google_native": false
+          },
+          {
+            "provider": "Tripadvisor",
+            "rating": 4.4,
+            "visible_review_count": 339,
+            "counted_as_google_native": false
+          }
+        ],
+        "access_notes": "Google-native review body sample was directly read in Google Hotels/Travel review tab via Aside Browser. Provider cards were not mixed into Google-native counts."
+      },
+      "ota_review_pool_signals": {
+        "rakuten_travel": {
+          "rating": null,
+          "visible_review_count": 1629,
+          "review_body_access": "direct_readable",
+          "direct_read_reviews": 360,
+          "onsen_related_direct_reviews": 164,
+          "source_url": "https://travel.rakuten.co.jp/HOTEL/11332/review.html"
+        },
+        "jalan": {
+          "rating": 4.9,
+          "visible_review_count": 1529,
+          "review_body_access": "direct_readable",
+          "direct_read_reviews": 55,
+          "onsen_related_direct_reviews": 55,
+          "source_url": "https://www.jalan.net/yad356524/kuchikomi/",
+          "access_notes": "Jalan 표면 visible count는 검색/숙소 페이지에서 확인. 정적 직접 본문은 중복 제거 후 55건으로 집계."
+        },
+        "jtb": {
+          "rating": "91/100 or 196 survey score surface",
+          "visible_review_count": "mixed: 184 comment results / 196 survey ratings / 88 related count text seen",
+          "review_body_access": "direct_readable",
+          "direct_read_reviews": 107,
+          "onsen_related_direct_reviews": 49,
+          "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/7461008/review/",
+          "access_notes": "JTB page header counts were inconsistent; direct-read count is based only on unique body blocks exposed in HTML."
+        },
+        "naver_blog": {
+          "rating": null,
+          "visible_review_count": null,
+          "review_body_access": "direct_readable",
+          "direct_read_reviews": 6,
+          "onsen_related_direct_reviews": 5,
+          "direct_urls_counted": [
+            "https://m.blog.naver.com/chayy12/224221814693",
+            "https://m.blog.naver.com/clap_watermelon9/224261003703",
+            "https://m.blog.naver.com/hk80moono/224298001960",
+            "https://m.blog.naver.com/bono8788/224087834650",
+            "https://m.blog.naver.com/suin__m/222982784872",
+            "https://m.blog.naver.com/jv1110/224038420188"
+          ],
+          "snippet_only_or_excluded": [
+            {
+              "url": "https://m.blog.naver.com/eattang/224309320173",
+              "reason": "opened but partner/sponsored disclosure present; retained as caution, not counted as independent user-review direct signal"
+            },
+            {
+              "url": "https://m.blog.naver.com/demijamong/224321958591",
+              "reason": "opened but partner/sponsored disclosure present; retained as caution, not counted as independent user-review direct signal"
+            },
+            {
+              "source": "Naver Cafe search results",
+              "reason": "snippet_only; cafe/login context not counted as direct user review body"
+            }
+          ]
+        },
+        "ikkyu_yahoo": {
+          "review_body_access": "snippet_only",
+          "visible_review_count": null,
+          "notes": "검색 표면과 후보 파일에서 존재 확인. 이번 회차 직접 본문 수에는 포함하지 않음"
+        },
+        "agoda_booking": {
+          "review_body_access": "snippet_only",
+          "visible_review_count": null,
+          "notes": "검색 광고/OTA 표면은 보였으나 직접 본문 확보 없음"
+        },
+        "trip_com": {
+          "review_body_access": "snippet_only",
+          "visible_review_count": 116,
+          "notes": "Google Hotels provider card로만 확인; 직접 본문 수에 포함하지 않음"
+        },
+        "tripadvisor": {
+          "review_body_access": "snippet_only",
+          "visible_review_count": 339,
+          "notes": "Google Hotels provider card와 검색 결과 일부로 확인; 직접 본문 수에 포함하지 않음"
+        }
+      },
+      "official_bath_facts_seen": {
+        "official_urls": [
+          "https://www.dogo-funaya.co.jp/",
+          "https://www.dogo-funaya.co.jp/facility/onsen.html",
+          "https://www.dogo-funaya.co.jp/guestroom/type2.html",
+          "https://www.dogo-funaya.co.jp/guestroom/type3.html"
+        ],
+        "ota_facility_urls": [
+          "https://travel.rakuten.co.jp/HOTEL/11332/11332_std.html",
+          "https://www.jtb.co.jp/kokunai-hotel/htl/7461008/bath/"
+        ],
+        "facts": [
+          "檜湯, 御影湯",
+          "각 대욕장에 露天風呂와 サウナ",
+          "庭の足湯",
+          "道後温泉100％",
+          "アルカリ性単純温泉, pH 9.1, 源泉46.8℃",
+          "一部客室: 道後温泉引き湯の檜風呂",
+          "JTB: 放流・循環併用式、加温している"
+        ]
+      },
+      "review_signal_keywords": [
+        "温泉",
+        "道後温泉",
+        "大浴場",
+        "露天風呂",
+        "足湯",
+        "檜湯",
+        "御影湯",
+        "サウナ",
+        "부들부들",
+        "대욕장",
+        "노천탕"
+      ],
+      "caution_keywords": [
+        "予約",
+        "駅",
+        "道後本館",
+        "徒歩",
+        "館内",
+        "古い",
+        "清潔",
+        "温度",
+        "거동이 불편"
+      ],
+      "next_sampling": "A등급 도달. 다음 보강 시 Ikkyu/Yahoo 원문과 Google rating_distribution 숫자 추출을 추가하면 플랫폼 맵이 더 단단해짐."
+    }
+  ]
+}

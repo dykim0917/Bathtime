@@ -1,0 +1,110 @@
+{
+  "research_date": "2026-07-04",
+  "slug": "shirahama-xyz-speciale",
+  "scope_note": "Aside Browser로 직접 확인한 동적/브라우저 표면. 검색 스니펫과 OTA 공급자 카드는 직접 리뷰 수에 포함하지 않았다.",
+  "browser_platforms": {
+    "google_maps": {
+      "source_url": "https://www.google.com/maps/search/?api=1&query=XYZ%E3%82%B9%E3%83%9A%E3%83%81%E3%82%A2%E3%83%BC%E3%83%AC%20%E7%99%BD%E6%B5%9C",
+      "rating": 4.6,
+      "visible_review_count": 60,
+      "rating_distribution": "bar chart visible; exact per-star counts not exposed in Aside output",
+      "review_body_access": "partial",
+      "direct_reviews_read": 10,
+      "onsen_related_direct_reviews": 5,
+      "provider_cards_seen": [
+        "Hotels.com",
+        "Trip.com",
+        "Ikyu.com",
+        "Agoda",
+        "JAPANiCAN.com"
+      ],
+      "direct_google_native_review_note": "Google-native review tab showed 10 visible reviews; repeated scroll attempts did not load additional review bodies.",
+      "keywords_seen": [
+        "部屋付き露天",
+        "温泉",
+        "景色",
+        "部屋の露天",
+        "露天の温泉",
+        "レーザー",
+        "ロールスロイス"
+      ]
+    },
+    "ikkyu": {
+      "source_url": "https://www.ikyu.com/00002920/review/",
+      "rating": 4.63,
+      "visible_review_count": 176,
+      "category_scores": {
+        "rooms_amenities": 4.55,
+        "facilities": 4.56,
+        "service": 4.65,
+        "food": 4.53,
+        "onsen_bath": 4.82,
+        "satisfaction": 4.64
+      },
+      "review_body_access": "direct_readable",
+      "direct_reviews_read": 138,
+      "onsen_related_direct_reviews": 102,
+      "pagination_note": "Aside Browser에서 p1-p5까지 date-stamped review blocks 138건을 확인했다. p6-p9는 0건으로 렌더링되어 visible 176건 중 남은 38건은 직접 본문화하지 못했다.",
+      "keyword_counts_surface": {
+        "露天風呂": 45,
+        "星空": 30,
+        "サプライズ": 10,
+        "オーシャンビュー": 9,
+        "プライベート空間": 6,
+        "夕日": 7,
+        "温泉しゃぶしゃぶ": 4,
+        "熊野牛": 4,
+        "サウナ": 2,
+        "記念日": 1
+      }
+    },
+    "yahoo_travel": {
+      "source_url": "https://travel.yahoo.co.jp/00002920/review/",
+      "rating": 4.63,
+      "visible_review_count": 176,
+      "review_body_access": "direct_readable",
+      "direct_reviews_read": 6,
+      "onsen_related_direct_reviews": 5,
+      "corpus_overlap_note": "Ikkyu와 같은 176건 리뷰풀을 공유하는 표면으로 보인다. 직접 본문 플랫폼으로는 기록하되 독립 작성자 수를 부풀리지 않도록 주의한다.",
+      "keywords_seen": [
+        "露天風呂の壁と屋根が可動式",
+        "客室露天風呂",
+        "内湯も温泉",
+        "ミラバス",
+        "お湯もトロトロ"
+      ]
+    },
+    "agoda": {
+      "source_url": "https://www.agoda.com/ja-jp/xyz/hotel/shingu-jp.html",
+      "rating": 9.3,
+      "visible_review_count": 103,
+      "review_body_access": "partial",
+      "direct_reviews_read": 0,
+      "onsen_related_direct_reviews": 0,
+      "partial_snippet_keywords": [
+        "温泉は本当によくお肌がすべすべ",
+        "露天風呂の温度を低め",
+        "部屋のお風呂は温泉"
+      ],
+      "exclusion_note": "리뷰 하이라이트/부분 문구는 날짜·작성자 단위 본문으로 확인되지 않아 직접 리뷰 수에서 제외했다."
+    },
+    "booking": {
+      "source_url": "https://www.booking.com/hotel/jp/xyz-supetiare.ja.html",
+      "rating": 9.0,
+      "visible_review_count": 3,
+      "review_body_access": "partial",
+      "direct_reviews_read": 0,
+      "onsen_related_direct_reviews": 0,
+      "partial_note": "숙소 설명과 리뷰 수는 확인했지만 개별 리뷰 본문은 Aside 출력에서 확보하지 못했다."
+    },
+    "naver_search": {
+      "source_url": "https://search.naver.com/search.naver?query=XYZ%20Speciale%20%ED%9B%84%EA%B8%B0%20%EA%B0%9D%EC%8B%A4%20%EB%85%B8%EC%B2%9C%ED%83%95",
+      "rating": null,
+      "visible_review_count": null,
+      "review_body_access": "snippet_only",
+      "direct_reviews_read": 0,
+      "onsen_related_direct_reviews": 0,
+      "note": "정확 숙소명 기준 한국어 블로그/카페 직접 본문은 확인되지 않았다. OTA/메타검색 스니펫과 타 지역 XYZ 계열 글은 직접 리뷰로 세지 않았다."
+    }
+  }
+}

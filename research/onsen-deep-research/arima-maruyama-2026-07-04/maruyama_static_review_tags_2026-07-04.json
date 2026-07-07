@@ -1,0 +1,39 @@
+[
+  {
+    "platform": "JTB/Rurubu",
+    "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/6435A16/review/",
+    "review_id": "4d1214adbbf6f55d",
+    "review_hash": "8b101d8b496a02c1",
+    "review_date": "2018-05-05",
+    "stay_date": "2018-05-03",
+    "score": null,
+    "title": "(function (w, d, s, l, i) { w[l] = w[l] || []; w[l].push({ '",
+    "room_type": "和室",
+    "plan_name": "【記念日は有馬温泉で】選べる特典付きのお祝い旅行 【温泉で癒されよう！】★極み★ディナー",
+    "body_char_count": 205,
+    "body_keywords": [
+      "貸切",
+      "貸切風呂",
+      "混雑"
+    ],
+    "context_keywords": [
+      "温泉",
+      "有馬温泉"
+    ],
+    "onsen_related_body": true,
+    "bath_area_tags": [
+      "room_bath",
+      "private_bath"
+    ],
+    "signal_type_tags": [
+      "room_bath_hot_spring",
+      "private_bath_experience",
+      "crowding",
+      "booking_confusion"
+    ],
+    "caution_tags": [
+      "bath_waiting"
+    ],
+    "language": "ja"
+  }
+]

@@ -1,0 +1,181 @@
+{
+  "research_date": "2026-07-06",
+  "scope": "shirahama-xyz-speciale ready lodging deep research",
+  "method": "Static collection plus 2026-07-06 web/Aside recheck. Yahoo Travel p1-p2, Trip.com review page, Expedia property page, and five Japanese blog/Tabier direct stay bodies were added as direct-body partial/direct surfaces. Ikkyu p6 was rechecked with Aside and exposed no public review bodies. Hotels.com XYZ Private spa was excluded as a different related lodging.",
+  "direct_review_sampling_status": "B: 251 direct reviews read, 174 onsen-related direct reviews, 8 direct-body platform surfaces. 300건 미만 종료 사유 갱신.",
+  "lodgings": [
+    {
+      "slug": "shirahama-xyz-speciale",
+      "name_ja": "海絶景とギネス認定の宿 全室露天風呂付離れ XYZスペチアーレ",
+      "name_ko_or_en": "XYZ Speciale",
+      "address": "和歌山県西牟婁郡白浜町椿1063-21",
+      "onsen_area": "椿温泉 / 白浜エリア",
+      "official_url": "https://xyz-speciale.xyz/",
+      "google_maps": {
+        "rating": 4.6,
+        "visible_review_count": 60,
+        "rating_distribution": "bar chart visible; exact counts not exposed",
+        "korean_reviews_visible": "not confirmed",
+        "review_body_access": "partial",
+        "direct_google_native_reviews_read": 10,
+        "onsen_related_direct_reviews": 5,
+        "provider_cards_seen": [
+          "Hotels.com",
+          "Trip.com",
+          "Ikyu.com",
+          "Agoda",
+          "JAPANiCAN.com"
+        ],
+        "access_note": "Aside Browser에서 리뷰 탭을 열고 스크롤했으나 10건 이후 추가 본문 로딩이 확인되지 않았다. 2026-07-06 Aside exec 재시도는 빈 출력으로 종료되어 새 Google-native 본문으로 산입하지 않았다."
+      },
+      "ota_review_pool_signals": {
+        "rakuten_travel": {
+          "rating": null,
+          "visible_review_count": 20,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 20,
+          "onsen_related_direct_reviews": 12,
+          "source_url": "https://travel.rakuten.co.jp/HOTEL/182811/review.html"
+        },
+        "jalan": {
+          "rating": 4.9,
+          "visible_review_count": 77,
+          "review_body_access": "partial",
+          "direct_reviews_read": 17,
+          "onsen_related_direct_reviews": 11,
+          "source_url": "https://www.jalan.net/yad355375/kuchikomi/",
+          "access_note": "static p1-p4가 각 17개 블록을 반환했지만 고유 본문은 같은 17건으로 중복됐다."
+        },
+        "ikkyu": {
+          "rating": 4.63,
+          "visible_review_count": 176,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 138,
+          "onsen_related_direct_reviews": 102,
+          "source_url": "https://www.ikyu.com/00002920/review/"
+        },
+        "yahoo_travel": {
+          "rating": 4.63,
+          "visible_review_count": 176,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 37,
+          "onsen_related_direct_reviews": 27,
+          "source_url": "https://travel.yahoo.co.jp/00002920/review/",
+          "access_note": "2026-07-06 p1-p2 재확인으로 Yahoo-native 직접 본문 37건까지 보강. Ikkyu 공유 리뷰풀 가능성은 계속 주의."
+        },
+        "japanese_blogs_tabier": {
+          "visible_review_count": 5,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 5,
+          "onsen_related_direct_reviews": 5,
+          "source_urls": [
+            "https://room78.info/travel_xyzspe/",
+            "https://www.tabier.com/review/%E5%A5%A5%E7%99%BD%E6%B5%9C%E6%A4%BF%E6%B8%A9%E6%B3%89%E3%80%80xyz%E3%82%B9%E3%83%9A%E3%83%81%E3%82%A2%E3%83%BC%E3%83%AC%E3%80%80%E5%8B%95%E7%94%BB%E3%83%AC%E3%83%9D/",
+            "https://ameblo.jp/gi03/entry-12964230659.html",
+            "https://plaza.rakuten.co.jp/ne510asobou46/diary/202509010000-amp/",
+            "https://fujiyu-blog.com/xyz-speciale/"
+          ],
+          "access_note": "정확 숙소 직접 숙박기 5건. 객실 노천탕, 객실 내탕, 椿温泉, 源泉, トロトロ/ヌルトロ, 별하늘/해전망 신호가 직접 본문에 나타난다."
+        },
+        "agoda": {
+          "rating": 9.3,
+          "visible_review_count": 103,
+          "review_body_access": "partial",
+          "direct_reviews_read": 0,
+          "source_url": "https://www.agoda.com/ja-jp/xyz/hotel/shingu-jp.html"
+        },
+        "booking": {
+          "rating": 9,
+          "visible_review_count": 3,
+          "review_body_access": "partial",
+          "direct_reviews_read": 0,
+          "source_url": "https://www.booking.com/hotel/jp/xyz-supetiare.ja.html"
+        },
+        "expedia": {
+          "rating": 9.8,
+          "visible_review_count": 35,
+          "review_body_access": "partial",
+          "direct_reviews_read": 16,
+          "source_url": "https://www.expedia.co.jp/en/Tanabe-Hotels-XYZ-Speciale.h67621525.Hotel-Information",
+          "onsen_related_direct_reviews": 9,
+          "access_note": "35건 표면 중 작성자·날짜·본문이 함께 보이는 16건만 직접 수로 산입."
+        },
+        "jtb": {
+          "rating": null,
+          "visible_review_count": null,
+          "review_body_access": "partial",
+          "direct_reviews_read": 0,
+          "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/6507A02/review/"
+        },
+        "naver_search_blog": {
+          "rating": null,
+          "visible_review_count": null,
+          "review_body_access": "snippet_only",
+          "direct_reviews_read": 0,
+          "source_url": "https://search.naver.com/search.naver?query=XYZ%20Speciale%20%ED%9B%84%EA%B8%B0%20%EA%B0%9D%EC%8B%A4%20%EB%85%B8%EC%B2%9C%ED%83%95"
+        },
+        "trip_com": {
+          "rating": null,
+          "visible_review_count": 18,
+          "review_body_access": "partial",
+          "direct_reviews_read": 8,
+          "onsen_related_direct_reviews": 3,
+          "source_url": "https://in.trip.com/hotels/shirahama-hotel-detail-79030461/xyz-speciale/review.html",
+          "access_note": "18건 표면 중 날짜·객실 타입·본문이 보이는 8건만 직접 수로 산입."
+        },
+        "tripadvisor": {
+          "rating": 5,
+          "visible_review_count": 1,
+          "review_body_access": "partial",
+          "direct_reviews_read": 0,
+          "source_url": "https://www.tripadvisor.jp/Hotel_Review-g1121351-d23965059-Reviews-XYZ_speciale-Shirahama_cho_Nishimuro_gun_Wakayama_Prefecture_Kinki.html",
+          "access_note": "개별 리뷰 본문 미노출로 직접 수 제외."
+        },
+        "hotels_com_private_spa_excluded": {
+          "rating": null,
+          "visible_review_count": 263,
+          "review_body_access": "direct_readable_but_excluded",
+          "direct_reviews_read": 0,
+          "source_url": "https://www.hotels.com/ho636650912/xyz-private-spa-and-seaside-resort-shirahama-japan/",
+          "access_note": "XYZ Private spa and Seaside Resort 표면으로, XYZ Speciale와 숙소 정체성이 달라 제외."
+        }
+      },
+      "official_bath_facts_seen": {
+        "room_bath": "probable; review/OTA surface mentions 内湯 and ミラバス as room bath",
+        "room_open_air_bath": "yes; official all rooms detached with source-flow open-air bath",
+        "public_bath": "not a public-bath-centered property",
+        "open_air_public_bath": "not confirmed",
+        "private_bath": "not confirmed as common reservable private bath",
+        "family_bath": "not confirmed",
+        "source_flow_claim": "official claims 源泉かけ流し",
+        "circulation_disinfection_claim": "not confirmed in this pass"
+      },
+      "review_signal_keywords": [
+        "客室露天風呂",
+        "部屋付き露天",
+        "内湯",
+        "ミラバス",
+        "源泉かけ流し",
+        "トロトロ",
+        "すべすべ",
+        "星空",
+        "海",
+        "絶景",
+        "プライベート"
+      ],
+      "caution_keywords": [
+        "電動",
+        "屋根",
+        "ウォール",
+        "開閉",
+        "リモコン",
+        "虫",
+        "カメムシ",
+        "価格",
+        "ロールスロイス",
+        "レーザー"
+      ],
+      "next_sampling": "A급까지 최소 49건 추가 직접 본문 필요. Ikkyu p6는 Aside에서 공개 리뷰 없음으로 확인되어 우선순위에서 낮춘다. Google Maps native 미확보 50건, Agoda 리뷰 패널 본문, Expedia/Trip.com 잔여 본문, Naver Blog/Cafe 직접 숙박 글을 우선 재확인."
+    }
+  ]
+}

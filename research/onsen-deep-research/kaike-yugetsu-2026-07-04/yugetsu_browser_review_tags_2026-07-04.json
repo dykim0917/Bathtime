@@ -1,0 +1,326 @@
+{
+  "research_date": "2026-07-04",
+  "google": [
+    {
+      "platform": "Google Hotels / Google Reviews",
+      "source_url": "https://www.google.com/travel/search?q=%E7%9A%86%E7%94%9F%E6%B8%B8%E6%9C%88",
+      "review_date": "2026-02-approx",
+      "language": "ko",
+      "access": "direct_readable",
+      "source_kind": "google_native",
+      "direct_count_unit": 1,
+      "body_keywords": [
+        "바다",
+        "온천욕",
+        "객실 구조"
+      ],
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "open_air_public_bath",
+        "public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring"
+      ],
+      "caution_tags": [
+        "sea_view"
+      ],
+      "original_keyword": [
+        "바다를 배경으로 온천욕",
+        "객실 구조"
+      ]
+    },
+    {
+      "platform": "Google Hotels / Google Reviews",
+      "source_url": "https://www.google.com/travel/search?q=%E7%9A%86%E7%94%9F%E6%B8%B8%E6%9C%88",
+      "review_date": "2025-11-approx",
+      "language": "ko",
+      "access": "direct_readable",
+      "source_kind": "google_native",
+      "direct_count_unit": 1,
+      "body_keywords": [
+        "해변",
+        "온천",
+        "전망"
+      ],
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "open_air_public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring"
+      ],
+      "caution_tags": [
+        "sea_view"
+      ],
+      "original_keyword": [
+        "해변을 바라보며",
+        "온천"
+      ]
+    },
+    {
+      "platform": "Google Hotels / Google Reviews",
+      "source_url": "https://www.google.com/travel/search?q=%E7%9A%86%E7%94%9F%E6%B8%B8%E6%9C%88",
+      "review_date": "2026-02-approx",
+      "language": "ko",
+      "access": "direct_readable",
+      "source_kind": "google_native",
+      "direct_count_unit": 1,
+      "body_keywords": [
+        "바다",
+        "온천",
+        "조용함"
+      ],
+      "bath_area_tags": [
+        "open_air_public_bath",
+        "public_bath"
+      ],
+      "signal_type_tags": [
+        "public_bath_hot_spring"
+      ],
+      "caution_tags": [
+        "sea_view"
+      ],
+      "original_keyword": [
+        "바다 보면서 온천",
+        "조용함"
+      ]
+    },
+    {
+      "platform": "Google Hotels / Google Reviews",
+      "source_url": "https://www.google.com/travel/search?q=%E7%9A%86%E7%94%9F%E6%B8%B8%E6%9C%88",
+      "review_date": "2025-07-approx",
+      "language": "ko",
+      "access": "direct_readable",
+      "source_kind": "google_native",
+      "direct_count_unit": 1,
+      "body_keywords": [
+        "객실 내 테라스",
+        "노천온천",
+        "대욕장"
+      ],
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "public_bath",
+        "open_air_public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring"
+      ],
+      "caution_tags": [
+        "sea_view"
+      ],
+      "original_keyword": [
+        "객실 내 테라스 노상온천",
+        "대욕장 퀄리티"
+      ]
+    },
+    {
+      "platform": "Google Hotels / Google Reviews",
+      "source_url": "https://www.google.com/travel/search?q=%E7%9A%86%E7%94%9F%E6%B8%B8%E6%9C%88",
+      "review_date": "2025-07-approx",
+      "language": "ko",
+      "access": "direct_readable",
+      "source_kind": "google_native",
+      "direct_count_unit": 1,
+      "body_keywords": [
+        "대욕장",
+        "바다전경",
+        "온천욕조"
+      ],
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "public_bath",
+        "open_air_public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring"
+      ],
+      "caution_tags": [
+        "sea_view"
+      ],
+      "original_keyword": [
+        "바다전경의 온천욕조",
+        "대욕장"
+      ]
+    },
+    {
+      "platform": "Google Hotels / Google Reviews",
+      "source_url": "https://www.google.com/travel/search?q=%E7%9A%86%E7%94%9F%E6%B8%B8%E6%9C%88",
+      "review_date": "2021-approx",
+      "language": "ko",
+      "access": "direct_readable",
+      "source_kind": "google_native",
+      "direct_count_unit": 1,
+      "body_keywords": [
+        "노천탕",
+        "넓은 방",
+        "뷰"
+      ],
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [
+        "sea_view"
+      ],
+      "original_keyword": [
+        "노천탕이 딸려 있음",
+        "방이 넓고 뷰"
+      ]
+    },
+    {
+      "platform": "Google Hotels / Google Reviews",
+      "source_url": "https://www.google.com/travel/search?q=%E7%9A%86%E7%94%9F%E6%B8%B8%E6%9C%88",
+      "review_date": "2025-07-approx",
+      "language": "ko",
+      "access": "direct_readable",
+      "source_kind": "google_native",
+      "direct_count_unit": 1,
+      "body_keywords": [
+        "파도",
+        "바다",
+        "휴식"
+      ],
+      "bath_area_tags": [
+        "unclear"
+      ],
+      "signal_type_tags": [
+        "water_texture"
+      ],
+      "caution_tags": [
+        "sea_view"
+      ],
+      "original_keyword": [
+        "파도치는 바다",
+        "푹쉬다"
+      ]
+    },
+    {
+      "platform": "Google Hotels / Google Reviews",
+      "source_url": "https://www.google.com/travel/search?q=%E7%9A%86%E7%94%9F%E6%B8%B8%E6%9C%88",
+      "review_date": "2026-02-approx",
+      "language": "ko",
+      "access": "direct_readable",
+      "source_kind": "tripcom_card_in_google",
+      "direct_count_unit": 0,
+      "body_keywords": [
+        "뷰",
+        "시설",
+        "청결"
+      ],
+      "bath_area_tags": [
+        "unclear"
+      ],
+      "signal_type_tags": [],
+      "caution_tags": [
+        "sea_view",
+        "cleanliness_aging"
+      ],
+      "original_keyword": [
+        "Trip.com Member",
+        "뷰",
+        "시설 및 청결도"
+      ]
+    }
+  ],
+  "naver": [
+    {
+      "platform": "Naver Blog",
+      "source_url": "https://blog.naver.com/nadore1234/224181932150",
+      "review_date": "2026-02-12",
+      "language": "ko",
+      "access": "direct_readable",
+      "independent_author": "nadore1234",
+      "body_keywords": [
+        "인피니트 노천탕",
+        "대중탕",
+        "대중탕 바다",
+        "붐비지는 않았다"
+      ],
+      "bath_area_tags": [
+        "public_bath",
+        "open_air_public_bath"
+      ],
+      "signal_type_tags": [
+        "public_bath_hot_spring",
+        "crowding"
+      ],
+      "caution_tags": [
+        "sea_view",
+        "public_bath_size_expectation"
+      ],
+      "original_keyword": [
+        "인피니트 노천탕",
+        "대중탕",
+        "사진보다 크지는 않다",
+        "붐비지는 않았다"
+      ]
+    },
+    {
+      "platform": "Naver Blog",
+      "source_url": "https://blog.naver.com/nadore1234/224180355913",
+      "review_date": "2026-02-11",
+      "language": "ko",
+      "access": "direct_readable",
+      "independent_author": "nadore1234",
+      "body_keywords": [
+        "전객실 노천온천",
+        "오션뷰",
+        "개인 노천 욕조",
+        "온천수"
+      ],
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [
+        "sea_view"
+      ],
+      "original_keyword": [
+        "전객실 노천온천",
+        "오션뷰 개인 노천 욕조",
+        "온천수"
+      ]
+    },
+    {
+      "platform": "Naver Blog",
+      "source_url": "https://blog.naver.com/rose_dentelle/224258562194",
+      "review_date": "2026-04-20",
+      "language": "ko",
+      "access": "direct_readable",
+      "independent_author": "rose_dentelle",
+      "body_keywords": [
+        "객실 야외 욕조",
+        "인피니티 노천탕",
+        "공용욕실",
+        "파도소리"
+      ],
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "public_bath",
+        "open_air_public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring"
+      ],
+      "caution_tags": [
+        "sea_view"
+      ],
+      "original_keyword": [
+        "객실마다 테라스에 야외 욕조",
+        "인피니티 노천탕",
+        "파도소리"
+      ]
+    }
+  ]
+}

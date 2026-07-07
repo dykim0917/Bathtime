@@ -1,0 +1,2 @@
+research_order,slug,name_ja,name_ko_or_en,area,track,source_tier,bath_research_axes,initial_review_pool_signal,priority_reason,status
+1,tamatsukuri-chorakuen,玉造温泉 湯之助の宿 長楽園,유노스케노야도 초라쿠엔 / Chorakuen,"玉造温泉, 島根県松江市",ready_deep_research,Tier 1,open_air_public_bath;public_bath;room_bath;room_open_air_bath;private_bath;water_texture;crowding;booking_confusion,"raw visible pool 5,136+ with 304 direct reads","120坪 혼욕 대노천탕과 객실 온천 옵션, 湯浴み着 혼동이 Bathtime 비교 가치가 높음",ready_A

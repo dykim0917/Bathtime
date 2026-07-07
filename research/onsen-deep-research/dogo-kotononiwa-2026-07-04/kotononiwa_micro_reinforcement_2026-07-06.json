@@ -1,0 +1,118 @@
+{
+  "research_date": "2026-07-06",
+  "slug": "dogo-kotononiwa",
+  "scope": "micro reinforcement after 268-review stage",
+  "counting_policy": "Only directly readable individual stay bodies were counted. Search snippets, ranking/recommendation articles, guide articles, video titles, video descriptions, visual-only evidence, noisy captions, and OTA/facility descriptions were excluded.",
+  "starting_totals": {
+    "directly_read_reviews": 268,
+    "onsen_related_direct_reviews": 194,
+    "data_quality_grade": "B"
+  },
+  "added_direct_sources": [
+    {
+      "platform": "note",
+      "url": "https://note.com/saturnina/n/n1d7b46becefa",
+      "author_or_source": "3Q",
+      "published_date": "2023-09-18",
+      "review_body_access": "direct_readable",
+      "directly_read_reviews_added": 1,
+      "onsen_related_direct_reviews_added": 1,
+      "bath_area": [
+        "room_bath",
+        "room_open_air_bath",
+        "facility_wide"
+      ],
+      "short_paraphrase": "First-person stay note says Kotononiwa has no large public bath and instead has a wide in-room source-flow onsen with soft, clear water.",
+      "original_keywords": [
+        "大浴場がありません",
+        "お部屋にひろ〜い温泉",
+        "源泉掛け流し",
+        "柔らかなお湯"
+      ]
+    },
+    {
+      "platform": "note",
+      "url": "https://note.com/kurashi_ido_log/n/n827e7fcf6191",
+      "author_or_source": "暮らしと移動のログ",
+      "published_date": "2026-03-20",
+      "review_body_access": "direct_readable",
+      "directly_read_reviews_added": 1,
+      "onsen_related_direct_reviews_added": 1,
+      "bath_area": [
+        "room_bath",
+        "facility_wide"
+      ],
+      "short_paraphrase": "First-person travel log describes the room bath as source-flow, lightly scented, moderate in temperature, and sufficiently spacious, with later use of Honkan/Bekkan and Kotononiwa rooftop footbath.",
+      "original_keywords": [
+        "部屋風呂",
+        "源泉掛け流し",
+        "温度もほどよく",
+        "広さも十分",
+        "屋上足湯"
+      ]
+    },
+    {
+      "platform": "YouTube transcripts",
+      "url": "https://www.youtube.com/watch?v=mv2ilbWPp50",
+      "author_or_source": "アムラーメンちゃんねる",
+      "published_date": "2025-03-03",
+      "review_body_access": "direct_readable_transcript",
+      "directly_read_reviews_added": 1,
+      "onsen_related_direct_reviews_added": 1,
+      "bath_area": [
+        "room_bath",
+        "facility_wide"
+      ],
+      "short_paraphrase": "Readable Japanese auto transcript for exact Kotononiwa stay covers arrival, room exploration, source-flow room bath, rooftop footbath, and breakfast.",
+      "original_keywords": [
+        "道後温泉",
+        "お部屋",
+        "源泉かけ流しのお風呂",
+        "足湯",
+        "朝食"
+      ]
+    }
+  ],
+  "rechecked_not_counted_sources": [
+    {
+      "platform": "Agoda",
+      "url": "https://www.agoda.com/ja-jp/katuragi-kotononiwa/hotel/matsuyama-jp.html",
+      "visible_review_count": 13,
+      "review_body_access": "partial_direct_readable_via_aside",
+      "directly_read_reviews_added": 0,
+      "onsen_related_direct_reviews_added": 0,
+      "terminal_recheck_note": "Aside Browser showed Agoda-native tab 12 and other-site tab 1. Scrolling the dialog, switching sort modes, filtering Japanese and Traditional Chinese, checking traveler types, and pressing spa/room comfort/service keyword chips still rendered only the same four individual body cards already counted."
+    },
+    {
+      "platform": "YouTube transcripts",
+      "review_body_access": "noisy_unusable_not_counted",
+      "directly_read_reviews_added": 0,
+      "onsen_related_direct_reviews_added": 0,
+      "examples": [
+        "https://www.youtube.com/watch?v=5SHBgPnLnIw",
+        "https://www.youtube.com/watch?v=FxV2cys2UJw",
+        "https://www.youtube.com/watch?v=S74nNUjoFt4",
+        "https://www.youtube.com/watch?v=vpfnUzr5n5U"
+      ],
+      "counting_note": "These exact Kotononiwa videos expose only music/noise-heavy auto captions or unusable English tokens. Title, description, and visual evidence were not counted as direct review bodies."
+    },
+    {
+      "platform": "Japanese guide/recommendation articles",
+      "review_body_access": "snippet_only_or_editorial_not_counted",
+      "directly_read_reviews_added": 0,
+      "onsen_related_direct_reviews_added": 0,
+      "examples": [
+        "https://www.onsen1.org/dougoonsen/kotononiwa.html",
+        "https://note.com/tabitomee/n/nfed2da457533"
+      ],
+      "counting_note": "Useful for demand/facility context only, not individual stay review bodies."
+    }
+  ],
+  "updated_totals": {
+    "directly_read_reviews": 271,
+    "onsen_related_direct_reviews": 197,
+    "direct_body_platform_count": 12,
+    "data_quality_grade": "B",
+    "why_not_A": "Still 29 direct review bodies short of 300. Agoda was rechecked with Aside and remains partial-only; Naver has no clean Korean firsthand body; Booking exact target was not found; Trip.com has no reviews; Tripadvisor remains identity-mixed."
+  }
+}

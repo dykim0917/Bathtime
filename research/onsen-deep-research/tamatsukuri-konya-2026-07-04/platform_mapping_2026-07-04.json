@@ -1,0 +1,131 @@
+{
+  "research_date": "2026-07-04",
+  "scope": "ready lodging deep research: Kansai/Sanin/Setouchi Tier 1, one lodging",
+  "method": "Static OTA review extraction plus Aside Browser verification for Google Maps/Hotels and Naver Search. Snippets excluded from direct review counts.",
+  "direct_review_sampling_status": "A: 300+ direct reviews, 3+ direct body platforms, stratified latest/low-score/onsen-keyword/Korean samples.",
+  "lodgings": [
+    {
+      "slug": "tamatsukuri-konya",
+      "name_ja": "玉造温泉 〜曲水の庭〜 ホテル玉泉",
+      "google_maps": {
+        "rating": 4.1,
+        "visible_review_count": 1624,
+        "rating_distribution": {
+          "1": 59,
+          "2": 63,
+          "3": 225,
+          "4": 664,
+          "5": 613
+        },
+        "korean_reviews_visible": true,
+        "direct_google_native_reviews_read": 9,
+        "onsen_related_google_native_reviews_read": 8,
+        "provider_cards_seen": [
+          {
+            "provider": "Tripadvisor",
+            "rating": 4,
+            "visible_review_count": 205,
+            "direct_read_reviews": 1,
+            "onsen_related_direct_reviews": 1
+          }
+        ]
+      },
+      "ota_review_pool_signals": {
+        "rakuten": {
+          "rating": null,
+          "visible_review_count": 1460,
+          "review_body_access": "direct_readable",
+          "direct_read_reviews": 360,
+          "onsen_related_direct_reviews": 181,
+          "source_url": "https://travel.rakuten.co.jp/HOTEL/106267/review.html"
+        },
+        "jalan": {
+          "rating": null,
+          "visible_review_count": 2315,
+          "review_body_access": "direct_readable",
+          "direct_read_reviews": 210,
+          "onsen_related_direct_reviews": 128,
+          "source_url": "https://www.jalan.net/yad331176/kuchikomi/"
+        },
+        "jtb": {
+          "rating": null,
+          "visible_review_count": null,
+          "review_body_access": "direct_readable",
+          "direct_read_reviews": 100,
+          "onsen_related_direct_reviews": 42,
+          "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/7323010/review/"
+        },
+        "trip_com": {
+          "rating": "9/10 seen in Naver snippet",
+          "visible_review_count": 78,
+          "review_body_access": "snippet_only",
+          "direct_read_reviews": 0
+        },
+        "hotels_com": {
+          "rating": "8.8/10 seen in Naver snippet",
+          "visible_review_count": 421,
+          "review_body_access": "snippet_only",
+          "direct_read_reviews": 0
+        },
+        "naver_search": {
+          "review_body_access": "snippet_only",
+          "direct_read_reviews": 0,
+          "onsen_related_direct_reviews": 0,
+          "snippets_seen": [
+            {
+              "source": "Trip.com",
+              "visible_signal": "9/10, 78 참여"
+            },
+            {
+              "source": "Hotels.com",
+              "visible_signal": "8.8/10, 421 참여"
+            },
+            {
+              "source": "Tourvis/Privia",
+              "visible_signal": "4.2/5, 104 참여"
+            },
+            {
+              "source": "Rakuten Travel Korean surface",
+              "visible_signal": "62 reviews snippet"
+            }
+          ],
+          "access_note": "Naver 검색 결과는 OTA/메타 표면과 블로그 스니펫 중심. 숙소 체류 본문을 직접 연 표본은 없으므로 직접 리뷰 수에 포함하지 않음."
+        }
+      },
+      "official_bath_facts_seen": {
+        "public_bath": "official/OTA_seen",
+        "open_air_public_bath": "official/OTA_seen",
+        "private_bath": "Yukoyuko_seen",
+        "room_open_air_bath": "conflicting_or_unclear",
+        "source_flow_claim": "conflicting",
+        "spring_quality": [
+          "単純温泉",
+          "硫酸塩泉(配湯)",
+          "塩化物泉(配湯)"
+        ],
+        "source_temperature": "72°C seen on Japan Onsen Association",
+        "caution": "Yukoyuko는 かけ流し 표기, Japan Onsen Association은 掛け流し浴槽 無로 표기되어 원천가케나가시 축은 공식/OTA 간 충돌로 처리."
+      },
+      "review_signal_keywords": [
+        "大浴場",
+        "温泉",
+        "美肌の湯",
+        "すべすべ",
+        "露天風呂",
+        "貸切風呂",
+        "대욕장",
+        "온천",
+        "피부가 부드럽다"
+      ],
+      "caution_keywords": [
+        "混雑",
+        "待ち",
+        "狭い",
+        "예약/안내",
+        "노천탕 공간 좁음",
+        "객실탕 태그 충돌"
+      ],
+      "next_sampling": "A급 기준은 충족. 객실 노천탕/객실탕 축을 상품 데이터로 쓰려면 공식 객실 타입 페이지와 OTA 객실별 플랜을 별도 확인해야 한다."
+    }
+  ]
+}

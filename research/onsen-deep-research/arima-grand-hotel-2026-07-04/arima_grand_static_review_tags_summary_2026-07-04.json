@@ -1,0 +1,42 @@
+{
+  "generated_at": "2026-07-04T03:20:13.943Z",
+  "lodging": "有馬グランドホテル",
+  "total_direct_extracted_static": 393,
+  "onsen_related_body_static": 183,
+  "direct_body_platforms_static": 3,
+  "by_platform": {
+    "Rakuten Travel": {
+      "direct": 154,
+      "onsen_body": 74
+    },
+    "Jalan": {
+      "direct": 88,
+      "onsen_body": 53
+    },
+    "JTB": {
+      "direct": 151,
+      "onsen_body": 56
+    }
+  },
+  "platform_page_stats": {
+    "rakuten_1": 20,
+    "rakuten_2": 20,
+    "rakuten_3": 20,
+    "rakuten_4": 20,
+    "rakuten_5": 20,
+    "rakuten_6": 20,
+    "rakuten_7": 20,
+    "rakuten_8": 14,
+    "jalan_1": 30,
+    "jalan_2": 30,
+    "jalan_3": 28,
+    "jtb_1": 40,
+    "jtb_2": 40,
+    "jtb_3": 40,
+    "jtb_4": 40,
+    "jtb_5": 40,
+    "jtb_6": 40,
+    "jtb_7": 31
+  },
+  "note": "Review bodies are not stored; hashes, metadata, short keywords and tags only. Official bath facts are not counted as review signals."
+}

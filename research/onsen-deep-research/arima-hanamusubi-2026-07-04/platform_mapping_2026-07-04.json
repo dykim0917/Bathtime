@@ -1,0 +1,169 @@
+{
+  "research_date": "2026-07-04",
+  "scope": "ready lodging deep research: Kansai/Sanin/Setouchi Tier 1 lodging",
+  "method": "정적 OTA 본문 수집 후 Aside Browser로 Google/Naver를 직접 확인. 검색 스니펫, OTA 요약, Google 패널 내 공급자 카드는 직접 리뷰 수에서 제외.",
+  "direct_review_sampling_status": "A: 300+ direct reviews, 3+ direct-body platforms, Google/Naver checked",
+  "lodgings": [
+    {
+      "slug": "arima-hanamusubi",
+      "name_ja": "有馬温泉 御幸荘 花結び",
+      "name_ko_or_en": "Miyukiso Hanamusubi / Arima Hot Spring Ryokan Hanamusubi",
+      "address": "兵庫県神戸市北区有馬町351 / 351 Arimacho, Kita Ward, Kobe, Hyogo 651-1401",
+      "onsen_area": "有馬温泉",
+      "google_maps": {
+        "rating": 4.1,
+        "visible_review_count": 1044,
+        "rating_distribution": null,
+        "korean_reviews_visible": true,
+        "review_body_access": "direct_readable",
+        "direct_google_native_reviews_read": 6,
+        "onsen_related_google_native_reviews": 4,
+        "ota_provider_cards_seen": [
+          "Trip.com",
+          "Tripadvisor"
+        ],
+        "caution": "Google 검색 패널/Travel 화면의 Trip.com·Tripadvisor 카드는 Google-native 리뷰에서 제외했다."
+      },
+      "ota_review_pool_signals": {
+        "Rakuten Travel": {
+          "visible_review_count": 2125,
+          "rating": null,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 360,
+          "onsen_related_direct_reviews": 196,
+          "source_url": "https://travel.rakuten.co.jp/HOTEL/9576/review.html",
+          "note": "Rakuten 숙소 화면에는 お客さまの声 2,517건 표기도 보였으나, 수집 JSON의 PRELOADED_STATE total 2,125를 보수적 리뷰풀로 사용."
+        },
+        "Jalan": {
+          "visible_review_count": 114,
+          "rating": null,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 114,
+          "onsen_related_direct_reviews": 76,
+          "source_url": "https://www.jalan.net/yad349968/kuchikomi/"
+        },
+        "JTB": {
+          "visible_review_count": 57,
+          "rating": null,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 65,
+          "onsen_related_direct_reviews": 28,
+          "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/6435022/review/",
+          "note": "JTB 화면은 全57件の評価 표기. 수집기는 페이지 중복/평가 블록 포함으로 65개 본문 블록을 추출했으나, 플랫폼 리뷰풀과 직접 본문 수는 별도 표기."
+        },
+        "Booking.com": {
+          "visible_review_count": 470,
+          "rating": 8.9,
+          "review_body_access": "snippet_only",
+          "direct_reviews_read": 0,
+          "source_basis": "Naver Search result"
+        },
+        "Trip.com": {
+          "visible_review_count": 209,
+          "rating": 9.3,
+          "review_body_access": "snippet_only/provider_card_only",
+          "direct_reviews_read": 0,
+          "source_basis": "Naver Search result and Google Travel provider card"
+        },
+        "Tripadvisor": {
+          "visible_review_count": 127,
+          "rating": 3.6,
+          "review_body_access": "provider_card_only",
+          "direct_reviews_read": 0,
+          "source_basis": "Google Travel provider card"
+        },
+        "JAPANiCAN": {
+          "visible_review_count": 100,
+          "rating": 4.2,
+          "review_body_access": "snippet_only",
+          "direct_reviews_read": 0,
+          "source_basis": "Naver Search result"
+        },
+        "Rakuten Travel Korean": {
+          "visible_review_count": 717,
+          "rating": 4.2,
+          "review_body_access": "snippet_only",
+          "direct_reviews_read": 0,
+          "source_basis": "Naver Search result",
+          "duplicate_risk": "Rakuten Travel 본체와 중복 가능성이 있어 visible minimum 합계에는 더하지 않음."
+        },
+        "Yahoo Travel": {
+          "visible_review_count": null,
+          "rating": null,
+          "review_body_access": "snippet_only/not_sampled_direct",
+          "direct_reviews_read": 0,
+          "source_url": "https://travel.yahoo.co.jp/00030104/"
+        },
+        "Ikkyu": {
+          "visible_review_count": null,
+          "rating": null,
+          "review_body_access": "snippet_only/not_sampled_direct",
+          "direct_reviews_read": 0,
+          "source_url": "https://www.ikyu.com/00030104/"
+        },
+        "Naver Search / Blog": {
+          "visible_review_count": null,
+          "rating": null,
+          "review_body_access": "direct_readable plus snippet_only",
+          "direct_reviews_read": 3,
+          "onsen_related_direct_reviews": 2,
+          "independent_authors": 3,
+          "snippet_only_results_seen": [
+            "Booking.com 470",
+            "Trip.com 209",
+            "Rakuten Travel Korean 717",
+            "JAPANiCAN 100",
+            "Naver Search blog previews"
+          ]
+        }
+      },
+      "official_bath_facts_seen": {
+        "official_site_url": "https://www.hanamusubi.co.jp/",
+        "rooms_url": "https://www.hanamusubi.co.jp/rooms/",
+        "hotspa_url": "https://www.hanamusubi.co.jp/hotspa/",
+        "facilities_url": "https://www.hanamusubi.co.jp/facilities/",
+        "faq_url": "https://www.hanamusubi.co.jp/faq/",
+        "room_open_air_bath": "공식: 6층에 5개 타입의 金泉付き露天風呂客室. 해당 객실 노천은 24시간 金泉 이용 가능.",
+        "room_bath": "공식 FAQ: 일반 객실의 실내 욕실은 온천이 아니며, 온천은 노천탕 객실에 한정.",
+        "public_bath": "공식: 7층 展望大浴場 花がすみ/花ごよみ.",
+        "open_air_public_bath": "공식: 공용 대욕장에 金泉露天風呂와 銀泉露天風呂 계열 표기. 성별 교체 운영.",
+        "private_bath": "공식: 展望金泉貸切露天風呂 花ごころ. 사전 예약, 45분, 유료.",
+        "family_bath": "OTA/Rakuten/JTB에서 家族風呂 표기가 보이나 공식 명칭은 貸切露天風呂. 한국어 개인탕/가족탕 리뷰는 private_bath/family_bath로 병기.",
+        "water_handling": "Rakuten: 天然温泉, 含食塩石膏泉. JTB: 温泉（循環ろ過式、加温している）. 공식 상세의 가수/소독/pH는 이번 표본에서 구조화하지 못함.",
+        "spring_quality": "Rakuten: 含食塩石膏泉. JTB: 含鉄泉. 有馬特有の金泉/銀泉 표기.",
+        "source_temperature": "JTB: 湧出口泉温 98.6℃.",
+        "public_bath_hours": "공식/JTB: 대욕장 6:00-9:30, 12:00-24:00 계열 표기. Naver 후기에는 6:30-9:30, 12:00-00:00로 인지된 신호가 있음.",
+        "tattoo_policy": "공식 확인 범위에서 문신 정책은 구조화하지 못함.",
+        "reservation_required": "貸切露天風呂 花ごころ는 사전 예약 필요."
+      },
+      "review_signal_keywords": [
+        "金泉",
+        "銀泉",
+        "露天風呂",
+        "客室露天風呂",
+        "金泉露天",
+        "大浴場",
+        "貸切風呂",
+        "家族風呂",
+        "個人탕",
+        "개인탕(가족탕)",
+        "금탕",
+        "은탕",
+        "カルキ",
+        "送迎",
+        "有馬温泉街"
+      ],
+      "caution_keywords": [
+        "送迎",
+        "予約",
+        "大浴場が小さい",
+        "カルキ",
+        "客室内風呂は温泉ではない",
+        "가격대",
+        "역에서 멀다",
+        "촬영 운영"
+      ],
+      "next_sampling": "A등급은 충족. 다음 보강은 Google rating_distribution 캡처, Ikkyu/Yahoo direct 본문, Booking.com/Trip.com 직접 본문 로그인/동적 접근 확인."
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "research_date": "2026-07-04",
+  "scope": "ready lodging deep research: Kansai/Sanin/Setouchi Tier 1 lodging",
+  "method": "Rakuten API, Jalan HTML, JTB HTML로 직접 본문 수집 후 Aside Browser로 Google Maps와 Naver Search를 확인. Naver 검색 스니펫과 Google 공급자 카드는 직접 리뷰 수/Google-native 리뷰와 분리.",
+  "direct_review_sampling_status": "A: 300+ direct reviews, 3+ direct-body platforms, Google/Naver checked",
+  "lodgings": [
+    {
+      "slug": "tamatsukuri-yunosuke",
+      "name_ja": "玉造グランドホテル長生閣",
+      "name_ko_or_en": "Tamatsukuri Grand Hotel Choseikaku / 다마쓰쿠리 그랜드 호텔 초세이카쿠",
+      "address": "島根県松江市玉湯町玉造331",
+      "onsen_area": "玉造温泉",
+      "google_maps": {
+        "rating": 4.1,
+        "visible_review_count": 986,
+        "rating_distribution": {
+          "1": 32,
+          "2": 16,
+          "3": 153,
+          "4": 381,
+          "5": 404
+        },
+        "korean_reviews_visible": true,
+        "review_body_access": "aside_review_tab_read plus provider_cards_direct_read",
+        "direct_google_native_reviews_read": 8,
+        "onsen_related_google_native_reviews": 6,
+        "ota_provider_cards_seen": [
+          "Tripadvisor"
+        ],
+        "provider_card_direct_reviews_read": 2,
+        "provider_card_onsen_related_reviews": 2,
+        "caution": "Tripadvisor 카드는 Google-native 리뷰로 세지 않았다."
+      },
+      "ota_review_pool_signals": {
+        "Rakuten Travel": {
+          "visible_review_count": 1658,
+          "rating": null,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 360,
+          "onsen_related_direct_reviews": 187,
+          "source_url": "https://travel.rakuten.co.jp/HOTEL/10743/review.html"
+        },
+        "Jalan": {
+          "visible_review_count": 2206,
+          "rating": 4.5,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 162,
+          "onsen_related_direct_reviews": 107,
+          "source_url": "https://www.jalan.net/yad306939/kuchikomi/"
+        },
+        "JTB": {
+          "visible_review_count": null,
+          "rating": null,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 67,
+          "onsen_related_direct_reviews": 34,
+          "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/7323006/review/"
+        },
+        "Tripadvisor": {
+          "visible_review_count": 178,
+          "rating": 3.8,
+          "review_body_access": "google_provider_card_direct_read",
+          "direct_reviews_read": 2,
+          "onsen_related_direct_reviews": 2
+        },
+        "Trip.com": {
+          "visible_review_count": 50,
+          "rating": 8.8,
+          "review_body_access": "snippet_only",
+          "direct_reviews_read": 0,
+          "source_basis": "Naver Search result"
+        },
+        "Expedia / Hotels.com": {
+          "visible_review_count": 160,
+          "rating": 8.6,
+          "review_body_access": "snippet_only",
+          "direct_reviews_read": 0,
+          "source_basis": "Naver Search result"
+        },
+        "Naver Search / Cafe": {
+          "visible_review_count": null,
+          "rating": null,
+          "review_body_access": "snippet_only",
+          "direct_reviews_read": 0,
+          "snippet_only_results_seen": [
+            "네일동 카페 숙박 후기 surface",
+            "Trip.com 50",
+            "Expedia/Hotels.com 160",
+            "Rakuten Travel Korean lodging surface"
+          ]
+        }
+      },
+      "official_bath_facts_seen": {
+        "official_site_url": "https://www.choseikaku.co.jp/",
+        "rakuten_onsen_url": "https://travel.rakuten.co.jp/HOTEL/10743/10743_onsen.html",
+        "room_open_air_bath": "일부 객실에 温泉付き最上階客室/露天風呂付 객실명이 확인된다. 전 객실 아님.",
+        "room_bath": "일반 객실 욕실은 있으나 온천 객실탕으로 공식 단정하지 않음.",
+        "public_bath": "Rakuten/공식 표면: 出雲神話 콘셉트의 大浴場, 파워스톤 めのう를 깐 めのう風呂.",
+        "open_air_public_bath": "Rakuten 온천 페이지: お風呂の種類에 露天風呂 표기.",
+        "private_bath": "직접 공식 확인 범위에서는 주요 축 아님. 후기에는 貸切風呂 소수.",
+        "family_bath": "Google-native 리뷰와 일부 후기에서 가족탕 존재 신호가 있으나 공식 상세 구조는 추가 확인 필요.",
+        "water_handling": "源泉かけ流し 주장은 이번 확인 범위에서 구조화하지 못함.",
+        "spring_quality": "Rakuten: 単純温泉, 低張性弱アルカリ性泉, カルシウム・ナトリウム硫酸塩泉. ゆこゆこ 표면: pH8.4, 자가원천 블렌드 언급.",
+        "public_bath_hours": "이번 확인 범위에서 구조화하지 못함.",
+        "tattoo_policy": "이번 확인 범위에서 구조화하지 못함."
+      },
+      "review_signal_keywords": [
+        "めのう風呂",
+        "メノウ風呂",
+        "大浴場",
+        "露天風呂",
+        "温泉",
+        "玉造温泉",
+        "美肌の湯",
+        "すべすべ",
+        "ツルツル",
+        "最上階露天風呂付",
+        "家族風呂"
+      ],
+      "caution_keywords": [
+        "古い",
+        "清掃",
+        "温度",
+        "混雑",
+        "写真と実際",
+        "部屋風呂混在",
+        "家族風呂公式未整理"
+      ],
+      "next_sampling": "A등급 충족. 다음 보강은 Google-native 더보기 확장, Yahoo/Relux 직접 본문, Naver 카페 원문 로그인 접근 확인."
+    }
+  ]
+}

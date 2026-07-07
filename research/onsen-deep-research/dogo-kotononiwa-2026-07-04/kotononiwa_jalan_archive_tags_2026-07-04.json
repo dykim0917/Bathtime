@@ -1,0 +1,1282 @@
+{
+  "summary": {
+    "generated_at": "2026-07-04T04:12:27.066Z",
+    "lodging": "道後温泉 琴の庭",
+    "platform": "Jalan Archive via Aside Browser",
+    "visible_review_count": 71,
+    "total_direct_browser": 56,
+    "onsen_related_body": 42,
+    "page_stats": {
+      "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01": 30,
+      "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01&idx=30": 26,
+      "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01&idx=60": 26
+    },
+    "bath_area_tags": {
+      "room_open_air_bath": 31,
+      "room_bath": 26,
+      "public_bath": 2,
+      "open_air_public_bath": 2
+    },
+    "signal_type_tags": {
+      "booking_confusion": 14,
+      "operations_note": 17,
+      "room_bath_hot_spring": 37,
+      "water_texture": 25,
+      "temperature_control": 9,
+      "public_bath_hot_spring": 3
+    },
+    "note": "Bodies not stored; Aside Browser archive text was reduced to hashes, metadata, short keywords and tags."
+  },
+  "reviews": [
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01",
+      "review_hash": "77007dffbfaf3d27",
+      "review_date": "2025-04-09",
+      "score": 5,
+      "body_char_count": 372,
+      "body_keywords": [
+        "足湯",
+        "清潔",
+        "庭"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [
+        "booking_confusion",
+        "operations_note"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01",
+      "review_hash": "b33ae90260295af8",
+      "review_date": "2025-02-06",
+      "score": 4,
+      "body_char_count": 176,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "露天",
+        "露天風呂",
+        "客室露天",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01",
+      "review_hash": "c963a24c5ce53787",
+      "review_date": "2025-01-31",
+      "score": 3,
+      "body_char_count": 321,
+      "body_keywords": [
+        "源泉",
+        "部屋風呂",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01",
+      "review_hash": "77e99f76442cd7fc",
+      "review_date": "2025-01-12",
+      "score": 4,
+      "body_char_count": 198,
+      "body_keywords": [
+        "温泉",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [
+        "booking_confusion",
+        "temperature_control"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01",
+      "review_hash": "4e6aa0052c4f1e01",
+      "review_date": "2025-01-12",
+      "score": 5,
+      "body_char_count": 157,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "お部屋のお風呂",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01",
+      "review_hash": "67f453d47e51c157",
+      "review_date": "2025-01-04",
+      "score": 5,
+      "body_char_count": 165,
+      "body_keywords": [
+        "清潔"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "booking_confusion"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01",
+      "review_hash": "6950cc3c0168d0fa",
+      "review_date": "2024-12-18",
+      "score": 5,
+      "body_char_count": 218,
+      "body_keywords": [
+        "温泉",
+        "お部屋のお風呂",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01",
+      "review_hash": "020165a1587c6fdd",
+      "review_date": "2024-11-04",
+      "score": 5,
+      "body_char_count": 118,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [
+        "water_texture"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01",
+      "review_hash": "93f7a3a3c96e7c95",
+      "review_date": "2024-10-18",
+      "score": 5,
+      "body_char_count": 110,
+      "body_keywords": [
+        "清潔"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01",
+      "review_hash": "6ab77e6fc598e134",
+      "review_date": "2024-10-11",
+      "score": 5,
+      "body_char_count": 456,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "露天",
+        "露天風呂",
+        "ラウンジ",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture",
+        "operations_note"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01",
+      "review_hash": "4a48e34a01ed1f8b",
+      "review_date": "2024-06-06",
+      "score": 5,
+      "body_char_count": 111,
+      "body_keywords": [
+        "温泉",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01",
+      "review_hash": "69af500e59eb6e11",
+      "review_date": "2024-05-01",
+      "score": 5,
+      "body_char_count": 149,
+      "body_keywords": [
+        "清潔"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01",
+      "review_hash": "3e3ce46a17e8c3b4",
+      "review_date": "2024-04-30",
+      "score": 5,
+      "body_char_count": 226,
+      "body_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01",
+      "review_hash": "43d304b961d1c9cd",
+      "review_date": "2024-04-16",
+      "score": 5,
+      "body_char_count": 128,
+      "body_keywords": [
+        "清潔"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01",
+      "review_hash": "818a845e07ff9315",
+      "review_date": "2024-03-29",
+      "score": 3,
+      "body_char_count": 229,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "源泉",
+        "源泉掛け流し",
+        "足湯",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture",
+        "operations_note"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01",
+      "review_hash": "503bb7bef1669049",
+      "review_date": "2024-03-17",
+      "score": 5,
+      "body_char_count": 88,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01",
+      "review_hash": "58a5d6e8f7e3bfda",
+      "review_date": "2024-03-11",
+      "score": 5,
+      "body_char_count": 227,
+      "body_keywords": [
+        "温泉",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01",
+      "review_hash": "1e066c6288a00389",
+      "review_date": "2023-09-11",
+      "score": 5,
+      "body_char_count": 409,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "清潔",
+        "庭"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "booking_confusion"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01",
+      "review_hash": "578122a742da6b99",
+      "review_date": "2023-08-25",
+      "score": 5,
+      "body_char_count": 449,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "大浴場",
+        "ラウンジ",
+        "ドリンク",
+        "清潔",
+        "庭"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "public_bath",
+        "open_air_public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring",
+        "booking_confusion",
+        "operations_note"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01",
+      "review_hash": "748fff19afca8989",
+      "review_date": "2023-06-02",
+      "score": 5,
+      "body_char_count": 236,
+      "body_keywords": [
+        "広い",
+        "清潔"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "booking_confusion",
+        "operations_note"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01",
+      "review_hash": "ba8f0769c1c7789b",
+      "review_date": "2023-05-25",
+      "score": 5,
+      "body_char_count": 270,
+      "body_keywords": [
+        "源泉",
+        "かけ流し",
+        "露天",
+        "露天風呂",
+        "客室露天",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01",
+      "review_hash": "0952564a5d950237",
+      "review_date": "2023-04-24",
+      "score": 5,
+      "body_char_count": 219,
+      "body_keywords": [
+        "清潔",
+        "庭"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01",
+      "review_hash": "728cb5e1cb1d6b0e",
+      "review_date": "2023-04-09",
+      "score": 5,
+      "body_char_count": 158,
+      "body_keywords": [
+        "温泉",
+        "露天",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "booking_confusion"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01",
+      "review_hash": "c89cf90200b78d93",
+      "review_date": "2023-03-19",
+      "score": 5,
+      "body_char_count": 180,
+      "body_keywords": [
+        "ドリンク",
+        "清潔"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "operations_note"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01",
+      "review_hash": "a3a736b70b9f8ef3",
+      "review_date": "2023-02-17",
+      "score": 3,
+      "body_char_count": 217,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "お部屋のお風呂",
+        "ドリンク",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture",
+        "booking_confusion",
+        "operations_note"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01",
+      "review_hash": "b252d426d6cc01ed",
+      "review_date": "2023-02-10",
+      "score": 5,
+      "body_char_count": 104,
+      "body_keywords": [
+        "清潔"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01",
+      "review_hash": "203a6332c3943825",
+      "review_date": "2023-02-02",
+      "score": 5,
+      "body_char_count": 416,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "源泉",
+        "かけ流し",
+        "露天",
+        "露天風呂",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01",
+      "review_hash": "20d7e732f289890b",
+      "review_date": "2022-12-18",
+      "score": 5,
+      "body_char_count": 514,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "生湯",
+        "かけ流し",
+        "露天",
+        "半露天",
+        "ドリンク",
+        "温度",
+        "清潔",
+        "庭"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture",
+        "temperature_control",
+        "operations_note"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01",
+      "review_hash": "74bf4ed4facb5632",
+      "review_date": "2022-12-12",
+      "score": 4,
+      "body_char_count": 237,
+      "body_keywords": [
+        "清潔"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01",
+      "review_hash": "b731270669af800b",
+      "review_date": "2022-11-29",
+      "score": 5,
+      "body_char_count": 270,
+      "body_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "広い",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01&idx=30",
+      "review_hash": "b16c9885d485d4d1",
+      "review_date": "2022-11-24",
+      "score": 5,
+      "body_char_count": 416,
+      "body_keywords": [
+        "源泉",
+        "露天",
+        "露天風呂",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [
+        "water_texture"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01&idx=30",
+      "review_hash": "e9b9a17e2f9d080c",
+      "review_date": "2022-09-28",
+      "score": 5,
+      "body_char_count": 139,
+      "body_keywords": [
+        "清潔"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01&idx=30",
+      "review_hash": "a8b660efb750d639",
+      "review_date": "2022-09-27",
+      "score": 4,
+      "body_char_count": 123,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "隣接",
+        "広い",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "open_air_public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring",
+        "booking_confusion"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01&idx=30",
+      "review_hash": "89f8b89ba8d43bac",
+      "review_date": "2022-09-27",
+      "score": 5,
+      "body_char_count": 537,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "源泉",
+        "かけ流し",
+        "露天",
+        "露天風呂",
+        "客室露天",
+        "広い",
+        "温度",
+        "清潔",
+        "庭"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture",
+        "temperature_control",
+        "operations_note"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01&idx=30",
+      "review_hash": "f6c94ecd81565c4d",
+      "review_date": "2022-09-26",
+      "score": 5,
+      "body_char_count": 132,
+      "body_keywords": [
+        "清潔"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01&idx=30",
+      "review_hash": "0f359792c645ce4f",
+      "review_date": "2022-08-03",
+      "score": 5,
+      "body_char_count": 221,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "足湯",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [
+        "water_texture",
+        "operations_note"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01&idx=30",
+      "review_hash": "2242c99fa87943cd",
+      "review_date": "2022-08-01",
+      "score": 4,
+      "body_char_count": 686,
+      "body_keywords": [
+        "清潔"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [
+        "booking_confusion",
+        "operations_note"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01&idx=30",
+      "review_hash": "67566706d1d3a97c",
+      "review_date": "2022-07-22",
+      "score": 4,
+      "body_char_count": 180,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [
+        "water_texture"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01&idx=30",
+      "review_hash": "85503192c8d687cd",
+      "review_date": "2022-04-30",
+      "score": 5,
+      "body_char_count": 444,
+      "body_keywords": [
+        "部屋風呂",
+        "ドリンク",
+        "清潔",
+        "庭"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "operations_note"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01&idx=30",
+      "review_hash": "90f0dab2c431ed99",
+      "review_date": "2022-04-19",
+      "score": 4,
+      "body_char_count": 335,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [
+        "water_texture",
+        "operations_note"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01&idx=30",
+      "review_hash": "3e9ab88706b0e5d2",
+      "review_date": "2022-04-16",
+      "score": 5,
+      "body_char_count": 225,
+      "body_keywords": [
+        "温泉",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01&idx=30",
+      "review_hash": "4181927f04189f22",
+      "review_date": "2022-04-16",
+      "score": 5,
+      "body_char_count": 130,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01&idx=30",
+      "review_hash": "0a89e4ec560c7dbf",
+      "review_date": "2022-01-29",
+      "score": 5,
+      "body_char_count": 502,
+      "body_keywords": [
+        "お部屋のお風呂",
+        "大浴場",
+        "狭い",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring",
+        "booking_confusion",
+        "temperature_control"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01&idx=30",
+      "review_hash": "7373bfcec5448471",
+      "review_date": "2022-01-10",
+      "score": 5,
+      "body_char_count": 459,
+      "body_keywords": [
+        "温泉",
+        "源泉",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [
+        "water_texture"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01&idx=30",
+      "review_hash": "5d77a773b3be0f4c",
+      "review_date": "2021-09-07",
+      "score": 5,
+      "body_char_count": 427,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "源泉",
+        "かけ流し",
+        "清潔",
+        "庭"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [
+        "water_texture"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01&idx=30",
+      "review_hash": "3035dce38fcff160",
+      "review_date": "2021-08-20",
+      "score": 2,
+      "body_char_count": 323,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [
+        "water_texture"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01&idx=30",
+      "review_hash": "1ab112bc0ee64846",
+      "review_date": "2021-02-27",
+      "score": 5,
+      "body_char_count": 464,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "源泉",
+        "源泉掛け流し",
+        "部屋風呂",
+        "温度",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture",
+        "booking_confusion",
+        "temperature_control"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01&idx=30",
+      "review_hash": "c80592dc10bab6dd",
+      "review_date": "2021-01-25",
+      "score": 5,
+      "body_char_count": 414,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "露天",
+        "露天風呂",
+        "客室露天",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture",
+        "booking_confusion",
+        "temperature_control",
+        "operations_note"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01&idx=30",
+      "review_hash": "875e1c1478092bca",
+      "review_date": "2020-11-25",
+      "score": 5,
+      "body_char_count": 311,
+      "body_keywords": [
+        "源泉",
+        "露天",
+        "露天風呂",
+        "温度",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture",
+        "booking_confusion",
+        "temperature_control"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01&idx=30",
+      "review_hash": "e801b2676eecad36",
+      "review_date": "2020-11-01",
+      "score": 5,
+      "body_char_count": 257,
+      "body_keywords": [
+        "ドリンク",
+        "清潔"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "operations_note"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01&idx=30",
+      "review_hash": "e7f8769806e2ba65",
+      "review_date": "2020-10-20",
+      "score": 5,
+      "body_char_count": 126,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01&idx=30",
+      "review_hash": "77c4d75edc4c1bd9",
+      "review_date": "2020-10-14",
+      "score": 5,
+      "body_char_count": 591,
+      "body_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "客室露天",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01&idx=30",
+      "review_hash": "ab4000aba84c5c03",
+      "review_date": "2020-08-29",
+      "score": 5,
+      "body_char_count": 676,
+      "body_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "ドリンク",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "operations_note"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01&idx=30",
+      "review_hash": "5864b6377d28bcba",
+      "review_date": "2020-08-25",
+      "score": 5,
+      "body_char_count": 398,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "源泉",
+        "かけ流し",
+        "温度",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [
+        "water_texture",
+        "temperature_control",
+        "operations_note"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01&idx=30",
+      "review_hash": "01ca0be33fe0dfc1",
+      "review_date": "2020-07-28",
+      "score": 5,
+      "body_char_count": 153,
+      "body_keywords": [
+        "清潔"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan Archive",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/archive/?screenId=UWW3701&smlCd=380205&dateUndecided=1&yadNo=339801&distCd=01&idx=30",
+      "review_hash": "22ed843b9467cefa",
+      "review_date": "2020-07-21",
+      "score": 5,
+      "body_char_count": 613,
+      "body_keywords": [
+        "温泉",
+        "生湯",
+        "源泉",
+        "源泉掛け流し",
+        "露天",
+        "露天風呂",
+        "温度",
+        "清潔",
+        "竹林",
+        "庭"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture",
+        "temperature_control"
+      ],
+      "language": "ja"
+    }
+  ]
+}

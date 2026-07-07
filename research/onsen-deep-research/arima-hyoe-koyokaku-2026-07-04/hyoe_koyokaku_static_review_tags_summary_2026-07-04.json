@@ -1,0 +1,49 @@
+{
+  "generated_at": "2026-07-04T03:29:08.354Z",
+  "lodging": "兵衛向陽閣",
+  "total_direct_extracted_static": 551,
+  "onsen_related_body_static": 274,
+  "direct_body_platforms_static": 3,
+  "by_platform": {
+    "Rakuten Travel": {
+      "direct": 240,
+      "onsen_body": 120
+    },
+    "Jalan": {
+      "direct": 131,
+      "onsen_body": 85
+    },
+    "JTB": {
+      "direct": 180,
+      "onsen_body": 69
+    }
+  },
+  "platform_page_stats": {
+    "rakuten_1": 20,
+    "rakuten_2": 20,
+    "rakuten_3": 20,
+    "rakuten_4": 20,
+    "rakuten_5": 20,
+    "rakuten_6": 20,
+    "rakuten_7": 20,
+    "rakuten_8": 20,
+    "rakuten_9": 20,
+    "rakuten_10": 20,
+    "rakuten_11": 20,
+    "rakuten_12": 20,
+    "jalan_1": 30,
+    "jalan_2": 30,
+    "jalan_3": 30,
+    "jalan_4": 30,
+    "jalan_5": 11,
+    "jtb_1": 40,
+    "jtb_2": 40,
+    "jtb_3": 40,
+    "jtb_4": 40,
+    "jtb_5": 40,
+    "jtb_6": 40,
+    "jtb_7": 40,
+    "jtb_8": 40
+  },
+  "note": "Review bodies are not stored; hashes, metadata, short keywords and tags only. Official bath facts are not counted as review signals."
+}

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     default: '바스타임 - 온천 검색기',
     template: '%s | 바스타임',
   },
-  description: '일본 료칸 이용 전 객실탕, 가족탕, 대욕장, 온천수 사용 범위와 확인할 점을 정리하는 온천 검색기입니다.',
+  description: '일본 료칸 이용 전 객실 내 프라이빗탕, 대절탕, 대욕장, 온천수 사용 범위와 확인할 점을 정리하는 온천 검색기입니다.',
   openGraph: {
     siteName: '바스타임',
     locale: 'ko_KR',
@@ -52,7 +52,7 @@ const siteJsonLd = {
       inLanguage: 'ko-KR',
       isPartOf: { '@id': `${siteUrl}/#website` },
       about: { '@id': `${siteUrl}/#organization` },
-      description: '일본 료칸 이용 전 객실탕, 가족탕, 대욕장, 온천수 사용 범위와 확인할 점을 정리하는 온천 검색기입니다.',
+      description: '일본 료칸 이용 전 객실 내 프라이빗탕, 대절탕, 대욕장, 온천수 사용 범위와 확인할 점을 정리하는 온천 검색기입니다.',
     },
   ],
 };

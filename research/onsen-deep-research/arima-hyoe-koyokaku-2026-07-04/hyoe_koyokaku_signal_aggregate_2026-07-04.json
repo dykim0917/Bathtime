@@ -1,0 +1,146 @@
+{
+  "research_date": "2026-07-04",
+  "slug": "arima-hyoe-koyokaku",
+  "accommodation_name": "兵衛向陽閣",
+  "identity": {
+    "name_ja": "兵衛向陽閣",
+    "name_ko": "효에 코요카쿠",
+    "name_en": "Hyoe Koyokaku",
+    "ota_names_seen": [
+      "有馬温泉 兵衛向陽閣",
+      "효에 고요카쿠",
+      "효에 코요카쿠",
+      "Hyoe Koyokaku"
+    ],
+    "official_site_url": "https://www.hyoe.co.jp/",
+    "address": "兵庫県神戸市北区有馬町1904 / 1904 Arimacho, Kita Ward, Kobe, Hyogo 651-1401",
+    "onsen_area": "有馬温泉"
+  },
+  "quality": {
+    "data_quality_grade": "A",
+    "grade_reason": "직접 본문 565건, 직접 본문 플랫폼 5개, Google Hotels/Maps와 Naver Blog 직접 확인 포함. 최신·저평점·온천 키워드·한국어 리뷰 층화가 모두 확보됨.",
+    "visible_review_pool_minimum": 8676,
+    "direct_reviews_read": 565,
+    "onsen_related_direct_reviews": 285,
+    "direct_body_platform_count": 5
+  },
+  "official_bath_facts": {
+    "official_status": "official_and_ota_facility_claims_only",
+    "room_bath": "일반 객실 내 욕실은 객실 비교표에 욕실 항목으로 확인되나, 온천 여부는 객실별로 구분 필요",
+    "room_open_air_bath": "공식 객실 페이지에서 일부 객실: 東館 貴賓室 老松은 金泉半露天風呂付き, 西館 展望露天風呂付 和モダン客室은 露天風呂付 객실로 확인",
+    "public_bath": "공식 온천 페이지와 JTB 시설 페이지에서 一の湯, 二の湯, 三の湯 대욕장 계통 확인",
+    "open_air_public_bath": "JTB 시설 페이지에서 露天風呂付温泉大浴場, 一の湯/二の湯/三の湯의 노천탕 계통 확인",
+    "private_bath": "공식 온천 페이지와 JTB 시설 페이지에서 貸切露天風呂 및 夕霧 등 대절/가족탕 계통 확인",
+    "family_bath": "JTB 시설 페이지에서 夕霧 貸切・家族風呂(混浴) 표기 확인",
+    "spring_claim": "공식 온천 페이지는 有馬温泉の湯・金泉을 전면 주장",
+    "flow_heating_circulation_disinfection": "JTB 시설 페이지: 温泉(放流・循環併用式、加温している). 소독/염소 표기는 이번 표본에서 공식 확인 불충분",
+    "spring_quality_ph_temperature": "공식 온천 페이지는 금천의 철분·염분·적갈색 변화를 설명하나, 이번 표본에서 pH/원천 온도 숫자는 확인하지 못함",
+    "hours_and_reservation": "JTB 시설 페이지 기준 대욕장 입욕 가능 시간 6:00-1:00. 대절/가족탕은 예약 필요성이 후기와 OTA 시설 설명에서 확인되나 공식 예약 조건은 추가 확인 권장"
+  },
+  "review_signal_rows": [
+    {
+      "bath_area": "public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 82,
+      "source_count": 82,
+      "platform_count": 5,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal",
+      "notes": "一の湯・二の湯・三の湯, 3개 대욕장, 넓은 욕장, 반복 이용 신호가 다중 플랫폼에서 강하게 반복된다."
+    },
+    {
+      "bath_area": "open_air_public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 26,
+      "source_count": 26,
+      "platform_count": 4,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal",
+      "notes": "공용 노천탕은 금천·노천탕·대욕장 동선과 함께 언급된다."
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 58,
+      "source_count": 58,
+      "platform_count": 5,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal",
+      "notes": "金泉, 적갈색/흙탕물 같은 색, 철분·염분, 부들부들 표현이 반복된다. 일부 리뷰의 銀泉 언급은 공식 표본에서 확인되지 않아 혼동 가능성을 둔다."
+    },
+    {
+      "bath_area": "private_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "positive",
+      "mention_count": 12,
+      "source_count": 12,
+      "platform_count": 3,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal",
+      "notes": "貸切風呂, 貸切露天, 전세탕, 프라이빗 노천탕이 산노유 주변 시설과 예약 경험으로 분리된다."
+    },
+    {
+      "bath_area": "family_bath",
+      "bath_area_confidence": "probable",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "neutral",
+      "mention_count": 2,
+      "source_count": 2,
+      "platform_count": 2,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal",
+      "notes": "한국어 리뷰의 가족탕/개인탕 표현은 공식상 貸切・家族風呂와 대응 가능하나, 객실탕과 혼합하지 않음."
+    },
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "probable",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 27,
+      "source_count": 27,
+      "platform_count": 3,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal",
+      "notes": "露天風呂付 객실, 金泉半露天, 개별 금천 노천탕 신호가 있으나 일부는 객실명/플랜명 문맥이라 실제 투숙 객실 타입 확인이 필요하다."
+    },
+    {
+      "bath_area": "public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "crowding",
+      "signal_direction": "mixed",
+      "mention_count": 39,
+      "source_count": 39,
+      "platform_count": 3,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal",
+      "notes": "混雑/混んで와 空いて/静か가 모두 있어 시간대·단체 수요에 따라 체감이 갈린다."
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "booking_confusion",
+      "signal_direction": "mixed",
+      "mention_count": 166,
+      "source_count": 166,
+      "platform_count": 4,
+      "contradiction_level": "medium",
+      "review_signal_status": "strong_signal",
+      "notes": "송영, 역/언덕, 체크인, 관내 이동, 예약 안내, 식사 시간 등 운영 동선 신호가 온천 이용 경험과 자주 결합된다."
+    }
+  ],
+  "operations_notes": {
+    "temperature_control_mentions": 8,
+    "cleanliness_aging_mentions": 36,
+    "view_mentions": 60,
+    "access_booking_mentions": 134,
+    "insects_mentions": 0,
+    "chlorine_mentions": 0
+  }
+}

@@ -1,0 +1,2 @@
+research_order,slug,name_ja,name_ko_or_en,area,track,source_tier,bath_research_axes,initial_review_pool_signal,priority_reason,status
+1,misasa-mansuirou,三朝薬師の湯 万翆楼,Mansuirou / 만수이로우,misasa,ready_lodging_deep_research,Tier 1,room_bath;room_open_air_bath;public_bath;open_air_public_bath;private_bath,"raw visible platform surfaces 4554+ with duplicate caution; direct read 579; onsen direct 319","三朝ラジウム의 고급 객실탕 후보로 객실 내탕/객실 노천탕, 대욕장, 공용 노천탕, 대절탕을 분리할 가치가 큼",A_completed

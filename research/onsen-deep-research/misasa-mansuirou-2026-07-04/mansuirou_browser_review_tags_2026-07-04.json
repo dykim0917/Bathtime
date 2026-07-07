@@ -1,0 +1,138 @@
+{
+  "research_date": "2026-07-04",
+  "slug": "misasa-mansuirou",
+  "scope_note": "Aside Browser 및 브라우저 직접 확인 표면. Google 공급자 카드, OTA AI 요약, Naver 검색 스니펫은 직접 리뷰 수에서 제외했다.",
+  "browser_platforms": {
+    "google_maps": {
+      "source_url": "https://www.google.com/maps/search/?api=1&query=%E4%B8%89%E6%9C%9D%E8%96%AC%E5%B8%AB%E3%81%AE%E6%B9%AF%20%E4%B8%87%E7%BF%86%E6%A5%BC",
+      "rating": 4.2,
+      "visible_review_count": 642,
+      "rating_distribution": "bar chart visible; exact per-star counts not exposed in Aside output",
+      "review_body_access": "partial",
+      "direct_reviews_read": 8,
+      "onsen_related_direct_reviews": 7,
+      "provider_cards_seen": [
+        "Trip.com",
+        "Booking.com",
+        "Ikyu.com",
+        "Trip.com",
+        "Klook"
+      ],
+      "direct_google_native_note": "리뷰 탭에서 'Google에 게시됨' 표시가 붙은 Google-native 리뷰만 직접 수에 포함했다. Trip.com 공급자 리뷰는 Google-native 수에 넣지 않았다.",
+      "keywords_seen": [
+        "대욕탕",
+        "야외 온탕",
+        "온천물",
+        "수질",
+        "가족탕",
+        "실내탕과 노천탕",
+        "객실 변경"
+      ]
+    },
+    "naver_search": {
+      "source_url": "https://search.naver.com/search.naver?query=%EB%A7%8C%EC%88%98%EC%9D%B4%EB%A1%9C%EC%9A%B0%20%ED%9B%84%EA%B8%B0%20%EC%98%A8%EC%B2%9C%20%EB%AF%B8%EC%82%AC%EC%82%AC",
+      "review_body_access": "snippet_only",
+      "direct_reviews_read": 0,
+      "onsen_related_direct_reviews": 0,
+      "note": "정확 숙소명 한국어 검색 결과는 카페/Trip.com/Agoda/쇼핑 표면 위주였다. 검색 결과 문구는 snippet_only로 분리했다.",
+      "snippet_keywords": [
+        "온천에서의 힐링",
+        "조금 번잡한 대중탕",
+        "온천물도 좋아서",
+        "대욕장",
+        "노천탕"
+      ]
+    },
+    "naver_cafe": {
+      "source_url": "https://m.cafe.naver.com/ca-fe/web/cafes/worldtravelcafe/articles/565329",
+      "review_body_access": "blocked",
+      "direct_reviews_read": 0,
+      "onsen_related_direct_reviews": 0,
+      "blocked_note": "모바일 카페 URL은 로그인/피드 표면으로 이동해 원문 본문을 확보하지 못했다."
+    },
+    "trip_com_moments": {
+      "source_urls": [
+        "https://kr.trip.com/moments/detail/misasa-60736-130727949/",
+        "https://kr.trip.com/moments/detail/misasa-60736-130727893/"
+      ],
+      "review_body_access": "direct_readable",
+      "direct_reviews_read": 2,
+      "onsen_related_direct_reviews": 1,
+      "source_count_caution": "같은 작성자의 관련 게시물 2건으로 보인다. 직접 본문 2건으로 읽었지만 독립 작성자 수는 1명으로 해석한다.",
+      "keywords_seen": [
+        "온천 길 찾는게 조금 힘들어서",
+        "대욕장은 하루에 한 번씩 남자/여자가 바뀌기",
+        "송영",
+        "웰컴 드링크",
+        "직원분들이 영어를 잘 못하셔요"
+      ]
+    },
+    "ikkyu": {
+      "source_url": "https://www.ikyu.com/00001032/review/",
+      "rating": 4.44,
+      "visible_review_count": 71,
+      "category_scores": {
+        "rooms_amenities": 4.2,
+        "facilities": 4.28,
+        "service": 4.44,
+        "food": 4.64,
+        "onsen_bath": 4.63,
+        "satisfaction": 4.45
+      },
+      "review_body_access": "direct_readable",
+      "direct_reviews_read": 20,
+      "onsen_related_direct_reviews": 17,
+      "keywords_seen": [
+        "湯質",
+        "温泉",
+        "源泉掛け流し",
+        "ラドン温泉",
+        "飲泉",
+        "大浴場",
+        "部屋の露天風呂",
+        "客室露天風呂",
+        "貸切風呂"
+      ]
+    },
+    "yahoo_travel": {
+      "source_url": "https://travel.yahoo.co.jp/00001032/review/",
+      "rating": 4.44,
+      "visible_review_count": 71,
+      "review_body_access": "direct_readable",
+      "direct_reviews_read_added_to_total": 0,
+      "onsen_related_direct_reviews_added_to_total": 0,
+      "corpus_overlap_note": "Ikkyu와 동일/유사 리뷰풀 71건으로 보여 총 직접 리뷰 수에는 중복 합산하지 않았다."
+    },
+    "tripadvisor": {
+      "source_url": "https://www.tripadvisor.jp/Hotel_Review-g1121364-d1125762-Reviews-Mansuirou-Misasa_cho_Tohaku_gun_Tottori_Prefecture_Chugoku.html",
+      "rating": 4.1,
+      "visible_review_count": 74,
+      "review_body_access": "direct_readable",
+      "direct_reviews_read": 10,
+      "onsen_related_direct_reviews": 7,
+      "keywords_seen": [
+        "源泉かけ流し",
+        "温泉",
+        "露天風呂",
+        "大浴場",
+        "循環",
+        "混雑",
+        "脱衣室",
+        "老朽化"
+      ]
+    },
+    "agoda": {
+      "source_url": "https://www.agoda.com/ko-kr/mansuirou-ryokan/hotel/misasa-jp.html",
+      "rating": 8.8,
+      "visible_review_count": 994,
+      "review_body_access": "partial",
+      "direct_reviews_read_added_to_total": 0,
+      "partial_keywords": [
+        "온천도 너무 좋았어요",
+        "숙소내 온천 가능 시간이 길어서",
+        "온천탕 및 스파"
+      ],
+      "exclusion_note": "개별 날짜/작성자 단위 본문을 안정적으로 분리하지 못해 직접 리뷰 수에 넣지 않았다."
+    }
+  }
+}

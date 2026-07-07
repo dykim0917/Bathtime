@@ -1,0 +1,88 @@
+{
+  "generated_at": "2026-07-04T04:10:05.889Z",
+  "lodging": "道後温泉 琴の庭",
+  "total_direct_extracted_static": 33,
+  "onsen_related_body_static": 27,
+  "direct_body_platforms_static": 2,
+  "by_platform": {
+    "Rakuten Travel": {
+      "direct": 18,
+      "onsen_body": 12
+    },
+    "Jalan": {
+      "direct": 15,
+      "onsen_body": 15
+    }
+  },
+  "platform_page_stats": {
+    "rakuten_1": 18,
+    "jalan_1": 15,
+    "jalan_2": 15,
+    "jalan_3": 15,
+    "jalan_4": 15,
+    "jalan_5": 15,
+    "jalan_6": 15,
+    "jtb_1": 0
+  },
+  "visible_review_pool_static": {
+    "rakuten": 18,
+    "jalan": null,
+    "jtb": null
+  },
+  "bath_area_tags": {
+    "room_open_air_bath": 17,
+    "room_bath": 23,
+    "public_bath": 2
+  },
+  "signal_type_tags": {
+    "room_bath_hot_spring": 24,
+    "booking_confusion": 11,
+    "water_texture": 12,
+    "crowding": 4,
+    "public_bath_hot_spring": 2
+  },
+  "caution_tags": {
+    "access_booking": 12,
+    "temperature_control": 2,
+    "cleanliness_aging": 6,
+    "lounge_operation": 2,
+    "price_expectation": 1,
+    "view_garden": 1
+  },
+  "body_keywords": {
+    "温泉": 16,
+    "露天": 12,
+    "露天風呂": 11,
+    "道後温泉": 9,
+    "清潔": 4,
+    "源泉": 3,
+    "予約": 3,
+    "静か": 3,
+    "商店街": 2,
+    "温度": 2,
+    "部屋風呂": 2,
+    "足湯": 2,
+    "露天風呂付": 2,
+    "駐車場": 2,
+    "道後温泉本館": 2,
+    "お部屋のお風呂": 2,
+    "大浴場": 2,
+    "徒歩": 1,
+    "泉質": 1,
+    "湯質": 1,
+    "客室風呂": 1,
+    "狭い": 1,
+    "露天風呂付き": 1,
+    "空いて": 1,
+    "掃除": 1,
+    "館内": 1,
+    "古い": 1
+  },
+  "scores": {
+    "2": 1,
+    "3": 1,
+    "4": 5,
+    "5": 26
+  },
+  "note": "Review bodies are not stored; hashes, metadata, short keywords and tags only. Official bath facts are not counted as review signals."
+}

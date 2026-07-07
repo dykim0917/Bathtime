@@ -1,0 +1,147 @@
+{
+  "research_date": "2026-07-06",
+  "scope": "ready lodging deep research: Kansai/Sanin/Setouchi Tier 1",
+  "method": "Static OTA extraction for Rakuten and Jalan, plus Aside Browser checks for Yahoo Travel, Google Maps/Hotels, and Naver Search. Snippets are separated from direct bodies. Reinforcement on 2026-07-06 added direct Google Maps native review-tab sampling and repeated Naver Blog/Cafe checks.",
+  "direct_review_sampling_status": "B: 545 directly read reviews and 4 direct-body platforms after Google-native reinforcement. A withheld because Naver Blog/Cafe Korean direct personal-stay bodies remain 0 and Trip.com KR is partial only.",
+  "lodgings": [
+    {
+      "slug": "shirahama-kachofugetsu",
+      "name_ja": "南紀白浜 和みの湯 花鳥風月",
+      "name_ko_or_en": "Kachofugetsu",
+      "area": "白浜温泉, 和歌山県",
+      "google_maps": {
+        "rating": 4.7,
+        "visible_review_count": 297,
+        "rating_distribution": {
+          "1": 7,
+          "2": 3,
+          "3": 7,
+          "4": 37,
+          "5": 243
+        },
+        "korean_reviews_visible": "not confirmed as Korean-authored; Korean UI translations visible",
+        "review_body_access": "direct_readable",
+        "direct_google_native_reviews_read": 25,
+        "onsen_related_google_native_reviews_read": 17,
+        "low_rating_direct_google_native_read": {
+          "1": 4,
+          "2": 1,
+          "3": 1
+        },
+        "provider_cards_excluded_from_direct_count": [
+          "Tripadvisor card inside Google feed",
+          "Trip.com card inside Google feed",
+          "owner replies",
+          "Google/provider summaries"
+        ]
+      },
+      "ota_review_pool_signals": {
+        "rakuten": {
+          "visible_review_count": 415,
+          "rating": null,
+          "review_body_access": "direct_readable",
+          "direct_read_reviews": 360,
+          "onsen_related_direct_reviews": 165,
+          "source_url": "https://travel.rakuten.co.jp/HOTEL/183409/review.html"
+        },
+        "jalan": {
+          "visible_review_count": 367,
+          "rating": null,
+          "review_body_access": "direct_readable",
+          "direct_read_reviews": 130,
+          "onsen_related_direct_reviews": 79,
+          "source_url": "https://www.jalan.net/yad351872/kuchikomi/"
+        },
+        "yahoo_travel": {
+          "visible_review_count": 45,
+          "rating": 4.69,
+          "review_body_access": "direct_readable_via_aside",
+          "direct_read_reviews": 30,
+          "onsen_related_direct_reviews": 24,
+          "source_url": "https://travel.yahoo.co.jp/00913643/review/"
+        },
+        "booking": {
+          "visible_review_count": null,
+          "rating": null,
+          "review_body_access": "not_sampled_in_depth",
+          "direct_read_reviews": 0,
+          "onsen_related_direct_reviews": 0,
+          "source_url": "https://www.booking.com/hotel/jp/nan-ji-bai-bang-he-minotang-hua-niao-feng-yue.ja.html"
+        },
+        "naver_search": {
+          "visible_review_count": null,
+          "rating": null,
+          "review_body_access": "snippet_only/not_found_exact_blog_cafe",
+          "direct_read_reviews": 0,
+          "onsen_related_direct_reviews": 0,
+          "source_url": "https://search.naver.com/search.naver?query=%EC%8B%9C%EB%9D%BC%ED%95%98%EB%A7%88%20%ED%95%98%EB%82%98%EB%8F%84%EB%A6%AC%ED%9B%84%EA%B2%8C%EC%B8%A0%20%ED%9B%84%EA%B8%B0%20%EA%B0%9D%EC%8B%A4%20%EB%85%B8%EC%B2%9C%ED%83%95",
+          "notes": "Exact property surfaced in Korean search, but Naver Blog/Cafe personal stay bodies were not found. Search snippets and media/OTA snippets are not direct reviews.",
+          "requested_queries": [
+            "카초후게츠 시라하마 후기",
+            "花鳥風月 시라하마 객실 노천탕",
+            "난키 시라하마 카초후게츠 온천"
+          ],
+          "variant_queries_tried": [
+            "가초후게쓰 시라하마 후기"
+          ]
+        },
+        "google_maps_native": {
+          "visible_review_count": 297,
+          "rating": 4.7,
+          "review_body_access": "direct_readable",
+          "direct_read_reviews": 25,
+          "onsen_related_direct_reviews": 17,
+          "source_url": "https://www.google.com/maps/search/%E5%8D%97%E7%B4%80%E7%99%BD%E6%B5%9C+%E5%92%8C%E3%81%BF%E3%81%AE%E6%B9%AF+%E8%8A%B1%E9%B3%A5%E9%A2%A8%E6%9C%88"
+        },
+        "tripcom_kr": {
+          "visible_review_count": 23,
+          "rating": 9.6,
+          "review_body_access": "partial",
+          "direct_read_reviews": 0,
+          "onsen_related_direct_reviews": 0,
+          "partial_review_cards_seen": 3,
+          "source_url": "https://kr.trip.com/hotels/shirahama-hotel-detail-86051528/nanki-shirahama-nagomi-no-yu-kacho-fugetsu/",
+          "note": "Exact Korean Trip.com page opened; visible user-review card text was partial/truncated, so it is recorded as partial Korean OTA evidence rather than full direct-body sampling."
+        }
+      },
+      "official_bath_facts_seen": {
+        "official_url": "https://shirahama-kachofugetsu.com/",
+        "address": "和歌山県西牟婁郡白浜町3729-32",
+        "onsen_area": "白浜温泉",
+        "room_bath": "official_seen",
+        "room_open_air_bath": "official_seen_all_rooms",
+        "public_bath": "official_absent",
+        "open_air_public_bath": "not_confirmed",
+        "private_bath": "not_confirmed_as_separate_facility",
+        "family_bath": "not_confirmed_as_separate_facility",
+        "source_note": "Official/OTA facts indicate all 24 rooms have private natural hot-spring semi-open-air baths and that the property intentionally has no public large bath."
+      },
+      "review_signal_keywords": [
+        "温泉",
+        "半露天風呂",
+        "露天風呂",
+        "部屋風呂",
+        "陶器風呂",
+        "泉質",
+        "ツルツル",
+        "すべすべ",
+        "大浴場がない",
+        "全室温泉付き"
+      ],
+      "caution_keywords": [
+        "大浴場なし",
+        "目隠し",
+        "視線",
+        "駐車場",
+        "温度",
+        "狭い",
+        "清潔",
+        "虫",
+        "送迎",
+        "予約"
+      ],
+      "next_sampling": "A로 올리려면 Naver Blog/Cafe 개인 숙박 본문 또는 한국어 OTA의 전체 리뷰 본문을 추가 확보해야 한다. Google-native 층화는 25건으로 보강 완료."
+    }
+  ],
+  "previous_research_date": "2026-07-04"
+}

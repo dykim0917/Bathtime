@@ -1,0 +1,155 @@
+{
+  "research_date": "2026-07-04",
+  "scope": "tamatsukuri-kasuien-minami ready lodging deep research",
+  "method": "Rakuten API/Jalan static extraction + Aside Browser confirmation for Google Maps, Naver and Ikkyu + web source verification. Snippets and provider cards excluded from direct review totals.",
+  "direct_review_sampling_status": "A: 300+ direct reviews, 4 direct-body platforms, latest/low-score/onsen-keyword/Korean-surface checks completed.",
+  "lodgings": [
+    {
+      "slug": "tamatsukuri-kasuien-minami",
+      "name_ja": "玉造温泉 佳翠苑皆美",
+      "name_ko_or_en": "가스이엔 미나미 / Kasuien Minami",
+      "google_maps": {
+        "rating": 4.4,
+        "visible_review_count": 1977,
+        "rating_distribution": {
+          "1": 52,
+          "2": 33,
+          "3": 118,
+          "4": 568,
+          "5": 1206
+        },
+        "korean_reviews_visible": true,
+        "review_body_access": "partial",
+        "direct_google_native_reviews_read": 9,
+        "onsen_related_google_native_reviews": 4,
+        "provider_cards_seen": [
+          "Tripadvisor",
+          "Agoda",
+          "Trip.com",
+          "Rakuten Travel",
+          "JAPANiCAN"
+        ]
+      },
+      "ota_review_pool_signals": {
+        "Rakuten Travel": {
+          "visible_review_count": 1167,
+          "direct_reviews_read": 440,
+          "onsen_related_direct_reviews": 209,
+          "review_body_access": "direct_readable"
+        },
+        "Jalan": {
+          "visible_review_count": 2071,
+          "direct_reviews_read": 134,
+          "onsen_related_direct_reviews": 90,
+          "review_body_access": "direct_readable"
+        },
+        "Google Maps native": {
+          "visible_review_count": 1977,
+          "rating": 4.4,
+          "rating_distribution": {
+            "1": 52,
+            "2": 33,
+            "3": 118,
+            "4": 568,
+            "5": 1206
+          },
+          "direct_reviews_read": 9,
+          "onsen_related_direct_reviews": 4,
+          "review_body_access": "partial"
+        },
+        "Ikkyu": {
+          "visible_review_count": 265,
+          "rating": 4.73,
+          "direct_reviews_read": 23,
+          "onsen_related_direct_reviews": 17,
+          "review_body_access": "direct_readable",
+          "note": "브라우저 표면 기준. Ikkyu/Yahoo 합산 총점 265건이나 페이지는 Ikkyu 게시 리뷰만 표시한다고 안내."
+        },
+        "Tripadvisor provider card in Google": {
+          "visible_review_count": null,
+          "direct_reviews_read": 0,
+          "onsen_related_direct_reviews": 0,
+          "review_body_access": "partial",
+          "not_counted_reason": "Google 패널 안 공급자 카드라 Google-native 리뷰 수에서 제외"
+        },
+        "Yahoo Travel": {
+          "visible_review_count": 265,
+          "rating": 4.73,
+          "direct_reviews_read": 0,
+          "onsen_related_direct_reviews": 0,
+          "review_body_access": "blocked",
+          "not_counted_reason": "정적 요청 403. Aside에서는 Ikkyu 표면이 Yahoo 합산 점수를 안내하므로 중복 가능성이 있어 직접 수 미반영."
+        },
+        "Naver Search": {
+          "visible_review_count": null,
+          "direct_reviews_read": 0,
+          "onsen_related_direct_reviews": 0,
+          "review_body_access": "snippet_only"
+        },
+        "Naver Blog": {
+          "visible_review_count": null,
+          "direct_reviews_read": 0,
+          "onsen_related_direct_reviews": 0,
+          "review_body_access": "snippet_only"
+        },
+        "Agoda": {
+          "visible_review_count": null,
+          "direct_reviews_read": 0,
+          "onsen_related_direct_reviews": 0,
+          "review_body_access": "partial",
+          "not_counted_reason": "Google 가격 카드 표면만 확인. 개별 리뷰 본문 미확보."
+        },
+        "Booking": {
+          "visible_review_count": null,
+          "direct_reviews_read": 0,
+          "onsen_related_direct_reviews": 0,
+          "review_body_access": "snippet_only",
+          "not_counted_reason": "Naver 검색 광고/요약 표면만 확인."
+        },
+        "Tripcom": {
+          "visible_review_count": 35,
+          "direct_reviews_read": 0,
+          "onsen_related_direct_reviews": 0,
+          "review_body_access": "snippet_only",
+          "not_counted_reason": "Naver 검색 표면에서 평점/참여 수와 객실명 스니펫만 확인."
+        },
+        "Tripadvisor": {
+          "visible_review_count": null,
+          "direct_reviews_read": 0,
+          "onsen_related_direct_reviews": 0,
+          "review_body_access": "blocked",
+          "not_counted_reason": "정적 요청은 JS/ad-blocker 안내. Google provider card 일부만 확인."
+        }
+      },
+      "official_bath_facts_seen": {
+        "official_site": "public bath/open-air public bath: 浮舟, 浮殿, 天遊の湯; hand/foot bath; spring quality and temperature shown",
+        "room_bath": "some rooms with source-flow bath per official top; Jalan/Ikkyu identify rooms with open-air bath, not all rooms",
+        "private_or_family_bath": "not confirmed as shared reservable bath in official/Jalan checked sources",
+        "spring_quality": "ナトリウム・カルシウム-硫酸塩・塩化物泉, 52.1C, weak alkaline high-temperature spring",
+        "circulation_addition": "Jalan states 加水・循環ろ過; Ikkyu states open-air bath not kakenagashi and 加水"
+      },
+      "review_signal_keywords": [
+        "玉造温泉",
+        "美肌",
+        "すべすべ",
+        "大浴場",
+        "9階展望風呂",
+        "天遊の湯",
+        "部屋風呂",
+        "源泉掛け流し",
+        "温泉露付スイート"
+      ],
+      "caution_keywords": [
+        "混雑",
+        "団体",
+        "予約",
+        "送迎",
+        "駐車場",
+        "源泉掛け流しではなく",
+        "塩素",
+        "温度調節"
+      ],
+      "next_sampling": "A 유지. 추가 보강은 Google 저평점 필터와 Naver 원문 블로그/카페 접근, Yahoo Travel 별도 본문 중복 제거 확인."
+    }
+  ]
+}

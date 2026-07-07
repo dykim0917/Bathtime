@@ -1,0 +1,187 @@
+{
+  "research_date": "2026-07-04",
+  "scope": "arima-nakanobo ready 숙소 딥리서치",
+  "method": "공식 사실과 후기 신호를 분리하고, Rakuten/Jalan 정적 본문 수집 후 Google Hotels/Maps와 Naver/Korean web을 Aside Browser로 직접 확인했다. 검색 스니펫, OTA 요약, 공급자 카드 리뷰는 직접 리뷰 수에서 제외했다.",
+  "direct_review_sampling_status": {
+    "target_direct_reviews": 300,
+    "direct_reviews_read": 433,
+    "onsen_related_direct_reviews": 305,
+    "direct_body_platform_count": 5,
+    "data_quality_grade": "A"
+  },
+  "lodgings": [
+    {
+      "slug": "arima-nakanobo",
+      "name_ja": "中の坊瑞苑",
+      "name_ko_or_en": "Nakanobo Zuien / 나카노보 즈이엔",
+      "identity": {
+        "official_name_ja": "中の坊 瑞苑",
+        "common_ko": "나카노보 즈이엔",
+        "english_name": "Nakanobo Zuien",
+        "ota_names": [
+          "有馬温泉 中の坊 瑞苑",
+          "Nakanobo Zuien (Adult Only)",
+          "나카노보 즈이엔"
+        ],
+        "former_or_rebrand_names": [],
+        "official_site_url": "https://www.zuien.jp/",
+        "address": "兵庫県神戸市北区有馬町808",
+        "onsen_area": "有馬温泉"
+      },
+      "google_maps": {
+        "rating": 4.5,
+        "visible_review_count": 701,
+        "rating_distribution": "Google Hotels/Maps 패널에서 별점 행은 보였으나 숫자별 분포는 텍스트로 직접 추출되지 않음",
+        "korean_reviews_visible": true,
+        "review_body_access": "partial",
+        "direct_google_native_reviews_read": 18,
+        "onsen_related_direct_google_native_reviews": 10,
+        "ota_provider_cards_seen": [
+          "Tripadvisor card present inside Google review surface; not counted as Google-native"
+        ],
+        "access_notes": "Aside Browser로 Google 검색 패널과 Google Travel review tab을 직접 확인. 추천순/저평점 표본을 읽었고 공급자 카드는 분리했다."
+      },
+      "ota_review_pool_signals": [
+        {
+          "platform": "Rakuten Travel",
+          "rating": "4.84 on review page surface",
+          "visible_review_count": 626,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 240,
+          "onsen_related_direct_reviews": 120,
+          "source_url": "https://travel.rakuten.co.jp/HOTEL/25288/review.html"
+        },
+        {
+          "platform": "Jalan",
+          "rating": 4.4,
+          "visible_review_count": 888,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 172,
+          "onsen_related_direct_reviews": 172,
+          "source_url": "https://www.jalan.net/yad342576/kuchikomi/"
+        },
+        {
+          "platform": "Ikkyu",
+          "rating": null,
+          "visible_review_count": null,
+          "review_body_access": "blocked",
+          "direct_reviews_read": 0,
+          "onsen_related_direct_reviews": 0,
+          "access_notes": "정적 접근 403. 이번 A등급 산출에는 미사용."
+        },
+        {
+          "platform": "Yahoo Travel",
+          "rating": null,
+          "visible_review_count": null,
+          "review_body_access": "blocked",
+          "direct_reviews_read": 0,
+          "onsen_related_direct_reviews": 0,
+          "access_notes": "정적 접근 403. 이번 A등급 산출에는 미사용."
+        },
+        {
+          "platform": "Relux",
+          "rating": null,
+          "visible_review_count": null,
+          "review_body_access": "not_found",
+          "direct_reviews_read": 0,
+          "onsen_related_direct_reviews": 0,
+          "access_notes": "검색/정적 접근에서 다른 숙소 페이지로 연결되어 identity mismatch."
+        },
+        {
+          "platform": "Trip.com",
+          "rating": 9.2,
+          "visible_review_count": 23,
+          "review_body_access": "snippet_only",
+          "direct_reviews_read": 0,
+          "onsen_related_direct_reviews": 0,
+          "access_notes": "Naver 검색 결과에서 노출된 리뷰풀/평점만 확인. 본문 미열람."
+        }
+      ],
+      "korean_web_and_naver": [
+        {
+          "platform": "Naver Blog",
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 2,
+          "onsen_related_direct_reviews": 2,
+          "source_urls": [
+            "https://m.blog.naver.com/kuriiiiii/223799907525",
+            "https://m.blog.naver.com/bs60208/224129753367"
+          ],
+          "access_notes": "Aside Browser로 모바일 본문 직접 확인. 개인 온천욕/객실 노천탕/대욕장/금탕/은탕 표현 확인."
+        },
+        {
+          "platform": "Naver Blog",
+          "review_body_access": "snippet_only",
+          "direct_reviews_read": 0,
+          "onsen_related_direct_reviews": 0,
+          "source_urls": [
+            "https://m.blog.naver.com/448686/223644604312"
+          ],
+          "access_notes": "본문은 열렸으나 투숙 후기라기보다 숙소 정보/제휴 링크 성격이 강해 직접 리뷰 표본에서 제외."
+        },
+        {
+          "platform": "Korean web blog",
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 1,
+          "onsen_related_direct_reviews": 1,
+          "source_urls": [
+            "https://keiberry.net/arima-onsen/"
+          ],
+          "access_notes": "직접 체류 후기 본문 확인."
+        },
+        {
+          "platform": "Naver Search",
+          "review_body_access": "snippet_only",
+          "direct_reviews_read": 0,
+          "onsen_related_direct_reviews": 0,
+          "access_notes": "Hotels.com, Trip.com, Cafe 등 검색 결과 스니펫은 직접 리뷰 수에서 제외."
+        }
+      ],
+      "official_bath_facts_seen": {
+        "room_bath": "객실 타입별 내탕/욕실은 존재. 온천 원천 여부는 객실 타입명과 공식 원천 표기를 함께 확인해야 함.",
+        "room_open_air_bath": "金泉露天付き, 銀泉露天付き, 金泉銀泉露天付き 객실 타입이 공식 확인됨. 전 객실 아님.",
+        "public_bath": "大浴場 瑞泉/爽泉 확인. 공식상 대욕장은 金泉 사용.",
+        "open_air_public_bath": "대욕장에 정원/노천 욕조가 공식 기재됨.",
+        "private_bath": "무료 貸切露天風呂 확인. 銀泉/ラドン泉, 내부 잠금 방식.",
+        "family_bath": "유료 예약제 貸切家族風呂 寿泉 확인. 金泉.",
+        "source_claims": [
+          "公式: 当館は入浴のみの営業はいたしておりません",
+          "公式: 金泉（赤湯）・銀泉（ラドン泉）の源泉表記以外は温泉ではございません",
+          "金泉/銀泉 모두 放流・循環併用式 표기 확인"
+        ],
+        "official_discrepancies_to_recheck": [
+          "金泉 加温 표기가 공식/OTA 표면에서 加温なし와 加温あり로 엇갈림",
+          "銀泉 加水 표기가 공식/OTA 표면에서 加水あり와 加水なし로 엇갈림",
+          "貸切家族風呂/貸切露天風呂 이용 시간 표기가 공식/OTA 표면에서 다르게 보임"
+        ],
+        "official_sources": [
+          "https://www.zuien.jp/",
+          "https://www.zuien.jp/spa/",
+          "https://travel.rakuten.co.jp/HOTEL/25288/25288.html"
+        ]
+      },
+      "review_signal_keywords": [
+        "温泉",
+        "金泉",
+        "銀泉",
+        "露天風呂",
+        "大浴場",
+        "貸切",
+        "家族風呂",
+        "개인 온천욕",
+        "금탕",
+        "은탕",
+        "대욕장"
+      ],
+      "caution_keywords": [
+        "予約",
+        "送迎",
+        "객실 타입",
+        "노천탕 여부",
+        "담배 냄새",
+        "온천감 의심"
+      ],
+      "next_sampling": "A등급 기준은 충족. 다음 보강 시 Ikkyu/Yahoo Travel을 브라우저 로그인/동적 렌더링으로 재확인하고, Google 리뷰 스크롤을 추가 확보하면 저평점/외국어 표본을 더 두껍게 만들 수 있다."
+    }
+  ]
+}

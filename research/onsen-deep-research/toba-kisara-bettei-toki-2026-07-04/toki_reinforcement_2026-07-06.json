@@ -1,0 +1,120 @@
+{
+  "research_date": "2026-07-06",
+  "slug": "toba-kisara-bettei-toki",
+  "name_ja": "季さら別邸 刻",
+  "scope": "ready lodging deep research reinforcement; not candidate collection",
+  "starting_point": {
+    "previous_directly_read_reviews": 256,
+    "previous_onsen_related_direct_reviews": 174,
+    "previous_direct_body_platform_count": 6,
+    "previous_grade": "B"
+  },
+  "added_direct_sources": [
+    {
+      "platform": "Tripadvisor",
+      "url": "https://www.tripadvisor.jp/Hotel_Review-g298195-d17793793-Reviews-Kisara_Bettei_Toki-Toba_Mie_Prefecture_Tokai_Chubu.html",
+      "visible_review_count": 5,
+      "rating": 4.4,
+      "review_body_access": "direct_readable",
+      "directly_read_reviews_added": 4,
+      "onsen_related_direct_reviews_added": 3,
+      "notes": "Tripadvisor page exposed 4 of 5 review bodies. Google hotel panel also displayed one Tripadvisor provider review; it was not counted as Google-native."
+    },
+    {
+      "platform": "Tabelog",
+      "url": "https://tabelog.com/mie/A2403/A240302/24017283/dtlrvwlst/",
+      "visible_review_count": 24,
+      "rating": 3.19,
+      "review_body_access": "partial_direct_readable",
+      "directly_read_reviews_added": 16,
+      "onsen_related_direct_reviews_added": 12,
+      "notes": "Tabelog classifies the item as ryokan/minshuku. Only opened individual stay/meal review bodies were counted. Food-only bodies were not counted as onsen-related."
+    },
+    {
+      "platform": "4travel / Japanese blogs / note",
+      "url": "multiple direct travelogue and blog bodies; see toki_second_reinforcement_2026-07-06.json",
+      "visible_review_count": 9,
+      "rating": null,
+      "review_body_access": "direct_readable",
+      "directly_read_reviews_added": 9,
+      "onsen_related_direct_reviews_added": 9,
+      "notes": "Added 9 unique author-level direct stay/travelogue/blog bodies from 4travel, ryokoshashin, Ameblo, yadolog, note, and hibi-kanro. Same-author series and Tabelog-linked duplicates were not double-counted."
+    }
+  ],
+  "rechecked_not_counted_sources": [
+    {
+      "platform": "Google Maps / Google Hotels",
+      "visible_review_count": 140,
+      "rating": 4.5,
+      "rating_distribution": {
+        "5_star": 106,
+        "4_star": 17,
+        "3_star": 5,
+        "2_star": 7,
+        "1_star": 5
+      },
+      "review_body_access": "partial_direct_readable_via_aside",
+      "new_directly_read_reviews_added": 15,
+      "why_added": "A later Aside Browser long-scroll session replaced the old unlogged Google 20-count line with a current author-logged Google-native 35-count sample. This is a platform-line recount, not an additive duplicate count.",
+      "keyword_pools_seen": {
+        "일본의 온천": 22,
+        "목욕": 21,
+        "족욕": 10,
+        "피부": 10
+      },
+      "provider_card_caution": "Tripadvisor reviews inside Google panel are provider reviews, not Google-native."
+    },
+    {
+      "platform": "Booking.com",
+      "visible_review_count": 6,
+      "rating": 9.7,
+      "review_body_access": "partial_or_blocked",
+      "directly_read_reviews_added": 0,
+      "notes": "Search/page surfaces show review count and score, but direct individual bodies were not exposed in static or checked browser-readable surfaces."
+    },
+    {
+      "platform": "Agoda",
+      "visible_review_count": 5,
+      "rating": 10.0,
+      "review_body_access": "blocked_or_js_summary_only",
+      "directly_read_reviews_added": 0,
+      "notes": "Agoda result exposes score/count language but not stable individual review bodies."
+    },
+    {
+      "platform": "Trip.com",
+      "visible_review_count": 19,
+      "rating": 9.7,
+      "review_body_access": "partial_summary_only",
+      "directly_read_reviews_added": 0,
+      "notes": "Trip.com static surfaces showed guest review summary/count and facility/room text, not individual bodies."
+    },
+    {
+      "platform": "Naver Blog/Search",
+      "visible_review_count": null,
+      "rating": null,
+      "review_body_access": "snippet_only_or_not_found_direct",
+      "directly_read_reviews_added": 0,
+      "notes": "Korean searches surfaced OTA/property pages, Korean booking pages, and unrelated/noise results. No direct Naver Blog/Cafe stay report for Toki was opened."
+    }
+  ],
+  "updated_totals": {
+    "directly_read_reviews": 300,
+    "onsen_related_direct_reviews": 213,
+    "direct_body_platform_count": 11,
+    "platforms_counted_as_direct_body": [
+      "Rakuten Travel",
+      "Jalan",
+      "Relux",
+      "Ikkyu",
+      "Yahoo Travel",
+      "Google-native",
+      "Tripadvisor",
+      "Tabelog",
+      "4travel travelogue",
+      "Japanese blogs/Ameblo",
+      "note"
+    ],
+    "data_quality_grade": "A",
+    "why_A": "Direct sample reached 300 after Google-native recount. Direct body platforms remain 11, and latest/low-rating/onsen-keyword/multi-platform strata are present. Korean direct review stratum remains unfilled and should be treated as a gap rather than a direct-count blocker."
+  }
+}

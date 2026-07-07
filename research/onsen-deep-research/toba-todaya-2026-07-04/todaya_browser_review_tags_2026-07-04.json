@@ -1,0 +1,203 @@
+[
+  {
+    "platform": "Google Maps native",
+    "source_url": "https://www.google.com/maps/search/?api=1&query=%E6%88%B8%E7%94%B0%E5%AE%B6%20%E9%B3%A5%E7%BE%BD",
+    "review_id": "google-native-ko-san9-10y",
+    "review_date": "about 10 years ago",
+    "language": "ko",
+    "access": "aside_review_tab_read",
+    "onsen_related_body": true,
+    "bath_area_tags": [
+      "private_bath",
+      "family_bath"
+    ],
+    "signal_type_tags": [
+      "private_bath_experience"
+    ],
+    "caution_tags": [
+      "korean_private_bath_not_room_bath"
+    ],
+    "original_keywords": [
+      "작은 개인 욕탕",
+      "족탕"
+    ],
+    "paraphrase": "Google-native 한국어 리뷰에서 작은 개인 욕탕 이용 가능성과 족탕을 언급한다. 객실탕 근거가 아니라 공용 프라이빗/대절탕 신호로 처리한다."
+  },
+  {
+    "platform": "Google Maps native",
+    "source_url": "https://www.google.com/maps/search/?api=1&query=%E6%88%B8%E7%94%B0%E5%AE%B6%20%E9%B3%A5%E7%BE%BD",
+    "review_id": "google-native-ko-ksm-2y",
+    "review_date": "about 2 years ago",
+    "language": "ko",
+    "access": "aside_review_tab_read",
+    "onsen_related_body": false,
+    "bath_area_tags": [],
+    "signal_type_tags": [],
+    "caution_tags": [
+      "view_privacy"
+    ],
+    "original_keywords": [
+      "방에서 보이는",
+      "바다의 뷰"
+    ],
+    "paraphrase": "Google-native 한국어 리뷰에서 객실 바다 전망과 식사 만족을 언급하나 온천 본문은 확인되지 않는다."
+  },
+  {
+    "platform": "Google Maps native",
+    "source_url": "https://www.google.com/maps/search/?api=1&query=%E6%88%B8%E7%94%B0%E5%AE%B6%20%E9%B3%A5%E7%BE%BD",
+    "review_id": "google-native-ko-yoon-9y",
+    "review_date": "about 9 years ago",
+    "language": "ko",
+    "access": "aside_review_tab_read",
+    "onsen_related_body": false,
+    "bath_area_tags": [],
+    "signal_type_tags": [],
+    "caution_tags": [
+      "cleanliness_aging"
+    ],
+    "original_keywords": [
+      "옛날식 관광호텔"
+    ],
+    "paraphrase": "Google-native 한국어 리뷰에서 오래된 관광호텔 느낌과 직원/식사 신호가 보인다."
+  },
+  {
+    "platform": "Google Maps native",
+    "source_url": "https://www.google.com/maps/search/?api=1&query=%E6%88%B8%E7%94%B0%E5%AE%B6%20%E9%B3%A5%E7%BE%BD",
+    "review_id": "google-native-ja-meme-1m",
+    "review_date": "about 1 month ago",
+    "language": "ja",
+    "access": "aside_review_tab_read",
+    "onsen_related_body": false,
+    "bath_area_tags": [],
+    "signal_type_tags": [],
+    "caution_tags": [
+      "cleanliness_aging",
+      "access_booking"
+    ],
+    "original_keywords": [
+      "大きな旅館",
+      "古式ゆかしい"
+    ],
+    "paraphrase": "Google-native 일본어 리뷰에서 대형 노포 료칸, 역 접근성, 외국인 직원 신호가 보이나 욕장 본문은 접힌 상태다."
+  },
+  {
+    "platform": "Google Maps native",
+    "source_url": "https://www.google.com/maps/search/?api=1&query=%E6%88%B8%E7%94%B0%E5%AE%B6%20%E9%B3%A5%E7%BE%BD",
+    "review_id": "google-native-ja-tadashi-2w",
+    "review_date": "about 2 weeks ago",
+    "language": "ja",
+    "access": "aside_review_tab_read",
+    "onsen_related_body": false,
+    "bath_area_tags": [],
+    "signal_type_tags": [],
+    "caution_tags": [
+      "buffet_crowding"
+    ],
+    "original_keywords": [
+      "大きな旅館",
+      "団体客"
+    ],
+    "paraphrase": "Google-native 최신 일본어 리뷰에서 단체 손님과 식사 동선 신호가 보이나 온천 본문은 접힌 상태다."
+  },
+  {
+    "platform": "Google Maps native",
+    "source_url": "https://www.google.com/maps/search/?api=1&query=%E6%88%B8%E7%94%B0%E5%AE%B6%20%E9%B3%A5%E7%BE%BD",
+    "review_id": "google-native-ja-jonathan-1m",
+    "review_date": "about 1 month ago",
+    "language": "ja",
+    "access": "aside_review_tab_read",
+    "onsen_related_body": false,
+    "bath_area_tags": [],
+    "signal_type_tags": [],
+    "caution_tags": [],
+    "original_keywords": [
+      "鳥羽",
+      "宿泊"
+    ],
+    "paraphrase": "Google-native 일본어 리뷰가 보이지만 snapshot 본문은 여행 맥락 중심이다."
+  },
+  {
+    "platform": "Google Maps native",
+    "source_url": "https://www.google.com/maps/search/?api=1&query=%E6%88%B8%E7%94%B0%E5%AE%B6%20%E9%B3%A5%E7%BE%BD",
+    "review_id": "google-native-ja-nametake-4m",
+    "review_date": "about 4 months ago",
+    "language": "ja",
+    "access": "aside_review_tab_read",
+    "onsen_related_body": false,
+    "bath_area_tags": [],
+    "signal_type_tags": [],
+    "caution_tags": [
+      "buffet_crowding"
+    ],
+    "original_keywords": [
+      "過去一番",
+      "バイキング"
+    ],
+    "paraphrase": "Google-native 일본어 리뷰에서 직원과 뷔페 긍정이 보이나 온천 본문은 접힌 상태다."
+  },
+  {
+    "platform": "Google Maps native",
+    "source_url": "https://www.google.com/maps/search/?api=1&query=%E6%88%B8%E7%94%B0%E5%AE%B6%20%E9%B3%A5%E7%BE%BD",
+    "review_id": "google-native-ja-chiyobubu-3w",
+    "review_date": "about 3 weeks ago",
+    "language": "ja",
+    "access": "aside_review_tab_read",
+    "onsen_related_body": false,
+    "bath_area_tags": [],
+    "signal_type_tags": [],
+    "caution_tags": [],
+    "original_keywords": [
+      "写真"
+    ],
+    "paraphrase": "Google-native 최신 일본어 사진 리뷰가 보이나 snapshot 본문은 온천 경험으로 판정하지 않는다."
+  },
+  {
+    "platform": "Tripadvisor provider card in Google Maps",
+    "source_url": "https://www.google.com/maps/search/?api=1&query=%E6%88%B8%E7%94%B0%E5%AE%B6%20%E9%B3%A5%E7%BE%BD",
+    "review_id": "google-provider-tripadvisor-ko-shg0111-9y",
+    "review_date": "about 9 years ago",
+    "language": "ko",
+    "access": "provider_card_direct_read",
+    "google_native": false,
+    "onsen_related_body": false,
+    "bath_area_tags": [],
+    "signal_type_tags": [],
+    "caution_tags": [
+      "provider_card_not_google_native",
+      "access_booking"
+    ],
+    "original_keywords": [
+      "역바로앞",
+      "차량제공",
+      "건물내부"
+    ],
+    "paraphrase": "Google Maps의 Tripadvisor 공급자 카드에서 역 접근성과 복잡한 동선 신호가 보인다."
+  },
+  {
+    "platform": "Tripadvisor provider card in Google Maps",
+    "source_url": "https://www.google.com/maps/search/?api=1&query=%E6%88%B8%E7%94%B0%E5%AE%B6%20%E9%B3%A5%E7%BE%BD",
+    "review_id": "google-provider-tripadvisor-ja-2025",
+    "review_date": "2025-10",
+    "language": "ja_to_ko_machine",
+    "access": "provider_card_direct_read",
+    "google_native": false,
+    "onsen_related_body": true,
+    "bath_area_tags": [
+      "open_air_public_bath"
+    ],
+    "signal_type_tags": [
+      "public_bath_hot_spring",
+      "booking_confusion"
+    ],
+    "caution_tags": [
+      "provider_card_not_google_native",
+      "access_booking",
+      "buffet_crowding"
+    ],
+    "original_keywords": [
+      "온천마을",
+      "경로가 번거롭다"
+    ],
+    "paraphrase": "Google Maps의 Tripadvisor 공급자 카드에서 온천마을 동선이 번거롭다는 신호가 확인된다."
+  }
+]

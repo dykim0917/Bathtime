@@ -1,0 +1,152 @@
+{
+  "research_date": "2026-07-04",
+  "scope": "tamatsukuri-chorakuen ready lodging deep research",
+  "method": "Rakuten API/Jalan static extraction + web/Aside Browser confirmation for Google Maps, Yahoo Travel, Trip.com, Naver Blog/Search. Snippets and Google provider cards excluded from direct totals unless opened on the provider page.",
+  "direct_review_sampling_status": "A: 300+ direct reviews, 6 direct-body platforms, latest/low-score/onsen-keyword/Korean review checks completed.",
+  "lodgings": [
+    {
+      "slug": "tamatsukuri-chorakuen",
+      "name_ja": "玉造温泉 湯之助の宿 長楽園",
+      "name_ko_or_en": "유노스케노야도 초라쿠엔 / Chorakuen",
+      "google_maps": {
+        "rating": 4.2,
+        "visible_review_count": 1018,
+        "rating_distribution": {
+          "1": 44,
+          "2": 28,
+          "3": 96,
+          "4": 347,
+          "5": 503
+        },
+        "korean_reviews_visible": true,
+        "review_body_access": "partial",
+        "direct_google_native_reviews_read": 6,
+        "onsen_related_google_native_reviews": 5,
+        "provider_cards_seen": [
+          "Trip.com",
+          "Tripadvisor",
+          "Rakuten Travel",
+          "Ikyu.com",
+          "Vio.com"
+        ]
+      },
+      "ota_review_pool_signals": {
+        "Rakuten Travel": {
+          "visible_review_count": 127,
+          "direct_reviews_read": 127,
+          "onsen_related_direct_reviews": 90,
+          "review_body_access": "direct_readable",
+          "note": "Rakuten visible 127건 전량 직접 수집"
+        },
+        "Jalan": {
+          "visible_review_count": 3611,
+          "direct_reviews_read": 95,
+          "onsen_related_direct_reviews": 85,
+          "review_body_access": "direct_readable",
+          "note": "정적 최신/일부 페이지 95건 직접 수집. visible 3,611건 전체는 아님."
+        },
+        "Yahoo Travel": {
+          "visible_review_count": 66,
+          "rating": 4.25,
+          "direct_reviews_read": 66,
+          "onsen_related_direct_reviews": 49,
+          "review_body_access": "direct_readable",
+          "note": "web/브라우저 표면으로 p1-p3 직접 본문 접근. Ikkyu/Yahoo 합산 점수와 중복 가능성 주의."
+        },
+        "Google Maps native": {
+          "visible_review_count": 1018,
+          "rating": 4.2,
+          "rating_distribution": {
+            "1": 44,
+            "2": 28,
+            "3": 96,
+            "4": 347,
+            "5": 503
+          },
+          "direct_reviews_read": 6,
+          "onsen_related_direct_reviews": 5,
+          "review_body_access": "partial",
+          "note": "Aside Browser 확인. Trip.com/Tripadvisor 공급자 카드는 Google-native에서 제외."
+        },
+        "Trip.com": {
+          "visible_review_count": 90,
+          "rating": 9.3,
+          "direct_reviews_read": 9,
+          "onsen_related_direct_reviews": 8,
+          "review_body_access": "direct_readable",
+          "note": "직접 페이지에서 개별 리뷰 9건 확인. AI 요약은 직접 수에서 제외."
+        },
+        "Naver Blog": {
+          "visible_review_count": null,
+          "direct_reviews_read": 1,
+          "onsen_related_direct_reviews": 1,
+          "review_body_access": "direct_readable",
+          "note": "초라쿠엔 숙박 블로그 본문 1건 직접 확인."
+        },
+        "Naver Search": {
+          "visible_review_count": null,
+          "direct_reviews_read": 0,
+          "onsen_related_direct_reviews": 0,
+          "review_body_access": "snippet_only"
+        },
+        "Ikkyu": {
+          "visible_review_count": 66,
+          "rating": 4.25,
+          "direct_reviews_read": 0,
+          "onsen_related_direct_reviews": 0,
+          "review_body_access": "direct_readable",
+          "not_counted_reason": "Yahoo/Ikkyu 합산 66건 표면. 이번 직접 총량은 Yahoo Travel 쪽 p1-p3를 기준으로 세고 Ikkyu는 교차 확인만 함."
+        },
+        "Tripadvisor": {
+          "visible_review_count": 224,
+          "direct_reviews_read": 0,
+          "onsen_related_direct_reviews": 0,
+          "review_body_access": "partial",
+          "not_counted_reason": "Google 공급자 카드와 검색 표면만 확인. Tripadvisor 직접 페이지는 별도 안정 표본 미확보."
+        },
+        "Agoda": {
+          "visible_review_count": null,
+          "direct_reviews_read": 0,
+          "onsen_related_direct_reviews": 0,
+          "review_body_access": "partial",
+          "not_counted_reason": "검색 결과/OTA 표면만 확인."
+        }
+      },
+      "official_bath_facts_seen": {
+        "official_current_url": "https://www.choraku.co.jp/",
+        "official_ko_url": "https://www.choraku.co.jp/kr/",
+        "identity_note": "candidate file official_url chorakuen.jp appears superseded by choraku.co.jp",
+        "public_open_air_bath": "龍宮の湯, 1909년 완성, 일본 최대급 혼욕 대노천탕, fresh source water supplied continuously per official Korean page",
+        "public_bath": "여성 노천탕 花泉, 남성 노천탕 恵泉, 대욕장/노천탕 표면",
+        "room_bath": "욕실 있는 객실에는 온천수 공급",
+        "room_open_air_bath": "노천탕 설치 특별 객실, 공식 한국어 표면상 특별실 2실/별채 특별실 등",
+        "private_bath": "유료 전세 온천탕 공식 표면 확인",
+        "spring_claims": "沸かさず、薄めず / source-flow framing; official Korean page states fresh source continuously supplied to Ryugu-no-yu",
+        "address": "島根県松江市玉湯町玉造323"
+      },
+      "review_signal_keywords": [
+        "混浴",
+        "大露天風呂",
+        "120坪",
+        "湯浴み着",
+        "部屋風呂",
+        "客室露天",
+        "源泉かけ流し",
+        "すべすべ",
+        "大浴場"
+      ],
+      "caution_keywords": [
+        "湯浴み着",
+        "洗い場",
+        "シャワー",
+        "ぬるい",
+        "古い",
+        "カビ",
+        "予約",
+        "送迎",
+        "入浴税/費用"
+      ],
+      "next_sampling": "A 유지. 추가 보강은 Jalan archive 3,611건 중 과거/저평점 확장, Tripadvisor 직접 페이지 안정 접근, Trip.com 전체 90건 확장."
+    }
+  ]
+}

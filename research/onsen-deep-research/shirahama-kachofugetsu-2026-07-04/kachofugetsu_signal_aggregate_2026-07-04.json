@@ -1,0 +1,132 @@
+{
+  "research_date": "2026-07-04",
+  "slug": "shirahama-kachofugetsu",
+  "accommodation_name": "南紀白浜 和みの湯 花鳥風月",
+  "data_quality_grade": "B",
+  "grade_reason": "Direct review volume exceeds 300 and three direct-body platforms were secured, but A is withheld because Korean direct-review strata were not found and Google-native review-tab sampling remains partial.",
+  "visible_review_pool_minimum": 1124,
+  "visible_review_pool_components": {
+    "rakuten_travel": 415,
+    "jalan": 367,
+    "yahoo_travel": 45,
+    "google_maps": 297
+  },
+  "direct_read_reviews_total": 520,
+  "onsen_related_direct_reviews_total": 268,
+  "direct_body_platform_count": 3,
+  "direct_body_platforms_counted": [
+    "Rakuten Travel",
+    "Jalan",
+    "Yahoo Travel"
+  ],
+  "google_maps_checked_via_aside": true,
+  "naver_checked_via_aside": true,
+  "official_facts_basis": {
+    "official_site_url": "https://shirahama-kachofugetsu.com/",
+    "address": "和歌山県西牟婁郡白浜町3729-32",
+    "onsen_area": "白浜温泉",
+    "room_count": 24,
+    "room_open_air_bath": "all rooms; official wording indicates natural hot spring semi-open-air bath in each room",
+    "room_bath": "all rooms; ceramic/private in-room bath language appears in OTA/reviews",
+    "public_bath": "officially absent",
+    "open_air_public_bath": "not confirmed as public facility",
+    "private_bath": "not confirmed as separate reservable public/private bath",
+    "family_bath": "not confirmed",
+    "source_separation_note": "Official facility facts are not counted as review signals."
+  },
+  "signals": [
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 407,
+      "source_count": 407,
+      "platform_count": 3,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal",
+      "evidence_basis": "Static OTA tags plus Yahoo direct bodies repeatedly mention room semi-open-air bath, room bath, and 24-hour private use."
+    },
+    {
+      "bath_area": "room_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 333,
+      "source_count": 333,
+      "platform_count": 3,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal",
+      "evidence_basis": "Room bath/ceramic tub language appears across Rakuten, Jalan, and Yahoo; the service value is private in-room bathing rather than a public bath circuit."
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 222,
+      "source_count": 222,
+      "platform_count": 3,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal",
+      "evidence_basis": "Keywords such as 温泉, 泉質, ツルツル, すべすべ, 肌 appear in direct bodies."
+    },
+    {
+      "bath_area": "public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "booking_confusion",
+      "signal_direction": "neutral",
+      "mention_count": 14,
+      "source_count": 14,
+      "platform_count": 2,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal",
+      "evidence_basis": "Direct reviews and official claims align that there is no public large bath; this is an expectation/positioning signal, not a public-bath satisfaction signal."
+    },
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "probable",
+      "signal_type": "booking_confusion",
+      "signal_direction": "mixed",
+      "mention_count": 71,
+      "source_count": 71,
+      "platform_count": 2,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal",
+      "evidence_basis": "View/privacy keywords such as 海, 景色, 目隠し, 視線 appear; some praise room-view bathing while some note privacy or parking/road sightline expectations."
+    },
+    {
+      "bath_area": "room_bath",
+      "bath_area_confidence": "probable",
+      "signal_type": "weak_onsen_feeling",
+      "signal_direction": "negative",
+      "mention_count": 5,
+      "source_count": 5,
+      "platform_count": 1,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal",
+      "evidence_basis": "A small number of bodies imply ordinary-water/weak-feeling concern; not enough to outweigh the positive water-texture signal."
+    },
+    {
+      "bath_area": "private_bath",
+      "bath_area_confidence": "unclear",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "neutral",
+      "mention_count": 2,
+      "source_count": 2,
+      "platform_count": 2,
+      "contradiction_level": "medium",
+      "review_signal_status": "insufficient",
+      "evidence_basis": "Mentions are mostly desire/request language such as wanting a reservable open-air bath; no separate private/family bath facility is treated as confirmed."
+    }
+  ],
+  "operation_notes": {
+    "temperature_control_mentions": 22,
+    "room_bath_size_expectation_mentions": 40,
+    "cleanliness_aging_mentions": 57,
+    "insects_mentions": 3,
+    "children_family_mentions": 76,
+    "access_booking_mentions": 118,
+    "price_expectation_mentions": 21
+  }
+}

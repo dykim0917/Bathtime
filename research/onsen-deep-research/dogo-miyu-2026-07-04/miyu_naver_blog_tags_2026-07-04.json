@@ -1,0 +1,196 @@
+{
+  "summary": {
+    "generated_at": "2026-07-04T04:07:11.921Z",
+    "lodging": "도고미유",
+    "platform": "Naver Blog via Aside Browser",
+    "searched_query": "도고 미유 후기 객실 노천탕",
+    "direct_opened_urls": 5,
+    "total_direct_browser": 4,
+    "onsen_related_body": 4,
+    "bath_area_tags": {
+      "room_open_air_bath": 4,
+      "public_bath": 4,
+      "open_air_public_bath": 4
+    },
+    "signal_type_tags": {
+      "room_bath_hot_spring": 4,
+      "public_bath_hot_spring": 4,
+      "water_texture": 4,
+      "operations_note": 4
+    },
+    "snippet_only_search_results": [
+      "Naver search snippets from Japanican, Agoda, Trip.com, OTA pages and unrelated Dogo/Yachiyo/Okudogo results were not counted as direct reviews."
+    ],
+    "note": "Bodies not stored; direct blog bodies reduced to hashes, metadata, short keywords and tags."
+  },
+  "reviews": [
+    {
+      "platform": "Naver Blog",
+      "source_url": "https://blog.naver.com/annatomo/224169050041",
+      "review_hash": "07b25e219fc67426",
+      "review_date": null,
+      "body_char_count": 6568,
+      "body_keywords": [
+        "온천",
+        "노천탕",
+        "객실",
+        "프라이빗",
+        "전망탕",
+        "전망",
+        "노천",
+        "도고온천",
+        "도고미유",
+        "미유",
+        "마쓰야마",
+        "라운지"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "public_bath",
+        "open_air_public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring",
+        "water_texture",
+        "operations_note"
+      ],
+      "language": "ko",
+      "access": "direct_readable"
+    },
+    {
+      "platform": "Naver Blog",
+      "source_url": "https://blog.naver.com/bearchew/224092452730",
+      "review_hash": "c5864eb7fc04ef53",
+      "review_date": null,
+      "body_char_count": 3584,
+      "body_keywords": [
+        "온천",
+        "노천탕",
+        "객실",
+        "개인",
+        "대욕장",
+        "노천",
+        "도고온천",
+        "도고미유",
+        "미유",
+        "마쓰야마",
+        "라운지"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "public_bath",
+        "open_air_public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring",
+        "water_texture",
+        "operations_note"
+      ],
+      "language": "ko",
+      "access": "direct_readable"
+    },
+    {
+      "platform": "Naver Blog",
+      "source_url": "https://blog.naver.com/ricangel66/224093408036",
+      "review_hash": "9d508cb01d541f8a",
+      "review_date": null,
+      "body_char_count": 5151,
+      "body_keywords": [
+        "온천",
+        "노천탕",
+        "객실",
+        "프라이빗",
+        "대욕장",
+        "노천",
+        "도고미유",
+        "미유",
+        "마쓰야마",
+        "라운지"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "public_bath",
+        "open_air_public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring",
+        "water_texture",
+        "operations_note"
+      ],
+      "language": "ko",
+      "access": "direct_readable"
+    },
+    {
+      "platform": "Naver Blog",
+      "source_url": "https://blog.naver.com/slsm19/224117393239",
+      "review_hash": "cce565dfb1a52cf8",
+      "review_date": null,
+      "body_char_count": 0,
+      "body_keywords": [
+        "온천",
+        "노천탕",
+        "객실",
+        "개인",
+        "대욕장",
+        "노천",
+        "도고온천",
+        "마쓰야마"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "public_bath",
+        "open_air_public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring",
+        "water_texture",
+        "operations_note"
+      ],
+      "language": "ko",
+      "access": "partial_or_irrelevant"
+    },
+    {
+      "platform": "Naver Blog",
+      "source_url": "https://blog.naver.com/448686/224100827722",
+      "review_hash": "0c80c07dd9fc4613",
+      "review_date": null,
+      "body_char_count": 3512,
+      "body_keywords": [
+        "온천",
+        "노천탕",
+        "객실",
+        "개인",
+        "대욕장",
+        "전망",
+        "노천",
+        "도고온천",
+        "도고미유",
+        "미유",
+        "마쓰야마",
+        "라운지"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "public_bath",
+        "open_air_public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring",
+        "water_texture",
+        "operations_note"
+      ],
+      "language": "ko",
+      "access": "direct_readable"
+    }
+  ]
+}

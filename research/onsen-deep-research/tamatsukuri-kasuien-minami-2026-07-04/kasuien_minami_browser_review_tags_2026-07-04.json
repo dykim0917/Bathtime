@@ -1,0 +1,730 @@
+[
+  {
+    "platform": "Google Maps native",
+    "source_url": "https://www.google.com/maps/search/?api=1&query=%E7%8E%89%E9%80%A0%E6%B8%A9%E6%B3%89%20%E4%BD%B3%E7%BF%A0%E8%8B%91%E7%9A%86%E7%BE%8E",
+    "review_body_access": "direct_readable",
+    "review_date": "2018 approx",
+    "score": 5,
+    "language": "ko",
+    "original_keyword": [
+      "료칸",
+      "만족"
+    ],
+    "bath_area_tags": [],
+    "signal_type_tags": [],
+    "caution_tags": [],
+    "onsen_related_body": false
+  },
+  {
+    "platform": "Google Maps native",
+    "source_url": "https://www.google.com/maps/search/?api=1&query=%E7%8E%89%E9%80%A0%E6%B8%A9%E6%B3%89%20%E4%BD%B3%E7%BF%A0%E8%8B%91%E7%9A%86%E7%BE%8E",
+    "review_body_access": "direct_readable",
+    "review_date": "2026 approx",
+    "score": 5,
+    "language": "ja",
+    "original_keyword": [
+      "大浴場",
+      "9階展望風呂",
+      "玉造温泉",
+      "すべすべ"
+    ],
+    "bath_area_tags": [
+      "public_bath",
+      "open_air_public_bath"
+    ],
+    "signal_type_tags": [
+      "public_bath_hot_spring",
+      "water_texture"
+    ],
+    "caution_tags": [
+      "view_garden_rooftop"
+    ],
+    "onsen_related_body": true
+  },
+  {
+    "platform": "Google Maps native",
+    "source_url": "https://www.google.com/maps/search/?api=1&query=%E7%8E%89%E9%80%A0%E6%B8%A9%E6%B3%89%20%E4%BD%B3%E7%BF%A0%E8%8B%91%E7%9A%86%E7%BE%8E",
+    "review_body_access": "direct_readable",
+    "review_date": "2026 approx",
+    "score": 5,
+    "language": "ja",
+    "original_keyword": [
+      "お湯",
+      "客室温泉"
+    ],
+    "bath_area_tags": [
+      "room_bath"
+    ],
+    "signal_type_tags": [
+      "room_bath_hot_spring",
+      "water_texture"
+    ],
+    "caution_tags": [
+      "room_bath_presence"
+    ],
+    "onsen_related_body": true
+  },
+  {
+    "platform": "Google Maps native",
+    "source_url": "https://www.google.com/maps/search/?api=1&query=%E7%8E%89%E9%80%A0%E6%B8%A9%E6%B3%89%20%E4%BD%B3%E7%BF%A0%E8%8B%91%E7%9A%86%E7%BE%8E",
+    "review_body_access": "direct_readable",
+    "review_date": "2026 approx",
+    "score": 5,
+    "language": "ja",
+    "original_keyword": [
+      "温泉"
+    ],
+    "bath_area_tags": [
+      "facility_wide"
+    ],
+    "signal_type_tags": [
+      "water_texture"
+    ],
+    "caution_tags": [],
+    "onsen_related_body": true
+  },
+  {
+    "platform": "Google Maps native",
+    "source_url": "https://www.google.com/maps/search/?api=1&query=%E7%8E%89%E9%80%A0%E6%B8%A9%E6%B3%89%20%E4%BD%B3%E7%BF%A0%E8%8B%91%E7%9A%86%E7%BE%8E",
+    "review_body_access": "direct_readable",
+    "review_date": "2026 approx",
+    "score": 5,
+    "language": "ja",
+    "original_keyword": [
+      "夕食利用"
+    ],
+    "bath_area_tags": [],
+    "signal_type_tags": [],
+    "caution_tags": [],
+    "onsen_related_body": false
+  },
+  {
+    "platform": "Google Maps native",
+    "source_url": "https://www.google.com/maps/search/?api=1&query=%E7%8E%89%E9%80%A0%E6%B8%A9%E6%B3%89%20%E4%BD%B3%E7%BF%A0%E8%8B%91%E7%9A%86%E7%BE%8E",
+    "review_body_access": "direct_readable",
+    "review_date": "2026 approx",
+    "score": 4,
+    "language": "ja",
+    "original_keyword": [
+      "予約",
+      "部屋",
+      "食事量"
+    ],
+    "bath_area_tags": [],
+    "signal_type_tags": [
+      "booking_confusion"
+    ],
+    "caution_tags": [
+      "access_booking"
+    ],
+    "onsen_related_body": false
+  },
+  {
+    "platform": "Google Maps native",
+    "source_url": "https://www.google.com/maps/search/?api=1&query=%E7%8E%89%E9%80%A0%E6%B8%A9%E6%B3%89%20%E4%BD%B3%E7%BF%A0%E8%8B%91%E7%9A%86%E7%BE%8E",
+    "review_body_access": "direct_readable",
+    "review_date": "2026 approx",
+    "score": 4,
+    "language": "ja",
+    "original_keyword": [
+      "朝食会場の混雑",
+      "展望風呂の展望",
+      "温泉指南書"
+    ],
+    "bath_area_tags": [
+      "open_air_public_bath"
+    ],
+    "signal_type_tags": [
+      "public_bath_hot_spring",
+      "crowding"
+    ],
+    "caution_tags": [
+      "view_garden_rooftop"
+    ],
+    "onsen_related_body": true
+  },
+  {
+    "platform": "Google Maps native",
+    "source_url": "https://www.google.com/maps/search/?api=1&query=%E7%8E%89%E9%80%A0%E6%B8%A9%E6%B3%89%20%E4%BD%B3%E7%BF%A0%E8%8B%91%E7%9A%86%E7%BE%8E",
+    "review_body_access": "direct_readable",
+    "review_date": "2026 approx",
+    "score": 5,
+    "language": "ja",
+    "original_keyword": [
+      "ゆっくり"
+    ],
+    "bath_area_tags": [],
+    "signal_type_tags": [],
+    "caution_tags": [],
+    "onsen_related_body": false
+  },
+  {
+    "platform": "Google Maps native",
+    "source_url": "https://www.google.com/maps/search/?api=1&query=%E7%8E%89%E9%80%A0%E6%B8%A9%E6%B3%89%20%E4%BD%B3%E7%BF%A0%E8%8B%91%E7%9A%86%E7%BE%8E",
+    "review_body_access": "direct_readable",
+    "review_date": "2026 approx",
+    "score": 5,
+    "language": "ja",
+    "original_keyword": [
+      "家族旅行"
+    ],
+    "bath_area_tags": [],
+    "signal_type_tags": [],
+    "caution_tags": [],
+    "onsen_related_body": false
+  },
+  {
+    "platform": "Ikkyu",
+    "source_url": "https://www.ikyu.com/00001076/review/",
+    "review_body_access": "direct_readable",
+    "review_id": "ikyu_page1_1",
+    "review_date": "2026-06-28",
+    "score": 5,
+    "language": "ja",
+    "original_keyword": [
+      "源泉かけ流しのお風呂"
+    ],
+    "bath_area_tags": [
+      "room_bath",
+      "room_open_air_bath"
+    ],
+    "signal_type_tags": [
+      "room_bath_hot_spring",
+      "water_texture"
+    ],
+    "caution_tags": [
+      "room_bath_presence"
+    ],
+    "onsen_related_body": true
+  },
+  {
+    "platform": "Ikkyu",
+    "source_url": "https://www.ikyu.com/00001076/review/",
+    "review_body_access": "direct_readable",
+    "review_id": "ikyu_page1_2",
+    "review_date": "2026-06-25",
+    "score": 5,
+    "language": "ja",
+    "original_keyword": [
+      "温泉",
+      "清掃"
+    ],
+    "bath_area_tags": [
+      "facility_wide"
+    ],
+    "signal_type_tags": [
+      "water_texture"
+    ],
+    "caution_tags": [
+      "cleanliness_aging"
+    ],
+    "onsen_related_body": true
+  },
+  {
+    "platform": "Ikkyu",
+    "source_url": "https://www.ikyu.com/00001076/review/",
+    "review_body_access": "direct_readable",
+    "review_id": "ikyu_page1_3",
+    "review_date": "2026-06-19",
+    "score": 4.67,
+    "language": "ja",
+    "original_keyword": [
+      "湯につかり"
+    ],
+    "bath_area_tags": [
+      "facility_wide"
+    ],
+    "signal_type_tags": [
+      "water_texture"
+    ],
+    "caution_tags": [],
+    "onsen_related_body": true
+  },
+  {
+    "platform": "Ikkyu",
+    "source_url": "https://www.ikyu.com/00001076/review/",
+    "review_body_access": "direct_readable",
+    "review_id": "ikyu_page1_4",
+    "review_date": "2026-06-17",
+    "score": 3.17,
+    "language": "ja",
+    "original_keyword": [
+      "食事"
+    ],
+    "bath_area_tags": [],
+    "signal_type_tags": [],
+    "caution_tags": [],
+    "onsen_related_body": false
+  },
+  {
+    "platform": "Ikkyu",
+    "source_url": "https://www.ikyu.com/00001076/review/",
+    "review_body_access": "direct_readable",
+    "review_id": "ikyu_page1_5",
+    "review_date": "2026-06-16",
+    "score": 4.83,
+    "language": "ja",
+    "original_keyword": [
+      "源泉掛け流し大好き"
+    ],
+    "bath_area_tags": [
+      "room_bath"
+    ],
+    "signal_type_tags": [
+      "room_bath_hot_spring"
+    ],
+    "caution_tags": [
+      "room_bath_presence"
+    ],
+    "onsen_related_body": true
+  },
+  {
+    "platform": "Ikkyu",
+    "source_url": "https://www.ikyu.com/00001076/review/",
+    "review_body_access": "direct_readable",
+    "review_id": "ikyu_page1_6",
+    "review_date": "2026-06-15",
+    "score": 3.67,
+    "language": "ja",
+    "original_keyword": [
+      "団体",
+      "朝食ビュッフェ"
+    ],
+    "bath_area_tags": [],
+    "signal_type_tags": [
+      "crowding",
+      "booking_confusion"
+    ],
+    "caution_tags": [
+      "access_booking"
+    ],
+    "onsen_related_body": false
+  },
+  {
+    "platform": "Ikkyu",
+    "source_url": "https://www.ikyu.com/00001076/review/",
+    "review_body_access": "direct_readable",
+    "review_id": "ikyu_page1_7",
+    "review_date": "2026-06-14",
+    "score": 5,
+    "language": "ja",
+    "original_keyword": [
+      "満足"
+    ],
+    "bath_area_tags": [],
+    "signal_type_tags": [],
+    "caution_tags": [],
+    "onsen_related_body": false
+  },
+  {
+    "platform": "Ikkyu",
+    "source_url": "https://www.ikyu.com/00001076/review/",
+    "review_body_access": "direct_readable",
+    "review_id": "ikyu_page1_8",
+    "review_date": "2026-06-08",
+    "score": 4.33,
+    "language": "ja",
+    "original_keyword": [
+      "玉造温泉",
+      "大きなお風呂"
+    ],
+    "bath_area_tags": [
+      "public_bath"
+    ],
+    "signal_type_tags": [
+      "public_bath_hot_spring",
+      "water_texture"
+    ],
+    "caution_tags": [],
+    "onsen_related_body": true
+  },
+  {
+    "platform": "Ikkyu",
+    "source_url": "https://www.ikyu.com/00001076/review/",
+    "review_body_access": "direct_readable",
+    "review_id": "ikyu_page1_9",
+    "review_date": "2026-05-30",
+    "score": 5,
+    "language": "ja",
+    "original_keyword": [
+      "温泉",
+      "清潔",
+      "お湯も熱く"
+    ],
+    "bath_area_tags": [
+      "facility_wide"
+    ],
+    "signal_type_tags": [
+      "water_texture"
+    ],
+    "caution_tags": [
+      "temperature_control",
+      "cleanliness_aging"
+    ],
+    "onsen_related_body": true
+  },
+  {
+    "platform": "Ikkyu",
+    "source_url": "https://www.ikyu.com/00001076/review/",
+    "review_body_access": "direct_readable",
+    "review_id": "ikyu_page1_10",
+    "review_date": "2026-05-28",
+    "score": 5,
+    "language": "ja",
+    "original_keyword": [
+      "温泉の風呂",
+      "大きくはない"
+    ],
+    "bath_area_tags": [
+      "public_bath"
+    ],
+    "signal_type_tags": [
+      "public_bath_hot_spring"
+    ],
+    "caution_tags": [],
+    "onsen_related_body": true
+  },
+  {
+    "platform": "Ikkyu",
+    "source_url": "https://www.ikyu.com/00001076/review/",
+    "review_body_access": "direct_readable",
+    "review_id": "ikyu_page1_11",
+    "review_date": "2026-05-23",
+    "score": 5,
+    "language": "ja",
+    "original_keyword": [
+      "大浴場",
+      "玉造温泉"
+    ],
+    "bath_area_tags": [
+      "public_bath"
+    ],
+    "signal_type_tags": [
+      "public_bath_hot_spring",
+      "water_texture"
+    ],
+    "caution_tags": [],
+    "onsen_related_body": true
+  },
+  {
+    "platform": "Ikkyu",
+    "source_url": "https://www.ikyu.com/00001076/review/",
+    "review_body_access": "direct_readable",
+    "review_id": "ikyu_page1_12",
+    "review_date": "2026-05-22",
+    "score": 5,
+    "language": "ja",
+    "original_keyword": [
+      "部屋の源泉掛け流しの露天風呂",
+      "温度調節",
+      "清潔感"
+    ],
+    "bath_area_tags": [
+      "room_open_air_bath"
+    ],
+    "signal_type_tags": [
+      "room_bath_hot_spring",
+      "water_texture"
+    ],
+    "caution_tags": [
+      "temperature_control",
+      "cleanliness_aging",
+      "room_bath_presence"
+    ],
+    "onsen_related_body": true
+  },
+  {
+    "platform": "Ikkyu",
+    "source_url": "https://www.ikyu.com/00001076/review/",
+    "review_body_access": "direct_readable",
+    "review_id": "ikyu_page1_13",
+    "review_date": "2026-05-07",
+    "score": 5,
+    "language": "ja",
+    "original_keyword": [
+      "温泉も良かった"
+    ],
+    "bath_area_tags": [
+      "facility_wide"
+    ],
+    "signal_type_tags": [
+      "water_texture"
+    ],
+    "caution_tags": [],
+    "onsen_related_body": true
+  },
+  {
+    "platform": "Ikkyu",
+    "source_url": "https://www.ikyu.com/00001076/review/",
+    "review_body_access": "direct_readable",
+    "review_id": "ikyu_page1_14",
+    "review_date": "2026-05-05",
+    "score": 4.83,
+    "language": "ja",
+    "original_keyword": [
+      "部屋風呂",
+      "まろやかなお湯"
+    ],
+    "bath_area_tags": [
+      "room_bath"
+    ],
+    "signal_type_tags": [
+      "room_bath_hot_spring",
+      "water_texture"
+    ],
+    "caution_tags": [
+      "room_bath_presence"
+    ],
+    "onsen_related_body": true
+  },
+  {
+    "platform": "Ikkyu",
+    "source_url": "https://www.ikyu.com/00001076/review/",
+    "review_body_access": "direct_readable",
+    "review_id": "ikyu_page1_15",
+    "review_date": "2026-04-10",
+    "score": 5,
+    "language": "ja",
+    "original_keyword": [
+      "予約時から丁寧"
+    ],
+    "bath_area_tags": [],
+    "signal_type_tags": [
+      "booking_confusion"
+    ],
+    "caution_tags": [
+      "access_booking"
+    ],
+    "onsen_related_body": false
+  },
+  {
+    "platform": "Ikkyu",
+    "source_url": "https://www.ikyu.com/00001076/review/",
+    "review_body_access": "direct_readable",
+    "review_id": "ikyu_page1_16",
+    "review_date": "2026-04-04",
+    "score": 4.83,
+    "language": "ja",
+    "original_keyword": [
+      "サービス",
+      "料理"
+    ],
+    "bath_area_tags": [],
+    "signal_type_tags": [],
+    "caution_tags": [],
+    "onsen_related_body": false
+  },
+  {
+    "platform": "Ikkyu",
+    "source_url": "https://www.ikyu.com/00001076/review/",
+    "review_body_access": "direct_readable",
+    "review_id": "ikyu_page1_17",
+    "review_date": "2026-03-27",
+    "score": 4.83,
+    "language": "ja",
+    "original_keyword": [
+      "玉造温泉",
+      "部屋",
+      "レストラン"
+    ],
+    "bath_area_tags": [
+      "facility_wide"
+    ],
+    "signal_type_tags": [
+      "water_texture",
+      "booking_confusion"
+    ],
+    "caution_tags": [
+      "access_booking"
+    ],
+    "onsen_related_body": true
+  },
+  {
+    "platform": "Ikkyu",
+    "source_url": "https://www.ikyu.com/00001076/review/",
+    "review_body_access": "direct_readable",
+    "review_id": "ikyu_page1_18",
+    "review_date": "2026-03-21",
+    "score": 4.17,
+    "language": "ja",
+    "original_keyword": [
+      "送迎",
+      "笑顔"
+    ],
+    "bath_area_tags": [],
+    "signal_type_tags": [
+      "booking_confusion"
+    ],
+    "caution_tags": [
+      "access_booking"
+    ],
+    "onsen_related_body": false
+  },
+  {
+    "platform": "Ikkyu",
+    "source_url": "https://www.ikyu.com/00001076/review/",
+    "review_body_access": "direct_readable",
+    "review_id": "ikyu_page1_19",
+    "review_date": "2026-03-17",
+    "score": 2.83,
+    "language": "ja",
+    "original_keyword": [
+      "源泉掛け流しではなく",
+      "駐車"
+    ],
+    "bath_area_tags": [
+      "facility_wide"
+    ],
+    "signal_type_tags": [
+      "weak_onsen_feeling",
+      "booking_confusion"
+    ],
+    "caution_tags": [
+      "access_booking"
+    ],
+    "onsen_related_body": true
+  },
+  {
+    "platform": "Ikkyu",
+    "source_url": "https://www.ikyu.com/00001076/review/",
+    "review_body_access": "direct_readable",
+    "review_id": "ikyu_page1_20",
+    "review_date": "2026-01-01",
+    "score": 5,
+    "language": "ja",
+    "original_keyword": [
+      "泉質",
+      "肌に優しく"
+    ],
+    "bath_area_tags": [
+      "facility_wide"
+    ],
+    "signal_type_tags": [
+      "water_texture"
+    ],
+    "caution_tags": [],
+    "onsen_related_body": true
+  },
+  {
+    "platform": "Ikkyu",
+    "source_url": "https://www.ikyu.com/00001076/review/",
+    "review_body_access": "direct_readable",
+    "review_id": "ikyu_page1_21",
+    "review_date": "2025-12-21",
+    "score": 4.17,
+    "language": "ja",
+    "original_keyword": [
+      "足湯",
+      "大浴場",
+      "椅子",
+      "タオル"
+    ],
+    "bath_area_tags": [
+      "public_bath",
+      "facility_wide"
+    ],
+    "signal_type_tags": [
+      "public_bath_hot_spring"
+    ],
+    "caution_tags": [
+      "access_booking"
+    ],
+    "onsen_related_body": true
+  },
+  {
+    "platform": "Ikkyu",
+    "source_url": "https://www.ikyu.com/00001076/review/",
+    "review_body_access": "direct_readable",
+    "review_id": "ikyu_page1_22",
+    "review_date": "2025-12-11",
+    "score": 5,
+    "language": "ja",
+    "original_keyword": [
+      "客室も温泉も"
+    ],
+    "bath_area_tags": [
+      "room_bath"
+    ],
+    "signal_type_tags": [
+      "room_bath_hot_spring",
+      "water_texture"
+    ],
+    "caution_tags": [
+      "room_bath_presence"
+    ],
+    "onsen_related_body": true
+  },
+  {
+    "platform": "Ikkyu",
+    "source_url": "https://www.ikyu.com/00001076/review/",
+    "review_body_access": "direct_readable",
+    "review_id": "ikyu_page1_23",
+    "review_date": "2025-12-09",
+    "score": 5,
+    "language": "ja",
+    "original_keyword": [
+      "お風呂も広々"
+    ],
+    "bath_area_tags": [
+      "public_bath"
+    ],
+    "signal_type_tags": [
+      "public_bath_hot_spring"
+    ],
+    "caution_tags": [],
+    "onsen_related_body": true
+  },
+  {
+    "platform": "Tripadvisor provider card in Google",
+    "source_url": "https://www.google.com/maps/search/?api=1&query=%E7%8E%89%E9%80%A0%E6%B8%A9%E6%B3%89%20%E4%BD%B3%E7%BF%A0%E8%8B%91%E7%9A%86%E7%BE%8E",
+    "review_body_access": "partial",
+    "review_date": "2025 approx",
+    "score": 3,
+    "language": "ja",
+    "original_keyword": [
+      "Tripadvisor 에 게시됨",
+      "朝食混雑"
+    ],
+    "bath_area_tags": [],
+    "signal_type_tags": [
+      "crowding"
+    ],
+    "caution_tags": [],
+    "onsen_related_body": false,
+    "excluded_from_direct_total": true,
+    "not_counted_reason": "Google 패널 안 공급자 카드이므로 Google-native 직접 수에서 제외"
+  },
+  {
+    "platform": "Naver Search",
+    "source_url": "https://search.naver.com/search.naver?query=%EA%B0%80%EC%8A%A4%EC%9D%B4%EC%97%94%20%EB%AF%B8%EB%82%98%EB%AF%B8%20%ED%9B%84%EA%B8%B0%20%EC%98%A8%EC%B2%9C",
+    "review_body_access": "snippet_only",
+    "language": "ko",
+    "original_keyword": [
+      "마쓰에 온천 숙소 베스트 3",
+      "가스이엔 미나미",
+      "다마츠쿠리 온천"
+    ],
+    "bath_area_tags": [],
+    "signal_type_tags": [],
+    "caution_tags": [],
+    "onsen_related_body": false,
+    "excluded_from_direct_total": true,
+    "not_counted_reason": "검색 결과 스니펫만 확인되어 직접 리뷰 수에 포함하지 않음"
+  },
+  {
+    "platform": "Naver Blog",
+    "source_url": "https://search.naver.com/search.naver?ssc=tab.blog.all&query=%EA%B0%80%EC%8A%A4%EC%9D%B4%EC%97%94%20%EB%AF%B8%EB%82%98%EB%AF%B8%20%ED%9B%84%EA%B8%B0%20%EC%98%A8%EC%B2%9C",
+    "review_body_access": "snippet_only",
+    "language": "ko",
+    "original_keyword": [
+      "지역 글",
+      "요약 글"
+    ],
+    "bath_area_tags": [],
+    "signal_type_tags": [],
+    "caution_tags": [],
+    "onsen_related_body": false,
+    "excluded_from_direct_total": true,
+    "not_counted_reason": "블로그 검색 결과 표면만 확인, 개별 숙박 후기 본문으로 보지 않음"
+  }
+]

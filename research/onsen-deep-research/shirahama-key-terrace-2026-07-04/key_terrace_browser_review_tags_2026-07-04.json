@@ -1,0 +1,100 @@
+{
+  "research_date": "2026-07-04",
+  "slug": "shirahama-key-terrace",
+  "aside_browser_checked": true,
+  "browser_platforms": {
+    "google_maps": {
+      "source_url": "https://www.google.com/maps/search/?api=1&query=SHIRAHAMA%20KEY%20TERRACE%20HOTEL%20SEAMORE",
+      "review_body_access": "partial_direct_readable_via_aside",
+      "rating": 4.0,
+      "visible_review_count": 3082,
+      "rating_distribution": "bars visible in Google panel; exact per-star counts not exposed in this pass",
+      "direct_google_native_reviews_read": 5,
+      "onsen_related_google_native_reviews_read": 4,
+      "korean_reviews_visible": "yes",
+      "provider_cards_seen": [
+        "Hotels.com",
+        "Trip.com",
+        "JAPANiCAN.com",
+        "Agoda",
+        "Ikyu.com"
+      ],
+      "supplier_review_cards_not_counted_as_google_native": [
+        {
+          "provider": "Trip.com",
+          "visible_review_count": 575,
+          "rating": "4.4/5",
+          "short_keywords_seen": [
+            "온천탕 바다뷰",
+            "1층 족욕탕",
+            "인피니티 노천탕",
+            "소독약 냄새",
+            "부드럽고 전망"
+          ]
+        }
+      ],
+      "short_keywords_seen": [
+        "한국인에게 유명한 온천 호텔",
+        "야외 온천",
+        "태평양이 보이는 야외온천",
+        "온천은 총3층",
+        "노천탕까지 구성",
+        "족욕"
+      ],
+      "notes": "Google review tab exposed both Google-native and Trip.com supplier reviews. Supplier reviews were recorded separately and not counted as Google-native."
+    },
+    "naver_search": {
+      "source_url": "https://search.naver.com/search.naver?query=%EC%8B%9C%EB%9D%BC%ED%95%98%EB%A7%88%20%ED%82%A4%ED%85%8C%EB%9D%BC%EC%8A%A4%20%ED%98%B8%ED%85%94%20%EC%8B%9C%EB%AA%A8%EC%96%B4%20%ED%9B%84%EA%B8%B0%20%EC%98%A8%EC%B2%9C",
+      "review_body_access": "direct_readable_plus_snippet_only_surfaces",
+      "direct_read_reviews": 2,
+      "onsen_related_direct_reviews": 2,
+      "direct_body_urls": [
+        "https://blog.naver.com/PostView.naver?blogId=440&logNo=224332025424&redirect=Dlog&widgetTypeCall=true&directAccess=false",
+        "https://blog.naver.com/PostView.naver?blogId=jinjo_o&logNo=224263760007&redirect=Dlog&widgetTypeCall=true&directAccess=false"
+      ],
+      "snippet_only_surfaces": [
+        "Naver hotel meta 8.5/10",
+        "Trip.com Korea 8.9/10, 564 reviews",
+        "Booking.com 8.3/10, 288 reviews",
+        "Agoda 8.5/10, 3,582 reviews",
+        "Hotels.com/Expedia 8.2/10, 333 reviews",
+        "Naver Cafe promotional-looking results"
+      ],
+      "short_keywords_seen": [
+        "온천이 기가막힙니다",
+        "바다보며 서서하는 온천",
+        "족욕장",
+        "실내 온천",
+        "실외 온천",
+        "바다를 바라보며 온천",
+        "무제한으로 온천 이용"
+      ],
+      "notes": "Two exact Korean Naver Blog bodies were opened and counted. Search snippets, OTA summaries, and cafe promotional-looking surfaces were not counted as direct reviews."
+    },
+    "booking": {
+      "source_url": "https://www.booking.com/hotel/jp/seamore.ko.html",
+      "review_body_access": "snippet_only_in_naver_surface",
+      "rating": "8.3/10",
+      "visible_review_count": 288,
+      "direct_read_reviews": 0,
+      "onsen_related_direct_reviews": 0
+    },
+    "agoda": {
+      "source_url": "https://www.agoda.com/ko-kr/shirahama-key-terrace-hotel-seamore/hotel/shirahama-jp.html",
+      "review_body_access": "snippet_only_in_naver_surface",
+      "rating": "8.5/10",
+      "visible_review_count": 3582,
+      "direct_read_reviews": 0,
+      "onsen_related_direct_reviews": 0
+    },
+    "trip_com_korea": {
+      "source_url": "https://kr.trip.com/hotels/shirahama-hotel-detail-705093/hotel/",
+      "review_body_access": "snippet_only_in_naver_surface_and_supplier_cards_in_google",
+      "rating": "8.9/10",
+      "visible_review_count": 564,
+      "direct_read_reviews": 0,
+      "onsen_related_direct_reviews": 0,
+      "notes": "Trip.com review bodies appeared inside Google supplier cards, but were not counted as Google-native or direct platform count in this pass."
+    }
+  }
+}

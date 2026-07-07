@@ -1,0 +1,67 @@
+{
+  "summary": {
+    "generated_at": "2026-07-04T04:07:27.810Z",
+    "lodging": "道後御湯",
+    "data_quality_grade": "A",
+    "total_direct_reviews": 344,
+    "onsen_related_direct_reviews": 239,
+    "direct_body_platform_count": 6,
+    "by_platform": {
+      "Rakuten Travel": {
+        "direct": 30,
+        "onsen": 16
+      },
+      "Jalan": {
+        "direct": 34,
+        "onsen": 23
+      },
+      "JTB": {
+        "direct": 24,
+        "onsen": 8
+      },
+      "Ikkyu": {
+        "direct": 176,
+        "onsen": 134
+      },
+      "Yahoo Travel": {
+        "direct": 76,
+        "onsen": 54
+      },
+      "Naver Blog": {
+        "direct": 4,
+        "onsen": 4
+      }
+    },
+    "visible_review_pool_minimum": 1296,
+    "visible_review_pool_basis": {
+      "google_hotels": 428,
+      "rakuten": 297,
+      "jalan_visible_readable": 34,
+      "jtb": 28,
+      "ikkyu": 210,
+      "yahoo_travel": 210,
+      "fourtravel": 46,
+      "naver_blog_search": "qualitative snippets plus 4 direct bodies"
+    },
+    "bath_area_tags": {
+      "room_open_air_bath": 146,
+      "room_bath": 134,
+      "public_bath": 60,
+      "open_air_public_bath": 40,
+      "private_bath": 1
+    },
+    "signal_type_tags": {
+      "room_bath_hot_spring": 176,
+      "booking_confusion": 21,
+      "water_texture": 96,
+      "public_bath_hot_spring": 62,
+      "private_bath_experience": 1,
+      "crowding": 19,
+      "weak_onsen_feeling": 1,
+      "chlorine_smell": 1,
+      "operations_note": 44,
+      "temperature_control": 15
+    },
+    "caveat": "Ikkyu and Yahoo Travel are same corporate review ecosystem; both rendered as separate URLs/platform surfaces via Aside, but downstream dedupe should keep hashes if matching content is discovered. Google-native individual review bodies were not accessible in this pass and are not counted."
+  }
+}

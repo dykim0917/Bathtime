@@ -1,0 +1,2 @@
+research_order,slug,name_ja,name_ko_or_en,area,track,source_tier,bath_research_axes,initial_review_pool_signal,priority_reason,status
+2,toba-kisara,季さら,Kisara / Kaiko Roman no Yado Kisara,toba-mie,ready_deep_research,Tier 1,room_open_air_bath;room_bath;facility_wide_water_texture;private_bath_or_family_bath_unclear,"Google 207; Rakuten visible 233/extractable 193; Jalan 567; Ikkyu 78 snippet; Yahoo 79 snippet; Trip.com 40 static signal","전 객실 객실 노천탕형 숙소로 Bathtime 객실탕/가족탕 오분류 위험이 높고, Rakuten/Jalan 본문 풀이 300건 이상 직접 확인 가능",completed_A

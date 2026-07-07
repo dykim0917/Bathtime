@@ -1,0 +1,253 @@
+{
+  "research_date": "2026-07-04",
+  "slug": "tamatsukuri-chorakuen",
+  "accommodation_name": "玉造温泉 湯之助の宿 長楽園",
+  "direct_read_total": 304,
+  "onsen_related_direct_total": 238,
+  "direct_body_platform_count": 6,
+  "data_quality_grade": "A",
+  "platform_direct_counts": {
+    "Rakuten Travel": {
+      "visible_review_count": 127,
+      "direct_reviews_read": 127,
+      "onsen_related_direct_reviews": 90,
+      "review_body_access": "direct_readable",
+      "note": "Rakuten visible 127건 전량 직접 수집"
+    },
+    "Jalan": {
+      "visible_review_count": 3611,
+      "direct_reviews_read": 95,
+      "onsen_related_direct_reviews": 85,
+      "review_body_access": "direct_readable",
+      "note": "정적 최신/일부 페이지 95건 직접 수집. visible 3,611건 전체는 아님."
+    },
+    "Yahoo Travel": {
+      "visible_review_count": 66,
+      "rating": 4.25,
+      "direct_reviews_read": 66,
+      "onsen_related_direct_reviews": 49,
+      "review_body_access": "direct_readable",
+      "note": "web/브라우저 표면으로 p1-p3 직접 본문 접근. Ikkyu/Yahoo 합산 점수와 중복 가능성 주의."
+    },
+    "Google Maps native": {
+      "visible_review_count": 1018,
+      "rating": 4.2,
+      "rating_distribution": {
+        "1": 44,
+        "2": 28,
+        "3": 96,
+        "4": 347,
+        "5": 503
+      },
+      "direct_reviews_read": 6,
+      "onsen_related_direct_reviews": 5,
+      "review_body_access": "partial",
+      "note": "Aside Browser 확인. Trip.com/Tripadvisor 공급자 카드는 Google-native에서 제외."
+    },
+    "Trip.com": {
+      "visible_review_count": 90,
+      "rating": 9.3,
+      "direct_reviews_read": 9,
+      "onsen_related_direct_reviews": 8,
+      "review_body_access": "direct_readable",
+      "note": "직접 페이지에서 개별 리뷰 9건 확인. AI 요약은 직접 수에서 제외."
+    },
+    "Naver Blog": {
+      "visible_review_count": null,
+      "direct_reviews_read": 1,
+      "onsen_related_direct_reviews": 1,
+      "review_body_access": "direct_readable",
+      "note": "초라쿠엔 숙박 블로그 본문 1건 직접 확인."
+    },
+    "Naver Search": {
+      "visible_review_count": null,
+      "direct_reviews_read": 0,
+      "onsen_related_direct_reviews": 0,
+      "review_body_access": "snippet_only"
+    },
+    "Ikkyu": {
+      "visible_review_count": 66,
+      "rating": 4.25,
+      "direct_reviews_read": 0,
+      "onsen_related_direct_reviews": 0,
+      "review_body_access": "direct_readable",
+      "not_counted_reason": "Yahoo/Ikkyu 합산 66건 표면. 이번 직접 총량은 Yahoo Travel 쪽 p1-p3를 기준으로 세고 Ikkyu는 교차 확인만 함."
+    },
+    "Tripadvisor": {
+      "visible_review_count": 224,
+      "direct_reviews_read": 0,
+      "onsen_related_direct_reviews": 0,
+      "review_body_access": "partial",
+      "not_counted_reason": "Google 공급자 카드와 검색 표면만 확인. Tripadvisor 직접 페이지는 별도 안정 표본 미확보."
+    },
+    "Agoda": {
+      "visible_review_count": null,
+      "direct_reviews_read": 0,
+      "onsen_related_direct_reviews": 0,
+      "review_body_access": "partial",
+      "not_counted_reason": "검색 결과/OTA 표면만 확인."
+    }
+  },
+  "bath_area_tags": {
+    "open_air_public_bath": 164,
+    "room_bath": 123,
+    "room_open_air_bath": 109,
+    "public_bath": 14
+  },
+  "signal_type_tags": {
+    "public_bath_hot_spring": 170,
+    "water_texture": 154,
+    "room_bath_hot_spring": 125,
+    "booking_confusion": 59,
+    "crowding": 21
+  },
+  "caution_tags": {
+    "view_garden_open_air": 178,
+    "mixed_bath_clothing": 152,
+    "temperature_control": 80,
+    "wash_area_shower": 73,
+    "access_booking": 58,
+    "quiet_luxury": 41,
+    "cleanliness_aging": 33,
+    "beauty_water_framing": 4,
+    "insects": 3,
+    "room_bath_presence": 1
+  },
+  "signal_rows": [
+    {
+      "accommodation_name": "玉造温泉 湯之助の宿 長楽園",
+      "bath_area": "open_air_public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "mixed",
+      "mention_count": 182,
+      "source_count": 182,
+      "platform_count": 6,
+      "contradiction_level": "medium",
+      "review_signal_status": "strong_signal",
+      "interpretation": "120坪 혼욕 대노천탕/庭園露天/龍宮の湯가 이 숙소의 핵심 신호다. 규모 만족이 강하지만 기대 미달·계절/온도·혼욕복 불편도 함께 반복된다."
+    },
+    {
+      "accommodation_name": "玉造温泉 湯之助の宿 長楽園",
+      "bath_area": "public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 22,
+      "source_count": 22,
+      "platform_count": 4,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal",
+      "interpretation": "남녀별 실내탕/작은 노천탕과 대욕장 신호가 보조 축으로 확인된다."
+    },
+    {
+      "accommodation_name": "玉造温泉 湯之助の宿 長楽園",
+      "bath_area": "room_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 78,
+      "source_count": 78,
+      "platform_count": 5,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal",
+      "interpretation": "객실 내탕/실내 암풍로/온천 공급 객실 신호가 반복된다. 전 객실 동일 체험으로 보면 안 된다."
+    },
+    {
+      "accommodation_name": "玉造温泉 湯之助の宿 長楽園",
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "mixed",
+      "mention_count": 59,
+      "source_count": 59,
+      "platform_count": 4,
+      "contradiction_level": "medium",
+      "review_signal_status": "strong_signal",
+      "interpretation": "離れ·知心庵·相生 등 객실 노천탕 신호가 강하지만 일부 고급 객실 옵션이다."
+    },
+    {
+      "accommodation_name": "玉造温泉 湯之助の宿 長楽園",
+      "bath_area": "private_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "neutral",
+      "mention_count": 2,
+      "source_count": 2,
+      "platform_count": 1,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal",
+      "interpretation": "공식 한국어 페이지에서 유료 전세 온천탕 표면이 확인되지만 리뷰 직접 신호는 약하다."
+    },
+    {
+      "accommodation_name": "玉造温泉 湯之助の宿 長楽園",
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 158,
+      "source_count": 158,
+      "platform_count": 6,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal",
+      "interpretation": "玉造温泉, 源泉, かけ流し, すべすべ, 피부에 좋은 온천수 표현이 반복된다."
+    },
+    {
+      "accommodation_name": "玉造温泉 湯之助の宿 長楽園",
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "weak_onsen_feeling",
+      "signal_direction": "negative",
+      "mention_count": 3,
+      "source_count": 3,
+      "platform_count": 2,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal",
+      "interpretation": "혼욕 대욕장 기대 미달, 恩恵을 거의 못 느꼈다는 반대 신호가 소수 있다."
+    },
+    {
+      "accommodation_name": "玉造温泉 湯之助の宿 長楽園",
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "chlorine_smell",
+      "signal_direction": "negative",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "low",
+      "review_signal_status": "insufficient",
+      "interpretation": "직접 표본에서는 塩素/カルキ 반복 신호가 잡히지 않았다."
+    },
+    {
+      "accommodation_name": "玉造温泉 湯之助の宿 長楽園",
+      "bath_area": "open_air_public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "crowding",
+      "signal_direction": "mixed",
+      "mention_count": 30,
+      "source_count": 30,
+      "platform_count": 5,
+      "contradiction_level": "medium",
+      "review_signal_status": "strong_signal",
+      "interpretation": "貸切状態/한산함과 남자·노인 중심, 세척 공간 부족, 혼잡 가능성이 함께 나타난다."
+    },
+    {
+      "accommodation_name": "玉造温泉 湯之助の宿 長楽園",
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "booking_confusion",
+      "signal_direction": "mixed",
+      "mention_count": 72,
+      "source_count": 72,
+      "platform_count": 6,
+      "contradiction_level": "medium",
+      "review_signal_status": "strong_signal",
+      "interpretation": "湯浴み着, 송영, 예약, 안내, 비용/입욕세, 객실·식사 안내 혼동은 운영 메모로 분리해야 한다."
+    }
+  ],
+  "notes": [
+    "150건은 중간 점검으로만 취급했고, 300건 이상 및 다중 플랫폼 확보 후 산출했다.",
+    "Google 패널의 Trip.com/Tripadvisor 공급자 카드는 Google-native 수와 분리했다.",
+    "Naver 검색 스니펫은 snippet_only이며 직접 수에 포함하지 않았다."
+  ]
+}

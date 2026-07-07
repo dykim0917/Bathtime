@@ -1,0 +1,100 @@
+{
+  "research_date": "2026-07-06",
+  "slug": "dogo-kotononiwa",
+  "name_ja": "道後温泉 葛城 琴の庭",
+  "method": "Aside Browser final access recheck after the 250-review stage. Checked Naver Blog/Search Korean queries, Agoda, Booking.com, Tripadvisor, Tabelog, and YouTube transcript availability. Search snippets, AI summaries, OTA summaries, video titles, and visual-only video evidence were excluded from direct counts.",
+  "starting_totals_before_this_recheck": {
+    "directly_read_reviews": 250,
+    "onsen_related_direct_reviews": 186,
+    "direct_body_platform_count": 9
+  },
+  "counted_sources_added": [
+    {
+      "platform": "Agoda",
+      "url": "https://www.agoda.com/ja-jp/katuragi-kotononiwa/hotel/matsuyama-jp.html",
+      "visible_review_count": 13,
+      "review_body_access": "partial_direct_readable_via_aside",
+      "directly_read_reviews_added": 4,
+      "onsen_related_direct_reviews_added": 1,
+      "original_keywords": [
+        "温泉付きのヴィラ",
+        "部屋のプライベート温泉",
+        "お部屋やお風呂"
+      ],
+      "counting_note": "Agoda-native tab showed 12 reviews and an other-site tab showed 1. Counted only the four visible Agoda-native individual body cards; other-site and summary surfaces were excluded. A later Aside recheck tried dialog scrolling, sort modes, language filters, traveler-type filters, and keyword chips; the same four cards remained the only body-rendered reviews."
+    },
+    {
+      "platform": "Tabelog lodging/meal reviews",
+      "url": "https://tabelog.com/ehime/A3801/A380101/38013896/dtlrvwlst/",
+      "visible_review_count": 17,
+      "review_body_access": "partial_direct_readable",
+      "directly_read_reviews_added": 12,
+      "onsen_related_direct_reviews_added": 5,
+      "original_keywords": [
+        "客室露天風呂",
+        "半露天風呂",
+        "源泉掛け流し",
+        "露天風呂を通るので寒い"
+      ],
+      "counting_note": "Food/meal review surface, not a lodging OTA. Counted as low-weight direct text because individual author bodies tied to this exact property were readable. Repeated same-author visits should be weighted lower in source_count interpretation."
+    },
+    {
+      "platform": "YouTube transcripts",
+      "urls": [
+        "https://www.youtube.com/watch?v=ELPBJ-kjHwM",
+        "https://www.youtube.com/watch?v=tMkv7PZd2RI"
+      ],
+      "visible_review_count": null,
+      "review_body_access": "direct_readable_transcript_partial",
+      "directly_read_reviews_added": 2,
+      "onsen_related_direct_reviews_added": 2,
+      "original_keywords": [
+        "露天風呂",
+        "生湯",
+        "お風呂",
+        "部屋露天風呂"
+      ],
+      "counting_note": "Only readable transcript text was counted. Noisy auto-captions, title-only results, and visual-only video evidence were excluded."
+    }
+  ],
+  "rechecked_not_counted_sources": [
+    {
+      "platform": "Naver Blog/Search",
+      "queries": [
+        "도고온천 코토노니와 후기",
+        "도고온천 코토노니와 후기 객실 노천탕",
+        "Kotononiwa",
+        "고토노니와",
+        "琴の庭 후기"
+      ],
+      "review_body_access": "snippet_only_or_promotional_not_counted",
+      "directly_read_reviews_added": 0,
+      "onsen_related_direct_reviews_added": 0,
+      "notes": "Search surfaces were ads, OTA/official pages, noisy unrelated hits, or one agency/recommendation-style Naver Blog page. No clean Korean firsthand stay review body was counted."
+    },
+    {
+      "platform": "Booking.com",
+      "review_body_access": "not_found",
+      "directly_read_reviews_added": 0,
+      "onsen_related_direct_reviews_added": 0,
+      "notes": "Exact Kotononiwa Booking.com listing was not found. Sibling Dogo-no-Yado Katsuragi result was excluded."
+    },
+    {
+      "platform": "Tripadvisor",
+      "url": "https://www.tripadvisor.jp/ShowUserReviews-g298230-d23557117-r800223784-Katsuragi_Kotononiwa-Matsuyama_Ehime_Prefecture_Shikoku.html",
+      "review_body_access": "partial_identity_mixed_not_counted",
+      "directly_read_reviews_added": 0,
+      "onsen_related_direct_reviews_added": 0,
+      "notes": "One Kotononiwa-labeled review body was readable, but the page chrome/header points to Hotel Katsuragi Spa Resort Dogo. Excluded from totals to avoid identity mixing."
+    }
+  ],
+  "updated_totals_after_this_recheck": {
+    "directly_read_reviews": 268,
+    "onsen_related_direct_reviews": 194,
+    "direct_body_platform_count": 12,
+    "data_quality_grade": "B",
+    "still_needed_for_A": 32,
+    "why_not_A": "The sample remains under 300. Accessible high-confidence OTA pools were already exhausted or duplicate; the remaining sources are partial, identity-mixed, noisy, promotional, or require additional dynamic loading.",
+    "superseded_by_micro_reinforcement": "kotononiwa_micro_reinforcement_2026-07-06.json updates the later working total to 270 direct / 196 onsen after two additional note stay bodies."
+  }
+}

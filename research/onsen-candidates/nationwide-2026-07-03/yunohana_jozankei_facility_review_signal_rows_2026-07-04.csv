@@ -1,0 +1,19 @@
+slug,facility_name,bath_area,bath_area_confidence,signal_type,signal_direction,mention_count,source_count,platform_count,contradiction_level,review_signal_status
+jozankei-yunohana,湯の花 定山渓殿,open_air_public_bath,specific,water_texture,positive,43,43,6,low,strong_signal
+jozankei-yunohana,湯の花 定山渓殿,open_air_public_bath,specific,sauna_quality,positive,32,32,3,low,strong_signal
+jozankei-yunohana,湯の花 定山渓殿,open_air_public_bath,specific,price_value,positive,30,30,4,low,strong_signal
+jozankei-yunohana,湯の花 定山渓殿,open_air_public_bath,specific,access_parking,positive,23,23,4,low,strong_signal
+jozankei-yunohana,湯の花 定山渓殿,open_air_public_bath,specific,cold_bath_quality,positive,20,20,3,low,strong_signal
+jozankei-yunohana,湯の花 定山渓殿,sauna,specific,sauna_quality,neutral,20,20,3,low,strong_signal
+jozankei-yunohana,湯の花 定山渓殿,open_air_public_bath,specific,shuttle_bus,positive,18,18,4,low,strong_signal
+jozankei-yunohana,湯の花 定山渓殿,sauna,specific,sauna_quality,positive,17,17,2,low,moderate_signal
+jozankei-yunohana,湯の花 定山渓殿,sauna,specific,water_texture,positive,16,16,2,low,moderate_signal
+jozankei-yunohana,湯の花 定山渓殿,open_air_public_bath,specific,temperature_issue,positive,15,15,3,low,strong_signal
+jozankei-yunohana,湯の花 定山渓殿,dining_area,specific,water_texture,neutral,14,14,2,low,moderate_signal
+jozankei-yunohana,湯の花 定山渓殿,open_air_public_bath,specific,water_texture,neutral,12,12,4,low,strong_signal
+jozankei-yunohana,湯の花 定山渓殿,open_air_public_bath,specific,source_flow_feeling,positive,12,12,3,low,strong_signal
+jozankei-yunohana,湯の花 定山渓殿,indoor_public_bath,specific,water_texture,neutral,12,12,2,low,moderate_signal
+jozankei-yunohana,湯の花 定山渓殿,sauna,specific,water_texture,neutral,12,12,3,low,strong_signal
+jozankei-yunohana,湯の花 定山渓殿,open_air_public_bath,specific,amenity_gap,positive,12,12,2,low,moderate_signal
+jozankei-yunohana,湯の花 定山渓殿,open_air_public_bath,specific,sauna_quality,neutral,11,11,3,low,strong_signal
+jozankei-yunohana,湯の花 定山渓殿,sauna,specific,price_value,positive,11,11,2,low,moderate_signal

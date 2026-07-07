@@ -1,0 +1,119 @@
+{
+  "research_date": "2026-07-06",
+  "slug": "shirahama-xyz-speciale",
+  "accommodation_name": "海絶景とギネス認定の宿 全室露天風呂付離れ XYZスペチアーレ",
+  "purpose": "B급 종료 사유 보강 및 300건 도달 가능성 재점검",
+  "method": [
+    "기존 Rakuten/Jalan/Ikkyu/Google/초기 Yahoo 표본은 유지했다.",
+    "Yahoo Travel 개별 리뷰 페이지 p1-p2를 재확인해 Yahoo-native 본문 수를 보강했다.",
+    "Trip.com review page와 Expedia.jp/en property page에서 날짜·작성자 단위 본문이 보이는 항목만 직접 본문으로 산입했다.",
+    "Hotels.com의 대형 리뷰풀은 XYZ Private spa and Seaside Resort 표면으로, 이번 숙소 XYZ Speciale 본문 수에서 제외했다.",
+    "검색 결과 스니펫과 AI/요약 문구는 직접 리뷰 수에서 제외했다."
+  ],
+  "aside_browser_recheck": {
+    "attempted": true,
+    "result": "2026-07-06 broad/narrow Aside exec 재시도는 빈 출력으로 종료되어 새 증거로 산입하지 않았다.",
+    "google_native_change": "none",
+    "naver_change": "none"
+  },
+  "platform_rechecks": {
+    "yahoo_travel": {
+      "source_url": "https://travel.yahoo.co.jp/00002920/review/",
+      "page_urls_checked": [
+        "https://travel.yahoo.co.jp/00002920/review/",
+        "https://travel.yahoo.co.jp/00002920/review/p2/"
+      ],
+      "visible_review_count": 176,
+      "rating": 4.63,
+      "prior_direct_reviews_read": 6,
+      "updated_direct_reviews_read": 37,
+      "newly_counted_direct_reviews": 31,
+      "updated_onsen_related_direct_reviews": 27,
+      "review_body_access": "direct_readable",
+      "overlap_caution": "Yahoo Travel 표면은 Ikkyu와 평점/리뷰풀 176건을 공유하지만, Yahoo 페이지는 Yahoo投稿のみ 표시라고 명시한다. 독립 플랫폼 표면으로는 세되 source_count 과대해석은 피한다.",
+      "short_keywords_seen": [
+        "露天風呂の壁と屋根が可動式",
+        "温泉は文句なし",
+        "トロトロ温泉",
+        "客室露天風呂",
+        "開閉式の露天風呂",
+        "椿温泉",
+        "温度調節",
+        "送迎の予約"
+      ],
+      "note": "p1/p2에서 개별 제목·작성자·投稿日·客室名·評点이 붙은 본문을 확인했다. 방문자口コミ/지도 성격 블록은 숙박 예약 리뷰로 보지 않고 제외했다."
+    },
+    "trip_com": {
+      "source_url": "https://in.trip.com/hotels/shirahama-hotel-detail-79030461/xyz-speciale/review.html",
+      "visible_review_count": 18,
+      "prior_direct_reviews_read": 0,
+      "updated_direct_reviews_read": 8,
+      "newly_counted_direct_reviews": 8,
+      "updated_onsen_related_direct_reviews": 3,
+      "review_body_access": "partial",
+      "access_note": "18건 표면 중 페이지에서 직접 읽힌 개별 본문은 8건으로 제한했다. 번역 UI 문구와 이미지 카드는 제외했다.",
+      "short_keywords_seen": [
+        "Double with Bath",
+        "Open-Air Hot Spring",
+        "hot springs",
+        "stars",
+        "hotel car",
+        "laser show"
+      ]
+    },
+    "expedia": {
+      "source_url": "https://www.expedia.co.jp/en/Tanabe-Hotels-XYZ-Speciale.h67621525.Hotel-Information",
+      "visible_review_count": 35,
+      "rating": 9.8,
+      "prior_direct_reviews_read": 0,
+      "updated_direct_reviews_read": 16,
+      "newly_counted_direct_reviews": 16,
+      "updated_onsen_related_direct_reviews": 9,
+      "review_body_access": "partial",
+      "access_note": "35건 표면 중 작성자·날짜·본문이 함께 보이는 항목만 직접 본문으로 산입했다. 평점만 있고 본문이 없는 항목은 제외했다.",
+      "short_keywords_seen": [
+        "Onsen",
+        "star view",
+        "露天風呂",
+        "温泉good",
+        "内風呂",
+        "絶景露天風呂",
+        "かけ流し",
+        "椿温泉",
+        "虫"
+      ]
+    },
+    "hotels_com_private_spa": {
+      "source_url": "https://www.hotels.com/ho636650912/xyz-private-spa-and-seaside-resort-shirahama-japan/",
+      "visible_review_count_seen": 263,
+      "review_body_access": "direct_readable_but_excluded",
+      "status": "not_counted",
+      "reason": "표면 숙소명이 XYZ Private spa and Seaside Resort로, 이번 대상인 XYZ Speciale와 다른 관련/자매 숙소로 판단되어 직접 리뷰 수에 합산하지 않았다."
+    },
+    "tripadvisor": {
+      "source_url": "https://www.tripadvisor.jp/Hotel_Review-g1121351-d23965059-Reviews-XYZ_speciale-Shirahama_cho_Nishimuro_gun_Wakayama_Prefecture_Kinki.html",
+      "visible_review_count": 1,
+      "direct_reviews_read": 0,
+      "review_body_access": "partial",
+      "note": "숙소 프로필과 공식성 설명은 보이나 개별 리뷰 본문은 안정적으로 노출되지 않아 직접 수 제외."
+    },
+    "naver_search_blog": {
+      "review_body_access": "snippet_only",
+      "direct_reviews_read": 0,
+      "note": "한국어 직접 숙박 본문은 이번 보강에서도 확보하지 못했다. 검색 결과/OTA 스니펫은 직접 리뷰 수에서 제외한다."
+    }
+  },
+  "updated_count_delta": {
+    "previous_total_direct_reviews_read": 191,
+    "previous_onsen_related_direct_reviews": 135,
+    "newly_counted_direct_reviews": 60,
+    "newly_counted_onsen_related_direct_reviews": 39,
+    "updated_total_direct_reviews_read": 251,
+    "updated_onsen_related_direct_reviews": 174,
+    "remaining_to_300": 49
+  },
+  "grade_after_recheck": {
+    "data_quality_grade": "B",
+    "reason": "직접 확인 251건, 직접 본문 플랫폼 8개 표면으로 보강됐지만 300건 미만이다. 150-299건 종료 구간이므로 접근 실패·부분 접근 사유를 유지한다."
+  }
+}

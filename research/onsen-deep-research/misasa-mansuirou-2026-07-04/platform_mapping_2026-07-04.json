@@ -1,0 +1,145 @@
+{
+  "research_date": "2026-07-04",
+  "scope": "misasa-mansuirou ready lodging deep research",
+  "method": "Rakuten API, Jalan static pages, Aside Browser for Google Maps, Naver, Trip.com Moments, Ikkyu/Yahoo, Tripadvisor, Agoda, plus official web search. Snippets, AI summaries, and provider cards were excluded from direct review counts.",
+  "direct_review_sampling_status": "A: 579 direct reviews read, 319 onsen-related direct reviews, 6 direct-body platforms.",
+  "lodgings": [
+    {
+      "slug": "misasa-mansuirou",
+      "name_ja": "三朝薬師の湯 万翆楼",
+      "name_ko_or_en": "Mansuirou / 만수이로우",
+      "address": "鳥取県東伯郡三朝町山田5",
+      "onsen_area": "三朝温泉",
+      "official_url": "https://www.mansuirou.co.jp/",
+      "google_maps": {
+        "rating": 4.2,
+        "visible_review_count": 642,
+        "rating_distribution": "bar chart visible; exact counts not exposed",
+        "korean_reviews_visible": true,
+        "review_body_access": "partial",
+        "direct_google_native_reviews_read": 8,
+        "onsen_related_direct_reviews": 7,
+        "provider_cards_seen": [
+          "Trip.com",
+          "Booking.com",
+          "Ikyu.com",
+          "Klook"
+        ],
+        "access_note": "Google hotel panel review tab showed Google-native and provider reviews mixed. Only 'Google에 게시됨' items were counted as Google-native direct reviews."
+      },
+      "ota_review_pool_signals": {
+        "rakuten_travel": {
+          "rating": 4.5,
+          "visible_review_count": 686,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 420,
+          "onsen_related_direct_reviews": 249,
+          "source_url": "https://travel.rakuten.co.jp/HOTEL/5608/review.html"
+        },
+        "jalan": {
+          "rating": 4.4,
+          "visible_review_count": 1016,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 119,
+          "onsen_related_direct_reviews": 38,
+          "source_url": "https://www.jalan.net/yad350895/kuchikomi/",
+          "access_note": "15 pages sampled. Candidate row's old Jalan 322084 was replaced by current public surface 350895."
+        },
+        "ikkyu": {
+          "rating": 4.44,
+          "visible_review_count": 71,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 20,
+          "onsen_related_direct_reviews": 17,
+          "source_url": "https://www.ikyu.com/00001032/review/"
+        },
+        "yahoo_travel": {
+          "rating": 4.44,
+          "visible_review_count": 71,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 0,
+          "source_url": "https://travel.yahoo.co.jp/00001032/review/",
+          "access_note": "Ikkyu와 같은 71건 계열로 보여 중복 카운트하지 않았다."
+        },
+        "trip_com_moments": {
+          "rating": null,
+          "visible_review_count": null,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 2,
+          "onsen_related_direct_reviews": 1,
+          "source_url": "https://kr.trip.com/moments/detail/misasa-60736-130727949/"
+        },
+        "tripadvisor": {
+          "rating": 4.1,
+          "visible_review_count": 74,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 10,
+          "onsen_related_direct_reviews": 7,
+          "source_url": "https://www.tripadvisor.jp/Hotel_Review-g1121364-d1125762-Reviews-Mansuirou-Misasa_cho_Tohaku_gun_Tottori_Prefecture_Chugoku.html"
+        },
+        "agoda": {
+          "rating": 8.8,
+          "visible_review_count": 994,
+          "review_body_access": "partial",
+          "direct_reviews_read": 0,
+          "source_url": "https://www.agoda.com/ko-kr/mansuirou-ryokan/hotel/misasa-jp.html"
+        },
+        "naver_search": {
+          "rating": null,
+          "visible_review_count": null,
+          "review_body_access": "snippet_only",
+          "direct_reviews_read": 0,
+          "source_url": "https://search.naver.com/search.naver?query=%EB%A7%8C%EC%88%98%EC%9D%B4%EB%A1%9C%EC%9A%B0%20%ED%9B%84%EA%B8%B0%20%EC%98%A8%EC%B2%9C%20%EB%AF%B8%EC%82%AC%EC%82%AC"
+        },
+        "naver_cafe": {
+          "rating": null,
+          "visible_review_count": null,
+          "review_body_access": "blocked",
+          "direct_reviews_read": 0,
+          "source_url": "https://m.cafe.naver.com/ca-fe/web/cafes/worldtravelcafe/articles/565329"
+        }
+      },
+      "official_bath_facts_seen": {
+        "public_bath": "yes; self-owned source 100% with heating/water-addition, indoor baths",
+        "open_air_public_bath": "yes; shared open-air bath",
+        "room_open_air_bath": "some rooms; suites/special rooms with hot spring open-air or semi-open-air bath",
+        "room_bath": "some rooms; do not treat as all rooms",
+        "private_bath": "yes/probable; 真珠の湯/貸切風呂 signals",
+        "family_bath": "review signal only; not merged with room bath",
+        "source_flow_claim": "official: 自家源泉3本, 源泉100%, 加温・加水あり",
+        "radium_drinking_inhalation": "official/OTA surface: ラドン/ラジウム, 浸かる・飲む・吸う, steam inhalation framing"
+      },
+      "review_signal_keywords": [
+        "部屋風呂",
+        "客室露天",
+        "半露天",
+        "露天風呂付",
+        "大浴場",
+        "露天風呂",
+        "貸切風呂",
+        "家族風呂",
+        "温泉",
+        "三朝温泉",
+        "ラジウム",
+        "ラドン",
+        "飲泉",
+        "源泉かけ流し",
+        "泉質"
+      ],
+      "caution_keywords": [
+        "古い",
+        "清潔",
+        "掃除",
+        "匂い",
+        "カビ",
+        "温度",
+        "湯加減",
+        "混雑",
+        "予約",
+        "送迎",
+        "案内"
+      ],
+      "next_sampling": "A급 기준은 충족했다. 다음 보강은 Naver Cafe 원문 접근, Agoda 개별 리뷰 본문 안정 추출, Jalan 저평점/과거 archive 확장이다."
+    }
+  ]
+}

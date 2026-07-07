@@ -4,7 +4,7 @@ const valueLabels: Record<string, string> = {
   available: '외부인 이용 가능',
   restricted: '조건부 이용',
   members_only: '회원 전용',
-  unknown: '확인 필요',
+  unknown: '예약 전 확인',
   public: '공용',
   semi_private: '반개별',
   private: '프라이빗',

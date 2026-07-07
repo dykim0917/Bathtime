@@ -1,0 +1,78 @@
+{
+  "direct_reviews_extracted": 404,
+  "onsen_related_body": 325,
+  "direct_body_platforms": 3,
+  "direct_platforms_with_aside_addenda": 5,
+  "by_platform": {
+    "Rakuten Travel": {
+      "direct": 197,
+      "onsen_body": 169
+    },
+    "Jalan": {
+      "direct": 135,
+      "onsen_body": 114
+    },
+    "Booking.com": {
+      "direct": 72,
+      "onsen_body": 42
+    }
+  },
+  "low_rated_direct_count": 36,
+  "latest_2026_direct_count": 253,
+  "directionCounts": {
+    "positive": 179,
+    "mixed": 169,
+    "negative": 18,
+    "neutral": 38
+  },
+  "bathCounts": {
+    "room_open_air_bath": 306,
+    "room_bath": 144,
+    "public_bath": 79,
+    "open_air_public_bath": 50,
+    "private_bath": 103,
+    "family_bath": 2
+  },
+  "signalCounts": {
+    "room_bath_hot_spring": 223,
+    "public_bath_hot_spring": 277,
+    "water_texture": 60,
+    "private_bath_experience": 87,
+    "booking_confusion": 174,
+    "crowding": 55,
+    "weak_onsen_feeling": 4
+  },
+  "cautionCounts": {
+    "temperature": 53,
+    "privacy_view": 53,
+    "access_steps": 46,
+    "insects": 7,
+    "cold": 5,
+    "cleanliness_aging": 23
+  },
+  "google_naver_aside": [
+    {
+      "platform": "Google Hotels",
+      "direct_read": 6,
+      "onsen_related": 5,
+      "access_status": "aside_review_tab_read",
+      "notes": "Google Hotels review tab opened in Aside; Google-native reviews separated from Trip.com/Tripadvisor provider cards."
+    },
+    {
+      "platform": "Naver Blog",
+      "direct_read": 1,
+      "onsen_related": 1,
+      "access_status": "direct_readable",
+      "notes": "Personal Korean stay blog opened in Aside; Naver search snippets kept separately."
+    },
+    {
+      "platform": "Naver Search",
+      "direct_read": 0,
+      "onsen_related": 0,
+      "access_status": "snippet_only",
+      "notes": "Search-result previews showed Korean demand signals but were not counted as direct reviews."
+    }
+  ],
+  "data_quality_prelim": "A",
+  "grade_reason": "300+ direct review bodies from 3 static-readable platforms plus Aside confirmation for Google Hotels and Naver; latest/low-rated/onsen-keyword/Korean strata represented."
+}

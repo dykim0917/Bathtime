@@ -1,0 +1,223 @@
+{
+  "research_date": "2026-07-06",
+  "scope": "ready lodging deep research reinforcement: toba-kisara-bettei-toki / 季さら別邸 刻",
+  "method": "Existing Rakuten, Jalan, Relux, Ikkyu, Yahoo Travel, and Google-native counts were retained. Google Maps/Hotels was rechecked with Aside Browser. Tripadvisor, Tabelog, 4travel travelogues, Japanese blogs/Ameblo, and note individual bodies were added. Booking, Agoda, Trip.com, Trivago, Amimir, Korean web, and Naver were mapped but snippets/summaries were not counted as direct reviews.",
+  "direct_review_sampling_status": {
+    "data_quality_grade": "A",
+    "directly_read_reviews": 300,
+    "onsen_related_direct_reviews": 213,
+    "direct_body_platform_count": 11,
+    "platforms_counted_as_direct_body": [
+      "Rakuten Travel",
+      "Jalan",
+      "Relux",
+      "Ikkyu",
+      "Yahoo Travel",
+      "Google-native",
+      "Tripadvisor",
+      "Tabelog",
+      "4travel travelogue",
+      "Japanese blogs/Ameblo",
+      "note"
+    ],
+    "why_A": "Additional direct bodies increased the sample from 256 to 285, then the old unlogged Google-native 20 line was replaced with a current Aside Browser author-logged Google-native 35 sample. Net total is 300 direct bodies, with 11 direct-body platforms and stratified Google/latest/low-rating/onsen-keyword coverage. Korean direct Naver remains a gap, but not a blocker for A after Google direct body recheck.",
+    "next_after_A": "Optional reinforcement: Naver Blog/Cafe direct Korean stay reports and Booking/Agoda/Trip.com individual bodies if they become stable."
+  },
+  "lodgings": [
+    {
+      "slug": "toba-kisara-bettei-toki",
+      "name_ja": "伊勢志摩・鳥羽 季さら別邸 刻",
+      "name_ko_or_en": "키사라 벳테이 토키 / Toki Kisara Bettei / Kisara Bettei Toki",
+      "address": "三重県鳥羽市安楽島町1075-7",
+      "onsen_area": "社宮司温泉 / 七栗の湯 source claim",
+      "identity_cautions": [
+        "季さら 본관은 1075-11, 刻은 1075-7",
+        "Kisara Oneness and Nostalgic Romance Renewal Inn appear as nearby related properties and must remain separate"
+      ],
+      "google_maps": {
+        "rating": 4.5,
+        "visible_review_count": 140,
+        "rating_distribution": {
+          "5_star": 106,
+          "4_star": 17,
+          "3_star": 5,
+          "2_star": 7,
+          "1_star": 5
+        },
+        "korean_reviews_visible": false,
+        "review_body_access": "partial_direct_readable_via_aside",
+        "directly_read_reviews": 35,
+        "onsen_related_direct_reviews": 23,
+        "keyword_pools_seen": {
+          "일본의 온천": 22,
+          "목욕": 21,
+          "족욕": 10,
+          "피부": 10
+        },
+        "ota_provider_cards": [
+          "Official site price card",
+          "Rakuten Travel price card",
+          "Booking.com price card",
+          "Trip.com price card",
+          "Ikyu.com price card",
+          "Tripadvisor review card inside Google panel"
+        ],
+        "access_note": "Aside Browser opened Google Maps/Hotels panel and review tab on 2026-07-06. A later long-scroll session exposed enough Google-native bodies to replace the prior unlogged 20-count line with a current author-logged 35-count sample. Tripadvisor provider cards inside Google were excluded."
+      },
+      "ota_review_pool_signals": {
+        "rakuten_travel": {
+          "rating": 4.4,
+          "visible_review_count": 62,
+          "review_body_access": "direct_readable",
+          "directly_read_reviews": 48,
+          "onsen_related_direct_reviews": 32,
+          "url": "https://travel.rakuten.co.jp/HOTEL/172767/review.html"
+        },
+        "jalan": {
+          "visible_review_count": 19,
+          "review_body_access": "direct_readable",
+          "directly_read_reviews": 19,
+          "onsen_related_direct_reviews": 11,
+          "url": "https://www.jalan.net/yad389295/kuchikomi/"
+        },
+        "relux": {
+          "rating": 4.6,
+          "visible_review_count": 44,
+          "bath_subrating": 4.8,
+          "review_body_access": "direct_readable",
+          "directly_read_reviews": 44,
+          "onsen_related_direct_reviews": 29,
+          "url": "https://rlx.jp/23788/review/"
+        },
+        "ikkyu": {
+          "rating": 4.56,
+          "visible_review_count": 125,
+          "review_body_access": "direct_readable_via_aside",
+          "directly_read_reviews": 100,
+          "onsen_related_direct_reviews": 74,
+          "url": "https://www.ikyu.com/00002691/review/",
+          "note": "Visible count is a combined Ikkyu/Yahoo surface."
+        },
+        "yahoo_travel": {
+          "rating": 4.56,
+          "visible_review_count": 125,
+          "review_body_access": "direct_readable_via_aside",
+          "directly_read_reviews": 25,
+          "onsen_related_direct_reviews": 20,
+          "url": "https://travel.yahoo.co.jp/00002691/review/",
+          "note": "Yahoo-only bodies counted separately; visible pool not double-counted with Ikkyu."
+        },
+        "tripadvisor": {
+          "rating": 4.4,
+          "visible_review_count": 5,
+          "review_body_access": "direct_readable",
+          "directly_read_reviews": 4,
+          "onsen_related_direct_reviews": 3,
+          "url": "https://www.tripadvisor.jp/Hotel_Review-g298195-d17793793-Reviews-Kisara_Bettei_Toki-Toba_Mie_Prefecture_Tokai_Chubu.html"
+        },
+        "tabelog": {
+          "rating": 3.19,
+          "visible_review_count": 24,
+          "review_body_access": "partial_direct_readable",
+          "directly_read_reviews": 16,
+          "onsen_related_direct_reviews": 12,
+          "url": "https://tabelog.com/mie/A2403/A240302/24017283/dtlrvwlst/",
+          "note": "Ryokan/minshuku listing. Individual stay/meal review bodies counted; food-only bodies excluded from onsen-related count."
+        },
+        "fourtravel_travelogues": {
+          "visible_review_count": 2,
+          "review_body_access": "direct_readable",
+          "directly_read_reviews": 2,
+          "onsen_related_direct_reviews": 2,
+          "url": "https://4travel.jp/search/travelogue?query=%E5%AD%A3%E3%81%95%E3%82%89%E5%88%A5%E9%82%B8%20%E5%88%BB",
+          "note": "Two directly opened travelogues were counted at author/stay level."
+        },
+        "japanese_blogs_ameblo": {
+          "visible_review_count": 6,
+          "review_body_access": "direct_readable",
+          "directly_read_reviews": 6,
+          "onsen_related_direct_reviews": 6,
+          "url": "multiple; see toki_second_reinforcement_2026-07-06.json",
+          "note": "Ameblo and independent Japanese blog stay reports. Same-author series and Tabelog-linked duplicate posts were not double-counted."
+        },
+        "note": {
+          "visible_review_count": 1,
+          "review_body_access": "direct_readable",
+          "directly_read_reviews": 1,
+          "onsen_related_direct_reviews": 1,
+          "url": "https://note.com/cocotak7/n/n0d53925a1ff8"
+        },
+        "booking": {
+          "rating": 9.7,
+          "visible_review_count": 6,
+          "review_body_access": "partial_or_blocked",
+          "directly_read_reviews": 0,
+          "onsen_related_direct_reviews": 0,
+          "url": "https://www.booking.com/hotel/jp/ji-sarabie-di-ke-toki.ja.html"
+        },
+        "agoda": {
+          "rating": 10.0,
+          "visible_review_count": 5,
+          "review_body_access": "blocked_or_js_summary_only",
+          "directly_read_reviews": 0,
+          "onsen_related_direct_reviews": 0,
+          "url": "https://www.agoda.com/kisara-bettei-toki-h12552945/hotel/toba-jp.html"
+        },
+        "trip_com": {
+          "rating": 9.7,
+          "visible_review_count": 19,
+          "review_body_access": "partial_summary_only",
+          "directly_read_reviews": 0,
+          "onsen_related_direct_reviews": 0,
+          "url": "https://jp.trip.com/hotels/toba-hotel-detail-32373264/kisara-bettei-toki/"
+        },
+        "naver_search": {
+          "review_body_access": "snippet_only_or_not_found_direct",
+          "directly_read_reviews": 0,
+          "onsen_related_direct_reviews": 0,
+          "notes": "No direct Naver Blog/Cafe stay report for Toki was opened. Korean OTA/booking pages and unrelated noisy results were excluded."
+        },
+        "rakuten_travel_korean": {
+          "visible_review_count": 0,
+          "review_body_access": "direct_readable_no_reviews",
+          "directly_read_reviews": 0,
+          "onsen_related_direct_reviews": 0,
+          "url": "https://travel.rakuten.com/kor/ko-kr/hotel_info_review/cnt_japan/sub_mie_prefecture/cty_toba_city/10123456796055/",
+          "note": "Korean review page opened and displayed no guest review bodies. Korean OTA facility translations were not counted as reviews."
+        }
+      },
+      "official_bath_facts_seen": {
+        "official_site_url": "https://www.toba-kisara.com/toki/",
+        "room_open_air_bath": "official homepage says all rooms have open-air bath",
+        "room_bath": "official homepage says all rooms have indoor bath",
+        "footbath": "official room page filter shows footbath-equipped rooms among 10 rooms",
+        "public_bath": "not confirmed as shared public bath",
+        "private_bath_or_family_bath": "no official shared reservable/family bath confirmation; in-room private bath context dominates",
+        "source_claim": "社宮司温泉 / 七栗の湯 / alkaline, almost colorless and odorless claim seen on Rakuten and official surfaces"
+      },
+      "review_signal_keywords": [
+        "露天風呂",
+        "内風呂",
+        "足湯",
+        "温泉",
+        "トロトロ",
+        "すべすべ",
+        "つるつる",
+        "泉質",
+        "部屋付き露天風呂"
+      ],
+      "caution_keywords": [
+        "かけ流しではありません",
+        "虫",
+        "蚊",
+        "カルキ",
+        "滑り",
+        "寒い",
+        "配膳",
+        "料理説明",
+        "ラウンジ"
+      ],
+      "next_sampling": "A급 기준은 충족했다. 다음 보강은 Naver Blog/Cafe 한국어 직접 숙박기와 Booking/Agoda/Trip.com 개별 본문 접근 재확인이다."
+    }
+  ]
+}

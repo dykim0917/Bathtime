@@ -1,6 +1,6 @@
 ---
 name: bathtime-onsen-facility-review-signal-researcher
-description: Research Japanese non-accommodation onsen facilities for Bathtime, including day-use onsen complexes, municipal public baths, family/private bath facilities, sand baths, steam baths, footbaths, and spa-like onsen facilities. Use when asked to collect official facts and public review signals about facility bath experience, source-flow claims, water texture, bath variety, family/private bath use, sand/steam bath experience, crowding, queue/reservation confusion, amenities, payment, access, or tourist expectation gaps.
+description: Research Japanese non-accommodation onsen facilities for Bathtime, including nationwide or regional candidate lists, day-use onsen complexes, municipal public baths, family/private bath facilities, sand baths, steam baths, footbaths, and spa-like onsen facilities. Use when asked to discover/tier onsen facility candidates or collect official facts and public review signals about facility bath experience, source-flow claims, water texture, bath variety, family/private bath use, sand/steam bath experience, crowding, queue/reservation confusion, amenities, payment, access, or tourist expectation gaps.
 ---
 
 # Bathtime Onsen Facility Review Signal Researcher
@@ -93,6 +93,7 @@ Never fill unknown facts from inference. Use `unclear`, `not_found`, or `needs_c
 2. **Choose research mode**
    - `candidate_mode`: collect identity, official/product facts, visible review pool, Korean demand signal, tier rationale, and gaps. Do not tag review signals deeply unless the user asks.
    - `deep_review_mode`: collect official facts, map review pools, read/tag reviews, and produce the full report.
+   - For regional or nationwide facility candidate work, read `references/facility-candidate-research-playbook.md` before collecting.
    - If unclear, default to `deep_review_mode` for one named facility and `candidate_mode` for regional/nationwide lists.
 
 3. **Classify facility type**
@@ -151,5 +152,6 @@ Do not let platform-visible review count control the tone. A facility with 3,000
 
 ## References
 
+- `references/facility-candidate-research-playbook.md`: regional/nationwide facility candidate discovery, tiering, split/exclude rules, and QA.
 - `references/facility-tagging-guide.md`: facility taxonomy, signal types, count rules, confidence/status rules.
 - `references/facility-report-template.md`: Korean report structure and table templates.

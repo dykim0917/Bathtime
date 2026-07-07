@@ -1,0 +1,135 @@
+{
+  "research_date": "2026-07-04",
+  "slug": "dogo-funaya",
+  "accommodation_name": "道後温泉 ふなや",
+  "identity": {
+    "name_ja": "道後温泉 ふなや",
+    "name_ko": "도고온천 후나야",
+    "name_en": "Funaya",
+    "ota_names_seen": [
+      "道後温泉 ふなや",
+      "ふなや",
+      "Funaya",
+      "후나야"
+    ],
+    "official_site_url": "https://www.dogo-funaya.co.jp/",
+    "address": "愛媛県松山市道後湯之町1-33 / 1-33 Dogoyunomachi, Matsuyama, Ehime 790-0842",
+    "onsen_area": "道後温泉"
+  },
+  "quality": {
+    "data_quality_grade": "A",
+    "grade_reason": "직접 본문 535건, 직접 본문 플랫폼 5개, Google Hotels/Maps와 Naver Blog 직접 확인 포함. 최신·저평점·온천 키워드·한국어 리뷰 층화가 확보됨.",
+    "visible_review_pool_minimum": 5380,
+    "direct_reviews_read": 535,
+    "onsen_related_direct_reviews": 277,
+    "direct_body_platform_count": 5
+  },
+  "official_bath_facts": {
+    "official_status": "official_and_ota_facility_claims_only",
+    "room_bath": "공식 객실 페이지에서 일부 객실의 道後温泉引き湯の檜風呂 확인",
+    "room_open_air_bath": "이번 공식 표본에서는 객실 노천탕을 확인하지 못함. 일부 OTA/후기 표면의 객실탕 표현은 room_bath와 분리 검토",
+    "public_bath": "공식 온천 페이지에서 檜湯, 御影湯 2개 대욕장 확인",
+    "open_air_public_bath": "공식 온천 페이지와 JTB 욕장 페이지에서 2개 대욕장 각각 露天風呂와 サウナ를 갖춘 것으로 확인",
+    "private_bath": "이번 공식 표본에서 대절탕/가족탕은 확인하지 못함",
+    "family_bath": "이번 공식 표본에서 가족탕은 확인하지 못함",
+    "footbath": "공식 온천 페이지에서 정원 足湯 확인",
+    "spring_claim": "공식 온천 페이지: 道後温泉100％, 源泉名 道後温泉",
+    "flow_heating_circulation_disinfection": "JTB 시설 페이지: 天然温泉(放流・循環併用式、加温している). 공식 사이트는 道後温泉100％를 주장하나 순환/가온 표기는 OTA 시설 정보와 분리 기록",
+    "spring_quality_ph_temperature": "공식 온천 페이지: アルカリ性単純温泉, pH 9.1, 源泉46.8℃, 使用位置42.0℃",
+    "hours_and_reservation": "공식 온천 페이지: 대욕장 11:30-22:00札止め, 5:30-9:30. JTB: 5:30-9:30, 11:30-23:30로 표기 차이 있어 최신 운영 재확인 권장"
+  },
+  "review_signal_rows": [
+    {
+      "bath_area": "public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 69,
+      "source_count": 69,
+      "platform_count": 5,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal",
+      "notes": "대욕장, 2층/3층 교대, 檜湯/御影湯, 넓은 대욕장 만족이 다중 플랫폼에서 강하게 반복된다."
+    },
+    {
+      "bath_area": "open_air_public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 17,
+      "source_count": 17,
+      "platform_count": 4,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal",
+      "notes": "노천탕 긍정이 있으나 일부 오래된 Tripadvisor/정적 표본에 노천이 좁거나 경관이 약하다는 반대 신호가 있다."
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 172,
+      "source_count": 172,
+      "platform_count": 5,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal",
+      "notes": "道後温泉, 알칼리성 단순천, 부드러운 물, 피부/腰痛/湯質 관련 표현이 강하게 반복된다."
+    },
+    {
+      "bath_area": "room_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 22,
+      "source_count": 22,
+      "platform_count": 4,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal",
+      "notes": "공식 객실 페이지와 후기에서 일부 객실의 도고온천 인입檜風呂/방 욕조 신호가 확인된다. 객실 노천탕으로 과대 태깅하지 않는다."
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "crowding",
+      "signal_direction": "mixed",
+      "mention_count": 78,
+      "source_count": 78,
+      "platform_count": 3,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal",
+      "notes": "空いて/静か와 混雑/混んで가 함께 있어 시간대·성수기·일본 명절 수요에 따라 갈린다."
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "booking_confusion",
+      "signal_direction": "mixed",
+      "mention_count": 159,
+      "source_count": 159,
+      "platform_count": 5,
+      "contradiction_level": "medium",
+      "review_signal_status": "strong_signal",
+      "notes": "道後温泉駅, 道後本館, 외탕/관광 동선, 예약·체크인, 택시/셔틀, 관내 이동 신호가 온천 경험과 자주 결합된다."
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "weak_onsen_feeling",
+      "signal_direction": "negative",
+      "mention_count": 2,
+      "source_count": 2,
+      "platform_count": 1,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal",
+      "notes": "カルキ/塩素 계열 부정 신호는 정적 표본에서 소수만 확인되어 탐색 신호다."
+    }
+  ],
+  "operations_notes": {
+    "temperature_control_mentions": 16,
+    "cleanliness_aging_mentions": 53,
+    "view_garden_mentions": 73,
+    "access_booking_mentions": 138,
+    "insects_mentions": 2,
+    "chlorine_mentions": 1
+  }
+}

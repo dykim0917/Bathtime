@@ -1,0 +1,151 @@
+{
+  "research_date": "2026-07-04",
+  "scope": "ready lodging deep research: Kansai/Sanin/Setouchi Tier 1 lodging",
+  "method": "Rakuten API, Jalan HTML, JTB HTML로 직접 본문 수집 후 Aside Browser로 Google Maps와 Naver Search를 확인. Naver 검색 스니펫과 Google 공급자 카드는 직접 리뷰 수/Google-native 리뷰와 분리.",
+  "direct_review_sampling_status": "A: 300+ direct reviews, 3+ direct-body platforms, Google/Naver checked",
+  "lodgings": [
+    {
+      "slug": "toba-todaya",
+      "name_ja": "伊勢志摩国立公園 / 鳥羽温泉郷 戸田家",
+      "name_ko_or_en": "Todaya / 토다야",
+      "address": "三重県鳥羽市鳥羽1丁目24-26",
+      "onsen_area": "鳥羽温泉郷 / 榊原温泉（七栗の湯）引湯",
+      "google_maps": {
+        "rating": 4,
+        "visible_review_count": 915,
+        "rating_distribution": {
+          "1": 60,
+          "2": 44,
+          "3": 113,
+          "4": 313,
+          "5": 385
+        },
+        "korean_reviews_visible": true,
+        "review_body_access": "aside_review_tab_read plus provider_cards_direct_read",
+        "direct_google_native_reviews_read": 8,
+        "onsen_related_google_native_reviews": 1,
+        "ota_provider_cards_seen": [
+          "Tripadvisor"
+        ],
+        "provider_card_direct_reviews_read": 2,
+        "provider_card_onsen_related_reviews": 1,
+        "caution": "Tripadvisor 카드는 Google-native 리뷰로 세지 않았다."
+      },
+      "ota_review_pool_signals": {
+        "Rakuten Travel": {
+          "visible_review_count": 1593,
+          "rating": null,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 360,
+          "onsen_related_direct_reviews": 159,
+          "source_url": "https://travel.rakuten.co.jp/HOTEL/4761/review.html"
+        },
+        "Jalan": {
+          "visible_review_count": 3128,
+          "rating": 4.5,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 210,
+          "onsen_related_direct_reviews": 80,
+          "source_url": "https://www.jalan.net/yad322346/kuchikomi/"
+        },
+        "JTB": {
+          "visible_review_count": null,
+          "rating": null,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 99,
+          "onsen_related_direct_reviews": 33,
+          "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/6112005/review/"
+        },
+        "Tripadvisor": {
+          "visible_review_count": 267,
+          "rating": 3.7,
+          "review_body_access": "google_provider_card_direct_read",
+          "direct_reviews_read": 2,
+          "onsen_related_direct_reviews": 1
+        },
+        "Agoda": {
+          "visible_review_count": null,
+          "rating": null,
+          "review_body_access": "snippet_only",
+          "direct_reviews_read": 0,
+          "source_basis": "Naver Search result"
+        },
+        "Hotels.com / Expedia": {
+          "visible_review_count": 590,
+          "rating": 8.8,
+          "review_body_access": "snippet_only",
+          "direct_reviews_read": 0,
+          "source_basis": "Naver Search result"
+        },
+        "Trip.com": {
+          "visible_review_count": 58,
+          "rating": 9.2,
+          "review_body_access": "snippet_only",
+          "direct_reviews_read": 0,
+          "source_basis": "Naver Search result"
+        },
+        "Klook": {
+          "visible_review_count": null,
+          "rating": null,
+          "review_body_access": "snippet_only",
+          "direct_reviews_read": 0,
+          "source_basis": "Naver Search result"
+        },
+        "Naver Search / Blog": {
+          "visible_review_count": null,
+          "rating": null,
+          "review_body_access": "snippet_only",
+          "direct_reviews_read": 0,
+          "snippet_only_results_seen": [
+            "Agoda Todaya result",
+            "Hotels.com/Expedia 8.8/10 590",
+            "Trip.com 58",
+            "Klook surface",
+            "Hotelping 557"
+          ]
+        }
+      },
+      "official_bath_facts_seen": {
+        "official_site_url": "https://www.todaya.co.jp/",
+        "hotsprings_url": "https://www.todaya.co.jp/hotspring/",
+        "rooms_url": "https://www.todaya.co.jp/room/",
+        "room_open_air_bath": "공식 객실 정보: 총 168실 중 南館 114실(露天風呂付客室 5실), 嬉春亭 54실(露天風呂付客室 5실). 南館 魚魚夢露天風呂付客室은 沸かし湯 사용 표기.",
+        "room_bath": "일반 객실 내 욕실은 있으나 온천 객실탕으로 공식 확인하지 않음.",
+        "public_bath": "嬉春亭大浴場, 南館大浴場 등 대욕장 운영.",
+        "open_air_public_bath": "戸田家温泉村/風流野天風呂棟 湯亭. 남녀 노천/야천탕과 湯めぐり 구조. 이용 시간 24시간 표기.",
+        "private_bath": "무료貸切風呂 5종: しゃこ貝風呂, 浮世風呂, 瓶風呂, 釜風呂, たぬき風呂. 예약 불필요, 안에서 잠그고 이용, 제한시간 없음, 6:00-24:00.",
+        "family_bath": "有料 貸切風水家族風呂/貸切風水貝殻家族風呂. 45분 3,300엔. 풍수家族風呂는 沸かし湯, 貝殻風呂는 温泉 표기.",
+        "footbath": "足湯処 せせらぎ은 沸かし湯, 万景の足湯는 みえ尾鷲海洋深層水 이용.",
+        "water_handling": "공식 source-flow 여부는 확인하지 못함. 泉質은 アルカリ性単純泉, 源泉名은 榊原温泉（七栗の湯）로 표기.",
+        "spring_quality": "アルカリ性単純泉.",
+        "public_bath_hours": "温泉村/湯亭 24시간, 무료貸切風呂 6:00-24:00, 유료 가족탕 6:00-22:00/6:30-21:30 표기.",
+        "tattoo_policy": "이번 확인 범위에서 구조화하지 못함."
+      },
+      "review_signal_keywords": [
+        "温泉村",
+        "露天風呂",
+        "野天風呂",
+        "大浴場",
+        "貸切風呂",
+        "家族風呂",
+        "無料貸切風呂",
+        "榊原温泉",
+        "七栗の湯",
+        "ツルツルしない",
+        "塩素",
+        "個人 욕탕"
+      ],
+      "caution_keywords": [
+        "露天風呂の混在",
+        "客室露天は沸かし湯表記",
+        "温泉感が弱いという低評価",
+        "塩素",
+        "古い",
+        "虫",
+        "館内動線",
+        "バイキング混雑"
+      ],
+      "next_sampling": "A등급 충족. 다음 보강은 Google-native 더보기 확장, Agoda/Hotels.com/Trip.com 직접 본문, Naver Blog 원문 발굴."
+    }
+  ]
+}

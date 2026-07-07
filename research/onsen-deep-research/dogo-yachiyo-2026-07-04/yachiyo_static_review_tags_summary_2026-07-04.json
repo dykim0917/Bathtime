@@ -1,0 +1,115 @@
+{
+  "generated_at": "2026-07-04T03:49:56.228Z",
+  "lodging": "道後温泉 八千代",
+  "total_direct_extracted_static": 188,
+  "onsen_related_body_static": 101,
+  "direct_body_platforms_static": 3,
+  "by_platform": {
+    "Rakuten Travel": {
+      "direct": 37,
+      "onsen_body": 22
+    },
+    "Jalan": {
+      "direct": 71,
+      "onsen_body": 46
+    },
+    "JTB": {
+      "direct": 80,
+      "onsen_body": 33
+    }
+  },
+  "platform_page_stats": {
+    "rakuten_1": 20,
+    "rakuten_2": 17,
+    "jalan_1": 30,
+    "jalan_2": 30,
+    "jalan_3": 11,
+    "jalan_4": 11,
+    "jalan_5": 11,
+    "jalan_6": 11,
+    "jtb_1": 40,
+    "jtb_2": 40,
+    "jtb_3": 40,
+    "jtb_4": 20,
+    "jtb_5": 20,
+    "jtb_6": 20,
+    "jtb_7": 20,
+    "jtb_8": 20
+  },
+  "visible_review_pool_static": {
+    "rakuten": 37,
+    "jalan": null,
+    "jtb": "全 54 件の評価 / 52 件のうち、 1 〜 20 件を表示 / 全 60 件の評価"
+  },
+  "bath_area_tags": {
+    "room_open_air_bath": 115,
+    "room_bath": 91,
+    "public_bath": 18,
+    "open_air_public_bath": 12,
+    "private_bath": 1
+  },
+  "signal_type_tags": {
+    "room_bath_hot_spring": 118,
+    "booking_confusion": 37,
+    "water_texture": 41,
+    "crowding": 9,
+    "public_bath_hot_spring": 18,
+    "private_bath_experience": 1
+  },
+  "caution_tags": {
+    "access_booking": 38,
+    "cleanliness_aging": 24,
+    "temperature_control": 4,
+    "view_garden": 1,
+    "price_expectation": 11
+  },
+  "body_keywords": {
+    "温泉": 67,
+    "露天": 43,
+    "露天風呂": 40,
+    "道後温泉": 39,
+    "大浴場": 18,
+    "清潔": 17,
+    "予約": 13,
+    "露天風呂付": 10,
+    "客室露天": 9,
+    "客室露天風呂": 9,
+    "駐車場": 7,
+    "露天風呂付き": 7,
+    "部屋風呂": 6,
+    "館内": 5,
+    "道後温泉本館": 5,
+    "徒歩": 5,
+    "高い": 5,
+    "商店街": 4,
+    "駅": 4,
+    "掃除": 4,
+    "静か": 4,
+    "内風呂": 3,
+    "温度": 3,
+    "空いて": 2,
+    "臭い": 2,
+    "すべすべ": 2,
+    "混雑": 2,
+    "お部屋のお風呂": 2,
+    "客室風呂": 1,
+    "熱い": 1,
+    "かけ流し": 1,
+    "貸切": 1,
+    "引き湯": 1,
+    "狭い": 1,
+    "送迎": 1,
+    "匂い": 1,
+    "サウナ": 1,
+    "露天風呂付客室": 1,
+    "古い": 1
+  },
+  "scores": {
+    "2": 2,
+    "3": 3,
+    "4": 10,
+    "5": 93,
+    "null": 80
+  },
+  "note": "Review bodies are not stored; hashes, metadata, short keywords and tags only. Official bath facts are not counted as review signals."
+}

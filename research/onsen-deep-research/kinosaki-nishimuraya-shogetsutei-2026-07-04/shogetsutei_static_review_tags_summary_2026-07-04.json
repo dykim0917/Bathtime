@@ -1,0 +1,127 @@
+{
+  "research_date": "2026-07-04",
+  "slug": "kinosaki-nishimuraya-shogetsutei",
+  "total_direct_extracted_static": 225,
+  "onsen_related_body_static": 125,
+  "direct_body_platforms_static": 3,
+  "by_platform": {
+    "Rakuten Travel": {
+      "direct": 101,
+      "onsen_body": 41
+    },
+    "Jalan": {
+      "direct": 59,
+      "onsen_body": 55
+    },
+    "JTB": {
+      "direct": 65,
+      "onsen_body": 29
+    }
+  },
+  "visible_review_pool_static": {
+    "rakuten": 101,
+    "jalan": 1113,
+    "jtb": null
+  },
+  "bath_area_tags": {
+    "room_open_air_bath": 28,
+    "room_bath": 40,
+    "public_bath": 68,
+    "family_bath": 1,
+    "open_air_public_bath": 6,
+    "private_bath": 12
+  },
+  "signal_type_tags": {
+    "room_bath_hot_spring": 49,
+    "water_texture": 107,
+    "booking_confusion": 66,
+    "public_bath_hot_spring": 68,
+    "crowding": 16,
+    "private_bath_experience": 13
+  },
+  "caution_tags": {
+    "access_booking": 64,
+    "children_family": 38,
+    "cleanliness_aging": 22,
+    "view_privacy": 46,
+    "price_expectation": 9,
+    "buffet_crowding": 15,
+    "public_bath_size_expectation": 10,
+    "temperature_control": 2,
+    "insects": 2
+  },
+  "body_keywords_top": {
+    "温泉": 96,
+    "城崎温泉": 72,
+    "庭": 40,
+    "西村屋": 34,
+    "外湯": 28,
+    "招月庭": 24,
+    "露天": 24,
+    "家族": 23,
+    "露天風呂": 23,
+    "清潔": 19,
+    "西村屋ホテル招月庭": 19,
+    "予約": 17,
+    "大浴場": 16,
+    "バイキング": 14,
+    "駅": 13,
+    "待ち": 12,
+    "貸切": 12,
+    "案内": 10,
+    "外湯巡り": 9,
+    "送迎": 8,
+    "説明": 8,
+    "サウナ": 7,
+    "外湯めぐり": 6,
+    "赤ちゃん": 5,
+    "露天風呂付": 5,
+    "子連れ": 4,
+    "貸切風呂": 4,
+    "露天風呂付き": 3,
+    "掃除": 3,
+    "駐車場": 3,
+    "貸切露天風呂": 3,
+    "広い": 2,
+    "泉質": 2,
+    "虫": 2,
+    "古い": 1,
+    "匂い": 1,
+    "家族風呂": 1,
+    "湯加減": 1,
+    "混雑": 1,
+    "源泉": 1,
+    "客室露天": 1,
+    "温度": 1,
+    "森のプライベートスパ": 1
+  },
+  "scores": {
+    "3": 4,
+    "4": 18,
+    "5": 79,
+    "null": 124
+  },
+  "collection_stats": {
+    "rakuten_offset_0": 20,
+    "rakuten_offset_20": 20,
+    "rakuten_offset_40": 20,
+    "rakuten_offset_60": 20,
+    "rakuten_offset_80": 20,
+    "rakuten_offset_100": 1,
+    "jalan_1": 30,
+    "jalan_2": 29,
+    "jalan_3": 29,
+    "jalan_4": 29,
+    "jalan_5": 29,
+    "jalan_6": 29,
+    "jalan_7": 29,
+    "jalan_8": 29,
+    "jalan_9": 29,
+    "jalan_10": 29,
+    "jtb_page_1": 20,
+    "jtb_page_2": 20,
+    "jtb_page_3": 20,
+    "jtb_page_4": 5,
+    "jtb_page_5": 0
+  }
+}

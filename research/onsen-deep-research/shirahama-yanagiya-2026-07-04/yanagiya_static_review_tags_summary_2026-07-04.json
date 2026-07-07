@@ -1,0 +1,105 @@
+{
+  "research_date": "2026-07-04",
+  "slug": "shirahama-yanagiya",
+  "name_ja": "白浜温泉 家族とすごす白浜の宿 柳屋",
+  "direct_read_total": 166,
+  "onsen_related_direct_total": 106,
+  "direct_body_platform_count": 2,
+  "platform_meta": {
+    "rakuten_visible_api_total": 77,
+    "rakuten_provider_header_review_count": null,
+    "jalan_direct_accessible_visible_total": 89,
+    "jalan_candidate_surface_visible_total": 1666
+  },
+  "by_platform": {
+    "Rakuten Travel": {
+      "direct": 77,
+      "onsen_body": 42
+    },
+    "Jalan": {
+      "direct": 89,
+      "onsen_body": 64
+    }
+  },
+  "bath_area_tags": {
+    "room_open_air_bath": 49,
+    "room_bath": 55,
+    "public_bath": 17,
+    "open_air_public_bath": 8,
+    "family_bath": 1,
+    "private_bath": 3
+  },
+  "signal_type_tags": {
+    "water_texture": 83,
+    "booking_confusion": 29,
+    "room_bath_hot_spring": 64,
+    "public_bath_hot_spring": 19,
+    "crowding": 5,
+    "private_bath_experience": 4,
+    "weak_onsen_feeling": 1
+  },
+  "caution_tags": {
+    "source_type_split": 23,
+    "cleanliness_aging": 16,
+    "view_privacy": 59,
+    "access_booking": 26,
+    "room_bath_size_expectation": 14,
+    "price_expectation": 12,
+    "children_family": 24,
+    "temperature_control": 12,
+    "insects": 1
+  },
+  "body_keywords_top": {
+    "温泉": 65,
+    "源泉": 35,
+    "露天": 31,
+    "露天風呂": 31,
+    "海": 22,
+    "白良浜": 20,
+    "景色": 20,
+    "かけ流し": 19,
+    "源泉かけ流し": 17,
+    "大浴場": 16,
+    "予約": 15,
+    "泉質": 14,
+    "家族": 13,
+    "子供": 12,
+    "清潔": 10,
+    "露天風呂付": 9,
+    "掛け流し": 8,
+    "説明": 7,
+    "露天風呂付き": 7,
+    "温度": 7,
+    "オーシャンビュー": 7,
+    "源泉掛け流し": 6,
+    "掃除": 5,
+    "貸切": 5,
+    "白浜温泉": 5,
+    "半露天": 4,
+    "半露天風呂": 4,
+    "貸切風呂": 4,
+    "眺望": 4,
+    "湯加減": 4,
+    "狭い": 3,
+    "駐車場": 2,
+    "孫": 2,
+    "広い": 2,
+    "子連れ": 2
+  },
+  "scores": {
+    "2": 1,
+    "3": 4,
+    "4": 24,
+    "5": 48,
+    "null": 89
+  },
+  "fetch_stats": {
+    "rakuten_offset_0": 20,
+    "rakuten_offset_20": 20,
+    "rakuten_offset_40": 20,
+    "rakuten_offset_60": 17,
+    "jalan_1": 30,
+    "jalan_2": 30,
+    "jalan_3": 29
+  }
+}

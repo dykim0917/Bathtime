@@ -1,0 +1,3011 @@
+{
+  "summary": {
+    "generated_at": "2026-07-04T04:02:48.732Z",
+    "lodging": "道後御湯",
+    "total_direct_extracted_static": 88,
+    "onsen_related_body_static": 47,
+    "direct_body_platforms_static": 3,
+    "by_platform": {
+      "Rakuten Travel": {
+        "direct": 30,
+        "onsen_body": 16
+      },
+      "Jalan": {
+        "direct": 34,
+        "onsen_body": 23
+      },
+      "JTB": {
+        "direct": 24,
+        "onsen_body": 8
+      }
+    },
+    "platform_page_stats": {
+      "rakuten_1": 20,
+      "rakuten_2": 10,
+      "jalan_1": 30,
+      "jalan_2": 4,
+      "jalan_3": 4,
+      "jalan_4": 4,
+      "jalan_5": 4,
+      "jalan_6": 4,
+      "jtb_1": 24,
+      "jtb_2": 20,
+      "jtb_3": 20,
+      "jtb_4": 20,
+      "jtb_5": 20,
+      "jtb_6": 20,
+      "jtb_7": 20,
+      "jtb_8": 20
+    },
+    "visible_review_pool_static": {
+      "rakuten": 30,
+      "jalan": null,
+      "jtb": "全 28 件の評価 / 25 件のうち、 1 〜 20 件を表示 / 全 4 件の評価"
+    },
+    "bath_area_tags": {
+      "room_open_air_bath": 68,
+      "room_bath": 50,
+      "public_bath": 10,
+      "open_air_public_bath": 7,
+      "private_bath": 1
+    },
+    "signal_type_tags": {
+      "room_bath_hot_spring": 70,
+      "booking_confusion": 21,
+      "water_texture": 19,
+      "public_bath_hot_spring": 10,
+      "private_bath_experience": 1,
+      "crowding": 7,
+      "weak_onsen_feeling": 1,
+      "chlorine_smell": 1
+    },
+    "caution_tags": {
+      "lounge_operation": 11,
+      "access_booking": 20,
+      "temperature_control": 10,
+      "view_garden": 15,
+      "cleanliness_aging": 12,
+      "public_bath_size_expectation": 2,
+      "price_expectation": 3
+    },
+    "body_keywords": {
+      "露天": 34,
+      "露天風呂": 33,
+      "温泉": 24,
+      "道後温泉": 18,
+      "清潔": 11,
+      "ラウンジ": 9,
+      "温度": 9,
+      "大浴場": 9,
+      "静か": 5,
+      "客室露天": 4,
+      "客室露天風呂": 4,
+      "商店街": 3,
+      "部屋風呂": 3,
+      "道後温泉本館": 3,
+      "スカイラウンジ": 2,
+      "予約": 2,
+      "かけ流し": 2,
+      "露天風呂付": 2,
+      "貸切": 1,
+      "展望風呂": 1,
+      "熱い": 1,
+      "客室風呂": 1,
+      "塩素": 1,
+      "コンパクト": 1,
+      "館内": 1,
+      "源泉": 1,
+      "駐車場": 1,
+      "泉質": 1,
+      "引き湯": 1,
+      "露天風呂付き": 1,
+      "眺望": 1,
+      "高い": 1,
+      "掃除": 1,
+      "サウナ": 1,
+      "水風呂": 1
+    },
+    "scores": {
+      "4": 4,
+      "5": 60,
+      "null": 24
+    },
+    "note": "Review bodies are not stored; hashes, metadata, short keywords and tags only. Official bath facts are not counted as review signals."
+  },
+  "reviews": [
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/165194/review.html",
+      "review_id": "33123477994194",
+      "review_hash": "1c1f8f4082840854",
+      "review_date": "2026-06-30",
+      "stay_date": "2026-06-25",
+      "score": 5,
+      "title": "丁寧な対応と露天風呂でゆったり",
+      "room_type": "【プレミア】温泉露天風呂付和洋室＜禁煙＞",
+      "plan_name": "【食事なし】 自由きままにお気軽シンプルステイプラン",
+      "body_char_count": 132,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "ラウンジ"
+      ],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "露天風呂付"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "lounge_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/165194/review.html",
+      "review_id": "33123477527325",
+      "review_hash": "7eaf9c071beb94b8",
+      "review_date": "2026-05-03",
+      "stay_date": "2026-05-01",
+      "score": 5,
+      "title": "お部屋も食事も最高！呑兵衛にも嬉しい宿",
+      "room_type": "【デラックス】温泉露天風呂付和洋室＜禁煙＞",
+      "plan_name": "【御湯スタンダード】＜朝夕付＞ダイニングtachibanaで伊予の四季を愉しむ御湯会席",
+      "body_char_count": 197,
+      "body_keywords": [],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "露天風呂付"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/165194/review.html",
+      "review_id": "33123477799554",
+      "review_hash": "6ca97fb5d73747c6",
+      "review_date": "2026-06-06",
+      "stay_date": "2026-06-01",
+      "score": 5,
+      "title": "サータのベッドに感動、スタッフも良い",
+      "room_type": "【スーペリア】温泉露天風呂付和洋室＜禁煙＞",
+      "plan_name": "【食事なし】 自由きままにお気軽シンプルステイプラン",
+      "body_char_count": 78,
+      "body_keywords": [],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "露天風呂付"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/165194/review.html",
+      "review_id": "33123477707495",
+      "review_hash": "4c0a06cc2a136fc9",
+      "review_date": "2026-05-25",
+      "stay_date": "2026-05-23",
+      "score": 5,
+      "title": "素敵なお部屋と丁寧な対応、食事も堪能",
+      "room_type": "【プレミア】温泉露天風呂付和洋室＜禁煙＞",
+      "plan_name": "【朝食付】露天風呂付客室でくつろぐ夕食なしのシンプルステイプラン",
+      "body_char_count": 75,
+      "body_keywords": [],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付客室"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/165194/review.html",
+      "review_id": "33123477463376",
+      "review_hash": "0f2d0adb22d518e3",
+      "review_date": "2026-04-25",
+      "stay_date": "2026-04-07",
+      "score": 5,
+      "title": "眺めも接客も最高！外に出るのが勿体無い宿",
+      "room_type": "【プレミア】温泉露天風呂付和洋室＜禁煙＞",
+      "plan_name": "【5％OFF】【楽天スーパーSALE】◆朝夕付◆伊予の四季を愉しむ御湯会席プラン",
+      "body_char_count": 83,
+      "body_keywords": [
+        "商店街"
+      ],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "露天風呂付"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [
+        "access_booking"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/165194/review.html",
+      "review_id": "33123478010012",
+      "review_hash": "3011c91bdb066e5c",
+      "review_date": "2026-07-02",
+      "stay_date": "2026-06-22",
+      "score": 5,
+      "title": "ロケーションも朝食も最高、また来たい！",
+      "room_type": "【スーペリア】温泉露天風呂付和洋室＜禁煙＞",
+      "plan_name": "【朝食付】露天風呂付客室でくつろぐ夕食なしのシンプルステイプラン",
+      "body_char_count": 313,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "露天",
+        "露天風呂",
+        "温度"
+      ],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付客室"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture"
+      ],
+      "caution_tags": [
+        "temperature_control",
+        "view_garden"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/165194/review.html",
+      "review_id": "33123477642505",
+      "review_hash": "b47bcf8aa8cef5aa",
+      "review_date": "2026-05-17",
+      "stay_date": "2026-05-15",
+      "score": 5,
+      "title": "おもてなし最高、客室露天風呂も満喫",
+      "room_type": "【プレミア】温泉露天風呂付和洋室＜禁煙＞",
+      "plan_name": "【朝食付】露天風呂付客室でくつろぐ夕食なしのシンプルステイプラン",
+      "body_char_count": 279,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "露天",
+        "露天風呂",
+        "客室露天",
+        "客室露天風呂",
+        "貸切",
+        "展望風呂",
+        "ラウンジ",
+        "スカイラウンジ",
+        "温度"
+      ],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "客室露天",
+        "客室露天風呂",
+        "露天風呂付",
+        "露天風呂付客室"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "public_bath",
+        "open_air_public_bath",
+        "private_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring",
+        "private_bath_experience",
+        "water_texture",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "temperature_control",
+        "view_garden",
+        "access_booking",
+        "lounge_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/165194/review.html",
+      "review_id": "33123477877053",
+      "review_hash": "1b093bb212e9f570",
+      "review_date": "2026-06-16",
+      "stay_date": "2026-06-15",
+      "score": 5,
+      "title": "露天風呂最高です",
+      "room_type": "【プレミア】温泉露天風呂付和洋室＜禁煙＞",
+      "plan_name": "【食事なし】 自由きままにお気軽シンプルステイプラン",
+      "body_char_count": 88,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "ラウンジ"
+      ],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "露天風呂付"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [
+        "lounge_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/165194/review.html",
+      "review_id": "33123477815851",
+      "review_hash": "ee3ba156e827db86",
+      "review_date": "2026-06-08",
+      "stay_date": "2026-06-06",
+      "score": 5,
+      "title": "丁寧な対応と煌びやかなライトアップが良い",
+      "room_type": "【スーペリア】温泉露天風呂付和洋室＜禁煙＞",
+      "plan_name": "【5％OFF】【楽天スーパーSALE】◆朝夕付◆伊予の四季を愉しむ御湯会席プラン",
+      "body_char_count": 63,
+      "body_keywords": [],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "露天風呂付"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "booking_confusion"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/165194/review.html",
+      "review_id": "33123476965637",
+      "review_hash": "2a3f305fb3622356",
+      "review_date": "2026-02-24",
+      "stay_date": "2026-02-10",
+      "score": 5,
+      "title": "期待を裏切らないサービスと温泉に大満足",
+      "room_type": "【スイート】温泉露天風呂付和洋室＜禁煙＞",
+      "plan_name": "【LUXDAYSセール】◇朝夕付◇伊予の四季を愉しむ御湯会席プラン＜露天風呂付き客室＞",
+      "body_char_count": 95,
+      "body_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂"
+      ],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付き"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/165194/review.html",
+      "review_id": "33123477031382",
+      "review_hash": "c3a9f23886d6360d",
+      "review_date": "2026-03-03",
+      "stay_date": "2026-03-01",
+      "score": 5,
+      "title": "露天風呂とアメニティ充実で大満足",
+      "room_type": "【スーペリア】温泉露天風呂付和洋室＜禁煙＞",
+      "plan_name": "【温泉ひとり旅】＜朝食付＞ひとり、心おきなく、露天風呂付客室で寛ぐ極上ほっこりお篭りステイプラン",
+      "body_char_count": 98,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "温度"
+      ],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付客室"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [
+        "temperature_control"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/165194/review.html",
+      "review_id": "33123476665898",
+      "review_hash": "a15bf27188bd9238",
+      "review_date": "2026-01-15",
+      "stay_date": "2026-01-10",
+      "score": 5,
+      "title": "過去一番！素敵なお宿でした",
+      "room_type": "【デラックス】温泉露天風呂付和洋室＜禁煙＞",
+      "plan_name": "【朝食付】露天風呂付客室でくつろぐ夕食なしのシンプルステイプラン",
+      "body_char_count": 69,
+      "body_keywords": [],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付客室"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/165194/review.html",
+      "review_id": "33123476858604",
+      "review_hash": "5b6d21edfe7f94a6",
+      "review_date": "2026-02-11",
+      "stay_date": "2026-02-09",
+      "score": 5,
+      "title": "またいつか行きたい！！",
+      "room_type": "【スーペリア】温泉露天風呂付和洋室＜禁煙＞",
+      "plan_name": "【秋冬SALE】◆朝夕付◆伊予の四季を愉しむ御湯会席プラン",
+      "body_char_count": 115,
+      "body_keywords": [],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "露天風呂付"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [
+        "lounge_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/165194/review.html",
+      "review_id": "33123476803165",
+      "review_hash": "989d97d7b717cb93",
+      "review_date": "2026-02-04",
+      "stay_date": "2026-01-31",
+      "score": 5,
+      "title": "母の誕生日旅行",
+      "room_type": "【プレミア】温泉露天風呂付和洋室＜禁煙＞",
+      "plan_name": "【朝食付】露天風呂付客室でくつろぐ夕食なしのシンプルステイプラン",
+      "body_char_count": 168,
+      "body_keywords": [
+        "温泉"
+      ],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付客室"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/165194/review.html",
+      "review_id": "33123476570596",
+      "review_hash": "75b182d5fede954d",
+      "review_date": "2026-01-04",
+      "stay_date": "2025-12-06",
+      "score": 5,
+      "title": "全てが素晴らしい、大満足の宿",
+      "room_type": "【プレミア】温泉露天風呂付和洋室＜禁煙＞",
+      "plan_name": "【御湯スタンダード】＜朝夕付＞ダイニングtachibanaで伊予の四季を愉しむ御湯会席",
+      "body_char_count": 127,
+      "body_keywords": [],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "露天風呂付"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/165194/review.html",
+      "review_id": "33123476558175",
+      "review_hash": "270d6f0cbf34cbea",
+      "review_date": "2026-01-02",
+      "stay_date": "2025-12-13",
+      "score": 5,
+      "title": "接客と料理に満足、また別の季節に",
+      "room_type": "【デラックス】温泉露天風呂付和洋室＜禁煙＞",
+      "plan_name": "【5％OFF】【楽天スーパーSALE】◆朝夕付◆伊予の四季を愉しむ御湯会席プラン",
+      "body_char_count": 393,
+      "body_keywords": [
+        "部屋風呂",
+        "大浴場",
+        "ラウンジ",
+        "清潔"
+      ],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "露天風呂付"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring"
+      ],
+      "caution_tags": [
+        "cleanliness_aging",
+        "lounge_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/165194/review.html",
+      "review_id": "33123476765137",
+      "review_hash": "4f4b11daa4d0ec14",
+      "review_date": "2026-01-29",
+      "stay_date": "2026-01-08",
+      "score": 5,
+      "title": "丁寧な接客と露天風呂からの絶景",
+      "room_type": "【デラックス】温泉露天風呂付和洋室＜禁煙＞",
+      "plan_name": "【御湯スタンダード】＜朝夕付＞ダイニングtachibanaで伊予の四季を愉しむ御湯会席",
+      "body_char_count": 55,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "温度"
+      ],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "露天風呂付"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [
+        "temperature_control",
+        "view_garden"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/165194/review.html",
+      "review_id": "33123476696812",
+      "review_hash": "3aa25e4c53135696",
+      "review_date": "2026-01-20",
+      "stay_date": "2026-01-17",
+      "score": 5,
+      "title": "夕陽が沈む絶景露天風呂",
+      "room_type": "【スーペリア】温泉露天風呂付和洋室＜禁煙＞",
+      "plan_name": "【朝食付】露天風呂付客室でくつろぐ夕食なしのシンプルステイプラン",
+      "body_char_count": 49,
+      "body_keywords": [
+        "露天",
+        "露天風呂"
+      ],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付客室"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [
+        "view_garden"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/165194/review.html",
+      "review_id": "33123476323265",
+      "review_hash": "83e361a0655f02bb",
+      "review_date": "2025-12-07",
+      "stay_date": "2025-11-02",
+      "score": 5,
+      "title": "記念日に最適！部屋露天風呂が最高",
+      "room_type": "【デラックス】温泉露天風呂付和洋室＜禁煙＞",
+      "plan_name": "2名様限定【MIYU Luxury Anniversary】＜朝夕付＞〜特別な1日となりますように〜",
+      "body_char_count": 156,
+      "body_keywords": [
+        "露天",
+        "露天風呂"
+      ],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "露天風呂付"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/165194/review.html",
+      "review_id": "33123476321818",
+      "review_hash": "edd2e1a9b8090ae5",
+      "review_date": "2025-12-07",
+      "stay_date": "2025-12-06",
+      "score": 5,
+      "title": "人生で1番幸せな気持ちになれるホテル",
+      "room_type": "【プレミア】温泉露天風呂付和洋室＜禁煙＞",
+      "plan_name": "2名様限定【MIYU Luxury Anniversary】＜朝夕付＞〜特別な1日となりますように〜",
+      "body_char_count": 132,
+      "body_keywords": [],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "露天風呂付"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "access_booking"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/165194/review.html",
+      "review_id": "33123476424908",
+      "review_hash": "1835ea48bc00e5d9",
+      "review_date": "2025-12-20",
+      "stay_date": "2025-12-18",
+      "score": 5,
+      "title": "過去一良かった旅館【道後御湯】",
+      "room_type": "【デラックス】温泉露天風呂付和洋室＜禁煙＞",
+      "plan_name": "【食事なし】 自由きままにお気軽シンプルステイプラン",
+      "body_char_count": 147,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "温度",
+        "清潔"
+      ],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "露天風呂付"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [
+        "temperature_control",
+        "cleanliness_aging"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/165194/review.html",
+      "review_id": "33123476123653",
+      "review_hash": "86db7a0fe6afcced",
+      "review_date": "2025-11-07",
+      "stay_date": "2025-11-04",
+      "score": 5,
+      "title": "",
+      "room_type": "【スーペリア】温泉露天風呂付和洋室＜禁煙＞",
+      "plan_name": "【5％OFF】【楽天スーパーSALE】◆朝夕付◆伊予の四季を愉しむ御湯会席プラン",
+      "body_char_count": 152,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "大浴場",
+        "清潔"
+      ],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "露天風呂付"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "public_bath",
+        "open_air_public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring"
+      ],
+      "caution_tags": [
+        "cleanliness_aging"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/165194/review.html",
+      "review_id": "33123472948482",
+      "review_hash": "b5949614313e2dfa",
+      "review_date": "2025-10-13",
+      "stay_date": "2025-10-06",
+      "score": 5,
+      "title": "",
+      "room_type": "【デラックス】温泉露天風呂付和洋室＜禁煙＞",
+      "plan_name": "【5％OFF】【楽天スーパーSALE】◆朝夕付◆伊予の四季を愉しむ御湯会席プラン",
+      "body_char_count": 177,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "露天",
+        "露天風呂",
+        "熱い",
+        "予約"
+      ],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "露天風呂付"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "temperature_control",
+        "access_booking"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/165194/review.html",
+      "review_id": "33123472796334",
+      "review_hash": "0bde482b5e7218e8",
+      "review_date": "2025-09-19",
+      "stay_date": "2025-09-15",
+      "score": 5,
+      "title": "",
+      "room_type": "【スーペリア】温泉露天風呂付和洋室＜禁煙＞",
+      "plan_name": "【LUXDAYSポイント5倍】＜朝食付＞露天風呂付客室でくつろぐシンプルステイプラン",
+      "body_char_count": 137,
+      "body_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂"
+      ],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付客室"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/165194/review.html",
+      "review_id": "33123472832803",
+      "review_hash": "c3eeec065283b648",
+      "review_date": "2025-09-12",
+      "stay_date": "2025-09-07",
+      "score": 5,
+      "title": "",
+      "room_type": "【スーペリア】温泉露天風呂付和洋室＜禁煙＞",
+      "plan_name": "【食事なし】 自由きままにお気軽シンプルステイプラン",
+      "body_char_count": 148,
+      "body_keywords": [
+        "露天",
+        "露天風呂"
+      ],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "露天風呂付"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "access_booking"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/165194/review.html",
+      "review_id": "33123472648461",
+      "review_hash": "f519163647b1a2ee",
+      "review_date": "2025-09-08",
+      "stay_date": "2025-09-06",
+      "score": 4,
+      "title": "",
+      "room_type": "【スーペリア】温泉露天風呂付和洋室＜禁煙＞",
+      "plan_name": "【朝食付】露天風呂付客室でくつろぐ夕食なしのシンプルステイプラン",
+      "body_char_count": 114,
+      "body_keywords": [],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付客室"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "access_booking"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/165194/review.html",
+      "review_id": "33123476399535",
+      "review_hash": "b239ea5eded404e2",
+      "review_date": "2025-12-16",
+      "stay_date": "2025-12-16",
+      "score": 5,
+      "title": "静かで高級、人生で５本の指に入るホテル",
+      "room_type": "【スイート】温泉露天風呂付和洋室＜禁煙＞",
+      "plan_name": "【夕食付】朝食を抜いて朝はゆっくり気ままに朝寝坊プラン",
+      "body_char_count": 60,
+      "body_keywords": [
+        "静か"
+      ],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "静か"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "crowding"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/165194/review.html",
+      "review_id": "33123476447953",
+      "review_hash": "ecddabbf80864d7d",
+      "review_date": "2025-12-16",
+      "stay_date": "2025-12-11",
+      "score": 5,
+      "title": "食事とサービスが最高、部屋も快適",
+      "room_type": "【デラックス】温泉露天風呂付和洋室＜禁煙＞",
+      "plan_name": "【LUXDAYSセール】◇朝夕付◇伊予の四季を愉しむ御湯会席プラン＜露天風呂付き客室＞",
+      "body_char_count": 83,
+      "body_keywords": [],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付き"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/165194/review.html",
+      "review_id": "33123476176237",
+      "review_hash": "01990bc1a861dc5c",
+      "review_date": "2025-11-19",
+      "stay_date": "2025-11-17",
+      "score": 5,
+      "title": "食事がが最高！",
+      "room_type": "【スーペリア】温泉露天風呂付和洋室＜禁煙＞",
+      "plan_name": "2名様限定【MIYU Luxury Anniversary】＜朝夕付＞〜特別な1日となりますように〜",
+      "body_char_count": 52,
+      "body_keywords": [],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "露天風呂付"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/165194/review.html",
+      "review_id": "33123472646572",
+      "review_hash": "8983e5e0c5f8b80f",
+      "review_date": "2025-09-08",
+      "stay_date": "2025-09-06",
+      "score": 5,
+      "title": "",
+      "room_type": "【スーペリア】温泉露天風呂付和洋室＜禁煙＞",
+      "plan_name": "【７周年SALE】5％OFF〜◆朝夕付◆伊予の四季を愉しむ御湯会席プラン＜露天風呂付き客室＞",
+      "body_char_count": 59,
+      "body_keywords": [],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付き"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad381624/kuchikomi/",
+      "review_id": "9c52949946c97cfb",
+      "review_hash": "cc485be900c687d1",
+      "review_date": "2026-06-24",
+      "stay_date": "2026-05",
+      "score": 5,
+      "title": "おもてなしが最高",
+      "room_type": "露天風呂付",
+      "plan_name": "【",
+      "body_char_count": 71,
+      "body_keywords": [],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "露天風呂付"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad381624/kuchikomi/",
+      "review_id": "ac87a1c781360ee0",
+      "review_hash": "6ad8f1d43494efc1",
+      "review_date": "2026-05-31",
+      "stay_date": "2026-05",
+      "score": 5,
+      "title": "すべてが最高",
+      "room_type": "露天風呂付",
+      "plan_name": "【朝食付】露天風呂付き客室でくつろぐ夕食なしのシンプルステイプラン",
+      "body_char_count": 106,
+      "body_keywords": [
+        "温泉",
+        "道後温泉"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付き"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad381624/kuchikomi/",
+      "review_id": "22e6da7968569da2",
+      "review_hash": "0b3fa888c9c23f4c",
+      "review_date": "2026-05-30",
+      "stay_date": "2026-05",
+      "score": 5,
+      "title": "ラグジュアリーな温泉旅",
+      "room_type": "露天風呂付",
+      "plan_name": "【温泉ひとり旅】＜朝食付＞ひとり、心おきなく、露天風呂付き客室で寛ぐ極上ほっこりお篭りステイプラン",
+      "body_char_count": 501,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "露天",
+        "露天風呂",
+        "大浴場",
+        "ラウンジ",
+        "スカイラウンジ"
+      ],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付き"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "public_bath",
+        "open_air_public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring",
+        "water_texture",
+        "crowding"
+      ],
+      "caution_tags": [
+        "lounge_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad381624/kuchikomi/",
+      "review_id": "0ef04192a3add01e",
+      "review_hash": "05d71e5e13f55aca",
+      "review_date": "2026-05-26",
+      "stay_date": "2026-05",
+      "score": 5,
+      "title": "部屋おもてなし共に素晴らしかったです",
+      "room_type": "露天風呂付",
+      "plan_name": "【",
+      "body_char_count": 132,
+      "body_keywords": [
+        "温泉",
+        "道後温泉"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "露天風呂付"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad381624/kuchikomi/",
+      "review_id": "ffb0d4bf08e2aba6",
+      "review_hash": "285130aece14bb0d",
+      "review_date": "2026-05-26",
+      "stay_date": "2026-05",
+      "score": 5,
+      "title": "夫婦旅行満喫",
+      "room_type": "露天風呂付",
+      "plan_name": "【じゃらん限定】＜朝夕付＞大人の隠れ宿で伊予の四季を愉しむ御湯会席プラン＜露天風呂付き客室＞",
+      "body_char_count": 62,
+      "body_keywords": [],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付き"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad381624/kuchikomi/",
+      "review_id": "d3a99e35d0e8b332",
+      "review_hash": "163893e0197bb37b",
+      "review_date": "2026-05-23",
+      "stay_date": "2026-05",
+      "score": 4,
+      "title": "久しぶりの道後温泉",
+      "room_type": "露天風呂付",
+      "plan_name": "【じゃらんスペシャルウィーク】◇朝夕付◇伊予の四季を愉しむ御湯会席プラン＜露天風呂付き客室＞",
+      "body_char_count": 259,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "かけ流し"
+      ],
+      "context_keywords": [
+        "温泉",
+        "道後温泉",
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付き"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "view_garden",
+        "access_booking"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad381624/kuchikomi/",
+      "review_id": "3d13b1f9ccb4c819",
+      "review_hash": "49c5eaa3c878aa6f",
+      "review_date": "2026-05-19",
+      "stay_date": "2026-05",
+      "score": 5,
+      "title": "夫の退職お疲れさま旅",
+      "room_type": "露天風呂付",
+      "plan_name": "【",
+      "body_char_count": 254,
+      "body_keywords": [
+        "露天",
+        "露天風呂"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "露天風呂付"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad381624/kuchikomi/",
+      "review_id": "41821d75d7ab932d",
+      "review_hash": "14ca5df89f5ce6cc",
+      "review_date": "2026-05-06",
+      "stay_date": "2026-04",
+      "score": 5,
+      "title": "リピート中",
+      "room_type": "露天風呂付",
+      "plan_name": "【",
+      "body_char_count": 222,
+      "body_keywords": [
+        "温泉",
+        "道後温泉"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "露天風呂付"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad381624/kuchikomi/",
+      "review_id": "2f65d23f85ef2b13",
+      "review_hash": "576d07539c7feafb",
+      "review_date": "2026-04-16",
+      "stay_date": "2026-04",
+      "score": 5,
+      "title": "全てが最高です",
+      "room_type": "露天風呂付",
+      "plan_name": "【じゃらん限定】＜朝夕付＞大人の隠れ宿で伊予の四季を愉しむ御湯会席プラン＜露天風呂付き客室＞",
+      "body_char_count": 196,
+      "body_keywords": [],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付き"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad381624/kuchikomi/",
+      "review_id": "b68a797dbedfaba7",
+      "review_hash": "768dc933aa6d0d24",
+      "review_date": "2026-04-13",
+      "stay_date": "2026-04",
+      "score": 5,
+      "title": "部屋風呂でのんびり",
+      "room_type": "露天風呂付",
+      "plan_name": "【御湯スタンダード】＜朝夕付＞ダイニングtachibanaで伊予の四季を愉しむ御湯会席＜露天風呂付き客室＞",
+      "body_char_count": 190,
+      "body_keywords": [
+        "部屋風呂"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付き",
+        "部屋風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "view_garden",
+        "access_booking"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad381624/kuchikomi/",
+      "review_id": "8266650a77ab76fc",
+      "review_hash": "6e6790087dc160c6",
+      "review_date": "2026-04-13",
+      "stay_date": "2026-03",
+      "score": 5,
+      "title": "人の多さに圧倒",
+      "room_type": "露天風呂付",
+      "plan_name": "【じゃらん限定】＜朝夕付＞大人の隠れ宿で伊予の四季を愉しむ御湯会席プラン＜露天風呂付き客室＞",
+      "body_char_count": 189,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "道後温泉本館",
+        "静か"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付き"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture",
+        "crowding"
+      ],
+      "caution_tags": [
+        "access_booking"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad381624/kuchikomi/",
+      "review_id": "eaaf25bc0fa87d63",
+      "review_hash": "b6dc1c4036ec6e9b",
+      "review_date": "2026-04-10",
+      "stay_date": "2026-04",
+      "score": 5,
+      "title": "本当によかった",
+      "room_type": "露天風呂付",
+      "plan_name": "【じゃらん限定】＜朝夕付＞大人の隠れ宿で伊予の四季を愉しむ御湯会席プラン＜露天風呂付き客室＞",
+      "body_char_count": 95,
+      "body_keywords": [],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付き"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad381624/kuchikomi/",
+      "review_id": "0e6c1f4abb44f42a",
+      "review_hash": "e6e3f3e1f25b00e6",
+      "review_date": "2026-04-06",
+      "stay_date": "2026-04",
+      "score": 5,
+      "title": "よかった",
+      "room_type": "露天風呂付",
+      "plan_name": "【じゃらん限定】＜朝夕付＞大人の隠れ宿で伊予の四季を愉しむ御湯会席プラン＜露天風呂付き客室＞",
+      "body_char_count": 249,
+      "body_keywords": [
+        "大浴場",
+        "温度"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付き"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring",
+        "crowding"
+      ],
+      "caution_tags": [
+        "temperature_control",
+        "public_bath_size_expectation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad381624/kuchikomi/",
+      "review_id": "529d926ad00cb762",
+      "review_hash": "3f51e07f968709fe",
+      "review_date": "2026-03-09",
+      "stay_date": "2026-03",
+      "score": 5,
+      "title": "夕食も全てがパーフェクト",
+      "room_type": "露天風呂付",
+      "plan_name": "【朝食付】露天風呂付き客室でくつろぐ夕食なしのシンプルステイプラン",
+      "body_char_count": 169,
+      "body_keywords": [
+        "清潔"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付き"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "cleanliness_aging"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad381624/kuchikomi/",
+      "review_id": "be1d51e55d9d5ce3",
+      "review_hash": "6aa1b4673c550b58",
+      "review_date": "2026-02-25",
+      "stay_date": "2025-12",
+      "score": 5,
+      "title": "年末の道後温泉、柑橘の香るホテル",
+      "room_type": "露天風呂付",
+      "plan_name": "【じゃらん限定】＜朝夕付＞大人の隠れ宿で伊予の四季を愉しむ御湯会席プラン＜露天風呂付き客室＞",
+      "body_char_count": 326,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "かけ流し",
+        "露天",
+        "客室風呂",
+        "道後温泉本館",
+        "塩素",
+        "コンパクト"
+      ],
+      "context_keywords": [
+        "温泉",
+        "道後温泉",
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付き"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture",
+        "weak_onsen_feeling",
+        "chlorine_smell"
+      ],
+      "caution_tags": [
+        "view_garden",
+        "access_booking",
+        "public_bath_size_expectation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad381624/kuchikomi/",
+      "review_id": "3ff4a0d5688f026d",
+      "review_hash": "e8f80e8d803df450",
+      "review_date": "2026-02-23",
+      "stay_date": "2026-01",
+      "score": 4,
+      "title": "また行きたい",
+      "room_type": "露天風呂付",
+      "plan_name": "【じゃらんスペシャルウィーク】■朝夕付■伊予の四季を愉しむ御湯会席プラン＜露天風呂付き客室＞",
+      "body_char_count": 67,
+      "body_keywords": [],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付き"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad381624/kuchikomi/",
+      "review_id": "1e71f5de690d4ff9",
+      "review_hash": "a7fe52e6d9bcc0b9",
+      "review_date": "2026-02-19",
+      "stay_date": "2026-02",
+      "score": 5,
+      "title": "記念日旅行におすすめ",
+      "room_type": "露天風呂付",
+      "plan_name": "【",
+      "body_char_count": 86,
+      "body_keywords": [],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "露天風呂付"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad381624/kuchikomi/",
+      "review_id": "025250314158e96b",
+      "review_hash": "c508e3da767fe68d",
+      "review_date": "2026-02-16",
+      "stay_date": "2026-02",
+      "score": 5,
+      "title": "特別な日になりました",
+      "room_type": "露天風呂付",
+      "plan_name": "【御湯スタンダード】＜朝夕付＞ダイニングtachibanaで伊予の四季を愉しむ御湯会席＜露天風呂付き客室＞",
+      "body_char_count": 131,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "清潔"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付き"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [
+        "cleanliness_aging"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad381624/kuchikomi/",
+      "review_id": "4f39aaf37e0e92ff",
+      "review_hash": "54ee1c3d8643ea77",
+      "review_date": "2026-02-09",
+      "stay_date": "2026-02",
+      "score": 5,
+      "title": "道後温泉でリフレッシュ",
+      "room_type": "露天風呂付",
+      "plan_name": "【御湯スタンダード】＜朝夕付＞ダイニングtachibanaで伊予の四季を愉しむ御湯会席＜露天風呂付き客室＞",
+      "body_char_count": 273,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "露天",
+        "露天風呂",
+        "大浴場",
+        "ラウンジ",
+        "館内",
+        "清潔"
+      ],
+      "context_keywords": [
+        "温泉",
+        "道後温泉",
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付き"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "public_bath",
+        "open_air_public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring",
+        "water_texture",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "cleanliness_aging",
+        "view_garden",
+        "access_booking",
+        "lounge_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad381624/kuchikomi/",
+      "review_id": "a8b63b1efc732eda",
+      "review_hash": "73988d7b4d5677a1",
+      "review_date": "2026-01-20",
+      "stay_date": "2026-01",
+      "score": 5,
+      "title": "全てが最高",
+      "room_type": "露天風呂付",
+      "plan_name": "【じゃらん限定】＜朝夕付＞大人の隠れ宿で伊予の四季を愉しむ御湯会席プラン＜露天風呂付き客室＞",
+      "body_char_count": 82,
+      "body_keywords": [],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付き"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad381624/kuchikomi/",
+      "review_id": "299d8281966945db",
+      "review_hash": "8b79ad69a71e2959",
+      "review_date": "2026-01-10",
+      "stay_date": "2026-01",
+      "score": 4,
+      "title": "お誕生日祝い",
+      "room_type": "露天風呂付",
+      "plan_name": "【じゃらん限定】＜朝夕付＞大人の隠れ宿で伊予の四季を愉しむ御湯会席プラン＜露天風呂付き客室＞",
+      "body_char_count": 70,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "客室露天",
+        "客室露天風呂",
+        "温度"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付き"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [
+        "temperature_control"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad381624/kuchikomi/",
+      "review_id": "d0cac59b5d0f0673",
+      "review_hash": "46ed825743e5b7c5",
+      "review_date": "2026-01-02",
+      "stay_date": "2025-12",
+      "score": 5,
+      "title": "ずっと泊まってみたかった",
+      "room_type": "露天風呂付",
+      "plan_name": "【温泉ひとり旅】＜朝食付＞ひとり、心おきなく、露天風呂付き客室で寛ぐ極上ほっこりお篭りステイプラン",
+      "body_char_count": 551,
+      "body_keywords": [
+        "温泉",
+        "道後温泉"
+      ],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付き"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad381624/kuchikomi/",
+      "review_id": "9f0edd2097542a55",
+      "review_hash": "f7068aa7d0c08bb9",
+      "review_date": "2025-12-18",
+      "stay_date": "2025-12",
+      "score": 5,
+      "title": "5点以上をつけられないことだけが残念です",
+      "room_type": "露天風呂付",
+      "plan_name": "【じゃらん限定】＜朝夕付＞大人の隠れ宿で伊予の四季を愉しむ御湯会席プラン＜露天風呂付き客室＞",
+      "body_char_count": 520,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "部屋風呂",
+        "ラウンジ",
+        "予約"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付き"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "view_garden",
+        "access_booking",
+        "lounge_operation",
+        "price_expectation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad381624/kuchikomi/",
+      "review_id": "c6daf8dbb9547f3a",
+      "review_hash": "a45265f989e864bc",
+      "review_date": "2025-12-16",
+      "stay_date": "2025-12",
+      "score": 5,
+      "title": "全てにおいて最高でした",
+      "room_type": "露天風呂付",
+      "plan_name": "【じゃらんスペシャルウィーク】■朝夕付■伊予の四季を愉しむ御湯会席プラン＜露天風呂付き客室＞",
+      "body_char_count": 263,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "源泉",
+        "露天",
+        "露天風呂"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付き"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad381624/kuchikomi/",
+      "review_id": "e5a63a5af036933f",
+      "review_hash": "9c280f344660aa3e",
+      "review_date": "2025-12-13",
+      "stay_date": "2025-12",
+      "score": 5,
+      "title": "スタッフの接客が最高です",
+      "room_type": "露天風呂付",
+      "plan_name": "【じゃらんスペシャルウィーク】●朝夕付●伊予の四季を愉しむ御湯会席プラン＜露天風呂付き客室＞",
+      "body_char_count": 193,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "駐車場"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付き"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "access_booking"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad381624/kuchikomi/",
+      "review_id": "08ceb8d96b31c196",
+      "review_hash": "7e2a947ff8878dd9",
+      "review_date": "2025-11-16",
+      "stay_date": "2025-11",
+      "score": 5,
+      "title": "温泉がツルツルになります",
+      "room_type": "露天風呂付",
+      "plan_name": "【じゃらんのお得な10日間】●朝夕付●伊予の四季を愉しむ御湯会席プラン＜露天風呂付き客室＞",
+      "body_char_count": 91,
+      "body_keywords": [
+        "温泉",
+        "泉質"
+      ],
+      "context_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付き"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad381624/kuchikomi/",
+      "review_id": "ad6f1fa7931bf09f",
+      "review_hash": "cac45c9b2a938fff",
+      "review_date": "2025-10-21",
+      "stay_date": "2025-10",
+      "score": 5,
+      "title": "部屋に露天風呂があると何時でも大好きなお風呂に入れて最高",
+      "room_type": "露天風呂付",
+      "plan_name": "【じゃらんスペシャルウィーク】●朝夕付●伊予の四季を愉しむ御湯会席プラン＜露天風呂付き客室＞",
+      "body_char_count": 307,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "大浴場",
+        "清潔"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付き"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "public_bath",
+        "open_air_public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "cleanliness_aging",
+        "view_garden",
+        "access_booking",
+        "lounge_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad381624/kuchikomi/",
+      "review_id": "182474f3d96a2638",
+      "review_hash": "627e64d20254e154",
+      "review_date": "2025-10-12",
+      "stay_date": "2025-09",
+      "score": 5,
+      "title": "落ち着いた雰囲気の素晴らしい宿",
+      "room_type": "露天風呂付",
+      "plan_name": "【朝食付】露天風呂付き客室でくつろぐ夕食なしのシンプルステイプラン",
+      "body_char_count": 179,
+      "body_keywords": [
+        "温泉",
+        "道後温泉"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付き"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad381624/kuchikomi/",
+      "review_id": "69ef456b3bcf01df",
+      "review_hash": "b9772b1f90a3cea8",
+      "review_date": "2025-09-29",
+      "stay_date": "2025-09",
+      "score": 5,
+      "title": "心も身体も癒されました",
+      "room_type": "露天風呂付",
+      "plan_name": "【じゃらん限定】＜朝夕付＞大人の隠れ宿で伊予の四季を愉しむ御湯会席プラン＜露天風呂付き客室＞",
+      "body_char_count": 401,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "引き湯",
+        "露天",
+        "露天風呂"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付き"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "view_garden"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad381624/kuchikomi/",
+      "review_id": "4692dff2a9647513",
+      "review_hash": "a6acfa7be34176ed",
+      "review_date": "2025-09-23",
+      "stay_date": "2025-08",
+      "score": 5,
+      "title": "道後温泉を味わうのに最適",
+      "room_type": "露天風呂付",
+      "plan_name": "【朝食付】露天風呂付き客室でくつろぐ夕食なしのシンプルステイプラン",
+      "body_char_count": 166,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "露天",
+        "露天風呂",
+        "客室露天",
+        "客室露天風呂"
+      ],
+      "context_keywords": [
+        "温泉",
+        "道後温泉",
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付き"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "view_garden",
+        "access_booking"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad381624/kuchikomi/?screenId=UWW3701&idx=30",
+      "review_id": "dbc630a5d0ef1c80",
+      "review_hash": "4194f5d405fab71b",
+      "review_date": "2025-09-10",
+      "stay_date": "2025-09",
+      "score": 5,
+      "title": "すべてが良かった",
+      "room_type": "露天風呂付",
+      "plan_name": "【じゃらんスペシャルウィーク】●朝夕付●伊予の四季を愉しむ御湯会席プラン＜露天風呂付き客室＞",
+      "body_char_count": 170,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付き",
+        "商店街",
+        "温度"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付き"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [
+        "temperature_control",
+        "access_booking"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad381624/kuchikomi/?screenId=UWW3701&idx=30",
+      "review_id": "56bcf34332e48468",
+      "review_hash": "75a056d49d4a1387",
+      "review_date": "2025-09-09",
+      "stay_date": "2025-09",
+      "score": 5,
+      "title": "まったり過ごしたい方オススメ",
+      "room_type": "露天風呂付",
+      "plan_name": "【朝食付】露天風呂付き客室でくつろぐ夕食なしのシンプルステイプラン",
+      "body_char_count": 140,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "清潔"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付き"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "cleanliness_aging"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad381624/kuchikomi/?screenId=UWW3701&idx=30",
+      "review_id": "da0cab4ffa180d08",
+      "review_hash": "485e484b61ea0fe2",
+      "review_date": "2025-07-11",
+      "stay_date": "2025-06",
+      "score": 5,
+      "title": "綺麗でした",
+      "room_type": "和洋室",
+      "plan_name": "【じゃらん限定】大人の隠れ宿で伊予の四季を愉しむ御湯会席プラン＜朝夕付＞",
+      "body_char_count": 115,
+      "body_keywords": [],
+      "context_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "access_booking"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad381624/kuchikomi/?screenId=UWW3701&idx=30",
+      "review_id": "2087f3aef053d35b",
+      "review_hash": "9bb246b263741ceb",
+      "review_date": "2025-07-04",
+      "stay_date": "2025-05",
+      "score": 5,
+      "title": "大満足でした",
+      "room_type": "和洋室",
+      "plan_name": "【じゃらん限定】大人の隠れ宿で伊予の四季を愉しむ御湯会席プラン＜朝夕付＞",
+      "body_char_count": 136,
+      "body_keywords": [],
+      "context_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "JTB",
+      "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/7461004/review/?area=38&room=1&dateunspecified=1&staynight=1&roomassign=m2",
+      "review_id": "5728f839146ba32b",
+      "review_hash": "fe6d6b005965b7a0",
+      "review_date": null,
+      "stay_date": "2026-03-29",
+      "score": null,
+      "title": "スタッフの対応が最初から最後まで大変良い",
+      "room_type": "",
+      "plan_name": "60代 / 男性 / レジャー・観光",
+      "body_char_count": 143,
+      "body_keywords": [
+        "露天",
+        "露天風呂"
+      ],
+      "context_keywords": [],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "JTB",
+      "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/7461004/review/?area=38&room=1&dateunspecified=1&staynight=1&roomassign=m2",
+      "review_id": "ab3f721449b8d60b",
+      "review_hash": "d44ffc3fec9653b5",
+      "review_date": null,
+      "stay_date": "2026-03-19",
+      "score": null,
+      "title": "お食事がおいしい",
+      "room_type": "",
+      "plan_name": "70代 / 女性 / その他",
+      "body_char_count": 60,
+      "body_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "ラウンジ"
+      ],
+      "context_keywords": [],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [
+        "lounge_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "JTB",
+      "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/7461004/review/?area=38&room=1&dateunspecified=1&staynight=1&roomassign=m2",
+      "review_id": "c4db92a6a85be6be",
+      "review_hash": "8f891989f5a8b39c",
+      "review_date": null,
+      "stay_date": "2026-03-12",
+      "score": null,
+      "title": "ホテル、スタッフの対応としては申し分ありません",
+      "room_type": "",
+      "plan_name": "60代 / 男性 / レジャー・観光",
+      "body_char_count": 150,
+      "body_keywords": [
+        "静か",
+        "眺望"
+      ],
+      "context_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [
+        "crowding"
+      ],
+      "caution_tags": [
+        "view_garden",
+        "price_expectation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "JTB",
+      "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/7461004/review/?area=38&room=1&dateunspecified=1&staynight=1&roomassign=m2",
+      "review_id": "e167418629925220",
+      "review_hash": "41ae9576eea86b2e",
+      "review_date": null,
+      "stay_date": "2025-12-06",
+      "score": null,
+      "title": "スタッフの皆さんの暖かい気配り",
+      "room_type": "",
+      "plan_name": "60代 / 男性 / レジャー・観光",
+      "body_char_count": 115,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "大浴場"
+      ],
+      "context_keywords": [],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "public_bath",
+        "open_air_public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "JTB",
+      "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/7461004/review/?area=38&room=1&dateunspecified=1&staynight=1&roomassign=m2",
+      "review_id": "1aa9d3632ae58f06",
+      "review_hash": "8da2f77ad9a85924",
+      "review_date": null,
+      "stay_date": "2025-10-31",
+      "score": null,
+      "title": "快適でしかなかった",
+      "room_type": "",
+      "plan_name": "40代 / 女性 / レジャー・観光",
+      "body_char_count": 25,
+      "body_keywords": [],
+      "context_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "JTB",
+      "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/7461004/review/?area=38&room=1&dateunspecified=1&staynight=1&roomassign=m2",
+      "review_id": "5f505264b5b655aa",
+      "review_hash": "3a60e563a4b24cc1",
+      "review_date": null,
+      "stay_date": "2025-10-12",
+      "score": null,
+      "title": "料金は、高いがそれ以上の価値があると思う",
+      "room_type": "",
+      "plan_name": "60代 / 男性 / レジャー・観光",
+      "body_char_count": 20,
+      "body_keywords": [
+        "高い"
+      ],
+      "context_keywords": [
+        "高い"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "caution_tags": [
+        "price_expectation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "JTB",
+      "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/7461004/review/?area=38&room=1&dateunspecified=1&staynight=1&roomassign=m2",
+      "review_id": "37cbfe5f608b2534",
+      "review_hash": "2fb57c56aea6652e",
+      "review_date": null,
+      "stay_date": "2025-09-16",
+      "score": null,
+      "title": "とても素敵な施設でした",
+      "room_type": "",
+      "plan_name": "50代 / 女性 / 夫婦・カップル",
+      "body_char_count": 86,
+      "body_keywords": [],
+      "context_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "JTB",
+      "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/7461004/review/?area=38&room=1&dateunspecified=1&staynight=1&roomassign=m2",
+      "review_id": "c529ff9787b5fbe8",
+      "review_hash": "a7107770fdb5d142",
+      "review_date": null,
+      "stay_date": "2025-08-26",
+      "score": null,
+      "title": "お客さんの数も少なく清潔感もありスタッフの対応が素敵でした",
+      "room_type": "",
+      "plan_name": "50代 / 男性 / 家族（未成年あり）",
+      "body_char_count": 30,
+      "body_keywords": [
+        "清潔"
+      ],
+      "context_keywords": [
+        "清潔"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "caution_tags": [
+        "cleanliness_aging"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "JTB",
+      "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/7461004/review/?area=38&room=1&dateunspecified=1&staynight=1&roomassign=m2",
+      "review_id": "48426d6e41f520a0",
+      "review_hash": "eeccd64120d713c7",
+      "review_date": null,
+      "stay_date": "2025-08-25",
+      "score": null,
+      "title": "清潔感",
+      "room_type": "",
+      "plan_name": "50代 / 女性 / ひとり",
+      "body_char_count": 19,
+      "body_keywords": [
+        "清潔"
+      ],
+      "context_keywords": [
+        "清潔"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "caution_tags": [
+        "cleanliness_aging"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "JTB",
+      "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/7461004/review/?area=38&room=1&dateunspecified=1&staynight=1&roomassign=m2",
+      "review_id": "8321b2655d8a08cd",
+      "review_hash": "5e74957cd90b55fe",
+      "review_date": null,
+      "stay_date": "2025-08-22",
+      "score": null,
+      "title": "全室客室露天風呂付で12歳以下お断りの宿というコンセプトから、静かな環境の中でゆっくりのんびりと過ごすことが出来て良かった",
+      "room_type": "",
+      "plan_name": "50代 / 女性 / グループ",
+      "body_char_count": 490,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "客室露天",
+        "客室露天風呂",
+        "露天風呂付",
+        "温度",
+        "静か",
+        "掃除"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "客室露天",
+        "客室露天風呂",
+        "露天風呂付",
+        "静か"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "crowding",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "temperature_control",
+        "cleanliness_aging",
+        "access_booking"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "JTB",
+      "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/7461004/review/?area=38&room=1&dateunspecified=1&staynight=1&roomassign=m2",
+      "review_id": "515d4046589e8e67",
+      "review_hash": "b9d3fd43a822201d",
+      "review_date": null,
+      "stay_date": "2025-08-18",
+      "score": null,
+      "title": "ご飯が美味しく部屋もよかった",
+      "room_type": "",
+      "plan_name": "30代 / 女性 / 夫婦・カップル",
+      "body_char_count": 39,
+      "body_keywords": [],
+      "context_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "JTB",
+      "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/7461004/review/?area=38&room=1&dateunspecified=1&staynight=1&roomassign=m2",
+      "review_id": "7cb510a00098a09d",
+      "review_hash": "0c9db03004032c67",
+      "review_date": null,
+      "stay_date": "2025-06-09",
+      "score": null,
+      "title": "スタッフの対応やアメニティの良さ部屋も綺麗で食事も美味しい最高の宿でした",
+      "room_type": "",
+      "plan_name": "60代 / 女性 / 夫婦・カップル",
+      "body_char_count": 37,
+      "body_keywords": [],
+      "context_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "JTB",
+      "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/7461004/review/?area=38&room=1&dateunspecified=1&staynight=1&roomassign=m2",
+      "review_id": "d02f390fe4216ad1",
+      "review_hash": "ebf97b1c5e4f35b6",
+      "review_date": null,
+      "stay_date": "2025-03-31",
+      "score": null,
+      "title": "宿の雰囲気や設備も大変良いが、スタッフのホスピタリティが素晴らしい",
+      "room_type": "",
+      "plan_name": "70代 / 女性 / ひとり",
+      "body_char_count": 55,
+      "body_keywords": [],
+      "context_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "JTB",
+      "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/7461004/review/?area=38&room=1&dateunspecified=1&staynight=1&roomassign=m2",
+      "review_id": "a9b842a83be001c0",
+      "review_hash": "3431505fad08e564",
+      "review_date": null,
+      "stay_date": "2025-02-16",
+      "score": null,
+      "title": "スタッフの方々の対応は最高で食事宿の雰囲気もとても良かったです",
+      "room_type": "",
+      "plan_name": "60代 / 女性 / ひとり",
+      "body_char_count": 48,
+      "body_keywords": [],
+      "context_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "JTB",
+      "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/7461004/review/?area=38&room=1&dateunspecified=1&staynight=1&roomassign=m2",
+      "review_id": "fe2472e1dfdf5c12",
+      "review_hash": "d150b4ada3c319a5",
+      "review_date": null,
+      "stay_date": "2024-11-09",
+      "score": null,
+      "title": "とてもお洒落な雰囲気でした",
+      "room_type": "",
+      "plan_name": "60代 / 男性 / 家族",
+      "body_char_count": 166,
+      "body_keywords": [],
+      "context_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "JTB",
+      "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/7461004/review/?area=38&room=1&dateunspecified=1&staynight=1&roomassign=m2",
+      "review_id": "de5b1bc1dfc0e20c",
+      "review_hash": "16c5212b24da532a",
+      "review_date": null,
+      "stay_date": "2024-10-24",
+      "score": null,
+      "title": "スタッフの対応の良さ",
+      "room_type": "",
+      "plan_name": "60代 / 男性 / 夫婦・カップル",
+      "body_char_count": 39,
+      "body_keywords": [],
+      "context_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "access_booking"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "JTB",
+      "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/7461004/review/?area=38&room=1&dateunspecified=1&staynight=1&roomassign=m2",
+      "review_id": "cd5978ac76ac4f8d",
+      "review_hash": "8c5ef0e60ad952b9",
+      "review_date": null,
+      "stay_date": "2024-08-15",
+      "score": null,
+      "title": "ホテルのロビー、ラウンジ、客室ともセンスの良いデザインで大変気に入りました",
+      "room_type": "",
+      "plan_name": "60代 / 男性 / 夫婦・カップル",
+      "body_char_count": 54,
+      "body_keywords": [
+        "ラウンジ"
+      ],
+      "context_keywords": [
+        "ラウンジ"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "caution_tags": [
+        "lounge_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "JTB",
+      "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/7461004/review/?area=38&room=1&dateunspecified=1&staynight=1&roomassign=m2",
+      "review_id": "9cc86e302ff156a2",
+      "review_hash": "146f2fed2ac8b3a1",
+      "review_date": null,
+      "stay_date": "2024-07-23",
+      "score": null,
+      "title": "最高でした",
+      "room_type": "",
+      "plan_name": "50代 / 男性 / 家族",
+      "body_char_count": 74,
+      "body_keywords": [],
+      "context_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "JTB",
+      "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/7461004/review/?area=38&room=1&dateunspecified=1&staynight=1&roomassign=m2",
+      "review_id": "989651dddcbc1245",
+      "review_hash": "e7f39ccf880a63dd",
+      "review_date": null,
+      "stay_date": "2024-07-19",
+      "score": null,
+      "title": "専属スタッフの対応が心地良く、食事においては",
+      "room_type": "",
+      "plan_name": "70代 / 男性 / 夫婦・カップル",
+      "body_char_count": 64,
+      "body_keywords": [],
+      "context_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "JTB",
+      "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/7461004/review/?area=38&room=1&dateunspecified=1&staynight=1&roomassign=m2",
+      "review_id": "3c742ef7d6094e60",
+      "review_hash": "a3a5e6d47bbcdfe9",
+      "review_date": null,
+      "stay_date": "2024-05-23",
+      "score": null,
+      "title": "清潔です",
+      "room_type": "",
+      "plan_name": "60代 / 男性 / 夫婦・カップル",
+      "body_char_count": 46,
+      "body_keywords": [
+        "清潔"
+      ],
+      "context_keywords": [
+        "清潔"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "caution_tags": [
+        "cleanliness_aging"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "JTB",
+      "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/7461004/review/?area=38&room=1&dateunspecified=1&staynight=1&roomassign=m2",
+      "review_id": "3af1258606e0eca2",
+      "review_hash": "4b86d52e17cdd1e0",
+      "review_date": null,
+      "stay_date": null,
+      "score": null,
+      "title": "客室の半露天風呂は大浴場を利用したいという気にならないくらいの十分な広さでした",
+      "room_type": "",
+      "plan_name": "不明 / 不明 / 家族",
+      "body_char_count": 134,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "大浴場"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "大浴場"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "public_bath",
+        "open_air_public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring"
+      ],
+      "caution_tags": [
+        "view_garden"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "JTB",
+      "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/7461004/review/?area=38&room=1&dateunspecified=1&staynight=1&roomassign=m2",
+      "review_id": "5089c056b2a5408f",
+      "review_hash": "5d6b46d05d4f3c1f",
+      "review_date": null,
+      "stay_date": null,
+      "score": null,
+      "title": "松山の宿でオススメを聞かれたら",
+      "room_type": "",
+      "plan_name": "50代 / 男性 / 恋人・夫婦",
+      "body_char_count": 382,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "露天",
+        "露天風呂",
+        "道後温泉本館",
+        "商店街",
+        "静か"
+      ],
+      "context_keywords": [],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture",
+        "crowding",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "view_garden",
+        "access_booking"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "JTB",
+      "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/7461004/review/?area=38&room=1&dateunspecified=1&staynight=1&roomassign=m2",
+      "review_id": "7e89f4fc4842b815",
+      "review_hash": "e96fa2710d7a35f1",
+      "review_date": null,
+      "stay_date": null,
+      "score": null,
+      "title": "スタッフの方々が親切でした",
+      "room_type": "",
+      "plan_name": "50代 / 男性 / 恋人・夫婦",
+      "body_char_count": 45,
+      "body_keywords": [
+        "温泉"
+      ],
+      "context_keywords": [],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "JTB",
+      "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/7461004/review/?area=38&room=1&dateunspecified=1&staynight=1&roomassign=m2",
+      "review_id": "da626dd6be577406",
+      "review_hash": "a1f3efd6956ede42",
+      "review_date": null,
+      "stay_date": null,
+      "score": null,
+      "title": "せっかくの道後温泉なので、部屋のお風呂ばかり使いました",
+      "room_type": "",
+      "plan_name": "60代 / 女性 / 恋人・夫婦",
+      "body_char_count": 54,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "大浴場",
+        "サウナ",
+        "水風呂"
+      ],
+      "context_keywords": [
+        "温泉",
+        "道後温泉"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_bath",
+        "public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring",
+        "water_texture"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    }
+  ]
+}

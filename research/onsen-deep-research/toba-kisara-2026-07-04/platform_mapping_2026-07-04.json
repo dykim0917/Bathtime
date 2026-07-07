@@ -1,0 +1,127 @@
+{
+  "research_date": "2026-07-04",
+  "scope": "ready lodging deep research: toba-kisara / 季さら",
+  "method": "Rakuten and Jalan public review HTML/JSON were parsed directly; Google Hotels review tab and Naver Search were checked with Aside Browser. Search snippets and AI summaries are not counted as direct reviews.",
+  "direct_review_sampling_status": {
+    "data_quality_grade": "A",
+    "directly_read_reviews": 780,
+    "onsen_related_direct_reviews": 393,
+    "direct_body_platform_count": 3,
+    "platforms_counted_as_direct_body": [
+      "Rakuten Travel",
+      "Jalan",
+      "Google-native"
+    ],
+    "korean_direct_review_status": "not_found_after_naver_aside_check",
+    "note": "Naver and Google search snippets were separated from direct review counts."
+  },
+  "lodgings": [
+    {
+      "slug": "toba-kisara",
+      "name_ja": "伊勢志摩・鳥羽 懐古ロマンの宿 季さら",
+      "name_ko_or_en": "키사라 / Kisara / Kaiko Roman no Yado Kisara / Nostalgic Romance Renewal Inn",
+      "address": "三重県鳥羽市安楽島町1075-11",
+      "onsen_area": "社宮司温泉 / 七栗の湯 source claim",
+      "google_maps": {
+        "rating": 4.3,
+        "visible_review_count": 207,
+        "rating_distribution": "Aside snapshot exposed star rows but not numeric distribution counts",
+        "korean_reviews_visible": false,
+        "review_body_access": "direct_readable",
+        "directly_read_reviews": 20,
+        "onsen_related_direct_reviews": 9,
+        "ota_provider_cards": [
+          "Booking.com price card",
+          "official site price card",
+          "nearby Kisara Oneness and Kisara Bettei Toki cards, separated as related-but-distinct properties"
+        ]
+      },
+      "ota_review_pool_signals": {
+        "rakuten_travel": {
+          "rating": 4.54,
+          "visible_review_count": 233,
+          "extractable_review_count_seen": 193,
+          "review_body_access": "direct_readable",
+          "directly_read_reviews": 193,
+          "onsen_related_direct_reviews": 90,
+          "url": "https://travel.rakuten.co.jp/HOTEL/108775/review.html"
+        },
+        "jalan": {
+          "rating": 4.3,
+          "visible_review_count": 567,
+          "latest_visible_count": 8,
+          "archive_visible_count": 559,
+          "bath_subrating": 4.8,
+          "review_body_access": "direct_readable",
+          "directly_read_reviews": 567,
+          "onsen_related_direct_reviews": 294,
+          "url": "https://www.jalan.net/yad359266/kuchikomi/"
+        },
+        "ikkyu": {
+          "rating": 4.6,
+          "visible_review_count": 78,
+          "review_body_access": "blocked_static_snippet_google_surface",
+          "directly_read_reviews": 0,
+          "url": "https://www.ikyu.com/00001863/"
+        },
+        "yahoo_travel": {
+          "rating": 4.6,
+          "visible_review_count": 79,
+          "review_body_access": "blocked_static_snippet_google_surface",
+          "directly_read_reviews": 0,
+          "url": "https://travel.yahoo.co.jp/00001863/review/"
+        },
+        "trip_com": {
+          "visible_review_count": 40,
+          "review_body_access": "partial_static_signal",
+          "directly_read_reviews": 0,
+          "identity_note": "Kaiko Roman No Yado Kisara and Kisara Oneness both surface in search; keep distinct."
+        },
+        "booking_com": {
+          "visible_review_count": null,
+          "review_body_access": "partial_or_bot_challenge",
+          "directly_read_reviews": 0
+        },
+        "naver_search": {
+          "visible_review_count": null,
+          "review_body_access": "snippet_only",
+          "directly_read_reviews": 0,
+          "onsen_related_direct_reviews": 0,
+          "notes": "Korean queries surfaced unrelated ryokan results, AI brief, Trip.com/Jalan links, and snippets. No direct Naver Blog/Cafe stay report for this property was opened."
+        }
+      },
+      "official_bath_facts_seen": {
+        "official_site_url": "https://www.toba-kisara.com/kisara/",
+        "room_open_air_bath": "official claims all rooms have open-air baths; homepage says 13 detached rooms",
+        "room_bath": "review/plan context repeatedly references inner bath/内風呂; official room page confirms detached room bath context but detailed water treatment not fully exposed in static text",
+        "public_bath": "not clearly confirmed as shared public bath; Rakuten facility surface says 露天風呂 but main product is in-room baths",
+        "private_bath_or_family_bath": "no clear official shared reservable/family bath confirmation; do not merge in-room private baths with family baths",
+        "source_claim": "社宮司温泉, 七栗 source, alkaline, almost colorless/odorless claim seen on official/Rakuten surfaces",
+        "room_count_caution": "official homepage says 13 detached rooms; Rakuten says 10 rooms. Treat as scope/version mismatch and verify before product display."
+      },
+      "review_signal_keywords": [
+        "露天風呂",
+        "温泉",
+        "内風呂",
+        "部屋付き",
+        "客室露天",
+        "プライベート",
+        "泉質",
+        "すべすべ",
+        "プロジェクション"
+      ],
+      "caution_keywords": [
+        "虫",
+        "温度",
+        "掃除",
+        "古い",
+        "匂い",
+        "カビ",
+        "予約",
+        "送迎",
+        "説明"
+      ],
+      "next_sampling": "A급 기준은 충족. 한국어 직접 숙박기 확보가 필요하면 Naver Blog/Google Korean web을 별도 장기 검색하고, Ikkyu/Yahoo는 Aside 또는 브라우저 세션으로 본문 접근을 재시도."
+    }
+  ]
+}

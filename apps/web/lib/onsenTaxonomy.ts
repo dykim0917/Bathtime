@@ -44,6 +44,9 @@ const regionGroupLabelByValue: Record<OnsenRegionGroup, string> = {
 
 const prefectureLabelByValue: Record<string, string> = {
   oita: '오이타현',
+  kumamoto: '구마모토현',
+  kagoshima: '가고시마현',
+  saga: '사가현',
   kanagawa: '가나가와현',
   yamanashi: '야마나시현',
   hokkaido: '홋카이도',
@@ -51,6 +54,12 @@ const prefectureLabelByValue: Record<string, string> = {
 
 const cityLabelByValue: Record<string, string> = {
   yufu: '유후시',
+  beppu: '벳푸시',
+  minamioguni: '미나미오구니마치',
+  ibusuki: '이부스키시',
+  ureshino: '우레시노시',
+  takeo: '다케오시',
+  kirishima: '기리시마시',
   hakone: '하코네마치',
   yugawara: '유가와라마치',
   fuefuki: '후에후키시',
@@ -73,6 +82,66 @@ const onsenAreaMetaByValue: Record<string, Omit<OnsenLocation, 'country' | 'disp
     cityLabel: '유후시',
     onsenArea: 'yufuin',
     onsenAreaLabel: '유후인',
+  },
+  beppu: {
+    regionGroup: 'kyushu',
+    regionGroupLabel: '규슈',
+    prefecture: 'oita',
+    prefectureLabel: '오이타현',
+    city: 'beppu',
+    cityLabel: '벳푸시',
+    onsenArea: 'beppu',
+    onsenAreaLabel: '벳푸',
+  },
+  kurokawa: {
+    regionGroup: 'kyushu',
+    regionGroupLabel: '규슈',
+    prefecture: 'kumamoto',
+    prefectureLabel: '구마모토현',
+    city: 'minamioguni',
+    cityLabel: '미나미오구니마치',
+    onsenArea: 'kurokawa',
+    onsenAreaLabel: '구로카와',
+  },
+  ibusuki: {
+    regionGroup: 'kyushu',
+    regionGroupLabel: '규슈',
+    prefecture: 'kagoshima',
+    prefectureLabel: '가고시마현',
+    city: 'ibusuki',
+    cityLabel: '이부스키시',
+    onsenArea: 'ibusuki',
+    onsenAreaLabel: '이부스키',
+  },
+  ureshino: {
+    regionGroup: 'kyushu',
+    regionGroupLabel: '규슈',
+    prefecture: 'saga',
+    prefectureLabel: '사가현',
+    city: 'ureshino',
+    cityLabel: '우레시노시',
+    onsenArea: 'ureshino',
+    onsenAreaLabel: '우레시노',
+  },
+  takeo: {
+    regionGroup: 'kyushu',
+    regionGroupLabel: '규슈',
+    prefecture: 'saga',
+    prefectureLabel: '사가현',
+    city: 'takeo',
+    cityLabel: '다케오시',
+    onsenArea: 'takeo',
+    onsenAreaLabel: '다케오',
+  },
+  kirishima: {
+    regionGroup: 'kyushu',
+    regionGroupLabel: '규슈',
+    prefecture: 'kagoshima',
+    prefectureLabel: '가고시마현',
+    city: 'kirishima',
+    cityLabel: '기리시마시',
+    onsenArea: 'kirishima',
+    onsenAreaLabel: '기리시마',
   },
   hakone: {
     regionGroup: 'kanto',
@@ -186,6 +255,12 @@ export const regionGroupFilters: OnsenTaxonomyFilter<OnsenRegionGroup>[] = [
 
 export const onsenAreaFilters: OnsenTaxonomyFilter[] = [
   { label: '유후인', value: 'yufuin', description: '오이타현 유후시' },
+  { label: '벳푸', value: 'beppu', description: '오이타현 벳푸시' },
+  { label: '구로카와', value: 'kurokawa', description: '구마모토현' },
+  { label: '이부스키', value: 'ibusuki', description: '가고시마현' },
+  { label: '우레시노', value: 'ureshino', description: '사가현' },
+  { label: '다케오', value: 'takeo', description: '사가현' },
+  { label: '기리시마', value: 'kirishima', description: '가고시마현' },
   { label: '하코네', value: 'hakone', description: '가나가와현' },
   { label: '유가와라', value: 'yugawara', description: '가나가와현' },
   { label: '이사와', value: 'isawa', description: '야마나시현' },
@@ -196,8 +271,6 @@ export const onsenAreaFilters: OnsenTaxonomyFilter[] = [
   { label: '유노카와', value: 'yunokawa-hakodate', description: '홋카이도 하코다테' },
   { label: '도야코', value: 'hokkaido-toyako', description: '홋카이도' },
   { label: '도카치가와', value: 'tokachigawa', description: '홋카이도' },
-  { label: '벳푸', value: 'beppu', description: '오이타현 벳푸시', disabled: true },
-  { label: '쿠로카와', value: 'kurokawa', description: '구마모토현', disabled: true },
   { label: '도쿄', value: 'tokyo', description: '도심 온천/호텔 대욕장', disabled: true },
   { label: '오사카', value: 'osaka', description: '도심 온천/당일온천', disabled: true },
 ];
@@ -210,8 +283,8 @@ export const travelContextFilters: OnsenTaxonomyFilter<OnsenTravelContext>[] = [
 ];
 
 export const bathContextFilters: OnsenTaxonomyFilter<OnsenBathContext>[] = [
-  { label: '객실탕 중심', value: 'room_bath' },
-  { label: '가족탕/대절탕 있음', value: 'private_bath' },
+  { label: '객실 내 프라이빗탕 중심', value: 'room_bath' },
+  { label: '대절탕 있음', value: 'private_bath' },
   { label: '대욕장 중심', value: 'public_bath' },
 ];
 
@@ -276,7 +349,7 @@ export function getDefaultOnsenLocation(region: string | null | undefined, area?
     return {
       country: 'JP',
       ...meta,
-      display: `${meta.regionGroupLabel} · ${meta.prefectureLabel} · ${meta.onsenAreaLabel}`,
+      display: formatOnsenLocationDisplay(meta),
     };
   }
 
@@ -292,6 +365,10 @@ export function getDefaultOnsenLocation(region: string | null | undefined, area?
     onsenAreaLabel: area ?? region ?? '온천지 확인',
     display: area ?? region ?? '일본 온천',
   };
+}
+
+export function formatOnsenLocationDisplay(location: Pick<OnsenLocation, 'regionGroupLabel' | 'prefectureLabel' | 'onsenAreaLabel'>) {
+  return [...new Set([location.regionGroupLabel, location.prefectureLabel, location.onsenAreaLabel].filter(Boolean))].join(' · ');
 }
 
 export function deriveOnsenContexts(candidate: Pick<OnsenCandidate, 'tags' | 'primaryBath' | 'summary' | 'waterDecision'>): OnsenStructuredContexts {

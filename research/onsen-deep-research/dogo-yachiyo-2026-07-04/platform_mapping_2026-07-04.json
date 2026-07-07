@@ -1,0 +1,153 @@
+{
+  "research_date": "2026-07-04",
+  "scope": "ready lodging deep research: dogo-yachiyo only",
+  "method": "Static OTA HTML extraction, Aside Browser for Ikkyu/Yahoo/Google/Naver, and strict separation of visible review pool, direct readable reviews, snippets, AI summaries, and official bath facts.",
+  "direct_review_sampling_status": {
+    "target_direct_reviews": 300,
+    "achieved_direct_reviews": 323,
+    "onsen_related_direct_reviews": 196,
+    "direct_body_platform_count": 7,
+    "data_quality_grade": "A"
+  },
+  "lodgings": [
+    {
+      "slug": "dogo-yachiyo",
+      "name_ja": "道後温泉 八千代",
+      "name_ko_or_en": "Dogo Onsen Yachiyo / 도고온천 야치요",
+      "official_site_url": "https://www.e-yachiyo.co.jp/",
+      "official_site_access_note": "https fetch failed locally; http official pages opened. Google result and Rakuten mirror also showed official text.",
+      "address": "愛媛県松山市道後多幸町6-34",
+      "onsen_area": "道後温泉",
+      "google_maps": {
+        "rating": 4.6,
+        "visible_review_count": 468,
+        "rating_distribution": "seen as bars in Google Hotels but exact numbers not extracted",
+        "korean_reviews_visible": "Google UI Korean locale visible; Google-native body text did not render in accessible sample",
+        "review_body_access": "partial",
+        "direct_read_reviews": 0,
+        "onsen_related_direct_reviews": 0,
+        "notes": "Google Hotels/Maps checked with Aside Browser. Provider cards and Google review summary were not counted as Google-native direct reviews."
+      },
+      "ota_review_pool_signals": [
+        {
+          "platform": "Rakuten Travel",
+          "rating": 4.83,
+          "visible_review_count": 496,
+          "review_body_access": "direct_readable",
+          "direct_read_reviews": 36,
+          "onsen_related_direct_reviews": 22
+        },
+        {
+          "platform": "Jalan",
+          "rating": 4.9,
+          "visible_review_count": 657,
+          "review_body_access": "direct_readable",
+          "direct_read_reviews": 71,
+          "onsen_related_direct_reviews": 46
+        },
+        {
+          "platform": "JTB",
+          "rating": "customer questionnaire 96; bath 84-class signal seen",
+          "visible_review_count": 60,
+          "review_body_access": "direct_readable",
+          "direct_read_reviews": 80,
+          "onsen_related_direct_reviews": 33,
+          "notes": "JTB pagination exposed more readable blocks than the visible count string; direct count is body blocks actually parsed."
+        },
+        {
+          "platform": "Ikkyu",
+          "rating": 4.80,
+          "visible_review_count": 76,
+          "review_body_access": "direct_readable via Aside Browser",
+          "direct_read_reviews": 47,
+          "onsen_related_direct_reviews": 30
+        },
+        {
+          "platform": "Yahoo Travel",
+          "rating": 4.80,
+          "visible_review_count": 76,
+          "review_body_access": "direct_readable via Aside Browser",
+          "direct_read_reviews": 68,
+          "onsen_related_direct_reviews": 44,
+          "notes": "Same corporate review ecosystem as Ikkyu; kept as separate surface but caveat recorded for downstream hash dedupe."
+        },
+        {
+          "platform": "Booking.com",
+          "rating": 9.1,
+          "visible_review_count": 75,
+          "review_body_access": "partial",
+          "direct_read_reviews": 19,
+          "onsen_related_direct_reviews": 19
+        },
+        {
+          "platform": "Hotels.com / Expedia",
+          "rating": 9.6,
+          "visible_review_count": 164,
+          "review_body_access": "partial",
+          "direct_read_reviews": 0,
+          "onsen_related_direct_reviews": 0,
+          "notes": "Aside showed property overview and visible pool; review modal was not opened reliably."
+        },
+        {
+          "platform": "Tripadvisor",
+          "rating": 4.2,
+          "visible_review_count": 121,
+          "review_body_access": "snippet_only",
+          "direct_read_reviews": 0,
+          "onsen_related_direct_reviews": 0
+        },
+        {
+          "platform": "Relux",
+          "rating": 4.8,
+          "visible_review_count": 69,
+          "review_body_access": "snippet_only",
+          "direct_read_reviews": 0,
+          "onsen_related_direct_reviews": 0
+        },
+        {
+          "platform": "Naver Blog/Search",
+          "rating": null,
+          "visible_review_count": null,
+          "review_body_access": "direct_readable plus snippet_only",
+          "direct_read_reviews": 2,
+          "onsen_related_direct_reviews": 2,
+          "notes": "Naver search snippets from OTA, partner pages, and blogs were not counted. Three URLs opened; one was partial/profile and excluded."
+        }
+      ],
+      "official_bath_facts_seen": {
+        "room_bath": "not a separate official indoor-room-bath axis in this sample",
+        "room_open_air_bath": "Official room page states all rooms have Dogo source-use hot spring open-air baths; room types 55.8 sqm and 67.5 sqm.",
+        "public_bath": "JTB and official navigation confirm public large bath.",
+        "open_air_public_bath": "JTB bath page lists open-air public bath attached to public bath.",
+        "private_bath": "not found",
+        "family_bath": "not found",
+        "source_claims": "Official/Rakuten text claims guest-room hot spring open-air baths use Dogo hot spring and kakenagashi. JTB bath page separately states public bath natural hot spring is circulation filtered with both added water and heating.",
+        "spring_quality": "JTB: simple spring, colorless transparent, odorless, source outlet 46.7 C.",
+        "use_time": "JTB: public bath/open-air public bath 15:00-24:00 and 05:30-10:30.",
+        "tattoo_policy": "not found in this pass"
+      },
+      "review_signal_keywords": [
+        "客室露天風呂",
+        "露天風呂付客室",
+        "お部屋のお風呂",
+        "部屋の露天風呂",
+        "源泉",
+        "かけ流し",
+        "온천수 노천탕",
+        "프라이빗",
+        "대욕장"
+      ],
+      "caution_keywords": [
+        "自分でためる",
+        "加水",
+        "熱い",
+        "大浴場は一般的",
+        "駐車場",
+        "高い",
+        "Google-native body not accessible",
+        "Naver snippet_only"
+      ],
+      "next_sampling": "A급 종료 가능. 추가 보강 시 Google-native 리뷰 본문 모달, Hotels.com 리뷰 모달, Tripadvisor/Relux 원문을 다시 열어 교차 플랫폼 중복을 줄이는 것이 우선."
+    }
+  ]
+}

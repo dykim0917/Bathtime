@@ -1,0 +1,139 @@
+{
+  "research_date": "2026-07-04",
+  "scope": "ready lodging deep research: Kansai/Sanin/Setouchi Tier 1",
+  "method": "Static OTA extraction for Rakuten and JTB, plus Aside Browser checks for Google Maps/Hotels, Google review tab, Naver Search, and Naver Blog. Snippets, supplier cards, and OTA summaries are separated from direct bodies.",
+  "direct_review_sampling_status": "A: 387 directly read reviews, four direct-body platforms, Google review-tab checked, Korean direct-body strata found in Google and Naver.",
+  "lodgings": [
+    {
+      "slug": "shirahama-key-terrace",
+      "name_ja": "SHIRAHAMA KEY TERRACE HOTEL SEAMORE",
+      "name_ko_or_en": "Hotel Seamore / 시라하마 키 테라스 호텔 시모어",
+      "area": "白浜温泉, 和歌山県",
+      "google_maps": {
+        "rating": 4.0,
+        "visible_review_count": 3082,
+        "rating_distribution": "bars visible; exact per-star counts not exposed in this pass",
+        "korean_reviews_visible": "yes",
+        "direct_google_native_reviews_read": 5,
+        "onsen_related_google_native_reviews_read": 4,
+        "provider_cards_seen": [
+          "Hotels.com",
+          "Trip.com",
+          "JAPANiCAN.com",
+          "Agoda",
+          "Ikyu.com"
+        ],
+        "provider_card_note": "Trip.com supplier reviews appeared in the Google review tab; not counted as Google-native direct reviews."
+      },
+      "ota_review_pool_signals": {
+        "rakuten": {
+          "visible_review_count": 1651,
+          "rating": null,
+          "review_body_access": "direct_readable",
+          "direct_read_reviews": 360,
+          "onsen_related_direct_reviews": 187,
+          "source_url": "https://travel.rakuten.co.jp/HOTEL/166965/review.html"
+        },
+        "jtb": {
+          "visible_review_count": 269,
+          "rating": null,
+          "review_body_access": "direct_readable",
+          "direct_read_reviews": 20,
+          "onsen_related_direct_reviews": 6,
+          "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/6506007/review/"
+        },
+        "jalan": {
+          "visible_review_count": null,
+          "rating": null,
+          "review_body_access": "not_found_in_static_id_search",
+          "direct_read_reviews": 0,
+          "onsen_related_direct_reviews": 0,
+          "notes": "Jalan ID was not locked during this pass; no Jalan body counted."
+        },
+        "naver_blog": {
+          "visible_review_count": 2,
+          "rating": null,
+          "review_body_access": "direct_readable_via_aside",
+          "direct_read_reviews": 2,
+          "onsen_related_direct_reviews": 2,
+          "source_urls": [
+            "https://blog.naver.com/PostView.naver?blogId=440&logNo=224332025424&redirect=Dlog&widgetTypeCall=true&directAccess=false",
+            "https://blog.naver.com/PostView.naver?blogId=jinjo_o&logNo=224263760007&redirect=Dlog&widgetTypeCall=true&directAccess=false"
+          ]
+        },
+        "naver_search": {
+          "visible_review_count": null,
+          "rating": null,
+          "review_body_access": "snippet_only_for_other_surfaces",
+          "direct_read_reviews": 0,
+          "onsen_related_direct_reviews": 0,
+          "notes": "Naver hotel meta, cafe promotional-looking results, Trip.com, Agoda, Booking, and Expedia/Hotels snippets were not counted as direct reviews."
+        },
+        "booking": {
+          "visible_review_count": 288,
+          "rating": "8.3/10",
+          "review_body_access": "snippet_only_in_naver_surface",
+          "direct_read_reviews": 0,
+          "onsen_related_direct_reviews": 0,
+          "source_url": "https://www.booking.com/hotel/jp/seamore.ko.html"
+        },
+        "agoda": {
+          "visible_review_count": 3582,
+          "rating": "8.5/10",
+          "review_body_access": "snippet_only_in_naver_surface",
+          "direct_read_reviews": 0,
+          "onsen_related_direct_reviews": 0,
+          "source_url": "https://www.agoda.com/ko-kr/shirahama-key-terrace-hotel-seamore/hotel/shirahama-jp.html"
+        },
+        "trip_com_korea": {
+          "visible_review_count": 564,
+          "rating": "8.9/10",
+          "review_body_access": "snippet_only_in_naver_surface_and_supplier_cards_in_google",
+          "direct_read_reviews": 0,
+          "onsen_related_direct_reviews": 0,
+          "source_url": "https://kr.trip.com/hotels/shirahama-hotel-detail-705093/hotel/"
+        }
+      },
+      "official_bath_facts_seen": {
+        "official_url": "https://www.keyterrace.co.jp/",
+        "official_spa_url": "https://www.keyterrace.co.jp/spa/",
+        "address": "和歌山県西牟婁郡白浜町1821",
+        "onsen_area": "白浜温泉",
+        "room_bath": "not_generalized",
+        "room_open_air_bath": "not_core_axis",
+        "public_bath": "official_seen",
+        "open_air_public_bath": "official_seen",
+        "private_bath": "not_confirmed_as_core_facility",
+        "family_bath": "not_confirmed",
+        "facility_wide": "infinity footbath and day-use bathing route",
+        "source_note": "Official spa page lists 露天風呂 三段の湯, 大浴場 海の湯, 浴場 波の湯, インフィニティ足湯, source names, day-use hours, and tattoo restriction."
+      },
+      "review_signal_keywords": [
+        "露天風呂",
+        "大浴場",
+        "足湯",
+        "インフィニティ足湯",
+        "サウナ",
+        "岩盤浴",
+        "海",
+        "絶景",
+        "바다보며 서서하는 온천",
+        "실내 온천",
+        "실외 온천"
+      ],
+      "caution_keywords": [
+        "混雑",
+        "待ち",
+        "ビュッフェ",
+        "階段",
+        "古い",
+        "匂い",
+        "温度",
+        "日帰り",
+        "外来",
+        "청결"
+      ],
+      "next_sampling": "A 조건은 충족. 더 촘촘하게 만들려면 Jalan ID를 다시 잠그고 Yahoo Travel/Trip.com direct bodies를 별도 플랫폼으로 직접 열어 공급자 표본을 분리한다."
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "research_date": "2026-07-04",
+  "slug": "arima-maruyama",
+  "total_direct_extracted_static": 1,
+  "onsen_related_body_static": 1,
+  "direct_body_platforms_static": 1,
+  "by_platform": {
+    "JTB/Rurubu": {
+      "direct": 1,
+      "onsen_body": 1
+    }
+  },
+  "visible_review_pool_static": {
+    "rakuten": null,
+    "jalan": null,
+    "jtb": 30
+  },
+  "bath_area_tags": {
+    "room_bath": 1,
+    "private_bath": 1
+  },
+  "signal_type_tags": {
+    "room_bath_hot_spring": 1,
+    "private_bath_experience": 1,
+    "crowding": 1,
+    "booking_confusion": 1
+  },
+  "caution_tags": {
+    "bath_waiting": 1
+  },
+  "body_keywords_top": {
+    "貸切": 1,
+    "貸切風呂": 1,
+    "混雑": 1
+  },
+  "scores": {
+    "null": 1
+  },
+  "collection_stats": {
+    "rakuten_1": 0,
+    "jalan_1": 0,
+    "jtb_blocks": 1
+  }
+}

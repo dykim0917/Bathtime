@@ -1,0 +1,175 @@
+{
+  "research_date": "2026-07-04",
+  "scope": "shirahama-yanagiya ready lodging deep research",
+  "method": "Rakuten/Jalan static extraction plus Aside Browser verification for Google Maps, Naver, JAPANiCAN, Tripadvisor, Trip.com. AI summaries, provider cards, and search snippets excluded from direct totals.",
+  "direct_review_sampling_status": "A: 317 direct reviews, 7 direct-body platforms, latest/low-rating/onsen-keyword/Korean/direct room-type strata checked.",
+  "lodgings": [
+    {
+      "slug": "shirahama-yanagiya",
+      "name_ja": "白浜温泉 家族とすごす白浜の宿 柳屋",
+      "name_ko_or_en": "Yanagiya / 시라하마 야나기야",
+      "official_url": "https://www.yanagiya-hotel.jp/",
+      "address": "〒649-2211 和歌山県西牟婁郡白浜町1870",
+      "onsen_area": "白浜温泉",
+      "google_maps": {
+        "rating": 4.3,
+        "visible_review_count": 530,
+        "rating_distribution": {
+          "1": 9,
+          "2": 9,
+          "3": 53,
+          "4": 206,
+          "5": 253
+        },
+        "korean_reviews_visible": true,
+        "direct_reviews_read": 31,
+        "onsen_related_direct_reviews": 23,
+        "provider_cards_seen": [
+          "Tripadvisor"
+        ],
+        "provider_cards_counted_as_google_native": false
+      },
+      "ota_review_pool_signals": {
+        "Rakuten Travel": {
+          "rating": null,
+          "visible_review_count": 77,
+          "visible_review_count_note": "Rakuten API로 접근 가능한 공개 본문 총량. 후보/페이지 표면의 더 큰 리뷰 수와 직접 확인 수를 섞지 않음.",
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 77,
+          "onsen_related_direct_reviews": 42,
+          "source_url": "https://travel.rakuten.co.jp/HOTEL/9133/review.html"
+        },
+        "Jalan": {
+          "rating": null,
+          "visible_review_count": 89,
+          "candidate_surface_visible_count": 1666,
+          "visible_review_count_note": "현재 정적 본문 접근 가능 총량은 89건. 후보 단계 표면 1,666건은 별도 참고값.",
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 89,
+          "onsen_related_direct_reviews": 64,
+          "source_url": "https://www.jalan.net/yad364545/kuchikomi/"
+        },
+        "Google Maps native": {
+          "rating": 4.3,
+          "visible_review_count": 530,
+          "rating_distribution": {
+            "1": 9,
+            "2": 9,
+            "3": 53,
+            "4": 206,
+            "5": 253
+          },
+          "korean_reviews_visible": true,
+          "review_body_access": "partial",
+          "direct_reviews_read": 31,
+          "onsen_related_direct_reviews": 23,
+          "source_url": "https://www.google.com/maps/search/?api=1&query=%E7%99%BD%E6%B5%9C%E6%B8%A9%E6%B3%89%20%E5%AE%B6%E6%97%8F%E3%81%A8%E3%81%99%E3%81%94%E3%81%99%E7%99%BD%E6%B5%9C%E3%81%AE%E5%AE%BF%20%E6%9F%B3%E5%B1%8B",
+          "note": "Aside Browser로 확인. Google 패널 내 Tripadvisor 공급자 카드는 Google-native에서 제외."
+        },
+        "JAPANiCAN": {
+          "rating": 4.5,
+          "visible_review_count": 98,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 75,
+          "onsen_related_direct_reviews": 38,
+          "source_url": "https://www.japanican.com/hotel/japan/shirahama/yanagiya-shirahama",
+          "note": "JAPANiCAN/Rurubu Travel 표시 댓글 75건을 15페이지까지 직접 확인."
+        },
+        "Tripadvisor": {
+          "rating": 3.9,
+          "visible_review_count": 84,
+          "rating_distribution": {
+            "excellent": 24,
+            "good": 38,
+            "average": 13,
+            "poor": 4,
+            "terrible": 5
+          },
+          "review_body_access": "partial",
+          "direct_reviews_read": 40,
+          "onsen_related_direct_reviews": 26,
+          "low_rating_reviews_read": 6,
+          "source_url": "https://www.tripadvisor.com/Hotel_Review-g1121351-d1171439-Reviews-Yanagiya-Shirahama_cho_Nishimuro_gun_Wakayama_Prefecture_Kinki.html",
+          "note": "Aside Browser에서 언어 필터를 All languages로 바꿔 p1-p4 40건 확인. 이후 필터가 흔들려 partial로 표기."
+        },
+        "Trip.com": {
+          "rating": 8.8,
+          "visible_review_count": 4,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 4,
+          "onsen_related_direct_reviews": 1,
+          "source_url": "https://ae.trip.com/hotels/shirahama-hotel-detail-4533378/yanagiya/",
+          "note": "4 verified reviews만 직접 수에 포함. AI review summary는 제외."
+        },
+        "Naver Blog": {
+          "rating": null,
+          "visible_review_count": null,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 1,
+          "onsen_related_direct_reviews": 1,
+          "source_url": "https://blog.naver.com/harimau81/223686770918",
+          "note": "한국어 블로그 본문 1건 직접 확인."
+        },
+        "Naver Search/Cafe": {
+          "rating": null,
+          "visible_review_count": null,
+          "review_body_access": "snippet_only",
+          "direct_reviews_read": 0,
+          "onsen_related_direct_reviews": 0,
+          "source_url": "https://search.naver.com/search.naver?query=%EC%8B%9C%EB%9D%BC%ED%95%98%EB%A7%88%20%EC%95%BC%EB%82%98%EA%B8%B0%EC%95%BC%20%ED%9B%84%EA%B8%B0",
+          "note": "검색/Cafe 결과는 본문 미개봉 또는 스니펫만 확인. 직접 수에서 제외."
+        },
+        "Agoda": {
+          "rating": null,
+          "visible_review_count": null,
+          "review_body_access": "partial",
+          "direct_reviews_read": 0,
+          "onsen_related_direct_reviews": 0,
+          "source_url": "https://www.agoda.com/yanagiya-ryokan/hotel/shirahama-jp.html",
+          "note": "Aside에서 표면/속성 확인. 개별 본문 안정 추출 전이라 직접 수 제외."
+        },
+        "Booking": {
+          "rating": null,
+          "visible_review_count": null,
+          "review_body_access": "not_found",
+          "direct_reviews_read": 0,
+          "onsen_related_direct_reviews": 0
+        }
+      },
+      "official_bath_facts_seen": [
+        "공식: 百割源泉 / 源泉百% 掛け流し를 표방.",
+        "공식: 木の湯・石の湯 대욕장/노천탕 표면.",
+        "공식 객실: `露天風呂付 久遠`, `露天風呂付 和室`, `露天風呂付 和洋室`는 노천풍로부(온천)로 표기.",
+        "공식 객실: `彩Jrスイート`, `彩プレミアムスイート`는 半露天風呂付(沸かし湯)로 표기.",
+        "JAPANiCAN 표면: 대욕장 이용 시간, 남녀 교체, private bath 예약/유료 표면 확인."
+      ],
+      "review_signal_keywords": [
+        "源泉かけ流し",
+        "百割源泉",
+        "泉質",
+        "露天風呂",
+        "大浴場",
+        "客室露天風呂",
+        "久遠",
+        "半露天",
+        "貸切風呂",
+        "家族風呂",
+        "온천물 좋음",
+        "노천탕"
+      ],
+      "caution_keywords": [
+        "家族風呂",
+        "家族露天風呂",
+        "小汚い",
+        "怪我",
+        "予約",
+        "素泊まり",
+        "部屋違い",
+        "温度",
+        "古い",
+        "虫"
+      ],
+      "next_sampling": "A급 충족. 다음 보강은 Tripadvisor 남은 44건, Agoda 개별 본문, Jalan 후보 표면 1,666건의 archive/동적 접근 확인."
+    }
+  ]
+}

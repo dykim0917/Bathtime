@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-07-04T02:57:17.109Z",
+  "lodging": "季さら別邸 刻",
+  "total_direct_extracted_static": 111,
+  "onsen_related_body_static": 72,
+  "direct_body_platforms_static": 3,
+  "by_platform": {
+    "Rakuten Travel": {
+      "direct": 48,
+      "onsen_body": 32
+    },
+    "Jalan": {
+      "direct": 19,
+      "onsen_body": 11
+    },
+    "Relux": {
+      "direct": 44,
+      "onsen_body": 29
+    }
+  },
+  "platform_page_stats": {
+    "rakuten_1": 20,
+    "rakuten_2": 20,
+    "rakuten_3": 8,
+    "jalan_1": 4,
+    "jalan_2": 15,
+    "relux_1": 44
+  },
+  "note": "Static/direct pages only. Browser-read Ikkyu/Yahoo/Google/Naver samples are recorded separately in platform_mapping and report."
+}

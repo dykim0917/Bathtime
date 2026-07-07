@@ -7,6 +7,7 @@ import { readAdminPostgrestSessionConfig, upsertPostgrestRow } from '../data/pos
 import {
   bathScopeLabels,
   bathContextLabels,
+  nameVerificationStatusLabels,
   onsenStatusLabels,
   regionGroupLabels,
   travelContextLabels,
@@ -17,6 +18,7 @@ import {
   type OnsenBathContext,
   type OnsenBathScope,
   type OnsenEvidenceCounts,
+  type OnsenNameVerificationStatus,
   type OnsenRegionGroup,
   type OnsenTravelContext,
   type OnsenWaterCriterion,
@@ -66,6 +68,15 @@ export async function updateOnsenAccommodation(formData: FormData) {
   const slug = String(formData.get('slug') ?? '').trim();
   const name = String(formData.get('name') ?? '').trim();
   const jaName = String(formData.get('jaName') ?? '').trim();
+  const displayNameKo = String(formData.get('displayNameKo') ?? '').trim();
+  const nameJa = String(formData.get('nameJa') ?? '').trim();
+  const nameEn = String(formData.get('nameEn') ?? '').trim();
+  const nameRomaji = String(formData.get('nameRomaji') ?? '').trim();
+  const aliasesKo = parseListField(formData.get('aliasesKo'));
+  const aliasesJa = parseListField(formData.get('aliasesJa'));
+  const aliasesEn = parseListField(formData.get('aliasesEn'));
+  const nameVerificationStatus = String(formData.get('nameVerificationStatus') ?? '').trim();
+  const nameSourceNote = String(formData.get('nameSourceNote') ?? '').trim();
   const region = String(formData.get('region') ?? '').trim();
   const area = String(formData.get('area') ?? '').trim();
   const country = String(formData.get('country') ?? 'JP').trim() || 'JP';
@@ -90,8 +101,9 @@ export async function updateOnsenAccommodation(formData: FormData) {
 
   if (
     !slug ||
-    !name ||
+    !(displayNameKo || name) ||
     !region ||
+    !isRecordKey(nameVerificationStatusLabels, nameVerificationStatus) ||
     !isRecordKey(regionGroupLabels, regionGroup) ||
     !summary ||
     !isRecordKey(waterUseStatusLabels, waterUseStatus) ||
@@ -114,8 +126,17 @@ export async function updateOnsenAccommodation(formData: FormData) {
       'onsen_accommodations',
       {
         slug,
-        name,
-        ja_name: jaName || null,
+        name: displayNameKo || name,
+        ja_name: nameJa || jaName || null,
+        display_name_ko: displayNameKo || name,
+        name_ja: nameJa || jaName || null,
+        name_en: nameEn || null,
+        name_romaji: nameRomaji || null,
+        aliases_ko: aliasesKo,
+        aliases_ja: aliasesJa,
+        aliases_en: aliasesEn,
+        name_verification_status: nameVerificationStatus satisfies OnsenNameVerificationStatus,
+        name_source_note: nameSourceNote || null,
         region,
         area: area || null,
         country,

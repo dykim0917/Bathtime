@@ -1,0 +1,132 @@
+{
+  "research_date": "2026-07-04",
+  "scope": "皆生游月 / Kaike Yugetsu 단일 ready 숙소 딥리서치",
+  "method": "Rakuten/Jalan/JTB 정적 본문 수집 후 Aside Browser로 Google Hotels/Google Reviews와 Naver Search/Blog를 직접 확인했다. 검색 스니펫, OTA 요약, Google 내 공급자 카드는 직접 리뷰 수에서 제외했다.",
+  "direct_review_sampling_status": {
+    "data_quality_grade": "A",
+    "total_direct_reviews": 542,
+    "onsen_related_direct_reviews": 290,
+    "direct_body_platform_count": 5,
+    "visible_review_pool_minimum_mapped": 3639,
+    "visible_pool_caution": "플랫폼상 노출 리뷰 수의 단순 매핑 합계이며 직접 읽은 리뷰 수와 합산하지 않는다."
+  },
+  "lodgings": [
+    {
+      "slug": "kaike-yugetsu",
+      "name_ja": "皆生游月",
+      "name_ko_or_en": "Kaike Yugetsu / 가이케 유게츠",
+      "address": "鳥取県米子市皆生温泉3-11-1",
+      "onsen_area": "皆生温泉",
+      "google_maps": {
+        "rating": 4.5,
+        "visible_review_count": 602,
+        "rating_distribution": null,
+        "korean_reviews_visible": true,
+        "review_body_access": "direct_readable",
+        "direct_google_native_reviews_read": 7,
+        "onsen_related_google_native_reviews": 7,
+        "ota_provider_cards_seen": ["Trip.com", "Ikyu.com", "Hotels.com", "Skyscanner", "JAPANiCAN.com"],
+        "caution": "Google Hotels 리뷰 탭의 Trip.com Member 카드는 Google-native 직접 리뷰로 세지 않았다."
+      },
+      "ota_review_pool_signals": {
+        "Rakuten Travel": {
+          "visible_review_count": 1405,
+          "rating": null,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 360,
+          "onsen_related_direct_reviews": 185,
+          "source_url": "https://travel.rakuten.co.jp/HOTEL/168732/review.html"
+        },
+        "Jalan": {
+          "visible_review_count": 1189,
+          "rating": 4.8,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 148,
+          "onsen_related_direct_reviews": 88,
+          "source_url": "https://www.jalan.net/yad398764/kuchikomi/"
+        },
+        "JTB": {
+          "visible_review_count": 66,
+          "rating": null,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 24,
+          "onsen_related_direct_reviews": 7,
+          "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/7316032/review/"
+        },
+        "Yahoo Travel": {
+          "visible_review_count": 308,
+          "rating": 4.72,
+          "review_body_access": "snippet_only/not_sampled_direct",
+          "direct_reviews_read": 0,
+          "source_url": "https://travel.yahoo.co.jp/00002607/review/"
+        },
+        "Ikkyu": {
+          "visible_review_count": 308,
+          "rating": null,
+          "review_body_access": "not_sampled_direct",
+          "direct_reviews_read": 0,
+          "source_url": "https://www.ikyu.com/00002607/review/"
+        },
+        "Trip.com": {
+          "visible_review_count": 64,
+          "rating": 9.3,
+          "review_body_access": "snippet_only/provider_card_only",
+          "direct_reviews_read": 0
+        },
+        "Agoda": {
+          "visible_review_count": null,
+          "rating": null,
+          "review_body_access": "snippet_only",
+          "direct_reviews_read": 0
+        },
+        "Naver Search / Blog": {
+          "visible_review_count": null,
+          "rating": null,
+          "review_body_access": "direct_readable plus snippet_only",
+          "direct_reviews_read": 3,
+          "onsen_related_direct_reviews": 3,
+          "independent_authors": 2
+        }
+      },
+      "official_bath_facts_seen": {
+        "official_site_url": "https://kaike-yugetsu.jp/",
+        "rooms_url": "https://kaike-yugetsu.jp/rooms/",
+        "hotspring_url": "https://kaike-yugetsu.jp/hotspring/",
+        "room_open_air_bath": "공식: 전 객실 오션뷰, 전 객실 온천 노천탕/테라스 온천 노천탕.",
+        "room_bath": "공식: 객실별 내욕 또는 샤워룸도 별도 언급.",
+        "public_bath": "공식: 7층 대욕장, 내탕, 사우나.",
+        "open_air_public_bath": "공식: 인피니티天空露天風呂. 풍속 8m 이상 또는 기온 3도 이하 등에는 운영 중지 가능.",
+        "private_bath": "공식 확인 없음.",
+        "family_bath": "공식 확인 없음.",
+        "water_handling": "객실 노천탕은 溜め式이며 掛け流し 아님. 객실 노천은 고온 원천을 직접 탕구까지 끌어오며 가수 표기. 대욕장/객실 노천 모두 정기 염소소독 표기. JTB는 공용 온천을 순환여과식, 가수·가온으로 표기.",
+        "spring_quality": "ナトリウム・カルシウム塩化物泉",
+        "tattoo_policy": "입묵/문신/TATOO 대욕장 입욕 불가, 객실 노천 이용 안내.",
+        "public_bath_hours": "대욕장 15:00-23:00, 6:00-9:00. 인피니티天空露天風呂 15:00-23:00, 날씨 양호 시 6:00-9:00. 사우나 15:00-22:00."
+      },
+      "review_signal_keywords": [
+        "露天風呂",
+        "客室露天風呂",
+        "テラス温泉露天風呂",
+        "大浴場",
+        "インフィニティ",
+        "天空露天風呂",
+        "日本海",
+        "오션뷰",
+        "개인 노천 욕조",
+        "대중탕",
+        "파도소리"
+      ],
+      "caution_keywords": [
+        "写真より大きくはない",
+        "虫",
+        "温度",
+        "駐車場",
+        "高い",
+        "塩素消毒",
+        "溜め式",
+        "掛け流しではない"
+      ],
+      "next_sampling": "A 등급은 충족. 다음 보강 시 Yahoo/Ikkyu 저평점 정렬과 Google rating_distribution 캡처를 추가하면 부정 신호 균형이 더 좋아진다."
+    }
+  ]
+}

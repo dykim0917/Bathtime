@@ -1,0 +1,48 @@
+{
+  "generated_at": "2026-07-04T02:29:14.059Z",
+  "lodging": "白浜温泉 浜千鳥の湯 海舟",
+  "total_direct_extracted": 404,
+  "onsen_related_body": 325,
+  "direct_body_platforms": 3,
+  "by_platform": {
+    "Rakuten Travel": {
+      "direct": 197,
+      "onsen_body": 169
+    },
+    "Jalan": {
+      "direct": 135,
+      "onsen_body": 114
+    },
+    "Booking.com": {
+      "direct": 72,
+      "onsen_body": 42
+    }
+  },
+  "platform_page_stats": {
+    "rakuten_1": 24,
+    "rakuten_2": 24,
+    "rakuten_3": 25,
+    "rakuten_4": 24,
+    "rakuten_5": 12,
+    "rakuten_6": 15,
+    "rakuten_7": 16,
+    "rakuten_8": 7,
+    "rakuten_9": 5,
+    "rakuten_10": 5,
+    "rakuten_11": 5,
+    "rakuten_12": 5,
+    "rakuten_13": 5,
+    "rakuten_14": 5,
+    "rakuten_15": 5,
+    "rakuten_16": 5,
+    "rakuten_17": 5,
+    "rakuten_18": 5,
+    "jalan_1": 30,
+    "jalan_2": 30,
+    "jalan_3": 30,
+    "jalan_4": 30,
+    "jalan_5": 15
+  },
+  "note": "Review bodies are not stored; hashes, metadata, short keywords and tags only. room/plan context is separated from body keyword counts.",
+  "booking_pages_sampled": 3
+}

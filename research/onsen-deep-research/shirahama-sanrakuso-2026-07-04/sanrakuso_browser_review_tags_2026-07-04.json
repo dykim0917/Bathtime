@@ -1,0 +1,56 @@
+[
+  {
+    "platform": "Trip.com provider card in Google Maps",
+    "source_url": "https://www.google.com/maps/search/?api=1&query=%E3%83%9B%E3%83%86%E3%83%AB%E4%B8%89%E6%A5%BD%E8%8D%98%20%E7%99%BD%E6%B5%9C",
+    "review_id": "google-maps-provider-tripcom-ko-2025",
+    "review_date": "2025",
+    "language": "ko",
+    "access": "provider_card_seen_not_counted",
+    "google_native": false,
+    "excluded_from_direct_total": true,
+    "onsen_related_body": true,
+    "bath_area_tags": [
+      "room_bath",
+      "public_bath"
+    ],
+    "signal_type_tags": [
+      "room_bath_hot_spring",
+      "public_bath_hot_spring",
+      "weak_onsen_feeling"
+    ],
+    "caution_tags": [
+      "provider_card_not_google_native"
+    ],
+    "original_keywords": [
+      "창가에 욕조있는 방",
+      "공용 온천",
+      "물의 차이"
+    ],
+    "paraphrase": "Google Maps 안의 Trip.com 카드에서 객실 창가 욕조와 공용 온천을 비교하는 한국어 본문이 보인다."
+  },
+  {
+    "platform": "Tripadvisor provider card in Google Maps",
+    "source_url": "https://www.google.com/maps/search/?api=1&query=%E3%83%9B%E3%83%86%E3%83%AB%E4%B8%89%E6%A5%BD%E8%8D%98%20%E7%99%BD%E6%B5%9C",
+    "review_id": "google-maps-provider-tripadvisor-ko-2017",
+    "review_date": "2017",
+    "language": "ko",
+    "access": "provider_card_seen_not_counted",
+    "google_native": false,
+    "excluded_from_direct_total": true,
+    "onsen_related_body": true,
+    "bath_area_tags": [
+      "public_bath"
+    ],
+    "signal_type_tags": [
+      "public_bath_hot_spring"
+    ],
+    "caution_tags": [
+      "provider_card_not_google_native"
+    ],
+    "original_keywords": [
+      "대욕장",
+      "해변 앞"
+    ],
+    "paraphrase": "Google Maps 안의 Tripadvisor 카드에서 해변 접근성과 대욕장 만족 신호가 확인된다."
+  }
+]

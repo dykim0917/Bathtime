@@ -13,8 +13,8 @@ import {
 import type { OnsenReview } from '@web/lib/onsenReviews';
 
 const bathTypeOptions: { value: OnsenReviewBathType; label: string }[] = [
-  { value: 'room_bath', label: '객실탕' },
-  { value: 'private_bath', label: '가족탕/대절탕' },
+  { value: 'room_bath', label: '객실 내 프라이빗탕' },
+  { value: 'private_bath', label: '대절탕' },
   { value: 'public_bath', label: '대욕장' },
   { value: 'other', label: '그 외' },
 ];
@@ -27,8 +27,8 @@ const waterFeelOptions: { value: OnsenReviewWaterFeel; label: string }[] = [
 ];
 
 const bathTypeLabels: Record<OnsenReview['bathType'], string> = {
-  room_bath: '객실탕',
-  private_bath: '가족탕/대절탕',
+  room_bath: '객실 내 프라이빗탕',
+  private_bath: '대절탕',
   public_bath: '대욕장',
   other: '그 외',
 };
@@ -183,7 +183,7 @@ export function OnsenReviewForm({
                   minLength={12}
                   value={body}
                   onChange={(event) => setBody(event.target.value)}
-                  placeholder="탕의 온도, 물 느낌, 객실탕과 대욕장 차이, 다음 사람이 알면 좋을 점을 적어주세요."
+                  placeholder="탕의 온도, 물 느낌, 객실 내 프라이빗탕과 대욕장 차이, 다음 사람이 알면 좋을 점을 적어주세요."
                 />
               </label>
 

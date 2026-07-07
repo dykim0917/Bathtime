@@ -1,0 +1,258 @@
+{
+  "research_date": "2026-07-06",
+  "slug": "shirahama-kachofugetsu",
+  "accommodation_name": "南紀白浜 和みの湯 花鳥風月",
+  "data_quality_grade": "B",
+  "grade_reason": "Direct review volume exceeds 300 and Google-native review-tab sampling was reinforced, but A remains withheld because Naver Blog/Cafe Korean personal-stay direct bodies were not found and Korean OTA text was only partial.",
+  "visible_review_pool_minimum": 1124,
+  "visible_review_pool_components": {
+    "rakuten_travel": 415,
+    "jalan": 367,
+    "yahoo_travel": 45,
+    "google_maps": 297
+  },
+  "direct_read_reviews_total": 545,
+  "onsen_related_direct_reviews_total": 285,
+  "direct_body_platform_count": 4,
+  "direct_body_platforms_counted": [
+    "Rakuten Travel",
+    "Jalan",
+    "Yahoo Travel",
+    "Google Maps native"
+  ],
+  "google_maps_checked_via_aside": true,
+  "naver_checked_via_aside": true,
+  "official_facts_basis": {
+    "official_site_url": "https://shirahama-kachofugetsu.com/",
+    "address": "和歌山県西牟婁郡白浜町3729-32",
+    "onsen_area": "白浜温泉",
+    "room_count": 24,
+    "room_open_air_bath": "all rooms; official wording indicates natural hot spring semi-open-air bath in each room",
+    "room_bath": "all rooms; ceramic/private in-room bath language appears in OTA/reviews",
+    "public_bath": "officially absent",
+    "open_air_public_bath": "not confirmed as public facility",
+    "private_bath": "not confirmed as separate reservable public/private bath",
+    "family_bath": "not confirmed",
+    "source_separation_note": "Official facility facts are not counted as review signals."
+  },
+  "signals": [
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 407,
+      "source_count": 407,
+      "platform_count": 3,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal",
+      "evidence_basis": "Static OTA tags plus Yahoo direct bodies repeatedly mention room semi-open-air bath, room bath, and 24-hour private use."
+    },
+    {
+      "bath_area": "room_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 333,
+      "source_count": 333,
+      "platform_count": 3,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal",
+      "evidence_basis": "Room bath/ceramic tub language appears across Rakuten, Jalan, and Yahoo; the service value is private in-room bathing rather than a public bath circuit."
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 222,
+      "source_count": 222,
+      "platform_count": 3,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal",
+      "evidence_basis": "Keywords such as 温泉, 泉質, ツルツル, すべすべ, 肌 appear in direct bodies."
+    },
+    {
+      "bath_area": "public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "booking_confusion",
+      "signal_direction": "neutral",
+      "mention_count": 14,
+      "source_count": 14,
+      "platform_count": 2,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal",
+      "evidence_basis": "Direct reviews and official claims align that there is no public large bath; this is an expectation/positioning signal, not a public-bath satisfaction signal."
+    },
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "probable",
+      "signal_type": "booking_confusion",
+      "signal_direction": "mixed",
+      "mention_count": 71,
+      "source_count": 71,
+      "platform_count": 2,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal",
+      "evidence_basis": "View/privacy keywords such as 海, 景色, 目隠し, 視線 appear; some praise room-view bathing while some note privacy or parking/road sightline expectations."
+    },
+    {
+      "bath_area": "room_bath",
+      "bath_area_confidence": "probable",
+      "signal_type": "weak_onsen_feeling",
+      "signal_direction": "negative",
+      "mention_count": 5,
+      "source_count": 5,
+      "platform_count": 1,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal",
+      "evidence_basis": "A small number of bodies imply ordinary-water/weak-feeling concern; not enough to outweigh the positive water-texture signal."
+    },
+    {
+      "bath_area": "private_bath",
+      "bath_area_confidence": "unclear",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "neutral",
+      "mention_count": 2,
+      "source_count": 2,
+      "platform_count": 2,
+      "contradiction_level": "medium",
+      "review_signal_status": "insufficient",
+      "evidence_basis": "Mentions are mostly desire/request language such as wanting a reservable open-air bath; no separate private/family bath facility is treated as confirmed."
+    }
+  ],
+  "operation_notes": {
+    "temperature_control_mentions": 22,
+    "room_bath_size_expectation_mentions": 40,
+    "cleanliness_aging_mentions": 57,
+    "insects_mentions": 3,
+    "children_family_mentions": 76,
+    "access_booking_mentions": 118,
+    "price_expectation_mentions": 21
+  },
+  "previous_research_date": "2026-07-04",
+  "reinforcement_2026_07_06": {
+    "research_date": "2026-07-06",
+    "slug": "shirahama-kachofugetsu",
+    "objective": "B-grade reinforcement check for Google-native and Korean direct-body strata",
+    "google_maps": {
+      "source_url": "https://www.google.com/maps/search/%E5%8D%97%E7%B4%80%E7%99%BD%E6%B5%9C+%E5%92%8C%E3%81%BF%E3%81%AE%E6%B9%AF+%E8%8A%B1%E9%B3%A5%E9%A2%A8%E6%9C%88",
+      "review_body_access": "direct_readable",
+      "rating": 4.7,
+      "visible_review_count": 297,
+      "rating_distribution": {
+        "1": 7,
+        "2": 3,
+        "3": 7,
+        "4": 37,
+        "5": 243
+      },
+      "direct_google_native_reviews_read_added": 25,
+      "onsen_related_google_native_reviews_added": 17,
+      "low_rating_direct_google_native_read": {
+        "1": 4,
+        "2": 1,
+        "3": 1
+      },
+      "excluded_from_direct_count": [
+        "Tripadvisor card inside Google feed",
+        "Trip.com card inside Google feed",
+        "owner replies",
+        "Google/provider summaries"
+      ]
+    },
+    "naver": {
+      "review_body_access": "snippet_only/not_found_exact_blog_cafe",
+      "requested_queries": [
+        "카초후게츠 시라하마 후기",
+        "花鳥風月 시라하마 객실 노천탕",
+        "난키 시라하마 카초후게츠 온천"
+      ],
+      "variant_queries_tried": [
+        "가초후게쓰 시라하마 후기"
+      ],
+      "blog_direct_bodies_read": 0,
+      "cafe_direct_bodies_read": 0,
+      "exact_property_visible_in_search": true,
+      "direct_korean_personal_stay_reviews": 0,
+      "snippet_only_signals": [
+        "Korean media/Rakuten-ranking articles mention the exact property as a popular ryokan.",
+        "Some Korean snippets mention 대욕장/varied baths, but this conflicts with official facts and direct reviews.",
+        "Trip.com result shows 9.6/10 and 23 participants; this is visible pool, not direct-read count."
+      ]
+    },
+    "tripcom_kr": {
+      "source_url": "https://kr.trip.com/hotels/shirahama-hotel-detail-86051528/nanki-shirahama-nagomi-no-yu-kacho-fugetsu/",
+      "review_body_access": "partial",
+      "visible_review_count": 23,
+      "rating": 9.6,
+      "partial_review_cards_seen": 3,
+      "counted_in_direct_total": false,
+      "note": "Exact Korean Trip.com page opened; visible user-review card text was partial/truncated, so it is recorded as partial Korean OTA evidence rather than full direct-body sampling."
+    },
+    "sample_evidence": [
+      {
+        "platform": "Google Maps native",
+        "language": "ja via Korean UI",
+        "review_date": "3주 전",
+        "original_keyword": [
+          "온천 첨부",
+          "いつでもお風呂"
+        ],
+        "paraphrase": "온천이 딸린 객실을 예약했고 언제든 욕실을 쓸 수 있는 점을 긍정적으로 평가."
+      },
+      {
+        "platform": "Google Maps native",
+        "language": "ja via Korean UI",
+        "review_date": "6개월 전",
+        "original_keyword": [
+          "全室に温泉",
+          "黒カビ"
+        ],
+        "paraphrase": "전실 온천과 따뜻한 객실탕은 긍정, 습기로 인한 곰팡이류 청결 메모가 함께 나타남."
+      },
+      {
+        "platform": "Google Maps native",
+        "language": "ja via Korean UI",
+        "review_date": "2개월 전 수정",
+        "original_keyword": [
+          "大浴場も貸切風呂もない"
+        ],
+        "paraphrase": "저평점 리뷰에서 대욕장과 대절탕이 없다는 기대 차이를 명확히 언급."
+      },
+      {
+        "platform": "Google Maps native",
+        "language": "ja via Korean UI",
+        "review_date": "6개월 전",
+        "original_keyword": [
+          "客室の露天風呂"
+        ],
+        "paraphrase": "저평점 안에서도 객실 노천탕 자체는 강점으로 언급됨."
+      },
+      {
+        "platform": "Google Maps native",
+        "language": "ja via Korean UI",
+        "review_date": "3개월 전 수정",
+        "original_keyword": [
+          "室内温泉",
+          "湯船"
+        ],
+        "paraphrase": "실내 온천의 알칼리성 체감과 욕조에서의 체류 경험을 언급."
+      },
+      {
+        "platform": "Trip.com KR",
+        "language": "ko UI",
+        "review_date": "2025-10-29",
+        "original_keyword": [
+          "객실 내 온천"
+        ],
+        "paraphrase": "한국어 UI 카드에서 객실 내 온천, 청결, 식사, 서비스를 긍정적으로 언급했으나 카드 본문은 partial로 처리."
+      }
+    ],
+    "upgrade_decision": {
+      "recommended_grade": "B",
+      "a_upgrade_justified": false,
+      "reason": "Google-native 직접 표본은 25건 추가되어 충분해졌지만, Naver Blog/Cafe 개인 숙박 본문은 0건이고 한국어 Trip.com 카드는 partial이라 A의 한국어 직접 본문 층화 완료로 보기 어렵다."
+    }
+  }
+}

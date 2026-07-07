@@ -1,0 +1,110 @@
+[
+  {
+    "accommodation_name": "季さら",
+    "bath_area": "room_open_air_bath",
+    "bath_area_confidence": "specific",
+    "signal_type": "room_bath_hot_spring",
+    "signal_direction": "positive",
+    "mention_count": 421,
+    "source_count": 421,
+    "platform_count": 3,
+    "contradiction_level": "low",
+    "review_signal_status": "strong_signal"
+  },
+  {
+    "accommodation_name": "季さら",
+    "bath_area": "room_bath",
+    "bath_area_confidence": "specific",
+    "signal_type": "room_bath_hot_spring",
+    "signal_direction": "positive",
+    "mention_count": 155,
+    "source_count": 155,
+    "platform_count": 3,
+    "contradiction_level": "low",
+    "review_signal_status": "strong_signal"
+  },
+  {
+    "accommodation_name": "季さら",
+    "bath_area": "room_open_air_bath",
+    "bath_area_confidence": "specific",
+    "signal_type": "private_bath_experience",
+    "signal_direction": "positive",
+    "mention_count": 421,
+    "source_count": 421,
+    "platform_count": 3,
+    "contradiction_level": "low",
+    "review_signal_status": "strong_signal"
+  },
+  {
+    "accommodation_name": "季さら",
+    "bath_area": "facility_wide",
+    "bath_area_confidence": "facility_wide",
+    "signal_type": "water_texture",
+    "signal_direction": "positive",
+    "mention_count": 48,
+    "source_count": 48,
+    "platform_count": 2,
+    "contradiction_level": "low",
+    "review_signal_status": "strong_signal"
+  },
+  {
+    "accommodation_name": "季さら",
+    "bath_area": "facility_wide",
+    "bath_area_confidence": "facility_wide",
+    "signal_type": "booking_confusion",
+    "signal_direction": "mixed",
+    "mention_count": 159,
+    "source_count": 159,
+    "platform_count": 2,
+    "contradiction_level": "medium",
+    "review_signal_status": "strong_signal"
+  },
+  {
+    "accommodation_name": "季さら",
+    "bath_area": "room_open_air_bath",
+    "bath_area_confidence": "specific",
+    "signal_type": "weak_onsen_feeling",
+    "signal_direction": "negative",
+    "mention_count": 1,
+    "source_count": 1,
+    "platform_count": 1,
+    "contradiction_level": "low",
+    "review_signal_status": "weak_signal"
+  },
+  {
+    "accommodation_name": "季さら",
+    "bath_area": "room_open_air_bath",
+    "bath_area_confidence": "specific",
+    "signal_type": "chlorine_smell",
+    "signal_direction": "negative",
+    "mention_count": 2,
+    "source_count": 2,
+    "platform_count": 1,
+    "contradiction_level": "low",
+    "review_signal_status": "weak_signal"
+  },
+  {
+    "accommodation_name": "季さら",
+    "bath_area": "public_bath",
+    "bath_area_confidence": "unclear",
+    "signal_type": "public_bath_hot_spring",
+    "signal_direction": "neutral",
+    "mention_count": 13,
+    "source_count": 13,
+    "platform_count": 2,
+    "contradiction_level": "medium",
+    "review_signal_status": "insufficient"
+  },
+  {
+    "accommodation_name": "季さら",
+    "bath_area": "private_bath",
+    "bath_area_confidence": "unclear",
+    "signal_type": "private_bath_experience",
+    "signal_direction": "neutral",
+    "mention_count": 3,
+    "source_count": 3,
+    "platform_count": 1,
+    "contradiction_level": "medium",
+    "review_signal_status": "insufficient"
+  }
+]

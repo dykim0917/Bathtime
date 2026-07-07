@@ -1,0 +1,114 @@
+{
+  "research_date": "2026-07-04",
+  "scope": "ready lodging deep research: Kansai/Sanin/Setouchi Tier 1",
+  "method": "Static OTA extraction for Rakuten and Jalan, plus Aside Browser checks for Yahoo Travel, Google Maps/Hotels, and Naver Search. Snippets are separated from direct bodies.",
+  "direct_review_sampling_status": "B: 520 directly read reviews and three direct-body platforms. A withheld because Korean direct-body strata were not found and Google-native review-tab body sampling remains partial.",
+  "lodgings": [
+    {
+      "slug": "shirahama-kachofugetsu",
+      "name_ja": "南紀白浜 和みの湯 花鳥風月",
+      "name_ko_or_en": "Kachofugetsu",
+      "area": "白浜温泉, 和歌山県",
+      "google_maps": {
+        "rating": 4.7,
+        "visible_review_count": 297,
+        "rating_distribution": "bars visible; exact per-star counts not exposed in this pass",
+        "korean_reviews_visible": "not confirmed",
+        "direct_google_native_reviews_read": 1,
+        "onsen_related_google_native_reviews_read": 1,
+        "provider_cards_seen": [
+          {
+            "provider": "Rakuten Travel",
+            "rating": null,
+            "visible_review_count": null
+          },
+          {
+            "provider": "skyticket",
+            "rating": null,
+            "visible_review_count": null
+          }
+        ]
+      },
+      "ota_review_pool_signals": {
+        "rakuten": {
+          "visible_review_count": 415,
+          "rating": null,
+          "review_body_access": "direct_readable",
+          "direct_read_reviews": 360,
+          "onsen_related_direct_reviews": 165,
+          "source_url": "https://travel.rakuten.co.jp/HOTEL/183409/review.html"
+        },
+        "jalan": {
+          "visible_review_count": 367,
+          "rating": null,
+          "review_body_access": "direct_readable",
+          "direct_read_reviews": 130,
+          "onsen_related_direct_reviews": 79,
+          "source_url": "https://www.jalan.net/yad351872/kuchikomi/"
+        },
+        "yahoo_travel": {
+          "visible_review_count": 45,
+          "rating": 4.69,
+          "review_body_access": "direct_readable_via_aside",
+          "direct_read_reviews": 30,
+          "onsen_related_direct_reviews": 24,
+          "source_url": "https://travel.yahoo.co.jp/00913643/review/"
+        },
+        "booking": {
+          "visible_review_count": null,
+          "rating": null,
+          "review_body_access": "not_sampled_in_depth",
+          "direct_read_reviews": 0,
+          "onsen_related_direct_reviews": 0,
+          "source_url": "https://www.booking.com/hotel/jp/nan-ji-bai-bang-he-minotang-hua-niao-feng-yue.ja.html"
+        },
+        "naver_search": {
+          "visible_review_count": null,
+          "rating": null,
+          "review_body_access": "snippet_only",
+          "direct_read_reviews": 0,
+          "onsen_related_direct_reviews": 0,
+          "source_url": "https://search.naver.com/search.naver?query=%EC%8B%9C%EB%9D%BC%ED%95%98%EB%A7%88%20%ED%95%98%EB%82%98%EB%8F%84%EB%A6%AC%ED%9B%84%EA%B2%8C%EC%B8%A0%20%ED%9B%84%EA%B8%B0%20%EA%B0%9D%EC%8B%A4%20%EB%85%B8%EC%B2%9C%ED%83%95",
+          "notes": "Exact Korean full-review body was not found in the checked Naver surface; snippets/unrelated results were not counted."
+        }
+      },
+      "official_bath_facts_seen": {
+        "official_url": "https://shirahama-kachofugetsu.com/",
+        "address": "和歌山県西牟婁郡白浜町3729-32",
+        "onsen_area": "白浜温泉",
+        "room_bath": "official_seen",
+        "room_open_air_bath": "official_seen_all_rooms",
+        "public_bath": "official_absent",
+        "open_air_public_bath": "not_confirmed",
+        "private_bath": "not_confirmed_as_separate_facility",
+        "family_bath": "not_confirmed_as_separate_facility",
+        "source_note": "Official/OTA facts indicate all 24 rooms have private natural hot-spring semi-open-air baths and that the property intentionally has no public large bath."
+      },
+      "review_signal_keywords": [
+        "温泉",
+        "半露天風呂",
+        "露天風呂",
+        "部屋風呂",
+        "陶器風呂",
+        "泉質",
+        "ツルツル",
+        "すべすべ",
+        "大浴場がない",
+        "全室温泉付き"
+      ],
+      "caution_keywords": [
+        "大浴場なし",
+        "目隠し",
+        "視線",
+        "駐車場",
+        "温度",
+        "狭い",
+        "清潔",
+        "虫",
+        "送迎",
+        "予約"
+      ],
+      "next_sampling": "A로 올리려면 Google-native 리뷰 탭 20건 이상과 Naver Blog/Cafe 또는 한국어 OTA 직접 본문을 추가 확인해야 한다."
+    }
+  ]
+}

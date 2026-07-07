@@ -1,0 +1,216 @@
+[
+  {
+    "platform": "Google Reviews",
+    "source_url": "https://www.google.com/search?q=%E6%9C%89%E9%A6%AC%E6%B8%A9%E6%B3%89%20%E5%BE%A1%E5%B9%B8%E8%8D%98%20%E8%8A%B1%E7%B5%90%E3%81%B3",
+    "review_id": "google-native-ko-kim-juho",
+    "review_date": "2025",
+    "language": "ko",
+    "access": "direct_readable",
+    "google_native": true,
+    "onsen_related_body": true,
+    "bath_area_tags": [
+      "private_bath"
+    ],
+    "signal_type_tags": [
+      "private_bath_experience"
+    ],
+    "caution_tags": [],
+    "original_keywords": [
+      "프라이빗 온천"
+    ],
+    "paraphrase": "한국어 Google-native 리뷰에서 친구들과 프라이빗 온천을 이용했다는 만족 신호가 보인다."
+  },
+  {
+    "platform": "Google Reviews",
+    "source_url": "https://www.google.com/search?q=%E6%9C%89%E9%A6%AC%E6%B8%A9%E6%B3%89%20%E5%BE%A1%E5%B9%B8%E8%8D%98%20%E8%8A%B1%E7%B5%90%E3%81%B3",
+    "review_id": "google-native-ko-seok",
+    "review_date": "2024",
+    "language": "ko",
+    "access": "direct_readable",
+    "google_native": true,
+    "onsen_related_body": true,
+    "bath_area_tags": [
+      "public_bath"
+    ],
+    "signal_type_tags": [
+      "public_bath_hot_spring"
+    ],
+    "caution_tags": [
+      "operation_photo_caution"
+    ],
+    "original_keywords": [
+      "온천도 좋았고",
+      "폰 사진"
+    ],
+    "paraphrase": "온천 자체는 긍정이나, 욕장 내 휴대폰 촬영 관련 운영 불안 신호가 함께 나온다."
+  },
+  {
+    "platform": "Google Reviews",
+    "source_url": "https://www.google.com/search?q=%E6%9C%89%E9%A6%AC%E6%B8%A9%E6%B3%89%20%E5%BE%A1%E5%B9%B8%E8%8D%98%20%E8%8A%B1%E7%B5%90%E3%81%B3",
+    "review_id": "google-native-ko-yorollo",
+    "review_date": "2025",
+    "language": "ko",
+    "access": "direct_readable",
+    "google_native": true,
+    "onsen_related_body": true,
+    "bath_area_tags": [
+      "public_bath",
+      "open_air_public_bath"
+    ],
+    "signal_type_tags": [
+      "public_bath_hot_spring"
+    ],
+    "caution_tags": [],
+    "original_keywords": [
+      "온천도 깔끔",
+      "야외온천"
+    ],
+    "paraphrase": "Google-native 한국어 리뷰에서 공용 야외 온천의 청결·만족 신호가 확인된다."
+  },
+  {
+    "platform": "Google Reviews",
+    "source_url": "https://www.google.com/search?q=%E6%9C%89%E9%A6%AC%E6%B8%A9%E6%B3%89%20%E5%BE%A1%E5%B9%B8%E8%8D%98%20%E8%8A%B1%E7%B5%90%E3%81%B3",
+    "review_id": "google-native-en-jk-hit",
+    "review_date": "2019",
+    "language": "ko",
+    "access": "direct_readable",
+    "google_native": true,
+    "onsen_related_body": true,
+    "bath_area_tags": [
+      "private_bath"
+    ],
+    "signal_type_tags": [
+      "private_bath_experience",
+      "booking_confusion"
+    ],
+    "caution_tags": [
+      "access_booking"
+    ],
+    "original_keywords": [
+      "private bath",
+      "fully booked"
+    ],
+    "paraphrase": "늦은 체크인 후 프라이빗탕 예약이 차서 다음날 아침으로 밀린 예약 혼동 신호가 있다."
+  },
+  {
+    "platform": "Google Reviews",
+    "source_url": "https://www.google.com/search?q=%E6%9C%89%E9%A6%AC%E6%B8%A9%E6%B3%89%20%E5%BE%A1%E5%B9%B8%E8%8D%98%20%E8%8A%B1%E7%B5%90%E3%81%B3",
+    "review_id": "google-native-ko-shin",
+    "review_date": "2026-02",
+    "language": "ko",
+    "access": "partial",
+    "google_native": true,
+    "onsen_related_body": false,
+    "bath_area_tags": [],
+    "signal_type_tags": [],
+    "caution_tags": [
+      "lounge_operation"
+    ],
+    "original_keywords": [
+      "라운지",
+      "객실"
+    ],
+    "paraphrase": "Google-native 한국어 최신 리뷰이나 Aside 화면에서는 온천 본문이 확인되지 않았다."
+  },
+  {
+    "platform": "Google Reviews",
+    "source_url": "https://www.google.com/search?q=%E6%9C%89%E9%A6%AC%E6%B8%A9%E6%B3%89%20%E5%BE%A1%E5%B9%B8%E8%8D%98%20%E8%8A%B1%E7%B5%90%E3%81%B3",
+    "review_id": "google-native-ko-cho",
+    "review_date": "2026-01",
+    "language": "ko",
+    "access": "partial",
+    "google_native": true,
+    "onsen_related_body": false,
+    "bath_area_tags": [],
+    "signal_type_tags": [],
+    "caution_tags": [
+      "access_booking"
+    ],
+    "original_keywords": [
+      "송영",
+      "직원"
+    ],
+    "paraphrase": "Google-native 한국어 리뷰이나 확인 화면에서는 송영·응대 중심으로 온천 신호는 없다."
+  },
+  {
+    "platform": "Naver Blog",
+    "source_url": "https://blog.naver.com/daymany/223735979971",
+    "review_id": "naver-blog-daymany-2025-01-23",
+    "review_date": "2025-01-23",
+    "language": "ko",
+    "access": "direct_readable",
+    "onsen_related_body": true,
+    "bath_area_tags": [
+      "private_bath",
+      "family_bath"
+    ],
+    "signal_type_tags": [
+      "private_bath_experience",
+      "booking_confusion"
+    ],
+    "caution_tags": [
+      "temperature_control"
+    ],
+    "original_keywords": [
+      "개인탕(가족탕)",
+      "금탕",
+      "40분",
+      "4,400엔"
+    ],
+    "paraphrase": "Naver Blog 원문에서 객실탕이 아니라 예약제 개인탕/가족탕을 이용한 한국어 체험이 확인된다."
+  },
+  {
+    "platform": "Naver Blog",
+    "source_url": "https://blog.naver.com/belief_me/223554688484",
+    "review_id": "naver-blog-belief-me-2024-08-20",
+    "review_date": "2024-08-20",
+    "language": "ko",
+    "access": "direct_readable",
+    "onsen_related_body": true,
+    "bath_area_tags": [
+      "public_bath",
+      "open_air_public_bath",
+      "private_bath"
+    ],
+    "signal_type_tags": [
+      "public_bath_hot_spring",
+      "private_bath_experience",
+      "crowding",
+      "booking_confusion"
+    ],
+    "caution_tags": [
+      "access_booking"
+    ],
+    "original_keywords": [
+      "대욕탕",
+      "금탕(노천탕)",
+      "은탕",
+      "개인욕탕",
+      "패스"
+    ],
+    "paraphrase": "Naver Blog 원문에서 7층 대욕장, 금탕 노천, 은탕을 구분하고 개인욕탕은 유료라 이용하지 않았다고 적는다."
+  },
+  {
+    "platform": "Naver Blog",
+    "source_url": "https://blog.naver.com/mhj2357/223303357058",
+    "review_id": "naver-blog-mhj2357-2023-12-27",
+    "review_date": "2023-12-27",
+    "language": "ko",
+    "access": "direct_readable",
+    "onsen_related_body": false,
+    "bath_area_tags": [],
+    "signal_type_tags": [],
+    "caution_tags": [
+      "cleanliness_aging",
+      "insects",
+      "price_expectation",
+      "temperature_control"
+    ],
+    "original_keywords": [
+      "숙박비",
+      "머리카락",
+      "벌레"
+    ],
+    "paraphrase": "Naver Blog 원문은 식사·객실 컨디션 중심이며 욕장 체험은 직접 신호로 세지 않는다."
+  }
+]

@@ -1,0 +1,139 @@
+{
+  "research_date": "2026-07-04",
+  "slug": "misasa-izanro-iwasaki",
+  "scope_note": "Aside Browser 및 브라우저 직접 확인 표면. Google 공급자 카드, OTA AI 요약, Naver 검색 스니펫은 직접 리뷰 수에서 제외했다.",
+  "browser_platforms": {
+    "google_maps": {
+      "source_url": "https://www.google.com/maps/search/?api=1&query=%E4%B8%89%E6%9C%9D%E6%B8%A9%E6%B3%89%20%E4%BE%9D%E5%B1%B1%E6%A5%BC%E5%B2%A9%E5%B4%8E",
+      "rating": 4.1,
+      "visible_review_count": 1332,
+      "rating_distribution": "bar chart visible; exact per-star counts not exposed in Aside output",
+      "review_body_access": "partial",
+      "direct_reviews_read": 5,
+      "onsen_related_direct_reviews": 4,
+      "provider_cards_seen": [
+        "Trip.com",
+        "Tripadvisor"
+      ],
+      "direct_google_native_note": "리뷰 탭에서 'Google에 게시됨' 표시가 붙은 Google-native 리뷰만 직접 수에 포함했다. Trip.com/Tripadvisor 공급자 리뷰는 Google-native 수에 넣지 않았다.",
+      "keywords_seen": [
+        "객실과 온천",
+        "프라이빗 개인탕",
+        "공용욕탕",
+        "온천탕이 매우 넓고 쾌적",
+        "미사사 최고의 온천"
+      ]
+    },
+    "naver_blog_search": {
+      "source_url": "https://search.naver.com/search.naver?query=%EC%9D%B4%EC%9E%94%EB%A1%9C%20%EC%9D%B4%EC%99%80%EC%82%AC%ED%82%A4%20%ED%9B%84%EA%B8%B0%20%EC%98%A8%EC%B2%9C",
+      "review_body_access": "direct_readable",
+      "direct_reviews_read": 1,
+      "onsen_related_direct_reviews": 1,
+      "direct_body_url": "https://m.blog.naver.com/getsomedoterra/224202845927",
+      "blocked_or_limited": [
+        "Naver Cafe exact result opened to login/feed surface; article body was not accessible in this pass."
+      ],
+      "snippet_only_surfaces": [
+        "Naver search showed Expedia/Hotels/Trip.com snippets and exact Korean demand signals, but snippets were excluded from direct counts."
+      ],
+      "keywords_seen": [
+        "온천하러",
+        "남탕과 여탕이 매일 바뀌기",
+        "물도 좋고",
+        "자연에 둘러쌓여 조용",
+        "탈의실도 다다미인데 곰팡이 하나 없이"
+      ]
+    },
+    "trip_com": {
+      "source_url": "https://kr.trip.com/hotels/misasa-hotel-detail-1653034/izanro-iwasaki/",
+      "rating": 8.3,
+      "visible_review_count": 31,
+      "review_body_access": "direct_readable",
+      "direct_reviews_read": 3,
+      "onsen_related_direct_reviews": 3,
+      "excluded_summary": "AI 리뷰 요약은 직접 리뷰 수에서 제외했다.",
+      "keywords_seen": [
+        "온천여행",
+        "노천탕",
+        "시설 내에 온천도 많아서",
+        "다양한 종류의 온천탕"
+      ]
+    },
+    "tripadvisor": {
+      "source_url": "https://www.tripadvisor.jp/Hotel_Review-g1121364-d1125741-Reviews-Izanro_Iwasaki-Misasa_cho_Tohaku_gun_Tottori_Prefecture_Chugoku.html",
+      "rating": 4.1,
+      "visible_review_count": 156,
+      "review_body_access": "direct_readable",
+      "direct_reviews_read": 10,
+      "onsen_related_direct_reviews": 9,
+      "keywords_seen": [
+        "ラジウム蒸気風呂",
+        "飲泉",
+        "右の湯",
+        "左の湯",
+        "貸切湯",
+        "露天風呂",
+        "部屋付きの露天風呂",
+        "お湯の質"
+      ]
+    },
+    "ikkyu": {
+      "source_url": "https://www.ikyu.com/00000800/review/",
+      "rating": 4.09,
+      "visible_review_count": 70,
+      "category_scores": {
+        "rooms_amenities": 4.0,
+        "facilities": 3.9,
+        "service": 3.99,
+        "food": 4.15,
+        "onsen_bath": 4.49,
+        "satisfaction": 4.03
+      },
+      "review_body_access": "direct_readable",
+      "direct_reviews_read": 20,
+      "onsen_related_direct_reviews": 18,
+      "keywords_seen": [
+        "温泉",
+        "泉質",
+        "ラジウム温浴",
+        "ラジウム吸引",
+        "大浴場",
+        "部屋の露天風呂",
+        "寒い",
+        "清掃",
+        "古い"
+      ]
+    },
+    "yahoo_travel": {
+      "source_url": "https://travel.yahoo.co.jp/00000800/review/",
+      "rating": 4.09,
+      "visible_review_count": 70,
+      "review_body_access": "direct_readable",
+      "direct_reviews_read_added_to_total": 0,
+      "onsen_related_direct_reviews_added_to_total": 0,
+      "corpus_overlap_note": "Ikkyu와 동일/유사 리뷰풀 70건으로 보여 총 직접 리뷰 수에는 중복 합산하지 않았다. 접근 상태만 direct_readable로 기록한다.",
+      "keywords_seen": [
+        "種類もあり",
+        "いい湯",
+        "回廊型の大浴場",
+        "半露天風呂",
+        "源泉かけ流し",
+        "ラジウム質",
+        "高濃度ラドン"
+      ]
+    },
+    "expedia_hotels": {
+      "source_url": "https://www.expedia.co.kr/Misasa-Hotels-Izanro-Iwasaki.h13238603.Hotel-Information",
+      "rating": 8.6,
+      "visible_review_count": 20,
+      "review_body_access": "partial",
+      "direct_reviews_read_added_to_total": 0,
+      "note": "Naver/Expedia/Hotels surface에서 한국어 리뷰 문구가 보였으나, 이번 집계에서는 안정적 개별 본문 추출로 별도 카운트하지 않았다."
+    },
+    "booking_agoda": {
+      "review_body_access": "not_found",
+      "direct_reviews_read_added_to_total": 0,
+      "note": "이번 패스에서는 정확 숙소 페이지의 개별 본문 표본을 확보하지 않았다."
+    }
+  }
+}

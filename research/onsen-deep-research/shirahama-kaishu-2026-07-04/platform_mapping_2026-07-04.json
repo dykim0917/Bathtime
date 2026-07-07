@@ -1,0 +1,140 @@
+{
+  "research_date": "2026-07-04",
+  "scope": "白浜温泉 浜千鳥の湯 海舟 / Hamachidori no Yu Kaishu",
+  "method": "Ready 숙소 1곳 딥리서치. 정적 직접 본문 추출(Rakuten/Jalan/Booking) + Aside Browser 확인(Google Hotels/Naver). Search snippet and OTA provider cards are excluded from direct review counts.",
+  "direct_review_sampling_status": {
+    "target_direct_reviews": 300,
+    "total_direct_reviews_checked": 411,
+    "onsen_related_direct_reviews_checked": 331,
+    "direct_body_platform_count": 5,
+    "data_quality_grade": "A",
+    "grade_reason": "300+ direct reviews, 3+ direct-body platforms, latest/low-rated/onsen keyword/Korean strata represented. Google Hotels and Naver checked with Aside Browser."
+  },
+  "lodgings": [
+    {
+      "slug": "shirahama-kaishu",
+      "name_ja": "白浜温泉 浜千鳥の湯 海舟",
+      "name_ko_or_en": "Hamachidori no Yu Kaishu",
+      "google_maps": {
+        "rating": "4.1",
+        "visible_review_count": 1943,
+        "rating_distribution": null,
+        "korean_reviews_visible": true,
+        "access_status": "aside_review_tab_read",
+        "google_native_direct_read": 6,
+        "google_native_onsen_related": 5,
+        "ota_provider_cards_seen": [
+          "Trip.com",
+          "Tripadvisor"
+        ],
+        "notes": "Google Hotels review tab showed mixed sources. Only reviews marked Google were counted as Google-native direct reads."
+      },
+      "ota_review_pool_signals": [
+        {
+          "platform": "Rakuten Travel",
+          "rating": "4.37",
+          "visible_review_count": 3565,
+          "review_body_access": "direct_readable",
+          "directly_read_reviews": 197,
+          "onsen_related_reviews": 169,
+          "source_url": "https://travel.rakuten.co.jp/HOTEL/68224/review.html"
+        },
+        {
+          "platform": "Jalan",
+          "rating": "4.5",
+          "visible_review_count": "latest 135; pastKuchiCnt 4701 exposed in page form",
+          "review_body_access": "direct_readable_latest; archive_not_fully_sampled",
+          "directly_read_reviews": 135,
+          "onsen_related_reviews": 114,
+          "source_url": "https://www.jalan.net/yad381160/kuchikomi/"
+        },
+        {
+          "platform": "Booking.com",
+          "rating": "8.8/10",
+          "visible_review_count": 340,
+          "review_body_access": "direct_readable",
+          "directly_read_reviews": 72,
+          "onsen_related_reviews": 42,
+          "source_url": "https://www.booking.com/reviews/jp/hotel/kaishu.en-gb.html"
+        },
+        {
+          "platform": "Trip.com",
+          "rating": "9.2/10",
+          "visible_review_count": 1257,
+          "review_body_access": "snippet_or_static_preview_only",
+          "directly_read_reviews": 0,
+          "onsen_related_reviews": 0,
+          "source_url": "https://ca.trip.com/hotels/shirahama-hotel-detail-1652312/hamachidorinoyu-kaisyu/review.html"
+        },
+        {
+          "platform": "Ikkyu/Yahoo Travel",
+          "rating": null,
+          "visible_review_count": "Ikkyu snippet 212 seen in search; direct fetch forbidden",
+          "review_body_access": "blocked_or_unreadable_static; needs_aside_if_needed",
+          "directly_read_reviews": 0,
+          "onsen_related_reviews": 0,
+          "source_url": "https://www.ikyu.com/00001352/"
+        },
+        {
+          "platform": "Expedia/Hotels.com",
+          "rating": "8.8 signal in search/Hotels.com",
+          "visible_review_count": "Expedia 234 / Hotels.com visible",
+          "review_body_access": "partial_or_bot_blocked",
+          "directly_read_reviews": 0,
+          "onsen_related_reviews": 0,
+          "source_url": "https://www.hotels.com/ho1106903968/hamachidorinoyu-kaisyu-shirahama-japan/"
+        }
+      ],
+      "naver": {
+        "search_query": "해슈 시라하마 후기 객실 노천탕",
+        "search_access_status": "snippet_only",
+        "direct_blog_access_status": "direct_readable",
+        "direct_blog_reviews_read": 1,
+        "onsen_related_direct_blog_reviews": 1,
+        "snippet_count_used_as_direct": 0,
+        "notes": "One personal stay blog was opened and counted. A hotel-introduction style blog was opened but not counted as guest review."
+      },
+      "official_bath_facts_seen": {
+        "official_url": "https://dormy-hotels.com/resort/hotels/shirahama_kaisyu/",
+        "hotspring_url": "https://dormy-hotels.com/resort/hotels/shirahama_kaisyu/hotspring/",
+        "rooms_url": "https://dormy-hotels.com/resort/hotels/shirahama_kaisyu/rooms/",
+        "room_open_air_bath": "浜屋 離れ 10室: 客室露天風呂（源泉かけ流し/合気温泉）; 暁の抄/波の抄 일부 객실: 客室露天風呂（沸かし湯）; ダブルルーム 15室은 객실露天 없음",
+        "public_bath": "大湯屋 海つばき, 合気温泉・文珠温泉, 15:00〜翌10:00",
+        "open_air_public_bath": "混浴露天風呂 浜千鳥の湯, 文珠温泉, 15:00-24:00 / 5:00-10:00, 湯浴み着 착용",
+        "private_bath": "2カ所の貸切露天風呂, 無料, 15:00-24:00 / 5:00-10:00, 空きがあれば 이용",
+        "spring_quality": "合気湯 55.5度 ナトリウム-塩化物・炭酸水素塩温泉; 文珠温泉 58.8度 含硫黄-ナトリウム-塩化物温泉",
+        "tattoo_note": "Rakuten FAQ says guests with tattoos should use private open-air baths rather than public baths."
+      },
+      "review_signal_keywords": [
+        "客室露天風呂",
+        "沸かし湯",
+        "源泉かけ流し",
+        "大浴場",
+        "混浴露天風呂",
+        "貸切露天風呂",
+        "海",
+        "景色",
+        "温度",
+        "階段",
+        "足の悪い方",
+        "混雑",
+        "チェックイン",
+        "곰팡이",
+        "노후",
+        "대욕장",
+        "혼탕",
+        "전세탕"
+      ],
+      "caution_keywords": [
+        "temperature",
+        "privacy_view",
+        "access_steps",
+        "cleanliness_aging",
+        "crowding",
+        "booking_confusion",
+        "insects"
+      ],
+      "next_sampling": "A grade reached. If upgrading precision, sample Jalan archive and Trip.com direct pages, then manually audit room-type split between 浜屋 離れ source-flow room baths and 波/暁 heated room baths."
+    }
+  ]
+}

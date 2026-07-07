@@ -1,0 +1,330 @@
+{
+  "research_date": "2026-07-04",
+  "slug": "tamatsukuri-konya",
+  "status": [
+    "ready"
+  ],
+  "data_quality_grade": "A",
+  "grade_reason": "직접 확인 680건, 직접 본문 플랫폼 5개, Google/Naver Aside 확인, 최신/저평점/온천 키워드/한국어 층화 표본 포함.",
+  "identity": {
+    "name_ja": "玉造温泉 〜曲水の庭〜 ホテル玉泉",
+    "name_ko_or_en": "호텔 교쿠센 / Hotel Gyokusen",
+    "ota_names": [
+      "曲水の庭 ホテル玉泉",
+      "ホテル玉泉",
+      "Hotel Gyokusen"
+    ],
+    "area": "玉造温泉, 島根県松江市",
+    "address": "島根県松江市玉湯町玉造53-2",
+    "official_url": "https://www.hotel-gyokusen.co.jp/"
+  },
+  "visible_review_pool_minimum_mapped": 6103,
+  "visible_review_pool_note": "Rakuten 1,460 + Jalan 2,315 + Google 1,624 + Tripadvisor 205 + Trip.com 78 + Hotels.com 421의 표면 합계. Tourvis/Privia 104와 Rakuten Korean surface 62는 중복 위험이 있어 최소 합계에서 제외.",
+  "direct_reviews_read_total": 680,
+  "onsen_related_direct_reviews_total": 360,
+  "direct_body_platforms": 5,
+  "direct_body_platform_names": [
+    "Rakuten Travel",
+    "Jalan",
+    "JTB",
+    "Google Maps native",
+    "Tripadvisor via Google Hotels card"
+  ],
+  "stratification": {
+    "latest_2026_onsen_static": 98,
+    "low_score_onsen_static": 6,
+    "google_korean_direct_reviews": 9,
+    "google_korean_onsen_reviews": 8,
+    "naver_direct_reviews": 0,
+    "naver_status": "snippet_only"
+  },
+  "static_summary": {
+    "research_date": "2026-07-04",
+    "slug": "tamatsukuri-konya",
+    "total_direct_extracted_static": 670,
+    "onsen_related_body_static": 351,
+    "direct_body_platforms_static": 3,
+    "by_platform": {
+      "Rakuten Travel": {
+        "direct": 360,
+        "onsen_body": 181
+      },
+      "Jalan": {
+        "direct": 210,
+        "onsen_body": 128
+      },
+      "JTB": {
+        "direct": 100,
+        "onsen_body": 42
+      }
+    },
+    "visible_review_pool_static": {
+      "rakuten": 1460,
+      "jalan": 2315,
+      "jtb": null
+    },
+    "bath_area_tags": {
+      "public_bath": 296,
+      "room_bath": 138,
+      "room_open_air_bath": 20,
+      "open_air_public_bath": 15,
+      "private_bath": 8,
+      "family_bath": 3
+    },
+    "signal_type_tags": {
+      "public_bath_hot_spring": 296,
+      "water_texture": 292,
+      "booking_confusion": 248,
+      "room_bath_hot_spring": 139,
+      "crowding": 154,
+      "private_bath_experience": 11,
+      "weak_onsen_feeling": 3
+    },
+    "caution_tags": {
+      "cleanliness_aging": 125,
+      "view_privacy": 171,
+      "access_booking": 241,
+      "public_bath_size_expectation": 96,
+      "buffet_crowding": 121,
+      "children_family": 86,
+      "temperature_control": 29,
+      "price_expectation": 46,
+      "insects": 1
+    },
+    "body_keywords_top": {
+      "温泉": 270,
+      "庭": 145,
+      "玉泉": 130,
+      "待ち": 122,
+      "ホテル玉泉": 116,
+      "バイキング": 108,
+      "大浴場": 98,
+      "清潔": 96,
+      "玉造温泉": 91,
+      "家族": 68,
+      "予約": 55,
+      "駐車場": 48,
+      "露天": 42,
+      "露天風呂": 37,
+      "泉質": 37,
+      "日本庭園": 35,
+      "案内": 35,
+      "広い": 27,
+      "送迎": 27,
+      "説明": 27,
+      "駅": 21,
+      "温度": 19,
+      "混雑": 18,
+      "掃除": 17,
+      "美肌": 16,
+      "サウナ": 16,
+      "眺望": 15,
+      "ツルツル": 12,
+      "美肌の湯": 12,
+      "すべすべ": 9,
+      "貸切": 8,
+      "匂い": 8,
+      "曲水の庭": 7,
+      "湯加減": 7,
+      "古い": 6,
+      "空いて": 5,
+      "混んで": 5,
+      "内湯": 4,
+      "子連れ": 4,
+      "貸切風呂": 4,
+      "臭い": 4,
+      "家族風呂": 3,
+      "つるつる": 3,
+      "熱い": 3,
+      "湯質": 2,
+      "狭い": 2,
+      "檜の湯": 2,
+      "巌の湯": 2,
+      "赤ちゃん": 2,
+      "源泉": 1
+    },
+    "scores": {
+      "3": 12,
+      "4": 118,
+      "5": 230,
+      "null": 310
+    },
+    "collection_stats": {
+      "rakuten_offset_0": 20,
+      "rakuten_offset_20": 20,
+      "rakuten_offset_40": 20,
+      "rakuten_offset_60": 20,
+      "rakuten_offset_80": 20,
+      "rakuten_offset_100": 20,
+      "rakuten_offset_120": 20,
+      "rakuten_offset_140": 20,
+      "rakuten_offset_160": 20,
+      "rakuten_offset_180": 20,
+      "rakuten_offset_200": 20,
+      "rakuten_offset_220": 20,
+      "rakuten_offset_240": 20,
+      "rakuten_offset_260": 20,
+      "rakuten_offset_280": 20,
+      "rakuten_offset_300": 20,
+      "rakuten_offset_320": 20,
+      "rakuten_offset_340": 20,
+      "jalan_1": 30,
+      "jalan_2": 30,
+      "jalan_3": 30,
+      "jalan_4": 30,
+      "jalan_5": 30,
+      "jalan_6": 30,
+      "jalan_7": 30,
+      "jtb_page_1": 20,
+      "jtb_page_2": 20,
+      "jtb_page_3": 20,
+      "jtb_page_4": 20,
+      "jtb_page_5": 20
+    }
+  },
+  "browser_summary": {
+    "google_maps": {
+      "rating": 4.1,
+      "visible_review_count": 1624,
+      "rating_distribution": {
+        "1": 59,
+        "2": 63,
+        "3": 225,
+        "4": 664,
+        "5": 613
+      },
+      "review_body_access": "partial",
+      "direct_read_google_native_reviews": 9,
+      "onsen_related_google_native_reviews": 8,
+      "provider_cards_seen": [
+        {
+          "provider": "Tripadvisor",
+          "rating": 4,
+          "visible_review_count": 205,
+          "direct_read_reviews": 1,
+          "onsen_related_direct_reviews": 1
+        }
+      ],
+      "access_note": "Aside Browser로 Google Maps/Hotels 패널과 리뷰 탭을 직접 열람. Google-native 리뷰와 공급자 카드는 분리 집계."
+    },
+    "naver": {
+      "review_body_access": "snippet_only",
+      "direct_read_reviews": 0,
+      "onsen_related_direct_reviews": 0,
+      "snippets_seen": [
+        {
+          "source": "Trip.com",
+          "visible_signal": "9/10, 78 참여"
+        },
+        {
+          "source": "Hotels.com",
+          "visible_signal": "8.8/10, 421 참여"
+        },
+        {
+          "source": "Tourvis/Privia",
+          "visible_signal": "4.2/5, 104 참여"
+        },
+        {
+          "source": "Rakuten Travel Korean surface",
+          "visible_signal": "62 reviews snippet"
+        }
+      ],
+      "access_note": "Naver 검색 결과는 OTA/메타 표면과 블로그 스니펫 중심. 숙소 체류 본문을 직접 연 표본은 없으므로 직접 리뷰 수에 포함하지 않음."
+    }
+  },
+  "official_bath_facts_seen": {
+    "public_bath": "official/OTA_seen",
+    "open_air_public_bath": "official/OTA_seen",
+    "private_bath": "Yukoyuko_seen",
+    "room_open_air_bath": "conflicting_or_unclear",
+    "source_flow_claim": "conflicting",
+    "spring_quality": [
+      "単純温泉",
+      "硫酸塩泉(配湯)",
+      "塩化物泉(配湯)"
+    ],
+    "source_temperature": "72°C seen on Japan Onsen Association",
+    "caution": "Yukoyuko는 かけ流し 표기, Japan Onsen Association은 掛け流し浴槽 無로 표기되어 원천가케나가시 축은 공식/OTA 간 충돌로 처리."
+  },
+  "review_signal_table": [
+    {
+      "accommodation_name": "玉造温泉 〜曲水の庭〜 ホテル玉泉",
+      "bath_area": "public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 304,
+      "source_count": 304,
+      "platform_count": 5,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal",
+      "note": "대욕장/온천/넓은 목욕 경험이 직접 표본 전반에서 강하게 반복된다."
+    },
+    {
+      "accommodation_name": "玉造温泉 〜曲水の庭〜 ホテル玉泉",
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 300,
+      "source_count": 300,
+      "platform_count": 5,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal",
+      "note": "美肌/すべすべ/피부가 부드럽다 계열의 수질·촉감 표현이 반복된다."
+    },
+    {
+      "accommodation_name": "玉造温泉 〜曲水の庭〜 ホテル玉泉",
+      "bath_area": "open_air_public_bath",
+      "bath_area_confidence": "probable",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "mixed",
+      "mention_count": 16,
+      "source_count": 16,
+      "platform_count": 2,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal",
+      "note": "공용 노천탕은 만족 표현이 있으나, Google 한국어 표본에서는 좁다는 부정 신호도 1건 확인된다."
+    },
+    {
+      "accommodation_name": "玉造温泉 〜曲水の庭〜 ホテル玉泉",
+      "bath_area": "private_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "positive",
+      "mention_count": 8,
+      "source_count": 8,
+      "platform_count": 1,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal",
+      "note": "貸切/貸切風呂 표본은 있으나 대욕장 신호에 비해 작다."
+    },
+    {
+      "accommodation_name": "玉造温泉 〜曲水の庭〜 ホテル玉泉",
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "unclear",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "mixed",
+      "mention_count": 20,
+      "source_count": 20,
+      "platform_count": 1,
+      "contradiction_level": "high",
+      "review_signal_status": "conflicting",
+      "note": "문맥 태그상 객실 노천/객실탕 표현이 잡히지만, 공식·협회 표기와 충돌 가능성이 있어 객실탕 축으로 해석하지 않는다."
+    },
+    {
+      "accommodation_name": "玉造温泉 〜曲水の庭〜 ホテル玉泉",
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "crowding",
+      "signal_direction": "mixed",
+      "mention_count": 154,
+      "source_count": 154,
+      "platform_count": 3,
+      "contradiction_level": "none",
+      "review_signal_status": "moderate_signal",
+      "note": "혼잡·대기·비어 있음이 함께 잡힌다. 온천 자체보다 뷔페/대형 숙소 운영 신호와 함께 읽어야 한다."
+    }
+  ],
+  "next_sampling": "A급 기준은 충족. 객실 노천탕/객실탕 축을 상품 데이터로 쓰려면 공식 객실 타입 페이지와 OTA 객실별 플랜을 별도 확인해야 한다."
+}

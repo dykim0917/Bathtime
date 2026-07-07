@@ -1,0 +1,119 @@
+[
+  {
+    "platform": "Google Maps",
+    "source_url": "https://www.google.com/maps/search/?api=1&query=%E7%8E%89%E9%80%A0%E6%B8%A9%E6%B3%89%20%E3%83%9B%E3%83%86%E3%83%AB%E7%8E%89%E6%B3%89",
+    "review_id": "google-native-kim-younghwan-2025",
+    "review_date": "2025",
+    "rating": 4,
+    "language": "ko",
+    "review_body_access": "direct_readable",
+    "google_native": true,
+    "bath_area_tags": [
+      "public_bath",
+      "open_air_public_bath"
+    ],
+    "signal_type_tags": [
+      "public_bath_hot_spring",
+      "weak_onsen_feeling"
+    ],
+    "signal_direction": "mixed",
+    "original_keyword": [
+      "온천시설",
+      "노천탕",
+      "일반 사우나"
+    ],
+    "paraphrase": "한국어 리뷰에서 온천 시설은 이용했지만 노천탕 공간이 좁고 일반 사우나처럼 느껴졌다는 부정/혼합 신호가 확인된다.",
+    "onsen_related_body": true
+  },
+  {
+    "platform": "Google Maps",
+    "source_url": "https://www.google.com/maps/search/?api=1&query=%E7%8E%89%E9%80%A0%E6%B8%A9%E6%B3%89%20%E3%83%9B%E3%83%86%E3%83%AB%E7%8E%89%E6%B3%89",
+    "review_id": "google-native-jung-byeongsam-2026",
+    "review_date": "2026",
+    "rating": 5,
+    "language": "ko",
+    "review_body_access": "direct_readable",
+    "google_native": true,
+    "bath_area_tags": [
+      "public_bath"
+    ],
+    "signal_type_tags": [
+      "public_bath_hot_spring",
+      "water_texture"
+    ],
+    "signal_direction": "positive",
+    "original_keyword": [
+      "온천이 너무 좋아요"
+    ],
+    "paraphrase": "최신 한국어 Google-native 리뷰에서 온천 만족 표현이 짧지만 직접 확인된다.",
+    "onsen_related_body": true
+  },
+  {
+    "platform": "Google Maps",
+    "source_url": "https://www.google.com/maps/search/?api=1&query=%E7%8E%89%E9%80%A0%E6%B8%A9%E6%B3%89%20%E3%83%9B%E3%83%86%E3%83%AB%E7%8E%89%E6%B3%89",
+    "review_id": "google-native-lee-action-girl-2026",
+    "review_date": "2026",
+    "rating": 5,
+    "language": "ko",
+    "review_body_access": "direct_readable",
+    "google_native": true,
+    "bath_area_tags": [],
+    "signal_type_tags": [],
+    "signal_direction": "neutral",
+    "original_keyword": [],
+    "paraphrase": "Google-native 한국어 최신 리뷰 1건은 숙박 만족 표본으로 읽었으나 온천 본문 신호는 확인되지 않았다.",
+    "onsen_related_body": false
+  },
+  {
+    "platform": "Google Maps",
+    "source_url": "https://www.google.com/maps/search/?api=1&query=%E7%8E%89%E9%80%A0%E6%B8%A9%E6%B3%89%20%E3%83%9B%E3%83%86%E3%83%AB%E7%8E%89%E6%B3%89",
+    "review_id": "google-native-older-ko-bundle",
+    "review_date": "2018-2019",
+    "rating": 4,
+    "language": "ko",
+    "review_body_access": "direct_readable",
+    "google_native": true,
+    "bath_area_tags": [
+      "public_bath"
+    ],
+    "signal_type_tags": [
+      "public_bath_hot_spring",
+      "water_texture",
+      "booking_confusion"
+    ],
+    "signal_direction": "positive",
+    "original_keyword": [
+      "대욕장",
+      "온천",
+      "피부가 부드럽다",
+      "송영"
+    ],
+    "paraphrase": "과거 한국어 Google-native 표본 여러 건에서 대욕장 안내, 온천 만족, 피부/머릿결 촉감, 송영 안내가 반복된다.",
+    "onsen_related_body": true,
+    "grouped_direct_reviews": 6,
+    "grouped_onsen_reviews": 6
+  },
+  {
+    "platform": "Tripadvisor via Google Hotels card",
+    "source_url": "https://www.google.com/maps/search/?api=1&query=%E7%8E%89%E9%80%A0%E6%B8%A9%E6%B3%89%20%E3%83%9B%E3%83%86%E3%83%AB%E7%8E%89%E6%B3%89",
+    "review_id": "google-provider-tripadvisor-kimheesoo",
+    "review_date": "2019",
+    "rating": 4,
+    "language": "ko",
+    "review_body_access": "direct_readable",
+    "google_native": false,
+    "bath_area_tags": [
+      "public_bath"
+    ],
+    "signal_type_tags": [
+      "public_bath_hot_spring"
+    ],
+    "signal_direction": "positive",
+    "original_keyword": [
+      "가장 큰 온천호텔",
+      "온천 힐링"
+    ],
+    "paraphrase": "Google 호텔 패널의 Tripadvisor 공급자 카드에서 규모 큰 온천호텔·온천 힐링 신호가 확인된다. Google-native 리뷰로 세지 않는다.",
+    "onsen_related_body": true
+  }
+]

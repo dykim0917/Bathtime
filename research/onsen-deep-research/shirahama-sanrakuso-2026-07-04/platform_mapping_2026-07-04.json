@@ -1,0 +1,160 @@
+{
+  "research_date": "2026-07-04",
+  "scope": "ready lodging deep research: Kansai/Sanin/Setouchi Tier 1 lodging",
+  "method": "Rakuten API, Jalan HTML, JTB HTML로 직접 본문 수집 후 Aside Browser로 Google Maps와 Naver Search를 확인. Naver 검색 스니펫과 Google 공급자 카드는 직접 리뷰 수/Google-native 리뷰와 분리.",
+  "direct_review_sampling_status": "A: 300+ direct reviews, 3 direct-body platforms, Google/Naver checked; Google provider cards excluded from direct totals",
+  "lodgings": [
+    {
+      "slug": "shirahama-sanrakuso",
+      "name_ja": "白浜温泉 ホテル三楽荘",
+      "name_ko_or_en": "Hotel Sanrakuso / 호텔 산라쿠소",
+      "address": "和歌山県西牟婁郡白浜町3078",
+      "onsen_area": "南紀白浜温泉 / 白浜温泉",
+      "google_maps": {
+        "rating": 4.2,
+        "visible_review_count": 938,
+        "rating_distribution": {
+          "1": 27,
+          "2": 24,
+          "3": 120,
+          "4": 366,
+          "5": 401
+        },
+        "korean_reviews_visible": true,
+        "review_body_access": "partial/provider_cards_direct_read",
+        "direct_google_native_reviews_read": 0,
+        "onsen_related_google_native_reviews": 0,
+        "ota_provider_cards_seen": [
+          "Trip.com",
+          "Tripadvisor"
+        ],
+        "provider_card_reviews_seen_not_counted": 2,
+        "provider_card_onsen_related_reviews_not_counted": 2,
+        "caution": "Google Maps의 Trip.com/Tripadvisor 카드는 Google-native 리뷰로 세지 않았다."
+      },
+      "ota_review_pool_signals": {
+        "Rakuten Travel": {
+          "visible_review_count": 2109,
+          "page_badge_review_count": 2531,
+          "rating": 4.53,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 360,
+          "onsen_related_direct_reviews": 195,
+          "source_url": "https://travel.rakuten.co.jp/HOTEL/8226/review.html"
+        },
+        "Jalan": {
+          "visible_review_count": 3533,
+          "rating": 4.5,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 155,
+          "onsen_related_direct_reviews": 120,
+          "source_url": "https://www.jalan.net/yad316623/kuchikomi/"
+        },
+        "JTB": {
+          "visible_review_count": null,
+          "rating": null,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 20,
+          "onsen_related_direct_reviews": 11,
+          "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/6506008/review/"
+        },
+        "Trip.com": {
+          "visible_review_count": 358,
+          "rating": 9.3,
+          "review_body_access": "snippet_only plus google_provider_card_seen_not_counted",
+          "direct_reviews_read": 0,
+          "onsen_related_direct_reviews": 0,
+          "source_basis": "Naver Search snippet and Google Maps provider card"
+        },
+        "Tripadvisor": {
+          "visible_review_count": 187,
+          "rating": 4.1,
+          "review_body_access": "snippet_only plus google_provider_card_seen_not_counted",
+          "direct_reviews_read": 0,
+          "onsen_related_direct_reviews": 0,
+          "source_basis": "Naver Search snippet and Google Maps provider card"
+        },
+        "Booking.com": {
+          "visible_review_count": 345,
+          "rating": 8.8,
+          "review_body_access": "snippet_only",
+          "direct_reviews_read": 0,
+          "source_basis": "Naver Search result"
+        },
+        "Agoda": {
+          "visible_review_count": null,
+          "rating": null,
+          "review_body_access": "snippet_only",
+          "direct_reviews_read": 0,
+          "source_basis": "Naver Search result"
+        },
+        "Rakuten Travel Korean": {
+          "visible_review_count": 769,
+          "rating": 4.5,
+          "review_body_access": "snippet_only",
+          "direct_reviews_read": 0,
+          "duplicate_risk": "Rakuten 본체와 중복 가능성이 있어 visible minimum 합계에는 더하지 않음."
+        },
+        "Traveloka": {
+          "visible_review_count": 357,
+          "rating": 8.6,
+          "review_body_access": "snippet_only",
+          "direct_reviews_read": 0,
+          "source_basis": "Naver Search result"
+        },
+        "Naver Search / Blog": {
+          "visible_review_count": null,
+          "rating": null,
+          "review_body_access": "snippet_only",
+          "direct_reviews_read": 0,
+          "snippet_only_results_seen": [
+            "Trip.com 358",
+            "Booking.com 345",
+            "Rakuten Travel Korean 769",
+            "Tripadvisor 187",
+            "Traveloka 357"
+          ]
+        }
+      },
+      "official_bath_facts_seen": {
+        "official_site_url": "https://sanrakuso.co.jp/",
+        "rooms_url": "https://sanrakuso.co.jp/rooms/",
+        "hotsprings_url": "https://sanrakuso.co.jp/hotsprings/",
+        "room_open_air_bath": "공식: 9Fましらの·8F浜水晶에 全22室の源泉かけ流し露天風呂付客室. 山の温泉「藤の湯」を 객실 노천에서 이용.",
+        "room_bath": "공식: 6F波の綾에는 海側ミラバス付客室이 있으나, 온천 객실탕으로 단정하지 않는다.",
+        "public_bath": "공식: 大浴場「夕月」「宵待」. 藤の湯와 衝幹の湯 두 원천을 즐기는 공용 내탕.",
+        "open_air_public_bath": "공식: 대욕장에 露天風呂はございません. 근처 공중 노천 崎の湯를 별도 안내.",
+        "private_bath": "공식 확인 없음.",
+        "family_bath": "공식 확인 없음.",
+        "water_handling": "공식: 2種の源泉を100%かけ流し. 다만 대욕장 안내에는 위생관리상 塩素系薬剤 사용 표기가 있다.",
+        "spring_quality": "藤の湯: ナトリウム-塩化物・炭酸水素塩泉. 衝幹の湯: ナトリウム-塩化物強塩温泉.",
+        "public_bath_hours": "15:00-24:00 / 5:00-9:30, 男女入替制.",
+        "tattoo_policy": "문신/타투 입욕은 원칙 제한. 시판 커버실로 완전히 가릴 수 있는 경우 대욕장 이용 가능.",
+        "structural_note": "대욕장 탈의장은 2층, 욕장은 1층 구조이며 약 15단 계단 안내."
+      },
+      "review_signal_keywords": [
+        "源泉かけ流し",
+        "露天風呂付客室",
+        "客室露天風呂",
+        "白良浜",
+        "オーシャンビュー",
+        "大浴場",
+        "藤の湯",
+        "衝幹の湯",
+        "ミラバス",
+        "温度",
+        "湯の花"
+      ],
+      "caution_keywords": [
+        "公用大浴場に露天なし",
+        "ミラバスは温泉と分리",
+        "塩素系薬剤",
+        "15段ほどの階段",
+        "温度",
+        "古い",
+        "子連れ混雑"
+      ],
+      "next_sampling": "A등급은 충족. 다음 보강은 Google-native 개별 리뷰 본문 확장, Naver Blog 원문 발굴, Yahoo/Ikkyu 직접 본문 확인."
+    }
+  ]
+}

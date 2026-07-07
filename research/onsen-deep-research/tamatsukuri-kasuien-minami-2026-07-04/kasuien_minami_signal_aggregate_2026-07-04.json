@@ -1,0 +1,249 @@
+{
+  "research_date": "2026-07-04",
+  "slug": "tamatsukuri-kasuien-minami",
+  "accommodation_name": "玉造温泉 佳翠苑皆美",
+  "direct_read_total": 606,
+  "onsen_related_direct_total": 320,
+  "direct_body_platform_count": 4,
+  "data_quality_grade": "A",
+  "platform_direct_counts": {
+    "Rakuten Travel": {
+      "visible_review_count": 1167,
+      "direct_reviews_read": 440,
+      "onsen_related_direct_reviews": 209,
+      "review_body_access": "direct_readable"
+    },
+    "Jalan": {
+      "visible_review_count": 2071,
+      "direct_reviews_read": 134,
+      "onsen_related_direct_reviews": 90,
+      "review_body_access": "direct_readable"
+    },
+    "Google Maps native": {
+      "visible_review_count": 1977,
+      "rating": 4.4,
+      "rating_distribution": {
+        "1": 52,
+        "2": 33,
+        "3": 118,
+        "4": 568,
+        "5": 1206
+      },
+      "direct_reviews_read": 9,
+      "onsen_related_direct_reviews": 4,
+      "review_body_access": "partial"
+    },
+    "Ikkyu": {
+      "visible_review_count": 265,
+      "rating": 4.73,
+      "direct_reviews_read": 23,
+      "onsen_related_direct_reviews": 17,
+      "review_body_access": "direct_readable",
+      "note": "브라우저 표면 기준. Ikkyu/Yahoo 합산 총점 265건이나 페이지는 Ikkyu 게시 리뷰만 표시한다고 안내."
+    },
+    "Tripadvisor provider card in Google": {
+      "visible_review_count": null,
+      "direct_reviews_read": 0,
+      "onsen_related_direct_reviews": 0,
+      "review_body_access": "partial",
+      "not_counted_reason": "Google 패널 안 공급자 카드라 Google-native 리뷰 수에서 제외"
+    },
+    "Yahoo Travel": {
+      "visible_review_count": 265,
+      "rating": 4.73,
+      "direct_reviews_read": 0,
+      "onsen_related_direct_reviews": 0,
+      "review_body_access": "blocked",
+      "not_counted_reason": "정적 요청 403. Aside에서는 Ikkyu 표면이 Yahoo 합산 점수를 안내하므로 중복 가능성이 있어 직접 수 미반영."
+    },
+    "Naver Search": {
+      "visible_review_count": null,
+      "direct_reviews_read": 0,
+      "onsen_related_direct_reviews": 0,
+      "review_body_access": "snippet_only"
+    },
+    "Naver Blog": {
+      "visible_review_count": null,
+      "direct_reviews_read": 0,
+      "onsen_related_direct_reviews": 0,
+      "review_body_access": "snippet_only"
+    },
+    "Agoda": {
+      "visible_review_count": null,
+      "direct_reviews_read": 0,
+      "onsen_related_direct_reviews": 0,
+      "review_body_access": "partial",
+      "not_counted_reason": "Google 가격 카드 표면만 확인. 개별 리뷰 본문 미확보."
+    },
+    "Booking": {
+      "visible_review_count": null,
+      "direct_reviews_read": 0,
+      "onsen_related_direct_reviews": 0,
+      "review_body_access": "snippet_only",
+      "not_counted_reason": "Naver 검색 광고/요약 표면만 확인."
+    },
+    "Tripcom": {
+      "visible_review_count": 35,
+      "direct_reviews_read": 0,
+      "onsen_related_direct_reviews": 0,
+      "review_body_access": "snippet_only",
+      "not_counted_reason": "Naver 검색 표면에서 평점/참여 수와 객실명 스니펫만 확인."
+    },
+    "Tripadvisor": {
+      "visible_review_count": null,
+      "direct_reviews_read": 0,
+      "onsen_related_direct_reviews": 0,
+      "review_body_access": "blocked",
+      "not_counted_reason": "정적 요청은 JS/ad-blocker 안내. Google provider card 일부만 확인."
+    }
+  },
+  "bath_area_tags": {
+    "room_bath": 126,
+    "room_open_air_bath": 59,
+    "public_bath": 56,
+    "open_air_public_bath": 32,
+    "facility_wide": 9
+  },
+  "signal_type_tags": {
+    "water_texture": 262,
+    "booking_confusion": 160,
+    "crowding": 150,
+    "room_bath_hot_spring": 134,
+    "public_bath_hot_spring": 79,
+    "chlorine_smell": 2,
+    "weak_onsen_feeling": 1
+  },
+  "caution_tags": {
+    "access_booking": 146,
+    "quiet_luxury": 143,
+    "view_garden_rooftop": 93,
+    "cleanliness_aging": 69,
+    "temperature_control": 18,
+    "beauty_water_framing": 18,
+    "room_bath_presence": 14
+  },
+  "signal_rows": [
+    {
+      "accommodation_name": "玉造温泉 佳翠苑皆美",
+      "bath_area": "room_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 126,
+      "source_count": 126,
+      "platform_count": 4,
+      "contradiction_level": "none",
+      "review_signal_status": "strong_signal",
+      "interpretation": "객실 내탕/객실 온천은 일부 객실 옵션으로 반복된다."
+    },
+    {
+      "accommodation_name": "玉造温泉 佳翠苑皆美",
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 59,
+      "source_count": 59,
+      "platform_count": 3,
+      "contradiction_level": "none",
+      "review_signal_status": "strong_signal",
+      "interpretation": "객실 노천탕은 2026년 리뉴얼 객실 및 고급 객실 표본에서 강하게 잡힌다."
+    },
+    {
+      "accommodation_name": "玉造温泉 佳翠苑皆美",
+      "bath_area": "public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 56,
+      "source_count": 56,
+      "platform_count": 4,
+      "contradiction_level": "none",
+      "review_signal_status": "strong_signal",
+      "interpretation": "대욕장, 1층/전망탕, 두 곳의 목욕장 이용 신호가 반복된다."
+    },
+    {
+      "accommodation_name": "玉造温泉 佳翠苑皆美",
+      "bath_area": "open_air_public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "mixed",
+      "mention_count": 32,
+      "source_count": 32,
+      "platform_count": 3,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal",
+      "interpretation": "전망 노천/옥상 노천의 장점과 전망·규모 기대 차이가 함께 보인다."
+    },
+    {
+      "accommodation_name": "玉造温泉 佳翠苑皆美",
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 262,
+      "source_count": 262,
+      "platform_count": 4,
+      "contradiction_level": "none",
+      "review_signal_status": "strong_signal",
+      "interpretation": "玉造温泉, 美肌, すべすべ, 泉質, まろやか 표현이 반복된다."
+    },
+    {
+      "accommodation_name": "玉造温泉 佳翠苑皆美",
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "weak_onsen_feeling",
+      "signal_direction": "negative",
+      "mention_count": 1,
+      "source_count": 1,
+      "platform_count": 1,
+      "contradiction_level": "medium",
+      "review_signal_status": "weak_signal",
+      "interpretation": "源泉掛け流しではない/循環 인식은 소수 부정 신호다."
+    },
+    {
+      "accommodation_name": "玉造温泉 佳翠苑皆美",
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "chlorine_smell",
+      "signal_direction": "negative",
+      "mention_count": 2,
+      "source_count": 2,
+      "platform_count": 1,
+      "contradiction_level": "none",
+      "review_signal_status": "weak_signal",
+      "interpretation": "塩素/カルキ는 정적 표본에서 2건만 확인된다."
+    },
+    {
+      "accommodation_name": "玉造温泉 佳翠苑皆美",
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "crowding",
+      "signal_direction": "mixed",
+      "mention_count": 150,
+      "source_count": 150,
+      "platform_count": 4,
+      "contradiction_level": "medium",
+      "review_signal_status": "strong_signal",
+      "interpretation": "혼잡 확인/공실감/단체·조식 혼잡 신호가 섞인다."
+    },
+    {
+      "accommodation_name": "玉造温泉 佳翠苑皆美",
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "booking_confusion",
+      "signal_direction": "mixed",
+      "mention_count": 160,
+      "source_count": 160,
+      "platform_count": 4,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal",
+      "interpretation": "예약, 송영, 주차, 안내, 객실·식사 옵션 신호는 운영 메모로 분리한다."
+    }
+  ],
+  "notes": [
+    "Rakuten/Jalan 직접 표본이 충분하지만 단일/이중 OTA에 머물지 않도록 Google Maps native와 Ikkyu 브라우저 직접 표본을 보강했다.",
+    "Naver 검색/블로그는 snippet_only로 분리했고 직접 리뷰 수에 넣지 않았다.",
+    "Google 패널의 Tripadvisor 공급자 카드는 Google-native 수에서 제외했다."
+  ]
+}

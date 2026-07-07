@@ -1,0 +1,240 @@
+{
+  "research_date": "2026-07-04",
+  "slug": "misasa-mansuirou",
+  "accommodation_name": "三朝薬師の湯 万翆楼",
+  "name_ko_or_en": "Mansuirou / 만수이로우",
+  "data_quality_grade": "A",
+  "grade_reason": "직접 확인 579건, 온천 관련 직접 리뷰 319건, 직접 본문 플랫폼 6개. Rakuten/Jalan 정적 대량 표본에 Google Maps, Trip.com Moments, Ikkyu, Tripadvisor 브라우저 표본을 보강했다.",
+  "identity_normalization": {
+    "official_name_ja": "三朝薬師の湯 万翆楼",
+    "name_ko_common": "만수이로우",
+    "name_en": "Mansuirou / Mansuirou Ryokan",
+    "ota_names": [
+      "三朝薬師の湯　万翆楼",
+      "三朝薬師の湯 万翆楼",
+      "Mansuirou Ryokan"
+    ],
+    "official_url": "https://www.mansuirou.co.jp/",
+    "address": "鳥取県東伯郡三朝町山田5",
+    "onsen_area": "三朝温泉",
+    "id_correction_note": "후보 행에는 Rakuten 38972 / Jalan 322084 표면이 적혀 있었으나, 현 공개 표면은 Rakuten 5608 / Jalan 350895로 정규화했다."
+  },
+  "visible_review_pool_raw_platform_sum": 4554,
+  "visible_review_pool_dedup_caution": "Google 패널의 OTA 공급자 카드, Ikkyu/Yahoo 71건 계열, Agoda/Trip.com/Google 중복 가능성이 있어 raw sum을 독립 리뷰풀로 해석하면 안 된다.",
+  "direct_review_counts": {
+    "total_direct_reviews_read": 579,
+    "onsen_related_direct_reviews": 319,
+    "direct_body_platform_count": 6,
+    "direct_body_platforms": [
+      "Rakuten Travel",
+      "Jalan",
+      "Google Maps native",
+      "Trip.com Moments",
+      "Ikkyu",
+      "Tripadvisor"
+    ]
+  },
+  "platform_direct_counts": {
+    "Rakuten Travel": {
+      "visible_review_count": 686,
+      "direct_reviews_read": 420,
+      "onsen_related_direct_reviews": 249,
+      "review_body_access": "direct_readable"
+    },
+    "Jalan": {
+      "visible_review_count": 1016,
+      "direct_reviews_read": 119,
+      "onsen_related_direct_reviews": 38,
+      "review_body_access": "direct_readable"
+    },
+    "Google Maps native": {
+      "visible_review_count": 642,
+      "direct_reviews_read": 8,
+      "onsen_related_direct_reviews": 7,
+      "review_body_access": "partial"
+    },
+    "Trip.com Moments": {
+      "visible_review_count": null,
+      "direct_reviews_read": 2,
+      "onsen_related_direct_reviews": 1,
+      "review_body_access": "direct_readable"
+    },
+    "Ikkyu": {
+      "visible_review_count": 71,
+      "direct_reviews_read": 20,
+      "onsen_related_direct_reviews": 17,
+      "review_body_access": "direct_readable"
+    },
+    "Tripadvisor": {
+      "visible_review_count": 74,
+      "direct_reviews_read": 10,
+      "onsen_related_direct_reviews": 7,
+      "review_body_access": "direct_readable"
+    },
+    "Yahoo Travel": {
+      "visible_review_count": 71,
+      "direct_reviews_read": 0,
+      "onsen_related_direct_reviews": 0,
+      "review_body_access": "direct_readable",
+      "not_counted_reason": "Ikkyu와 같은 71건 계열로 보여 직접 리뷰 총량에는 중복 합산하지 않음"
+    },
+    "Agoda": {
+      "visible_review_count": 994,
+      "direct_reviews_read": 0,
+      "onsen_related_direct_reviews": 0,
+      "review_body_access": "partial"
+    },
+    "Naver Search": {
+      "visible_review_count": null,
+      "direct_reviews_read": 0,
+      "onsen_related_direct_reviews": 0,
+      "review_body_access": "snippet_only"
+    },
+    "Naver Cafe": {
+      "visible_review_count": null,
+      "direct_reviews_read": 0,
+      "onsen_related_direct_reviews": 0,
+      "review_body_access": "blocked"
+    }
+  },
+  "official_bath_facts": {
+    "official_url": "https://www.mansuirou.co.jp/onsen.html",
+    "public_bath": "공식/시설 주장: 자가원천 3본의 원천100%(가온·가수 있음) 온천을 내탕/욕장별로 제공.",
+    "open_air_public_bath": "공식/시설 주장: 노천탕 있음.",
+    "room_open_air_bath": "공식/시설 주장: 일부 스위트/특별 객실에 온천 노천 또는 반노천탕. 2023년 12월 절경 스위트 노천탕이 三朝温泉 원천100% 노천탕으로 리뉴얼된 표면 확인.",
+    "room_bath": "공식/시설 주장: 일부 객실의 객실풍로/내탕/반노천 계열. 전 객실 신호로 보지 않음.",
+    "private_bath": "공식/시설 및 리뷰 표면: 貸切風呂/真珠の湯 신호 있음.",
+    "family_bath": "후기 신호에서 가족탕 표현이 소수 등장. 객실탕과 합치지 않음.",
+    "source_flow_claim": "공식/시설 주장: 自家源泉100%, 加温・加水あり. Rakuten/Yahoo 표면에서는 자가원천掛け流し/源泉100% 표현도 보인다.",
+    "radium_related_claim": "공식/OTA 표면: ラドン/ラジウム, 浸かる・飲む・吸う, 대욕장 천장 설계로 증기 흡입을 강조."
+  },
+  "review_signal_tags": [
+    {
+      "accommodation_name": "三朝薬師の湯 万翆楼",
+      "bath_area": "room_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 115,
+      "source_count": 115,
+      "platform_count": 5,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal",
+      "note": "객실 내탕/객실풍로/객실 노천 포함 객실탕 신호가 강하다. 단, 전 객실이 아니라 객실 타입별 옵션으로 해석해야 한다."
+    },
+    {
+      "accommodation_name": "三朝薬師の湯 万翆楼",
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 72,
+      "source_count": 72,
+      "platform_count": 5,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal",
+      "note": "露天風呂付, 半露天, 部屋の露天風呂가 반복된다. 객실탕 만족과 고급/기념일 숙박 신호가 붙는다."
+    },
+    {
+      "accommodation_name": "三朝薬師の湯 万翆楼",
+      "bath_area": "public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 73,
+      "source_count": 73,
+      "platform_count": 6,
+      "contradiction_level": "medium",
+      "review_signal_status": "strong_signal",
+      "note": "大浴場, 온천물, 수질, 타월 비치, 넓음 신호가 반복된다. 일부는 기대보다 작음/노천 개방감 부족/순환 언급이 있어 contradiction은 medium이다."
+    },
+    {
+      "accommodation_name": "三朝薬師の湯 万翆楼",
+      "bath_area": "open_air_public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "mixed",
+      "mention_count": 38,
+      "source_count": 38,
+      "platform_count": 5,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal",
+      "note": "공용 노천탕 언급은 반복되지만, 작다/조경 없음/개방감 부족이라는 Google/Tripadvisor 계열 부정 신호도 있다."
+    },
+    {
+      "accommodation_name": "三朝薬師の湯 万翆楼",
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 260,
+      "source_count": 260,
+      "platform_count": 6,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal",
+      "note": "三朝温泉, ラジウム, ラドン, 泉質, 온천물/수질 좋음이 강하게 반복된다."
+    },
+    {
+      "accommodation_name": "三朝薬師の湯 万翆楼",
+      "bath_area": "private_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "mixed",
+      "mention_count": 17,
+      "source_count": 17,
+      "platform_count": 4,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal",
+      "note": "貸切風呂/家族탕 신호가 반복되며, Google 한국어 리뷰에서는 가족탕 요금과 노천 없음이 구체적 불만으로 나타난다."
+    },
+    {
+      "accommodation_name": "三朝薬師の湯 万翆楼",
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "chlorine_smell",
+      "signal_direction": "negative",
+      "mention_count": 1,
+      "source_count": 1,
+      "platform_count": 1,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal",
+      "note": "塩素는 1건 탐색 신호 수준이다."
+    },
+    {
+      "accommodation_name": "三朝薬師の湯 万翆楼",
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "crowding",
+      "signal_direction": "mixed",
+      "mention_count": 16,
+      "source_count": 16,
+      "platform_count": 3,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal",
+      "note": "혼잡/번잡한 대중탕과 한산/쾌적 신호가 모두 있어 시간대·시즌·가격대 영향으로 본다."
+    }
+  ],
+  "management_notes": [
+    "청소, 냄새, 곰팡이, 시설 노후감 신호가 저평점 리뷰에 반복된다.",
+    "객실탕 온도/湯加減 조절 신호가 있다.",
+    "송영, 체크인 안내, 객실 변경, 식사 시간/예약 안내 등 운영 신호가 반복된다.",
+    "Naver 정확 숙소명 검색은 스니펫 수요는 있으나 직접 본문 접근은 제한적이었다."
+  ],
+  "grade_completion": {
+    "meets_300_direct_reviews": true,
+    "meets_3_direct_platforms": true,
+    "google_checked_with_aside": true,
+    "naver_checked_with_aside": true,
+    "strata_covered": [
+      "latest reviews",
+      "low-rating reviews",
+      "onsen keyword reviews",
+      "Korean reviews",
+      "room-type-visible reviews",
+      "Japanese OTA reviews",
+      "Google-native reviews",
+      "Trip.com Korean direct body",
+      "Tripadvisor direct body"
+    ]
+  }
+}

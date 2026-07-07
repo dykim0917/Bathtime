@@ -1,0 +1,140 @@
+{
+  "research_date": "2026-07-04",
+  "scope": "shirahama-xyz-speciale ready lodging deep research",
+  "method": "Static collection for Rakuten/Jalan/JTB plus Aside Browser checks for Google Maps, Ikkyu, Yahoo Travel, Agoda, Booking, Naver Search. Snippets and OTA summary/highlight cards were excluded from direct review counts.",
+  "direct_review_sampling_status": "B: 191 direct reviews read, 135 onsen-related direct reviews, 5 direct-body platform surfaces. 종료 사유는 300건 미달 접근 한계로 기록.",
+  "lodgings": [
+    {
+      "slug": "shirahama-xyz-speciale",
+      "name_ja": "海絶景とギネス認定の宿 全室露天風呂付離れ XYZスペチアーレ",
+      "name_ko_or_en": "XYZ Speciale",
+      "address": "和歌山県西牟婁郡白浜町椿1063-21",
+      "onsen_area": "椿温泉 / 白浜エリア",
+      "official_url": "https://xyz-speciale.xyz/",
+      "google_maps": {
+        "rating": 4.6,
+        "visible_review_count": 60,
+        "rating_distribution": "bar chart visible; exact counts not exposed",
+        "korean_reviews_visible": "not confirmed",
+        "review_body_access": "partial",
+        "direct_google_native_reviews_read": 10,
+        "onsen_related_direct_reviews": 5,
+        "provider_cards_seen": [
+          "Hotels.com",
+          "Trip.com",
+          "Ikyu.com",
+          "Agoda",
+          "JAPANiCAN.com"
+        ],
+        "access_note": "Aside Browser에서 리뷰 탭을 열고 스크롤했으나 10건 이후 추가 본문 로딩이 확인되지 않았다."
+      },
+      "ota_review_pool_signals": {
+        "rakuten_travel": {
+          "rating": null,
+          "visible_review_count": 20,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 20,
+          "onsen_related_direct_reviews": 12,
+          "source_url": "https://travel.rakuten.co.jp/HOTEL/182811/review.html"
+        },
+        "jalan": {
+          "rating": 4.9,
+          "visible_review_count": 77,
+          "review_body_access": "partial",
+          "direct_reviews_read": 17,
+          "onsen_related_direct_reviews": 11,
+          "source_url": "https://www.jalan.net/yad355375/kuchikomi/",
+          "access_note": "static p1-p4가 각 17개 블록을 반환했지만 고유 본문은 같은 17건으로 중복됐다."
+        },
+        "ikkyu": {
+          "rating": 4.63,
+          "visible_review_count": 176,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 138,
+          "onsen_related_direct_reviews": 102,
+          "source_url": "https://www.ikyu.com/00002920/review/"
+        },
+        "yahoo_travel": {
+          "rating": 4.63,
+          "visible_review_count": 176,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 6,
+          "onsen_related_direct_reviews": 5,
+          "source_url": "https://travel.yahoo.co.jp/00002920/review/",
+          "access_note": "Ikkyu와 공유 리뷰풀 가능성이 높아 source_count 해석 주의."
+        },
+        "agoda": {
+          "rating": 9.3,
+          "visible_review_count": 103,
+          "review_body_access": "partial",
+          "direct_reviews_read": 0,
+          "source_url": "https://www.agoda.com/ja-jp/xyz/hotel/shingu-jp.html"
+        },
+        "booking": {
+          "rating": 9.0,
+          "visible_review_count": 3,
+          "review_body_access": "partial",
+          "direct_reviews_read": 0,
+          "source_url": "https://www.booking.com/hotel/jp/xyz-supetiare.ja.html"
+        },
+        "expedia": {
+          "rating": 9.8,
+          "visible_review_count": 35,
+          "review_body_access": "snippet_only",
+          "direct_reviews_read": 0,
+          "source_url": "https://www.expedia.com/Tanabe-Hotels-XYZ-Speciale.h67621525.Hotel-Information"
+        },
+        "jtb": {
+          "rating": null,
+          "visible_review_count": null,
+          "review_body_access": "partial",
+          "direct_reviews_read": 0,
+          "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/6507A02/review/"
+        },
+        "naver_search_blog": {
+          "rating": null,
+          "visible_review_count": null,
+          "review_body_access": "snippet_only",
+          "direct_reviews_read": 0,
+          "source_url": "https://search.naver.com/search.naver?query=XYZ%20Speciale%20%ED%9B%84%EA%B8%B0%20%EA%B0%9D%EC%8B%A4%20%EB%85%B8%EC%B2%9C%ED%83%95"
+        }
+      },
+      "official_bath_facts_seen": {
+        "room_bath": "probable; review/OTA surface mentions 内湯 and ミラバス as room bath",
+        "room_open_air_bath": "yes; official all rooms detached with source-flow open-air bath",
+        "public_bath": "not a public-bath-centered property",
+        "open_air_public_bath": "not confirmed",
+        "private_bath": "not confirmed as common reservable private bath",
+        "family_bath": "not confirmed",
+        "source_flow_claim": "official claims 源泉かけ流し",
+        "circulation_disinfection_claim": "not confirmed in this pass"
+      },
+      "review_signal_keywords": [
+        "客室露天風呂",
+        "部屋付き露天",
+        "内湯",
+        "ミラバス",
+        "源泉かけ流し",
+        "トロトロ",
+        "すべすべ",
+        "星空",
+        "海",
+        "絶景",
+        "プライベート"
+      ],
+      "caution_keywords": [
+        "電動",
+        "屋根",
+        "ウォール",
+        "開閉",
+        "リモコン",
+        "虫",
+        "カメムシ",
+        "価格",
+        "ロールスロイス",
+        "レーザー"
+      ],
+      "next_sampling": "Ikkyu/Yahoo 남은 38건 렌더링, Jalan 모바일/아카이브, Trip.com/Hotels.com/Expedia 개별 본문 접근을 재확인하면 A급 가능성을 다시 판단할 수 있다."
+    }
+  ]
+}

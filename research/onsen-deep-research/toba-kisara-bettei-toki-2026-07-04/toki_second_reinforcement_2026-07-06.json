@@ -1,0 +1,130 @@
+{
+  "research_date": "2026-07-06",
+  "slug": "toba-kisara-bettei-toki",
+  "name_ja": "季さら別邸 刻",
+  "scope": "second same-day reinforcement after B-grade 276 direct sample",
+  "counting_rule": "Only directly opened stay/travelogue/blog bodies are counted. Same-author multi-post series is counted once. Tabelog-linked Ameblo posts already represented in Tabelog are not double-counted.",
+  "starting_point": {
+    "directly_read_reviews": 276,
+    "onsen_related_direct_reviews": 189,
+    "direct_body_platform_count": 8,
+    "data_quality_grade": "B"
+  },
+  "added_direct_sources": [
+    {
+      "platform": "4travel travelogue",
+      "url": "https://4travel.jp/travelogue/11647752",
+      "review_body_access": "direct_readable",
+      "directly_read_reviews_added": 1,
+      "onsen_related_direct_reviews_added": 1,
+      "signals": ["room_bath", "room_open_air_bath", "water_texture"],
+      "original_keywords": ["温泉あり", "露天風呂つき", "内風呂も温泉", "トロトロ"]
+    },
+    {
+      "platform": "4travel travelogue",
+      "url": "https://4travel.jp/travelogue/11893082",
+      "review_body_access": "direct_readable",
+      "directly_read_reviews_added": 1,
+      "onsen_related_direct_reviews_added": 1,
+      "signals": ["room_open_air_bath", "private_bath_experience"],
+      "original_keywords": ["露天風呂付客室", "温泉"]
+    },
+    {
+      "platform": "Japanese blog",
+      "url": "https://ryokoshashin.com/japan/day1-2-4.html",
+      "review_body_access": "direct_readable",
+      "directly_read_reviews_added": 1,
+      "onsen_related_direct_reviews_added": 1,
+      "signals": ["room_bath", "room_open_air_bath", "water_texture"],
+      "original_keywords": ["大浴場はなく", "内風呂", "露天風呂", "トロリ"]
+    },
+    {
+      "platform": "Ameblo",
+      "url": "https://ameblo.jp/tomate-blog/entry-12839760798.html",
+      "review_body_access": "direct_readable",
+      "directly_read_reviews_added": 1,
+      "onsen_related_direct_reviews_added": 1,
+      "signals": ["room_open_air_bath", "private_bath_experience"],
+      "original_keywords": ["露天風呂", "送迎"]
+    },
+    {
+      "platform": "Ameblo",
+      "url": "https://ameblo.jp/mihomiho5493/entry-12644495591.html",
+      "review_body_access": "direct_readable",
+      "directly_read_reviews_added": 1,
+      "onsen_related_direct_reviews_added": 1,
+      "signals": ["room_bath", "room_open_air_bath"],
+      "original_keywords": ["客室温泉付き", "宿泊"]
+    },
+    {
+      "platform": "Ameblo",
+      "url": "https://ameblo.jp/kankunman/entry-12710392274.html",
+      "review_body_access": "direct_readable",
+      "directly_read_reviews_added": 1,
+      "onsen_related_direct_reviews_added": 1,
+      "signals": ["room_bath", "room_open_air_bath", "water_texture"],
+      "original_keywords": ["大浴場が無い", "お部屋のお風呂", "お湯がトロっと"]
+    },
+    {
+      "platform": "Japanese blog",
+      "url": "https://yadolog.jp/toba-kisara-toki/",
+      "review_body_access": "direct_readable",
+      "directly_read_reviews_added": 1,
+      "onsen_related_direct_reviews_added": 1,
+      "signals": ["room_bath", "room_open_air_bath", "footbath", "water_texture"],
+      "original_keywords": ["2つの湯船", "どちらも温泉", "露天風呂", "足湯"]
+    },
+    {
+      "platform": "note",
+      "url": "https://note.com/cocotak7/n/n0d53925a1ff8",
+      "review_body_access": "direct_readable",
+      "directly_read_reviews_added": 1,
+      "onsen_related_direct_reviews_added": 1,
+      "signals": ["room_open_air_bath", "footbath", "private_bath_experience"],
+      "original_keywords": ["部屋付き露天風呂", "足湯"]
+    },
+    {
+      "platform": "Ameblo",
+      "url": "https://ameblo.jp/hibi-kanro/entry-12883416505.html",
+      "review_body_access": "direct_readable",
+      "directly_read_reviews_added": 1,
+      "onsen_related_direct_reviews_added": 1,
+      "signals": ["room_open_air_bath", "footbath", "water_texture"],
+      "original_keywords": ["露天風呂", "足湯", "泉質", "保湿保温"]
+    }
+  ],
+  "not_counted_after_recheck": [
+    {
+      "platform": "Yahoo Travel",
+      "url": "https://travel.yahoo.co.jp/00002691/review/",
+      "review_body_access": "direct_readable",
+      "reason": "Page 1 and page 2 were opened, but they correspond to the already counted Yahoo-only 25 direct bodies; not added again."
+    },
+    {
+      "platform": "Ikkyu",
+      "url": "https://www.ikyu.com/00002691/review/",
+      "review_body_access": "direct_readable/search_surface",
+      "reason": "Existing 100 Ikkyu direct body sample remains the safe count. Search/open snippets were not used to inflate direct reads."
+    },
+    {
+      "platform": "Tabelog-linked Ameblo",
+      "url": "https://ameblo.jp/aiming2/entry-12710379849.html",
+      "review_body_access": "direct_readable",
+      "reason": "Same author/content family is already represented in Tabelog review bodies; not double-counted."
+    },
+    {
+      "platform": "Google Maps / Google Hotels",
+      "url": "https://www.google.com/maps/search/?api=1&query=%E5%AD%A3%E3%81%95%E3%82%89%E5%88%A5%E9%82%B8%20%E5%88%BB%20TOKI",
+      "review_body_access": "partial_direct_readable_via_aside",
+      "reason": "Review tab again exposed current Google-native bodies, but prior Google 20 sample cannot be de-duplicated author-by-author from available files."
+    }
+  ],
+  "updated_totals": {
+    "directly_read_reviews": 285,
+    "onsen_related_direct_reviews": 198,
+    "direct_body_platform_count": 11,
+    "data_quality_grade": "B",
+    "remaining_to_A_minimum": 15,
+    "why_not_A": "Direct sample is still below 300. Korean direct Blog/Cafe stratum remains 0. Google has a visible pool but additional direct bodies could not be safely de-duplicated against prior Google sample."
+  }
+}

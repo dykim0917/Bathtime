@@ -1,0 +1,151 @@
+{
+  "research_date": "2026-07-04",
+  "slug": "shirahama-kawakyu",
+  "accommodation_name": "ホテル川久",
+  "data_quality_grade": "A",
+  "grade_reason": "588 directly read reviews, five direct-body platforms, Google review-tab check, Korean Google/Naver direct bodies, latest/low-rated/onsen-keyword strata all covered.",
+  "visible_review_pool_minimum": 9435,
+  "visible_review_pool_components": {
+    "rakuten_travel_page_surface": 3580,
+    "jalan": 2725,
+    "jtb": 181,
+    "yahoo_travel": 601,
+    "google_maps": 2348
+  },
+  "direct_read_reviews_total": 588,
+  "onsen_related_direct_reviews_total": 149,
+  "direct_body_platform_count": 5,
+  "direct_body_platforms_counted": [
+    "Rakuten Travel",
+    "Jalan",
+    "JTB",
+    "Google Maps",
+    "Naver Blog"
+  ],
+  "google_maps_checked_via_aside": true,
+  "naver_checked_via_aside": true,
+  "official_facts_basis": {
+    "official_site_url": "https://www.hotel-kawakyu.jp/",
+    "official_hot_spring_url": "https://www.hotel-kawakyu.jp/hotspring/",
+    "official_spa_suite_url": "https://www.hotel-kawakyu.jp/club_stage/pss/",
+    "address": "和歌山県西牟婁郡白浜町3745",
+    "onsen_area": "白浜温泉",
+    "public_bath": "official_seen; two hot spring salons",
+    "open_air_public_bath": "official_seen; Tanabe Bay-view open-air bath and Yūkyū no Mori rock open-air bath",
+    "room_open_air_bath": "official_seen_for_presidential_spa_suite; not all rooms",
+    "room_bath": "review-seen for standard in-room baths; hot-spring status not generalized",
+    "private_bath": "not treated as standard facility; older/private-use Midnight Spa surface exists but not core current lodging axis in this pass",
+    "family_bath": "not confirmed",
+    "operating_notes": "1F and 2F hot spring salons are gender-switched by day; Rakuten/official surface indicates morning and afternoon-night operating hours.",
+    "source_separation_note": "Official facility facts are not counted as review signals."
+  },
+  "signals": [
+    {
+      "bath_area": "public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 66,
+      "source_count": 66,
+      "platform_count": 5,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal",
+      "evidence_basis": "Direct bodies repeatedly mention 大浴場, 浴場, 1층/2층 대욕장, and 温泉サロン."
+    },
+    {
+      "bath_area": "open_air_public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 11,
+      "source_count": 11,
+      "platform_count": 3,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal",
+      "evidence_basis": "Open-air bath/露天風呂 and Korean 노천 references appear, but less frequently than broad public-bath mentions."
+    },
+    {
+      "bath_area": "room_bath",
+      "bath_area_confidence": "probable",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "mixed",
+      "mention_count": 87,
+      "source_count": 87,
+      "platform_count": 4,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal",
+      "evidence_basis": "Room/in-room bath language appears often, but much is room facility context rather than hot-spring satisfaction; do not generalize all rooms as room onsen."
+    },
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 15,
+      "source_count": 15,
+      "platform_count": 2,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal",
+      "evidence_basis": "Spa-suite/open-terrace natural hot-spring open-air bath axis exists, but it is a room-category-specific signal."
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 16,
+      "source_count": 16,
+      "platform_count": 3,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal",
+      "evidence_basis": "泉質, すべすべ/スベスベ, 温泉향, 湯の花-style comments appear but are not the dominant review volume."
+    },
+    {
+      "bath_area": "public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "booking_confusion",
+      "signal_direction": "neutral",
+      "mention_count": 145,
+      "source_count": 145,
+      "platform_count": 4,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal",
+      "evidence_basis": "Daily gender-switching and 1F/2F bath distinction repeat; this is a structure/navigation signal rather than dissatisfaction by itself."
+    },
+    {
+      "bath_area": "public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "crowding",
+      "signal_direction": "mixed",
+      "mention_count": 23,
+      "source_count": 23,
+      "platform_count": 2,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal",
+      "evidence_basis": "Crowding/empty timing appears for baths and buffet; bath-specific crowding should be shown separately from buffet congestion."
+    },
+    {
+      "bath_area": "public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "chlorine_smell",
+      "signal_direction": "negative",
+      "mention_count": 1,
+      "source_count": 1,
+      "platform_count": 1,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal",
+      "evidence_basis": "One Jalan body contains 塩素; insufficient as a broad chlorine signal."
+    }
+  ],
+  "operation_notes": {
+    "buffet_crowding_mentions": 250,
+    "access_booking_mentions": 123,
+    "view_privacy_mentions": 102,
+    "cleanliness_aging_mentions": 90,
+    "children_family_mentions": 80,
+    "price_expectation_mentions": 43,
+    "public_bath_size_expectation_mentions": 44,
+    "temperature_control_mentions": 11,
+    "insects_mentions": 1
+  }
+}

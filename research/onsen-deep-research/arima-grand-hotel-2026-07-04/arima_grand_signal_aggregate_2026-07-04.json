@@ -1,0 +1,155 @@
+{
+  "research_date": "2026-07-04",
+  "slug": "arima-grand-hotel",
+  "accommodation_name": "有馬グランドホテル",
+  "direct_review_totals": {
+    "direct_reviews_read": 402,
+    "onsen_related_direct_reviews": 189,
+    "direct_body_platform_count": 5,
+    "data_quality_grade": "A",
+    "grade_reason": "300건 이상 직접 확인, 3개 이상 직접 본문 플랫폼, 최신/저평점/온천 키워드/한국어 리뷰 층화 확인"
+  },
+  "direct_review_sources": [
+    {
+      "platform": "Rakuten Travel",
+      "direct_reviews_read": 154,
+      "onsen_related_direct_reviews": 74,
+      "review_body_access": "direct_readable",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/25128/review.html"
+    },
+    {
+      "platform": "Jalan",
+      "direct_reviews_read": 88,
+      "onsen_related_direct_reviews": 53,
+      "review_body_access": "direct_readable",
+      "source_url": "https://www.jalan.net/yad313952/kuchikomi/"
+    },
+    {
+      "platform": "JTB",
+      "direct_reviews_read": 151,
+      "onsen_related_direct_reviews": 56,
+      "review_body_access": "direct_readable",
+      "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/6435003/review/"
+    },
+    {
+      "platform": "Google Hotels / Google Maps native",
+      "direct_reviews_read": 8,
+      "onsen_related_direct_reviews": 5,
+      "review_body_access": "partial",
+      "source_url": "https://www.google.com/travel/search?q=%E6%9C%89%E9%A6%AC%E3%82%B0%E3%83%A9%E3%83%B3%E3%83%89%E3%83%9B%E3%83%86%E3%83%AB"
+    },
+    {
+      "platform": "Naver Blog",
+      "direct_reviews_read": 1,
+      "onsen_related_direct_reviews": 1,
+      "review_body_access": "direct_readable",
+      "source_url": "https://m.blog.naver.com/omrchoi/224226813921"
+    }
+  ],
+  "review_signal_rows": [
+    {
+      "accommodation_name": "有馬グランドホテル",
+      "bath_area": "public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 46,
+      "source_count": 46,
+      "platform_count": 5,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal",
+      "notes": "9층 전망대욕장과 지하 대욕장 모두 대형 욕장 만족으로 반복된다."
+    },
+    {
+      "accommodation_name": "有馬グランドホテル",
+      "bath_area": "open_air_public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 16,
+      "source_count": 16,
+      "platform_count": 4,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal",
+      "notes": "노천탕은 지하 ゆらり 및 9층 전망대욕장 맥락에서 함께 언급된다."
+    },
+    {
+      "accommodation_name": "有馬グランドホテル",
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 54,
+      "source_count": 54,
+      "platform_count": 5,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal",
+      "notes": "金泉/銀泉, 금탕/은탕의 구분이 숙박·당일온천 양쪽에서 반복된다."
+    },
+    {
+      "accommodation_name": "有馬グランドホテル",
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "mixed",
+      "mention_count": 29,
+      "source_count": 29,
+      "platform_count": 3,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal",
+      "notes": "露天風呂付き客室은 객실 타입/플랜명에서 강하게 드러나며, 본문 만족·불만은 일부만 직접 반복된다."
+    },
+    {
+      "accommodation_name": "有馬グランドホテル",
+      "bath_area": "private_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "positive",
+      "mention_count": 12,
+      "source_count": 12,
+      "platform_count": 2,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal",
+      "notes": "プライベートスパ/貸切風呂는 대욕장보다 언급량은 적지만 별도 시설로 확인된다."
+    },
+    {
+      "accommodation_name": "有馬グランドホテル",
+      "bath_area": "family_bath",
+      "bath_area_confidence": "probable",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "neutral",
+      "mention_count": 2,
+      "source_count": 2,
+      "platform_count": 1,
+      "contradiction_level": "medium",
+      "review_signal_status": "weak_signal",
+      "notes": "JTB 시설면에는 가족風呂 3개가 보이나 직접 후기 언급은 소수다."
+    },
+    {
+      "accommodation_name": "有馬グランドホテル",
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "crowding",
+      "signal_direction": "mixed",
+      "mention_count": 27,
+      "source_count": 27,
+      "platform_count": 4,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal",
+      "notes": "넓고 붐비지 않는다는 신호가 반복되지만, 대형 호텔 특성상 조식/시설 혼잡 맥락도 일부 있다."
+    },
+    {
+      "accommodation_name": "有馬グランドホテル",
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "booking_confusion",
+      "signal_direction": "mixed",
+      "mention_count": 88,
+      "source_count": 88,
+      "platform_count": 5,
+      "contradiction_level": "medium",
+      "review_signal_status": "strong_signal",
+      "notes": "셔틀, 높은 지대, 당일온천 이용권, 객실 타입/식사 플랜이 온천 경험과 자주 함께 등장한다."
+    }
+  ]
+}

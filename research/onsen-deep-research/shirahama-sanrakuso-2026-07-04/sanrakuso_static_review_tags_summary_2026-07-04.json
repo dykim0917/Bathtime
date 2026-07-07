@@ -1,0 +1,128 @@
+{
+  "research_date": "2026-07-04",
+  "slug": "shirahama-sanrakuso",
+  "total_direct_extracted_static": 535,
+  "onsen_related_body_static": 326,
+  "direct_body_platforms_static": 3,
+  "by_platform": {
+    "Rakuten Travel": {
+      "direct": 360,
+      "onsen_body": 195
+    },
+    "Jalan": {
+      "direct": 155,
+      "onsen_body": 120
+    },
+    "JTB": {
+      "direct": 20,
+      "onsen_body": 11
+    }
+  },
+  "visible_review_pool_static": {
+    "rakuten": 2109,
+    "jalan": 3533,
+    "jtb": null
+  },
+  "bath_area_tags": {
+    "room_open_air_bath": 266,
+    "room_bath": 268,
+    "public_bath": 119,
+    "open_air_public_bath": 67,
+    "private_bath": 4,
+    "family_bath": 1
+  },
+  "signal_type_tags": {
+    "room_bath_hot_spring": 342,
+    "public_bath_hot_spring": 121,
+    "booking_confusion": 129,
+    "water_texture": 128,
+    "crowding": 134,
+    "private_bath_experience": 5,
+    "weak_onsen_feeling": 2
+  },
+  "caution_tags": {
+    "children_family": 155,
+    "access_booking": 126,
+    "view_privacy": 314,
+    "public_bath_size_expectation": 28,
+    "temperature_control": 30,
+    "cleanliness_aging": 67,
+    "price_expectation": 37,
+    "insects": 3
+  },
+  "body_keywords_top": {
+    "温泉": 188,
+    "海": 172,
+    "白良浜": 159,
+    "露天": 158,
+    "露天風呂": 151,
+    "待ち": 120,
+    "浴場": 119,
+    "大浴場": 115,
+    "源泉": 92,
+    "景色": 85,
+    "露天風呂付": 73,
+    "かけ流し": 64,
+    "源泉かけ流し": 62,
+    "オーシャンビュー": 44,
+    "露天風呂付き": 40,
+    "白浜温泉": 37,
+    "清潔": 36,
+    "藤の湯": 33,
+    "掛け流し": 32,
+    "露天風呂付客室": 31,
+    "部屋の露天風呂": 28,
+    "温度": 27,
+    "泉質": 25,
+    "子連れ": 24,
+    "客室露天": 22,
+    "客室露天風呂": 21,
+    "ミラバス": 19,
+    "古い": 17,
+    "広い": 17,
+    "眺望": 16,
+    "高い": 15,
+    "部屋風呂": 14,
+    "駐車場": 11,
+    "赤ちゃん": 10,
+    "掃除": 10,
+    "静か": 8,
+    "温泉露天風呂": 5,
+    "臭い": 5,
+    "狭い": 4,
+    "貸切": 4
+  },
+  "scores": {
+    "3": 12,
+    "4": 120,
+    "5": 228,
+    "null": 175
+  },
+  "collection_stats": {
+    "rakuten_offset_0": 20,
+    "rakuten_offset_20": 20,
+    "rakuten_offset_40": 20,
+    "rakuten_offset_60": 20,
+    "rakuten_offset_80": 20,
+    "rakuten_offset_100": 20,
+    "rakuten_offset_120": 20,
+    "rakuten_offset_140": 20,
+    "rakuten_offset_160": 20,
+    "rakuten_offset_180": 20,
+    "rakuten_offset_200": 20,
+    "rakuten_offset_220": 20,
+    "rakuten_offset_240": 20,
+    "rakuten_offset_260": 20,
+    "rakuten_offset_280": 20,
+    "rakuten_offset_300": 20,
+    "rakuten_offset_320": 20,
+    "rakuten_offset_340": 20,
+    "jalan_1": 30,
+    "jalan_2": 30,
+    "jalan_3": 30,
+    "jalan_4": 30,
+    "jalan_5": 30,
+    "jalan_6": 5,
+    "jtb_blocks": 20
+  }
+}

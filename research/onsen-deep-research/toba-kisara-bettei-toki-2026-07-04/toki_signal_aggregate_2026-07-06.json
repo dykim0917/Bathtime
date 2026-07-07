@@ -1,0 +1,112 @@
+{
+  "research_date": "2026-07-06",
+  "slug": "toba-kisara-bettei-toki",
+  "accommodation_name": "季さら別邸 刻",
+  "data_quality": {
+    "grade": "A",
+    "directly_read_reviews": 300,
+    "onsen_related_direct_reviews": 213,
+    "direct_body_platform_count": 11,
+    "confidence_phrase": "강하게 반복된다",
+    "grade_reason": "Google-native 재산정 후 300건 직접 확인, 3개 이상 직접 본문 플랫폼, 최신/저평점/온천 키워드/다중 플랫폼 층화를 충족한다. Naver 한국어 직접 숙박기는 gap으로 남긴다."
+  },
+  "review_signal_rows": [
+    {
+      "accommodation_name": "季さら別邸 刻",
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 210,
+      "source_count": 210,
+      "platform_count": 11,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "accommodation_name": "季さら別邸 刻",
+      "bath_area": "room_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 108,
+      "source_count": 108,
+      "platform_count": 11,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "accommodation_name": "季さら別邸 刻",
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 114,
+      "source_count": 114,
+      "platform_count": 11,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "accommodation_name": "季さら別邸 刻",
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "positive",
+      "mention_count": 189,
+      "source_count": 189,
+      "platform_count": 11,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "accommodation_name": "季さら別邸 刻",
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "booking_confusion",
+      "signal_direction": "mixed",
+      "mention_count": 47,
+      "source_count": 47,
+      "platform_count": 6,
+      "contradiction_level": "medium",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "accommodation_name": "季さら別邸 刻",
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "weak_onsen_feeling",
+      "signal_direction": "negative",
+      "mention_count": 2,
+      "source_count": 2,
+      "platform_count": 2,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "accommodation_name": "季さら別邸 刻",
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "chlorine_smell",
+      "signal_direction": "negative",
+      "mention_count": 2,
+      "source_count": 2,
+      "platform_count": 1,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "accommodation_name": "季さら別邸 刻",
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "positive",
+      "mention_count": 20,
+      "source_count": 20,
+      "platform_count": 5,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal",
+      "note": "Officially this is an in-room footbath-equipped subset, not a shared family/private bath."
+    }
+  ]
+}

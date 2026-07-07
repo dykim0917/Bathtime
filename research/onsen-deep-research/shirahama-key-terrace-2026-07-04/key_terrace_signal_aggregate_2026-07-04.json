@@ -1,0 +1,143 @@
+{
+  "research_date": "2026-07-04",
+  "slug": "shirahama-key-terrace",
+  "accommodation_name": "SHIRAHAMA KEY TERRACE HOTEL SEAMORE",
+  "data_quality_grade": "A",
+  "grade_reason": "387 directly read reviews, four direct-body platforms, Google review-tab check, Korean Google/Naver direct bodies, latest/low-rated/onsen-keyword strata covered.",
+  "visible_review_pool_minimum": 5002,
+  "visible_review_pool_components": {
+    "rakuten_travel": 1651,
+    "jtb": 269,
+    "google_maps": 3082
+  },
+  "additional_visible_surfaces_not_in_minimum_pool": {
+    "trip_com_korea": 564,
+    "booking": 288,
+    "agoda": 3582,
+    "hotels_expedia": 333
+  },
+  "direct_read_reviews_total": 387,
+  "onsen_related_direct_reviews_total": 199,
+  "direct_body_platform_count": 4,
+  "direct_body_platforms_counted": [
+    "Rakuten Travel",
+    "JTB",
+    "Google Maps",
+    "Naver Blog"
+  ],
+  "google_maps_checked_via_aside": true,
+  "naver_checked_via_aside": true,
+  "official_facts_basis": {
+    "official_site_url": "https://www.keyterrace.co.jp/",
+    "official_spa_url": "https://www.keyterrace.co.jp/spa/",
+    "address": "和歌山県西牟婁郡白浜町1821",
+    "onsen_area": "白浜温泉",
+    "public_bath": "official_seen; 大浴場 海の湯 and 浴場 波の湯",
+    "open_air_public_bath": "official_seen; 露天風呂 三段の湯, 120cm standing bath, source-flow claim",
+    "facility_wide": "official_seen; 1F outdoor infinity footbath and day-use bathing route",
+    "room_bath": "review/room-context seen; not generalized as room hot spring",
+    "room_open_air_bath": "not treated as core lodging-wide axis",
+    "private_bath": "not confirmed as core facility",
+    "family_bath": "not confirmed",
+    "source_claims": "Official spa page lists 行幸源泉 for 露天風呂 三段の湯 and 砿湯2号 for 海の湯/波の湯; source-flow is stated for 三段の湯.",
+    "operating_notes": "Bathing hours 5:00-10:00 and 15:00-25:00; day-use bathing 13:00-20:00; tattoo use of public baths refused; infinity footbath 7:00-23:00.",
+    "source_separation_note": "Official facility facts are not counted as review signals."
+  },
+  "signals": [
+    {
+      "bath_area": "open_air_public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 63,
+      "source_count": 63,
+      "platform_count": 4,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal",
+      "evidence_basis": "露天風呂, 바다보며 서서하는 온천, 야외온천, 인피니티 노천탕/전망 language repeats across direct platforms."
+    },
+    {
+      "bath_area": "public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 57,
+      "source_count": 57,
+      "platform_count": 4,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal",
+      "evidence_basis": "大浴場, 浴場, 실내 온천, 온천은 총3층, 샴푸바/탕 종류 language repeats."
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 65,
+      "source_count": 65,
+      "platform_count": 4,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal",
+      "evidence_basis": "Infinity footbath/足湯 and terrace-waterfront use repeat as a facility-wide bath-adjacent signal."
+    },
+    {
+      "bath_area": "room_bath",
+      "bath_area_confidence": "probable",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "mixed",
+      "mention_count": 76,
+      "source_count": 76,
+      "platform_count": 2,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal",
+      "evidence_basis": "Room-bath tags are influenced by room/plan context and should not be generalized as in-room hot spring satisfaction."
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 11,
+      "source_count": 11,
+      "platform_count": 3,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal",
+      "evidence_basis": "泉質, 白浜温泉, つるつる, 물 부드러움-style signals appear but view/bath-layout mentions dominate."
+    },
+    {
+      "bath_area": "public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "crowding",
+      "signal_direction": "mixed",
+      "mention_count": 24,
+      "source_count": 24,
+      "platform_count": 2,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal",
+      "evidence_basis": "Bath and buffet/crowding signals coexist; bath-specific waiting/crowding is present but not the main negative axis."
+    },
+    {
+      "bath_area": "public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "weak_onsen_feeling",
+      "signal_direction": "negative",
+      "mention_count": 1,
+      "source_count": 1,
+      "platform_count": 1,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal",
+      "evidence_basis": "One direct body contains weak/ordinary-feeling context; insufficient as a broad signal."
+    }
+  ],
+  "operation_notes": {
+    "view_privacy_mentions": 181,
+    "buffet_crowding_mentions": 138,
+    "access_booking_mentions": 101,
+    "children_family_mentions": 93,
+    "cleanliness_aging_mentions": 63,
+    "price_expectation_mentions": 31,
+    "temperature_control_mentions": 9,
+    "public_bath_size_expectation_mentions": 17,
+    "insects_mentions": 1
+  }
+}

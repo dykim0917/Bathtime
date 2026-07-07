@@ -1,0 +1,959 @@
+{
+  "summary": {
+    "generated_at": "2026-07-04T03:53:41.650Z",
+    "lodging": "道後温泉 八千代",
+    "platform": "Ikkyu via Aside Browser",
+    "visible_review_count": 76,
+    "total_direct_browser": 47,
+    "onsen_related_body": 30,
+    "page_stats": {
+      "https://www.ikyu.com/00030512/review/": 30,
+      "https://www.ikyu.com/00030512/review/p2/": 17
+    },
+    "bath_area_tags": {
+      "room_open_air_bath": 14,
+      "room_bath": 15,
+      "public_bath": 11,
+      "open_air_public_bath": 7
+    },
+    "signal_type_tags": {
+      "room_bath_hot_spring": 18,
+      "water_texture": 12,
+      "operations_note": 14,
+      "public_bath_hot_spring": 11,
+      "temperature_control": 1
+    },
+    "note": "Bodies not stored; Aside Browser rendered text was reduced to hashes, metadata, short keywords and tags."
+  },
+  "reviews": [
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/",
+      "review_hash": "75d51ffaaf6976a4",
+      "review_date": "2026-06-15",
+      "score": 4.67,
+      "body_char_count": 218,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "露天",
+        "露天風呂",
+        "湯",
+        "風呂",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture",
+        "operations_note"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/",
+      "review_hash": "ce7c79638c74cf92",
+      "review_date": "2026-06-14",
+      "score": 5,
+      "body_char_count": 94,
+      "body_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/",
+      "review_hash": "21862342f2894a9d",
+      "review_date": "2026-03-26",
+      "score": 4.83,
+      "body_char_count": 405,
+      "body_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/",
+      "review_hash": "0453c2bf1a5fda6d",
+      "review_date": "2026-02-16",
+      "score": 5,
+      "body_char_count": 524,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "露天",
+        "露天風呂",
+        "客室露天",
+        "客室露天風呂",
+        "露天風呂付き",
+        "露天風呂付",
+        "大浴場",
+        "風呂",
+        "駐車場"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "public_bath",
+        "open_air_public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring",
+        "water_texture",
+        "operations_note"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/",
+      "review_hash": "22cbeca019af301e",
+      "review_date": "2025-12-14",
+      "score": 5,
+      "body_char_count": 69,
+      "body_keywords": [
+        "風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/",
+      "review_hash": "4fa96918c72747f8",
+      "review_date": "2025-12-13",
+      "score": 5,
+      "body_char_count": 80,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/",
+      "review_hash": "9d4bb68d6759dbd3",
+      "review_date": "2025-12-08",
+      "score": 5,
+      "body_char_count": 344,
+      "body_keywords": [
+        "温泉"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/",
+      "review_hash": "b4fcd536a61b5801",
+      "review_date": "2025-11-17",
+      "score": 5,
+      "body_char_count": 170,
+      "body_keywords": [
+        "温泉",
+        "道後温泉"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [
+        "water_texture"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/",
+      "review_hash": "47f8e3e9d6672c46",
+      "review_date": "2025-11-08",
+      "score": 5,
+      "body_char_count": 96,
+      "body_keywords": [
+        "お部屋のお風呂",
+        "風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/",
+      "review_hash": "b2304d0c6c37714f",
+      "review_date": "2025-11-04",
+      "score": 4.67,
+      "body_char_count": 296,
+      "body_keywords": [
+        "温泉"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/",
+      "review_hash": "67cbe50e535533b9",
+      "review_date": "2025-10-19",
+      "score": 5,
+      "body_char_count": 161,
+      "body_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/",
+      "review_hash": "c0502c80ef655153",
+      "review_date": "2025-10-17",
+      "score": 5,
+      "body_char_count": 178,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "湯",
+        "風呂",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "operations_note"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/",
+      "review_hash": "d29e5cd568be76f2",
+      "review_date": "2025-09-27",
+      "score": 5,
+      "body_char_count": 282,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "露天",
+        "露天風呂",
+        "大浴場",
+        "風呂",
+        "商店街"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "public_bath",
+        "open_air_public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring",
+        "water_texture"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/",
+      "review_hash": "3721160ada789f2d",
+      "review_date": "2025-09-22",
+      "score": 4.67,
+      "body_char_count": 77,
+      "body_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/",
+      "review_hash": "b9235f183a5b5659",
+      "review_date": "2025-09-08",
+      "score": 5,
+      "body_char_count": 227,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "露天",
+        "露天風呂",
+        "風呂",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture",
+        "operations_note"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/",
+      "review_hash": "3aa3502cf7131b86",
+      "review_date": "2025-08-18",
+      "score": 5,
+      "body_char_count": 141,
+      "body_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/",
+      "review_hash": "18e6cfb114803e97",
+      "review_date": "2025-08-16",
+      "score": 5,
+      "body_char_count": 219,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/",
+      "review_hash": "e224c61d72d4b5d2",
+      "review_date": "2025-08-16",
+      "score": 4.67,
+      "body_char_count": 179,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "清潔",
+        "広い"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [
+        "water_texture",
+        "operations_note"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/",
+      "review_hash": "3ea501ad4407fb8a",
+      "review_date": "2025-08-01",
+      "score": 4.83,
+      "body_char_count": 292,
+      "body_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "大浴場",
+        "風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "public_bath",
+        "open_air_public_bath"
+      ],
+      "signal_type_tags": [
+        "public_bath_hot_spring"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/",
+      "review_hash": "56a0e8791b53f847",
+      "review_date": "2025-07-28",
+      "score": 5,
+      "body_char_count": 251,
+      "body_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/",
+      "review_hash": "0a1ffd8e3d91cbcb",
+      "review_date": "2025-07-25",
+      "score": 4.67,
+      "body_char_count": 264,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "大浴場",
+        "湯",
+        "駐車場"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "public_bath"
+      ],
+      "signal_type_tags": [
+        "public_bath_hot_spring",
+        "water_texture",
+        "operations_note"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/",
+      "review_hash": "9605f26e87644114",
+      "review_date": "2025-07-23",
+      "score": 4.33,
+      "body_char_count": 362,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "露天",
+        "露天風呂",
+        "大浴場",
+        "風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "public_bath",
+        "open_air_public_bath"
+      ],
+      "signal_type_tags": [
+        "public_bath_hot_spring",
+        "water_texture"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/",
+      "review_hash": "fa4a5f3242ffa5f6",
+      "review_date": "2025-06-06",
+      "score": 4.83,
+      "body_char_count": 81,
+      "body_keywords": [
+        "温泉"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/",
+      "review_hash": "0ba4c6e897a685ee",
+      "review_date": "2025-06-05",
+      "score": 5,
+      "body_char_count": 75,
+      "body_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/",
+      "review_hash": "d48a66af17226eec",
+      "review_date": "2025-05-28",
+      "score": 5,
+      "body_char_count": 165,
+      "body_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/",
+      "review_hash": "55f44ba57e293147",
+      "review_date": "2025-05-26",
+      "score": 5,
+      "body_char_count": 376,
+      "body_keywords": [
+        "温泉",
+        "お部屋のお風呂",
+        "大浴場",
+        "源泉",
+        "加水",
+        "風呂",
+        "熱い",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_bath",
+        "public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring",
+        "water_texture",
+        "temperature_control",
+        "operations_note"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/",
+      "review_hash": "c49ec839e0ac7912",
+      "review_date": "2025-05-23",
+      "score": 4.67,
+      "body_char_count": 316,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "客室露天",
+        "客室露天風呂",
+        "風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/",
+      "review_hash": "35fc3d5fcc3b1d6d",
+      "review_date": "2025-05-11",
+      "score": 4.5,
+      "body_char_count": 486,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "露天",
+        "大浴場",
+        "湯",
+        "風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "public_bath",
+        "open_air_public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring",
+        "water_texture"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/",
+      "review_hash": "e74e9e0d3ffed4cd",
+      "review_date": "2025-04-06",
+      "score": 5,
+      "body_char_count": 102,
+      "body_keywords": [
+        "風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/",
+      "review_hash": "cd7305db7add633a",
+      "review_date": "2025-03-09",
+      "score": 4.67,
+      "body_char_count": 214,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/p2/",
+      "review_hash": "806c41ac49c4edb1",
+      "review_date": "2025-03-09",
+      "score": 4.67,
+      "body_char_count": 186,
+      "body_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/p2/",
+      "review_hash": "74581a1a064770ad",
+      "review_date": "2025-02-17",
+      "score": 5,
+      "body_char_count": 339,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "大浴場",
+        "風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "public_bath",
+        "open_air_public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/p2/",
+      "review_hash": "ab3ace27d8e33bca",
+      "review_date": "2025-02-09",
+      "score": 5,
+      "body_char_count": 158,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "露天",
+        "露天風呂",
+        "風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/p2/",
+      "review_hash": "d51d71f84238265c",
+      "review_date": "2025-01-23",
+      "score": 5,
+      "body_char_count": 150,
+      "body_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/p2/",
+      "review_hash": "7713f70f79f10f2d",
+      "review_date": "2024-12-31",
+      "score": 3.5,
+      "body_char_count": 184,
+      "body_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "露天風呂付き",
+        "露天風呂付",
+        "大浴場",
+        "風呂",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "public_bath",
+        "open_air_public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring",
+        "operations_note"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/p2/",
+      "review_hash": "67bcef0d831c76cf",
+      "review_date": "2024-12-24",
+      "score": 4.83,
+      "body_char_count": 734,
+      "body_keywords": [
+        "湯"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/p2/",
+      "review_hash": "16d720b74b77ea1f",
+      "review_date": "2024-12-13",
+      "score": 4.67,
+      "body_char_count": 132,
+      "body_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/p2/",
+      "review_hash": "121bf04715438100",
+      "review_date": "2024-12-08",
+      "score": 4.67,
+      "body_char_count": 218,
+      "body_keywords": [
+        "清潔"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [
+        "operations_note"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/p2/",
+      "review_hash": "6c2499d5ee3a8b55",
+      "review_date": "2024-12-04",
+      "score": 4.83,
+      "body_char_count": 151,
+      "body_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/p2/",
+      "review_hash": "4178f9fc8b77983d",
+      "review_date": "2024-12-03",
+      "score": 5,
+      "body_char_count": 120,
+      "body_keywords": [
+        "風呂",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "operations_note"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/p2/",
+      "review_hash": "d6d9b1ce09c14e08",
+      "review_date": "2024-11-20",
+      "score": 5,
+      "body_char_count": 384,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "大浴場"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "public_bath"
+      ],
+      "signal_type_tags": [
+        "public_bath_hot_spring",
+        "water_texture"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/p2/",
+      "review_hash": "cd325bdd3df1f8e0",
+      "review_date": "2024-10-28",
+      "score": 4.33,
+      "body_char_count": 111,
+      "body_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/p2/",
+      "review_hash": "53bce38d43b9886b",
+      "review_date": "2024-10-18",
+      "score": 5,
+      "body_char_count": 259,
+      "body_keywords": [
+        "高い"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [
+        "operations_note"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/p2/",
+      "review_hash": "57b66c776b593fb9",
+      "review_date": "2024-10-02",
+      "score": 4.17,
+      "body_char_count": 320,
+      "body_keywords": [
+        "高い"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [
+        "operations_note"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/p2/",
+      "review_hash": "41110168fe8f462c",
+      "review_date": "2024-09-29",
+      "score": 5,
+      "body_char_count": 107,
+      "body_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "露天風呂付き",
+        "露天風呂付",
+        "風呂",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "operations_note"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/p2/",
+      "review_hash": "1e2cc92d72edbd8f",
+      "review_date": "2024-09-23",
+      "score": 5,
+      "body_char_count": 179,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "お部屋のお風呂",
+        "風呂",
+        "清潔"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "operations_note"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Ikkyu",
+      "source_url": "https://www.ikyu.com/00030512/review/p2/",
+      "review_hash": "00c00fea275e43d5",
+      "review_date": "2024-08-16",
+      "score": 4.67,
+      "body_char_count": 118,
+      "body_keywords": [
+        "大浴場"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring"
+      ],
+      "language": "ja"
+    }
+  ]
+}

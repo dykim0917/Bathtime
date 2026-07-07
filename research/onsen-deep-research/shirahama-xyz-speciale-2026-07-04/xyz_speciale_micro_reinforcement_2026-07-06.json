@@ -1,0 +1,142 @@
+{
+  "research_date": "2026-07-06",
+  "slug": "shirahama-xyz-speciale",
+  "scope": "micro reinforcement after 246-review stage",
+  "counting_policy": "Only directly readable individual stay bodies were counted. Search snippets, OTA/facility descriptions, editor-only summaries, AI summaries, and duplicate Ikkyu/Yahoo shared bodies were excluded.",
+  "starting_totals": {
+    "directly_read_reviews": 246,
+    "onsen_related_direct_reviews": 169,
+    "direct_body_platform_count": 7,
+    "data_quality_grade": "B"
+  },
+  "added_direct_sources": [
+    {
+      "platform": "Japanese blogs / Tabier",
+      "url": "https://room78.info/travel_xyzspe/",
+      "author_or_source": "ミニマルーム",
+      "published_date": "2021-11-28 / updated 2022-05-14",
+      "review_body_access": "direct_readable",
+      "directly_read_reviews_added": 1,
+      "onsen_related_direct_reviews_added": 1,
+      "bath_area": [
+        "room_open_air_bath"
+      ],
+      "short_paraphrase": "First-person stay report describes the room terrace open-air bath, remote-controlled wall/privacy adjustment, sunset and star-view context.",
+      "original_keywords": [
+        "露天風呂付きのベランダ",
+        "塀はリモコン",
+        "満天の星空"
+      ]
+    },
+    {
+      "platform": "Japanese blogs / Tabier",
+      "url": "https://www.tabier.com/review/%E5%A5%A5%E7%99%BD%E6%B5%9C%E6%A4%BF%E6%B8%A9%E6%B3%89%E3%80%80xyz%E3%82%B9%E3%83%9A%E3%83%81%E3%82%A2%E3%83%BC%E3%83%AC%E3%80%80%E5%8B%95%E7%94%BB%E3%83%AC%E3%83%9D/",
+      "author_or_source": "温泉タビエル",
+      "published_date": "2021-08-04",
+      "review_body_access": "direct_readable",
+      "directly_read_reviews_added": 1,
+      "onsen_related_direct_reviews_added": 1,
+      "bath_area": [
+        "room_open_air_bath",
+        "facility_wide"
+      ],
+      "short_paraphrase": "Direct stay/video report places the property in Tsubaki Onsen and describes the bath water as slightly sulfurous and slippery, while noting source temperature/operation context.",
+      "original_keywords": [
+        "奥白浜椿温泉",
+        "すこし硫黄の匂い",
+        "肌がヌルトロ",
+        "源泉"
+      ]
+    },
+    {
+      "platform": "Japanese blogs / Tabier",
+      "url": "https://ameblo.jp/gi03/entry-12964230659.html",
+      "author_or_source": "京都のぎっちゃん 旅日記",
+      "published_date": "2026-07-06 surface",
+      "review_body_access": "direct_readable",
+      "directly_read_reviews_added": 1,
+      "onsen_related_direct_reviews_added": 1,
+      "bath_area": [
+        "room_bath",
+        "room_open_air_bath",
+        "facility_wide"
+      ],
+      "short_paraphrase": "Anniversary stay report describes all rooms as ocean-view with hot-spring open-air baths, then separately mentions indoor Tsubaki Onsen, Mirabath/Mirable, and thick skin-feel water.",
+      "original_keywords": [
+        "温泉露天風呂付",
+        "内風呂でも椿温泉",
+        "ミラバス",
+        "トロトロの美容液"
+      ]
+    },
+    {
+      "platform": "Japanese blogs / Tabier",
+      "url": "https://plaza.rakuten.co.jp/ne510asobou46/diary/202509010000-amp/",
+      "author_or_source": "ねこねこ日記",
+      "published_date": "2025-09-04",
+      "review_body_access": "direct_readable",
+      "directly_read_reviews_added": 1,
+      "onsen_related_direct_reviews_added": 1,
+      "bath_area": [
+        "room_bath",
+        "room_open_air_bath",
+        "facility_wide"
+      ],
+      "short_paraphrase": "Room-focused stay note describes room open-air bath, electric shutter, source-flow slippery water, star-view bathing, and indoor bath source tap.",
+      "original_keywords": [
+        "露天風呂付離れ",
+        "内風呂",
+        "源泉が出てくる",
+        "トロトロの源泉かけ流し",
+        "星空"
+      ]
+    },
+    {
+      "platform": "Japanese blogs / Tabier",
+      "url": "https://fujiyu-blog.com/xyz-speciale/",
+      "author_or_source": "ふじゆーブログ",
+      "published_date": "2023-03-13",
+      "review_body_access": "direct_readable",
+      "directly_read_reviews_added": 1,
+      "onsen_related_direct_reviews_added": 1,
+      "bath_area": [
+        "room_open_air_bath",
+        "facility_wide"
+      ],
+      "short_paraphrase": "First-person stay review describes the guest-room open-air bath, Tsubaki Onsen source-flow claim, pH/skin effect, 24-hour bathing, and remote-controlled roof/wall.",
+      "original_keywords": [
+        "客室にある露天風呂",
+        "椿温泉",
+        "源泉がかけ流し",
+        "pH9.9",
+        "屋根や塀"
+      ]
+    }
+  ],
+  "rechecked_not_counted_sources": [
+    {
+      "platform": "Ikkyu",
+      "url": "https://www.ikyu.com/00002920/review/p6/",
+      "visible_review_count": 176,
+      "review_body_access": "direct_readable_until_p5_then_no_public_reviews",
+      "directly_read_reviews_added": 0,
+      "onsen_related_direct_reviews_added": 0,
+      "terminal_recheck_note": "Aside Browser opened p6 successfully, but page body says 公開中のクチコミはありません and pagination only links back to p1-p5. DOM anchor inspection and GraphQL/network reload did not expose additional review bodies. The 176 total remains a combined/aggregate surface, not 176 directly readable Ikkyu bodies."
+    },
+    {
+      "platform": "Google Maps / Agoda",
+      "review_body_access": "aside_subtask_interrupted_no_new_count",
+      "directly_read_reviews_added": 0,
+      "onsen_related_direct_reviews_added": 0,
+      "terminal_recheck_note": "A parallel Aside subtask was started for Google and Agoda, but it did not return usable final evidence before being stopped. No new Google or Agoda direct bodies were counted in this micro pass."
+    }
+  ],
+  "updated_totals": {
+    "directly_read_reviews": 251,
+    "onsen_related_direct_reviews": 174,
+    "direct_body_platform_count": 8,
+    "data_quality_grade": "B",
+    "remaining_to_A": 49,
+    "why_not_A": "Still below 300 direct reviews. Ikkyu p6+ does not expose public bodies, Google remains partial at 10 direct in the authoritative count, Agoda remains uncounted until a completed Aside panel pass returns body-level evidence, and Naver Korean direct stay bodies remain 0."
+  }
+}

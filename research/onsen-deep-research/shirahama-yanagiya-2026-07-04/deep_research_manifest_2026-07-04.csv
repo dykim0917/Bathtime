@@ -1,0 +1,2 @@
+research_order,slug,name_ja,name_ko_or_en,area,track,source_tier,bath_research_axes,initial_review_pool_signal,priority_reason,status
+1,shirahama-yanagiya,白浜温泉 家族とすごす白浜の宿 柳屋,Yanagiya / 시라하마 야나기야,"白浜温泉, 和歌山県",ready_lodging_deep_research,Tier 1,room_open_air_bath;room_bath;public_bath;open_air_public_bath;private_bath;family_bath,conservative visible pool 959+; candidate Jalan surface 1666 separately noted; direct read 317,객실 노천탕/반노천탕/공용탕/대절탕이 섞이기 쉬운 ready 후보라 Bathtime bath-area split 가치가 큼.,ready;split_needed;A

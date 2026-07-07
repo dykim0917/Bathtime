@@ -1,0 +1,73 @@
+{
+  "research_date": "2026-07-06",
+  "slug": "toba-kisara-bettei-toki",
+  "name_ja": "季さら別邸 刻",
+  "scope": "Google-native author-logged recount to reach 300-direct threshold",
+  "counting_rule": "This is not a cumulative add-on to the prior Google 20. The Google-native platform line is replaced by a current Aside Browser author-logged sample of 35 direct bodies. Tripadvisor provider cards visible inside Google are excluded from Google-native.",
+  "aside_browser_status": {
+    "url": "https://www.google.com/maps/search/?api=1&query=%E5%AD%A3%E3%81%95%E3%82%89%E5%88%A5%E9%82%B8%20%E5%88%BB%20TOKI",
+    "rating": 4.5,
+    "visible_review_count": 140,
+    "rating_distribution": {
+      "5_star": 106,
+      "4_star": 17,
+      "3_star": 5,
+      "2_star": 7,
+      "1_star": 5
+    },
+    "review_body_access": "partial_direct_readable_via_aside",
+    "provider_cards_excluded": ["Tripadvisor", "Booking.com", "Trip.com", "Ikyu.com", "Rakuten Travel"]
+  },
+  "google_native_recount": {
+    "previous_google_direct_count": 20,
+    "previous_google_onsen_related_count": 8,
+    "current_author_logged_direct_count": 35,
+    "current_onsen_related_direct_count": 23,
+    "net_direct_increase": 15,
+    "net_onsen_related_increase": 15,
+    "author_sample_logged": [
+      {"author": "M", "original_keywords": ["ノ천탕", "内湯", "露天", "足湯"], "onsen_related": true},
+      {"author": "Satoyoung", "original_keywords": ["内風呂", "露天風呂", "榊原温泉"], "onsen_related": true},
+      {"author": "Akky Holly", "original_keywords": ["宿泊", "鳥羽"], "onsen_related": false},
+      {"author": "M N", "original_keywords": ["癒し"], "onsen_related": false},
+      {"author": "Y Y", "original_keywords": ["個室", "静か"], "onsen_related": false},
+      {"author": "佐助", "original_keywords": ["内湯", "露天", "トロトロ"], "onsen_related": true},
+      {"author": "eden", "original_keywords": ["景色", "部屋"], "onsen_related": false},
+      {"author": "りんご", "original_keywords": ["旅館", "リフレッシュ"], "onsen_related": false},
+      {"author": "春菜小黒", "original_keywords": ["部屋内にお風呂"], "onsen_related": true},
+      {"author": "ふかりんたったん", "original_keywords": ["宿", "料理"], "onsen_related": false},
+      {"author": "石井ひろみ", "original_keywords": ["足湯", "露天湯", "海"], "onsen_related": true},
+      {"author": "N-1019", "original_keywords": ["家族旅行", "ベビー"], "onsen_related": false},
+      {"author": "Bookmark Bleu", "original_keywords": ["足湯", "足水"], "onsen_related": true},
+      {"author": "C o", "original_keywords": ["触感", "温泉"], "onsen_related": true},
+      {"author": "める", "original_keywords": ["足湯", "露天탕"], "onsen_related": true},
+      {"author": "リッツ", "original_keywords": ["客室の温泉"], "onsen_related": true},
+      {"author": "ERIKA", "original_keywords": ["客室露天風呂", "トロトロ", "すべすべ"], "onsen_related": true},
+      {"author": "K", "original_keywords": ["露天탕", "水垢", "吸水口"], "onsen_related": true},
+      {"author": "TAKABEE O", "original_keywords": ["部屋のノ천탕", "ブラインド"], "onsen_related": true},
+      {"author": "s n", "original_keywords": ["노천탕付き", "景色"], "onsen_related": true},
+      {"author": "貴子", "original_keywords": ["部屋に付いている温泉탕", "温度設定"], "onsen_related": true},
+      {"author": "美味検索", "original_keywords": ["半露天탕"], "onsen_related": true},
+      {"author": "マキ", "original_keywords": ["隣の露天탕", "子供", "朝"], "onsen_related": true},
+      {"author": "信吾", "original_keywords": ["部屋付き", "トロトロした温泉"], "onsen_related": true},
+      {"author": "Alice Berlin", "original_keywords": ["部屋にお風呂が二つ", "露天탕"], "onsen_related": true},
+      {"author": "Mizue Kato", "original_keywords": ["大浴場はありません", "内湯", "露天風呂", "トロトロ"], "onsen_related": true},
+      {"author": "K", "original_keywords": ["泉質最高", "トロトロ", "露天風呂"], "onsen_related": true},
+      {"author": "mayuna I", "original_keywords": ["足湯", "子連れ"], "onsen_related": true},
+      {"author": "美香", "original_keywords": ["温泉", "お湯"], "onsen_related": true},
+      {"author": "Chatoratta", "original_keywords": ["露天風呂"], "onsen_related": true},
+      {"author": "Junpei Nakano", "original_keywords": ["露天風呂", "足湯"], "onsen_related": true},
+      {"author": "ともりん", "original_keywords": ["温泉", "肌", "ツルツル"], "onsen_related": true},
+      {"author": "2425 minipuu", "original_keywords": ["温泉", "デッキ"], "onsen_related": true},
+      {"author": "キャサリンキャサリン", "original_keywords": ["お風呂", "肌つるつる"], "onsen_related": true},
+      {"author": "B O", "original_keywords": ["ノ천탕", "内湯"], "onsen_related": true}
+    ]
+  },
+  "updated_totals_after_google_recount": {
+    "directly_read_reviews": 300,
+    "onsen_related_direct_reviews": 213,
+    "direct_body_platform_count": 11,
+    "data_quality_grade": "A",
+    "grade_reason": "300 direct bodies reached after replacing the old unlogged Google 20 line with a current author-logged Google-native 35 sample. Direct body platforms remain 11. Latest, low-rating, onsen-keyword, and multi-platform strata are present; Korean direct Naver remains a gap but Google Korean UI/direct body check was completed."
+  }
+}

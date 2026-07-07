@@ -1,0 +1,63 @@
+{
+  "research_date": "2026-07-06",
+  "slug": "dogo-kotononiwa",
+  "source": "Yahoo Travel property page combined review modal",
+  "url": "https://travel.yahoo.co.jp/00002798/?top=reviews",
+  "method": "Aside Browser opened the Yahoo Travel review page, then opened the property-page 'クチコミをすべてみる' modal and pressed '続きをみる' until the embedded combined review connection reported hasNextPage=false.",
+  "headline_visible_review_count": 84,
+  "modal_embedded_total_count_seen": 91,
+  "direct_bodies_loaded_in_modal": 91,
+  "strict_onsen_related_bodies_loaded_in_modal": 71,
+  "broad_onsen_related_bodies_loaded_in_modal": 74,
+  "access_status": "direct_readable_via_aside",
+  "counting_policy": {
+    "counted_as_new_direct_reviews": 0,
+    "reason": "The combined modal is a Yahoo Travel + Ikkyu/Fusuma combined surface. It validates the already-counted Ikkyu 70 and Yahoo Travel 21 body pool rather than adding a new independent pool.",
+    "do_not_count": [
+      "AI Review summary",
+      "headline 84件 aggregate",
+      "duplicate bodies already counted from Ikkyu/Yahoo Travel"
+    ]
+  },
+  "dedupe_interpretation": {
+    "ikkyu_direct_already_counted": 70,
+    "yahoo_travel_direct_already_counted": 21,
+    "yahoo_maps_direct_already_counted_separately": 4,
+    "combined_modal_total_explains": "70 Ikkyu/Fusuma bodies + 21 Yahoo Travel bodies = 91 combined modal bodies. The lower headline 84件 is displayed as the current score/review count surface and should not override the directly loaded body count.",
+    "direct_total_change": 0
+  },
+  "keyword_samples_from_later_loaded_modal": [
+    {
+      "original_keyword": "部屋の半露天風呂, 生温泉",
+      "bath_area": "room_open_air_bath",
+      "signal_type": "room_bath_hot_spring"
+    },
+    {
+      "original_keyword": "お部屋のお風呂, 生湯",
+      "bath_area": "room_bath",
+      "signal_type": "water_texture"
+    },
+    {
+      "original_keyword": "系列ホテルの露天風呂",
+      "bath_area": "open_air_public_bath",
+      "signal_type": "public_bath_hot_spring"
+    },
+    {
+      "original_keyword": "道後温泉と同じ源泉掛け流し",
+      "bath_area": "room_open_air_bath",
+      "signal_type": "room_bath_hot_spring"
+    },
+    {
+      "original_keyword": "塩素",
+      "bath_area": "room_open_air_bath",
+      "signal_type": "chlorine_smell"
+    }
+  ],
+  "result_for_quality_grade": {
+    "directly_read_reviews_after_recheck": 268,
+    "onsen_related_direct_reviews_after_recheck": 194,
+    "data_quality_grade": "B",
+    "still_needed_for_A": 32,
+    "termination_note": "Yahoo/Ikkyu combined modal was exhausted in Aside Browser, but it did not add unique review bodies beyond the already-counted Ikkyu/Yahoo pools. Later Agoda, Tabelog, and YouTube transcript sources lifted the unique direct total to 268."
+  }
+}

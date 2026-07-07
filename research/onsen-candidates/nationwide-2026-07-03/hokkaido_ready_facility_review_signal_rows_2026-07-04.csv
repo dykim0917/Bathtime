@@ -1,0 +1,33 @@
+slug,facility_name,bath_area,bath_area_confidence,signal_type,signal_direction,mention_count,source_count,platform_count,contradiction_level,review_signal_status
+noboribetsu-sagiriyu,登別温泉 さぎり湯,indoor_public_bath,specific,water_texture,mixed,19,19,3,medium,strong_signal
+noboribetsu-sagiriyu,登別温泉 さぎり湯,indoor_public_bath,specific,aged_facility,mixed,14,14,3,medium,strong_signal
+noboribetsu-sagiriyu,登別温泉 さぎり湯,indoor_public_bath,specific,price_value,mixed,10,10,1,medium,moderate_signal
+noboribetsu-sagiriyu,登別温泉 さぎり湯,unclear,unclear,water_texture,positive,9,9,2,low,moderate_signal
+noboribetsu-sagiriyu,登別温泉 さぎり湯,open_air_public_bath,specific,water_texture,mixed,8,8,1,medium,weak_signal
+noboribetsu-sagiriyu,登別温泉 さぎり湯,unclear,unclear,water_texture,mixed,8,8,2,medium,moderate_signal
+noboribetsu-sagiriyu,登別温泉 さぎり湯,indoor_public_bath,specific,water_texture,positive,8,8,3,low,strong_signal
+noboribetsu-sagiriyu,登別温泉 さぎり湯,indoor_public_bath,specific,sauna_quality,mixed,7,7,3,medium,strong_signal
+jozankei-hoheikyo,豊平峡温泉,open_air_public_bath,specific,water_texture,mixed,68,67,2,medium,strong_signal
+jozankei-hoheikyo,豊平峡温泉,open_air_public_bath,specific,water_texture,positive,41,40,2,low,strong_signal
+jozankei-hoheikyo,豊平峡温泉,open_air_public_bath,specific,source_flow_feeling,mixed,31,31,3,medium,strong_signal
+jozankei-hoheikyo,豊平峡温泉,open_air_public_bath,specific,price_value,mixed,31,31,2,medium,strong_signal
+jozankei-hoheikyo,豊平峡温泉,open_air_public_bath,specific,crowding,mixed,27,27,2,medium,moderate_signal
+jozankei-hoheikyo,豊平峡温泉,open_air_public_bath,specific,cleanliness,mixed,23,23,2,medium,moderate_signal
+jozankei-hoheikyo,豊平峡温泉,open_air_public_bath,specific,source_flow_feeling,positive,20,19,2,low,moderate_signal
+jozankei-hoheikyo,豊平峡温泉,open_air_public_bath,specific,aged_facility,mixed,20,19,2,medium,moderate_signal
+jozankei-yunohana,湯の花 定山渓殿,open_air_public_bath,specific,water_texture,neutral,2,2,1,low,weak_signal
+jozankei-yunohana,湯の花 定山渓殿,open_air_public_bath,specific,sauna_quality,neutral,2,2,1,low,weak_signal
+jozankei-yunohana,湯の花 定山渓殿,open_air_public_bath,specific,cold_bath_quality,neutral,2,2,1,low,weak_signal
+jozankei-yunohana,湯の花 定山渓殿,facility_wide,specific,cleanliness,mixed,2,2,2,medium,moderate_signal
+jozankei-yunohana,湯の花 定山渓殿,open_air_public_bath,specific,cleanliness,mixed,2,2,1,medium,weak_signal
+jozankei-yunohana,湯の花 定山渓殿,open_air_public_bath,specific,water_texture,positive,2,2,1,low,weak_signal
+jozankei-yunohana,湯の花 定山渓殿,indoor_public_bath,specific,water_texture,mixed,2,2,1,medium,weak_signal
+jozankei-yunohana,湯の花 定山渓殿,indoor_public_bath,specific,operation_confusion,mixed,2,2,1,medium,weak_signal
+hakodate-yachigashira,谷地頭温泉,unclear,unclear,water_texture,positive,58,57,2,low,strong_signal
+hakodate-yachigashira,谷地頭温泉,unclear,unclear,water_texture,neutral,46,44,2,low,strong_signal
+hakodate-yachigashira,谷地頭温泉,open_air_public_bath,specific,water_texture,positive,30,30,2,low,strong_signal
+hakodate-yachigashira,谷地頭温泉,indoor_public_bath,specific,water_texture,neutral,30,26,1,low,moderate_signal
+hakodate-yachigashira,谷地頭温泉,indoor_public_bath,specific,water_texture,positive,27,26,2,low,moderate_signal
+hakodate-yachigashira,谷地頭温泉,indoor_public_bath,specific,aged_facility,neutral,26,22,1,low,moderate_signal
+hakodate-yachigashira,谷地頭温泉,open_air_public_bath,specific,water_texture,neutral,25,25,1,low,moderate_signal
+hakodate-yachigashira,谷地頭温泉,open_air_public_bath,specific,price_value,positive,21,20,2,low,moderate_signal

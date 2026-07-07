@@ -1,0 +1,240 @@
+[
+  {
+    "platform": "Google Maps native",
+    "source_url": "https://www.google.com/maps/search/?api=1&query=%E7%8E%89%E9%80%A0%E3%82%B0%E3%83%A9%E3%83%B3%E3%83%89%E3%83%9B%E3%83%86%E3%83%AB%E9%95%B7%E7%94%9F%E9%96%A3",
+    "review_id": "google-native-ko-jeongsuk-1y",
+    "review_date": "about 1 year ago",
+    "language": "ko",
+    "access": "aside_review_tab_read",
+    "onsen_related_body": true,
+    "bath_area_tags": [
+      "public_bath",
+      "open_air_public_bath"
+    ],
+    "signal_type_tags": [
+      "public_bath_hot_spring"
+    ],
+    "caution_tags": [],
+    "original_keywords": [
+      "온탕",
+      "노천탕"
+    ],
+    "paraphrase": "Google-native 한국어 리뷰에서 온탕과 노천탕 이용이 직접 언급된다."
+  },
+  {
+    "platform": "Google Maps native",
+    "source_url": "https://www.google.com/maps/search/?api=1&query=%E7%8E%89%E9%80%A0%E3%82%B0%E3%83%A9%E3%83%B3%E3%83%89%E3%83%9B%E3%83%86%E3%83%AB%E9%95%B7%E7%94%9F%E9%96%A3",
+    "review_id": "google-native-ko-hanki-1y",
+    "review_date": "about 1 year ago",
+    "language": "ko",
+    "access": "aside_review_tab_read",
+    "onsen_related_body": true,
+    "bath_area_tags": [
+      "public_bath",
+      "open_air_public_bath"
+    ],
+    "signal_type_tags": [
+      "public_bath_hot_spring",
+      "crowding"
+    ],
+    "caution_tags": [],
+    "original_keywords": [
+      "대욕장",
+      "야외",
+      "아무도 없었다"
+    ],
+    "paraphrase": "Google-native 한국어 리뷰에서 아침 대욕장과 야외탕을 이용했고, 사람이 없는 시간대를 긍정적으로 언급한다."
+  },
+  {
+    "platform": "Google Maps native",
+    "source_url": "https://www.google.com/maps/search/?api=1&query=%E7%8E%89%E9%80%A0%E3%82%B0%E3%83%A9%E3%83%B3%E3%83%89%E3%83%9B%E3%83%86%E3%83%AB%E9%95%B7%E7%94%9F%E9%96%A3",
+    "review_id": "google-native-ko-beeryong-4y",
+    "review_date": "about 4 years ago",
+    "language": "ko",
+    "access": "aside_review_tab_read",
+    "onsen_related_body": true,
+    "bath_area_tags": [
+      "room_open_air_bath"
+    ],
+    "signal_type_tags": [
+      "room_bath_hot_spring",
+      "water_texture"
+    ],
+    "caution_tags": [],
+    "original_keywords": [
+      "최상층 노천탕 첨부",
+      "온천원천"
+    ],
+    "paraphrase": "Google-native 한국어 리뷰에서 최상층 객실 노천탕과 원천 사용 체감을 강하게 긍정한다."
+  },
+  {
+    "platform": "Google Maps native",
+    "source_url": "https://www.google.com/maps/search/?api=1&query=%E7%8E%89%E9%80%A0%E3%82%B0%E3%83%A9%E3%83%B3%E3%83%89%E3%83%9B%E3%83%86%E3%83%AB%E9%95%B7%E7%94%9F%E9%96%A3",
+    "review_id": "google-native-ja-nimi-1m",
+    "review_date": "about 1 month ago",
+    "language": "ja_to_ko_machine",
+    "access": "aside_review_tab_read",
+    "onsen_related_body": false,
+    "bath_area_tags": [],
+    "signal_type_tags": [],
+    "caution_tags": [
+      "access_booking"
+    ],
+    "original_keywords": [
+      "駐車場",
+      "案内"
+    ],
+    "paraphrase": "Google-native 최신 일본어 리뷰에서 직원 안내와 주차 동선이 보이나 욕장 본문은 접힌 상태다."
+  },
+  {
+    "platform": "Google Maps native",
+    "source_url": "https://www.google.com/maps/search/?api=1&query=%E7%8E%89%E9%80%A0%E3%82%B0%E3%83%A9%E3%83%B3%E3%83%89%E3%83%9B%E3%83%86%E3%83%AB%E9%95%B7%E7%94%9F%E9%96%A3",
+    "review_id": "google-native-ja-toto-1m",
+    "review_date": "about 1 month ago",
+    "language": "ja_to_ko_machine",
+    "access": "aside_review_tab_read",
+    "onsen_related_body": true,
+    "bath_area_tags": [
+      "public_bath",
+      "open_air_public_bath"
+    ],
+    "signal_type_tags": [
+      "public_bath_hot_spring",
+      "water_texture"
+    ],
+    "caution_tags": [
+      "public_bath_size_expectation"
+    ],
+    "original_keywords": [
+      "内湯",
+      "露天風呂",
+      "なめらか"
+    ],
+    "paraphrase": "Google-native 일본어 리뷰에서 내탕 1개와 노천탕 1개, 넓고 매끄러운 물 체감을 언급한다."
+  },
+  {
+    "platform": "Google Maps native",
+    "source_url": "https://www.google.com/maps/search/?api=1&query=%E7%8E%89%E9%80%A0%E3%82%B0%E3%83%A9%E3%83%B3%E3%83%89%E3%83%9B%E3%83%86%E3%83%AB%E9%95%B7%E7%94%9F%E9%96%A3",
+    "review_id": "google-native-ja-long-5m",
+    "review_date": "about 5 months ago",
+    "language": "ja_to_ko_machine",
+    "access": "aside_review_tab_read",
+    "onsen_related_body": false,
+    "bath_area_tags": [
+      "room_bath"
+    ],
+    "signal_type_tags": [],
+    "caution_tags": [],
+    "original_keywords": [
+      "部屋風呂以外"
+    ],
+    "paraphrase": "Google-native 일본어 리뷰에서 객실 욕실 외 시설 만족이 보이나 온천 본문으로 직접 세지 않는다."
+  },
+  {
+    "platform": "Google Maps native",
+    "source_url": "https://www.google.com/maps/search/?api=1&query=%E7%8E%89%E9%80%A0%E3%82%B0%E3%83%A9%E3%83%B3%E3%83%89%E3%83%9B%E3%83%86%E3%83%AB%E9%95%B7%E7%94%9F%E9%96%A3",
+    "review_id": "google-native-ja-osanai-3m",
+    "review_date": "about 3 months ago",
+    "language": "ja_to_ko_machine",
+    "access": "aside_review_tab_read",
+    "onsen_related_body": true,
+    "bath_area_tags": [
+      "open_air_public_bath"
+    ],
+    "signal_type_tags": [
+      "public_bath_hot_spring",
+      "water_texture",
+      "crowding"
+    ],
+    "caution_tags": [
+      "cleanliness_aging"
+    ],
+    "original_keywords": [
+      "露天탕",
+      "湯と肌感",
+      "独占状態"
+    ],
+    "paraphrase": "Google-native 일본어 리뷰에서 노천탕 분위기와 피부 체감, 독점 상태 시간대를 긍정한다."
+  },
+  {
+    "platform": "Google Maps native",
+    "source_url": "https://www.google.com/maps/search/?api=1&query=%E7%8E%89%E9%80%A0%E3%82%B0%E3%83%A9%E3%83%B3%E3%83%89%E3%83%9B%E3%83%86%E3%83%AB%E9%95%B7%E7%94%9F%E9%96%A3",
+    "review_id": "google-native-ja-mm-5m",
+    "review_date": "about 5 months ago",
+    "language": "ja_to_ko_machine",
+    "access": "aside_review_tab_read",
+    "onsen_related_body": true,
+    "bath_area_tags": [
+      "public_bath",
+      "open_air_public_bath",
+      "family_bath"
+    ],
+    "signal_type_tags": [
+      "public_bath_hot_spring",
+      "private_bath_experience",
+      "water_texture"
+    ],
+    "caution_tags": [
+      "temperature_control"
+    ],
+    "original_keywords": [
+      "温泉",
+      "男女入替",
+      "家族風呂"
+    ],
+    "paraphrase": "Google-native 일본어 리뷰에서 온천, 남녀 교체 이용, 가족탕 존재를 언급한다."
+  },
+  {
+    "platform": "Tripadvisor provider card in Google Maps",
+    "source_url": "https://www.google.com/maps/search/?api=1&query=%E7%8E%89%E9%80%A0%E3%82%B0%E3%83%A9%E3%83%B3%E3%83%89%E3%83%9B%E3%83%86%E3%83%AB%E9%95%B7%E7%94%9F%E9%96%A3",
+    "review_id": "google-provider-tripadvisor-ko-dohee-8y",
+    "review_date": "about 8 years ago",
+    "language": "ko",
+    "access": "provider_card_direct_read",
+    "google_native": false,
+    "onsen_related_body": true,
+    "bath_area_tags": [
+      "public_bath"
+    ],
+    "signal_type_tags": [
+      "public_bath_hot_spring"
+    ],
+    "caution_tags": [
+      "provider_card_not_google_native"
+    ],
+    "original_keywords": [
+      "대욕장",
+      "사진과 실제"
+    ],
+    "paraphrase": "Google Maps 안의 Tripadvisor 카드에서 대욕장이 사진 기대와 다소 다르다는 한국어 신호가 보인다."
+  },
+  {
+    "platform": "Tripadvisor provider card in Google Maps",
+    "source_url": "https://www.google.com/maps/search/?api=1&query=%E7%8E%89%E9%80%A0%E3%82%B0%E3%83%A9%E3%83%B3%E3%83%89%E3%83%9B%E3%83%86%E3%83%AB%E9%95%B7%E7%94%9F%E9%96%A3",
+    "review_id": "google-provider-tripadvisor-ja-akio-2y",
+    "review_date": "about 2 years ago",
+    "language": "ja_to_ko_machine",
+    "access": "provider_card_direct_read",
+    "google_native": false,
+    "onsen_related_body": true,
+    "bath_area_tags": [
+      "public_bath",
+      "open_air_public_bath"
+    ],
+    "signal_type_tags": [
+      "public_bath_hot_spring",
+      "water_texture",
+      "crowding"
+    ],
+    "caution_tags": [
+      "provider_card_not_google_native",
+      "public_bath_size_expectation"
+    ],
+    "original_keywords": [
+      "メノウ",
+      "大浴場",
+      "露天風呂"
+    ],
+    "paraphrase": "Tripadvisor 공급자 카드에서 메노우 대욕장, 큰 노천탕, 혼잡 스트레스가 적다는 신호가 보인다."
+  }
+]

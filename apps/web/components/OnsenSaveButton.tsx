@@ -55,7 +55,7 @@ export function OnsenSaveButton({ slug }: { slug: string }) {
       }}
     >
       <BookmarkSimple size={17} weight={saved ? 'fill' : 'bold'} aria-hidden="true" />
-      {saved ? '찜한 온천' : state === 'checking' ? '확인 중' : '찜하기'}
+      {saved ? '찜한 온천' : state === 'checking' ? '저장 확인 중' : '찜하기'}
     </button>
   );
 }

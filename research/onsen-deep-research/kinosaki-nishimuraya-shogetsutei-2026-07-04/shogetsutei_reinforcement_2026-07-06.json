@@ -1,0 +1,87 @@
+{
+  "research_date": "2026-07-06",
+  "slug": "kinosaki-nishimuraya-shogetsutei",
+  "accommodation_name": "城崎温泉 西村屋ホテル招月庭",
+  "purpose": "B급 사유였던 Google/Naver/Korean strata 결핍 재점검 및 Trip.com 직접 본문 보강",
+  "method": [
+    "기존 Rakuten/Jalan/JTB/Yahoo/Tripadvisor/Booking 직접 표본 305건은 유지했다.",
+    "Trip.com review page에서 날짜·객실 타입·본문이 함께 보이는 15건을 직접 본문으로 추가했다.",
+    "Tripadvisor Korea에서 한국어 원문 리뷰 1건을 직접 본문으로 추가했다.",
+    "Google Hotels/Maps는 기존 Aside Browser 확인 기록을 유지하되, 2026-07-06 Aside repl은 로컬 브라우저 연결 타임아웃으로 새 Google-native 본문을 확보하지 못했다.",
+    "Naver/검색 스니펫, Google 공급자 카드, OTA 요약은 직접 리뷰 수에서 제외했다."
+  ],
+  "platform_rechecks": {
+    "google_hotels_maps": {
+      "previous_source": "Aside Browser 2026-07-04",
+      "rating": 4.5,
+      "visible_review_count": 1717,
+      "prior_direct_google_native_reviews": 0,
+      "updated_direct_google_native_reviews": 0,
+      "review_body_access": "partial",
+      "recheck_2026_07_06": "aside repl openTab timed out at localhost browser connection; web open of Google Travel redirected to unsupported-browser page.",
+      "provider_cards_seen_previous": [
+        "Trip.com 4.6/5 81 reviews",
+        "Tripadvisor 4.4/5 261 reviews"
+      ],
+      "note": "Google 공급자 카드는 Google-native 본문으로 세지 않는다."
+    },
+    "naver_search_blog": {
+      "review_body_access": "snippet_only",
+      "direct_reviews_read": 0,
+      "onsen_related_direct_reviews": 0,
+      "note": "Naver 직접 숙박 본문은 계속 미확보. 한국어 직접 층은 Tripadvisor Korea 원문 1건으로 별도 보강했다."
+    },
+    "trip_com": {
+      "source_url": "https://www.trip.com/hotels/toyooka-hotel-detail-705576/kinosaki-onsen-nishimuraya-hotel-shogetsutei/review.html",
+      "rating": 9.3,
+      "visible_review_count": 82,
+      "review_body_access": "partial",
+      "direct_reviews_read": 15,
+      "onsen_related_direct_reviews": 11,
+      "strata_seen": [
+        "latest_2026",
+        "low_rating_6_5",
+        "onsen_keyword",
+        "private_hot_spring",
+        "public_hot_spring",
+        "hot_spring_town"
+      ],
+      "short_keywords_seen": [
+        "onsen town",
+        "public hot spring bath",
+        "private hot spring baths",
+        "private hot springs",
+        "hotel onsen",
+        "outdoor and indoor hot spring",
+        "public soup",
+        "great hot spring resort"
+      ]
+    },
+    "tripadvisor_korea": {
+      "source_url": "https://www.tripadvisor.co.kr/ShowUserReviews-g1022822-d1165592-r437351401-Kinosaki_Onsen_Nishimuraya_Hotel_Shogetsutei-Toyooka_Hyogo_Prefecture_Kinki.html",
+      "review_body_access": "direct_readable",
+      "direct_reviews_read": 1,
+      "onsen_related_direct_reviews": 1,
+      "language": "ko",
+      "short_keywords_seen": [
+        "온센 메구리",
+        "호텔 내부에 있는 온천",
+        "가족과 여행"
+      ],
+      "note": "Tripadvisor Korea property page shows Korean language count 2, but this pass opened and counted only the directly visible full Korean body."
+    }
+  },
+  "updated_count_delta": {
+    "previous_total_direct_reviews_read": 305,
+    "previous_onsen_related_direct_reviews": 172,
+    "newly_counted_direct_reviews": 16,
+    "newly_counted_onsen_related_direct_reviews": 12,
+    "updated_total_direct_reviews_read": 321,
+    "updated_onsen_related_direct_reviews": 184,
+    "updated_direct_body_platform_count": 7
+  },
+  "grade_after_recheck": {
+    "data_quality_grade": "A",
+    "reason": "직접 확인 321건, 직접 본문 플랫폼 7개, 최신/저평점/온천 키워드/한국어 직접 리뷰 층을 보강했다. Google-native 직접 본문은 0건이지만 Google Hotels/Maps 자체는 Aside로 확인했고 공급자 카드는 분리했다."
+  }
+}

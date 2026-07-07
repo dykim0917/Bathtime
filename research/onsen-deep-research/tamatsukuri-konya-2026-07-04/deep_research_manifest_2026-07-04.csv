@@ -1,0 +1,2 @@
+research_order,slug,name_ja,name_ko_or_en,area,track,source_tier,bath_research_axes,initial_review_pool_signal,priority_reason,status
+1,tamatsukuri-konya,玉造温泉 〜曲水の庭〜 ホテル玉泉,호텔 교쿠센 / Hotel Gyokusen,"玉造温泉, 島根県",ready_deep_research,Tier 1,public_bath; open_air_public_bath; water_texture; private_bath; room_bath_conflict_check,visible minimum 6103; direct 680; onsen direct 360,대형 대욕장·정원 온천 축의 표본 규모가 크고 Google 한국어 리뷰가 직접 확인됨,ready

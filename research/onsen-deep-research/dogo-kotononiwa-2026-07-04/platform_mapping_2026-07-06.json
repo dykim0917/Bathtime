@@ -1,0 +1,265 @@
+{
+  "research_date": "2026-07-06",
+  "scope": "ready lodging deep research reinforcement: dogo-kotononiwa / 道後温泉 葛城 琴の庭",
+  "method": "Existing Rakuten, Jalan, Ikkyu, and Yahoo ecosystem direct counts were retained with Yahoo Travel/Yahoo Maps separated after recheck. Google Maps/Hotels was rechecked with Aside Browser and the earlier Google-native 16-review line was replaced by a longer author-card recount. 4travel hotel reviews, 4travel travelogues, Japanese blogs, note posts, and Lemon8 direct stay bodies were added. A later Aside Browser pass changed Agoda from blocked to partial direct-readable, added low-weight Tabelog lodging/meal review bodies and two usable YouTube transcript bodies. Booking, Trip.com, Tripadvisor sibling/identity-mixed surfaces, Hotels.com/Expedia, Naver, AI summaries, search snippets, and OTA summaries were excluded from direct review counts unless individual body text was readable and identity-clean.",
+  "direct_review_sampling_status": {
+    "data_quality_grade": "B",
+    "directly_read_reviews": 271,
+    "onsen_related_direct_reviews": 197,
+    "direct_body_platform_count": 12,
+    "platforms_counted_as_direct_body": [
+      "Rakuten Travel",
+      "Jalan",
+      "Ikkyu",
+      "Yahoo Travel",
+      "Yahoo Maps",
+      "Google-native",
+      "4travel hotel reviews",
+      "4travel travelogues",
+      "Japanese blogs/note/Lemon8",
+      "Agoda",
+      "Tabelog lodging/meal reviews",
+      "YouTube transcripts"
+    ],
+    "why_not_300": "Additional direct bodies increased the sample from 184 to 271. Google visible pool is 94, but only 55 body-bearing Google-native author cards were counted after Aside Browser long-scroll recount; rating-only/no-body cards and provider cards were excluded. Yahoo/Ikkyu combined modal was loaded to 91 direct bodies but matched the already-counted Ikkyu 70 + Yahoo Travel 21 pool, so it added 0 unique direct bodies. Agoda exposed 4 usable visible bodies out of a 12-review Agoda tab even after scroll, sort, language, traveler-type, and keyword-chip checks; Tabelog added 12 low-weight lodging/meal bodies; YouTube added 3 usable transcript bodies; and two additional note stay bodies were counted. Booking exact target was not found, Trip.com has no reviews, Tripadvisor remains identity-mixed, and Naver did not expose a clean Korean firsthand stay review.",
+    "next_to_A": "Need at least 29 additional direct review bodies. Priority: re-open Google-native for any hidden body-bearing cards and find additional exact first-person Japanese/Korean stay blogs. Only count more YouTube/Vlog sources if transcript text is readable rather than title/description/visual-only. Agoda should be treated as partially exhausted in Aside: 12-review tab visible, but only four individual body cards rendered."
+  },
+  "lodgings": [
+    {
+      "slug": "dogo-kotononiwa",
+      "name_ja": "道後温泉 葛城 琴の庭",
+      "name_ko_or_en": "Kotononiwa / 카츠라기 코토노니와",
+      "official_site_url": "https://kotononiwa.jp/",
+      "address": "愛媛県松山市道後湯月町4-16",
+      "onsen_area": "道後温泉",
+      "identity_cautions": [
+        "Hotel Katsuragi Spa Resort Dogo and sister facility 花ゆづき appear in reviews and routes; keep them separate from 琴の庭 in-house bath facts.",
+        "Public bath/open-air public bath mentions often mean sister-facility bath use."
+      ],
+      "google_maps": {
+        "rating": 4.3,
+        "visible_review_count": 94,
+        "rating_distribution": {
+          "5_star": 64,
+          "4_star": 11,
+          "3_star": 10,
+          "2_star": 1,
+          "1_star": 8
+        },
+        "korean_reviews_visible": "Korean UI visible; Korean-language Google-native body not confirmed in snapshot",
+        "review_body_access": "partial_direct_readable_via_aside",
+        "directly_read_reviews": 55,
+        "onsen_related_direct_reviews": 39,
+        "keyword_pools_seen": {
+          "목욕": 15,
+          "요리": 10,
+          "음료": 9,
+          "가격": 8,
+          "맛": 6,
+          "도고 온천 본관": 5,
+          "어메니티": 5,
+          "온천 마을": 4,
+          "화물": 3,
+          "유카타": 3
+        },
+        "ota_provider_cards": [
+          "Official site price/availability",
+          "nearby hotel cards only; no provider review counted as Google-native"
+        ],
+        "access_note": "Aside Browser opened Google Maps review tab and long-scrolled the Google-native author cards. This 55/39 recount replaces the earlier 16/14 Google line. Rating-only/no-body cards and Google provider/OTA cards were not counted."
+      },
+      "ota_review_pool_signals": [
+        {
+          "platform": "Rakuten Travel",
+          "visible_review_count": 18,
+          "review_body_access": "direct_readable",
+          "directly_read_reviews": 18,
+          "onsen_related_direct_reviews": 12,
+          "url": "https://travel.rakuten.co.jp/HOTEL/178753/review.html"
+        },
+        {
+          "platform": "Jalan",
+          "rating": 4.6,
+          "visible_review_count": 71,
+          "review_body_access": "direct_readable",
+          "directly_read_reviews": 71,
+          "onsen_related_direct_reviews": 57,
+          "url": "https://www.jalan.net/yad339801/kuchikomi/",
+          "note": "Current surface still exposes 71 reviews; existing latest/archive direct count retained."
+        },
+        {
+          "platform": "Ikkyu",
+          "visible_review_count": 84,
+          "review_body_access": "direct_readable_via_aside",
+          "directly_read_reviews": 70,
+          "onsen_related_direct_reviews": 47,
+          "url": "https://www.ikyu.com/00002798/review/"
+        },
+        {
+          "platform": "Yahoo Travel",
+          "visible_review_count": 84,
+          "review_body_access": "direct_readable_via_aside",
+          "directly_read_reviews": 21,
+          "onsen_related_direct_reviews": 16,
+          "url": "https://travel.yahoo.co.jp/00002798/review/",
+          "note": "Rechecked with Aside Browser. Yahoo headline 84 is a Yahoo Travel + Ikkyu combined score surface; the Yahoo Travel review page itself exposes 21 unique Yahoo Travel bodies."
+        },
+        {
+          "platform": "Yahoo Maps",
+          "visible_review_count": 4,
+          "review_body_access": "direct_readable_via_yahoo_travel_page",
+          "directly_read_reviews": 4,
+          "onsen_related_direct_reviews": 4,
+          "url": "https://travel.yahoo.co.jp/00002798/review/",
+          "note": "Four Yahoo!地図 visitor-review cards appear at the bottom of the Yahoo Travel review page. Counted separately from Yahoo Travel lodging reviews."
+        },
+        {
+          "platform": "Yahoo Travel + Ikkyu combined modal",
+          "visible_review_count": 84,
+          "review_body_access": "direct_readable_via_aside_duplicate_pool",
+          "directly_read_reviews": 0,
+          "onsen_related_direct_reviews": 0,
+          "url": "https://travel.yahoo.co.jp/00002798/?top=reviews",
+          "notes": "Aside loaded the combined modal to 91 body records with hasNextPage=false. This validates the already-counted Ikkyu 70 + Yahoo Travel 21 pool and adds 0 unique direct bodies."
+        },
+        {
+          "platform": "4travel hotel reviews",
+          "rating": 3.25,
+          "visible_review_count": 4,
+          "review_body_access": "direct_readable",
+          "directly_read_reviews": 4,
+          "onsen_related_direct_reviews": 4,
+          "url": "https://4travel.jp/dm_hotel-11821742"
+        },
+        {
+          "platform": "4travel travelogues",
+          "visible_review_count": 3,
+          "review_body_access": "direct_readable",
+          "directly_read_reviews": 3,
+          "onsen_related_direct_reviews": 3,
+          "url": "https://4travel.jp/dm_hotel-11821742/travelogue"
+        },
+        {
+          "platform": "Japanese blogs/note/Lemon8",
+          "visible_review_count": 6,
+          "review_body_access": "direct_readable",
+          "directly_read_reviews": 6,
+          "onsen_related_direct_reviews": 6,
+          "urls": [
+            "https://www.pink-nez.com/welcome-home/?p=18311",
+            "https://ameblo.jp/magnolia-7131/entry-12800393873.html",
+            "https://supihare.com/dogo-onsen/",
+            "https://www.lemon8-app.com/%40proaso_momo/6979064791335846406?region=jp",
+            "https://note.com/saturnina/n/n1d7b46becefa",
+            "https://note.com/kurashi_ido_log/n/n827e7fcf6191"
+          ]
+        },
+        {
+          "platform": "Trip.com",
+          "visible_review_count": 0,
+          "review_body_access": "not_found",
+          "directly_read_reviews": 0,
+          "onsen_related_direct_reviews": 0,
+          "url": "https://www.trip.com/hotels/matsuyama-hotel-detail-121874857/kotononiwa/",
+          "notes": "Trip.com page says 'Be the first to post a review after your stay'; property description is official/OTA facility text only."
+        },
+        {
+          "platform": "Tripadvisor",
+          "visible_review_count": 1,
+          "review_body_access": "partial_identity_mixed_not_counted",
+          "directly_read_reviews": 0,
+          "onsen_related_direct_reviews": 0,
+          "url": "https://www.tripadvisor.jp/ShowUserReviews-g298230-d23557117-r800223784-Katsuragi_Kotononiwa-Matsuyama_Ehime_Prefecture_Shikoku.html",
+          "notes": "One Kotononiwa-labeled review body was readable and mentions source-flow onsen, but the page chrome/header points to Hotel Katsuragi Spa Resort Dogo. Kept as identity-mixed and not counted in direct totals. The separate Hotel Katsuragi Spa Resort Dogo page with 110 reviews is excluded."
+        },
+        {
+          "platform": "Agoda",
+          "rating": 9.4,
+          "visible_review_count": 13,
+          "review_body_access": "partial_direct_readable_via_aside",
+          "directly_read_reviews": 4,
+          "onsen_related_direct_reviews": 1,
+          "url": "https://www.agoda.com/ja-jp/katuragi-kotononiwa/hotel/matsuyama-jp.html",
+          "notes": "Aside Browser review section showed Agoda-native tab 12 reviews plus 1 other-site tab. Four Agoda-native visible body cards were read; one directly mentioned private room onsen. Other-site card was not counted. A later Aside recheck tried panel scroll-to-bottom, newest/high/low/helpful sort, Japanese and Traditional Chinese language filters, traveler-type filters, and keyword chips (spa/room comfort/service); no more than the same four body cards rendered."
+        },
+        {
+          "platform": "Tabelog lodging/meal reviews",
+          "rating": 3.07,
+          "visible_review_count": 17,
+          "review_body_access": "partial_direct_readable",
+          "directly_read_reviews": 12,
+          "onsen_related_direct_reviews": 5,
+          "url": "https://tabelog.com/ehime/A3801/A380101/38013896/dtlrvwlst/",
+          "notes": "Tabelog is a food/meal review surface rather than a lodging OTA. Counted conservatively as low-weight direct bodies because the page exposes individual author review text tied to this exact property; repeated same-author visits remain lower weight for source_count. Bath mentions include 客室露天風呂, 半露天風呂, 源泉掛け流し, and room-bath cold-season usability."
+        },
+        {
+          "platform": "YouTube transcripts",
+          "visible_review_count": null,
+          "review_body_access": "direct_readable_transcript_partial",
+          "directly_read_reviews": 3,
+          "onsen_related_direct_reviews": 3,
+          "urls": [
+            "https://www.youtube.com/watch?v=ELPBJ-kjHwM",
+            "https://www.youtube.com/watch?v=tMkv7PZd2RI",
+            "https://www.youtube.com/watch?v=mv2ilbWPp50"
+          ],
+          "notes": "Several exact Kotononiwa stay videos were found, but only transcript text was eligible. Three Japanese auto-generated transcripts were readable enough for direct bath text; title-only/video-only results, description-only bath claims, and noisy music/filler captions were not counted."
+        },
+        {
+          "platform": "Booking.com",
+          "review_body_access": "not_found",
+          "directly_read_reviews": 0,
+          "onsen_related_direct_reviews": 0,
+          "notes": "Aside Browser/search did not surface an exact Kotononiwa Booking.com listing. Sibling Dogo-no-Yado Katsuragi results were excluded."
+        },
+        {
+          "platform": "Hotels.com / Expedia",
+          "review_body_access": "official_ota_facility_surface_only",
+          "directly_read_reviews": 0,
+          "onsen_related_direct_reviews": 0,
+          "url": "https://kr.hotels.com/ho1720593440/katsuragi-koto-no-niwa-masseuyama-ilbon/"
+        },
+        {
+          "platform": "Naver Blog/Search",
+          "review_body_access": "snippet_only_or_promotional_not_counted",
+          "directly_read_reviews": 0,
+          "onsen_related_direct_reviews": 0,
+          "notes": "Korean Naver queries mostly surfaced ads, OTA/official pages, noisy hits, or one agency/recommendation-style Naver Blog page. No clean Korean firsthand stay review body was counted."
+        }
+      ],
+      "official_bath_facts_seen": {
+        "room_bath": "All-room private bath axis; official/OTA surfaces describe in-room Dogo Onsen bathing.",
+        "room_open_air_bath": "Official and OTA surfaces describe open-air/semi-open-air room baths using Dogo Onsen source-flow claims.",
+        "public_bath": "JTB/previous mapping says no large public bath at this lodging; sister facilities may be usable.",
+        "open_air_public_bath": "not official in-house; sister facility route only",
+        "private_bath": "Official/OTA wording can be ambiguous because all guest rooms are private bath units; do not merge with shared private/family bath.",
+        "family_bath": "official wording previously found as 家族風呂あり/貸切可 but operational detail unclear; recheck required",
+        "source_claims": "Official/JTB/OTA: all rooms source-flow Dogo Onsen / 生湯 / 源泉かけ流し.",
+        "spring_quality": "simple spring in prior JTB surface; Hotels.com Korea exposes in-room mineral bath as OTA facility fact."
+      },
+      "review_signal_keywords": [
+        "生湯",
+        "源泉かけ流し",
+        "客室露天風呂",
+        "半露天風呂",
+        "部屋風呂",
+        "大浴場はありません",
+        "姉妹館",
+        "花ゆづき",
+        "道後温泉本館",
+        "足湯"
+      ],
+      "caution_keywords": [
+        "案内不足",
+        "使いづらい",
+        "温泉が出なくなりました",
+        "シャワールーム",
+        "ホテルお風呂遠い",
+        "sister facility route confusion",
+        "Google partial",
+        "Naver snippet_only"
+      ],
+      "next_sampling": "A급으로 올리려면 추가 29건 이상이 필요하다. Yahoo/Ikkyu 결합 모달은 Aside로 91건 끝까지 확인했지만 중복 풀이라 추가 0건이었다. Agoda는 12건 탭 중 4건 본문만 렌더되는 상태를 Aside로 재확인했다. 남은 우선순위는 Google-native rating-only/no-body 카드 외 추가 본문 확장, 한국어 직접 숙박기 재검색, 자막이 읽히는 정확 숙소 YouTube/Vlog 텍스트 보강이다."
+    }
+  ]
+}

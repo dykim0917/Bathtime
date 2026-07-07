@@ -1,0 +1,121 @@
+{
+  "research_date": "2026-07-04",
+  "scope": "ready lodging deep research: Kansai/Sanin/Setouchi Tier 1",
+  "method": "Static OTA extraction plus Aside Browser verification for Yahoo, Google, Naver, Tripadvisor, Booking.",
+  "direct_review_sampling_status": "B: 300+ direct reviews and 6 platforms, but A withheld because Korean/Naver direct body and Google-native review-tab sampling are insufficient.",
+  "lodgings": [
+    {
+      "slug": "kinosaki-nishimuraya-shogetsutei",
+      "name_ja": "城崎温泉 西村屋ホテル招月庭",
+      "google_maps": {
+        "rating": 4.5,
+        "visible_review_count": 1717,
+        "rating_distribution": null,
+        "korean_reviews_visible": "supplier snippets only in this pass",
+        "direct_google_native_reviews_read": 0,
+        "onsen_related_google_native_reviews_read": 0,
+        "provider_cards_seen": [
+          {
+            "provider": "Trip.com",
+            "rating": "4.6/5",
+            "visible_review_count": 81,
+            "snippet_keyword": "폭설/저녁 게 코스"
+          },
+          {
+            "provider": "Tripadvisor",
+            "rating": "4.4/5",
+            "visible_review_count": 261,
+            "snippet_keyword": "온센 메구리"
+          }
+        ]
+      },
+      "ota_review_pool_signals": {
+        "rakuten": {
+          "visible_review_count": 101,
+          "review_body_access": "direct_readable",
+          "direct_read_reviews": 101,
+          "onsen_related_direct_reviews": 41,
+          "source_url": "https://travel.rakuten.co.jp/HOTEL/14007/review.html"
+        },
+        "jalan": {
+          "visible_review_count": 1113,
+          "review_body_access": "direct_readable",
+          "direct_read_reviews": 59,
+          "onsen_related_direct_reviews": 55,
+          "source_url": "https://www.jalan.net/yad332274/kuchikomi/"
+        },
+        "jtb": {
+          "visible_review_count": null,
+          "review_body_access": "direct_readable",
+          "direct_read_reviews": 65,
+          "onsen_related_direct_reviews": 29,
+          "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/6318001/review/"
+        },
+        "yahoo_travel": {
+          "visible_review_count": 149,
+          "review_body_access": "direct_readable_via_aside",
+          "direct_read_reviews": 30,
+          "onsen_related_direct_reviews": 16,
+          "source_url": "https://travel.yahoo.co.jp/00001014/review/"
+        },
+        "tripadvisor": {
+          "visible_review_count": 261,
+          "review_body_access": "direct_readable_via_aside",
+          "direct_read_reviews": 40,
+          "onsen_related_direct_reviews": 25,
+          "source_url": "https://www.tripadvisor.jp/Hotel_Review-g1022822-d1165592-Reviews-Kinosaki_Onsen_Nishimuraya_Hotel_Shogetsutei-Toyooka_Hyogo_Prefecture_Kinki.html"
+        },
+        "booking": {
+          "visible_review_count": 331,
+          "review_body_access": "partial",
+          "direct_read_reviews": 10,
+          "onsen_related_direct_reviews": 6,
+          "source_url": "https://www.booking.com/hotel/jp/nishimuraya-shogetsutei.ko.html"
+        },
+        "naver_search": {
+          "review_body_access": "snippet_only",
+          "directly_read_reviews": 0,
+          "onsen_related_direct_reviews": 0,
+          "snippets_seen": [
+            "Trip.com 9.3/10, 82 참여",
+            "Booking.com 9.3/10, 330 참여",
+            "Korean blog snippets mentioning 대욕장/정원뷰 노천탕/온천마을 거리"
+          ],
+          "notes": "Naver Blog/Search showed Korean demand signals, but no opened full lodging-review body was counted."
+        }
+      },
+      "official_bath_facts_seen": {
+        "room_open_air_bath": "official_seen",
+        "room_open_air_bath_hot_spring_status": "not_hot_spring_for_guest-room_private_occupancy",
+        "public_bath": "official_seen",
+        "open_air_public_bath": "official_seen",
+        "private_bath": "official_seen",
+        "source_note": "Official room-open-air page states guest-room private baths use 沸かし湯/白湯 to protect Kinosaki hot spring resources, while large baths and private baths use hot spring water.",
+        "official_sources": [
+          "https://www.nishimuraya.ne.jp/shogetsu/room/roten.php",
+          "https://www.nishimuraya.ne.jp/shogetsu/spa/private.php"
+        ]
+      },
+      "review_signal_keywords": [
+        "大浴場",
+        "露天風呂",
+        "外湯",
+        "貸切風呂",
+        "森のプライベートスパ",
+        "沸かし湯",
+        "白湯",
+        "대욕장",
+        "정원뷰 노천탕"
+      ],
+      "caution_keywords": [
+        "客室露天風呂は白湯",
+        "外湯まで距離",
+        "送迎バス",
+        "朝食混雑",
+        "大浴場混雑",
+        "価格期待"
+      ],
+      "next_sampling": "A로 올리려면 Google-native 리뷰 탭과 Naver Blog/Cafe 직접 본문을 열어 한국어 온천 표본을 추가해야 한다."
+    }
+  ]
+}

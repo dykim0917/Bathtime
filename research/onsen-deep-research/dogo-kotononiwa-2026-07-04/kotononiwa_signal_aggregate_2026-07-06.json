@@ -1,0 +1,101 @@
+{
+  "research_date": "2026-07-06",
+  "slug": "dogo-kotononiwa",
+  "accommodation_name": "道後温泉 葛城 琴の庭",
+  "data_quality": {
+    "grade": "B",
+    "directly_read_reviews": 271,
+    "onsen_related_direct_reviews": 197,
+    "direct_body_platform_count": 12,
+    "confidence_phrase": "뚜렷하게 확인된다",
+    "grade_reason": "150-299건 직접 확인과 다중 플랫폼 조건은 충족하지만 300건 미만이고, 한국어 직접 숙박기 표본은 없다. Google은 55건까지 재집계했으나 rating-only/no-body 카드는 제외했다. Yahoo/Ikkyu 결합 모달은 91건까지 끝까지 열었지만 기존 Ikkyu/Yahoo 풀과 중복되어 추가 0건이다. Agoda, Tabelog, YouTube transcript 3건, note 직접 숙박기 2건을 추가했지만 보강 후에도 A 기준까지 29건 부족하다."
+  },
+  "review_signal_rows": [
+    {
+      "accommodation_name": "道後温泉 葛城 琴の庭",
+      "bath_area": "room_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 131,
+      "source_count": 131,
+      "platform_count": 12,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "accommodation_name": "道後温泉 葛城 琴の庭",
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 120,
+      "source_count": 120,
+      "platform_count": 12,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "accommodation_name": "道後温泉 葛城 琴の庭",
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 100,
+      "source_count": 100,
+      "platform_count": 12,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "accommodation_name": "道後温泉 葛城 琴の庭",
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "booking_confusion",
+      "signal_direction": "mixed",
+      "mention_count": 63,
+      "source_count": 63,
+      "platform_count": 7,
+      "contradiction_level": "medium",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "accommodation_name": "道後温泉 葛城 琴の庭",
+      "bath_area": "public_bath",
+      "bath_area_confidence": "probable",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "mixed",
+      "mention_count": 23,
+      "source_count": 23,
+      "platform_count": 5,
+      "contradiction_level": "high",
+      "review_signal_status": "conflicting",
+      "note": "Most public-bath mentions refer to sister facilities or external route. The lodging itself is officially no-large-public-bath."
+    },
+    {
+      "accommodation_name": "道後温泉 葛城 琴の庭",
+      "bath_area": "open_air_public_bath",
+      "bath_area_confidence": "probable",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "mixed",
+      "mention_count": 13,
+      "source_count": 13,
+      "platform_count": 4,
+      "contradiction_level": "high",
+      "review_signal_status": "conflicting",
+      "note": "Sister-facility 花ゆづき/Katsuragi Spa Resort bath-route signal; do not tag as in-house public open-air bath without context."
+    },
+    {
+      "accommodation_name": "道後温泉 葛城 琴の庭",
+      "bath_area": "room_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "positive",
+      "mention_count": 109,
+      "source_count": 109,
+      "platform_count": 12,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    }
+  ]
+}

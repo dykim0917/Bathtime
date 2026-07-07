@@ -1,0 +1,1167 @@
+{
+  "summary": {
+    "generated_at": "2026-07-04T04:10:05.889Z",
+    "lodging": "道後温泉 琴の庭",
+    "total_direct_extracted_static": 33,
+    "onsen_related_body_static": 27,
+    "direct_body_platforms_static": 2,
+    "by_platform": {
+      "Rakuten Travel": {
+        "direct": 18,
+        "onsen_body": 12
+      },
+      "Jalan": {
+        "direct": 15,
+        "onsen_body": 15
+      }
+    },
+    "platform_page_stats": {
+      "rakuten_1": 18,
+      "jalan_1": 15,
+      "jalan_2": 15,
+      "jalan_3": 15,
+      "jalan_4": 15,
+      "jalan_5": 15,
+      "jalan_6": 15,
+      "jtb_1": 0
+    },
+    "visible_review_pool_static": {
+      "rakuten": 18,
+      "jalan": null,
+      "jtb": null
+    },
+    "bath_area_tags": {
+      "room_open_air_bath": 17,
+      "room_bath": 23,
+      "public_bath": 2
+    },
+    "signal_type_tags": {
+      "room_bath_hot_spring": 24,
+      "booking_confusion": 11,
+      "water_texture": 12,
+      "crowding": 4,
+      "public_bath_hot_spring": 2
+    },
+    "caution_tags": {
+      "access_booking": 12,
+      "temperature_control": 2,
+      "cleanliness_aging": 6,
+      "lounge_operation": 2,
+      "price_expectation": 1,
+      "view_garden": 1
+    },
+    "body_keywords": {
+      "温泉": 16,
+      "露天": 12,
+      "露天風呂": 11,
+      "道後温泉": 9,
+      "清潔": 4,
+      "源泉": 3,
+      "予約": 3,
+      "静か": 3,
+      "商店街": 2,
+      "温度": 2,
+      "部屋風呂": 2,
+      "足湯": 2,
+      "露天風呂付": 2,
+      "駐車場": 2,
+      "道後温泉本館": 2,
+      "お部屋のお風呂": 2,
+      "大浴場": 2,
+      "徒歩": 1,
+      "泉質": 1,
+      "湯質": 1,
+      "客室風呂": 1,
+      "狭い": 1,
+      "露天風呂付き": 1,
+      "空いて": 1,
+      "掃除": 1,
+      "館内": 1,
+      "古い": 1
+    },
+    "scores": {
+      "2": 1,
+      "3": 1,
+      "4": 5,
+      "5": 26
+    },
+    "note": "Review bodies are not stored; hashes, metadata, short keywords and tags only. Official bath facts are not counted as review signals."
+  },
+  "reviews": [
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/178753/review.html",
+      "review_id": "33123477873675",
+      "review_hash": "d536161b81861dd2",
+      "review_date": "2026-06-16",
+      "stay_date": "2026-06-13",
+      "score": 5,
+      "title": "孫も大喜び！海の幸満載でリピートしたい宿",
+      "room_type": "離れ ときみ邸「濡羽」〜NUREBA〜",
+      "plan_name": "源泉かけ流しと木の空間を自室で楽しむプラン＜2食付＞「緑風庵」にてお食事",
+      "body_char_count": 205,
+      "body_keywords": [
+        "露天",
+        "露天風呂"
+      ],
+      "context_keywords": [
+        "源泉",
+        "かけ流し"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/178753/review.html",
+      "review_id": "33123477869883",
+      "review_hash": "4722347e3d64f96a",
+      "review_date": "2026-06-15",
+      "stay_date": "2026-06-12",
+      "score": 4,
+      "title": "父も喜んだフルーツと広々お風呂",
+      "room_type": "ヴィラタイプ 「琥珀」〜KOHAKU〜",
+      "plan_name": "源泉かけ流しと木の空間を自室で楽しむプラン＜2食付＞「緑風庵」にてお食事",
+      "body_char_count": 179,
+      "body_keywords": [
+        "商店街"
+      ],
+      "context_keywords": [
+        "源泉",
+        "かけ流し"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [
+        "access_booking"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/178753/review.html",
+      "review_id": "33123477763718",
+      "review_hash": "07016772251635a6",
+      "review_date": "2026-06-01",
+      "stay_date": "2026-04-23",
+      "score": 5,
+      "title": "吹き抜け露天風呂と好立地に感動！",
+      "room_type": "ヴィラガーデンスイート「茜」〜AKANE〜[RC]",
+      "plan_name": "【お食事なし】生湯を堪能 のんびり道後旅＜源泉かけ流し露天風呂付客室＞",
+      "body_char_count": 139,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "商店街",
+        "徒歩"
+      ],
+      "context_keywords": [
+        "源泉",
+        "かけ流し",
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付客室"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "access_booking"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/178753/review.html",
+      "review_id": "33123477914289",
+      "review_hash": "11aa3e69a990c673",
+      "review_date": "2026-06-21",
+      "stay_date": "2026-06-20",
+      "score": 5,
+      "title": "全てが最高！また利用したいホテル",
+      "room_type": "ヴィラタイプ 「琥珀」〜KOHAKU〜",
+      "plan_name": "源泉かけ流しと木の空間を自室で楽しむプラン＜2食付＞「緑風庵」にてお食事",
+      "body_char_count": 80,
+      "body_keywords": [
+        "泉質",
+        "温度",
+        "清潔"
+      ],
+      "context_keywords": [
+        "源泉",
+        "かけ流し"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture"
+      ],
+      "caution_tags": [
+        "temperature_control",
+        "cleanliness_aging"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/178753/review.html",
+      "review_id": "33123477233314",
+      "review_hash": "9def140ab057ebf6",
+      "review_date": "2026-03-26",
+      "stay_date": "2026-03-22",
+      "score": 5,
+      "title": "母との道後温泉旅行、快適で贅沢な滞在",
+      "room_type": "ヴィラタイプ 「琥珀」〜KOHAKU〜",
+      "plan_name": "【お食事なし】生湯を堪能 のんびり道後旅＜源泉かけ流し露天風呂付客室＞",
+      "body_char_count": 219,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "源泉",
+        "清潔"
+      ],
+      "context_keywords": [
+        "温泉",
+        "道後温泉",
+        "源泉",
+        "かけ流し",
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付客室"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture"
+      ],
+      "caution_tags": [
+        "cleanliness_aging"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/178753/review.html",
+      "review_id": "33123476995581",
+      "review_hash": "7e4783bf6dec98f2",
+      "review_date": "2026-02-27",
+      "stay_date": "2026-02-12",
+      "score": 4,
+      "title": "部屋風呂と食事は満足、給仕の咳払いが残念",
+      "room_type": "ヴィラタイプ 「琥珀」〜KOHAKU〜",
+      "plan_name": "源泉かけ流しと木の空間を自室で楽しむプラン＜2食付＞「緑風庵」にてお食事",
+      "body_char_count": 83,
+      "body_keywords": [
+        "部屋風呂"
+      ],
+      "context_keywords": [
+        "源泉",
+        "かけ流し",
+        "部屋風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/178753/review.html",
+      "review_id": "33123476191721",
+      "review_hash": "65ca9081ca47ce45",
+      "review_date": "2025-11-24",
+      "stay_date": "2025-11-22",
+      "score": 5,
+      "title": "",
+      "room_type": "ガーデンスイート「茜」〜AKANE〜",
+      "plan_name": "プライベートDinnerプラン＜【個室2名様利用】・2食付",
+      "body_char_count": 103,
+      "body_keywords": [],
+      "context_keywords": [],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/178753/review.html",
+      "review_id": "33123476505905",
+      "review_hash": "bfc11b8649cc93e4",
+      "review_date": "2025-12-26",
+      "stay_date": "2025-12-24",
+      "score": 5,
+      "title": "全てが最高でした！！",
+      "room_type": "ヴィラタイプ 「琥珀」〜KOHAKU〜",
+      "plan_name": "プライベートDinnerプラン＜【個室3〜4名様利用】・2食付",
+      "body_char_count": 162,
+      "body_keywords": [
+        "温泉",
+        "道後温泉"
+      ],
+      "context_keywords": [],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [
+        "water_texture"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/178753/review.html",
+      "review_id": "33123476274539",
+      "review_hash": "da7315b047bbccc8",
+      "review_date": "2025-12-02",
+      "stay_date": "2025-10-15",
+      "score": 5,
+      "title": "道後中心なのに静か！半露天風呂が最高",
+      "room_type": "ヴィラタイプ 「琥珀」〜KOHAKU〜",
+      "plan_name": "源泉かけ流しと木の空間を自室で楽しむプラン＜2食付＞「緑風庵」にてお食事",
+      "body_char_count": 103,
+      "body_keywords": [
+        "温泉",
+        "露天"
+      ],
+      "context_keywords": [
+        "源泉",
+        "かけ流し",
+        "露天",
+        "露天風呂",
+        "静か"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/178753/review.html",
+      "review_id": "33123476231642",
+      "review_hash": "311b62e88322cc7d",
+      "review_date": "2025-11-29",
+      "stay_date": "2025-11-27",
+      "score": 5,
+      "title": "接客が丁寧！設備も綺麗で快適な宿",
+      "room_type": "ヴィラタイプ 「琥珀」〜KOHAKU〜",
+      "plan_name": "【お食事なし】生湯を堪能 のんびり道後旅＜源泉かけ流し露天風呂付客室＞",
+      "body_char_count": 200,
+      "body_keywords": [
+        "足湯"
+      ],
+      "context_keywords": [
+        "源泉",
+        "かけ流し",
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付客室"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "booking_confusion"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/178753/review.html",
+      "review_id": "33123472586148",
+      "review_hash": "e61d0ab8060990fe",
+      "review_date": "2025-08-15",
+      "stay_date": "2025-08-13",
+      "score": 5,
+      "title": "",
+      "room_type": "メゾネット「萌黄」〜MOEGI〜",
+      "plan_name": "プライベートDinnerプラン＜【個室2名様利用】・2食付",
+      "body_char_count": 162,
+      "body_keywords": [
+        "温泉",
+        "露天",
+        "露天風呂",
+        "露天風呂付"
+      ],
+      "context_keywords": [],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/178753/review.html",
+      "review_id": "33123472539796",
+      "review_hash": "003507ef9f76b3fc",
+      "review_date": "2025-08-03",
+      "stay_date": "2025-08-01",
+      "score": 4,
+      "title": "",
+      "room_type": "離れ ときみ邸「濡羽」〜NUREBA〜",
+      "plan_name": "プライベートDinnerプラン＜【個室2名様利用】・2食付",
+      "body_char_count": 208,
+      "body_keywords": [
+        "温泉"
+      ],
+      "context_keywords": [],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/178753/review.html",
+      "review_id": "33123473310350",
+      "review_hash": "9335cca19734a09a",
+      "review_date": "2025-07-21",
+      "stay_date": "2025-07-18",
+      "score": 5,
+      "title": "",
+      "room_type": "ガーデンスイート「茜」〜AKANE〜",
+      "plan_name": "プライベートDinnerプラン＜【個室2名様利用】・2食付",
+      "body_char_count": 437,
+      "body_keywords": [
+        "温泉",
+        "源泉",
+        "湯質",
+        "露天",
+        "露天風呂",
+        "予約"
+      ],
+      "context_keywords": [],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "access_booking",
+        "lounge_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/178753/review.html",
+      "review_id": "33123476295235",
+      "review_hash": "e884b61f6b3a1339",
+      "review_date": "2025-12-04",
+      "stay_date": "2025-11-09",
+      "score": 4,
+      "title": "道後温泉近く、最高の部屋とサービス",
+      "room_type": "ヴィラタイプ 「琥珀」〜KOHAKU〜",
+      "plan_name": "【お食事なし】生湯を堪能 のんびり道後旅＜源泉かけ流し露天風呂付客室＞",
+      "body_char_count": 44,
+      "body_keywords": [
+        "温泉",
+        "道後温泉"
+      ],
+      "context_keywords": [
+        "温泉",
+        "道後温泉",
+        "源泉",
+        "かけ流し",
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付客室"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/178753/review.html",
+      "review_id": "33123476201527",
+      "review_hash": "a55721a8e2ddf884",
+      "review_date": "2025-11-26",
+      "stay_date": "2025-10-27",
+      "score": 5,
+      "title": "全てがハイレベル、再訪したい",
+      "room_type": "ヴィラタイプ 「琥珀」〜KOHAKU〜",
+      "plan_name": "源泉かけ流しと木の空間を自室で楽しむプラン＜2食付＞「緑風庵」にてお食事",
+      "body_char_count": 40,
+      "body_keywords": [],
+      "context_keywords": [
+        "源泉",
+        "かけ流し"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/178753/review.html",
+      "review_id": "33123472993317",
+      "review_hash": "cd8380ea2e57377f",
+      "review_date": "2025-10-24",
+      "stay_date": "2025-10-22",
+      "score": 5,
+      "title": "",
+      "room_type": "ヴィラタイプ 「琥珀」〜KOHAKU〜",
+      "plan_name": "源泉かけ流しと木の空間を自室で楽しむプラン＜2食付＞「緑風庵」にてお食事",
+      "body_char_count": 86,
+      "body_keywords": [],
+      "context_keywords": [
+        "源泉",
+        "かけ流し"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/178753/review.html",
+      "review_id": "33123472641499",
+      "review_hash": "51823e8534a52f8f",
+      "review_date": "2025-09-06",
+      "stay_date": "2025-09-03",
+      "score": 5,
+      "title": "",
+      "room_type": "ヴィラタイプ 「琥珀」〜KOHAKU〜",
+      "plan_name": "源泉かけ流しと木の空間を自室で楽しむプラン＜2食付＞「緑風庵」にてお食事",
+      "body_char_count": 58,
+      "body_keywords": [],
+      "context_keywords": [
+        "源泉",
+        "かけ流し"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/178753/review.html",
+      "review_id": "33123473320747",
+      "review_hash": "472291ef860d7b24",
+      "review_date": "2025-07-23",
+      "stay_date": "2025-05-23",
+      "score": 5,
+      "title": "",
+      "room_type": "ヴィラタイプ 「琥珀」〜KOHAKU〜",
+      "plan_name": "源泉かけ流しと木の空間を自室で楽しむプラン＜2食付＞「緑風庵」にてお食事",
+      "body_char_count": 89,
+      "body_keywords": [],
+      "context_keywords": [
+        "源泉",
+        "かけ流し"
+      ],
+      "onsen_related_body": false,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/",
+      "review_id": "a66d589b200ab288",
+      "review_hash": "5975fa872f8d47c1",
+      "review_date": "2026-06-17",
+      "stay_date": "2026-06",
+      "score": 5,
+      "title": "お風呂が広く、すてきなデザイン",
+      "room_type": "ツイン",
+      "plan_name": "【リクライニングベッド付】源泉かけ流しと木の空間を自室で楽しむ・2食付＜ヴィラタイプ＞",
+      "body_char_count": 786,
+      "body_keywords": [
+        "客室風呂",
+        "狭い"
+      ],
+      "context_keywords": [
+        "源泉",
+        "かけ流し"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [
+        "price_expectation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/",
+      "review_id": "cb32b4b77eea2763",
+      "review_hash": "938cb0c00135cece",
+      "review_date": "2026-06-15",
+      "stay_date": "2026-06",
+      "score": 5,
+      "title": "ゆったりと過ごせます",
+      "room_type": "和洋室",
+      "plan_name": "プライベートDinnerプラン＜【個室2名様利用】・2食付",
+      "body_char_count": 69,
+      "body_keywords": [
+        "露天",
+        "露天風呂"
+      ],
+      "context_keywords": [],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/",
+      "review_id": "6332cf7a6beaa38d",
+      "review_hash": "9e4c73c2e3d9fd50",
+      "review_date": "2026-06-11",
+      "stay_date": "2026-06",
+      "score": 2,
+      "title": "何もかもがいちいち使いづらく過ごしにくい",
+      "room_type": "露天風呂付",
+      "plan_name": "源泉かけ流しと木の空間を自室で楽しむプラン・2食付<離れスイート＞離れ「緑風庵」にてお食事 その他",
+      "body_char_count": 682,
+      "body_keywords": [
+        "温泉",
+        "源泉",
+        "露天",
+        "露天風呂",
+        "露天風呂付",
+        "露天風呂付き",
+        "空いて",
+        "掃除"
+      ],
+      "context_keywords": [
+        "源泉",
+        "かけ流し",
+        "露天",
+        "露天風呂",
+        "露天風呂付"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture",
+        "crowding",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "cleanliness_aging",
+        "access_booking"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/",
+      "review_id": "8501a0d543b8bff1",
+      "review_hash": "6d125b5aa76c3f22",
+      "review_date": "2026-04-29",
+      "stay_date": "2026-03",
+      "score": 5,
+      "title": "誕生日旅行に",
+      "room_type": "露天風呂付",
+      "plan_name": "【お",
+      "body_char_count": 158,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "露天",
+        "露天風呂",
+        "予約"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "露天風呂付"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "access_booking"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/",
+      "review_id": "8aa4674b630bcba9",
+      "review_hash": "940c01450d7e4d14",
+      "review_date": "2026-04-25",
+      "stay_date": "2026-04",
+      "score": 4,
+      "title": "家族旅行",
+      "room_type": "",
+      "plan_name": "【じゃらんスペシャルウィーク】源泉かけ流しと木の空間を自室で楽しむプラン・2食付~ヴィラタイプ~ その他",
+      "body_char_count": 251,
+      "body_keywords": [
+        "温泉",
+        "駐車場"
+      ],
+      "context_keywords": [
+        "源泉",
+        "かけ流し"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "access_booking"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/",
+      "review_id": "2d1a2854aadaccc3",
+      "review_hash": "77fb47d52b30403b",
+      "review_date": "2026-04-07",
+      "stay_date": "2026-04",
+      "score": 5,
+      "title": "良かったです",
+      "room_type": "",
+      "plan_name": "【じゃらんスペシャルウィーク】源泉かけ流しと木の空間を自室で楽しむプラン・2食付~ヴィラタイプ~ その他",
+      "body_char_count": 189,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "足湯",
+        "道後温泉本館",
+        "静か",
+        "清潔"
+      ],
+      "context_keywords": [
+        "源泉",
+        "かけ流し"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [
+        "water_texture",
+        "crowding",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "cleanliness_aging",
+        "view_garden",
+        "access_booking"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/",
+      "review_id": "81c776deb96b9973",
+      "review_hash": "4c4daa087a4667af",
+      "review_date": "2026-03-20",
+      "stay_date": "2026-03",
+      "score": 5,
+      "title": "ゆっくりできる",
+      "room_type": "露天風呂付",
+      "plan_name": "【じゃらんスペシャルウィーク】【お",
+      "body_char_count": 158,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "露天",
+        "露天風呂",
+        "道後温泉本館"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "露天風呂付"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture"
+      ],
+      "caution_tags": [
+        "access_booking"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/",
+      "review_id": "d155a689360ff4e5",
+      "review_hash": "e70fcdd22ca248c7",
+      "review_date": "2026-03-10",
+      "stay_date": "2026-03",
+      "score": 5,
+      "title": "初めての道後温泉",
+      "room_type": "ツイン",
+      "plan_name": "プライベートDinnerプラン＜【個室2名様利用】・2食付",
+      "body_char_count": 259,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "露天",
+        "露天風呂",
+        "温度"
+      ],
+      "context_keywords": [
+        "温泉",
+        "道後温泉"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture"
+      ],
+      "caution_tags": [
+        "temperature_control"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/",
+      "review_id": "6a2bd29d64c223a6",
+      "review_hash": "5592c25731f8f1b6",
+      "review_date": "2025-11-23",
+      "stay_date": "2025-11",
+      "score": 5,
+      "title": "大人のお宿",
+      "room_type": "露天風呂付",
+      "plan_name": "【じゃらんスペシャルウィーク】【お",
+      "body_char_count": 243,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "お部屋のお風呂",
+        "大浴場",
+        "静か",
+        "駐車場"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "露天風呂付"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring",
+        "water_texture",
+        "crowding",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "access_booking",
+        "lounge_operation"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/",
+      "review_id": "0daa1df152e7dff9",
+      "review_hash": "467a1382a25acb5e",
+      "review_date": "2025-10-13",
+      "stay_date": "2025-08",
+      "score": 5,
+      "title": "部屋・食事・お風呂全て最高でした",
+      "room_type": "露天風呂付",
+      "plan_name": "【お",
+      "body_char_count": 166,
+      "body_keywords": [
+        "お部屋のお風呂",
+        "大浴場",
+        "館内",
+        "清潔"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "露天風呂付"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath",
+        "public_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "public_bath_hot_spring",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "cleanliness_aging",
+        "access_booking"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/",
+      "review_id": "a19c7e6ba2c4fdb4",
+      "review_hash": "6e370d668ca04323",
+      "review_date": "2025-09-14",
+      "stay_date": "2025-09",
+      "score": 3,
+      "title": "落ち着いた過ごしやすかったさたです",
+      "room_type": "和洋室",
+      "plan_name": "プライベートDinnerプラン＜【個室2名様利用】・2食付",
+      "body_char_count": 77,
+      "body_keywords": [
+        "露天",
+        "露天風呂",
+        "静か"
+      ],
+      "context_keywords": [],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "crowding"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/",
+      "review_id": "942b18140ae14c62",
+      "review_hash": "792815894a03b001",
+      "review_date": "2025-09-02",
+      "stay_date": "2025-08",
+      "score": 5,
+      "title": "部屋の半露天風呂が最高でした",
+      "room_type": "露天風呂付",
+      "plan_name": "【じゃらんのお得な10日間】【お",
+      "body_char_count": 146,
+      "body_keywords": [
+        "露天",
+        "露天風呂"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "露天風呂付"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "caution_tags": [],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/",
+      "review_id": "6665e13069b113a9",
+      "review_hash": "2933102602733378",
+      "review_date": "2025-07-28",
+      "stay_date": "2025-07",
+      "score": 5,
+      "title": "とても素敵な空間でした",
+      "room_type": "露天風呂付",
+      "plan_name": "【じゃらんスペシャルウィーク】【お",
+      "body_char_count": 106,
+      "body_keywords": [
+        "温泉",
+        "予約"
+      ],
+      "context_keywords": [
+        "露天",
+        "露天風呂",
+        "露天風呂付"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath",
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "access_booking"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/",
+      "review_id": "4e0ae40a6a7c4937",
+      "review_hash": "c8c06922ea66461d",
+      "review_date": "2025-07-08",
+      "stay_date": "2025-07",
+      "score": 5,
+      "title": "温泉もお料理も接客も最高です",
+      "room_type": "",
+      "plan_name": "【じゃらんのお得な10日間】源泉かけ流しと木の空間を自室で楽しむプラン・2食付＜ヴィラタイプ＞ その他",
+      "body_char_count": 257,
+      "body_keywords": [
+        "温泉",
+        "道後温泉",
+        "古い"
+      ],
+      "context_keywords": [
+        "温泉",
+        "源泉",
+        "かけ流し"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [],
+      "signal_type_tags": [
+        "water_texture"
+      ],
+      "caution_tags": [
+        "cleanliness_aging"
+      ],
+      "language": "ja"
+    },
+    {
+      "platform": "Jalan",
+      "source_url": "https://www.jalan.net/yad339801/kuchikomi/",
+      "review_id": "089b6b112da0cbcc",
+      "review_hash": "c21ac0a6bbab551b",
+      "review_date": "2025-07-08",
+      "stay_date": "2025-07",
+      "score": 5,
+      "title": "憧れの部屋風呂",
+      "room_type": "",
+      "plan_name": "プライベートDinnerプラン＜【個室2名様利用】・2食付 その他",
+      "body_char_count": 155,
+      "body_keywords": [
+        "部屋風呂"
+      ],
+      "context_keywords": [
+        "部屋風呂"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "booking_confusion"
+      ],
+      "caution_tags": [
+        "access_booking"
+      ],
+      "language": "ja"
+    }
+  ]
+}

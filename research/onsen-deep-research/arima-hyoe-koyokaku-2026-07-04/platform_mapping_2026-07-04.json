@@ -1,0 +1,165 @@
+{
+  "research_date": "2026-07-04",
+  "scope": "ready lodging deep research: arima-hyoe-koyokaku",
+  "method": "Rakuten/Jalan/JTB 정적 본문 파싱 후 Google Hotels/Maps 및 Naver Blog를 Aside Browser로 직접 확인. 검색 결과 스니펫과 OTA/AI 요약은 직접 리뷰 수에서 제외.",
+  "direct_review_sampling_status": {
+    "target_direct_reviews": 300,
+    "direct_reviews_read": 565,
+    "onsen_related_direct_reviews": 285,
+    "direct_body_platform_count": 5,
+    "data_quality_grade": "A"
+  },
+  "lodgings": [
+    {
+      "slug": "arima-hyoe-koyokaku",
+      "name_ja": "兵衛向陽閣",
+      "google_maps": {
+        "rating": 4.4,
+        "visible_review_count": 2414,
+        "rating_distribution": {
+          "status": "partial",
+          "note": "Google Hotels 리뷰 탭에서 분포 막대는 보였으나 Aside 텍스트 스냅샷으로 별점별 숫자는 추출되지 않음"
+        },
+        "korean_reviews_visible": true,
+        "review_body_access": "partial",
+        "direct_read_reviews": 8,
+        "onsen_related_direct_reviews": 6,
+        "provider_cards_seen": [
+          {
+            "provider": "Trip.com",
+            "rating": 4.6,
+            "visible_review_count": 61,
+            "counted_as_google_native": false
+          },
+          {
+            "provider": "Tripadvisor",
+            "rating": 4.2,
+            "visible_review_count": 355,
+            "counted_as_google_native": false
+          }
+        ],
+        "access_notes": "Google-native review body sample was directly read in Google Hotels/Travel review tab via Aside Browser. Provider cards were not mixed into Google-native counts."
+      },
+      "ota_review_pool_signals": {
+        "rakuten_travel": {
+          "rating": null,
+          "visible_review_count": 2074,
+          "review_body_access": "direct_readable",
+          "direct_read_reviews": 240,
+          "onsen_related_direct_reviews": 120,
+          "source_url": "https://travel.rakuten.co.jp/HOTEL/8636/review.html"
+        },
+        "jalan": {
+          "rating": null,
+          "visible_review_count": 3644,
+          "review_body_access": "direct_readable",
+          "direct_read_reviews": 131,
+          "onsen_related_direct_reviews": 85,
+          "source_url": "https://www.jalan.net/yad321542/kuchikomi/"
+        },
+        "jtb": {
+          "rating": "88/100 customer survey score",
+          "visible_review_count": "mixed: 128 comment results / 155 survey ratings / 163 related count text seen",
+          "review_body_access": "direct_readable",
+          "direct_read_reviews": 180,
+          "onsen_related_direct_reviews": 69,
+          "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/6435001/review/",
+          "access_notes": "JTB page header counts were inconsistent, but the HTML exposed unique direct body blocks across paginated review pages. Visible count is therefore not used as a direct-read proxy."
+        },
+        "naver_blog": {
+          "rating": null,
+          "visible_review_count": null,
+          "review_body_access": "direct_readable",
+          "direct_read_reviews": 6,
+          "onsen_related_direct_reviews": 5,
+          "direct_urls_counted": [
+            "https://m.blog.naver.com/duthe/223833822182",
+            "https://m.blog.naver.com/tlessay/224253360558",
+            "https://m.blog.naver.com/kuy8590/224155124820",
+            "https://m.blog.naver.com/heybb/224176866015",
+            "https://m.blog.naver.com/dbs6122/224172415813",
+            "https://m.blog.naver.com/narae2819/224301053095"
+          ],
+          "snippet_only_or_excluded": [
+            {
+              "url": "https://m.blog.naver.com/soapists/223824939120",
+              "reason": "opened but sponsored disclosure present; retained as caution, not counted as user-review direct signal"
+            },
+            {
+              "url": "https://m.blog.naver.com/duthe/223835678983",
+              "reason": "opened but food-only body; not counted as onsen-related direct review"
+            },
+            {
+              "source": "Naver Cafe search results",
+              "reason": "snippet_only; login/cafe context not opened as direct user review body"
+            }
+          ]
+        },
+        "booking_com": {
+          "review_body_access": "not_found",
+          "visible_review_count": null,
+          "notes": "이번 샘플링에서 직접 본문 확보 없음"
+        },
+        "agoda": {
+          "review_body_access": "not_found",
+          "visible_review_count": null,
+          "notes": "이번 샘플링에서 직접 본문 확보 없음"
+        },
+        "trip_com": {
+          "review_body_access": "snippet_only",
+          "visible_review_count": 61,
+          "notes": "Google Hotels provider card로만 확인; 직접 본문 수에 포함하지 않음"
+        },
+        "tripadvisor": {
+          "review_body_access": "snippet_only",
+          "visible_review_count": 355,
+          "notes": "Google Hotels provider card로만 확인; 직접 본문 수에 포함하지 않음"
+        }
+      },
+      "official_bath_facts_seen": {
+        "official_urls": [
+          "https://www.hyoe.co.jp/",
+          "https://www.hyoe.co.jp/hotspa/",
+          "https://www.hyoe.co.jp/rooms/",
+          "https://www.hyoe.co.jp/rooms/compare/"
+        ],
+        "ota_facility_urls": [
+          "https://www.jtb.co.jp/kokunai-hotel/htl/6435001/bath/"
+        ],
+        "facts": [
+          "一の湯, 二の湯, 三の湯",
+          "貸切露天風呂 / 夕霧 貸切・家族風呂",
+          "金泉",
+          "温泉(放流・循環併用式、加温している)",
+          "一部客室: 金泉半露天風呂付き / 展望露天風呂付"
+        ]
+      },
+      "review_signal_keywords": [
+        "温泉",
+        "大浴場",
+        "露天風呂",
+        "金泉",
+        "三の湯",
+        "一の湯",
+        "二の湯",
+        "貸切風呂",
+        "전세탕",
+        "프라이빗 노천탕",
+        "이치노유",
+        "니노유",
+        "산노유"
+      ],
+      "caution_keywords": [
+        "送迎",
+        "坂",
+        "館内",
+        "予約",
+        "혼잡",
+        "古い",
+        "掃除",
+        "温度"
+      ],
+      "next_sampling": "A등급 도달. 다음 보강 시 Booking/Agoda/Trip.com 원문 접근과 Google 별점 분포 숫자 추출을 추가하면 플랫폼 맵이 더 단단해짐."
+    }
+  ]
+}

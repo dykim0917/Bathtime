@@ -1,0 +1,135 @@
+{
+  "research_date": "2026-07-04",
+  "scope": "ready lodging deep research: Kansai/Sanin/Setouchi Tier 1",
+  "method": "Static OTA extraction for Rakuten, Jalan, and JTB, plus Aside Browser checks for Google Maps/Hotels, Google review tab, Naver Search, and Naver Blog. Snippets and supplier cards are separated from direct bodies.",
+  "direct_review_sampling_status": "A: 588 directly read reviews, five direct-body platforms, Google review-tab checked, Korean direct-body strata found in Google and Naver.",
+  "lodgings": [
+    {
+      "slug": "shirahama-kawakyu",
+      "name_ja": "ホテル川久",
+      "name_ko_or_en": "Hotel Kawakyu / 호텔 카와큐",
+      "area": "白浜温泉, 和歌山県",
+      "google_maps": {
+        "rating": 4.2,
+        "visible_review_count": 2348,
+        "rating_distribution": {
+          "5": 1256,
+          "4": 686,
+          "3": 209,
+          "2": 95,
+          "1": 102
+        },
+        "korean_reviews_visible": "yes",
+        "direct_google_native_reviews_read": 9,
+        "onsen_related_google_native_reviews_read": 4,
+        "provider_cards_seen": [
+          "Rakuten Travel",
+          "Trip.com",
+          "JAPANiCAN.com",
+          "Ikyu.com",
+          "Relux"
+        ],
+        "provider_card_note": "Tripadvisor supplier card appeared inside the review tab; not counted as Google-native direct review."
+      },
+      "ota_review_pool_signals": {
+        "rakuten": {
+          "visible_review_count": 3580,
+          "rating": 4.55,
+          "review_body_access": "direct_readable",
+          "direct_read_reviews": 310,
+          "onsen_related_direct_reviews": 65,
+          "source_url": "https://travel.rakuten.co.jp/HOTEL/14111/review.html",
+          "notes": "Rakuten page surface shows 3,580 reviews; currently extractable API window yielded 310 direct bodies."
+        },
+        "jalan": {
+          "visible_review_count": 2725,
+          "rating": 4.5,
+          "review_body_access": "direct_readable",
+          "direct_read_reviews": 248,
+          "onsen_related_direct_reviews": 74,
+          "source_url": "https://www.jalan.net/yad321757/kuchikomi/"
+        },
+        "jtb": {
+          "visible_review_count": 181,
+          "rating": null,
+          "review_body_access": "direct_readable",
+          "direct_read_reviews": 20,
+          "onsen_related_direct_reviews": 5,
+          "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/6506001/review/"
+        },
+        "yahoo_travel": {
+          "visible_review_count": 601,
+          "rating": 4.51,
+          "review_body_access": "snippet_only_in_this_pass",
+          "direct_read_reviews": 0,
+          "onsen_related_direct_reviews": 0,
+          "source_url": "https://travel.yahoo.co.jp/00000557/review/"
+        },
+        "naver_blog": {
+          "visible_review_count": 1,
+          "rating": null,
+          "review_body_access": "direct_readable_via_aside",
+          "direct_read_reviews": 1,
+          "onsen_related_direct_reviews": 1,
+          "source_url": "https://blog.naver.com/PostView.naver?blogId=rebirth324&logNo=223948015990&redirect=Dlog&widgetTypeCall=true&directAccess=false"
+        },
+        "naver_search": {
+          "visible_review_count": null,
+          "rating": null,
+          "review_body_access": "snippet_only_for_other_surfaces",
+          "direct_read_reviews": 0,
+          "onsen_related_direct_reviews": 0,
+          "notes": "Trip.com Korea, Hotels.com/Expedia, Naver Cafe, and other OTA/search snippets were not counted as direct reviews."
+        },
+        "trip_com_korea": {
+          "visible_review_count": 29,
+          "rating": "7.1/10",
+          "review_body_access": "snippet_only",
+          "direct_read_reviews": 0,
+          "onsen_related_direct_reviews": 0,
+          "source_url": "https://kr.trip.com/hotels/shirahama-hotel-detail-704509/hotel-kawakyu/"
+        }
+      },
+      "official_bath_facts_seen": {
+        "official_url": "https://www.hotel-kawakyu.jp/",
+        "official_hot_spring_url": "https://www.hotel-kawakyu.jp/hotspring/",
+        "official_spa_suite_url": "https://www.hotel-kawakyu.jp/club_stage/pss/",
+        "address": "和歌山県西牟婁郡白浜町3745",
+        "onsen_area": "白浜温泉",
+        "room_bath": "review_seen; official hot-spring generalization not made",
+        "room_open_air_bath": "official_seen_for_presidential_spa_suite",
+        "public_bath": "official_seen",
+        "open_air_public_bath": "official_seen",
+        "private_bath": "not_core_current_axis",
+        "family_bath": "not_confirmed",
+        "source_note": "Official pages show two hot spring salons: 2F ROYAL SPA and 1F ロイヤルスパ 悠久の森, operated with daily gender switching. Presidential Spa Suite has open terrace natural hot-spring open-air bath."
+      },
+      "review_signal_keywords": [
+        "大浴場",
+        "温泉サロン",
+        "ロイヤルスパ",
+        "露天風呂",
+        "入替",
+        "サウナ",
+        "泉質",
+        "온천향",
+        "탕의 꽃",
+        "대욕장 두 군데",
+        "방 안 욕조"
+      ],
+      "caution_keywords": [
+        "混雑",
+        "ビュッフェ",
+        "古い",
+        "カビ",
+        "匂い",
+        "温度",
+        "塩素",
+        "男女入替",
+        "階段",
+        "価格期待"
+      ],
+      "next_sampling": "A 조건은 충족. 더 촘촘하게 만들려면 Yahoo Travel 직접 본문 30건과 Trip.com Korea 직접 후기 본문을 추가해 한국어/글로벌 OTA 층을 보강한다."
+    }
+  ]
+}

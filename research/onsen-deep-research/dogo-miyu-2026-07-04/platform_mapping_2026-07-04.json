@@ -1,0 +1,147 @@
+{
+  "research_date": "2026-07-04",
+  "scope": "ready lodging deep research: dogo-miyu only",
+  "method": "Static OTA extraction, Aside Browser for Ikkyu/Yahoo/Google/Naver, and strict separation of official bath facts, visible review pool, direct readable reviews, snippets, and AI/search summaries.",
+  "direct_review_sampling_status": {
+    "target_direct_reviews": 300,
+    "achieved_direct_reviews": 344,
+    "onsen_related_direct_reviews": 239,
+    "direct_body_platform_count": 6,
+    "data_quality_grade": "A"
+  },
+  "lodgings": [
+    {
+      "slug": "dogo-miyu",
+      "name_ja": "道後御湯",
+      "name_ko_or_en": "Dogo Miyu / 도고미유",
+      "official_site_url": "https://www.dogomiyu.jp/",
+      "address": "愛媛県松山市道後鷺谷町2-20",
+      "onsen_area": "道後温泉",
+      "google_maps": {
+        "rating": 4.7,
+        "visible_review_count": 428,
+        "rating_distribution": "seen as Google Hotels review surface, exact star counts not extracted",
+        "korean_reviews_visible": "Korean UI visible; no individual Google-native review body was readable in this pass",
+        "review_body_access": "partial",
+        "direct_read_reviews": 0,
+        "onsen_related_direct_reviews": 0,
+        "notes": "Google Search and Google Hotels were checked with Aside Browser. Google review pool and summary were recorded, but Google-native bodies were not counted."
+      },
+      "ota_review_pool_signals": [
+        {
+          "platform": "Rakuten Travel",
+          "rating": 4.89,
+          "visible_review_count": 297,
+          "review_body_access": "direct_readable",
+          "direct_read_reviews": 30,
+          "onsen_related_direct_reviews": 16
+        },
+        {
+          "platform": "Jalan",
+          "rating": null,
+          "visible_review_count": 34,
+          "review_body_access": "direct_readable",
+          "direct_read_reviews": 34,
+          "onsen_related_direct_reviews": 23,
+          "notes": "Visible count could not be extracted as a separate header; current readable review block count is used as conservative visible/readable pool."
+        },
+        {
+          "platform": "JTB",
+          "rating": "customer questionnaire 96; visible count strings mixed",
+          "visible_review_count": 28,
+          "review_body_access": "direct_readable",
+          "direct_read_reviews": 24,
+          "onsen_related_direct_reviews": 8
+        },
+        {
+          "platform": "Ikkyu",
+          "rating": 4.88,
+          "visible_review_count": 210,
+          "review_body_access": "direct_readable via Aside Browser",
+          "direct_read_reviews": 176,
+          "onsen_related_direct_reviews": 134
+        },
+        {
+          "platform": "Yahoo Travel",
+          "rating": 4.88,
+          "visible_review_count": 210,
+          "review_body_access": "direct_readable via Aside Browser",
+          "direct_read_reviews": 76,
+          "onsen_related_direct_reviews": 54,
+          "notes": "Same corporate review ecosystem as Ikkyu; kept as separate rendered platform surface with downstream hash-dedupe caveat."
+        },
+        {
+          "platform": "4travel",
+          "rating": null,
+          "visible_review_count": 46,
+          "review_body_access": "snippet_only",
+          "direct_read_reviews": 0,
+          "onsen_related_direct_reviews": 0
+        },
+        {
+          "platform": "Agoda",
+          "rating": 9.7,
+          "visible_review_count": null,
+          "review_body_access": "snippet_only",
+          "direct_read_reviews": 0,
+          "onsen_related_direct_reviews": 0
+        },
+        {
+          "platform": "Booking.com",
+          "rating": null,
+          "visible_review_count": null,
+          "review_body_access": "not_found",
+          "direct_read_reviews": 0,
+          "onsen_related_direct_reviews": 0
+        },
+        {
+          "platform": "Naver Blog/Search",
+          "rating": null,
+          "visible_review_count": null,
+          "review_body_access": "direct_readable plus snippet_only",
+          "direct_read_reviews": 4,
+          "onsen_related_direct_reviews": 4,
+          "notes": "Naver search snippets from Japanican, Agoda, Trip.com/OTA pages and unrelated Dogo/Yachiyo/Okudogo results were excluded from direct counts."
+        }
+      ],
+      "official_bath_facts_seen": {
+        "room_bath": "not a separate indoor-room-bath axis in official sample",
+        "room_open_air_bath": "Official site states all rooms have open-air baths and view terraces; Google result states all guest rooms use Dogo Onsen draw-in water for room open-air baths.",
+        "public_bath": "Official site and JTB confirm top-floor/observatory bath.",
+        "open_air_public_bath": "Official/JTB confirm rooftop/observatory open-air bath.",
+        "private_bath": "not found",
+        "family_bath": "not found",
+        "source_claims": "Official wording emphasizes Dogo Onsen and guest-room open-air baths. JTB public-bath page states public bath spring use is discharge/circulation combined and heated.",
+        "spring_quality": "Official: soft/smooth Dogo Onsen, 'beauty water' framing. JTB: simple spring, colorless transparent, odorless, outlet 43 C.",
+        "use_time": "JTB: observatory public bath 15:00-24:00 and 06:00-10:00.",
+        "tattoo_policy": "not found in this pass"
+      },
+      "review_signal_keywords": [
+        "客室露天風呂",
+        "温泉露天風呂付",
+        "お部屋のお風呂",
+        "部屋の露天風呂",
+        "展望風呂",
+        "屋上大浴場",
+        "道後温泉",
+        "源泉",
+        "かけ流し",
+        "개인 노천탕",
+        "전 객실 노천탕",
+        "전망탕"
+      ],
+      "caution_keywords": [
+        "大浴場は小さい",
+        "コンパクト",
+        "温度",
+        "熱い",
+        "塩素",
+        "ラウンジ",
+        "高い",
+        "Google-native body not accessible",
+        "Naver snippet_only"
+      ],
+      "next_sampling": "A급 종료 가능. 추가 보강 시 Google-native 리뷰 본문 모달, 4travel 원문, Agoda 직접 본문을 다시 확인하고 Ikkyu/Yahoo 중복을 해시 기준으로 재점검."
+    }
+  ]
+}

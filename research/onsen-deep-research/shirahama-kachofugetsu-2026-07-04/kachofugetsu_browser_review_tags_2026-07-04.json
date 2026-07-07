@@ -1,0 +1,75 @@
+{
+  "research_date": "2026-07-04",
+  "slug": "shirahama-kachofugetsu",
+  "aside_browser_checked": true,
+  "browser_platforms": {
+    "yahoo_travel": {
+      "source_url": "https://travel.yahoo.co.jp/00913643/review/",
+      "review_body_access": "direct_readable_via_aside",
+      "rating": 4.69,
+      "visible_review_count": 45,
+      "direct_read_reviews": 30,
+      "onsen_related_direct_reviews": 24,
+      "short_keywords_seen": [
+        "温泉",
+        "お風呂に何度も",
+        "陶器製の浴槽",
+        "客室の半露天風呂",
+        "貸切露天風呂が欲しい",
+        "源泉かけ流し",
+        "全室温泉付き",
+        "大浴場のないお宿",
+        "肌がすべすべ"
+      ],
+      "bath_area_notes": {
+        "room_open_air_bath": "direct repeated",
+        "room_bath": "direct repeated",
+        "private_bath": "desire/request signal only; not treated as existing facility",
+        "public_bath": "absence signal; official and reviews indicate no public bath"
+      }
+    },
+    "google_maps": {
+      "source_url": "https://www.google.com/maps/search/?api=1&query=%E5%8D%97%E7%B4%80%E7%99%BD%E6%B5%9C%20%E5%92%8C%E3%81%BF%E3%81%AE%E6%B9%AF%20%E8%8A%B1%E9%B3%A5%E9%A2%A8%E6%9C%88",
+      "review_body_access": "partial",
+      "rating": 4.7,
+      "visible_review_count": 297,
+      "rating_distribution": "bars visible in Google panel; exact per-star counts not exposed in this pass",
+      "korean_reviews_visible": "not confirmed",
+      "direct_google_native_reviews_read": 1,
+      "onsen_related_google_native_reviews_read": 1,
+      "provider_cards_seen": [
+        {
+          "provider": "Rakuten Travel",
+          "rating": null,
+          "visible_review_count": null
+        },
+        {
+          "provider": "skyticket",
+          "rating": null,
+          "visible_review_count": null
+        }
+      ],
+      "short_keywords_seen": [
+        "温泉も楽しめました",
+        "ドライヤー焦げ臭く煙",
+        "送風口ホコリ"
+      ],
+      "notes": "Google Maps/Hotels was checked in Aside Browser. Full Google-native review tab sampling was not expanded beyond the panel update in this pass."
+    },
+    "naver_search": {
+      "source_url": "https://search.naver.com/search.naver?query=%EC%8B%9C%EB%9D%BC%ED%95%98%EB%A7%88%20%ED%95%98%EB%82%98%EB%8F%84%EB%A6%AC%ED%9B%84%EA%B2%8C%EC%B8%A0%20%ED%9B%84%EA%B8%B0%20%EA%B0%9D%EC%8B%A4%20%EB%85%B8%EC%B2%9C%ED%83%95",
+      "review_body_access": "snippet_only",
+      "direct_read_reviews": 0,
+      "onsen_related_direct_reviews": 0,
+      "snippets_seen": [],
+      "notes": "Exact Korean direct-review body for this lodging was not found in the checked Naver Search surface. Snippets and unrelated lodging results were not counted."
+    },
+    "booking": {
+      "source_url": "https://www.booking.com/hotel/jp/nan-ji-bai-bang-he-minotang-hua-niao-feng-yue.ja.html",
+      "review_body_access": "not_sampled_in_depth",
+      "direct_read_reviews": 0,
+      "onsen_related_direct_reviews": 0,
+      "notes": "Booking.com surface was identified but not used for direct body count because 300+ direct reviews and three direct-body platforms were already secured through Rakuten, Jalan, and Yahoo."
+    }
+  }
+}

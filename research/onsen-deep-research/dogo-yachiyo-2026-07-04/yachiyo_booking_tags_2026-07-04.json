@@ -1,0 +1,446 @@
+{
+  "summary": {
+    "generated_at": "2026-07-04T03:55:57.108Z",
+    "lodging": "Dogo Onsen Yachiyo 道後温泉八千代",
+    "platform": "Booking.com",
+    "visible_review_count": 75,
+    "total_direct_static": 19,
+    "onsen_related_body": 19,
+    "bath_area_tags": {
+      "room_open_air_bath": 19
+    },
+    "signal_type_tags": {
+      "room_bath_hot_spring": 19,
+      "operations_note": 8,
+      "water_texture": 5
+    },
+    "note": "Bodies not stored; Booking review blocks reduced to hashes, metadata, short keywords and tags."
+  },
+  "reviews": [
+    {
+      "platform": "Booking.com",
+      "source_url": "https://www.booking.com/reviews/jp/hotel/yachiyo.html",
+      "review_hash": "8226309161003c2b",
+      "review_date": "May 18, 2026",
+      "score": 9,
+      "body_char_count": 406,
+      "body_keywords": [
+        "bath",
+        "open air bath",
+        "room",
+        "location"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "operations_note"
+      ],
+      "language": "en"
+    },
+    {
+      "platform": "Booking.com",
+      "source_url": "https://www.booking.com/reviews/jp/hotel/yachiyo.html",
+      "review_hash": "ec295418334df726",
+      "review_date": "April 22, 2026",
+      "score": null,
+      "body_char_count": 319,
+      "body_keywords": [
+        "bath",
+        "open air bath",
+        "room"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "operations_note"
+      ],
+      "language": "en"
+    },
+    {
+      "platform": "Booking.com",
+      "source_url": "https://www.booking.com/reviews/jp/hotel/yachiyo.html",
+      "review_hash": "f0e3d575c0cf8e12",
+      "review_date": "March 28, 2026",
+      "score": 8,
+      "body_char_count": 307,
+      "body_keywords": [
+        "onsen",
+        "bath",
+        "open air bath",
+        "room",
+        "location"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture",
+        "operations_note"
+      ],
+      "language": "en"
+    },
+    {
+      "platform": "Booking.com",
+      "source_url": "https://www.booking.com/reviews/jp/hotel/yachiyo.html",
+      "review_hash": "716d93288f482f52",
+      "review_date": "November 10, 2025",
+      "score": null,
+      "body_char_count": 546,
+      "body_keywords": [
+        "bath",
+        "open air bath",
+        "hot spring",
+        "room",
+        "clean"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture",
+        "operations_note"
+      ],
+      "language": "en"
+    },
+    {
+      "platform": "Booking.com",
+      "source_url": "https://www.booking.com/reviews/jp/hotel/yachiyo.html",
+      "review_hash": "1d9f61bcc110afdd",
+      "review_date": "October 27, 2025",
+      "score": null,
+      "body_char_count": 819,
+      "body_keywords": [
+        "onsen",
+        "bath",
+        "open air bath",
+        "room",
+        "location"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture",
+        "operations_note"
+      ],
+      "language": "en"
+    },
+    {
+      "platform": "Booking.com",
+      "source_url": "https://www.booking.com/reviews/jp/hotel/yachiyo.html",
+      "review_hash": "d4ac2f19b27f32fd",
+      "review_date": "June 28, 2025",
+      "score": null,
+      "body_char_count": 570,
+      "body_keywords": [
+        "bath",
+        "open air bath",
+        "room",
+        "clean"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "language": "en"
+    },
+    {
+      "platform": "Booking.com",
+      "source_url": "https://www.booking.com/reviews/jp/hotel/yachiyo.html",
+      "review_hash": "982d149b33f5756c",
+      "review_date": "May 23, 2025",
+      "score": null,
+      "body_char_count": 601,
+      "body_keywords": [
+        "onsen",
+        "bath",
+        "open air bath",
+        "room"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture",
+        "operations_note"
+      ],
+      "language": "en"
+    },
+    {
+      "platform": "Booking.com",
+      "source_url": "https://www.booking.com/reviews/jp/hotel/yachiyo.html",
+      "review_hash": "ee84d3647e605e3b",
+      "review_date": "December 23, 2025",
+      "score": null,
+      "body_char_count": 454,
+      "body_keywords": [
+        "bath",
+        "open air bath",
+        "room",
+        "location"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "operations_note"
+      ],
+      "language": "en"
+    },
+    {
+      "platform": "Booking.com",
+      "source_url": "https://www.booking.com/reviews/jp/hotel/yachiyo.html",
+      "review_hash": "f373f755c50343e3",
+      "review_date": "November 16, 2024",
+      "score": null,
+      "body_char_count": 789,
+      "body_keywords": [
+        "onsen",
+        "bath",
+        "open air bath",
+        "room",
+        "location",
+        "light"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring",
+        "water_texture",
+        "operations_note"
+      ],
+      "language": "en"
+    },
+    {
+      "platform": "Booking.com",
+      "source_url": "https://www.booking.com/reviews/jp/hotel/yachiyo.html",
+      "review_hash": "84015d7b552d24d7",
+      "review_date": "May 14, 2026",
+      "score": null,
+      "body_char_count": 251,
+      "body_keywords": [
+        "bath",
+        "open air bath",
+        "room"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "language": "en"
+    },
+    {
+      "platform": "Booking.com",
+      "source_url": "https://www.booking.com/reviews/jp/hotel/yachiyo.html",
+      "review_hash": "2bcfeb9f17e1b0bd",
+      "review_date": "November 16, 2025",
+      "score": null,
+      "body_char_count": 301,
+      "body_keywords": [
+        "bath",
+        "open air bath",
+        "room"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "language": "en"
+    },
+    {
+      "platform": "Booking.com",
+      "source_url": "https://www.booking.com/reviews/jp/hotel/yachiyo.html",
+      "review_hash": "a053a7a59437ccb2",
+      "review_date": "September 5, 2025",
+      "score": null,
+      "body_char_count": 282,
+      "body_keywords": [
+        "bath",
+        "open air bath",
+        "room"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "language": "en"
+    },
+    {
+      "platform": "Booking.com",
+      "source_url": "https://www.booking.com/reviews/jp/hotel/yachiyo.html",
+      "review_hash": "9875a9e9eb6921b7",
+      "review_date": "August 18, 2025",
+      "score": null,
+      "body_char_count": 243,
+      "body_keywords": [
+        "bath",
+        "open air bath",
+        "room"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "language": "en"
+    },
+    {
+      "platform": "Booking.com",
+      "source_url": "https://www.booking.com/reviews/jp/hotel/yachiyo.html",
+      "review_hash": "437d1156f8f13df8",
+      "review_date": "August 16, 2025",
+      "score": null,
+      "body_char_count": 285,
+      "body_keywords": [
+        "bath",
+        "open air bath",
+        "room"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "language": "en"
+    },
+    {
+      "platform": "Booking.com",
+      "source_url": "https://www.booking.com/reviews/jp/hotel/yachiyo.html",
+      "review_hash": "b7e8d164d7a3743f",
+      "review_date": "April 23, 2025",
+      "score": null,
+      "body_char_count": 278,
+      "body_keywords": [
+        "bath",
+        "open air bath",
+        "room"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "language": "en"
+    },
+    {
+      "platform": "Booking.com",
+      "source_url": "https://www.booking.com/reviews/jp/hotel/yachiyo.html",
+      "review_hash": "9a1d155d3af7895a",
+      "review_date": "October 27, 2024",
+      "score": 9,
+      "body_char_count": 274,
+      "body_keywords": [
+        "bath",
+        "open air bath",
+        "room"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "language": "en"
+    },
+    {
+      "platform": "Booking.com",
+      "source_url": "https://www.booking.com/reviews/jp/hotel/yachiyo.html",
+      "review_hash": "83ecaac1f698d33d",
+      "review_date": "September 17, 2024",
+      "score": null,
+      "body_char_count": 284,
+      "body_keywords": [
+        "bath",
+        "open air bath",
+        "room"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "language": "en"
+    },
+    {
+      "platform": "Booking.com",
+      "source_url": "https://www.booking.com/reviews/jp/hotel/yachiyo.html",
+      "review_hash": "d33d506464e91e32",
+      "review_date": "August 19, 2023",
+      "score": 9,
+      "body_char_count": 277,
+      "body_keywords": [
+        "bath",
+        "open air bath",
+        "room"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "language": "en"
+    },
+    {
+      "platform": "Booking.com",
+      "source_url": "https://www.booking.com/reviews/jp/hotel/yachiyo.html",
+      "review_hash": "462a53b757c5d15d",
+      "review_date": "July 28, 2023",
+      "score": 9,
+      "body_char_count": 266,
+      "body_keywords": [
+        "bath",
+        "open air bath",
+        "room"
+      ],
+      "onsen_related_body": true,
+      "bath_area_tags": [
+        "room_open_air_bath"
+      ],
+      "signal_type_tags": [
+        "room_bath_hot_spring"
+      ],
+      "language": "en"
+    }
+  ]
+}

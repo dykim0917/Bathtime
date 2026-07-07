@@ -1,0 +1,143 @@
+{
+  "research_date": "2026-07-04",
+  "scope": "misasa-izanro-iwasaki ready lodging deep research",
+  "method": "Rakuten API, Jalan static pages, Aside Browser for Google Maps, Naver, Trip.com, Tripadvisor, Ikkyu/Yahoo, plus official web search. Snippets, AI summaries, and provider cards were excluded from direct review counts.",
+  "direct_review_sampling_status": "A: 372 direct reviews read, 253 onsen-related direct reviews, 7 direct-body platforms.",
+  "lodgings": [
+    {
+      "slug": "misasa-izanro-iwasaki",
+      "name_ja": "三朝温泉 依山楼岩崎",
+      "name_ko_or_en": "Izanro Iwasaki / 이잔로 이와사키",
+      "address": "鳥取県東伯郡三朝町三朝365-1",
+      "onsen_area": "三朝温泉",
+      "official_url": "https://izanro.co.jp/",
+      "google_maps": {
+        "rating": 4.1,
+        "visible_review_count": 1332,
+        "rating_distribution": "bar chart visible; exact counts not exposed",
+        "korean_reviews_visible": true,
+        "review_body_access": "partial",
+        "direct_google_native_reviews_read": 5,
+        "onsen_related_direct_reviews": 4,
+        "provider_cards_seen": [
+          "Trip.com",
+          "Tripadvisor"
+        ],
+        "access_note": "Google hotel panel review tab showed Google-native and provider reviews mixed. Only 'Google에 게시됨' items were counted as Google-native direct reviews."
+      },
+      "ota_review_pool_signals": {
+        "rakuten_travel": {
+          "rating": 4.39,
+          "visible_review_count": 189,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 189,
+          "onsen_related_direct_reviews": 107,
+          "source_url": "https://travel.rakuten.co.jp/HOTEL/5840/review.html"
+        },
+        "jalan": {
+          "rating": 4.5,
+          "visible_review_count": 1938,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 144,
+          "onsen_related_direct_reviews": 111,
+          "source_url": "https://www.jalan.net/yad347748/kuchikomi/",
+          "access_note": "18 pages sampled; direct body extraction was stable enough to pass 300 total with Rakuten."
+        },
+        "ikkyu": {
+          "rating": 4.09,
+          "visible_review_count": 70,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 20,
+          "onsen_related_direct_reviews": 18,
+          "source_url": "https://www.ikyu.com/00000800/review/"
+        },
+        "yahoo_travel": {
+          "rating": 4.09,
+          "visible_review_count": 70,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 0,
+          "source_url": "https://travel.yahoo.co.jp/00000800/review/",
+          "access_note": "Ikkyu와 같은 70건 계열로 보여 중복 카운트하지 않았다."
+        },
+        "trip_com": {
+          "rating": 8.3,
+          "visible_review_count": 31,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 3,
+          "onsen_related_direct_reviews": 3,
+          "source_url": "https://kr.trip.com/hotels/misasa-hotel-detail-1653034/izanro-iwasaki/"
+        },
+        "tripadvisor": {
+          "rating": 4.1,
+          "visible_review_count": 156,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 10,
+          "onsen_related_direct_reviews": 9,
+          "source_url": "https://www.tripadvisor.jp/Hotel_Review-g1121364-d1125741-Reviews-Izanro_Iwasaki-Misasa_cho_Tohaku_gun_Tottori_Prefecture_Chugoku.html"
+        },
+        "expedia_hotels": {
+          "rating": 8.6,
+          "visible_review_count": 20,
+          "review_body_access": "partial",
+          "direct_reviews_read": 0,
+          "source_url": "https://www.expedia.co.kr/Misasa-Hotels-Izanro-Iwasaki.h13238603.Hotel-Information"
+        },
+        "naver_blog": {
+          "rating": null,
+          "visible_review_count": null,
+          "review_body_access": "direct_readable",
+          "direct_reviews_read": 1,
+          "onsen_related_direct_reviews": 1,
+          "source_url": "https://m.blog.naver.com/getsomedoterra/224202845927"
+        },
+        "naver_cafe": {
+          "rating": null,
+          "visible_review_count": null,
+          "review_body_access": "blocked",
+          "direct_reviews_read": 0,
+          "source_url": "https://m.cafe.naver.com/ca-fe/web/cafes/jpnstory/articles/3711521"
+        }
+      },
+      "official_bath_facts_seen": {
+        "public_bath": "yes; 회유식 대정원풍로 山の湯, 左の湯/右の湯",
+        "open_air_public_bath": "yes; 정원 노천탕/대정원 노천탕",
+        "room_open_air_bath": "some rooms; special/guest rooms with source-flow open-air bath",
+        "room_bath": "some rooms; do not treat as all rooms",
+        "private_bath": "some review signals; official detail needs separate product check",
+        "family_bath": "not a primary official axis in this pass",
+        "source_flow_claim": "official surfaces include 源泉かけ流し for some baths/rooms",
+        "radium_drinking_inhalation": "official/review surfaces mention ラジウム, 飲泉, ラジウム蒸気風呂, ミストサウナ"
+      },
+      "review_signal_keywords": [
+        "大浴場",
+        "庭園風呂",
+        "回遊式",
+        "山の湯",
+        "右の湯",
+        "左の湯",
+        "露天風呂",
+        "ラジウム",
+        "ラドン",
+        "飲泉",
+        "蒸気",
+        "ミスト",
+        "泉質",
+        "半露天",
+        "貸切湯"
+      ],
+      "caution_keywords": [
+        "古い",
+        "老朽",
+        "清掃",
+        "寒い",
+        "温度",
+        "塩素",
+        "匂い",
+        "タオル",
+        "送迎",
+        "予約"
+      ],
+      "next_sampling": "A급 기준은 충족했다. 다음 보강은 Jalan 저평점/과거 archive 추가와 Expedia/Hotels 한국어 개별 본문 안정 추출이다."
+    }
+  ]
+}
