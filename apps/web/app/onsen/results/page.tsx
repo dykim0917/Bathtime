@@ -25,7 +25,7 @@ import {
 
 export const metadata: Metadata = {
   title: '온천 검색 결과',
-  description: '일본 료칸 예약 전 객실탕, 가족탕, 대욕장, 온천수 체감과 주의할 점을 비교합니다.',
+  description: '일본 료칸 예약 전 객실 내 프라이빗탕, 대절탕, 대욕장, 온천수 체감과 주의할 점을 비교합니다.',
   alternates: {
     canonical: '/onsen/results',
   },
@@ -122,11 +122,11 @@ function getWaterSortRank(waterDecision: { springType: string; operation: string
 function normalizeResultCardCopy(value: string) {
   const copy = normalizeOnsenPublicCopy(value);
 
-  if (copy === '온천수 확인') return '조건 확인';
+  if (copy === '온천수 확인') return '온천수 확인';
   if (copy === '온천수 참고 확인') return '참고 확인';
-  if (copy === '온천수 확인 필요') return '조건 확인 필요';
+  if (copy === '온천수 확인 필요') return '예약 전 확인';
   if (copy === '객실 온천수 확인') return '객실 온천탕';
-  if (copy === '객실 온천수 확인 필요') return '객실탕 조건 확인';
+  if (copy === '객실 온천수 확인 필요') return '객실 타입별 확인';
   if (copy === '전 객실 온천수 확인') return '전 객실 온천탕';
 
   return copy;
@@ -195,12 +195,12 @@ export default async function OnsenPage({
   const clearVisibleFiltersHref = buildResultsHref({ query, regionGroup, area });
   const quickFilters = [
     {
-      label: '객실탕 중심',
+      label: '객실 내 프라이빗탕 중심',
       active: bath.includes('room_bath'),
       href: buildResultsHref({ query, regionGroup, area, travel, bath: toggleFilterValue(bath, 'room_bath'), water }),
     },
     {
-      label: '가족탕/대절탕 있음',
+      label: '대절탕 있음',
       active: bath.includes('private_bath'),
       href: buildResultsHref({ query, regionGroup, area, travel, bath: toggleFilterValue(bath, 'private_bath'), water }),
     },
@@ -412,7 +412,7 @@ export default async function OnsenPage({
                       </div>
 
                       <div className="onsen-card-decision">
-                        <p>{normalizeOnsenPublicCopy(candidate.waterDecision.summary)}</p>
+                        <p>{normalizeOnsenPublicCopy(candidate.verdict?.headline ?? candidate.waterDecision.summary)}</p>
                       </div>
 
                       <dl className="onsen-card-fact-line" aria-label={`${candidate.name} 온천수 정보`}>

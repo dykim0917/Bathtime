@@ -2905,6 +2905,12 @@ p {
   line-height: var(--bt-leading-body);
 }
 
+.onsen-review-summary-card .onsen-verdict-briefing {
+  color: var(--bt-color-muted);
+  font-size: var(--bt-text-meta);
+  line-height: var(--bt-leading-ui);
+}
+
 .onsen-review-summary-tags {
   display: flex;
   flex-wrap: wrap;
@@ -2944,6 +2950,92 @@ p {
   font-size: 18px;
   font-weight: var(--bt-weight-semibold);
   line-height: var(--bt-leading-tight);
+}
+
+.onsen-verdict-list {
+  display: grid;
+  gap: var(--bt-space-3);
+}
+
+.onsen-verdict-item {
+  display: grid;
+  gap: var(--bt-space-3);
+  border: 1px solid var(--bt-color-border-soft);
+  border-radius: var(--bt-radius-md);
+  background: var(--bt-surface-default);
+  padding: var(--bt-space-4);
+}
+
+.onsen-verdict-item[data-type="conditional"] {
+  border-color: color-mix(in srgb, var(--bt-color-accent) 52%, var(--bt-color-border-soft));
+}
+
+.onsen-verdict-item[data-type="minor"] {
+  background: var(--bt-surface-subtle);
+}
+
+.onsen-verdict-item-head {
+  display: grid;
+  gap: var(--bt-space-1);
+}
+
+.onsen-verdict-item-head span {
+  color: var(--bt-color-primary-active);
+  font-size: var(--bt-text-meta);
+  font-weight: var(--bt-weight-semibold);
+  line-height: var(--bt-leading-ui);
+}
+
+.onsen-verdict-item-head strong {
+  color: var(--bt-color-ink);
+  font-size: var(--bt-text-body);
+  font-weight: var(--bt-weight-semibold);
+  line-height: var(--bt-leading-tight);
+}
+
+.onsen-verdict-item p {
+  margin: 0;
+  color: var(--bt-color-body);
+  font-size: var(--bt-text-small);
+  line-height: var(--bt-leading-body);
+}
+
+.onsen-verdict-item dl {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bt-space-2);
+  margin: 0;
+}
+
+.onsen-verdict-item dl div {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bt-space-1);
+  min-height: 30px;
+  border-radius: var(--bt-radius-pill);
+  background: var(--bt-color-surface-soft);
+  padding-inline: var(--bt-space-3);
+}
+
+.onsen-verdict-item dt,
+.onsen-verdict-item dd {
+  margin: 0;
+  font-size: var(--bt-text-meta);
+  line-height: var(--bt-leading-ui);
+}
+
+.onsen-verdict-item dt {
+  color: var(--bt-color-muted);
+}
+
+.onsen-verdict-item dd {
+  color: var(--bt-color-ink);
+  font-weight: var(--bt-weight-semibold);
+}
+
+.onsen-verdict-conclusion {
+  border-left: 2px solid var(--bt-color-primary-active);
+  padding-left: var(--bt-space-3);
 }
 
 .onsen-fact-list,

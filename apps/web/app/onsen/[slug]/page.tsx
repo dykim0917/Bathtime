@@ -6,7 +6,7 @@ import { OnsenSaveButton } from '@web/components/OnsenSaveButton';
 import { OnsenShareButton } from '@web/components/OnsenShareButton';
 import { statusLabels, type OnsenCandidate } from '@web/lib/onsenCatalog';
 import { normalizeOnsenPublicCopy, normalizeOnsenSourceLabel } from '@web/lib/onsenCopy';
-import { readOnsenCandidate, readOnsenCandidates } from '@web/lib/onsenData';
+import { readOnsenCandidate } from '@web/lib/onsenData';
 import { readOnsenReviewCounts, readOnsenReviews } from '@web/lib/onsenReviews';
 
 type PageProps = {
@@ -15,12 +15,7 @@ type PageProps = {
 
 type OnsenFact = OnsenCandidate['facts'][number];
 
-const facilityFactLabels = new Set(['대욕장', '가족탕', '객실탕', '프라이빗탕']);
-
-export async function generateStaticParams() {
-  const candidates = await readOnsenCandidates();
-  return candidates.map((candidate) => ({ slug: candidate.slug }));
-}
+const facilityFactLabels = new Set(['대욕장', '대절탕', '객실 내 프라이빗탕', '객실 프라이빗탕', '프라이빗탕']);
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
@@ -34,7 +29,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title: `${candidate.name} 온천 근거`,
-    description: `${candidate.name}의 객실탕, 대욕장, 온천수 체감과 확인해둘 점을 정리했습니다.`,
+    description: `${candidate.name}의 객실 내 프라이빗탕, 대욕장, 온천수 체감과 확인해둘 점을 정리했습니다.`,
     alternates: {
       canonical: `/onsen/${candidate.slug}`,
     },
@@ -67,6 +62,18 @@ function getOperationFact(candidate: OnsenCandidate) {
 }
 
 function getReviewSummary(candidate: OnsenCandidate) {
+  if (candidate.verdict) {
+    const highlights = candidate.verdict.items
+      .map((item) => normalizeOnsenPublicCopy(item.chipLabel ?? item.headline))
+      .filter((value, index, values) => value && values.indexOf(value) === index)
+      .slice(0, 4);
+
+    return {
+      body: normalizeOnsenPublicCopy(candidate.verdict.headline),
+      highlights: highlights.length > 0 ? highlights : [normalizeOnsenPublicCopy(candidate.primaryBath), normalizeOnsenPublicCopy(candidate.waterDecision.operation)].filter(Boolean),
+    };
+  }
+
   const bodyParts = [candidate.summary, ...candidate.signals.map((signal) => signal.summary)]
     .map((value) => normalizeOnsenPublicCopy(value))
     .filter((value, index, values) => value.length >= 24 && values.indexOf(value) === index);
@@ -79,6 +86,19 @@ function getReviewSummary(candidate: OnsenCandidate) {
   ].filter((value, index, values) => value && value !== '온천수 확인' && values.indexOf(value) === index);
 
   return { body, highlights };
+}
+
+function formatBriefing(candidate: OnsenCandidate) {
+  const briefing = candidate.verdict?.briefing;
+  if (!briefing) return null;
+
+  const parts = [
+    typeof briefing.experiencesRead === 'number' ? `직접 읽은 이용 경험 ${briefing.experiencesRead}건` : null,
+    typeof briefing.onsenRelated === 'number' ? `온천 관련 ${briefing.onsenRelated}건` : null,
+    briefing.platforms.length > 0 ? briefing.platforms.join(' · ') : null,
+  ].filter(Boolean);
+
+  return parts.length > 0 ? parts.join(' · ') : null;
 }
 
 export default async function OnsenDetailPage({ params }: PageProps) {
@@ -136,19 +156,51 @@ export default async function OnsenDetailPage({ params }: PageProps) {
 
           <section className="onsen-review-summary-card" aria-labelledby="onsen-review-summary-title">
             <div className="onsen-review-summary-head">
-              <h2 id="onsen-review-summary-title">이런 점이 좋았어요</h2>
+              <h2 id="onsen-review-summary-title">{candidate.verdict ? '바스타임 판정' : '이런 점이 좋았어요'}</h2>
               <span>
                 <Sparkle size={15} weight="fill" aria-hidden="true" />
-                AI 요약
+                {candidate.verdict ? (candidate.verdict.level === 'full' ? 'Full' : 'Lite') : 'AI 요약'}
               </span>
             </div>
             <p>{reviewSummary.body}</p>
+            {formatBriefing(candidate) ? <p className="onsen-verdict-briefing">{formatBriefing(candidate)}</p> : null}
             <div className="onsen-review-summary-tags" aria-label="요약 포인트">
               {reviewSummary.highlights.map((highlight) => (
                 <span key={highlight}>{highlight}</span>
               ))}
             </div>
           </section>
+
+          {candidate.verdict?.items.length ? (
+            <section className="onsen-compact-section onsen-verdict-section" aria-labelledby="onsen-verdict-title">
+              <div className="onsen-compact-head">
+                <Sparkle size={19} weight="fill" aria-hidden="true" />
+                <h2 id="onsen-verdict-title">판정 근거</h2>
+              </div>
+              <div className="onsen-verdict-list">
+                {candidate.verdict.items.map((item) => (
+                  <article key={`${candidate.slug}-verdict-${item.order}`} className="onsen-verdict-item" data-type={item.type}>
+                    <div className="onsen-verdict-item-head">
+                      <span>근거 {item.order}</span>
+                      <strong>{normalizeOnsenPublicCopy(item.headline)}</strong>
+                    </div>
+                    <p>{normalizeOnsenPublicCopy(item.body)}</p>
+                    <dl>
+                      <div>
+                        <dt>관련 언급</dt>
+                        <dd>{item.counts.mentions}건</dd>
+                      </div>
+                      <div>
+                        <dt>부정 항목</dt>
+                        <dd>{item.counts.negative}건</dd>
+                      </div>
+                    </dl>
+                    <p className="onsen-verdict-conclusion">결론: {normalizeOnsenPublicCopy(item.verdict)}</p>
+                  </article>
+                ))}
+              </div>
+            </section>
+          ) : null}
 
           <section className="onsen-compact-section" aria-labelledby="onsen-fit-title">
             <div className="onsen-compact-head">
@@ -174,7 +226,9 @@ export default async function OnsenDetailPage({ params }: PageProps) {
                     <div key={fact.label} className="onsen-facility-item">
                       <span>{fact.label}</span>
                       <strong>{normalizeOnsenPublicCopy(fact.value)}</strong>
-                      <em data-status={fact.status}>{statusLabels[fact.status]}</em>
+                      <em data-status={fact.status} aria-label={`${fact.label} 상태: ${statusLabels[fact.status]}`}>
+                        {statusLabels[fact.status]}
+                      </em>
                     </div>
                   ))}
                 </div>
@@ -187,7 +241,7 @@ export default async function OnsenDetailPage({ params }: PageProps) {
                 </div>
                 <p>{normalizeOnsenPublicCopy(operationFact?.detail ?? candidate.waterDecision.summary)}</p>
                 <span className="onsen-status-badge" data-status={operationFact?.status ?? 'needs_check'}>
-                  {statusLabels[operationFact?.status ?? 'needs_check']}
+                  온천 운용 {statusLabels[operationFact?.status ?? 'needs_check']}
                 </span>
               </div>
             </div>

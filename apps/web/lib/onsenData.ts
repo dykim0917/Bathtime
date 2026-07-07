@@ -1,11 +1,12 @@
 import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 
-import { onsenCandidates, type OnsenCandidate, type OnsenStatus } from './onsenCatalog';
+import { onsenCandidates, type OnsenCandidate, type OnsenStatus, type OnsenVerdict, type OnsenVerdictItem } from './onsenCatalog';
 import {
   deriveOnsenContexts,
   enrichOnsenCandidate,
   getDefaultOnsenLocation,
+  formatOnsenLocationDisplay,
   getOnsenAreaLabel,
   getOnsenCityLabel,
   getOnsenPrefectureLabel,
@@ -65,6 +66,96 @@ type OnsenAccommodationRow = {
   updated_at: string | null;
 };
 
+type OnsenVerdictRow = {
+  target_slug: string;
+  level: 'full' | 'lite' | 'draft';
+  headline: string;
+  briefing: unknown;
+  items: unknown;
+  verified_at: string | null;
+};
+
+const platformLabels: Record<string, string> = {
+  jalan: '자란',
+  rakuten: '라쿠텐',
+  google_maps: '구글 지도',
+  tripadvisor: '트립어드바이저',
+  agoda: '아고다',
+  yahoo_travel: '야후 트래블',
+};
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return Boolean(value) && typeof value === 'object' && !Array.isArray(value);
+}
+
+function normalizeStringArray(value: unknown): string[] {
+  return Array.isArray(value) ? value.filter((item): item is string => typeof item === 'string' && item.trim().length > 0) : [];
+}
+
+function normalizeNumber(value: unknown) {
+  const parsed = typeof value === 'number' ? value : typeof value === 'string' && value.trim() ? Number(value) : Number.NaN;
+  return Number.isFinite(parsed) && parsed >= 0 ? Math.floor(parsed) : undefined;
+}
+
+function normalizeVerdictItem(value: unknown): OnsenVerdictItem | null {
+  if (!isRecord(value) || !isRecord(value.counts)) return null;
+
+  const order = normalizeNumber(value.order) ?? 0;
+  const mentions = normalizeNumber(value.counts.mentions);
+  const negative = normalizeNumber(value.counts.negative) ?? 0;
+  const denominator = value.counts.denominator === 'experiences_read' ? 'experiences_read' : 'onsen_related';
+  const type = value.type === 'conditional' || value.type === 'minor' ? value.type : 'positive';
+  const headline = typeof value.headline === 'string' ? value.headline.trim() : '';
+  const body = typeof value.body === 'string' ? value.body.trim() : '';
+  const verdict = typeof value.verdict === 'string' ? value.verdict.trim() : '';
+  const chipLabel = typeof value.chip_label === 'string' ? value.chip_label.trim() : typeof value.chipLabel === 'string' ? value.chipLabel.trim() : undefined;
+  const seasonMonths = Array.isArray(value.season_months)
+    ? value.season_months.map(normalizeNumber).filter((item): item is number => Boolean(item))
+    : null;
+
+  if (!order || mentions === undefined || !headline || !body || !verdict) return null;
+
+  return {
+    order,
+    type,
+    headline,
+    counts: {
+      mentions,
+      negative,
+      denominator,
+    },
+    body,
+    verdict,
+    chipLabel,
+    seasonMonths,
+  };
+}
+
+function normalizeVerdict(row: OnsenVerdictRow): OnsenVerdict | null {
+  if (row.level === 'draft') return null;
+
+  const briefing = isRecord(row.briefing) ? row.briefing : {};
+  const platforms = normalizeStringArray(briefing.platforms).map((platform) => platformLabels[platform] ?? platform);
+  const items = Array.isArray(row.items)
+    ? row.items
+        .map(normalizeVerdictItem)
+        .filter((item): item is OnsenVerdictItem => Boolean(item))
+        .sort((a, b) => a.order - b.order)
+    : [];
+
+  return {
+    level: row.level,
+    headline: row.headline,
+    briefing: {
+      experiencesRead: normalizeNumber(briefing.experiences_read ?? briefing.experiencesRead),
+      onsenRelated: normalizeNumber(briefing.onsen_related ?? briefing.onsenRelated),
+      platforms,
+    },
+    items,
+    verifiedAt: row.verified_at ?? undefined,
+  };
+}
+
 function parseEnvFile(filePath: string) {
   if (!existsSync(filePath)) return {};
 
@@ -122,15 +213,15 @@ function springTypeLabel(status: OnsenWaterUseStatus, sourceType: OnsenWaterSour
   if (sourceType === 'free_flowing_source') return '직수 온천';
   if (status === 'official_confirmed' || sourceType === 'hot_spring_confirmed') return '온천수 확인';
   if (status === 'review_supported') return '온천수 참고 확인';
-  return '온천수 확인 필요';
+  return '온천수 예약 전 확인';
 }
 
 function roomBathLabel(scope: OnsenBathScope) {
   if (scope === 'all_rooms') return '전 객실 온천탕';
   if (scope === 'some_rooms') return '일부 객실 온천탕';
-  if (scope === 'room_signal_only') return '객실탕 조건 확인';
-  if (scope === 'public_bath_only') return '공용탕 중심';
-  return '확인 필요';
+  if (scope === 'room_signal_only') return '객실 타입별 확인';
+  if (scope === 'public_bath_only') return '공용 온천 중심';
+  return '예약 전 확인';
 }
 
 function operationLabel(sourceType: OnsenWaterSourceType, notes: string[]) {
@@ -138,7 +229,7 @@ function operationLabel(sourceType: OnsenWaterSourceType, notes: string[]) {
   if (sourceType === 'free_flowing_source') return '직수 온천';
   if (sourceType === 'natural_100') return '천연온천';
   if (sourceType === 'hot_spring_confirmed') return '온천수 확인';
-  return notes[0] ?? '확인 필요';
+  return notes[0] ?? '예약 전 확인';
 }
 
 function buildTags(row: OnsenAccommodationRow, notes: string[]) {
@@ -150,10 +241,10 @@ function buildTags(row: OnsenAccommodationRow, notes: string[]) {
   if (row.bath_scope === 'all_rooms' || row.bath_scope === 'some_rooms' || row.bath_scope === 'room_signal_only' || /객실|전 객실/.test(primaryBath)) {
     tags.add('room-bath');
   }
-  if (/가족탕|대절탕|대여탕|전세|프라이빗/.test(primaryBath) || notes.some((note) => note.includes('대절탕')) || (counts.privateBathMentionCount ?? 0) > 0) {
+  if (/대절탕|전세|프라이빗/.test(primaryBath) || notes.some((note) => note.includes('대절탕')) || (counts.privateBathMentionCount ?? 0) > 0) {
     tags.add('private-bath');
   }
-  if (row.bath_scope === 'public_bath_only' || /대욕장|공용탕/.test(primaryBath) || (counts.publicBathMentionCount ?? 0) > 0) {
+  if (row.bath_scope === 'public_bath_only' || /대욕장|공용 온천/.test(primaryBath) || (counts.publicBathMentionCount ?? 0) > 0) {
     tags.add('public-bath');
   }
   if (/부드럽|매끈|수질|피부감|온천감/.test(summary) || (counts.waterTextureMentionCount ?? 0) > 0) {
@@ -169,7 +260,7 @@ function buildTags(row: OnsenAccommodationRow, notes: string[]) {
 function createFit(row: OnsenAccommodationRow, tags: string[]) {
   const fit: string[] = [];
   if (tags.includes('room-bath')) fit.push('객실 안에서 온천을 끝내고 싶음');
-  if (tags.includes('private-bath')) fit.push('가족탕/대절탕을 따로 쓰고 싶음');
+  if (tags.includes('private-bath')) fit.push('대절탕을 따로 쓰고 싶음');
   if (tags.includes('public-bath')) fit.push('대욕장이나 큰 노천탕을 먼저 봄');
   if (tags.includes('water-texture')) fit.push('온천수 느낌까지 확인하고 싶음');
   if (fit.length === 0) fit.push('온천 구성을 먼저 확인하고 싶음');
@@ -179,7 +270,7 @@ function createFit(row: OnsenAccommodationRow, tags: string[]) {
 function createNotice(row: OnsenAccommodationRow, notes: string[]) {
   if (notes.some((note) => note.includes('겨울'))) return '겨울 이용이라면 노천탕 온도와 동선을 함께 확인하세요.';
   if (notes.some((note) => note.includes('벌레') || note.includes('자연물'))) return '노천탕은 계절에 따라 벌레나 자연물 유입이 있을 수 있습니다.';
-  if (notes.some((note) => note.includes('대절탕'))) return '가족탕/대절탕은 예약제나 선착순 조건을 확인하는 편이 좋습니다.';
+  if (notes.some((note) => note.includes('대절탕'))) return '대절탕은 예약제나 선착순 조건을 확인하는 편이 좋습니다.';
   if (row.water_use_status === 'needs_official_check' || row.water_source_type === 'needs_check') return '온천수 사용 범위는 상세 조건에서 다시 확인하세요.';
   return undefined;
 }
@@ -205,11 +296,70 @@ function mapLocation(row: OnsenAccommodationRow): OnsenLocation {
     cityLabel,
     onsenArea,
     onsenAreaLabel,
-    display: `${regionGroupLabel} · ${prefectureLabel} · ${onsenAreaLabel}`,
+    display: formatOnsenLocationDisplay({ regionGroupLabel, prefectureLabel, onsenAreaLabel }),
   };
 }
 
-function mapOnsenAccommodation(row: OnsenAccommodationRow): OnsenCandidate {
+function operationDetailLabel(operation: string, notes: string[]) {
+  const base = operation === '온천수 확인' ? '온천수 사용 여부를 확인한 숙소입니다.' : `${operation}으로 정리했습니다.`;
+  if (notes.length === 0) return `${base} 객실 타입과 플랜별 세부 조건을 함께 확인합니다.`;
+  const noteText = notes
+    .map((note) => note.trim())
+    .filter(Boolean)
+    .map((note) => (/[.!?。]$/.test(note) ? note : `${note}.`))
+    .join(' ');
+  return `${base} ${noteText}`;
+}
+
+function publicBathFact(tags: string[], primaryBath: string) {
+  if (tags.includes('public-bath')) {
+    return {
+      value: '대욕장/공용 온천 있음',
+      status: 'confirmed' as OnsenStatus,
+      detail: '대욕장 또는 공용 온천 구성이 확인됩니다.',
+    };
+  }
+
+  if (/객실|프라이빗|전 객실|노천/.test(primaryBath)) {
+    return {
+      value: '중심 항목 아님',
+      status: 'review_signal' as OnsenStatus,
+      detail: '현재 정리 기준은 객실 내 프라이빗탕 중심입니다. 대욕장 이용을 원하면 별도 시설 안내를 확인하세요.',
+    };
+  }
+
+  return {
+    value: '예약 전 확인',
+    status: 'needs_check' as OnsenStatus,
+    detail: '대욕장 운영 여부는 객실 타입이나 플랜보다 숙소 시설 안내에서 확인하는 항목입니다.',
+  };
+}
+
+function privateBathFact(tags: string[], primaryBath: string) {
+  if (tags.includes('private-bath')) {
+    return {
+      value: '대절탕 있음',
+      status: 'confirmed' as OnsenStatus,
+      detail: '대절탕은 객실 내 프라이빗탕과 별도로 운영 조건을 확인하는 항목입니다.',
+    };
+  }
+
+  if (/객실|프라이빗|전 객실|노천/.test(primaryBath)) {
+    return {
+      value: '중심 항목 아님',
+      status: 'review_signal' as OnsenStatus,
+      detail: '이 숙소는 대절탕보다 객실 내 프라이빗탕을 중심으로 보는 편이 좋습니다.',
+    };
+  }
+
+  return {
+    value: '예약 전 확인',
+    status: 'needs_check' as OnsenStatus,
+    detail: '대절탕은 예약제, 선착순, 유료 운영 여부가 달라질 수 있어 숙소 안내에서 확인합니다.',
+  };
+}
+
+function mapOnsenAccommodation(row: OnsenAccommodationRow, verdict?: OnsenVerdict): OnsenCandidate {
   const notes = Array.isArray(row.operation_notes) ? row.operation_notes : [];
   const tags = buildTags(row, notes);
   const operation = operationLabel(row.water_source_type, notes);
@@ -217,8 +367,10 @@ function mapOnsenAccommodation(row: OnsenAccommodationRow): OnsenCandidate {
   const springType = springTypeLabel(row.water_use_status, row.water_source_type);
   const counts = row.evidence_counts ?? {};
   const updatedAt = row.content_updated_at ?? row.updated_at?.slice(0, 10) ?? '';
-  const operationDetail = notes.length > 0 ? `${operation}. ${notes.join(', ')} 조건을 함께 봅니다.` : `${operation}. 상세 조건에서 온천수 운용을 확인합니다.`;
+  const operationDetail = operationDetailLabel(operation, notes);
   const cautionCount = counts.cautionMentionCount ?? 0;
+  const publicBath = publicBathFact(tags, row.primary_bath ?? '');
+  const privateBath = privateBathFact(tags, row.primary_bath ?? '');
 
   const candidate: OnsenCandidate = {
     slug: row.slug,
@@ -229,7 +381,7 @@ function mapOnsenAccommodation(row: OnsenAccommodationRow): OnsenCandidate {
     location: mapLocation(row),
     summary: row.summary,
     fit: createFit(row, tags),
-    primaryBath: row.primary_bath ?? '온천 구성 확인 필요',
+    primaryBath: row.primary_bath ?? '온천 구성 예약 전 확인',
     waterDecision: {
       label: '온천수 확인',
       summary: row.summary,
@@ -250,22 +402,22 @@ function mapOnsenAccommodation(row: OnsenAccommodationRow): OnsenCandidate {
     ],
     facts: [
       {
-        label: '객실탕',
+        label: '객실 내 프라이빗탕',
         value: roomBath,
         status: statusFor(row.bath_scope),
-        detail: row.bath_scope === 'public_bath_only' ? '객실탕보다 공용 온천 시설을 중심으로 보는 숙소입니다.' : `${roomBath}으로 정리됩니다.`,
+        detail: row.bath_scope === 'public_bath_only' ? '객실 내 프라이빗탕보다 공용 온천 시설을 중심으로 보는 숙소입니다.' : `${roomBath}으로 정리됩니다.`,
       },
       {
         label: '대욕장',
-        value: tags.includes('public-bath') ? '확인됨' : '조건 확인',
-        status: tags.includes('public-bath') ? 'confirmed' : 'needs_check',
-        detail: tags.includes('public-bath') ? '대욕장 또는 공용탕 구성이 확인됩니다.' : '대욕장 중심으로 볼 숙소인지는 추가 확인이 필요합니다.',
+        value: publicBath.value,
+        status: publicBath.status,
+        detail: publicBath.detail,
       },
       {
-        label: '가족탕',
-        value: tags.includes('private-bath') ? '확인됨' : '조건 확인',
-        status: tags.includes('private-bath') ? 'confirmed' : 'needs_check',
-        detail: tags.includes('private-bath') ? '가족탕/대절탕 조건을 함께 볼 수 있습니다.' : '가족탕/대절탕 유무는 상세 조건에서 확인하세요.',
+        label: '대절탕',
+        value: privateBath.value,
+        status: privateBath.status,
+        detail: privateBath.detail,
       },
       {
         label: '온천 운용',
@@ -275,13 +427,13 @@ function mapOnsenAccommodation(row: OnsenAccommodationRow): OnsenCandidate {
       },
     ],
     signals: [
-      { label: '객실탕', count: counts.roomBathMentionCount ?? 0, status: tags.includes('room-bath') ? 'review_signal' : 'needs_check', summary: roomBath },
-      { label: '대욕장', count: counts.publicBathMentionCount ?? 0, status: tags.includes('public-bath') ? 'review_signal' : 'needs_check', summary: row.primary_bath ?? '확인 필요' },
+      { label: '객실 내 프라이빗탕', count: counts.roomBathMentionCount ?? 0, status: tags.includes('room-bath') ? 'review_signal' : 'needs_check', summary: roomBath },
+      { label: '대욕장', count: counts.publicBathMentionCount ?? 0, status: tags.includes('public-bath') ? 'review_signal' : 'needs_check', summary: row.primary_bath ?? '예약 전 확인' },
       { label: '수질', count: counts.waterTextureMentionCount ?? 0, status: tags.includes('water-texture') ? 'review_signal' : 'needs_check', summary: springType },
     ],
     cautions: [
       {
-        issue: createNotice(row, notes) ? '이용 전 확인' : '상세 조건 확인',
+        issue: createNotice(row, notes) ? '이용 전 확인' : '예약 전 확인',
         count: cautionCount,
         summary: createNotice(row, notes) ?? '객실 타입과 온천수 사용 범위를 함께 확인하는 편이 좋습니다.',
       },
@@ -295,6 +447,7 @@ function mapOnsenAccommodation(row: OnsenAccommodationRow): OnsenCandidate {
       },
     ],
     officialLinks: [],
+    verdict,
   };
 
   return {
@@ -308,6 +461,37 @@ function mapOnsenAccommodation(row: OnsenAccommodationRow): OnsenCandidate {
       deriveOnsenContexts(candidate)
     ),
   };
+}
+
+async function readPublishedOnsenVerdicts(config: NonNullable<ReturnType<typeof readSupabaseServerConfig>>, slugs: string[]) {
+  if (slugs.length === 0) return new Map<string, OnsenVerdict>();
+
+  const url = new URL(`${config.restUrl}/onsen_verdicts`);
+  url.searchParams.set('select', 'target_slug,level,headline,briefing,items,verified_at');
+  url.searchParams.set('target_type', 'eq.accommodation');
+  url.searchParams.set('status', 'eq.published');
+  url.searchParams.set('target_slug', `in.(${slugs.map((slug) => `"${slug}"`).join(',')})`);
+
+  try {
+    const response = await fetch(url, {
+      headers: {
+        apikey: config.apiKey,
+        authorization: `Bearer ${config.apiKey}`,
+      },
+      next: { revalidate: 60, tags: ['onsen-verdicts'] },
+    });
+
+    if (!response.ok) return new Map<string, OnsenVerdict>();
+
+    const rows = (await response.json()) as OnsenVerdictRow[];
+    return new Map(
+      rows
+        .map((row) => [row.target_slug, normalizeVerdict(row)] as const)
+        .filter((entry): entry is readonly [string, OnsenVerdict] => Boolean(entry[1]))
+    );
+  } catch {
+    return new Map<string, OnsenVerdict>();
+  }
 }
 
 export async function readOnsenCandidates(): Promise<OnsenCandidate[]> {
@@ -335,7 +519,11 @@ export async function readOnsenCandidates(): Promise<OnsenCandidate[]> {
 
     const rows = (await response.json()) as OnsenAccommodationRow[];
     if (rows.length === 0) return onsenCandidates.map(enrichOnsenCandidate);
-    return rows.map(mapOnsenAccommodation);
+    const verdictsBySlug = await readPublishedOnsenVerdicts(
+      config,
+      rows.map((row) => row.slug)
+    );
+    return rows.map((row) => mapOnsenAccommodation(row, verdictsBySlug.get(row.slug)));
   } catch {
     return onsenCandidates.map(enrichOnsenCandidate);
   }
