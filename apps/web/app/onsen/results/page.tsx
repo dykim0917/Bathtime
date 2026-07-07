@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import {
+  ArrowCounterClockwise,
+  CaretDown,
   Drop,
   FunnelSimple,
   ChatCircleText,
-  MagnifyingGlass,
   SealCheck,
   ThermometerHot,
   Warning,
@@ -16,7 +17,6 @@ import { readOnsenReviewCounts } from '@web/lib/onsenReviews';
 import {
   bathContextFilters,
   getFilterLabel,
-  getFilterLabels,
   onsenAreaFilters,
   regionGroupFilters,
   splitLegacySignals,
@@ -70,6 +70,10 @@ function buildResultsHref(params: { query?: string; regionGroup?: string; area?:
 
   const queryString = nextParams.toString();
   return queryString ? `/onsen/results?${queryString}` : '/onsen/results';
+}
+
+function toggleFilterValue(values: string[], value: string) {
+  return values.includes(value) ? values.filter((item) => item !== value) : [...values, value];
 }
 
 export default async function OnsenPage({
@@ -126,134 +130,169 @@ export default async function OnsenPage({
   });
   const activeRegionGroupLabel = getFilterLabel(regionGroupFilters, regionGroup);
   const activeAreaLabel = getFilterLabel(onsenAreaFilters, area);
-  const activeTravelLabels = getFilterLabels(travelContextFilters, travel);
-  const activeBathLabels = getFilterLabels(bathContextFilters, bath);
-  const activeWaterLabels = getFilterLabels(waterCriterionFilters, water);
-  const hasActiveFilter = Boolean(query || regionGroup || area || travel.length > 0 || bath.length > 0 || water.length > 0);
+  const hasVisibleFilter = travel.length > 0 || bath.length > 0 || water.length > 0;
   const currentResultsHref = buildResultsHref({ query, regionGroup, area, travel, bath, water });
-  const selectedTravel = travel[0] ?? '';
-  const selectedBath = bath[0] ?? '';
-  const selectedWater = water[0] ?? '';
-  const conditionSummary = [
-    activeRegionGroupLabel ?? '전체 지역',
-    activeAreaLabel,
-    ...activeTravelLabels,
-    ...activeBathLabels,
-    ...activeWaterLabels,
-    query ? `"${query}"` : null,
-  ].filter(Boolean).join(' · ');
+  const clearVisibleFiltersHref = buildResultsHref({ query, regionGroup, area });
+  const quickFilters = [
+    {
+      label: '객실탕 중심',
+      active: bath.includes('room_bath'),
+      href: buildResultsHref({ query, regionGroup, area, travel, bath: toggleFilterValue(bath, 'room_bath'), water }),
+    },
+    {
+      label: '가족탕/대절탕 있음',
+      active: bath.includes('private_bath'),
+      href: buildResultsHref({ query, regionGroup, area, travel, bath: toggleFilterValue(bath, 'private_bath'), water }),
+    },
+    {
+      label: '100% 천연온천',
+      active: water.includes('natural_100'),
+      href: buildResultsHref({ query, regionGroup, area, travel, bath, water: toggleFilterValue(water, 'natural_100') }),
+    },
+    {
+      label: '온천수 확인',
+      active: water.includes('spring_confirmed'),
+      href: buildResultsHref({ query, regionGroup, area, travel, bath, water: toggleFilterValue(water, 'spring_confirmed') }),
+    },
+  ];
+  const resultScopeLabel = activeAreaLabel ?? activeRegionGroupLabel ?? '전체 지역';
 
   return (
     <div className="onsen-results-page">
       <section className="onsen-results-control" aria-label="검색 조건">
-        <form className="onsen-results-toolbar" action="/onsen/results">
-          <div className="onsen-search-box onsen-search-box-compact">
-            <MagnifyingGlass size={20} weight="regular" aria-hidden="true" />
-            <input name="query" type="search" placeholder="결과 안에서 다시 검색" aria-label="온천 검색어" defaultValue={query} />
-          </div>
+        <div className="onsen-filter-quickbar">
+          <span className="onsen-filter-strip-label">
+            <FunnelSimple size={18} weight="bold" aria-hidden="true" />
+            필터
+          </span>
 
-          <label className="onsen-filter-select">
-            <span>지역 범위</span>
-            <select name="regionGroup" defaultValue={regionGroup}>
-              <option value="">전체 지역</option>
-              {regionGroupFilters.map((item) => (
-                <option key={item.value} value={item.value} disabled={item.disabled}>
-                  {item.label}
-                </option>
-              ))}
-            </select>
-          </label>
+          <nav className="onsen-filter-quickchips" aria-label="주요 온천 필터">
+            {quickFilters.map((item) => (
+              <Link
+                key={item.label}
+                className="onsen-filter-chip onsen-filter-chip-quick"
+                data-state={item.active ? 'active' : undefined}
+                href={item.href}
+                aria-current={item.active ? 'true' : undefined}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
 
-          <label className="onsen-filter-select">
-            <span>온천지/도시</span>
-            <select name="area" defaultValue={area || legacyRegion}>
-              <option value="">전체 온천지</option>
-              {onsenAreaFilters.map((item) => (
-                <option key={item.value} value={item.value} disabled={item.disabled}>
-                  {item.label}
-                </option>
-              ))}
-            </select>
-          </label>
+          <details className="onsen-filter-accordion">
+            <summary className="onsen-filter-summary" aria-label="전체 필터 펼치기">
+              <CaretDown size={16} weight="bold" aria-hidden="true" />
+            </summary>
 
-          <label className="onsen-filter-select">
-            <span>이용 방식</span>
-            <select name="travel" defaultValue={selectedTravel}>
-              <option value="">전체 방식</option>
-              {travelContextFilters.map((item) => (
-                <option key={item.value} value={item.value} disabled={item.disabled}>
-                  {item.label}
-                </option>
-              ))}
-            </select>
-          </label>
+            <nav className="onsen-results-toolbar" aria-label="온천 결과 필터">
+              <div className="onsen-filter-group">
+                <span>방식</span>
+                <div className="onsen-filter-chip-row">
+                  {travelContextFilters
+                    .filter((item) => !item.disabled)
+                    .map((item) => {
+                      const active = travel.includes(item.value);
+                      return (
+                        <Link
+                          key={item.value}
+                          className="onsen-filter-chip"
+                          data-state={active ? 'active' : undefined}
+                          href={buildResultsHref({
+                            query,
+                            regionGroup,
+                            area,
+                            travel: toggleFilterValue(travel, item.value),
+                            bath,
+                            water,
+                          })}
+                          aria-current={active ? 'true' : undefined}
+                        >
+                          {item.label}
+                        </Link>
+                      );
+                    })}
+                </div>
+              </div>
 
-          <label className="onsen-filter-select">
-            <span>탕 구성</span>
-            <select name="bath" defaultValue={selectedBath}>
-              <option value="">전체 구성</option>
-              {bathContextFilters.map((item) => (
-                <option key={item.value} value={item.value}>
-                  {item.label}
-                </option>
-              ))}
-            </select>
-          </label>
+              <div className="onsen-filter-group">
+                <span>구성</span>
+                <div className="onsen-filter-chip-row">
+                  {bathContextFilters.map((item) => {
+                    const active = bath.includes(item.value);
+                    return (
+                      <Link
+                        key={item.value}
+                        className="onsen-filter-chip"
+                        data-state={active ? 'active' : undefined}
+                        href={buildResultsHref({
+                          query,
+                          regionGroup,
+                          area,
+                          travel,
+                          bath: toggleFilterValue(bath, item.value),
+                          water,
+                        })}
+                        aria-current={active ? 'true' : undefined}
+                      >
+                        {item.label}
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
 
-          <label className="onsen-filter-select">
-            <span>온천 기준</span>
-            <select name="water" defaultValue={selectedWater}>
-              <option value="">전체 기준</option>
-              {waterCriterionFilters.map((item) => (
-                <option key={item.value} value={item.value}>
-                  {item.label}
-                </option>
-              ))}
-            </select>
-          </label>
+              <div className="onsen-filter-group">
+                <span>기준</span>
+                <div className="onsen-filter-chip-row">
+                  {waterCriterionFilters.map((item) => {
+                    const active = water.includes(item.value);
+                    return (
+                      <Link
+                        key={item.value}
+                        className="onsen-filter-chip"
+                        data-state={active ? 'active' : undefined}
+                        href={buildResultsHref({
+                          query,
+                          regionGroup,
+                          area,
+                          travel,
+                          bath,
+                          water: toggleFilterValue(water, item.value),
+                        })}
+                        aria-current={active ? 'true' : undefined}
+                      >
+                        {item.label}
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
 
-          <div className="onsen-results-actions">
-            <button type="submit">적용</button>
-            {hasActiveFilter && <Link href="/onsen/results">초기화</Link>}
-          </div>
-        </form>
+              <div className="onsen-results-actions">
+                {hasVisibleFilter ? (
+                  <Link className="onsen-reset-action" href={clearVisibleFiltersHref}>
+                    <ArrowCounterClockwise size={15} weight="bold" aria-hidden="true" />
+                    초기화
+                  </Link>
+                ) : (
+                  <span className="onsen-reset-action" aria-disabled="true">
+                    <ArrowCounterClockwise size={15} weight="bold" aria-hidden="true" />
+                    초기화
+                  </span>
+                )}
+              </div>
+            </nav>
+          </details>
+        </div>
       </section>
 
       <section className="onsen-results-shell" aria-label="온천 검색 결과">
-        <aside className="onsen-filter-panel">
-          <div className="onsen-filter-panel-head">
-            <FunnelSimple size={18} weight="bold" aria-hidden="true" />
-            <span>온천 기준</span>
-          </div>
-          <dl className="onsen-summary-metrics">
-            <div>
-              <dt>검색 결과</dt>
-              <dd>{filtered.length}곳</dd>
-            </div>
-            <div>
-              <dt>기본 축</dt>
-              <dd>지역 · 방식</dd>
-            </div>
-            <div>
-              <dt>현재 온천지</dt>
-              <dd>{activeAreaLabel ?? '유후인 중심'}</dd>
-            </div>
-          </dl>
-          <div className="onsen-check-list">
-            <p>같이 봐야 할 항목</p>
-            <span>료칸 숙박인지, 당일온천인지</span>
-            <span>객실탕, 대절탕, 대욕장 중 무엇이 중심인지</span>
-            <span>온천수 운용과 직수 여부</span>
-            <span>겨울, 동선, 예약 조건처럼 놓치기 쉬운 점</span>
-          </div>
-        </aside>
-
         <div className="onsen-result-list">
           <div className="onsen-results-titlebar">
             <div>
               <span className="onsen-filter-label">온천 검색 결과</span>
-              <h1 id="onsen-results-title">{filtered.length}곳을 비교 중입니다</h1>
-              <p className="onsen-results-condition">{conditionSummary}</p>
+              <h1 id="onsen-results-title">{resultScopeLabel} 온천 {filtered.length}개</h1>
             </div>
           </div>
 
