@@ -1012,6 +1012,10 @@ html[data-bathtime-surface='app'] .app-bridge {
   background: var(--bt-color-canvas);
 }
 
+.onsen-shell:has(.onsen-home) .content-area {
+  background: transparent;
+}
+
 .auth-shell .content-area {
   display: grid;
   grid-template-rows: minmax(0, 1fr) auto;
