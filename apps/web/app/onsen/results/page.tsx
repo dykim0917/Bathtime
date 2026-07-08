@@ -63,6 +63,21 @@ function normalizeParams(value: string | string[] | undefined) {
   return values.flatMap((item) => item.split(',')).map((item) => item.trim()).filter(Boolean);
 }
 
+function uniqueValues<T extends string>(values: T[]) {
+  return [...new Set(values)];
+}
+
+function normalizeFilterParam<T extends string>(value: string | string[] | undefined, filters: { value: T; disabled?: boolean }[]) {
+  const normalized = normalizeParam(value);
+  const allowed = new Set(filters.filter((item) => !item.disabled).map((item) => item.value));
+  return allowed.has(normalized as T) ? (normalized as T) : '';
+}
+
+function normalizeFilterParams<T extends string>(value: string | string[] | undefined, filters: { value: T; disabled?: boolean }[]) {
+  const allowed = new Set(filters.filter((item) => !item.disabled).map((item) => item.value));
+  return uniqueValues(normalizeParams(value).filter((item): item is T => allowed.has(item as T)));
+}
+
 function buildResultsHref(params: { query?: string; regionGroup?: string; area?: string; travel?: string[]; bath?: string[]; water?: string[] }) {
   const nextParams = new URLSearchParams();
 
@@ -111,6 +126,16 @@ function normalizeResultCardCopy(value: string) {
   return copy;
 }
 
+function formatVerdictStamp(candidate: { directReviews: number; verdict?: { briefing: { experiencesRead?: number }; items: unknown[] } }) {
+  if (!candidate.verdict) return null;
+
+  const experiencesRead = candidate.verdict.briefing.experiencesRead ?? candidate.directReviews;
+  const itemCount = candidate.verdict.items.length;
+  const evidenceText = itemCount > 0 ? `판정 근거 ${formatNumber(itemCount)}개` : '구조 확인';
+
+  return `이용 경험 ${formatNumber(experiencesRead)}건 분석 · ${evidenceText}`;
+}
+
 export default async function OnsenPage({
   searchParams,
 }: {
@@ -127,13 +152,12 @@ export default async function OnsenPage({
 }) {
   const params = await searchParams;
   const query = normalizeParam(params.query).trim().toLowerCase();
-  const legacyRegion = normalizeParam(params.region);
-  const regionGroup = normalizeParam(params.regionGroup);
-  const area = normalizeParam(params.area || params.region);
+  const regionGroup = normalizeFilterParam(params.regionGroup, regionGroupFilters);
+  const area = normalizeFilterParam(params.area, onsenAreaFilters) || normalizeFilterParam(params.region, onsenAreaFilters);
   const legacySignals = splitLegacySignals(normalizeParams(params.signal));
-  const travel = normalizeParams(params.travel);
-  const bath = [...normalizeParams(params.bath), ...legacySignals.bath];
-  const water = [...normalizeParams(params.water), ...legacySignals.water];
+  const travel = normalizeFilterParams(params.travel, travelContextFilters);
+  const bath = uniqueValues([...normalizeFilterParams(params.bath, bathContextFilters), ...legacySignals.bath]);
+  const water = uniqueValues([...normalizeFilterParams(params.water, waterCriterionFilters), ...legacySignals.water]);
   const candidates = await readOnsenCandidates();
   const reviewCounts = await readOnsenReviewCounts(candidates.map((candidate) => candidate.slug));
   const filtered = candidates
@@ -192,7 +216,7 @@ export default async function OnsenPage({
       href: buildResultsHref({ query, regionGroup, area, travel, bath: toggleFilterValue(bath, 'private_bath'), water }),
     },
     {
-      label: '원천 100% 직수',
+      label: '원천 직수 확인',
       active: water.includes('direct_source'),
       href: buildResultsHref({ query, regionGroup, area, travel, bath, water: toggleFilterValue(water, 'direct_source') }),
     },
@@ -362,7 +386,7 @@ export default async function OnsenPage({
           {filtered.length === 0 && (
             <div className="onsen-empty-state">
               <strong>조건에 맞는 온천 기록이 아직 없습니다.</strong>
-              <p>현재는 유후인 후보부터 정리하고 있습니다. 지역을 유후인으로 바꾸거나 확인 포인트를 줄여보세요.</p>
+              <p>지역, 구성, 기준을 하나씩 줄이거나 전체 결과에서 다시 탐색해보세요.</p>
               <Link href="/onsen/results">전체 결과 보기</Link>
             </div>
           )}
@@ -371,6 +395,7 @@ export default async function OnsenPage({
             (() => {
               const waterHighlightMark = getOnsenWaterHighlightMark(candidate);
               const reviewCount = reviewCounts[candidate.slug] ?? 0;
+              const verdictStamp = formatVerdictStamp(candidate);
 
               return (
                 <Link
@@ -415,6 +440,7 @@ export default async function OnsenPage({
 
                       <div className="onsen-card-decision">
                         <p>{normalizeOnsenPublicCopy(candidate.verdict?.headline ?? candidate.waterDecision.summary)}</p>
+                        {verdictStamp ? <span className="onsen-card-verdict-stamp">{verdictStamp}</span> : null}
                       </div>
 
                       <dl className="onsen-card-fact-line" aria-label={`${candidate.name} 온천수 정보`}>
