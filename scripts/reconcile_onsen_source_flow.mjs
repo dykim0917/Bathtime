@@ -5,13 +5,14 @@ import path from 'node:path';
 const repoRoot = process.cwd();
 const outputDir = path.join(repoRoot, 'research/onsen-db-seed');
 const seedDate = '2026-07-08';
-const outputBase = `onsen_source_flow_reconciliation_${seedDate}`;
+const isSecondPass = process.argv.includes('--second-pass');
+const outputBase = isSecondPass ? `onsen_source_flow_reconciliation_2nd_${seedDate}` : `onsen_source_flow_reconciliation_${seedDate}`;
 const outputJsonPath = path.join(outputDir, `${outputBase}.json`);
 const outputSqlPath = path.join(outputDir, `${outputBase}.upsert.sql`);
 const outputReportPath = path.join(outputDir, `${outputBase}_report.md`);
 const shouldApply = process.argv.includes('--apply');
 
-const confirmedSourceRules = [
+const firstPassConfirmedSourceRules = [
   {
     slug: 'hakone-byakudan',
     source_file: 'research/onsen-review-signals/hakone-byakudan/platform_mapping_2026-07-04.json',
@@ -50,7 +51,120 @@ const confirmedSourceRules = [
   },
 ];
 
-const manualReviewCandidates = [
+const secondPassConfirmedSourceRules = [
+  {
+    slug: 'yufuin-wazanho',
+    source_file: 'research/onsen-review-signals/yufuin-wazanho/platform_mapping_2026-07-08.json',
+    evidence_type: 'official_bath_facts',
+    evidence_keyword: '대욕장과 객실탕 모두 源泉100%掛け流し',
+    fact_value: '공식 온천 표면에서 대욕장과 객실탕 모두 원천 100% 가케나가시로 표기됩니다.',
+    operation_note: '대욕장과 객실탕 모두 원천 100% 가케나가시로 표기됩니다',
+    validation: 'source_file_contains_patterns',
+    required_patterns: ['源泉100%掛け流し'],
+  },
+  {
+    slug: 'beppu-yunosato-hayama',
+    source_file: 'research/onsen-review-signals/beppu-yunosato-hayama/review_signal_summary_2026-07-07.md',
+    evidence_type: 'official_bath_facts',
+    evidence_keyword: '天然温泉かけ流し / 源泉かけ流し',
+    fact_value: '공식 표면에서 천연온천 가케나가시와 원천가케나가시가 확인됩니다. 객실탕은 일부 객실 타입 중심입니다.',
+    operation_note: '공식 표면에서 원천가케나가시가 확인됩니다. 객실탕은 일부 객실 타입 중심입니다',
+    validation: 'source_file_contains_patterns',
+    required_patterns: ['天然温泉かけ流し', '源泉かけ流し'],
+  },
+  {
+    slug: 'ibusuki-ginsyo',
+    source_file: 'research/onsen-review-signals/ibusuki-ginsyo/platform_mapping_2026-07-04.json',
+    evidence_type: 'official_bath_facts',
+    evidence_keyword: '대욕장 내탕/노천 + 객실 노천 源泉かけ流し',
+    fact_value: '공식 표면에서 대욕장 내탕/노천과 객실 노천탕의 원천가케나가시 표기가 확인됩니다. 객실 노천탕은 공급 시간 조건을 함께 봐야 합니다.',
+    operation_note: '대욕장과 객실 노천탕에 원천가케나가시 표기가 확인됩니다. 객실 노천탕은 공급 시간 조건을 함께 확인하세요',
+    validation: 'source_file_contains_patterns',
+    required_patterns: ['source_claim', '源泉かけ流し'],
+  },
+  {
+    slug: 'yufuin-warabino',
+    source_file: 'research/onsen-review-signals/yufuin-tier2-deep-research/yufuin-warabino/review_signal_summary_curated_2026-07-02.json',
+    evidence_type: 'official_or_ota_facility_facts',
+    evidence_keyword: '전 객실 원천가케나가시 온천 포함',
+    fact_value: '공식/OTA 시설 정보 기준 전 객실 원천가케나가시 온천 포함 숙소로 정리된 근거가 있습니다.',
+    operation_note: '전 객실 원천가케나가시 온천 포함 숙소로 정리된 근거가 있습니다',
+    validation: 'source_file_contains_patterns',
+    required_patterns: ['전 객실 원천가케나가시'],
+  },
+  {
+    slug: 'yufuin-konjakuan',
+    source_file: 'research/onsen-review-signals/yufuin-konjakuan/platform_mapping_2026-07-08.json',
+    evidence_type: 'official_or_ota_facility_facts',
+    evidence_keyword: '天然温泉100% / 温泉掛け流し / 모든 목욕탕 가족탕',
+    fact_value: '공식/Jalan 표면에서 천연온천 100%, 온천 가케나가시, 가족탕 중심 구성이 확인됩니다.',
+    operation_note: '천연온천 100%와 온천 가케나가시 표기가 확인됩니다. 객실탕과 대절 가족탕 구성을 분리해서 확인하세요',
+    validation: 'source_file_contains_patterns',
+    required_patterns: ['천연온천100%', '温泉掛け流し'],
+  },
+  {
+    slug: 'unzen-fukudaya',
+    source_file: 'research/onsen-review-signals/unzen-fukudaya/platform_mapping_2026-07-04.json',
+    evidence_type: 'official_or_ota_facility_facts',
+    evidence_keyword: '源泉かけ流し / 白濁温泉',
+    fact_value: '공식 메타/객실 페이지와 라쿠텐 온천 표면에서 원천가케나가시 백탁온천 표기가 확인됩니다.',
+    operation_note: '공식/OTA 표면에서 원천가케나가시 백탁온천 표기가 확인됩니다',
+    validation: 'source_file_contains_patterns',
+    required_patterns: ['source_claim', '源泉かけ流し'],
+  },
+  {
+    slug: 'hakone-gen-gora',
+    source_file: 'research/onsen-review-signals/hakone-gen-gora/review_signal_summary_2026-07-04.md',
+    evidence_type: 'official_facility_facts',
+    evidence_keyword: '전 18실 원천가케나가시 객실 노천탕',
+    fact_value: '공식/시설 표면 기준 전 18실 원천가케나가시 객실 노천탕과 원천가케나가시 대욕장 표기가 확인됩니다.',
+    operation_note: '전 객실 원천가케나가시 객실 노천탕으로 정리된 공식/시설 근거가 있습니다',
+    validation: 'source_file_contains_patterns',
+    required_patterns: ['전 18실', '원천가케나가시'],
+  },
+  {
+    slug: 'yufuin-sakuratei',
+    source_file: 'research/onsen-review-signals/yufuin-sakuratei/review_signal_summary_2026-07-08.md',
+    evidence_type: 'official_or_ota_facility_facts',
+    evidence_keyword: '전 10동 별채 원천가케나가시 노천탕',
+    fact_value: 'Jalan/Rakuten/Yahoo/Ikkyu 표면에서 전 10동 별채 원천가케나가시 노천탕 숙소로 소개됩니다.',
+    operation_note: '전 10동 별채 원천가케나가시 노천탕 숙소로 소개되는 근거가 있습니다',
+    validation: 'source_file_contains_patterns',
+    required_patterns: ['전 10동', '원천가케나가시'],
+  },
+  {
+    slug: 'yufuin-baien',
+    source_file: 'research/onsen-review-signals/yufuin-baien/review_signal_summary_curated_2026-07-01.json',
+    evidence_type: 'official_bath_facts',
+    evidence_keyword: '공식 온천 페이지 원천가케나가시',
+    fact_value: '공식 온천 페이지에서 원천가케나가시 표기가 확인됩니다. 객실 노천/반노천은 별채 객실 타입별로 확인해야 합니다.',
+    operation_note: '공식 온천 페이지에서 원천가케나가시 표기가 확인됩니다. 객실 노천/반노천은 객실 타입별로 확인하세요',
+    validation: 'source_file_contains_patterns',
+    required_patterns: ['원천가케나가시'],
+  },
+  {
+    slug: 'hakone-yuyado-zen',
+    source_file: 'research/onsen-review-signals/hakone-yuyado-zen/platform_mapping_2026-07-04.json',
+    evidence_type: 'official_bath_facts_with_temperature_caution',
+    evidence_keyword: 'all rooms 掛け流し / 天然掛け流しにごり湯',
+    fact_value: '공식 객실 페이지는 전 객실 가케나가시 온천, TOP 표면은 천연 가케나가시 니고리유로 설명합니다. 온도 조절 신호는 별도 확인이 필요합니다.',
+    operation_note: '전 객실 가케나가시 온천 표기가 확인됩니다. 뜨거운 원천과 온도 조절 신호를 함께 확인하세요',
+    validation: 'source_file_contains_patterns',
+    required_patterns: ['all rooms', '掛け流し'],
+  },
+  {
+    slug: 'beppu-yutorelo',
+    source_file: 'research/onsen-review-signals/beppu-yutorelo/platform_mapping_2026-07-08.json',
+    evidence_type: 'official_series_facility_facts',
+    evidence_keyword: '自家源泉かけ流し / 自家源泉',
+    fact_value: '공식 계열 설명에서 자가 원천가케나가시와 자가 원천 온천 신호가 확인됩니다.',
+    operation_note: '공식 계열 설명에서 자가 원천가케나가시 표기가 확인됩니다',
+    validation: 'source_file_contains_patterns',
+    required_patterns: ['source_flow_claim', '自家源泉'],
+  },
+];
+
+const firstPassManualReviewCandidates = [
   {
     slug: 'misasa-izanro-iwasaki',
     status: 'hold_partial_scope',
@@ -92,6 +206,62 @@ const manualReviewCandidates = [
     reason: '과거 문구에 직수 표현이 있던 유후인 숙소군은 원문 공식/후기 근거를 다시 묶기 전까지 자동 복원하지 않습니다.',
   },
 ];
+
+const secondPassManualReviewCandidates = [
+  {
+    slug: 'hakone-fontainebleau',
+    status: 'hold_review_heavy',
+    reason: '가케나가시 리뷰 신호는 많지만 이번 스캔에서 공식 표면 문장이 충분히 분리되지 않아 보류합니다.',
+  },
+  {
+    slug: 'beppu-kannawa-bettei',
+    status: 'hold_review_heavy',
+    reason: 'Jalan 직접 리뷰에 원천가케나가시가 반복되지만 공식 표면 근거를 더 분리해야 합니다.',
+  },
+  {
+    slug: 'yufuin-kounokura',
+    status: 'hold_review_heavy',
+    reason: '리뷰/플랜명 신호는 강하지만 공식 시설 표면 검산 후 승격하는 편이 안전합니다.',
+  },
+  {
+    slug: 'ureshino-shiibasanso',
+    status: 'hold_room_type_specific',
+    reason: '源泉100%かけ流し 표기가 객실 타입/플랜명 중심으로 보여 객실 타입 caveat를 더 정리해야 합니다.',
+  },
+  {
+    slug: 'beppu-bettei-haruki',
+    status: 'hold_review_or_plan_signal',
+    reason: '리뷰와 일부 표면 신호는 있으나 공식 전 범위 근거가 부족합니다.',
+  },
+  {
+    slug: 'misasa-izanro-iwasaki',
+    status: 'hold_partial_scope',
+    reason: '일부 욕장/객실 단위 원천가케나가시 표면은 있으나 숙소 전체 배지로 승격할 범위 검산이 필요합니다.',
+  },
+  {
+    slug: 'shirahama-sanrakuso',
+    status: 'hold_partial_room_type',
+    reason: '원천가케나가시 객실 표면은 있으나 일부 객실/욕장 범위 분리가 필요합니다.',
+  },
+  {
+    slug: 'shirahama-kaishu',
+    status: 'hold_partial_room_type',
+    reason: '일부 객실/이탈 객실은 원천가케나가시이나 다른 객실은 끓인 물 표기가 있어 자동 승격하지 않습니다.',
+  },
+  {
+    slug: 'misasa-mansuirou',
+    status: 'hold_partial_or_mixed_operation',
+    reason: '자가원천 100%와 가온/가수 표면이 함께 있어 직수 배지보다 수동 판정이 먼저 필요합니다.',
+  },
+  {
+    slug: 'tamatsukuri-konya',
+    status: 'exclude_conflict',
+    reason: 'Yukoyuko와 Japan Onsen Association 표면이 충돌하여 직수 후보에서 제외합니다.',
+  },
+];
+
+const confirmedSourceRules = isSecondPass ? secondPassConfirmedSourceRules : firstPassConfirmedSourceRules;
+const manualReviewCandidates = isSecondPass ? secondPassManualReviewCandidates : firstPassManualReviewCandidates;
 
 function parseEnvFile(filePath) {
   if (!existsSync(filePath)) return {};
@@ -232,6 +402,13 @@ function validateRule(rule, row) {
     const sourceText = readText(sourcePath);
     if (/百割源泉/.test(sourceText) && /源泉百%|源泉100%|掛け流し|かけ流し/.test(sourceText)) return { ok: true };
     return { ok: false, reason: 'Local summary does not contain official source-flow wording.' };
+  }
+
+  if (rule.validation === 'source_file_contains_patterns') {
+    const sourceText = readText(sourcePath);
+    const missing = normalizeArray(rule.required_patterns).filter((pattern) => !sourceText.includes(pattern));
+    if (missing.length === 0) return { ok: true };
+    return { ok: false, reason: `Source file is missing required patterns: ${missing.join(', ')}` };
   }
 
   return { ok: false, reason: `Unknown validation: ${rule.validation}` };
