@@ -1,0 +1,2610 @@
+{
+  "accommodations": [
+    {
+      "slug": "tokachigawa-seijakubou",
+      "name": "도카치가와 온천 세이자쿠보",
+      "ja_name": "全室源泉かけ流し露天風呂付きの宿 清寂房《十勝川モール温泉》",
+      "display_name_ko": "도카치가와 온천 세이자쿠보",
+      "name_ja": "全室源泉かけ流し露天風呂付きの宿 清寂房《十勝川モール温泉》",
+      "name_en": null,
+      "aliases_ko": [
+        "도카치가와 온천 세이자쿠보"
+      ],
+      "aliases_ja": [
+        "全室源泉かけ流し露天風呂付きの宿 清寂房《十勝川モール温泉》"
+      ],
+      "aliases_en": [],
+      "name_verification_status": "verified",
+      "name_source_note": "홋카이도 리컨실리에이션 seed 생성 과정에서 한국어 서비스명을 보정",
+      "region": "tokachigawa",
+      "area": "홋카이도 · 홋카이도 · 도카치가와",
+      "country": "JP",
+      "region_group": "hokkaido",
+      "prefecture": "hokkaido",
+      "city": "otofuke",
+      "onsen_area": "tokachigawa",
+      "travel_contexts": [
+        "ryokan_stay"
+      ],
+      "bath_contexts": [
+        "room_bath",
+        "public_bath"
+      ],
+      "water_criteria": [
+        "spring_confirmed",
+        "water_texture"
+      ],
+      "summary": "홋카이도 · 홋카이도 · 도카치가와의 온천 숙소입니다. 객실 노천탕 중심을 기준으로 이용 경험이 반복되며, 객실 타입과 공용탕 운영 조건을 함께 확인하시기 바랍니다.",
+      "primary_bath": "객실 노천탕 중심",
+      "water_use_status": "review_supported",
+      "water_source_type": "hot_spring_confirmed",
+      "bath_scope": "some_rooms",
+      "operation_notes": [
+        "객실 노천탕 중심으로 정리했습니다",
+        "예약 조건과 운영 시간을 함께 확인하시기 바랍니다"
+      ],
+      "evidence_counts": {
+        "directReviewCount": 380,
+        "onsenReviewCount": 300,
+        "directBodyPlatformCount": 8,
+        "roomBathMentionCount": 516,
+        "publicBathMentionCount": 55,
+        "privateBathMentionCount": 0,
+        "waterTextureMentionCount": 210,
+        "cautionMentionCount": 73
+      },
+      "evidence_grade": "A",
+      "evidence_note": "직접 읽은 이용 경험 380건, 온천 관련 300건, 본문 확인 플랫폼 8개",
+      "status": "active",
+      "source_file": "research/onsen-candidates/nationwide-2026-07-03/hokkaido_ready_accommodation_quality_matrix_2026-07-04.csv",
+      "content_updated_at": "2026-07-08"
+    },
+    {
+      "slug": "toyako-lake-suite-konosisu",
+      "name": "더 레이크 스위트 고노스미카",
+      "ja_name": "ザ・レイクスイート湖の栖",
+      "display_name_ko": "더 레이크 스위트 고노스미카",
+      "name_ja": "ザ・レイクスイート湖の栖",
+      "name_en": null,
+      "aliases_ko": [
+        "더 레이크 스위트 고노스미카"
+      ],
+      "aliases_ja": [
+        "ザ・レイクスイート湖の栖"
+      ],
+      "aliases_en": [],
+      "name_verification_status": "verified",
+      "name_source_note": "홋카이도 리컨실리에이션 seed 생성 과정에서 한국어 서비스명을 보정",
+      "region": "hokkaido-toyako",
+      "area": "홋카이도 · 홋카이도 · 도야코",
+      "country": "JP",
+      "region_group": "hokkaido",
+      "prefecture": "hokkaido",
+      "city": "toyako",
+      "onsen_area": "hokkaido-toyako",
+      "travel_contexts": [
+        "ryokan_stay"
+      ],
+      "bath_contexts": [
+        "room_bath",
+        "public_bath"
+      ],
+      "water_criteria": [
+        "spring_confirmed",
+        "water_texture"
+      ],
+      "summary": "홋카이도 · 홋카이도 · 도야코의 온천 숙소입니다. 객실 노천탕 중심을 기준으로 이용 경험이 반복되며, 객실 타입과 공용탕 운영 조건을 함께 확인하시기 바랍니다.",
+      "primary_bath": "객실 노천탕 중심",
+      "water_use_status": "review_supported",
+      "water_source_type": "hot_spring_confirmed",
+      "bath_scope": "some_rooms",
+      "operation_notes": [
+        "객실 노천탕 중심으로 정리했습니다",
+        "예약 조건과 운영 시간을 함께 확인하시기 바랍니다"
+      ],
+      "evidence_counts": {
+        "directReviewCount": 308,
+        "onsenReviewCount": 255,
+        "directBodyPlatformCount": 7,
+        "roomBathMentionCount": 313,
+        "publicBathMentionCount": 183,
+        "privateBathMentionCount": 0,
+        "waterTextureMentionCount": 52,
+        "cautionMentionCount": 394
+      },
+      "evidence_grade": "A",
+      "evidence_note": "직접 읽은 이용 경험 308건, 온천 관련 255건, 본문 확인 플랫폼 7개",
+      "status": "active",
+      "source_file": "research/onsen-candidates/nationwide-2026-07-03/hokkaido_ready_accommodation_quality_matrix_2026-07-04.csv",
+      "content_updated_at": "2026-07-08"
+    },
+    {
+      "slug": "noboribetsu-bourou-noguchi",
+      "name": "보로 노구치 노보리베츠",
+      "ja_name": "望楼NOGUCHI登別",
+      "display_name_ko": "보로 노구치 노보리베츠",
+      "name_ja": "望楼NOGUCHI登別",
+      "name_en": null,
+      "aliases_ko": [
+        "보로 노구치 노보리베츠"
+      ],
+      "aliases_ja": [
+        "望楼NOGUCHI登別"
+      ],
+      "aliases_en": [],
+      "name_verification_status": "verified",
+      "name_source_note": "홋카이도 리컨실리에이션 seed 생성 과정에서 한국어 서비스명을 보정",
+      "region": "noboribetsu",
+      "area": "홋카이도 · 홋카이도 · 노보리베츠",
+      "country": "JP",
+      "region_group": "hokkaido",
+      "prefecture": "hokkaido",
+      "city": "noboribetsu",
+      "onsen_area": "noboribetsu",
+      "travel_contexts": [
+        "ryokan_stay"
+      ],
+      "bath_contexts": [
+        "room_bath",
+        "public_bath"
+      ],
+      "water_criteria": [
+        "spring_confirmed",
+        "water_texture"
+      ],
+      "summary": "홋카이도 · 홋카이도 · 노보리베츠의 온천 숙소입니다. 객실 내 프라이빗탕 중심을 기준으로 이용 경험이 반복되며, 객실 타입과 공용탕 운영 조건을 함께 확인하시기 바랍니다.",
+      "primary_bath": "객실 내 프라이빗탕 중심",
+      "water_use_status": "review_supported",
+      "water_source_type": "hot_spring_confirmed",
+      "bath_scope": "some_rooms",
+      "operation_notes": [
+        "객실 내 프라이빗탕 중심으로 정리했습니다"
+      ],
+      "evidence_counts": {
+        "directReviewCount": 368,
+        "onsenReviewCount": 247,
+        "directBodyPlatformCount": 11,
+        "roomBathMentionCount": 319,
+        "publicBathMentionCount": 118,
+        "privateBathMentionCount": 0,
+        "waterTextureMentionCount": 152,
+        "cautionMentionCount": 109
+      },
+      "evidence_grade": "A",
+      "evidence_note": "직접 읽은 이용 경험 368건, 온천 관련 247건, 본문 확인 플랫폼 11개",
+      "status": "active",
+      "source_file": "research/onsen-candidates/nationwide-2026-07-03/hokkaido_ready_accommodation_quality_matrix_2026-07-04.csv",
+      "content_updated_at": "2026-07-08"
+    },
+    {
+      "slug": "jozankei-suizantei",
+      "name": "조잔케이 다이이치 호텔 스이잔테이",
+      "ja_name": "定山渓第一寶亭留 翠山亭",
+      "display_name_ko": "조잔케이 다이이치 호텔 스이잔테이",
+      "name_ja": "定山渓第一寶亭留 翠山亭",
+      "name_en": null,
+      "aliases_ko": [
+        "조잔케이 다이이치 호텔 스이잔테이"
+      ],
+      "aliases_ja": [
+        "定山渓第一寶亭留 翠山亭"
+      ],
+      "aliases_en": [],
+      "name_verification_status": "verified",
+      "name_source_note": "홋카이도 리컨실리에이션 seed 생성 과정에서 한국어 서비스명을 보정",
+      "region": "jozankei",
+      "area": "홋카이도 · 홋카이도 · 조잔케이",
+      "country": "JP",
+      "region_group": "hokkaido",
+      "prefecture": "hokkaido",
+      "city": "sapporo",
+      "onsen_area": "jozankei",
+      "travel_contexts": [
+        "ryokan_stay"
+      ],
+      "bath_contexts": [
+        "room_bath",
+        "private_bath",
+        "public_bath"
+      ],
+      "water_criteria": [
+        "spring_confirmed",
+        "water_texture"
+      ],
+      "summary": "홋카이도 · 홋카이도 · 조잔케이의 온천 숙소입니다. 직접 읽은 이용 경험 수는 확보했지만, 현재 full 판정 기준에는 일부 항목이 모자랍니다. 객실 타입과 온천 이용 조건을 예약 전에 확인하시기 바랍니다.",
+      "primary_bath": "객실 내 프라이빗탕 중심",
+      "water_use_status": "review_supported",
+      "water_source_type": "hot_spring_confirmed",
+      "bath_scope": "some_rooms",
+      "operation_notes": [
+        "객실 내 프라이빗탕 중심으로 정리했습니다"
+      ],
+      "evidence_counts": {
+        "directReviewCount": 313,
+        "onsenReviewCount": 199,
+        "directBodyPlatformCount": 9,
+        "roomBathMentionCount": 179,
+        "publicBathMentionCount": 68,
+        "privateBathMentionCount": 21,
+        "waterTextureMentionCount": 28,
+        "cautionMentionCount": 60
+      },
+      "evidence_grade": "A",
+      "evidence_note": "직접 읽은 이용 경험 313건, 온천 관련 199건, 본문 확인 플랫폼 9개",
+      "status": "active",
+      "source_file": "research/onsen-candidates/nationwide-2026-07-03/hokkaido_ready_accommodation_quality_matrix_2026-07-04.csv",
+      "content_updated_at": "2026-07-08"
+    },
+    {
+      "slug": "yunokawa-nagisatei",
+      "name": "유노카와 프린스 호텔 나기사테이",
+      "ja_name": "湯の川プリンスホテル渚亭",
+      "display_name_ko": "유노카와 프린스 호텔 나기사테이",
+      "name_ja": "湯の川プリンスホテル渚亭",
+      "name_en": null,
+      "aliases_ko": [
+        "유노카와 프린스 호텔 나기사테이"
+      ],
+      "aliases_ja": [
+        "湯の川プリンスホテル渚亭"
+      ],
+      "aliases_en": [],
+      "name_verification_status": "verified",
+      "name_source_note": "홋카이도 리컨실리에이션 seed 생성 과정에서 한국어 서비스명을 보정",
+      "region": "yunokawa-hakodate",
+      "area": "홋카이도 · 홋카이도 · 유노카와",
+      "country": "JP",
+      "region_group": "hokkaido",
+      "prefecture": "hokkaido",
+      "city": "hakodate",
+      "onsen_area": "yunokawa-hakodate",
+      "travel_contexts": [
+        "ryokan_stay"
+      ],
+      "bath_contexts": [
+        "room_bath",
+        "public_bath"
+      ],
+      "water_criteria": [
+        "spring_confirmed",
+        "water_texture"
+      ],
+      "summary": "홋카이도 · 홋카이도 · 유노카와의 온천 숙소입니다. 객실 노천탕 중심을 기준으로 이용 경험이 반복되며, 객실 타입과 공용탕 운영 조건을 함께 확인하시기 바랍니다.",
+      "primary_bath": "객실 노천탕 중심",
+      "water_use_status": "review_supported",
+      "water_source_type": "hot_spring_confirmed",
+      "bath_scope": "some_rooms",
+      "operation_notes": [
+        "객실 노천탕 중심으로 정리했습니다",
+        "예약 조건과 운영 시간을 함께 확인하시기 바랍니다"
+      ],
+      "evidence_counts": {
+        "directReviewCount": 333,
+        "onsenReviewCount": 251,
+        "directBodyPlatformCount": 7,
+        "roomBathMentionCount": 335,
+        "publicBathMentionCount": 30,
+        "privateBathMentionCount": 0,
+        "waterTextureMentionCount": 74,
+        "cautionMentionCount": 365
+      },
+      "evidence_grade": "A",
+      "evidence_note": "직접 읽은 이용 경험 333건, 온천 관련 251건, 본문 확인 플랫폼 7개",
+      "status": "active",
+      "source_file": "research/onsen-candidates/nationwide-2026-07-03/hokkaido_ready_accommodation_quality_matrix_2026-07-04.csv",
+      "content_updated_at": "2026-07-08"
+    },
+    {
+      "slug": "noboribetsu-daiichi-takimotokan",
+      "name": "다이이치 타키모토칸",
+      "ja_name": "第一滝本館",
+      "display_name_ko": "다이이치 타키모토칸",
+      "name_ja": "第一滝本館",
+      "name_en": null,
+      "aliases_ko": [
+        "다이이치 타키모토칸"
+      ],
+      "aliases_ja": [
+        "第一滝本館"
+      ],
+      "aliases_en": [],
+      "name_verification_status": "verified",
+      "name_source_note": "홋카이도 리컨실리에이션 seed 생성 과정에서 한국어 서비스명을 보정",
+      "region": "noboribetsu",
+      "area": "홋카이도 · 홋카이도 · 노보리베츠",
+      "country": "JP",
+      "region_group": "hokkaido",
+      "prefecture": "hokkaido",
+      "city": "noboribetsu",
+      "onsen_area": "noboribetsu",
+      "travel_contexts": [
+        "ryokan_stay"
+      ],
+      "bath_contexts": [
+        "public_bath"
+      ],
+      "water_criteria": [
+        "spring_confirmed",
+        "water_texture"
+      ],
+      "summary": "홋카이도 · 홋카이도 · 노보리베츠의 온천 숙소입니다. 직접 읽은 이용 경험 수는 확보했지만, 현재 full 판정 기준에는 일부 항목이 모자랍니다. 객실 타입과 온천 이용 조건을 예약 전에 확인하시기 바랍니다.",
+      "primary_bath": "대욕장/공용 온천 중심",
+      "water_use_status": "review_supported",
+      "water_source_type": "hot_spring_confirmed",
+      "bath_scope": "public_bath_only",
+      "operation_notes": [
+        "대욕장/공용 온천 중심으로 정리했습니다"
+      ],
+      "evidence_counts": {
+        "directReviewCount": 300,
+        "onsenReviewCount": 189,
+        "directBodyPlatformCount": 8,
+        "roomBathMentionCount": 0,
+        "publicBathMentionCount": 278,
+        "privateBathMentionCount": 0,
+        "waterTextureMentionCount": 98,
+        "cautionMentionCount": 170
+      },
+      "evidence_grade": "A",
+      "evidence_note": "직접 읽은 이용 경험 300건, 온천 관련 189건, 본문 확인 플랫폼 8개",
+      "status": "active",
+      "source_file": "research/onsen-candidates/nationwide-2026-07-03/hokkaido_ready_accommodation_quality_matrix_2026-07-04.csv",
+      "content_updated_at": "2026-07-08"
+    },
+    {
+      "slug": "noboribetsu-mahoroba",
+      "name": "호텔 마호로바",
+      "ja_name": "ホテルまほろば",
+      "display_name_ko": "호텔 마호로바",
+      "name_ja": "ホテルまほろば",
+      "name_en": null,
+      "aliases_ko": [
+        "호텔 마호로바"
+      ],
+      "aliases_ja": [
+        "ホテルまほろば"
+      ],
+      "aliases_en": [],
+      "name_verification_status": "verified",
+      "name_source_note": "홋카이도 리컨실리에이션 seed 생성 과정에서 한국어 서비스명을 보정",
+      "region": "noboribetsu",
+      "area": "홋카이도 · 홋카이도 · 노보리베츠",
+      "country": "JP",
+      "region_group": "hokkaido",
+      "prefecture": "hokkaido",
+      "city": "noboribetsu",
+      "onsen_area": "noboribetsu",
+      "travel_contexts": [
+        "ryokan_stay"
+      ],
+      "bath_contexts": [
+        "room_bath",
+        "public_bath"
+      ],
+      "water_criteria": [
+        "spring_confirmed",
+        "water_texture"
+      ],
+      "summary": "홋카이도 · 홋카이도 · 노보리베츠의 온천 숙소입니다. 대욕장/공용 온천 중심을 기준으로 이용 경험이 반복되며, 객실 타입과 공용탕 운영 조건을 함께 확인하시기 바랍니다.",
+      "primary_bath": "대욕장/공용 온천 중심",
+      "water_use_status": "review_supported",
+      "water_source_type": "hot_spring_confirmed",
+      "bath_scope": "some_rooms",
+      "operation_notes": [
+        "대욕장/공용 온천 중심으로 정리했습니다"
+      ],
+      "evidence_counts": {
+        "directReviewCount": 330,
+        "onsenReviewCount": 216,
+        "directBodyPlatformCount": 8,
+        "roomBathMentionCount": 29,
+        "publicBathMentionCount": 232,
+        "privateBathMentionCount": 0,
+        "waterTextureMentionCount": 72,
+        "cautionMentionCount": 261
+      },
+      "evidence_grade": "A",
+      "evidence_note": "직접 읽은 이용 경험 330건, 온천 관련 216건, 본문 확인 플랫폼 8개",
+      "status": "active",
+      "source_file": "research/onsen-candidates/nationwide-2026-07-03/hokkaido_ready_accommodation_quality_matrix_2026-07-04.csv",
+      "content_updated_at": "2026-07-08"
+    },
+    {
+      "slug": "noboribetsu-grand",
+      "name": "노보리베츠 그랜드 호텔",
+      "ja_name": "祝いの宿 登別グランドホテル",
+      "display_name_ko": "노보리베츠 그랜드 호텔",
+      "name_ja": "祝いの宿 登別グランドホテル",
+      "name_en": null,
+      "aliases_ko": [
+        "노보리베츠 그랜드 호텔"
+      ],
+      "aliases_ja": [
+        "祝いの宿 登別グランドホテル"
+      ],
+      "aliases_en": [],
+      "name_verification_status": "verified",
+      "name_source_note": "홋카이도 리컨실리에이션 seed 생성 과정에서 한국어 서비스명을 보정",
+      "region": "noboribetsu",
+      "area": "홋카이도 · 홋카이도 · 노보리베츠",
+      "country": "JP",
+      "region_group": "hokkaido",
+      "prefecture": "hokkaido",
+      "city": "noboribetsu",
+      "onsen_area": "noboribetsu",
+      "travel_contexts": [
+        "ryokan_stay"
+      ],
+      "bath_contexts": [
+        "room_bath",
+        "public_bath"
+      ],
+      "water_criteria": [
+        "spring_confirmed",
+        "water_texture"
+      ],
+      "summary": "홋카이도 · 홋카이도 · 노보리베츠의 온천 숙소입니다. 대욕장/공용 온천 중심을 기준으로 이용 경험이 반복되며, 객실 타입과 공용탕 운영 조건을 함께 확인하시기 바랍니다.",
+      "primary_bath": "대욕장/공용 온천 중심",
+      "water_use_status": "review_supported",
+      "water_source_type": "hot_spring_confirmed",
+      "bath_scope": "some_rooms",
+      "operation_notes": [
+        "대욕장/공용 온천 중심으로 정리했습니다",
+        "예약 조건과 운영 시간을 함께 확인하시기 바랍니다"
+      ],
+      "evidence_counts": {
+        "directReviewCount": 324,
+        "onsenReviewCount": 200,
+        "directBodyPlatformCount": 8,
+        "roomBathMentionCount": 34,
+        "publicBathMentionCount": 213,
+        "privateBathMentionCount": 0,
+        "waterTextureMentionCount": 69,
+        "cautionMentionCount": 287
+      },
+      "evidence_grade": "A",
+      "evidence_note": "직접 읽은 이용 경험 324건, 온천 관련 200건, 본문 확인 플랫폼 8개",
+      "status": "active",
+      "source_file": "research/onsen-candidates/nationwide-2026-07-03/hokkaido_ready_accommodation_quality_matrix_2026-07-04.csv",
+      "content_updated_at": "2026-07-08"
+    },
+    {
+      "slug": "noboribetsu-manseikaku",
+      "name": "노보리베츠 만세이카쿠",
+      "ja_name": "登別万世閣",
+      "display_name_ko": "노보리베츠 만세이카쿠",
+      "name_ja": "登別万世閣",
+      "name_en": null,
+      "aliases_ko": [
+        "노보리베츠 만세이카쿠"
+      ],
+      "aliases_ja": [
+        "登別万世閣"
+      ],
+      "aliases_en": [],
+      "name_verification_status": "verified",
+      "name_source_note": "홋카이도 리컨실리에이션 seed 생성 과정에서 한국어 서비스명을 보정",
+      "region": "noboribetsu",
+      "area": "홋카이도 · 홋카이도 · 노보리베츠",
+      "country": "JP",
+      "region_group": "hokkaido",
+      "prefecture": "hokkaido",
+      "city": "noboribetsu",
+      "onsen_area": "noboribetsu",
+      "travel_contexts": [
+        "ryokan_stay"
+      ],
+      "bath_contexts": [
+        "public_bath"
+      ],
+      "water_criteria": [
+        "spring_confirmed",
+        "water_texture"
+      ],
+      "summary": "홋카이도 · 홋카이도 · 노보리베츠의 온천 숙소입니다. 대욕장/공용 온천 중심을 기준으로 이용 경험이 반복되며, 객실 타입과 공용탕 운영 조건을 함께 확인하시기 바랍니다.",
+      "primary_bath": "대욕장/공용 온천 중심",
+      "water_use_status": "review_supported",
+      "water_source_type": "hot_spring_confirmed",
+      "bath_scope": "public_bath_only",
+      "operation_notes": [
+        "대욕장/공용 온천 중심으로 정리했습니다"
+      ],
+      "evidence_counts": {
+        "directReviewCount": 351,
+        "onsenReviewCount": 228,
+        "directBodyPlatformCount": 7,
+        "roomBathMentionCount": 0,
+        "publicBathMentionCount": 238,
+        "privateBathMentionCount": 0,
+        "waterTextureMentionCount": 88,
+        "cautionMentionCount": 340
+      },
+      "evidence_grade": "A",
+      "evidence_note": "직접 읽은 이용 경험 351건, 온천 관련 228건, 본문 확인 플랫폼 7개",
+      "status": "active",
+      "source_file": "research/onsen-candidates/nationwide-2026-07-03/hokkaido_ready_accommodation_quality_matrix_2026-07-04.csv",
+      "content_updated_at": "2026-07-08"
+    },
+    {
+      "slug": "noboribetsu-takinoya",
+      "name": "노보리베츠 타키노야",
+      "ja_name": "登別温泉郷 滝乃家",
+      "display_name_ko": "노보리베츠 타키노야",
+      "name_ja": "登別温泉郷 滝乃家",
+      "name_en": null,
+      "aliases_ko": [
+        "노보리베츠 타키노야"
+      ],
+      "aliases_ja": [
+        "登別温泉郷 滝乃家"
+      ],
+      "aliases_en": [],
+      "name_verification_status": "verified",
+      "name_source_note": "홋카이도 리컨실리에이션 seed 생성 과정에서 한국어 서비스명을 보정",
+      "region": "noboribetsu",
+      "area": "홋카이도 · 홋카이도 · 노보리베츠",
+      "country": "JP",
+      "region_group": "hokkaido",
+      "prefecture": "hokkaido",
+      "city": "noboribetsu",
+      "onsen_area": "noboribetsu",
+      "travel_contexts": [
+        "ryokan_stay"
+      ],
+      "bath_contexts": [
+        "room_bath",
+        "public_bath"
+      ],
+      "water_criteria": [
+        "spring_confirmed",
+        "water_texture"
+      ],
+      "summary": "홋카이도 · 홋카이도 · 노보리베츠의 온천 숙소입니다. 직접 읽은 이용 경험 수는 확보했지만, 현재 full 판정 기준에는 일부 항목이 모자랍니다. 객실 타입과 온천 이용 조건을 예약 전에 확인하시기 바랍니다.",
+      "primary_bath": "객실 내 프라이빗탕 중심",
+      "water_use_status": "review_supported",
+      "water_source_type": "hot_spring_confirmed",
+      "bath_scope": "some_rooms",
+      "operation_notes": [
+        "객실 내 프라이빗탕 중심으로 정리했습니다",
+        "예약 조건과 운영 시간을 함께 확인하시기 바랍니다"
+      ],
+      "evidence_counts": {
+        "directReviewCount": 312,
+        "onsenReviewCount": 184,
+        "directBodyPlatformCount": 4,
+        "roomBathMentionCount": 303,
+        "publicBathMentionCount": 46,
+        "privateBathMentionCount": 0,
+        "waterTextureMentionCount": 62,
+        "cautionMentionCount": 349
+      },
+      "evidence_grade": "A",
+      "evidence_note": "직접 읽은 이용 경험 312건, 온천 관련 184건, 본문 확인 플랫폼 4개",
+      "status": "active",
+      "source_file": "research/onsen-candidates/nationwide-2026-07-03/hokkaido_ready_accommodation_quality_matrix_2026-07-04.csv",
+      "content_updated_at": "2026-07-08"
+    },
+    {
+      "slug": "noboribetsu-hanayura",
+      "name": "료테이 하나유라",
+      "ja_name": "旅亭 花ゆら",
+      "display_name_ko": "료테이 하나유라",
+      "name_ja": "旅亭 花ゆら",
+      "name_en": null,
+      "aliases_ko": [
+        "료테이 하나유라"
+      ],
+      "aliases_ja": [
+        "旅亭 花ゆら"
+      ],
+      "aliases_en": [],
+      "name_verification_status": "verified",
+      "name_source_note": "홋카이도 리컨실리에이션 seed 생성 과정에서 한국어 서비스명을 보정",
+      "region": "noboribetsu",
+      "area": "홋카이도 · 홋카이도 · 노보리베츠",
+      "country": "JP",
+      "region_group": "hokkaido",
+      "prefecture": "hokkaido",
+      "city": "noboribetsu",
+      "onsen_area": "noboribetsu",
+      "travel_contexts": [
+        "ryokan_stay"
+      ],
+      "bath_contexts": [
+        "room_bath",
+        "public_bath"
+      ],
+      "water_criteria": [
+        "spring_confirmed",
+        "water_texture"
+      ],
+      "summary": "홋카이도 · 홋카이도 · 노보리베츠의 온천 숙소입니다. 객실 노천탕 중심을 기준으로 이용 경험이 반복되며, 객실 타입과 공용탕 운영 조건을 함께 확인하시기 바랍니다.",
+      "primary_bath": "객실 노천탕 중심",
+      "water_use_status": "review_supported",
+      "water_source_type": "hot_spring_confirmed",
+      "bath_scope": "some_rooms",
+      "operation_notes": [
+        "객실 노천탕 중심으로 정리했습니다"
+      ],
+      "evidence_counts": {
+        "directReviewCount": 306,
+        "onsenReviewCount": 211,
+        "directBodyPlatformCount": 8,
+        "roomBathMentionCount": 211,
+        "publicBathMentionCount": 95,
+        "privateBathMentionCount": 0,
+        "waterTextureMentionCount": 57,
+        "cautionMentionCount": 49
+      },
+      "evidence_grade": "A",
+      "evidence_note": "직접 읽은 이용 경험 306건, 온천 관련 211건, 본문 확인 플랫폼 8개",
+      "status": "active",
+      "source_file": "research/onsen-candidates/nationwide-2026-07-03/hokkaido_ready_accommodation_quality_matrix_2026-07-04.csv",
+      "content_updated_at": "2026-07-08"
+    },
+    {
+      "slug": "jozankei-chalet-ivy",
+      "name": "샬레 아이비 조잔케이",
+      "ja_name": "シャレーアイビー定山渓",
+      "display_name_ko": "샬레 아이비 조잔케이",
+      "name_ja": "シャレーアイビー定山渓",
+      "name_en": null,
+      "aliases_ko": [
+        "샬레 아이비 조잔케이"
+      ],
+      "aliases_ja": [
+        "シャレーアイビー定山渓"
+      ],
+      "aliases_en": [],
+      "name_verification_status": "verified",
+      "name_source_note": "홋카이도 리컨실리에이션 seed 생성 과정에서 한국어 서비스명을 보정",
+      "region": "jozankei",
+      "area": "홋카이도 · 홋카이도 · 조잔케이",
+      "country": "JP",
+      "region_group": "hokkaido",
+      "prefecture": "hokkaido",
+      "city": "sapporo",
+      "onsen_area": "jozankei",
+      "travel_contexts": [
+        "ryokan_stay"
+      ],
+      "bath_contexts": [
+        "room_bath",
+        "public_bath"
+      ],
+      "water_criteria": [
+        "spring_confirmed",
+        "water_texture"
+      ],
+      "summary": "홋카이도 · 홋카이도 · 조잔케이의 온천 숙소입니다. 직접 읽은 이용 경험 수는 확보했지만, 현재 full 판정 기준에는 일부 항목이 모자랍니다. 객실 타입과 온천 이용 조건을 예약 전에 확인하시기 바랍니다.",
+      "primary_bath": "객실 내 프라이빗탕 중심",
+      "water_use_status": "review_supported",
+      "water_source_type": "hot_spring_confirmed",
+      "bath_scope": "some_rooms",
+      "operation_notes": [
+        "객실 내 프라이빗탕 중심으로 정리했습니다",
+        "예약 조건과 운영 시간을 함께 확인하시기 바랍니다"
+      ],
+      "evidence_counts": {
+        "directReviewCount": 312,
+        "onsenReviewCount": 103,
+        "directBodyPlatformCount": 12,
+        "roomBathMentionCount": 180,
+        "publicBathMentionCount": 32,
+        "privateBathMentionCount": 0,
+        "waterTextureMentionCount": 34,
+        "cautionMentionCount": 54
+      },
+      "evidence_grade": "A",
+      "evidence_note": "직접 읽은 이용 경험 312건, 온천 관련 103건, 본문 확인 플랫폼 12개",
+      "status": "active",
+      "source_file": "research/onsen-candidates/nationwide-2026-07-03/hokkaido_ready_accommodation_quality_matrix_2026-07-04.csv",
+      "content_updated_at": "2026-07-08"
+    },
+    {
+      "slug": "jozankei-grand-blissen",
+      "name": "그랜드 블리센 호텔 조잔케이",
+      "ja_name": "グランドブリッセンホテル定山渓",
+      "display_name_ko": "그랜드 블리센 호텔 조잔케이",
+      "name_ja": "グランドブリッセンホテル定山渓",
+      "name_en": null,
+      "aliases_ko": [
+        "그랜드 블리센 호텔 조잔케이"
+      ],
+      "aliases_ja": [
+        "グランドブリッセンホテル定山渓"
+      ],
+      "aliases_en": [],
+      "name_verification_status": "verified",
+      "name_source_note": "홋카이도 리컨실리에이션 seed 생성 과정에서 한국어 서비스명을 보정",
+      "region": "jozankei",
+      "area": "홋카이도 · 홋카이도 · 조잔케이",
+      "country": "JP",
+      "region_group": "hokkaido",
+      "prefecture": "hokkaido",
+      "city": "sapporo",
+      "onsen_area": "jozankei",
+      "travel_contexts": [
+        "ryokan_stay"
+      ],
+      "bath_contexts": [
+        "room_bath",
+        "public_bath"
+      ],
+      "water_criteria": [
+        "spring_confirmed"
+      ],
+      "summary": "홋카이도 · 홋카이도 · 조잔케이의 온천 숙소입니다. 객실 내 프라이빗탕 중심을 기준으로 이용 경험이 반복되며, 객실 타입과 공용탕 운영 조건을 함께 확인하시기 바랍니다.",
+      "primary_bath": "객실 내 프라이빗탕 중심",
+      "water_use_status": "review_supported",
+      "water_source_type": "hot_spring_confirmed",
+      "bath_scope": "some_rooms",
+      "operation_notes": [
+        "객실 내 프라이빗탕 중심으로 정리했습니다",
+        "예약 조건과 운영 시간을 함께 확인하시기 바랍니다"
+      ],
+      "evidence_counts": {
+        "directReviewCount": 305,
+        "onsenReviewCount": 216,
+        "directBodyPlatformCount": 3,
+        "roomBathMentionCount": 399,
+        "publicBathMentionCount": 75,
+        "privateBathMentionCount": 0,
+        "waterTextureMentionCount": 0,
+        "cautionMentionCount": 474
+      },
+      "evidence_grade": "A",
+      "evidence_note": "직접 읽은 이용 경험 305건, 온천 관련 216건, 본문 확인 플랫폼 3개",
+      "status": "active",
+      "source_file": "research/onsen-candidates/nationwide-2026-07-03/hokkaido_ready_accommodation_quality_matrix_2026-07-04.csv",
+      "content_updated_at": "2026-07-08"
+    },
+    {
+      "slug": "yunokawa-heiseikan-hanatsuki",
+      "name": "헤이세이칸 시오사이테이 별관 하나츠키",
+      "ja_name": "平成館 しおさい亭 別館 花月",
+      "display_name_ko": "헤이세이칸 시오사이테이 별관 하나츠키",
+      "name_ja": "平成館 しおさい亭 別館 花月",
+      "name_en": null,
+      "aliases_ko": [
+        "헤이세이칸 시오사이테이 별관 하나츠키"
+      ],
+      "aliases_ja": [
+        "平成館 しおさい亭 別館 花月"
+      ],
+      "aliases_en": [],
+      "name_verification_status": "verified",
+      "name_source_note": "홋카이도 리컨실리에이션 seed 생성 과정에서 한국어 서비스명을 보정",
+      "region": "yunokawa-hakodate",
+      "area": "홋카이도 · 홋카이도 · 유노카와",
+      "country": "JP",
+      "region_group": "hokkaido",
+      "prefecture": "hokkaido",
+      "city": "hakodate",
+      "onsen_area": "yunokawa-hakodate",
+      "travel_contexts": [
+        "ryokan_stay"
+      ],
+      "bath_contexts": [
+        "room_bath",
+        "public_bath"
+      ],
+      "water_criteria": [
+        "spring_confirmed",
+        "water_texture",
+        "temperature_adjustment"
+      ],
+      "summary": "홋카이도 · 홋카이도 · 유노카와의 온천 숙소입니다. 객실 노천탕 중심을 기준으로 이용 경험이 반복되며, 객실 타입과 공용탕 운영 조건을 함께 확인하시기 바랍니다.",
+      "primary_bath": "객실 노천탕 중심",
+      "water_use_status": "review_supported",
+      "water_source_type": "hot_spring_confirmed",
+      "bath_scope": "some_rooms",
+      "operation_notes": [
+        "객실 노천탕 중심으로 정리했습니다",
+        "수온 체감은 계절과 시간대에 따라 달라질 수 있습니다"
+      ],
+      "evidence_counts": {
+        "directReviewCount": 300,
+        "onsenReviewCount": 246,
+        "directBodyPlatformCount": 6,
+        "roomBathMentionCount": 271,
+        "publicBathMentionCount": 37,
+        "privateBathMentionCount": 0,
+        "waterTextureMentionCount": 31,
+        "cautionMentionCount": 102
+      },
+      "evidence_grade": "A",
+      "evidence_note": "직접 읽은 이용 경험 300건, 온천 관련 246건, 본문 확인 플랫폼 6개",
+      "status": "active",
+      "source_file": "research/onsen-candidates/nationwide-2026-07-03/hokkaido_ready_accommodation_quality_matrix_2026-07-04.csv",
+      "content_updated_at": "2026-07-08"
+    },
+    {
+      "slug": "yunokawa-heiseikan-shiosaitei",
+      "name": "헤이세이칸 시오사이테이",
+      "ja_name": "平成館 しおさい亭",
+      "display_name_ko": "헤이세이칸 시오사이테이",
+      "name_ja": "平成館 しおさい亭",
+      "name_en": null,
+      "aliases_ko": [
+        "헤이세이칸 시오사이테이"
+      ],
+      "aliases_ja": [
+        "平成館 しおさい亭"
+      ],
+      "aliases_en": [],
+      "name_verification_status": "verified",
+      "name_source_note": "홋카이도 리컨실리에이션 seed 생성 과정에서 한국어 서비스명을 보정",
+      "region": "yunokawa-hakodate",
+      "area": "홋카이도 · 홋카이도 · 유노카와",
+      "country": "JP",
+      "region_group": "hokkaido",
+      "prefecture": "hokkaido",
+      "city": "hakodate",
+      "onsen_area": "yunokawa-hakodate",
+      "travel_contexts": [
+        "ryokan_stay"
+      ],
+      "bath_contexts": [
+        "room_bath",
+        "public_bath"
+      ],
+      "water_criteria": [
+        "spring_confirmed",
+        "water_texture"
+      ],
+      "summary": "홋카이도 · 홋카이도 · 유노카와의 온천 숙소입니다. 직접 읽은 이용 경험 수는 확보했지만, 현재 full 판정 기준에는 일부 항목이 모자랍니다. 객실 타입과 온천 이용 조건을 예약 전에 확인하시기 바랍니다.",
+      "primary_bath": "객실 노천탕 중심",
+      "water_use_status": "review_supported",
+      "water_source_type": "hot_spring_confirmed",
+      "bath_scope": "some_rooms",
+      "operation_notes": [
+        "객실 노천탕 중심으로 정리했습니다"
+      ],
+      "evidence_counts": {
+        "directReviewCount": 318,
+        "onsenReviewCount": 199,
+        "directBodyPlatformCount": 6,
+        "roomBathMentionCount": 143,
+        "publicBathMentionCount": 88,
+        "privateBathMentionCount": 0,
+        "waterTextureMentionCount": 61,
+        "cautionMentionCount": 231
+      },
+      "evidence_grade": "A",
+      "evidence_note": "직접 읽은 이용 경험 318건, 온천 관련 199건, 본문 확인 플랫폼 6개",
+      "status": "active",
+      "source_file": "research/onsen-candidates/nationwide-2026-07-03/hokkaido_ready_accommodation_quality_matrix_2026-07-04.csv",
+      "content_updated_at": "2026-07-08"
+    },
+    {
+      "slug": "yunokawa-hanabishi",
+      "name": "하코다테 유노카와 온천 하나비시 호텔",
+      "ja_name": "函館・湯の川温泉 花びしホテル",
+      "display_name_ko": "하코다테 유노카와 온천 하나비시 호텔",
+      "name_ja": "函館・湯の川温泉 花びしホテル",
+      "name_en": null,
+      "aliases_ko": [
+        "하코다테 유노카와 온천 하나비시 호텔"
+      ],
+      "aliases_ja": [
+        "函館・湯の川温泉 花びしホテル"
+      ],
+      "aliases_en": [],
+      "name_verification_status": "verified",
+      "name_source_note": "홋카이도 리컨실리에이션 seed 생성 과정에서 한국어 서비스명을 보정",
+      "region": "yunokawa-hakodate",
+      "area": "홋카이도 · 홋카이도 · 유노카와",
+      "country": "JP",
+      "region_group": "hokkaido",
+      "prefecture": "hokkaido",
+      "city": "hakodate",
+      "onsen_area": "yunokawa-hakodate",
+      "travel_contexts": [
+        "ryokan_stay"
+      ],
+      "bath_contexts": [
+        "room_bath",
+        "public_bath"
+      ],
+      "water_criteria": [
+        "spring_confirmed",
+        "water_texture"
+      ],
+      "summary": "홋카이도 · 홋카이도 · 유노카와의 온천 숙소입니다. 직접 읽은 이용 경험 수는 확보했지만, 현재 full 판정 기준에는 일부 항목이 모자랍니다. 객실 타입과 온천 이용 조건을 예약 전에 확인하시기 바랍니다.",
+      "primary_bath": "대욕장/공용 온천 중심",
+      "water_use_status": "review_supported",
+      "water_source_type": "hot_spring_confirmed",
+      "bath_scope": "some_rooms",
+      "operation_notes": [
+        "대욕장/공용 온천 중심으로 정리했습니다",
+        "예약 조건과 운영 시간을 함께 확인하시기 바랍니다"
+      ],
+      "evidence_counts": {
+        "directReviewCount": 310,
+        "onsenReviewCount": 168,
+        "directBodyPlatformCount": 3,
+        "roomBathMentionCount": 73,
+        "publicBathMentionCount": 105,
+        "privateBathMentionCount": 0,
+        "waterTextureMentionCount": 31,
+        "cautionMentionCount": 233
+      },
+      "evidence_grade": "A",
+      "evidence_note": "직접 읽은 이용 경험 310건, 온천 관련 168건, 본문 확인 플랫폼 3개",
+      "status": "active",
+      "source_file": "research/onsen-candidates/nationwide-2026-07-03/hokkaido_ready_accommodation_quality_matrix_2026-07-04.csv",
+      "content_updated_at": "2026-07-08"
+    }
+  ],
+  "verdicts": [
+    {
+      "target_type": "accommodation",
+      "target_slug": "tokachigawa-seijakubou",
+      "level": "full",
+      "headline": "객실 노천탕 중심 숙소입니다.",
+      "briefing": {
+        "experiences_read": 380,
+        "onsen_related": 300,
+        "platform_count": 8,
+        "platforms": [
+          "자란",
+          "구글 지도",
+          "잇큐",
+          "야후 트래블",
+          "호텔스닷컴",
+          "라쿠텐",
+          "부킹닷컴",
+          "트립닷컴"
+        ]
+      },
+      "items": [
+        {
+          "order": 1,
+          "type": "positive",
+          "headline": "객실 노천탕이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 250,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 8,
+            "direction_counts": {
+              "positive": 250,
+              "mixed": 0,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "객실 노천탕 관련 평가는 플랫폼을 나눠 봐도 안정적으로 반복됩니다. 이 숙소를 고를 때 먼저 확인할 핵심 온천 경험으로 볼 수 있습니다.",
+          "verdict": "객실 노천탕을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "객실 노천탕",
+          "adoption_status": "verdict_basis",
+          "signal_key": "room_bath_hot_spring",
+          "bath_area": "room_open_air_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 2,
+          "type": "positive",
+          "headline": "수질 체감이 선택 기준으로 잡힙니다.",
+          "counts": {
+            "mentions": 210,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 8,
+            "direction_counts": {
+              "positive": 210,
+              "mixed": 0,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "수질 체감 관련 평가는 플랫폼을 나눠 봐도 안정적으로 반복됩니다. 이 숙소를 고를 때 먼저 확인할 핵심 온천 경험으로 볼 수 있습니다.",
+          "verdict": "수질 체감을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "수질 체감",
+          "adoption_status": "verdict_basis",
+          "signal_key": "water_texture",
+          "bath_area": "room_open_air_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 3,
+          "type": "conditional",
+          "headline": "대욕장이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 55,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 6,
+            "direction_counts": {
+              "positive": 0,
+              "mixed": 55,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "대욕장 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "대욕장을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "대욕장",
+          "adoption_status": "verdict_basis",
+          "signal_key": "public_bath_hot_spring",
+          "bath_area": "public_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 4,
+          "type": "positive",
+          "headline": "객실 내 프라이빗탕이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 38,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 6,
+            "direction_counts": {
+              "positive": 38,
+              "mixed": 0,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "객실 내 프라이빗탕 관련 평가는 플랫폼을 나눠 봐도 안정적으로 반복됩니다. 이 숙소를 고를 때 먼저 확인할 핵심 온천 경험으로 볼 수 있습니다.",
+          "verdict": "객실 내 프라이빗탕을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "객실 내 프라이빗탕",
+          "adoption_status": "verdict_basis",
+          "signal_key": "room_bath_hot_spring",
+          "bath_area": "room_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 5,
+          "type": "conditional",
+          "headline": "예약 조건은 미리 분리해 확인해야 합니다.",
+          "counts": {
+            "mentions": 18,
+            "negative": 18,
+            "denominator": "experiences_read",
+            "platform_count": 6,
+            "direction_counts": {
+              "positive": 0,
+              "mixed": 0,
+              "negative": 18,
+              "neutral": 0
+            }
+          },
+          "body": "예약/운영 조건 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "예약 단계에서 객실 타입과 온천 이용 조건을 따로 확인하시기 바랍니다.",
+          "chip_label": "예약/운영 조건",
+          "adoption_status": "verdict_basis",
+          "signal_key": "booking_confusion",
+          "bath_area": "room_open_air_bath",
+          "platforms": [],
+          "season_months": null
+        }
+      ],
+      "fact_statuses": [],
+      "status": "published",
+      "verified_at": "2026-07-08",
+      "source_file": "research/onsen-candidates/nationwide-2026-07-03/hokkaido_ready_accommodation_review_signal_rows_2026-07-03.csv"
+    },
+    {
+      "target_type": "accommodation",
+      "target_slug": "toyako-lake-suite-konosisu",
+      "level": "full",
+      "headline": "객실 노천탕 중심 숙소입니다.",
+      "briefing": {
+        "experiences_read": 308,
+        "onsen_related": 255,
+        "platform_count": 7,
+        "platforms": [
+          "라쿠텐",
+          "구글 지도",
+          "자란",
+          "야후 트래블",
+          "트립닷컴",
+          "잇큐",
+          "호텔스닷컴"
+        ]
+      },
+      "items": [
+        {
+          "order": 1,
+          "type": "conditional",
+          "headline": "객실 노천탕이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 205,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 7,
+            "direction_counts": {
+              "positive": 0,
+              "mixed": 205,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "객실 노천탕 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "객실 노천탕을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "객실 노천탕",
+          "adoption_status": "verdict_basis",
+          "signal_key": "room_bath_hot_spring",
+          "bath_area": "room_open_air_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 2,
+          "type": "positive",
+          "headline": "공용 노천탕이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 102,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 7,
+            "direction_counts": {
+              "positive": 102,
+              "mixed": 0,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "공용 노천탕 관련 평가는 플랫폼을 나눠 봐도 안정적으로 반복됩니다. 이 숙소를 고를 때 먼저 확인할 핵심 온천 경험으로 볼 수 있습니다.",
+          "verdict": "공용 노천탕을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "공용 노천탕",
+          "adoption_status": "verdict_basis",
+          "signal_key": "public_bath_hot_spring",
+          "bath_area": "open_air_public_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 3,
+          "type": "conditional",
+          "headline": "대욕장이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 81,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 7,
+            "direction_counts": {
+              "positive": 0,
+              "mixed": 81,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "대욕장 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "대욕장을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "대욕장",
+          "adoption_status": "verdict_basis",
+          "signal_key": "public_bath_hot_spring",
+          "bath_area": "public_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 4,
+          "type": "conditional",
+          "headline": "예약 조건은 미리 분리해 확인해야 합니다.",
+          "counts": {
+            "mentions": 56,
+            "negative": 56,
+            "denominator": "experiences_read",
+            "platform_count": 7,
+            "direction_counts": {
+              "positive": 0,
+              "mixed": 0,
+              "negative": 56,
+              "neutral": 0
+            }
+          },
+          "body": "예약/운영 조건 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "예약 단계에서 객실 타입과 온천 이용 조건을 따로 확인하시기 바랍니다.",
+          "chip_label": "예약/운영 조건",
+          "adoption_status": "verdict_basis",
+          "signal_key": "booking_confusion",
+          "bath_area": "room_open_air_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 5,
+          "type": "conditional",
+          "headline": "수질 체감이 선택 기준으로 잡힙니다.",
+          "counts": {
+            "mentions": 52,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 7,
+            "direction_counts": {
+              "positive": 0,
+              "mixed": 52,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "수질 체감 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "수질 체감을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "수질 체감",
+          "adoption_status": "verdict_basis",
+          "signal_key": "water_texture",
+          "bath_area": "room_open_air_bath",
+          "platforms": [],
+          "season_months": null
+        }
+      ],
+      "fact_statuses": [],
+      "status": "published",
+      "verified_at": "2026-07-08",
+      "source_file": "research/onsen-candidates/nationwide-2026-07-03/hokkaido_ready_accommodation_review_signal_rows_2026-07-03.csv"
+    },
+    {
+      "target_type": "accommodation",
+      "target_slug": "noboribetsu-bourou-noguchi",
+      "level": "full",
+      "headline": "객실 내 프라이빗탕 중심 숙소입니다.",
+      "briefing": {
+        "experiences_read": 368,
+        "onsen_related": 247,
+        "platform_count": 11,
+        "platforms": [
+          "자란",
+          "잇큐",
+          "야후 트래블",
+          "트립어드바이저",
+          "트립닷컴",
+          "익스피디아",
+          "구글 지도",
+          "라쿠텐",
+          "부킹닷컴",
+          "리럭스",
+          "JTB"
+        ]
+      },
+      "items": [
+        {
+          "order": 1,
+          "type": "positive",
+          "headline": "객실 내 프라이빗탕이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 176,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 11,
+            "direction_counts": {
+              "positive": 176,
+              "mixed": 0,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "객실 내 프라이빗탕 관련 평가는 플랫폼을 나눠 봐도 안정적으로 반복됩니다. 이 숙소를 고를 때 먼저 확인할 핵심 온천 경험으로 볼 수 있습니다.",
+          "verdict": "객실 내 프라이빗탕을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "객실 내 프라이빗탕",
+          "adoption_status": "verdict_basis",
+          "signal_key": "room_bath_hot_spring",
+          "bath_area": "room_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 2,
+          "type": "positive",
+          "headline": "수질 체감이 선택 기준으로 잡힙니다.",
+          "counts": {
+            "mentions": 104,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 10,
+            "direction_counts": {
+              "positive": 104,
+              "mixed": 0,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "수질 체감 관련 평가는 플랫폼을 나눠 봐도 안정적으로 반복됩니다. 이 숙소를 고를 때 먼저 확인할 핵심 온천 경험으로 볼 수 있습니다.",
+          "verdict": "수질 체감을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "수질 체감",
+          "adoption_status": "verdict_basis",
+          "signal_key": "water_texture",
+          "bath_area": "room_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 3,
+          "type": "conditional",
+          "headline": "대욕장이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 70,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 9,
+            "direction_counts": {
+              "positive": 0,
+              "mixed": 70,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "대욕장 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "대욕장을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "대욕장",
+          "adoption_status": "verdict_basis",
+          "signal_key": "public_bath_hot_spring",
+          "bath_area": "public_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 4,
+          "type": "positive",
+          "headline": "수질 체감이 선택 기준으로 잡힙니다.",
+          "counts": {
+            "mentions": 48,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 8,
+            "direction_counts": {
+              "positive": 48,
+              "mixed": 0,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "수질 체감 관련 평가는 플랫폼을 나눠 봐도 안정적으로 반복됩니다. 이 숙소를 고를 때 먼저 확인할 핵심 온천 경험으로 볼 수 있습니다.",
+          "verdict": "수질 체감을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "수질 체감",
+          "adoption_status": "verdict_basis",
+          "signal_key": "water_texture",
+          "bath_area": "public_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 5,
+          "type": "conditional",
+          "headline": "객실 노천탕이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 39,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 7,
+            "direction_counts": {
+              "positive": 0,
+              "mixed": 39,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "객실 노천탕 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "객실 노천탕을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "객실 노천탕",
+          "adoption_status": "verdict_basis",
+          "signal_key": "room_bath_hot_spring",
+          "bath_area": "room_open_air_bath",
+          "platforms": [],
+          "season_months": null
+        }
+      ],
+      "fact_statuses": [],
+      "status": "published",
+      "verified_at": "2026-07-08",
+      "source_file": "research/onsen-candidates/nationwide-2026-07-03/hokkaido_ready_accommodation_review_signal_rows_2026-07-03.csv"
+    },
+    {
+      "target_type": "accommodation",
+      "target_slug": "jozankei-suizantei",
+      "level": "lite",
+      "headline": "객실 내 프라이빗탕 중심 숙소입니다.",
+      "briefing": {
+        "experiences_read": 313,
+        "onsen_related": 199,
+        "platform_count": 9,
+        "platforms": [
+          "라쿠텐",
+          "구글 지도",
+          "자란",
+          "잇큐",
+          "야후 트래블",
+          "트립닷컴",
+          "아고다",
+          "한국어 리뷰"
+        ]
+      },
+      "items": [],
+      "fact_statuses": [],
+      "status": "published",
+      "verified_at": "2026-07-08",
+      "source_file": "research/onsen-candidates/nationwide-2026-07-03/hokkaido_ready_accommodation_review_signal_rows_2026-07-03.csv"
+    },
+    {
+      "target_type": "accommodation",
+      "target_slug": "yunokawa-nagisatei",
+      "level": "full",
+      "headline": "객실 노천탕 중심 숙소입니다.",
+      "briefing": {
+        "experiences_read": 333,
+        "onsen_related": 251,
+        "platform_count": 7,
+        "platforms": [
+          "라쿠텐",
+          "구글 지도",
+          "JTB",
+          "야후 트래블",
+          "트립닷컴",
+          "부킹닷컴",
+          "한국어 리뷰"
+        ]
+      },
+      "items": [
+        {
+          "order": 1,
+          "type": "conditional",
+          "headline": "객실 노천탕이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 198,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 7,
+            "direction_counts": {
+              "positive": 0,
+              "mixed": 198,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "객실 노천탕 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "객실 노천탕을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "객실 노천탕",
+          "adoption_status": "verdict_basis",
+          "signal_key": "room_bath_hot_spring",
+          "bath_area": "room_open_air_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 2,
+          "type": "conditional",
+          "headline": "수질 체감이 선택 기준으로 잡힙니다.",
+          "counts": {
+            "mentions": 74,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 5,
+            "direction_counts": {
+              "positive": 0,
+              "mixed": 74,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "수질 체감 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "수질 체감을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "수질 체감",
+          "adoption_status": "verdict_basis",
+          "signal_key": "water_texture",
+          "bath_area": "room_open_air_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 3,
+          "type": "conditional",
+          "headline": "예약 조건은 미리 분리해 확인해야 합니다.",
+          "counts": {
+            "mentions": 45,
+            "negative": 45,
+            "denominator": "experiences_read",
+            "platform_count": 5,
+            "direction_counts": {
+              "positive": 0,
+              "mixed": 0,
+              "negative": 45,
+              "neutral": 0
+            }
+          },
+          "body": "예약/운영 조건 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "예약 단계에서 객실 타입과 온천 이용 조건을 따로 확인하시기 바랍니다.",
+          "chip_label": "예약/운영 조건",
+          "adoption_status": "verdict_basis",
+          "signal_key": "booking_confusion",
+          "bath_area": "room_open_air_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 4,
+          "type": "conditional",
+          "headline": "대욕장이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 30,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 6,
+            "direction_counts": {
+              "positive": 0,
+              "mixed": 30,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "대욕장 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "대욕장을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "대욕장",
+          "adoption_status": "verdict_basis",
+          "signal_key": "public_bath_hot_spring",
+          "bath_area": "public_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 5,
+          "type": "conditional",
+          "headline": "혼잡은 시간대에 따라 갈립니다.",
+          "counts": {
+            "mentions": 18,
+            "negative": 0,
+            "denominator": "experiences_read",
+            "platform_count": 3,
+            "direction_counts": {
+              "positive": 0,
+              "mixed": 18,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "혼잡 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "조용한 이용을 원하면 시간대와 공용탕 동선을 먼저 확인하시기 바랍니다.",
+          "chip_label": "혼잡",
+          "adoption_status": "verdict_basis",
+          "signal_key": "crowding",
+          "bath_area": "room_open_air_bath",
+          "platforms": [],
+          "season_months": null
+        }
+      ],
+      "fact_statuses": [],
+      "status": "published",
+      "verified_at": "2026-07-08",
+      "source_file": "research/onsen-candidates/nationwide-2026-07-03/hokkaido_ready_accommodation_review_signal_rows_2026-07-03.csv"
+    },
+    {
+      "target_type": "accommodation",
+      "target_slug": "noboribetsu-daiichi-takimotokan",
+      "level": "lite",
+      "headline": "대욕장/공용 온천 중심 숙소입니다.",
+      "briefing": {
+        "experiences_read": 300,
+        "onsen_related": 189,
+        "platform_count": 8,
+        "platforms": [
+          "라쿠텐",
+          "구글 지도",
+          "야후 트래블",
+          "잇큐",
+          "JTB",
+          "자란",
+          "부킹닷컴",
+          "한국어 리뷰"
+        ]
+      },
+      "items": [],
+      "fact_statuses": [],
+      "status": "published",
+      "verified_at": "2026-07-08",
+      "source_file": "research/onsen-candidates/nationwide-2026-07-03/hokkaido_ready_accommodation_review_signal_rows_2026-07-03.csv"
+    },
+    {
+      "target_type": "accommodation",
+      "target_slug": "noboribetsu-mahoroba",
+      "level": "full",
+      "headline": "대욕장/공용 온천 중심 숙소입니다.",
+      "briefing": {
+        "experiences_read": 330,
+        "onsen_related": 216,
+        "platform_count": 8,
+        "platforms": [
+          "라쿠텐",
+          "구글 지도",
+          "야후 트래블",
+          "부킹닷컴",
+          "잇큐",
+          "트립닷컴",
+          "호텔스닷컴",
+          "트립어드바이저"
+        ]
+      },
+      "items": [
+        {
+          "order": 1,
+          "type": "conditional",
+          "headline": "대욕장이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 138,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 8,
+            "direction_counts": {
+              "positive": 0,
+              "mixed": 138,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "대욕장 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "대욕장을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "대욕장",
+          "adoption_status": "verdict_basis",
+          "signal_key": "public_bath_hot_spring",
+          "bath_area": "public_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 2,
+          "type": "conditional",
+          "headline": "수질 체감이 선택 기준으로 잡힙니다.",
+          "counts": {
+            "mentions": 72,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 8,
+            "direction_counts": {
+              "positive": 0,
+              "mixed": 72,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "수질 체감 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "수질 체감을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "수질 체감",
+          "adoption_status": "verdict_basis",
+          "signal_key": "water_texture",
+          "bath_area": "facility_wide",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 3,
+          "type": "conditional",
+          "headline": "혼잡은 시간대에 따라 갈립니다.",
+          "counts": {
+            "mentions": 51,
+            "negative": 0,
+            "denominator": "experiences_read",
+            "platform_count": 6,
+            "direction_counts": {
+              "positive": 0,
+              "mixed": 51,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "혼잡 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "조용한 이용을 원하면 시간대와 공용탕 동선을 먼저 확인하시기 바랍니다.",
+          "chip_label": "혼잡",
+          "adoption_status": "verdict_basis",
+          "signal_key": "crowding",
+          "bath_area": "public_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 4,
+          "type": "positive",
+          "headline": "공용 노천탕이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 43,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 8,
+            "direction_counts": {
+              "positive": 43,
+              "mixed": 0,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "공용 노천탕 관련 평가는 플랫폼을 나눠 봐도 안정적으로 반복됩니다. 이 숙소를 고를 때 먼저 확인할 핵심 온천 경험으로 볼 수 있습니다.",
+          "verdict": "공용 노천탕을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "공용 노천탕",
+          "adoption_status": "verdict_basis",
+          "signal_key": "public_bath_hot_spring",
+          "bath_area": "open_air_public_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 5,
+          "type": "positive",
+          "headline": "객실 노천탕이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 29,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 4,
+            "direction_counts": {
+              "positive": 29,
+              "mixed": 0,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "객실 노천탕 관련 평가는 플랫폼을 나눠 봐도 안정적으로 반복됩니다. 이 숙소를 고를 때 먼저 확인할 핵심 온천 경험으로 볼 수 있습니다.",
+          "verdict": "객실 노천탕을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "객실 노천탕",
+          "adoption_status": "verdict_basis",
+          "signal_key": "room_bath_hot_spring",
+          "bath_area": "room_open_air_bath",
+          "platforms": [],
+          "season_months": null
+        }
+      ],
+      "fact_statuses": [],
+      "status": "published",
+      "verified_at": "2026-07-08",
+      "source_file": "research/onsen-candidates/nationwide-2026-07-03/hokkaido_ready_accommodation_review_signal_rows_2026-07-03.csv"
+    },
+    {
+      "target_type": "accommodation",
+      "target_slug": "noboribetsu-grand",
+      "level": "full",
+      "headline": "대욕장/공용 온천 중심 숙소입니다.",
+      "briefing": {
+        "experiences_read": 324,
+        "onsen_related": 200,
+        "platform_count": 8,
+        "platforms": [
+          "라쿠텐",
+          "부킹닷컴",
+          "야후 트래블",
+          "잇큐",
+          "트립닷컴",
+          "트립어드바이저",
+          "한국어 리뷰",
+          "구글 지도"
+        ]
+      },
+      "items": [
+        {
+          "order": 1,
+          "type": "conditional",
+          "headline": "대욕장이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 157,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 8,
+            "direction_counts": {
+              "positive": 0,
+              "mixed": 157,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "대욕장 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "대욕장을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "대욕장",
+          "adoption_status": "verdict_basis",
+          "signal_key": "public_bath_hot_spring",
+          "bath_area": "public_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 2,
+          "type": "conditional",
+          "headline": "수질 체감이 선택 기준으로 잡힙니다.",
+          "counts": {
+            "mentions": 69,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 8,
+            "direction_counts": {
+              "positive": 0,
+              "mixed": 69,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "수질 체감 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "수질 체감을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "수질 체감",
+          "adoption_status": "verdict_basis",
+          "signal_key": "water_texture",
+          "bath_area": "facility_wide",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 3,
+          "type": "conditional",
+          "headline": "예약 조건은 미리 분리해 확인해야 합니다.",
+          "counts": {
+            "mentions": 34,
+            "negative": 34,
+            "denominator": "experiences_read",
+            "platform_count": 4,
+            "direction_counts": {
+              "positive": 0,
+              "mixed": 0,
+              "negative": 34,
+              "neutral": 0
+            }
+          },
+          "body": "예약/운영 조건 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "예약 단계에서 객실 타입과 온천 이용 조건을 따로 확인하시기 바랍니다.",
+          "chip_label": "예약/운영 조건",
+          "adoption_status": "verdict_basis",
+          "signal_key": "booking_confusion",
+          "bath_area": "room_open_air_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 4,
+          "type": "positive",
+          "headline": "공용 노천탕이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 29,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 7,
+            "direction_counts": {
+              "positive": 29,
+              "mixed": 0,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "공용 노천탕 관련 평가는 플랫폼을 나눠 봐도 안정적으로 반복됩니다. 이 숙소를 고를 때 먼저 확인할 핵심 온천 경험으로 볼 수 있습니다.",
+          "verdict": "공용 노천탕을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "공용 노천탕",
+          "adoption_status": "verdict_basis",
+          "signal_key": "public_bath_hot_spring",
+          "bath_area": "open_air_public_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 5,
+          "type": "conditional",
+          "headline": "혼잡은 시간대에 따라 갈립니다.",
+          "counts": {
+            "mentions": 27,
+            "negative": 0,
+            "denominator": "experiences_read",
+            "platform_count": 6,
+            "direction_counts": {
+              "positive": 0,
+              "mixed": 27,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "혼잡 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "조용한 이용을 원하면 시간대와 공용탕 동선을 먼저 확인하시기 바랍니다.",
+          "chip_label": "혼잡",
+          "adoption_status": "verdict_basis",
+          "signal_key": "crowding",
+          "bath_area": "public_bath",
+          "platforms": [],
+          "season_months": null
+        }
+      ],
+      "fact_statuses": [],
+      "status": "published",
+      "verified_at": "2026-07-08",
+      "source_file": "research/onsen-candidates/nationwide-2026-07-03/hokkaido_ready_accommodation_review_signal_rows_2026-07-03.csv"
+    },
+    {
+      "target_type": "accommodation",
+      "target_slug": "noboribetsu-manseikaku",
+      "level": "full",
+      "headline": "대욕장/공용 온천 중심 숙소입니다.",
+      "briefing": {
+        "experiences_read": 351,
+        "onsen_related": 228,
+        "platform_count": 7,
+        "platforms": [
+          "라쿠텐",
+          "구글 지도",
+          "부킹닷컴",
+          "야후 트래블",
+          "자란",
+          "트립닷컴",
+          "한국어 리뷰"
+        ]
+      },
+      "items": [
+        {
+          "order": 1,
+          "type": "conditional",
+          "headline": "대욕장이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 148,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 7,
+            "direction_counts": {
+              "positive": 0,
+              "mixed": 148,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "대욕장 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "대욕장을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "대욕장",
+          "adoption_status": "verdict_basis",
+          "signal_key": "public_bath_hot_spring",
+          "bath_area": "public_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 2,
+          "type": "conditional",
+          "headline": "수질 체감이 선택 기준으로 잡힙니다.",
+          "counts": {
+            "mentions": 88,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 7,
+            "direction_counts": {
+              "positive": 0,
+              "mixed": 88,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "수질 체감 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "수질 체감을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "수질 체감",
+          "adoption_status": "verdict_basis",
+          "signal_key": "water_texture",
+          "bath_area": "facility_wide",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 3,
+          "type": "conditional",
+          "headline": "공용 노천탕이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 47,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 6,
+            "direction_counts": {
+              "positive": 0,
+              "mixed": 47,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "공용 노천탕 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "공용 노천탕을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "공용 노천탕",
+          "adoption_status": "verdict_basis",
+          "signal_key": "public_bath_hot_spring",
+          "bath_area": "open_air_public_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 4,
+          "type": "conditional",
+          "headline": "혼잡은 시간대에 따라 갈립니다.",
+          "counts": {
+            "mentions": 43,
+            "negative": 0,
+            "denominator": "experiences_read",
+            "platform_count": 5,
+            "direction_counts": {
+              "positive": 0,
+              "mixed": 43,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "혼잡 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "조용한 이용을 원하면 시간대와 공용탕 동선을 먼저 확인하시기 바랍니다.",
+          "chip_label": "혼잡",
+          "adoption_status": "verdict_basis",
+          "signal_key": "crowding",
+          "bath_area": "public_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 5,
+          "type": "conditional",
+          "headline": "온천감 약함은 조건부로 확인해야 합니다.",
+          "counts": {
+            "mentions": 14,
+            "negative": 14,
+            "denominator": "onsen_related",
+            "platform_count": 4,
+            "direction_counts": {
+              "positive": 0,
+              "mixed": 0,
+              "negative": 14,
+              "neutral": 0
+            }
+          },
+          "body": "온천감 약함 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "진한 온천감이 최우선이라면 다른 후보와 함께 비교하시기 바랍니다.",
+          "chip_label": "온천감 약함",
+          "adoption_status": "verdict_basis",
+          "signal_key": "weak_onsen_feeling",
+          "bath_area": "facility_wide",
+          "platforms": [],
+          "season_months": null
+        }
+      ],
+      "fact_statuses": [],
+      "status": "published",
+      "verified_at": "2026-07-08",
+      "source_file": "research/onsen-candidates/nationwide-2026-07-03/hokkaido_ready_accommodation_review_signal_rows_2026-07-03.csv"
+    },
+    {
+      "target_type": "accommodation",
+      "target_slug": "noboribetsu-takinoya",
+      "level": "lite",
+      "headline": "객실 내 프라이빗탕 중심 숙소입니다.",
+      "briefing": {
+        "experiences_read": 312,
+        "onsen_related": 184,
+        "platform_count": 4,
+        "platforms": [
+          "자란",
+          "라쿠텐",
+          "구글 지도",
+          "잇큐"
+        ]
+      },
+      "items": [],
+      "fact_statuses": [],
+      "status": "published",
+      "verified_at": "2026-07-08",
+      "source_file": "research/onsen-candidates/nationwide-2026-07-03/hokkaido_ready_accommodation_review_signal_rows_2026-07-03.csv"
+    },
+    {
+      "target_type": "accommodation",
+      "target_slug": "noboribetsu-hanayura",
+      "level": "full",
+      "headline": "객실 노천탕 중심 숙소입니다.",
+      "briefing": {
+        "experiences_read": 306,
+        "onsen_related": 211,
+        "platform_count": 8,
+        "platforms": [
+          "자란",
+          "라쿠텐",
+          "구글 지도",
+          "잇큐",
+          "JTB",
+          "리럭스",
+          "야후 트래블",
+          "트립어드바이저"
+        ]
+      },
+      "items": [
+        {
+          "order": 1,
+          "type": "positive",
+          "headline": "객실 노천탕이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 151,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 8,
+            "direction_counts": {
+              "positive": 151,
+              "mixed": 0,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "객실 노천탕 관련 평가는 플랫폼을 나눠 봐도 안정적으로 반복됩니다. 이 숙소를 고를 때 먼저 확인할 핵심 온천 경험으로 볼 수 있습니다.",
+          "verdict": "객실 노천탕을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "객실 노천탕",
+          "adoption_status": "verdict_basis",
+          "signal_key": "room_bath_hot_spring",
+          "bath_area": "room_open_air_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 2,
+          "type": "positive",
+          "headline": "객실 내 프라이빗탕이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 60,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 8,
+            "direction_counts": {
+              "positive": 60,
+              "mixed": 0,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "객실 내 프라이빗탕 관련 평가는 플랫폼을 나눠 봐도 안정적으로 반복됩니다. 이 숙소를 고를 때 먼저 확인할 핵심 온천 경험으로 볼 수 있습니다.",
+          "verdict": "객실 내 프라이빗탕을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "객실 내 프라이빗탕",
+          "adoption_status": "verdict_basis",
+          "signal_key": "room_bath_hot_spring",
+          "bath_area": "room_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 3,
+          "type": "positive",
+          "headline": "수질 체감이 선택 기준으로 잡힙니다.",
+          "counts": {
+            "mentions": 57,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 8,
+            "direction_counts": {
+              "positive": 57,
+              "mixed": 0,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "수질 체감 관련 평가는 플랫폼을 나눠 봐도 안정적으로 반복됩니다. 이 숙소를 고를 때 먼저 확인할 핵심 온천 경험으로 볼 수 있습니다.",
+          "verdict": "수질 체감을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "수질 체감",
+          "adoption_status": "verdict_basis",
+          "signal_key": "water_texture",
+          "bath_area": "facility_wide",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 4,
+          "type": "conditional",
+          "headline": "대욕장이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 49,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 8,
+            "direction_counts": {
+              "positive": 0,
+              "mixed": 49,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "대욕장 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "대욕장을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "대욕장",
+          "adoption_status": "verdict_basis",
+          "signal_key": "public_bath_hot_spring",
+          "bath_area": "public_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 5,
+          "type": "positive",
+          "headline": "공용 노천탕이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 46,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 7,
+            "direction_counts": {
+              "positive": 46,
+              "mixed": 0,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "공용 노천탕 관련 평가는 플랫폼을 나눠 봐도 안정적으로 반복됩니다. 이 숙소를 고를 때 먼저 확인할 핵심 온천 경험으로 볼 수 있습니다.",
+          "verdict": "공용 노천탕을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "공용 노천탕",
+          "adoption_status": "verdict_basis",
+          "signal_key": "public_bath_hot_spring",
+          "bath_area": "open_air_public_bath",
+          "platforms": [],
+          "season_months": null
+        }
+      ],
+      "fact_statuses": [],
+      "status": "published",
+      "verified_at": "2026-07-08",
+      "source_file": "research/onsen-candidates/nationwide-2026-07-03/hokkaido_ready_accommodation_review_signal_rows_2026-07-03.csv"
+    },
+    {
+      "target_type": "accommodation",
+      "target_slug": "jozankei-chalet-ivy",
+      "level": "lite",
+      "headline": "객실 내 프라이빗탕 중심 숙소입니다.",
+      "briefing": {
+        "experiences_read": 312,
+        "onsen_related": 103,
+        "platform_count": 12,
+        "platforms": [
+          "라쿠텐",
+          "잇큐",
+          "야후 트래블",
+          "부킹닷컴",
+          "트립닷컴",
+          "익스피디아",
+          "호텔스닷컴",
+          "자란",
+          "JTB",
+          "구글 지도",
+          "트립어드바이저",
+          "리럭스"
+        ]
+      },
+      "items": [],
+      "fact_statuses": [],
+      "status": "published",
+      "verified_at": "2026-07-08",
+      "source_file": "research/onsen-candidates/nationwide-2026-07-03/hokkaido_ready_accommodation_review_signal_rows_2026-07-03.csv"
+    },
+    {
+      "target_type": "accommodation",
+      "target_slug": "jozankei-grand-blissen",
+      "level": "full",
+      "headline": "객실 내 프라이빗탕 중심 숙소입니다.",
+      "briefing": {
+        "experiences_read": 305,
+        "onsen_related": 216,
+        "platform_count": 3,
+        "platforms": [
+          "자란",
+          "라쿠텐",
+          "야후 트래블"
+        ]
+      },
+      "items": [
+        {
+          "order": 1,
+          "type": "conditional",
+          "headline": "객실 내 프라이빗탕이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 216,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 3,
+            "direction_counts": {
+              "positive": 0,
+              "mixed": 216,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "객실 내 프라이빗탕 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "객실 내 프라이빗탕을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "객실 내 프라이빗탕",
+          "adoption_status": "verdict_basis",
+          "signal_key": "room_bath_hot_spring",
+          "bath_area": "room_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 2,
+          "type": "conditional",
+          "headline": "객실 노천탕이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 95,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 3,
+            "direction_counts": {
+              "positive": 0,
+              "mixed": 95,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "객실 노천탕 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "객실 노천탕을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "객실 노천탕",
+          "adoption_status": "verdict_basis",
+          "signal_key": "room_bath_hot_spring",
+          "bath_area": "room_open_air_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 3,
+          "type": "conditional",
+          "headline": "예약 조건은 미리 분리해 확인해야 합니다.",
+          "counts": {
+            "mentions": 88,
+            "negative": 88,
+            "denominator": "experiences_read",
+            "platform_count": 3,
+            "direction_counts": {
+              "positive": 0,
+              "mixed": 0,
+              "negative": 88,
+              "neutral": 0
+            }
+          },
+          "body": "예약/운영 조건 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "예약 단계에서 객실 타입과 온천 이용 조건을 따로 확인하시기 바랍니다.",
+          "chip_label": "예약/운영 조건",
+          "adoption_status": "verdict_basis",
+          "signal_key": "booking_confusion",
+          "bath_area": "room_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 4,
+          "type": "conditional",
+          "headline": "대욕장이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 43,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 3,
+            "direction_counts": {
+              "positive": 0,
+              "mixed": 43,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "대욕장 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "대욕장을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "대욕장",
+          "adoption_status": "verdict_basis",
+          "signal_key": "public_bath_hot_spring",
+          "bath_area": "public_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 5,
+          "type": "conditional",
+          "headline": "혼잡은 시간대에 따라 갈립니다.",
+          "counts": {
+            "mentions": 32,
+            "negative": 32,
+            "denominator": "experiences_read",
+            "platform_count": 3,
+            "direction_counts": {
+              "positive": 0,
+              "mixed": 0,
+              "negative": 32,
+              "neutral": 0
+            }
+          },
+          "body": "혼잡 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "조용한 이용을 원하면 시간대와 공용탕 동선을 먼저 확인하시기 바랍니다.",
+          "chip_label": "혼잡",
+          "adoption_status": "verdict_basis",
+          "signal_key": "crowding",
+          "bath_area": "public_bath",
+          "platforms": [],
+          "season_months": null
+        }
+      ],
+      "fact_statuses": [],
+      "status": "published",
+      "verified_at": "2026-07-08",
+      "source_file": "research/onsen-candidates/nationwide-2026-07-03/hokkaido_ready_accommodation_review_signal_rows_2026-07-03.csv"
+    },
+    {
+      "target_type": "accommodation",
+      "target_slug": "yunokawa-heiseikan-hanatsuki",
+      "level": "full",
+      "headline": "객실 노천탕 중심 숙소입니다.",
+      "briefing": {
+        "experiences_read": 300,
+        "onsen_related": 246,
+        "platform_count": 6,
+        "platforms": [
+          "자란",
+          "라쿠텐",
+          "부킹닷컴",
+          "트립닷컴",
+          "잇큐",
+          "야후 트래블"
+        ]
+      },
+      "items": [
+        {
+          "order": 1,
+          "type": "positive",
+          "headline": "객실 노천탕이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 206,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 6,
+            "direction_counts": {
+              "positive": 206,
+              "mixed": 0,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "객실 노천탕 관련 평가는 플랫폼을 나눠 봐도 안정적으로 반복됩니다. 이 숙소를 고를 때 먼저 확인할 핵심 온천 경험으로 볼 수 있습니다.",
+          "verdict": "객실 노천탕을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "객실 노천탕",
+          "adoption_status": "verdict_basis",
+          "signal_key": "room_bath_hot_spring",
+          "bath_area": "room_open_air_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 2,
+          "type": "conditional",
+          "headline": "대욕장이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 37,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 5,
+            "direction_counts": {
+              "positive": 0,
+              "mixed": 37,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "대욕장 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "대욕장을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "대욕장",
+          "adoption_status": "verdict_basis",
+          "signal_key": "public_bath_hot_spring",
+          "bath_area": "public_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 3,
+          "type": "conditional",
+          "headline": "수온은 이용 조건에 따라 체감이 갈립니다.",
+          "counts": {
+            "mentions": 34,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 5,
+            "direction_counts": {
+              "positive": 0,
+              "mixed": 34,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "수온 조절 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "겨울이나 야간 이용이 중요하다면 수온 조절 조건을 먼저 확인하시기 바랍니다.",
+          "chip_label": "수온 조절",
+          "adoption_status": "verdict_basis",
+          "signal_key": "temperature_control",
+          "bath_area": "room_open_air_bath",
+          "platforms": [],
+          "season_months": [
+            11,
+            12,
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "order": 4,
+          "type": "conditional",
+          "headline": "수질 체감이 선택 기준으로 잡힙니다.",
+          "counts": {
+            "mentions": 31,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 6,
+            "direction_counts": {
+              "positive": 0,
+              "mixed": 31,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "수질 체감 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "수질 체감을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "수질 체감",
+          "adoption_status": "verdict_basis",
+          "signal_key": "water_texture",
+          "bath_area": "room_open_air_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 5,
+          "type": "minor",
+          "headline": "온천 이용이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 17,
+            "negative": 17,
+            "denominator": "onsen_related",
+            "platform_count": 3,
+            "direction_counts": {
+              "positive": 0,
+              "mixed": 0,
+              "negative": 17,
+              "neutral": 0
+            }
+          },
+          "body": "온천 이용은 중심 경험은 아니지만 선택 전에 함께 볼 만한 항목입니다. 다른 핵심 욕장 경험과 나란히 비교하면 숙소의 성격이 더 분명해집니다.",
+          "verdict": "온천 이용을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "온천 이용",
+          "adoption_status": "verdict_basis",
+          "signal_key": "aged_facility",
+          "bath_area": "facility_wide",
+          "platforms": [],
+          "season_months": null
+        }
+      ],
+      "fact_statuses": [],
+      "status": "published",
+      "verified_at": "2026-07-08",
+      "source_file": "research/onsen-candidates/nationwide-2026-07-03/hokkaido_ready_accommodation_review_signal_rows_2026-07-03.csv"
+    },
+    {
+      "target_type": "accommodation",
+      "target_slug": "yunokawa-heiseikan-shiosaitei",
+      "level": "lite",
+      "headline": "객실 노천탕 중심 숙소입니다.",
+      "briefing": {
+        "experiences_read": 318,
+        "onsen_related": 199,
+        "platform_count": 6,
+        "platforms": [
+          "라쿠텐",
+          "구글 지도",
+          "자란",
+          "야후 트래블",
+          "부킹닷컴",
+          "트립닷컴"
+        ]
+      },
+      "items": [],
+      "fact_statuses": [],
+      "status": "published",
+      "verified_at": "2026-07-08",
+      "source_file": "research/onsen-candidates/nationwide-2026-07-03/hokkaido_ready_accommodation_review_signal_rows_2026-07-03.csv"
+    },
+    {
+      "target_type": "accommodation",
+      "target_slug": "yunokawa-hanabishi",
+      "level": "lite",
+      "headline": "대욕장/공용 온천 중심 숙소입니다.",
+      "briefing": {
+        "experiences_read": 310,
+        "onsen_related": 168,
+        "platform_count": 3,
+        "platforms": [
+          "자란",
+          "라쿠텐",
+          "잇큐"
+        ]
+      },
+      "items": [],
+      "fact_statuses": [],
+      "status": "published",
+      "verified_at": "2026-07-08",
+      "source_file": "research/onsen-candidates/nationwide-2026-07-03/hokkaido_ready_accommodation_review_signal_rows_2026-07-03.csv"
+    }
+  ]
+}

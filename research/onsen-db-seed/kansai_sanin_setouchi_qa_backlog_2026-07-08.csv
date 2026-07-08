@@ -1,0 +1,41 @@
+slug,qa_status,grade_verified,direct_review_count,onsen_related_count,platform_count,seed_status,backlog_bucket,reason,next_action
+arima-gekkoen-korokan,candidate_only,D,,,,not_seeded,딥리서치 대기,딥리서치 폴더 없음; 직접 리뷰 수 미확정; 직접 본문 플랫폼 수 미확정,"ready 딥리서치 대상 여부를 먼저 결정하고, 직접 본문 300건 목표로 조사합니다."
+arima-goshobessho,candidate_only,D,,,,not_seeded,딥리서치 대기,딥리서치 폴더 없음; 직접 리뷰 수 미확정; 직접 본문 플랫폼 수 미확정,"ready 딥리서치 대상 여부를 먼저 결정하고, 직접 본문 300건 목표로 조사합니다."
+arima-goshoboh,candidate_only,D,,,,not_seeded,딥리서치 대기,딥리서치 폴더 없음; 직접 리뷰 수 미확정; 직접 본문 플랫폼 수 미확정,"ready 딥리서치 대상 여부를 먼저 결정하고, 직접 본문 300건 목표로 조사합니다."
+arima-grand-hotel,ready_for_db,A,402,189,5,seeded_lite,2차 표본 보강,full 표본 기준 미달,"직접 0건, 온천 관련 11건 이상 보강 여부를 확인합니다."
+arima-hanamusubi,ready_for_db,A,548,306,5,seeded_lite,3차 상세 signal row 복원,상세 signal row 없음,원천 sample index 또는 숙소별 상세 signal row를 복원한 뒤 full/lite를 다시 판정합니다.
+arima-hatago,candidate_only,D,,,,not_seeded,딥리서치 대기,딥리서치 폴더 없음; 직접 리뷰 수 미확정; 직접 본문 플랫폼 수 미확정,"ready 딥리서치 대상 여부를 먼저 결정하고, 직접 본문 300건 목표로 조사합니다."
+arima-kinzan,candidate_only,D,,,,not_seeded,딥리서치 대기,딥리서치 폴더 없음; 직접 리뷰 수 미확정; 직접 본문 플랫폼 수 미확정,"ready 딥리서치 대상 여부를 먼저 결정하고, 직접 본문 300건 목표로 조사합니다."
+arima-kosenkaku,candidate_only,D,,,,not_seeded,딥리서치 대기,딥리서치 폴더 없음; 직접 리뷰 수 미확정; 직접 본문 플랫폼 수 미확정,"ready 딥리서치 대상 여부를 먼저 결정하고, 직접 본문 300건 목표로 조사합니다."
+arima-maruyama,needs_research_reinforcement,D,,,,not_seeded,재조사 필요,manifest/summary/platform_mapping 세트 미완성; 직접 리뷰 수 미확정; 직접 본문 플랫폼 수 미확정; bath axis 분리 산출 확인 필요,"manifest, summary, platform mapping, aggregate 세트를 먼저 완성합니다."
+arima-okuno-hosomichi,candidate_only,D,,,,not_seeded,딥리서치 대기,딥리서치 폴더 없음; 직접 리뷰 수 미확정; 직접 본문 플랫폼 수 미확정,"ready 딥리서치 대상 여부를 먼저 결정하고, 직접 본문 300건 목표로 조사합니다."
+arima-shisui,candidate_only,D,,,,not_seeded,딥리서치 대기,딥리서치 폴더 없음; 직접 리뷰 수 미확정; 직접 본문 플랫폼 수 미확정,"ready 딥리서치 대상 여부를 먼저 결정하고, 직접 본문 300건 목표로 조사합니다."
+kinosaki-kawaguchiya-riverside,candidate_only,D,,,,not_seeded,딥리서치 대기,딥리서치 폴더 없음; 직접 리뷰 수 미확정; 직접 본문 플랫폼 수 미확정,"ready 딥리서치 대상 여부를 먼저 결정하고, 직접 본문 300건 목표로 조사합니다."
+kinosaki-mikiya,candidate_only,D,,,,not_seeded,딥리서치 대기,딥리서치 폴더 없음; 직접 리뷰 수 미확정; 직접 본문 플랫폼 수 미확정,"ready 딥리서치 대상 여부를 먼저 결정하고, 직접 본문 300건 목표로 조사합니다."
+kinosaki-nishimuraya-honkan,candidate_only,D,,,,not_seeded,딥리서치 대기,딥리서치 폴더 없음; 직접 리뷰 수 미확정; 직접 본문 플랫폼 수 미확정,"ready 딥리서치 대상 여부를 먼저 결정하고, 직접 본문 300건 목표로 조사합니다."
+kinosaki-nishimuraya-shogetsutei,ready_for_db,A,321,184,7,seeded_lite,2차 표본 보강,full 표본 기준 미달,"직접 0건, 온천 관련 16건 이상 보강 여부를 확인합니다."
+kinosaki-ryokufukaku,candidate_only,D,,,,not_seeded,딥리서치 대기,딥리서치 폴더 없음; 직접 리뷰 수 미확정; 직접 본문 플랫폼 수 미확정,"ready 딥리서치 대상 여부를 먼저 결정하고, 직접 본문 300건 목표로 조사합니다."
+shirahama-kachofugetsu,near_ready_b,B,545,285,4,not_seeded,2차 보강 후보,snippet_only 분리 확인; 300건 이상이나 한국어/플랫폼 층화 gap으로 B 유지,한국어/저평점/추가 플랫폼 gap을 보강하고 QA 상태를 ready_for_db로 재판정합니다.
+shirahama-kaishu,ready_for_db,A,411,331,5,seeded_lite,3차 상세 signal row 복원,상세 signal row 없음,원천 sample index 또는 숙소별 상세 signal row를 복원한 뒤 full/lite를 다시 판정합니다.
+shirahama-kawakyu,ready_for_db,A,588,149,5,seeded_lite,2차 표본 보강,full 표본 기준 미달,"직접 0건, 온천 관련 51건 이상 보강 여부를 확인합니다."
+shirahama-key-terrace,ready_for_db,A,387,199,4,seeded_lite,2차 표본 보강,full 표본 기준 미달,"직접 0건, 온천 관련 1건 이상 보강 여부를 확인합니다."
+shirahama-sanrakuso,ready_for_db,A,535,326,3,seeded_lite,3차 상세 signal row 복원,상세 signal row 없음,원천 sample index 또는 숙소별 상세 signal row를 복원한 뒤 full/lite를 다시 판정합니다.
+shirahama-xyz-speciale,near_ready_b,B,251,174,8,not_seeded,2차 보강 후보,snippet_only 분리 확인; A까지 직접 리뷰 49건 이상 추가 필요,한국어/저평점/추가 플랫폼 gap을 보강하고 QA 상태를 ready_for_db로 재판정합니다.
+shirahama-yanagiya,ready_for_db,A,317,195,7,seeded_lite,2차 표본 보강,full 표본 기준 미달,"직접 0건, 온천 관련 5건 이상 보강 여부를 확인합니다."
+toba-toba-kokusai,candidate_only,D,,,,not_seeded,딥리서치 대기,딥리서치 폴더 없음; 직접 리뷰 수 미확정; 직접 본문 플랫폼 수 미확정,"ready 딥리서치 대상 여부를 먼저 결정하고, 직접 본문 300건 목표로 조사합니다."
+toba-todaya,ready_for_db,A,679,274,5,seeded_lite,3차 상세 signal row 복원,상세 signal row 없음,원천 sample index 또는 숙소별 상세 signal row를 복원한 뒤 full/lite를 다시 판정합니다.
+kaike-kasuitei,candidate_only,D,,,,not_seeded,딥리서치 대기,딥리서치 폴더 없음; 직접 리뷰 수 미확정; 직접 본문 플랫폼 수 미확정,"ready 딥리서치 대상 여부를 먼저 결정하고, 직접 본문 300건 목표로 조사합니다."
+kaike-shiontei,candidate_only,D,,,,not_seeded,딥리서치 대기,딥리서치 폴더 없음; 직접 리뷰 수 미확정; 직접 본문 플랫폼 수 미확정,"ready 딥리서치 대상 여부를 먼저 결정하고, 직접 본문 300건 목표로 조사합니다."
+kaike-yugetsu,ready_for_db,A,542,290,5,seeded_lite,3차 상세 signal row 복원,상세 signal row 없음,원천 sample index 또는 숙소별 상세 signal row를 복원한 뒤 full/lite를 다시 판정합니다.
+kaike-yurari,candidate_only,D,,,,not_seeded,딥리서치 대기,딥리서치 폴더 없음; 직접 리뷰 수 미확정; 직접 본문 플랫폼 수 미확정,"ready 딥리서치 대상 여부를 먼저 결정하고, 직접 본문 300건 목표로 조사합니다."
+misasa-saiki-bekkan,candidate_only,D,,,,not_seeded,딥리서치 대기,딥리서치 폴더 없음; 직접 리뷰 수 미확정; 직접 본문 플랫폼 수 미확정,"ready 딥리서치 대상 여부를 먼저 결정하고, 직접 본문 300건 목표로 조사합니다."
+tamatsukuri-yunosuke,ready_for_db,A,599,336,5,seeded_lite,3차 상세 signal row 복원,상세 signal row 없음,원천 sample index 또는 숙소별 상세 signal row를 복원한 뒤 full/lite를 다시 판정합니다.
+yubara-aburaya,candidate_only,D,,,,not_seeded,딥리서치 대기,딥리서치 폴더 없음; 직접 리뷰 수 미확정; 직접 본문 플랫폼 수 미확정,"ready 딥리서치 대상 여부를 먼저 결정하고, 직접 본문 300건 목표로 조사합니다."
+yuda-kamefuku,candidate_only,D,,,,not_seeded,딥리서치 대기,딥리서치 폴더 없음; 직접 리뷰 수 미확정; 직접 본문 플랫폼 수 미확정,"ready 딥리서치 대상 여부를 먼저 결정하고, 직접 본문 300건 목표로 조사합니다."
+yuda-matsudaya,candidate_only,D,,,,not_seeded,딥리서치 대기,딥리서치 폴더 없음; 직접 리뷰 수 미확정; 직접 본문 플랫폼 수 미확정,"ready 딥리서치 대상 여부를 먼저 결정하고, 직접 본문 300건 목표로 조사합니다."
+dogo-dogokan,candidate_only,D,,,,not_seeded,딥리서치 대기,딥리서치 폴더 없음; 직접 리뷰 수 미확정; 직접 본문 플랫폼 수 미확정,"ready 딥리서치 대상 여부를 먼저 결정하고, 직접 본문 300건 목표로 조사합니다."
+dogo-kotononiwa,near_ready_b,B,271,197,12,not_seeded,2차 보강 후보,snippet_only 분리 확인; A까지 직접 리뷰 29건 이상 추가 필요,한국어/저평점/추가 플랫폼 gap을 보강하고 QA 상태를 ready_for_db로 재판정합니다.
+dogo-kowakuen-haruka,candidate_only,D,,,,not_seeded,딥리서치 대기,딥리서치 폴더 없음; 직접 리뷰 수 미확정; 직접 본문 플랫폼 수 미확정,"ready 딥리서치 대상 여부를 먼저 결정하고, 직접 본문 300건 목표로 조사합니다."
+dogo-miyu,ready_for_db,A,344,239,6,seeded_lite,3차 상세 signal row 복원,상세 signal row 없음,원천 sample index 또는 숙소별 상세 signal row를 복원한 뒤 full/lite를 다시 판정합니다.
+dogo-oborozukiyo,candidate_only,D,,,,not_seeded,딥리서치 대기,딥리서치 폴더 없음; 직접 리뷰 수 미확정; 직접 본문 플랫폼 수 미확정,"ready 딥리서치 대상 여부를 먼저 결정하고, 직접 본문 300건 목표로 조사합니다."
+dogo-yachiyo,ready_for_db,A,323,196,7,seeded_lite,2차 표본 보강,full 표본 기준 미달,"직접 0건, 온천 관련 4건 이상 보강 여부를 확인합니다."

@@ -160,6 +160,7 @@ function normalizeVerdict(row: OnsenVerdictRow): OnsenVerdict | null {
   const normalizedBriefing = {
     experiencesRead: normalizeNumber(briefing.experiences_read ?? briefing.experiencesRead),
     onsenRelated: normalizeNumber(briefing.onsen_related ?? briefing.onsenRelated),
+    platformCount: normalizeNumber(briefing.platform_count ?? briefing.platformCount),
     platforms: normalizeStringArray(briefing.platforms).map((platform) => platformLabels[platform] ?? platform),
   };
   const platforms = normalizeStringArray(briefing.platforms).map((platform) => platformLabels[platform] ?? platform);
@@ -220,10 +221,7 @@ function readSupabaseServerConfig() {
   const env = readServerEnv();
   const supabaseUrl = env.NEXT_PUBLIC_SUPABASE_URL?.trim() ?? env.EXPO_PUBLIC_SUPABASE_URL?.trim();
   const restUrl = env.CONTENT_DB_REST_URL?.trim() ?? (supabaseUrl ? `${supabaseUrl.replace(/\/+$/, '')}/rest/v1` : '');
-  const apiKey =
-    env.CONTENT_DB_SERVICE_ROLE_KEY?.trim() ??
-    env.NEXT_PUBLIC_SUPABASE_ANON_KEY?.trim() ??
-    env.EXPO_PUBLIC_SUPABASE_ANON_KEY?.trim();
+  const apiKey = env.NEXT_PUBLIC_SUPABASE_ANON_KEY?.trim() ?? env.EXPO_PUBLIC_SUPABASE_ANON_KEY?.trim();
 
   if (!restUrl || !apiKey) return null;
 
@@ -409,7 +407,11 @@ function sourceNoteFor(row: OnsenAccommodationRow, verdict?: OnsenVerdict) {
     const parts = [
       typeof briefing.experiencesRead === 'number' ? `직접 읽은 이용 경험 ${briefing.experiencesRead}건` : null,
       typeof briefing.onsenRelated === 'number' ? `온천 관련 ${briefing.onsenRelated}건` : null,
-      briefing.platforms.length > 0 ? `본문 확인 플랫폼 ${briefing.platforms.length}개` : null,
+      typeof briefing.platformCount === 'number'
+        ? `본문 확인 플랫폼 ${briefing.platformCount}개`
+        : briefing.platforms.length > 0
+          ? `본문 확인 플랫폼 ${briefing.platforms.length}개`
+          : null,
     ].filter(Boolean);
 
     if (parts.length > 0) return parts.join(', ');

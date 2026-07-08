@@ -1,0 +1,1138 @@
+{
+  "accommodations": [
+    {
+      "slug": "yufuin-ryoutiku",
+      "name": "유후 료치쿠",
+      "ja_name": "御宿 由府両築",
+      "display_name_ko": "유후 료치쿠",
+      "name_ja": "御宿 由府両築",
+      "name_en": "Yufu Ryochiku",
+      "aliases_ko": [
+        "유후 료치쿠"
+      ],
+      "aliases_ja": [
+        "御宿 由府両築"
+      ],
+      "aliases_en": [
+        "Yufu Ryochiku",
+        "Oyado Yufu Ryochiku",
+        "Onjuku Yufuryochiku"
+      ],
+      "name_verification_status": "verified",
+      "name_source_note": "규슈 유후인 레거시 리컨실리에이션 seed 생성 과정에서 한국어 서비스명을 보정",
+      "region": "yufuin",
+      "area": "규슈 · 오이타현 · 유후인",
+      "country": "JP",
+      "region_group": "kyushu",
+      "prefecture": "oita",
+      "city": "yufu",
+      "onsen_area": "yufuin",
+      "travel_contexts": [
+        "ryokan_stay"
+      ],
+      "bath_contexts": [
+        "room_bath",
+        "private_bath"
+      ],
+      "water_criteria": [
+        "spring_confirmed",
+        "water_texture"
+      ],
+      "summary": "규슈 · 오이타현 · 유후인의 온천 숙소입니다. 대절탕/가족탕 중심을 기준으로 이용 경험이 반복되며, 객실 타입과 공용탕 운영 조건을 함께 확인하시기 바랍니다.",
+      "primary_bath": "대절탕/가족탕 중심",
+      "water_use_status": "review_supported",
+      "water_source_type": "hot_spring_confirmed",
+      "bath_scope": "room_signal_only",
+      "operation_notes": [
+        "대절탕/가족탕 중심으로 정리했습니다"
+      ],
+      "evidence_counts": {
+        "directReviewCount": 1636,
+        "onsenReviewCount": 1022,
+        "directBodyPlatformCount": 3,
+        "roomBathMentionCount": 119,
+        "publicBathMentionCount": 0,
+        "privateBathMentionCount": 511,
+        "waterTextureMentionCount": 446,
+        "cautionMentionCount": 119
+      },
+      "evidence_grade": "A",
+      "evidence_note": "직접 읽은 이용 경험 1,636건, 온천 관련 1,022건, 본문 확인 플랫폼 3개",
+      "status": "active",
+      "source_file": "research/onsen-review-signals/yufuin_tier1_ready_after_reqa_2026-07-06.csv",
+      "content_updated_at": "2026-07-08"
+    },
+    {
+      "slug": "yufuin-hanamura",
+      "name": "유후인 카호리노사토 하나무라",
+      "ja_name": "湯布院かほりの郷 はな村",
+      "display_name_ko": "유후인 카호리노사토 하나무라",
+      "name_ja": "湯布院かほりの郷 はな村",
+      "name_en": null,
+      "aliases_ko": [
+        "유후인 카호리노사토 하나무라"
+      ],
+      "aliases_ja": [
+        "湯布院かほりの郷 はな村"
+      ],
+      "aliases_en": [],
+      "name_verification_status": "verified",
+      "name_source_note": "규슈 유후인 레거시 리컨실리에이션 seed 생성 과정에서 한국어 서비스명을 보정",
+      "region": "yufuin",
+      "area": "규슈 · 오이타현 · 유후인",
+      "country": "JP",
+      "region_group": "kyushu",
+      "prefecture": "oita",
+      "city": "yufu",
+      "onsen_area": "yufuin",
+      "travel_contexts": [
+        "ryokan_stay"
+      ],
+      "bath_contexts": [
+        "room_bath",
+        "private_bath",
+        "public_bath"
+      ],
+      "water_criteria": [
+        "spring_confirmed"
+      ],
+      "summary": "규슈 · 오이타현 · 유후인의 온천 숙소입니다. 객실 노천탕 중심을 기준으로 이용 경험이 반복되며, 객실 타입과 공용탕 운영 조건을 함께 확인하시기 바랍니다.",
+      "primary_bath": "객실 노천탕 중심",
+      "water_use_status": "review_supported",
+      "water_source_type": "hot_spring_confirmed",
+      "bath_scope": "some_rooms",
+      "operation_notes": [
+        "객실 노천탕 중심으로 정리했습니다"
+      ],
+      "evidence_counts": {
+        "directReviewCount": 1257,
+        "onsenReviewCount": 895,
+        "directBodyPlatformCount": 3,
+        "roomBathMentionCount": 152,
+        "publicBathMentionCount": 148,
+        "privateBathMentionCount": 181,
+        "waterTextureMentionCount": 0,
+        "cautionMentionCount": 481
+      },
+      "evidence_grade": "A",
+      "evidence_note": "직접 읽은 이용 경험 1,257건, 온천 관련 895건, 본문 확인 플랫폼 3개",
+      "status": "active",
+      "source_file": "research/onsen-review-signals/yufuin_tier1_ready_after_reqa_2026-07-06.csv",
+      "content_updated_at": "2026-07-08"
+    },
+    {
+      "slug": "yufuin-ryu-no-hige",
+      "name": "쿠사야네노야도 류노히게・벳테이 유무타",
+      "ja_name": "草屋根の宿 龍のひげ／別邸 ゆむた",
+      "display_name_ko": "쿠사야네노야도 류노히게・벳테이 유무타",
+      "name_ja": "草屋根の宿 龍のひげ／別邸 ゆむた",
+      "name_en": null,
+      "aliases_ko": [
+        "쿠사야네노야도 류노히게・벳테이 유무타"
+      ],
+      "aliases_ja": [
+        "草屋根の宿 龍のひげ／別邸 ゆむた"
+      ],
+      "aliases_en": [],
+      "name_verification_status": "verified",
+      "name_source_note": "규슈 유후인 레거시 리컨실리에이션 seed 생성 과정에서 한국어 서비스명을 보정",
+      "region": "yufuin",
+      "area": "규슈 · 오이타현 · 유후인",
+      "country": "JP",
+      "region_group": "kyushu",
+      "prefecture": "oita",
+      "city": "yufu",
+      "onsen_area": "yufuin",
+      "travel_contexts": [
+        "ryokan_stay"
+      ],
+      "bath_contexts": [
+        "room_bath"
+      ],
+      "water_criteria": [
+        "spring_confirmed",
+        "water_texture"
+      ],
+      "summary": "규슈 · 오이타현 · 유후인의 온천 숙소입니다. 직접 읽은 이용 경험 수는 확보했지만, 현재 full 판정 기준에는 일부 항목이 모자랍니다. 객실 타입과 온천 이용 조건을 예약 전에 확인하시기 바랍니다.",
+      "primary_bath": "객실 노천탕 중심",
+      "water_use_status": "review_supported",
+      "water_source_type": "hot_spring_confirmed",
+      "bath_scope": "room_signal_only",
+      "operation_notes": [
+        "객실 노천탕 중심으로 정리했습니다"
+      ],
+      "evidence_counts": {
+        "directReviewCount": 979,
+        "onsenReviewCount": 861,
+        "directBodyPlatformCount": 3,
+        "roomBathMentionCount": 578,
+        "publicBathMentionCount": 0,
+        "privateBathMentionCount": 0,
+        "waterTextureMentionCount": 40,
+        "cautionMentionCount": 618
+      },
+      "evidence_grade": "A",
+      "evidence_note": "직접 읽은 이용 경험 979건, 온천 관련 861건, 본문 확인 플랫폼 3개",
+      "status": "active",
+      "source_file": "research/onsen-review-signals/yufuin_tier1_ready_after_reqa_2026-07-06.csv",
+      "content_updated_at": "2026-07-08"
+    },
+    {
+      "slug": "yufuin-poppoan",
+      "name": "유후인 팝포안",
+      "ja_name": "旅の宿 ぽっぽ庵",
+      "display_name_ko": "유후인 팝포안",
+      "name_ja": "旅の宿 ぽっぽ庵",
+      "name_en": "Yufuin Onsen Poppo-an",
+      "aliases_ko": [
+        "유후인 팝포안"
+      ],
+      "aliases_ja": [
+        "旅の宿 ぽっぽ庵"
+      ],
+      "aliases_en": [
+        "Yufuin Onsen Poppo-an",
+        "Yufuin Poppoan",
+        "Poppoan"
+      ],
+      "name_verification_status": "verified",
+      "name_source_note": "규슈 유후인 레거시 리컨실리에이션 seed 생성 과정에서 한국어 서비스명을 보정",
+      "region": "yufuin",
+      "area": "규슈 · 오이타현 · 유후인",
+      "country": "JP",
+      "region_group": "kyushu",
+      "prefecture": "oita",
+      "city": "yufu",
+      "onsen_area": "yufuin",
+      "travel_contexts": [
+        "ryokan_stay"
+      ],
+      "bath_contexts": [
+        "room_bath",
+        "private_bath"
+      ],
+      "water_criteria": [
+        "spring_confirmed",
+        "water_texture"
+      ],
+      "summary": "규슈 · 오이타현 · 유후인의 온천 숙소입니다. 객실 노천탕 중심을 기준으로 이용 경험이 반복되며, 객실 타입과 공용탕 운영 조건을 함께 확인하시기 바랍니다.",
+      "primary_bath": "객실 노천탕 중심",
+      "water_use_status": "review_supported",
+      "water_source_type": "hot_spring_confirmed",
+      "bath_scope": "room_signal_only",
+      "operation_notes": [
+        "객실 노천탕 중심으로 정리했습니다"
+      ],
+      "evidence_counts": {
+        "directReviewCount": 889,
+        "onsenReviewCount": 740,
+        "directBodyPlatformCount": 3,
+        "roomBathMentionCount": 402,
+        "publicBathMentionCount": 0,
+        "privateBathMentionCount": 262,
+        "waterTextureMentionCount": 276,
+        "cautionMentionCount": 84
+      },
+      "evidence_grade": "A",
+      "evidence_note": "직접 읽은 이용 경험 889건, 온천 관련 740건, 본문 확인 플랫폼 3개",
+      "status": "active",
+      "source_file": "research/onsen-review-signals/yufuin_tier1_ready_after_reqa_2026-07-06.csv",
+      "content_updated_at": "2026-07-08"
+    },
+    {
+      "slug": "yufuin-baien",
+      "name": "유후인 바이엔 가든 리조트",
+      "ja_name": "由布院 梅園 GARDEN RESORT",
+      "display_name_ko": "유후인 바이엔 가든 리조트",
+      "name_ja": "由布院 梅園 GARDEN RESORT",
+      "name_en": "Yufuin Baien Garden Resort / Baien",
+      "aliases_ko": [
+        "유후인 바이엔 가든 리조트"
+      ],
+      "aliases_ja": [
+        "由布院 梅園 GARDEN RESORT",
+        "由布院 梅園 ＧＡＲＤＥＮ ＲＥＳＯＲＴ",
+        "名苑と名水の宿 梅園"
+      ],
+      "aliases_en": [
+        "Yufuin Baien Garden Resort / Baien"
+      ],
+      "name_verification_status": "verified",
+      "name_source_note": "규슈 유후인 레거시 리컨실리에이션 seed 생성 과정에서 한국어 서비스명을 보정",
+      "region": "yufuin",
+      "area": "규슈 · 오이타현 · 유후인",
+      "country": "JP",
+      "region_group": "kyushu",
+      "prefecture": "oita",
+      "city": "yufu",
+      "onsen_area": "yufuin",
+      "travel_contexts": [
+        "ryokan_stay"
+      ],
+      "bath_contexts": [
+        "room_bath",
+        "private_bath",
+        "public_bath"
+      ],
+      "water_criteria": [
+        "spring_confirmed"
+      ],
+      "summary": "규슈 · 오이타현 · 유후인의 온천 숙소입니다. 공용 노천탕 중심을 기준으로 이용 경험이 반복되며, 객실 타입과 공용탕 운영 조건을 함께 확인하시기 바랍니다.",
+      "primary_bath": "공용 노천탕 중심",
+      "water_use_status": "review_supported",
+      "water_source_type": "hot_spring_confirmed",
+      "bath_scope": "some_rooms",
+      "operation_notes": [
+        "공용 노천탕 중심으로 정리했습니다",
+        "예약 조건과 운영 시간을 함께 확인하시기 바랍니다"
+      ],
+      "evidence_counts": {
+        "directReviewCount": 458,
+        "onsenReviewCount": 411,
+        "directBodyPlatformCount": 3,
+        "roomBathMentionCount": 23,
+        "publicBathMentionCount": 310,
+        "privateBathMentionCount": 191,
+        "waterTextureMentionCount": 0,
+        "cautionMentionCount": 191
+      },
+      "evidence_grade": "A",
+      "evidence_note": "직접 읽은 이용 경험 458건, 온천 관련 411건, 본문 확인 플랫폼 3개",
+      "status": "active",
+      "source_file": "research/onsen-review-signals/yufuin_tier1_ready_after_reqa_2026-07-06.csv",
+      "content_updated_at": "2026-07-08"
+    },
+    {
+      "slug": "yufuin-ubl-hotel",
+      "name": "유후인 유벨 호텔",
+      "ja_name": "由布院ユウベルホテル",
+      "display_name_ko": "유후인 유벨 호텔",
+      "name_ja": "由布院ユウベルホテル",
+      "name_en": "Yufuin Ubl Hotel / Yufuin UBL Hotel",
+      "aliases_ko": [
+        "유후인 유벨 호텔",
+        "유후인 유벨 호텔 / Yufuin Ubl Hotel"
+      ],
+      "aliases_ja": [
+        "由布院ユウベルホテル"
+      ],
+      "aliases_en": [
+        "Yufuin Ubl Hotel / Yufuin UBL Hotel"
+      ],
+      "name_verification_status": "verified",
+      "name_source_note": "규슈 유후인 레거시 리컨실리에이션 seed 생성 과정에서 한국어 서비스명을 보정",
+      "region": "yufuin",
+      "area": "규슈 · 오이타현 · 유후인",
+      "country": "JP",
+      "region_group": "kyushu",
+      "prefecture": "oita",
+      "city": "yufu",
+      "onsen_area": "yufuin",
+      "travel_contexts": [
+        "ryokan_stay"
+      ],
+      "bath_contexts": [
+        "room_bath",
+        "public_bath"
+      ],
+      "water_criteria": [
+        "spring_confirmed",
+        "water_texture"
+      ],
+      "summary": "규슈 · 오이타현 · 유후인의 온천 숙소입니다. 공용 노천탕 중심을 기준으로 이용 경험이 반복되며, 객실 타입과 공용탕 운영 조건을 함께 확인하시기 바랍니다.",
+      "primary_bath": "공용 노천탕 중심",
+      "water_use_status": "review_supported",
+      "water_source_type": "hot_spring_confirmed",
+      "bath_scope": "some_rooms",
+      "operation_notes": [
+        "공용 노천탕 중심으로 정리했습니다",
+        "예약 조건과 운영 시간을 함께 확인하시기 바랍니다"
+      ],
+      "evidence_counts": {
+        "directReviewCount": 326,
+        "onsenReviewCount": 287,
+        "directBodyPlatformCount": 3,
+        "roomBathMentionCount": 60,
+        "publicBathMentionCount": 210,
+        "privateBathMentionCount": 0,
+        "waterTextureMentionCount": 10,
+        "cautionMentionCount": 12
+      },
+      "evidence_grade": "A",
+      "evidence_note": "직접 읽은 이용 경험 326건, 온천 관련 287건, 본문 확인 플랫폼 3개",
+      "status": "active",
+      "source_file": "research/onsen-review-signals/yufuin_tier1_ready_after_reqa_2026-07-06.csv",
+      "content_updated_at": "2026-07-08"
+    }
+  ],
+  "verdicts": [
+    {
+      "target_type": "accommodation",
+      "target_slug": "yufuin-ryoutiku",
+      "level": "full",
+      "headline": "대절탕/가족탕 중심 숙소입니다.",
+      "briefing": {
+        "experiences_read": 1636,
+        "onsen_related": 1022,
+        "platform_count": 3,
+        "platforms": [
+          "자란",
+          "라쿠텐",
+          "아고다"
+        ]
+      },
+      "items": [
+        {
+          "order": 1,
+          "type": "positive",
+          "headline": "수질 체감이 선택 기준으로 잡힙니다.",
+          "counts": {
+            "mentions": 446,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 3,
+            "direction_counts": {
+              "positive": 446,
+              "mixed": 0,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "수질 체감 관련 평가는 플랫폼을 나눠 봐도 안정적으로 반복됩니다. 이 숙소를 고를 때 먼저 확인할 핵심 온천 경험으로 볼 수 있습니다.",
+          "verdict": "수질 체감을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "수질 체감",
+          "adoption_status": "verdict_basis",
+          "signal_key": "water_texture",
+          "bath_area": "facility_wide",
+          "platforms": [
+            "아고다",
+            "자란",
+            "라쿠텐"
+          ],
+          "season_months": null
+        },
+        {
+          "order": 2,
+          "type": "positive",
+          "headline": "대절탕이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 275,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 3,
+            "direction_counts": {
+              "positive": 275,
+              "mixed": 0,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "대절탕 관련 평가는 플랫폼을 나눠 봐도 안정적으로 반복됩니다. 이 숙소를 고를 때 먼저 확인할 핵심 온천 경험으로 볼 수 있습니다.",
+          "verdict": "대절탕을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "대절탕",
+          "adoption_status": "verdict_basis",
+          "signal_key": "private_bath_experience",
+          "bath_area": "private_bath",
+          "platforms": [
+            "아고다",
+            "자란",
+            "라쿠텐"
+          ],
+          "season_months": null
+        },
+        {
+          "order": 3,
+          "type": "conditional",
+          "headline": "혼잡은 시간대에 따라 갈립니다.",
+          "counts": {
+            "mentions": 119,
+            "negative": 0,
+            "denominator": "experiences_read",
+            "platform_count": 3,
+            "direction_counts": {
+              "positive": 119,
+              "mixed": 0,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "혼잡 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "조용한 이용을 원하면 시간대와 공용탕 동선을 먼저 확인하시기 바랍니다.",
+          "chip_label": "혼잡",
+          "adoption_status": "verdict_basis",
+          "signal_key": "crowding",
+          "bath_area": "private_bath",
+          "platforms": [
+            "아고다",
+            "자란",
+            "라쿠텐"
+          ],
+          "season_months": null
+        },
+        {
+          "order": 4,
+          "type": "positive",
+          "headline": "객실 노천탕이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 119,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 3,
+            "direction_counts": {
+              "positive": 119,
+              "mixed": 0,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "객실 노천탕 관련 평가는 플랫폼을 나눠 봐도 안정적으로 반복됩니다. 이 숙소를 고를 때 먼저 확인할 핵심 온천 경험으로 볼 수 있습니다.",
+          "verdict": "객실 노천탕을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "객실 노천탕",
+          "adoption_status": "verdict_basis",
+          "signal_key": "room_bath_hot_spring",
+          "bath_area": "room_open_air_bath",
+          "platforms": [
+            "아고다",
+            "자란",
+            "라쿠텐"
+          ],
+          "season_months": null
+        },
+        {
+          "order": 5,
+          "type": "positive",
+          "headline": "가족탕이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 117,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 3,
+            "direction_counts": {
+              "positive": 117,
+              "mixed": 0,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "가족탕 관련 평가는 플랫폼을 나눠 봐도 안정적으로 반복됩니다. 이 숙소를 고를 때 먼저 확인할 핵심 온천 경험으로 볼 수 있습니다.",
+          "verdict": "가족탕을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "가족탕",
+          "adoption_status": "verdict_basis",
+          "signal_key": "private_bath_experience",
+          "bath_area": "family_bath",
+          "platforms": [
+            "아고다",
+            "자란",
+            "라쿠텐"
+          ],
+          "season_months": null
+        }
+      ],
+      "fact_statuses": [],
+      "status": "published",
+      "verified_at": "2026-07-08",
+      "source_file": "research/onsen-review-signals/yufuin_tier1_ready_after_reqa_2026-07-06.csv"
+    },
+    {
+      "target_type": "accommodation",
+      "target_slug": "yufuin-hanamura",
+      "level": "full",
+      "headline": "객실 노천탕 중심 숙소입니다.",
+      "briefing": {
+        "experiences_read": 1257,
+        "onsen_related": 895,
+        "platform_count": 3,
+        "platforms": [
+          "자란",
+          "라쿠텐",
+          "아고다"
+        ]
+      },
+      "items": [
+        {
+          "order": 1,
+          "type": "conditional",
+          "headline": "객실 노천탕이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 152,
+            "negative": 3,
+            "denominator": "onsen_related",
+            "platform_count": 3,
+            "direction_counts": {
+              "positive": 78,
+              "mixed": 71,
+              "negative": 3,
+              "neutral": 5
+            }
+          },
+          "body": "객실 노천탕 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "객실 노천탕을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "객실 노천탕",
+          "adoption_status": "verdict_basis",
+          "signal_key": "room_bath_hot_spring",
+          "bath_area": "room_open_air_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 2,
+          "type": "conditional",
+          "headline": "대절탕이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 123,
+            "negative": 2,
+            "denominator": "onsen_related",
+            "platform_count": 3,
+            "direction_counts": {
+              "positive": 68,
+              "mixed": 53,
+              "negative": 2,
+              "neutral": 3
+            }
+          },
+          "body": "대절탕 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "대절탕을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "대절탕",
+          "adoption_status": "verdict_basis",
+          "signal_key": "private_bath_experience",
+          "bath_area": "private_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 3,
+          "type": "conditional",
+          "headline": "대욕장이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 86,
+            "negative": 3,
+            "denominator": "onsen_related",
+            "platform_count": 3,
+            "direction_counts": {
+              "positive": 47,
+              "mixed": 36,
+              "negative": 3,
+              "neutral": 1
+            }
+          },
+          "body": "대욕장 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "대욕장을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "대욕장",
+          "adoption_status": "verdict_basis",
+          "signal_key": "public_bath_hot_spring",
+          "bath_area": "public_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 4,
+          "type": "conditional",
+          "headline": "공용 노천탕이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 62,
+            "negative": 1,
+            "denominator": "onsen_related",
+            "platform_count": 2,
+            "direction_counts": {
+              "positive": 48,
+              "mixed": 13,
+              "negative": 1,
+              "neutral": 4
+            }
+          },
+          "body": "공용 노천탕 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "공용 노천탕을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "공용 노천탕",
+          "adoption_status": "verdict_basis",
+          "signal_key": "public_bath_hot_spring",
+          "bath_area": "open_air_public_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 5,
+          "type": "conditional",
+          "headline": "가족탕이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 58,
+            "negative": 1,
+            "denominator": "onsen_related",
+            "platform_count": 3,
+            "direction_counts": {
+              "positive": 32,
+              "mixed": 25,
+              "negative": 1,
+              "neutral": 4
+            }
+          },
+          "body": "가족탕 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "가족탕을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "가족탕",
+          "adoption_status": "verdict_basis",
+          "signal_key": "private_bath_experience",
+          "bath_area": "family_bath",
+          "platforms": [],
+          "season_months": null
+        }
+      ],
+      "fact_statuses": [],
+      "status": "published",
+      "verified_at": "2026-07-08",
+      "source_file": "research/onsen-review-signals/yufuin_tier1_ready_after_reqa_2026-07-06.csv"
+    },
+    {
+      "target_type": "accommodation",
+      "target_slug": "yufuin-ryu-no-hige",
+      "level": "lite",
+      "headline": "객실 노천탕 중심 숙소입니다.",
+      "briefing": {
+        "experiences_read": 979,
+        "onsen_related": 861,
+        "platform_count": 3,
+        "platforms": [
+          "자란",
+          "라쿠텐",
+          "아고다"
+        ]
+      },
+      "items": [],
+      "fact_statuses": [],
+      "status": "published",
+      "verified_at": "2026-07-08",
+      "source_file": "research/onsen-review-signals/yufuin_tier1_ready_after_reqa_2026-07-06.csv"
+    },
+    {
+      "target_type": "accommodation",
+      "target_slug": "yufuin-poppoan",
+      "level": "full",
+      "headline": "객실 노천탕 중심 숙소입니다.",
+      "briefing": {
+        "experiences_read": 889,
+        "onsen_related": 740,
+        "platform_count": 3,
+        "platforms": [
+          "자란",
+          "라쿠텐",
+          "아고다"
+        ]
+      },
+      "items": [
+        {
+          "order": 1,
+          "type": "positive",
+          "headline": "객실 노천탕이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 402,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 3,
+            "direction_counts": {
+              "positive": 402,
+              "mixed": 0,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "객실 노천탕 관련 평가는 플랫폼을 나눠 봐도 안정적으로 반복됩니다. 이 숙소를 고를 때 먼저 확인할 핵심 온천 경험으로 볼 수 있습니다.",
+          "verdict": "객실 노천탕을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "객실 노천탕",
+          "adoption_status": "verdict_basis",
+          "signal_key": "room_bath_hot_spring",
+          "bath_area": "room_open_air_bath",
+          "platforms": [
+            "아고다",
+            "자란",
+            "라쿠텐"
+          ],
+          "season_months": null
+        },
+        {
+          "order": 2,
+          "type": "positive",
+          "headline": "수질 체감이 선택 기준으로 잡힙니다.",
+          "counts": {
+            "mentions": 276,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 2,
+            "direction_counts": {
+              "positive": 276,
+              "mixed": 0,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "수질 체감 관련 평가는 플랫폼을 나눠 봐도 안정적으로 반복됩니다. 이 숙소를 고를 때 먼저 확인할 핵심 온천 경험으로 볼 수 있습니다.",
+          "verdict": "수질 체감을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "수질 체감",
+          "adoption_status": "verdict_basis",
+          "signal_key": "water_texture",
+          "bath_area": "facility_wide",
+          "platforms": [
+            "아고다",
+            "자란"
+          ],
+          "season_months": null
+        },
+        {
+          "order": 3,
+          "type": "positive",
+          "headline": "대절탕이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 155,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 3,
+            "direction_counts": {
+              "positive": 155,
+              "mixed": 0,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "대절탕 관련 평가는 플랫폼을 나눠 봐도 안정적으로 반복됩니다. 이 숙소를 고를 때 먼저 확인할 핵심 온천 경험으로 볼 수 있습니다.",
+          "verdict": "대절탕을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "대절탕",
+          "adoption_status": "verdict_basis",
+          "signal_key": "private_bath_experience",
+          "bath_area": "private_bath",
+          "platforms": [
+            "아고다",
+            "자란",
+            "라쿠텐"
+          ],
+          "season_months": null
+        },
+        {
+          "order": 4,
+          "type": "conditional",
+          "headline": "혼잡은 시간대에 따라 갈립니다.",
+          "counts": {
+            "mentions": 84,
+            "negative": 0,
+            "denominator": "experiences_read",
+            "platform_count": 2,
+            "direction_counts": {
+              "positive": 84,
+              "mixed": 0,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "혼잡 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "조용한 이용을 원하면 시간대와 공용탕 동선을 먼저 확인하시기 바랍니다.",
+          "chip_label": "혼잡",
+          "adoption_status": "verdict_basis",
+          "signal_key": "crowding",
+          "bath_area": "private_bath",
+          "platforms": [
+            "아고다",
+            "자란"
+          ],
+          "season_months": null
+        },
+        {
+          "order": 5,
+          "type": "minor",
+          "headline": "가족탕이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 23,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 2,
+            "direction_counts": {
+              "positive": 23,
+              "mixed": 0,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "가족탕은 중심 경험은 아니지만 선택 전에 함께 볼 만한 항목입니다. 다른 핵심 욕장 경험과 나란히 비교하면 숙소의 성격이 더 분명해집니다.",
+          "verdict": "가족탕을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "가족탕",
+          "adoption_status": "verdict_basis",
+          "signal_key": "private_bath_experience",
+          "bath_area": "family_bath",
+          "platforms": [
+            "아고다",
+            "자란"
+          ],
+          "season_months": null
+        }
+      ],
+      "fact_statuses": [],
+      "status": "published",
+      "verified_at": "2026-07-08",
+      "source_file": "research/onsen-review-signals/yufuin_tier1_ready_after_reqa_2026-07-06.csv"
+    },
+    {
+      "target_type": "accommodation",
+      "target_slug": "yufuin-baien",
+      "level": "full",
+      "headline": "공용 노천탕 중심 숙소입니다.",
+      "briefing": {
+        "experiences_read": 458,
+        "onsen_related": 411,
+        "platform_count": 3,
+        "platforms": [
+          "자란",
+          "라쿠텐",
+          "트립닷컴"
+        ]
+      },
+      "items": [
+        {
+          "order": 1,
+          "type": "positive",
+          "headline": "공용 노천탕이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 310,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 3,
+            "direction_counts": {
+              "positive": 310,
+              "mixed": 0,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "공용 노천탕 관련 평가는 플랫폼을 나눠 봐도 안정적으로 반복됩니다. 이 숙소를 고를 때 먼저 확인할 핵심 온천 경험으로 볼 수 있습니다.",
+          "verdict": "공용 노천탕을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "공용 노천탕",
+          "adoption_status": "verdict_basis",
+          "signal_key": "public_bath_hot_spring",
+          "bath_area": "open_air_public_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 2,
+          "type": "conditional",
+          "headline": "대절탕이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 125,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 3,
+            "direction_counts": {
+              "positive": 0,
+              "mixed": 125,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "대절탕 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "대절탕을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "대절탕",
+          "adoption_status": "verdict_basis",
+          "signal_key": "private_bath_experience",
+          "bath_area": "private_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 3,
+          "type": "conditional",
+          "headline": "예약 조건은 미리 분리해 확인해야 합니다.",
+          "counts": {
+            "mentions": 42,
+            "negative": 0,
+            "denominator": "experiences_read",
+            "platform_count": 3,
+            "direction_counts": {
+              "positive": 0,
+              "mixed": 42,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "예약/운영 조건 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "예약 단계에서 객실 타입과 온천 이용 조건을 따로 확인하시기 바랍니다.",
+          "chip_label": "예약/운영 조건",
+          "adoption_status": "verdict_basis",
+          "signal_key": "booking_confusion",
+          "bath_area": "private_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 4,
+          "type": "conditional",
+          "headline": "혼잡은 시간대에 따라 갈립니다.",
+          "counts": {
+            "mentions": 24,
+            "negative": 0,
+            "denominator": "experiences_read",
+            "platform_count": 2,
+            "direction_counts": {
+              "positive": 0,
+              "mixed": 24,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "혼잡 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "조용한 이용을 원하면 시간대와 공용탕 동선을 먼저 확인하시기 바랍니다.",
+          "chip_label": "혼잡",
+          "adoption_status": "verdict_basis",
+          "signal_key": "crowding",
+          "bath_area": "private_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 5,
+          "type": "minor",
+          "headline": "객실 노천탕이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 23,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 3,
+            "direction_counts": {
+              "positive": 23,
+              "mixed": 0,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "객실 노천탕은 중심 경험은 아니지만 선택 전에 함께 볼 만한 항목입니다. 다른 핵심 욕장 경험과 나란히 비교하면 숙소의 성격이 더 분명해집니다.",
+          "verdict": "객실 노천탕을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "객실 노천탕",
+          "adoption_status": "verdict_basis",
+          "signal_key": "room_bath_hot_spring",
+          "bath_area": "room_open_air_bath",
+          "platforms": [],
+          "season_months": null
+        }
+      ],
+      "fact_statuses": [],
+      "status": "published",
+      "verified_at": "2026-07-08",
+      "source_file": "research/onsen-review-signals/yufuin_tier1_ready_after_reqa_2026-07-06.csv"
+    },
+    {
+      "target_type": "accommodation",
+      "target_slug": "yufuin-ubl-hotel",
+      "level": "full",
+      "headline": "공용 노천탕 중심 숙소입니다.",
+      "briefing": {
+        "experiences_read": 326,
+        "onsen_related": 287,
+        "platform_count": 3,
+        "platforms": [
+          "자란",
+          "구글 지도",
+          "구글 지도"
+        ]
+      },
+      "items": [
+        {
+          "order": 1,
+          "type": "positive",
+          "headline": "공용 노천탕이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 210,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 3,
+            "direction_counts": {
+              "positive": 210,
+              "mixed": 0,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "공용 노천탕 관련 평가는 플랫폼을 나눠 봐도 안정적으로 반복됩니다. 이 숙소를 고를 때 먼저 확인할 핵심 온천 경험으로 볼 수 있습니다.",
+          "verdict": "공용 노천탕을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "공용 노천탕",
+          "adoption_status": "verdict_basis",
+          "signal_key": "public_bath_hot_spring",
+          "bath_area": "open_air_public_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 2,
+          "type": "positive",
+          "headline": "객실 내 프라이빗탕이 이 숙소의 주요 판단 기준입니다.",
+          "counts": {
+            "mentions": 48,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 3,
+            "direction_counts": {
+              "positive": 48,
+              "mixed": 0,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "객실 내 프라이빗탕 관련 평가는 플랫폼을 나눠 봐도 안정적으로 반복됩니다. 이 숙소를 고를 때 먼저 확인할 핵심 온천 경험으로 볼 수 있습니다.",
+          "verdict": "객실 내 프라이빗탕을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "객실 내 프라이빗탕",
+          "adoption_status": "verdict_basis",
+          "signal_key": "room_bath_hot_spring",
+          "bath_area": "room_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 3,
+          "type": "conditional",
+          "headline": "예약 조건은 미리 분리해 확인해야 합니다.",
+          "counts": {
+            "mentions": 12,
+            "negative": 0,
+            "denominator": "experiences_read",
+            "platform_count": 3,
+            "direction_counts": {
+              "positive": 0,
+              "mixed": 12,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "예약/운영 조건 관련 평가는 장점과 주의점이 함께 잡힙니다. 여러 플랫폼에서 같은 항목이 반복되므로 예약 조건과 계절 변수를 같이 확인하시기 바랍니다.",
+          "verdict": "예약 단계에서 객실 타입과 온천 이용 조건을 따로 확인하시기 바랍니다.",
+          "chip_label": "예약/운영 조건",
+          "adoption_status": "verdict_basis",
+          "signal_key": "booking_confusion",
+          "bath_area": "room_bath",
+          "platforms": [],
+          "season_months": null
+        },
+        {
+          "order": 4,
+          "type": "minor",
+          "headline": "수질 체감이 선택 기준으로 잡힙니다.",
+          "counts": {
+            "mentions": 10,
+            "negative": 0,
+            "denominator": "onsen_related",
+            "platform_count": 2,
+            "direction_counts": {
+              "positive": 10,
+              "mixed": 0,
+              "negative": 0,
+              "neutral": 0
+            }
+          },
+          "body": "수질 체감은 중심 경험은 아니지만 선택 전에 함께 볼 만한 항목입니다. 다른 핵심 욕장 경험과 나란히 비교하면 숙소의 성격이 더 분명해집니다.",
+          "verdict": "수질 체감을 우선순위에 두는 여행자라면 비교 가치가 높습니다.",
+          "chip_label": "수질 체감",
+          "adoption_status": "verdict_basis",
+          "signal_key": "water_texture",
+          "bath_area": "facility_wide",
+          "platforms": [],
+          "season_months": null
+        }
+      ],
+      "fact_statuses": [],
+      "status": "published",
+      "verified_at": "2026-07-08",
+      "source_file": "research/onsen-review-signals/yufuin_tier1_ready_after_reqa_2026-07-06.csv"
+    }
+  ]
+}

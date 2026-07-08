@@ -95,7 +95,11 @@ function formatBriefing(candidate: OnsenCandidate) {
   const parts = [
     typeof briefing.experiencesRead === 'number' ? `직접 읽은 이용 경험 ${briefing.experiencesRead}건` : null,
     typeof briefing.onsenRelated === 'number' ? `온천 관련 ${briefing.onsenRelated}건` : null,
-    briefing.platforms.length > 0 ? briefing.platforms.join(' · ') : null,
+    briefing.platforms.length > 0
+      ? briefing.platforms.join(' · ')
+      : typeof briefing.platformCount === 'number'
+        ? `본문 확인 플랫폼 ${briefing.platformCount}개`
+        : null,
   ].filter(Boolean);
 
   return parts.length > 0 ? parts.join(' · ') : null;
