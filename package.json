@@ -34,6 +34,7 @@
     "store:splash": "node scripts/generate_splash_icon.mjs",
     "catalog:api:mock": "node scripts/mock_catalog_api.mjs",
     "content:api:mock": "node scripts/mock_content_api.mjs",
+    "security:audit": "npm audit --audit-level=high && npm --prefix apps/web audit --audit-level=high && npm --prefix apps/admin audit --audit-level=high",
     "test": "jest",
     "test:scenario:print": "jest src/engine/__tests__/scenario_output.test.ts --runInBand",
     "typecheck": "tsc --noEmit"
