@@ -3,6 +3,7 @@ import { Waves } from '@phosphor-icons/react/ssr';
 import { readOnsenCandidates } from '@web/lib/onsenData';
 import { buildOnsenSearchSuggestions, popularOnsenSearches, recommendedOnsenPlaces } from '@web/lib/onsenSearch';
 import type { OnsenCandidate } from '@web/lib/onsenCatalog';
+import { getOnsenWaterHighlightMark, hasConfirmedWaterKakenagashi } from '@web/lib/onsenWaterSignal';
 import { OnsenSearchForm } from './OnsenSearchForm';
 
 type RegionInventory = {
@@ -49,26 +50,6 @@ function OnsenLaurel({ side = 'left' }: { side?: 'left' | 'right' }) {
       />
     </svg>
   );
-}
-
-function getWaterHighlightMark(waterDecision: { springType: string; operation: string }) {
-  const text = `${waterDecision.springType} ${waterDecision.operation}`;
-
-  if (text.includes('직수')) {
-    return {
-      label: '직수 온천',
-      tone: 'water-source',
-    };
-  }
-
-  if (text.includes('100%') || text.includes('천연온천') || text.includes('천연 온천')) {
-    return {
-      label: '천연온천',
-      tone: 'water-natural',
-    };
-  }
-
-  return null;
 }
 
 function getVerdictTotal(candidates: OnsenCandidate[]) {
@@ -130,7 +111,7 @@ function getRegionInventory(candidates: OnsenCandidate[]): RegionInventory[] {
       } satisfies RegionInventory);
 
     existing.publishedCount += 1;
-    if (candidate.verdict?.factStatuses.some((fact) => fact.code === 'water_kakenagashi' && fact.status === 'confirmed')) {
+    if (hasConfirmedWaterKakenagashi(candidate)) {
       existing.directSourceCount += 1;
     }
     byArea.set(area, existing);
@@ -172,7 +153,7 @@ export async function OnsenLanding() {
           </div>
           <div className="onsen-featured-verdict-grid">
             {featuredVerdicts.map((candidate) => {
-              const waterHighlightMark = getWaterHighlightMark(candidate.waterDecision);
+              const waterHighlightMark = getOnsenWaterHighlightMark(candidate);
 
               return (
                 <Link key={candidate.slug} className="onsen-featured-verdict-card" href={`/onsen/${candidate.slug}`}>
@@ -189,7 +170,7 @@ export async function OnsenLanding() {
 
                   <div className="onsen-featured-verdict-copy">
                     {waterHighlightMark ? (
-                      <span className="onsen-card-water-award" data-tone={waterHighlightMark.tone}>
+                      <span className="onsen-card-water-award" data-tone={waterHighlightMark.tone} title={waterHighlightMark.title}>
                         <OnsenLaurel />
                         {waterHighlightMark.label}
                         <OnsenLaurel side="right" />

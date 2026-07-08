@@ -101,6 +101,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
   const isOnsenRoute = pathname === '/' || pathname.startsWith('/onsen');
+  const isAuthRoute = pathname.startsWith('/auth');
   const showOnsenHeaderSearch = pathname.startsWith('/onsen') && pathname !== '/onsen';
   const [signedIn, setSignedIn] = useState(false);
   const [authReady, setAuthReady] = useState(false);
@@ -193,28 +194,31 @@ export function Shell({ children }: { children: React.ReactNode }) {
   const shellClassName = useMemo(() => {
     const classes = ['site-shell'];
     if (isOnsenRoute) classes.push('onsen-shell');
+    if (isAuthRoute) classes.push('auth-shell');
     return classes.join(' ');
-  }, [isOnsenRoute]);
+  }, [isAuthRoute, isOnsenRoute]);
   return (
     <div className={shellClassName}>
-      <aside className="sidebar">
-        <div className="brand-block">
-          <Link className="brand" href="/" aria-label="Bathtime 홈">
-            <span className="brand-symbol">
-              <img src={brandSymbol.src} alt="" width={30} height={30} aria-hidden="true" />
-            </span>
-            <img className="brand-logo" src={logoImage.src} alt="바스타임" width={158} height={30} />
-          </Link>
-        </div>
-        {showOnsenHeaderSearch ? (
-          <Suspense fallback={<div className="onsen-header-search-slot" aria-hidden="true" />}>
-            <OnsenHeaderSearch suggestions={onsenSearchSuggestions} />
-          </Suspense>
-        ) : null}
-        <div className="header-actions">
-          <AccountButton signedIn={signedIn} ready={authReady} onSignedOut={() => setSignedIn(false)} />
-        </div>
-      </aside>
+      {!isAuthRoute ? (
+        <aside className="sidebar">
+          <div className="brand-block">
+            <Link className="brand" href="/" aria-label="Bathtime 홈">
+              <span className="brand-symbol">
+                <img src={brandSymbol.src} alt="" width={30} height={30} aria-hidden="true" />
+              </span>
+              <img className="brand-logo" src={logoImage.src} alt="바스타임" width={158} height={30} />
+            </Link>
+          </div>
+          {showOnsenHeaderSearch ? (
+            <Suspense fallback={<div className="onsen-header-search-slot" aria-hidden="true" />}>
+              <OnsenHeaderSearch suggestions={onsenSearchSuggestions} />
+            </Suspense>
+          ) : null}
+          <div className="header-actions">
+            <AccountButton signedIn={signedIn} ready={authReady} onSignedOut={() => setSignedIn(false)} />
+          </div>
+        </aside>
+      ) : null}
       <div className="content-area">
         <main className={pathname.startsWith('/content/') ? 'main content-route-main' : isOnsenRoute ? 'main onsen-route-main' : 'main'}>
           {children}

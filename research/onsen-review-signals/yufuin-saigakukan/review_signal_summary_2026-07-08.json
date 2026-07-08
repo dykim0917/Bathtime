@@ -1,0 +1,128 @@
+{
+  "research_date": "2026-07-08",
+  "slug": "yufuin-saigakukan",
+  "name_ja": "柚富の郷 彩岳館",
+  "name_ko": "유후인 사이가쿠칸",
+  "aliases": [
+    "由布院温泉 柚富の郷 彩岳館",
+    "Yufunogo Saigakukan",
+    "Saigakukan"
+  ],
+  "region_display_ko": "규슈 · 오이타현 · 유후인",
+  "area_bucket": "Yufuin",
+  "data_quality_grade": "A",
+  "qa_status": "ready_for_db",
+  "ready_for_db": true,
+  "collection_briefing": {
+    "visible_review_pool": "Google Maps 620 / 4.4; Agoda visible 2,094 / 9.0; Trip.com 40 / 8.9; Tripadvisor provider 133; Rakuten Travel API 14; Jalan existing direct 34",
+    "direct_read_review_count": 363,
+    "onsen_related_direct_review_count": 237,
+    "direct_body_platform_count": 5,
+    "direct_body_platforms": {
+      "Jalan": 34,
+      "Rakuten Travel": 14,
+      "Agoda API": 304,
+      "Trip.com": 3,
+      "Google Maps": 8
+    },
+    "access_gaps": [
+      "Naver Search/Blog 직접 본문은 이번 보강에서 0건",
+      "Google Maps의 Trip.com 41건과 Tripadvisor 133건 공급자 카드는 Google-native 직접 리뷰에서 제외"
+    ]
+  },
+  "official_hot_spring_facts": {
+    "official_url": "https://www.saigakukan.co.jp/",
+    "rakuten_onsen_url": "https://travel.rakuten.co.jp/HOTEL/20453/20453_onsen.html",
+    "public_bath": "공식/OTA는 대욕장과 공용 노천탕, 유후다케 조망 노천탕을 안내한다.",
+    "family_bath_private_bath": "공식/OTA와 Google 후기에서 가족탕/프라이빗 온천 예약 신호가 보인다.",
+    "room_open_air_bath": "일부 객실은 유후다케뷰 객실 노천탕/프리미엄 스위트로 안내된다. 전 객실 객실탕으로 일반화하지 않는다.",
+    "source_flow_claim": "공식/OTA는 원천가케나가시, 2개 원천, 알칼리성 단순천을 주장한다."
+  },
+  "review_signal_summary": [
+    {
+      "bath_area": "public_bath/open_air_public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 39,
+      "source_count": 39,
+      "platform_count": 5,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "family_bath/private_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "mixed",
+      "mention_count": 37,
+      "source_count": 37,
+      "platform_count": 5,
+      "contradiction_level": "medium",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 51,
+      "source_count": 51,
+      "platform_count": 3,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 218,
+      "source_count": 218,
+      "platform_count": 5,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "unclear",
+      "signal_type": "weak_onsen_feeling",
+      "signal_direction": "negative",
+      "mention_count": 1,
+      "source_count": 1,
+      "platform_count": 1,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal"
+    }
+  ],
+  "bath_area_tags": {
+    "family_bath": 26,
+    "public_bath": 35,
+    "open_air_public_bath": 4,
+    "facility_wide": 140,
+    "room_open_air_bath": 51,
+    "private_bath": 11
+  },
+  "signal_counts": {
+    "private_bath_experience": 35,
+    "water_texture": 218,
+    "booking_confusion": 42,
+    "public_bath_hot_spring": 38,
+    "neutral": 34,
+    "room_bath_hot_spring": 51,
+    "operation_caution": 24,
+    "temperature_control": 4,
+    "weak_onsen_feeling": 1
+  },
+  "caution_signals": [
+    "프라이빗 온천/개별 온천 예약제",
+    "송영·택시 동선",
+    "객실 타입별 샤워/객실탕 차이",
+    "온천감 약함 1건",
+    "객실 냄새/응대 저평점 신호"
+  ],
+  "copy_summary_ko": "직접 확인 363건 중 온천 관련 237건에서 대욕장·공용 노천탕, 가족탕/프라이빗 온천, 일부 객실 노천탕 신호가 함께 반복된다. 사이가쿠칸은 객실탕 단일형이 아니라 유후다케 조망 대욕장과 예약형 프라이빗탕, 일부 객실 노천탕을 분리해 읽어야 하는 복합형 온천 숙소다.",
+  "primary_bath_ko": "유후다케 조망 공용 노천탕·대욕장 + 예약형 가족탕/프라이빗 온천 + 일부 객실 노천탕",
+  "operation_notes_ko": "Google Maps는 Aside Browser로 4.4/620 및 별점 분포 5=377, 4=178, 3=41, 2=8, 1=16을 확인했다. Agoda 2,094건은 리뷰풀로만 기록하고 API 직접 본문 304건만 직접 수에 넣었다. Google의 Trip.com/Tripadvisor 공급자 카드는 Google-native 직접 리뷰에서 제외했다.",
+  "next_action": "ready_for_db. Naver 직접 본문은 후속 한국어 수요 보강으로 분리한다."
+}

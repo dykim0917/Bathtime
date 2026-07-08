@@ -1,0 +1,83 @@
+{
+  "version": "kyushu-direction-backfill-v0.1",
+  "created_at": "2026-07-08",
+  "scope": "Kyushu 3차-B candidates only",
+  "policy": {
+    "include_for_seed": [
+      "body_sentiment_inference_needed",
+      "issue_caution_calibration_needed"
+    ],
+    "exclude_for_seed": [
+      "positive_default_is_risky"
+    ],
+    "low_confidence_rows_are_kept_but_not_enough_to_select_positive_default_candidates": true,
+    "original_direct_review_sample_index_files_are_not_overwritten": true
+  },
+  "directions": {
+    "positive": "온천/욕장 경험이 명확히 좋게 언급되거나, 긍정 본문 표현과 온천 태그가 함께 있는 경우",
+    "mixed": "장점과 주의점이 같은 행에 함께 있거나, 예약/운영/온도/혼잡 같은 조건부 태그가 붙은 경우",
+    "negative": "약한 온천감, 염소, 명백한 불만 본문 또는 낮은 평점+부정 본문이 있는 경우",
+    "neutral": "숙박 맥락 또는 온천과 무관한 행"
+  },
+  "caution_direction_rules": {
+    "sister_property_movement": "mixed",
+    "aging_or_access": "mixed",
+    "operation_recheck": "mixed",
+    "cleanliness": "mixed",
+    "temperature": "mixed",
+    "crowding": "mixed",
+    "stairs_access": "mixed",
+    "room_coldness": "mixed",
+    "insects": "mixed",
+    "weak_onsen_feeling": "negative",
+    "chlorine": "negative",
+    "booking_confusion": "mixed",
+    "booking_access": "mixed",
+    "operation_caution": "mixed",
+    "temperature_control": "mixed",
+    "cleanliness_or_age": "mixed",
+    "cleanliness_or_safety": "mixed",
+    "building_age": "mixed",
+    "temperature_access_cleanliness": "mixed",
+    "room_no_shower_or_small_wet_area": "mixed",
+    "stairs_or_access": "mixed",
+    "room_type_mismatch": "mixed",
+    "access_or_taxi": "mixed",
+    "expectation_or_service_gap": "mixed",
+    "pet_friendly_context": "neutral"
+  },
+  "positive_signals": [
+    "facility_wide_onsen_experience",
+    "private_bath_experience",
+    "public_bath_hot_spring",
+    "room_bath_hot_spring",
+    "source_flow",
+    "water_texture"
+  ],
+  "conditional_signals": [
+    "booking_confusion",
+    "booking_or_operation_confusion",
+    "crowding",
+    "maintenance_caution",
+    "maintenance_cleanliness",
+    "operation_caution",
+    "room_bath_operational_caution",
+    "temperature_access_cleanliness",
+    "temperature_control",
+    "temperature_management"
+  ],
+  "negative_signals": [
+    "chlorine_smell",
+    "weak_onsen_feeling"
+  ],
+  "body_positive_patterns": [
+    "良かった|よかった|最高|満足|大満足|素晴らし|すばらし|気持ち良|気持ちよ|快適|ゆっくり|のんびり|楽し|また.*(泊まり|行き|伺い)|お湯.*(良|よ)|泉質.*(良|よ)|すべすべ|スベスベ|とろとろ|トロトロ|美人の湯|掛け流|かけ流|癒され|満喫|贅沢|絶景|眺め.*良",
+    "good|great|excellent|amazing|wonderful|relax|private onsen|nice bath",
+    "좋았|만족|최고|훌륭|편안|프라이빗|온천.*좋|물.*좋|다시"
+  ],
+  "body_negative_patterns": [
+    "残念|不満|不快|悪い|悪かった|最悪|がっかり|期待外れ|汚|カビ|臭|狭|寒|ぬるい|ぬるかった|熱すぎ|熱過ぎ|虫|蚊|入れなかった|掃除|壊|工事|騒|不便|分かりにく|わかりにく|危な|痛|古すぎ|冷た|清潔感がない",
+    "bad|dirty|cold|too hot|too small|disappoint|smell|bug|insect|mold|noise",
+    "아쉽|불편|더럽|춥|차갑|너무 뜨|벌레|냄새|실망|낡|좁"
+  ]
+}

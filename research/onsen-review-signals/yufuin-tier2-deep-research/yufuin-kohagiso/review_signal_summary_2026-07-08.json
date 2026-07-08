@@ -1,0 +1,128 @@
+{
+  "accommodation_name": "ゆふいん 小萩荘 / 유후인 코하기소",
+  "research_date": "2026-07-08",
+  "data_quality_grade": "C",
+  "qa_status": "needs_research_reinforcement",
+  "ready_for_db": false,
+  "collection_briefing": {
+    "visible_review_pool": "Jalan 74 + Google Maps 37 = visible 111 confirmed. Trip.com direct review pool 0. Other OTA pools not confirmed.",
+    "directly_read_reviews": 83,
+    "onsen_related_direct_reviews": 75,
+    "direct_body_platform_count": 2,
+    "direct_body_platforms": [
+      "Jalan",
+      "Google Maps"
+    ],
+    "access_failed_or_limited_platforms": [
+      "Trip.com not_found reviews 0",
+      "Agoda not_found",
+      "Booking.com not_found",
+      "Rakuten not_found",
+      "Yahoo Travel not_found",
+      "Tripadvisor partial/403 static + Google provider preview only",
+      "Naver Search snippet_only/no blog direct body found"
+    ]
+  },
+  "identity": {
+    "name_ja": "ゆふいん 小萩荘 / お宿 小萩荘 / 民宿小萩荘",
+    "name_ko": "유후인 코하기소",
+    "name_en": "Oyado Yufuin Kohagiso / Kohagi-so",
+    "official_url": "https://www.kohagiso.com/",
+    "address": "大分県由布市湯布院町川上1352-2",
+    "onsen_area": "由布院温泉"
+  },
+  "official_hot_spring_facts": [
+    {
+      "source": "official_site",
+      "fact": "유후인 온천 숙박시설이며 공식 사이트는 온천과 초박 중심 운영을 안내한다."
+    },
+    {
+      "source": "yufuin_tourism_bureau",
+      "fact": "천연가케나가시, 지하 400m 원천, 60도 고온 온천, 가족탕 타입, 내탕+노천탕, 3-4명 동시 이용 가능을 시설 정보로 표기한다."
+    }
+  ],
+  "review_signal_summary": [
+    {
+      "bath_area": "private_bath/family_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "positive",
+      "mention_count": 29,
+      "source_count": 29,
+      "platform_count": 1,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "public_bath/open_air_public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "mixed",
+      "mention_count": 29,
+      "source_count": 29,
+      "platform_count": 2,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 4,
+      "source_count": 4,
+      "platform_count": 2,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "open_air_public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "booking_confusion",
+      "signal_direction": "negative",
+      "mention_count": 1,
+      "source_count": 1,
+      "platform_count": 1,
+      "contradiction_level": "medium",
+      "review_signal_status": "weak_signal"
+    }
+  ],
+  "evidence_examples": [
+    {
+      "short_paraphrase": "Jalan 표본에서는 가족탕/전세탕 이용 신호가 가장 뚜렷하다.",
+      "original_keyword": "貸切 / 家族風呂",
+      "source_url": "https://www.jalan.net/yad347558/kuchikomi/",
+      "language": "ja",
+      "review_date": "2026/5/16"
+    },
+    {
+      "short_paraphrase": "Google 한국어 리뷰에서 온천 만족이 짧게 확인된다.",
+      "original_keyword": "온천도 정말 좋고",
+      "source_url": "https://www.google.com/maps/search/?api=1&query=%E3%82%86%E3%81%B5%E3%81%84%E3%82%93%20%E5%B0%8F%E8%90%A9%E8%8D%98",
+      "language": "ko",
+      "review_date": "8년 전"
+    },
+    {
+      "short_paraphrase": "Google 일본어 리뷰에서 노천탕 온수 부재와 내탕만 이용 가능했다는 시점 특정 부정 신호가 보인다.",
+      "original_keyword": "露天風呂にお湯はない / 内湯のみ",
+      "source_url": "https://www.google.com/maps/search/?api=1&query=%E3%82%86%E3%81%B5%E3%81%84%E3%82%93%20%E5%B0%8F%E8%90%A9%E8%8D%98",
+      "language": "ja",
+      "review_date": "2년 전"
+    },
+    {
+      "short_paraphrase": "Google 리뷰에서 공용 목욕 구조와 초박 중심 운영이 언급된다.",
+      "original_keyword": "素泊 / 風呂も共用",
+      "source_url": "https://www.google.com/maps/search/?api=1&query=%E3%82%86%E3%81%B5%E3%81%84%E3%82%93%20%E5%B0%8F%E8%90%A9%E8%8D%98",
+      "language": "ja",
+      "review_date": "1년 전"
+    }
+  ],
+  "bathtime_interpretation": "직접 확인 83건 중 온천 관련 75건으로, 표본 안에서는 가족탕/전세탕형 소규모 온천 민박 신호가 반복된다. 다만 직접 본문 플랫폼은 Jalan과 Google Maps 2개뿐이고 총량도 100건 미만이어서, DB 즉시 적재보다 보강 큐 유지가 데이터에 맞다. 특히 공식 정보의 가족탕·가케나가시 주장은 후기 만족 신호와 분리해야 하며, Google에는 노천탕 운영 상태에 대한 시점 특정 부정 신호가 함께 보인다.",
+  "gaps": [
+    "300건 기준까지 최소 217건 부족하다.",
+    "직접 본문 플랫폼은 2개로 A급의 3개 이상 기준에 미달한다.",
+    "Tripadvisor는 Google/NAVITIME 경유 텍스트만 보였고 원 플랫폼 직접 본문은 아직 확보하지 못했다.",
+    "Naver는 검색 결과에 예약/소개성 페이지만 확인되어 한국어 직접 블로그 본문은 확보하지 못했다."
+  ],
+  "next_action": "Tripadvisor를 Aside Browser로 직접 재시도하고, Booking/Expedia/Hotels.com 메타 검색에서 Kohagiso 고유 페이지가 있는지 확인한다. 추가 본문 풀이 없으면 C급 needs_research_reinforcement로 유지하고 유후인 대표 보강 대상에서는 후순위로 내린다."
+}

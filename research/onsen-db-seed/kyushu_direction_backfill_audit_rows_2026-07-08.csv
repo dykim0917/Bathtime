@@ -1,0 +1,281 @@
+slug,row_index,platform,rating,onsen_related,signal_tags,issue_tags,signal_direction,rule,confidence
+beppu-bettei-haruki,1,Jalan,,True,風呂;露天;半露天;湯;お湯;時間,,positive,body_positive,high
+beppu-bettei-haruki,2,Jalan,,True,温泉;風呂;露天;半露天,,positive,body_positive,high
+beppu-bettei-haruki,3,Jalan,,True,風呂;露天;半露天;貸切,,positive,body_positive,high
+beppu-bettei-haruki,4,Jalan,,True,風呂;予約,,mixed,body_positive_and_negative,high
+beppu-bettei-haruki,5,Jalan,,False,,,positive,body_positive,high
+beppu-bettei-haruki,6,Jalan,,False,,,positive,body_positive,high
+beppu-bettei-haruki,7,Jalan,,True,風呂;露天;半露天;貸切;狭,,mixed,body_negative_with_context,high
+beppu-bettei-haruki,8,Jalan,,True,風呂;露天;半露天;貸切,,positive,body_positive,high
+beppu-bettei-haruki,9,Jalan,,True,水,,mixed,body_positive_and_negative,high
+beppu-bettei-haruki,10,Jalan,,True,風呂,,mixed,body_positive_and_negative,high
+beppu-bettei-haruki,11,Jalan,,True,風呂;露天,,positive,body_positive,high
+beppu-bettei-haruki,12,Jalan,,True,風呂;浴;時間,,positive,body_positive,high
+beppu-bettei-haruki,13,Jalan,,True,温泉;貸切;予約,,positive,body_positive,high
+beppu-bettei-haruki,14,Jalan,,False,,,positive,body_positive,high
+beppu-bettei-haruki,15,Jalan,,True,温泉,,mixed,body_positive_and_negative,high
+beppu-bettei-haruki,16,Jalan,,True,温泉;風呂;源泉;時間,,positive,body_positive,high
+beppu-bettei-haruki,17,Jalan,,True,温泉;風呂;湯;浴,,mixed,body_positive_and_negative,high
+beppu-bettei-haruki,18,Jalan,,True,浴,,positive,body_positive,high
+beppu-bettei-haruki,19,Jalan,,True,温泉;風呂;露天;浴,,positive,body_positive,high
+beppu-bettei-haruki,20,Jalan,,True,風呂;貸切,,positive,body_positive,high
+beppu-hachiyo,1,Rakuten Travel,5,1,room_open_air_bath;small_bath_or_room;food,,positive,body_positive,high
+beppu-hachiyo,2,Rakuten Travel,5,1,room_open_air_bath;food,,positive,body_positive,high
+beppu-hachiyo,3,Rakuten Travel,4,1,private_bath;small_bath_or_room;food,,mixed,body_positive_and_negative,high
+beppu-hachiyo,4,Rakuten Travel,4,1,room_open_air_bath;food,,positive,rating_positive_signal,medium
+beppu-hachiyo,5,Rakuten Travel,3,1,room_open_air_bath;food;access,,mixed,body_negative_with_context,high
+beppu-hachiyo,6,Rakuten Travel,5,1,room_open_air_bath;food;access,,mixed,body_positive_and_negative,high
+beppu-hachiyo,7,Rakuten Travel,5,1,room_open_air_bath;food,,positive,body_positive,high
+beppu-hachiyo,8,Rakuten Travel,5,1,room_open_air_bath;food;access,,positive,body_positive,high
+beppu-hachiyo,9,Rakuten Travel,5,1,room_open_air_bath;room_bath;food,,positive,body_positive,high
+beppu-hachiyo,10,Rakuten Travel,5,1,room_open_air_bath;room_bath;food,,mixed,body_positive_and_negative,high
+beppu-hachiyo,11,Rakuten Travel,5,1,private_bath;food,,positive,body_positive,high
+beppu-hachiyo,12,Rakuten Travel,5,1,room_open_air_bath;food;access,,positive,body_positive,high
+beppu-hachiyo,13,Rakuten Travel,5,1,private_bath;food,,positive,body_positive,high
+beppu-hachiyo,14,Rakuten Travel,5,1,room_open_air_bath;private_bath;food,,positive,body_positive,high
+beppu-hachiyo,15,Rakuten Travel,5,1,room_open_air_bath;small_bath_or_room;food,,positive,body_positive,high
+beppu-hachiyo,16,Rakuten Travel,5,1,food;access,,positive,body_positive,high
+beppu-hachiyo,17,Rakuten Travel,5,1,room_open_air_bath;food,,positive,body_positive,high
+beppu-hachiyo,18,Rakuten Travel,5,1,room_open_air_bath;small_bath_or_room;food,,positive,body_positive,high
+beppu-hachiyo,19,Rakuten Travel,5,1,room_open_air_bath;food,,positive,body_positive,high
+beppu-hachiyo,20,Rakuten Travel,5,1,room_bath;private_bath;food,,mixed,body_positive_and_negative,high
+beppu-hoshino-kai,1,Jalan,,true,booking_confusion|open_air_public_bath|room_open_air_bath|view,,mixed,body_positive_and_negative,high
+beppu-hoshino-kai,2,Jalan,,true,booking_confusion|cleaning_or_maintenance|open_air_public_bath|public_bath|room_open_air_bath,,mixed,conditional_signal_tag,medium
+beppu-hoshino-kai,3,Jalan,,true,cleaning_or_maintenance|public_bath|view,,mixed,conditional_signal_tag,medium
+beppu-hoshino-kai,4,Jalan,,true,booking_confusion,,mixed,conditional_signal_tag,medium
+beppu-hoshino-kai,5,Jalan,,true,open_air_public_bath,,positive,body_positive,high
+beppu-hoshino-kai,6,Jalan,,false,booking_confusion,,mixed,conditional_signal_tag,medium
+beppu-hoshino-kai,7,Jalan,,true,booking_confusion|footbath|view,,mixed,conditional_signal_tag,medium
+beppu-hoshino-kai,8,Jalan,,true,access|booking_confusion|cleaning_or_maintenance,,mixed,body_positive_and_negative,high
+beppu-hoshino-kai,9,Jalan,,false,booking_confusion|view,,mixed,conditional_signal_tag,medium
+beppu-hoshino-kai,10,Jalan,,false,,,mixed,body_positive_and_negative,high
+beppu-hoshino-kai,11,Jalan,,true,cleaning_or_maintenance|view,,mixed,body_positive_and_negative,high
+beppu-hoshino-kai,12,Jalan,,false,view,,positive,body_positive,high
+beppu-hoshino-kai,13,Jalan,,true,booking_confusion|room_bath|view,,mixed,conditional_signal_tag,medium
+beppu-hoshino-kai,14,Jalan,,true,booking_confusion|crowding,,mixed,conditional_signal_tag,medium
+beppu-hoshino-kai,15,Jalan,,false,,,positive,body_positive,high
+beppu-hoshino-kai,16,Jalan,,true,cleaning_or_maintenance,,mixed,body_positive_and_negative,high
+beppu-hoshino-kai,17,Jalan,,true,crowding|footbath|open_air_public_bath|view,,mixed,conditional_signal_tag,medium
+beppu-hoshino-kai,18,Jalan,,false,,,positive,body_positive,high
+beppu-hoshino-kai,19,Jalan,,false,,,positive,body_positive,high
+beppu-hoshino-kai,20,Jalan,,false,booking_confusion,,mixed,body_positive_and_negative,high
+beppu-kannawa-bettei,1,Jalan,,True,内湯;湯;工事,,mixed,body_negative_with_context,high
+beppu-kannawa-bettei,2,Jalan,,True,風呂;湯;予約,,mixed,body_positive_and_negative,high
+beppu-kannawa-bettei,3,Jalan,,True,風呂;源泉;掛け流;予約,,positive,body_positive,high
+beppu-kannawa-bettei,4,Jalan,,True,温泉;風呂;熱;水;予約,,mixed,body_positive_and_negative,high
+beppu-kannawa-bettei,5,Jalan,,True,風呂;貸切,,mixed,body_positive_and_negative,high
+beppu-kannawa-bettei,6,Jalan,,True,風呂;湯;水;蚊,,negative,low_rating_negative_body,high
+beppu-kannawa-bettei,7,Jalan,,True,温泉;風呂;露天,,positive,body_positive,high
+beppu-kannawa-bettei,8,Jalan,,True,温泉;風呂;湯;源泉;熱;家族風呂;予約,,positive,body_positive,high
+beppu-kannawa-bettei,9,Jalan,,True,温泉;風呂;浴;掃除,,mixed,body_positive_and_negative,high
+beppu-kannawa-bettei,10,Jalan,,True,風呂;汚;狭,,mixed,body_positive_and_negative,high
+beppu-kannawa-bettei,11,Jalan,,True,風呂;露天;内湯;湯;肌;熱;水;熱すぎ,,mixed,body_positive_and_negative,high
+beppu-kannawa-bettei,12,Jalan,,True,温泉,,mixed,body_positive_and_negative,high
+beppu-kannawa-bettei,13,Jalan,,True,風呂;露天;貸切,,positive,body_positive,high
+beppu-kannawa-bettei,14,Jalan,,True,風呂;露天;内湯;湯;家族風呂,,positive,body_positive,high
+beppu-kannawa-bettei,15,Jalan,,True,温泉,,positive,body_positive,high
+beppu-kannawa-bettei,16,Jalan,,True,風呂;湯;熱;熱い,,positive,body_positive,high
+beppu-kannawa-bettei,17,Jalan,,True,温泉,,positive,body_positive,high
+beppu-kannawa-bettei,18,Jalan,,True,温泉;風呂;湯;熱;ぬる;熱い,,mixed,body_positive_and_negative,high
+beppu-kannawa-bettei,19,Jalan,,True,温泉;風呂;露天;家族風呂,,mixed,body_positive_and_negative,high
+beppu-kannawa-bettei,20,Jalan,,True,温泉,,positive,body_positive,high
+beppu-terrace-midoubaru,1,Rakuten Travel,5,1,room_open_air_bath,,positive,rating_positive_signal,medium
+beppu-terrace-midoubaru,2,Rakuten Travel,5,1,room_open_air_bath;view,,positive,body_positive,high
+beppu-terrace-midoubaru,3,Rakuten Travel,4,1,room_open_air_bath;temperature_hot;access_road,,mixed,body_positive_and_negative,high
+beppu-terrace-midoubaru,4,Rakuten Travel,4,1,room_open_air_bath,,mixed,body_positive_and_negative,high
+beppu-terrace-midoubaru,5,Rakuten Travel,5,1,room_open_air_bath,,positive,body_positive,high
+beppu-terrace-midoubaru,6,Rakuten Travel,5,1,room_open_air_bath,,positive,body_positive,high
+beppu-terrace-midoubaru,7,Rakuten Travel,4,1,room_open_air_bath;view,,positive,body_positive,high
+beppu-terrace-midoubaru,8,Rakuten Travel,4,1,room_open_air_bath;view,,positive,body_positive,high
+beppu-terrace-midoubaru,9,Rakuten Travel,5,1,room_open_air_bath,,positive,body_positive,high
+beppu-terrace-midoubaru,10,Rakuten Travel,5,1,room_open_air_bath,,positive,body_positive,high
+beppu-terrace-midoubaru,11,Rakuten Travel,4,1,room_open_air_bath;view;temperature_hot;stairs_layout;access_road,,mixed,body_positive_and_negative,high
+beppu-terrace-midoubaru,12,Rakuten Travel,5,1,room_open_air_bath,,positive,body_positive,high
+beppu-terrace-midoubaru,13,Rakuten Travel,5,1,room_open_air_bath;view,,positive,body_positive,high
+beppu-terrace-midoubaru,14,Rakuten Travel,5,1,room_open_air_bath,,positive,body_positive,high
+beppu-terrace-midoubaru,15,Rakuten Travel,3,1,room_open_air_bath,,mixed,body_positive_and_negative,high
+beppu-terrace-midoubaru,16,Rakuten Travel,4,1,room_open_air_bath;view,,positive,body_positive,high
+beppu-terrace-midoubaru,17,Rakuten Travel,4,1,room_open_air_bath;view,,mixed,body_positive_and_negative,high
+beppu-terrace-midoubaru,18,Rakuten Travel,5,1,room_open_air_bath;view,,positive,body_positive,high
+beppu-terrace-midoubaru,19,Rakuten Travel,5,1,room_open_air_bath,,positive,body_positive,high
+beppu-terrace-midoubaru,20,Rakuten Travel,5,1,room_open_air_bath,,positive,rating_positive_signal,medium
+takeo-koyokaku,1,Jalan,5,yes,water_texture,,positive,rating_positive_signal,medium
+takeo-koyokaku,2,Jalan,5,yes,room_bath_hot_spring;water_texture,,positive,body_positive,high
+takeo-koyokaku,3,Jalan,5,yes,water_texture,,positive,rating_positive_signal,medium
+takeo-koyokaku,4,Jalan,5,no,,,positive,body_positive,high
+takeo-koyokaku,5,Jalan,5,yes,private_bath_experience;water_texture,,positive,body_positive,high
+takeo-koyokaku,6,Jalan,4,yes,water_texture,room_coldness,mixed,body_negative_with_context,high
+takeo-koyokaku,7,Jalan,5,yes,private_bath_experience;water_texture,,positive,body_positive,high
+takeo-koyokaku,8,Jalan,5,yes,,,positive,body_positive,high
+takeo-koyokaku,9,Jalan,5,yes,public_bath_hot_spring;water_texture,stairs_access,mixed,caution_or_issue_tag,high
+takeo-koyokaku,10,Jalan,4,yes,,stairs_access,mixed,caution_or_issue_tag,high
+takeo-koyokaku,11,Jalan,5,yes,water_texture,,positive,rating_positive_signal,medium
+takeo-koyokaku,12,Jalan,5,yes,private_bath_experience;water_texture,,positive,body_positive,high
+takeo-koyokaku,13,Jalan,5,yes,private_bath_experience,,positive,body_positive,high
+takeo-koyokaku,14,Jalan,5,no,,,positive,body_positive,high
+takeo-koyokaku,15,Jalan,5,no,,,positive,body_positive,high
+takeo-koyokaku,16,Jalan,5,yes,water_texture,stairs_access;temperature,mixed,caution_or_issue_tag,high
+takeo-koyokaku,17,Jalan,3,yes,water_texture,,positive,rating_positive_signal,medium
+takeo-koyokaku,18,Jalan,4,yes,private_bath_experience,,positive,body_positive,high
+takeo-koyokaku,19,Jalan,5,yes,water_texture,room_coldness,mixed,body_negative_with_context,high
+takeo-koyokaku,20,Jalan,5,yes,water_texture,,positive,rating_positive_signal,medium
+ureshino-shiibasanso,1,Jalan,5,yes,public_bath_hot_spring;water_texture;booking_confusion,sister_property_movement;aging_or_access,mixed,caution_or_issue_tag,high
+ureshino-shiibasanso,2,Jalan,5,yes,room_bath_hot_spring;public_bath_hot_spring;water_texture;booking_confusion,sister_property_movement;aging_or_access,mixed,caution_or_issue_tag,high
+ureshino-shiibasanso,3,Jalan,5,yes,public_bath_hot_spring;booking_confusion,sister_property_movement,mixed,caution_or_issue_tag,high
+ureshino-shiibasanso,4,Jalan,5,yes,booking_confusion,sister_property_movement,mixed,caution_or_issue_tag,high
+ureshino-shiibasanso,5,Jalan,4,yes,water_texture,,positive,rating_positive_signal,medium
+ureshino-shiibasanso,6,Jalan,5,yes,water_texture,,positive,rating_positive_signal,medium
+ureshino-shiibasanso,7,Jalan,5,yes,water_texture;booking_confusion,sister_property_movement,mixed,caution_or_issue_tag,high
+ureshino-shiibasanso,8,Jalan,5,yes,crowding;booking_confusion,sister_property_movement,mixed,caution_or_issue_tag,high
+ureshino-shiibasanso,9,Jalan,5,yes,water_texture;booking_confusion,sister_property_movement,mixed,caution_or_issue_tag,high
+ureshino-shiibasanso,10,Jalan,4,yes,room_bath_hot_spring;public_bath_hot_spring;water_texture;private_bath_experience;booking_confusion,sister_property_movement,mixed,caution_or_issue_tag,high
+ureshino-shiibasanso,11,Jalan,5,yes,water_texture;booking_confusion,sister_property_movement,mixed,caution_or_issue_tag,high
+ureshino-shiibasanso,12,Jalan,5,yes,booking_confusion,sister_property_movement,mixed,caution_or_issue_tag,high
+ureshino-shiibasanso,13,Jalan,5,yes,public_bath_hot_spring;water_texture;booking_confusion,sister_property_movement,mixed,caution_or_issue_tag,high
+ureshino-shiibasanso,14,Jalan,5,yes,public_bath_hot_spring;water_texture;booking_confusion,sister_property_movement,mixed,caution_or_issue_tag,high
+ureshino-shiibasanso,15,Jalan,5,yes,booking_confusion,sister_property_movement,mixed,caution_or_issue_tag,high
+ureshino-shiibasanso,16,Jalan,5,yes,public_bath_hot_spring;water_texture;booking_confusion,sister_property_movement,mixed,caution_or_issue_tag,high
+ureshino-shiibasanso,17,Jalan,5,yes,public_bath_hot_spring;water_texture;booking_confusion,sister_property_movement,mixed,caution_or_issue_tag,high
+ureshino-shiibasanso,18,Jalan,5,yes,water_texture;booking_confusion,sister_property_movement,mixed,caution_or_issue_tag,high
+ureshino-shiibasanso,19,Jalan,4,yes,room_bath_hot_spring;public_bath_hot_spring;booking_confusion,sister_property_movement,mixed,caution_or_issue_tag,high
+ureshino-shiibasanso,20,Jalan,3,yes,water_texture;booking_confusion,sister_property_movement;cleanliness,mixed,caution_or_issue_tag,high
+ureshino-taishoya,1,Jalan,4,yes,booking_confusion,,mixed,conditional_signal_tag,medium
+ureshino-taishoya,2,Jalan,5,yes,water_texture,,positive,rating_positive_signal,medium
+ureshino-taishoya,3,Jalan,5,yes,booking_confusion;public_bath_hot_spring;water_texture,sister_property_movement,mixed,caution_or_issue_tag,high
+ureshino-taishoya,4,Jalan,5,yes,public_bath_hot_spring;room_bath_hot_spring;water_texture,,positive,body_positive,high
+ureshino-taishoya,5,Jalan,5,no,,aging_or_access,mixed,caution_or_issue_tag,high
+ureshino-taishoya,6,Jalan,5,yes,water_texture,,positive,rating_positive_signal,medium
+ureshino-taishoya,7,Jalan,4,yes,water_texture,sister_property_movement,mixed,caution_or_issue_tag,high
+ureshino-taishoya,8,Jalan,5,yes,booking_confusion;public_bath_hot_spring;water_texture,sister_property_movement,mixed,caution_or_issue_tag,high
+ureshino-taishoya,9,Jalan,5,yes,water_texture,,positive,rating_positive_signal,medium
+ureshino-taishoya,10,Jalan,5,yes,water_texture,sister_property_movement,mixed,caution_or_issue_tag,high
+ureshino-taishoya,11,Jalan,5,yes,water_texture,,positive,body_positive,high
+ureshino-taishoya,12,Jalan,5,yes,water_texture,temperature,mixed,caution_or_issue_tag,high
+ureshino-taishoya,13,Jalan,4,yes,water_texture,,positive,rating_positive_signal,medium
+ureshino-taishoya,14,Jalan,4,yes,booking_confusion;public_bath_hot_spring;water_texture,aging_or_access,mixed,caution_or_issue_tag,high
+ureshino-taishoya,15,Jalan,5,yes,water_texture,aging_or_access,mixed,caution_or_issue_tag,high
+ureshino-taishoya,16,Jalan,5,yes,public_bath_hot_spring;water_texture,cleanliness;temperature,mixed,caution_or_issue_tag,high
+ureshino-taishoya,17,Jalan,4,yes,water_texture,,positive,rating_positive_signal,medium
+ureshino-taishoya,18,Jalan,5,yes,water_texture,,positive,body_positive,high
+ureshino-taishoya,19,Jalan,5,yes,water_texture,,positive,body_positive,high
+ureshino-taishoya,20,Jalan,4,yes,room_bath_hot_spring;water_texture,aging_or_access,mixed,caution_or_issue_tag,high
+ureshino-wataya-besso,1,Jalan,3,yes,room_bath_hot_spring;public_bath_hot_spring;water_texture,,positive,positive_signal_no_caution,medium
+ureshino-wataya-besso,2,Jalan,2,yes,public_bath_hot_spring;water_texture,temperature,mixed,body_negative_with_context,high
+ureshino-wataya-besso,3,Jalan,5,yes,water_texture,,positive,body_positive,high
+ureshino-wataya-besso,4,Jalan,3,yes,booking_confusion,,mixed,conditional_signal_tag,medium
+ureshino-wataya-besso,5,Jalan,3,yes,public_bath_hot_spring;booking_confusion,operation_recheck,mixed,caution_or_issue_tag,high
+ureshino-wataya-besso,6,Jalan,5,yes,room_bath_hot_spring;public_bath_hot_spring,,positive,body_positive,high
+ureshino-wataya-besso,7,Jalan,4,yes,public_bath_hot_spring;booking_confusion,operation_recheck,mixed,caution_or_issue_tag,high
+ureshino-wataya-besso,8,Jalan,5,yes,water_texture,aging_or_access,mixed,caution_or_issue_tag,high
+ureshino-wataya-besso,9,Jalan,4,yes,public_bath_hot_spring;water_texture,,positive,body_positive,high
+ureshino-wataya-besso,10,Jalan,3,yes,room_bath_hot_spring;public_bath_hot_spring;water_texture,insects,negative,low_rating_negative_body,high
+ureshino-wataya-besso,11,Jalan,3,yes,booking_confusion,operation_recheck;cleanliness,negative,low_rating_negative_body,high
+ureshino-wataya-besso,12,Jalan,3,no,,,mixed,body_negative_with_context,high
+ureshino-wataya-besso,13,Jalan,5,yes,public_bath_hot_spring;water_texture;crowding;booking_confusion,aging_or_access;cleanliness;crowding,mixed,caution_or_issue_tag,high
+ureshino-wataya-besso,14,Jalan,5,yes,room_bath_hot_spring;public_bath_hot_spring,,positive,rating_positive_signal,medium
+ureshino-wataya-besso,15,Jalan,4,yes,water_texture,,positive,rating_positive_signal,medium
+ureshino-wataya-besso,16,Jalan,4,no,,,positive,body_positive,high
+ureshino-wataya-besso,17,Jalan,3,yes,public_bath_hot_spring;booking_confusion,operation_recheck,negative,low_rating_negative_body,high
+ureshino-wataya-besso,18,Jalan,3,yes,room_bath_hot_spring;public_bath_hot_spring;water_texture;booking_confusion,operation_recheck,mixed,caution_or_issue_tag,high
+ureshino-wataya-besso,19,Jalan,5,yes,public_bath_hot_spring,,positive,rating_positive_signal,medium
+ureshino-wataya-besso,20,Jalan,4,yes,public_bath_hot_spring;water_texture;booking_confusion,aging_or_access,mixed,caution_or_issue_tag,high
+yufuin-enokiya,1,Rakuten Travel,5,True,private_bath_experience;crowding,room_no_shower_or_small_wet_area;pet_friendly_context,mixed,caution_or_issue_tag,high
+yufuin-enokiya,2,Rakuten Travel,5,False,,,neutral,neutral_or_lodging_context,medium
+yufuin-enokiya,3,Rakuten Travel,5,True,facility_wide_hot_spring_mention,,positive,rating_positive_signal,medium
+yufuin-enokiya,4,Rakuten Travel,5,True,facility_wide_hot_spring_mention,pet_friendly_context,positive,rating_positive_signal,medium
+yufuin-enokiya,5,Rakuten Travel,5,False,,,neutral,neutral_or_lodging_context,medium
+yufuin-enokiya,6,Rakuten Travel,5,True,private_bath_experience,,positive,body_positive,high
+yufuin-enokiya,7,Rakuten Travel,5,True,water_texture,pet_friendly_context,positive,rating_positive_signal,medium
+yufuin-enokiya,8,Rakuten Travel,5,False,,,neutral,neutral_or_lodging_context,medium
+yufuin-enokiya,9,Rakuten Travel,4,False,,,neutral,neutral_or_lodging_context,medium
+yufuin-enokiya,10,Rakuten Travel,4,True,facility_wide_hot_spring_mention,pet_friendly_context,positive,rating_positive_signal,medium
+yufuin-enokiya,11,Rakuten Travel,4,True,facility_wide_hot_spring_mention,,positive,rating_positive_signal,medium
+yufuin-enokiya,12,Rakuten Travel,5,True,facility_wide_hot_spring_mention,,positive,rating_positive_signal,medium
+yufuin-enokiya,13,Rakuten Travel,5,True,facility_wide_hot_spring_mention,,positive,rating_positive_signal,medium
+yufuin-enokiya,14,Rakuten Travel,5,False,,,neutral,neutral_or_lodging_context,medium
+yufuin-enokiya,15,Rakuten Travel,5,True,facility_wide_hot_spring_mention,,positive,rating_positive_signal,medium
+yufuin-enokiya,16,Rakuten Travel,5,True,private_bath_experience;crowding;booking_confusion,pet_friendly_context,mixed,conditional_signal_tag,medium
+yufuin-enokiya,17,Rakuten Travel,4,True,private_bath_experience,pet_friendly_context,positive,body_positive,high
+yufuin-enokiya,18,Rakuten Travel,5,False,,,neutral,neutral_or_lodging_context,medium
+yufuin-enokiya,19,Rakuten Travel,5,True,facility_wide_hot_spring_mention,,positive,rating_positive_signal,medium
+yufuin-enokiya,20,Rakuten Travel,5,True,private_bath_experience,,positive,body_positive,high
+yufuin-kounokura,1,Jalan,,true,booking_confusion;onsen_related;public_bath_hot_spring;room_bath_hot_spring,,mixed,conditional_signal_tag,medium
+yufuin-kounokura,2,Jalan,,true,booking_confusion;onsen_related;room_bath_hot_spring,,mixed,conditional_signal_tag,medium
+yufuin-kounokura,3,Jalan,,false,booking_confusion,,mixed,conditional_signal_tag,medium
+yufuin-kounokura,4,Jalan,,true,booking_confusion;onsen_related;public_bath_hot_spring;room_bath_hot_spring,temperature,mixed,body_negative_with_context,high
+yufuin-kounokura,5,Jalan,,true,booking_confusion;onsen_related;room_bath_hot_spring,,mixed,conditional_signal_tag,medium
+yufuin-kounokura,6,Jalan,,true,booking_confusion;onsen_related;room_bath_hot_spring,,mixed,conditional_signal_tag,medium
+yufuin-kounokura,7,Jalan,,true,booking_confusion;onsen_related;room_bath_hot_spring,,mixed,conditional_signal_tag,medium
+yufuin-kounokura,8,Jalan,,false,booking_confusion,,mixed,conditional_signal_tag,medium
+yufuin-kounokura,9,Jalan,,false,booking_confusion,temperature,mixed,body_negative_with_context,high
+yufuin-kounokura,10,Jalan,,true,onsen_related;public_bath_hot_spring;room_bath_hot_spring;water_texture,temperature,mixed,body_negative_with_context,high
+yufuin-kounokura,11,Jalan,,true,onsen_related;room_bath_hot_spring,,positive,positive_signal_no_caution,medium
+yufuin-kounokura,12,Jalan,,true,booking_confusion;onsen_related;room_bath_hot_spring,,mixed,conditional_signal_tag,medium
+yufuin-kounokura,13,Jalan,,true,onsen_related;room_bath_hot_spring;water_texture,temperature,mixed,body_negative_with_context,high
+yufuin-kounokura,14,Jalan,,false,booking_confusion,,mixed,conditional_signal_tag,medium
+yufuin-kounokura,15,Jalan,,true,booking_confusion;onsen_related,,mixed,conditional_signal_tag,medium
+yufuin-kounokura,16,Jalan,,true,booking_confusion;onsen_related,,mixed,conditional_signal_tag,medium
+yufuin-kounokura,17,Jalan,,true,booking_confusion;onsen_related;room_bath_hot_spring,temperature,mixed,caution_or_issue_tag,high
+yufuin-kounokura,18,Jalan,,true,booking_confusion;onsen_related;room_bath_hot_spring,,mixed,conditional_signal_tag,medium
+yufuin-kounokura,19,Jalan,,true,booking_confusion;onsen_related,,mixed,conditional_signal_tag,medium
+yufuin-kounokura,20,Jalan,,true,booking_confusion;onsen_related,,mixed,conditional_signal_tag,medium
+yufuin-oyado-kaikatei,1,Jalan,5 5,True,room_bath_hot_spring;private_bath_experience,,positive,body_positive,high
+yufuin-oyado-kaikatei,2,Jalan,5 5,True,room_bath_hot_spring;private_bath_experience,,positive,body_positive,high
+yufuin-oyado-kaikatei,3,Jalan,4 4,True,room_bath_hot_spring;private_bath_experience,temperature_access_cleanliness,mixed,caution_or_issue_tag,high
+yufuin-oyado-kaikatei,4,Jalan,5 5,True,room_bath_hot_spring;booking_confusion,,mixed,conditional_signal_tag,medium
+yufuin-oyado-kaikatei,5,Jalan,5 5,True,room_bath_hot_spring;booking_confusion,,mixed,conditional_signal_tag,medium
+yufuin-oyado-kaikatei,6,Jalan,4 4,True,room_bath_hot_spring;private_bath_experience,,positive,body_positive,high
+yufuin-oyado-kaikatei,7,Jalan,5 5,True,room_bath_hot_spring,,positive,rating_positive_signal,medium
+yufuin-oyado-kaikatei,8,Jalan,3 3,True,room_bath_hot_spring,temperature_access_cleanliness,mixed,caution_or_issue_tag,high
+yufuin-oyado-kaikatei,9,Jalan,5 5,True,room_bath_hot_spring,,positive,rating_positive_signal,medium
+yufuin-oyado-kaikatei,10,Jalan,5 5,True,room_bath_hot_spring,temperature_access_cleanliness,mixed,caution_or_issue_tag,high
+yufuin-oyado-kaikatei,11,Jalan,5 5,True,room_bath_hot_spring;water_texture;booking_confusion,temperature_access_cleanliness,mixed,body_negative_with_context,high
+yufuin-oyado-kaikatei,12,Jalan,5 5,True,room_bath_hot_spring,,positive,rating_positive_signal,medium
+yufuin-oyado-kaikatei,13,Jalan,4 4,True,room_bath_hot_spring,,positive,rating_positive_signal,medium
+yufuin-oyado-kaikatei,14,Jalan,3 3,True,room_bath_hot_spring;private_bath_experience;water_texture,temperature_access_cleanliness,mixed,caution_or_issue_tag,high
+yufuin-oyado-kaikatei,15,Jalan,3 3,True,room_bath_hot_spring;private_bath_experience;water_texture;booking_confusion,,mixed,conditional_signal_tag,medium
+yufuin-oyado-kaikatei,16,Jalan,5 5,True,room_bath_hot_spring;public_bath_hot_spring;private_bath_experience;booking_confusion,temperature_access_cleanliness,mixed,caution_or_issue_tag,high
+yufuin-oyado-kaikatei,17,Jalan,3 3,True,room_bath_hot_spring,,positive,positive_signal_no_caution,medium
+yufuin-oyado-kaikatei,18,Jalan,3 3,True,room_bath_hot_spring,,positive,positive_signal_no_caution,medium
+yufuin-oyado-kaikatei,19,Jalan,5 5,True,room_bath_hot_spring;private_bath_experience,temperature_access_cleanliness,mixed,caution_or_issue_tag,high
+yufuin-oyado-kaikatei,20,Jalan,4 4,True,room_bath_hot_spring;private_bath_experience;crowding;booking_confusion,temperature_access_cleanliness,mixed,caution_or_issue_tag,high
+yufuin-shuhokan,1,Jalan,,true,onsen_related,temperature,mixed,caution_or_issue_tag,high
+yufuin-shuhokan,2,Jalan,,true,onsen_related,,positive,positive_signal_no_caution,medium
+yufuin-shuhokan,3,Jalan,,true,onsen_related,,positive,positive_signal_no_caution,medium
+yufuin-shuhokan,4,Jalan,,true,onsen_related,,positive,positive_signal_no_caution,medium
+yufuin-shuhokan,5,Jalan,,true,onsen_related,,positive,positive_signal_no_caution,medium
+yufuin-shuhokan,6,Jalan,,false,booking_confusion,,mixed,conditional_signal_tag,medium
+yufuin-shuhokan,7,Jalan,,true,booking_confusion;onsen_related,,mixed,conditional_signal_tag,medium
+yufuin-shuhokan,8,Jalan,,true,onsen_related;public_bath_hot_spring,,positive,positive_signal_no_caution,medium
+yufuin-shuhokan,9,Jalan,,true,onsen_related,,positive,positive_signal_no_caution,medium
+yufuin-shuhokan,10,Jalan,,true,booking_confusion;onsen_related;public_bath_hot_spring,,mixed,conditional_signal_tag,medium
+yufuin-shuhokan,11,Jalan,,true,onsen_related;water_texture,,positive,positive_signal_no_caution,medium
+yufuin-shuhokan,12,Jalan,,true,onsen_related,,positive,positive_signal_no_caution,medium
+yufuin-shuhokan,13,Jalan,,true,booking_confusion;onsen_related,,mixed,conditional_signal_tag,medium
+yufuin-shuhokan,14,Jalan,,true,onsen_related;public_bath_hot_spring,cleanliness_or_age,mixed,body_negative_with_context,high
+yufuin-shuhokan,15,Jalan,,true,onsen_related;public_bath_hot_spring,,positive,positive_signal_no_caution,medium
+yufuin-shuhokan,16,Jalan,,true,onsen_related,,positive,positive_signal_no_caution,medium
+yufuin-shuhokan,17,Jalan,,true,onsen_related,,positive,positive_signal_no_caution,medium
+yufuin-shuhokan,18,Jalan,,false,,,neutral,neutral_or_lodging_context,medium
+yufuin-shuhokan,19,Jalan,,false,,,neutral,neutral_or_lodging_context,medium
+yufuin-shuhokan,20,Jalan,,false,,,neutral,neutral_or_lodging_context,medium
+yufuin-tosyoan,1,Jalan,5 5,True,room_bath_hot_spring;water_texture,,positive,rating_positive_signal,medium
+yufuin-tosyoan,2,Jalan,5 5,True,room_bath_hot_spring,,positive,rating_positive_signal,medium
+yufuin-tosyoan,3,Jalan,4 4,True,room_bath_hot_spring;water_texture,,positive,rating_positive_signal,medium
+yufuin-tosyoan,4,Jalan,4 4,True,room_bath_hot_spring;water_texture,,positive,rating_positive_signal,medium
+yufuin-tosyoan,5,Jalan,5 5,True,room_bath_hot_spring;water_texture;booking_confusion,booking_confusion,mixed,caution_or_issue_tag,high
+yufuin-tosyoan,6,Jalan,4 4,False,water_texture;booking_confusion,booking_confusion,mixed,caution_or_issue_tag,high
+yufuin-tosyoan,7,Jalan,5 5,True,water_texture;booking_confusion,booking_confusion,mixed,caution_or_issue_tag,high
+yufuin-tosyoan,8,Jalan,5 5,True,water_texture;booking_confusion;operation_caution,booking_confusion;operation_caution,mixed,body_negative_with_context,high
+yufuin-tosyoan,9,Jalan,4 4,False,water_texture,,positive,rating_positive_signal,medium
+yufuin-tosyoan,10,Jalan,4 4,True,water_texture;booking_confusion,booking_confusion,mixed,caution_or_issue_tag,high
+yufuin-tosyoan,11,Jalan,5 5,True,water_texture;booking_confusion,booking_confusion,mixed,caution_or_issue_tag,high
+yufuin-tosyoan,12,Jalan,5 5,True,room_bath_hot_spring;water_texture,,positive,rating_positive_signal,medium
+yufuin-tosyoan,13,Jalan,4 4,True,room_bath_hot_spring,,positive,rating_positive_signal,medium
+yufuin-tosyoan,14,Jalan,4 4,True,room_bath_hot_spring;water_texture,,positive,rating_positive_signal,medium
+yufuin-tosyoan,15,Jalan,5 5,True,water_texture,,positive,rating_positive_signal,medium
+yufuin-tosyoan,16,Jalan,5 5,True,room_bath_hot_spring;water_texture;booking_confusion,booking_confusion,mixed,caution_or_issue_tag,high
+yufuin-tosyoan,17,Jalan,4 4,True,water_texture;operation_caution,operation_caution,mixed,body_negative_with_context,high
+yufuin-tosyoan,18,Jalan,5 5,True,water_texture;booking_confusion,booking_confusion,mixed,caution_or_issue_tag,high
+yufuin-tosyoan,19,Jalan,5 5,True,water_texture,,positive,rating_positive_signal,medium
+yufuin-tosyoan,20,Jalan,5 5,True,water_texture;booking_confusion,booking_confusion,mixed,caution_or_issue_tag,high

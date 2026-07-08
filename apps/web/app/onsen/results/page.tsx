@@ -14,6 +14,12 @@ import { normalizeOnsenPublicCopy } from '@web/lib/onsenCopy';
 import { readOnsenCandidates } from '@web/lib/onsenData';
 import { readOnsenReviewCounts } from '@web/lib/onsenReviews';
 import {
+  getOnsenWaterHighlightMark,
+  getOnsenWaterSortRank,
+  hasConfirmedWaterKakenagashi,
+  hasOnsenWaterCriterion,
+} from '@web/lib/onsenWaterSignal';
+import {
   bathContextFilters,
   getFilterLabel,
   onsenAreaFilters,
@@ -32,6 +38,10 @@ export const metadata: Metadata = {
 };
 
 const MIN_VISIBLE_REVIEW_COUNT = 5;
+
+function formatNumber(value: number) {
+  return new Intl.NumberFormat('ko-KR').format(value);
+}
 
 function OnsenLaurel({ side = 'left' }: { side?: 'left' | 'right' }) {
   return (
@@ -88,37 +98,6 @@ function toggleFilterValue(values: string[], value: string) {
   return values.includes(value) ? values.filter((item) => item !== value) : [...values, value];
 }
 
-function getWaterHighlightMark(waterDecision: { springType: string; operation: string }) {
-  const text = `${waterDecision.springType} ${waterDecision.operation}`;
-
-  if (text.includes('직수')) {
-    return {
-      label: '직수 온천',
-      tone: 'water-source',
-      title: '직수 온천 단서',
-    };
-  }
-
-  if (text.includes('100%') || text.includes('천연온천') || text.includes('천연 온천')) {
-    return {
-      label: '천연온천',
-      tone: 'water-natural',
-      title: '천연온천 단서',
-    };
-  }
-
-  return null;
-}
-
-function getWaterSortRank(waterDecision: { springType: string; operation: string }) {
-  const waterHighlightMark = getWaterHighlightMark(waterDecision);
-
-  if (waterHighlightMark?.tone === 'water-source') return 0;
-  if (waterHighlightMark?.tone === 'water-natural') return 1;
-
-  return 2;
-}
-
 function normalizeResultCardCopy(value: string) {
   const copy = normalizeOnsenPublicCopy(value);
 
@@ -166,7 +145,7 @@ export default async function OnsenPage({
       const areaMatch = !area || location?.onsenArea === area || candidate.region === area;
       const travelMatch = travel.every((item) => contexts?.travel.some((value) => value === item));
       const bathMatch = bath.every((item) => contexts?.bath.some((value) => value === item));
-      const waterMatch = water.every((item) => contexts?.water.some((value) => value === item));
+      const waterMatch = water.every((item) => hasOnsenWaterCriterion(candidate, item));
       const queryText = [
         candidate.name,
         candidate.jaName,
@@ -186,8 +165,16 @@ export default async function OnsenPage({
       const queryMatch = !query || queryText.includes(query);
       return regionGroupMatch && areaMatch && travelMatch && bathMatch && waterMatch && queryMatch;
     })
-    .sort((a, b) => getWaterSortRank(a.candidate.waterDecision) - getWaterSortRank(b.candidate.waterDecision) || a.index - b.index)
+    .sort((a, b) => getOnsenWaterSortRank(a.candidate) - getOnsenWaterSortRank(b.candidate) || a.index - b.index)
     .map(({ candidate }) => candidate);
+  const resultStats = filtered.reduce(
+    (acc, candidate) => ({
+      verdictCount: acc.verdictCount + (candidate.verdict ? 1 : 0),
+      directSourceCount: acc.directSourceCount + (hasConfirmedWaterKakenagashi(candidate) ? 1 : 0),
+      experiencesRead: acc.experiencesRead + (candidate.verdict?.briefing.experiencesRead ?? candidate.directReviews ?? 0),
+    }),
+    { verdictCount: 0, directSourceCount: 0, experiencesRead: 0 }
+  );
   const activeRegionGroupLabel = getFilterLabel(regionGroupFilters, regionGroup);
   const activeAreaLabel = getFilterLabel(onsenAreaFilters, area);
   const hasVisibleFilter = travel.length > 0 || bath.length > 0 || water.length > 0;
@@ -354,6 +341,20 @@ export default async function OnsenPage({
               <span className="onsen-filter-label">온천 검색 결과</span>
               <h1 id="onsen-results-title">{resultScopeLabel} 온천 {filtered.length}개</h1>
             </div>
+            <dl className="onsen-results-counts" aria-label="현재 결과 판정 요약">
+              <div>
+                <dt>판정 있음</dt>
+                <dd>{formatNumber(resultStats.verdictCount)}곳</dd>
+              </div>
+              <div>
+                <dt>직수 확인</dt>
+                <dd>{formatNumber(resultStats.directSourceCount)}곳</dd>
+              </div>
+              <div>
+                <dt>읽은 경험</dt>
+                <dd>{formatNumber(resultStats.experiencesRead)}건</dd>
+              </div>
+            </dl>
           </div>
 
           {filtered.length === 0 && (
@@ -366,7 +367,7 @@ export default async function OnsenPage({
 
           {filtered.map((candidate) => (
             (() => {
-              const waterHighlightMark = getWaterHighlightMark(candidate.waterDecision);
+              const waterHighlightMark = getOnsenWaterHighlightMark(candidate);
               const reviewCount = reviewCounts[candidate.slug] ?? 0;
 
               return (
@@ -374,7 +375,6 @@ export default async function OnsenPage({
                   key={candidate.slug}
                   className="onsen-result-card-link"
                   href={`/onsen/${candidate.slug}?from=${encodeURIComponent(currentResultsHref)}`}
-                  aria-label={`${candidate.name} 상세 보기`}
                 >
                   <article className="onsen-result-card">
                     <div className="onsen-card-visual" aria-label={`${candidate.name} 사진 영역`}>
@@ -395,12 +395,12 @@ export default async function OnsenPage({
                             <span className="onsen-card-location">{candidate.location?.display ?? candidate.area}</span>
                           </div>
                           <div className="onsen-card-title-row">
-                            <h3>{candidate.name}</h3>
-                            <span className="onsen-card-official-mark" title="공식 안내에서 확인한 정보 포함" aria-label="공식 안내 확인">
+                            <h2>{candidate.name}</h2>
+                            <span className="onsen-card-official-mark" role="img" title="공식 안내에서 확인한 정보 포함" aria-label="공식 안내 확인">
                               <SealCheck size={18} weight="fill" aria-hidden="true" />
                             </span>
                             {waterHighlightMark ? (
-                              <span className="onsen-card-water-award" data-tone={waterHighlightMark.tone}>
+                              <span className="onsen-card-water-award" data-tone={waterHighlightMark.tone} title={waterHighlightMark.title}>
                                 <OnsenLaurel />
                                 {waterHighlightMark.label}
                                 <OnsenLaurel side="right" />

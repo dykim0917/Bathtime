@@ -1,0 +1,167 @@
+{
+  "accommodation_name": "お宿 開花亭 / 오야도 카이카테이",
+  "research_date": "2026-07-08",
+  "data_quality_grade": "A",
+  "qa_status": "ready_for_db",
+  "ready_for_db": true,
+  "collection_briefing": {
+    "visible_review_pool": "Agoda 1,880, Google Maps/Hotels 258, Rakuten visible 145/custom page and review state total 134, Jalan 58, Trip.com provider card 49, Tripadvisor provider card 30, Naver Search snippets 다수. 이 수치는 직접 읽은 리뷰 수와 합산하지 않음.",
+    "directly_read_reviews": 428,
+    "onsen_related_direct_reviews": 415,
+    "direct_body_platform_count": 3,
+    "direct_body_platforms": [
+      "Jalan",
+      "Agoda",
+      "Rakuten Travel"
+    ],
+    "google_checked": "Aside Browser로 Google Maps/Hotels 평점 4.6, visible 258, rating distribution 177/61/13/3/4 확인. Google-native 본문은 이번 직접 표본에 산입하지 않음.",
+    "naver_checked": "Aside Browser로 Naver Search 확인. 블로그/카페/검색 미리보기 신호는 snippet_only이며 직접 리뷰 수 제외.",
+    "access_failed_or_limited_platforms": [
+      "Google-native review body partial/login-prone; provider cards separated",
+      "Trip.com provider card/snippet only",
+      "Tripadvisor provider card/snippet only",
+      "Naver snippet_only"
+    ]
+  },
+  "identity": {
+    "name_ja": "お宿 開花亭 / おやど 開花亭",
+    "name_ko": "오야도 카이카테이",
+    "name_en": "Oyado Kaikatei Ryokan",
+    "aliases": [
+      "Yufuin Oyado Kaikatei",
+      "오야도 카이카테이 료칸"
+    ],
+    "official_url": "https://www.kaikatei.info/",
+    "address": "大分県由布市湯布院町川上2150-1",
+    "onsen_area": "由布院温泉"
+  },
+  "official_hot_spring_facts": [
+    {
+      "source": "official_site",
+      "url": "https://www.kaikatei.info/",
+      "facts": [
+        "由布院温泉 숙박시설",
+        "공식 사이트 메타/본문에서 温泉旅館, 全室, 客室, 露天, 源泉, 掛け流し 관련 표기가 확인됨"
+      ]
+    },
+    {
+      "source": "Rakuten facility page",
+      "url": "https://travel.rakuten.co.jp/HOTEL/137975/CUSTOM/GW137975120525160058.html",
+      "facts": [
+        "全室露天・内湯付き離れの宿로 표기",
+        "객실 페이지가 전 객실 노천·내탕 딸린 별채 구조를 시설 주장으로 제시"
+      ]
+    },
+    {
+      "source": "Jalan lodging page",
+      "url": "https://www.jalan.net/yad312931/",
+      "facts": [
+        "Jalan 숙소 ID yad312931, 후기 58건/평점 4.8 표면 확인"
+      ]
+    }
+  ],
+  "review_signal_summary": [
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 408,
+      "source_count": 408,
+      "platform_count": 3,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "room_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 41,
+      "source_count": 41,
+      "platform_count": 3,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 7,
+      "source_count": 7,
+      "platform_count": 3,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "booking_confusion",
+      "signal_direction": "mixed",
+      "mention_count": 76,
+      "source_count": 76,
+      "platform_count": 3,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "public_bath/open_air_public_bath",
+      "bath_area_confidence": "unclear",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "neutral",
+      "mention_count": 10,
+      "source_count": 10,
+      "platform_count": 2,
+      "contradiction_level": "medium",
+      "review_signal_status": "weak_signal"
+    }
+  ],
+  "evidence_examples": [
+    {
+      "short_paraphrase": "Agoda 한국어 표본에서 프라이빗탕, 내탕/노천탕, 가이세키 가격 만족이 함께 언급된다.",
+      "original_keyword": "프라이빗탕 / 내탕 / 노천탕",
+      "source_url": "https://www.agoda.com/ko-kr/oyado-kaikatei-ryokan/reviews/yufu-jp.html",
+      "language": "ko",
+      "review_date": "2026-01-06"
+    },
+    {
+      "short_paraphrase": "Agoda 한국어 표본에서 아기 동반 객실의 온도 조절 가능성과 바위 노천탕·실내탕 구성이 확인된다.",
+      "original_keyword": "온천 온도 조절 / 바위 노천탕+실내탕",
+      "source_url": "https://www.agoda.com/ko-kr/oyado-kaikatei-ryokan/reviews/yufu-jp.html",
+      "language": "ko",
+      "review_date": "2025-12-02"
+    },
+    {
+      "short_paraphrase": "Jalan 표본은 객실 노천탕 이용 만족을 반복적으로 보여준다.",
+      "original_keyword": "部屋 / 露天風呂",
+      "source_url": "https://www.jalan.net/yad312931/kuchikomi/",
+      "language": "ja",
+      "review_date": "2026-05-18"
+    },
+    {
+      "short_paraphrase": "Rakuten 표본에서 별채 객실과 객실 노천탕, 식사 만족이 함께 나타난다.",
+      "original_keyword": "露天付離れ / お風呂",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/137975/review.html",
+      "language": "ja",
+      "review_date": "2026-04-21"
+    },
+    {
+      "short_paraphrase": "Naver 검색 미리보기에서는 독채·개별 노천탕·실내탕+야외노천탕 수요 표현이 보이나 직접 본문으로 세지 않았다.",
+      "original_keyword": "독채 / 개별 노천탕 / 전객실 실내탕+야외 노천탕",
+      "source_url": "https://search.naver.com/search.naver?query=%EC%98%A4%EC%95%BC%EB%8F%84%20%EC%B9%B4%EC%9D%B4%EC%B9%B4%ED%85%8C%EC%9D%B4%20%ED%9B%84%EA%B8%B0",
+      "language": "ko",
+      "review_date": "snippet_only"
+    }
+  ],
+  "bathtime_interpretation": "직접 확인 428건 중 온천 관련 415건이며, 객실 노천탕/객실 내탕 신호가 3개 직접 본문 플랫폼에서 강하게 반복된다. 이 숙소는 대욕장보다 객실 안에서 독립적으로 온천을 쓰는 경험이 핵심이며, 한국어 표본에서도 `프라이빗탕`, `개인노천탕`, `실내탕+야외 노천탕` 표현이 같은 방향으로 나타난다. 다만 Google·Naver의 검색/공급자 미리보기는 직접 리뷰 수에서 제외했고, 접근성·송영·객실 타입 표기는 운영 주의 신호로 별도 분리한다.",
+  "gaps": [
+    "Google-native 본문은 이번 직접 표본에 포함하지 않았다.",
+    "Trip.com/Tripadvisor는 Google/Naver 표면 카드만 확인되어 snippet/provider signal로 유지했다.",
+    "Naver Blog/Cafe 본문은 직접 열람 표본으로 세지 않았다."
+  ],
+  "copy_summary_ko": "직접 확인 표본 428건 중 객실 노천탕/객실탕 맥락이 압도적으로 반복된다. Bathtime에서는 대욕장 중심 숙소가 아니라, 별채 객실 안에서 노천탕과 내탕을 쓰는 객실탕 중심형으로 해석하는 편이 데이터에 맞다.",
+  "primary_bath_ko": "전 객실 별채형 객실 노천탕·객실 내탕 중심",
+  "operation_notes_ko": "위치가 역·번화가에서 다소 떨어졌다는 한국어/OTA 신호가 반복되고, 체크아웃 택시·송영 부재·도보 접근성은 예약 전 안내 문구로 분리하는 편이 좋다. 객실 타입별 내탕/노천탕 표기는 공식 시설 주장과 후기 객실명 모두에서 확인되나, 예약 채널별 객실명 차이는 별도 확인 축으로 둔다.",
+  "next_action": "DB seed 후보에 포함. Trip.com/Tripadvisor/Naver 직접 본문을 추가하면 한국어 저평점·공급자 카드 신호를 더 세밀하게 분리할 수 있지만 A급 기준은 충족했다."
+}

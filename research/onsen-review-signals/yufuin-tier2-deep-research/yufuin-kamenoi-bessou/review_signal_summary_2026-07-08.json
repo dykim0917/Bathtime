@@ -1,0 +1,185 @@
+{
+  "research_date": "2026-07-08",
+  "slug": "yufuin-kamenoi-bessou",
+  "name_ja": "亀の井別荘",
+  "name_ko": "카메노이 벳소",
+  "aliases": [
+    "Kamenoi Besso",
+    "카메노이 벳소",
+    "카메노이벳소",
+    "亀の井別荘"
+  ],
+  "region_display_ko": "규슈 · 오이타현 · 유후인",
+  "area_bucket": "Yufuin/Yunohira",
+  "qa_status": "needs_research_reinforcement",
+  "data_quality_grade": "C",
+  "visible_review_pool": "Google Maps 446; Tripadvisor provider card 150; Rakuten Travel 24; JTB questionnaire 17 + RRB 16; Trip.com 6; Yahoo/Ikkyu combined 121 legacy; Naver Search snippet pool present",
+  "direct_read_review_count": 78,
+  "onsen_related_direct_review_count": 34,
+  "direct_body_platforms": [
+    "Rakuten Travel",
+    "JTB",
+    "Trip.com",
+    "Google Maps",
+    "Naver Blog"
+  ],
+  "direct_body_platform_count": 5,
+  "platform_status_by_source": {
+    "Google Maps": {
+      "rating": "4.5",
+      "visible_review_count": 446,
+      "rating_distribution": {
+        "5": 318,
+        "4": 84,
+        "3": 26,
+        "2": 5,
+        "1": 13
+      },
+      "review_body_access": "direct_readable",
+      "direct_read_count": 7,
+      "onsen_related_direct_count": 2,
+      "notes": "Aside Browser로 카메노이 벳소 패널과 리뷰 탭 확인. Tripadvisor provider card는 Google-native에서 제외."
+    },
+    "Naver Search": {
+      "review_body_access": "snippet_only",
+      "direct_read_count": 0,
+      "onsen_related_direct_count": 0,
+      "notes": "검색 결과에 객실 노천탕/대욕장/개인탕 수요 신호가 반복되지만 직접 본문 수에는 불산입."
+    },
+    "Naver Blog": {
+      "review_body_access": "direct_readable",
+      "direct_read_count": 1,
+      "onsen_related_direct_count": 1,
+      "source_url": "https://blog.naver.com/guftjssmla77/224159665661"
+    },
+    "Rakuten Travel": {
+      "visible_review_count": 24,
+      "review_body_access": "direct_readable",
+      "direct_read_count": 19,
+      "onsen_related_direct_count": 19,
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/180627/review.html"
+    },
+    "JTB": {
+      "visible_review_count": "jtb questionnaire 17; rrb review 16",
+      "review_body_access": "direct_readable",
+      "direct_read_count": 45,
+      "onsen_related_direct_count": 12,
+      "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/8413003/review/"
+    },
+    "Trip.com": {
+      "visible_review_count": 6,
+      "review_body_access": "partial",
+      "direct_read_count": 6,
+      "onsen_related_direct_count": 0,
+      "source_url": "https://jp.trip.com/hotels/yufu-hotel-detail-1652229/kamenoi-bessou/",
+      "notes": "commentList 배열 6건 확인. 인코딩 복원 전이라 온천 태깅 제외."
+    },
+    "Yahoo Travel": {
+      "visible_review_count": "121 combined Yahoo/Ikkyu legacy",
+      "review_body_access": "blocked",
+      "direct_read_count": 0,
+      "onsen_related_direct_count": 0,
+      "notes": "2026-07-08 정적 접근은 403. 2026-07-02 legacy summary에는 18건 직접/8건 온천으로 기록되나 sample index 복원 부족."
+    },
+    "Ikkyu": {
+      "visible_review_count": "121 combined Yahoo/Ikkyu legacy",
+      "review_body_access": "blocked",
+      "direct_read_count": 0,
+      "onsen_related_direct_count": 0,
+      "notes": "2026-07-08 정적 접근은 403. 2026-07-02 legacy summary에는 22건 직접/6건 온천으로 기록되나 sample index 복원 부족."
+    },
+    "Tripadvisor": {
+      "visible_review_count": 150,
+      "review_body_access": "snippet_only",
+      "direct_read_count": 0,
+      "onsen_related_direct_count": 0,
+      "notes": "Google 호텔 패널 내 provider preview와 정적 403만 확인. Google-native와 분리."
+    }
+  },
+  "official_hot_spring_facts": {
+    "official_url": "http://www.kamenoi-bessou.jp/",
+    "address": "2633-1 Yufuincho Kawakami, Yufu, Oita 879-5102",
+    "official_claims_seen": [
+      "공식 사이트에서 일부 객실의 원천가케나가시 노천탕/내탕 리뉴얼 공지를 확인.",
+      "JTB 시설 설명에는 대욕장을 천연 가케나가시 온천으로 설명.",
+      "객실별 내탕/노천탕 구성은 객실 타입에 따라 달라지는 형태로 보이며 전 객실 동일로 단정하지 않음."
+    ],
+    "separated_from_review_signals": true
+  },
+  "review_signal_summary": [
+    {
+      "bath_area": "room_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 14,
+      "source_count": 14,
+      "platform_count": 3,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 6,
+      "source_count": 6,
+      "platform_count": 3,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 7,
+      "source_count": 7,
+      "platform_count": 3,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 4,
+      "source_count": 4,
+      "platform_count": 3,
+      "contradiction_level": "none",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "room_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "negative",
+      "mention_count": 2,
+      "source_count": 2,
+      "platform_count": 2,
+      "contradiction_level": "medium",
+      "review_signal_status": "weak_signal"
+    }
+  ],
+  "bath_area_tags": [
+    "room_bath",
+    "room_open_air_bath",
+    "public_bath",
+    "open_air_public_bath",
+    "facility_wide",
+    "unclear"
+  ],
+  "caution_signals": [
+    "객실탕 온도 조절 어려움이 소수 반복된다.",
+    "본관/별채, 객실 타입별 식사·탕 구성 차이가 있어 예약 전 기대치 혼동이 생길 수 있다.",
+    "Naver 검색에는 벳푸 카메노이 호텔과 명칭 혼입 결과가 함께 떠서 후보 정규화가 중요하다."
+  ],
+  "copy_summary_ko": "직접 검산 가능한 표본 78건 중 온천 관련 신호 34건이 확인된다. 객실 내탕·객실 노천탕·대욕장을 모두 갖춘 고급 료칸형 데이터이지만, Yahoo/Ikkyu legacy 40건의 원 표본 복원이 부족하고 전체 직접 표본이 100건 미만이라 DB 적재용 A급으로 보기는 이르다.",
+  "primary_bath_ko": "객실 타입별 내탕/노천탕과 공용 대욕장·노천탕을 함께 보는 숙소. 한국어 후기에서는 객실 개인탕보다 대욕장과 객실탕을 모두 이용한 체험 서술이 중요하다.",
+  "operation_notes_ko": "Google·Naver는 Aside Browser로 확인했다. Tripadvisor 공급자 카드와 Google-native 리뷰는 분리했고, Naver 검색 결과는 직접 블로그 1건 외에는 snippet_only로 처리했다.",
+  "next_action": "Yahoo/Ikkyu는 브라우저 동적 접근으로 legacy 40건의 sample index를 복원하고, Tripadvisor 또는 Google 리뷰 탭을 추가 스크롤해 직접 표본을 150건 이상으로 올린 뒤 B급 재판정한다.",
+  "ready_for_db": false,
+  "termination_reason_under_150": "현재 검산 가능한 직접 본문은 78건이다. Google Maps는 Aside snapshot 표본만 확보됐고 대량 스크롤 미완료, Yahoo/Ikkyu는 정적 403 및 legacy 원 표본 불완전, Tripadvisor는 403/provider preview 상태라 150건 이상으로 종료 판정하지 않는다."
+}
