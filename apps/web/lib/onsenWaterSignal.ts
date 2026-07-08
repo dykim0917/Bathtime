@@ -13,17 +13,17 @@ export function getOnsenWaterHighlightMark(candidate: Pick<OnsenCandidate, 'verd
 
   if (hasConfirmedWaterKakenagashi(candidate) || (!candidate.verdict && text.includes('직수'))) {
     return {
-      label: '직수 온천',
+      label: '원천 100% 직수',
       tone: 'water-source',
-      title: '직수 온천 공식 확인',
+      title: '원천을 흘려보내는 직수 방식으로 확인',
     };
   }
 
-  if (text.includes('100%') || text.includes('천연온천') || text.includes('천연 온천')) {
+  if (/100%\s*천연|천연온천|천연 온천/.test(text)) {
     return {
-      label: '천연온천',
+      label: '천연온천 표기',
       tone: 'water-natural',
-      title: '천연온천 단서',
+      title: '천연온천 표기 단서',
     };
   }
 
@@ -32,7 +32,7 @@ export function getOnsenWaterHighlightMark(candidate: Pick<OnsenCandidate, 'verd
 
 export function hasOnsenWaterCriterion(candidate: WaterSignalCandidate, criterion: string) {
   if (criterion === 'direct_source' && candidate.verdict) {
-    return hasConfirmedWaterKakenagashi(candidate);
+    return hasConfirmedWaterKakenagashi(candidate) || (candidate.contexts?.water.some((value) => value === criterion) ?? false);
   }
 
   return candidate.contexts?.water.some((value) => value === criterion) ?? false;

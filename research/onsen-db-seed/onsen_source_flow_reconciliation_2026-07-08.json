@@ -1,0 +1,265 @@
+{
+  "generated_at": "2026-07-08T06:33:12.536Z",
+  "apply_mode": true,
+  "seed_date": "2026-07-08",
+  "confirmed_updates": [
+    {
+      "slug": "hakone-byakudan",
+      "name": "하코네 고라 백단",
+      "ja_name": "箱根強羅 白檀",
+      "evidence_type": "previous_reviewed_seed_and_platform_mapping",
+      "evidence_keyword": "water_source_type=free_flowing_source / water_kakenagashi",
+      "source_file": "research/onsen-review-signals/hakone-byakudan/platform_mapping_2026-07-04.json",
+      "previous": {
+        "water_use_status": "review_supported",
+        "water_source_type": "hot_spring_confirmed",
+        "water_criteria": [
+          "spring_confirmed",
+          "water_texture"
+        ],
+        "operation_notes": [
+          "객실 노천탕 중심으로 정리했습니다"
+        ],
+        "fact_statuses": []
+      },
+      "next": {
+        "accommodation_patch": {
+          "water_use_status": "official_confirmed",
+          "water_source_type": "free_flowing_source",
+          "water_criteria": [
+            "spring_confirmed",
+            "direct_source",
+            "water_texture"
+          ],
+          "operation_notes": [
+            "객실 노천탕 중심으로 정리했습니다",
+            "자가 원천을 흘려보내는 직수 방식으로 확인됩니다"
+          ],
+          "content_updated_at": "2026-07-08"
+        },
+        "verdict_patch": {
+          "fact_statuses": [
+            {
+              "code": "water_kakenagashi",
+              "label": "원천 100% 직수",
+              "status": "confirmed",
+              "value": "전 객실 객실 노천탕과 공용탕에 자가 원천을 직수 방식으로 공급한다는 이전 검증 근거가 있습니다.",
+              "source": "research/onsen-review-signals/hakone-byakudan/platform_mapping_2026-07-04.json"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "slug": "tokachigawa-seijakubou",
+      "name": "도카치가와 온천 세이자쿠보",
+      "ja_name": "全室源泉かけ流し露天風呂付きの宿 清寂房《十勝川モール温泉》",
+      "evidence_type": "official_name_surface",
+      "evidence_keyword": "全室源泉かけ流し露天風呂付きの宿",
+      "source_file": "research/onsen-db-seed/hokkaido_reconciliation_seed_2026-07-08.json",
+      "previous": {
+        "water_use_status": "review_supported",
+        "water_source_type": "hot_spring_confirmed",
+        "water_criteria": [
+          "spring_confirmed",
+          "water_texture"
+        ],
+        "operation_notes": [
+          "객실 노천탕 중심으로 정리했습니다",
+          "예약 조건과 운영 시간을 함께 확인하시기 바랍니다"
+        ],
+        "fact_statuses": []
+      },
+      "next": {
+        "accommodation_patch": {
+          "water_use_status": "official_confirmed",
+          "water_source_type": "free_flowing_source",
+          "water_criteria": [
+            "spring_confirmed",
+            "direct_source",
+            "water_texture"
+          ],
+          "operation_notes": [
+            "객실 노천탕 중심으로 정리했습니다",
+            "예약 조건과 운영 시간을 함께 확인하시기 바랍니다",
+            "전 객실 노천탕이 원천가케나가시로 표기됩니다"
+          ],
+          "content_updated_at": "2026-07-08"
+        },
+        "verdict_patch": {
+          "fact_statuses": [
+            {
+              "code": "water_kakenagashi",
+              "label": "원천 100% 직수",
+              "status": "confirmed",
+              "value": "일본어 숙소명 표면에서 전 객실 원천가케나가시 노천탕 구성이 확인됩니다.",
+              "source": "research/onsen-db-seed/hokkaido_reconciliation_seed_2026-07-08.json"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "slug": "yunohira-gyounso",
+      "name": "유노히라 교운소",
+      "ja_name": "湯平温泉 宿彩暁雲荘 源泉掛け流し大人限定宿",
+      "evidence_type": "official_name_surface",
+      "evidence_keyword": "源泉掛け流し大人限定宿",
+      "source_file": "research/onsen-db-seed/kyushu_qa_seed_3rd_2026-07-08.json",
+      "previous": {
+        "water_use_status": "review_supported",
+        "water_source_type": "hot_spring_confirmed",
+        "water_criteria": [
+          "spring_confirmed",
+          "water_texture"
+        ],
+        "operation_notes": [
+          "객실 내 프라이빗탕 중심으로 정리했습니다",
+          "예약 조건과 운영 시간을 함께 확인하시기 바랍니다"
+        ],
+        "fact_statuses": []
+      },
+      "next": {
+        "accommodation_patch": {
+          "water_use_status": "official_confirmed",
+          "water_source_type": "free_flowing_source",
+          "water_criteria": [
+            "spring_confirmed",
+            "direct_source",
+            "water_texture"
+          ],
+          "operation_notes": [
+            "객실 내 프라이빗탕 중심으로 정리했습니다",
+            "예약 조건과 운영 시간을 함께 확인하시기 바랍니다",
+            "공식 표면에서 원천가케나가시 표기가 확인됩니다"
+          ],
+          "content_updated_at": "2026-07-08"
+        },
+        "verdict_patch": {
+          "fact_statuses": [
+            {
+              "code": "water_kakenagashi",
+              "label": "원천 100% 직수",
+              "status": "confirmed",
+              "value": "일본어 숙소명 표면에서 원천가케나가시 숙소임이 확인됩니다.",
+              "source": "research/onsen-db-seed/kyushu_qa_seed_3rd_2026-07-08.json"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "slug": "shirahama-yanagiya",
+      "name": "시라하마 야나기야",
+      "ja_name": "白浜温泉 家族とすごす白浜の宿 柳屋",
+      "evidence_type": "official_facts_and_deep_research",
+      "evidence_keyword": "百割源泉 / 源泉百% 掛け流し",
+      "source_file": "research/onsen-deep-research/shirahama-yanagiya-2026-07-04/review_signal_summary_2026-07-04.md",
+      "previous": {
+        "water_use_status": "review_supported",
+        "water_source_type": "hot_spring_confirmed",
+        "water_criteria": [
+          "spring_confirmed",
+          "water_texture"
+        ],
+        "operation_notes": [
+          "객실 노천탕 중심으로 정리했습니다",
+          "예약 조건과 운영 시간을 함께 확인하시기 바랍니다"
+        ],
+        "fact_statuses": []
+      },
+      "next": {
+        "accommodation_patch": {
+          "water_use_status": "official_confirmed",
+          "water_source_type": "free_flowing_source",
+          "water_criteria": [
+            "spring_confirmed",
+            "direct_source",
+            "water_texture"
+          ],
+          "operation_notes": [
+            "객실 노천탕 중심으로 정리했습니다",
+            "예약 조건과 운영 시간을 함께 확인하시기 바랍니다",
+            "원천 100% 직수 표기가 확인됩니다. 일부 반노천 객실은 끓인 물 표기라 객실 타입을 함께 확인하세요"
+          ],
+          "content_updated_at": "2026-07-08"
+        },
+        "verdict_patch": {
+          "fact_statuses": [
+            {
+              "code": "water_kakenagashi",
+              "label": "원천 100% 직수",
+              "status": "confirmed",
+              "value": "공식 표면에서 백할원천과 원천 100% 가케나가시가 확인됩니다. 일부 반노천 객실은 끓인 물 표기라 객실 타입 확인이 필요합니다.",
+              "source": "research/onsen-deep-research/shirahama-yanagiya-2026-07-04/review_signal_summary_2026-07-04.md"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "manual_review_candidates": [
+    {
+      "slug": "misasa-izanro-iwasaki",
+      "status": "hold_partial_scope",
+      "reason": "일부 욕장/객실 단위 원천가케나가시 표면은 있으나 숙소 전체 배지로 승격할 범위 검산이 필요합니다."
+    },
+    {
+      "slug": "misasa-mansuirou",
+      "status": "hold_partial_or_mixed_operation",
+      "reason": "자가원천 100%와 가온/가수 표면이 함께 있어 직수 배지보다 수동 판정이 먼저 필요합니다."
+    },
+    {
+      "slug": "shirahama-kaishu",
+      "status": "hold_partial_room_type",
+      "reason": "일부 객실/이탈 객실은 원천가케나가시이나 다른 객실은 끓인 물 표기가 있어 자동 승격하지 않습니다."
+    },
+    {
+      "slug": "shirahama-key-terrace",
+      "status": "hold_partial_public_bath",
+      "reason": "특정 공용탕 원천가케나가시 표면으로 보여 숙소 전체 직수 배지 전 범위 검산이 필요합니다."
+    },
+    {
+      "slug": "shirahama-sanrakuso",
+      "status": "hold_partial_room_type",
+      "reason": "원천가케나가시 객실 표면은 있으나 일부 객실/욕장 범위 분리가 필요합니다."
+    },
+    {
+      "slug": "kaike-yugetsu",
+      "status": "exclude_conflict",
+      "reason": "로컬 조사에서 가케나가시가 아니라는 표면이 확인되어 직수 후보에서 제외합니다."
+    },
+    {
+      "slug": "toba-kisara-bettei-toki",
+      "status": "exclude_conflict",
+      "reason": "로컬 조사에서 가케나가시가 아니라는 표면이 확인되어 직수 후보에서 제외합니다."
+    },
+    {
+      "slug": "yufuin_previous_copy_candidates",
+      "status": "hold_previous_copy_only",
+      "reason": "과거 문구에 직수 표현이 있던 유후인 숙소군은 원문 공식/후기 근거를 다시 묶기 전까지 자동 복원하지 않습니다."
+    }
+  ],
+  "applied": [
+    {
+      "slug": "hakone-byakudan",
+      "accommodation_rows": 1,
+      "verdict_rows": 1
+    },
+    {
+      "slug": "tokachigawa-seijakubou",
+      "accommodation_rows": 1,
+      "verdict_rows": 1
+    },
+    {
+      "slug": "yunohira-gyounso",
+      "accommodation_rows": 1,
+      "verdict_rows": 1
+    },
+    {
+      "slug": "shirahama-yanagiya",
+      "accommodation_rows": 1,
+      "verdict_rows": 1
+    }
+  ]
+}
