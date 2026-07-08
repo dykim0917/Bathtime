@@ -205,7 +205,7 @@ export async function OnsenLanding() {
                 </span>
                 <span className="onsen-region-inventory-copy">
                   <strong>{item.label}</strong>
-                  <span>숙소 {formatNumber(item.publishedCount)}곳 · 직수 {formatNumber(item.directSourceCount)}곳</span>
+                  <span>숙소 {formatNumber(item.publishedCount)}곳 · 100% 원천 {formatNumber(item.directSourceCount)}곳</span>
                 </span>
               </Link>
             ))}

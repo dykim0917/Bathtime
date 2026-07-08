@@ -12,13 +12,13 @@ export const recommendedOnsenPlaces: OnsenSearchSuggestion[] = [
   { label: '유후인, 일본', description: '객실 내 프라이빗탕과 조용한 료칸부터 확인', href: '/onsen/results?area=yufuin', kind: 'region' },
   { label: '벳푸, 일본', description: '대욕장과 객실 온천을 함께 확인', href: '/onsen/results?area=beppu', kind: 'region' },
   { label: '하코네, 일본', description: '도쿄 근교 료칸 온천 후보', href: '/onsen/results?area=hakone', kind: 'region' },
-  { label: '도야호, 일본', description: '홋카이도 호수 전망 온천 후보', href: '/onsen/results?area=toyako', kind: 'region' },
+  { label: '도야호, 일본', description: '홋카이도 호수 전망 온천 후보', href: '/onsen/results?area=hokkaido-toyako', kind: 'region' },
 ];
 
 export const popularOnsenSearches = [
   { label: '유후인 객실 내 프라이빗탕', href: '/onsen/results?area=yufuin&bath=room_bath' },
   { label: '유후인 대절탕', href: '/onsen/results?area=yufuin&bath=private_bath' },
-  { label: '원천 100% 직수 료칸', href: '/onsen/results?travel=ryokan_stay&water=direct_source' },
+  { label: '원천 직수 확인 숙소', href: '/onsen/results?travel=ryokan_stay&water=direct_source' },
   { label: '객실 내 프라이빗탕', href: '/onsen/results?bath=room_bath' },
 ];
 
