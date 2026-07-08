@@ -1440,7 +1440,7 @@ p {
 
 .onsen-region-inventory-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: var(--bt-space-3);
 }
 
@@ -1518,15 +1518,133 @@ p {
   line-height: var(--bt-leading-ui);
 }
 
+.onsen-region-compact-panel {
+  display: grid;
+  gap: var(--bt-space-3);
+  border-top: 1px solid var(--bt-color-border-soft);
+  padding-top: var(--bt-space-4);
+}
+
+.onsen-region-compact-head {
+  cursor: pointer;
+  color: var(--bt-color-primary-active);
+}
+
+.onsen-region-compact-head::marker {
+  color: var(--bt-color-primary-active);
+  font-size: var(--bt-text-small);
+}
+
+.onsen-region-compact-head:focus-visible {
+  border-radius: var(--bt-radius-xs);
+  outline: 2px solid var(--bt-color-primary);
+  outline-offset: 4px;
+}
+
+.onsen-region-compact-summary-copy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: calc(100% - 24px);
+  gap: var(--bt-space-3);
+  vertical-align: middle;
+}
+
+.onsen-region-compact-summary-copy strong {
+  color: var(--bt-color-ink);
+  font-size: var(--bt-text-body);
+  font-weight: var(--bt-weight-semibold);
+  line-height: var(--bt-leading-ui);
+  transition: color var(--bt-motion-base) var(--bt-ease-out);
+}
+
+.onsen-region-compact-head:hover .onsen-region-compact-summary-copy strong,
+.onsen-region-compact-head:focus-visible .onsen-region-compact-summary-copy strong {
+  color: var(--bt-color-primary-active);
+}
+
+.onsen-region-compact-summary-copy > span {
+  color: var(--bt-color-muted);
+  font-size: var(--bt-text-meta);
+  font-weight: var(--bt-weight-semibold);
+  line-height: var(--bt-leading-ui);
+}
+
+.onsen-region-compact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(156px, 1fr));
+  gap: var(--bt-space-2);
+  margin-top: var(--bt-space-3);
+}
+
+.onsen-region-compact-panel:not([open]) .onsen-region-compact-grid {
+  display: none;
+}
+
+.onsen-region-compact-link {
+  display: grid;
+  align-content: center;
+  gap: var(--bt-space-1);
+  min-height: 64px;
+  border: 1px solid var(--bt-color-border);
+  border-radius: var(--bt-radius-sm);
+  background: var(--bt-surface-default);
+  color: var(--bt-color-body);
+  padding: var(--bt-space-3);
+  transition:
+    background-color var(--bt-motion-base) var(--bt-ease-out),
+    border-color var(--bt-motion-base) var(--bt-ease-out),
+    transform var(--bt-motion-base) var(--bt-ease-out);
+}
+
+.onsen-region-compact-link:hover,
+.onsen-region-compact-link:focus-visible {
+  border-color: var(--bt-color-primary);
+  background: var(--bt-color-primary-soft);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.onsen-region-compact-link strong {
+  overflow: hidden;
+  color: var(--bt-color-ink);
+  font-size: var(--bt-text-small);
+  font-weight: var(--bt-weight-semibold);
+  line-height: var(--bt-leading-ui);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: color var(--bt-motion-base) var(--bt-ease-out);
+}
+
+.onsen-region-compact-link:hover strong,
+.onsen-region-compact-link:focus-visible strong {
+  color: var(--bt-color-primary-active);
+}
+
+.onsen-region-compact-link span {
+  color: var(--bt-color-muted);
+  font-size: var(--bt-text-meta);
+  font-weight: var(--bt-weight-semibold);
+  line-height: var(--bt-leading-ui);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .onsen-region-inventory-bg img,
-  .onsen-region-inventory-copy strong {
+  .onsen-region-inventory-copy strong,
+  .onsen-region-compact-link,
+  .onsen-region-compact-link strong,
+  .onsen-region-compact-summary-copy strong {
     transition: none;
   }
 
   .onsen-region-inventory-card:hover .onsen-region-inventory-bg img,
   .onsen-region-inventory-card:focus-visible .onsen-region-inventory-bg img,
   .onsen-region-inventory-card:active .onsen-region-inventory-bg img {
+    transform: none;
+  }
+
+  .onsen-region-compact-link:hover,
+  .onsen-region-compact-link:focus-visible {
     transform: none;
   }
 }
@@ -6956,6 +7074,10 @@ p {
 
   .onsen-featured-verdict-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .onsen-region-inventory-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .onsen-method-grid {
