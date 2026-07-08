@@ -128,6 +128,8 @@ export async function OnsenLanding() {
   const totals = getVerdictTotal(candidates);
   const featuredVerdicts = getFeaturedVerdicts(candidates);
   const regionInventory = getRegionInventory(candidates);
+  const featuredRegionInventory = regionInventory.slice(0, 6);
+  const compactRegionInventory = regionInventory.slice(6);
 
   return (
     <div className="onsen-home">
@@ -195,10 +197,10 @@ export async function OnsenLanding() {
           <div className="onsen-home-section-head">
             <p className="onsen-kicker">지역별 보기</p>
             <h2 id="onsen-region-inventory-title">지역별로 확인한 온천</h2>
-            <p>현재 확인된 숙소가 있는 지역만 보여줍니다.</p>
+            <p>숙소 수가 많은 지역을 먼저 정리했습니다.</p>
           </div>
           <div className="onsen-region-inventory-grid">
-            {regionInventory.map((item) => (
+            {featuredRegionInventory.map((item) => (
               <Link key={item.area} className="onsen-region-inventory-card" href={item.href}>
                 <span className="onsen-region-inventory-bg" aria-hidden="true">
                   <img src={item.imageUrl} alt="" loading="lazy" />
@@ -210,6 +212,24 @@ export async function OnsenLanding() {
               </Link>
             ))}
           </div>
+          {compactRegionInventory.length > 0 ? (
+            <details className="onsen-region-compact-panel" aria-label="더 많은 온천 지역">
+              <summary className="onsen-region-compact-head">
+                <span className="onsen-region-compact-summary-copy">
+                  <strong>더 많은 지역</strong>
+                  <span>{formatNumber(compactRegionInventory.length)}개 지역</span>
+                </span>
+              </summary>
+              <div className="onsen-region-compact-grid">
+                {compactRegionInventory.map((item) => (
+                  <Link key={item.area} className="onsen-region-compact-link" href={item.href}>
+                    <strong>{item.label}</strong>
+                    <span>숙소 {formatNumber(item.publishedCount)}곳</span>
+                  </Link>
+                ))}
+              </div>
+            </details>
+          ) : null}
         </section>
       ) : null}
     </div>
