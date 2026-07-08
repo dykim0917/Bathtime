@@ -343,13 +343,15 @@ export default async function OnsenPage({
             </div>
             <dl className="onsen-results-counts" aria-label="현재 결과 판정 요약">
               <div>
-                <dt>판정 있음</dt>
+                <dt>판정</dt>
                 <dd>{formatNumber(resultStats.verdictCount)}곳</dd>
               </div>
-              <div>
-                <dt>직수 확인</dt>
-                <dd>{formatNumber(resultStats.directSourceCount)}곳</dd>
-              </div>
+              {resultStats.directSourceCount > 0 ? (
+                <div>
+                  <dt>직수</dt>
+                  <dd>{formatNumber(resultStats.directSourceCount)}곳</dd>
+                </div>
+              ) : null}
               <div>
                 <dt>읽은 경험</dt>
                 <dd>{formatNumber(resultStats.experiencesRead)}건</dd>
