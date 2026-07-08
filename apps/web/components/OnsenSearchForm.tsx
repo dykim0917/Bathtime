@@ -297,7 +297,7 @@ function SearchPanelContent({
         <section className="onsen-popover-section" aria-labelledby="onsen-popular-title">
           <div className="onsen-popover-section-head">
             <MagnifyingGlass size={18} weight="bold" aria-hidden="true" />
-            <strong id="onsen-popular-title">인기 검색어</strong>
+            <strong id="onsen-popular-title">추천 검색어</strong>
           </div>
           <div className="onsen-popular-search-list">
             {popularSearches.map((item, index) => (

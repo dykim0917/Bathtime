@@ -980,6 +980,34 @@ html[data-bathtime-surface='app'] .app-bridge {
   padding: 84px 0 0;
 }
 
+.onsen-route-main:has(.onsen-home) {
+  padding-top: 0;
+}
+
+.onsen-shell:has(.onsen-home) .sidebar {
+  border-bottom-color: rgba(255, 253, 248, 0.18);
+  background: linear-gradient(180deg, rgba(31, 43, 40, 0.34), rgba(31, 43, 40, 0));
+  box-shadow: none;
+}
+
+.onsen-shell:has(.onsen-home) .brand-logo {
+  filter: brightness(0) invert(1);
+}
+
+.onsen-shell:has(.onsen-home) .account-button {
+  border-color: rgba(255, 253, 248, 0.36);
+  background: rgba(255, 253, 248, 0.16);
+  color: var(--bt-color-on-primary);
+  backdrop-filter: blur(14px);
+}
+
+.onsen-shell:has(.onsen-home) .account-button:hover,
+.onsen-shell:has(.onsen-home) .account-button:focus-visible {
+  border-color: rgba(255, 253, 248, 0.72);
+  background: rgba(255, 253, 248, 0.9);
+  color: var(--bt-color-ink);
+}
+
 .onsen-shell .content-area {
   background: var(--bt-color-canvas);
 }
@@ -1060,17 +1088,17 @@ p {
   content: '';
   position: absolute;
   inset: 0 0 auto;
-  height: clamp(96px, 10vw, 116px);
+  height: clamp(250px, 28vw, 340px);
   background:
-    linear-gradient(180deg, rgba(31, 43, 40, 0.2), rgba(31, 43, 40, 0.1)),
+    linear-gradient(180deg, rgba(31, 43, 40, 0.44), rgba(31, 43, 40, 0.2) 42%, rgba(31, 43, 40, 0.06) 72%, rgba(31, 43, 40, 0)),
     url('/images/about/bathtime-about-hero.jpg') center 48% / cover;
 }
 
 .onsen-home::after {
   content: '';
   position: absolute;
-  inset: clamp(62px, 7vw, 78px) 0 auto;
-  height: clamp(36px, 5vw, 56px);
+  inset: clamp(198px, 22vw, 274px) 0 auto;
+  height: clamp(58px, 7vw, 88px);
   background: linear-gradient(180deg, rgba(251, 250, 246, 0), var(--bt-color-canvas));
 }
 
@@ -1083,16 +1111,8 @@ p {
   gap: var(--bt-space-3);
   width: min(980px, 100%);
   margin-inline: auto;
-  padding-top: clamp(18px, 3vw, 26px);
+  padding-top: clamp(104px, 10vw, 128px);
   text-align: center;
-}
-
-.onsen-search-hero:has(.onsen-search-box.is-open) {
-  margin-bottom: 430px;
-}
-
-.onsen-search-hero:has(.onsen-search-box-autocomplete.is-open) {
-  margin-bottom: 230px;
 }
 
 .onsen-hero-copy-block {
@@ -1314,20 +1334,20 @@ p {
 
 .onsen-featured-verdict-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: var(--bt-space-3);
 }
 
 .onsen-featured-verdict-card {
   display: grid;
   align-content: start;
-  gap: var(--bt-space-3);
-  min-height: 238px;
+  gap: var(--bt-space-4);
+  min-width: 0;
   border: 1px solid var(--bt-color-border);
   border-radius: var(--bt-radius-md);
   background: var(--bt-surface-default);
   color: var(--bt-color-body);
-  padding: var(--bt-space-5);
+  padding: var(--bt-space-3);
   box-shadow: var(--bt-shadow-soft);
   transition:
     border-color var(--bt-motion-base) var(--bt-ease-out),
@@ -1343,17 +1363,37 @@ p {
   transform: translateY(-2px);
 }
 
+.onsen-featured-verdict-visual {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border: 1px solid var(--bt-color-border-soft);
+  border-radius: var(--bt-radius-sm);
+  background:
+    radial-gradient(circle at 28% 20%, rgba(223, 240, 237, 0.95), transparent 34%),
+    linear-gradient(145deg, rgba(39, 124, 120, 0.12), rgba(244, 231, 200, 0.5)),
+    var(--bt-color-surface-soft);
+}
+
+.onsen-featured-verdict-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.onsen-featured-verdict-copy {
+  display: grid;
+  align-content: start;
+  gap: var(--bt-space-2);
+  min-width: 0;
+  padding: 0 var(--bt-space-2) var(--bt-space-2);
+}
+
 .onsen-featured-verdict-card strong {
   color: var(--bt-color-ink);
   font-size: var(--bt-text-card-title);
   font-weight: var(--bt-weight-semibold);
   line-height: var(--bt-leading-tight);
-}
-
-.onsen-featured-verdict-card p {
-  color: var(--bt-color-body);
-  font-size: var(--bt-text-small);
-  line-height: var(--bt-leading-body);
 }
 
 .onsen-verdict-card-meta {
@@ -1368,44 +1408,88 @@ p {
 
 .onsen-region-inventory-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: var(--bt-space-3);
 }
 
 .onsen-region-inventory-card {
   display: grid;
   gap: var(--bt-space-2);
-  border: 1px solid var(--bt-color-border);
-  border-radius: var(--bt-radius-md);
-  background: var(--bt-surface-default);
   color: var(--bt-color-body);
-  padding: var(--bt-space-5);
-  transition:
-    border-color var(--bt-motion-base) var(--bt-ease-out),
-    box-shadow var(--bt-motion-base) var(--bt-ease-out),
-    transform var(--bt-motion-base) var(--bt-ease-out);
+  transition: transform var(--bt-motion-base) var(--bt-ease-out);
 }
 
 .onsen-region-inventory-card:hover,
 .onsen-region-inventory-card:focus-visible {
-  border-color: var(--bt-color-primary);
-  box-shadow: var(--bt-shadow-soft);
   outline: none;
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
-.onsen-region-inventory-card strong {
+.onsen-region-inventory-bg {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--bt-radius-md);
+  background: var(--bt-surface-subtle);
+}
+
+.onsen-region-inventory-card:focus-visible .onsen-region-inventory-bg {
+  outline: 2px solid var(--bt-color-primary);
+  outline-offset: 3px;
+}
+
+.onsen-region-inventory-bg img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.96);
+  transform: scale(1.02);
+  transition:
+    filter var(--bt-motion-base) var(--bt-ease-out),
+    transform var(--bt-motion-base) var(--bt-ease-out);
+}
+
+.onsen-region-inventory-card:hover .onsen-region-inventory-bg img,
+.onsen-region-inventory-card:focus-visible .onsen-region-inventory-bg img {
+  filter: saturate(1.06);
+  transform: scale(1.06);
+}
+
+.onsen-region-inventory-copy {
+  display: grid;
+  gap: var(--bt-space-1);
+  padding: 0;
+}
+
+.onsen-region-inventory-copy strong {
   color: var(--bt-color-ink);
-  font-size: var(--bt-text-card-title);
+  font-size: var(--bt-text-body);
   font-weight: var(--bt-weight-semibold);
   line-height: var(--bt-leading-ui);
 }
 
-.onsen-region-inventory-card span {
-  color: var(--bt-color-primary-active);
-  font-size: var(--bt-text-small);
+.onsen-region-inventory-copy > span {
+  color: var(--bt-color-muted);
+  font-size: var(--bt-text-meta);
   font-weight: var(--bt-weight-semibold);
   line-height: var(--bt-leading-ui);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .onsen-region-inventory-card,
+  .onsen-region-inventory-bg img {
+    transition: none;
+  }
+
+  .onsen-region-inventory-card:hover,
+  .onsen-region-inventory-card:focus-visible,
+  .onsen-region-inventory-card:hover .onsen-region-inventory-bg img,
+  .onsen-region-inventory-card:focus-visible .onsen-region-inventory-bg img {
+    transform: none;
+  }
 }
 
 .onsen-search-hero > .onsen-hero-copy-block > .onsen-kicker {
@@ -1426,7 +1510,7 @@ p {
 }
 
 .onsen-search-hero .onsen-search-box-airbnb {
-  margin-top: clamp(14px, 2.2vw, 22px);
+  margin-top: clamp(18px, 2.6vw, 30px);
 }
 
 .onsen-method-page {
@@ -1940,6 +2024,11 @@ p {
   margin-top: var(--bt-space-6);
   padding: var(--bt-space-2);
   overflow: visible;
+}
+
+.onsen-search-box.is-open,
+.onsen-search-box:focus-within {
+  z-index: 40;
 }
 
 .onsen-search-box svg {
@@ -7039,10 +7128,20 @@ p {
     padding: 0 18px 56px;
   }
 
+  .onsen-home::before {
+    height: 300px;
+    background-position: center top;
+  }
+
+  .onsen-home::after {
+    inset: 224px 0 auto;
+    height: 76px;
+  }
+
   .onsen-search-hero {
     grid-template-columns: 1fr;
     gap: var(--bt-space-3);
-    padding-top: var(--bt-space-5);
+    padding-top: 94px;
   }
 
   .onsen-total-stamp {
@@ -7067,15 +7166,14 @@ p {
     grid-template-columns: 1fr;
   }
 
-  .onsen-featured-verdict-card:nth-child(n + 4) {
-    display: none;
-  }
-
   .onsen-featured-verdict-card {
     min-height: 0;
   }
 
-  .onsen-region-inventory-grid,
+  .onsen-region-inventory-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .onsen-method-grid {
     grid-template-columns: 1fr;
   }

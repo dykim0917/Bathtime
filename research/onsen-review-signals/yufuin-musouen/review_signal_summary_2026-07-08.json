@@ -1,0 +1,52 @@
+{
+  "research_date": "2026-07-08",
+  "slug": "yufuin-musouen",
+  "name_ja": "山のホテル 夢想園",
+  "name_ko": "야마노호텔 무소엔",
+  "aliases": [
+    "由布院温泉 山のホテル 夢想園",
+    "山のホテル夢想園",
+    "Yama no Hotel Musouen",
+    "Musouen"
+  ],
+  "region_display_ko": "규슈 · 오이타현 · 유후인",
+  "area_bucket": "Yufuin",
+  "data_quality_grade": "A",
+  "qa_status": "ready_for_db",
+  "ready_for_db": true,
+  "collection_briefing": {
+    "visible_review_pool": "Google Maps 1,564 / 4.4; Jalan lodging 1,205; Rakuten Travel API 139; Jalan tourist/day-use 235 and Nifty Onsen 58 treated as facility auxiliary; Google provider cards Trip.com 191 and Tripadvisor 216 excluded from Google-native",
+    "direct_read_review_count": 1391,
+    "onsen_related_direct_review_count": 1362,
+    "direct_body_platform_count": 3,
+    "direct_body_platforms": {
+      "Jalan lodging": 1205,
+      "Rakuten Travel": 139,
+      "Google Maps native": 47
+    },
+    "access_gaps": [
+      "Naver direct body 0; search/blog signals kept outside direct_read",
+      "Google provider cards excluded",
+      "Jalan tourist/day-use and Nifty Onsen separated as facility auxiliary"
+    ]
+  },
+  "official_hot_spring_facts": "공식 사이트 기준 대형 조망 노천탕, 숙박자 전용 남녀 내탕, 예약제가 아닌 가족/그룹 전용 가족탕. 원천명 御夢想温泉, 알칼리성 단순온천, 泉温 62.5도 표기. 일부 노천탕의 源泉そのまま 표현은 공식 주장으로만 기록.",
+  "review_signal_summary": "숙박자 직접 표본 1391건 중 온천 관련 1362건에서 대형 조망 노천탕과 가족탕/전용탕 신호가 강하게 반복된다. 객실탕형 숙소가 아니라 공용 대형 노천탕과 가족탕을 중심으로 해석하는 편이 데이터에 맞고, Google과 시설 보조 표본의 당일입욕 신호는 숙소 direct_read에서 분리했다.",
+  "bath_area_tags": [
+    "public_bath",
+    "open_air_public_bath",
+    "family_bath",
+    "facility_wide"
+  ],
+  "caution_signals": [
+    "당일입욕/온천시설 리뷰 혼입 금지",
+    "염소·カルキ·循環·소독약냄새 보조 신호 분리",
+    "대욕장 청소/이용 시간 신호",
+    "언덕·택시 의존",
+    "일부 객실/욕장 노후·벌레 신호"
+  ],
+  "copy_summary_ko": "직접 확인 1391건 중 온천 관련 1362건에서 유후다케 조망 대형 노천탕과 가족탕 경험이 강하게 반복된다. 무소엔은 객실탕형보다 공용 노천탕·가족탕 중심 숙소로 읽는 편이 맞으며, 당일입욕 리뷰와 Google 공급자 카드는 숙소 직접 리뷰 수에서 분리했다.",
+  "primary_bath_ko": "유후다케 조망 공용 대형 노천탕 + 가족탕",
+  "operation_notes_ko": "Google Maps의 당일입욕 리뷰와 Jalan/Nifty 시설 리뷰는 숙소 DB direct_read에서 제외했다. Naver는 이번 보강에서 직접 본문을 확보하지 못했으므로 한국어 수요 보강 시 snippet과 원문을 계속 분리한다.",
+  "next_action": "DB seed 후보. Naver 직접 본문은 후속 한국어 수요 보강으로 분리."
+}

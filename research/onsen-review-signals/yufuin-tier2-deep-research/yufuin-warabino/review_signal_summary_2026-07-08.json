@@ -1,0 +1,50 @@
+{
+  "research_date": "2026-07-08",
+  "slug": "yufuin-warabino",
+  "name_ja": "山荘 わらび野",
+  "name_ko": "산소 와라비노",
+  "aliases": [
+    "由布院温泉 山荘わらび野",
+    "Yufuin Sanso Warabino",
+    "Sanso Warabino"
+  ],
+  "region_display_ko": "규슈 · 오이타현 · 유후인",
+  "area_bucket": "Yufuin/Yunohira",
+  "data_quality_grade": "A",
+  "qa_status": "ready_for_db",
+  "ready_for_db": true,
+  "collection_briefing": {
+    "visible_review_pool": "Google Maps 209 / 4.7; Rakuten Travel 147; Jalan 140; JTB loaded body blocks 51 / direct deduped 20; Trip.com provider 27; Tripadvisor provider 68; Ikyu/Yahoo visible surfaces",
+    "direct_read_review_count": 315,
+    "onsen_related_direct_review_count": 300,
+    "direct_body_platform_count": 4,
+    "direct_body_platforms": {
+      "Jalan": 140,
+      "Rakuten Travel": 147,
+      "JTB": 20,
+      "Google Maps native": 8
+    },
+    "access_gaps": [
+      "Naver direct body 0; search/blog snippets kept outside direct_read",
+      "Google Trip.com/Tripadvisor provider cards excluded"
+    ]
+  },
+  "official_hot_spring_facts": "공식/OTA 시설 정보 기준 2019년 리뉴얼, 총 13실급 소규모 숙소로 설명되며, 객실에 온천수가 나오는 욕조/반노천탕 또는 전용탕이 있는 객실형 숙소로 노출된다. Rakuten 본문과 Google 리뷰에서는 각 코티지/독채에 원천가케나가시 반노천풍로가 있고 24시간 반복 입욕한다는 숙박자 신호가 반복되지만, 공식 주장과 후기 체감은 분리한다.",
+  "review_signal_summary": "직접 확인 315건 중 온천 관련 300건에서 독채/코티지 객실 전용 온천, 반노천탕, 원천가케나가시 체감과 반복 입욕 신호가 강하게 반복된다. 한국어 Google 리뷰에서는 객실 내 반노천탕, 개인탕, 개별온천 표현이 객실탕 문맥으로 나타난다.",
+  "bath_area_tags": [
+    "room_bath",
+    "room_open_air_bath",
+    "facility_wide"
+  ],
+  "caution_signals": [
+    "온도 조절 어려움/열탕 신호",
+    "유후인역 외곽 위치와 픽업·렌트카 의존",
+    "가격 부담",
+    "숲속 벌레/계절 신호",
+    "Google 공급자 카드 혼입 주의"
+  ],
+  "copy_summary_ko": "직접 확인 315건 중 온천 관련 300건에서 독채 객실 전용 온천과 반노천탕 만족이 강하게 반복된다. 산소 와라비노는 대욕장형보다 객실 안에서 여러 번 들어가는 프라이빗 온천 경험을 중심으로 해석하는 편이 데이터에 맞다.",
+  "primary_bath_ko": "독채 객실 전용 온천/반노천탕",
+  "operation_notes_ko": "Google Maps는 Aside Browser로 209건 풀과 8건 Google-native 숙박 문맥을 확인했다. Trip.com·Tripadvisor 공급자 카드는 Google 직접 리뷰에서 제외했고, Naver는 이번 보강에서 직접 본문 0건으로 분리한다.",
+  "next_action": "DB seed 후보. Naver 직접 본문은 후속 한국어 수요 보강으로 분리."
+}

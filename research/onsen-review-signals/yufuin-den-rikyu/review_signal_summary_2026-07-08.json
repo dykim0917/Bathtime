@@ -1,0 +1,60 @@
+{
+  "research_date": "2026-07-08",
+  "slug": "yufuin-den-rikyu",
+  "name_ja": "御宿 田 離宮",
+  "name_ko": "오야도 덴 리큐",
+  "region_display_ko": "규슈 · 오이타현 · 유후인",
+  "area_bucket": "Yufuin",
+  "data_quality_grade": "B",
+  "qa_status": "needs_research_reinforcement",
+  "ready_for_db": false,
+  "collection_briefing": {
+    "visible_review_pool": "Google Hotels 129 / 4.8; Yahoo Travel/Ikyu visible 42 / 4.84; Rakuten Travel visible 45; Jalan direct pool 127; Relux direct 25; Booking WAF 202; Expedia 429; Agoda page visible but no stable direct body extracted",
+    "direct_read_review_count": 231,
+    "onsen_related_direct_review_count": 180,
+    "direct_body_platform_count": 5,
+    "direct_body_platforms": {
+      "Jalan": 127,
+      "Rakuten Travel": 45,
+      "Relux": 25,
+      "Yahoo Travel": 25,
+      "Google Hotels native": 9
+    },
+    "access_gaps": [
+      "Google Hotels는 visible 129건 중 native 9건만 직접 구조화",
+      "Yahoo Travel은 visible 42건 중 첫 렌더링 25건만 직접 구조화",
+      "Booking.com WAF 202",
+      "Expedia 429",
+      "Ikkyu static 403, Yahoo와 동일 계열 중복 가능성으로 미산입",
+      "Agoda는 페이지 로드됐지만 직접 본문을 안정적으로 분리하지 못함"
+    ]
+  },
+  "official_hot_spring_facts": "공식 사이트 기준 총 7실 전실 별채, 전 객실 내탕·노천탕付き 객실, 객실 온천 원천가케나가시 주장. 공용 대욕장/대절탕은 기존 공식 facts에서 보이지 않는다.",
+  "review_signal_summary": "직접 확인 231건 중 온천 관련 180건에서 객실 노천탕과 객실 내탕 중심 신호가 뚜렷하게 확인된다. `大浴場が無い` 표현은 결핍 단독 신호라기보다 이 숙소가 공용탕형이 아니라 객실탕 체류형이라는 분류 신호로 읽는 편이 맞다.",
+  "bath_area_tags": {
+    "room_open_air_bath": 178,
+    "facility_wide": 28,
+    "room_bath": 63,
+    "unclear": 22,
+    "public_bath": 5
+  },
+  "signal_counts": {
+    "room_bath_hot_spring": 180,
+    "water_texture": 10,
+    "neutral": 50,
+    "operation_caution": 20,
+    "temperature_control": 9,
+    "booking_confusion": 5
+  },
+  "caution_signals": [
+    "300건 A급 기준 미달",
+    "대욕장 없음에 따른 기대치 조정",
+    "탕 온도 조절/겨울철 미지근함 일부 신호",
+    "벌레·개구리·숲/논 주변 계절 신호",
+    "일부 객실의 좁음·카비·인접 소리 신호"
+  ],
+  "copy_summary_ko": "직접 확인 231건 중 온천 관련 180건에서 전 객실 별채의 객실 노천탕·내탕 신호가 뚜렷하게 확인된다. 덴 리큐는 대욕장형 숙소가 아니라 객실 안에서 유후다케 조망과 원천가케나가시 표현을 중심으로 소비되는 프라이빗 객실탕형 숙소로 해석하는 편이 데이터에 맞다.",
+  "primary_bath_ko": "전 객실 별채 객실 노천탕 + 객실 내탕",
+  "operation_notes_ko": "Google Hotels는 Aside Browser로 4.8/129 및 Google-native 9건을 확인했다. Yahoo Travel은 4.84/42 중 25건만 직접 구조화했고, 검색/공급자/차단 표면은 직접 리뷰 수에 넣지 않았다. A급까지는 직접 본문 69건 추가가 필요하다.",
+  "next_action": "needs_research_reinforcement 유지. Google Hotels deep-scroll, Yahoo/Ikyu 추가 17건, Tripadvisor 원문 10건, Naver Blog 직접 본문을 재시도해 300건 도달 여부를 판정."
+}

@@ -1,6 +1,6 @@
 {
   "accommodation_name": "湯布院別荘 四季彩ホテル / 유후인 별장 시키사이 호텔 / Yufuin Bessou Shikisai Hotel",
-  "checked_at": "2026-06-30",
+  "checked_at": "2026-07-08",
   "identity": {
     "korean_name": "유후인 별장 시키사이 호텔 / 유후인 베소우 시키사이 호텔",
     "japanese_name": "湯布院別荘 四季彩ホテル",
@@ -39,31 +39,38 @@
   ],
   "collection_briefing": [
     {
-      "source": "Google Maps",
-      "visible_review_count": 483,
+      "source": "Google Maps / Google Hotels",
+      "visible_review_count": 486,
       "rating": 4.2,
-      "directly_read_reviews": 10,
-      "onsen_related_reviews": 8,
-      "access_status": "aside_review_tab_read",
-      "notes": "Aside Browser로 리뷰 탭 확인. 별점 분포 5성 256, 4성 138, 3성 45, 2성 19, 1성 25. 온천 60, 목욕 43, 탕 11 키워드 클러스터 노출."
+      "rating_distribution": {
+        "5": 258,
+        "4": 138,
+        "3": 46,
+        "2": 19,
+        "1": 25
+      },
+      "directly_read_reviews": 110,
+      "onsen_related_reviews": 87,
+      "access_status": "direct_readable_aside_google_native_lodging_context",
+      "notes": "Aside Browser로 리뷰 탭 확인. Google-native 139건 중 숙박 문맥 110건만 숙소 direct_read에 반영하고, 일일온천/시설 단독 문맥 29건은 제외 파일로 분리."
     },
     {
       "source": "Jalan",
       "visible_review_count": 324,
-      "rating": 4.0,
-      "directly_read_reviews": 159,
-      "onsen_related_reviews": 142,
-      "access_status": "direct_fetch_partial_read + archive_read",
-      "notes": "최신 9건 + archive 5페이지 150건 구조화. 전체 324건 중 절반가량 표본."
+      "rating": "3.9/4.0 surface variation",
+      "directly_read_reviews": 324,
+      "onsen_related_reviews": 257,
+      "access_status": "direct_fetch_full_lodging_review_pages",
+      "notes": "최신 페이지와 archive 1-11페이지를 파싱해 숙박자 고유 본문 324건을 구조화. 표준 인덱스에는 장문 원문 없이 키워드/요약만 남김."
     },
     {
       "source": "Rakuten Travel",
       "visible_review_count": 15,
       "rating": null,
       "directly_read_reviews": 15,
-      "onsen_related_reviews": 12,
-      "access_status": "direct_fetch_partial_read",
-      "notes": "현재 Rakuten 신형 리뷰 페이지 기준 15건만 노출. 후보 수집 당시 304건과 차이 있음."
+      "onsen_related_reviews": 15,
+      "access_status": "legacy_direct_fetch_readable",
+      "notes": "기존 2026-06-30 Rakuten 직접 본문 15건을 표준 인덱스에 반영."
     },
     {
       "source": "Naver Search / Blog / Cafe",
@@ -71,33 +78,25 @@
       "rating": null,
       "directly_read_reviews": 0,
       "onsen_related_reviews": 0,
-      "access_status": "aside_search_snapshot_read",
-      "notes": "검색 스니펫 기준. 한국어 수요 신호 강함: 한국인 상주, 노천탕, 개인탕, 가족탕, 가성비 료칸, 아이 동반."
+      "access_status": "snippet_only",
+      "notes": "한국어 수요 신호는 있으나 이번 패스에서 원문 직접 본문은 열지 않아 직접 리뷰 수에 넣지 않음."
     },
     {
-      "source": "Trip.com",
-      "visible_review_count": 341,
-      "rating": null,
-      "directly_read_reviews": 2,
-      "onsen_related_reviews": 2,
-      "access_status": "web_search_snippet_read",
-      "notes": "검색 결과에서 일본어 후기 일부 확인. 온천/가족탕/넓은 노천탕 신호."
-    },
-    {
-      "source": "Hotels.com / Expedia / Agoda / HotelsCombined",
-      "visible_review_count": null,
+      "source": "Trip.com / Hotels.com / Expedia / Agoda",
+      "visible_review_count": "Trip.com 341 legacy/search surface; others not stable",
       "rating": null,
       "directly_read_reviews": 0,
       "onsen_related_reviews": 0,
-      "access_status": "snippet_only",
-      "notes": "Naver/Google 결과상 리뷰 풀은 보이나 이번 단계에서 본문 직접 확인은 미완료."
+      "access_status": "snippet_or_not_sampled",
+      "notes": "검색 스니펫과 OTA 요약은 직접 리뷰 수에서 제외."
     }
   ],
   "data_quality": {
-    "grade": "B",
-    "directly_read_total": 186,
-    "platforms_with_read_text": 4,
-    "reason": "Jalan 159건, Rakuten 15건, Google Maps 10건, Trip.com 스니펫 2건. 직접 본문 100건 이상이고 플랫폼은 넓지만 300건 미만이며 일부는 스니펫이므로 B로 판정."
+    "grade": "A",
+    "directly_read_total": 449,
+    "platforms_with_read_text": 3,
+    "onsen_related_direct_reviews": 359,
+    "reason": "직접 확인 300건 이상, Google 확인 포함 3개 직접 본문 플랫폼, 숙박 문맥과 일일온천/시설 문맥 분리 완료."
   },
   "review_signal_summary": [
     {
@@ -105,9 +104,9 @@
       "bath_area_confidence": "specific",
       "signal_type": "public_bath_hot_spring",
       "signal_direction": "positive",
-      "mention_count": 100,
-      "source_count": 100,
-      "platform_count": 4,
+      "mention_count": 154,
+      "source_count": 154,
+      "platform_count": 3,
       "contradiction_level": "medium",
       "review_signal_status": "strong_signal"
     },
@@ -116,28 +115,28 @@
       "bath_area_confidence": "specific",
       "signal_type": "private_bath_experience",
       "signal_direction": "mixed",
-      "mention_count": 60,
-      "source_count": 60,
-      "platform_count": 4,
+      "mention_count": 102,
+      "source_count": 102,
+      "platform_count": 3,
       "contradiction_level": "medium",
       "review_signal_status": "strong_signal"
     },
     {
-      "bath_area": "open_air_public_bath / private_bath",
+      "bath_area": "open_air_public_bath / private_bath / facility_wide",
       "bath_area_confidence": "specific",
       "signal_type": "water_texture",
       "signal_direction": "positive",
-      "mention_count": 16,
-      "source_count": 16,
-      "platform_count": 2,
+      "mention_count": 174,
+      "source_count": 174,
+      "platform_count": 3,
       "contradiction_level": "low",
-      "review_signal_status": "moderate_signal"
+      "review_signal_status": "strong_signal"
     },
     {
       "bath_area": "facility_wide",
-      "bath_area_confidence": "unclear",
-      "signal_type": "weak_onsen_feeling",
-      "signal_direction": "negative",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "chlorine_smell",
+      "signal_direction": "mixed",
       "mention_count": 1,
       "source_count": 1,
       "platform_count": 1,
@@ -145,34 +144,23 @@
       "review_signal_status": "weak_signal"
     },
     {
-      "bath_area": "facility_wide",
-      "bath_area_confidence": "facility_wide",
-      "signal_type": "chlorine_smell",
-      "signal_direction": "neutral",
-      "mention_count": 0,
-      "source_count": 0,
-      "platform_count": 0,
-      "contradiction_level": "none",
-      "review_signal_status": "insufficient"
-    },
-    {
       "bath_area": "private_bath / family_bath",
       "bath_area_confidence": "specific",
       "signal_type": "crowding",
       "signal_direction": "negative",
-      "mention_count": 11,
-      "source_count": 11,
-      "platform_count": 2,
+      "mention_count": 2,
+      "source_count": 2,
+      "platform_count": 1,
       "contradiction_level": "medium",
-      "review_signal_status": "moderate_signal"
+      "review_signal_status": "weak_signal"
     },
     {
-      "bath_area": "private_bath / family_bath",
+      "bath_area": "private_bath / family_bath / facility_wide",
       "bath_area_confidence": "specific",
       "signal_type": "booking_confusion",
       "signal_direction": "negative",
-      "mention_count": 18,
-      "source_count": 18,
+      "mention_count": 67,
+      "source_count": 67,
       "platform_count": 3,
       "contradiction_level": "medium",
       "review_signal_status": "moderate_signal"
@@ -194,29 +182,29 @@
       "issue": "가족탕/대여탕 예약·선착순 운영 혼선",
       "bath_area": "private_bath / family_bath",
       "evidence_level": "moderate_signal",
-      "summary": "대여탕은 좋다는 신호와 함께 늦은 체크인, 예약제 안내 부족, 이용하지 못함, 만실/타이밍 문제가 반복된다.",
-      "sample_count": 18
+      "summary": "대여탕은 좋다는 신호와 함께 예약제·선착순·프론트 안내·타이밍 문제가 반복된다.",
+      "sample_count": 67
     },
     {
       "issue": "노천탕 중심 구조의 추위/동선 리스크",
       "bath_area": "open_air_public_bath",
       "evidence_level": "moderate_signal",
-      "summary": "내탕이 없고 노천탕 중심이라 겨울철 복도·탈의·세면 동선이 춥다는 신호가 반복된다.",
-      "sample_count": 36
+      "summary": "내탕이 없고 노천탕 중심이라 겨울철 복도·탈의·세면 동선의 추위가 주의 신호로 남는다.",
+      "sample_count": 2
     },
     {
-      "issue": "객실/건물 노후감과 서비스 기대 차이",
+      "issue": "객실/건물 노후감과 청결 기대 차이",
       "bath_area": "facility_wide",
       "evidence_level": "moderate_signal",
-      "summary": "방은 넓지만 건물은 오래되었고, 가격 대비 료칸 감성/식사/서비스가 기대보다 낮다는 저평점이 일부 반복된다.",
-      "sample_count": 20
+      "summary": "방은 넓다는 긍정과 함께 건물 노후, 벌레, 청결·서비스 기대 차이가 일부 반복된다.",
+      "sample_count": 73
     },
     {
-      "issue": "염소/칼키 냄새",
+      "issue": "숙박 리뷰와 당일온천 리뷰 혼입",
       "bath_area": "facility_wide",
-      "evidence_level": "no_negative_signal",
-      "summary": "직접 표본에서는 염소 냄새 불만은 확인되지 않았고, 오히려 칼키 냄새 없음/소독 없음 표현이 소수 확인된다.",
-      "sample_count": 0
+      "evidence_level": "structural_caution",
+      "summary": "Google에는 일일온천/시설 이용 후기가 섞여 있어 숙소 direct_read에서는 숙박 문맥만 분리 집계했다.",
+      "sample_count": 29
     }
   ],
   "evidence_examples": [
@@ -293,12 +281,24 @@
       "review_date": "2023/10/11"
     }
   ],
-  "bathtime_interpretation": "공식 정보와 후기 표본을 함께 보면, 시키사이 호텔은 객실탕 숙소가 아니라 노천탕과 가족탕/대여탕 중심의 온천 호텔로 분류하는 것이 타당합니다. 노천탕과 온천 수질에 대한 긍정 신호는 뚜렷하지만, 가족탕은 선착순·예약제 운영 때문에 이용 성공 여부가 만족도를 크게 가릅니다. 한국어 후기에서는 가성비 료칸, 노천탕, 한국인 대응 신호가 강하지만, 료칸 감성이나 객실탕을 기대하면 아쉬울 수 있습니다.",
+  "bathtime_interpretation": "직접 확인 449건 중 온천 관련 359건, 직접 본문 3플랫폼 기준으로 시키사이 호텔은 객실탕 숙소가 아니라 공용 노천탕과 예약제 대여탕/가족탕 중심 숙소로 읽는 편이 데이터에 맞다. 노천탕과 수질 긍정은 강하게 반복되지만, 대여탕은 선착순·예약제 운영 때문에 만족도가 갈린다. Google 리뷰는 일일온천 문맥이 섞이므로 숙소 DB에는 숙박 맥락 110건만 합산하고 시설 단독 문맥은 별도 보조 신호로 분리했다.",
   "gaps": [
-    "Google Maps 483건 중 최신 visible sample만 확인, 전량 스크롤 추출 미완료",
-    "Jalan 324건 중 159건 구조화, 나머지 archive 페이지 미추출",
-    "Rakuten 현재 신형 리뷰 페이지는 15건만 노출되어 과거 304건 풀과 차이 있음",
-    "Hotels.com/Expedia/Agoda/Trip.com 본문 전량 미확인",
-    "Naver Blog/Cafe는 검색 스니펫 중심이며 본문 직접 확인은 다음 보강 필요"
-  ]
+    "Naver Blog/Cafe는 이번 패스에서 직접 본문 표본 0건이며 검색 스니펫은 직접 리뷰 수에 넣지 않았다.",
+    "Trip.com/Agoda/Expedia/Hotels.com은 이번 패스에서 직접 본문 표본으로 추가하지 않았다.",
+    "Google native 중 일일온천/시설 단독 문맥 29건은 숙소 direct_read에서 제외했다."
+  ],
+  "research_date": "2026-07-08",
+  "qa_status": "ready_for_db",
+  "data_quality_grade": "A",
+  "direct_review_totals": {
+    "direct_read_review_count": 449,
+    "onsen_related_direct_review_count": 359,
+    "direct_body_platform_count": 3,
+    "direct_body_platforms": {
+      "Jalan": 324,
+      "Rakuten Travel": 15,
+      "Google Maps": 110
+    },
+    "visible_review_pool_note": "visible review count와 직접 읽은 리뷰 수를 합산하지 않음"
+  }
 }
