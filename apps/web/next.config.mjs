@@ -27,8 +27,28 @@ const nextConfig = {
       ...(process.env.NODE_ENV === 'development' ? ["'unsafe-eval'"] : []),
       'https://www.googletagmanager.com',
       'https://www.google-analytics.com',
+      'https://pagead2.googlesyndication.com',
+      'https://*.adtrafficquality.google',
       'https://dapi.kakao.com',
       'https://t1.daumcdn.net',
+    ].join(' ');
+    const connectSources = [
+      "'self'",
+      'https://*.supabase.co',
+      'https://www.google-analytics.com',
+      'https://region1.google-analytics.com',
+      'https://pagead2.googlesyndication.com',
+      'https://googleads.g.doubleclick.net',
+      'https://*.adtrafficquality.google',
+      'https://dapi.kakao.com',
+      'https://*.kakao.com',
+    ].join(' ');
+    const frameSources = [
+      "'self'",
+      'https://googleads.g.doubleclick.net',
+      'https://tpc.googlesyndication.com',
+      'https://*.adtrafficquality.google',
+      'https://www.google.com',
     ].join(' ');
 
     const csp = [
@@ -40,7 +60,8 @@ const nextConfig = {
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' https: data: blob:",
       "font-src 'self' data:",
-      "connect-src 'self' https://*.supabase.co https://www.google-analytics.com https://region1.google-analytics.com https://dapi.kakao.com https://*.kakao.com",
+      `connect-src ${connectSources}`,
+      `frame-src ${frameSources}`,
       "form-action 'self'",
       "upgrade-insecure-requests",
     ].join('; ');
