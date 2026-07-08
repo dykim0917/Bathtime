@@ -19,6 +19,7 @@
     "catalog:seed:export:postgres": "node scripts/export_catalog_research_seed_postgres.mjs",
     "content:seed:export:postgres": "node scripts/export_content_seed_postgres.mjs",
     "onsen:hokkaido:mvp:export": "node scripts/export_hokkaido_onsen_mvp_seed.mjs",
+    "onsen:seed:izu-tohoku": "node scripts/build_izu_shizuoka_tohoku_reconciliation_seed.mjs",
     "onsen:verdict:check": "node scripts/check_onsen_verdict_quality.mjs",
     "archive:spot:upsert": "node scripts/upsert_archive_content_from_spot_seed.mjs",
     "archive:item:upsert": "node scripts/upsert_archive_content_from_spot_seed.mjs",
