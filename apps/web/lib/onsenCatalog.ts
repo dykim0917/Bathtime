@@ -33,6 +33,7 @@ export type OnsenVerdict = {
   briefing: {
     experiencesRead?: number;
     onsenRelated?: number;
+    platformCount?: number;
     platforms: string[];
   };
   items: OnsenVerdictItem[];
