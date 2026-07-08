@@ -243,8 +243,8 @@ function statusFor(value: OnsenWaterUseStatus | OnsenWaterSourceType | OnsenBath
 }
 
 function springTypeLabel(status: OnsenWaterUseStatus, sourceType: OnsenWaterSourceType) {
-  if (sourceType === 'natural_100') return '100% 천연온천';
-  if (sourceType === 'free_flowing_source') return '직수 온천';
+  if (sourceType === 'natural_100') return '천연온천 표기';
+  if (sourceType === 'free_flowing_source') return '원천 100% 직수';
   if (status === 'official_confirmed' || sourceType === 'hot_spring_confirmed') return '온천수 확인';
   if (status === 'review_supported') return '온천수 참고 확인';
   return '온천수 예약 전 확인';
@@ -260,8 +260,8 @@ function roomBathLabel(scope: OnsenBathScope) {
 
 function operationLabel(sourceType: OnsenWaterSourceType, notes: string[]) {
   if (notes.some((note) => note.includes('순환') || note.includes('여과'))) return '재사용 온천(순환식)';
-  if (sourceType === 'free_flowing_source') return '직수 온천';
-  if (sourceType === 'natural_100') return '천연온천';
+  if (sourceType === 'free_flowing_source') return '원천 100% 직수';
+  if (sourceType === 'natural_100') return '천연온천 표기';
   if (sourceType === 'hot_spring_confirmed') return '원천 방식 이용 전 확인';
   return notes[0] ?? '이용 전 확인';
 }
@@ -337,7 +337,9 @@ function mapLocation(row: OnsenAccommodationRow): OnsenLocation {
 function operationDetailLabel(operation: string, notes: string[]) {
   const base =
     operation === '원천 방식 이용 전 확인'
-      ? '온천수 사용은 확인했지만, 직수 온천인지 재사용 온천인지는 추가 확인이 필요합니다.'
+      ? '온천수 사용은 확인했지만, 원천 100% 직수인지 재사용 온천인지는 추가 확인이 필요합니다.'
+      : operation === '원천 100% 직수'
+        ? '원천을 흘려보내는 방식으로 정리했습니다.'
       : `${operation}으로 정리했습니다.`;
   if (notes.length === 0) return `${base} 객실 타입과 플랜별 세부 조건을 함께 확인합니다.`;
   const noteText = notes

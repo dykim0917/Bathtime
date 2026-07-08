@@ -192,14 +192,14 @@ export default async function OnsenPage({
       href: buildResultsHref({ query, regionGroup, area, travel, bath: toggleFilterValue(bath, 'private_bath'), water }),
     },
     {
-      label: '100% 천연온천',
-      active: water.includes('natural_100'),
-      href: buildResultsHref({ query, regionGroup, area, travel, bath, water: toggleFilterValue(water, 'natural_100') }),
-    },
-    {
-      label: '직수 온천',
+      label: '원천 100% 직수',
       active: water.includes('direct_source'),
       href: buildResultsHref({ query, regionGroup, area, travel, bath, water: toggleFilterValue(water, 'direct_source') }),
+    },
+    {
+      label: '부드러운 물 느낌',
+      active: water.includes('water_texture'),
+      href: buildResultsHref({ query, regionGroup, area, travel, bath, water: toggleFilterValue(water, 'water_texture') }),
     },
   ];
   const resultScopeLabel = activeAreaLabel ?? activeRegionGroupLabel ?? '전체 지역';

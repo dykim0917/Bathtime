@@ -440,8 +440,8 @@ export const bathContextFilters: OnsenTaxonomyFilter<OnsenBathContext>[] = [
 ];
 
 export const waterCriterionFilters: OnsenTaxonomyFilter<OnsenWaterCriterion>[] = [
-  { label: '직수 온천', value: 'direct_source' },
-  { label: '100% 천연온천', value: 'natural_100' },
+  { label: '원천 100% 직수', value: 'direct_source' },
+  { label: '천연온천 표기', value: 'natural_100' },
   { label: '부드러운 물 느낌', value: 'water_texture' },
   { label: '온도 조정 확인', value: 'temperature_adjustment' },
   { label: '겨울 주의', value: 'winter_caution' },
@@ -539,7 +539,7 @@ export function deriveOnsenContexts(candidate: Pick<OnsenCandidate, 'tags' | 'pr
   if (candidate.tags.includes('public-bath')) bath.add('public_bath');
 
   if (/직수/.test(text)) water.add('direct_source');
-  if (/100%|천연온천/.test(text)) water.add('natural_100');
+  if (/100%\s*천연|천연온천|천연 온천/.test(text)) water.add('natural_100');
   if (/온천수|원천|온천/.test(text)) water.add('spring_confirmed');
   if (candidate.tags.includes('water-texture') || /부드럽|매끈|수질|피부감|물 느낌/.test(text)) water.add('water_texture');
   if (/물을 섞어|온도 조정|가온|가수/.test(text)) water.add('temperature_adjustment');
