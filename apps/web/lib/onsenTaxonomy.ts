@@ -47,9 +47,18 @@ const prefectureLabelByValue: Record<string, string> = {
   kumamoto: '구마모토현',
   kagoshima: '가고시마현',
   saga: '사가현',
+  nagasaki: '나가사키현',
   kanagawa: '가나가와현',
   yamanashi: '야마나시현',
   hokkaido: '홋카이도',
+  hyogo: '효고현',
+  wakayama: '와카야마현',
+  mie: '미에현',
+  tottori: '돗토리현',
+  shimane: '시마네현',
+  ehime: '에히메현',
+  okayama: '오카야마현',
+  yamaguchi: '야마구치현',
 };
 
 const cityLabelByValue: Record<string, string> = {
@@ -60,6 +69,7 @@ const cityLabelByValue: Record<string, string> = {
   ureshino: '우레시노시',
   takeo: '다케오시',
   kirishima: '기리시마시',
+  unzen: '운젠시',
   hakone: '하코네마치',
   yugawara: '유가와라마치',
   fuefuki: '후에후키시',
@@ -70,6 +80,16 @@ const cityLabelByValue: Record<string, string> = {
   hakodate: '하코다테시',
   toyako: '도야코초',
   otofuke: '오토후케초',
+  kobe: '고베시',
+  toyooka: '도요오카시',
+  shirahama: '시라하마초',
+  toba: '도바시',
+  yonago: '요나고시',
+  misasa: '미사사초',
+  matsue: '마쓰에시',
+  matsuyama: '마쓰야마시',
+  maniwa: '마니와시',
+  yamaguchi: '야마구치시',
 };
 
 const onsenAreaMetaByValue: Record<string, Omit<OnsenLocation, 'country' | 'display'>> = {
@@ -82,6 +102,16 @@ const onsenAreaMetaByValue: Record<string, Omit<OnsenLocation, 'country' | 'disp
     cityLabel: '유후시',
     onsenArea: 'yufuin',
     onsenAreaLabel: '유후인',
+  },
+  yunohira: {
+    regionGroup: 'kyushu',
+    regionGroupLabel: '규슈',
+    prefecture: 'oita',
+    prefectureLabel: '오이타현',
+    city: 'yufu',
+    cityLabel: '유후시',
+    onsenArea: 'yunohira',
+    onsenAreaLabel: '유노히라',
   },
   beppu: {
     regionGroup: 'kyushu',
@@ -142,6 +172,16 @@ const onsenAreaMetaByValue: Record<string, Omit<OnsenLocation, 'country' | 'disp
     cityLabel: '기리시마시',
     onsenArea: 'kirishima',
     onsenAreaLabel: '기리시마',
+  },
+  unzen: {
+    regionGroup: 'kyushu',
+    regionGroupLabel: '규슈',
+    prefecture: 'nagasaki',
+    prefectureLabel: '나가사키현',
+    city: 'unzen',
+    cityLabel: '운젠시',
+    onsenArea: 'unzen',
+    onsenAreaLabel: '운젠',
   },
   hakone: {
     regionGroup: 'kanto',
@@ -243,24 +283,127 @@ const onsenAreaMetaByValue: Record<string, Omit<OnsenLocation, 'country' | 'disp
     onsenArea: 'tokachigawa',
     onsenAreaLabel: '도카치가와',
   },
+  arima: {
+    regionGroup: 'kansai',
+    regionGroupLabel: '간사이',
+    prefecture: 'hyogo',
+    prefectureLabel: '효고현',
+    city: 'kobe',
+    cityLabel: '고베시',
+    onsenArea: 'arima',
+    onsenAreaLabel: '아리마',
+  },
+  kinosaki: {
+    regionGroup: 'kansai',
+    regionGroupLabel: '간사이',
+    prefecture: 'hyogo',
+    prefectureLabel: '효고현',
+    city: 'toyooka',
+    cityLabel: '도요오카시',
+    onsenArea: 'kinosaki',
+    onsenAreaLabel: '기노사키',
+  },
+  shirahama: {
+    regionGroup: 'kansai',
+    regionGroupLabel: '간사이',
+    prefecture: 'wakayama',
+    prefectureLabel: '와카야마현',
+    city: 'shirahama',
+    cityLabel: '시라하마초',
+    onsenArea: 'shirahama',
+    onsenAreaLabel: '시라하마',
+  },
+  toba: {
+    regionGroup: 'kansai',
+    regionGroupLabel: '간사이',
+    prefecture: 'mie',
+    prefectureLabel: '미에현',
+    city: 'toba',
+    cityLabel: '도바시',
+    onsenArea: 'toba',
+    onsenAreaLabel: '도바',
+  },
+  kaike: {
+    regionGroup: 'chugoku_shikoku',
+    regionGroupLabel: '주고쿠/시코쿠',
+    prefecture: 'tottori',
+    prefectureLabel: '돗토리현',
+    city: 'yonago',
+    cityLabel: '요나고시',
+    onsenArea: 'kaike',
+    onsenAreaLabel: '가이케',
+  },
+  misasa: {
+    regionGroup: 'chugoku_shikoku',
+    regionGroupLabel: '주고쿠/시코쿠',
+    prefecture: 'tottori',
+    prefectureLabel: '돗토리현',
+    city: 'misasa',
+    cityLabel: '미사사초',
+    onsenArea: 'misasa',
+    onsenAreaLabel: '미사사',
+  },
+  tamatsukuri: {
+    regionGroup: 'chugoku_shikoku',
+    regionGroupLabel: '주고쿠/시코쿠',
+    prefecture: 'shimane',
+    prefectureLabel: '시마네현',
+    city: 'matsue',
+    cityLabel: '마쓰에시',
+    onsenArea: 'tamatsukuri',
+    onsenAreaLabel: '다마쓰쿠리',
+  },
+  dogo: {
+    regionGroup: 'chugoku_shikoku',
+    regionGroupLabel: '주고쿠/시코쿠',
+    prefecture: 'ehime',
+    prefectureLabel: '에히메현',
+    city: 'matsuyama',
+    cityLabel: '마쓰야마시',
+    onsenArea: 'dogo',
+    onsenAreaLabel: '도고',
+  },
+  yubara: {
+    regionGroup: 'chugoku_shikoku',
+    regionGroupLabel: '주고쿠/시코쿠',
+    prefecture: 'okayama',
+    prefectureLabel: '오카야마현',
+    city: 'maniwa',
+    cityLabel: '마니와시',
+    onsenArea: 'yubara',
+    onsenAreaLabel: '유바라',
+  },
+  yuda: {
+    regionGroup: 'chugoku_shikoku',
+    regionGroupLabel: '주고쿠/시코쿠',
+    prefecture: 'yamaguchi',
+    prefectureLabel: '야마구치현',
+    city: 'yamaguchi',
+    cityLabel: '야마구치시',
+    onsenArea: 'yuda',
+    onsenAreaLabel: '유다',
+  },
 };
 
 export const regionGroupFilters: OnsenTaxonomyFilter<OnsenRegionGroup>[] = [
   { label: '규슈', value: 'kyushu' },
   { label: '간토', value: 'kanto' },
   { label: '홋카이도', value: 'hokkaido' },
-  { label: '간사이', value: 'kansai', disabled: true },
+  { label: '간사이', value: 'kansai' },
+  { label: '주고쿠/시코쿠', value: 'chugoku_shikoku' },
   { label: '도호쿠', value: 'tohoku', disabled: true },
 ];
 
 export const onsenAreaFilters: OnsenTaxonomyFilter[] = [
   { label: '유후인', value: 'yufuin', description: '오이타현 유후시' },
+  { label: '유노히라', value: 'yunohira', description: '오이타현 유후시' },
   { label: '벳푸', value: 'beppu', description: '오이타현 벳푸시' },
   { label: '구로카와', value: 'kurokawa', description: '구마모토현' },
   { label: '이부스키', value: 'ibusuki', description: '가고시마현' },
   { label: '우레시노', value: 'ureshino', description: '사가현' },
   { label: '다케오', value: 'takeo', description: '사가현' },
   { label: '기리시마', value: 'kirishima', description: '가고시마현' },
+  { label: '운젠', value: 'unzen', description: '나가사키현' },
   { label: '하코네', value: 'hakone', description: '가나가와현' },
   { label: '유가와라', value: 'yugawara', description: '가나가와현' },
   { label: '이사와', value: 'isawa', description: '야마나시현' },
@@ -271,6 +414,14 @@ export const onsenAreaFilters: OnsenTaxonomyFilter[] = [
   { label: '유노카와', value: 'yunokawa-hakodate', description: '홋카이도 하코다테' },
   { label: '도야코', value: 'hokkaido-toyako', description: '홋카이도' },
   { label: '도카치가와', value: 'tokachigawa', description: '홋카이도' },
+  { label: '아리마', value: 'arima', description: '효고현 고베' },
+  { label: '기노사키', value: 'kinosaki', description: '효고현 도요오카' },
+  { label: '시라하마', value: 'shirahama', description: '와카야마현' },
+  { label: '도바', value: 'toba', description: '미에현' },
+  { label: '가이케', value: 'kaike', description: '돗토리현 요나고' },
+  { label: '미사사', value: 'misasa', description: '돗토리현' },
+  { label: '다마쓰쿠리', value: 'tamatsukuri', description: '시마네현' },
+  { label: '도고', value: 'dogo', description: '에히메현 마쓰야마' },
   { label: '도쿄', value: 'tokyo', description: '도심 온천/호텔 대욕장', disabled: true },
   { label: '오사카', value: 'osaka', description: '도심 온천/당일온천', disabled: true },
 ];
@@ -306,20 +457,27 @@ export function getFilterLabels<T extends string>(items: OnsenTaxonomyFilter<T>[
     .filter((label): label is string => Boolean(label));
 }
 
+function getSafeLocalLabel(value: string | null | undefined, fallback: string) {
+  const normalized = value?.trim();
+  if (!normalized) return fallback;
+  if (/[A-Za-z_]/.test(normalized)) return fallback;
+  return normalized;
+}
+
 export function getOnsenRegionGroupLabel(value: string | null | undefined) {
-  return regionGroupLabelByValue[value as OnsenRegionGroup] ?? value ?? '지역 확인';
+  return regionGroupLabelByValue[value as OnsenRegionGroup] ?? getSafeLocalLabel(value, '지역 확인');
 }
 
 export function getOnsenPrefectureLabel(value: string | null | undefined) {
-  return prefectureLabelByValue[value ?? ''] ?? value ?? '지역 확인';
+  return prefectureLabelByValue[value ?? ''] ?? getSafeLocalLabel(value, '지역 확인');
 }
 
 export function getOnsenCityLabel(value: string | null | undefined) {
-  return cityLabelByValue[value ?? ''] ?? value ?? '도시 확인';
+  return cityLabelByValue[value ?? ''] ?? getSafeLocalLabel(value, '도시 확인');
 }
 
 export function getOnsenAreaLabel(value: string | null | undefined) {
-  return onsenAreaMetaByValue[value ?? '']?.onsenAreaLabel ?? value ?? '온천지 확인';
+  return onsenAreaMetaByValue[value ?? '']?.onsenAreaLabel ?? getSafeLocalLabel(value, '온천지 확인');
 }
 
 function normalizeContextList<T extends string>(value: unknown, allowedItems: OnsenTaxonomyFilter<T>[]): T[] {
@@ -358,12 +516,12 @@ export function getDefaultOnsenLocation(region: string | null | undefined, area?
     regionGroup: 'kyushu',
     regionGroupLabel: '규슈',
     prefecture: 'unknown',
-    prefectureLabel: area ?? region ?? '지역 확인',
+    prefectureLabel: getSafeLocalLabel(area ?? region, '지역 확인'),
     city: 'unknown',
     cityLabel: '도시 확인',
     onsenArea: region ?? 'unknown',
-    onsenAreaLabel: area ?? region ?? '온천지 확인',
-    display: area ?? region ?? '일본 온천',
+    onsenAreaLabel: getSafeLocalLabel(area ?? region, '온천지 확인'),
+    display: getSafeLocalLabel(area ?? region, '일본 온천'),
   };
 }
 
