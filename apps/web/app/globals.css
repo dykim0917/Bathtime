@@ -980,20 +980,24 @@ html[data-bathtime-surface='app'] .app-bridge {
   padding: 84px 0 0;
 }
 
+.onsen-home-shell .onsen-route-main,
 .onsen-route-main:has(.onsen-home) {
   padding-top: 0;
 }
 
+.onsen-home-shell .sidebar,
 .onsen-shell:has(.onsen-home) .sidebar {
   border-bottom-color: rgba(255, 253, 248, 0.18);
   background: linear-gradient(180deg, rgba(31, 43, 40, 0.34), rgba(31, 43, 40, 0));
   box-shadow: none;
 }
 
+.onsen-home-shell .brand-logo,
 .onsen-shell:has(.onsen-home) .brand-logo {
   filter: brightness(0) invert(1);
 }
 
+.onsen-home-shell .account-button,
 .onsen-shell:has(.onsen-home) .account-button {
   border-color: rgba(255, 253, 248, 0.36);
   background: rgba(255, 253, 248, 0.16);
@@ -1001,6 +1005,8 @@ html[data-bathtime-surface='app'] .app-bridge {
   backdrop-filter: blur(14px);
 }
 
+.onsen-home-shell .account-button:hover,
+.onsen-home-shell .account-button:focus-visible,
 .onsen-shell:has(.onsen-home) .account-button:hover,
 .onsen-shell:has(.onsen-home) .account-button:focus-visible {
   border-color: rgba(255, 253, 248, 0.72);
@@ -1012,6 +1018,7 @@ html[data-bathtime-surface='app'] .app-bridge {
   background: var(--bt-color-canvas);
 }
 
+.onsen-home-shell .content-area,
 .onsen-shell:has(.onsen-home) .content-area {
   background: transparent;
 }

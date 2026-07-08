@@ -101,6 +101,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
   const isOnsenRoute = pathname === '/' || pathname.startsWith('/onsen');
+  const isOnsenHomeRoute = pathname === '/' || pathname === '/onsen';
   const isAuthRoute = pathname.startsWith('/auth');
   const showOnsenHeaderSearch = pathname.startsWith('/onsen') && pathname !== '/onsen';
   const [signedIn, setSignedIn] = useState(false);
@@ -194,9 +195,10 @@ export function Shell({ children }: { children: React.ReactNode }) {
   const shellClassName = useMemo(() => {
     const classes = ['site-shell'];
     if (isOnsenRoute) classes.push('onsen-shell');
+    if (isOnsenHomeRoute) classes.push('onsen-home-shell');
     if (isAuthRoute) classes.push('auth-shell');
     return classes.join(' ');
-  }, [isAuthRoute, isOnsenRoute]);
+  }, [isAuthRoute, isOnsenHomeRoute, isOnsenRoute]);
   return (
     <div className={shellClassName}>
       {!isAuthRoute ? (
