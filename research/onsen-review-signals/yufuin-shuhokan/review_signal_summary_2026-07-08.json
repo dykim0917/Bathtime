@@ -1,0 +1,198 @@
+{
+  "slug": "yufuin-shuhokan",
+  "accommodation_name": {
+    "ko": "유후인 호텔 슈호칸",
+    "ja": "ゆふいんホテル秀峰館",
+    "en": "Yufuin Hotel Shuhokan"
+  },
+  "research_date": "2026-07-08",
+  "collection_briefing": {
+    "slug": "yufuin-shuhokan",
+    "name_ja": "ゆふいんホテル秀峰館",
+    "name_ko": "유후인 호텔 슈호칸",
+    "research_date": "2026-07-08",
+    "data_quality_grade": "A",
+    "grade_reason": "직접 읽은 리뷰 329건, 온천 관련 233건, 직접 본문 플랫폼 4개. Google Maps는 Aside Browser로 확인했고 Agoda API는 provider 표시를 보존했다.",
+    "visible_review_pool": {
+      "Google Maps": 779,
+      "Google_Tripadvisor_provider_card": 127,
+      "Rakuten_visible_review_count": 245,
+      "Rakuten_api_direct_total": 37,
+      "Jalan_direct_pages": 41,
+      "Agoda_reviewsCount_pool": 5176,
+      "Booking_static_fetch": "202 challenge",
+      "Yahoo Travel": "403"
+    },
+    "direct_read_review_count": 329,
+    "onsen_related_direct_review_count": 233,
+    "direct_body_platforms": {
+      "Jalan": 41,
+      "Rakuten Travel": 37,
+      "Agoda API": 240,
+      "Google Maps": 11
+    },
+    "onsen_related_by_platform": {
+      "Jalan": 36,
+      "Rakuten Travel": 33,
+      "Agoda API": 157,
+      "Google Maps": 7
+    },
+    "direct_provider_breakdown": {
+      "Jalan / Jalan": 41,
+      "Rakuten Travel / Rakuten Travel": 37,
+      "Agoda API / Agoda": 120,
+      "Agoda API / Booking.com": 120,
+      "Google Maps / Google Maps": 11
+    },
+    "bath_area_counts": {
+      "facility_wide": 175,
+      "unclear": 96,
+      "open_air_public_bath": 28,
+      "public_bath": 57,
+      "room_bath": 3
+    },
+    "signal_counts": {
+      "onsen_related": 233,
+      "booking_confusion": 112,
+      "public_bath_hot_spring": 57,
+      "water_texture": 6,
+      "crowding": 27,
+      "room_bath_hot_spring": 3,
+      "chlorine_smell": 1
+    },
+    "caution_counts": {
+      "temperature": 23,
+      "cleanliness_or_age": 89
+    }
+  },
+  "official_facts": [
+    "공식 사이트 기준 유후다케를 조망하는 전망 대욕장과 병설 노천탕을 안내.",
+    "공식 사이트/라쿠텐 온천 페이지 기준 4층에 전망 대욕장, 내탕, 노천탕, 사우나, 수풍로가 있음.",
+    "라쿠텐 온천 페이지 기준 泉質은 단순온천, 욕장 종류는 온천·대욕장·노천풍呂·사우나·천연온천.",
+    "공식 홈에는 족욕과 관내 라멘점 안내가 함께 보임. 객실 노천탕 숙소로 보기는 어려움."
+  ],
+  "review_signal_summary": [
+    {
+      "bath_area": "public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 57,
+      "source_count": 57,
+      "platform_count": 4,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "open_air_public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 28,
+      "source_count": 28,
+      "platform_count": 4,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "probable",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 6,
+      "source_count": 6,
+      "platform_count": 4,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "probable",
+      "signal_type": "weak_onsen_feeling",
+      "signal_direction": "mixed",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "probable",
+      "signal_type": "chlorine_smell",
+      "signal_direction": "neutral",
+      "mention_count": 1,
+      "source_count": 1,
+      "platform_count": 1,
+      "contradiction_level": "low",
+      "review_signal_status": "insufficient"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "probable",
+      "signal_type": "crowding",
+      "signal_direction": "mixed",
+      "mention_count": 27,
+      "source_count": 27,
+      "platform_count": 4,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "probable",
+      "signal_type": "booking_confusion",
+      "signal_direction": "neutral",
+      "mention_count": 112,
+      "source_count": 112,
+      "platform_count": 4,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    }
+  ],
+  "evidence_examples": [
+    {
+      "signal_type": "public_bath_hot_spring",
+      "source_type": "Google Maps",
+      "source_url": "https://www.google.com/maps/search/ゆふいんホテル秀峰館",
+      "language": "ko",
+      "short_paraphrase": "넓은 대욕장과 전망을 선택 이유로 언급.",
+      "original_keyword": "대욕장;뷰",
+      "review_date": "1개월 전"
+    },
+    {
+      "signal_type": "public_bath_hot_spring",
+      "source_type": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/28141/review.html",
+      "language": "ja",
+      "short_paraphrase": "최상층 노천탕과 유후다케 조망을 함께 언급.",
+      "original_keyword": "最上階;露天風呂;由布岳",
+      "review_date": "2026-02-10"
+    },
+    {
+      "signal_type": "public_bath_hot_spring",
+      "source_type": "Agoda API",
+      "source_url": "https://www.agoda.com/yufuin-hotel-shuhokan/hotel/yufu-jp.html",
+      "language": "en",
+      "short_paraphrase": "상층 온천과 산 전망을 긍정적으로 언급.",
+      "original_keyword": "hot spring;view;top floor",
+      "review_date": "April 14, 2026"
+    },
+    {
+      "signal_type": "booking_confusion",
+      "source_type": "Google Maps",
+      "source_url": "https://www.google.com/maps/search/ゆふいんホテル秀峰館",
+      "language": "ko",
+      "short_paraphrase": "역에서 도보 가능하지만 캐리어와 택시 동선을 주의해야 한다는 신호.",
+      "original_keyword": "송영서비스 없음;택시;역 도보",
+      "review_date": "2개월 전"
+    }
+  ],
+  "bathtime_interpretation": "직접 확인 329건 중 온천 관련 233건이 잡히며, 슈호칸은 객실탕형 숙소가 아니라 유후다케 전망 대욕장과 공용 노천탕 중심 숙소로 해석하는 편이 데이터에 맞다. Google 한국어 리뷰와 Agoda/Booking 제공 리뷰에서 대욕장·노천탕·전망 신호가 반복되지만, 역에서의 도보·택시·송영 부재, 건물 노후감과 별도 입욕료 같은 운영 신호도 함께 분리해야 한다. 플랫폼상 Google 779건, Rakuten 245건, Agoda API pool 5,176건은 리뷰풀로만 기록하고 직접 읽은 수치와 합산하지 않았다.",
+  "gaps": [
+    "Google Maps의 Tripadvisor 127건 공급자 카드는 Google-native 직접 리뷰에서 제외.",
+    "Booking.com 정적 fetch는 202 challenge로 직접 본문 접근 실패.",
+    "Yahoo Travel은 403으로 직접 본문 접근 실패.",
+    "Agoda API는 직접 본문 240건을 확보했지만 providerText가 Agoda/Booking.com으로 섞여 있어 source note를 유지."
+  ]
+}

@@ -1,0 +1,147 @@
+{
+  "research_date": "2026-07-08",
+  "slug": "yufuin-enokiya",
+  "name_ja": "榎屋旅館",
+  "name_ko": "유후인 에노키야 료칸",
+  "region_display_ko": "규슈 · 오이타현 · 유후인",
+  "collection_briefing": {
+    "visible_review_pool": "Google Maps 335건, Agoda 2,827건, Rakuten API/direct pool 192건, Jalan 기존 직접 표본 19건. 이 숫자는 직접 읽은 리뷰 수와 합산하지 않는다.",
+    "direct_read_review_count": 414,
+    "onsen_related_direct_review_count": 276,
+    "direct_body_platform_count": 4,
+    "direct_body_platforms": {
+      "Rakuten Travel": 192,
+      "Jalan": 19,
+      "Agoda API": 200,
+      "Google Maps": 3
+    },
+    "access_gaps": [
+      "Trip.com URL 오염 정황으로 제외",
+      "Yahoo Travel 네트워크 오류로 직접 본문 미반영",
+      "Naver는 직접 본문 0건으로 유지"
+    ]
+  },
+  "official_facts": {
+    "official_url": "https://www.yufuin-enokiya.jp/",
+    "official_hotspring_url": "https://www.yufuin-enokiya.jp/hotspring/",
+    "public_bath": "공식/OTA 기준 대욕장 없음으로 분리",
+    "room_bath": "객실탕/객실 노천탕 없음으로 분리",
+    "private_bath": "공식 기준 Hiyodori, Mejiro, Kawasemi 세 개 대절탕. 예약 없이 객실 태블릿으로 공실 확인.",
+    "open_air_private_bath": "세 탕 중 Mejiro, Kawasemi는 노천 포함으로 기록.",
+    "source_flow_claim": "공식은 원천가케나가시 및 pH 8.4 단순천, 메타규산 206mg/kg을 주장한다."
+  },
+  "review_signal_summary": [
+    {
+      "bath_area": "private_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "positive",
+      "mention_count": 121,
+      "source_count": 121,
+      "platform_count": 4,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "family_bath",
+      "bath_area_confidence": "probable",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "positive",
+      "mention_count": 14,
+      "source_count": 14,
+      "platform_count": 2,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "private_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "crowding",
+      "signal_direction": "mixed",
+      "mention_count": 47,
+      "source_count": 47,
+      "platform_count": 3,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 5,
+      "source_count": 5,
+      "platform_count": 1,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "room_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "neutral",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient"
+    },
+    {
+      "bath_area": "public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "neutral",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient"
+    }
+  ],
+  "evidence_examples": [
+    {
+      "paraphrase": "한국어 Google 리뷰에서 공용탕 세 개를 안에서 잠그고 쓰는 프라이빗 방식으로 설명한다.",
+      "original_keywords": [
+        "공용탕 3개",
+        "프라이빗",
+        "문 잠그고"
+      ],
+      "source_url": "https://www.google.com/maps/search/?api=1&query=%E6%A6%8E%E5%B1%8B%E6%97%85%E9%A4%A8%20%E7%94%B1%E5%B8%83%E9%99%A2",
+      "language": "ko",
+      "review_date": "4개월 전"
+    },
+    {
+      "paraphrase": "Rakuten 최신 리뷰에서 세 개뿐인 대절탕이라 원하는 시간에 못 들어갈 수 있다는 운영 주의를 남긴다.",
+      "original_keywords": [
+        "貸切風呂",
+        "3室",
+        "シャワーがない"
+      ],
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/28502/review.html",
+      "language": "ja",
+      "review_date": "2026-05-26"
+    },
+    {
+      "paraphrase": "Agoda 한국어권 표본에서 세 공용탕을 가족 단위로 프라이빗하게 쓰며, 객실 샤워 부재와 공실 불안을 같이 언급한다.",
+      "original_keywords": [
+        "public baths",
+        "privately by families",
+        "no shower",
+        "available"
+      ],
+      "source_url": "https://www.agoda.com/enokiya-ryokan/hotel/yufu-jp.html",
+      "language": "en",
+      "review_date": "May 20, 2026"
+    }
+  ],
+  "bathtime_interpretation": "직접 확인 표본 414건 중 온천 관련 직접 리뷰가 276건으로, 에노키야는 대욕장형도 객실탕형도 아니라 세 개의 대절/가족형 온천을 중심으로 읽는 편이 데이터에 맞다. 긍정 신호는 프라이빗하게 잠그고 쓰는 탕 경험에 집중되며, 부정/주의 신호는 탕 수가 세 개뿐인 데 따른 공실 타이밍과 객실 샤워 부재에 모인다.",
+  "data_quality_grade": "A",
+  "copy_summary_ko": "세 개의 공용 대절탕을 가족·동행 단위로 잠그고 쓰는 유후인 소형 료칸이다. 직접 확인 표본에서는 프라이빗 온천 이용 만족이 강하게 반복되지만, 객실탕이나 대욕장을 기대하기보다 공실 타이밍을 보며 이용하는 구조로 이해해야 한다.",
+  "primary_bath_ko": "예약 없이 태블릿으로 공실을 확인해 쓰는 대절/가족형 온천 3개",
+  "operation_notes_ko": "대욕장과 객실 온천은 DB 노출에서 제외한다. 일부 객실은 샤워가 없어 탕 공실 여부가 체감 편의에 직접 영향을 준다는 후기 신호가 반복된다.",
+  "gaps": [
+    "Naver 직접 본문은 이번 보강에서 0건",
+    "Trip.com URL 오염 정황으로 제외",
+    "Yahoo Travel은 네트워크 오류로 직접 본문 미반영"
+  ]
+}

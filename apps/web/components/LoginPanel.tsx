@@ -97,11 +97,8 @@ export function LoginPanel() {
   }, []);
 
   return (
-    <section className="auth-box">
-      <div className="auth-copy">
-        <h2>Google 계정으로 계속하기</h2>
-        <p>찜한 온천과 숙소 후보를 계정에 연결합니다.</p>
-      </div>
+    <section className="auth-box" aria-labelledby="auth-title">
+      <h1 id="auth-title">로그인</h1>
       {!supabase ? <p className="auth-warning">Supabase 로그인 환경변수가 필요합니다.</p> : null}
       {message ? <p className={status === 'error' ? 'auth-warning' : 'auth-note'}>{message}</p> : null}
       <button

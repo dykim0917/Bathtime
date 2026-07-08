@@ -1,0 +1,200 @@
+{
+  "accommodation_name": "由布院 玉の湯 / 유후인 타마노유",
+  "research_date": "2026-07-08",
+  "collection_briefing": {
+    "platform_visible_review_pool": {
+      "Google Maps": {
+        "rating": "4.4",
+        "visible_review_count": 385,
+        "rating_distribution": {
+          "5": 246,
+          "4": 92,
+          "3": 22,
+          "2": 8,
+          "1": 17
+        },
+        "note": "Tripadvisor provider card 170건은 Google-native 직접 리뷰에서 제외"
+      },
+      "JTB": {
+        "visible_review_count_signal": "JTB questionnaire 19 + RRB 14 shown in summary fields; direct public arrays 44 rows"
+      },
+      "Rakuten Travel": {
+        "rating_signal": "category BATH 3.8",
+        "visible_review_count": 33,
+        "direct_public_rows_current_page": 1
+      },
+      "Trip.com": {
+        "visible_review_count": 4,
+        "direct_public_rows_current_page": 2
+      },
+      "Yahoo Travel / Ikkyu": {
+        "visible_review_count": "41 combined legacy",
+        "rating": "4.66 overall; 温泉・お風呂 4.76",
+        "legacy_direct_read": 38
+      },
+      "Naver Search": {
+        "access": "snippet_only search results plus 1 direct Naver Blog article"
+      },
+      "Agoda": {
+        "rating": "9.1/10 snippet",
+        "visible_review_count": 23,
+        "access": "snippet_only in Naver result; exact API not yet extracted"
+      },
+      "Japanican": {
+        "rating": "4.8/5 snippet",
+        "visible_review_count": 31,
+        "access": "snippet_only in Naver result"
+      },
+      "Tripadvisor": {
+        "rating": "4.4/5 provider card",
+        "visible_review_count": 170,
+        "access": "provider_card_snippet_only; static page 403"
+      }
+    },
+    "directly_read_reviews": 94,
+    "onsen_related_direct_reviews": 33,
+    "direct_body_platform_count": 7,
+    "direct_body_platforms": [
+      "Yahoo Travel",
+      "Ikkyu",
+      "JTB",
+      "Rakuten Travel",
+      "Trip.com",
+      "Google Maps",
+      "Naver Blog"
+    ],
+    "access_failed_or_limited_platforms": {
+      "Tripadvisor": "static 403; Google provider card snippet only",
+      "Agoda": "Naver exact result snippet and rating only; direct API/body not extracted",
+      "Japanican": "Naver exact result snippet only",
+      "Yahoo/Ikkyu": "2026-07-02 Aside legacy summary available, but current row-level reconstruction incomplete"
+    }
+  },
+  "official_facts": [
+    {
+      "bath_area": "room_bath",
+      "fact": "공식 온천 페이지와 객실 페이지는 전 객실에 대욕장과 같은 원천을 끌어온 히노키 내풍로가 있다고 주장한다.",
+      "source_url": "https://tamanoyu.co.jp/hot-spring/"
+    },
+    {
+      "bath_area": "public_bath",
+      "fact": "공식 온천 페이지는 남녀별 대욕장 이용 시간 6:00-10:00 / 15:00-23:00을 표기한다.",
+      "source_url": "https://tamanoyu.co.jp/hot-spring/"
+    },
+    {
+      "bath_area": "open_air_public_bath",
+      "fact": "공식 온천 페이지는 남녀별 욕장에 내풍로와 노천풍로가 있다고 표기한다.",
+      "source_url": "https://tamanoyu.co.jp/hot-spring/"
+    },
+    {
+      "bath_area": "facility_wide",
+      "fact": "공식 온천 페이지는 무색투명 단순온천, 약알칼리성 pH8.2를 표기한다.",
+      "source_url": "https://tamanoyu.co.jp/hot-spring/"
+    },
+    {
+      "bath_area": "room_bath",
+      "fact": "공식 사이트 하단과 객실 페이지는 전 객실 원천가케나가시 목욕탕, 내풍로를 표기한다.",
+      "source_url": "https://tamanoyu.co.jp/room/"
+    }
+  ],
+  "review_signal_summary": [
+    {
+      "bath_area": "room_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 14,
+      "source_count": 14,
+      "platform_count": 5,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "mixed",
+      "mention_count": 10,
+      "source_count": 10,
+      "platform_count": 5,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 5,
+      "source_count": 5,
+      "platform_count": 3,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "weak_onsen_feeling",
+      "signal_direction": "mixed",
+      "mention_count": 3,
+      "source_count": 3,
+      "platform_count": 3,
+      "contradiction_level": "medium",
+      "review_signal_status": "weak_signal"
+    }
+  ],
+  "evidence_examples": [
+    {
+      "short_paraphrase": "객실 히노키 내탕을 반복 이용했다는 숙박자 경험.",
+      "original_keywords": "部屋付きの風呂;ヒノキ;かけ流し",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/180079/review.html",
+      "language": "ja",
+      "review_date": "2026-03-09"
+    },
+    {
+      "short_paraphrase": "대욕장과 객실탕을 모두 이용했고 전반적으로 만족했다는 JTB 숙박 후기.",
+      "original_keywords": "温泉;大浴場;部屋風呂",
+      "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/8413004/review/",
+      "language": "ja",
+      "review_date": "2019-07-09"
+    },
+    {
+      "short_paraphrase": "대욕장은 작지만 조용하고 깨끗하며 객실 부속탕도 좋다는 Google 한국어 리뷰.",
+      "original_keywords": "대욕장;room bath",
+      "source_url": "https://www.google.com/maps/search/%E7%94%B1%E5%B8%83%E9%99%A2+%E7%8E%89%E3%81%AE%E6%B9%AF",
+      "language": "ko",
+      "review_date": "2023 approx"
+    },
+    {
+      "short_paraphrase": "객실 내 히노키 욕조와 객실 노천탕 문맥을 설명한 Naver 블로그 본문.",
+      "original_keywords": "객실내 노천탕;히노키 욕조",
+      "source_url": "https://blog.naver.com/hoteljavaman/221416755092",
+      "language": "ko",
+      "review_date": "2018-12-11"
+    },
+    {
+      "short_paraphrase": "일부 리뷰에서는 대욕장이 특출나지는 않다는 약한 온천감 신호가 보인다.",
+      "original_keywords": "特筆すべきものはない",
+      "source_url": "https://travel.yahoo.co.jp/00002536/review/",
+      "language": "ja",
+      "review_date": "2021-08-13"
+    },
+    {
+      "short_paraphrase": "Trip.com 저평점 표본에서는 온천보다 객실 관리와 벌레 문제가 중심으로 나타난다.",
+      "original_keywords": "ゴキブリ;掃除",
+      "source_url": "https://jp.trip.com/hotels/yufu-hotel-detail-1652227/yufuin-tamanoyu-oita/review.html",
+      "language": "ja",
+      "review_date": "2024-08-11"
+    }
+  ],
+  "bathtime_interpretation": "직접 확인 표본 94건 중 온천 관련 33건이 잡히며, 객실 히노키 내탕과 공용 대욕장 신호가 함께 보인다. 다만 이 숙소는 아직 A급이 아니라 C급 초기 반복 신호 단계이며, Yahoo/Ikkyu 레거시 표본 복원과 Google deep-scroll이 끝나야 DB seed 문구를 자신 있게 고정할 수 있다.",
+  "gaps": [
+    "Google Maps는 rating 4.4 / visible 385 / 별점 분포까지 확인했지만 Google-native 직접 본문은 8건만 표본화했다.",
+    "Naver는 정확 블로그 1건을 직접 확인했고, Agoda/Japanican/Clien 등 검색 결과는 snippet_only로 분리했다.",
+    "Yahoo/Ikkyu 38건은 2026-07-02 Aside 요약 근거가 있으나 행 단위 복원은 6건뿐이다.",
+    "Tripadvisor는 static 403과 Google provider card 수준이라 직접 리뷰 수에 넣지 않았다."
+  ],
+  "data_quality_grade": "C",
+  "qa_status": "needs_research_reinforcement",
+  "ready_for_db": false
+}

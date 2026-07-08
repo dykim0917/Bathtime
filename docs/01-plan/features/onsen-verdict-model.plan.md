@@ -2,7 +2,7 @@
 
 온천 숙소와 시설을 `좋다/나쁘다`로 추천하는 대신, 이용 경험과 공식 정보를 읽고 바스타임의 기준으로 판정하는 모델을 데이터 구조와 UI에 반영하기 위한 개발 명세입니다.
 
-카피 규칙은 [바스타임 판정문 작성 규칙](../../03-content/onsen-judgment-copy-guide.md), 용어 표기는 [온천 용어 가이드](../../03-content/onsen-term-guide.md)를 따릅니다. 본 문서는 그 규칙을 담는 스키마, 컴포넌트, 상태, QA 기준을 정의합니다.
+카피 규칙은 [바스타임 판정문 작성 규칙](../../03-content/onsen-judgment-copy-guide.md), 용어 표기는 [온천 용어 가이드](../../03-content/onsen-term-guide.md)를 따릅니다. 지역별 DB seed 운영은 [온천 숙소 지역별 DB Seed 프로세스](../../04-report/onsen-regional-db-seed-process.md)를 따릅니다. 본 문서는 그 규칙을 담는 스키마, 컴포넌트, 상태, QA 기준을 정의합니다.
 
 적용 범위:
 
@@ -47,7 +47,14 @@
       "counts": {
         "mentions": 187,
         "negative": 4,
-        "denominator": "onsen_related"
+        "denominator": "onsen_related",
+        "platform_count": 3,
+        "direction_counts": {
+          "positive": 171,
+          "mixed": 12,
+          "negative": 4,
+          "neutral": 0
+        }
       },
       "body": "프라이버시와 독립성에 대한 평가는 플랫폼을 가리지 않고 일관됩니다.",
       "verdict": "대욕장 없이 객실탕만으로 충분한지 고민하지 않으셔도 되는 구조입니다.",
@@ -70,6 +77,8 @@
 - `items[].type`: `positive | conditional | minor` 중 하나입니다.
 - `items[].counts.mentions`: 필수입니다. 숫자가 없으면 해당 판정 항목을 게시하지 않습니다.
 - `items[].counts.negative`: 필수입니다. 부정값이 없으면 `0`으로 저장합니다.
+- `items[].counts.platform_count`: 필수입니다. 해당 항목이 확인된 독립 직접 본문 플랫폼 수입니다.
+- `items[].counts.direction_counts`: 필수입니다. `positive`, `mixed`, `negative`, `neutral`을 모두 숫자로 저장합니다.
 - `items[].chip_label`: 카드에 축약 노출할 명사형 라벨입니다.
 - `season_months`: 계절성 항목일 때만 `[11, 12, 1, 2, 3]`처럼 저장합니다.
 
@@ -79,8 +88,8 @@
 
 | level | 조건 | 사용자 노출 |
 | --- | --- | --- |
-| `full` | 판정 항목 3개 이상, 수집 브리핑 완비 | 상세 판정 블록 전체 노출 |
-| `lite` | 구조 사실 기반 대표문과 수집 브리핑은 있으나 판정 항목 0~2개 | 카드와 상세 상단에 간략 정보만 노출 |
+| `full` | 직접 읽은 이용 경험 300건 이상, 온천 관련 200건 이상, 직접 본문 플랫폼 3개 이상, 채택 기준을 통과한 판정 항목 3개 이상 | 상세 판정 블록 전체 노출 |
+| `lite` | 구조 사실 기반 대표문과 수집 브리핑은 있으나 full 표본 기준 또는 판정 항목 기준 미달 | 카드와 상세 상단에 간략 정보만 노출 |
 | `draft` | 수치나 문장 검수 미완료 | 공개 페이지에서는 기존 기본 정보 폴백 |
 
 `full`만 고집하면 데이터 생산 속도가 지나치게 느려질 수 있습니다. 초기에는 `lite`로 공개 가능한 범위를 만들고, 핵심 숙소부터 `full`로 승격합니다.
@@ -110,10 +119,15 @@
 
 `published full` 조건:
 
+- `briefing.experiences_read >= 300`
+- `briefing.onsen_related >= 200`
+- `briefing.platforms.length >= 3`
 - `items.length >= 3`
 - 모든 `items[].counts.mentions`가 null이 아니고 0 이상
 - 모든 `items[].counts.negative`가 null이 아니고 0 이상
-- `briefing.platforms.length >= 1`
+- 모든 `items[].counts.platform_count >= 2`
+- 모든 `items[].counts.direction_counts`가 `positive`, `mixed`, `negative`, `neutral` 숫자를 가짐
+- 모든 판정 항목의 `mentions`가 `10건 이상`이면서 해당 분모의 `2% 이상`
 - `headline`과 `items[].headline/body/verdict`에 금지 패턴 없음
 
 `published lite` 조건:
@@ -122,6 +136,7 @@
 - `briefing.experiences_read` 있음
 - `briefing.platforms.length >= 1`
 - `items.length`는 0~2개 허용
+- full 표본 기준 또는 판정 항목 채택 기준을 충족하지 못한 항목은 독립 판정 근거로 노출하지 않음
 - `headline`은 구조 사실 기반 문장만 허용
 - 집계 해석형 단정문은 사용 불가
 - 화면에는 `판정 항목 N개`처럼 부풀려 보이는 표현을 쓰지 않음
@@ -136,6 +151,49 @@
 
 - 카운트 미확정 항목은 DB에 넣지 않습니다.
 - 프론트에는 `[N]` 렌더링 경로를 만들지 않습니다.
+
+### 2.3.1 판정 항목 채택 규칙
+
+`full`의 3개 이상 판정 항목은 아무 내부 태그나 올린 개수가 아닙니다. 각 항목은 [바스타임 판정문 작성 규칙](../../03-content/onsen-judgment-copy-guide.md)의 v0.1 채택 기준을 통과해야 합니다.
+
+항목별 필수 집계:
+
+```jsonc
+{
+  "signal_key": "room_open_air_bath_experience",
+  "bath_area": "room_open_air_bath",
+  "counts": {
+    "mentions": 127,
+    "negative": 3,
+    "denominator": "onsen_related",
+    "platform_count": 3,
+    "direction_counts": {
+      "positive": 118,
+      "mixed": 6,
+      "negative": 3,
+      "neutral": 0
+    }
+  },
+  "adoption_status": "verdict_basis"
+}
+```
+
+`adoption_status` 값:
+
+| status | 의미 | 공개 처리 |
+| --- | --- | --- |
+| `verdict_basis` | 10건 이상, 분모 2% 이상, 2플랫폼 이상 | `items[]`로 사용 가능 |
+| `attention_note` | 5건 이상, 2플랫폼 이상이나 `verdict_basis` 미달 | 독립 근거로 세지 않고 보조 주의 문장만 가능 |
+| `internal_only` | 1~4건 또는 단일 플랫폼 | 사용자 노출 금지 |
+
+예를 들어 `유량 주의 4건 / 1플랫폼`은 `internal_only`입니다. 이것을 full verdict의 독립 근거로 올리면 안 됩니다.
+
+방향성 기준:
+
+- `mentions = positive + mixed + negative`
+- `negative = negative`
+- `neutral`은 시설 존재나 객실명 확인에는 쓸 수 있지만 만족/불만 판정 언급 수에는 넣지 않습니다.
+- `mixed`는 부정값으로 합치지 않고 조건부 해석에 사용합니다.
 
 ### 2.4 신규: `fact_status`
 
@@ -403,8 +461,11 @@ DB enum/코드 값과 UI 라벨 매핑을 단일 소스로 관리합니다.
 | 3 | 1곳 파일럿 작성 | `full` 판정 표준 케이스 |
 | 4 | 상세 페이지 판정 블록과 카드 개편 | 프론트 |
 | 5 | 핵심 숙소부터 `lite` 또는 `full` 판정 작성 | 지역 배치 |
-| 6 | `fact_status` 3상태 소급 적용 | `확인 필요` 제거 |
-| 7 | 관리자 입력/검수 UI 보강 | 운영 플로우 |
+| 6 | 기존 `full` 판정의 `platform_count`와 `direction_counts` 백필 | 새 게시 게이트 적용 준비 |
+| 7 | `fact_status` 3상태 소급 적용 | `확인 필요` 제거 |
+| 8 | 관리자 입력/검수 UI 보강 | 운영 플로우 |
+| 9 | 업로드/QA 스크립트에 full 채택 기준 강제 | 워커 간 판정 일관성 확보 |
+| 10 | 지역별 1차/2차/3차-A/3차-B seed 프로세스 적용 | 지역 간 DB 적재 품질 일관화 |
 
 추천 파일럿 순서:
 
@@ -415,11 +476,19 @@ DB enum/코드 값과 UI 라벨 매핑을 단일 소스로 관리합니다.
 
 판정 유형별 표준 케이스를 먼저 만들고 나머지 숙소에 확산합니다.
 
+지역 배치는 한 번에 전량 적재하지 않습니다. 먼저 `full_verdict_candidate`와 `ready_for_db_lite`를 1차로 적재하고, 이후 `needs_platform_reconciliation`/`needs_count_reconciliation` 중 방향값이 안정적인 후보를 2차로 회수합니다. `needs_direction_backfill`은 명시 방향 컬럼이 있는 3차-A와 별도 backfilled CSV가 필요한 3차-B로 분리합니다. 자세한 운영 절차는 [지역별 DB Seed 프로세스](../../04-report/onsen-regional-db-seed-process.md)를 기준으로 삼습니다.
+
 ## 8. QA 체크리스트
 
 - [ ] `published full` 전건: 판정 항목 3개 이상
+- [ ] `published full` 전건: 직접 읽은 이용 경험 300건 이상
+- [ ] `published full` 전건: 온천 관련 이용 경험 200건 이상
+- [ ] `published full` 전건: 직접 본문 플랫폼 3개 이상
 - [ ] 모든 판정 항목의 counts null 없음
 - [ ] `negative`가 0이어도 숫자로 저장됨
+- [ ] 모든 판정 항목의 `platform_count`가 2 이상
+- [ ] 모든 판정 항목의 `direction_counts.positive/mixed/negative/neutral`이 숫자로 있음
+- [ ] 모든 판정 항목의 `mentions`가 10건 이상이면서 해당 분모의 2% 이상
 - [ ] 플랫폼 실명 1개 이상
 - [ ] 사용자 노출 문자열에 `신호` 0건
 - [ ] `후기에 따르면`, `리뷰에서`, `많더라`, `대체로`, `~인 편입니다` 0건

@@ -70,6 +70,7 @@ seo-audit-getbathtime/
 # local agent / visual QA outputs
 .codex-pet-runs/
 .superloopy/
+.playwright-cli/
 
 # raw onsen review exports are large local research inputs
 research/onsen-review-signals/**/*.csv

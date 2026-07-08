@@ -1,0 +1,186 @@
+{
+  "accommodation_name": "ENOWA YUFUIN / 에노와 유후인",
+  "research_date": "2026-07-08",
+  "data_quality_grade": "D",
+  "qa_status": "needs_research_reinforcement",
+  "ready_for_db": false,
+  "collection_briefing": {
+    "visible_review_pool": "Google Maps 87, Ikkyu/Yahoo 37, Trip.com 14, Rakuten 6, Tripadvisor Korea/Naver surface 10, Agoda page present but direct comments 0. visible 수치는 직접 읽은 리뷰 수와 합산하지 않음.",
+    "directly_read_reviews": 42,
+    "onsen_related_direct_reviews": 32,
+    "direct_body_platform_count": 10,
+    "direct_body_platforms": [
+      "Ikkyu",
+      "Yahoo Travel",
+      "Tripadvisor",
+      "Expedia",
+      "Tistory",
+      "AVENIORA",
+      "NextTrip",
+      "Trip.com",
+      "Rakuten Travel",
+      "Google Maps"
+    ],
+    "google_checked": "Aside Browser로 Google Maps 평점 4.7, visible 87, 별점 분포 69/14/1/1/2 확인. Google-native 직접 표본 6건만 산입.",
+    "naver_checked": "Aside Browser로 Naver Search 확인. 검색 결과와 예약/Tripadvisor 표면 중심이라 snippet_only로 분리.",
+    "termination_reason": "300건 A급 기준까지 258건 부족하고, 접근 확인된 대형 OTA 중 Agoda는 commentList 0건, Rakuten은 전체 6건, Trip.com은 직접 배열 10건 수준이다. Google visible pool도 87건으로 전부 읽어도 단독으로 A급 총량에 크게 못 미친다."
+  },
+  "identity": {
+    "name_ja": "ENOWA YUFUIN",
+    "name_ko": "에노와 유후인",
+    "name_en": "ENOWA YUFUIN",
+    "aliases": [
+      "ENOWA",
+      "Enowa Yufuin",
+      "에노와 유후인"
+    ],
+    "official_url": "https://enowa-yufuin.jp/",
+    "address": "大分県由布市湯布院町川上544",
+    "onsen_area": "由布院温泉"
+  },
+  "official_hot_spring_facts": [
+    {
+      "source": "official_site",
+      "fact": "공식 Experience/Room 페이지는 각 객실에서 온천을 즐기는 구조와 객실/빌라별 outdoor hot spring bath, private bath, pool 등을 시설 주장으로 제시한다."
+    },
+    {
+      "source": "official_site",
+      "fact": "공식 온천 성분은 나트륨-염화물・황산염 온천, 저장성 알칼리성 고온천으로 표기된다."
+    },
+    {
+      "source": "Rakuten",
+      "fact": "Rakuten 온천 정보는 온천/노천풍로와 황산염천・나트륨염화물천을 표기한다."
+    }
+  ],
+  "review_signal_summary": [
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 30,
+      "source_count": 30,
+      "platform_count": 7,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "positive",
+      "mention_count": 15,
+      "source_count": 15,
+      "platform_count": 6,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 9,
+      "source_count": 9,
+      "platform_count": 4,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "weak_onsen_feeling",
+      "signal_direction": "mixed",
+      "mention_count": 1,
+      "source_count": 1,
+      "platform_count": 1,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal"
+    }
+  ],
+  "bath_area_tags": [
+    "room_open_air_bath",
+    "facility_wide"
+  ],
+  "caution_signals": [
+    "The Rooms/빌라 객실 선택에 따른 전망·프라이버시 차이",
+    "일부 온도 기대치 차이",
+    "고가 숙소 가격 기대치",
+    "유후인 중심부 접근/셔틀 맥락"
+  ],
+  "copy_summary_ko": "직접 확인 표본 42건에서는 객실 또는 빌라 단위의 개인 온천·노천탕 경험이 반복된다. 다만 직접 표본 총량이 50건 미만이므로, Bathtime DB 즉시 적재보다는 고급 객실온천형 보강 후보로 유지하는 편이 데이터에 맞다.",
+  "primary_bath_ko": "객실·빌라 단위 개인 온천/노천탕 중심",
+  "operation_notes_ko": "공식 시설 정보는 객실 온천과 빌라형 온천·풀을 강하게 제시하지만, 후기 표본은 아직 작다. 객실 선택에 따른 전망·프라이버시, 온도 기대치, 가격 기대치, 중심부 접근/셔틀 신호를 운영 주의로 분리한다.",
+  "next_action": "A급까지 최소 258건 추가 필요. Booking.com 직접 본문, Google Maps 전체 스크롤, Tripadvisor 브라우저 직접 열람, Ikkyu/Yahoo 추가 페이지 접근을 재시도한다. Agoda는 현재 commentList 0건으로 direct source에서 제외.",
+  "platform_status_by_source": {
+    "Google Maps": {
+      "rating": "4.7",
+      "visible_review_count": 87,
+      "rating_distribution": {
+        "5": 69,
+        "4": 14,
+        "3": 1,
+        "2": 1,
+        "1": 2
+      },
+      "review_body_access": "direct_readable_partial",
+      "direct_read_reviews": 6,
+      "onsen_related_direct_reviews": 3,
+      "note": "Aside Browser로 리뷰 탭 확인. Tripadvisor/Trip.com 공급자 카드는 Google-native 직접 리뷰에서 제외."
+    },
+    "Agoda": {
+      "rating": null,
+      "visible_review_count": null,
+      "review_body_access": "partial_no_comments",
+      "direct_read_reviews": 0,
+      "note": "고유 hotelId 79094797 확인. reviews page commentList 0건이라 직접 본문 산입 불가."
+    },
+    "Trip.com": {
+      "rating": "9.9 surface",
+      "visible_review_count": 14,
+      "review_body_access": "direct_readable",
+      "direct_read_reviews": 10,
+      "onsen_related_direct_reviews": 5,
+      "note": "정적 HTML commentList 직접 파싱. totalCountForPage 14이나 직접 파싱 배열은 10건."
+    },
+    "Rakuten Travel": {
+      "rating": null,
+      "visible_review_count": 6,
+      "review_body_access": "direct_readable",
+      "direct_read_reviews": 6,
+      "onsen_related_direct_reviews": 6,
+      "note": "PRELOADED_STATE reviewList total 6."
+    },
+    "Ikkyu/Yahoo Travel": {
+      "rating": "4.8 legacy",
+      "visible_review_count": 37,
+      "review_body_access": "direct_readable_partial_legacy",
+      "direct_read_reviews": 12,
+      "onsen_related_direct_reviews": 12,
+      "note": "legacy Ikkyu 11 + Yahoo 1 표본 유지."
+    },
+    "Tripadvisor": {
+      "rating": "5/5 Naver surface",
+      "visible_review_count": 10,
+      "review_body_access": "blocked_static_403_with_legacy_direct",
+      "direct_read_reviews": 2,
+      "onsen_related_direct_reviews": 2,
+      "note": "직접 static fetch는 403. 기존 직접 표본 2건만 유지, Google/Naver provider preview는 direct 제외."
+    },
+    "Expedia": {
+      "review_body_access": "legacy_direct_partial",
+      "direct_read_reviews": 1,
+      "onsen_related_direct_reviews": 1
+    },
+    "Korean/Japanese blogs": {
+      "review_body_access": "legacy_direct_partial",
+      "direct_read_reviews": 5,
+      "onsen_related_direct_reviews": 4
+    },
+    "Naver Search": {
+      "review_body_access": "snippet_only",
+      "direct_read_reviews": 0,
+      "note": "Aside Browser로 검색 확인. Tripadvisor/Tripadvisor Korea/booking/meta surfaces and snippets only; direct blog body not opened in this pass."
+    }
+  }
+}

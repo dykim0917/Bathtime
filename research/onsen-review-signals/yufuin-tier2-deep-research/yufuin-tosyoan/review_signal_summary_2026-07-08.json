@@ -1,0 +1,122 @@
+{
+  "research_date": "2026-07-08",
+  "slug": "yufuin-tosyoan",
+  "name_ja": "由布院温泉 東匠庵",
+  "name_ko": "유후인 토쇼안",
+  "aliases": [
+    "Yufuin Onsen Toshoan",
+    "Tosyoan",
+    "東匠庵"
+  ],
+  "region_display_ko": "규슈 · 오이타현 · 유후인",
+  "area_bucket": "Yufuin",
+  "data_quality_grade": "A",
+  "qa_status": "ready_for_db",
+  "ready_for_db": true,
+  "collection_briefing": {
+    "visible_review_pool": "Google Maps 200 / 4.5; Agoda visible 1,328 / 9.1; Jalan direct pool 118 / 4.5; Rakuten Travel visible/API 38",
+    "direct_read_review_count": 413,
+    "onsen_related_direct_review_count": 284,
+    "direct_body_platform_count": 4,
+    "direct_body_platforms": {
+      "Jalan": 118,
+      "Rakuten Travel": 38,
+      "Agoda API": 237,
+      "Google Maps": 20
+    },
+    "access_gaps": [
+      "Naver Search/Blog 직접 본문은 이번 보강에서 0건",
+      "Trip.com은 visible 49건을 확인했지만 이번 직접 수에는 산입하지 않음"
+    ]
+  },
+  "official_hot_spring_facts": {
+    "official_url": "http://tosyoan.com/",
+    "jalan_url": "https://www.jalan.net/yad331264/",
+    "room_bath": "공식/OTA 기준 전 객실 온천 포함 객실로 안내된다. 객실 내탕 신호가 후기에서 반복된다.",
+    "room_open_air_bath": "유후다케 전망 객실탕/객실 노천탕 계열 표현이 후기와 객실명에서 반복된다. 객실별 형태 차이는 room-level 노출에서 유지한다.",
+    "public_bath": "Jalan 일부 후기의 대욕장 표현은 소수라, 주력 bath_area로 일반화하지 않는다.",
+    "private_bath": "한국어 Google의 개인탕/프라이빗 표현은 객실 안 전용탕 문맥으로 태깅한다."
+  },
+  "review_signal_summary": [
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 130,
+      "source_count": 130,
+      "platform_count": 4,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "room_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 61,
+      "source_count": 61,
+      "platform_count": 4,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 194,
+      "source_count": 194,
+      "platform_count": 4,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "probable",
+      "signal_type": "booking_confusion",
+      "signal_direction": "mixed",
+      "mention_count": 107,
+      "source_count": 107,
+      "platform_count": 4,
+      "contradiction_level": "medium",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "unclear",
+      "signal_type": "chlorine_smell",
+      "signal_direction": "neutral",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient"
+    }
+  ],
+  "bath_area_tags": {
+    "room_open_air_bath": 130,
+    "room_bath": 61,
+    "facility_wide": 131,
+    "public_bath": 4
+  },
+  "signal_counts": {
+    "room_bath_hot_spring": 152,
+    "water_texture": 194,
+    "booking_confusion": 107,
+    "operation_caution": 31,
+    "temperature_control": 22,
+    "neutral": 37
+  },
+  "caution_signals": [
+    "송영·택시 동선",
+    "온도/계절 노천탕 체감",
+    "벌레/모기 계절 신호",
+    "객실 타입별 조망 기대치",
+    "리모델링 후 노천탕 기대 차이"
+  ],
+  "copy_summary_ko": "직접 확인 413건 중 온천 관련 284건에서 객실 노천탕·객실 내탕 중심 신호가 강하게 반복된다. 토쇼안은 대욕장형 숙소가 아니라 객실 안 전용 온천과 유후다케 조망을 중심으로 소비되는 객실탕형 숙소로 해석하는 편이 데이터에 맞다.",
+  "primary_bath_ko": "객실 전용 온천탕, 객실 노천탕/전망탕 중심",
+  "operation_notes_ko": "Google Maps는 Aside Browser로 4.5/200 및 별점 분포 5=145, 4=27, 3=12, 2=8, 1=8을 확인했다. Agoda 1,328건은 리뷰풀로만 기록하고 API 직접 본문 237건만 직접 수에 넣었다. 한국어 Google의 개인탕·프라이빗 표현은 가족탕이 아니라 객실 전용탕 문맥으로 태깅한다.",
+  "next_action": "ready_for_db. Naver 직접 본문은 후속 한국어 수요 보강으로 분리한다."
+}

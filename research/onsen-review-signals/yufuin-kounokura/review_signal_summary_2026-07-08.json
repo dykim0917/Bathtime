@@ -1,0 +1,204 @@
+{
+  "slug": "yufuin-kounokura",
+  "accommodation_name": {
+    "ko": "하타고 코노쿠라",
+    "ja": "旅籠Hatago 香乃蔵",
+    "en": "Ryokan Hatago Konokura / Hatago Kounokura"
+  },
+  "research_date": "2026-07-08",
+  "collection_briefing": {
+    "slug": "yufuin-kounokura",
+    "name_ja": "旅籠Hatago 香乃蔵",
+    "name_ko": "하타고 코노쿠라",
+    "research_date": "2026-07-08",
+    "data_quality_grade": "A",
+    "grade_reason": "직접 읽은 리뷰 301건, 직접 본문 플랫폼 5개, Google Maps/Hotels Aside 확인, 최신·온천 키워드·저평점 일부·한국어 Google 표본을 포함.",
+    "visible_review_pool": {
+      "Jalan": 105,
+      "Rakuten Travel_visible_summary": 72,
+      "Rakuten Travel_api_direct_total": 63,
+      "JTB_schema_review_count": 85,
+      "JTB_jtb_review_list_count": 79,
+      "Relux_visible_review_count": 45,
+      "Google Maps": 138,
+      "Google_Tripadvisor_provider_card": 12
+    },
+    "direct_read_review_count": 301,
+    "onsen_related_direct_review_count": 233,
+    "direct_body_platforms": {
+      "Jalan": 105,
+      "Rakuten Travel": 63,
+      "JTB": 93,
+      "Relux": 30,
+      "Google Maps": 10
+    },
+    "onsen_related_by_platform": {
+      "Jalan": 92,
+      "Rakuten Travel": 63,
+      "JTB": 44,
+      "Relux": 30,
+      "Google Maps": 4
+    },
+    "bath_area_counts": {
+      "public_bath": 46,
+      "room_open_air_bath": 115,
+      "unclear": 68,
+      "room_bath": 27,
+      "facility_wide": 90,
+      "private_bath": 2,
+      "open_air_public_bath": 1
+    },
+    "signal_counts": {
+      "booking_confusion": 110,
+      "onsen_related": 233,
+      "public_bath_hot_spring": 47,
+      "room_bath_hot_spring": 133,
+      "water_texture": 32,
+      "weak_onsen_feeling": 3,
+      "private_bath_experience": 3,
+      "crowding": 15
+    }
+  },
+  "official_facts": [
+    "공식 사이트 기준 전 8실 별채, 전실 객실 노천탕付き.",
+    "객실 노천탕은 원천가케나가시로 안내.",
+    "모든 온천은 원천가케나가시 천연온천으로 설명.",
+    "모야에는 대욕장과 노천탕이 있으며 대욕장 이용 시간은 6:30-23:00.",
+    "泉質은 알칼리성 단순온천.",
+    "12세 이하 어린이 숙박 불가."
+  ],
+  "review_signal_summary": [
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "room_bath_hot_spring",
+      "signal_direction": "positive",
+      "mention_count": 115,
+      "source_count": 115,
+      "platform_count": 5,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "mixed",
+      "mention_count": 47,
+      "source_count": 47,
+      "platform_count": 5,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "probable",
+      "signal_type": "water_texture",
+      "signal_direction": "positive",
+      "mention_count": 32,
+      "source_count": 32,
+      "platform_count": 5,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "probable",
+      "signal_type": "weak_onsen_feeling",
+      "signal_direction": "mixed",
+      "mention_count": 3,
+      "source_count": 3,
+      "platform_count": 1,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "probable",
+      "signal_type": "chlorine_smell",
+      "signal_direction": "neutral",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient"
+    },
+    {
+      "bath_area": "room_open_air_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "positive",
+      "mention_count": 0,
+      "source_count": 0,
+      "platform_count": 0,
+      "contradiction_level": "none",
+      "review_signal_status": "insufficient"
+    },
+    {
+      "bath_area": "public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "crowding",
+      "signal_direction": "positive",
+      "mention_count": 10,
+      "source_count": 10,
+      "platform_count": 4,
+      "contradiction_level": "low",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "probable",
+      "signal_type": "booking_confusion",
+      "signal_direction": "neutral",
+      "mention_count": 110,
+      "source_count": 110,
+      "platform_count": 5,
+      "contradiction_level": "low",
+      "review_signal_status": "strong_signal"
+    }
+  ],
+  "evidence_examples": [
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Rakuten Travel",
+      "source_url": "https://travel.rakuten.co.jp/HOTEL/129936/review.html",
+      "language": "ja",
+      "short_paraphrase": "객실 노천탕과 온천 수질을 함께 긍정적으로 언급.",
+      "original_keyword": "お部屋の露天風呂;すべすべ",
+      "review_date": "2026-05-17"
+    },
+    {
+      "signal_type": "public_bath_hot_spring",
+      "source_type": "Google Maps",
+      "source_url": "https://www.google.com/maps/search/旅籠Hatago+香乃蔵+由布院",
+      "language": "ko",
+      "short_paraphrase": "방 안 노천탕과 공용탕, 온천물 수질을 함께 긍정적으로 언급.",
+      "original_keyword": "온천 물 수질;방안에 있는 노천탕;공용탕",
+      "review_date": "5년 전"
+    },
+    {
+      "signal_type": "water_texture",
+      "source_type": "JTB",
+      "source_url": "https://www.jtb.co.jp/kokunai-hotel/htl/8413028/review/",
+      "language": "ja",
+      "short_paraphrase": "알칼리성 온천의 미끈한 질감과 노천탕 이용을 언급.",
+      "original_keyword": "源泉かけ流し;アルカリ性;ヌルっと",
+      "review_date": ""
+    },
+    {
+      "signal_type": "room_bath_caution",
+      "source_type": "Relux",
+      "source_url": "https://rlx.jp/22218/review/",
+      "language": "ja",
+      "short_paraphrase": "겨울철 객실 노천탕 접근 동선과 체감 추위에 대한 주의 신호.",
+      "original_keyword": "露天風呂;ヒートショック",
+      "review_date": "2025-11-25"
+    }
+  ],
+  "bathtime_interpretation": "직접 확인 301건 중 온천 관련 233건이 잡히며, 객실 노천탕 언급이 5개 플랫폼에서 강하게 반복된다. 코노쿠라는 대욕장 중심 숙소라기보다 전실 객실 노천탕과 알칼리성 온천 질감, 조용한 소규모 숙박 경험을 함께 읽어야 하는 데이터다. 다만 Relux와 일부 저평점 표본에서는 겨울철 객실 노천탕 동선, 온도감, 대욕장 주변 안전·청결 주의 신호가 있어 운영 메모로 분리하는 편이 맞다.",
+  "gaps": [
+    "JTB는 schema reviewCount 85, JTB list count 79, 중복 제거 직접 본문 93건이 서로 달라 count reconciliation 주석을 유지.",
+    "Google Maps는 Aside 화면에서 Google-native 10건만 직접 읽었고, Tripadvisor 공급자 카드 12건은 직접 리뷰 수에서 제외.",
+    "Naver는 이번 보강에서 직접 본문 추가 확보 없이 Google 한국어 리뷰로만 한국어 신호를 반영."
+  ]
+}
