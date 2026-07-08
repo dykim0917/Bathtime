@@ -4,6 +4,14 @@ export type OnsenStatus = 'confirmed' | 'needs_check' | 'review_signal' | 'atten
 
 export type OnsenVerdictLevel = 'full' | 'lite' | 'draft';
 
+export type OnsenFactStatus = {
+  code: string;
+  label?: string;
+  status: 'confirmed' | 'needs_check' | 'not_confirmed';
+  value?: string;
+  source?: string;
+};
+
 export type OnsenVerdictItem = {
   order: number;
   type: 'positive' | 'conditional' | 'minor';
@@ -28,6 +36,7 @@ export type OnsenVerdict = {
     platforms: string[];
   };
   items: OnsenVerdictItem[];
+  factStatuses: OnsenFactStatus[];
   verifiedAt?: string;
 };
 

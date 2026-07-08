@@ -1,7 +1,7 @@
 import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 
-import { onsenCandidates, type OnsenCandidate, type OnsenStatus, type OnsenVerdict, type OnsenVerdictItem } from './onsenCatalog';
+import { onsenCandidates, type OnsenCandidate, type OnsenFactStatus, type OnsenStatus, type OnsenVerdict, type OnsenVerdictItem } from './onsenCatalog';
 import {
   deriveOnsenContexts,
   enrichOnsenCandidate,
@@ -72,6 +72,7 @@ type OnsenVerdictRow = {
   headline: string;
   briefing: unknown;
   items: unknown;
+  fact_statuses: unknown;
   verified_at: string | null;
 };
 
@@ -132,6 +133,22 @@ function normalizeVerdictItem(value: unknown): OnsenVerdictItem | null {
   };
 }
 
+function normalizeFactStatus(value: unknown): OnsenFactStatus | null {
+  if (!isRecord(value)) return null;
+  const code = typeof value.code === 'string' ? value.code.trim() : '';
+  const rawStatus = typeof value.status === 'string' ? value.status.trim() : '';
+  const status = rawStatus === 'confirmed' || rawStatus === 'not_confirmed' ? rawStatus : rawStatus === 'needs_check' ? rawStatus : null;
+  if (!code || !status) return null;
+
+  return {
+    code,
+    status,
+    label: typeof value.label === 'string' ? value.label.trim() : undefined,
+    value: typeof value.value === 'string' ? value.value.trim() : undefined,
+    source: typeof value.source === 'string' ? value.source.trim() : undefined,
+  };
+}
+
 function getVerdictDenominator(item: OnsenVerdictItem, briefing: OnsenVerdict['briefing']) {
   return item.counts.denominator === 'experiences_read' ? briefing.experiencesRead : briefing.onsenRelated;
 }
@@ -156,6 +173,9 @@ function normalizeVerdict(row: OnsenVerdictRow): OnsenVerdict | null {
         })
         .sort((a, b) => a.order - b.order)
     : [];
+  const factStatuses = Array.isArray(row.fact_statuses)
+    ? row.fact_statuses.map(normalizeFactStatus).filter((item): item is OnsenFactStatus => Boolean(item))
+    : [];
 
   return {
     level: row.level,
@@ -165,6 +185,7 @@ function normalizeVerdict(row: OnsenVerdictRow): OnsenVerdict | null {
       platforms,
     },
     items,
+    factStatuses,
     verifiedAt: row.verified_at ?? undefined,
   };
 }
@@ -503,7 +524,7 @@ async function readPublishedOnsenVerdicts(config: NonNullable<ReturnType<typeof 
   if (slugs.length === 0) return new Map<string, OnsenVerdict>();
 
   const url = new URL(`${config.restUrl}/onsen_verdicts`);
-  url.searchParams.set('select', 'target_slug,level,headline,briefing,items,verified_at');
+  url.searchParams.set('select', 'target_slug,level,headline,briefing,items,fact_statuses,verified_at');
   url.searchParams.set('target_type', 'eq.accommodation');
   url.searchParams.set('status', 'eq.published');
   url.searchParams.set('target_slug', `in.(${slugs.map((slug) => `"${slug}"`).join(',')})`);

@@ -778,8 +778,8 @@ INSERT INTO public.onsen_accommodations (
 ) VALUES (
   'hakone-byakudan', '하코네 고라 백단', '箱根強羅 白檀', '하코네 고라 백단', '箱根強羅 白檀', 'Hakone Gora Byakudan', ARRAY['하코네 고라 백단', '하코네 백단', '고라 백단']::text[], 'verified', '한국어 서비스 대표명 1차 QA 완료(2026-07-07)',
   'hakone', '가나가와 하코네', 'JP', 'kanto', 'kanagawa', 'hakone', 'hakone',
-  '["ryokan_stay"]'::jsonb, '["room_bath"]'::jsonb, '["spring_confirmed","winter_caution"]'::jsonb,
-  '전 객실 노천탕을 앞세우는 하코네 고급 료칸형 숙소입니다. 객실에서 프라이빗하게 온천을 쓰고 싶은 여행자에게 잘 맞습니다.', '전 객실 노천탕 중심', 'review_supported', 'hot_spring_confirmed', 'all_rooms',
+  '["ryokan_stay"]'::jsonb, '["room_bath"]'::jsonb, '["spring_confirmed","winter_caution","direct_source"]'::jsonb,
+  '전 객실 노천탕을 앞세우는 하코네 고급 료칸형 숙소입니다. 객실에서 프라이빗하게 온천을 쓰고 싶은 여행자에게 잘 맞습니다.', '전 객실 노천탕 중심', 'official_confirmed', 'free_flowing_source', 'all_rooms',
   '["객실 노천탕 중심입니다","계절에 따라 벌레나 냉감 확인을 권장합니다"]'::jsonb, '{"directReviewCount":342,"onsenReviewCount":234,"platformCount":4}'::jsonb, 'A', '직접 읽은 이용 경험 342건, 온천 관련 234건, 본문 확인 플랫폼 4개', 'active', 'research/onsen-copy-qa/onsen_accommodation_copy_qa_reviewed_2026-07-07.csv', '2026-07-07'
 ) ON CONFLICT (slug) DO UPDATE SET
   name = EXCLUDED.name,
@@ -2130,7 +2130,7 @@ INSERT INTO public.onsen_accommodations (
   'ureshino', '사가 우레시노', 'JP', 'kyushu', 'saga', 'ureshino', 'ureshino',
   '["ryokan_stay"]'::jsonb, '["public_bath"]'::jsonb, '["spring_confirmed","water_texture"]'::jsonb,
   '우레시노의 전통 료칸형 온천 경험을 기대할 때 보기 좋은 숙소입니다. 온천 물의 부드러운 질감, 대욕장, 식사와 접객을 함께 보는 체류형 숙소에 가깝습니다.', '대욕장 중심', 'review_supported', 'hot_spring_confirmed', 'public_bath_only',
-  '["우레시노 수질 기대치와 함께 안내합니다","전통 료칸 체류형입니다"]'::jsonb, '{"directReviewCount":369,"onsenReviewCount":328,"platformCount":4}'::jsonb, 'A', '직접 읽은 이용 경험 369건, 온천 관련 328건, 본문 확인 플랫폼 4개', 'active', 'research/onsen-copy-qa/onsen_accommodation_copy_qa_reviewed_2026-07-07.csv', '2026-07-07'
+  '["우레시노 수질 기대치와 함께 안내합니다","전통 료칸 체류형입니다"]'::jsonb, '{"directReviewCount":369,"onsenReviewCount":330,"platformCount":4}'::jsonb, 'A', '직접 읽은 이용 경험 369건, 온천 관련 330건, 본문 확인 플랫폼 4개', 'active', 'research/onsen-copy-qa/onsen_accommodation_copy_qa_reviewed_2026-07-07.csv', '2026-07-07'
 ) ON CONFLICT (slug) DO UPDATE SET
   name = EXCLUDED.name,
   ja_name = EXCLUDED.ja_name,
@@ -2265,7 +2265,7 @@ INSERT INTO public.onsen_accommodations (
   'yufuin', '오이타 유후인', 'JP', 'kyushu', 'oita', 'yufu', 'yufuin',
   '["ryokan_stay"]'::jsonb, '["room_bath"]'::jsonb, '["spring_confirmed"]'::jsonb,
   '유후인 역세권과 온천 료칸 경험을 함께 기대하는 숙소입니다. 객실 내 프라이빗탕 특화 숙소라기보다 위치 편의와 온천 이용을 함께 보는 균형형 숙소에 가깝습니다.', '균형형 유후인 온천숙소', 'review_supported', 'hot_spring_confirmed', 'room_signal_only',
-  '["위치 편의와 온천 이용을 함께 안내합니다","객실 내 프라이빗탕 여부는 객실 타입별 확인이 필요합니다"]'::jsonb, '{"directReviewCount":1257,"onsenReviewCount":895,"platformCount":3}'::jsonb, 'A', '직접 읽은 이용 경험 1,257건, 온천 관련 895건, 본문 확인 플랫폼 3개', 'active', 'research/onsen-copy-qa/onsen_accommodation_copy_qa_reviewed_2026-07-07.csv', '2026-07-07'
+  '["위치 편의와 온천 이용을 함께 안내합니다","객실 내 프라이빗탕 여부는 객실 타입별 확인이 필요합니다"]'::jsonb, '{"directReviewCount":1257,"onsenReviewCount":415,"platformCount":3}'::jsonb, 'A', '직접 읽은 이용 경험 1,257건, 온천 관련 415건, 본문 확인 플랫폼 3개', 'active', 'research/onsen-copy-qa/onsen_accommodation_copy_qa_reviewed_2026-07-07.csv', '2026-07-07'
 ) ON CONFLICT (slug) DO UPDATE SET
   name = EXCLUDED.name,
   ja_name = EXCLUDED.ja_name,
@@ -2400,7 +2400,7 @@ INSERT INTO public.onsen_accommodations (
   'yufuin', '오이타 유후인', 'JP', 'kyushu', 'oita', 'yufu', 'yufuin',
   '["ryokan_stay"]'::jsonb, '["room_bath"]'::jsonb, '["spring_confirmed"]'::jsonb,
   '유후인에서 객실 노천탕과 조용한 독립 체류를 기대하는 숙소입니다. 객실 안에서 온천을 즐기는 프라이빗한 시간을 우선하는 여행자에게 잘 맞습니다.', '객실 노천탕 중심', 'review_supported', 'hot_spring_confirmed', 'room_signal_only',
-  '["객실 타입별 노천탕 구성 확인이 필요합니다","프라이빗 체류형 숙소입니다"]'::jsonb, '{"directReviewCount":979,"onsenReviewCount":861,"platformCount":3}'::jsonb, 'A', '직접 읽은 이용 경험 979건, 온천 관련 861건, 본문 확인 플랫폼 3개', 'active', 'research/onsen-copy-qa/onsen_accommodation_copy_qa_reviewed_2026-07-07.csv', '2026-07-07'
+  '["객실 타입별 노천탕 구성 확인이 필요합니다","프라이빗 체류형 숙소입니다"]'::jsonb, '{"directReviewCount":979,"onsenReviewCount":837,"platformCount":3}'::jsonb, 'A', '직접 읽은 이용 경험 979건, 온천 관련 837건, 본문 확인 플랫폼 3개', 'active', 'research/onsen-copy-qa/onsen_accommodation_copy_qa_reviewed_2026-07-07.csv', '2026-07-07'
 ) ON CONFLICT (slug) DO UPDATE SET
   name = EXCLUDED.name,
   ja_name = EXCLUDED.ja_name,
@@ -2445,7 +2445,7 @@ INSERT INTO public.onsen_accommodations (
   'yufuin', '오이타 유후인', 'JP', 'kyushu', 'oita', 'yufu', 'yufuin',
   '["ryokan_stay"]'::jsonb, '["room_bath","public_bath"]'::jsonb, '["spring_confirmed"]'::jsonb,
   '유후인에서 비교적 차분한 호텔형 온천 숙소를 찾을 때 보기 좋습니다. 객실 내 프라이빗탕 특화보다 대욕장과 호텔형 숙박 편의성을 함께 보는 구조입니다.', '호텔형 대욕장 중심', 'review_supported', 'hot_spring_confirmed', 'room_signal_only',
-  '["호텔형 온천 숙소입니다","객실 내 프라이빗탕보다 대욕장 이용 중심입니다"]'::jsonb, '{"directReviewCount":326,"onsenReviewCount":287,"platformCount":3}'::jsonb, 'A', '직접 읽은 이용 경험 326건, 온천 관련 287건, 본문 확인 플랫폼 3개', 'active', 'research/onsen-copy-qa/onsen_accommodation_copy_qa_reviewed_2026-07-07.csv', '2026-07-07'
+  '["호텔형 온천 숙소입니다","객실 내 프라이빗탕보다 대욕장 이용 중심입니다"]'::jsonb, '{"directReviewCount":326,"onsenReviewCount":276,"platformCount":3}'::jsonb, 'A', '직접 읽은 이용 경험 326건, 온천 관련 276건, 본문 확인 플랫폼 3개', 'active', 'research/onsen-copy-qa/onsen_accommodation_copy_qa_reviewed_2026-07-07.csv', '2026-07-07'
 ) ON CONFLICT (slug) DO UPDATE SET
   name = EXCLUDED.name,
   ja_name = EXCLUDED.ja_name,
@@ -3188,7 +3188,7 @@ WHERE public.onsen_verdicts.level <> 'full';
 INSERT INTO public.onsen_verdicts (
   target_type, target_slug, level, headline, briefing, items, fact_statuses, status, verified_at, source_file
 ) VALUES (
-  'accommodation', 'ureshino-taishoya', 'lite', '대욕장 중심 숙소입니다.', '{"experiences_read":369,"onsen_related":328,"platforms":["본문 확인 플랫폼 4개"]}'::jsonb, '[{"order":1,"type":"positive","headline":"대욕장 중심이 핵심입니다.","counts":{"mentions":203,"negative":0,"denominator":"onsen_related"},"body":"우레시노의 전통 료칸형 온천 경험을 기대할 때 보기 좋은 숙소입니다. 온천 물의 부드러운 질감, 대욕장, 식사와 접객을 함께 보는 체류형 숙소에 가깝습니다.","verdict":"숙소를 고를 때 객실 구성과 온천 이용 방식을 함께 확인하시기 바랍니다.","chip_label":"대욕장 중심"}]'::jsonb, '[]'::jsonb, 'published', '2026-07-07', 'research/onsen-copy-qa/onsen_accommodation_copy_qa_reviewed_2026-07-07.csv'
+  'accommodation', 'ureshino-taishoya', 'lite', '대욕장 중심 숙소입니다.', '{"experiences_read":369,"onsen_related":330,"platforms":["본문 확인 플랫폼 4개"]}'::jsonb, '[{"order":1,"type":"positive","headline":"대욕장 중심이 핵심입니다.","counts":{"mentions":204,"negative":0,"denominator":"onsen_related"},"body":"우레시노의 전통 료칸형 온천 경험을 기대할 때 보기 좋은 숙소입니다. 온천 물의 부드러운 질감, 대욕장, 식사와 접객을 함께 보는 체류형 숙소에 가깝습니다.","verdict":"숙소를 고를 때 객실 구성과 온천 이용 방식을 함께 확인하시기 바랍니다.","chip_label":"대욕장 중심"}]'::jsonb, '[]'::jsonb, 'published', '2026-07-07', 'research/onsen-copy-qa/onsen_accommodation_copy_qa_reviewed_2026-07-07.csv'
 ) ON CONFLICT (target_type, target_slug) DO UPDATE SET
   level = EXCLUDED.level,
   headline = EXCLUDED.headline,
@@ -3236,7 +3236,7 @@ WHERE public.onsen_verdicts.level <> 'full';
 INSERT INTO public.onsen_verdicts (
   target_type, target_slug, level, headline, briefing, items, fact_statuses, status, verified_at, source_file
 ) VALUES (
-  'accommodation', 'yufuin-hanamura', 'lite', '균형형 유후인 온천숙소을 기준으로 확인할 수 있는 숙소입니다.', '{"experiences_read":1257,"onsen_related":895,"platforms":["본문 확인 플랫폼 3개"]}'::jsonb, '[{"order":1,"type":"positive","headline":"균형형 유후인 온천숙소 구성이 핵심입니다.","counts":{"mentions":554,"negative":0,"denominator":"onsen_related"},"body":"유후인 역세권과 온천 료칸 경험을 함께 기대하는 숙소입니다. 객실 내 프라이빗탕 특화 숙소라기보다 위치 편의와 온천 이용을 함께 보는 균형형 숙소에 가깝습니다.","verdict":"숙소를 고를 때 객실 구성과 온천 이용 방식을 함께 확인하시기 바랍니다.","chip_label":"균형형 유후인 온천숙소"}]'::jsonb, '[]'::jsonb, 'published', '2026-07-07', 'research/onsen-copy-qa/onsen_accommodation_copy_qa_reviewed_2026-07-07.csv'
+  'accommodation', 'yufuin-hanamura', 'lite', '균형형 유후인 온천숙소을 기준으로 확인할 수 있는 숙소입니다.', '{"experiences_read":1257,"onsen_related":415,"platforms":["본문 확인 플랫폼 3개"]}'::jsonb, '[{"order":1,"type":"positive","headline":"균형형 유후인 온천숙소 구성이 핵심입니다.","counts":{"mentions":257,"negative":0,"denominator":"onsen_related"},"body":"유후인 역세권과 온천 료칸 경험을 함께 기대하는 숙소입니다. 객실 내 프라이빗탕 특화 숙소라기보다 위치 편의와 온천 이용을 함께 보는 균형형 숙소에 가깝습니다.","verdict":"숙소를 고를 때 객실 구성과 온천 이용 방식을 함께 확인하시기 바랍니다.","chip_label":"균형형 유후인 온천숙소"}]'::jsonb, '[]'::jsonb, 'published', '2026-07-07', 'research/onsen-copy-qa/onsen_accommodation_copy_qa_reviewed_2026-07-07.csv'
 ) ON CONFLICT (target_type, target_slug) DO UPDATE SET
   level = EXCLUDED.level,
   headline = EXCLUDED.headline,
@@ -3284,7 +3284,7 @@ WHERE public.onsen_verdicts.level <> 'full';
 INSERT INTO public.onsen_verdicts (
   target_type, target_slug, level, headline, briefing, items, fact_statuses, status, verified_at, source_file
 ) VALUES (
-  'accommodation', 'yufuin-ryu-no-hige', 'lite', '객실 노천탕 중심 숙소입니다.', '{"experiences_read":979,"onsen_related":861,"platforms":["본문 확인 플랫폼 3개"]}'::jsonb, '[{"order":1,"type":"positive","headline":"객실 노천탕 중심이 핵심입니다.","counts":{"mentions":533,"negative":0,"denominator":"onsen_related"},"body":"유후인에서 객실 노천탕과 조용한 독립 체류를 기대하는 숙소입니다. 객실 안에서 온천을 즐기는 프라이빗한 시간을 우선하는 여행자에게 잘 맞습니다.","verdict":"숙소를 고를 때 객실 구성과 온천 이용 방식을 함께 확인하시기 바랍니다.","chip_label":"객실 노천탕 중심"}]'::jsonb, '[]'::jsonb, 'published', '2026-07-07', 'research/onsen-copy-qa/onsen_accommodation_copy_qa_reviewed_2026-07-07.csv'
+  'accommodation', 'yufuin-ryu-no-hige', 'lite', '객실 노천탕 중심 숙소입니다.', '{"experiences_read":979,"onsen_related":837,"platforms":["본문 확인 플랫폼 3개"]}'::jsonb, '[{"order":1,"type":"positive","headline":"객실 노천탕 중심이 핵심입니다.","counts":{"mentions":518,"negative":0,"denominator":"onsen_related"},"body":"유후인에서 객실 노천탕과 조용한 독립 체류를 기대하는 숙소입니다. 객실 안에서 온천을 즐기는 프라이빗한 시간을 우선하는 여행자에게 잘 맞습니다.","verdict":"숙소를 고를 때 객실 구성과 온천 이용 방식을 함께 확인하시기 바랍니다.","chip_label":"객실 노천탕 중심"}]'::jsonb, '[]'::jsonb, 'published', '2026-07-07', 'research/onsen-copy-qa/onsen_accommodation_copy_qa_reviewed_2026-07-07.csv'
 ) ON CONFLICT (target_type, target_slug) DO UPDATE SET
   level = EXCLUDED.level,
   headline = EXCLUDED.headline,
@@ -3300,7 +3300,7 @@ WHERE public.onsen_verdicts.level <> 'full';
 INSERT INTO public.onsen_verdicts (
   target_type, target_slug, level, headline, briefing, items, fact_statuses, status, verified_at, source_file
 ) VALUES (
-  'accommodation', 'yufuin-ubl-hotel', 'lite', '호텔형 대욕장 중심 숙소입니다.', '{"experiences_read":326,"onsen_related":287,"platforms":["본문 확인 플랫폼 3개"]}'::jsonb, '[{"order":1,"type":"positive","headline":"호텔형 대욕장 중심이 핵심입니다.","counts":{"mentions":177,"negative":0,"denominator":"onsen_related"},"body":"유후인에서 비교적 차분한 호텔형 온천 숙소를 찾을 때 보기 좋습니다. 객실 내 프라이빗탕 특화보다 대욕장과 호텔형 숙박 편의성을 함께 보는 구조입니다.","verdict":"숙소를 고를 때 객실 구성과 온천 이용 방식을 함께 확인하시기 바랍니다.","chip_label":"호텔형 대욕장 중심"}]'::jsonb, '[]'::jsonb, 'published', '2026-07-07', 'research/onsen-copy-qa/onsen_accommodation_copy_qa_reviewed_2026-07-07.csv'
+  'accommodation', 'yufuin-ubl-hotel', 'lite', '호텔형 대욕장 중심 숙소입니다.', '{"experiences_read":326,"onsen_related":276,"platforms":["본문 확인 플랫폼 3개"]}'::jsonb, '[{"order":1,"type":"positive","headline":"호텔형 대욕장 중심이 핵심입니다.","counts":{"mentions":171,"negative":0,"denominator":"onsen_related"},"body":"유후인에서 비교적 차분한 호텔형 온천 숙소를 찾을 때 보기 좋습니다. 객실 내 프라이빗탕 특화보다 대욕장과 호텔형 숙박 편의성을 함께 보는 구조입니다.","verdict":"숙소를 고를 때 객실 구성과 온천 이용 방식을 함께 확인하시기 바랍니다.","chip_label":"호텔형 대욕장 중심"}]'::jsonb, '[]'::jsonb, 'published', '2026-07-07', 'research/onsen-copy-qa/onsen_accommodation_copy_qa_reviewed_2026-07-07.csv'
 ) ON CONFLICT (target_type, target_slug) DO UPDATE SET
   level = EXCLUDED.level,
   headline = EXCLUDED.headline,
@@ -3312,3 +3312,11 @@ INSERT INTO public.onsen_verdicts (
   source_file = EXCLUDED.source_file,
   updated_at = NOW()
 WHERE public.onsen_verdicts.level <> 'full';
+
+
+
+UPDATE public.onsen_verdicts
+SET fact_statuses = '[{"code":"water_kakenagashi","label":"직수 온천","status":"confirmed","value":"전 객실 객실 노천탕과 공용탕에 자가 원천을 직수 방식으로 공급한다는 공식 근거가 있습니다.","source":"research/onsen-review-signals/hakone-byakudan/platform_mapping_2026-07-04.json"}]'::jsonb, updated_at = NOW()
+WHERE target_type = 'accommodation'
+  AND target_slug = 'hakone-byakudan'
+  AND status = 'published';

@@ -53,13 +53,13 @@
         "notes": "호텔 ID 158635 리뷰 페이지 PRELOADED_STATE 본문 추출."
       },
       {
-        "source": "Google hotel panel via Aside",
+        "source": "Google Maps via Aside Browser",
         "visible_review_count": 225,
         "rating": "4.3",
-        "directly_read_reviews": 0,
-        "onsen_related_reviews": 0,
-        "access_status": "aside_search_snapshot_read",
-        "notes": "Google 호텔 패널 및 검색 스니펫 확인. 직접 본문 표본 아님."
+        "directly_read_reviews": 154,
+        "onsen_related_reviews": 76,
+        "access_status": "direct_readable_aside_browser_snapshot",
+        "notes": "Google Maps 리뷰 탭에서 Google-native 본문 154건을 직접 확인. 검색 스니펫/공급자 카드와 합산하지 않음."
       },
       {
         "source": "Agoda via Google/Aside",
@@ -76,19 +76,20 @@
         "rating": "4.5",
         "directly_read_reviews": 0,
         "onsen_related_reviews": 0,
-        "access_status": "snippet_only",
-        "notes": "Expedia 96, Hotels.com 92 노출. 본문 직접 표본에는 미산입."
+        "access_status": "blocked",
+        "notes": "로컬 Expedia raw는 gzip 해제 후 Bot or Not challenge로 확인되어 직접 본문 미산입."
       }
     ],
-    "directly_read_total": 221,
-    "onsen_related_total": 168,
+    "directly_read_total": 375,
+    "onsen_related_total": 244,
     "platforms_with_direct_body_text": [
       "Booking.com",
       "Jalan",
-      "Rakuten Travel"
+      "Rakuten Travel",
+      "Google Maps"
     ],
-    "data_quality_grade": "B+",
-    "grade_reason": "직접 확인 221건, 3개 플랫폼 본문 확보. 300건 목표에는 못 미치지만 Booking/Jalan/Rakuten으로 플랫폼 다양성은 양호함. Booking 전체 621건 중 정적 페이지네이션은 중복 반환이 많아 추가 확장 제한."
+    "data_quality_grade": "A",
+    "grade_reason": "직접 확인 375건, 온천 관련 244건, 직접 본문 4플랫폼. Google Maps/Hotels는 Aside Browser로 직접 확인했고, 검색 스니펫·공급자 카드·중복 pagination은 직접 리뷰 수에서 제외했다."
   },
   "review_signal_summary": [
     {
@@ -96,9 +97,9 @@
       "bath_area_confidence": "specific",
       "signal_type": "room_bath_hot_spring",
       "signal_direction": "positive",
-      "mention_count": 33,
-      "source_count": 33,
-      "platform_count": 3,
+      "mention_count": 43,
+      "source_count": 43,
+      "platform_count": 4,
       "contradiction_level": "low",
       "review_signal_status": "strong_signal"
     },
@@ -107,9 +108,9 @@
       "bath_area_confidence": "specific",
       "signal_type": "private_bath_experience",
       "signal_direction": "positive",
-      "mention_count": 48,
-      "source_count": 48,
-      "platform_count": 3,
+      "mention_count": 59,
+      "source_count": 59,
+      "platform_count": 4,
       "contradiction_level": "low",
       "review_signal_status": "strong_signal"
     },
@@ -118,9 +119,9 @@
       "bath_area_confidence": "specific",
       "signal_type": "public_bath_hot_spring",
       "signal_direction": "mixed",
-      "mention_count": 21,
-      "source_count": 21,
-      "platform_count": 3,
+      "mention_count": 28,
+      "source_count": 28,
+      "platform_count": 4,
       "contradiction_level": "medium",
       "review_signal_status": "moderate_signal"
     },
@@ -129,9 +130,9 @@
       "bath_area_confidence": "probable",
       "signal_type": "water_texture",
       "signal_direction": "positive",
-      "mention_count": 5,
-      "source_count": 5,
-      "platform_count": 2,
+      "mention_count": 12,
+      "source_count": 12,
+      "platform_count": 3,
       "contradiction_level": "low",
       "review_signal_status": "weak_signal"
     },
@@ -162,9 +163,9 @@
       "bath_area_confidence": "specific",
       "signal_type": "crowding",
       "signal_direction": "mixed",
-      "mention_count": 2,
-      "source_count": 2,
-      "platform_count": 2,
+      "mention_count": 7,
+      "source_count": 7,
+      "platform_count": 3,
       "contradiction_level": "low",
       "review_signal_status": "weak_signal"
     },
@@ -173,9 +174,9 @@
       "bath_area_confidence": "unclear",
       "signal_type": "booking_confusion",
       "signal_direction": "neutral",
-      "mention_count": 16,
-      "source_count": 16,
-      "platform_count": 3,
+      "mention_count": 27,
+      "source_count": 27,
+      "platform_count": 4,
       "contradiction_level": "low",
       "review_signal_status": "moderate_signal"
     }
@@ -208,6 +209,20 @@
       "evidence_level": "weak",
       "summary": "벌레·냄새·청결 관련 신호는 소수이며 온천 특화 불만으로 강하게 반복되지는 않음.",
       "sample_count": 15
+    },
+    {
+      "issue": "방음/윗층 발소리",
+      "bath_area": "room_open_air_bath / facility_wide",
+      "evidence_level": "moderate",
+      "summary": "Google 저평점 및 중간평점 표본에서 벽 얇음, 윗층 발소리, 소음 신호가 반복된다.",
+      "sample_count": 12
+    },
+    {
+      "issue": "송영/픽업·역 접근",
+      "bath_area": "facility_wide",
+      "evidence_level": "moderate",
+      "summary": "유후인역에서 도보/언덕 부담과 픽업·송영 의존 신호가 Google 한국어 리뷰에서 반복된다.",
+      "sample_count": 18
     }
   ],
   "evidence_examples": [
@@ -302,11 +317,42 @@
       "review_date": "2026-07-01 sample"
     }
   ],
-  "bathtime_interpretation": "공식 정보와 후기 표본을 함께 보면, 사토야마사후는 객실 원천가케나가시 노천탕과 무료 대여 노천탕이 동시에 강점으로 반복되는 숙소입니다. 직접 확인 221건 중 온천 관련 168건, 프라이빗/대여탕 신호 48건, 객실 노천탕 신호 33건이 확인되어 B+급 데이터로 활용 가능합니다. 다만 온도 편차와 공용탕 이용 매너/안내 문제는 일부 반복되므로, “프라이빗 온천 강점 + 온도 주의”를 함께 표시하는 편이 좋습니다.",
+  "bathtime_interpretation": "사토야마사후는 직접 확인 375건 중 온천 관련 244건이 잡히며, 객실 노천탕과 무료 대여/가족탕, 공용 욕장 신호가 함께 반복되는 복합형 온천 숙소입니다. Google Maps 한국어 표본 보강 후에도 객실탕·가족탕 만족은 유지되지만, 방음/윗층 발소리, 온도 편차, 픽업·역 접근 의존은 운영 주의 신호로 더 뚜렷해졌습니다. Bathtime에는 객실 노천탕 일부 객실, 대여 노천탕/가족탕, 대욕장을 분리하고 “프라이빗 온천 강점 + 방음/동선 주의”로 노출하는 편이 데이터에 맞습니다.",
   "gaps": [
-    "300건 목표에는 미달. Booking 전체 621건이 보이나 정적 페이지네이션이 중복 반환되어 120건 본문 표본에 그침.",
-    "Agoda 1,819건, Google 225건, Expedia 96건은 Aside/Google 표면에서 확인했으나 본문 직접 표본은 미산입.",
-    "Trip.com 정적 페이지는 본문 추출 품질이 낮아 직접 표본에서 제외.",
-    "공식 URL이 .com에서 .jp로 변경/리다이렉트된 점은 후보 DB 정정 필요."
-  ]
+    "Naver Blog/Cafe 원문 직접 본문은 이번 패스에서 추가하지 않았다. 검색 스니펫이 있더라도 직접 리뷰 수에는 포함하지 않는다.",
+    "Booking.com page 2-10은 본문이 보이나 번역/중복 노출 위험이 있어 기존 120건 이상으로 부풀리지 않았다.",
+    "Agoda 1,819건은 visible surface로만 두고, 이번 패스에서 신뢰 가능한 직접 본문으로 추가하지 않았다.",
+    "Expedia raw는 Bot or Not challenge로 차단, Trip.com local raw는 Koriyama 숙소 데이터 오염이 확인되어 제외했다."
+  ],
+  "google_maps_reinforcement_2026_07_08": {
+    "access": "direct_readable_aside_browser_snapshot",
+    "rating": 4.3,
+    "visible_review_count": 225,
+    "rating_distribution": {
+      "5": 135,
+      "4": 56,
+      "3": 15,
+      "2": 7,
+      "1": 12
+    },
+    "direct_google_native_reviews_added": 154,
+    "onsen_related_added": 76,
+    "keyword_chips": {
+      "온천": 27,
+      "석식": 27,
+      "료칸": 18,
+      "가이세키": 13,
+      "개인": 13,
+      "후루": 11,
+      "만족": 9,
+      "탕": 6,
+      "소음": 5
+    },
+    "excluded": "Trip.com provider/off-target raw, Expedia bot challenge, Booking duplicate pagination not counted"
+  },
+  "files": {
+    "direct_review_sample_index": "research/onsen-review-signals/yufuin-satoyamasafu/direct_review_sample_index_2026-07-08.csv",
+    "platform_mapping": "research/onsen-review-signals/yufuin-satoyamasafu/platform_mapping_2026-07-08.json",
+    "collection_stats": "research/onsen-review-signals/yufuin-satoyamasafu/collection_stats_2026-07-08.json"
+  }
 }

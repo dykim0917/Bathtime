@@ -1,12 +1,15 @@
 {
   "accommodation_name": "由布院別邸 風の森 / 유후인 벳테이 카제노모리",
-  "research_date": "2026-07-02",
+  "research_date": "2026-07-08",
   "official_facts": {
-    "official_url": "not_confirmed_in_this_pass",
+    "official_url": "https://www.e-kazenomori.com/",
     "jalan_url": "https://www.jalan.net/yad309591/",
+    "booking_url": "https://www.booking.com/reviews/jp/hotel/yufuin-kaze-no-mori.ja.html",
     "facts": [
-      "Jalan 기준 전 객실 별채, 노천·내탕 포함 객실, 원천가케나가시 숙소로 소개됨.",
-      "객실탕 중심형 후보."
+      "공식 사이트 기준 전실 별채이며, 전 객실 노천·내탕이 붙은 객실이라고 소개된다.",
+      "공식 사이트는 자가원천·가케나가시, 유후인에서는 드문 염화물천/탄산수소염천, 전 객실 원천가케나가시 100% 천연온천 내탕·노천탕을 주장한다.",
+      "공식 사이트 주소 표기는 〒879-5103 大分県由布市湯布院町川南371-1, 전화 0977-84-2510이다.",
+      "Google 호텔 패널 및 OTA 객실명에서도 露天・内湯付き離れ/露天風呂付 객실 타입이 반복된다."
     ]
   },
   "collection_briefing": [
@@ -16,39 +19,71 @@
       "rating": "4.5",
       "directly_read_reviews": 210,
       "onsen_related_reviews": 200,
-      "access_status": "direct_fetch_full_or_near_full_read + archive_probe",
-      "notes": "Jalan current/archive static HTML body parsed. Unique bodies verified."
+      "access_status": "direct_readable_legacy_static_fetch",
+      "notes": "2026-07-02 current/archive 본문 210건을 직접 리뷰 단위로 재사용. 장문 원문은 기존 원천 파일에만 존재하고 2026-07-08 표준 인덱스에는 키워드/패러프레이즈만 남김."
     },
     {
-      "source": "Google/Naver/Rakuten/Global OTA",
-      "visible_review_count": "pending",
-      "rating": "pending",
+      "source": "Google Maps / Google Hotels",
+      "visible_review_count": 242,
+      "rating": "4.3",
+      "rating_distribution": {
+        "5": 150,
+        "4": 51,
+        "3": 19,
+        "2": 8,
+        "1": 14
+      },
+      "directly_read_reviews": 148,
+      "onsen_related_reviews": 96,
+      "access_status": "direct_readable_aside_google_native",
+      "notes": "Aside Browser로 리뷰 탭을 열어 Google-native 148건을 누적. Google 패널 내 Trip.com/Tripadvisor 공급자 카드는 Google 직접 표본에서 제외."
+    },
+    {
+      "source": "Booking.com",
+      "visible_review_count": "430 page title / 132 Japanese-language score count seen",
+      "rating": "9.0/10",
+      "directly_read_reviews": 30,
+      "onsen_related_reviews": 30,
+      "access_status": "direct_fetch_readable",
+      "notes": "Booking 리뷰 페이지 1-2에서 본문 30건을 구조화. 객실명에 포함된 露天風呂付는 객실 타입 근거로만 쓰고, 경험 신호와 분리."
+    },
+    {
+      "source": "Rakuten Travel",
+      "visible_review_count": 119,
+      "rating": "4.55",
       "directly_read_reviews": 0,
       "onsen_related_reviews": 0,
-      "access_status": "pending_aside_or_direct_search",
-      "notes": "1차 산출물에는 미포함. 동적 플랫폼 addendum 필요."
+      "access_status": "direct_fetch_opened_not_sampled",
+      "notes": "정적 페이지 접근은 됐지만 A급 기준 충족 후 이번 표준 인덱스에는 직접 표본으로 추가하지 않음."
+    },
+    {
+      "source": "Trip.com",
+      "visible_review_count": 41,
+      "rating": "9.5/10",
+      "directly_read_reviews": 0,
+      "onsen_related_reviews": 0,
+      "access_status": "direct_fetch_opened_not_sampled",
+      "notes": "정적 페이지 접근은 됐지만 Google 공급자 카드와 직접 Google 리뷰를 분리하기 위해 이번 표준 인덱스에는 추가하지 않음."
+    },
+    {
+      "source": "Ikkyu / Yahoo Travel",
+      "visible_review_count": "snippet_only from search",
+      "rating": "not_counted",
+      "directly_read_reviews": 0,
+      "onsen_related_reviews": 0,
+      "access_status": "blocked_403_static_or_snippet_only",
+      "notes": "검색 결과 스니펫은 직접 리뷰 수에서 제외."
     }
   ],
   "review_signal_summary": [
     {
-      "bath_area": "room_bath/room_open_air_bath",
+      "bath_area": "room_bath / room_open_air_bath",
       "bath_area_confidence": "specific",
       "signal_type": "room_bath_hot_spring",
       "signal_direction": "positive",
-      "mention_count": 164,
-      "source_count": 164,
-      "platform_count": 1,
-      "contradiction_level": "low",
-      "review_signal_status": "strong_signal"
-    },
-    {
-      "bath_area": "public_bath/open_air_public_bath",
-      "bath_area_confidence": "specific",
-      "signal_type": "public_bath_hot_spring",
-      "signal_direction": "positive",
-      "mention_count": 32,
-      "source_count": 32,
-      "platform_count": 1,
+      "mention_count": 198,
+      "source_count": 198,
+      "platform_count": 3,
       "contradiction_level": "low",
       "review_signal_status": "strong_signal"
     },
@@ -57,11 +92,33 @@
       "bath_area_confidence": "facility_wide",
       "signal_type": "water_texture",
       "signal_direction": "positive",
-      "mention_count": 156,
-      "source_count": 156,
-      "platform_count": 1,
+      "mention_count": 190,
+      "source_count": 190,
+      "platform_count": 3,
       "contradiction_level": "low",
       "review_signal_status": "strong_signal"
+    },
+    {
+      "bath_area": "public_bath / open_air_public_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "public_bath_hot_spring",
+      "signal_direction": "mixed",
+      "mention_count": 34,
+      "source_count": 34,
+      "platform_count": 2,
+      "contradiction_level": "medium",
+      "review_signal_status": "moderate_signal"
+    },
+    {
+      "bath_area": "private_bath / family_bath",
+      "bath_area_confidence": "specific",
+      "signal_type": "private_bath_experience",
+      "signal_direction": "positive",
+      "mention_count": 7,
+      "source_count": 7,
+      "platform_count": 1,
+      "contradiction_level": "low",
+      "review_signal_status": "weak_signal"
     },
     {
       "bath_area": "facility_wide",
@@ -86,15 +143,15 @@
       "review_signal_status": "insufficient"
     },
     {
-      "bath_area": "private_bath/family_bath",
-      "bath_area_confidence": "specific",
-      "signal_type": "private_bath_experience",
-      "signal_direction": "positive",
-      "mention_count": 7,
-      "source_count": 7,
-      "platform_count": 1,
-      "contradiction_level": "low",
-      "review_signal_status": "weak_signal"
+      "bath_area": "facility_wide",
+      "bath_area_confidence": "facility_wide",
+      "signal_type": "booking_confusion",
+      "signal_direction": "mixed",
+      "mention_count": 79,
+      "source_count": 79,
+      "platform_count": 3,
+      "contradiction_level": "medium",
+      "review_signal_status": "strong_signal"
     },
     {
       "bath_area": "facility_wide",
@@ -106,100 +163,111 @@
       "platform_count": 1,
       "contradiction_level": "medium",
       "review_signal_status": "moderate_signal"
-    },
-    {
-      "bath_area": "facility_wide",
-      "bath_area_confidence": "facility_wide",
-      "signal_type": "booking_confusion",
-      "signal_direction": "mixed",
-      "mention_count": 58,
-      "source_count": 58,
-      "platform_count": 1,
-      "contradiction_level": "medium",
-      "review_signal_status": "strong_signal"
     }
   ],
   "attention_signals": [
     {
       "issue": "온도/계절 노천탕 편의",
       "bath_area": "facility_wide",
-      "evidence_level": "repeated",
-      "summary": "뜨거움/미지근함/추위/온도 조절 언급을 별도 주의로 분리해야 함.",
-      "sample_count": 27
+      "evidence_level": "limited_repeated",
+      "summary": "뜨거움/미지근함/겨울 냉기 같은 온도·계절 신호는 만족 신호와 분리해 운영 주의로 둔다.",
+      "sample_count": 8
     },
     {
       "issue": "벌레/모기/노천 환경",
       "bath_area": "room_open_air_bath/open_air_public_bath",
       "evidence_level": "seasonal",
-      "summary": "노천탕 숙소 공통으로 벌레·모기 언급이 계절성 주의 신호로 보임.",
+      "summary": "노천탕 숙소 공통으로 벌레·외부 환경 신호는 계절성 주의로 분리한다.",
       "sample_count": 2
     },
     {
-      "issue": "청결/낡음/냄새",
+      "issue": "청결/낡음/먼지",
       "bath_area": "facility_wide",
       "evidence_level": "limited",
-      "summary": "시설 노후·청결 신호를 분리 관리해야 함.",
-      "sample_count": 7
+      "summary": "Google/Booking 보강 후에도 청결·노후 신호는 소수이지만 낮은 기대치 리스크로 남는다.",
+      "sample_count": 9
     },
     {
-      "issue": "예약/안내/운영 혼동",
+      "issue": "예약/안내/송영/객실명 혼동",
       "bath_area": "facility_wide",
       "evidence_level": "repeated",
-      "summary": "예약, 설명, 송영, 체크인 등 운영 정보 관련 표현이 반복됨.",
-      "sample_count": 51
+      "summary": "송영, 객실명 혼동, 예약/안내 관련 운영 신호가 여러 플랫폼에서 반복된다.",
+      "sample_count": 79
     }
   ],
   "evidence_examples": [
     {
       "signal_type": "room_bath_hot_spring",
+      "source_type": "Google Maps review",
+      "source_url": "https://www.google.com/maps/search/由布院別邸+風の森",
+      "language": "ko",
+      "short_paraphrase": "객실에 딸린 탕과 노천탕을 중심으로 숙박 만족을 설명한 후기.",
+      "original_keyword": "탕과 노천탕이 딸린 방",
+      "review_date": "5개월 전"
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Google Maps review",
+      "source_url": "https://www.google.com/maps/search/由布院別邸+風の森",
+      "language": "ko",
+      "short_paraphrase": "공용탕은 없지만 객실마다 실내·실외 욕조가 있어 조용히 쉬기 좋다고 쓴 후기.",
+      "original_keyword": "공용탕은 없지만 / 실내, 실외 욕조",
+      "review_date": "6개월 전"
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Booking.com review",
+      "source_url": "https://www.booking.com/reviews/jp/hotel/yufuin-kaze-no-mori.ja.html",
+      "language": "ja",
+      "short_paraphrase": "객실에 온천이 있어 느긋하게 이용했다는 최신 Booking 후기.",
+      "original_keyword": "部屋に温泉",
+      "review_date": "2026年6月19日"
+    },
+    {
+      "signal_type": "water_texture",
       "source_type": "Jalan review",
       "source_url": "https://www.jalan.net/yad309591/kuchikomi/",
       "language": "ja",
-      "short_paraphrase": "객실탕/객실 노천탕 이용 만족이 드러나는 후기.",
-      "original_keyword": "部屋 / 露天風呂",
-      "review_date": "2026/5/26"
+      "short_paraphrase": "탕감이 좋고 객실탕 만족이 함께 나타난 후기.",
+      "original_keyword": "トロトロ / 温泉",
+      "review_date": "2026/6/14"
     },
     {
       "signal_type": "public_bath_hot_spring",
-      "source_type": "Jalan review",
-      "source_url": "https://www.jalan.net/yad309591/kuchikomi/",
-      "language": "ja",
-      "short_paraphrase": "공용탕 또는 대욕장 이용 만족이 드러나는 후기.",
-      "original_keyword": "大浴場 / 露天",
-      "review_date": "2026/3/6"
-    },
-    {
-      "signal_type": "private_bath_experience",
-      "source_type": "Jalan review",
-      "source_url": "https://www.jalan.net/yad309591/kuchikomi/archive/2.HTML",
-      "language": "ja",
-      "short_paraphrase": "전세탕/가족탕/프라이빗 이용성이 드러나는 후기.",
-      "original_keyword": "貸切 / 家族風呂",
-      "review_date": "2020/12/10"
-    },
-    {
-      "signal_type": "weak_onsen_feeling",
-      "source_type": "Jalan review",
-      "source_url": "https://www.jalan.net/yad309591/kuchikomi/archive/2.HTML",
-      "language": "ja",
-      "short_paraphrase": "온천 또는 탕 규모 기대치가 맞지 않았다는 소수 후기.",
-      "original_keyword": "期待外れ / 物足り",
-      "review_date": "2021/1/14"
+      "source_type": "Google Maps review",
+      "source_url": "https://www.google.com/maps/search/由布院別邸+風の森",
+      "language": "ko",
+      "short_paraphrase": "공용탕 유무를 명시해 객실탕 중심 구조를 드러낸 후기.",
+      "original_keyword": "공용탕은 없지만",
+      "review_date": "6개월 전"
     },
     {
       "signal_type": "booking_confusion",
-      "source_type": "Jalan review",
-      "source_url": "https://www.jalan.net/yad309591/kuchikomi/",
+      "source_type": "Booking.com review",
+      "source_url": "https://www.booking.com/reviews/jp/hotel/yufuin-kaze-no-mori.ja.html",
       "language": "ja",
-      "short_paraphrase": "예약·안내·운영 관련 혼동이나 주의가 드러나는 후기.",
-      "original_keyword": "予約 / 説明",
-      "review_date": "2026/6/14"
+      "short_paraphrase": "객실 입구/객실명 혼동 가능성을 적은 후기.",
+      "original_keyword": "部屋の名前 / 間違えて",
+      "review_date": "2026年6月19日"
     }
   ],
-  "bathtime_interpretation": "Jalan 210건 본문 기준으로 유후인 벳테이 카제노모리는 객실탕/객실 노천탕 중심 신호가 뚜렷합니다. 표본 규모는 숙소별 리뷰풀에 따라 다르지만, 객실에서 온천을 독립적으로 쓰는 경험이 반복되어 Bathtime에서는 객실탕 중심형으로 우선 분류할 수 있습니다.",
+  "bathtime_interpretation": "직접 확인 388건 중 온천 관련 326건, 직접 본문 플랫폼 3개 기준으로 객실 노천탕·객실 내탕 신호가 강하게 반복된다. 이 숙소는 대욕장형으로 읽기보다 전 객실 별채의 객실탕 중심 숙소로 분류하는 편이 데이터에 맞으며, Google 한국어 리뷰에서도 `개인탕`, `개별 노천탕`, `공용탕은 없지만` 계열 표현이 객실탕 문맥으로 나타난다. 다만 송영·객실명 혼동·일부 노후/청결 신호는 온천 만족과 분리해 운영 주의로 남긴다.",
   "gaps": [
-    "Google Maps/Naver/Agoda/Booking/Trip/Yahoo 등 동적·글로벌 플랫폼 직접 본문 확인 필요.",
-    "Jalan 단일 플랫폼 기반이므로 platform_count는 보수적으로 유지.",
-    "공식 사이트 세부 온천 페이지/객실별 탕 타입은 추가 보강 필요."
-  ]
+    "Naver Blog/Search는 이번 패스에서 직접 본문을 열어 표본화하지 않았으므로 검색 스니펫이 있더라도 직접 리뷰 수에는 넣지 않았다.",
+    "Ikkyu/Yahoo Travel 정적 접근은 403 또는 검색 스니펫 중심이라 직접 표본에서 제외했다.",
+    "Rakuten/Trip.com은 정적 페이지 접근은 됐지만 A급 기준 충족 후 이번 인덱스에는 직접 본문 표본으로 추가하지 않았다."
+  ],
+  "data_quality_grade": "A",
+  "qa_status": "ready_for_db",
+  "direct_review_totals": {
+    "direct_read_review_count": 388,
+    "onsen_related_direct_review_count": 326,
+    "direct_body_platform_count": 3,
+    "direct_body_platforms": {
+      "Jalan": 210,
+      "Google Maps": 148,
+      "Booking.com": 30
+    },
+    "visible_review_pool_note": "visible review count와 직접 읽은 리뷰 수를 합산하지 않음"
+  }
 }

@@ -188,7 +188,7 @@
       "issue": "공용 대욕장 없음/불명확",
       "bath_area": "public_bath",
       "evidence_level": "official_absence + review",
-      "summary": "공식 사이트에는 공용 대욕장 운영 정보가 없고, 한 후기는 시설에 대풍呂가 없다고 명시. 일부 OTA 메타데이터의 大浴場 표기는 직접 확인 필요.",
+      "summary": "공식 사이트에는 공용 대욕장 운영 정보가 없고, 한 후기는 시설에 대풍呂가 없다고 명시. 일부 OTA 메타데이터의 大浴場 표기는 현재 공식 facts와 후기 본문에서 뒷받침되지 않는다.",
       "sample_count": 1
     },
     {

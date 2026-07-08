@@ -2,22 +2,30 @@
   "accommodation_name": {
     "ko": "유후인 ZEN",
     "ja": "由布院ZEN",
-    "en_aliases": ["Yufuin ZEN", "Hanare-no-Yado Yufuin ZEN", "Yufuin ZEN - Adults only"]
+    "en_aliases": [
+      "Yufuin ZEN",
+      "Hanare-no-Yado Yufuin ZEN",
+      "Yufuin ZEN - Adults only"
+    ]
   },
   "research_date": "2026-07-01",
   "collection_brief": {
-    "direct_structured_review_sample_total": 298,
+    "direct_structured_review_sample_total": 307,
     "platforms": {
       "Jalan": 261,
-      "Agoda": 37
+      "Agoda": 37,
+      "Google Maps": 9
     },
-    "onsen_related_rows_auto": 281,
+    "onsen_related_rows_auto": 285,
     "visible_or_api_review_counts": {
-      "Jalan": 261,
-      "Agoda_comments": 37
+      "Google Maps": "4.8/109 visible; distribution 5=94, 4=9, 3=4, 2=0, 1=2",
+      "Jalan": "261 direct rows retained",
+      "Agoda_comments": "37 direct rows retained; API page 2 empty",
+      "Relux": "43 visible in Google search result; not direct-read in this pass",
+      "Expedia": "4 visible in Google search result; not direct-read in this pass"
     },
-    "data_quality": "B+: 298 directly structured review rows across Jalan and Agoda. It narrowly misses the 300+ A-grade threshold, but Jalan appears to cover the visible lodging review pool and signals are very concentrated.",
-    "note": "Agoda is accessible but small for this property. Unlike Onjuku Yagura, the core sample is Japanese OTA/Jalan."
+    "data_quality": "A: 307 directly checked review rows across 3 direct-body platforms after 2026-07-08 Google Maps Aside Browser reinforcement. Google-native reviews are separated from Trip.com provider card snippets.",
+    "note": "Existing Jalan/Agoda 298-row sample was retained after duplicate check; 9 Google-native review-tab rows were added. Search snippets, AI summaries, and Google panel supplier cards are excluded from direct_read."
   },
   "official_facts": {
     "official_urls": [
@@ -39,9 +47,9 @@
       "bath_area_confidence": "specific",
       "signal_type": "room_bath_hot_spring",
       "signal_direction": "positive",
-      "mention_count": 179,
-      "source_count": 179,
-      "platform_count": 2,
+      "mention_count": 184,
+      "source_count": 184,
+      "platform_count": 3,
       "contradiction_level": "low",
       "review_signal_status": "strong_signal",
       "interpretation_ko": "객실 반노천탕/객실 온천 신호가 매우 강하게 반복된다. ZEN은 전형적인 객실탕 중심형 숙소다."
@@ -63,9 +71,9 @@
       "bath_area_confidence": "facility_wide",
       "signal_type": "water_texture",
       "signal_direction": "positive",
-      "mention_count": 212,
-      "source_count": 212,
-      "platform_count": 2,
+      "mention_count": 215,
+      "source_count": 215,
+      "platform_count": 3,
       "contradiction_level": "low",
       "review_signal_status": "strong_signal",
       "interpretation_ko": "源泉, かけ流し, 泉質, ツルツル, 湯ざわり 계열 표현이 강하게 반복된다. 물성/원천 신호가 객실탕 신호와 결합되어 있다."
@@ -101,7 +109,7 @@
       "signal_direction": "positive",
       "mention_count": 11,
       "source_count": 11,
-      "platform_count": 2,
+      "platform_count": 3,
       "contradiction_level": "low",
       "review_signal_status": "moderate_signal",
       "interpretation_ko": "프라이빗 경험은 공용 대절탕이 아니라 객실 반노천탕에서 나온다. Agoda 글로벌 후기에서도 private bath/in-room onsen 표현이 반복된다."
@@ -123,8 +131,8 @@
       "bath_area_confidence": "unclear",
       "signal_type": "booking_confusion",
       "signal_direction": "mixed",
-      "mention_count": 12,
-      "source_count": 12,
+      "mention_count": 16,
+      "source_count": 16,
       "platform_count": 2,
       "contradiction_level": "medium",
       "review_signal_status": "weak_signal",
@@ -251,15 +259,45 @@
       "short_paraphrase": "객실에 private bath가 있어 혼자 온천을 즐기기 좋았다는 한국어 계열 후기.",
       "original_keyword": "private bath / hot springs alone",
       "review_date": "October 2024"
+    },
+    {
+      "signal_type": "room_bath_hot_spring",
+      "source_type": "Google_Maps_review",
+      "source_url": "https://www.google.com/maps/search/%E9%9B%A2%E3%82%8C%E3%81%AE%E5%AE%BF+%E7%94%B1%E5%B8%83%E9%99%A2+ZEN",
+      "language": "ko",
+      "short_paraphrase": "온천 온도가 적당하고 바깥을 바라보며 쉬기 좋았으며 택시/렌터카 접근을 권한 한국어 Google-native 후기.",
+      "original_keyword": "온천 / 온도 / 바깥 / 택시",
+      "review_date": "3년 전"
     }
   ],
   "bathtime_interpretation_ko": [
-    "유후인 ZEN은 객실 반노천탕 중심형이라는 신호가 매우 강하게 반복됩니다. 공식 정보와 Jalan 후기 모두 전 객실 원천가케나가시 반노천탕, 독채형 객실, 프라이빗 이용성을 같은 방향으로 보여줍니다.",
-    "온천감은 '원천', '가케나가시', '泉質', 'ツルツル' 표현이 충분히 반복되어 강한 긍정 신호로 볼 수 있습니다. 다만 원천이 뜨거워 지하수로 온도 조절한다는 점은 장점이자 사용 팁으로 함께 표시하는 편이 좋습니다.",
-    "대욕장/가족탕을 기대하는 고객에게는 맞지 않을 수 있습니다. Bathtime에는 '전 객실 반노천 원천가케나가시, 대욕장 중심 아님, 겨울 냉기와 벌레 일부 주의'로 보여주는 것이 적합합니다."
+    "유후인 ZEN은 직접 확인 307건 중 온천 관련 285건이 잡히며, 객실 반노천탕과 원천가케나가시 체감 신호가 강하게 반복됩니다. Jalan 중심 표본에 Agoda와 Google Maps 한국어 본문이 붙어, 객실탕 중심형 숙소라는 해석은 A급 기준에서 충분히 지지됩니다.",
+    "Google Maps에서는 4.8점/109건 리뷰풀과 5점 94건 중심의 분포가 확인됐지만, 이 숫자는 직접 읽은 리뷰 수와 합산하지 않았습니다. 직접 반영한 Google-native 본문은 9건이며 Trip.com 공급자 카드는 제외했습니다.",
+    "Bathtime에는 전 객실 반노천 원천가케나가시 객실탕, 대욕장 중심 아님, 역-숙소 언덕·택시 동선과 탕 온도 조절 주의를 함께 노출하는 편이 데이터에 맞습니다."
   ],
   "files": {
     "combined_csv": "research/onsen-review-signals/yufuin-zen/combined_review_sample_2026-07-01.csv",
-    "agoda_raw_pages": "research/onsen-review-signals/yufuin-zen/raw/agoda_hotelreviews_pages_raw.json"
+    "agoda_raw_pages": "research/onsen-review-signals/yufuin-zen/raw/agoda_hotelreviews_pages_raw.json",
+    "direct_review_sample_index": "research/onsen-review-signals/yufuin-zen/direct_review_sample_index_2026-07-08.csv",
+    "platform_mapping": "research/onsen-review-signals/yufuin-zen/platform_mapping_2026-07-08.json",
+    "collection_stats": "research/onsen-review-signals/yufuin-zen/collection_stats_2026-07-08.json"
+  },
+  "google_maps_reinforcement_2026_07_08": {
+    "access": "direct_readable_aside_browser",
+    "rating": 4.8,
+    "visible_review_count": 109,
+    "rating_distribution": {
+      "5": 94,
+      "4": 9,
+      "3": 4,
+      "2": 0,
+      "1": 2
+    },
+    "direct_google_native_reviews_added": 9,
+    "onsen_related_added": 3,
+    "provider_cards_excluded": [
+      "Trip.com supplier card 1 visible snippet"
+    ],
+    "short_signal": "한국어 Google-native 리뷰에서 객실/프라이빗 체류, 온천 만족, 택시·언덕 접근 주의가 보강됐다."
   }
 }

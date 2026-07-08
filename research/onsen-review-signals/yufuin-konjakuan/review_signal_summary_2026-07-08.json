@@ -1,0 +1,54 @@
+{
+  "research_date": "2026-07-08",
+  "slug": "yufuin-konjakuan",
+  "name_ja": "別荘 今昔庵",
+  "name_ko": "벳소 콘자쿠안 / 별장 금석암",
+  "aliases": [
+    "Bessou Konjakuan",
+    "Besso Konjakuan",
+    "今昔庵",
+    "콘자쿠앙"
+  ],
+  "region_display_ko": "규슈 · 오이타현 · 유후인",
+  "area_bucket": "Yufuin",
+  "data_quality_grade": "A",
+  "qa_status": "ready_for_db",
+  "ready_for_db": true,
+  "collection_briefing": {
+    "visible_review_pool": "Jalan 821; Booking.com 398; Google Maps 213 / 4.7; Tripadvisor supplier 19; Rakuten API 6; Trip.com/Yahoo visible surfaces in legacy output",
+    "direct_read_review_count": 867,
+    "onsen_related_direct_review_count": 812,
+    "direct_body_platform_count": 5,
+    "direct_body_platforms": {
+      "Jalan lodging": 818,
+      "Rakuten Travel": 6,
+      "Booking.com": 16,
+      "Trip.com": 7,
+      "Google Maps native": 20
+    },
+    "access_gaps": [
+      "Naver direct body 0; search/blog snippets kept outside direct_read",
+      "Google Tripadvisor supplier card excluded"
+    ]
+  },
+  "official_hot_spring_facts": "공식 사이트 기준 2024년 2월 리뉴얼, 총 9객실. 별채 4실과 모옥 일부 객실에 온천 노천탕이 있고, 객실탕과 노천/내탕 2개의 대절 가족탕에서 유후인 온천을 즐길 수 있다고 설명한다. Jalan은 천연온천100%, 温泉掛け流し, 모든 목욕탕은 가족탕이라고 표기한다. 모두 공식 주장으로 분리한다.",
+  "review_signal_summary": "직접 확인 867건 중 온천 관련 812건에서 객실 노천탕/객실 전용탕과 가족탕·대절탕 신호가 강하게 반복된다. 한국어 Google 리뷰에서는 개인온천, 객실 내 온천, 노천개인탕 표현이 객실 안 전용탕 문맥으로 나타나며, 가족탕은 공용 대절탕으로 분리된다.",
+  "bath_area_tags": [
+    "room_open_air_bath",
+    "room_bath",
+    "family_bath",
+    "facility_wide"
+  ],
+  "caution_signals": [
+    "객실별 노천탕 유무 차이",
+    "가족탕 공실/타이밍 신호",
+    "탕 온도 과열·미지근함 일부 반복",
+    "벌레/노천탕 계절 신호",
+    "배수·프라이버시·가격 부담 약한 신호",
+    "Google 공급자 카드 혼입 주의"
+  ],
+  "copy_summary_ko": "직접 확인 867건 중 온천 관련 812건에서 객실 노천탕과 가족탕 경험이 강하게 반복된다. 콘자쿠안은 대욕장형이 아니라 객실 전용 온천과 공용 대절 가족탕을 분리해 읽어야 하며, 한국어의 개인온천·개별탕 표현은 대부분 객실탕 문맥으로 태깅하는 편이 맞다.",
+  "primary_bath_ko": "객실 노천탕/객실 전용탕 + 대절 가족탕",
+  "operation_notes_ko": "Jalan archive는 818건까지 직접 구조화했고 Google Maps는 Aside Browser로 213건 풀과 20건 Google-native 숙박 문맥을 확인했다. Tripadvisor 공급자 카드는 Google 직접 리뷰에서 제외했고, Naver는 이번 보강에서 직접 본문 0건으로 분리한다.",
+  "next_action": "DB seed 후보. Naver 직접 본문은 후속 한국어 수요 보강으로 분리."
+}
