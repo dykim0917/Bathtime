@@ -77,12 +77,14 @@ Use these fields when building regional or nationwide facility candidates.
 | field | Meaning |
 |---|---|
 | `candidate_slug` | Stable lowercase identifier. |
+| `candidate_track` | `traditional_onsen_facility` or `spa_complex_super_sento`. Use this before tiering so historic onsen facilities are not compared directly with urban spa complexes. |
 | `korean_name` | Korean service-facing name. |
 | `japanese_name` | Official Japanese name when verified. |
 | `aliases` | English, Korean variants, old names, map/OTA variants. |
 | `facility_type` | One primary type from the facility type table. |
 | `facility_model` | `bathe`, `reserve_private`, `experience`, `stopover`, or `route_or_pass`. |
 | `archetype` | Public bathing, experience-led, private-use, mixed, or route/pass. |
+| `lodging_available` | `true`, `false`, or `unclear`. A spa complex with lodging remains a facility when bathing/spa use is the primary product. |
 | `prefecture` | Japanese prefecture. |
 | `municipality` | City/town/village. |
 | `onsen_area` | Onsen area or district name. |

@@ -62,6 +62,15 @@ export type OnsenCandidate = {
     operation: string;
     notice?: string;
   };
+  waterProfile?: {
+    canonicalMethod?: 'kakenagashi_pure' | 'kakenagashi' | 'junkan' | null;
+    label?: string;
+    badgeGate?: string;
+    conditionCodes: string[];
+    conditionLabels: string[];
+    textureFilters: { code: string; label: string; exposureStatus?: string; mentionCount?: number }[];
+    colorFilter?: { code: string; label: string; status?: string; exposeAsFilter?: boolean };
+  };
   dataQuality: 'A' | 'B' | 'C' | 'D';
   directReviews: number;
   onsenReviews: number;

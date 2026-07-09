@@ -13,6 +13,7 @@ import {
 import { normalizeOnsenPublicCopy } from '@web/lib/onsenCopy';
 import { readOnsenCandidates } from '@web/lib/onsenData';
 import { readOnsenReviewCounts } from '@web/lib/onsenReviews';
+import type { OnsenCandidate } from '@web/lib/onsenCatalog';
 import {
   getOnsenWaterHighlightMark,
   getOnsenWaterSortRank,
@@ -26,8 +27,15 @@ import {
   regionGroupFilters,
   splitLegacySignals,
   travelContextFilters,
+  waterColorFilters,
+  waterConditionFilters,
+  type OnsenWaterCriterion,
   waterCriterionFilters,
+  waterMethodFilters,
+  waterTextureFilters,
 } from '@web/lib/onsenTaxonomy';
+import type { OnsenTermInfoKey } from '@web/lib/onsenTermInfo';
+import { TermInfo } from '@web/components/TermInfo';
 
 export const metadata: Metadata = {
   title: '온천 검색 결과',
@@ -78,6 +86,24 @@ function normalizeFilterParams<T extends string>(value: string | string[] | unde
   return uniqueValues(normalizeParams(value).filter((item): item is T => allowed.has(item as T)));
 }
 
+const legacyWaterParamAliases: Partial<Record<string, OnsenWaterCriterion>> = {
+  direct_source: 'kakenagashi',
+  temperature_adjustment: 'temperature_adjustment',
+  winter_caution: 'winter_caution',
+};
+
+function normalizeWaterFilterParams(value: string | string[] | undefined) {
+  const allowed = new Set(waterCriterionFilters.filter((item) => !item.disabled).map((item) => item.value));
+  return uniqueValues(
+    normalizeParams(value)
+      .map((item) => {
+        if (allowed.has(item as OnsenWaterCriterion)) return item as OnsenWaterCriterion;
+        return legacyWaterParamAliases[item] ?? null;
+      })
+      .filter((item): item is OnsenWaterCriterion => Boolean(item))
+  );
+}
+
 function buildResultsHref(params: { query?: string; regionGroup?: string; area?: string; travel?: string[]; bath?: string[]; water?: string[] }) {
   const nextParams = new URLSearchParams();
 
@@ -113,6 +139,23 @@ function toggleFilterValue(values: string[], value: string) {
   return values.includes(value) ? values.filter((item) => item !== value) : [...values, value];
 }
 
+const waterMethodValues = new Set<string>(waterMethodFilters.map((item) => item.value));
+const waterColorValues = new Set<string>(waterColorFilters.map((item) => item.value));
+
+function toggleWaterFilterValue(values: OnsenWaterCriterion[], value: OnsenWaterCriterion) {
+  if (values.includes(value)) return values.filter((item) => item !== value);
+
+  if (waterMethodValues.has(value)) {
+    return [...values.filter((item) => !waterMethodValues.has(item)), value];
+  }
+
+  if (waterColorValues.has(value)) {
+    return [...values.filter((item) => !waterColorValues.has(item)), value];
+  }
+
+  return [...values, value];
+}
+
 function normalizeResultCardCopy(value: string) {
   const copy = normalizeOnsenPublicCopy(value);
 
@@ -136,6 +179,70 @@ function formatVerdictStamp(candidate: { directReviews: number; verdict?: { brie
   return `이용 경험 ${formatNumber(experiencesRead)}건 분석 · ${evidenceText}`;
 }
 
+function getWaterCriterionTermKey(value: OnsenWaterCriterion) {
+  if (value === 'kakenagashi_pure') return 'pureDirectWater';
+  if (value === 'kakenagashi') return 'directWater';
+  if (value === 'junkan') return 'recirculatedWater';
+  if (value === 'slippery') return 'slipperyWater';
+  if (value === 'salt_warmth') return 'saltWater';
+  if (value === 'sulfur') return 'sulfurWater';
+  if (value === 'carbonated') return 'carbonatedWater';
+  if (value === 'hakutaku') return 'whiteCloudyWater';
+  if (value === 'brown') return 'brownWater';
+  if (value === 'temperature_adjustment') return 'temperatureCondition';
+  if (value === 'winter_caution') return 'winterCaution';
+
+  return null;
+}
+
+function getAvailableWaterValues(candidates: OnsenCandidate[]) {
+  return new Set(
+    waterCriterionFilters
+      .filter((filter) => candidates.some((candidate) => hasOnsenWaterCriterion(candidate, filter.value)))
+      .map((filter) => filter.value)
+  );
+}
+
+function filterAvailableWaterItems<T extends OnsenWaterCriterion, Item extends { value: T }>(filters: Item[], availableValues: Set<OnsenWaterCriterion>) {
+  return filters.filter((item) => availableValues.has(item.value));
+}
+
+function FilterChip({
+  label,
+  href,
+  active,
+  quick,
+  termKey,
+}: {
+  label: string;
+  href: string;
+  active: boolean;
+  quick?: boolean;
+  termKey?: OnsenTermInfoKey | null;
+}) {
+  if (!termKey) {
+    return (
+      <Link
+        className={`onsen-filter-chip${quick ? ' onsen-filter-chip-quick' : ''}`}
+        data-state={active ? 'active' : undefined}
+        href={href}
+        aria-current={active ? 'true' : undefined}
+      >
+        {label}
+      </Link>
+    );
+  }
+
+  return (
+    <span className={`onsen-filter-chip-unit${quick ? ' onsen-filter-chip-unit-quick' : ''}`} data-state={active ? 'active' : undefined}>
+      <Link className="onsen-filter-chip-link" href={href} aria-current={active ? 'true' : undefined}>
+        {label}
+      </Link>
+      <TermInfo termKey={termKey} align={quick ? 'end' : 'start'} />
+    </span>
+  );
+}
+
 export default async function OnsenPage({
   searchParams,
 }: {
@@ -157,8 +264,14 @@ export default async function OnsenPage({
   const legacySignals = splitLegacySignals(normalizeParams(params.signal));
   const travel = normalizeFilterParams(params.travel, travelContextFilters);
   const bath = uniqueValues([...normalizeFilterParams(params.bath, bathContextFilters), ...legacySignals.bath]);
-  const water = uniqueValues([...normalizeFilterParams(params.water, waterCriterionFilters), ...legacySignals.water]);
+  const requestedWater = uniqueValues([...normalizeWaterFilterParams(params.water), ...legacySignals.water]);
   const candidates = await readOnsenCandidates();
+  const availableWaterValues = getAvailableWaterValues(candidates);
+  const water = requestedWater.filter((item) => availableWaterValues.has(item));
+  const availableMethodFilters = filterAvailableWaterItems(waterMethodFilters, availableWaterValues);
+  const availableTextureFilters = filterAvailableWaterItems(waterTextureFilters, availableWaterValues);
+  const availableColorFilters = filterAvailableWaterItems(waterColorFilters, availableWaterValues);
+  const availableConditionFilters = filterAvailableWaterItems(waterConditionFilters, availableWaterValues);
   const reviewCounts = await readOnsenReviewCounts(candidates.map((candidate) => candidate.slug));
   const filtered = candidates
     .map((candidate, index) => ({ candidate, index }))
@@ -195,16 +308,22 @@ export default async function OnsenPage({
     (acc, candidate) => ({
       verdictCount: acc.verdictCount + (candidate.verdict ? 1 : 0),
       directSourceCount: acc.directSourceCount + (hasConfirmedWaterKakenagashi(candidate) ? 1 : 0),
+      pureSourceCount: acc.pureSourceCount + (candidate.waterProfile?.canonicalMethod === 'kakenagashi_pure' ? 1 : 0),
       experiencesRead: acc.experiencesRead + (candidate.verdict?.briefing.experiencesRead ?? candidate.directReviews ?? 0),
     }),
-    { verdictCount: 0, directSourceCount: 0, experiencesRead: 0 }
+    { verdictCount: 0, directSourceCount: 0, pureSourceCount: 0, experiencesRead: 0 }
   );
   const activeRegionGroupLabel = getFilterLabel(regionGroupFilters, regionGroup);
   const activeAreaLabel = getFilterLabel(onsenAreaFilters, area);
   const hasVisibleFilter = travel.length > 0 || bath.length > 0 || water.length > 0;
   const currentResultsHref = buildResultsHref({ query, regionGroup, area, travel, bath, water });
   const clearVisibleFiltersHref = buildResultsHref({ query, regionGroup, area });
-  const quickFilters = [
+  const quickFilters: {
+    label: string;
+    active: boolean;
+    href: string;
+    termKey?: OnsenTermInfoKey;
+  }[] = [
     {
       label: '객실 내 프라이빗탕 중심',
       active: bath.includes('room_bath'),
@@ -216,16 +335,22 @@ export default async function OnsenPage({
       href: buildResultsHref({ query, regionGroup, area, travel, bath: toggleFilterValue(bath, 'private_bath'), water }),
     },
     {
-      label: '원천 직수 확인',
-      active: water.includes('direct_source'),
-      href: buildResultsHref({ query, regionGroup, area, travel, bath, water: toggleFilterValue(water, 'direct_source') }),
+      label: '직수',
+      active: water.includes('kakenagashi'),
+      href: buildResultsHref({ query, regionGroup, area, travel, bath, water: toggleWaterFilterValue(water, 'kakenagashi') }),
+      termKey: 'directWater' as const,
     },
-    {
-      label: '부드러운 물 느낌',
-      active: water.includes('water_texture'),
-      href: buildResultsHref({ query, regionGroup, area, travel, bath, water: toggleFilterValue(water, 'water_texture') }),
-    },
-  ];
+    ...(availableWaterValues.has('kakenagashi_pure')
+      ? [
+          {
+            label: '순수직수',
+            active: water.includes('kakenagashi_pure'),
+            href: buildResultsHref({ query, regionGroup, area, travel, bath, water: toggleWaterFilterValue(water, 'kakenagashi_pure') }),
+            termKey: 'pureDirectWater' as const,
+          },
+        ]
+      : []),
+  ].filter((item) => !item.termKey || item.termKey !== 'directWater' || availableWaterValues.has('kakenagashi'));
   const resultScopeLabel = activeAreaLabel ?? activeRegionGroupLabel ?? '전체 지역';
 
   return (
@@ -239,15 +364,7 @@ export default async function OnsenPage({
 
           <nav className="onsen-filter-quickchips" aria-label="주요 온천 필터">
             {quickFilters.map((item) => (
-              <Link
-                key={item.label}
-                className="onsen-filter-chip onsen-filter-chip-quick"
-                data-state={item.active ? 'active' : undefined}
-                href={item.href}
-                aria-current={item.active ? 'true' : undefined}
-              >
-                {item.label}
-              </Link>
+              <FilterChip key={item.label} label={item.label} active={item.active} href={item.href} quick termKey={item.termKey} />
             ))}
           </nav>
 
@@ -258,7 +375,9 @@ export default async function OnsenPage({
 
             <nav className="onsen-results-toolbar" aria-label="온천 결과 필터">
               <div className="onsen-filter-group">
-                <span>방식</span>
+                <div className="onsen-filter-group-title">
+                  <span>이용</span>
+                </div>
                 <div className="onsen-filter-chip-row">
                   {travelContextFilters
                     .filter((item) => !item.disabled)
@@ -282,12 +401,14 @@ export default async function OnsenPage({
                           {item.label}
                         </Link>
                       );
-                    })}
+                  })}
                 </div>
               </div>
 
               <div className="onsen-filter-group">
-                <span>구성</span>
+                <div className="onsen-filter-group-title">
+                  <span>구성</span>
+                </div>
                 <div className="onsen-filter-chip-row">
                   {bathContextFilters.map((item) => {
                     const active = bath.includes(item.value);
@@ -313,32 +434,126 @@ export default async function OnsenPage({
                 </div>
               </div>
 
-              <div className="onsen-filter-group">
-                <span>기준</span>
-                <div className="onsen-filter-chip-row">
-                  {waterCriterionFilters.map((item) => {
-                    const active = water.includes(item.value);
-                    return (
-                      <Link
-                        key={item.value}
-                        className="onsen-filter-chip"
-                        data-state={active ? 'active' : undefined}
-                        href={buildResultsHref({
-                          query,
-                          regionGroup,
-                          area,
-                          travel,
-                          bath,
-                          water: toggleFilterValue(water, item.value),
-                        })}
-                        aria-current={active ? 'true' : undefined}
-                      >
-                        {item.label}
-                      </Link>
-                    );
-                  })}
+              {availableMethodFilters.length > 0 ? (
+                <div className="onsen-filter-group">
+                  <div className="onsen-filter-group-title">
+                    <span>온천수</span>
+                    <TermInfo termKey="waterCriteria" />
+                  </div>
+                  <div className="onsen-filter-chip-row">
+                    {availableMethodFilters.map((item) => {
+                      const active = water.includes(item.value);
+                      const termKey = getWaterCriterionTermKey(item.value);
+                      return (
+                        <FilterChip
+                          key={item.value}
+                          label={item.label}
+                          active={active}
+                          href={buildResultsHref({
+                            query,
+                            regionGroup,
+                            area,
+                            travel,
+                            bath,
+                            water: toggleWaterFilterValue(water, item.value),
+                          })}
+                          termKey={termKey}
+                        />
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
+              ) : null}
+
+              {availableTextureFilters.length > 0 ? (
+                <div className="onsen-filter-group">
+                  <div className="onsen-filter-group-title">
+                    <span>감촉</span>
+                  </div>
+                  <div className="onsen-filter-chip-row">
+                    {availableTextureFilters.map((item) => {
+                      const active = water.includes(item.value);
+                      const termKey = getWaterCriterionTermKey(item.value);
+                      return (
+                        <FilterChip
+                          key={item.value}
+                          label={item.label}
+                          active={active}
+                          href={buildResultsHref({
+                            query,
+                            regionGroup,
+                            area,
+                            travel,
+                            bath,
+                            water: toggleWaterFilterValue(water, item.value),
+                          })}
+                          termKey={termKey}
+                        />
+                      );
+                    })}
+                  </div>
+                </div>
+              ) : null}
+
+              {availableColorFilters.length > 0 ? (
+                <div className="onsen-filter-group">
+                  <div className="onsen-filter-group-title">
+                    <span>색</span>
+                  </div>
+                  <div className="onsen-filter-chip-row">
+                    {availableColorFilters.map((item) => {
+                      const active = water.includes(item.value);
+                      const termKey = getWaterCriterionTermKey(item.value);
+                      return (
+                        <FilterChip
+                          key={item.value}
+                          label={item.label}
+                          active={active}
+                          href={buildResultsHref({
+                            query,
+                            regionGroup,
+                            area,
+                            travel,
+                            bath,
+                            water: toggleWaterFilterValue(water, item.value),
+                          })}
+                          termKey={termKey}
+                        />
+                      );
+                    })}
+                  </div>
+                </div>
+              ) : null}
+
+              {availableConditionFilters.length > 0 ? (
+                <div className="onsen-filter-group">
+                  <div className="onsen-filter-group-title">
+                    <span>조건</span>
+                  </div>
+                  <div className="onsen-filter-chip-row">
+                    {availableConditionFilters.map((item) => {
+                      const active = water.includes(item.value);
+                      const termKey = getWaterCriterionTermKey(item.value);
+                      return (
+                        <FilterChip
+                          key={item.value}
+                          label={item.label}
+                          active={active}
+                          href={buildResultsHref({
+                            query,
+                            regionGroup,
+                            area,
+                            travel,
+                            bath,
+                            water: toggleWaterFilterValue(water, item.value),
+                          })}
+                          termKey={termKey}
+                        />
+                      );
+                    })}
+                  </div>
+                </div>
+              ) : null}
 
               <div className="onsen-results-actions">
                 {hasVisibleFilter ? (
@@ -370,9 +585,21 @@ export default async function OnsenPage({
                 <dt>판정</dt>
                 <dd>{formatNumber(resultStats.verdictCount)}곳</dd>
               </div>
+              {resultStats.pureSourceCount > 0 ? (
+                <div>
+                  <dt>
+                    순수직수
+                    <TermInfo termKey="pureDirectWater" align="end" />
+                  </dt>
+                  <dd>{formatNumber(resultStats.pureSourceCount)}곳</dd>
+                </div>
+              ) : null}
               {resultStats.directSourceCount > 0 ? (
                 <div>
-                  <dt>직수</dt>
+                  <dt>
+                    직수
+                    <TermInfo termKey="directWater" align="end" />
+                  </dt>
                   <dd>{formatNumber(resultStats.directSourceCount)}곳</dd>
                 </div>
               ) : null}
@@ -386,7 +613,7 @@ export default async function OnsenPage({
           {filtered.length === 0 && (
             <div className="onsen-empty-state">
               <strong>조건에 맞는 온천 기록이 아직 없습니다.</strong>
-              <p>지역, 구성, 기준을 하나씩 줄이거나 전체 결과에서 다시 탐색해보세요.</p>
+              <p>지역, 구성, 온천수 필터를 하나씩 줄이거나 전체 결과에서 다시 탐색해보세요.</p>
               <Link href="/onsen/results">전체 결과 보기</Link>
             </div>
           )}
@@ -427,7 +654,12 @@ export default async function OnsenPage({
                               <SealCheck size={18} weight="fill" aria-hidden="true" />
                             </span>
                             {waterHighlightMark ? (
-                              <span className="onsen-card-water-award" data-tone={waterHighlightMark.tone} title={waterHighlightMark.title}>
+                              <span
+                                className="onsen-card-water-award"
+                                data-tone={waterHighlightMark.tone}
+                                title={waterHighlightMark.title}
+                                aria-label={`${waterHighlightMark.label}: ${waterHighlightMark.title}`}
+                              >
                                 <OnsenLaurel />
                                 {waterHighlightMark.label}
                                 <OnsenLaurel side="right" />

@@ -4,7 +4,15 @@ export type OnsenCountryCode = 'JP';
 export type OnsenRegionGroup = 'kyushu' | 'kanto' | 'kansai' | 'hokkaido' | 'tohoku' | 'chubu' | 'chugoku_shikoku';
 export type OnsenTravelContext = 'ryokan_stay' | 'day_trip' | 'city_bath' | 'hotel_public_bath';
 export type OnsenBathContext = 'room_bath' | 'private_bath' | 'public_bath';
-export type OnsenWaterCriterion = 'direct_source' | 'natural_100' | 'spring_confirmed' | 'water_texture' | 'temperature_adjustment' | 'winter_caution';
+export type OnsenWaterMethodCriterion = 'kakenagashi_pure' | 'kakenagashi' | 'junkan';
+export type OnsenWaterTextureCriterion = 'slippery' | 'salt_warmth' | 'sulfur' | 'carbonated';
+export type OnsenWaterColorCriterion = 'hakutaku' | 'brown';
+export type OnsenWaterConditionCriterion = 'temperature_adjustment' | 'winter_caution';
+export type OnsenWaterCriterion =
+  | OnsenWaterMethodCriterion
+  | OnsenWaterTextureCriterion
+  | OnsenWaterColorCriterion
+  | OnsenWaterConditionCriterion;
 
 export type OnsenLocation = {
   country: OnsenCountryCode;
@@ -666,11 +674,34 @@ export const bathContextFilters: OnsenTaxonomyFilter<OnsenBathContext>[] = [
   { label: '대욕장 중심', value: 'public_bath' },
 ];
 
-export const waterCriterionFilters: OnsenTaxonomyFilter<OnsenWaterCriterion>[] = [
-  { label: '원천 직수 확인', value: 'direct_source' },
-  { label: '부드러운 물 느낌', value: 'water_texture' },
-  { label: '온도 조정 확인', value: 'temperature_adjustment' },
+export const waterMethodFilters: OnsenTaxonomyFilter<OnsenWaterMethodCriterion>[] = [
+  { label: '순수직수', value: 'kakenagashi_pure' },
+  { label: '직수', value: 'kakenagashi' },
+  { label: '순환식 온천', value: 'junkan' },
+];
+
+export const waterTextureFilters: OnsenTaxonomyFilter<OnsenWaterTextureCriterion>[] = [
+  { label: '미끌미끌', value: 'slippery' },
+  { label: '소금탕', value: 'salt_warmth' },
+  { label: '유황탕', value: 'sulfur' },
+  { label: '탄산온천', value: 'carbonated' },
+];
+
+export const waterColorFilters: OnsenTaxonomyFilter<OnsenWaterColorCriterion>[] = [
+  { label: '백탁', value: 'hakutaku' },
+  { label: '갈색빛', value: 'brown' },
+];
+
+export const waterConditionFilters: OnsenTaxonomyFilter<OnsenWaterConditionCriterion>[] = [
+  { label: '가수·가온 조건', value: 'temperature_adjustment' },
   { label: '겨울 주의', value: 'winter_caution' },
+];
+
+export const waterCriterionFilters: OnsenTaxonomyFilter<OnsenWaterCriterion>[] = [
+  ...waterMethodFilters,
+  ...waterTextureFilters,
+  ...waterColorFilters,
+  ...waterConditionFilters,
 ];
 
 export function getFilterLabel<T extends string>(items: OnsenTaxonomyFilter<T>[], value: string) {
@@ -712,13 +743,31 @@ function normalizeContextList<T extends string>(value: unknown, allowedItems: On
   return value.filter((item): item is T => typeof item === 'string' && allowedValues.has(item as T));
 }
 
+const legacyWaterContextAliases: Partial<Record<string, OnsenWaterCriterion>> = {
+  direct_source: 'kakenagashi',
+  temperature_adjustment: 'temperature_adjustment',
+  winter_caution: 'winter_caution',
+};
+
+function normalizeWaterContextList(value: unknown): OnsenWaterCriterion[] {
+  if (!Array.isArray(value)) return [];
+  const allowedValues = new Set(waterCriterionFilters.map((item) => item.value));
+  return value
+    .map((item) => {
+      if (typeof item !== 'string') return null;
+      if (allowedValues.has(item as OnsenWaterCriterion)) return item as OnsenWaterCriterion;
+      return legacyWaterContextAliases[item] ?? null;
+    })
+    .filter((item): item is OnsenWaterCriterion => Boolean(item));
+}
+
 export function normalizeOnsenContexts(
   input: { travel?: unknown; bath?: unknown; water?: unknown },
   fallback: OnsenStructuredContexts
 ): OnsenStructuredContexts {
   const travel = normalizeContextList(input.travel, travelContextFilters);
   const bath = normalizeContextList(input.bath, bathContextFilters);
-  const water = normalizeContextList(input.water, waterCriterionFilters);
+  const water = normalizeWaterContextList(input.water);
 
   return {
     travel: travel.length > 0 ? travel : fallback.travel,
@@ -764,10 +813,12 @@ export function deriveOnsenContexts(candidate: Pick<OnsenCandidate, 'tags' | 'pr
   if (candidate.tags.includes('private-bath')) bath.add('private_bath');
   if (candidate.tags.includes('public-bath')) bath.add('public_bath');
 
-  if (/직수/.test(text)) water.add('direct_source');
-  if (/100%\s*천연|천연온천|천연 온천/.test(text)) water.add('natural_100');
-  if (/온천수|원천|온천/.test(text)) water.add('spring_confirmed');
-  if (candidate.tags.includes('water-texture') || /부드럽|매끈|수질|피부감|물 느낌/.test(text)) water.add('water_texture');
+  if (/순수직수/.test(text)) {
+    water.add('kakenagashi_pure');
+    water.add('kakenagashi');
+  } else if (/직수/.test(text)) {
+    water.add('kakenagashi');
+  }
   if (/물을 섞어|온도 조정|가온|가수/.test(text)) water.add('temperature_adjustment');
   if (candidate.tags.includes('winter-caution') || /겨울|추위|춥/.test(text)) water.add('winter_caution');
 
@@ -794,7 +845,6 @@ export function splitLegacySignals(signals: string[]) {
     if (signal === 'room-bath') bath.push('room_bath');
     if (signal === 'private-bath') bath.push('private_bath');
     if (signal === 'public-bath') bath.push('public_bath');
-    if (signal === 'water-texture') water.push('water_texture');
     if (signal === 'winter-caution') water.push('winter_caution');
   }
 

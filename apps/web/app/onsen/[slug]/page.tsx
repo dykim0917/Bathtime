@@ -4,6 +4,7 @@ import { CheckCircle, ImagesSquare, LinkSimple, Sparkle, WarningCircle, Waves } 
 import { OnsenReviewForm } from '@web/components/OnsenReviewForm';
 import { OnsenSaveButton } from '@web/components/OnsenSaveButton';
 import { OnsenShareButton } from '@web/components/OnsenShareButton';
+import { TermInfo } from '@web/components/TermInfo';
 import { statusLabels, type OnsenCandidate } from '@web/lib/onsenCatalog';
 import { normalizeOnsenPublicCopy, normalizeOnsenSourceLabel } from '@web/lib/onsenCopy';
 import { readOnsenCandidate } from '@web/lib/onsenData';
@@ -88,6 +89,93 @@ function getReviewSummary(candidate: OnsenCandidate) {
   return { body, highlights };
 }
 
+function getSiteOrigin() {
+  return (process.env.NEXT_PUBLIC_WEB_URL?.trim() || 'https://www.getbathtime.com').replace(/\/+$/, '');
+}
+
+function getAbsoluteUrl(pathOrUrl: string) {
+  return new URL(pathOrUrl, getSiteOrigin()).toString();
+}
+
+function compactRecord<T extends Record<string, unknown>>(value: T) {
+  return Object.fromEntries(
+    Object.entries(value).filter(([, entry]) => {
+      if (entry === null || entry === undefined) return false;
+      return !Array.isArray(entry) || entry.length > 0;
+    })
+  );
+}
+
+function serializeStructuredData(value: unknown) {
+  return JSON.stringify(value).replace(/</g, '\\u003c');
+}
+
+function buildLodgingBusinessStructuredData(candidate: OnsenCandidate, siteReviewCount: number) {
+  const url = getAbsoluteUrl(`/onsen/${candidate.slug}`);
+  const experiencesRead = candidate.verdict?.briefing.experiencesRead ?? candidate.directReviews;
+  const onsenRelated = candidate.verdict?.briefing.onsenRelated ?? candidate.onsenReviews;
+  const address = compactRecord({
+    '@type': 'PostalAddress',
+    addressCountry: candidate.location?.country ?? 'JP',
+    addressRegion: candidate.location?.prefectureLabel,
+    addressLocality: candidate.location?.cityLabel,
+  });
+  const amenityFeature = candidate.facts
+    .filter((fact) => ['객실 내 프라이빗탕', '대욕장', '대절탕', '온천수 방식'].includes(fact.label))
+    .map((fact) =>
+      compactRecord({
+        '@type': 'LocationFeatureSpecification',
+        name: fact.label,
+        value: fact.value,
+        description: normalizeOnsenPublicCopy(fact.detail),
+      })
+    );
+  const additionalProperty = [
+    compactRecord({
+      '@type': 'PropertyValue',
+      name: '바스타임이 분석한 이용 경험',
+      value: experiencesRead,
+    }),
+    compactRecord({
+      '@type': 'PropertyValue',
+      name: '온천 관련 이용 경험',
+      value: onsenRelated,
+    }),
+    siteReviewCount > 0
+      ? compactRecord({
+          '@type': 'PropertyValue',
+          name: '바스타임 사용자 리뷰',
+          value: siteReviewCount,
+        })
+      : null,
+  ].filter(Boolean);
+
+  return compactRecord({
+    '@context': 'https://schema.org',
+    '@type': 'LodgingBusiness',
+    '@id': `${url}#lodging`,
+    name: candidate.name,
+    alternateName: candidate.jaName,
+    description: normalizeOnsenPublicCopy(candidate.verdict?.headline ?? candidate.summary),
+    url,
+    image: candidate.imageUrl ? getAbsoluteUrl(candidate.imageUrl) : undefined,
+    address,
+    amenityFeature,
+    interactionStatistic:
+      typeof experiencesRead === 'number' && experiencesRead > 0
+        ? [
+            {
+              '@type': 'InteractionCounter',
+              interactionType: { '@type': 'ReviewAction' },
+              userInteractionCount: experiencesRead,
+              name: '바스타임이 분석한 이용 경험',
+            },
+          ]
+        : [],
+    additionalProperty,
+  });
+}
+
 function formatBriefing(candidate: OnsenCandidate) {
   const briefing = candidate.verdict?.briefing;
   if (!briefing) return null;
@@ -133,9 +221,11 @@ export default async function OnsenDetailPage({ params }: PageProps) {
   const facilityFacts = getFacilityFacts(candidate.facts);
   const operationFact = getOperationFact(candidate);
   const reviewSummary = getReviewSummary(candidate);
+  const lodgingBusinessStructuredData = buildLodgingBusinessStructuredData(candidate, siteReviewCount);
 
   return (
     <article className="onsen-detail-page">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeStructuredData(lodgingBusinessStructuredData) }} />
       <div className="onsen-detail-layout">
         <section className="onsen-stay-card" aria-labelledby="onsen-detail-title">
           <div className="onsen-detail-gallery" aria-label={`${candidate.name} 사진 슬라이드`}>
@@ -254,7 +344,10 @@ export default async function OnsenDetailPage({ params }: PageProps) {
 
               <div className="onsen-operation-card">
                 <div>
-                  <span>온천수 방식</span>
+                  <div className="onsen-operation-label-row">
+                    <span>온천수 방식</span>
+                    <TermInfo termKey="waterCriteria" />
+                  </div>
                   <strong>{normalizeOnsenPublicCopy(candidate.waterDecision.operation)}</strong>
                 </div>
                 <p>{normalizeOnsenPublicCopy(operationFact?.detail ?? candidate.waterDecision.summary)}</p>

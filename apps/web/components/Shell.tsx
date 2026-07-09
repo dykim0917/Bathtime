@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { BookmarkSimple, CaretDown, SignOut, UserCircle, X } from '@phosphor-icons/react';
+import { BookmarkSimple, CaretDown, CaretLeft, SignOut, UserCircle, X } from '@phosphor-icons/react';
 import { Suspense, useEffect, useMemo, useState } from 'react';
 import brandSymbol from '@/assets/images/bathtime.svg';
 import logoImage from '@/assets/images/logo.png';
@@ -97,6 +97,34 @@ function OnsenHeaderSearch({ suggestions }: { suggestions: ReturnType<typeof bui
   );
 }
 
+function getMobileBackTarget(pathname: string) {
+  if (pathname === '/onsen/results') {
+    return { href: '/onsen', label: '온천 검색기로 돌아가기' };
+  }
+
+  if (pathname === '/onsen/methodology') {
+    return { href: '/onsen', label: '온천 검색기로 돌아가기' };
+  }
+
+  if (/^\/onsen\/[^/]+$/.test(pathname)) {
+    return { href: '/onsen/results', label: '온천 검색 결과로 돌아가기' };
+  }
+
+  return null;
+}
+
+function getInternalPath(value: string | null) {
+  if (!value || !value.startsWith('/') || value.startsWith('//')) return null;
+
+  try {
+    const url = new URL(value, window.location.origin);
+    if (url.origin !== window.location.origin) return null;
+    return `${url.pathname}${url.search}${url.hash}`;
+  } catch {
+    return null;
+  }
+}
+
 export function Shell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
@@ -108,6 +136,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
   const [authReady, setAuthReady] = useState(false);
   const [authGate, setAuthGate] = useState<{ source: string; next: string; message: string } | null>(null);
   const onsenSearchSuggestions = useMemo(() => buildOnsenSearchSuggestions(onsenCandidates), []);
+  const mobileBackTarget = useMemo(() => getMobileBackTarget(pathname), [pathname]);
 
   useEffect(() => {
     const supabase = getSupabaseClient();
@@ -199,11 +228,38 @@ export function Shell({ children }: { children: React.ReactNode }) {
     if (isAuthRoute) classes.push('auth-shell');
     return classes.join(' ');
   }, [isAuthRoute, isOnsenHomeRoute, isOnsenRoute]);
+
+  const handleMobileBack = () => {
+    if (!mobileBackTarget) return;
+
+    const from = getInternalPath(new URL(window.location.href).searchParams.get('from'));
+    if (from) {
+      router.push(from);
+      return;
+    }
+
+    try {
+      if (document.referrer && new URL(document.referrer).origin === window.location.origin) {
+        router.back();
+        return;
+      }
+    } catch {
+      // Fall through to the route-level fallback below.
+    }
+
+    router.push(mobileBackTarget.href);
+  };
+
   return (
     <div className={shellClassName}>
       {!isAuthRoute ? (
         <aside className="sidebar">
           <div className="brand-block">
+            {mobileBackTarget ? (
+              <button className="mobile-back-button" type="button" aria-label={mobileBackTarget.label} title={mobileBackTarget.label} onClick={handleMobileBack}>
+                <CaretLeft size={20} weight="bold" aria-hidden="true" />
+              </button>
+            ) : null}
             <Link className="brand" href="/" aria-label="Bathtime 홈">
               <span className="brand-symbol">
                 <img src={brandSymbol.src} alt="" width={30} height={30} aria-hidden="true" />

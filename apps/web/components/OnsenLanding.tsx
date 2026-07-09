@@ -33,6 +33,8 @@ const regionImageByArea: Record<string, string> = {
   'yunokawa-hakodate': '/images/onsen/regions/yunokawa-hakodate.jpg',
   'hokkaido-toyako': '/images/onsen/regions/hokkaido-toyako.jpg',
   tokachigawa: '/images/onsen/regions/tokachigawa.jpg',
+  atami: '/images/onsen/regions/atami.jpg',
+  gero: '/images/onsen/regions/gero.jpg',
   tokyo: '/images/onsen/regions/tokyo.jpg',
   osaka: '/images/onsen/regions/osaka.jpg',
 };
@@ -172,7 +174,12 @@ export async function OnsenLanding() {
 
                   <div className="onsen-featured-verdict-copy">
                     {waterHighlightMark ? (
-                      <span className="onsen-card-water-award" data-tone={waterHighlightMark.tone} title={waterHighlightMark.title}>
+                      <span
+                        className="onsen-card-water-award"
+                        data-tone={waterHighlightMark.tone}
+                        title={waterHighlightMark.title}
+                        aria-label={`${waterHighlightMark.label}: ${waterHighlightMark.title}`}
+                      >
                         <OnsenLaurel />
                         {waterHighlightMark.label}
                         <OnsenLaurel side="right" />
@@ -207,7 +214,7 @@ export async function OnsenLanding() {
                 </span>
                 <span className="onsen-region-inventory-copy">
                   <strong>{item.label}</strong>
-                  <span>숙소 {formatNumber(item.publishedCount)}곳 · 100% 원천 {formatNumber(item.directSourceCount)}곳</span>
+                  <span>숙소 {formatNumber(item.publishedCount)}곳 · 직수 {formatNumber(item.directSourceCount)}곳</span>
                 </span>
               </Link>
             ))}

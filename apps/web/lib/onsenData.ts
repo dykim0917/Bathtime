@@ -13,6 +13,7 @@ import {
   getOnsenRegionGroupLabel,
   normalizeOnsenContexts,
   type OnsenLocation,
+  type OnsenWaterCriterion,
 } from './onsenTaxonomy';
 
 type OnsenWaterUseStatus = 'official_confirmed' | 'review_supported' | 'needs_official_check' | 'unclear';
@@ -27,6 +28,8 @@ type OnsenEvidenceCounts = {
   privateBathMentionCount?: number | null;
   waterTextureMentionCount?: number | null;
   cautionMentionCount?: number | null;
+  waterJudgment?: unknown;
+  waterSensoryJudgment?: unknown;
 };
 
 type OnsenAccommodationRow = {
@@ -241,7 +244,7 @@ function statusFor(value: OnsenWaterUseStatus | OnsenWaterSourceType | OnsenBath
 }
 
 function springTypeLabel(status: OnsenWaterUseStatus, sourceType: OnsenWaterSourceType) {
-  if (sourceType === 'natural_100') return '천연온천 표기';
+  if (sourceType === 'natural_100') return '온천수 확인';
   if (sourceType === 'free_flowing_source') return '원천 100% 직수';
   if (status === 'official_confirmed' || sourceType === 'hot_spring_confirmed') return '온천수 확인';
   if (status === 'review_supported') return '온천수 참고 확인';
@@ -259,9 +262,141 @@ function roomBathLabel(scope: OnsenBathScope) {
 function operationLabel(sourceType: OnsenWaterSourceType, notes: string[]) {
   if (notes.some((note) => note.includes('순환') || note.includes('여과'))) return '재사용 온천(순환식)';
   if (sourceType === 'free_flowing_source') return '원천 100% 직수';
-  if (sourceType === 'natural_100') return '천연온천 표기';
+  if (sourceType === 'natural_100') return '온천수 확인';
   if (sourceType === 'hot_spring_confirmed') return '원천 방식 이용 전 확인';
   return notes[0] ?? '이용 전 확인';
+}
+
+function normalizeWaterMethod(value: unknown): NonNullable<OnsenCandidate['waterProfile']>['canonicalMethod'] {
+  if (value === 'kakenagashi_pure' || value === 'kakenagashi' || value === 'junkan') return value;
+  return null;
+}
+
+function normalizeWaterConditionCodes(value: unknown) {
+  if (Array.isArray(value)) return value.filter((item): item is string => typeof item === 'string' && item.trim().length > 0);
+  if (!isRecord(value)) return [];
+
+  return Object.entries(value)
+    .filter(([, status]) => {
+      if (typeof status !== 'string') return false;
+      return status.startsWith('confirmed');
+    })
+    .map(([key]) => key);
+}
+
+function normalizeWaterTextureFilters(value: unknown): NonNullable<OnsenCandidate['waterProfile']>['textureFilters'] {
+  if (!Array.isArray(value)) return [];
+
+  return value
+    .map((item) => {
+      if (!isRecord(item)) return null;
+      const code = typeof item.code === 'string' ? item.code.trim() : '';
+      const label = typeof item.ui_label_ko === 'string' ? item.ui_label_ko.trim() : '';
+      if (!code || !label) return null;
+
+      return {
+        code,
+        label,
+        exposureStatus: typeof item.exposure_status === 'string' ? item.exposure_status : undefined,
+        mentionCount: normalizeNumber(item.direct_review_mention_count),
+      };
+    })
+    .filter((item): item is NonNullable<typeof item> => Boolean(item));
+}
+
+function normalizeWaterColorFilter(value: unknown): NonNullable<OnsenCandidate['waterProfile']>['colorFilter'] | undefined {
+  if (!isRecord(value)) return undefined;
+  const code = typeof value.filter_candidate === 'string' ? value.filter_candidate.trim() : '';
+  const label = typeof value.detail_label_ko === 'string' ? value.detail_label_ko.trim() : '';
+  if (!code || !label) return undefined;
+
+  return {
+    code,
+    label,
+    status: typeof value.status === 'string' ? value.status : undefined,
+    exposeAsFilter: value.expose_as_filter === true,
+  };
+}
+
+function normalizeWaterProfile(counts: OnsenEvidenceCounts | null | undefined): OnsenCandidate['waterProfile'] | undefined {
+  const waterJudgment = isRecord(counts?.waterJudgment) ? counts.waterJudgment : null;
+  const sensoryJudgment = isRecord(counts?.waterSensoryJudgment) ? counts.waterSensoryJudgment : null;
+  if (!waterJudgment && !sensoryJudgment) return undefined;
+
+  const canonicalMethod = normalizeWaterMethod(waterJudgment?.canonical_water_method);
+  const conditionCodes = normalizeWaterConditionCodes(waterJudgment?.conditions);
+  const conditionLabels = normalizeStringArray(waterJudgment?.condition_labels_ko).filter((label) => label !== '조건 없음');
+  const textureFilters = normalizeWaterTextureFilters(sensoryJudgment?.texture_filters);
+  const colorFilter = normalizeWaterColorFilter(sensoryJudgment?.official_color);
+
+  return {
+    canonicalMethod,
+    label: typeof waterJudgment?.ui_label_ko === 'string' ? waterJudgment.ui_label_ko : undefined,
+    badgeGate: typeof waterJudgment?.badge_gate === 'string' ? waterJudgment.badge_gate : undefined,
+    conditionCodes,
+    conditionLabels,
+    textureFilters,
+    colorFilter,
+  };
+}
+
+function shouldExposeTextureFilter(filter: NonNullable<OnsenCandidate['waterProfile']>['textureFilters'][number]) {
+  return filter.exposureStatus === 'candidate_with_count' && typeof filter.mentionCount === 'number' && filter.mentionCount > 0;
+}
+
+function shouldExposeColorFilter(filter: NonNullable<OnsenCandidate['waterProfile']>['colorFilter']) {
+  if (!filter) return false;
+  if (filter.exposeAsFilter) return true;
+  return filter.status === 'confirmed' || filter.status === 'official_confirmed' || filter.status === 'filter_ready';
+}
+
+function waterContextsFromProfile(profile: OnsenCandidate['waterProfile'] | undefined, notes: string[]) {
+  const water = new Set<OnsenWaterCriterion>();
+  const method = profile?.canonicalMethod;
+
+  if (method === 'kakenagashi_pure') {
+    water.add('kakenagashi_pure');
+    water.add('kakenagashi');
+  } else if (method === 'kakenagashi') {
+    water.add('kakenagashi');
+  } else if (method === 'junkan') {
+    water.add('junkan');
+  }
+
+  for (const filter of profile?.textureFilters ?? []) {
+    if (shouldExposeTextureFilter(filter)) {
+      if (filter.code === 'slippery' || filter.code === 'salt_warmth' || filter.code === 'sulfur' || filter.code === 'carbonated') {
+        water.add(filter.code);
+      }
+    }
+  }
+
+  const colorFilter = profile?.colorFilter;
+  if (shouldExposeColorFilter(colorFilter)) {
+    if (colorFilter?.code === 'hakutaku' || colorFilter?.code === 'brown') water.add(colorFilter.code);
+  }
+
+  if (profile?.conditionCodes.some((code) => code === 'kasui' || code === 'kaon') || notes.some((note) => /물을 섞어|온도 조정|가온|가수/.test(note))) {
+    water.add('temperature_adjustment');
+  }
+
+  return [...water];
+}
+
+function operationLabelFromProfile(profile: OnsenCandidate['waterProfile'] | undefined, fallback: string) {
+  if (profile?.canonicalMethod === 'kakenagashi_pure') return '순수직수';
+  if (profile?.canonicalMethod === 'kakenagashi') return '직수';
+  if (profile?.canonicalMethod === 'junkan') return '순환식 온천';
+  if (profile) return '원천 방식 이용 전 확인';
+  return fallback;
+}
+
+function springTypeLabelFromProfile(profile: OnsenCandidate['waterProfile'] | undefined, fallback: string) {
+  if (profile?.canonicalMethod === 'kakenagashi_pure') return '순수직수';
+  if (profile?.canonicalMethod === 'kakenagashi') return '직수';
+  if (profile?.canonicalMethod === 'junkan') return '순환식 온천';
+  if (profile) return '온천수 확인';
+  return fallback;
 }
 
 function buildTags(row: OnsenAccommodationRow, notes: string[]) {
@@ -336,8 +471,10 @@ function operationDetailLabel(operation: string, notes: string[]) {
   const base =
     operation === '원천 방식 이용 전 확인'
       ? '온천수 사용은 확인했지만, 원천 100% 직수인지 재사용 온천인지는 추가 확인이 필요합니다.'
-      : operation === '원천 100% 직수'
+      : operation === '원천 100% 직수' || operation === '직수' || operation === '순수직수'
         ? '원천을 흘려보내는 방식으로 정리했습니다.'
+      : operation === '순환식 온천'
+        ? '온천수를 순환·여과해 쓰는 방식으로 정리했습니다.'
       : `${operation}으로 정리했습니다.`;
   if (notes.length === 0) return `${base} 객실 타입과 플랜별 세부 조건을 함께 확인합니다.`;
   const noteText = notes
@@ -348,7 +485,9 @@ function operationDetailLabel(operation: string, notes: string[]) {
   return `${base} ${noteText}`;
 }
 
-function operationStatusFor(sourceType: OnsenWaterSourceType): OnsenStatus {
+function operationStatusFor(sourceType: OnsenWaterSourceType, profile?: OnsenCandidate['waterProfile']): OnsenStatus {
+  if (profile?.canonicalMethod) return 'confirmed';
+  if (profile) return 'needs_check';
   if (sourceType === 'free_flowing_source' || sourceType === 'natural_100') return 'confirmed';
   return 'needs_check';
 }
@@ -422,11 +561,12 @@ function sourceNoteFor(row: OnsenAccommodationRow, verdict?: OnsenVerdict) {
 
 function mapOnsenAccommodation(row: OnsenAccommodationRow, verdict?: OnsenVerdict): OnsenCandidate {
   const notes = Array.isArray(row.operation_notes) ? row.operation_notes : [];
-  const tags = buildTags(row, notes);
-  const operation = operationLabel(row.water_source_type, notes);
-  const roomBath = roomBathLabel(row.bath_scope);
-  const springType = springTypeLabel(row.water_use_status, row.water_source_type);
   const counts = row.evidence_counts ?? {};
+  const waterProfile = normalizeWaterProfile(counts);
+  const tags = buildTags(row, notes);
+  const operation = operationLabelFromProfile(waterProfile, operationLabel(row.water_source_type, notes));
+  const roomBath = roomBathLabel(row.bath_scope);
+  const springType = springTypeLabelFromProfile(waterProfile, springTypeLabel(row.water_use_status, row.water_source_type));
   const updatedAt = row.content_updated_at ?? row.updated_at?.slice(0, 10) ?? '';
   const operationDetail = operationDetailLabel(operation, notes);
   const cautionCount = counts.cautionMentionCount ?? 0;
@@ -451,6 +591,7 @@ function mapOnsenAccommodation(row: OnsenAccommodationRow, verdict?: OnsenVerdic
       operation,
       notice: createNotice(row, notes),
     },
+    waterProfile,
     dataQuality: row.evidence_grade ?? 'D',
     directReviews: counts.directReviewCount ?? 0,
     onsenReviews: counts.onsenReviewCount ?? 0,
@@ -483,7 +624,7 @@ function mapOnsenAccommodation(row: OnsenAccommodationRow, verdict?: OnsenVerdic
       {
         label: '온천수 방식',
         value: operation,
-        status: operationStatusFor(row.water_source_type),
+        status: operationStatusFor(row.water_source_type, waterProfile),
         detail: operationDetail,
       },
     ],
@@ -517,7 +658,7 @@ function mapOnsenAccommodation(row: OnsenAccommodationRow, verdict?: OnsenVerdic
       {
         travel: row.travel_contexts,
         bath: row.bath_contexts,
-        water: row.water_criteria,
+        water: [...normalizeStringArray(row.water_criteria), ...waterContextsFromProfile(waterProfile, notes)],
       },
       deriveOnsenContexts(candidate)
     ),
