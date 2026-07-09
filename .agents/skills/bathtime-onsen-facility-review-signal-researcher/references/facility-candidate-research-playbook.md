@@ -12,6 +12,13 @@ Include:
 - Wellness/spa complexes when onsen bathing is a meaningful user decision.
 - Route/pass or area-cluster rows only as discovery leads; split them before deep comparison when needed.
 
+For nationwide expansion, split candidates into two tracks before tiering:
+
+- `traditional_onsen_facility`: historic public baths, sotoyu, municipal public baths, symbolic open-air baths, sand/steam baths, family/private bath centers, and onsen-area route/pass leads.
+- `spa_complex_super_sento`: urban spa complexes, super sento, wellness/sauna facilities, onsen theme parks, and spa facilities with optional lodging or overnight rest.
+
+If a spa complex offers lodging, capsule stays, or overnight rest, keep it in the facility dataset when the primary user decision is bathing/spa/sauna use. Record `lodging_available`, but do not move it into the accommodation dataset unless room booking is the primary product.
+
 Exclude or hold:
 
 - Lodging-only ryokan/hotels unless the facility has a clear non-guest day-use product.
@@ -58,7 +65,7 @@ Search in Japanese first, then Korean and English variants.
 
 For candidate mode, produce or update a table/CSV with:
 
-`candidate_slug`, `korean_name`, `japanese_name`, `aliases`, `facility_type`, `facility_model`, `archetype`, `prefecture`, `municipality`, `onsen_area`, `official_url`, `map_or_review_url`, `visible_review_pool`, `korean_demand_signal`, `product_strength`, `likely_tier`, `tier_reason`, `cleanup_status`, `verification_status`, `source_urls`, `notes`.
+`candidate_slug`, `candidate_track`, `korean_name`, `japanese_name`, `aliases`, `facility_type`, `facility_model`, `archetype`, `lodging_available`, `prefecture`, `municipality`, `onsen_area`, `official_url`, `map_or_review_url`, `visible_review_pool`, `korean_demand_signal`, `product_strength`, `likely_tier`, `tier_reason`, `cleanup_status`, `verification_status`, `source_urls`, `notes`.
 
 Do not add deep-review signal fields unless reviews were directly read and tagged.
 
@@ -68,8 +75,10 @@ Check:
 
 - No duplicate Japanese official names unless they are intentionally separate branches/products.
 - Every Tier 1 row has an official/municipal/tourism URL and at least one map/review/OTA URL.
+- Every row has `candidate_track` filled as `traditional_onsen_facility` or `spa_complex_super_sento`.
 - Every route/pass, area cluster, and footbath-only row has the right cleanup status.
 - Lodging-only rows are excluded or marked hold unless day-use use is confirmed.
+- Spa complexes with optional lodging are marked `lodging_available=true` or `unclear` instead of being silently moved to accommodations.
 - Visible review count is not described as directly read evidence.
 - Korean demand is based on observable Korean search/blog/cafe traces, not assumption.
 - Volatile facts such as hours, prices, reservation rules, and closures are marked as needing fresh confirmation before user-facing guidance.

@@ -18,7 +18,7 @@ export const recommendedOnsenPlaces: OnsenSearchSuggestion[] = [
 export const popularOnsenSearches = [
   { label: '유후인 객실 내 프라이빗탕', href: '/onsen/results?area=yufuin&bath=room_bath' },
   { label: '유후인 대절탕', href: '/onsen/results?area=yufuin&bath=private_bath' },
-  { label: '원천 직수 확인 숙소', href: '/onsen/results?travel=ryokan_stay&water=direct_source' },
+  { label: '직수 숙소', href: '/onsen/results?travel=ryokan_stay&water=kakenagashi' },
   { label: '객실 내 프라이빗탕', href: '/onsen/results?bath=room_bath' },
 ];
 
