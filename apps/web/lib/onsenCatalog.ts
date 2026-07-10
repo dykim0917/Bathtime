@@ -20,6 +20,13 @@ export type OnsenVerdictItem = {
     mentions: number;
     negative: number;
     denominator: 'experiences_read' | 'onsen_related';
+    platformCount?: number;
+    directionCounts?: {
+      positive: number;
+      mixed: number;
+      negative: number;
+      neutral: number;
+    };
   };
   body: string;
   verdict: string;
@@ -41,7 +48,10 @@ export type OnsenVerdict = {
   verifiedAt?: string;
 };
 
+export type OnsenEntityType = 'accommodation' | 'facility';
+
 export type OnsenCandidate = {
+  entityType?: OnsenEntityType;
   slug: string;
   name: string;
   jaName: string;
@@ -82,8 +92,21 @@ export type OnsenCandidate = {
   cautions: { issue: string; count: number; summary: string }[];
   sources: { label: string; direct: number; onsenRelated: number; note: string }[];
   officialLinks: { label: string; href: string }[];
+  officialFilterCodes?: string[];
+  facilityDetails?: {
+    type: string;
+    typeLabel: string;
+    model: string;
+    archetype: string;
+    bathAreas: string[];
+    cleanupStatus: string;
+  };
   verdict?: OnsenVerdict;
 };
+
+export function getOnsenEntityType(candidate: Pick<OnsenCandidate, 'entityType'>): OnsenEntityType {
+  return candidate.entityType ?? 'accommodation';
+}
 
 export const statusLabels: Record<OnsenStatus, string> = {
   confirmed: '확인됨',

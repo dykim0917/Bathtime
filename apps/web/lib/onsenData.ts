@@ -2,6 +2,7 @@ import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 
 import { onsenCandidates, type OnsenCandidate, type OnsenFactStatus, type OnsenStatus, type OnsenVerdict, type OnsenVerdictItem } from './onsenCatalog';
+import { readActiveOnsenFacilityCandidates } from './onsenFacilityData';
 import {
   deriveOnsenContexts,
   enrichOnsenCandidate,
@@ -79,22 +80,46 @@ type OnsenVerdictRow = {
   verified_at: string | null;
 };
 
-const platformLabels: Record<string, string> = {
-  jalan: '자란',
-  rakuten: '라쿠텐',
-  google_maps: '구글 지도',
-  tripadvisor: '트립어드바이저',
-  agoda: '아고다',
-  yahoo_travel: '야후 트래블',
-  relux: '리럭스',
-};
-
 function isRecord(value: unknown): value is Record<string, unknown> {
   return Boolean(value) && typeof value === 'object' && !Array.isArray(value);
 }
 
 function normalizeStringArray(value: unknown): string[] {
   return Array.isArray(value) ? value.filter((item): item is string => typeof item === 'string' && item.trim().length > 0) : [];
+}
+
+function normalizePlatformLabel(value: string) {
+  const label = value.trim();
+  const key = label.toLowerCase().replace(/[^a-z0-9가-힣]+/g, '_');
+  if (!label || /^본문 확인 플랫폼\s*\d+개$/.test(label)) return null;
+  if (key === '4travel' || key.includes('fourtravel') || label === '포트래블') return '포트래블';
+  if (key.includes('google') && key.includes('hotel') || label === '구글 호텔') return '구글 호텔';
+  if (key.includes('google') || label === '구글 지도') return '구글 지도';
+  if (key.includes('nifty') || label.replaceAll(' ', '') === '니프티온천') return '니프티온천';
+  if (key.includes('naver') || label.startsWith('네이버')) return '네이버';
+  if (key.includes('jalan') || label === '자란') return '자란';
+  if (key.includes('tripadvisor') || label === '트립어드바이저') return '트립어드바이저';
+  if (key.includes('yahoo_map') || label === '야후 지도') return '야후 지도';
+  if (key.includes('yahoo_travel') || label === '야후 트래블') return '야후 트래블';
+  if (key === 'rakuten' || key.includes('rakuten_travel') || label === '라쿠텐' || label === '라쿠텐 트래블') return '라쿠텐 트래블';
+  if (key.includes('rakudaclub')) return key.includes('airtrip') ? '에어트립·라쿠다클럽' : '라쿠다클럽';
+  if (key.includes('booking') || label === '부킹닷컴') return '부킹닷컴';
+  if (key.includes('hotels_com') || label === '호텔스닷컴') return '호텔스닷컴';
+  if (key.includes('expedia') || label === '익스피디아') return '익스피디아';
+  if (key === 'ikyu' || label === '잇큐') return '잇큐';
+  if (key === 'relux' || label === '리럭스') return '리럭스';
+  if (key.includes('rurubu') || label === '루루부') return '루루부';
+  if (key.includes('japanese_blog') || label === '일본어 블로그') return '일본어 블로그';
+  if (key.includes('korean') && key.includes('blog') || label.startsWith('한국어 블로그')) return '한국어 블로그';
+  if (key.includes('asoview') || label === '아소뷰') return '아소뷰';
+  if (key.includes('agoda') || label === '아고다') return '아고다';
+  if (key.includes('trip_com') || label === '트립닷컴') return '트립닷컴';
+  if (key.includes('sauna_ikitai') || label === '사우나이키타이') return '사우나이키타이';
+  return label;
+}
+
+function normalizePlatforms(value: unknown) {
+  return [...new Set(normalizeStringArray(value).map(normalizePlatformLabel).filter((item): item is string => Boolean(item)))];
 }
 
 function normalizeNumber(value: unknown) {
@@ -109,6 +134,20 @@ function normalizeVerdictItem(value: unknown): OnsenVerdictItem | null {
   const mentions = normalizeNumber(value.counts.mentions);
   const negative = normalizeNumber(value.counts.negative) ?? 0;
   const denominator = value.counts.denominator === 'experiences_read' ? 'experiences_read' : 'onsen_related';
+  const platformCount = normalizeNumber(value.counts.platform_count ?? value.counts.platformCount);
+  const rawDirectionCounts = isRecord(value.counts.direction_counts)
+    ? value.counts.direction_counts
+    : isRecord(value.counts.directionCounts)
+      ? value.counts.directionCounts
+      : null;
+  const directionCounts = rawDirectionCounts
+    ? {
+        positive: normalizeNumber(rawDirectionCounts.positive) ?? 0,
+        mixed: normalizeNumber(rawDirectionCounts.mixed) ?? 0,
+        negative: normalizeNumber(rawDirectionCounts.negative) ?? 0,
+        neutral: normalizeNumber(rawDirectionCounts.neutral) ?? 0,
+      }
+    : undefined;
   const type = value.type === 'conditional' || value.type === 'minor' ? value.type : 'positive';
   const headline = typeof value.headline === 'string' ? value.headline.trim() : '';
   const body = typeof value.body === 'string' ? value.body.trim() : '';
@@ -128,6 +167,8 @@ function normalizeVerdictItem(value: unknown): OnsenVerdictItem | null {
       mentions,
       negative,
       denominator,
+      platformCount,
+      directionCounts,
     },
     body,
     verdict,
@@ -160,13 +201,13 @@ function normalizeVerdict(row: OnsenVerdictRow): OnsenVerdict | null {
   if (row.level === 'draft') return null;
 
   const briefing = isRecord(row.briefing) ? row.briefing : {};
+  const platforms = normalizePlatforms(briefing.platforms);
   const normalizedBriefing = {
     experiencesRead: normalizeNumber(briefing.experiences_read ?? briefing.experiencesRead),
     onsenRelated: normalizeNumber(briefing.onsen_related ?? briefing.onsenRelated),
     platformCount: normalizeNumber(briefing.platform_count ?? briefing.platformCount),
-    platforms: normalizeStringArray(briefing.platforms).map((platform) => platformLabels[platform] ?? platform),
+    platforms,
   };
-  const platforms = normalizeStringArray(briefing.platforms).map((platform) => platformLabels[platform] ?? platform);
   const items = Array.isArray(row.items)
     ? row.items
         .map(normalizeVerdictItem)
@@ -574,6 +615,7 @@ function mapOnsenAccommodation(row: OnsenAccommodationRow, verdict?: OnsenVerdic
   const privateBath = privateBathFact(tags, row.primary_bath ?? '');
 
   const candidate: OnsenCandidate = {
+    entityType: 'accommodation',
     slug: row.slug,
     name: row.display_name_ko?.trim() || row.name,
     jaName: row.name_ja?.trim() || row.ja_name || '',
@@ -665,12 +707,16 @@ function mapOnsenAccommodation(row: OnsenAccommodationRow, verdict?: OnsenVerdic
   };
 }
 
-async function readPublishedOnsenVerdicts(config: NonNullable<ReturnType<typeof readSupabaseServerConfig>>, slugs: string[]) {
+async function readPublishedOnsenVerdicts(
+  config: NonNullable<ReturnType<typeof readSupabaseServerConfig>>,
+  slugs: string[],
+  targetType: 'accommodation' | 'facility'
+) {
   if (slugs.length === 0) return new Map<string, OnsenVerdict>();
 
   const url = new URL(`${config.restUrl}/onsen_verdicts`);
   url.searchParams.set('select', 'target_slug,level,headline,briefing,items,fact_statuses,verified_at');
-  url.searchParams.set('target_type', 'eq.accommodation');
+  url.searchParams.set('target_type', `eq.${targetType}`);
   url.searchParams.set('status', 'eq.published');
   url.searchParams.set('target_slug', `in.(${slugs.map((slug) => `"${slug}"`).join(',')})`);
 
@@ -708,6 +754,7 @@ export async function readOnsenCandidates(): Promise<OnsenCandidate[]> {
   url.searchParams.set('status', 'eq.active');
   url.searchParams.set('order', 'region.asc,display_name_ko.asc,name.asc');
 
+  let accommodations: OnsenCandidate[];
   try {
     const response = await fetch(url, {
       headers: {
@@ -717,18 +764,56 @@ export async function readOnsenCandidates(): Promise<OnsenCandidate[]> {
       next: { revalidate: 60, tags: ['onsen-accommodations'] },
     });
 
-    if (!response.ok) return onsenCandidates.map(enrichOnsenCandidate);
+    if (!response.ok) throw new Error(`onsen_accommodations read failed: ${response.status}`);
 
     const rows = (await response.json()) as OnsenAccommodationRow[];
-    if (rows.length === 0) return onsenCandidates.map(enrichOnsenCandidate);
-    const verdictsBySlug = await readPublishedOnsenVerdicts(
-      config,
-      rows.map((row) => row.slug)
-    );
-    return rows.map((row) => mapOnsenAccommodation(row, verdictsBySlug.get(row.slug)));
+    if (rows.length === 0) {
+      accommodations = onsenCandidates.map(enrichOnsenCandidate);
+    } else {
+      const verdictsBySlug = await readPublishedOnsenVerdicts(
+        config,
+        rows.map((row) => row.slug),
+        'accommodation'
+      );
+      accommodations = rows.map((row) => mapOnsenAccommodation(row, verdictsBySlug.get(row.slug)));
+    }
   } catch {
-    return onsenCandidates.map(enrichOnsenCandidate);
+    accommodations = onsenCandidates.map(enrichOnsenCandidate);
   }
+
+  const facilities = await readActiveOnsenFacilityCandidates(config);
+  const facilityVerdictsBySlug = await readPublishedOnsenVerdicts(
+    config,
+    facilities.map((facility) => facility.slug),
+    'facility'
+  );
+  const facilitiesWithVerdicts = facilities.map((facility) => {
+    const verdict = facilityVerdictsBySlug.get(facility.slug);
+    if (!verdict) return facility;
+    const platformCount = verdict.briefing.platformCount ?? verdict.briefing.platforms.length;
+    const verdictCautions = verdict.items
+      .filter((item) => item.type !== 'positive')
+      .map((item) => ({
+        issue: item.chipLabel ?? '이용 전 확인',
+        count: item.counts.mentions,
+        summary: item.verdict,
+      }));
+
+    return {
+      ...facility,
+      verdict,
+      cautions: verdictCautions.length > 0 ? verdictCautions : facility.cautions,
+      sources: facility.sources.map((source) =>
+        source.label === '시설 이용 경험'
+          ? {
+              ...source,
+              note: `직접 읽은 시설 관련 이용 경험 ${verdict.briefing.experiencesRead ?? facility.directReviews}건 · 본문 확인 플랫폼 ${platformCount}개입니다. 플랫폼 노출 리뷰 수는 합산하지 않았습니다.`,
+            }
+          : source
+      ),
+    };
+  });
+  return [...accommodations, ...facilitiesWithVerdicts];
 }
 
 export async function readOnsenCandidate(slug: string): Promise<OnsenCandidate | undefined> {

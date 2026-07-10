@@ -1,11 +1,11 @@
-import type { OnsenCandidate } from './onsenCatalog';
+import { getOnsenEntityType, type OnsenCandidate } from './onsenCatalog';
 import { onsenAreaFilters } from './onsenTaxonomy';
 
 export type OnsenSearchSuggestion = {
   label: string;
   href: string;
   description?: string;
-  kind: 'region' | 'stay' | 'keyword';
+  kind: 'region' | 'stay' | 'facility' | 'keyword';
 };
 
 export const recommendedOnsenPlaces: OnsenSearchSuggestion[] = [
@@ -17,9 +17,9 @@ export const recommendedOnsenPlaces: OnsenSearchSuggestion[] = [
 
 export const popularOnsenSearches = [
   { label: '유후인 객실 내 프라이빗탕', href: '/onsen/results?area=yufuin&bath=room_bath' },
-  { label: '유후인 대절탕', href: '/onsen/results?area=yufuin&bath=private_bath' },
+  { label: '도쿄 당일온천', href: '/onsen/results?area=tokyo&type=facility' },
+  { label: '노천탕 있는 시설', href: '/onsen/results?type=facility&feature=open_air_bath' },
   { label: '직수 숙소', href: '/onsen/results?travel=ryokan_stay&water=kakenagashi' },
-  { label: '객실 내 프라이빗탕', href: '/onsen/results?bath=room_bath' },
 ];
 
 export function buildOnsenSearchSuggestions(candidates: OnsenCandidate[]): OnsenSearchSuggestion[] {
@@ -30,11 +30,11 @@ export function buildOnsenSearchSuggestions(candidates: OnsenCandidate[]): Onsen
     kind: 'region',
   }));
 
-  const staySuggestions: OnsenSearchSuggestion[] = candidates.slice(0, 40).map((candidate) => ({
+  const staySuggestions: OnsenSearchSuggestion[] = candidates.map((candidate) => ({
     label: candidate.name,
-    description: candidate.location?.display ?? candidate.area ?? '일본 온천 숙소',
+    description: `${candidate.location?.display ?? candidate.area ?? '일본 온천'} · ${getOnsenEntityType(candidate) === 'facility' ? '당일온천 시설' : '온천 숙소'}`,
     href: `/onsen/${candidate.slug}`,
-    kind: 'stay',
+    kind: getOnsenEntityType(candidate) === 'facility' ? 'facility' : 'stay',
   }));
 
   return [...areaSuggestions, ...staySuggestions, ...recommendedOnsenPlaces];
