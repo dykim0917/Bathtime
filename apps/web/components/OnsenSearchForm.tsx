@@ -135,7 +135,7 @@ export function OnsenSearchForm({ suggestions, recommendedPlaces, popularSearche
               setQuery(nextQuery);
               setOpen(true);
             }}
-            placeholder={isHeaderVariant ? '온천지, 숙소 이름' : '유후인, 벳푸, 하코네'}
+            placeholder={isHeaderVariant ? '온천지, 숙소·시설 이름' : '유후인, 도쿄, 구사쓰'}
             aria-label="온천 검색어"
             autoComplete="off"
           />
@@ -182,7 +182,7 @@ export function OnsenSearchForm({ suggestions, recommendedPlaces, popularSearche
                 type="search"
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
-                placeholder="유후인, 벳푸, 숙소 이름"
+                placeholder="온천지, 숙소·시설 이름"
                 aria-label="온천 검색어"
                 autoComplete="off"
               />

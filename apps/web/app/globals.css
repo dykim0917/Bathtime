@@ -114,6 +114,12 @@
   --bt-radius-pill: 999px;
   --bt-shadow-soft: 0 16px 38px rgba(40, 53, 49, 0.08);
   --bt-shadow-lifted: 0 20px 48px rgba(36, 95, 89, 0.14);
+  --bt-review-modal-max-width: 720px;
+  --bt-review-step-min-height: 360px;
+}
+
+body.bt-modal-open {
+  overflow: hidden;
 }
 
 .bt-eyebrow {
@@ -2941,7 +2947,7 @@ p {
 }
 
 .onsen-results-toolbar .onsen-filter-group-title {
-  flex: 0 0 72px;
+  flex: 0 0 88px;
   display: inline-flex;
   align-items: center;
   gap: 4px;
@@ -2951,6 +2957,13 @@ p {
   line-height: 1;
   margin-right: 2px;
   padding-top: 10px;
+}
+
+.onsen-results-toolbar .onsen-filter-group-title small {
+  color: var(--bt-color-primary-active);
+  font-size: var(--bt-text-meta);
+  font-weight: var(--bt-weight-medium);
+  line-height: 1.2;
 }
 
 .onsen-filter-chip-row {
@@ -4032,6 +4045,24 @@ p {
   align-items: center;
   flex-wrap: wrap;
   gap: var(--bt-space-2);
+}
+
+.onsen-card-entity-type {
+  display: inline-flex;
+  align-items: center;
+  min-height: 20px;
+  border: 1px solid var(--bt-color-border);
+  color: var(--bt-color-body);
+  font-size: var(--bt-text-meta);
+  font-weight: var(--bt-weight-semibold);
+  line-height: 1;
+  padding: 0 var(--bt-space-2);
+}
+
+.onsen-card-entity-type[data-type="facility"] {
+  border-color: var(--bt-status-confirmed-border);
+  background: var(--bt-color-primary-soft);
+  color: var(--bt-color-primary-active);
 }
 
 .onsen-card-location,
@@ -5236,6 +5267,655 @@ p {
 
 .onsen-review-error {
   color: var(--bt-form-invalid-text);
+}
+
+.onsen-review-box {
+  gap: var(--bt-space-5);
+  border-radius: var(--bt-radius-md);
+  padding: clamp(var(--bt-space-5), 3vw, var(--bt-space-6));
+}
+
+.onsen-review-panel-head h2 {
+  font-size: var(--bt-text-card-title);
+}
+
+.onsen-review-title-row span {
+  min-width: calc(var(--bt-space-6) + var(--bt-space-1));
+  height: calc(var(--bt-space-6) + var(--bt-space-1));
+  background: var(--bt-color-primary-soft);
+  font-size: var(--bt-text-small);
+  padding-inline: var(--bt-space-2);
+}
+
+.onsen-review-benefit {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--bt-space-3);
+  border-block: 1px solid var(--bt-color-border-soft);
+  background: var(--bt-surface-subtle);
+  color: var(--bt-color-primary-active);
+  margin-inline: calc(var(--bt-space-5) * -1);
+  padding: var(--bt-space-4) var(--bt-space-5);
+}
+
+.onsen-review-benefit > div {
+  display: grid;
+  gap: var(--bt-space-1);
+}
+
+.onsen-review-benefit strong {
+  color: var(--bt-color-ink);
+  font-size: var(--bt-text-small);
+  line-height: var(--bt-leading-ui);
+}
+
+.onsen-review-benefit p {
+  color: var(--bt-color-body);
+  font-size: var(--bt-text-meta);
+  line-height: var(--bt-leading-ui);
+}
+
+.onsen-review-benefit a {
+  color: var(--bt-color-primary-active);
+  font-size: var(--bt-text-meta);
+  font-weight: var(--bt-weight-semibold);
+  text-decoration: underline;
+  text-underline-offset: var(--bt-space-1);
+}
+
+.onsen-review-list {
+  min-height: calc(var(--bt-space-24) + var(--bt-space-6));
+}
+
+.onsen-review-card-meta {
+  gap: var(--bt-space-2);
+}
+
+.onsen-review-card-meta span {
+  min-height: var(--bt-space-6);
+  font-size: var(--bt-text-meta);
+  padding-inline: var(--bt-space-2);
+}
+
+.onsen-review-open-button {
+  min-height: var(--bt-space-10);
+  padding-inline: var(--bt-space-4);
+}
+
+.onsen-review-modal {
+  width: min(var(--bt-review-modal-max-width), 100%);
+  max-height: calc(100svh - var(--bt-space-10));
+}
+
+.onsen-review-modal-head h3 {
+  font-size: var(--bt-text-card-title);
+}
+
+.onsen-review-modal-head button {
+  width: var(--bt-space-10);
+  height: var(--bt-space-10);
+}
+
+.onsen-review-modal-head button:disabled {
+  color: var(--bt-disabled-text);
+}
+
+.onsen-review-form {
+  gap: var(--bt-space-5);
+}
+
+.onsen-review-progress {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--bt-space-1);
+  padding: 0;
+  list-style: none;
+}
+
+.onsen-review-progress li {
+  display: flex;
+  align-items: center;
+  gap: var(--bt-space-2);
+  border-bottom: var(--bt-space-1) solid var(--bt-color-border-soft);
+  color: var(--bt-color-muted);
+  font-size: var(--bt-text-meta);
+  font-weight: var(--bt-weight-semibold);
+  padding-bottom: var(--bt-space-2);
+}
+
+.onsen-review-progress li span {
+  display: inline-grid;
+  place-items: center;
+  width: var(--bt-space-6);
+  height: var(--bt-space-6);
+  border: 1px solid var(--bt-color-border);
+  border-radius: var(--bt-radius-pill);
+  background: var(--bt-surface-default);
+  font-family: var(--bt-font-data);
+}
+
+.onsen-review-progress li[data-current='true'],
+.onsen-review-progress li[data-complete='true'] {
+  border-bottom-color: var(--bt-color-primary-active);
+  color: var(--bt-color-primary-active);
+}
+
+.onsen-review-progress li[data-current='true'] span,
+.onsen-review-progress li[data-complete='true'] span {
+  border-color: var(--bt-color-primary-active);
+  background: var(--bt-color-primary-soft);
+}
+
+.onsen-review-step {
+  min-height: var(--bt-review-step-min-height);
+}
+
+.onsen-review-question-group {
+  display: grid;
+  gap: var(--bt-space-5);
+}
+
+.onsen-review-question-head {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--bt-space-3);
+  color: var(--bt-color-primary-active);
+}
+
+.onsen-review-question-head > div,
+.onsen-review-success > div:not(.onsen-review-success-facts, .onsen-review-success-actions) {
+  display: grid;
+  gap: var(--bt-space-1);
+}
+
+.onsen-review-question-head h4,
+.onsen-review-success h4 {
+  color: var(--bt-color-ink);
+  font-size: var(--bt-text-card-title);
+  font-weight: var(--bt-weight-semibold);
+  line-height: var(--bt-leading-tight);
+}
+
+.onsen-review-question-head p,
+.onsen-review-success p {
+  color: var(--bt-color-body);
+  font-size: var(--bt-text-small);
+  line-height: var(--bt-leading-body);
+}
+
+.onsen-review-question-group fieldset {
+  display: grid;
+  gap: var(--bt-space-2);
+  border: 0;
+  padding: 0;
+}
+
+.onsen-review-question-group legend {
+  display: flex;
+  align-items: center;
+  gap: var(--bt-space-2);
+  color: var(--bt-color-muted);
+  font-size: var(--bt-text-meta);
+  font-weight: var(--bt-weight-semibold);
+  line-height: var(--bt-leading-ui);
+  margin-bottom: var(--bt-space-2);
+}
+
+.onsen-review-choice-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bt-space-2);
+}
+
+.onsen-review-choice {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bt-space-2);
+  min-height: var(--bt-space-10);
+  border: 1px solid var(--bt-form-border);
+  border-radius: var(--bt-radius-pill);
+  background: var(--bt-surface-default);
+  color: var(--bt-color-body);
+  font-size: var(--bt-text-small);
+  font-weight: var(--bt-weight-medium);
+  line-height: var(--bt-leading-ui);
+  padding: 0 var(--bt-space-3);
+}
+
+.onsen-review-choice > span {
+  width: var(--bt-space-3);
+  height: var(--bt-space-3);
+  border: 1px solid var(--bt-color-border-strong);
+  border-radius: var(--bt-radius-pill);
+  background: var(--bt-surface-default);
+}
+
+.onsen-review-choice:hover,
+.onsen-review-choice:focus-visible {
+  border-color: var(--bt-form-focus-border);
+  outline: none;
+  box-shadow: var(--bt-focus-ring);
+}
+
+.onsen-review-choice[data-selected='true'] {
+  border-color: var(--bt-color-primary-active);
+  background: var(--bt-color-primary-soft);
+  color: var(--bt-color-primary-active);
+}
+
+.onsen-review-choice[data-selected='true'] > span {
+  border-color: var(--bt-color-primary-active);
+  background: var(--bt-color-primary-active);
+  box-shadow: inset 0 0 0 var(--bt-space-1) var(--bt-surface-default);
+}
+
+.onsen-review-form label {
+  gap: var(--bt-space-2);
+}
+
+.onsen-review-form input,
+.onsen-review-form textarea {
+  font-size: var(--bt-text-small);
+  padding: var(--bt-space-3);
+}
+
+.onsen-review-form textarea {
+  min-height: calc(var(--bt-space-24) + var(--bt-space-4));
+  line-height: var(--bt-leading-body);
+}
+
+.onsen-review-date-field {
+  width: min(100%, calc(var(--bt-space-24) * 3));
+}
+
+.onsen-review-date-field > span,
+.onsen-review-question-group label > span {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bt-space-2);
+}
+
+.onsen-review-date-field small,
+.onsen-review-question-group label > small {
+  color: var(--bt-color-muted);
+  font-size: var(--bt-text-meta);
+  font-weight: var(--bt-weight-regular);
+}
+
+.onsen-review-actions {
+  display: grid;
+  grid-template-columns: minmax(var(--bt-space-20), auto) 1fr;
+  gap: var(--bt-space-3);
+}
+
+.onsen-review-actions button {
+  gap: var(--bt-space-2);
+  min-height: var(--bt-space-12);
+  color: var(--bt-color-on-primary);
+  font-size: var(--bt-text-small);
+  padding: 0 var(--bt-space-5);
+  justify-self: end;
+}
+
+.onsen-review-actions .onsen-review-back-button {
+  justify-self: start;
+  border-color: var(--bt-color-border);
+  background: var(--bt-surface-default);
+  color: var(--bt-color-body);
+}
+
+.onsen-review-success {
+  display: grid;
+  justify-items: start;
+  gap: var(--bt-space-5);
+  min-height: var(--bt-review-step-min-height);
+  align-content: center;
+  color: var(--bt-status-success-text);
+  padding-block: var(--bt-space-5);
+}
+
+.onsen-review-success-facts,
+.onsen-review-success-actions,
+.passport-entry-date,
+.passport-entry-facts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--bt-space-2);
+}
+
+.onsen-review-success-facts span,
+.passport-entry-facts span {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--bt-space-8);
+  border: 1px solid var(--bt-status-success-border);
+  border-radius: var(--bt-radius-pill);
+  background: var(--bt-status-success-bg);
+  color: var(--bt-status-success-text);
+  font-size: var(--bt-text-meta);
+  font-weight: var(--bt-weight-medium);
+  padding-inline: var(--bt-space-3);
+}
+
+.onsen-review-success-actions a,
+.onsen-review-success-actions button {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--bt-space-12);
+  border: 1px solid var(--bt-color-primary-active);
+  border-radius: var(--bt-radius-md);
+  background: var(--bt-color-primary-active);
+  color: var(--bt-color-on-primary);
+  font-size: var(--bt-text-small);
+  font-weight: var(--bt-weight-semibold);
+  padding-inline: var(--bt-space-5);
+}
+
+.onsen-review-success-actions button {
+  border-color: var(--bt-color-border);
+  background: var(--bt-surface-default);
+  color: var(--bt-color-body);
+}
+
+.passport-page {
+  width: min(100%, calc(var(--bt-space-24) * 12));
+}
+
+.passport-stack {
+  display: grid;
+  gap: var(--bt-space-16);
+}
+
+.passport-state {
+  display: grid;
+  justify-items: start;
+  gap: var(--bt-space-3);
+  min-height: calc(var(--bt-space-24) * 3);
+  align-content: center;
+  border-block: 1px solid var(--bt-color-border);
+  color: var(--bt-color-primary-active);
+  padding-block: var(--bt-space-10);
+}
+
+.passport-state h2 {
+  color: var(--bt-color-ink);
+  font-size: var(--bt-text-card-title);
+}
+
+.passport-state p {
+  max-width: calc(var(--bt-space-24) * 6);
+  color: var(--bt-color-body);
+  font-size: var(--bt-text-small);
+  line-height: var(--bt-leading-body);
+}
+
+.passport-state .button-primary,
+.passport-state .button-secondary {
+  margin-top: var(--bt-space-2);
+}
+
+.passport-summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
+  gap: var(--bt-space-10);
+  align-items: end;
+  border-block: 1px solid var(--bt-color-border);
+  padding-block: var(--bt-space-10);
+}
+
+.passport-summary-copy,
+.passport-section-head > div {
+  display: grid;
+  gap: var(--bt-space-2);
+}
+
+.passport-summary h2,
+.passport-section-head h2 {
+  color: var(--bt-color-ink);
+  font-family: var(--bt-font-editorial);
+  font-size: var(--bt-text-section-title);
+  font-weight: var(--bt-weight-medium);
+  line-height: var(--bt-leading-tight);
+}
+
+.passport-summary-copy p {
+  max-width: calc(var(--bt-space-24) * 7);
+  color: var(--bt-color-body);
+  font-size: var(--bt-text-body);
+  line-height: var(--bt-leading-body);
+}
+
+.passport-stat-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-left: 1px solid var(--bt-color-border);
+}
+
+.passport-stat-list > div {
+  display: grid;
+  gap: var(--bt-space-2);
+  border-right: 1px solid var(--bt-color-border-soft);
+  padding: var(--bt-space-2) var(--bt-space-4);
+}
+
+.passport-stat-list > div:last-child {
+  border-right: 0;
+}
+
+.passport-stat-list dt,
+.passport-taste-list span,
+.passport-entry-date {
+  color: var(--bt-color-muted);
+  font-size: var(--bt-text-meta);
+  line-height: var(--bt-leading-ui);
+}
+
+.passport-stat-list dd {
+  color: var(--bt-color-ink);
+  font-family: var(--bt-font-data);
+  font-size: var(--bt-text-section-title);
+  font-weight: var(--bt-weight-semibold);
+}
+
+.passport-taste,
+.passport-history {
+  display: grid;
+  gap: var(--bt-space-6);
+}
+
+.passport-section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--bt-space-4);
+  color: var(--bt-color-primary-active);
+}
+
+.passport-taste-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-block: 1px solid var(--bt-color-border);
+}
+
+.passport-taste-list > div {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--bt-space-2) var(--bt-space-3);
+  align-items: center;
+  border-right: 1px solid var(--bt-color-border-soft);
+  color: var(--bt-color-primary-active);
+  padding: var(--bt-space-5);
+}
+
+.passport-taste-list > div:last-child {
+  border-right: 0;
+}
+
+.passport-taste-list strong,
+.passport-taste-list small {
+  grid-column: 2;
+}
+
+.passport-taste-list strong {
+  color: var(--bt-color-ink);
+  font-size: var(--bt-text-body);
+}
+
+.passport-taste-list small {
+  color: var(--bt-color-muted);
+  font-size: var(--bt-text-meta);
+}
+
+.passport-entry-list {
+  display: grid;
+  border-top: 1px solid var(--bt-color-border);
+}
+
+.passport-entry {
+  display: grid;
+  gap: var(--bt-space-4);
+  border-bottom: 1px solid var(--bt-color-border);
+  padding-block: var(--bt-space-6);
+}
+
+.passport-entry-date {
+  justify-content: space-between;
+}
+
+.passport-entry-date em,
+.passport-entry-main > span {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--bt-space-6);
+  border: 1px solid var(--bt-status-reference-border);
+  border-radius: var(--bt-radius-pill);
+  background: var(--bt-status-reference-bg);
+  color: var(--bt-status-reference-text);
+  font-size: var(--bt-text-meta);
+  font-style: normal;
+  font-weight: var(--bt-weight-medium);
+  padding-inline: var(--bt-space-2);
+}
+
+.passport-entry-date em[data-status='approved'],
+.passport-entry-main > span[data-verified='true'] {
+  border-color: var(--bt-status-success-border);
+  background: var(--bt-status-success-bg);
+  color: var(--bt-status-success-text);
+}
+
+.passport-entry-date em[data-status='rejected'] {
+  border-color: var(--bt-status-attention-border);
+  background: var(--bt-status-attention-bg);
+  color: var(--bt-status-attention-text);
+}
+
+.passport-entry-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: var(--bt-space-4);
+}
+
+.passport-entry-main > div {
+  display: grid;
+  gap: var(--bt-space-2);
+}
+
+.passport-entry-main a,
+.passport-entry-main strong {
+  color: var(--bt-color-ink);
+  font-family: var(--bt-font-editorial);
+  font-size: var(--bt-text-card-title);
+  font-weight: var(--bt-weight-semibold);
+}
+
+.passport-entry-main a:hover,
+.passport-entry-main a:focus-visible {
+  color: var(--bt-color-primary-active);
+  text-decoration: underline;
+  text-underline-offset: var(--bt-space-1);
+}
+
+.passport-entry-main p,
+.passport-entry-caution {
+  color: var(--bt-color-body);
+  font-size: var(--bt-text-small);
+  line-height: var(--bt-leading-body);
+}
+
+.passport-entry-caution {
+  border-left: var(--bt-space-1) solid var(--bt-status-attention-border);
+  background: var(--bt-status-attention-bg);
+  padding: var(--bt-space-2) var(--bt-space-3);
+}
+
+@media (max-width: 767px) {
+  .onsen-review-modal-backdrop {
+    align-items: end;
+    padding: var(--bt-space-2);
+  }
+
+  .onsen-review-modal {
+    max-height: calc(100svh - var(--bt-space-4));
+    padding: var(--bt-space-5);
+  }
+
+  .onsen-review-benefit {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .onsen-review-benefit a {
+    grid-column: 2;
+  }
+
+  .onsen-review-progress li {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: var(--bt-space-1);
+  }
+
+  .onsen-review-step {
+    min-height: 0;
+  }
+
+  .onsen-review-choice {
+    flex: 1 1 calc(50% - var(--bt-space-2));
+    justify-content: flex-start;
+  }
+
+  .passport-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .passport-stat-list {
+    border-top: 1px solid var(--bt-color-border);
+    border-left: 0;
+    padding-top: var(--bt-space-4);
+  }
+
+  .passport-taste-list {
+    grid-template-columns: 1fr;
+  }
+
+  .passport-taste-list > div {
+    border-right: 0;
+    border-bottom: 1px solid var(--bt-color-border-soft);
+  }
+
+  .passport-taste-list > div:last-child {
+    border-bottom: 0;
+  }
+
+  .passport-entry-main {
+    grid-template-columns: 1fr;
+  }
+
+  .passport-entry-main > span {
+    justify-self: start;
+  }
 }
 
 .home-hero {

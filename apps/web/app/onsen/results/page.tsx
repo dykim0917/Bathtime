@@ -13,7 +13,7 @@ import {
 import { normalizeOnsenPublicCopy } from '@web/lib/onsenCopy';
 import { readOnsenCandidates } from '@web/lib/onsenData';
 import { readOnsenReviewCounts } from '@web/lib/onsenReviews';
-import type { OnsenCandidate } from '@web/lib/onsenCatalog';
+import { getOnsenEntityType, type OnsenCandidate, type OnsenEntityType } from '@web/lib/onsenCatalog';
 import {
   getOnsenWaterHighlightMark,
   getOnsenWaterSortRank,
@@ -23,6 +23,8 @@ import {
 import {
   bathContextFilters,
   getFilterLabel,
+  officialFacilityFeatureFilters,
+  onsenEntityFilters,
   onsenAreaFilters,
   regionGroupFilters,
   splitLegacySignals,
@@ -39,7 +41,7 @@ import { TermInfo } from '@web/components/TermInfo';
 
 export const metadata: Metadata = {
   title: '온천 검색 결과',
-  description: '일본 료칸 예약 전 객실 내 프라이빗탕, 대절탕, 대욕장, 온천수 체감과 주의할 점을 비교합니다.',
+  description: '일본 온천 숙소와 당일입욕 시설의 목욕 구성, 공식 시설 정보, 온천수 근거와 이용 경험을 비교합니다.',
   alternates: {
     canonical: '/onsen/results',
   },
@@ -104,11 +106,24 @@ function normalizeWaterFilterParams(value: string | string[] | undefined) {
   );
 }
 
-function buildResultsHref(params: { query?: string; regionGroup?: string; area?: string; travel?: string[]; bath?: string[]; water?: string[] }) {
+function buildResultsHref(params: {
+  query?: string;
+  type?: OnsenEntityType | '';
+  regionGroup?: string;
+  area?: string;
+  travel?: string[];
+  bath?: string[];
+  water?: string[];
+  feature?: string[];
+}) {
   const nextParams = new URLSearchParams();
 
   if (params.query) {
     nextParams.set('query', params.query);
+  }
+
+  if (params.type) {
+    nextParams.set('type', params.type);
   }
 
   if (params.regionGroup) {
@@ -129,6 +144,10 @@ function buildResultsHref(params: { query?: string; regionGroup?: string; area?:
 
   for (const water of params.water ?? []) {
     nextParams.append('water', water);
+  }
+
+  for (const feature of params.feature ?? []) {
+    nextParams.append('feature', feature);
   }
 
   const queryString = nextParams.toString();
@@ -248,41 +267,62 @@ export default async function OnsenPage({
 }: {
   searchParams: Promise<{
     query?: string | string[];
+    type?: string | string[];
     region?: string | string[];
     regionGroup?: string | string[];
     area?: string | string[];
     travel?: string | string[];
     bath?: string | string[];
     water?: string | string[];
+    feature?: string | string[];
     signal?: string | string[];
   }>;
 }) {
   const params = await searchParams;
   const query = normalizeParam(params.query).trim().toLowerCase();
+  const entityType = normalizeFilterParam(params.type, onsenEntityFilters);
   const regionGroup = normalizeFilterParam(params.regionGroup, regionGroupFilters);
   const area = normalizeFilterParam(params.area, onsenAreaFilters) || normalizeFilterParam(params.region, onsenAreaFilters);
   const legacySignals = splitLegacySignals(normalizeParams(params.signal));
-  const travel = normalizeFilterParams(params.travel, travelContextFilters);
-  const bath = uniqueValues([...normalizeFilterParams(params.bath, bathContextFilters), ...legacySignals.bath]);
+  const requestedTravel = normalizeFilterParams(params.travel, travelContextFilters);
+  const requestedBath = uniqueValues([...normalizeFilterParams(params.bath, bathContextFilters), ...legacySignals.bath]);
   const requestedWater = uniqueValues([...normalizeWaterFilterParams(params.water), ...legacySignals.water]);
   const candidates = await readOnsenCandidates();
-  const availableWaterValues = getAvailableWaterValues(candidates);
+  const filterScopeCandidates = entityType
+    ? candidates.filter((candidate) => getOnsenEntityType(candidate) === entityType)
+    : candidates;
+  const availableTravelValues = new Set(filterScopeCandidates.flatMap((candidate) => candidate.contexts?.travel ?? []));
+  const availableBathValues = new Set(filterScopeCandidates.flatMap((candidate) => candidate.contexts?.bath ?? []));
+  const travel = requestedTravel.filter((item) => availableTravelValues.has(item));
+  const bath = requestedBath.filter((item) => availableBathValues.has(item));
+  const availableFeatureFilters = officialFacilityFeatureFilters.filter((filter) =>
+    filterScopeCandidates.some((candidate) => candidate.officialFilterCodes?.includes(filter.value))
+  );
+  const feature = normalizeFilterParams(params.feature, availableFeatureFilters);
+  const availableWaterValues = getAvailableWaterValues(filterScopeCandidates);
   const water = requestedWater.filter((item) => availableWaterValues.has(item));
   const availableMethodFilters = filterAvailableWaterItems(waterMethodFilters, availableWaterValues);
   const availableTextureFilters = filterAvailableWaterItems(waterTextureFilters, availableWaterValues);
   const availableColorFilters = filterAvailableWaterItems(waterColorFilters, availableWaterValues);
   const availableConditionFilters = filterAvailableWaterItems(waterConditionFilters, availableWaterValues);
-  const reviewCounts = await readOnsenReviewCounts(candidates.map((candidate) => candidate.slug));
+  const accommodationSlugs = candidates.filter((candidate) => getOnsenEntityType(candidate) === 'accommodation').map((candidate) => candidate.slug);
+  const facilitySlugs = candidates.filter((candidate) => getOnsenEntityType(candidate) === 'facility').map((candidate) => candidate.slug);
+  const [accommodationReviewCounts, facilityReviewCounts] = await Promise.all([
+    readOnsenReviewCounts(accommodationSlugs, 'accommodation'),
+    readOnsenReviewCounts(facilitySlugs, 'facility'),
+  ]);
   const filtered = candidates
     .map((candidate, index) => ({ candidate, index }))
     .filter(({ candidate }) => {
       const location = candidate.location;
       const contexts = candidate.contexts;
+      const entityMatch = !entityType || getOnsenEntityType(candidate) === entityType;
       const regionGroupMatch = !regionGroup || location?.regionGroup === regionGroup;
       const areaMatch = !area || location?.onsenArea === area || candidate.region === area;
       const travelMatch = travel.every((item) => contexts?.travel.some((value) => value === item));
       const bathMatch = bath.every((item) => contexts?.bath.some((value) => value === item));
       const waterMatch = water.every((item) => hasOnsenWaterCriterion(candidate, item));
+      const featureMatch = feature.every((item) => candidate.officialFilterCodes?.includes(item));
       const queryText = [
         candidate.name,
         candidate.jaName,
@@ -300,23 +340,24 @@ export default async function OnsenPage({
         .join(' ')
         .toLowerCase();
       const queryMatch = !query || queryText.includes(query);
-      return regionGroupMatch && areaMatch && travelMatch && bathMatch && waterMatch && queryMatch;
+      return entityMatch && regionGroupMatch && areaMatch && travelMatch && bathMatch && waterMatch && featureMatch && queryMatch;
     })
     .sort((a, b) => getOnsenWaterSortRank(a.candidate) - getOnsenWaterSortRank(b.candidate) || a.index - b.index)
     .map(({ candidate }) => candidate);
   const resultStats = filtered.reduce(
     (acc, candidate) => ({
-      verdictCount: acc.verdictCount + (candidate.verdict ? 1 : 0),
+      accommodationCount: acc.accommodationCount + (getOnsenEntityType(candidate) === 'accommodation' ? 1 : 0),
+      facilityCount: acc.facilityCount + (getOnsenEntityType(candidate) === 'facility' ? 1 : 0),
       directSourceCount: acc.directSourceCount + (hasConfirmedWaterKakenagashi(candidate) ? 1 : 0),
       pureSourceCount: acc.pureSourceCount + (candidate.waterProfile?.canonicalMethod === 'kakenagashi_pure' ? 1 : 0),
       experiencesRead: acc.experiencesRead + (candidate.verdict?.briefing.experiencesRead ?? candidate.directReviews ?? 0),
     }),
-    { verdictCount: 0, directSourceCount: 0, pureSourceCount: 0, experiencesRead: 0 }
+    { accommodationCount: 0, facilityCount: 0, directSourceCount: 0, pureSourceCount: 0, experiencesRead: 0 }
   );
   const activeRegionGroupLabel = getFilterLabel(regionGroupFilters, regionGroup);
   const activeAreaLabel = getFilterLabel(onsenAreaFilters, area);
-  const hasVisibleFilter = travel.length > 0 || bath.length > 0 || water.length > 0;
-  const currentResultsHref = buildResultsHref({ query, regionGroup, area, travel, bath, water });
+  const hasVisibleFilter = Boolean(entityType) || travel.length > 0 || bath.length > 0 || water.length > 0 || feature.length > 0;
+  const currentResultsHref = buildResultsHref({ query, type: entityType, regionGroup, area, travel, bath, water, feature });
   const clearVisibleFiltersHref = buildResultsHref({ query, regionGroup, area });
   const quickFilters: {
     label: string;
@@ -324,20 +365,38 @@ export default async function OnsenPage({
     href: string;
     termKey?: OnsenTermInfoKey;
   }[] = [
-    {
-      label: '객실 내 프라이빗탕 중심',
-      active: bath.includes('room_bath'),
-      href: buildResultsHref({ query, regionGroup, area, travel, bath: toggleFilterValue(bath, 'room_bath'), water }),
-    },
-    {
-      label: '대절탕 있음',
-      active: bath.includes('private_bath'),
-      href: buildResultsHref({ query, regionGroup, area, travel, bath: toggleFilterValue(bath, 'private_bath'), water }),
-    },
+    ...onsenEntityFilters.map((item) => ({
+      label: item.label,
+      active: entityType === item.value,
+      href: buildResultsHref({
+        query,
+        type: entityType === item.value ? '' : item.value,
+        regionGroup,
+        area,
+        travel,
+        bath,
+        water,
+        feature,
+      }),
+    })),
+    ...(entityType === 'facility'
+      ? []
+      : [{
+          label: '객실 내 프라이빗탕 중심',
+          active: bath.includes('room_bath'),
+          href: buildResultsHref({ query, type: entityType, regionGroup, area, travel, bath: toggleFilterValue(bath, 'room_bath'), water, feature }),
+        }]),
+    ...(availableBathValues.has('private_bath')
+      ? [{
+          label: '대절탕 있음',
+          active: bath.includes('private_bath'),
+          href: buildResultsHref({ query, type: entityType, regionGroup, area, travel, bath: toggleFilterValue(bath, 'private_bath'), water, feature }),
+        }]
+      : []),
     {
       label: '직수',
       active: water.includes('kakenagashi'),
-      href: buildResultsHref({ query, regionGroup, area, travel, bath, water: toggleWaterFilterValue(water, 'kakenagashi') }),
+      href: buildResultsHref({ query, type: entityType, regionGroup, area, travel, bath, water: toggleWaterFilterValue(water, 'kakenagashi'), feature }),
       termKey: 'directWater' as const,
     },
     ...(availableWaterValues.has('kakenagashi_pure')
@@ -345,12 +404,12 @@ export default async function OnsenPage({
           {
             label: '순수직수',
             active: water.includes('kakenagashi_pure'),
-            href: buildResultsHref({ query, regionGroup, area, travel, bath, water: toggleWaterFilterValue(water, 'kakenagashi_pure') }),
+            href: buildResultsHref({ query, type: entityType, regionGroup, area, travel, bath, water: toggleWaterFilterValue(water, 'kakenagashi_pure'), feature }),
             termKey: 'pureDirectWater' as const,
           },
         ]
       : []),
-  ].filter((item) => !item.termKey || item.termKey !== 'directWater' || availableWaterValues.has('kakenagashi'));
+  ].filter((item) => !('termKey' in item) || item.termKey !== 'directWater' || availableWaterValues.has('kakenagashi'));
   const resultScopeLabel = activeAreaLabel ?? activeRegionGroupLabel ?? '전체 지역';
 
   return (
@@ -376,11 +435,42 @@ export default async function OnsenPage({
             <nav className="onsen-results-toolbar" aria-label="온천 결과 필터">
               <div className="onsen-filter-group">
                 <div className="onsen-filter-group-title">
+                  <span>유형</span>
+                </div>
+                <div className="onsen-filter-chip-row">
+                  {onsenEntityFilters.map((item) => {
+                    const active = entityType === item.value;
+                    return (
+                      <Link
+                        key={item.value}
+                        className="onsen-filter-chip"
+                        data-state={active ? 'active' : undefined}
+                        href={buildResultsHref({
+                          query,
+                          type: active ? '' : item.value,
+                          regionGroup,
+                          area,
+                          travel,
+                          bath,
+                          water,
+                          feature,
+                        })}
+                        aria-current={active ? 'true' : undefined}
+                      >
+                        {item.label}
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="onsen-filter-group">
+                <div className="onsen-filter-group-title">
                   <span>이용</span>
                 </div>
                 <div className="onsen-filter-chip-row">
                   {travelContextFilters
-                    .filter((item) => !item.disabled)
+                    .filter((item) => !item.disabled && availableTravelValues.has(item.value))
                     .map((item) => {
                       const active = travel.includes(item.value);
                       return (
@@ -390,11 +480,13 @@ export default async function OnsenPage({
                           data-state={active ? 'active' : undefined}
                           href={buildResultsHref({
                             query,
+                            type: entityType,
                             regionGroup,
                             area,
                             travel: toggleFilterValue(travel, item.value),
                             bath,
                             water,
+                            feature,
                           })}
                           aria-current={active ? 'true' : undefined}
                         >
@@ -410,7 +502,7 @@ export default async function OnsenPage({
                   <span>구성</span>
                 </div>
                 <div className="onsen-filter-chip-row">
-                  {bathContextFilters.map((item) => {
+                  {bathContextFilters.filter((item) => availableBathValues.has(item.value)).map((item) => {
                     const active = bath.includes(item.value);
                     return (
                       <Link
@@ -419,11 +511,13 @@ export default async function OnsenPage({
                         data-state={active ? 'active' : undefined}
                         href={buildResultsHref({
                           query,
+                          type: entityType,
                           regionGroup,
                           area,
                           travel,
                           bath: toggleFilterValue(bath, item.value),
                           water,
+                          feature,
                         })}
                         aria-current={active ? 'true' : undefined}
                       >
@@ -451,11 +545,13 @@ export default async function OnsenPage({
                           active={active}
                           href={buildResultsHref({
                             query,
+                            type: entityType,
                             regionGroup,
                             area,
                             travel,
                             bath,
                             water: toggleWaterFilterValue(water, item.value),
+                            feature,
                           })}
                           termKey={termKey}
                         />
@@ -481,11 +577,13 @@ export default async function OnsenPage({
                           active={active}
                           href={buildResultsHref({
                             query,
+                            type: entityType,
                             regionGroup,
                             area,
                             travel,
                             bath,
                             water: toggleWaterFilterValue(water, item.value),
+                            feature,
                           })}
                           termKey={termKey}
                         />
@@ -511,11 +609,13 @@ export default async function OnsenPage({
                           active={active}
                           href={buildResultsHref({
                             query,
+                            type: entityType,
                             regionGroup,
                             area,
                             travel,
                             bath,
                             water: toggleWaterFilterValue(water, item.value),
+                            feature,
                           })}
                           termKey={termKey}
                         />
@@ -541,11 +641,13 @@ export default async function OnsenPage({
                           active={active}
                           href={buildResultsHref({
                             query,
+                            type: entityType,
                             regionGroup,
                             area,
                             travel,
                             bath,
                             water: toggleWaterFilterValue(water, item.value),
+                            feature,
                           })}
                           termKey={termKey}
                         />
@@ -554,6 +656,44 @@ export default async function OnsenPage({
                   </div>
                 </div>
               ) : null}
+
+              {['목욕 구성', '사우나·체험', '이용 편의', '공식 성분'].map((group) => {
+                const items = availableFeatureFilters.filter((item) => item.description === group);
+                if (items.length === 0) return null;
+                return (
+                  <div className="onsen-filter-group" key={group}>
+                    <div className="onsen-filter-group-title">
+                      <span>{group}</span>
+                      <small>공식 확인</small>
+                    </div>
+                    <div className="onsen-filter-chip-row">
+                      {items.map((item) => {
+                        const active = feature.includes(item.value);
+                        return (
+                          <Link
+                            key={item.value}
+                            className="onsen-filter-chip"
+                            data-state={active ? 'active' : undefined}
+                            href={buildResultsHref({
+                              query,
+                              type: entityType,
+                              regionGroup,
+                              area,
+                              travel,
+                              bath,
+                              water,
+                              feature: toggleFilterValue(feature, item.value),
+                            })}
+                            aria-current={active ? 'true' : undefined}
+                          >
+                            {item.label}
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  </div>
+                );
+              })}
 
               <div className="onsen-results-actions">
                 {hasVisibleFilter ? (
@@ -582,9 +722,15 @@ export default async function OnsenPage({
             </div>
             <dl className="onsen-results-counts" aria-label="현재 결과 판정 요약">
               <div>
-                <dt>판정</dt>
-                <dd>{formatNumber(resultStats.verdictCount)}곳</dd>
+                <dt>숙소</dt>
+                <dd>{formatNumber(resultStats.accommodationCount)}곳</dd>
               </div>
+              {resultStats.facilityCount > 0 ? (
+                <div>
+                  <dt>당일온천</dt>
+                  <dd>{formatNumber(resultStats.facilityCount)}곳</dd>
+                </div>
+              ) : null}
               {resultStats.pureSourceCount > 0 ? (
                 <div>
                   <dt>
@@ -621,7 +767,10 @@ export default async function OnsenPage({
           {filtered.map((candidate) => (
             (() => {
               const waterHighlightMark = getOnsenWaterHighlightMark(candidate);
-              const reviewCount = reviewCounts[candidate.slug] ?? 0;
+              const candidateType = getOnsenEntityType(candidate);
+              const reviewCount = candidateType === 'facility'
+                ? facilityReviewCounts[candidate.slug] ?? 0
+                : accommodationReviewCounts[candidate.slug] ?? 0;
               const verdictStamp = formatVerdictStamp(candidate);
 
               return (
@@ -647,6 +796,9 @@ export default async function OnsenPage({
                         <div>
                           <div className="onsen-card-meta-row">
                             <span className="onsen-card-location">{candidate.location?.display ?? candidate.area}</span>
+                            <span className="onsen-card-entity-type" data-type={candidateType}>
+                              {candidateType === 'facility' ? '당일온천' : '숙소'}
+                            </span>
                           </div>
                           <div className="onsen-card-title-row">
                             <h2>{candidate.name}</h2>
@@ -686,7 +838,7 @@ export default async function OnsenPage({
                         <div>
                           <dt>
                             <Drop size={15} weight="bold" aria-hidden="true" />
-                            객실
+                            {candidateType === 'facility' ? '이용' : '객실'}
                           </dt>
                           <dd>{normalizeResultCardCopy(candidate.waterDecision.roomBath)}</dd>
                         </div>

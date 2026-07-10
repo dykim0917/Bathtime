@@ -163,6 +163,25 @@ Atlassian식 구조에서 가져오는 것은 컬러가 아니라 의미 체계�
 - Overlays must use the overlay surface, lifted shadow, and shared scrim token.
 - Future UI work starts from this token contract. If a value is missing, add it here first and then use it in CSS.
 
+#### Onsen Review / Passport
+
+- Review modal max width: CSS `--bt-review-modal-max-width`, `720px`.
+- Review step body min height: CSS `--bt-review-step-min-height`, `360px`, so question changes do not shift the modal shell.
+- Review flow is three steps: 방문, 온천수, 이용 경험. Progress uses text and line fill together, never color alone.
+- Structured answers use icon-backed selectable controls. Selected state uses Primary Soft, focus uses the shared form focus ring.
+- Submission success stays inside the modal and immediately explains the personal benefit: the visit has been added to 온천여권 and contributes to the user's taste profile.
+- Passport is an archive surface, not a gamified leaderboard. It shows visit count, distinct places, verified visits, taste signals, and recent records without points, ranks, streak pressure, or fake precision.
+- First-party reviews and externally collected review evidence must never share a displayed denominator.
+
+#### Onsen Accommodation / Facility Search
+
+- Accommodation and non-accommodation facility records share result-card geometry but always show an explicit entity label.
+- The primary type control offers 숙소 and 당일온천. With neither selected, both entity types are shown.
+- Facility feature chips appear only when at least one active facility has a confirmed, ready official filter fact for that feature.
+- Review-derived facility signals may appear in summaries and cautions, but never create hard filters or water-method badges.
+- Facility water-method badges remain hidden until the official water fact has a `ready` render status and a verified bath scope.
+- Accommodation cards keep the 객실 fact; facility cards replace it with 이용 so lodging-specific language does not leak into facility results.
+
 ---
 
 ## 4. IA / Navigation Strategy
@@ -1010,6 +1029,8 @@ export const spacing = {
 | 2026-05-07 | 핵심 객체를 Content / Place / Item / Routine Preset으로 정리 | 메뉴 중심 IA뿐 아니라 아카이브 플랫폼으로서 데이터 구조와 확장 방향을 명확히 하기 위해 |
 | 2026-05-07 | 디자인 방향을 Warm Archive + Soft Water Accent로 재정의 | 라이트 테마 기반 아카이브 서비스에 맞게 신뢰감, 사진 중심성, 절제된 포인트 컬러를 확보하기 위해 |
 | 2026-05-07 | Primary color를 Deep Ritual Teal로 지정 | 물, 청결함, 웰니스 감각은 유지하되 쨍한 소비자 마켓 컬러를 피하기 위해 |
+| 2026-07-10 | 자체 온천 리뷰를 온천여권 기록으로 확장 | 리뷰 작성 직후 개인 기록과 취향 분석이라는 효용을 제공하고, 시설 데이터의 장기적인 자체 근거를 만들기 위해 |
+| 2026-07-10 | 온천 검색에 숙소·당일온천 시설을 병렬 편입 | 데이터 모델과 근거 모수는 분리하면서 한 검색 표면에서 유형과 공식 시설 사실로 탐색할 수 있게 하기 위해 |
 
 ---
 

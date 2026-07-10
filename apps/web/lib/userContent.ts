@@ -3,6 +3,17 @@
 import type { User } from '@supabase/supabase-js';
 import type { Submission } from '@/src/archive/types';
 import { getSupabaseClient } from './auth';
+import type {
+  OnsenPassportEntry,
+  OnsenReviewBathArea,
+  OnsenReviewCleanliness,
+  OnsenReviewCrowding,
+  OnsenReviewRevisitIntent,
+  OnsenReviewTargetType,
+  OnsenReviewTemperature,
+  OnsenReviewWaterColor,
+  OnsenReviewWaterTexture,
+} from './onsenPassport';
 
 export class AuthRequiredError extends Error {
   constructor(message = 'Login is required') {
@@ -20,8 +31,27 @@ export type ContentFeedbackReason =
   | 'needs_more_candidates'
   | 'tone_unclear'
   | 'other';
-export type OnsenReviewBathType = 'room_bath' | 'private_bath' | 'public_bath' | 'other';
 export type OnsenReviewWaterFeel = 'clear' | 'soft' | 'strong' | 'unclear';
+
+type OnsenPassportRow = {
+  id: string;
+  target_type: OnsenPassportEntry['targetType'];
+  target_slug: string;
+  target_name: string | null;
+  bath_areas: OnsenPassportEntry['bathAreas'];
+  visited_on: string | null;
+  water_texture: OnsenPassportEntry['waterTexture'];
+  water_color: OnsenPassportEntry['waterColor'];
+  temperature_experience: OnsenPassportEntry['temperatureExperience'];
+  crowding_level: OnsenPassportEntry['crowdingLevel'];
+  cleanliness_level: OnsenPassportEntry['cleanlinessLevel'];
+  revisit_intent: OnsenPassportEntry['revisitIntent'];
+  caution_text: string | null;
+  body: string;
+  status: OnsenPassportEntry['status'];
+  visit_verification_status: OnsenPassportEntry['verificationStatus'];
+  created_at: string;
+};
 
 type SubmissionRow = {
   id: string;
@@ -321,24 +351,93 @@ export async function removeContentFeedback(contentId: string): Promise<void> {
 }
 
 export async function saveOnsenReview(input: {
-  accommodationSlug: string;
-  bathType: OnsenReviewBathType;
-  waterFeel: OnsenReviewWaterFeel;
-  visitSeason?: string;
+  targetType: OnsenReviewTargetType;
+  targetSlug: string;
+  targetName: string;
+  bathAreas: OnsenReviewBathArea[];
+  visitedOn?: string;
+  waterTexture: OnsenReviewWaterTexture[];
+  waterColor: OnsenReviewWaterColor;
+  temperatureExperience: OnsenReviewTemperature;
+  crowdingLevel: OnsenReviewCrowding;
+  cleanlinessLevel: OnsenReviewCleanliness;
+  revisitIntent: OnsenReviewRevisitIntent;
+  cautionText?: string;
   body: string;
-}): Promise<void> {
+}): Promise<OnsenPassportEntry> {
   const user = await getAuthenticatedUser({ ensureProfile: true });
   const supabase = requireClient();
-  const { error } = await supabase.from('onsen_reviews').insert({
-    accommodation_slug: input.accommodationSlug,
-    user_id: user.id,
-    bath_type: input.bathType,
-    water_feel: input.waterFeel,
-    visit_season: input.visitSeason?.trim() || null,
-    body: input.body,
-  });
+  const waterFeel: OnsenReviewWaterFeel = input.waterTexture.includes('distinctive')
+    ? 'strong'
+    : input.waterTexture.some((value) => value === 'slippery' || value === 'soft')
+      ? 'soft'
+      : input.waterTexture.includes('unclear')
+        ? 'unclear'
+        : 'clear';
+  const { data, error } = await supabase
+    .from('onsen_reviews')
+    .insert({
+      accommodation_slug: input.targetType === 'accommodation' ? input.targetSlug : null,
+      target_type: input.targetType,
+      target_slug: input.targetSlug,
+      target_name: input.targetName,
+      evidence_origin: 'first_party',
+      user_id: user.id,
+      bath_type: input.bathAreas[0],
+      bath_areas: input.bathAreas,
+      water_feel: waterFeel,
+      water_texture: input.waterTexture,
+      water_color: input.waterColor,
+      temperature_experience: input.temperatureExperience,
+      crowding_level: input.crowdingLevel,
+      cleanliness_level: input.cleanlinessLevel,
+      revisit_intent: input.revisitIntent,
+      visited_on: input.visitedOn || null,
+      visit_season: null,
+      caution_text: input.cautionText?.trim() || null,
+      body: input.body.trim(),
+    })
+    .select('id,target_type,target_slug,target_name,bath_areas,visited_on,water_texture,water_color,temperature_experience,crowding_level,cleanliness_level,revisit_intent,caution_text,body,status,visit_verification_status,created_at')
+    .single();
 
   if (error) throw error;
+  return mapOnsenPassportRow(data as OnsenPassportRow);
+}
+
+function mapOnsenPassportRow(row: OnsenPassportRow): OnsenPassportEntry {
+  return {
+    id: row.id,
+    targetType: row.target_type,
+    targetSlug: row.target_slug,
+    targetName: row.target_name?.trim() || row.target_slug,
+    bathAreas: row.bath_areas,
+    visitedOn: row.visited_on,
+    waterTexture: row.water_texture,
+    waterColor: row.water_color,
+    temperatureExperience: row.temperature_experience,
+    crowdingLevel: row.crowding_level,
+    cleanlinessLevel: row.cleanliness_level,
+    revisitIntent: row.revisit_intent,
+    cautionText: row.caution_text,
+    body: row.body,
+    status: row.status,
+    verificationStatus: row.visit_verification_status,
+    createdAt: row.created_at,
+  };
+}
+
+export async function getMyOnsenPassportEntries(): Promise<OnsenPassportEntry[]> {
+  const user = await getAuthenticatedUser();
+  const supabase = requireClient();
+  const { data, error } = await supabase
+    .from('onsen_reviews')
+    .select('id,target_type,target_slug,target_name,bath_areas,visited_on,water_texture,water_color,temperature_experience,crowding_level,cleanliness_level,revisit_intent,caution_text,body,status,visit_verification_status,created_at')
+    .eq('user_id', user.id)
+    .order('visited_on', { ascending: false, nullsFirst: false })
+    .order('created_at', { ascending: false });
+
+  if (error) throw error;
+  return (data as OnsenPassportRow[] | null ?? []).map(mapOnsenPassportRow);
 }
 
 function mapSubmissionRow(row: SubmissionRow): Submission {

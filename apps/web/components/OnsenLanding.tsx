@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Waves } from '@phosphor-icons/react/ssr';
 import { readOnsenCandidates } from '@web/lib/onsenData';
 import { buildOnsenSearchSuggestions, popularOnsenSearches, recommendedOnsenPlaces } from '@web/lib/onsenSearch';
-import type { OnsenCandidate } from '@web/lib/onsenCatalog';
+import { getOnsenEntityType, type OnsenCandidate } from '@web/lib/onsenCatalog';
 import { getOnsenWaterHighlightMark, hasConfirmedWaterKakenagashi } from '@web/lib/onsenWaterSignal';
 import { OnsenSearchForm } from './OnsenSearchForm';
 
@@ -11,6 +11,8 @@ type RegionInventory = {
   label: string;
   href: string;
   publishedCount: number;
+  accommodationCount: number;
+  facilityCount: number;
   directSourceCount: number;
   imageUrl: string;
 };
@@ -54,16 +56,14 @@ function OnsenLaurel({ side = 'left' }: { side?: 'left' | 'right' }) {
   );
 }
 
-function getVerdictTotal(candidates: OnsenCandidate[]) {
+function getCatalogTotal(candidates: OnsenCandidate[]) {
   return candidates.reduce(
-    (acc, candidate) => {
-      if (!candidate.verdict) return acc;
-      return {
-        experiencesRead: acc.experiencesRead + (candidate.verdict.briefing.experiencesRead ?? candidate.directReviews ?? 0),
-        publishedCount: acc.publishedCount + 1,
-      };
-    },
-    { experiencesRead: 0, publishedCount: 0 }
+    (acc, candidate) => ({
+      experiencesRead: acc.experiencesRead + (candidate.verdict?.briefing.experiencesRead ?? candidate.directReviews ?? 0),
+      accommodationCount: acc.accommodationCount + (getOnsenEntityType(candidate) === 'accommodation' ? 1 : 0),
+      facilityCount: acc.facilityCount + (getOnsenEntityType(candidate) === 'facility' ? 1 : 0),
+    }),
+    { experiencesRead: 0, accommodationCount: 0, facilityCount: 0 }
   );
 }
 
@@ -108,11 +108,15 @@ function getRegionInventory(candidates: OnsenCandidate[]): RegionInventory[] {
         label,
         href: `/onsen/results?area=${encodeURIComponent(area)}`,
         publishedCount: 0,
+        accommodationCount: 0,
+        facilityCount: 0,
         directSourceCount: 0,
         imageUrl: regionImageByArea[area] ?? '/images/onsen/regions/yufuin.jpg',
       } satisfies RegionInventory);
 
     existing.publishedCount += 1;
+    if (getOnsenEntityType(candidate) === 'facility') existing.facilityCount += 1;
+    else existing.accommodationCount += 1;
     if (hasConfirmedWaterKakenagashi(candidate)) {
       existing.directSourceCount += 1;
     }
@@ -127,7 +131,7 @@ function getRegionInventory(candidates: OnsenCandidate[]): RegionInventory[] {
 export async function OnsenLanding() {
   const candidates = await readOnsenCandidates();
   const suggestions = buildOnsenSearchSuggestions(candidates);
-  const totals = getVerdictTotal(candidates);
+  const totals = getCatalogTotal(candidates);
   const featuredVerdicts = getFeaturedVerdicts(candidates);
   const regionInventory = getRegionInventory(candidates);
   const featuredRegionInventory = regionInventory.slice(0, 6);
@@ -138,9 +142,11 @@ export async function OnsenLanding() {
       <section className="onsen-search-hero" aria-labelledby="onsen-search-title">
         <div className="onsen-hero-copy-block">
           <p className="onsen-kicker">바스타임 온천 검색기</p>
-          <h1 id="onsen-search-title">숙소보다 먼저, 어떤 온천인지 확인하세요.</h1>
+          <h1 id="onsen-search-title">숙박 전에도, 당일 방문 전에도 어떤 온천인지 확인하세요.</h1>
           <div className="onsen-total-stamp" aria-label="바스타임 온천 판정 현황">
-            <strong>이용 경험 {formatNumber(totals.experiencesRead)}건을 읽고, {formatNumber(totals.publishedCount)}곳을 확인했습니다.</strong>
+            <strong>
+              이용 경험 {formatNumber(totals.experiencesRead)}건을 읽고, 숙소 {formatNumber(totals.accommodationCount)}곳과 당일온천 {formatNumber(totals.facilityCount)}곳을 확인했습니다.
+            </strong>
             <Link href="/onsen/methodology">확인 기준 보기</Link>
           </div>
 
@@ -153,7 +159,7 @@ export async function OnsenLanding() {
           <div className="onsen-home-section-head">
             <p className="onsen-kicker">바스타임 판정</p>
             <h2 id="onsen-featured-verdicts-title">먼저 확인해볼 온천</h2>
-            <p>검색어를 정하지 않아도, 바스타임이 확인한 숙소부터 살펴볼 수 있습니다.</p>
+            <p>검색어를 정하지 않아도, 바스타임이 근거를 확인한 온천부터 살펴볼 수 있습니다.</p>
           </div>
           <div className="onsen-featured-verdict-grid">
             {featuredVerdicts.map((candidate) => {
@@ -185,7 +191,9 @@ export async function OnsenLanding() {
                         <OnsenLaurel side="right" />
                       </span>
                     ) : null}
-                    <span className="onsen-card-location">{candidate.location?.display ?? candidate.area}</span>
+                    <span className="onsen-card-location">
+                      {candidate.location?.display ?? candidate.area} · {getOnsenEntityType(candidate) === 'facility' ? '당일온천' : '숙소'}
+                    </span>
                     <strong>{candidate.name}</strong>
                     <span className="onsen-verdict-card-meta">
                       이용 경험 {formatNumber(candidate.verdict?.briefing.experiencesRead ?? candidate.directReviews)}건 분석 ·{' '}
@@ -204,7 +212,7 @@ export async function OnsenLanding() {
           <div className="onsen-home-section-head">
             <p className="onsen-kicker">지역별 보기</p>
             <h2 id="onsen-region-inventory-title">지역별로 확인한 온천</h2>
-            <p>숙소 수가 많은 지역을 먼저 정리했습니다.</p>
+            <p>판정이 준비된 숙소와 당일온천이 많은 지역을 먼저 정리했습니다.</p>
           </div>
           <div className="onsen-region-inventory-grid">
             {featuredRegionInventory.map((item) => (
@@ -214,7 +222,10 @@ export async function OnsenLanding() {
                 </span>
                 <span className="onsen-region-inventory-copy">
                   <strong>{item.label}</strong>
-                  <span>숙소 {formatNumber(item.publishedCount)}곳 · 직수 {formatNumber(item.directSourceCount)}곳</span>
+                  <span>
+                    숙소 {formatNumber(item.accommodationCount)}곳 · 당일온천 {formatNumber(item.facilityCount)}곳
+                    {item.directSourceCount > 0 ? ` · 직수 ${formatNumber(item.directSourceCount)}곳` : ''}
+                  </span>
                 </span>
               </Link>
             ))}
@@ -231,7 +242,7 @@ export async function OnsenLanding() {
                 {compactRegionInventory.map((item) => (
                   <Link key={item.area} className="onsen-region-compact-link" href={item.href}>
                     <strong>{item.label}</strong>
-                    <span>숙소 {formatNumber(item.publishedCount)}곳</span>
+                    <span>숙소 {formatNumber(item.accommodationCount)}곳 · 당일온천 {formatNumber(item.facilityCount)}곳</span>
                   </Link>
                 ))}
               </div>

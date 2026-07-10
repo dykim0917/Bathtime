@@ -25,10 +25,10 @@ const processSteps = [
     shortTitle: '읽습니다',
     image: '/images/onsen/regions/atami.jpg',
     alt: '바다와 온천 마을이 함께 보이는 아타미 풍경',
-    description: '숙소 공식 안내와 예약 조건을 먼저 확인해 탕의 위치, 온천수 사용 범위, 운영 방식을 구조화합니다.',
+    description: '숙소와 시설의 공식 안내를 먼저 확인해 탕의 위치, 온천수 사용 범위, 예약·입장 방식을 구조화합니다.',
     rows: [
-      ['공식 확인', '객실탕, 대절탕, 대욕장'],
-      ['조건 확인', '객실 타입, 계절, 이용 시간'],
+      ['공식 확인', '객실탕, 대절탕, 공용탕'],
+      ['조건 확인', '객실 타입, 입장 범위, 이용 시간'],
       ['방식 확인', '순수직수, 직수, 순환식 온천'],
     ],
   },
@@ -65,7 +65,7 @@ const processSteps = [
     rows: [
       ['확인됨', '공식 정보로 검증한 사실'],
       ['이용 경험 기준', '반복 언급을 세어 내린 판단'],
-      ['예약 시 확인', '조건에 따라 달라지는 항목'],
+      ['이용 전 확인', '조건에 따라 달라지는 항목'],
     ],
   },
 ] as const;
@@ -75,8 +75,8 @@ const informationStates = [
     id: 'confirmed',
     label: '확인됨',
     title: '공식 정보로 검증한 사실',
-    body: '숙소 공식 안내나 구조화된 예약 정보로 교차 확인한 항목입니다. 탕의 위치, 원천 방식, 객실별 이용 범위처럼 구조적인 사실이 여기에 해당합니다.',
-    example: '전 객실에 프라이빗 노천탕이 있습니다.',
+    body: '숙소·시설 공식 안내나 구조화된 예약·입장 정보로 확인한 항목입니다. 탕의 위치, 원천 방식, 객실별·욕장별 이용 범위처럼 구조적인 사실이 여기에 해당합니다.',
+    example: '당일입욕으로 이용할 수 있는 공용탕 범위가 확인됐습니다.',
     icon: CheckCircle,
   },
   {
@@ -89,21 +89,19 @@ const informationStates = [
   },
   {
     id: 'check',
-    label: '예약 시 확인',
-    title: '시기와 플랜에 따라 달라지는 조건',
-    body: '객실 타입, 계절, 운영 시간처럼 예약 시점에 달라질 수 있는 항목입니다. 막연한 주의 대신 무엇을 확인해야 하는지 함께 적습니다.',
-    example: '대절탕이 예약제인지 선착순인지 숙소에 확인하세요.',
+    label: '이용 전 확인',
+    title: '시기와 예약·입장 방식에 따라 달라지는 조건',
+    body: '객실 타입, 입장 대상, 계절, 운영 시간처럼 예약·방문 시점에 달라질 수 있는 항목입니다. 막연한 주의 대신 무엇을 확인해야 하는지 함께 적습니다.',
+    example: '대절탕 예약 방식과 당일입욕 마감 시간을 공식 안내에서 확인하세요.',
     icon: WarningCircle,
   },
 ] as const;
-
-const platforms = ['자란', '라쿠텐 트래블', '구글 지도', '트립어드바이저', '아고다', '야후 트래블', '리럭스'];
 
 function formatNumber(value: number) {
   return new Intl.NumberFormat('ko-KR').format(value);
 }
 
-export function OnsenMethodologyExperience({ totals }: { totals: MethodologyTotals }) {
+export function OnsenMethodologyExperience({ totals, platforms }: { totals: MethodologyTotals; platforms: string[] }) {
   const [activeStep, setActiveStep] = useState(0);
   const [activeState, setActiveState] = useState<(typeof informationStates)[number]['id']>('confirmed');
   const progressRef = useRef<HTMLSpanElement>(null);
@@ -202,7 +200,7 @@ export function OnsenMethodologyExperience({ totals }: { totals: MethodologyTota
             </div>
             <div>
               <dt>{formatNumber(totals.platformCount)}</dt>
-              <dd>확인 플랫폼</dd>
+              <dd>확인 표면</dd>
             </div>
           </dl>
         </div>
@@ -218,7 +216,7 @@ export function OnsenMethodologyExperience({ totals }: { totals: MethodologyTota
           <h2>하나의 답으로 줄이기 전에,<br />서로 다른 장면을 오래 봅니다.</h2>
           <p>
             같은 지역 안에서도 온천수 방식과 탕의 위치, 계절에 따른 체감은 다릅니다. 바스타임은 분위기만으로
-            묶지 않고, 예약 전에 실제로 달라지는 조건을 따로 확인합니다.
+            묶지 않고, 예약이나 방문 전에 실제로 달라지는 조건을 따로 확인합니다.
           </p>
         </div>
         <div className="onsen-method-opening-gallery" data-method-reveal>
@@ -240,7 +238,7 @@ export function OnsenMethodologyExperience({ totals }: { totals: MethodologyTota
       <section className="onsen-method-process-v2" aria-labelledby="method-process-title">
         <div className="onsen-method-section-head" data-method-reveal>
           <p className="onsen-method-label">판정이 만들어지는 과정</p>
-          <h2 id="method-process-title">읽은 것은 숫자가 되고,<br />숫자는 예약 기준이 됩니다.</h2>
+          <h2 id="method-process-title">읽은 것은 숫자가 되고,<br />숫자는 선택 기준이 됩니다.</h2>
           <p>오른쪽 내용을 따라 내려가면 사진과 판정 단계가 함께 바뀝니다.</p>
         </div>
 
@@ -360,10 +358,10 @@ export function OnsenMethodologyExperience({ totals }: { totals: MethodologyTota
           <p className="onsen-method-label">확인하는 표면</p>
           <h2 id="method-sources-title">어디를 읽었는지도<br />판정의 일부입니다.</h2>
           <p>
-            공개적으로 확인 가능한 플랫폼을 숙소별로 나눠 읽습니다. 각 판정 페이지에는 직접 읽은 이용 경험 수와
+            공개적으로 확인 가능한 플랫폼과 공개 표면을 숙소·시설별로 나눠 읽습니다. 각 판정 페이지에는 직접 읽은 이용 경험 수와
             확인한 플랫폼 수, 기준일을 함께 표시합니다.
           </p>
-          <ol className="onsen-method-platform-list" aria-label="확인 플랫폼">
+          <ol className="onsen-method-platform-list" aria-label="주요 확인 표면">
             {platforms.map((platform, index) => (
               <li key={platform}><span>{String(index + 1).padStart(2, '0')}</span>{platform}</li>
             ))}
