@@ -2,13 +2,12 @@
 
 import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { BookmarkSimple, CaretDown, CaretLeft, SignOut, UserCircle, X } from '@phosphor-icons/react';
+import { BookOpenText, BookmarkSimple, CaretDown, CaretLeft, SignOut, UserCircle, X } from '@phosphor-icons/react';
 import { Suspense, useEffect, useMemo, useState } from 'react';
 import brandSymbol from '@/assets/images/bathtime.svg';
 import logoImage from '@/assets/images/logo.png';
 import { OnsenSearchForm } from '@web/components/OnsenSearchForm';
 import { getSupabaseClient } from '@web/lib/auth';
-import { onsenCandidates } from '@web/lib/onsenCatalog';
 import { buildOnsenSearchSuggestions, popularOnsenSearches, recommendedOnsenPlaces } from '@web/lib/onsenSearch';
 
 type NativeAuthSessionMessage = {
@@ -57,6 +56,10 @@ function AccountButton({ signedIn, ready, onSignedOut }: { signedIn: boolean; re
         <CaretDown size={13} weight="bold" aria-hidden />
       </button>
       <div className="account-menu" role="menu">
+        <Link href="/passport" role="menuitem" onClick={() => setOpen(false)}>
+          <BookOpenText size={17} aria-hidden />
+          내 온천여권
+        </Link>
         <Link href="/saved" role="menuitem" onClick={() => setOpen(false)}>
           <BookmarkSimple size={17} aria-hidden />
           찜한 온천
@@ -125,7 +128,13 @@ function getInternalPath(value: string | null) {
   }
 }
 
-export function Shell({ children }: { children: React.ReactNode }) {
+export function Shell({
+  children,
+  onsenSearchSuggestions,
+}: {
+  children: React.ReactNode;
+  onsenSearchSuggestions: ReturnType<typeof buildOnsenSearchSuggestions>;
+}) {
   const pathname = usePathname();
   const router = useRouter();
   const isOnsenRoute = pathname === '/' || pathname.startsWith('/onsen');
@@ -135,7 +144,6 @@ export function Shell({ children }: { children: React.ReactNode }) {
   const [signedIn, setSignedIn] = useState(false);
   const [authReady, setAuthReady] = useState(false);
   const [authGate, setAuthGate] = useState<{ source: string; next: string; message: string } | null>(null);
-  const onsenSearchSuggestions = useMemo(() => buildOnsenSearchSuggestions(onsenCandidates), []);
   const mobileBackTarget = useMemo(() => getMobileBackTarget(pathname), [pathname]);
 
   useEffect(() => {

@@ -5,7 +5,7 @@ import { OnsenReviewForm } from '@web/components/OnsenReviewForm';
 import { OnsenSaveButton } from '@web/components/OnsenSaveButton';
 import { OnsenShareButton } from '@web/components/OnsenShareButton';
 import { TermInfo } from '@web/components/TermInfo';
-import { statusLabels, type OnsenCandidate } from '@web/lib/onsenCatalog';
+import { getOnsenEntityType, statusLabels, type OnsenCandidate } from '@web/lib/onsenCatalog';
 import { normalizeOnsenPublicCopy, normalizeOnsenSourceLabel } from '@web/lib/onsenCopy';
 import { readOnsenCandidate } from '@web/lib/onsenData';
 import { readOnsenReviewCounts, readOnsenReviews } from '@web/lib/onsenReviews';
@@ -16,7 +16,16 @@ type PageProps = {
 
 type OnsenFact = OnsenCandidate['facts'][number];
 
-const facilityFactLabels = new Set(['대욕장', '대절탕', '객실 내 프라이빗탕', '객실 프라이빗탕', '프라이빗탕']);
+const facilityFactLabels = new Set([
+  '대욕장',
+  '대절탕',
+  '객실 내 프라이빗탕',
+  '객실 프라이빗탕',
+  '프라이빗탕',
+  '시설 유형',
+  '목욕 구성',
+  '공식 확인 항목',
+]);
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
@@ -30,7 +39,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title: `${candidate.name} 온천 근거`,
-    description: `${candidate.name}의 객실 내 프라이빗탕, 대욕장, 온천수 체감과 확인해둘 점을 정리했습니다.`,
+    description: getOnsenEntityType(candidate) === 'facility'
+      ? `${candidate.name}의 공식 시설 정보, 목욕 구성, 온천수 근거와 이용 경험을 정리했습니다.`
+      : `${candidate.name}의 객실 내 프라이빗탕, 대욕장, 온천수 체감과 확인해둘 점을 정리했습니다.`,
     alternates: {
       canonical: `/onsen/${candidate.slug}`,
     },
@@ -50,7 +61,7 @@ function getGalleryItems(candidate: OnsenCandidate) {
   return [
     { label: '외관 또는 입구 사진' },
     { label: '온천탕 사진' },
-    { label: '객실 또는 동선 사진' },
+    { label: getOnsenEntityType(candidate) === 'facility' ? '휴게 또는 이용 동선 사진' : '객실 또는 동선 사진' },
   ];
 }
 
@@ -110,8 +121,9 @@ function serializeStructuredData(value: unknown) {
   return JSON.stringify(value).replace(/</g, '\\u003c');
 }
 
-function buildLodgingBusinessStructuredData(candidate: OnsenCandidate, siteReviewCount: number) {
+function buildOnsenStructuredData(candidate: OnsenCandidate, siteReviewCount: number) {
   const url = getAbsoluteUrl(`/onsen/${candidate.slug}`);
+  const candidateType = getOnsenEntityType(candidate);
   const experiencesRead = candidate.verdict?.briefing.experiencesRead ?? candidate.directReviews;
   const onsenRelated = candidate.verdict?.briefing.onsenRelated ?? candidate.onsenReviews;
   const address = compactRecord({
@@ -121,7 +133,7 @@ function buildLodgingBusinessStructuredData(candidate: OnsenCandidate, siteRevie
     addressLocality: candidate.location?.cityLabel,
   });
   const amenityFeature = candidate.facts
-    .filter((fact) => ['객실 내 프라이빗탕', '대욕장', '대절탕', '온천수 방식'].includes(fact.label))
+    .filter((fact) => fact.status === 'confirmed' || fact.label === '온천수 방식')
     .map((fact) =>
       compactRecord({
         '@type': 'LocationFeatureSpecification',
@@ -152,8 +164,8 @@ function buildLodgingBusinessStructuredData(candidate: OnsenCandidate, siteRevie
 
   return compactRecord({
     '@context': 'https://schema.org',
-    '@type': 'LodgingBusiness',
-    '@id': `${url}#lodging`,
+    '@type': candidateType === 'facility' ? 'LocalBusiness' : 'LodgingBusiness',
+    '@id': `${url}#${candidateType}`,
     name: candidate.name,
     alternateName: candidate.jaName,
     description: normalizeOnsenPublicCopy(candidate.verdict?.headline ?? candidate.summary),
@@ -215,17 +227,21 @@ export default async function OnsenDetailPage({ params }: PageProps) {
     notFound();
   }
 
-  const [reviewCounts, siteReviews] = await Promise.all([readOnsenReviewCounts([candidate.slug]), readOnsenReviews(candidate.slug)]);
+  const candidateType = getOnsenEntityType(candidate);
+  const [reviewCounts, siteReviews] = await Promise.all([
+    readOnsenReviewCounts([candidate.slug], candidateType),
+    readOnsenReviews(candidate.slug, 6, candidateType),
+  ]);
   const siteReviewCount = reviewCounts[candidate.slug] ?? 0;
   const galleryItems = getGalleryItems(candidate);
   const facilityFacts = getFacilityFacts(candidate.facts);
   const operationFact = getOperationFact(candidate);
   const reviewSummary = getReviewSummary(candidate);
-  const lodgingBusinessStructuredData = buildLodgingBusinessStructuredData(candidate, siteReviewCount);
+  const onsenStructuredData = buildOnsenStructuredData(candidate, siteReviewCount);
 
   return (
     <article className="onsen-detail-page">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeStructuredData(lodgingBusinessStructuredData) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeStructuredData(onsenStructuredData) }} />
       <div className="onsen-detail-layout">
         <section className="onsen-stay-card" aria-labelledby="onsen-detail-title">
           <div className="onsen-detail-gallery" aria-label={`${candidate.name} 사진 슬라이드`}>
@@ -252,7 +268,7 @@ export default async function OnsenDetailPage({ params }: PageProps) {
 
           <header className="onsen-stay-head">
             <div>
-              <p className="onsen-detail-kicker">온천 아카이브</p>
+              <p className="onsen-detail-kicker">{candidateType === 'facility' ? '당일온천 시설' : '온천 숙소'}</p>
               <h1 id="onsen-detail-title">{candidate.name}</h1>
               <span>{candidate.jaName}</span>
             </div>
@@ -264,10 +280,12 @@ export default async function OnsenDetailPage({ params }: PageProps) {
 
           <section className="onsen-review-summary-card" aria-labelledby="onsen-review-summary-title">
             <div className="onsen-review-summary-head">
-              <h2 id="onsen-review-summary-title">{candidate.verdict ? '바스타임 판정' : '이런 점이 좋았어요'}</h2>
+              <h2 id="onsen-review-summary-title">
+                {candidate.verdict ? '바스타임 판정' : candidateType === 'facility' ? '시설 이용 요약' : '이런 점이 좋았어요'}
+              </h2>
               <span>
                 <Sparkle size={15} weight="fill" aria-hidden="true" />
-                {candidate.verdict ? '이용 경험으로 확인' : '요약'}
+                {candidate.verdict ? '이용 경험으로 확인' : candidateType === 'facility' ? '공식 사실·후기 분리' : '요약'}
               </span>
             </div>
             <p>{reviewSummary.body}</p>
@@ -299,8 +317,8 @@ export default async function OnsenDetailPage({ params }: PageProps) {
                         <dd>{formatVerdictMentionCount(candidate, item)}</dd>
                       </div>
                       <div>
-                        <dt>부정 항목</dt>
-                        <dd>{item.counts.negative}건</dd>
+                        <dt>{(item.counts.directionCounts?.mixed ?? 0) > 0 ? '혼합 판정' : '부정 항목'}</dt>
+                        <dd>{(item.counts.directionCounts?.mixed ?? 0) > 0 ? item.counts.directionCounts?.mixed : item.counts.negative}건</dd>
                       </div>
                     </dl>
                     <p className="onsen-verdict-conclusion">결론: {normalizeOnsenPublicCopy(item.verdict)}</p>
@@ -352,7 +370,9 @@ export default async function OnsenDetailPage({ params }: PageProps) {
                 </div>
                 <p>{normalizeOnsenPublicCopy(operationFact?.detail ?? candidate.waterDecision.summary)}</p>
                 <span className="onsen-status-badge" data-status={operationFact?.status ?? 'needs_check'}>
-                  온천수 방식 {statusLabels[operationFact?.status ?? 'needs_check']}
+                  온천수 방식 {candidateType === 'facility' && (operationFact?.status ?? 'needs_check') === 'needs_check'
+                    ? '확인 중'
+                    : statusLabels[operationFact?.status ?? 'needs_check']}
                 </span>
               </div>
             </div>
@@ -399,8 +419,9 @@ export default async function OnsenDetailPage({ params }: PageProps) {
 
         <aside className="onsen-review-column" aria-label="바스타임 리뷰">
           <OnsenReviewForm
-            accommodationSlug={candidate.slug}
-            accommodationName={candidate.name}
+            targetType={candidateType}
+            targetSlug={candidate.slug}
+            targetName={candidate.name}
             reviewCount={siteReviewCount}
             reviews={siteReviews}
           />

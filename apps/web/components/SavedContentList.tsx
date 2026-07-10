@@ -70,7 +70,7 @@ export function SavedContentList({ contents, onsenCandidates }: { contents: Arch
     return (
       <section className="body-panel saved-empty-panel">
         <h2>로그인하면 찜한 온천을 이어서 볼 수 있어요.</h2>
-        <p>비교하던 료칸과 온천 조건을 계정에 연결해두고 다시 꺼내볼 수 있습니다.</p>
+        <p>비교하던 숙소와 당일온천 시설을 계정에 연결해두고 다시 꺼내볼 수 있습니다.</p>
         <Link className="button-primary" href="/auth/login?source=saved&next=/saved">Google로 로그인</Link>
       </section>
     );
@@ -84,7 +84,7 @@ export function SavedContentList({ contents, onsenCandidates }: { contents: Arch
     return (
       <section className="body-panel saved-empty-panel">
         <h2>아직 찜한 온천이 없어요.</h2>
-        <p>온천 상세에서 찜하기를 눌러 비교할 료칸을 담아보세요.</p>
+        <p>온천 상세에서 찜하기를 눌러 비교할 숙소와 시설을 담아보세요.</p>
         <Link className="button-primary" href="/onsen/results">온천 검색하기</Link>
       </section>
     );

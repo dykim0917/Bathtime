@@ -1,24 +1,53 @@
+import type {
+  OnsenReviewBathArea,
+  OnsenReviewCleanliness,
+  OnsenReviewCrowding,
+  OnsenReviewRevisitIntent,
+  OnsenReviewTargetType,
+  OnsenReviewTemperature,
+  OnsenReviewWaterColor,
+  OnsenReviewWaterTexture,
+} from './onsenPassport';
+
 export type OnsenReviewSummary = Record<string, number>;
 
 export type OnsenReview = {
   id: string;
-  accommodationSlug: string;
-  bathType: 'room_bath' | 'private_bath' | 'public_bath' | 'other';
+  targetType: OnsenReviewTargetType;
+  targetSlug: string;
+  bathType: OnsenReviewBathArea;
+  bathAreas: OnsenReviewBathArea[];
   waterFeel: 'clear' | 'soft' | 'strong' | 'unclear';
+  waterTexture: OnsenReviewWaterTexture[];
+  waterColor: OnsenReviewWaterColor;
+  temperatureExperience: OnsenReviewTemperature;
+  crowdingLevel: OnsenReviewCrowding;
+  cleanlinessLevel: OnsenReviewCleanliness;
+  revisitIntent: OnsenReviewRevisitIntent;
+  visitedOn: string | null;
   visitSeason: string | null;
   body: string;
   createdAt: string;
 };
 
 type OnsenReviewCountRow = {
-  accommodation_slug: string;
+  target_slug: string;
 };
 
 type OnsenReviewRow = {
   id: string;
-  accommodation_slug: string;
+  target_type: OnsenReview['targetType'];
+  target_slug: string;
   bath_type: OnsenReview['bathType'];
+  bath_areas: OnsenReview['bathAreas'];
   water_feel: OnsenReview['waterFeel'];
+  water_texture: OnsenReview['waterTexture'];
+  water_color: OnsenReview['waterColor'];
+  temperature_experience: OnsenReview['temperatureExperience'];
+  crowding_level: OnsenReview['crowdingLevel'];
+  cleanliness_level: OnsenReview['cleanlinessLevel'];
+  revisit_intent: OnsenReview['revisitIntent'];
+  visited_on: string | null;
   visit_season: string | null;
   body: string;
   created_at: string;
@@ -33,16 +62,17 @@ function readSupabaseConfig() {
   return { url, anonKey };
 }
 
-export async function readOnsenReviewCounts(slugs: string[]): Promise<OnsenReviewSummary> {
+export async function readOnsenReviewCounts(slugs: string[], targetType: OnsenReviewTargetType = 'accommodation'): Promise<OnsenReviewSummary> {
   const config = readSupabaseConfig();
   const uniqueSlugs = Array.from(new Set(slugs)).filter(Boolean);
 
   if (!config || uniqueSlugs.length === 0) return {};
 
   const url = new URL('/rest/v1/onsen_reviews', config.url);
-  url.searchParams.set('select', 'accommodation_slug');
+  url.searchParams.set('select', 'target_slug');
   url.searchParams.set('status', 'eq.approved');
-  url.searchParams.set('accommodation_slug', `in.(${uniqueSlugs.map((slug) => `"${slug}"`).join(',')})`);
+  url.searchParams.set('target_type', `eq.${targetType}`);
+  url.searchParams.set('target_slug', `in.(${uniqueSlugs.map((slug) => `"${slug}"`).join(',')})`);
 
   try {
     const response = await fetch(url, {
@@ -57,7 +87,7 @@ export async function readOnsenReviewCounts(slugs: string[]): Promise<OnsenRevie
 
     const rows = (await response.json()) as OnsenReviewCountRow[];
     return rows.reduce<OnsenReviewSummary>((acc, row) => {
-      acc[row.accommodation_slug] = (acc[row.accommodation_slug] ?? 0) + 1;
+      acc[row.target_slug] = (acc[row.target_slug] ?? 0) + 1;
       return acc;
     }, {});
   } catch {
@@ -65,15 +95,16 @@ export async function readOnsenReviewCounts(slugs: string[]): Promise<OnsenRevie
   }
 }
 
-export async function readOnsenReviews(slug: string, limit = 6): Promise<OnsenReview[]> {
+export async function readOnsenReviews(slug: string, limit = 6, targetType: OnsenReviewTargetType = 'accommodation'): Promise<OnsenReview[]> {
   const config = readSupabaseConfig();
 
   if (!config || !slug) return [];
 
   const url = new URL('/rest/v1/onsen_reviews', config.url);
-  url.searchParams.set('select', 'id,accommodation_slug,bath_type,water_feel,visit_season,body,created_at');
+  url.searchParams.set('select', 'id,target_type,target_slug,bath_type,bath_areas,water_feel,water_texture,water_color,temperature_experience,crowding_level,cleanliness_level,revisit_intent,visited_on,visit_season,body,created_at');
   url.searchParams.set('status', 'eq.approved');
-  url.searchParams.set('accommodation_slug', `eq.${slug}`);
+  url.searchParams.set('target_type', `eq.${targetType}`);
+  url.searchParams.set('target_slug', `eq.${slug}`);
   url.searchParams.set('order', 'created_at.desc');
   url.searchParams.set('limit', String(limit));
 
@@ -91,9 +122,18 @@ export async function readOnsenReviews(slug: string, limit = 6): Promise<OnsenRe
     const rows = (await response.json()) as OnsenReviewRow[];
     return rows.map((row) => ({
       id: row.id,
-      accommodationSlug: row.accommodation_slug,
+      targetType: row.target_type,
+      targetSlug: row.target_slug,
       bathType: row.bath_type,
+      bathAreas: row.bath_areas,
       waterFeel: row.water_feel,
+      waterTexture: row.water_texture,
+      waterColor: row.water_color,
+      temperatureExperience: row.temperature_experience,
+      crowdingLevel: row.crowding_level,
+      cleanlinessLevel: row.cleanliness_level,
+      revisitIntent: row.revisit_intent,
+      visitedOn: row.visited_on,
       visitSeason: row.visit_season,
       body: row.body,
       createdAt: row.created_at,
