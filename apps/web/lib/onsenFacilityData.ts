@@ -124,6 +124,13 @@ const signalLabels: Record<string, string> = {
   operation_volatility: '운영 변동',
 };
 
+const textureFilterLabels: Record<string, string> = {
+  slippery: '미끌미끌',
+  salt_warmth: '염분감',
+  sulfur: '유황감',
+  carbonated: '탄산감',
+};
+
 function isRecord(value: unknown): value is Record<string, unknown> {
   return Boolean(value) && typeof value === 'object' && !Array.isArray(value);
 }
@@ -184,6 +191,17 @@ function facilitySummary(row: FacilityRow, location: OnsenLocation) {
   return `${location.onsenAreaLabel}에서 공용 온천욕을 중심으로 이용하는 당일입욕 시설입니다.`;
 }
 
+function facilityOperationNotice(value: unknown) {
+  const profile = isRecord(value) ? value : {};
+  if (profile.operation_status === 'temporarily_closed_pending_reopening_notice') {
+    return {
+      summary: '현재 임시휴업 중이며 재개일은 공식 발표를 기다리고 있습니다.',
+      caution: '재개일이 정해지지 않았습니다. 방문 계획을 세우기 전에 공식 공지를 확인하세요.',
+    };
+  }
+  return null;
+}
+
 function primaryBathLabel(areas: string[]) {
   const prioritized = ['open_air_public_bath', 'public_bath', 'family_bath', 'private_bath', 'sand_bath', 'steam_bath', 'sauna', 'stone_sauna'];
   const labels = prioritized.filter((area) => areas.includes(area)).map((area) => bathAreaLabels[area]);
@@ -193,6 +211,13 @@ function primaryBathLabel(areas: string[]) {
 function waterProfileFromFacts(facts: FacilityWaterFactRow[]): OnsenCandidate['waterProfile'] | undefined {
   if (facts.length === 0) return undefined;
   const readyMethodFact = facts.find((fact) => fact.method_render_status === 'ready' && fact.water_system);
+  const readyColorFact = facts.find(
+    (fact) => fact.color_filter_status === 'ready' && (fact.water_color === 'white' || fact.water_color === 'brown')
+  );
+  const readyTextureCodes = unique(facts
+    .filter((fact) => fact.texture_filter_status === 'ready_with_review_count')
+    .flatMap((fact) => stringArray(fact.texture_filter_candidates))
+    .filter((code) => textureFilterLabels[code]));
   const conditionCodes = unique(
     facts.flatMap((fact) => [
       fact.kasui === 'present' ? 'kasui' : '',
@@ -208,7 +233,19 @@ function waterProfileFromFacts(facts: FacilityWaterFactRow[]): OnsenCandidate['w
     badgeGate: readyMethodFact ? 'ready' : 'hold',
     conditionCodes,
     conditionLabels,
-    textureFilters: [],
+    textureFilters: readyTextureCodes.map((code) => ({
+      code,
+      label: textureFilterLabels[code],
+      exposureStatus: 'filter_ready',
+    })),
+    colorFilter: readyColorFact
+      ? {
+          code: readyColorFact.water_color === 'white' ? 'hakutaku' : 'brown',
+          label: readyColorFact.water_color === 'white' ? '백탁' : '갈색빛',
+          status: 'filter_ready',
+          exposeAsFilter: true,
+        }
+      : undefined,
   };
 }
 
@@ -238,9 +275,11 @@ function mapFacilityCandidate(
   const springLabels = [
     officialFilterCodes.includes('spring_acidic') ? '산성천' : '',
     officialFilterCodes.includes('spring_sulfur') ? '유황천' : '',
+    officialFilterCodes.includes('spring_chloride') ? '염화물천' : '',
   ].filter(Boolean);
   const springType = springLabels.join(' · ') || '온천 성분 공식 안내 확인';
-  const summary = facilitySummary(row, location);
+  const operationNotice = facilityOperationNotice(row.official_profile);
+  const summary = operationNotice?.summary ?? facilitySummary(row, location);
   const primaryBath = primaryBathLabel(areas);
   const directReviews = evidence?.facility_related_direct_reviews ?? 0;
   const topSignals = [...reviewSignals]
@@ -271,6 +310,16 @@ function mapFacilityCandidate(
     waterContexts.add('junkan');
   }
   if (waterProfile?.conditionCodes.some((code) => code === 'kasui' || code === 'kaon')) waterContexts.add('temperature_adjustment');
+  for (const filter of waterProfile?.textureFilters ?? []) {
+    if (filter.code === 'slippery' || filter.code === 'salt_warmth' || filter.code === 'sulfur' || filter.code === 'carbonated') {
+      waterContexts.add(filter.code);
+    }
+  }
+  if (waterProfile?.colorFilter?.exposeAsFilter) {
+    if (waterProfile.colorFilter.code === 'hakutaku' || waterProfile.colorFilter.code === 'brown') {
+      waterContexts.add(waterProfile.colorFilter.code);
+    }
+  }
 
   return {
     entityType: 'facility',
@@ -328,20 +377,39 @@ function mapFacilityCandidate(
           ? '공식 원문에서 확인된 욕장 범위에만 방식 정보를 적용합니다.'
           : '공식 원문에서 직수·순환 방식과 적용 욕장 범위를 확정하기 전까지 방식 배지를 표시하지 않습니다.',
       },
+      ...(waterProfile?.colorFilter?.exposeAsFilter
+        ? [{
+            label: '공식 물빛',
+            value: waterProfile.colorFilter.label,
+            status: 'confirmed' as OnsenStatus,
+            detail: '공식 원문에서 물빛과 적용 욕장 범위가 함께 확인된 경우에만 표시합니다.',
+          }]
+        : []),
+      ...(waterProfile?.textureFilters.length
+        ? [{
+            label: '후기에서 본 감촉',
+            value: waterProfile.textureFilters.map((filter) => filter.label).join(' · '),
+            status: 'review_signal' as OnsenStatus,
+            detail: '직접 읽은 후기에서 감촉 유형과 독립 후기 수, 플랫폼 분산이 기준을 통과한 경우에만 표시합니다.',
+          }]
+        : []),
     ],
     signals: topSignals.map((signal) => ({
-      label: signalLabels[signal.signal_type] ?? '시설 이용 경험',
+      label: signalLabels[signal.signal_type] ?? '시설 후기',
       count: signal.mention_count,
       status: 'review_signal',
-      summary: signal.evidence_summary ?? `${signalLabels[signal.signal_type] ?? '시설 이용'} 관련 경험이 직접 읽은 후기에서 ${signal.mention_count}건 반복됐습니다.`,
+      summary: signal.evidence_summary ?? `${signalLabels[signal.signal_type] ?? '시설 이용'}을 다룬 후기가 직접 읽은 표본에서 ${signal.mention_count}건 반복됐습니다.`,
     })),
-    cautions: cautionSignals.length > 0
-      ? cautionSignals.map((signal) => ({
+    cautions: [
+      ...(operationNotice ? [{ issue: '임시휴업', count: 0, summary: operationNotice.caution }] : []),
+      ...(cautionSignals.length > 0
+        ? cautionSignals.map((signal) => ({
           issue: signalLabels[signal.signal_type] ?? '이용 전 확인',
           count: signal.mention_count,
-          summary: signal.evidence_summary ?? `${signalLabels[signal.signal_type] ?? '시설 이용'} 관련 주의 경험이 ${signal.mention_count}건 확인됐습니다. 방문 전 공식 운영 정보를 함께 확인하세요.`,
+          summary: signal.evidence_summary ?? `${signalLabels[signal.signal_type] ?? '시설 이용'}에 관한 주의 후기가 ${signal.mention_count}건 확인됐습니다. 방문 전 공식 운영 정보를 함께 확인하세요.`,
         }))
-      : [{ issue: '운영 정보 확인', count: 0, summary: '운영 시간과 이용 조건은 방문 전 공식 사이트에서 다시 확인하세요.' }],
+        : [{ issue: '운영 정보 확인', count: 0, summary: '운영 시간과 이용 조건은 방문 전 공식 사이트에서 다시 확인하세요.' }]),
+    ],
     sources: [
       {
         label: '공식 시설 정보',
@@ -350,10 +418,10 @@ function mapFacilityCandidate(
         note: `공식 필터 사실 ${readyFilterFacts.length}건을 원문·URL·적용 범위와 함께 확인했습니다.`,
       },
       {
-        label: '시설 이용 경험',
+        label: '시설 후기',
         direct: directReviews,
         onsenRelated: 0,
-        note: `직접 읽은 시설 관련 이용 경험 ${directReviews}건 · 본문 확인 플랫폼 ${evidence?.direct_body_platform_count ?? 0}개입니다. 플랫폼 노출 리뷰 수는 합산하지 않았습니다.`,
+        note: `직접 읽은 시설 관련 후기 ${directReviews}건 · 본문 확인 플랫폼 ${evidence?.direct_body_platform_count ?? 0}개입니다. 플랫폼 노출 리뷰 수는 합산하지 않았습니다.`,
       },
     ],
     officialLinks,

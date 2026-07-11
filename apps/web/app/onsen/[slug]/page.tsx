@@ -25,6 +25,8 @@ const facilityFactLabels = new Set([
   '시설 유형',
   '목욕 구성',
   '공식 확인 항목',
+  '공식 물빛',
+  '후기에서 본 감촉',
 ]);
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -40,7 +42,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `${candidate.name} 온천 근거`,
     description: getOnsenEntityType(candidate) === 'facility'
-      ? `${candidate.name}의 공식 시설 정보, 목욕 구성, 온천수 근거와 이용 경험을 정리했습니다.`
+      ? `${candidate.name}의 공식 시설 정보, 목욕 구성, 온천수 근거와 후기를 정리했습니다.`
       : `${candidate.name}의 객실 내 프라이빗탕, 대욕장, 온천수 체감과 확인해둘 점을 정리했습니다.`,
     alternates: {
       canonical: `/onsen/${candidate.slug}`,
@@ -145,12 +147,12 @@ function buildOnsenStructuredData(candidate: OnsenCandidate, siteReviewCount: nu
   const additionalProperty = [
     compactRecord({
       '@type': 'PropertyValue',
-      name: '바스타임이 분석한 이용 경험',
+      name: '바스타임이 분석한 후기',
       value: experiencesRead,
     }),
     compactRecord({
       '@type': 'PropertyValue',
-      name: '온천 관련 이용 경험',
+      name: '온천 관련 후기',
       value: onsenRelated,
     }),
     siteReviewCount > 0
@@ -180,7 +182,7 @@ function buildOnsenStructuredData(candidate: OnsenCandidate, siteReviewCount: nu
               '@type': 'InteractionCounter',
               interactionType: { '@type': 'ReviewAction' },
               userInteractionCount: experiencesRead,
-              name: '바스타임이 분석한 이용 경험',
+              name: '바스타임이 분석한 후기',
             },
           ]
         : [],
@@ -193,7 +195,7 @@ function formatBriefing(candidate: OnsenCandidate) {
   if (!briefing) return null;
 
   const parts = [
-    typeof briefing.experiencesRead === 'number' ? `직접 읽은 이용 경험 ${briefing.experiencesRead}건` : null,
+    typeof briefing.experiencesRead === 'number' ? `직접 읽은 후기 ${briefing.experiencesRead}건` : null,
     typeof briefing.onsenRelated === 'number' ? `온천 관련 ${briefing.onsenRelated}건` : null,
     briefing.platforms.length > 0
       ? briefing.platforms.join(' · ')
@@ -210,7 +212,7 @@ function formatVerdictMentionCount(candidate: OnsenCandidate, item: NonNullable<
     item.counts.denominator === 'experiences_read'
       ? candidate.verdict?.briefing.experiencesRead
       : candidate.verdict?.briefing.onsenRelated;
-  const denominatorLabel = item.counts.denominator === 'experiences_read' ? '직접 읽은 이용 경험' : '온천 관련';
+  const denominatorLabel = item.counts.denominator === 'experiences_read' ? '직접 읽은 후기' : '온천 관련 후기';
 
   if (typeof denominator !== 'number') {
     return `${item.counts.mentions}건`;
@@ -285,7 +287,7 @@ export default async function OnsenDetailPage({ params }: PageProps) {
               </h2>
               <span>
                 <Sparkle size={15} weight="fill" aria-hidden="true" />
-                {candidate.verdict ? '이용 경험으로 확인' : candidateType === 'facility' ? '공식 사실·후기 분리' : '요약'}
+                {candidate.verdict ? '여러 후기에서 확인' : candidateType === 'facility' ? '공식 사실·후기 분리' : '요약'}
               </span>
             </div>
             <p>{reviewSummary.body}</p>

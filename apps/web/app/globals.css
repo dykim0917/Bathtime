@@ -19,6 +19,41 @@
   --scrim: rgba(31, 43, 40, 0.34);
   --radius: 8px;
   --radius-lg: 10px;
+  --v2-canvas: #f7f8f5;
+  --v2-surface: #ffffff;
+  --v2-surface-soft: #eef1ed;
+  --v2-ink: #182522;
+  --v2-body: #44504c;
+  --v2-muted: #6e7874;
+  --v2-primary: #176b63;
+  --v2-primary-active: #0f514c;
+  --v2-primary-soft: #ddebe7;
+  --v2-mineral: #3b6f8a;
+  --v2-mineral-soft: #e5eef2;
+  --v2-iron: #a9553d;
+  --v2-iron-soft: #f6eae5;
+  --v2-sulfur: #d7d4c5;
+  --v2-water-gold: #916b00;
+  --v2-water-silver: #596762;
+  --v2-water-bronze: #a64f2e;
+  --v2-border: #d7ded9;
+  --v2-border-strong: #aab6b0;
+  --v2-on-dark: #f8faf7;
+  --v2-scrim: rgba(24, 37, 34, 0.46);
+  --v2-font-editorial: "Noto Serif KR", "AppleMyungjo", "Batang", serif;
+  --v2-font-sans: Pretendard, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --v2-font-data: var(--v2-font-sans);
+  --v2-page-title: 40px;
+  --v2-section-title: 32px;
+  --v2-lead-title: 28px;
+  --v2-card-title: 20px;
+  --v2-body-lead: 18px;
+  --v2-body-size: 16px;
+  --v2-small: 14px;
+  --v2-meta: 12px;
+  --v2-content: 1200px;
+  --v2-gutter: 40px;
+  --v2-discovery-hero-height: 360px;
   --bt-color-canvas: var(--canvas);
   --bt-color-surface: var(--surface);
   --bt-color-surface-soft: var(--surface-soft);
@@ -80,7 +115,7 @@
   --bt-ease-inout: cubic-bezier(0.4, 0, 0, 1);
   --bt-font-sans: Pretendard, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --bt-font-editorial: "Noto Serif KR", "Nanum Myeongjo", serif;
-  --bt-font-data: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  --bt-font-data: var(--bt-font-sans);
   --bt-text-hero: clamp(42px, 6.6vw, 82px);
   --bt-text-page-title: clamp(30px, 4.6vw, 52px);
   --bt-text-section-title: clamp(24px, 3.1vw, 38px);
@@ -534,6 +569,7 @@ body {
     var(--canvas);
   color: var(--ink);
   font-family: var(--bt-font-sans);
+  font-variant-numeric: tabular-nums;
   word-break: keep-all;
 }
 
@@ -706,6 +742,10 @@ img {
   z-index: 130;
 }
 
+.onsen-header-mobile-search-button {
+  display: none;
+}
+
 .onsen-header-search-slot .onsen-search-box-airbnb {
   width: 100%;
   min-height: 44px;
@@ -752,7 +792,39 @@ img {
 
 .onsen-header-search-slot .onsen-search-popover {
   top: calc(100% + var(--bt-space-3));
-  max-height: min(480px, calc(100vh - 112px));
+  right: auto;
+  left: 50%;
+  width: min(760px, calc(100vw - (var(--bt-space-16) * 2)));
+  max-height: min(560px, calc(100vh - 112px));
+  transform: translateX(-50%);
+}
+
+.onsen-header-search-slot .onsen-search-box.is-open .onsen-search-popover,
+.onsen-header-search-slot .onsen-search-box:focus-within .onsen-search-popover {
+  transform: translateX(-50%);
+}
+
+.onsen-header-search-slot .onsen-search-box-autocomplete .onsen-search-popover {
+  grid-template-columns: minmax(0, 1fr);
+  max-height: min(520px, calc(100vh - 112px));
+}
+
+.onsen-header-search-slot .onsen-search-box:not(.onsen-search-box-autocomplete) .onsen-recommend-section {
+  grid-column: 1;
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.onsen-header-search-slot .onsen-search-box:not(.onsen-search-box-autocomplete) .onsen-popular-section {
+  grid-column: 2;
+}
+
+@media (min-width: 768px) and (max-width: 900px) {
+  .onsen-header-search-slot .onsen-search-popover {
+    position: fixed;
+    top: var(--bt-space-20);
+    left: 50%;
+  }
 }
 
 .content-area {
@@ -872,6 +944,17 @@ img {
   font-size: 12px;
   font-weight: 700;
   cursor: pointer;
+}
+
+.account-button-icon {
+  width: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  border-color: transparent;
+  border-radius: var(--bt-radius-pill);
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
 }
 
 .account-menu-wrap {
@@ -1012,41 +1095,39 @@ html[data-bathtime-surface='app'] .app-bridge {
 .onsen-home-shell .onsen-route-main,
 .site-shell:has(.onsen-home) .main,
 .onsen-route-main:has(.onsen-home) {
-  padding-top: 0;
+  padding-top: 84px;
 }
 
-.onsen-home-shell .sidebar,
-.site-shell:has(.onsen-home) .sidebar,
-.onsen-shell:has(.onsen-home) .sidebar {
-  border-bottom-color: rgba(255, 253, 248, 0.18);
-  background: linear-gradient(180deg, rgba(31, 43, 40, 0.34), rgba(31, 43, 40, 0));
+.onsen-shell .sidebar {
+  border-bottom-color: var(--v2-border);
+  background: var(--v2-surface);
   box-shadow: none;
+  backdrop-filter: none;
 }
 
 .onsen-home-shell .brand-logo,
 .site-shell:has(.onsen-home) .brand-logo,
 .onsen-shell:has(.onsen-home) .brand-logo {
-  filter: brightness(0) invert(1);
+  filter: none;
 }
 
-.onsen-home-shell .account-button,
-.site-shell:has(.onsen-home) .account-button,
-.onsen-shell:has(.onsen-home) .account-button {
-  border-color: rgba(255, 253, 248, 0.36);
-  background: rgba(255, 253, 248, 0.16);
-  color: var(--bt-color-on-primary);
-  backdrop-filter: blur(14px);
+.onsen-shell .account-button {
+  border-color: transparent;
+  background: transparent;
+  color: var(--v2-ink);
+  backdrop-filter: none;
 }
 
-.onsen-home-shell .account-button:hover,
-.onsen-home-shell .account-button:focus-visible,
-.site-shell:has(.onsen-home) .account-button:hover,
-.site-shell:has(.onsen-home) .account-button:focus-visible,
-.onsen-shell:has(.onsen-home) .account-button:hover,
-.onsen-shell:has(.onsen-home) .account-button:focus-visible {
-  border-color: rgba(255, 253, 248, 0.72);
-  background: rgba(255, 253, 248, 0.9);
-  color: var(--bt-color-ink);
+.onsen-shell .account-button:hover,
+.onsen-shell .account-button:focus-visible {
+  border-color: var(--v2-border);
+  background: var(--v2-surface-soft);
+  color: var(--v2-primary-active);
+}
+
+.onsen-shell .account-button-icon:hover,
+.onsen-shell .account-button-icon:focus-visible {
+  border-color: transparent;
 }
 
 .onsen-shell .content-area {
@@ -1056,7 +1137,7 @@ html[data-bathtime-surface='app'] .app-bridge {
 .onsen-home-shell .content-area,
 .site-shell:has(.onsen-home) .content-area,
 .onsen-shell:has(.onsen-home) .content-area {
-  background: transparent;
+  background: var(--v2-canvas);
 }
 
 .auth-shell .content-area {
@@ -3567,6 +3648,19 @@ p {
   border-radius: var(--bt-radius-md);
   background: var(--bt-color-primary-soft);
   color: var(--bt-color-primary-active);
+}
+
+.onsen-place-image {
+  width: var(--bt-space-16);
+  height: var(--bt-space-12);
+  overflow: hidden;
+  background: var(--bt-surface-subtle);
+}
+
+.onsen-place-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .onsen-place-suggestion-list strong {
@@ -8923,6 +9017,36 @@ p {
 
   .onsen-shell .brand-logo {
     width: 104px;
+  }
+
+  .onsen-header-search-slot {
+    justify-self: end;
+    width: 44px;
+  }
+
+  .onsen-header-search-slot .onsen-search-box-header {
+    display: none;
+  }
+
+  .onsen-header-mobile-search-button {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    min-height: 44px;
+    border: 0;
+    border-radius: var(--bt-radius-pill);
+    background: transparent;
+    color: var(--v2-ink);
+    padding: 0;
+  }
+
+  .onsen-header-mobile-search-button:hover,
+  .onsen-header-mobile-search-button:focus-visible,
+  .account-button-icon:hover,
+  .account-button-icon:focus-visible {
+    background: var(--v2-surface-soft);
+    color: var(--v2-primary-active);
+    outline: none;
   }
 
   .onsen-header-search-slot .onsen-search-box-airbnb {

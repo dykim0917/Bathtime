@@ -14,7 +14,7 @@ const PUBLIC_REVIEW_PLATFORMS = [
 
 export const metadata: Metadata = {
   title: '바스타임이 온천을 확인하는 방법',
-  description: '바스타임 온천 검색기가 이용 경험과 공식 정보를 읽고 온천 숙소와 당일온천 시설을 판정하는 기준을 설명합니다.',
+  description: '바스타임 온천 검색기가 후기와 공식 정보를 읽고 온천 숙소와 당일온천 시설을 판정하는 기준을 설명합니다.',
   alternates: {
     canonical: '/onsen/methodology',
   },

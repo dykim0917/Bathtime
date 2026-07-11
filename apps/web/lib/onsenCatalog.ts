@@ -4,6 +4,24 @@ export type OnsenStatus = 'confirmed' | 'needs_check' | 'review_signal' | 'atten
 
 export type OnsenVerdictLevel = 'full' | 'lite' | 'draft';
 
+export type OnsenEditorialCardSummary = {
+  text: string;
+  status: 'published' | 'draft';
+  officialBasis?: {
+    factKo: string;
+    sourceUrl?: string;
+    sourceFile: string;
+  };
+  reviewBasis?: {
+    findingKo: string;
+    directReviewCount: number;
+    onsenRelatedCount?: number;
+    platformCount?: number;
+    sourceFile: string;
+  };
+  verifiedAt?: string;
+};
+
 export type OnsenFactStatus = {
   code: string;
   label?: string;
@@ -42,6 +60,7 @@ export type OnsenVerdict = {
     onsenRelated?: number;
     platformCount?: number;
     platforms: string[];
+    editorialCardSummary?: OnsenEditorialCardSummary;
   };
   items: OnsenVerdictItem[];
   factStatuses: OnsenFactStatus[];
@@ -62,6 +81,7 @@ export type OnsenCandidate = {
   location?: OnsenLocation;
   contexts?: OnsenStructuredContexts;
   summary: string;
+  cardSummary?: OnsenEditorialCardSummary;
   fit: string[];
   primaryBath: string;
   waterDecision: {
@@ -111,7 +131,7 @@ export function getOnsenEntityType(candidate: Pick<OnsenCandidate, 'entityType'>
 export const statusLabels: Record<OnsenStatus, string> = {
   confirmed: '확인됨',
   needs_check: '예약 전 확인',
-  review_signal: '이용 경험 기준',
+  review_signal: '후기 기준',
   attention: '주의',
 };
 
@@ -229,7 +249,7 @@ export const onsenCandidates: OnsenCandidate[] = [
         label: '온천 운용',
         value: '원천 직수 언급',
         status: 'review_signal',
-        detail: '원천 직수 관련 이용 경험이 확인됩니다.',
+        detail: '원천 직수 관련 후기가 확인됩니다.',
       },
       {
         label: '예약 주의',
