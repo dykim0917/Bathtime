@@ -1,7 +1,7 @@
 import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 
-import { onsenCandidates, type OnsenCandidate, type OnsenFactStatus, type OnsenStatus, type OnsenVerdict, type OnsenVerdictItem } from './onsenCatalog';
+import { onsenCandidates, type OnsenCandidate, type OnsenEditorialCardSummary, type OnsenFactStatus, type OnsenStatus, type OnsenVerdict, type OnsenVerdictItem } from './onsenCatalog';
 import { readActiveOnsenFacilityCandidates } from './onsenFacilityData';
 import {
   deriveOnsenContexts,
@@ -31,6 +31,7 @@ type OnsenEvidenceCounts = {
   cautionMentionCount?: number | null;
   waterJudgment?: unknown;
   waterSensoryJudgment?: unknown;
+  editorialCardSummary?: unknown;
 };
 
 type OnsenAccommodationRow = {
@@ -127,6 +128,43 @@ function normalizeNumber(value: unknown) {
   return Number.isFinite(parsed) && parsed >= 0 ? Math.floor(parsed) : undefined;
 }
 
+function normalizeEditorialCardSummary(value: unknown): OnsenEditorialCardSummary | undefined {
+  if (!isRecord(value)) return undefined;
+  const text = typeof value.text === 'string' ? value.text.trim() : '';
+  const status = value.status === 'published' ? 'published' : value.status === 'draft' ? 'draft' : null;
+  if (!text || !status) return undefined;
+
+  const officialBasis = isRecord(value.official_basis)
+    && typeof value.official_basis.fact_ko === 'string'
+    && typeof value.official_basis.source_file === 'string'
+    ? {
+        factKo: value.official_basis.fact_ko.trim(),
+        sourceUrl: typeof value.official_basis.source_url === 'string' ? value.official_basis.source_url.trim() : undefined,
+        sourceFile: value.official_basis.source_file.trim(),
+      }
+    : undefined;
+  const reviewBasis = isRecord(value.review_basis)
+    && typeof value.review_basis.finding_ko === 'string'
+    && typeof value.review_basis.source_file === 'string'
+    && typeof normalizeNumber(value.review_basis.direct_review_count) === 'number'
+    ? {
+        findingKo: value.review_basis.finding_ko.trim(),
+        directReviewCount: normalizeNumber(value.review_basis.direct_review_count) as number,
+        onsenRelatedCount: normalizeNumber(value.review_basis.onsen_related_count),
+        platformCount: normalizeNumber(value.review_basis.platform_count),
+        sourceFile: value.review_basis.source_file.trim(),
+      }
+    : undefined;
+
+  return {
+    text,
+    status,
+    officialBasis,
+    reviewBasis,
+    verifiedAt: typeof value.verified_at === 'string' ? value.verified_at.trim() : undefined,
+  };
+}
+
 function normalizeVerdictItem(value: unknown): OnsenVerdictItem | null {
   if (!isRecord(value) || !isRecord(value.counts)) return null;
 
@@ -206,6 +244,7 @@ function normalizeVerdict(row: OnsenVerdictRow): OnsenVerdict | null {
     experiencesRead: normalizeNumber(briefing.experiences_read ?? briefing.experiencesRead),
     onsenRelated: normalizeNumber(briefing.onsen_related ?? briefing.onsenRelated),
     platformCount: normalizeNumber(briefing.platform_count ?? briefing.platformCount),
+    editorialCardSummary: normalizeEditorialCardSummary(briefing.editorial_card_summary ?? briefing.editorialCardSummary),
     platforms,
   };
   const items = Array.isArray(row.items)
@@ -585,7 +624,7 @@ function sourceNoteFor(row: OnsenAccommodationRow, verdict?: OnsenVerdict) {
   const briefing = verdict?.briefing;
   if (briefing) {
     const parts = [
-      typeof briefing.experiencesRead === 'number' ? `직접 읽은 이용 경험 ${briefing.experiencesRead}건` : null,
+      typeof briefing.experiencesRead === 'number' ? `직접 읽은 후기 ${briefing.experiencesRead}건` : null,
       typeof briefing.onsenRelated === 'number' ? `온천 관련 ${briefing.onsenRelated}건` : null,
       typeof briefing.platformCount === 'number'
         ? `본문 확인 플랫폼 ${briefing.platformCount}개`
@@ -623,6 +662,7 @@ function mapOnsenAccommodation(row: OnsenAccommodationRow, verdict?: OnsenVerdic
     region: row.region,
     location: mapLocation(row),
     summary: row.summary,
+    cardSummary: normalizeEditorialCardSummary(counts.editorialCardSummary),
     fit: createFit(row, tags),
     primaryBath: row.primary_bath ?? '온천 구성 예약 전 확인',
     waterDecision: {
@@ -801,13 +841,14 @@ export async function readOnsenCandidates(): Promise<OnsenCandidate[]> {
 
     return {
       ...facility,
+      cardSummary: verdict.briefing.editorialCardSummary ?? facility.cardSummary,
       verdict,
       cautions: verdictCautions.length > 0 ? verdictCautions : facility.cautions,
       sources: facility.sources.map((source) =>
-        source.label === '시설 이용 경험'
+        source.label === '시설 후기'
           ? {
               ...source,
-              note: `직접 읽은 시설 관련 이용 경험 ${verdict.briefing.experiencesRead ?? facility.directReviews}건 · 본문 확인 플랫폼 ${platformCount}개입니다. 플랫폼 노출 리뷰 수는 합산하지 않았습니다.`,
+              note: `직접 읽은 시설 관련 후기 ${verdict.briefing.experiencesRead ?? facility.directReviews}건 · 본문 확인 플랫폼 ${platformCount}개입니다. 플랫폼 노출 리뷰 수는 합산하지 않았습니다.`,
             }
           : source
       ),

@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { ClockCounterClockwise, MagnifyingGlass, MapPin, X } from '@phosphor-icons/react';
@@ -107,6 +108,17 @@ export function OnsenSearchForm({ suggestions, recommendedPlaces, popularSearche
 
   return (
     <>
+      {isHeaderVariant ? (
+        <button
+          className="onsen-header-mobile-search-button"
+          type="button"
+          aria-label="온천 검색 열기"
+          title="온천 검색"
+          onClick={() => setMobileOpen(true)}
+        >
+          <MagnifyingGlass size={20} weight="regular" aria-hidden="true" />
+        </button>
+      ) : null}
       <form
         ref={formRef}
         className={formClassName}
@@ -256,7 +268,7 @@ function SearchPanelContent({
       ) : null}
 
       {mode === 'full' && recentSearches.length > 0 ? (
-        <section className="onsen-popover-section" aria-labelledby="onsen-recent-title">
+        <section className="onsen-popover-section onsen-recent-section" aria-labelledby="onsen-recent-title">
           <div className="onsen-popover-section-head">
             <ClockCounterClockwise size={18} weight="bold" aria-hidden="true" />
             <strong id="onsen-recent-title">최근 검색어</strong>
@@ -272,7 +284,7 @@ function SearchPanelContent({
       ) : null}
 
       {mode === 'full' ? (
-        <section className="onsen-popover-section" aria-labelledby="onsen-recommend-title">
+        <section className="onsen-popover-section onsen-recommend-section" aria-labelledby="onsen-recommend-title">
           <div className="onsen-popover-section-head">
             <MapPin size={18} weight="bold" aria-hidden="true" />
             <strong id="onsen-recommend-title">추천 지역</strong>
@@ -280,8 +292,8 @@ function SearchPanelContent({
           <div className="onsen-place-suggestion-list">
             {recommendedPlaces.map((item) => (
               <Link key={item.label} href={item.href} onClick={() => onPick(item.label)}>
-                <span className="onsen-place-icon" aria-hidden="true">
-                  <MapPin size={18} weight="bold" />
+                <span className={item.imageUrl ? 'onsen-place-icon onsen-place-image' : 'onsen-place-icon'} aria-hidden="true">
+                  {item.imageUrl ? <Image src={item.imageUrl} alt="" width={64} height={48} sizes="64px" /> : <MapPin size={18} weight="bold" />}
                 </span>
                 <span>
                   <strong>{item.label}</strong>
@@ -294,7 +306,7 @@ function SearchPanelContent({
       ) : null}
 
       {mode === 'full' ? (
-        <section className="onsen-popover-section" aria-labelledby="onsen-popular-title">
+        <section className="onsen-popover-section onsen-popular-section" aria-labelledby="onsen-popular-title">
           <div className="onsen-popover-section-head">
             <MagnifyingGlass size={18} weight="bold" aria-hidden="true" />
             <strong id="onsen-popular-title">추천 검색어</strong>

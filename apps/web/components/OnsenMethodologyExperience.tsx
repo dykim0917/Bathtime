@@ -37,7 +37,7 @@ const processSteps = [
     shortTitle: '분류합니다',
     image: '/images/onsen/regions/ureshino.jpg',
     alt: '녹음 사이로 온천 건물이 보이는 우레시노 풍경',
-    description: '이용 경험의 원문은 게시하지 않습니다. 선택에 영향을 주는 항목만 같은 기준표에 따라 분류합니다.',
+    description: '후기 원문은 게시하지 않습니다. 선택에 영향을 주는 항목만 같은 기준표에 따라 분류합니다.',
     rows: [
       ['탕 경험', '프라이빗함, 혼잡, 동선'],
       ['물의 감촉', '매끈함, 염분감, 유황감'],
@@ -51,7 +51,7 @@ const processSteps = [
     alt: '강과 산으로 둘러싸인 게로 온천 마을 풍경',
     description: '긍정적인 언급만 골라내지 않습니다. 반복된 장점과 부정 신호를 같은 분모 안에서 함께 집계합니다.',
     rows: [
-      ['직접 읽은 이용 경험', '234건'],
+      ['직접 읽은 후기', '234건'],
       ['객실탕 관련 언급', '187건'],
       ['수온 관련 부정 언급', '4건'],
     ],
@@ -64,7 +64,7 @@ const processSteps = [
     description: '몇 건을 읽었는지, 어떤 조건이 남아 있는지 밝힌 뒤 바스타임의 결론으로 정리합니다.',
     rows: [
       ['확인됨', '공식 정보로 검증한 사실'],
-      ['이용 경험 기준', '반복 언급을 세어 내린 판단'],
+      ['후기 기준', '반복 언급을 세어 내린 판단'],
       ['이용 전 확인', '조건에 따라 달라지는 항목'],
     ],
   },
@@ -81,9 +81,9 @@ const informationStates = [
   },
   {
     id: 'experience',
-    label: '이용 경험 기준',
+    label: '후기 기준',
     title: '반복 언급을 세어 도출한 판단',
-    body: '직접 읽은 이용 경험에서 같은 항목이 얼마나 반복됐는지 집계한 결과입니다. 판정에는 몇 건 중 몇 건인지 분모를 함께 표시합니다.',
+    body: '직접 읽은 후기에서 같은 항목이 얼마나 반복됐는지 집계한 결과입니다. 판정에는 몇 건 중 몇 건인지 분모를 함께 표시합니다.',
     example: '온천 관련 234건 중 141건이 물의 매끈함을 언급합니다.',
     icon: ClipboardText,
   },
@@ -186,13 +186,13 @@ export function OnsenMethodologyExperience({ totals, platforms }: { totals: Meth
           <p className="onsen-method-label">바스타임의 확인 기준</p>
           <h1>인용하지 않고,<br />판정합니다.</h1>
           <p className="onsen-method-hero-lede">
-            홍보 문구나 이용 경험 원문을 옮기지 않습니다. 직접 읽고, 세고, 분류한 뒤 어떤 온천 경험인지
+            홍보 문구나 후기 원문을 옮기지 않습니다. 직접 읽고, 세고, 분류한 뒤 어떤 온천인지
             바스타임의 기준으로 정리합니다.
           </p>
           <dl className="onsen-method-hero-stats" aria-label="온천 판정 현황">
             <div>
               <dt>{formatNumber(totals.experiencesRead)}</dt>
-              <dd>직접 읽은 이용 경험</dd>
+              <dd>직접 읽은 후기</dd>
             </div>
             <div>
               <dt>{formatNumber(totals.publishedCount)}</dt>
@@ -299,7 +299,7 @@ export function OnsenMethodologyExperience({ totals, platforms }: { totals: Meth
         <div className="onsen-method-principle-list">
           <article data-method-reveal>
             <strong>원문은 옮기지 않습니다</strong>
-            <p>외부 이용 경험의 문장과 말투는 사용자 화면에 재게시하지 않습니다.</p>
+            <p>외부 후기의 문장과 말투는 사용자 화면에 재게시하지 않습니다.</p>
           </article>
           <article data-method-reveal>
             <strong>부정 신호도 똑같이 셉니다</strong>
@@ -358,7 +358,7 @@ export function OnsenMethodologyExperience({ totals, platforms }: { totals: Meth
           <p className="onsen-method-label">확인하는 표면</p>
           <h2 id="method-sources-title">어디를 읽었는지도<br />판정의 일부입니다.</h2>
           <p>
-            공개적으로 확인 가능한 플랫폼과 공개 표면을 숙소·시설별로 나눠 읽습니다. 각 판정 페이지에는 직접 읽은 이용 경험 수와
+            공개적으로 확인 가능한 플랫폼과 공개 표면을 숙소·시설별로 나눠 읽습니다. 각 판정 페이지에는 직접 읽은 후기 수와
             확인한 플랫폼 수, 기준일을 함께 표시합니다.
           </p>
           <ol className="onsen-method-platform-list" aria-label="주요 확인 표면">

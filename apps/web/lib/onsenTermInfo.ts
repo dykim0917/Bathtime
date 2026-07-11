@@ -48,7 +48,7 @@ const termInfo: Record<OnsenTermInfoKey, OnsenTermInfo> = {
   },
   carbonatedWater: {
     title: '탄산온천',
-    description: '이산화탄소천 계열입니다. 기포나 탄산감 언급은 이용 경험 카운트와 함께 봅니다.',
+    description: '이산화탄소천 계열입니다. 기포나 탄산감 언급은 직접 읽은 후기 수와 함께 봅니다.',
   },
   whiteCloudyWater: {
     title: '백탁',

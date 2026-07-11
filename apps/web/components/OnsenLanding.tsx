@@ -1,10 +1,13 @@
 import Link from 'next/link';
-import { Waves } from '@phosphor-icons/react/ssr';
-import { readOnsenCandidates } from '@web/lib/onsenData';
-import { buildOnsenSearchSuggestions, popularOnsenSearches, recommendedOnsenPlaces } from '@web/lib/onsenSearch';
+import { ArrowRight } from '@phosphor-icons/react/ssr';
 import { getOnsenEntityType, type OnsenCandidate } from '@web/lib/onsenCatalog';
-import { getOnsenWaterHighlightMark, hasConfirmedWaterKakenagashi } from '@web/lib/onsenWaterSignal';
-import { OnsenSearchForm } from './OnsenSearchForm';
+import { getOnsenCardSummary } from '@web/lib/onsenCopy';
+import { readOnsenCandidates } from '@web/lib/onsenData';
+import { getOnsenRegionImage } from '@web/lib/onsenRegionImages';
+import { hasConfirmedWaterKakenagashi } from '@web/lib/onsenWaterSignal';
+import { OnsenDiscoveryHero } from './OnsenDiscoveryHero';
+import { OnsenPassportHomeBand } from './OnsenPassportHomeBand';
+import styles from './OnsenLanding.module.css';
 
 type RegionInventory = {
   area: string;
@@ -17,81 +20,21 @@ type RegionInventory = {
   imageUrl: string;
 };
 
-const regionImageByArea: Record<string, string> = {
-  yufuin: '/images/onsen/regions/yufuin.jpg',
-  beppu: '/images/onsen/regions/beppu.jpg',
-  kurokawa: '/images/onsen/regions/kurokawa.jpg',
-  ibusuki: '/images/onsen/regions/ibusuki.jpg',
-  ureshino: '/images/onsen/regions/ureshino.jpg',
-  takeo: '/images/onsen/regions/takeo.jpg',
-  kirishima: '/images/onsen/regions/kirishima.jpg',
-  hakone: '/images/onsen/regions/hakone.jpg',
-  yugawara: '/images/onsen/regions/yugawara.jpg',
-  isawa: '/images/onsen/regions/isawa.jpg',
-  kawaguchiko: '/images/onsen/regions/kawaguchiko.jpg',
-  fujiyoshida: '/images/onsen/regions/fujiyoshida.jpg',
-  jozankei: '/images/onsen/regions/jozankei.jpg',
-  noboribetsu: '/images/onsen/regions/noboribetsu.jpg',
-  'yunokawa-hakodate': '/images/onsen/regions/yunokawa-hakodate.jpg',
-  'hokkaido-toyako': '/images/onsen/regions/hokkaido-toyako.jpg',
-  tokachigawa: '/images/onsen/regions/tokachigawa.jpg',
-  atami: '/images/onsen/regions/atami.jpg',
-  gero: '/images/onsen/regions/gero.jpg',
-  tokyo: '/images/onsen/regions/tokyo.jpg',
-  osaka: '/images/onsen/regions/osaka.jpg',
-};
+type MomentKind = 'quiet' | 'couple' | 'scenic';
 
 function formatNumber(value: number) {
   return new Intl.NumberFormat('ko-KR').format(value);
 }
 
-function OnsenLaurel({ side = 'left' }: { side?: 'left' | 'right' }) {
-  return (
-    <svg className="onsen-card-water-award-laurel" data-side={side} viewBox="0 96 192 358" aria-hidden="true" focusable="false">
-      <path
-        fill="currentColor"
-        d="m185.152344 425.984375c-12.199219-4.320313-23.851563-10.042969-34.726563-17.054687 27.695313-20.011719 34.761719-58.261719 16.046875-86.851563-27.496094 18.027344-36.859375 53.953125-21.664062 83.105469-13.386719-9.347656-25.335938-20.601563-35.472656-33.398438-6.453126-8.199218-12.140626-16.972656-16.992188-26.210937 31.425781-8.359375 51.582031-38.960938 46.863281-71.132813-28.511719 4.21875-50.6875 26.984375-54.160156 55.597656-8.855469-21.878906-12.945313-45.398437-12-68.984374 33.738281-.210938 61.515625-26.574219 63.488281-60.253907-25.113281-1.4375-48.734375 11.980469-60.359375 34.289063 2.714844-13.710938 7.109375-27.027344 13.089844-39.65625l6.796875-13.992188c23.199219-17.566406 31.628906-48.566406 20.523438-75.457031-29.089844 12.0625-45.0625 43.507813-37.65625 74.113281l-4.082032 8.40625c-4.246094 8.996094-7.765625 18.320313-10.519531 27.878906-4.84375-25.214843-24.289063-45.09375-49.390625-50.496093-6.984375 32.5625 12.171875 65.039062 44.046875 74.679687-2.976563 19.625-2.722656 39.605469.75 59.144532-11.269531-22.445313-34.636719-36.214844-59.734375-35.199219 1.445312 35.25 31.148438 62.679687 66.398438 61.328125 4.132812 12.234375 9.539062 24.003906 16.136718 35.105468-20.191406-12.644531-45.734375-13.023437-66.296875-.984374 16.953125 28.882812 53.308594 39.808593 83.378907 25.0625 9.753906 11.796874 20.941406 22.332031 33.304687 31.359374-27.324219-6.476562-55.679687 5.617188-69.921875 29.816407 29.230469 17.179687 66.78125 8.5625 85.601562-19.640625 9.921876 5.808594 20.367188 10.667968 31.199219 14.519531.851563.300781 1.75.457031 2.65625.457031 3.902344.007813 7.242188-2.804687 7.902344-6.652344.65625-3.847656-1.5625-7.609374-5.246094-8.898437zm0 0"
-      />
-    </svg>
-  );
-}
-
 function getCatalogTotal(candidates: OnsenCandidate[]) {
   return candidates.reduce(
     (acc, candidate) => ({
-      experiencesRead: acc.experiencesRead + (candidate.verdict?.briefing.experiencesRead ?? candidate.directReviews ?? 0),
+      reviewsRead: acc.reviewsRead + (candidate.verdict?.briefing.experiencesRead ?? candidate.directReviews ?? 0),
       accommodationCount: acc.accommodationCount + (getOnsenEntityType(candidate) === 'accommodation' ? 1 : 0),
       facilityCount: acc.facilityCount + (getOnsenEntityType(candidate) === 'facility' ? 1 : 0),
     }),
-    { experiencesRead: 0, accommodationCount: 0, facilityCount: 0 }
+    { reviewsRead: 0, accommodationCount: 0, facilityCount: 0 }
   );
-}
-
-function getFeaturedVerdicts(candidates: OnsenCandidate[]) {
-  const currentMonth = new Date().getMonth() + 1;
-  const regionCounts = new Map<string, number>();
-
-  return [...candidates]
-    .filter((candidate) => candidate.verdict)
-    .sort((a, b) => {
-      const aSeason = a.verdict?.items.some((item) => item.seasonMonths?.includes(currentMonth)) ? 1 : 0;
-      const bSeason = b.verdict?.items.some((item) => item.seasonMonths?.includes(currentMonth)) ? 1 : 0;
-      if (aSeason !== bSeason) return bSeason - aSeason;
-
-      const aLevel = a.verdict?.level === 'full' ? 1 : 0;
-      const bLevel = b.verdict?.level === 'full' ? 1 : 0;
-      if (aLevel !== bLevel) return bLevel - aLevel;
-
-      return (b.verdict?.briefing.experiencesRead ?? b.directReviews ?? 0) - (a.verdict?.briefing.experiencesRead ?? a.directReviews ?? 0);
-    })
-    .filter((candidate) => {
-      const key = candidate.location?.onsenArea ?? candidate.region;
-      const count = regionCounts.get(key) ?? 0;
-      if (count >= 2) return false;
-      regionCounts.set(key, count + 1);
-      return true;
-    })
-    .slice(0, 4);
 }
 
 function getRegionInventory(candidates: OnsenCandidate[]): RegionInventory[] {
@@ -111,15 +54,13 @@ function getRegionInventory(candidates: OnsenCandidate[]): RegionInventory[] {
         accommodationCount: 0,
         facilityCount: 0,
         directSourceCount: 0,
-        imageUrl: regionImageByArea[area] ?? '/images/onsen/regions/yufuin.jpg',
+        imageUrl: getOnsenRegionImage(area),
       } satisfies RegionInventory);
 
     existing.publishedCount += 1;
     if (getOnsenEntityType(candidate) === 'facility') existing.facilityCount += 1;
     else existing.accommodationCount += 1;
-    if (hasConfirmedWaterKakenagashi(candidate)) {
-      existing.directSourceCount += 1;
-    }
+    if (hasConfirmedWaterKakenagashi(candidate)) existing.directSourceCount += 1;
     byArea.set(area, existing);
   }
 
@@ -128,128 +69,280 @@ function getRegionInventory(candidates: OnsenCandidate[]): RegionInventory[] {
     .sort((a, b) => b.publishedCount - a.publishedCount || a.label.localeCompare(b.label, 'ko-KR'));
 }
 
+function getCandidateSearchText(candidate: OnsenCandidate) {
+  return [
+    candidate.primaryBath,
+    candidate.summary,
+    candidate.verdict?.headline,
+    ...candidate.tags,
+    ...(candidate.contexts?.bath ?? []),
+    ...(candidate.officialFilterCodes ?? []),
+    ...candidate.facts.flatMap((fact) => [fact.label, fact.value, fact.detail]),
+  ]
+    .filter(Boolean)
+    .join(' ');
+}
+
+function hasBathContext(candidate: OnsenCandidate, value: 'room_bath' | 'private_bath') {
+  if (candidate.contexts?.bath.includes(value)) return true;
+  if (value === 'room_bath' && candidate.tags.includes('room-bath')) return true;
+  if (value === 'private_bath' && candidate.tags.includes('private-bath')) return true;
+  return value === 'private_bath' && candidate.officialFilterCodes?.includes('private_bath');
+}
+
+function hasConfirmedOpenAirBath(candidate: OnsenCandidate) {
+  if (candidate.officialFilterCodes?.includes('open_air_bath')) return true;
+  return candidate.facts.some(
+    (fact) => fact.status !== 'needs_check' && /노천탕|노천 온천|노천욕/.test(`${fact.label} ${fact.value}`)
+  );
+}
+
+function getCandidateScore(candidate: OnsenCandidate) {
+  const imageScore = candidate.imageUrl ? 1_000_000 : 0;
+  const verdictScore = candidate.verdict?.level === 'full' ? 100_000 : 0;
+  const reviewScore = candidate.verdict?.briefing.experiencesRead ?? candidate.directReviews ?? 0;
+  return imageScore + verdictScore + reviewScore;
+}
+
+function selectMomentCandidates(
+  candidates: OnsenCandidate[],
+  kind: MomentKind,
+  excludedSlugs: Set<string>,
+  limit = 3
+) {
+  const matches = candidates
+    .filter((candidate) => candidate.verdict && !excludedSlugs.has(candidate.slug))
+    .filter((candidate) => {
+      if (kind === 'quiet') return hasBathContext(candidate, 'private_bath') || hasBathContext(candidate, 'room_bath');
+      if (kind === 'couple') return getOnsenEntityType(candidate) === 'accommodation' && hasBathContext(candidate, 'room_bath');
+      return hasConfirmedOpenAirBath(candidate);
+    })
+    .sort((a, b) => getCandidateScore(b) - getCandidateScore(a));
+
+  const selected: OnsenCandidate[] = [];
+  const selectedAreas = new Set<string>();
+
+  for (const candidate of matches) {
+    const area = candidate.location?.onsenArea ?? candidate.region;
+    if (selectedAreas.has(area)) continue;
+    selected.push(candidate);
+    selectedAreas.add(area);
+    if (selected.length === limit) return selected;
+  }
+
+  for (const candidate of matches) {
+    if (selected.some((item) => item.slug === candidate.slug)) continue;
+    selected.push(candidate);
+    if (selected.length === limit) break;
+  }
+
+  return selected;
+}
+
+function getCandidateImage(candidate: OnsenCandidate) {
+  const area = candidate.location?.onsenArea ?? candidate.region;
+  return candidate.imageUrl ?? getOnsenRegionImage(area);
+}
+
+function getCandidateLocation(candidate: OnsenCandidate) {
+  const region = candidate.location?.regionGroupLabel;
+  const area = candidate.location?.onsenAreaLabel ?? candidate.area;
+  const type = getOnsenEntityType(candidate) === 'facility' ? '당일온천' : '숙소';
+  return [region, area, type].filter(Boolean).join(' · ');
+}
+
+function getMomentCondition(candidate: OnsenCandidate, kind: MomentKind) {
+  const text = getCandidateSearchText(candidate);
+  if (kind === 'quiet') {
+    if (hasBathContext(candidate, 'private_bath')) return '대절탕';
+    return '객실 내 프라이빗탕';
+  }
+  if (kind === 'couple') return /노천/.test(text) ? '객실 내 프라이빗탕 · 노천탕' : '객실 내 프라이빗탕';
+  if (/설경|눈/.test(text)) return '노천탕 · 설경';
+  if (/바다|ocean_view/.test(text)) return '노천탕 · 바다 전망';
+  return '노천탕 · 자연 전망';
+}
+
+function MomentCard({ candidate, kind }: { candidate: OnsenCandidate; kind: MomentKind }) {
+  return (
+    <Link className={styles.momentCard} href={`/onsen/${candidate.slug}`}>
+      <span className={styles.momentCardMedia}>
+        <img src={getCandidateImage(candidate)} alt={candidate.imageAlt ?? `${candidate.name} 온천 풍경`} loading="lazy" />
+      </span>
+      <span className={styles.momentCardCopy}>
+        <span className={styles.locationLine}>{getCandidateLocation(candidate)}</span>
+        <strong>{candidate.name}</strong>
+        <span className={styles.momentCardSummary}>{getOnsenCardSummary(candidate)}</span>
+        <small>{getMomentCondition(candidate, kind)}</small>
+      </span>
+    </Link>
+  );
+}
+
+function formatRegionInventory(item: RegionInventory) {
+  const parts: string[] = [];
+  if (item.accommodationCount > 0) parts.push(`숙소 ${formatNumber(item.accommodationCount)}`);
+  if (item.facilityCount > 0) parts.push(`당일온천 ${formatNumber(item.facilityCount)}`);
+  if (item.directSourceCount > 0) parts.push(`직수 ${formatNumber(item.directSourceCount)}`);
+  return parts.join(' · ');
+}
+
 export async function OnsenLanding() {
   const candidates = await readOnsenCandidates();
-  const suggestions = buildOnsenSearchSuggestions(candidates);
   const totals = getCatalogTotal(candidates);
-  const featuredVerdicts = getFeaturedVerdicts(candidates);
-  const regionInventory = getRegionInventory(candidates);
-  const featuredRegionInventory = regionInventory.slice(0, 6);
-  const compactRegionInventory = regionInventory.slice(6);
+  const regions = getRegionInventory(candidates).slice(0, 5);
+  const usedSlugs = new Set<string>();
+  const quietCandidates = selectMomentCandidates(candidates, 'quiet', usedSlugs);
+  quietCandidates.forEach((candidate) => usedSlugs.add(candidate.slug));
+  const coupleCandidates = selectMomentCandidates(candidates, 'couple', usedSlugs);
+  coupleCandidates.forEach((candidate) => usedSlugs.add(candidate.slug));
+  const scenicCandidates = selectMomentCandidates(candidates, 'scenic', usedSlugs);
 
   return (
-    <div className="onsen-home">
-      <section className="onsen-search-hero" aria-labelledby="onsen-search-title">
-        <div className="onsen-hero-copy-block">
-          <p className="onsen-kicker">바스타임 온천 검색기</p>
-          <h1 id="onsen-search-title">숙박 전에도, 당일 방문 전에도 어떤 온천인지 확인하세요.</h1>
-          <div className="onsen-total-stamp" aria-label="바스타임 온천 판정 현황">
-            <strong>
-              이용 경험 {formatNumber(totals.experiencesRead)}건을 읽고, 숙소 {formatNumber(totals.accommodationCount)}곳과 당일온천 {formatNumber(totals.facilityCount)}곳을 확인했습니다.
-            </strong>
-            <Link href="/onsen/methodology">확인 기준 보기</Link>
-          </div>
+    <div className={styles.home}>
+      <OnsenDiscoveryHero />
+      <OnsenPassportHomeBand />
 
-          <OnsenSearchForm suggestions={suggestions} recommendedPlaces={recommendedOnsenPlaces} popularSearches={popularOnsenSearches} panelMode="autocomplete" />
-        </div>
-      </section>
-
-      {featuredVerdicts.length > 0 ? (
-        <section className="onsen-featured-verdicts" aria-labelledby="onsen-featured-verdicts-title">
-          <div className="onsen-home-section-head">
-            <p className="onsen-kicker">바스타임 판정</p>
-            <h2 id="onsen-featured-verdicts-title">먼저 확인해볼 온천</h2>
-            <p>검색어를 정하지 않아도, 바스타임이 근거를 확인한 온천부터 살펴볼 수 있습니다.</p>
-          </div>
-          <div className="onsen-featured-verdict-grid">
-            {featuredVerdicts.map((candidate) => {
-              const waterHighlightMark = getOnsenWaterHighlightMark(candidate);
-
-              return (
-                <Link key={candidate.slug} className="onsen-featured-verdict-card" href={`/onsen/${candidate.slug}`}>
-                  <div className="onsen-featured-verdict-visual" aria-label={`${candidate.name} 사진 영역`}>
-                    {candidate.imageUrl ? (
-                      <img src={candidate.imageUrl} alt={candidate.imageAlt ?? `${candidate.name} 온천 이미지`} loading="lazy" />
-                    ) : (
-                      <div className="onsen-card-placeholder">
-                        <Waves size={26} weight="bold" aria-hidden="true" />
-                        <span>사진 준비 중</span>
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="onsen-featured-verdict-copy">
-                    {waterHighlightMark ? (
-                      <span
-                        className="onsen-card-water-award"
-                        data-tone={waterHighlightMark.tone}
-                        title={waterHighlightMark.title}
-                        aria-label={`${waterHighlightMark.label}: ${waterHighlightMark.title}`}
-                      >
-                        <OnsenLaurel />
-                        {waterHighlightMark.label}
-                        <OnsenLaurel side="right" />
-                      </span>
-                    ) : null}
-                    <span className="onsen-card-location">
-                      {candidate.location?.display ?? candidate.area} · {getOnsenEntityType(candidate) === 'facility' ? '당일온천' : '숙소'}
-                    </span>
-                    <strong>{candidate.name}</strong>
-                    <span className="onsen-verdict-card-meta">
-                      이용 경험 {formatNumber(candidate.verdict?.briefing.experiencesRead ?? candidate.directReviews)}건 분석 ·{' '}
-                      {(candidate.verdict?.items.length ?? 0) > 0 ? `근거 ${candidate.verdict?.items.length ?? 0}개` : '구조 확인'}
-                    </span>
-                  </div>
-                </Link>
-              );
-            })}
+      {quietCandidates.length > 0 ? (
+        <section className={styles.desireStory} id="moments" aria-labelledby="quiet-desire-title">
+          <div className={styles.storyInner}>
+            <header className={styles.storyHeading}>
+              <div>
+                <h2 id="quiet-desire-title">아무도 없는 탕에서 오래 있고 싶을 때.</h2>
+                <strong>대절탕 · 객실 내 프라이빗탕</strong>
+              </div>
+              <Link href="/onsen/results?bath=private_bath">
+                이 조건 전체 보기 <ArrowRight size={16} aria-hidden="true" />
+              </Link>
+            </header>
+            <div className={styles.cardGrid}>
+              {quietCandidates.map((candidate) => <MomentCard key={candidate.slug} candidate={candidate} kind="quiet" />)}
+            </div>
           </div>
         </section>
       ) : null}
 
-      {regionInventory.length > 0 ? (
-        <section className="onsen-region-inventory" aria-labelledby="onsen-region-inventory-title">
-          <div className="onsen-home-section-head">
-            <p className="onsen-kicker">지역별 보기</p>
-            <h2 id="onsen-region-inventory-title">지역별로 확인한 온천</h2>
-            <p>판정이 준비된 숙소와 당일온천이 많은 지역을 먼저 정리했습니다.</p>
-          </div>
-          <div className="onsen-region-inventory-grid">
-            {featuredRegionInventory.map((item) => (
-              <Link key={item.area} className="onsen-region-inventory-card" href={item.href}>
-                <span className="onsen-region-inventory-bg" aria-hidden="true">
-                  <img src={item.imageUrl} alt="" loading="lazy" />
+      {coupleCandidates.length > 0 ? (
+        <section className={`${styles.desireStory} ${styles.desireStorySoft}`} aria-labelledby="couple-desire-title">
+          <div className={styles.storyInner}>
+            <header className={styles.storyHeading}>
+              <div>
+                <h2 id="couple-desire-title">둘만 쓰는 객실탕이 필요할 때.</h2>
+                <strong>객실 내 프라이빗탕 · 노천탕</strong>
+              </div>
+              <Link href="/onsen/results?bath=room_bath">
+                이 조건 전체 보기 <ArrowRight size={16} aria-hidden="true" />
+              </Link>
+            </header>
+            <div className={styles.coupleGallery}>
+              <Link className={styles.coupleFeature} href={`/onsen/${coupleCandidates[0].slug}`}>
+                <img src={getCandidateImage(coupleCandidates[0])} alt={coupleCandidates[0].imageAlt ?? `${coupleCandidates[0].name} 온천 풍경`} loading="lazy" />
+                <span className={styles.coupleFeatureShade} aria-hidden="true" />
+                <span className={styles.coupleFeatureCopy}>
+                  <span className={styles.locationLine}>{getCandidateLocation(coupleCandidates[0])}</span>
+                  <strong>{coupleCandidates[0].name}</strong>
+                  <span className={styles.momentCardSummary}>{getOnsenCardSummary(coupleCandidates[0])}</span>
+                  <small>{getMomentCondition(coupleCandidates[0], 'couple')}</small>
                 </span>
-                <span className="onsen-region-inventory-copy">
+              </Link>
+              <div className={styles.coupleShortlist}>
+                {coupleCandidates.slice(1).map((candidate) => (
+                  <Link key={candidate.slug} className={styles.coupleOption} href={`/onsen/${candidate.slug}`}>
+                    <span className={styles.coupleOptionMedia}>
+                      <img src={getCandidateImage(candidate)} alt={candidate.imageAlt ?? `${candidate.name} 온천 풍경`} loading="lazy" />
+                    </span>
+                    <span className={styles.coupleOptionCopy}>
+                      <span className={styles.locationLine}>{getCandidateLocation(candidate)}</span>
+                      <strong>{candidate.name}</strong>
+                      <span className={styles.momentCardSummary}>{getOnsenCardSummary(candidate)}</span>
+                      <small>{getMomentCondition(candidate, 'couple')}</small>
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      ) : null}
+
+      {scenicCandidates.length > 0 ? (
+        <section className={styles.desireStory} id="scenic-moment" aria-labelledby="scenic-desire-title">
+          <div className={styles.storyInner}>
+            <header className={styles.storyHeading}>
+              <div>
+                <h2 id="scenic-desire-title">눈이나 숲을 보며 잠기고 싶을 때.</h2>
+                <strong>노천탕 · 자연 전망</strong>
+              </div>
+              <Link href="/onsen/results?feature=open_air_bath">
+                이 조건 전체 보기 <ArrowRight size={16} aria-hidden="true" />
+              </Link>
+            </header>
+            <div className={`${styles.cardGrid} ${styles.scenicCardGrid}`}>
+              {scenicCandidates.map((candidate) => <MomentCard key={candidate.slug} candidate={candidate} kind="scenic" />)}
+            </div>
+          </div>
+        </section>
+      ) : null}
+
+      {regions.length > 0 ? (
+        <section className={styles.regionSection} id="regions" aria-labelledby="regions-title">
+          <header className={styles.sectionHeading}>
+            <span>지역별 온천</span>
+            <h2 id="regions-title">풍경과 재고를 함께 봅니다.</h2>
+            <p>지금 판정이 준비된 온천 숙소와 당일온천이 많은 지역부터 둘러보세요.</p>
+          </header>
+          <div className={styles.regionGrid}>
+            {regions.map((item) => (
+              <Link key={item.area} className={styles.regionTile} href={item.href}>
+                <img src={item.imageUrl} alt={`${item.label} 온천 마을`} loading="lazy" />
+                <span className={styles.regionTileCopy}>
                   <strong>{item.label}</strong>
-                  <span>
-                    숙소 {formatNumber(item.accommodationCount)}곳 · 당일온천 {formatNumber(item.facilityCount)}곳
-                    {item.directSourceCount > 0 ? ` · 직수 ${formatNumber(item.directSourceCount)}곳` : ''}
-                  </span>
+                  <span>{formatRegionInventory(item)}</span>
                 </span>
               </Link>
             ))}
           </div>
-          {compactRegionInventory.length > 0 ? (
-            <details className="onsen-region-compact-panel" aria-label="더 많은 온천 지역">
-              <summary className="onsen-region-compact-head">
-                <span className="onsen-region-compact-summary-copy">
-                  <strong>더 많은 지역</strong>
-                  <span>{formatNumber(compactRegionInventory.length)}개 지역</span>
-                </span>
-              </summary>
-              <div className="onsen-region-compact-grid">
-                {compactRegionInventory.map((item) => (
-                  <Link key={item.area} className="onsen-region-compact-link" href={item.href}>
-                    <strong>{item.label}</strong>
-                    <span>숙소 {formatNumber(item.accommodationCount)}곳 · 당일온천 {formatNumber(item.facilityCount)}곳</span>
-                  </Link>
-                ))}
-              </div>
-            </details>
-          ) : null}
+          <Link className={styles.allRegionsLink} href="/onsen/results">
+            전체 지역과 온천 보기 <ArrowRight size={16} aria-hidden="true" />
+          </Link>
         </section>
       ) : null}
+
+      <section className={styles.waterBand} id="water" aria-labelledby="water-title">
+        <div className={styles.waterBandInner}>
+          <div className={styles.waterBandCopy}>
+            <span>온천수로 찾기</span>
+            <h2 id="water-title">직수인가,<br />무엇을 더했는가.</h2>
+            <p>복잡한 일본어 표기는 내부 데이터에 남기고, 사용자는 방식과 조건을 두 줄로 이해할 수 있게 정리합니다.</p>
+          </div>
+          <nav className={styles.waterList} aria-label="온천수 방식">
+            <Link href="/onsen/results?water=kakenagashi_pure"><strong>순수직수</strong><span>물을 더하지 않고 데우지 않은 원천 그대로</span><ArrowRight size={18} aria-hidden="true" /></Link>
+            <Link href="/onsen/results?water=kakenagashi"><strong>직수</strong><span>흘려보내는 방식, 가수·가온 조건은 함께 표시</span><ArrowRight size={18} aria-hidden="true" /></Link>
+            <Link href="/onsen/results?water=junkan"><strong>순환식 온천</strong><span>순환 여과 방식이 공식 확인된 온천</span><ArrowRight size={18} aria-hidden="true" /></Link>
+            <Link href="/onsen/results?water=slippery"><strong>물의 감촉</strong><span>후기에서 반복된 매끈함, 부드러움, 온천감</span><ArrowRight size={18} aria-hidden="true" /></Link>
+          </nav>
+        </div>
+      </section>
+
+      <section className={styles.evidenceStrip} aria-label="바스타임 온천 데이터 현황">
+        <div className={styles.evidenceInner}>
+          <div><strong>{formatNumber(totals.reviewsRead)}</strong><span>직접 읽은 후기</span></div>
+          <div><strong>{formatNumber(totals.accommodationCount)}</strong><span>온천 숙소</span></div>
+          <div><strong>{formatNumber(totals.facilityCount)}</strong><span>당일온천</span></div>
+          <Link href="/onsen/methodology">어떻게 확인했나요? <ArrowRight size={16} aria-hidden="true" /></Link>
+        </div>
+      </section>
+
+      <section className={styles.methodBand} aria-labelledby="method-title">
+        <img src="/images/onsen/regions/kurokawa.jpg" alt="숲과 수로가 이어지는 구로카와 온천 마을" loading="lazy" />
+        <span className={styles.methodShade} aria-hidden="true" />
+        <div className={styles.methodCopy}>
+          <span>바스타임의 확인 기준</span>
+          <h2 id="method-title">인용하지 않고,<br />직접 읽고 판정합니다.</h2>
+          <p>공식 정보와 공개 후기를 분리해 읽고, 근거가 확인된 사실과 방문 전에 다시 볼 조건을 나눠 표시합니다.</p>
+          <Link href="/onsen/methodology">판정 방법 읽기 <ArrowRight size={16} aria-hidden="true" /></Link>
+        </div>
+      </section>
     </div>
   );
 }

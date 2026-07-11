@@ -36,24 +36,43 @@ function Icon({ name, size = 20, active = false }: { name: IconName; size?: numb
   return <IconComponent size={size} weight={active ? 'fill' : 'regular'} aria-hidden />;
 }
 
-function AccountButton({ signedIn, ready, onSignedOut }: { signedIn: boolean; ready: boolean; onSignedOut: () => void }) {
+function AccountButton({
+  signedIn,
+  ready,
+  iconOnly = false,
+  onSignedOut,
+}: {
+  signedIn: boolean;
+  ready: boolean;
+  iconOnly?: boolean;
+  onSignedOut: () => void;
+}) {
   const [open, setOpen] = useState(false);
+  const buttonClassName = iconOnly ? 'account-button account-button-icon' : 'account-button';
 
   if (!ready || !signedIn) {
     return (
-      <Link className="account-button" href="/auth/login">
-        <Icon name="user" size={16} />
-        <span>로그인</span>
+      <Link className={buttonClassName} href="/auth/login" aria-label={iconOnly ? '로그인' : undefined} title={iconOnly ? '로그인' : undefined}>
+        <Icon name="user" size={iconOnly ? 20 : 16} />
+        {iconOnly ? null : <span>로그인</span>}
       </Link>
     );
   }
 
   return (
     <div className={open ? 'account-menu-wrap is-open' : 'account-menu-wrap'}>
-      <button className="account-button" type="button" aria-haspopup="menu" aria-expanded={open} onClick={() => setOpen((value) => !value)}>
-        <Icon name="user" size={17} />
-        <span>프로필</span>
-        <CaretDown size={13} weight="bold" aria-hidden />
+      <button
+        className={buttonClassName}
+        type="button"
+        aria-label={iconOnly ? '계정 메뉴' : undefined}
+        title={iconOnly ? '계정 메뉴' : undefined}
+        aria-haspopup="menu"
+        aria-expanded={open}
+        onClick={() => setOpen((value) => !value)}
+      >
+        <Icon name="user" size={iconOnly ? 20 : 17} />
+        {iconOnly ? null : <span>프로필</span>}
+        {iconOnly ? null : <CaretDown size={13} weight="bold" aria-hidden />}
       </button>
       <div className="account-menu" role="menu">
         <Link href="/passport" role="menuitem" onClick={() => setOpen(false)}>
@@ -95,6 +114,7 @@ function OnsenHeaderSearch({ suggestions }: { suggestions: ReturnType<typeof bui
         popularSearches={popularOnsenSearches}
         initialQuery={onsenQuery}
         variant="header"
+        panelMode="autocomplete"
       />
     </div>
   );
@@ -140,7 +160,7 @@ export function Shell({
   const isOnsenRoute = pathname === '/' || pathname.startsWith('/onsen');
   const isOnsenHomeRoute = pathname === '/' || pathname === '/onsen';
   const isAuthRoute = pathname.startsWith('/auth');
-  const showOnsenHeaderSearch = pathname.startsWith('/onsen') && pathname !== '/onsen';
+  const showOnsenHeaderSearch = isOnsenRoute;
   const [signedIn, setSignedIn] = useState(false);
   const [authReady, setAuthReady] = useState(false);
   const [authGate, setAuthGate] = useState<{ source: string; next: string; message: string } | null>(null);
@@ -281,7 +301,7 @@ export function Shell({
             </Suspense>
           ) : null}
           <div className="header-actions">
-            <AccountButton signedIn={signedIn} ready={authReady} onSignedOut={() => setSignedIn(false)} />
+            <AccountButton signedIn={signedIn} ready={authReady} iconOnly={isOnsenRoute} onSignedOut={() => setSignedIn(false)} />
           </div>
         </aside>
       ) : null}

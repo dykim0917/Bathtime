@@ -42,6 +42,7 @@ const nextConfig = {
       'https://*.adtrafficquality.google',
       'https://dapi.kakao.com',
       'https://*.kakao.com',
+      'https://tiles.openfreemap.org',
     ].join(' ');
     const frameSources = [
       "'self'",
@@ -60,6 +61,7 @@ const nextConfig = {
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' https: data: blob:",
       "font-src 'self' data:",
+      "worker-src 'self' blob:",
       `connect-src ${connectSources}`,
       `frame-src ${frameSources}`,
       "form-action 'self'",

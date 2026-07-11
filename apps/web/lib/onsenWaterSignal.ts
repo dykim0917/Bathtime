@@ -15,7 +15,7 @@ export function getOnsenWaterHighlightMark(candidate: Pick<OnsenCandidate, 'verd
   if (candidate.waterProfile?.canonicalMethod === 'kakenagashi_pure') {
     return {
       label: '순수직수',
-      tone: 'water-source',
+      tone: 'gold',
       title: '공식 정보에서 원천 그대로 흘려보내는 방식으로 확인',
     };
   }
@@ -23,15 +23,23 @@ export function getOnsenWaterHighlightMark(candidate: Pick<OnsenCandidate, 'verd
   if (candidate.waterProfile?.canonicalMethod === 'kakenagashi') {
     return {
       label: '직수',
-      tone: 'water-source',
+      tone: 'silver',
       title: '공식 정보에서 온천수를 흘려보내는 방식으로 확인',
+    };
+  }
+
+  if (candidate.waterProfile?.canonicalMethod === 'junkan') {
+    return {
+      label: '순환식 온천',
+      tone: 'bronze',
+      title: '공식 정보에서 온천수를 순환·여과해 사용하는 방식으로 확인',
     };
   }
 
   if (hasConfirmedWaterKakenagashi(candidate) || (!candidate.verdict && text.includes('직수'))) {
     return {
       label: '직수',
-      tone: 'water-source',
+      tone: 'silver',
       title: '공식 정보에서 온천수를 흘려보내는 방식으로 확인',
     };
   }
@@ -57,7 +65,8 @@ export function getOnsenWaterSortRank(candidate: Pick<OnsenCandidate, 'verdict' 
 
   const waterHighlightMark = getOnsenWaterHighlightMark(candidate);
 
-  if (waterHighlightMark?.tone === 'water-source') return 1;
+  if (waterHighlightMark?.tone === 'silver') return 1;
+  if (waterHighlightMark?.tone === 'bronze') return 2;
 
-  return 2;
+  return 3;
 }

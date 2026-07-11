@@ -1,0 +1,781 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>바스타임 온천 결과 V2 | Evidence Workbench</title>
+  <link rel="icon" href="data:," />
+  <link rel="stylesheet" href="../home-v2/shared.css" />
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.css" />
+  <link rel="stylesheet" href="./results.css" />
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body class="results-prototype">
+  <svg class="prototype-symbols" aria-hidden="true" focusable="false">
+    <symbol id="water-laurel" viewBox="0 96 192 358">
+      <path fill="currentColor" d="m185.152344 425.984375c-12.199219-4.320313-23.851563-10.042969-34.726563-17.054687 27.695313-20.011719 34.761719-58.261719 16.046875-86.851563-27.496094 18.027344-36.859375 53.953125-21.664062 83.105469-13.386719-9.347656-25.335938-20.601563-35.472656-33.398438-6.453126-8.199218-12.140626-16.972656-16.992188-26.210937 31.425781-8.359375 51.582031-38.960938 46.863281-71.132813-28.511719 4.21875-50.6875 26.984375-54.160156 55.597656-8.855469-21.878906-12.945313-45.398437-12-68.984374 33.738281-.210938 61.515625-26.574219 63.488281-60.253907-25.113281-1.4375-48.734375 11.980469-60.359375 34.289063 2.714844-13.710938 7.109375-27.027344 13.089844-39.65625l6.796875-13.992188c23.199219-17.566406 31.628906-48.566406 20.523438-75.457031-29.089844 12.0625-45.0625 43.507813-37.65625 74.113281l-4.082032 8.40625c-4.246094 8.996094-7.765625 18.320313-10.519531 27.878906-4.84375-25.214843-24.289063-45.09375-49.390625-50.496093-6.984375 32.5625 12.171875 65.039062 44.046875 74.679687-2.976563 19.625-2.722656 39.605469.75 59.144532-11.269531-22.445313-34.636719-36.214844-59.734375-35.199219 1.445312 35.25 31.148438 62.679687 66.398438 61.328125 4.132812 12.234375 9.539062 24.003906 16.136718 35.105468-20.191406-12.644531-45.734375-13.023437-66.296875-.984374 16.953125 28.882812 53.308594 39.808593 83.378907 25.0625 9.753906 11.796874 20.941406 22.332031 33.304687 31.359374-27.324219-6.476562-55.679687 5.617188-69.921875 29.816407 29.230469 17.179687 66.78125 8.5625 85.601562-19.640625 9.921876 5.808594 20.367188 10.667968 31.199219 14.519531.851563.300781 1.75.457031 2.65625.457031 3.902344.007813 7.242188-2.804687 7.902344-6.652344.65625-3.847656-1.5625-7.609374-5.246094-8.898437zm0 0" />
+    </symbol>
+  </svg>
+  <header class="results-nav">
+    <div class="results-nav-inner">
+      <a class="results-brand" href="#top" aria-label="바스타임 홈">
+        <img src="../../../../assets/images/logo.png" alt="바스타임" />
+      </a>
+      <button class="mobile-back" type="button" aria-label="이전 화면" title="이전 화면">
+        <i class="ph ph-arrow-left" aria-hidden="true"></i>
+      </button>
+      <form class="results-search" id="results-search" action="#results-list">
+        <label>
+          <i class="ph ph-magnifying-glass" aria-hidden="true"></i>
+          <input type="search" placeholder="온천지, 숙소·시설 이름" aria-label="온천 검색어" />
+        </label>
+        <button type="submit" aria-label="검색"><i class="ph ph-magnifying-glass" aria-hidden="true"></i></button>
+      </form>
+      <nav class="results-nav-actions" aria-label="계정과 검색">
+        <button class="mobile-search-trigger" id="mobile-search-trigger" type="button" aria-label="온천 검색 열기" title="온천 검색">
+          <i class="ph ph-magnifying-glass" aria-hidden="true"></i>
+        </button>
+        <a href="#account" aria-label="로그인" title="로그인"><i class="ph ph-user-circle" aria-hidden="true"></i></a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="mobile-search-drawer" id="mobile-search-drawer" hidden>
+    <form action="#results-list">
+      <label>
+        <i class="ph ph-magnifying-glass" aria-hidden="true"></i>
+        <input type="search" placeholder="온천지, 숙소·시설 이름" aria-label="모바일 온천 검색어" />
+      </label>
+      <button type="submit">검색</button>
+    </form>
+  </div>
+
+  <main class="results-page" id="top">
+    <section class="results-overview" aria-labelledby="results-title">
+      <div class="overview-main">
+        <div class="overview-copy">
+          <span class="scope-label"><i class="ph ph-map-pin" aria-hidden="true"></i> 일본 전역</span>
+          <h1 id="results-title">전체 지역 온천 <strong id="result-count">254곳</strong></h1>
+        </div>
+        <label class="sort-control desktop-sort">
+          <span>정렬</span>
+          <select id="sort-desktop" aria-label="결과 정렬">
+            <option value="recommended">바스타임 추천순</option>
+            <option value="reviews">후기 많이 읽은 순</option>
+            <option value="water">온천수 방식 우선</option>
+            <option value="name">이름순</option>
+          </select>
+          <i class="ph ph-caret-down" aria-hidden="true"></i>
+        </label>
+      </div>
+
+      <div class="selected-filter-row" id="selected-filter-row" hidden>
+        <span>선택한 조건</span>
+        <div class="selected-filter-list" id="selected-filter-list"></div>
+        <button class="clear-filters" id="clear-filters-top" type="button">모두 지우기</button>
+      </div>
+    </section>
+
+    <section class="results-workspace" aria-label="온천 검색 결과와 필터">
+      <aside class="filter-rail" id="filter-panel" aria-label="검색 결과 필터" aria-hidden="false">
+        <div class="filter-rail-head">
+          <div>
+            <i class="ph ph-funnel-simple" aria-hidden="true"></i>
+            <strong>필터</strong>
+            <span id="filter-active-count" hidden>0</span>
+          </div>
+          <button class="clear-filters" id="clear-filters-rail" type="button">초기화</button>
+          <button class="filter-close" id="filter-close" type="button" aria-label="필터 닫기" title="필터 닫기">
+            <i class="ph ph-x" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <div class="filter-scroll">
+          <details class="filter-group" open>
+            <summary><span>이용 형태</span><i class="ph ph-caret-down" aria-hidden="true"></i></summary>
+            <div class="filter-group-body filter-option-list">
+              <button class="filter-option" type="button" data-filter="숙소" data-group="entity" data-count="186">
+                <span class="check-box"><i class="ph ph-check" aria-hidden="true"></i></span><span>숙소</span><small>186</small>
+              </button>
+              <button class="filter-option" type="button" data-filter="당일온천" data-group="entity" data-count="68">
+                <span class="check-box"><i class="ph ph-check" aria-hidden="true"></i></span><span>당일온천</span><small>68</small>
+              </button>
+            </div>
+          </details>
+
+          <details class="filter-group" open>
+            <summary><span>목욕 구성</span><i class="ph ph-caret-down" aria-hidden="true"></i></summary>
+            <div class="filter-group-body filter-option-list">
+              <button class="filter-option" type="button" data-filter="객실 내 프라이빗탕" data-count="73">
+                <span class="check-box"><i class="ph ph-check" aria-hidden="true"></i></span><span>객실 내 프라이빗탕</span><small>73</small>
+              </button>
+              <button class="filter-option" type="button" data-filter="대절탕" data-count="38">
+                <span class="check-box"><i class="ph ph-check" aria-hidden="true"></i></span><span>대절탕</span><small>38</small>
+              </button>
+              <button class="filter-option" type="button" data-filter="노천탕" data-count="128">
+                <span class="check-box"><i class="ph ph-check" aria-hidden="true"></i></span><span>노천탕</span><small>128</small>
+              </button>
+              <button class="filter-option" type="button" data-filter="대욕장" data-count="151">
+                <span class="check-box"><i class="ph ph-check" aria-hidden="true"></i></span><span>대욕장</span><small>151</small>
+              </button>
+            </div>
+          </details>
+
+          <details class="filter-group" open>
+            <summary>
+              <span>온천수 방식</span>
+              <span class="term-help" role="img" aria-label="온천수 방식 설명" title="온천수 방식 설명"><i class="ph ph-info" aria-hidden="true"></i></span>
+              <i class="ph ph-caret-down" aria-hidden="true"></i>
+            </summary>
+            <div class="filter-group-body filter-option-list">
+              <button class="filter-option" type="button" data-filter="순수직수" data-group="water" data-count="3">
+                <span class="check-box"><i class="ph ph-check" aria-hidden="true"></i></span><span>순수직수</span><small>3</small>
+              </button>
+              <button class="filter-option" type="button" data-filter="직수" data-group="water" data-count="20">
+                <span class="check-box"><i class="ph ph-check" aria-hidden="true"></i></span><span>직수</span><small>20</small>
+              </button>
+              <button class="filter-option" type="button" data-filter="순환식 온천" data-group="water" data-count="41">
+                <span class="check-box"><i class="ph ph-check" aria-hidden="true"></i></span><span>순환식 온천</span><small>41</small>
+              </button>
+            </div>
+          </details>
+
+          <details class="filter-group">
+            <summary><span>물의 감촉과 색</span><i class="ph ph-caret-down" aria-hidden="true"></i></summary>
+            <div class="filter-group-body filter-option-list">
+              <button class="filter-option" type="button" data-filter="부드러움" data-count="36">
+                <span class="check-box"><i class="ph ph-check" aria-hidden="true"></i></span><span>부드러움</span><small>36</small>
+              </button>
+              <button class="filter-option" type="button" data-filter="백탁" data-count="17">
+                <span class="check-box"><i class="ph ph-check" aria-hidden="true"></i></span><span>백탁·우유빛</span><small>17</small>
+              </button>
+              <button class="filter-option" type="button" data-filter="갈색빛" data-count="9">
+                <span class="check-box"><i class="ph ph-check" aria-hidden="true"></i></span><span>갈색빛</span><small>9</small>
+              </button>
+            </div>
+          </details>
+
+          <details class="filter-group">
+            <summary><span>공식 시설 조건</span><i class="ph ph-caret-down" aria-hidden="true"></i></summary>
+            <div class="filter-group-body filter-option-list">
+              <button class="filter-option" type="button" data-filter="사우나" data-count="51">
+                <span class="check-box"><i class="ph ph-check" aria-hidden="true"></i></span><span>사우나</span><small>51</small>
+              </button>
+              <button class="filter-option" type="button" data-filter="주차" data-count="107">
+                <span class="check-box"><i class="ph ph-check" aria-hidden="true"></i></span><span>주차 가능</span><small>107</small>
+              </button>
+              <button class="filter-option" type="button" data-filter="모래찜질" data-count="7">
+                <span class="check-box"><i class="ph ph-check" aria-hidden="true"></i></span><span>모래찜질</span><small>7</small>
+              </button>
+            </div>
+          </details>
+        </div>
+
+        <footer class="mobile-filter-footer">
+          <button class="clear-filters" id="clear-filters-mobile" type="button">초기화</button>
+          <button class="apply-filters" id="apply-filters" type="button"><span id="apply-count">254</span>곳 결과 보기</button>
+        </footer>
+      </aside>
+
+      <div class="results-column">
+        <div class="results-list-control">
+          <p><strong id="range-count">1~24</strong><span> / <b id="total-count-inline">254</b>곳</span></p>
+          <div class="results-list-control-actions">
+            <span>숙소와 당일온천을 함께 표시합니다.</span>
+            <button class="map-toggle" id="map-toggle-desktop" type="button" aria-controls="map-panel" aria-expanded="true">
+              <i class="ph ph-map-trifold" aria-hidden="true"></i>
+              <span>지도 닫기</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="mobile-results-toolbar">
+          <span><strong id="mobile-result-count">254</strong>곳</span>
+          <button id="filter-open" type="button">
+            <i class="ph ph-funnel-simple" aria-hidden="true"></i>
+            필터
+            <em id="mobile-filter-count" hidden>0</em>
+          </button>
+          <button id="map-toggle-mobile" type="button" aria-controls="map-panel" aria-expanded="false">
+            <i class="ph ph-map-trifold" aria-hidden="true"></i>
+            지도
+          </button>
+          <label>
+            <i class="ph ph-arrows-down-up" aria-hidden="true"></i>
+            <select id="sort-mobile" aria-label="모바일 결과 정렬">
+              <option value="recommended">추천순</option>
+              <option value="reviews">후기순</option>
+              <option value="water">온천수순</option>
+              <option value="name">이름순</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="results-body">
+          <div class="results-list-pane">
+            <div class="result-list" id="results-list">
+          <a class="result-card" href="#detail-shirahama" data-rank="1" data-reviews="317" data-water-rank="1" data-name="시라하마 야나기야" data-lat="33.6764" data-lng="135.3443" data-tags="숙소|간사이|시라하마|객실 내 프라이빗탕|노천탕|순수직수|부드러움|주차">
+            <span class="result-media"><img src="../../../../apps/web/public/images/onsen/regions/ibusuki.jpg" alt="바다와 산이 보이는 시라하마 온천 풍경" /></span>
+            <span class="result-main">
+              <span class="result-meta"><span>간사이 · 와카야마현 · 시라하마</span><em>숙소</em></span>
+              <span class="result-title-line"><strong role="heading" aria-level="2">시라하마 야나기야</strong><span class="water-mark" data-grade="gold"><svg class="water-grade-laurel" data-side="left" aria-hidden="true"><use href="#water-laurel"></use></svg><span>순수직수</span><svg class="water-grade-laurel" data-side="right" aria-hidden="true"><use href="#water-laurel"></use></svg></span></span>
+              <small>白浜温泉 家族とすごす白浜の宿 柳屋</small>
+              <span class="result-verdict">객실에서 온천을 오래 즐기고 싶을 때, 객실 노천탕 구성이 가장 분명한 후보입니다.</span>
+              <span class="result-evidence"><span><i class="ph ph-check-circle" aria-hidden="true"></i>후기 317건 분석 · 판정 근거 3개</span><span class="first-party-reviews" aria-label="바스타임 후기 0건" title="바스타임 후기"><i class="ph ph-chat-circle-text" aria-hidden="true"></i>0건</span></span>
+            </span>
+            <span class="result-facts">
+              <span><small>목욕 구성</small><strong>객실 노천탕 중심</strong></span>
+              <span><small>온천수</small><strong>가수·가온 없는 원천</strong></span>
+              <i class="ph ph-arrow-right" aria-hidden="true"></i>
+            </span>
+          </a>
+
+          <a class="result-card" href="#detail-sakuratei" data-rank="2" data-reviews="619" data-water-rank="1" data-name="오야도 사쿠라테이" data-lat="33.2640" data-lng="131.3550" data-tags="숙소|규슈|유후인|객실 내 프라이빗탕|노천탕|순수직수|부드러움|주차">
+            <span class="result-media"><img src="../../../../apps/web/public/images/onsen/regions/yufuin.jpg" alt="산과 료칸이 보이는 유후인 온천 풍경" /></span>
+            <span class="result-main">
+              <span class="result-meta"><span>규슈 · 오이타현 · 유후인</span><em>숙소</em></span>
+              <span class="result-title-line"><strong role="heading" aria-level="2">오야도 사쿠라테이</strong><span class="water-mark" data-grade="gold"><svg class="water-grade-laurel" data-side="left" aria-hidden="true"><use href="#water-laurel"></use></svg><span>순수직수</span><svg class="water-grade-laurel" data-side="right" aria-hidden="true"><use href="#water-laurel"></use></svg></span></span>
+              <small>全室露天付き離れ宿 御宿 さくら亭</small>
+              <span class="result-verdict">방을 나서지 않고 온천을 이어가고 싶은 여행에 맞는 전 객실 독립형 숙소입니다.</span>
+              <span class="result-evidence"><span><i class="ph ph-check-circle" aria-hidden="true"></i>후기 619건 분석 · 판정 근거 5개</span><span class="first-party-reviews" aria-label="바스타임 후기 0건" title="바스타임 후기"><i class="ph ph-chat-circle-text" aria-hidden="true"></i>0건</span></span>
+            </span>
+            <span class="result-facts">
+              <span><small>목욕 구성</small><strong>전 객실 노천탕</strong></span>
+              <span><small>온천수</small><strong>원천 그대로 사용</strong></span>
+              <i class="ph ph-arrow-right" aria-hidden="true"></i>
+            </span>
+          </a>
+
+          <a class="result-card" href="#detail-sayano" data-rank="3" data-reviews="842" data-water-rank="2" data-name="마에노하라 온천 사야노유도코로" data-lat="35.7694" data-lng="139.6969" data-tags="당일온천|간토|도쿄|대욕장|노천탕|직수|갈색빛|사우나|주차">
+            <span class="result-media"><img src="../../../../apps/web/public/images/onsen/regions/tokyo.jpg" alt="정원과 탕이 어우러진 도쿄 당일온천 풍경" /></span>
+            <span class="result-main">
+              <span class="result-meta"><span>간토 · 도쿄 · 이타바시</span><em data-type="facility">당일온천</em></span>
+              <span class="result-title-line"><strong role="heading" aria-level="2">마에노하라 온천 사야노유도코로</strong><span class="water-mark" data-grade="silver"><svg class="water-grade-laurel" data-side="left" aria-hidden="true"><use href="#water-laurel"></use></svg><span>직수</span><svg class="water-grade-laurel" data-side="right" aria-hidden="true"><use href="#water-laurel"></use></svg></span></span>
+              <small>前野原温泉 さやの湯処</small>
+              <span class="result-verdict">도쿄에서 멀리 가지 않고 노천탕과 온천수를 함께 경험하기 좋은 당일온천입니다.</span>
+              <span class="result-evidence"><span><i class="ph ph-check-circle" aria-hidden="true"></i>후기 842건 분석 · 판정 근거 4개</span><span class="first-party-reviews" aria-label="바스타임 후기 0건" title="바스타임 후기"><i class="ph ph-chat-circle-text" aria-hidden="true"></i>0건</span></span>
+            </span>
+            <span class="result-facts">
+              <span><small>이용 구성</small><strong>노천탕 · 사우나</strong></span>
+              <span><small>온천수</small><strong>갈색빛 염화물천</strong></span>
+              <i class="ph ph-arrow-right" aria-hidden="true"></i>
+            </span>
+          </a>
+
+          <a class="result-card" href="#detail-ginyu" data-rank="4" data-reviews="504" data-water-rank="4" data-name="하코네 긴유" data-lat="35.2325" data-lng="139.1069" data-tags="숙소|간토|하코네|객실 내 프라이빗탕|노천탕|부드러움|주차">
+            <span class="result-media"><img src="../../../../apps/web/public/images/onsen/regions/hakone.jpg" alt="산과 물이 보이는 하코네 온천 풍경" /></span>
+            <span class="result-main">
+              <span class="result-meta"><span>간토 · 가나가와현 · 하코네</span><em>숙소</em></span>
+              <span class="result-title-line"><strong role="heading" aria-level="2">하코네 긴유</strong></span>
+              <small>箱根吟遊</small>
+              <span class="result-verdict">계곡 전망과 객실 노천탕을 여행의 중심에 두고 싶을 때 비교할 숙소입니다.</span>
+              <span class="result-evidence"><span><i class="ph ph-check-circle" aria-hidden="true"></i>후기 504건 분석 · 판정 근거 3개</span><span class="first-party-reviews" aria-label="바스타임 후기 0건" title="바스타임 후기"><i class="ph ph-chat-circle-text" aria-hidden="true"></i>0건</span></span>
+            </span>
+            <span class="result-facts">
+              <span><small>목욕 구성</small><strong>객실 노천탕</strong></span>
+              <span><small>온천수</small><strong>방식 공식 확인 중</strong></span>
+              <i class="ph ph-arrow-right" aria-hidden="true"></i>
+            </span>
+          </a>
+
+          <a class="result-card" href="#detail-takimotokan" data-rank="5" data-reviews="1284" data-water-rank="3" data-name="다이이치 타키모토칸" data-lat="42.4926" data-lng="141.1434" data-tags="숙소|홋카이도|노보리베츠|대욕장|노천탕|순환식 온천|백탁|사우나|주차">
+            <span class="result-media"><img src="../../../../apps/web/public/images/onsen/regions/noboribetsu.jpg" alt="눈 덮인 노보리베츠 원천 풍경" /></span>
+            <span class="result-main">
+              <span class="result-meta"><span>홋카이도 · 노보리베츠</span><em>숙소</em></span>
+              <span class="result-title-line"><strong role="heading" aria-level="2">다이이치 타키모토칸</strong><span class="water-mark" data-grade="bronze"><svg class="water-grade-laurel" data-side="left" aria-hidden="true"><use href="#water-laurel"></use></svg><span>순환식 온천</span><svg class="water-grade-laurel" data-side="right" aria-hidden="true"><use href="#water-laurel"></use></svg></span></span>
+              <small>第一滝本館</small>
+              <span class="result-verdict">서로 다른 온천수와 큰 대욕장을 한곳에서 비교해보고 싶은 여행에 맞는 숙소입니다.</span>
+              <span class="result-evidence"><span><i class="ph ph-check-circle" aria-hidden="true"></i>후기 1,284건 분석 · 판정 근거 5개</span><span class="first-party-reviews" aria-label="바스타임 후기 0건" title="바스타임 후기"><i class="ph ph-chat-circle-text" aria-hidden="true"></i>0건</span></span>
+            </span>
+            <span class="result-facts">
+              <span><small>목욕 구성</small><strong>대형 대욕장 · 노천탕</strong></span>
+              <span><small>온천수</small><strong>욕조별 방식 병기</strong></span>
+              <i class="ph ph-arrow-right" aria-hidden="true"></i>
+            </span>
+          </a>
+
+          <a class="result-card" href="#detail-takegawara" data-rank="6" data-reviews="476" data-water-rank="4" data-name="다케가와라 온천" data-lat="33.2777" data-lng="131.5039" data-tags="당일온천|규슈|벳푸|대욕장|모래찜질|갈색빛">
+            <span class="result-media"><img src="../../../../apps/web/public/images/onsen/regions/beppu.jpg" alt="온천 증기가 피어오르는 벳푸 풍경" /></span>
+            <span class="result-main">
+              <span class="result-meta"><span>규슈 · 오이타현 · 벳푸</span><em data-type="facility">당일온천</em></span>
+              <span class="result-title-line"><strong role="heading" aria-level="2">다케가와라 온천</strong></span>
+              <small>竹瓦温泉</small>
+              <span class="result-verdict">오래된 공동탕과 벳푸의 모래찜질 문화를 함께 경험하고 싶을 때 찾는 당일온천입니다.</span>
+              <span class="result-evidence"><span><i class="ph ph-check-circle" aria-hidden="true"></i>후기 476건 분석 · 판정 근거 3개</span><span class="first-party-reviews" aria-label="바스타임 후기 0건" title="바스타임 후기"><i class="ph ph-chat-circle-text" aria-hidden="true"></i>0건</span></span>
+            </span>
+            <span class="result-facts">
+              <span><small>이용 구성</small><strong>대욕장 · 모래찜질</strong></span>
+              <span><small>온천수</small><strong>방식 공식 확인 중</strong></span>
+              <i class="ph ph-arrow-right" aria-hidden="true"></i>
+            </span>
+          </a>
+            </div>
+
+            <div class="result-empty" id="result-empty" hidden>
+              <i class="ph ph-magnifying-glass" aria-hidden="true"></i>
+              <strong>조건에 맞는 온천이 없습니다.</strong>
+              <p>온천수나 목욕 조건을 하나 줄여 다시 살펴보세요.</p>
+              <button id="empty-reset" type="button">전체 결과로 돌아가기</button>
+            </div>
+
+            <nav class="pagination" aria-label="결과 페이지">
+              <button type="button" aria-label="이전 페이지" disabled><i class="ph ph-arrow-left" aria-hidden="true"></i></button>
+              <button type="button" aria-current="page">1</button>
+              <button type="button">2</button>
+              <button type="button">3</button>
+              <span>…</span>
+              <button type="button">11</button>
+              <button type="button" aria-label="다음 페이지"><i class="ph ph-arrow-right" aria-hidden="true"></i></button>
+            </nav>
+          </div>
+
+          <aside class="map-panel" id="map-panel" aria-label="검색 결과 지도" aria-hidden="true">
+            <header class="map-panel-head">
+              <div>
+                <span><i class="ph ph-map-trifold" aria-hidden="true"></i>지도</span>
+                <strong><b id="map-result-count">254</b>곳 표시</strong>
+              </div>
+              <button class="map-close" id="map-close" type="button" aria-label="지도 닫기" title="지도 닫기">
+                <i class="ph ph-x" aria-hidden="true"></i>
+              </button>
+            </header>
+            <div class="results-map" id="results-map" aria-label="검색 결과 위치">
+              <span class="map-loading">지도를 불러오는 중입니다.</span>
+            </div>
+            <p class="map-panel-note"><i class="ph ph-cursor-click" aria-hidden="true"></i>마커를 누르면 해당 온천을 목록에서 보여줍니다.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.js"></script>
+  <script>
+    const baseTotal = 254;
+    const activeFilters = new Map();
+    const filterPanel = document.querySelector('#filter-panel');
+    const selectedRow = document.querySelector('#selected-filter-row');
+    const selectedList = document.querySelector('#selected-filter-list');
+    const resultCards = [...document.querySelectorAll('.result-card')];
+    const resultList = document.querySelector('#results-list');
+    const resultEmpty = document.querySelector('#result-empty');
+    const sortDesktop = document.querySelector('#sort-desktop');
+    const sortMobile = document.querySelector('#sort-mobile');
+    const resultsColumn = document.querySelector('.results-column');
+    const mapPanel = document.querySelector('#map-panel');
+    const mapElement = document.querySelector('#results-map');
+    const mapClose = document.querySelector('#map-close');
+    const mapDesktopButton = document.querySelector('#map-toggle-desktop');
+    const mapMobileButton = document.querySelector('#map-toggle-mobile');
+    const responsiveMedia = window.matchMedia('(max-width: 980px)');
+    const mapMarkers = new Map();
+    const visibleMapMarkers = new Set();
+    let focusBeforeFilter = null;
+    let focusBeforeMap = null;
+    let resultsMap = null;
+    let desktopMapPreferred = true;
+    let previousResponsiveState = responsiveMedia.matches;
+
+    function getFilteredTotal(visibleCards) {
+      if (activeFilters.size === 0) return baseTotal;
+      if (visibleCards === 0) return 0;
+      const counts = [...activeFilters.values()].map((item) => item.count);
+      const smallest = Math.min(...counts);
+      return Math.max(1, Math.round(smallest * Math.pow(0.76, activeFilters.size - 1)));
+    }
+
+    function renderSelectedFilters() {
+      selectedList.replaceChildren();
+      activeFilters.forEach((item, label) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.dataset.removeFilter = label;
+        button.setAttribute('aria-label', `${label} 조건 제거`);
+        button.innerHTML = `<span>${label}</span><i class="ph ph-x" aria-hidden="true"></i>`;
+        selectedList.append(button);
+      });
+      selectedRow.hidden = activeFilters.size === 0;
+    }
+
+    function updateResults() {
+      let visibleCards = 0;
+      const labels = [...activeFilters.keys()];
+      resultCards.forEach((card) => {
+        const tags = card.dataset.tags.split('|');
+        const visible = labels.every((label) => tags.includes(label));
+        card.hidden = !visible;
+        if (visible) visibleCards += 1;
+      });
+
+      const total = getFilteredTotal(visibleCards);
+      const countText = `${total.toLocaleString('ko-KR')}곳`;
+      document.querySelector('#result-count').textContent = countText;
+      document.querySelector('#total-count-inline').textContent = total.toLocaleString('ko-KR');
+      document.querySelector('#mobile-result-count').textContent = total.toLocaleString('ko-KR');
+      document.querySelector('#apply-count').textContent = total.toLocaleString('ko-KR');
+      document.querySelector('#map-result-count').textContent = total.toLocaleString('ko-KR');
+      document.querySelector('#range-count').textContent = total === 0 ? '0' : `1~${Math.min(24, total)}`;
+      document.querySelector('#filter-active-count').textContent = activeFilters.size;
+      document.querySelector('#filter-active-count').hidden = activeFilters.size === 0;
+      document.querySelector('#mobile-filter-count').textContent = activeFilters.size;
+      document.querySelector('#mobile-filter-count').hidden = activeFilters.size === 0;
+      resultEmpty.hidden = visibleCards > 0;
+      renderSelectedFilters();
+      updateMapMarkers();
+    }
+
+    function setButtonState(button, active) {
+      button.classList.toggle('is-active', active);
+      button.setAttribute('aria-pressed', String(active));
+    }
+
+    function toggleFilter(button) {
+      const label = button.dataset.filter;
+      const group = button.dataset.group;
+      const wasActive = button.classList.contains('is-active');
+
+      if (group) {
+        document.querySelectorAll(`[data-group="${group}"]`).forEach((item) => {
+          activeFilters.delete(item.dataset.filter);
+          setButtonState(item, false);
+        });
+      }
+
+      if (!wasActive) {
+        activeFilters.set(label, { count: Number(button.dataset.count), source: button });
+        setButtonState(button, true);
+      }
+      updateResults();
+    }
+
+    function removeFilter(label) {
+      const item = activeFilters.get(label);
+      if (item?.source instanceof HTMLElement) setButtonState(item.source, false);
+      activeFilters.delete(label);
+      updateResults();
+    }
+
+    function clearFilters() {
+      document.querySelectorAll('.filter-option.is-active').forEach((button) => setButtonState(button, false));
+      activeFilters.clear();
+      updateResults();
+    }
+
+    function sortCards(value) {
+      const sorted = [...resultCards].sort((a, b) => {
+        if (value === 'reviews') return Number(b.dataset.reviews) - Number(a.dataset.reviews);
+        if (value === 'water') return Number(a.dataset.waterRank) - Number(b.dataset.waterRank);
+        if (value === 'name') return a.dataset.name.localeCompare(b.dataset.name, 'ko-KR');
+        return Number(a.dataset.rank) - Number(b.dataset.rank);
+      });
+      sorted.forEach((card) => resultList.append(card));
+      sortDesktop.value = value;
+      sortMobile.value = value;
+      updateMapMarkers();
+    }
+
+    function revealCardFromMap(card) {
+      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      card.classList.add('is-map-focused');
+      window.setTimeout(() => {
+        card.focus({ preventScroll: true });
+        card.classList.remove('is-map-focused');
+      }, 700);
+    }
+
+    function localizeMapLabels() {
+      const koreanFirstName = [
+        'coalesce',
+        ['get', 'name:ko'],
+        ['get', 'name_ko'],
+        ['get', 'name_en'],
+        ['get', 'name:en'],
+        ['get', 'name'],
+        ['get', 'name:latin'],
+      ];
+      let localizedLayers = 0;
+
+      resultsMap.getStyle().layers.forEach((layer) => {
+        const textField = layer.layout?.['text-field'];
+        if (layer.type !== 'symbol' || !textField || !JSON.stringify(textField).includes('name')) return;
+        resultsMap.setLayoutProperty(layer.id, 'text-field', koreanFirstName);
+        localizedLayers += 1;
+      });
+
+      mapElement.dataset.localizedLayers = String(localizedLayers);
+    }
+
+    function ensureMap() {
+      if (resultsMap) return true;
+      if (!window.maplibregl) {
+        document.querySelector('.map-loading').textContent = '지도를 불러오지 못했습니다.';
+        return false;
+      }
+
+      mapElement.replaceChildren();
+      resultsMap = new window.maplibregl.Map({
+        attributionControl: false,
+        center: [137.2, 36.4],
+        container: mapElement,
+        keyboard: true,
+        localIdeographFontFamily: 'Pretendard, "Noto Sans KR", sans-serif',
+        locale: {
+          'AttributionControl.ToggleAttribution': '지도 출처 보기',
+          'Map.Title': '검색 결과 위치 지도',
+          'NavigationControl.ZoomIn': '확대',
+          'NavigationControl.ZoomOut': '축소',
+        },
+        scrollZoom: false,
+        style: 'https://tiles.openfreemap.org/styles/bright',
+        zoom: 4.4,
+      });
+      resultsMap.addControl(new window.maplibregl.NavigationControl({ showCompass: false }), 'top-left');
+      resultsMap.addControl(new window.maplibregl.AttributionControl({ compact: true }), 'bottom-right');
+      const collapseAttribution = () => {
+        mapElement.querySelector('.maplibregl-ctrl-attrib')?.classList.remove('maplibregl-compact-show');
+      };
+
+      resultCards.forEach((card) => {
+        const markerElement = document.createElement('button');
+        const popup = document.createElement('div');
+        const name = document.createElement('strong');
+        const location = document.createElement('span');
+        markerElement.type = 'button';
+        markerElement.className = 'onsen-map-marker';
+        markerElement.setAttribute('aria-label', card.dataset.name);
+        popup.className = 'map-popup';
+        name.textContent = card.dataset.name;
+        location.textContent = card.querySelector('.result-meta > span').textContent;
+        popup.append(name, location);
+        const mapPopup = new window.maplibregl.Popup({
+          closeButton: true,
+          closeOnClick: true,
+          focusAfterOpen: false,
+          offset: 18,
+        }).setDOMContent(popup);
+        const marker = new window.maplibregl.Marker({ element: markerElement })
+          .setLngLat([Number(card.dataset.lng), Number(card.dataset.lat)])
+          .setPopup(mapPopup)
+          .addTo(resultsMap);
+        markerElement.addEventListener('click', () => {
+          if (responsiveMedia.matches) {
+            mapPopup.remove();
+            closeMap({ restoreFocus: false });
+            window.setTimeout(() => revealCardFromMap(card), 300);
+          } else {
+            revealCardFromMap(card);
+          }
+        });
+        mapMarkers.set(card, { element: markerElement, marker });
+        visibleMapMarkers.add(card);
+      });
+
+      resultsMap.on('load', () => {
+        localizeMapLabels();
+        collapseAttribution();
+        updateMapMarkers();
+      });
+
+      return true;
+    }
+
+    function updateMapMarkers() {
+      if (!resultsMap) return;
+      const visibleCards = [...resultList.querySelectorAll('.result-card')].filter((card) => !card.hidden);
+
+      mapMarkers.forEach(({ marker }, card) => {
+        if (!visibleCards.includes(card) && visibleMapMarkers.has(card)) {
+          marker.remove();
+          visibleMapMarkers.delete(card);
+        }
+      });
+
+      visibleCards.forEach((card, index) => {
+        const { element, marker } = mapMarkers.get(card);
+        element.textContent = String(index + 1);
+        if (!visibleMapMarkers.has(card)) {
+          marker.addTo(resultsMap);
+          visibleMapMarkers.add(card);
+        }
+      });
+
+      if (visibleCards.length === 0) {
+        resultsMap.jumpTo({ center: [137.2, 36.4], zoom: 4.4 });
+        return;
+      }
+
+      const bounds = new window.maplibregl.LngLatBounds();
+      visibleCards.forEach((card) => bounds.extend([Number(card.dataset.lng), Number(card.dataset.lat)]));
+      if (visibleCards.length === 1) resultsMap.jumpTo({ center: bounds.getCenter(), zoom: 8 });
+      else resultsMap.fitBounds(bounds, { duration: 0, maxZoom: 8, padding: 28 });
+    }
+
+    function syncMapControls() {
+      const open = mapPanel.classList.contains('is-open');
+      const desktopOpen = open && !responsiveMedia.matches;
+      const mobileOpen = open && responsiveMedia.matches;
+      mapDesktopButton.setAttribute('aria-expanded', String(desktopOpen));
+      mapDesktopButton.querySelector('span').textContent = desktopOpen ? '지도 닫기' : '지도 보기';
+      mapMobileButton.setAttribute('aria-expanded', String(mobileOpen));
+    }
+
+    function openMap(trigger = null) {
+      if (trigger instanceof HTMLElement) focusBeforeMap = trigger;
+      ensureMap();
+      mapPanel.classList.add('is-open');
+      mapPanel.setAttribute('aria-hidden', 'false');
+
+      if (responsiveMedia.matches) {
+        mapPanel.setAttribute('role', 'dialog');
+        mapPanel.setAttribute('aria-modal', 'true');
+        document.body.classList.add('map-sheet-is-open');
+        window.setTimeout(() => mapClose.focus(), 60);
+      } else {
+        resultsColumn.classList.add('map-is-open');
+        mapPanel.removeAttribute('role');
+        mapPanel.removeAttribute('aria-modal');
+      }
+
+      syncMapControls();
+      window.setTimeout(() => {
+        if (!resultsMap) return;
+        resultsMap.resize();
+        updateMapMarkers();
+      }, responsiveMedia.matches ? 300 : 0);
+    }
+
+    function closeMap({ restoreFocus = true } = {}) {
+      mapPanel.classList.remove('is-open');
+      mapPanel.setAttribute('aria-hidden', 'true');
+      mapPanel.removeAttribute('role');
+      mapPanel.removeAttribute('aria-modal');
+      resultsColumn.classList.remove('map-is-open');
+      document.body.classList.remove('map-sheet-is-open');
+      syncMapControls();
+      if (restoreFocus && focusBeforeMap instanceof HTMLElement) focusBeforeMap.focus();
+      focusBeforeMap = null;
+    }
+
+    function openFilters() {
+      focusBeforeFilter = document.activeElement;
+      filterPanel.classList.add('is-open');
+      filterPanel.setAttribute('role', 'dialog');
+      filterPanel.setAttribute('aria-modal', 'true');
+      filterPanel.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('filter-is-open');
+      window.setTimeout(() => document.querySelector('#filter-close').focus(), 0);
+    }
+
+    function closeFilters() {
+      filterPanel.classList.remove('is-open');
+      filterPanel.removeAttribute('role');
+      filterPanel.removeAttribute('aria-modal');
+      filterPanel.setAttribute('aria-hidden', String(window.matchMedia('(max-width: 980px)').matches));
+      document.body.classList.remove('filter-is-open');
+      if (focusBeforeFilter instanceof HTMLElement) focusBeforeFilter.focus();
+    }
+
+    document.querySelectorAll('.filter-option').forEach((button) => {
+      button.setAttribute('aria-pressed', 'false');
+      button.addEventListener('click', () => toggleFilter(button));
+    });
+
+    selectedList.addEventListener('click', (event) => {
+      const button = event.target.closest('[data-remove-filter]');
+      if (button) removeFilter(button.dataset.removeFilter);
+    });
+
+    [document.querySelector('#clear-filters-top'), document.querySelector('#clear-filters-rail'), document.querySelector('#clear-filters-mobile'), document.querySelector('#empty-reset')]
+      .forEach((button) => button.addEventListener('click', clearFilters));
+
+    sortDesktop.addEventListener('change', () => sortCards(sortDesktop.value));
+    sortMobile.addEventListener('change', () => sortCards(sortMobile.value));
+
+    document.querySelector('#filter-open').addEventListener('click', openFilters);
+    document.querySelector('#filter-close').addEventListener('click', closeFilters);
+    document.querySelector('#apply-filters').addEventListener('click', closeFilters);
+
+    mapDesktopButton.addEventListener('click', () => {
+      if (mapPanel.classList.contains('is-open') && !responsiveMedia.matches) {
+        desktopMapPreferred = false;
+        closeMap();
+      } else {
+        desktopMapPreferred = true;
+        openMap(mapDesktopButton);
+      }
+    });
+    mapMobileButton.addEventListener('click', () => openMap(mapMobileButton));
+    mapClose.addEventListener('click', () => {
+      if (!responsiveMedia.matches) desktopMapPreferred = false;
+      closeMap();
+    });
+
+    document.querySelectorAll('.pagination button:not([disabled])').forEach((button) => {
+      button.addEventListener('click', () => {
+        if (!/^\d+$/.test(button.textContent.trim())) return;
+        document.querySelectorAll('.pagination button').forEach((item) => item.removeAttribute('aria-current'));
+        button.setAttribute('aria-current', 'page');
+        document.querySelector('.results-overview').scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    document.querySelector('#mobile-search-trigger').addEventListener('click', () => {
+      const drawer = document.querySelector('#mobile-search-drawer');
+      drawer.hidden = !drawer.hidden;
+      if (!drawer.hidden) drawer.querySelector('input').focus();
+    });
+
+    document.querySelector('.mobile-back').addEventListener('click', () => {
+      if (window.history.length > 1) window.history.back();
+      else window.location.hash = 'top';
+    });
+
+    document.querySelectorAll('form').forEach((form) => {
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        document.querySelector('#mobile-search-drawer').hidden = true;
+      });
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        if (filterPanel.classList.contains('is-open')) closeFilters();
+        else if (mapPanel.classList.contains('is-open')) closeMap();
+      }
+
+      const activeDialog = filterPanel.classList.contains('is-open')
+        ? filterPanel
+        : mapPanel.classList.contains('is-open') && responsiveMedia.matches
+          ? mapPanel
+          : null;
+      if (event.key !== 'Tab' || !activeDialog) return;
+      const focusable = [...activeDialog.querySelectorAll('button, select, input, a[href], [tabindex]:not([tabindex="-1"])')]
+        .filter((item) => !item.disabled && item.getClientRects().length > 0);
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    });
+
+    const syncFilterVisibility = () => filterPanel.setAttribute('aria-hidden', String(responsiveMedia.matches && !filterPanel.classList.contains('is-open')));
+    const syncResponsiveLayout = () => {
+      syncFilterVisibility();
+      const isMobile = responsiveMedia.matches;
+      if (isMobile === previousResponsiveState) return;
+      closeMap({ restoreFocus: false });
+      if (!isMobile && desktopMapPreferred) openMap();
+      previousResponsiveState = isMobile;
+    };
+    responsiveMedia.addEventListener('change', syncResponsiveLayout);
+    window.addEventListener('resize', syncResponsiveLayout);
+    syncFilterVisibility();
+    updateResults();
+    if (!responsiveMedia.matches) openMap();
+  </script>
+</body>
+</html>
