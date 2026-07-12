@@ -43,6 +43,29 @@ export function normalizeOnsenPublicCopy(text: string) {
     .replace(/확인하는 편이 낫습니다/g, '확인하세요');
 }
 
+const fitDisplayCopy: Record<string, string> = {
+  '객실 안에서 온천을 끝내고 싶음': '객실 내 온천 이용을 우선하는 경우',
+  '대절탕을 따로 쓰고 싶음': '일행끼리 이용할 대절탕이 필요한 경우',
+  '대욕장이나 큰 노천탕을 먼저 봄': '대욕장 또는 대형 노천탕을 우선하는 경우',
+  '온천수 느낌까지 확인하고 싶음': '온천수의 감촉을 비교하려는 경우',
+  '온천 구성을 먼저 확인하고 싶음': '욕장별 구성을 먼저 비교하려는 경우',
+  '대욕장도 중요함': '대욕장 이용을 중요하게 보는 경우',
+  '프라이버시 우선': '프라이버시를 우선하는 경우',
+  '객실 노천탕이 핵심': '객실 노천탕을 우선하는 경우',
+  '독채 객실 선호': '독채 객실을 선호하는 경우',
+  '유후다케 전망 관심': '유후다케 전망을 중요하게 보는 경우',
+  '당일입욕 시설을 찾고 있음': '숙박 없이 온천을 이용하려는 경우',
+};
+
+export function normalizeOnsenFitCopy(text: string) {
+  const normalized = normalizeOnsenPublicCopy(text);
+  if (fitDisplayCopy[normalized]) return fitDisplayCopy[normalized];
+  if (normalized.startsWith('공식 정보로 확인된 ')) {
+    return `${normalized.replace('공식 정보로 확인된 ', '')} 이용을 우선하는 경우`;
+  }
+  return normalized;
+}
+
 type OnsenCardCopyCandidate = {
   summary: string;
   fit: string[];

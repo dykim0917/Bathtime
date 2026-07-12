@@ -13,7 +13,7 @@ import {
   Waves,
   X,
 } from '@phosphor-icons/react/ssr';
-import { TermInfo } from '@web/components/TermInfo';
+import { TermInfo, TermTooltip } from '@web/components/TermInfo';
 import { getOnsenEntityType, type OnsenCandidate, type OnsenEntityType } from '@web/lib/onsenCatalog';
 import { getOnsenCardSummary, normalizeOnsenPublicCopy } from '@web/lib/onsenCopy';
 import { readOnsenCandidates } from '@web/lib/onsenData';
@@ -43,19 +43,48 @@ import {
   hasOnsenWaterCriterion,
 } from '@web/lib/onsenWaterSignal';
 import {
+  OnsenResultsFilterAction,
   OnsenResultsSort,
   OnsenResultsWorkspace,
   type OnsenResultsSortValue,
 } from './OnsenResultsWorkspace';
 import styles from './results.module.css';
 
-export const metadata: Metadata = {
-  title: '온천 검색 결과',
-  description: '일본 온천 숙소와 당일입욕 시설의 목욕 구성, 공식 시설 정보, 온천수 근거와 후기를 비교합니다.',
-  alternates: {
-    canonical: '/onsen/results',
-  },
+type OnsenResultsSearchParams = {
+  [key: string]: string | string[] | undefined;
+  query?: string | string[];
+  type?: string | string[];
+  region?: string | string[];
+  regionGroup?: string | string[];
+  area?: string | string[];
+  travel?: string | string[];
+  bath?: string | string[];
+  water?: string | string[];
+  feature?: string | string[];
+  signal?: string | string[];
+  sort?: string | string[];
+  page?: string | string[];
 };
+
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<OnsenResultsSearchParams>;
+}): Promise<Metadata> {
+  const params = await searchParams;
+  const hasQueryParams = Object.values(params).some((value) =>
+    Array.isArray(value) ? value.some(Boolean) : Boolean(value)
+  );
+
+  return {
+    title: '온천 검색 결과',
+    description: '일본 온천 숙소와 당일입욕 시설의 목욕 구성, 공식 시설 정보, 온천수 근거와 후기를 비교합니다.',
+    alternates: {
+      canonical: '/onsen/results',
+    },
+    robots: hasQueryParams ? { index: false, follow: false } : undefined,
+  };
+}
 
 const PAGE_SIZE = 24;
 
@@ -237,11 +266,13 @@ function FilterOption({
 }) {
   return (
     <span className={styles.filterOption} data-active={active ? 'true' : undefined}>
-      <Link className={styles.filterOptionLink} href={href} aria-current={active ? 'true' : undefined}>
-        <span className={styles.checkBox}><Check size={14} weight="bold" aria-hidden /></span>
-        <span className={styles.filterOptionLabel}>{label}</span>
-      </Link>
-      {termKey ? <TermInfo termKey={termKey} align="end" /> : null}
+      <span className={styles.filterOptionChoice}>
+        <OnsenResultsFilterAction className={styles.filterOptionLink} href={href} active={active}>
+          <span className={styles.checkBox}><Check size={14} weight="bold" aria-hidden /></span>
+          <span className={styles.filterOptionLabel}>{label}</span>
+        </OnsenResultsFilterAction>
+        {termKey ? <TermInfo termKey={termKey} className={styles.filterOptionInfo} /> : null}
+      </span>
       <small className={styles.filterOptionCount}>{formatNumber(count)}</small>
     </span>
   );
@@ -262,20 +293,7 @@ function getPaginationItems(currentPage: number, pageCount: number) {
 export default async function OnsenPage({
   searchParams,
 }: {
-  searchParams: Promise<{
-    query?: string | string[];
-    type?: string | string[];
-    region?: string | string[];
-    regionGroup?: string | string[];
-    area?: string | string[];
-    travel?: string | string[];
-    bath?: string | string[];
-    water?: string | string[];
-    feature?: string | string[];
-    signal?: string | string[];
-    sort?: string | string[];
-    page?: string | string[];
-  }>;
+  searchParams: Promise<OnsenResultsSearchParams>;
 }) {
   const params = await searchParams;
   const rawQuery = normalizeParam(params.query).trim();
@@ -580,13 +598,13 @@ export default async function OnsenPage({
             <span className={styles.selectedLabel}>선택한 조건</span>
             <div className={styles.selectedList}>
               {activeFilters.map((item) => (
-                <Link key={item.key} href={item.href} aria-label={`${item.label} 조건 제거`}>
+                <Link key={item.key} href={item.href} prefetch={false} rel="nofollow" aria-label={`${item.label} 조건 제거`}>
                   {item.label}
                   <X size={14} weight="bold" aria-hidden />
                 </Link>
               ))}
             </div>
-            <Link className={styles.clearAll} href="/onsen/results">모두 지우기</Link>
+            <Link className={styles.clearAll} href="/onsen/results" prefetch={false}>모두 지우기</Link>
           </div>
         ) : null}
       </section>
@@ -608,7 +626,7 @@ export default async function OnsenPage({
               <MagnifyingGlass size={28} weight="bold" aria-hidden />
               <strong>조건에 맞는 온천이 없습니다.</strong>
               <p>온천수나 목욕 조건을 하나 줄여 다시 살펴보세요.</p>
-              <Link href="/onsen/results">전체 결과로 돌아가기</Link>
+              <Link href="/onsen/results" prefetch={false}>전체 결과로 돌아가기</Link>
             </div>
           ) : null}
 
@@ -626,7 +644,9 @@ export default async function OnsenPage({
                 id={`onsen-result-${candidate.slug}`}
                 key={candidate.slug}
                 className={styles.resultCardLink}
-                href={`/onsen/${candidate.slug}?from=${encodeURIComponent(currentResultsHref)}`}
+                href={`/onsen/${candidate.slug}`}
+                prefetch={false}
+                data-return-href={currentResultsHref}
               >
                 <article className={styles.resultCard}>
                   <div className={styles.resultMedia} aria-label={`${candidate.name} 사진 영역`}>
@@ -650,16 +670,18 @@ export default async function OnsenPage({
                     <div className={styles.resultTitleRow}>
                       <h2>{candidate.name}</h2>
                       {waterHighlightMark ? (
-                        <span
-                          className={styles.waterAward}
-                          data-tone={waterHighlightMark.tone}
-                          title={waterHighlightMark.title}
-                          aria-label={`${waterHighlightMark.label}: ${waterHighlightMark.title}`}
+                        <TermTooltip
+                          className={styles.waterAwardTooltip}
+                          title={waterHighlightMark.label}
+                          description={waterHighlightMark.title}
+                          align="end"
                         >
-                          <OnsenLaurel />
-                          {waterHighlightMark.label}
-                          <OnsenLaurel side="right" />
-                        </span>
+                          <span className={styles.waterAward} data-tone={waterHighlightMark.tone}>
+                            <OnsenLaurel />
+                            {waterHighlightMark.label}
+                            <OnsenLaurel side="right" />
+                          </span>
+                        </TermTooltip>
                       ) : null}
                     </div>
                     {candidate.jaName ? <span className={styles.originalName}>{candidate.jaName}</span> : null}
@@ -701,17 +723,17 @@ export default async function OnsenPage({
         {filtered.length > PAGE_SIZE ? (
           <nav className={styles.pagination} aria-label="결과 페이지">
             {currentPage > 1 ? (
-              <Link href={hrefFor({ page: currentPage - 1 })} aria-label="이전 페이지"><ArrowLeft size={17} weight="bold" aria-hidden /></Link>
+              <Link href={hrefFor({ page: currentPage - 1 })} prefetch={false} rel="nofollow" aria-label="이전 페이지"><ArrowLeft size={17} weight="bold" aria-hidden /></Link>
             ) : (
               <span aria-disabled="true"><ArrowLeft size={17} aria-hidden /></span>
             )}
             {paginationItems.map((item, index) => item === 'ellipsis' ? (
               <span key={`ellipsis-${index}`}>…</span>
             ) : (
-              <Link key={item} href={hrefFor({ page: item })} aria-current={item === currentPage ? 'page' : undefined}>{item}</Link>
+              <Link key={item} href={hrefFor({ page: item })} prefetch={false} rel="nofollow" aria-current={item === currentPage ? 'page' : undefined}>{item}</Link>
             ))}
             {currentPage < pageCount ? (
-              <Link href={hrefFor({ page: currentPage + 1 })} aria-label="다음 페이지"><ArrowRight size={17} weight="bold" aria-hidden /></Link>
+              <Link href={hrefFor({ page: currentPage + 1 })} prefetch={false} rel="nofollow" aria-label="다음 페이지"><ArrowRight size={17} weight="bold" aria-hidden /></Link>
             ) : (
               <span aria-disabled="true"><ArrowRight size={17} aria-hidden /></span>
             )}

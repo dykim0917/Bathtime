@@ -9,6 +9,7 @@ type SaveState = 'checking' | 'idle' | 'saving';
 export function OnsenSaveButton({ slug }: { slug: string }) {
   const [saved, setSaved] = useState(false);
   const [state, setState] = useState<SaveState>('checking');
+  const label = state === 'saving' ? '찜 저장 중' : saved ? '찜 취소' : '찜하기';
 
   useEffect(() => {
     let active = true;
@@ -35,7 +36,9 @@ export function OnsenSaveButton({ slug }: { slug: string }) {
     <button
       className={saved ? 'onsen-save-button saved' : 'onsen-save-button'}
       type="button"
+      aria-label={label}
       aria-pressed={saved}
+      title={label}
       disabled={state === 'saving'}
       onClick={async () => {
         if (state === 'saving') return;
@@ -55,7 +58,6 @@ export function OnsenSaveButton({ slug }: { slug: string }) {
       }}
     >
       <BookmarkSimple size={17} weight={saved ? 'fill' : 'bold'} aria-hidden="true" />
-      {saved ? '찜한 온천' : '찜하기'}
     </button>
   );
 }

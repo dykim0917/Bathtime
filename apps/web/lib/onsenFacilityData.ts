@@ -256,6 +256,46 @@ function operationLabel(profile: OnsenCandidate['waterProfile']) {
   return '원천 방식 확인 중';
 }
 
+function facilityWaterVerification(
+  facts: FacilityWaterFactRow[],
+  profile: OnsenCandidate['waterProfile'],
+  verifiedAt: string | null
+): NonNullable<OnsenCandidate['waterVerification']> {
+  const methodFact = facts.find((fact) => fact.method_render_status === 'ready' && fact.water_system);
+  const method = profile?.canonicalMethod ?? null;
+  const basis = method === 'kakenagashi_pure'
+    ? '공식 안내에서 원천 100% 직수 표기를 확인했습니다.'
+    : method === 'kakenagashi'
+      ? '공식 안내에서 직수 표기를 확인했습니다.'
+      : method === 'junkan'
+        ? '공식 안내에서 순환·여과 방식을 확인했습니다.'
+        : '온천수 사용은 확인했지만 직수·순환식 여부는 공식 자료에서 확인 중입니다.';
+  const unresolvedLabels = methodFact
+    ? [
+      methodFact.kasui === 'unknown' ? '가수 여부' : '',
+      methodFact.kaon === 'unknown' ? '가온 여부' : '',
+      methodFact.disinfection === 'unknown' ? '소독 여부' : '',
+    ].filter(Boolean)
+    : ['직수·순환식 여부'];
+  const sourceUrls = unique(facts.map((fact) => fact.official_source_url).filter((href) => /^https?:\/\//.test(href)));
+
+  return {
+    status: method ? 'confirmed' : 'needs_check',
+    basis,
+    scope: methodFact ? bathAreaLabels[methodFact.facility_area] ?? methodFact.facility_area : undefined,
+    conditions: profile?.conditionLabels ?? [],
+    unresolved: unresolvedLabels,
+    exceptions: [],
+    guidance: !method
+      ? '온천수 방식이 선택 기준이라면 방식 확인이 끝난 후보와 먼저 비교하세요.'
+      : profile?.conditionCodes.some((code) => code === 'kasui' || code === 'kaon')
+        ? '물을 더하거나 데우지 않는 온천을 원한다면 다른 후보와 함께 비교하세요.'
+        : undefined,
+    sources: sourceUrls.map((href, index) => ({ label: index === 0 ? '공식 사이트' : '공식 참고 자료', href })),
+    verifiedAt: verifiedAt ?? undefined,
+  };
+}
+
 function mapFacilityCandidate(
   row: FacilityRow,
   waterFacts: FacilityWaterFactRow[],
@@ -272,6 +312,7 @@ function mapFacilityCandidate(
     .filter((label): label is string => Boolean(label));
   const waterProfile = waterProfileFromFacts(waterFacts);
   const operation = operationLabel(waterProfile);
+  const waterVerification = facilityWaterVerification(waterFacts, waterProfile, row.official_checked_at ?? row.content_updated_at);
   const springLabels = [
     officialFilterCodes.includes('spring_acidic') ? '산성천' : '',
     officialFilterCodes.includes('spring_sulfur') ? '유황천' : '',
@@ -341,6 +382,7 @@ function mapFacilityCandidate(
       notice: '운영 시간과 입장 조건은 방문 전 공식 안내를 다시 확인하세요.',
     },
     waterProfile,
+    waterVerification,
     dataQuality: evidence?.evidence_grade ?? 'D',
     directReviews,
     onsenReviews: 0,

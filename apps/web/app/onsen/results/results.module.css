@@ -45,58 +45,12 @@
   font: inherit;
 }
 
-.sortControl,
-.sortCompact {
-  position: relative;
-  display: grid;
-  align-items: center;
-  border: 1px solid var(--v2-border);
-  border-radius: var(--bt-radius-md);
-  background: var(--v2-surface);
-  color: var(--v2-ink);
-}
-
 .sortControl {
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: var(--bt-space-3);
   min-width: 240px;
-  min-height: 44px;
-  padding-inline: var(--bt-space-4);
-}
-
-.sortControl > span {
-  color: var(--v2-muted);
-  font-size: var(--v2-meta);
-  font-weight: var(--bt-weight-semibold);
-}
-
-.sortControl select,
-.sortCompact select {
-  min-width: 0;
-  border: 0;
-  outline: 0;
-  appearance: none;
-  background: transparent;
-  color: var(--v2-ink);
-  font-size: var(--v2-small);
-  font-weight: var(--bt-weight-semibold);
-}
-
-.sortControl:focus-within,
-.sortCompact:focus-within {
-  border-color: var(--v2-primary);
-  outline: 2px solid var(--v2-primary-soft);
 }
 
 .sortCompact {
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: var(--bt-space-2);
-  min-height: 40px;
-  padding-inline: var(--bt-space-3);
-}
-
-.sortCompact select {
-  width: 62px;
+  width: 108px;
 }
 
 .selectedRow {
@@ -275,13 +229,20 @@
 .filterOption {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto auto;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   gap: var(--bt-space-2);
   min-height: 40px;
   border-radius: var(--bt-radius-xs);
   color: var(--v2-body);
   padding-right: var(--bt-space-2);
+}
+
+.filterOptionChoice {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  min-width: 0;
 }
 
 .filterOption:hover {
@@ -294,12 +255,21 @@
 }
 
 .filterOptionLink {
+  appearance: none;
   display: grid;
   grid-template-columns: var(--bt-space-5) minmax(0, 1fr);
+  flex: 0 1 auto;
   align-items: center;
   gap: var(--bt-space-3);
+  min-width: 0;
   min-height: 40px;
+  border: 0;
+  background: transparent;
+  color: inherit;
   padding-left: var(--bt-space-2);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
 }
 
 .filterOptionLink:focus-visible {
@@ -330,8 +300,15 @@
 
 .filterOptionLabel {
   min-width: 0;
+  overflow: hidden;
   font-size: var(--v2-small);
   font-weight: var(--bt-weight-semibold);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.filterOptionInfo {
+  color: var(--v2-muted);
 }
 
 .filterOptionCount {
@@ -554,6 +531,11 @@
   font-size: var(--v2-meta);
   font-weight: var(--bt-weight-semibold);
   white-space: nowrap;
+}
+
+.waterAwardTooltip {
+  flex: 0 0 auto;
+  cursor: help;
 }
 
 .waterAward[data-tone='gold'] {
@@ -1175,8 +1157,7 @@
     grid-template-columns: minmax(0, 1fr) auto auto auto;
   }
 
-  .mobileToolbar > button,
-  .sortCompact {
+  .mobileToolbar > button {
     gap: var(--bt-space-1);
     padding-inline: var(--bt-space-2);
   }
@@ -1185,9 +1166,8 @@
     font-size: 13px;
   }
 
-  .sortCompact select {
-    width: 48px;
-    font-size: 13px;
+  .sortCompact {
+    width: 108px;
   }
 
   .resultList {

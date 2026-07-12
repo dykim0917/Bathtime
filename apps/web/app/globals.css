@@ -157,6 +157,10 @@ body.bt-modal-open {
   overflow: hidden;
 }
 
+body.bt-drawer-open {
+  overflow: hidden;
+}
+
 .bt-eyebrow {
   color: var(--bt-color-primary-active);
   font-size: var(--bt-text-meta);
@@ -668,20 +672,30 @@ img {
   min-width: 40px;
   width: 40px;
   min-height: 40px;
-  border: 1px solid var(--bt-color-border);
-  border-radius: var(--bt-radius-pill);
-  background: var(--bt-surface-default);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
   color: var(--bt-color-primary-active);
+  padding: 0;
   cursor: pointer;
 }
 
-.mobile-back-button:hover,
-.mobile-back-button:focus-visible {
-  border-color: var(--bt-color-primary);
-  background: var(--bt-color-primary-soft);
+.mobile-back-button:hover {
+  background: transparent;
   color: var(--bt-color-primary-active);
+  transform: none;
+}
+
+.mobile-back-button:focus-visible {
+  background: transparent;
+  color: var(--bt-color-primary-active);
+  outline: 2px solid var(--bt-color-primary);
+  outline-offset: 2px;
+  transform: none;
+}
+
+.mobile-back-button:active {
   outline: none;
-  transform: translateY(-1px);
 }
 
 .nav-link {
@@ -3145,6 +3159,11 @@ p {
   vertical-align: middle;
 }
 
+.bt-term-tooltip {
+  display: inline-flex;
+  min-width: 0;
+}
+
 .bt-term-info-trigger {
   display: inline-flex;
   align-items: center;
@@ -3168,11 +3187,9 @@ p {
 }
 
 .bt-term-info-popover {
-  position: absolute;
-  top: calc(100% + 8px);
-  left: 0;
-  z-index: 60;
-  display: none;
+  position: fixed;
+  z-index: 300;
+  display: grid;
   gap: 6px;
   width: min(260px, calc(100vw - 36px));
   border: 0;
@@ -3184,32 +3201,27 @@ p {
   font-weight: var(--bt-weight-regular);
   line-height: 1.55;
   padding: var(--bt-space-3) var(--bt-space-4);
+  pointer-events: none;
+}
+
+.bt-term-info-popover[data-ready='false'] {
+  visibility: hidden;
 }
 
 .bt-term-info-popover::before {
   content: '';
   position: absolute;
   top: -6px;
-  left: 16px;
+  left: var(--bt-term-arrow-left, 16px);
   width: 14px;
   height: 14px;
   background: var(--bt-color-ink);
   transform: rotate(45deg);
 }
 
-.bt-term-info:hover .bt-term-info-popover,
-.bt-term-info:focus-within .bt-term-info-popover {
-  display: grid;
-}
-
-.bt-term-info[data-align="end"] .bt-term-info-popover {
-  right: 0;
-  left: auto;
-}
-
-.bt-term-info[data-align="end"] .bt-term-info-popover::before {
-  right: 14px;
-  left: auto;
+.bt-term-info-popover[data-placement='top']::before {
+  top: auto;
+  bottom: -6px;
 }
 
 .bt-term-info-popover strong {
@@ -5191,6 +5203,30 @@ p {
   color: var(--bt-status-reference-text);
 }
 
+.onsen-review-card-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.onsen-review-card-facts span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  border-radius: var(--bt-radius-xs);
+  background: var(--bt-surface-subtle);
+  color: var(--bt-color-body);
+  font-size: 11px;
+  font-weight: var(--bt-weight-medium);
+  line-height: 1.35;
+  padding: 4px 7px;
+}
+
+.onsen-review-card-facts span[data-tone='revisit'] {
+  background: var(--bt-color-primary-soft);
+  color: var(--bt-color-primary-active);
+}
+
 .onsen-review-open-button {
   display: inline-flex;
   align-items: center;
@@ -5223,11 +5259,12 @@ p {
 .onsen-review-modal-backdrop {
   position: fixed;
   inset: 0;
-  z-index: 90;
+  z-index: 160;
   display: grid;
   place-items: center;
   background: var(--bt-scrim);
   padding: var(--bt-space-5);
+  animation: onsenReviewBackdropIn 160ms var(--bt-ease-out) both;
 }
 
 .onsen-review-modal {
@@ -5241,6 +5278,36 @@ p {
   background: var(--bt-surface-overlay);
   box-shadow: var(--bt-shadow-lifted);
   padding: var(--bt-space-6);
+  animation: onsenReviewModalDropIn 220ms var(--bt-ease-out) both;
+}
+
+@keyframes onsenReviewBackdropIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes onsenReviewModalDropIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .onsen-review-modal-backdrop,
+  .onsen-review-modal {
+    animation: none;
+  }
 }
 
 .onsen-review-modal-head {
@@ -5263,10 +5330,23 @@ p {
   place-items: center;
   width: 36px;
   height: 36px;
-  border: 1px solid var(--bt-color-border);
-  border-radius: var(--bt-radius-pill);
-  background: var(--bt-surface-default);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
   color: var(--bt-color-primary-active);
+  padding: 0;
+}
+
+.onsen-review-modal-head button:hover {
+  background: transparent;
+  color: var(--bt-color-primary-active);
+}
+
+.onsen-review-modal-head button:focus-visible {
+  background: transparent;
+  color: var(--bt-color-primary-active);
+  outline: 2px solid var(--bt-color-primary);
+  outline-offset: 2px;
 }
 
 .onsen-review-form {
@@ -5364,9 +5444,10 @@ p {
 }
 
 .onsen-review-box {
+  --onsen-review-panel-padding: clamp(var(--bt-space-5), 3vw, var(--bt-space-6));
   gap: var(--bt-space-5);
   border-radius: var(--bt-radius-md);
-  padding: clamp(var(--bt-space-5), 3vw, var(--bt-space-6));
+  padding: var(--onsen-review-panel-padding);
 }
 
 .onsen-review-panel-head h2 {
@@ -5385,12 +5466,26 @@ p {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
-  gap: var(--bt-space-3);
-  border-block: 1px solid var(--bt-color-border-soft);
-  background: var(--bt-surface-subtle);
-  color: var(--bt-color-primary-active);
-  margin-inline: calc(var(--bt-space-5) * -1);
-  padding: var(--bt-space-4) var(--bt-space-5);
+  gap: var(--bt-space-4);
+  margin-inline: calc(0px - var(--onsen-review-panel-padding));
+  background: var(--v2-ink);
+  color: var(--v2-on-dark);
+  padding: var(--bt-space-5) var(--onsen-review-panel-padding);
+  text-decoration: none;
+  transition: background var(--bt-motion-base) var(--bt-ease-out);
+}
+
+.onsen-review-benefit:hover {
+  background: #243b36;
+}
+
+.onsen-review-benefit:focus-visible {
+  outline: 2px solid var(--bt-color-primary);
+  outline-offset: 3px;
+}
+
+.onsen-review-benefit > svg:first-child {
+  color: #d8c48f;
 }
 
 .onsen-review-benefit > div {
@@ -5398,28 +5493,49 @@ p {
   gap: var(--bt-space-1);
 }
 
+.onsen-review-benefit > div > span {
+  color: color-mix(in srgb, var(--v2-on-dark) 62%, transparent);
+  font-family: var(--bt-font-data);
+  font-size: 10px;
+  font-weight: var(--bt-weight-semibold);
+  line-height: var(--bt-leading-ui);
+}
+
 .onsen-review-benefit strong {
-  color: var(--bt-color-ink);
-  font-size: var(--bt-text-small);
+  color: var(--v2-on-dark);
+  font-size: 15px;
   line-height: var(--bt-leading-ui);
 }
 
 .onsen-review-benefit p {
-  color: var(--bt-color-body);
+  color: color-mix(in srgb, var(--v2-on-dark) 70%, transparent);
   font-size: var(--bt-text-meta);
   line-height: var(--bt-leading-ui);
 }
 
-.onsen-review-benefit a {
-  color: var(--bt-color-primary-active);
-  font-size: var(--bt-text-meta);
-  font-weight: var(--bt-weight-semibold);
-  text-decoration: underline;
-  text-underline-offset: var(--bt-space-1);
+.onsen-review-benefit > svg:last-child {
+  color: var(--v2-on-dark);
 }
 
 .onsen-review-list {
   min-height: calc(var(--bt-space-24) + var(--bt-space-6));
+}
+
+.onsen-review-all-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bt-space-1);
+  width: fit-content;
+  border: 0;
+  background: transparent;
+  color: var(--bt-color-primary-active);
+  padding: 0;
+  font-size: var(--bt-text-meta);
+  font-weight: var(--bt-weight-semibold);
+  line-height: var(--bt-leading-ui);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .onsen-review-card-meta {
@@ -5439,7 +5555,7 @@ p {
 
 .onsen-review-modal {
   width: min(var(--bt-review-modal-max-width), 100%);
-  max-height: calc(100svh - var(--bt-space-10));
+  max-height: calc(100svh - var(--bt-space-16));
 }
 
 .onsen-review-modal-head h3 {
@@ -5463,6 +5579,7 @@ p {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--bt-space-1);
+  margin: 0;
   padding: 0;
   list-style: none;
 }
@@ -5525,6 +5642,7 @@ p {
 
 .onsen-review-question-head h4,
 .onsen-review-success h4 {
+  margin: 0;
   color: var(--bt-color-ink);
   font-size: var(--bt-text-card-title);
   font-weight: var(--bt-weight-semibold);
@@ -5541,6 +5659,7 @@ p {
 .onsen-review-question-group fieldset {
   display: grid;
   gap: var(--bt-space-2);
+  margin: 0;
   border: 0;
   padding: 0;
 }
@@ -5578,11 +5697,21 @@ p {
 }
 
 .onsen-review-choice > span {
-  width: var(--bt-space-3);
-  height: var(--bt-space-3);
+  display: inline-grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
   border: 1px solid var(--bt-color-border-strong);
-  border-radius: var(--bt-radius-pill);
+  border-radius: var(--bt-radius-xs);
   background: var(--bt-surface-default);
+}
+
+.onsen-review-choice > span svg {
+  opacity: 0;
+  transform: scale(0.7);
+  transition:
+    opacity var(--bt-motion-fast) var(--bt-ease-out),
+    transform var(--bt-motion-fast) var(--bt-ease-out);
 }
 
 .onsen-review-choice:hover,
@@ -5601,7 +5730,12 @@ p {
 .onsen-review-choice[data-selected='true'] > span {
   border-color: var(--bt-color-primary-active);
   background: var(--bt-color-primary-active);
-  box-shadow: inset 0 0 0 var(--bt-space-1) var(--bt-surface-default);
+  color: var(--bt-color-on-primary);
+}
+
+.onsen-review-choice[data-selected='true'] > span svg {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .onsen-review-form label {
@@ -5635,6 +5769,54 @@ p {
   color: var(--bt-color-muted);
   font-size: var(--bt-text-meta);
   font-weight: var(--bt-weight-regular);
+}
+
+.onsen-review-publish-option {
+  display: grid;
+  gap: var(--bt-space-2);
+  border: 1px solid var(--bt-color-border);
+  border-radius: var(--bt-radius-sm);
+  background: var(--bt-surface-subtle);
+  padding: var(--bt-space-4);
+}
+
+.onsen-review-publish-option > label {
+  display: flex;
+  grid-template-columns: none;
+  align-items: center;
+  gap: var(--bt-space-2);
+  color: var(--bt-color-ink);
+  font-size: var(--bt-text-small);
+}
+
+.onsen-review-publish-option input[type='checkbox'] {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  margin: 0;
+  accent-color: var(--bt-color-primary-active);
+}
+
+.onsen-review-publish-option p,
+.onsen-review-publish-option small {
+  margin: 0;
+  color: var(--bt-color-muted);
+  font-size: var(--bt-text-meta);
+  line-height: var(--bt-leading-ui);
+}
+
+.onsen-review-publish-option a {
+  width: fit-content;
+  color: var(--bt-color-primary-active);
+  font-size: var(--bt-text-meta);
+  font-weight: var(--bt-weight-semibold);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.onsen-review-publish-option[data-enabled='true'] {
+  border-color: var(--bt-status-confirmed-border);
+  background: var(--bt-status-confirmed-bg);
 }
 
 .onsen-review-actions {
@@ -5819,6 +6001,211 @@ p {
   gap: var(--bt-space-6);
 }
 
+.passport-public-settings {
+  display: grid;
+  gap: var(--bt-space-6);
+  border-block: 1px solid var(--bt-color-border);
+  padding-block: var(--bt-space-8);
+  scroll-margin-top: calc(var(--bt-mobile-header-height) + var(--bt-space-6));
+}
+
+.passport-public-settings .passport-section-head p {
+  max-width: calc(var(--bt-space-24) * 7);
+  margin: 0;
+  color: var(--bt-color-body);
+  font-size: var(--bt-text-small);
+  line-height: var(--bt-leading-body);
+}
+
+.passport-public-form {
+  display: grid;
+  gap: var(--bt-space-6);
+}
+
+.passport-public-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--bt-space-4);
+}
+
+.passport-public-fields > label {
+  display: grid;
+  gap: var(--bt-space-2);
+  color: var(--bt-color-ink);
+  font-size: var(--bt-text-small);
+  font-weight: var(--bt-weight-semibold);
+}
+
+.passport-public-fields > label > span:not(.passport-handle-field) {
+  color: var(--bt-color-muted);
+  font-size: var(--bt-text-meta);
+  font-weight: var(--bt-weight-regular);
+}
+
+.passport-public-fields input,
+.passport-public-fields textarea {
+  width: 100%;
+  min-height: var(--bt-space-12);
+  border: 1px solid var(--bt-form-border);
+  border-radius: var(--bt-radius-sm);
+  background: var(--bt-surface-default);
+  color: var(--bt-color-ink);
+  padding: var(--bt-space-3);
+  font: inherit;
+  font-size: var(--bt-text-small);
+  outline: none;
+}
+
+.passport-public-fields input:focus,
+.passport-public-fields textarea:focus {
+  border-color: var(--bt-form-focus-border);
+  box-shadow: var(--bt-focus-ring);
+}
+
+.passport-public-bio {
+  grid-column: 1 / -1;
+}
+
+.passport-public-bio textarea {
+  min-height: 92px;
+  line-height: var(--bt-leading-body);
+  resize: vertical;
+}
+
+.passport-public-bio > small {
+  justify-self: end;
+  color: var(--bt-color-muted);
+  font-size: var(--bt-text-meta);
+  font-weight: var(--bt-weight-regular);
+}
+
+.passport-handle-field {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  overflow: hidden;
+  border: 1px solid var(--bt-form-border);
+  border-radius: var(--bt-radius-sm);
+  background: var(--bt-surface-subtle);
+}
+
+.passport-handle-field:focus-within {
+  border-color: var(--bt-form-focus-border);
+  box-shadow: var(--bt-focus-ring);
+}
+
+.passport-handle-field small {
+  color: var(--bt-color-muted);
+  padding-left: var(--bt-space-3);
+  font-size: var(--bt-text-meta);
+  font-weight: var(--bt-weight-regular);
+  white-space: nowrap;
+}
+
+.passport-handle-field input {
+  border: 0;
+  border-left: 1px solid var(--bt-color-border-soft);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.passport-handle-field input:focus {
+  border-color: var(--bt-color-border-soft);
+  box-shadow: none;
+}
+
+.passport-public-toggles {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-block: 1px solid var(--bt-color-border-soft);
+}
+
+.passport-public-toggles label {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: var(--bt-space-3);
+  padding: var(--bt-space-4);
+  cursor: pointer;
+}
+
+.passport-public-toggles label + label {
+  border-left: 1px solid var(--bt-color-border-soft);
+}
+
+.passport-public-toggles input {
+  width: 19px;
+  height: 19px;
+  margin: 1px 0 0;
+  accent-color: var(--bt-color-primary-active);
+}
+
+.passport-public-toggles span {
+  display: grid;
+  gap: var(--bt-space-1);
+}
+
+.passport-public-toggles strong {
+  color: var(--bt-color-ink);
+  font-size: var(--bt-text-small);
+}
+
+.passport-public-toggles small {
+  color: var(--bt-color-muted);
+  font-size: var(--bt-text-meta);
+  line-height: var(--bt-leading-ui);
+}
+
+.passport-public-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--bt-space-3);
+}
+
+.passport-public-actions button,
+.passport-public-actions a {
+  display: inline-flex;
+  min-height: var(--bt-space-10);
+  align-items: center;
+  gap: var(--bt-space-2);
+  border: 0;
+  border-radius: var(--bt-radius-sm);
+  background: var(--bt-color-primary-active);
+  color: var(--bt-color-on-primary);
+  padding-inline: var(--bt-space-4);
+  font-size: var(--bt-text-small);
+  font-weight: var(--bt-weight-semibold);
+}
+
+.passport-public-actions a {
+  background: var(--bt-color-primary-soft);
+  color: var(--bt-color-primary-active);
+}
+
+.passport-public-actions button:disabled {
+  background: var(--bt-disabled-bg);
+  color: var(--bt-disabled-text);
+}
+
+.passport-public-actions > span {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bt-space-1);
+  color: var(--bt-status-success-text);
+  font-size: var(--bt-text-meta);
+  font-weight: var(--bt-weight-semibold);
+}
+
+.passport-public-actions > p,
+.passport-visibility-error {
+  width: 100%;
+  margin: 0;
+  color: var(--bt-form-invalid-text);
+  font-size: var(--bt-text-meta);
+  line-height: var(--bt-leading-ui);
+}
+
 .passport-section-head {
   display: flex;
   align-items: flex-end;
@@ -5893,6 +6280,38 @@ p {
   padding-inline: var(--bt-space-2);
 }
 
+.passport-entry-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--bt-space-2);
+}
+
+.passport-entry-controls button {
+  display: inline-flex;
+  min-height: var(--bt-space-7);
+  align-items: center;
+  gap: var(--bt-space-1);
+  border: 1px solid var(--bt-color-border);
+  border-radius: var(--bt-radius-pill);
+  background: var(--bt-surface-default);
+  color: var(--bt-color-muted);
+  padding-inline: var(--bt-space-2);
+  font-size: var(--bt-text-meta);
+  font-weight: var(--bt-weight-semibold);
+}
+
+.passport-entry-controls button[data-public='true'] {
+  border-color: var(--bt-status-confirmed-border);
+  background: var(--bt-status-confirmed-bg);
+  color: var(--bt-status-confirmed-text);
+}
+
+.passport-entry-controls button:disabled {
+  cursor: wait;
+  opacity: 0.55;
+}
+
 .passport-entry-date em[data-status='approved'],
 .passport-entry-main > span[data-verified='true'] {
   border-color: var(--bt-status-success-border);
@@ -5948,21 +6367,23 @@ p {
 
 @media (max-width: 767px) {
   .onsen-review-modal-backdrop {
-    align-items: end;
-    padding: var(--bt-space-2);
+    display: block;
+    overflow: hidden;
+    background: var(--bt-surface-default);
+    padding: 0;
   }
 
   .onsen-review-modal {
-    max-height: calc(100svh - var(--bt-space-4));
-    padding: var(--bt-space-5);
-  }
-
-  .onsen-review-benefit {
-    grid-template-columns: auto minmax(0, 1fr);
-  }
-
-  .onsen-review-benefit a {
-    grid-column: 2;
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    align-content: start;
+    border: 0;
+    border-radius: 0;
+    background: var(--bt-surface-default);
+    box-shadow: none;
+    overscroll-behavior: contain;
+    padding: max(var(--bt-space-4), env(safe-area-inset-top)) var(--bt-space-4) max(var(--bt-space-6), env(safe-area-inset-bottom));
   }
 
   .onsen-review-progress li {
@@ -6009,6 +6430,38 @@ p {
 
   .passport-entry-main > span {
     justify-self: start;
+  }
+
+  .passport-public-fields,
+  .passport-public-toggles {
+    grid-template-columns: 1fr;
+  }
+
+  .passport-public-toggles label + label {
+    border-top: 1px solid var(--bt-color-border-soft);
+    border-left: 0;
+  }
+
+  .passport-handle-field {
+    grid-template-columns: 1fr;
+  }
+
+  .passport-handle-field small {
+    padding: var(--bt-space-2) var(--bt-space-3) 0;
+  }
+
+  .passport-handle-field input {
+    border-top: 0;
+    border-left: 0;
+  }
+
+  .passport-entry-date {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .passport-entry-controls {
+    justify-content: flex-start;
   }
 }
 
@@ -8165,10 +8618,11 @@ p {
   flex: 0 0 auto;
   width: 38px;
   height: 38px;
-  border: 1px solid var(--hairline);
-  border-radius: 999px;
-  background: var(--surface);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
   color: var(--ink);
+  padding: 0;
 }
 
 .saved-settings-button:hover,
@@ -8180,11 +8634,15 @@ p {
 
 .modal-icon-button:hover,
 .modal-icon-button:focus-visible {
-  border-color: var(--primary-active);
-  box-shadow: 0 10px 24px rgba(31, 102, 98, 0.12);
+  background: transparent;
+  box-shadow: none;
   color: var(--primary-active);
-  outline: none;
-  transform: translateY(-1px);
+  transform: none;
+}
+
+.modal-icon-button:focus-visible {
+  outline: 2px solid var(--primary-active);
+  outline-offset: 2px;
 }
 
 .modal-backdrop {
@@ -9088,9 +9546,7 @@ p {
     padding-bottom: 28px;
   }
 
-  .bt-term-info-popover,
-  .bt-term-info[data-align="end"] .bt-term-info-popover {
-    position: fixed;
+  .bt-term-info-popover[data-mobile='true'] {
     top: auto;
     right: 18px;
     bottom: 18px;
@@ -9102,8 +9558,7 @@ p {
     overflow: auto;
   }
 
-  .bt-term-info-popover::before,
-  .bt-term-info[data-align="end"] .bt-term-info-popover::before {
+  .bt-term-info-popover[data-mobile='true']::before {
     display: none;
   }
 

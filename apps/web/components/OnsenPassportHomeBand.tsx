@@ -95,19 +95,19 @@ export function OnsenPassportHomeBand() {
         .join(' · ')
     : '';
   const passportTitle = hasEntries
-    ? `${summary.uniquePlaces}곳의 온천이 여권에 남아 있습니다.`
+    ? `${summary.uniquePlaces}곳의 온천, ${entries.length}건의 후기`
     : isEmpty
-      ? '이번 온천을, 첫 장으로 남겨보세요.'
+      ? '첫 후기를 작성하면 온천여권이 시작됩니다.'
       : status === 'error'
-        ? '온천여권은 잠시 쉬어가고 있습니다.'
-        : '내 온천 기록을 펼치고 있습니다.';
+        ? '온천여권을 불러오지 못했습니다.'
+        : '온천여권을 불러오는 중입니다.';
   const stateMessage = isEmpty
-    ? '온천 상세에서 물의 감촉과 그날의 경험을 남기면, 방문과 취향이 이곳에 차곡차곡 쌓입니다.'
+    ? '온천 상세에서 후기를 작성하면 다녀온 곳과 물의 감촉이 여권에 쌓입니다.'
     : status === 'error'
-      ? '메인에서는 기록을 불러오지 못했습니다. 온천여권에서 다시 확인해 주세요.'
-      : '다녀온 온천과 물의 감촉을 불러오는 중입니다.';
+      ? '온천여권 페이지에서 다시 확인해 주세요.'
+      : '저장된 방문 기록을 확인하고 있습니다.';
   const ctaHref = isEmpty ? '/onsen/results' : '/passport';
-  const ctaLabel = isEmpty ? '첫 기록 남길 온천 찾기' : '온천여권 펼쳐보기';
+  const ctaLabel = isEmpty ? '다녀온 온천 찾기' : '내 온천여권 보기';
 
   return (
     <section className={styles.passportBand} aria-labelledby="home-passport-title" aria-busy={status === 'loading'}>
@@ -124,12 +124,12 @@ export function OnsenPassportHomeBand() {
           <>
             <dl className={styles.passportStats}>
               <div><dt>다녀온 곳</dt><dd>{summary.uniquePlaces}곳</dd></div>
-              <div><dt>남긴 기록</dt><dd>{entries.length}회</dd></div>
-              <div><dt>자주 고른 감촉</dt><dd>{summary.topTexture ? waterTextureLabels[summary.topTexture.value] : '기록 중'}</dd></div>
+              <div><dt>작성한 후기</dt><dd>{entries.length}건</dd></div>
+              <div><dt>자주 고른 감촉</dt><dd>{summary.topTexture ? waterTextureLabels[summary.topTexture.value] : '아직 뚜렷하지 않음'}</dd></div>
             </dl>
             {summary.latest ? (
               <Link className={styles.passportRecent} href={`/onsen/${summary.latest.targetSlug}`}>
-                <span>최근 기록</span>
+                <span>최근 작성한 후기</span>
                 <strong>{summary.latest.targetName}</strong>
                 <small>{recentMeta}</small>
               </Link>

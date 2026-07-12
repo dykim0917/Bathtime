@@ -1,14 +1,16 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import type { FormEvent } from 'react';
+import { createPortal } from 'react-dom';
 import {
   ArrowLeft,
   ArrowRight,
   Bathtub,
   BookOpenText,
   CalendarBlank,
+  Check,
   CheckCircle,
   Drop,
   PencilSimpleLine,
@@ -17,7 +19,7 @@ import {
   Users,
   X,
 } from '@phosphor-icons/react';
-import { AuthRequiredError, redirectToLogin, saveOnsenReview } from '@web/lib/userContent';
+import { AuthRequiredError, getMyOnsenPublicProfile, redirectToLogin, saveOnsenReview } from '@web/lib/userContent';
 import {
   bathAreaLabels,
   cleanlinessLabels,
@@ -27,6 +29,7 @@ import {
   waterColorLabels,
   waterTextureLabels,
   type OnsenPassportEntry,
+  type OnsenPublicProfile,
   type OnsenReviewBathArea,
   type OnsenReviewCleanliness,
   type OnsenReviewCrowding,
@@ -37,6 +40,9 @@ import {
   type OnsenReviewWaterTexture,
 } from '@web/lib/onsenPassport';
 import type { OnsenReview } from '@web/lib/onsenReviews';
+import { ONSEN_REVIEW_OPEN_EVENT } from '@web/lib/onsenReviewEvents';
+import { OnsenReviewCard } from './OnsenReviewCard';
+import { OnsenReviewDrawerButton } from './OnsenReviewDrawerButton';
 
 const bathAreaOptions: OnsenReviewBathArea[] = [
   'room_bath',
@@ -55,8 +61,8 @@ const waterColorOptions: OnsenReviewWaterColor[] = ['clear', 'white', 'brown', '
 const temperatureOptions: OnsenReviewTemperature[] = ['cool', 'lukewarm', 'comfortable', 'hot', 'mixed', 'unclear'];
 const crowdingOptions: OnsenReviewCrowding[] = ['quiet', 'comfortable', 'busy', 'packed', 'unclear'];
 const cleanlinessOptions: OnsenReviewCleanliness[] = ['good', 'neutral', 'concern', 'unclear'];
-const revisitOptions: OnsenReviewRevisitIntent[] = ['yes', 'maybe', 'no', 'unsure'];
-const stepLabels = ['방문', '온천수', '이용 경험'];
+const revisitOptions: OnsenReviewRevisitIntent[] = ['yes', 'no'];
+const stepLabels = ['방문', '온천수', '후기'];
 
 function formatLocalDateInput(date: Date) {
   const year = date.getFullYear();
@@ -68,7 +74,7 @@ function formatLocalDateInput(date: Date) {
 function ChoiceButton({ selected, label, onClick }: { selected: boolean; label: string; onClick: () => void }) {
   return (
     <button className="onsen-review-choice" type="button" aria-pressed={selected} data-selected={selected} onClick={onClick}>
-      <span aria-hidden="true" />
+      <span aria-hidden="true"><Check size={12} weight="bold" /></span>
       {label}
     </button>
   );
@@ -99,10 +105,15 @@ export function OnsenReviewForm({
   const [revisitIntent, setRevisitIntent] = useState<OnsenReviewRevisitIntent | null>(null);
   const [cautionText, setCautionText] = useState('');
   const [body, setBody] = useState('');
+  const [publishReview, setPublishReview] = useState(false);
+  const [publicProfile, setPublicProfile] = useState<OnsenPublicProfile | null>(null);
+  const [publicProfileStatus, setPublicProfileStatus] = useState<'idle' | 'loading' | 'ready'>('idle');
   const [savedEntry, setSavedEntry] = useState<OnsenPassportEntry | null>(null);
   const [status, setStatus] = useState<'idle' | 'submitting' | 'submitted' | 'error'>('idle');
   const [error, setError] = useState('');
   const [today, setToday] = useState('');
+  const modalRef = useRef<HTMLDivElement>(null);
+  const openingRef = useRef(false);
   const availableBathAreas = targetType === 'facility'
     ? bathAreaOptions.filter((value) => value !== 'room_bath')
     : bathAreaOptions;
@@ -123,6 +134,11 @@ export function OnsenReviewForm({
   useEffect(() => {
     setToday(formatLocalDateInput(new Date()));
   }, []);
+
+  useEffect(() => {
+    if (!open) return;
+    modalRef.current?.scrollTo({ top: 0 });
+  }, [open, step]);
 
   const canContinue = step === 0
     ? bathAreas.length > 0
@@ -147,25 +163,55 @@ export function OnsenReviewForm({
     });
   }
 
-  function openReviewForm() {
-    if (status === 'submitted') {
-      setStep(0);
-      setBathAreas([]);
-      setVisitedOn('');
-      setWaterTexture([]);
-      setWaterColor(null);
-      setTemperatureExperience(null);
-      setCrowdingLevel(null);
-      setCleanlinessLevel(null);
-      setRevisitIntent(null);
-      setCautionText('');
-      setBody('');
-      setSavedEntry(null);
-      setStatus('idle');
-      setError('');
+  const openReviewForm = useCallback(async () => {
+    if (open || openingRef.current) return;
+    openingRef.current = true;
+    setPublicProfileStatus('loading');
+
+    try {
+      let profile: OnsenPublicProfile | null = null;
+      try {
+        profile = await getMyOnsenPublicProfile();
+      } catch (authError) {
+        if (authError instanceof AuthRequiredError) {
+          setPublicProfileStatus('idle');
+          redirectToLogin('onsen_review');
+          return;
+        }
+        console.error('Failed to load onsen public profile', authError);
+      }
+
+      setPublicProfile(profile);
+      setPublicProfileStatus('ready');
+
+      if (status === 'submitted') {
+        setStep(0);
+        setBathAreas([]);
+        setVisitedOn('');
+        setWaterTexture([]);
+        setWaterColor(null);
+        setTemperatureExperience(null);
+        setCrowdingLevel(null);
+        setCleanlinessLevel(null);
+        setRevisitIntent(null);
+        setCautionText('');
+        setBody('');
+        setPublishReview(false);
+        setSavedEntry(null);
+        setStatus('idle');
+        setError('');
+      }
+      setOpen(true);
+    } finally {
+      openingRef.current = false;
     }
-    setOpen(true);
-  }
+  }, [open, status]);
+
+  useEffect(() => {
+    const handleOpen = () => void openReviewForm();
+    window.addEventListener(ONSEN_REVIEW_OPEN_EVENT, handleOpen);
+    return () => window.removeEventListener(ONSEN_REVIEW_OPEN_EVENT, handleOpen);
+  }, [openReviewForm]);
 
   async function submitReview(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -188,6 +234,7 @@ export function OnsenReviewForm({
         revisitIntent,
         cautionText,
         body,
+        isPublic: publishReview && Boolean(publicProfile?.passportIsPublic),
       });
       setSavedEntry(entry);
       setStatus('submitted');
@@ -197,7 +244,7 @@ export function OnsenReviewForm({
         return;
       }
       console.error('Failed to submit onsen review', submitError);
-      setError('기록을 저장하지 못했습니다. 잠시 후 다시 시도해주세요.');
+      setError('후기를 등록하지 못했습니다. 잠시 후 다시 시도해 주세요.');
       setStatus('error');
     }
   }
@@ -206,58 +253,52 @@ export function OnsenReviewForm({
     <section className="onsen-review-box" aria-labelledby="onsen-review-title">
       <div className="onsen-review-panel-head">
         <div>
-          <span className="onsen-filter-label">바스타임 자체 리뷰</span>
+          <span className="onsen-filter-label">회원 후기</span>
           <div className="onsen-review-title-row">
-            <h2 id="onsen-review-title">다녀온 기록</h2>
+            <h2 id="onsen-review-title">온천 이용 후기</h2>
             <span>{reviewCount}</span>
           </div>
         </div>
-        <button className="onsen-review-open-button" type="button" onClick={openReviewForm}>
+        <button className="onsen-review-open-button" type="button" onClick={() => void openReviewForm()}>
           <PencilSimpleLine size={17} weight="bold" aria-hidden="true" />
-          기록하기
+          후기 작성
         </button>
       </div>
 
-      <div className="onsen-review-benefit">
+      <Link
+        className="onsen-review-benefit"
+        href="/auth/login?source=passport&next=%2Fpassport"
+        aria-label="내 온천여권 보기"
+      >
         <BookOpenText size={22} weight="duotone" aria-hidden="true" />
         <div>
-          <strong>리뷰가 내 온천여권에 남습니다</strong>
-          <p>물의 감촉과 이용 경험이 쌓이면 내 취향을 더 정확히 알 수 있습니다.</p>
+          <span>ONSEN PASSPORT</span>
+          <strong>내 온천여권 보기</strong>
+          <p>작성한 후기와 물의 감촉을 한곳에서 관리합니다.</p>
         </div>
-        <Link href="/passport">온천여권 보기</Link>
-      </div>
+        <ArrowRight size={18} weight="bold" aria-hidden="true" />
+      </Link>
 
       <div className="onsen-review-list">
         {reviews.length > 0 ? (
-          reviews.map((review) => {
-            const isSample = review.body.startsWith('[샘플]');
-            const reviewBody = isSample ? review.body.replace(/^\[샘플\]\s*/, '') : review.body;
-            return (
-              <article className="onsen-review-card" key={review.id}>
-                <div className="onsen-review-card-meta">
-                  {isSample ? <span data-tone="sample">샘플</span> : null}
-                  <span>{bathAreaLabels[review.bathType]}</span>
-                  {review.waterTexture[0] ? <span>{waterTextureLabels[review.waterTexture[0]]}</span> : null}
-                  {review.visitedOn ?? review.visitSeason ? <span>{review.visitedOn ?? review.visitSeason}</span> : null}
-                </div>
-                <p>{reviewBody}</p>
-              </article>
-            );
-          })
+          <>
+            <OnsenReviewCard review={reviews[0]} variant="preview" />
+            <OnsenReviewDrawerButton reviewCount={reviewCount} className="onsen-review-all-link" />
+          </>
         ) : (
-          <p>아직 바스타임 자체 리뷰가 없습니다. 다녀왔다면 첫 기록을 남겨주세요.</p>
+          <p>아직 등록된 회원 후기가 없습니다. 첫 후기를 작성해 주세요.</p>
         )}
       </div>
 
-      {open ? (
+      {open && typeof document !== 'undefined' ? createPortal(
         <div className="onsen-review-modal-backdrop" role="presentation">
-          <div className="onsen-review-modal" role="dialog" aria-modal="true" aria-labelledby="onsen-review-modal-title">
+          <div ref={modalRef} className="onsen-review-modal" role="dialog" aria-modal="true" aria-labelledby="onsen-review-modal-title">
             <div className="onsen-review-modal-head">
               <div>
-                <span className="onsen-filter-label">온천여권에 기록</span>
+                <span className="onsen-filter-label">후기 작성</span>
                 <h3 id="onsen-review-modal-title">{targetName}</h3>
               </div>
-              <button type="button" aria-label="기록 작성 닫기" autoFocus onClick={() => setOpen(false)} disabled={status === 'submitting'}>
+              <button type="button" aria-label="후기 작성 닫기" autoFocus onClick={() => setOpen(false)} disabled={status === 'submitting'}>
                 <X size={18} weight="bold" aria-hidden="true" />
               </button>
             </div>
@@ -266,11 +307,11 @@ export function OnsenReviewForm({
               <div className="onsen-review-success" role="status">
                 <CheckCircle size={38} weight="duotone" aria-hidden="true" />
                 <div>
-                  <span className="onsen-filter-label">기록 완료</span>
-                  <h4>온천여권에 한 곳이 더해졌습니다</h4>
-                  <p>검수 중에도 내 기록에서는 바로 확인할 수 있습니다. 같은 감촉의 온천이 쌓이면 취향도 함께 정리됩니다.</p>
+                  <span className="onsen-filter-label">후기 작성 완료</span>
+                  <h4>후기를 등록했습니다</h4>
+                  <p>{savedEntry.isPublic ? '온천여권에서는 바로 확인할 수 있습니다. 검수가 끝나면 공개 닉네임과 함께 이곳에도 표시됩니다.' : '온천여권에서는 바로 확인할 수 있습니다. 공개 여부는 여권에서 언제든 바꿀 수 있습니다.'}</p>
                 </div>
-                <div className="onsen-review-success-facts" aria-label="저장된 기록 요약">
+                <div className="onsen-review-success-facts" aria-label="작성한 후기 요약">
                   <span>{bathAreaLabels[savedEntry.bathAreas[0]]}</span>
                   <span>{waterTextureLabels[savedEntry.waterTexture[0]]}</span>
                   <span>{revisitLabels[savedEntry.revisitIntent]}</span>
@@ -282,7 +323,7 @@ export function OnsenReviewForm({
               </div>
             ) : (
               <form className="onsen-review-form" onSubmit={submitReview}>
-                <ol className="onsen-review-progress" aria-label="기록 작성 단계">
+                <ol className="onsen-review-progress" aria-label="후기 작성 단계">
                   {stepLabels.map((label, index) => (
                     <li key={label} data-current={step === index} data-complete={step > index}>
                       <span>{index + 1}</span>
@@ -324,13 +365,27 @@ export function OnsenReviewForm({
                     <div className="onsen-review-question-group">
                       <div className="onsen-review-question-head">
                         <Users size={24} weight="duotone" aria-hidden="true" />
-                        <div><h4>이용하기는 어땠나요?</h4><p>혼잡과 청결은 방문 시점의 경험으로 저장됩니다.</p></div>
+                        <div><h4>이용하기는 어땠나요?</h4><p>방문 당시의 혼잡도와 청결 상태를 남겨 주세요.</p></div>
                       </div>
                       <fieldset><legend>혼잡도</legend><div className="onsen-review-choice-list">{crowdingOptions.map((value) => <ChoiceButton key={value} selected={crowdingLevel === value} label={crowdingLabels[value]} onClick={() => setCrowdingLevel(value)} />)}</div></fieldset>
                       <fieldset><legend>청결 상태</legend><div className="onsen-review-choice-list">{cleanlinessOptions.map((value) => <ChoiceButton key={value} selected={cleanlinessLevel === value} label={cleanlinessLabels[value]} onClick={() => setCleanlinessLevel(value)} />)}</div></fieldset>
                       <fieldset><legend>다시 방문한다면</legend><div className="onsen-review-choice-list">{revisitOptions.map((value) => <ChoiceButton key={value} selected={revisitIntent === value} label={revisitLabels[value]} onClick={() => setRevisitIntent(value)} />)}</div></fieldset>
-                      <label>온천 중심 한 줄 기록<textarea required minLength={12} maxLength={1200} value={body} onChange={(event) => setBody(event.target.value)} placeholder="물의 느낌, 좋았던 점, 다음 방문자가 알면 좋은 내용을 적어주세요." /><small>{body.trim().length}/12자 이상</small></label>
+                      <label>한 줄 후기<textarea required minLength={12} maxLength={1200} value={body} onChange={(event) => setBody(event.target.value)} placeholder="물의 느낌, 좋았던 점, 다음 방문자가 알면 좋은 내용을 적어주세요." /><small>{body.trim().length}/12자 이상</small></label>
                       <label>미리 알면 좋은 점 <span>선택</span><input maxLength={300} value={cautionText} onChange={(event) => setCautionText(event.target.value)} placeholder="예: 주말 오후에는 입장 대기가 있었어요." /></label>
+                      <div className="onsen-review-publish-option" data-enabled={publicProfile?.passportIsPublic || undefined}>
+                        <label>
+                          <input
+                            type="checkbox"
+                            checked={publishReview}
+                            disabled={!publicProfile?.passportIsPublic}
+                            onChange={(event) => setPublishReview(event.target.checked)}
+                          />
+                          <span>검수 후 이 후기를 공개하기</span>
+                        </label>
+                        <p>Google 계정 이름은 사용하지 않습니다. 내가 정한 공개 닉네임과 월 단위 방문 시점만 표시됩니다.</p>
+                        {publicProfileStatus === 'loading' ? <small>공개 설정을 확인하고 있습니다.</small> : null}
+                        {publicProfileStatus === 'ready' && !publicProfile?.passportIsPublic ? <Link href="/passport#passport-public-settings">온천여권에서 공개 프로필 설정</Link> : null}
+                      </div>
                     </div>
                   ) : null}
                 </div>
@@ -340,14 +395,15 @@ export function OnsenReviewForm({
                   {step < 2 ? (
                     <button type="button" disabled={!canContinue} onClick={() => setStep((current) => current + 1)}>다음 <ArrowRight size={17} weight="bold" aria-hidden="true" /></button>
                   ) : (
-                    <button type="submit" disabled={status === 'submitting' || !canContinue}><BookOpenText size={17} weight="bold" aria-hidden="true" />{status === 'submitting' ? '기록 중' : '온천여권에 기록'}</button>
+                    <button type="submit" disabled={status === 'submitting' || !canContinue}><BookOpenText size={17} weight="bold" aria-hidden="true" />{status === 'submitting' ? '등록 중' : '후기 등록'}</button>
                   )}
                 </div>
                 {error ? <p className="onsen-review-error" role="alert">{error}</p> : null}
               </form>
             )}
           </div>
-        </div>
+        </div>,
+        document.body
       ) : null}
     </section>
   );

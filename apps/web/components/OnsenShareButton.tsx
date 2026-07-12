@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { ShareNetwork } from '@phosphor-icons/react';
+import { Check, ShareNetwork } from '@phosphor-icons/react';
 
 type OnsenShareButtonProps = {
   title: string;
@@ -10,6 +10,7 @@ type OnsenShareButtonProps = {
 
 export function OnsenShareButton({ title, summary }: OnsenShareButtonProps) {
   const [copied, setCopied] = useState(false);
+  const label = copied ? '링크가 복사되었습니다' : '공유하기';
 
   const markCopied = () => {
     setCopied(true);
@@ -26,7 +27,9 @@ export function OnsenShareButton({ title, summary }: OnsenShareButtonProps) {
     <button
       className={copied ? 'onsen-share-button copied' : 'onsen-share-button'}
       type="button"
+      aria-label={label}
       aria-live="polite"
+      title={label}
       onClick={async () => {
         const url = window.location.href;
 
@@ -43,8 +46,9 @@ export function OnsenShareButton({ title, summary }: OnsenShareButtonProps) {
         }
       }}
     >
-      <ShareNetwork size={17} weight="bold" aria-hidden="true" />
-      {copied ? '링크 복사됨' : '공유하기'}
+      {copied
+        ? <Check size={17} weight="bold" aria-hidden="true" />
+        : <ShareNetwork size={17} weight="bold" aria-hidden="true" />}
     </button>
   );
 }

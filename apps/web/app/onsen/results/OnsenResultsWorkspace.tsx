@@ -11,7 +11,8 @@ import {
   MapTrifold,
   X,
 } from '@phosphor-icons/react';
-import { type ReactNode, useCallback, useEffect, useRef, useState } from 'react';
+import { type MouseEvent as ReactMouseEvent, type ReactNode, useCallback, useEffect, useRef, useState } from 'react';
+import { SelectBox, type SelectBoxOption } from '@web/components/SelectBox';
 import type { OnsenMapPoint } from '@web/lib/onsenMap';
 import styles from './results.module.css';
 
@@ -22,6 +23,47 @@ const OnsenResultsMap = dynamic(
 
 export type OnsenResultsSortValue = 'recommended' | 'reviews' | 'water' | 'name';
 
+const sortOptions: SelectBoxOption<OnsenResultsSortValue>[] = [
+  { value: 'recommended', label: '바스타임 추천순' },
+  { value: 'reviews', label: '후기 많이 읽은 순' },
+  { value: 'water', label: '온천수 방식 우선' },
+  { value: 'name', label: '이름순' },
+];
+
+const compactSortOptions: SelectBoxOption<OnsenResultsSortValue>[] = [
+  { value: 'recommended', label: '추천순' },
+  { value: 'reviews', label: '후기순' },
+  { value: 'water', label: '온천수순' },
+  { value: 'name', label: '이름순' },
+];
+
+type OnsenResultsFilterActionProps = {
+  active: boolean;
+  children: ReactNode;
+  className?: string;
+  href: string;
+};
+
+export function OnsenResultsFilterAction({
+  active,
+  children,
+  className,
+  href,
+}: OnsenResultsFilterActionProps) {
+  const router = useRouter();
+
+  return (
+    <button
+      type="button"
+      className={className}
+      aria-pressed={active}
+      onClick={() => router.push(href)}
+    >
+      {children}
+    </button>
+  );
+}
+
 type OnsenResultsSortProps = {
   value: OnsenResultsSortValue;
   compact?: boolean;
@@ -31,26 +73,23 @@ export function OnsenResultsSort({ value, compact = false }: OnsenResultsSortPro
   const router = useRouter();
 
   return (
-    <label className={compact ? styles.sortCompact : styles.sortControl}>
-      {compact ? <ArrowsDownUp size={16} weight="bold" aria-hidden /> : <span>정렬</span>}
-      <select
-        value={value}
-        aria-label="결과 정렬"
-        onChange={(event) => {
+    <SelectBox
+      className={compact ? styles.sortCompact : styles.sortControl}
+      value={value}
+      options={compact ? compactSortOptions : sortOptions}
+      ariaLabel="결과 정렬"
+      label={compact ? undefined : '정렬'}
+      leadingIcon={compact ? <ArrowsDownUp size={16} weight="bold" aria-hidden /> : undefined}
+      compact={compact}
+      onChange={(nextSort) => {
           const nextParams = new URLSearchParams(window.location.search);
-          if (event.target.value === 'recommended') nextParams.delete('sort');
-          else nextParams.set('sort', event.target.value);
+          if (nextSort === 'recommended') nextParams.delete('sort');
+          else nextParams.set('sort', nextSort);
           nextParams.delete('page');
           const query = nextParams.toString();
           router.push(query ? `${window.location.pathname}?${query}` : window.location.pathname);
-        }}
-      >
-        <option value="recommended">{compact ? '추천순' : '바스타임 추천순'}</option>
-        <option value="reviews">{compact ? '후기순' : '후기 많이 읽은 순'}</option>
-        <option value="water">{compact ? '온천수순' : '온천수 방식 우선'}</option>
-        <option value="name">이름순</option>
-      </select>
-    </label>
+      }}
+    />
   );
 }
 
@@ -84,6 +123,7 @@ export function OnsenResultsWorkspace({
   mapPoints,
   visibleResultCount,
 }: OnsenResultsWorkspaceProps) {
+  const router = useRouter();
   const [filterOpen, setFilterOpen] = useState(false);
   const [desktopMapOpen, setDesktopMapOpen] = useState(true);
   const [mobileMapOpen, setMobileMapOpen] = useState(false);
@@ -183,6 +223,19 @@ export function OnsenResultsWorkspace({
     }
   }, [isNarrow]);
 
+  const handleResultLinkClick = useCallback((event: ReactMouseEvent<HTMLDivElement>) => {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    if (!(event.target instanceof Element)) return;
+
+    const link = event.target.closest<HTMLAnchorElement>('a[data-return-href]');
+    const href = link?.getAttribute('href');
+    const returnHref = link?.dataset.returnHref;
+    if (!href || !returnHref) return;
+
+    event.preventDefault();
+    router.push(`${href}?from=${encodeURIComponent(returnHref)}`);
+  }, [router]);
+
   const mapVisible = isNarrow === null ? false : isNarrow ? mobileMapOpen : desktopMapOpen;
 
   return (
@@ -201,7 +254,7 @@ export function OnsenResultsWorkspace({
             <strong>필터</strong>
           </div>
           {hasFilters ? (
-            <Link className={styles.resetAction} href={resetHref}>
+            <Link className={styles.resetAction} href={resetHref} prefetch={false} rel="nofollow">
               <ArrowCounterClockwise size={15} weight="bold" aria-hidden />
               초기화
             </Link>
@@ -282,7 +335,7 @@ export function OnsenResultsWorkspace({
         </div>
 
         <div className={styles.resultsBody}>
-          <div className={styles.listPane}>{children}</div>
+          <div className={styles.listPane} onClickCapture={handleResultLinkClick}>{children}</div>
           <aside
             ref={mapPanelRef}
             id="onsen-results-map-panel"

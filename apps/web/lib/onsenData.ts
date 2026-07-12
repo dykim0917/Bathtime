@@ -1,7 +1,7 @@
 import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 
-import { onsenCandidates, type OnsenCandidate, type OnsenEditorialCardSummary, type OnsenFactStatus, type OnsenStatus, type OnsenVerdict, type OnsenVerdictItem } from './onsenCatalog';
+import { onsenCandidates, type OnsenCandidate, type OnsenEditorialCardSummary, type OnsenFactStatus, type OnsenStatus, type OnsenVerdict, type OnsenVerdictItem, type OnsenWaterVerification } from './onsenCatalog';
 import { readActiveOnsenFacilityCandidates } from './onsenFacilityData';
 import {
   deriveOnsenContexts,
@@ -343,7 +343,7 @@ function operationLabel(sourceType: OnsenWaterSourceType, notes: string[]) {
   if (notes.some((note) => note.includes('순환') || note.includes('여과'))) return '재사용 온천(순환식)';
   if (sourceType === 'free_flowing_source') return '원천 100% 직수';
   if (sourceType === 'natural_100') return '온천수 확인';
-  if (sourceType === 'hot_spring_confirmed') return '원천 방식 이용 전 확인';
+  if (sourceType === 'hot_spring_confirmed') return '원천 방식 확인 중';
   return notes[0] ?? '이용 전 확인';
 }
 
@@ -420,6 +420,101 @@ function normalizeWaterProfile(counts: OnsenEvidenceCounts | null | undefined): 
   };
 }
 
+const accommodationWaterScopeLabels: Record<string, string> = {
+  room_bath: '객실탕',
+  public_bath: '대욕장·공용탕',
+  private_bath: '대절탕',
+  room_bath_and_public_bath: '객실탕·대욕장',
+  public_bath_and_private_bath: '대욕장·대절탕',
+  room_bath_and_private_bath: '객실탕·대절탕',
+  all_baths: '전체 욕장',
+};
+
+const waterConditionLabels: Record<string, string> = {
+  kasui: '물을 섞어 식힘',
+  kaon: '데워서 온도 조정',
+  disinfection: '소독 표기 있음',
+};
+
+const unresolvedWaterConditionLabels: Record<string, string> = {
+  kasui: '가수 여부',
+  kaon: '가온 여부',
+  disinfection: '소독 여부',
+};
+
+const waterConditionCodes = ['kasui', 'kaon', 'disinfection'] as const;
+
+function waterMethodBasis(method: NonNullable<OnsenCandidate['waterProfile']>['canonicalMethod']) {
+  if (method === 'kakenagashi_pure') return '공식 안내에서 원천 100% 직수 표기를 확인했습니다.';
+  if (method === 'kakenagashi') return '공식 안내에서 직수 표기를 확인했습니다.';
+  if (method === 'junkan') return '공식 안내에서 순환·여과 방식을 확인했습니다.';
+  return '온천수 사용은 확인했지만 직수·순환식 여부는 공식 자료에서 확인 중입니다.';
+}
+
+function publicWaterExceptions(notes: string[]) {
+  return notes
+    .flatMap((note) => note.match(/[^.!?。]+[.!?。]?/g) ?? [])
+    .map((note) => note.trim().replace(/[.!?。]+$/, ''))
+    .filter((note) => /끓인 물|공급 시간|가수|가온|온도 조절|소독/.test(note))
+    .map((note) => {
+      const boiledWaterMatch = note.match(/^(.+?)은 끓인 물 표기라/);
+      if (boiledWaterMatch) return `${boiledWaterMatch[1]}은 온천수가 아닌 끓인 물을 사용합니다.`;
+      return `${note}.`;
+    });
+}
+
+function waterSelectionGuidance(method: NonNullable<OnsenCandidate['waterProfile']>['canonicalMethod'], conditions: string[], exceptions: string[]) {
+  if (exceptions.some((exception) => exception.includes('끓인 물'))) {
+    return '온천수가 목적이라면 끓인 물을 사용하는 객실 유형은 제외하세요.';
+  }
+  if (exceptions.some((exception) => exception.includes('공급 시간'))) {
+    return '객실탕을 이용하려면 온천수 공급 시간을 먼저 확인하세요.';
+  }
+  if (conditions.some((condition) => condition === waterConditionLabels.kasui || condition === waterConditionLabels.kaon)) {
+    return '물을 더하거나 데우지 않는 온천을 원한다면 다른 후보와 함께 비교하세요.';
+  }
+  if (!method) {
+    return '온천수 방식이 선택 기준이라면 방식 확인이 끝난 후보와 먼저 비교하세요.';
+  }
+  return undefined;
+}
+
+function normalizeAccommodationWaterVerification(
+  counts: OnsenEvidenceCounts | null | undefined,
+  profile: OnsenCandidate['waterProfile'],
+  notes: string[],
+  verifiedAt: string
+): OnsenWaterVerification {
+  const judgment = isRecord(counts?.waterJudgment) ? counts.waterJudgment : null;
+  const conditionStates = isRecord(judgment?.conditions) ? judgment.conditions : {};
+  const method = profile?.canonicalMethod ?? null;
+  const conditions = waterConditionCodes
+    .filter((code) => conditionStates[code] === 'confirmed' || conditionStates[code] === 'present')
+    .map((code) => waterConditionLabels[code]);
+  const unresolved = method
+    ? waterConditionCodes
+      .filter((code) => conditionStates[code] === 'unknown')
+      .map((code) => unresolvedWaterConditionLabels[code])
+    : ['직수·순환식 여부'];
+  const exceptions = publicWaterExceptions(notes);
+  const sourceUrls = typeof judgment?.official_source_url === 'string'
+    ? judgment.official_source_url.split(';').map((url) => url.trim()).filter((url) => /^https?:\/\//.test(url))
+    : [];
+  const scopeCode = typeof judgment?.water_scope === 'string' ? judgment.water_scope : '';
+
+  return {
+    status: method ? 'confirmed' : 'needs_check',
+    basis: waterMethodBasis(method),
+    scope: accommodationWaterScopeLabels[scopeCode],
+    conditions,
+    unresolved,
+    exceptions,
+    guidance: waterSelectionGuidance(method, conditions, exceptions),
+    sources: sourceUrls.map((href, index) => ({ label: index === 0 ? '공식 사이트' : '공식 참고 자료', href })),
+    verifiedAt: verifiedAt || undefined,
+  };
+}
+
 function shouldExposeTextureFilter(filter: NonNullable<OnsenCandidate['waterProfile']>['textureFilters'][number]) {
   return filter.exposureStatus === 'candidate_with_count' && typeof filter.mentionCount === 'number' && filter.mentionCount > 0;
 }
@@ -467,7 +562,7 @@ function operationLabelFromProfile(profile: OnsenCandidate['waterProfile'] | und
   if (profile?.canonicalMethod === 'kakenagashi_pure') return '순수직수';
   if (profile?.canonicalMethod === 'kakenagashi') return '직수';
   if (profile?.canonicalMethod === 'junkan') return '순환식 온천';
-  if (profile) return '원천 방식 이용 전 확인';
+  if (profile) return '원천 방식 확인 중';
   return fallback;
 }
 
@@ -545,24 +640,6 @@ function mapLocation(row: OnsenAccommodationRow): OnsenLocation {
     onsenAreaLabel,
     display: formatOnsenLocationDisplay({ regionGroupLabel, prefectureLabel, onsenAreaLabel }),
   };
-}
-
-function operationDetailLabel(operation: string, notes: string[]) {
-  const base =
-    operation === '원천 방식 이용 전 확인'
-      ? '온천수 사용은 확인했지만, 원천 100% 직수인지 재사용 온천인지는 추가 확인이 필요합니다.'
-      : operation === '원천 100% 직수' || operation === '직수' || operation === '순수직수'
-        ? '원천을 흘려보내는 방식으로 정리했습니다.'
-      : operation === '순환식 온천'
-        ? '온천수를 순환·여과해 쓰는 방식으로 정리했습니다.'
-      : `${operation}으로 정리했습니다.`;
-  if (notes.length === 0) return `${base} 객실 타입과 플랜별 세부 조건을 함께 확인합니다.`;
-  const noteText = notes
-    .map((note) => note.trim())
-    .filter(Boolean)
-    .map((note) => (/[.!?。]$/.test(note) ? note : `${note}.`))
-    .join(' ');
-  return `${base} ${noteText}`;
 }
 
 function operationStatusFor(sourceType: OnsenWaterSourceType, profile?: OnsenCandidate['waterProfile']): OnsenStatus {
@@ -648,7 +725,7 @@ function mapOnsenAccommodation(row: OnsenAccommodationRow, verdict?: OnsenVerdic
   const roomBath = roomBathLabel(row.bath_scope);
   const springType = springTypeLabelFromProfile(waterProfile, springTypeLabel(row.water_use_status, row.water_source_type));
   const updatedAt = row.content_updated_at ?? row.updated_at?.slice(0, 10) ?? '';
-  const operationDetail = operationDetailLabel(operation, notes);
+  const waterVerification = normalizeAccommodationWaterVerification(counts, waterProfile, notes, updatedAt);
   const cautionCount = counts.cautionMentionCount ?? 0;
   const publicBath = publicBathFact(tags, row.primary_bath ?? '');
   const privateBath = privateBathFact(tags, row.primary_bath ?? '');
@@ -674,6 +751,7 @@ function mapOnsenAccommodation(row: OnsenAccommodationRow, verdict?: OnsenVerdic
       notice: createNotice(row, notes),
     },
     waterProfile,
+    waterVerification,
     dataQuality: row.evidence_grade ?? 'D',
     directReviews: counts.directReviewCount ?? 0,
     onsenReviews: counts.onsenReviewCount ?? 0,
@@ -707,7 +785,7 @@ function mapOnsenAccommodation(row: OnsenAccommodationRow, verdict?: OnsenVerdic
         label: '온천수 방식',
         value: operation,
         status: operationStatusFor(row.water_source_type, waterProfile),
-        detail: operationDetail,
+        detail: waterVerification.basis,
       },
     ],
     signals: [

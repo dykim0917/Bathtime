@@ -36,7 +36,19 @@ export type OnsenPassportEntry = {
   body: string;
   status: OnsenReviewStatus;
   verificationStatus: OnsenReviewVerificationStatus;
+  isPublic: boolean;
   createdAt: string;
+};
+
+export type OnsenPublicProfile = {
+  userId: string;
+  handle: string;
+  displayName: string;
+  bio: string | null;
+  passportIsPublic: boolean;
+  showVisitMonth: boolean;
+  createdAt: string;
+  updatedAt: string;
 };
 
 export const bathAreaLabels: Record<OnsenReviewBathArea, string> = {
@@ -95,11 +107,15 @@ export const cleanlinessLabels: Record<OnsenReviewCleanliness, string> = {
 };
 
 export const revisitLabels: Record<OnsenReviewRevisitIntent, string> = {
-  yes: '다시 가고 싶음',
-  maybe: '조건이 맞으면 다시 감',
-  no: '다시 가지 않을 것 같음',
-  unsure: '아직 모르겠음',
+  yes: '재방문 의사 있음',
+  maybe: '조건부 재방문',
+  no: '재방문 의사 없음',
+  unsure: '응답 보류',
 };
+
+export function getVisibleRevisitLabel(value: OnsenReviewRevisitIntent): string | null {
+  return value === 'yes' || value === 'no' ? revisitLabels[value] : null;
+}
 
 export function getTopValue<T extends string>(values: T[], ignored: T[] = []): { value: T; count: number } | null {
   const ignoredSet = new Set(ignored);
@@ -119,4 +135,9 @@ export function getTopValue<T extends string>(values: T[], ignored: T[] = []): {
 export function formatPassportVisitDate(entry: Pick<OnsenPassportEntry, 'visitedOn' | 'createdAt'>): string {
   const value = entry.visitedOn ?? entry.createdAt;
   return new Intl.DateTimeFormat('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' }).format(new Date(value));
+}
+
+export function formatPublicVisitMonth(value: string | null): string | null {
+  if (!value) return null;
+  return new Intl.DateTimeFormat('ko-KR', { year: 'numeric', month: 'long' }).format(new Date(`${value.slice(0, 10)}T00:00:00`));
 }

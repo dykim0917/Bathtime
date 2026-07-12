@@ -30,6 +30,18 @@ export type OnsenFactStatus = {
   source?: string;
 };
 
+export type OnsenWaterVerification = {
+  status: OnsenStatus;
+  basis: string;
+  scope?: string;
+  conditions: string[];
+  unresolved: string[];
+  exceptions: string[];
+  guidance?: string;
+  sources: { label: string; href: string }[];
+  verifiedAt?: string;
+};
+
 export type OnsenVerdictItem = {
   order: number;
   type: 'positive' | 'conditional' | 'minor';
@@ -76,6 +88,7 @@ export type OnsenCandidate = {
   jaName: string;
   imageUrl?: string;
   imageAlt?: string;
+  galleryImages?: { url: string; alt?: string }[];
   area: string;
   region: string;
   location?: OnsenLocation;
@@ -101,6 +114,7 @@ export type OnsenCandidate = {
     textureFilters: { code: string; label: string; exposureStatus?: string; mentionCount?: number }[];
     colorFilter?: { code: string; label: string; status?: string; exposeAsFilter?: boolean };
   };
+  waterVerification?: OnsenWaterVerification;
   dataQuality: 'A' | 'B' | 'C' | 'D';
   directReviews: number;
   onsenReviews: number;

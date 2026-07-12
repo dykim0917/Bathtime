@@ -5,6 +5,7 @@ import type { Submission } from '@/src/archive/types';
 import { getSupabaseClient } from './auth';
 import type {
   OnsenPassportEntry,
+  OnsenPublicProfile,
   OnsenReviewBathArea,
   OnsenReviewCleanliness,
   OnsenReviewCrowding,
@@ -19,6 +20,13 @@ export class AuthRequiredError extends Error {
   constructor(message = 'Login is required') {
     super(message);
     this.name = 'AuthRequiredError';
+  }
+}
+
+export class PublicHandleTakenError extends Error {
+  constructor(message = 'This public handle is already in use') {
+    super(message);
+    this.name = 'PublicHandleTakenError';
   }
 }
 
@@ -50,7 +58,18 @@ type OnsenPassportRow = {
   body: string;
   status: OnsenPassportEntry['status'];
   visit_verification_status: OnsenPassportEntry['verificationStatus'];
+  is_public: boolean;
   created_at: string;
+};
+
+type OnsenPublicProfileRow = {
+  handle: string;
+  display_name: string;
+  bio: string | null;
+  passport_is_public: boolean;
+  show_visit_month: boolean;
+  created_at: string;
+  updated_at: string;
 };
 
 type SubmissionRow = {
@@ -364,8 +383,9 @@ export async function saveOnsenReview(input: {
   revisitIntent: OnsenReviewRevisitIntent;
   cautionText?: string;
   body: string;
+  isPublic?: boolean;
 }): Promise<OnsenPassportEntry> {
-  const user = await getAuthenticatedUser({ ensureProfile: true });
+  await getAuthenticatedUser({ ensureProfile: true });
   const supabase = requireClient();
   const waterFeel: OnsenReviewWaterFeel = input.waterTexture.includes('distinctive')
     ? 'strong'
@@ -381,8 +401,6 @@ export async function saveOnsenReview(input: {
       target_type: input.targetType,
       target_slug: input.targetSlug,
       target_name: input.targetName,
-      evidence_origin: 'first_party',
-      user_id: user.id,
       bath_type: input.bathAreas[0],
       bath_areas: input.bathAreas,
       water_feel: waterFeel,
@@ -396,8 +414,9 @@ export async function saveOnsenReview(input: {
       visit_season: null,
       caution_text: input.cautionText?.trim() || null,
       body: input.body.trim(),
+      is_public: Boolean(input.isPublic),
     })
-    .select('id,target_type,target_slug,target_name,bath_areas,visited_on,water_texture,water_color,temperature_experience,crowding_level,cleanliness_level,revisit_intent,caution_text,body,status,visit_verification_status,created_at')
+    .select('id,target_type,target_slug,target_name,bath_areas,visited_on,water_texture,water_color,temperature_experience,crowding_level,cleanliness_level,revisit_intent,caution_text,body,status,visit_verification_status,is_public,created_at')
     .single();
 
   if (error) throw error;
@@ -422,6 +441,7 @@ function mapOnsenPassportRow(row: OnsenPassportRow): OnsenPassportEntry {
     body: row.body,
     status: row.status,
     verificationStatus: row.visit_verification_status,
+    isPublic: row.is_public,
     createdAt: row.created_at,
   };
 }
@@ -431,13 +451,86 @@ export async function getMyOnsenPassportEntries(): Promise<OnsenPassportEntry[]>
   const supabase = requireClient();
   const { data, error } = await supabase
     .from('onsen_reviews')
-    .select('id,target_type,target_slug,target_name,bath_areas,visited_on,water_texture,water_color,temperature_experience,crowding_level,cleanliness_level,revisit_intent,caution_text,body,status,visit_verification_status,created_at')
+    .select('id,target_type,target_slug,target_name,bath_areas,visited_on,water_texture,water_color,temperature_experience,crowding_level,cleanliness_level,revisit_intent,caution_text,body,status,visit_verification_status,is_public,created_at')
     .eq('user_id', user.id)
     .order('visited_on', { ascending: false, nullsFirst: false })
     .order('created_at', { ascending: false });
 
   if (error) throw error;
   return (data as OnsenPassportRow[] | null ?? []).map(mapOnsenPassportRow);
+}
+
+function mapOnsenPublicProfileRow(row: OnsenPublicProfileRow, userId: string): OnsenPublicProfile {
+  return {
+    userId,
+    handle: row.handle,
+    displayName: row.display_name,
+    bio: row.bio,
+    passportIsPublic: row.passport_is_public,
+    showVisitMonth: row.show_visit_month,
+    createdAt: row.created_at,
+    updatedAt: row.updated_at,
+  };
+}
+
+export async function getMyOnsenPublicProfile(): Promise<OnsenPublicProfile | null> {
+  const user = await getAuthenticatedUser();
+  const supabase = requireClient();
+  const { data, error } = await supabase.rpc('read_my_onsen_public_profile');
+
+  if (error) throw error;
+  const [row] = (data as OnsenPublicProfileRow[] | null) ?? [];
+  return row ? mapOnsenPublicProfileRow(row, user.id) : null;
+}
+
+export async function saveMyOnsenPublicProfile(input: {
+  handle: string;
+  displayName: string;
+  bio?: string;
+  passportIsPublic: boolean;
+  showVisitMonth: boolean;
+}): Promise<OnsenPublicProfile> {
+  await getAuthenticatedUser({ ensureProfile: true });
+  const supabase = requireClient();
+  const handle = input.handle.trim().toLowerCase();
+  const displayName = input.displayName.trim();
+  const bio = input.bio?.trim() || null;
+
+  if (!/^[a-z0-9][a-z0-9_-]{2,23}$/.test(handle)) {
+    throw new Error('Public handle format is invalid');
+  }
+
+  const { error } = await supabase.rpc('upsert_my_onsen_public_profile', {
+    p_handle: handle,
+    p_display_name: displayName,
+    p_bio: bio,
+    p_passport_is_public: input.passportIsPublic,
+    p_show_visit_month: input.showVisitMonth,
+  });
+
+  if (isUniqueViolation(error)) throw new PublicHandleTakenError();
+  if (error) throw error;
+  const profile = await getMyOnsenPublicProfile();
+  if (!profile) throw new Error('Public profile was not saved');
+  return profile;
+}
+
+export async function setOnsenReviewVisibility(reviewId: string, isPublic: boolean): Promise<void> {
+  const user = await getAuthenticatedUser();
+  const supabase = requireClient();
+
+  if (isPublic) {
+    const profile = await getMyOnsenPublicProfile();
+    if (!profile?.passportIsPublic) throw new Error('Public passport is not enabled');
+  }
+
+  const { error } = await supabase
+    .from('onsen_reviews')
+    .update({ is_public: isPublic, updated_at: new Date().toISOString() })
+    .eq('id', reviewId)
+    .eq('user_id', user.id);
+
+  if (error) throw error;
 }
 
 function mapSubmissionRow(row: SubmissionRow): Submission {
