@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { CheckCircle, LinkSimple, MapPin, MapTrifold, SealCheck, Sparkle, WarningCircle, Waves } from '@phosphor-icons/react/ssr';
+import { ArrowSquareOut, LinkSimple, MapPin, MapTrifold, SealCheck, Sparkle, WarningCircle, Waves } from '@phosphor-icons/react/ssr';
+import { OnsenDecisionFactDetails, OnsenDetailAnalytics, OnsenTrackedExternalLink } from '@web/components/OnsenAnalytics';
 import { OnsenReviewForm } from '@web/components/OnsenReviewForm';
 import { OnsenReviewDrawer } from '@web/components/OnsenReviewDrawer';
 import { OnsenReviewSection } from '@web/components/OnsenReviewSection';
@@ -10,13 +11,15 @@ import { TermInfo } from '@web/components/TermInfo';
 import { getOnsenEntityType, statusLabels, type OnsenCandidate } from '@web/lib/onsenCatalog';
 import { getOnsenCardSummary, normalizeOnsenFitCopy, normalizeOnsenPublicCopy, normalizeOnsenSourceLabel } from '@web/lib/onsenCopy';
 import { readOnsenCandidate } from '@web/lib/onsenData';
+import { getOnsenDecisionProfile } from '@web/lib/onsenDecision';
+import { normalizeOnsenEntryIntent } from '@web/lib/onsenIntent';
 import { readOnsenReviewAggregate, readOnsenReviewCounts, readOnsenReviews } from '@web/lib/onsenReviews';
-import { getOnsenWaterHighlightMark } from '@web/lib/onsenWaterSignal';
 import { OnsenDetailGallery, type OnsenDetailGalleryItem } from './OnsenDetailGallery';
 import styles from './page.module.css';
 
 type PageProps = {
   params: Promise<{ slug: string }>;
+  searchParams?: Promise<{ intent?: string | string[]; from?: string | string[] }>;
 };
 
 type OnsenFact = OnsenCandidate['facts'][number];
@@ -51,6 +54,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       : `${candidate.name}의 객실 내 프라이빗탕, 대욕장, 온천수 체감과 이용 전 확인사항을 정리했습니다.`,
     alternates: {
       canonical: `/onsen/${candidate.slug}`,
+      languages: {
+        'ko-KR': `/onsen/${candidate.slug}`,
+        en: `/en/onsen/${candidate.slug}`,
+        'x-default': `/onsen/${candidate.slug}`,
+      },
     },
   };
 }
@@ -98,15 +106,27 @@ function getWaterVerification(candidate: OnsenCandidate): NonNullable<OnsenCandi
 }
 
 function formatVerificationDate(value: string) {
-  return value.replaceAll('-', '.');
+  const date = value.match(/^\d{4}-\d{2}-\d{2}/)?.[0] ?? value;
+  return date.replaceAll('-', '.');
 }
 
 function getMapSearchUrl(candidate: OnsenCandidate) {
+  if (candidate.facilityDetails?.mapUrl) return candidate.facilityDetails.mapUrl;
   const query = [candidate.jaName || candidate.name, candidate.location?.prefectureLabel]
     .filter(Boolean)
     .join(' ');
 
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+}
+
+function normalizeSearchParam(value: string | string[] | undefined) {
+  return Array.isArray(value) ? value[0] ?? '' : value ?? '';
+}
+
+function decisionFactStatusLabel(status: 'confirmed' | 'conditional' | 'needs_check') {
+  if (status === 'confirmed') return '확인됨';
+  if (status === 'conditional') return '조건부';
+  return '확인 중';
 }
 
 function getSiteOrigin() {
@@ -211,8 +231,10 @@ function formatVerdictMentionCount(candidate: OnsenCandidate, item: NonNullable<
   return `${denominatorLabel} ${denominator}건 중 ${item.counts.mentions}건`;
 }
 
-export default async function OnsenDetailPage({ params }: PageProps) {
+export default async function OnsenDetailPage({ params, searchParams }: PageProps) {
   const { slug } = await params;
+  const resolvedSearchParams = await searchParams;
+  const entryIntent = normalizeOnsenEntryIntent(normalizeSearchParam(resolvedSearchParams?.intent));
   const candidate = await readOnsenCandidate(slug);
 
   if (!candidate) {
@@ -231,26 +253,55 @@ export default async function OnsenDetailPage({ params }: PageProps) {
   const waterVerification = getWaterVerification(candidate);
   const verdictHeadline = normalizeOnsenPublicCopy(getOnsenCardSummary(candidate));
   const onsenStructuredData = buildOnsenStructuredData(candidate, siteReviewCount);
-  const waterHighlightMark = getOnsenWaterHighlightMark(candidate);
   const mapSearchUrl = getMapSearchUrl(candidate);
+  const decisionProfile = getOnsenDecisionProfile(candidate);
+  const heroDecisionFacts = (candidateType === 'facility'
+    ? [decisionProfile.price, ...decisionProfile.trip, ...decisionProfile.experience]
+    : [
+        ...decisionProfile.experience.filter((fact) => fact.status !== 'needs_check'),
+        ...decisionProfile.experience.filter((fact) => fact.status === 'needs_check'),
+        decisionProfile.price,
+      ])
+    .filter((fact): fact is NonNullable<typeof fact> => Boolean(fact))
+    .filter((fact, index, facts) => facts.findIndex((item) => item.code === fact.code) === index)
+    .slice(0, 2);
+  const onsenArea = candidate.location?.onsenArea ?? candidate.region;
 
   return (
     <article className={styles.page}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeStructuredData(onsenStructuredData) }} />
+      <OnsenDetailAnalytics
+        entryIntent={entryIntent}
+        entityType={candidateType}
+        targetSlug={candidate.slug}
+        onsenArea={onsenArea}
+        sourceComponent="onsen_detail"
+        decisionFactCoverage={decisionProfile.coverage}
+      />
       <header className={styles.hero} aria-labelledby="onsen-detail-title">
         <div className={styles.heroIntro}>
           <div className={styles.heroTopline}>
             <p className={styles.locationLine}>
               <span>{candidateType === 'facility' ? '온천시설' : '온천 숙소'}</span>
               <span className={styles.locationPlace}><MapPin size={14} weight="bold" aria-hidden="true" />{candidate.location?.display ?? candidate.area}</span>
-              <a href={mapSearchUrl} target="_blank" rel="noreferrer">
+              <OnsenTrackedExternalLink
+                href={mapSearchUrl}
+                target="_blank"
+                rel="noreferrer"
+                actionType="map"
+                entryIntent={entryIntent}
+                entityType={candidateType}
+                targetSlug={candidate.slug}
+                onsenArea={onsenArea}
+                sourceComponent="onsen_detail_topline"
+              >
                 <MapTrifold size={14} weight="bold" aria-hidden="true" />
                 지도에서 보기
-              </a>
+              </OnsenTrackedExternalLink>
             </p>
             <div className={styles.actions} aria-label="온천 액션">
               <OnsenSaveButton slug={candidate.slug} />
-              <OnsenShareButton title={candidate.name} summary={normalizeOnsenPublicCopy(candidate.summary)} />
+              <OnsenShareButton slug={candidate.slug} title={candidate.name} summary={normalizeOnsenPublicCopy(candidate.summary)} />
             </div>
           </div>
 
@@ -263,23 +314,45 @@ export default async function OnsenDetailPage({ params }: PageProps) {
         <OnsenDetailGallery name={candidate.name} items={galleryItems} />
 
         <div className={styles.heroSummary}>
-          <dl className={styles.heroFacts} aria-label="대표 온천 정보">
-            <div>
-              <dt>이용 구성</dt>
-              <dd>{normalizeOnsenPublicCopy(candidate.primaryBath)}</dd>
+          <div className={styles.heroDecision}>
+            <dl className={styles.heroFacts} aria-label="대표 온천 정보">
+              {(heroDecisionFacts.length > 0 ? heroDecisionFacts : [{
+                code: 'bath_composition',
+                label: '이용 구성',
+                value: normalizeOnsenPublicCopy(candidate.primaryBath),
+              }]).map((fact) => (
+                <div key={fact.code}>
+                  <dt>{fact.label}</dt>
+                  <dd>{fact.value}</dd>
+                </div>
+              ))}
+            </dl>
+            <div className={styles.heroFit}>
+              <span>이런 여행에 맞아요</span>
+              <p>{candidate.fit.slice(0, 2).map(normalizeOnsenFitCopy).join(' · ')}</p>
             </div>
-            <div>
-              <dt>온천수 방식</dt>
-              <dd>
-                {waterHighlightMark ? (
-                  <span className={styles.waterGrade} data-tone={waterHighlightMark.tone} title={waterHighlightMark.title}>
-                    <SealCheck size={17} weight="fill" aria-hidden="true" />
-                    {waterHighlightMark.label}
-                  </span>
-                ) : normalizeOnsenPublicCopy(candidate.waterDecision.operation)}
-              </dd>
-            </div>
-          </dl>
+            {decisionProfile.primaryAction.href ? (
+              <OnsenTrackedExternalLink
+                className={styles.primaryAction}
+                href={decisionProfile.primaryAction.href}
+                target="_blank"
+                rel="noreferrer"
+                actionType={candidateType === 'facility' ? 'official' : 'price_check'}
+                entryIntent={entryIntent}
+                entityType={candidateType}
+                targetSlug={candidate.slug}
+                onsenArea={onsenArea}
+                sourceComponent="onsen_detail_hero"
+              >
+                {decisionProfile.primaryAction.label}
+                <ArrowSquareOut size={17} weight="bold" aria-hidden="true" />
+              </OnsenTrackedExternalLink>
+            ) : (
+              <span className={styles.primaryActionUnavailable}>
+                {candidateType === 'facility' ? '공식 이용 안내 확인 중' : '가격·예약은 OTA에서 확인'}
+              </span>
+            )}
+          </div>
 
           <section className={styles.verdictLead} data-published={candidate.verdict ? 'true' : undefined} aria-labelledby="onsen-verdict-lead-title">
             <div className={styles.verdictStatusLine}>
@@ -302,6 +375,91 @@ export default async function OnsenDetailPage({ params }: PageProps) {
 
       <div className={styles.contentGrid}>
         <main className={styles.mainColumn}>
+          <section className={`${styles.section} ${styles.decisionSection}`} aria-labelledby="onsen-decision-title">
+            <header className={styles.sectionHead}>
+              <span>여행에 필요한 정보부터</span>
+              <h2 id="onsen-decision-title">이 온천을 고르기 전에</h2>
+            </header>
+
+            <div className={styles.decisionBands}>
+              <section className={styles.decisionBand} aria-labelledby="onsen-experience-title">
+                <header>
+                  <span>01</span>
+                  <h3 id="onsen-experience-title">여기서 할 수 있는 목욕</h3>
+                  <p>이름보다 실제로 이용할 수 있는 탕 구성을 먼저 봅니다.</p>
+                </header>
+                <dl className={styles.decisionFactList}>
+                  {decisionProfile.experience.slice(0, 6).map((fact) => (
+                    <div key={`${fact.code}-${fact.scope ?? ''}`} data-status={fact.status}>
+                      <dt>{fact.label}</dt>
+                      <dd>{fact.value}</dd>
+                      <dd>{decisionFactStatusLabel(fact.status)}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </section>
+
+              <section className={styles.decisionBand} aria-labelledby="onsen-usage-title">
+                <header>
+                  <span>02</span>
+                  <h3 id="onsen-usage-title">실제 이용 방법</h3>
+                  <p>예약, 현장 확인, 이용 시간처럼 도착한 뒤 필요한 행동을 순서대로 확인합니다.</p>
+                </header>
+                <div className={styles.usageFactList}>
+                  {decisionProfile.usage.slice(0, 5).map((fact, index) => (
+                    <OnsenDecisionFactDetails
+                      key={`${fact.code}-${fact.scope ?? ''}`}
+                      className={styles.usageFact}
+                      entryIntent={entryIntent}
+                      entityType={candidateType}
+                      targetSlug={candidate.slug}
+                      onsenArea={onsenArea}
+                      sourceComponent="onsen_detail_usage"
+                      factCode={fact.code}
+                    >
+                      <summary>
+                        <span>{String(index + 1).padStart(2, '0')}</span>
+                        <strong>{fact.label}</strong>
+                        <b>{fact.value}</b>
+                        <small>{decisionFactStatusLabel(fact.status)}</small>
+                      </summary>
+                      <div>
+                        <p>{fact.detail ?? '현재 확인된 범위만 표시합니다. 이용 조건은 예약 또는 방문 전에 다시 확인하세요.'}</p>
+                        {fact.checkedAt ? <span>{formatVerificationDate(fact.checkedAt)} 확인</span> : null}
+                        {fact.sourceUrl ? <a href={fact.sourceUrl} target="_blank" rel="noreferrer"><LinkSimple size={14} weight="bold" aria-hidden="true" />공식 안내</a> : null}
+                      </div>
+                    </OnsenDecisionFactDetails>
+                  ))}
+                </div>
+              </section>
+
+              <section className={styles.decisionBand} aria-labelledby="onsen-trip-title">
+                <header>
+                  <span>03</span>
+                  <h3 id="onsen-trip-title">여행 일정에 넣기</h3>
+                  <p>요금과 시간, 접근, 숙박 가능 여부를 한곳에서 봅니다.</p>
+                </header>
+                {decisionProfile.trip.length > 0 ? (
+                  <dl className={styles.decisionFactList}>
+                    {decisionProfile.trip.slice(0, 6).map((fact) => (
+                      <div key={`${fact.code}-${fact.scope ?? ''}`} data-status={fact.status}>
+                        <dt>{fact.label}</dt>
+                        <dd>{fact.value}</dd>
+                        <dd>{decisionFactStatusLabel(fact.status)}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                ) : (
+                  <p className={styles.decisionEmpty}>
+                    {candidateType === 'facility'
+                      ? '요금과 운영 시간의 공식 확인을 진행하고 있습니다.'
+                      : '현재는 목욕 구성과 후기만 제공합니다. 가격과 예약 가능 여부는 OTA에서 확인해 주세요.'}
+                  </p>
+                )}
+              </section>
+            </div>
+          </section>
+
           {candidate.verdict?.items.length ? (
             <section className={styles.section} aria-labelledby="onsen-verdict-title">
               <header className={styles.sectionHead}>
@@ -346,22 +504,11 @@ export default async function OnsenDetailPage({ params }: PageProps) {
             </section>
           ) : null}
 
-          <section className={styles.fitCaution} aria-label="추천 이용 조건과 이용 전 확인사항">
-            <div className={styles.fitBlock}>
-              <header>
-                <CheckCircle size={20} weight="fill" aria-hidden="true" />
-                <h2>추천 이용 조건</h2>
-              </header>
-              <ul>
-                {candidate.fit.map((item) => (
-                  <li key={item}>{normalizeOnsenFitCopy(item)}</li>
-                ))}
-              </ul>
-            </div>
+          <section className={`${styles.fitCaution} ${styles.cautionOnly}`} aria-label="예약과 방문 전 확인사항">
             <div className={styles.cautionBlock}>
               <header>
                 <WarningCircle size={20} weight="bold" aria-hidden="true" />
-                <h2>이용 전 확인사항</h2>
+                <h2>예약·방문 전에 볼 점</h2>
               </header>
               <div>
                 {candidate.cautions.map((caution) => (
@@ -441,10 +588,21 @@ export default async function OnsenDetailPage({ params }: PageProps) {
                   {waterVerification.verifiedAt ? <span>{formatVerificationDate(waterVerification.verifiedAt)} 정보 갱신</span> : null}
                   <div>
                     {waterVerification.sources.map((source) => (
-                      <a key={source.href} href={source.href} target="_blank" rel="noreferrer">
+                      <OnsenTrackedExternalLink
+                        key={source.href}
+                        href={source.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        actionType="official"
+                        entryIntent={entryIntent}
+                        entityType={candidateType}
+                        targetSlug={candidate.slug}
+                        onsenArea={onsenArea}
+                        sourceComponent="onsen_detail_water_source"
+                      >
                         <LinkSimple size={14} weight="bold" aria-hidden="true" />
                         {source.label}
-                      </a>
+                      </OnsenTrackedExternalLink>
                     ))}
                   </div>
                 </footer>
@@ -489,10 +647,21 @@ export default async function OnsenDetailPage({ params }: PageProps) {
             {candidate.officialLinks.length > 0 ? (
               <div className={styles.officialLinks}>
                 {candidate.officialLinks.map((link) => (
-                  <a key={link.href} href={link.href} target="_blank" rel="noreferrer">
+                  <OnsenTrackedExternalLink
+                    key={link.href}
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    actionType="official"
+                    entryIntent={entryIntent}
+                    entityType={candidateType}
+                    targetSlug={candidate.slug}
+                    onsenArea={onsenArea}
+                    sourceComponent="onsen_detail_sources"
+                  >
                     <LinkSimple size={16} weight="bold" aria-hidden="true" />
                     {link.label}
-                  </a>
+                  </OnsenTrackedExternalLink>
                 ))}
               </div>
             ) : null}

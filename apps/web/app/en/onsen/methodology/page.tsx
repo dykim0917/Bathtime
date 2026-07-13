@@ -3,30 +3,31 @@ import { OnsenMethodologyExperience } from '@web/components/OnsenMethodologyExpe
 import { readOnsenCandidates } from '@web/lib/onsenData';
 
 const PUBLIC_REVIEW_PLATFORMS = [
-  '자란',
-  '라쿠텐 트래블',
-  '구글 지도',
-  '트립어드바이저',
-  '아고다',
-  '야후 트래블',
-  '리럭스',
+  'Jalan',
+  'Rakuten Travel',
+  'Google Maps',
+  'Tripadvisor',
+  'Agoda',
+  'Yahoo! Travel Japan',
+  'Relux',
 ];
 
 export const metadata: Metadata = {
-  title: '바스타임이 온천을 확인하는 방법',
-  description: '바스타임 온천 검색기가 후기와 공식 정보를 읽고 온천 숙소와 당일온천 시설을 판정하는 기준을 설명합니다.',
+  title: 'How Bathtime checks an onsen',
+  description: 'See how Bathtime combines official information and counted review signals to organize Japanese onsen stays and day-use baths.',
   alternates: {
-    canonical: '/onsen/methodology',
+    canonical: '/en/onsen/methodology',
     languages: { 'ko-KR': '/onsen/methodology', en: '/en/onsen/methodology', 'x-default': '/onsen/methodology' },
   },
 };
 
-export default async function OnsenMethodologyPage() {
+export default async function EnglishOnsenMethodologyPage() {
   const candidates = await readOnsenCandidates();
   const published = candidates.filter((candidate) => candidate.verdict);
 
   return (
     <OnsenMethodologyExperience
+      locale="en"
       totals={{
         experiencesRead: published.reduce(
           (total, candidate) => total + (candidate.verdict?.briefing.experiencesRead ?? candidate.directReviews ?? 0),

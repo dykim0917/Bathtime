@@ -1459,15 +1459,15 @@ export const onsenAreaFilters: OnsenTaxonomyFilter[] = [
 ];
 
 export const travelContextFilters: OnsenTaxonomyFilter<OnsenTravelContext>[] = [
-  { label: '료칸 숙박', value: 'ryokan_stay' },
-  { label: '당일 이용', value: 'day_trip' },
-  { label: '도심 온천시설', value: 'city_bath' },
+  { label: '숙박하며 이용', value: 'ryokan_stay' },
+  { label: '여행 중 방문', value: 'day_trip' },
+  { label: '도심에서 쉬기', value: 'city_bath' },
   { label: '호텔 대욕장', value: 'hotel_public_bath', disabled: true },
 ];
 
 export const onsenEntityFilters: OnsenTaxonomyFilter<'accommodation' | 'facility'>[] = [
-  { label: '숙소', value: 'accommodation' },
-  { label: '온천시설', value: 'facility' },
+  { label: '숙박하며 이용', value: 'accommodation' },
+  { label: '여행 중 방문', value: 'facility' },
 ];
 
 export const officialFacilityFeatureFilters = [

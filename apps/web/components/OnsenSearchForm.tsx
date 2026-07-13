@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { ClockCounterClockwise, MagnifyingGlass, MapPin, X } from '@phosphor-icons/react';
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { localizedPath, type BathtimeLocale } from '@web/lib/i18n';
 import type { OnsenSearchSuggestion } from '@web/lib/onsenSearch';
 
 export type { OnsenSearchSuggestion } from '@web/lib/onsenSearch';
@@ -21,9 +22,25 @@ type Props = {
   initialQuery?: string;
   variant?: 'default' | 'header';
   panelMode?: 'full' | 'autocomplete';
+  locale?: BathtimeLocale;
 };
 
 const recentStorageKey = 'bathtime:onsen-recent-searches';
+
+const searchCopy = {
+  ko: {
+    open: '온천 검색 열기', search: '온천 검색', where: '어디로', headerPlaceholder: '온천지, 숙소·시설 이름',
+    placeholder: '유후인, 도쿄, 구사쓰', queryLabel: '온천 검색어', suggestions: '온천 검색 제안', close: '검색 닫기',
+    autocomplete: '자동완성', noMatch: '일치하는 후보가 아직 없습니다. 검색어로 결과를 볼 수 있어요.', recent: '최근 검색어',
+    recommended: '추천 지역', popular: '추천 검색어',
+  },
+  en: {
+    open: 'Open onsen search', search: 'Search', where: 'Where', headerPlaceholder: 'Onsen town, stay, or facility',
+    placeholder: 'Yufuin, Tokyo, Kusatsu', queryLabel: 'Search onsen', suggestions: 'Onsen search suggestions', close: 'Close search',
+    autocomplete: 'Suggestions', noMatch: 'No exact match yet. You can still search with this phrase.', recent: 'Recent searches',
+    recommended: 'Recommended areas', popular: 'Popular searches',
+  },
+} as const;
 
 function readRecentSearches() {
   if (typeof window === 'undefined') return [];
@@ -41,7 +58,7 @@ function writeRecentSearch(value: string) {
   window.localStorage.setItem(recentStorageKey, JSON.stringify(next));
 }
 
-export function OnsenSearchForm({ suggestions, recommendedPlaces, popularSearches, initialQuery = '', variant = 'default', panelMode = 'full' }: Props) {
+export function OnsenSearchForm({ suggestions, recommendedPlaces, popularSearches, initialQuery = '', variant = 'default', panelMode = 'full', locale = 'ko' }: Props) {
   const router = useRouter();
   const formRef = useRef<HTMLFormElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -49,6 +66,8 @@ export function OnsenSearchForm({ suggestions, recommendedPlaces, popularSearche
   const [open, setOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [recentSearches, setRecentSearches] = useState<string[]>([]);
+  const copy = searchCopy[locale];
+  const resultsPath = localizedPath('/onsen/results', locale);
 
   useEffect(() => {
     setRecentSearches(readRecentSearches());
@@ -81,14 +100,18 @@ export function OnsenSearchForm({ suggestions, recommendedPlaces, popularSearche
     const keyword = query.trim().toLowerCase();
     if (!keyword) return [];
     return suggestions
-      .filter((item) => item.label.toLowerCase().includes(keyword) || item.description?.toLowerCase().includes(keyword))
+      .filter((item) =>
+        item.label.toLowerCase().includes(keyword) ||
+        item.description?.toLowerCase().includes(keyword) ||
+        item.keywords?.some((value) => value.toLowerCase().includes(keyword))
+      )
       .slice(0, 6);
   }, [query, suggestions]);
 
   const submitQuery = (value = query) => {
     const trimmed = value.trim();
     if (trimmed) writeRecentSearch(trimmed);
-    router.push(trimmed ? `/onsen/results?query=${encodeURIComponent(trimmed)}` : '/onsen/results');
+    router.push(trimmed ? `${resultsPath}?query=${encodeURIComponent(trimmed)}` : resultsPath);
   };
 
   const closeMobile = () => setMobileOpen(false);
@@ -112,8 +135,8 @@ export function OnsenSearchForm({ suggestions, recommendedPlaces, popularSearche
         <button
           className="onsen-header-mobile-search-button"
           type="button"
-          aria-label="온천 검색 열기"
-          title="온천 검색"
+          aria-label={copy.open}
+          title={copy.search}
           onClick={() => setMobileOpen(true)}
         >
           <MagnifyingGlass size={20} weight="regular" aria-hidden="true" />
@@ -122,14 +145,14 @@ export function OnsenSearchForm({ suggestions, recommendedPlaces, popularSearche
       <form
         ref={formRef}
         className={formClassName}
-        action="/onsen/results"
+        action={resultsPath}
         onSubmit={(event) => {
           event.preventDefault();
           submitQuery();
         }}
       >
         <label className="onsen-search-field onsen-search-field-main">
-          <span>어디로</span>
+          <span>{copy.where}</span>
           <input
             ref={inputRef}
             name="query"
@@ -147,18 +170,18 @@ export function OnsenSearchForm({ suggestions, recommendedPlaces, popularSearche
               setQuery(nextQuery);
               setOpen(true);
             }}
-            placeholder={isHeaderVariant ? '온천지, 숙소·시설 이름' : '유후인, 도쿄, 구사쓰'}
-            aria-label="온천 검색어"
+            placeholder={isHeaderVariant ? copy.headerPlaceholder : copy.placeholder}
+            aria-label={copy.queryLabel}
             autoComplete="off"
           />
         </label>
 
-        <button type="submit" aria-label="온천 검색">
+        <button type="submit" aria-label={copy.search}>
           <MagnifyingGlass size={20} weight="bold" aria-hidden="true" />
-          <span>검색</span>
+          <span>{copy.search}</span>
         </button>
 
-        <div className="onsen-search-popover" aria-label="온천 검색 제안">
+        <div className="onsen-search-popover" aria-label={copy.suggestions}>
           <SearchPanelContent
             query={query}
             autocompleteItems={autocompleteItems}
@@ -166,6 +189,7 @@ export function OnsenSearchForm({ suggestions, recommendedPlaces, popularSearche
             popularSearches={popularSearches}
             recentSearches={recentSearches}
             mode={desktopPanelMode}
+            locale={locale}
             onPick={(label) => {
               writeRecentSearch(label);
               setRecentSearches(readRecentSearches());
@@ -175,13 +199,13 @@ export function OnsenSearchForm({ suggestions, recommendedPlaces, popularSearche
       </form>
 
       {mobileOpen ? (
-        <div className="onsen-mobile-search-sheet" role="dialog" aria-modal="true" aria-label="온천 검색">
+        <div className="onsen-mobile-search-sheet" role="dialog" aria-modal="true" aria-label={copy.search}>
           <div className="onsen-mobile-search-head">
-            <button type="button" aria-label="검색 닫기" onClick={closeMobile}>
+            <button type="button" aria-label={copy.close} onClick={closeMobile}>
               <X size={22} weight="bold" aria-hidden="true" />
             </button>
             <form
-              action="/onsen/results"
+              action={resultsPath}
               onSubmit={(event) => {
                 event.preventDefault();
                 closeMobile();
@@ -194,11 +218,11 @@ export function OnsenSearchForm({ suggestions, recommendedPlaces, popularSearche
                 type="search"
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
-                placeholder="온천지, 숙소·시설 이름"
-                aria-label="온천 검색어"
+                placeholder={copy.headerPlaceholder}
+                aria-label={copy.queryLabel}
                 autoComplete="off"
               />
-              <button type="submit" aria-label="검색">
+              <button type="submit" aria-label={copy.search}>
                 <MagnifyingGlass size={22} aria-hidden="true" />
               </button>
             </form>
@@ -210,6 +234,7 @@ export function OnsenSearchForm({ suggestions, recommendedPlaces, popularSearche
             popularSearches={popularSearches}
             recentSearches={recentSearches}
             mode="full"
+            locale={locale}
             onPick={(label) => {
               writeRecentSearch(label);
               setRecentSearches(readRecentSearches());
@@ -229,6 +254,7 @@ function SearchPanelContent({
   popularSearches,
   recentSearches,
   mode,
+  locale,
   onPick,
 }: {
   query: string;
@@ -237,15 +263,19 @@ function SearchPanelContent({
   popularSearches: PopularSearch[];
   recentSearches: string[];
   mode: 'full' | 'autocomplete';
+  locale: BathtimeLocale;
   onPick: (label: string) => void;
 }) {
+  const copy = searchCopy[locale];
+  const resultsPath = localizedPath('/onsen/results', locale);
+
   return (
     <div className="onsen-search-panel-content">
       {query.trim() ? (
         <section className="onsen-popover-section onsen-autocomplete-section" aria-labelledby="onsen-autocomplete-title">
           <div className="onsen-popover-section-head">
             <MagnifyingGlass size={18} weight="bold" aria-hidden="true" />
-            <strong id="onsen-autocomplete-title">자동완성</strong>
+            <strong id="onsen-autocomplete-title">{copy.autocomplete}</strong>
           </div>
           {autocompleteItems.length > 0 ? (
             <div className="onsen-place-suggestion-list">
@@ -262,7 +292,7 @@ function SearchPanelContent({
               ))}
             </div>
           ) : (
-            <p className="onsen-empty-recent">일치하는 후보가 아직 없습니다. 검색어로 결과를 볼 수 있어요.</p>
+            <p className="onsen-empty-recent">{copy.noMatch}</p>
           )}
         </section>
       ) : null}
@@ -271,11 +301,11 @@ function SearchPanelContent({
         <section className="onsen-popover-section onsen-recent-section" aria-labelledby="onsen-recent-title">
           <div className="onsen-popover-section-head">
             <ClockCounterClockwise size={18} weight="bold" aria-hidden="true" />
-            <strong id="onsen-recent-title">최근 검색어</strong>
+            <strong id="onsen-recent-title">{copy.recent}</strong>
           </div>
           <div className="onsen-recent-list">
             {recentSearches.map((item) => (
-              <Link key={item} href={`/onsen/results?query=${encodeURIComponent(item)}`} onClick={() => onPick(item)}>
+              <Link key={item} href={`${resultsPath}?query=${encodeURIComponent(item)}`} onClick={() => onPick(item)}>
                 {item}
               </Link>
             ))}
@@ -287,7 +317,7 @@ function SearchPanelContent({
         <section className="onsen-popover-section onsen-recommend-section" aria-labelledby="onsen-recommend-title">
           <div className="onsen-popover-section-head">
             <MapPin size={18} weight="bold" aria-hidden="true" />
-            <strong id="onsen-recommend-title">추천 지역</strong>
+            <strong id="onsen-recommend-title">{copy.recommended}</strong>
           </div>
           <div className="onsen-place-suggestion-list">
             {recommendedPlaces.map((item) => (
@@ -309,7 +339,7 @@ function SearchPanelContent({
         <section className="onsen-popover-section onsen-popular-section" aria-labelledby="onsen-popular-title">
           <div className="onsen-popover-section-head">
             <MagnifyingGlass size={18} weight="bold" aria-hidden="true" />
-            <strong id="onsen-popular-title">추천 검색어</strong>
+            <strong id="onsen-popular-title">{copy.popular}</strong>
           </div>
           <div className="onsen-popular-search-list">
             {popularSearches.map((item, index) => (

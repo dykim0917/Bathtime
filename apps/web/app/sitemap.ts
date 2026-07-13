@@ -13,7 +13,7 @@ function toLastModified(value?: string) {
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const host = getHost();
   const [contents, onsenCandidates] = await Promise.all([getPublishedArchiveContents(), readOnsenCandidates()]);
-  const staticRoutes = ['', '/about', '/explore', '/routines', '/submit', '/legal/privacy', '/legal/terms', '/onsen', '/onsen/results', '/onsen/methodology'].map((path) => ({
+  const staticRoutes = ['', '/about', '/explore', '/routines', '/submit', '/legal/privacy', '/legal/terms', '/onsen', '/onsen/results', '/onsen/methodology', '/en', '/en/onsen', '/en/onsen/results', '/en/onsen/methodology'].map((path) => ({
     url: `${host}${path}`,
     lastModified: new Date(),
   }));
@@ -26,6 +26,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
     ...onsenCandidates.map((candidate) => ({
       url: `${host}/onsen/${candidate.slug}`,
+      lastModified: toLastModified(candidate.updatedAt),
+    })),
+    ...onsenCandidates.map((candidate) => ({
+      url: `${host}/en/onsen/${candidate.slug}`,
       lastModified: toLastModified(candidate.updatedAt),
     })),
   ];

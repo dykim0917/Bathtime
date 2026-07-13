@@ -14,9 +14,12 @@ import {
   X,
 } from '@phosphor-icons/react/ssr';
 import { TermInfo, TermTooltip } from '@web/components/TermInfo';
+import { OnsenResultImpression, OnsenResultsAnalytics } from '@web/components/OnsenAnalytics';
 import { getOnsenEntityType, type OnsenCandidate, type OnsenEntityType } from '@web/lib/onsenCatalog';
 import { getOnsenCardSummary, normalizeOnsenPublicCopy } from '@web/lib/onsenCopy';
 import { readOnsenCandidates } from '@web/lib/onsenData';
+import { getOnsenDecisionProfile, type OnsenDecisionProfile } from '@web/lib/onsenDecision';
+import { addOnsenEntryIntent, normalizeOnsenEntryIntent, onsenEntryIntentMeta, type OnsenEntryIntentValue } from '@web/lib/onsenIntent';
 import { buildOnsenMapPoints } from '@web/lib/onsenMap';
 import { readOnsenReviewCounts } from '@web/lib/onsenReviews';
 import {
@@ -64,6 +67,7 @@ type OnsenResultsSearchParams = {
   signal?: string | string[];
   sort?: string | string[];
   page?: string | string[];
+  intent?: string | string[];
 };
 
 export async function generateMetadata({
@@ -81,6 +85,7 @@ export async function generateMetadata({
     description: '일본 온천 숙소와 당일입욕 시설의 목욕 구성, 공식 시설 정보, 온천수 근거와 후기를 비교합니다.',
     alternates: {
       canonical: '/onsen/results',
+      languages: { 'ko-KR': '/onsen/results', en: '/en/onsen/results', 'x-default': '/onsen/results' },
     },
     robots: hasQueryParams ? { index: false, follow: false } : undefined,
   };
@@ -168,10 +173,12 @@ type ResultsHrefParams = {
   feature?: string[];
   sort?: OnsenResultsSortValue;
   page?: number;
+  intent?: OnsenEntryIntentValue | '';
 };
 
 function buildResultsHref(params: ResultsHrefParams) {
   const nextParams = new URLSearchParams();
+  if (params.intent && params.intent !== 'unknown') nextParams.set('intent', params.intent);
   if (params.query) nextParams.set('query', params.query);
   if (params.type) nextParams.set('type', params.type);
   if (params.regionGroup) nextParams.set('regionGroup', params.regionGroup);
@@ -251,6 +258,20 @@ function getReviewVolume(candidate: OnsenCandidate) {
   return candidate.verdict?.briefing.experiencesRead ?? candidate.directReviews ?? 0;
 }
 
+function getResultDecisionFacts(profile: OnsenDecisionProfile, entityType: OnsenEntityType) {
+  const preferredCodes = entityType === 'facility'
+    ? ['adult_price_yen', 'opening_hours', 'bath_count', 'bath_composition']
+    : ['room_bath', 'private_bath', 'public_bath', 'bath_composition'];
+  const allFacts = [...profile.trip, ...profile.usage, ...profile.experience];
+  const confirmedFacts = allFacts.filter((fact) => fact.status !== 'needs_check');
+  const selected = [
+    ...preferredCodes.map((code) => confirmedFacts.find((fact) => fact.code === code)),
+    ...preferredCodes.map((code) => allFacts.find((fact) => fact.code === code)),
+  ]
+    .filter((fact): fact is NonNullable<typeof fact> => Boolean(fact));
+  return [...new Map(selected.map((fact) => [fact.code, fact])).values()].slice(0, 2);
+}
+
 function FilterOption({
   label,
   href,
@@ -296,6 +317,7 @@ export default async function OnsenPage({
   searchParams: Promise<OnsenResultsSearchParams>;
 }) {
   const params = await searchParams;
+  const entryIntent = normalizeOnsenEntryIntent(normalizeParam(params.intent));
   const rawQuery = normalizeParam(params.query).trim();
   const query = rawQuery.toLowerCase();
   const entityType = normalizeFilterParam(params.type, onsenEntityFilters);
@@ -308,9 +330,13 @@ export default async function OnsenPage({
   const requestedBath = uniqueValues([...normalizeFilterParams(params.bath, bathContextFilters), ...legacySignals.bath]);
   const requestedWater = uniqueValues([...normalizeWaterFilterParams(params.water), ...legacySignals.water]);
   const candidates = await readOnsenCandidates();
+  const decisionProfiles = new Map(candidates.map((candidate) => [candidate.slug, getOnsenDecisionProfile(candidate)]));
+  const intentScopeCandidates = entryIntent === 'unknown'
+    ? candidates
+    : candidates.filter((candidate) => decisionProfiles.get(candidate.slug)?.intents.includes(entryIntent));
   const filterScopeCandidates = entityType
-    ? candidates.filter((candidate) => getOnsenEntityType(candidate) === entityType)
-    : candidates;
+    ? intentScopeCandidates.filter((candidate) => getOnsenEntityType(candidate) === entityType)
+    : intentScopeCandidates;
   const availableTravelValues = new Set(filterScopeCandidates.flatMap((candidate) => candidate.contexts?.travel ?? []));
   const availableBathValues = new Set(filterScopeCandidates.flatMap((candidate) => candidate.contexts?.bath ?? []));
   const travel = requestedTravel.filter((item) => availableTravelValues.has(item));
@@ -338,6 +364,7 @@ export default async function OnsenPage({
     .filter(({ candidate }) => {
       const location = candidate.location;
       const contexts = candidate.contexts;
+      const intentMatch = entryIntent === 'unknown' || decisionProfiles.get(candidate.slug)?.intents.includes(entryIntent);
       const entityMatch = !entityType || getOnsenEntityType(candidate) === entityType;
       const regionGroupMatch = !regionGroup || location?.regionGroup === regionGroup;
       const areaMatch = !area || location?.onsenArea === area || candidate.region === area;
@@ -360,14 +387,19 @@ export default async function OnsenPage({
         ...candidate.tags,
       ].join(' ').toLowerCase();
       const queryMatch = !query || queryText.includes(query);
-      return entityMatch && regionGroupMatch && areaMatch && travelMatch && bathMatch && waterMatch && featureMatch && queryMatch;
+      return intentMatch && entityMatch && regionGroupMatch && areaMatch && travelMatch && bathMatch && waterMatch && featureMatch && queryMatch;
     });
 
   filteredEntries.sort((a, b) => {
     if (sort === 'reviews') return getReviewVolume(b.candidate) - getReviewVolume(a.candidate) || a.index - b.index;
     if (sort === 'name') return a.candidate.name.localeCompare(b.candidate.name, 'ko-KR');
     if (sort === 'water') return getOnsenWaterSortRank(a.candidate) - getOnsenWaterSortRank(b.candidate) || a.index - b.index;
-    return getOnsenWaterSortRank(a.candidate) - getOnsenWaterSortRank(b.candidate) || a.index - b.index;
+    const aProfile = decisionProfiles.get(a.candidate.slug);
+    const bProfile = decisionProfiles.get(b.candidate.slug);
+    return (bProfile?.coverage ?? 0) - (aProfile?.coverage ?? 0)
+      || Number(Boolean(bProfile?.price)) - Number(Boolean(aProfile?.price))
+      || getReviewVolume(b.candidate) - getReviewVolume(a.candidate)
+      || a.index - b.index;
   });
 
   const filtered = filteredEntries.map(({ candidate }) => candidate);
@@ -379,8 +411,10 @@ export default async function OnsenPage({
   const activeRegionGroupLabel = getFilterLabel(regionGroupFilters, regionGroup);
   const activeAreaLabel = getFilterLabel(onsenAreaFilters, area);
   const resultScopeLabel = activeAreaLabel ?? activeRegionGroupLabel ?? '전체 지역';
+  const intentMeta = entryIntent === 'unknown' ? null : onsenEntryIntentMeta[entryIntent];
 
   const currentState: ResultsHrefParams = {
+    intent: entryIntent,
     query: rawQuery,
     type: entityType,
     regionGroup,
@@ -397,6 +431,11 @@ export default async function OnsenPage({
   const resetFiltersHref = hrefFor({ type: '', travel: [], bath: [], water: [], feature: [], page: 1 });
 
   const activeFilters: { key: string; label: string; href: string }[] = [];
+  if (entryIntent !== 'unknown') activeFilters.push({
+    key: 'intent',
+    label: onsenEntryIntentMeta[entryIntent].eyebrow,
+    href: hrefFor({ intent: '', page: 1 }),
+  });
   if (rawQuery) activeFilters.push({ key: 'query', label: `“${rawQuery}” 검색`, href: hrefFor({ query: '', page: 1 }) });
   if (regionGroup) activeFilters.push({ key: 'regionGroup', label: activeRegionGroupLabel ?? regionGroup, href: hrefFor({ regionGroup: '', page: 1 }) });
   if (area) activeFilters.push({ key: 'area', label: activeAreaLabel ?? area, href: hrefFor({ area: '', page: 1 }) });
@@ -428,7 +467,7 @@ export default async function OnsenPage({
   const filterBody = (
     <>
       <details className={styles.filterGroup} open>
-        <summary><span>유형</span><CaretDown size={16} weight="bold" aria-hidden /></summary>
+        <summary><span>이용 형태</span><CaretDown size={16} weight="bold" aria-hidden /></summary>
         <div className={styles.filterGroupBody}>
           {onsenEntityFilters.map((item) => {
             const active = entityType === item.value;
@@ -438,7 +477,7 @@ export default async function OnsenPage({
                 label={item.label}
                 active={active}
                 count={countBy((candidate) => getOnsenEntityType(candidate) === item.value, candidates)}
-                href={hrefFor({ type: active ? '' : item.value, page: 1 })}
+                href={hrefFor({ type: active ? '' : item.value, intent: '', page: 1 })}
               />
             );
           })}
@@ -476,9 +515,36 @@ export default async function OnsenPage({
         </div>
       </details>
 
-      {availableMethodFilters.length > 0 ? (
+      {availableFeatureFilters.length > 0 ? (
         <details className={styles.filterGroup} open>
-          <summary><span>온천수 방식</span><CaretDown size={16} weight="bold" aria-hidden /></summary>
+          <summary><span>이용 조건</span><CaretDown size={16} weight="bold" aria-hidden /></summary>
+          <div className={styles.filterGroupBody}>
+            {['목욕 구성', '사우나·체험', '이용 편의'].flatMap((group) => {
+              const items = availableFeatureFilters.filter((item) => item.description === group);
+              if (items.length === 0) return [];
+              return [
+                <span className={styles.filterSubgroup} key={`${group}-label`}>{group}</span>,
+                ...items.map((item) => {
+                  const active = feature.includes(item.value);
+                  return (
+                    <FilterOption
+                      key={item.value}
+                      label={item.label}
+                      active={active}
+                      count={countBy((candidate) => candidate.officialFilterCodes?.includes(item.value) ?? false)}
+                      href={hrefFor({ feature: toggleFilterValue(feature, item.value), page: 1 })}
+                    />
+                  );
+                }),
+              ];
+            })}
+          </div>
+        </details>
+      ) : null}
+
+      {availableMethodFilters.length > 0 ? (
+        <details className={styles.filterGroup}>
+          <summary><span>온천수 상세</span><CaretDown size={16} weight="bold" aria-hidden /></summary>
           <div className={styles.filterGroupBody}>
             {availableMethodFilters.map((item) => {
               const active = water.includes(item.value);
@@ -547,28 +613,21 @@ export default async function OnsenPage({
         </details>
       ) : null}
 
-      {availableFeatureFilters.length > 0 ? (
+      {availableFeatureFilters.some((item) => item.description === '공식 성분') ? (
         <details className={styles.filterGroup}>
-          <summary><span>공식 시설 조건</span><CaretDown size={16} weight="bold" aria-hidden /></summary>
+          <summary><span>공식 수질</span><CaretDown size={16} weight="bold" aria-hidden /></summary>
           <div className={styles.filterGroupBody}>
-            {['목욕 구성', '사우나·체험', '이용 편의', '공식 성분'].flatMap((group) => {
-              const items = availableFeatureFilters.filter((item) => item.description === group);
-              if (items.length === 0) return [];
-              return [
-                <span className={styles.filterSubgroup} key={`${group}-label`}>{group}</span>,
-                ...items.map((item) => {
-                  const active = feature.includes(item.value);
-                  return (
-                    <FilterOption
-                      key={item.value}
-                      label={item.label}
-                      active={active}
-                      count={countBy((candidate) => candidate.officialFilterCodes?.includes(item.value) ?? false)}
-                      href={hrefFor({ feature: toggleFilterValue(feature, item.value), page: 1 })}
-                    />
-                  );
-                }),
-              ];
+            {availableFeatureFilters.filter((item) => item.description === '공식 성분').map((item) => {
+              const active = feature.includes(item.value);
+              return (
+                <FilterOption
+                  key={item.value}
+                  label={item.label}
+                  active={active}
+                  count={countBy((candidate) => candidate.officialFilterCodes?.includes(item.value) ?? false)}
+                  href={hrefFor({ feature: toggleFilterValue(feature, item.value), page: 1 })}
+                />
+              );
             })}
           </div>
         </details>
@@ -581,6 +640,11 @@ export default async function OnsenPage({
 
   return (
     <div className={styles.page}>
+      <OnsenResultsAnalytics
+        entryIntent={entryIntent}
+        activeFilters={activeFilters.map((item) => item.key)}
+        queryType={rawQuery ? 'text' : 'empty'}
+      />
       <section className={styles.overview} aria-labelledby="onsen-results-title">
         <div className={styles.overviewMain}>
           <div className={styles.overviewCopy}>
@@ -588,7 +652,7 @@ export default async function OnsenPage({
               <MapPin size={14} weight="bold" aria-hidden />
               {resultScopeLabel === '전체 지역' ? '일본 전역' : resultScopeLabel}
             </span>
-            <h1 id="onsen-results-title">{resultScopeLabel} 온천 <strong>{formatNumber(filtered.length)}곳</strong></h1>
+            <h1 id="onsen-results-title">{intentMeta?.resultTitle ?? `${resultScopeLabel} 온천`} <strong>{formatNumber(filtered.length)}곳</strong></h1>
           </div>
           <OnsenResultsSort value={sort} />
         </div>
@@ -612,7 +676,7 @@ export default async function OnsenPage({
       <OnsenResultsWorkspace
         filterBody={filterBody}
         resetHref={resetFiltersHref}
-        hasFilters={Boolean(entityType || travel.length || bath.length || water.length || feature.length)}
+        hasFilters={Boolean(entryIntent !== 'unknown' || entityType || travel.length || bath.length || water.length || feature.length)}
         resultCount={filtered.length}
         rangeStart={rangeStart}
         rangeEnd={rangeEnd}
@@ -625,12 +689,12 @@ export default async function OnsenPage({
             <div className={styles.emptyState}>
               <MagnifyingGlass size={28} weight="bold" aria-hidden />
               <strong>조건에 맞는 온천이 없습니다.</strong>
-              <p>온천수나 목욕 조건을 하나 줄여 다시 살펴보세요.</p>
-              <Link href="/onsen/results" prefetch={false}>전체 결과로 돌아가기</Link>
+              <p>{intentMeta ? '선택한 이용 조건을 줄이거나 전체 온천에서 다시 찾아보세요.' : '온천수나 목욕 조건을 하나 줄여 다시 살펴보세요.'}</p>
+              <Link href="/onsen/results" prefetch={false}>전체 온천 보기</Link>
             </div>
           ) : null}
 
-          {pageCandidates.map((candidate) => {
+          {pageCandidates.map((candidate, pageIndex) => {
             const waterHighlightMark = getOnsenWaterHighlightMark(candidate);
             const candidateType = getOnsenEntityType(candidate);
             const reviewCount = candidateType === 'facility'
@@ -638,17 +702,37 @@ export default async function OnsenPage({
               : accommodationReviewCounts[candidate.slug] ?? 0;
             const verdictStamp = formatVerdictStamp(candidate);
             const waterOperation = normalizeResultCardCopy(candidate.waterDecision.operation || candidate.waterDecision.springType);
+            const decisionProfile = decisionProfiles.get(candidate.slug) ?? getOnsenDecisionProfile(candidate);
+            const resultDecisionFacts = getResultDecisionFacts(decisionProfile, candidateType);
+            const resultPosition = rangeStart + pageIndex;
 
             return (
               <Link
                 id={`onsen-result-${candidate.slug}`}
                 key={candidate.slug}
                 className={styles.resultCardLink}
-                href={`/onsen/${candidate.slug}`}
+                href={addOnsenEntryIntent(`/onsen/${candidate.slug}`, entryIntent)}
                 prefetch={false}
                 data-return-href={currentResultsHref}
+                data-onsen-result-link="true"
+                data-entry-intent={entryIntent}
+                data-entity-type={candidateType}
+                data-target-slug={candidate.slug}
+                data-onsen-area={candidate.location?.onsenArea ?? candidate.region}
+                data-result-position={resultPosition}
+                data-decision-fact-coverage={decisionProfile.coverage}
+                data-has-price={decisionProfile.price ? 'true' : 'false'}
               >
-                <article className={styles.resultCard}>
+                <article className={styles.resultCard} data-onsen-result-card="true">
+                  <OnsenResultImpression
+                    entryIntent={entryIntent}
+                    entityType={candidateType}
+                    targetSlug={candidate.slug}
+                    onsenArea={candidate.location?.onsenArea ?? candidate.region}
+                    sourceComponent="onsen_results_card"
+                    resultPosition={resultPosition}
+                    decisionFactCoverage={decisionProfile.coverage}
+                  />
                   <div className={styles.resultMedia} aria-label={`${candidate.name} 사진 영역`}>
                     {candidate.imageUrl ? (
                       <img src={candidate.imageUrl} alt={candidate.imageAlt ?? `${candidate.name} 온천 이미지`} loading="lazy" />
@@ -664,7 +748,7 @@ export default async function OnsenPage({
                     <div className={styles.resultMeta}>
                       <span>{candidate.location?.display ?? candidate.area}</span>
                       <span className={styles.entityType} data-type={candidateType}>
-                        {candidateType === 'facility' ? '온천시설' : '숙소'}
+                        {candidateType === 'facility' ? '여행 중 방문' : '숙박하며 이용'}
                       </span>
                     </div>
                     <div className={styles.resultTitleRow}>
@@ -704,14 +788,20 @@ export default async function OnsenPage({
                   </div>
 
                   <dl className={styles.resultFacts} aria-label={`${candidate.name} 결정 정보`}>
-                    <div>
-                      <dt>{candidateType === 'facility' ? '이용 구성' : '목욕 구성'}</dt>
-                      <dd>{normalizeResultCardCopy(candidate.primaryBath)}</dd>
-                    </div>
-                    <div>
-                      <dt>온천수</dt>
-                      <dd>{waterOperation}</dd>
-                    </div>
+                    {(resultDecisionFacts.length > 0 ? resultDecisionFacts : [{
+                      code: 'bath_composition',
+                      label: candidateType === 'facility' ? '이용 구성' : '목욕 구성',
+                      value: normalizeResultCardCopy(candidate.primaryBath),
+                    }, {
+                      code: 'water',
+                      label: '온천수',
+                      value: waterOperation,
+                    }]).map((fact) => (
+                      <div key={fact.code}>
+                        <dt>{fact.label}</dt>
+                        <dd>{fact.value}</dd>
+                      </div>
+                    ))}
                     <ArrowRight size={18} weight="bold" aria-hidden />
                   </dl>
                 </article>

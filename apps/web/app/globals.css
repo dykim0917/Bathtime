@@ -744,6 +744,23 @@ img {
   min-width: 0;
 }
 
+.header-language-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  min-height: 40px;
+  color: var(--v2-muted);
+  font-size: var(--v2-meta);
+  font-weight: var(--bt-weight-semibold);
+}
+
+.header-language-link:hover,
+.header-language-link:focus-visible {
+  color: var(--v2-primary-active);
+  outline: none;
+}
+
 .onsen-header-search-slot {
   justify-self: center;
   width: min(520px, 100%);

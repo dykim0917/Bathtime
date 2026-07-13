@@ -8,9 +8,23 @@ export type WebAnalyticsEventName =
   | 'content_unsaved'
   | 'explore_filter_used'
   | 'app_cta_clicked'
-  | 'app_store_clicked';
+  | 'app_store_clicked'
+  | 'onsen_entry_impression'
+  | 'onsen_entry_click'
+  | 'onsen_search_submitted'
+  | 'onsen_filter_applied'
+  | 'onsen_result_impression'
+  | 'onsen_result_click'
+  | 'onsen_detail_view'
+  | 'onsen_decision_fact_opened'
+  | 'onsen_booking_click'
+  | 'onsen_facility_action_click'
+  | 'onsen_saved'
+  | 'onsen_shared'
+  | 'onsen_review_started'
+  | 'onsen_review_completed';
 
-type AnalyticsParams = Record<string, boolean | number | string | string[] | null | undefined>;
+export type AnalyticsParams = Record<string, boolean | number | string | string[] | null | undefined>;
 
 declare global {
   interface Window {

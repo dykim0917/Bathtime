@@ -41,6 +41,7 @@ import {
 } from '@web/lib/onsenPassport';
 import type { OnsenReview } from '@web/lib/onsenReviews';
 import { ONSEN_REVIEW_OPEN_EVENT } from '@web/lib/onsenReviewEvents';
+import { trackOnsenEvent } from '@web/lib/onsenAnalytics';
 import { OnsenReviewCard } from './OnsenReviewCard';
 import { OnsenReviewDrawerButton } from './OnsenReviewDrawerButton';
 
@@ -202,6 +203,11 @@ export function OnsenReviewForm({
         setError('');
       }
       setOpen(true);
+      trackOnsenEvent('onsen_review_started', {
+        entity_type: targetType,
+        target_slug: targetSlug,
+        source_component: 'onsen_detail_reviews',
+      });
     } finally {
       openingRef.current = false;
     }
@@ -238,6 +244,11 @@ export function OnsenReviewForm({
       });
       setSavedEntry(entry);
       setStatus('submitted');
+      trackOnsenEvent('onsen_review_completed', {
+        entity_type: targetType,
+        target_slug: targetSlug,
+        source_component: 'onsen_detail_reviews',
+      });
     } catch (submitError) {
       if (submitError instanceof AuthRequiredError) {
         redirectToLogin('onsen_review');

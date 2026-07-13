@@ -8,7 +8,8 @@ import brandSymbol from '@/assets/images/bathtime.svg';
 import logoImage from '@/assets/images/logo.png';
 import { OnsenSearchForm } from '@web/components/OnsenSearchForm';
 import { getSupabaseClient } from '@web/lib/auth';
-import { buildOnsenSearchSuggestions, popularOnsenSearches, recommendedOnsenPlaces } from '@web/lib/onsenSearch';
+import { isEnglishLocalePath, localizedPath, stripLocalePath, type BathtimeLocale } from '@web/lib/i18n';
+import { buildOnsenSearchSuggestions, getPopularOnsenSearches, getRecommendedOnsenPlaces } from '@web/lib/onsenSearch';
 
 type NativeAuthSessionMessage = {
   source?: string;
@@ -40,11 +41,13 @@ function AccountButton({
   signedIn,
   ready,
   iconOnly = false,
+  locale,
   onSignedOut,
 }: {
   signedIn: boolean;
   ready: boolean;
   iconOnly?: boolean;
+  locale: BathtimeLocale;
   onSignedOut: () => void;
 }) {
   const [open, setOpen] = useState(false);
@@ -52,9 +55,9 @@ function AccountButton({
 
   if (!ready || !signedIn) {
     return (
-      <Link className={buttonClassName} href="/auth/login" aria-label={iconOnly ? '로그인' : undefined} title={iconOnly ? '로그인' : undefined}>
+      <Link className={buttonClassName} href="/auth/login" aria-label={iconOnly ? (locale === 'en' ? 'Log in' : '로그인') : undefined} title={iconOnly ? (locale === 'en' ? 'Log in' : '로그인') : undefined}>
         <Icon name="user" size={iconOnly ? 20 : 16} />
-        {iconOnly ? null : <span>로그인</span>}
+        {iconOnly ? null : <span>{locale === 'en' ? 'Log in' : '로그인'}</span>}
       </Link>
     );
   }
@@ -64,24 +67,24 @@ function AccountButton({
       <button
         className={buttonClassName}
         type="button"
-        aria-label={iconOnly ? '계정 메뉴' : undefined}
-        title={iconOnly ? '계정 메뉴' : undefined}
+        aria-label={iconOnly ? (locale === 'en' ? 'Account menu' : '계정 메뉴') : undefined}
+        title={iconOnly ? (locale === 'en' ? 'Account menu' : '계정 메뉴') : undefined}
         aria-haspopup="menu"
         aria-expanded={open}
         onClick={() => setOpen((value) => !value)}
       >
         <Icon name="user" size={iconOnly ? 20 : 17} />
-        {iconOnly ? null : <span>프로필</span>}
+        {iconOnly ? null : <span>{locale === 'en' ? 'Profile' : '프로필'}</span>}
         {iconOnly ? null : <CaretDown size={13} weight="bold" aria-hidden />}
       </button>
       <div className="account-menu" role="menu">
         <Link href="/passport" role="menuitem" onClick={() => setOpen(false)}>
           <BookOpenText size={17} aria-hidden />
-          내 온천여권
+          {locale === 'en' ? 'My onsen passport' : '내 온천여권'}
         </Link>
         <Link href="/saved" role="menuitem" onClick={() => setOpen(false)}>
           <BookmarkSimple size={17} aria-hidden />
-          찜한 온천
+          {locale === 'en' ? 'Saved onsen' : '찜한 온천'}
         </Link>
         <button
           type="button"
@@ -95,14 +98,14 @@ function AccountButton({
           }}
         >
           <SignOut size={17} aria-hidden />
-          로그아웃
+          {locale === 'en' ? 'Log out' : '로그아웃'}
         </button>
       </div>
     </div>
   );
 }
 
-function OnsenHeaderSearch({ suggestions }: { suggestions: ReturnType<typeof buildOnsenSearchSuggestions> }) {
+function OnsenHeaderSearch({ suggestions, locale }: { suggestions: ReturnType<typeof buildOnsenSearchSuggestions>; locale: BathtimeLocale }) {
   const searchParams = useSearchParams();
   const onsenQuery = searchParams.get('query') ?? '';
 
@@ -110,30 +113,45 @@ function OnsenHeaderSearch({ suggestions }: { suggestions: ReturnType<typeof bui
     <div className="onsen-header-search-slot">
       <OnsenSearchForm
         suggestions={suggestions}
-        recommendedPlaces={recommendedOnsenPlaces}
-        popularSearches={popularOnsenSearches}
+        recommendedPlaces={getRecommendedOnsenPlaces(locale)}
+        popularSearches={getPopularOnsenSearches(locale)}
         initialQuery={onsenQuery}
         variant="header"
         panelMode="autocomplete"
+        locale={locale}
       />
     </div>
   );
 }
 
-function getMobileBackTarget(pathname: string) {
+function getMobileBackTarget(pathname: string, locale: BathtimeLocale) {
   if (pathname === '/onsen/results') {
-    return { href: '/onsen', label: '온천 검색기로 돌아가기' };
+    return { href: localizedPath('/onsen', locale), label: locale === 'en' ? 'Back to onsen search' : '온천 검색기로 돌아가기' };
   }
 
   if (pathname === '/onsen/methodology') {
-    return { href: '/onsen', label: '온천 검색기로 돌아가기' };
+    return { href: localizedPath('/onsen', locale), label: locale === 'en' ? 'Back to onsen search' : '온천 검색기로 돌아가기' };
   }
 
   if (/^\/onsen\/[^/]+$/.test(pathname)) {
-    return { href: '/onsen/results', label: '온천 검색 결과로 돌아가기' };
+    return { href: localizedPath('/onsen/results', locale), label: locale === 'en' ? 'Back to onsen results' : '온천 검색 결과로 돌아가기' };
   }
 
   return null;
+}
+
+function LanguageSwitch({ locale }: { locale: BathtimeLocale }) {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const targetLocale: BathtimeLocale = locale === 'en' ? 'ko' : 'en';
+  const query = searchParams.toString();
+  const href = `${localizedPath(pathname, targetLocale)}${query ? `?${query}` : ''}`;
+
+  return (
+    <Link className="header-language-link" href={href} hrefLang={targetLocale} lang={targetLocale}>
+      {targetLocale === 'en' ? 'EN' : '한국어'}
+    </Link>
+  );
 }
 
 function getInternalPath(value: string | null) {
@@ -151,20 +169,28 @@ function getInternalPath(value: string | null) {
 export function Shell({
   children,
   onsenSearchSuggestions,
+  onsenSearchSuggestionsEn,
 }: {
   children: React.ReactNode;
   onsenSearchSuggestions: ReturnType<typeof buildOnsenSearchSuggestions>;
+  onsenSearchSuggestionsEn: ReturnType<typeof buildOnsenSearchSuggestions>;
 }) {
   const pathname = usePathname();
   const router = useRouter();
-  const isOnsenRoute = pathname === '/' || pathname.startsWith('/onsen');
-  const isOnsenHomeRoute = pathname === '/' || pathname === '/onsen';
-  const isAuthRoute = pathname.startsWith('/auth');
+  const locale: BathtimeLocale = isEnglishLocalePath(pathname) ? 'en' : 'ko';
+  const routePathname = stripLocalePath(pathname);
+  const isOnsenRoute = routePathname === '/' || routePathname.startsWith('/onsen');
+  const isOnsenHomeRoute = routePathname === '/' || routePathname === '/onsen';
+  const isAuthRoute = routePathname.startsWith('/auth');
   const showOnsenHeaderSearch = isOnsenRoute;
   const [signedIn, setSignedIn] = useState(false);
   const [authReady, setAuthReady] = useState(false);
   const [authGate, setAuthGate] = useState<{ source: string; next: string; message: string } | null>(null);
-  const mobileBackTarget = useMemo(() => getMobileBackTarget(pathname), [pathname]);
+  const mobileBackTarget = useMemo(() => getMobileBackTarget(routePathname, locale), [locale, routePathname]);
+
+  useEffect(() => {
+    document.documentElement.lang = locale;
+  }, [locale]);
 
   useEffect(() => {
     const supabase = getSupabaseClient();
@@ -279,7 +305,7 @@ export function Shell({
   };
 
   return (
-    <div className={shellClassName}>
+    <div className={shellClassName} lang={locale}>
       {!isAuthRoute ? (
         <aside className="sidebar">
           <div className="brand-block">
@@ -288,41 +314,42 @@ export function Shell({
                 <CaretLeft size={20} weight="bold" aria-hidden="true" />
               </button>
             ) : null}
-            <Link className="brand" href="/" aria-label="Bathtime 홈">
+            <Link className="brand" href={localizedPath('/', locale)} aria-label={locale === 'en' ? 'Bathtime home' : 'Bathtime 홈'}>
               <span className="brand-symbol">
                 <img src={brandSymbol.src} alt="" width={30} height={30} aria-hidden="true" />
               </span>
-              <img className="brand-logo" src={logoImage.src} alt="바스타임" width={158} height={30} />
+              <img className="brand-logo" src={logoImage.src} alt={locale === 'en' ? 'Bathtime' : '바스타임'} width={158} height={30} />
             </Link>
           </div>
           {showOnsenHeaderSearch ? (
             <Suspense fallback={<div className="onsen-header-search-slot" aria-hidden="true" />}>
-              <OnsenHeaderSearch suggestions={onsenSearchSuggestions} />
+              <OnsenHeaderSearch suggestions={locale === 'en' ? onsenSearchSuggestionsEn : onsenSearchSuggestions} locale={locale} />
             </Suspense>
           ) : null}
           <div className="header-actions">
-            <AccountButton signedIn={signedIn} ready={authReady} iconOnly={isOnsenRoute} onSignedOut={() => setSignedIn(false)} />
+            {isOnsenRoute ? <Suspense fallback={null}><LanguageSwitch locale={locale} /></Suspense> : null}
+            <AccountButton signedIn={signedIn} ready={authReady} iconOnly={isOnsenRoute} locale={locale} onSignedOut={() => setSignedIn(false)} />
           </div>
         </aside>
       ) : null}
       <div className="content-area">
-        <main className={pathname.startsWith('/content/') ? 'main content-route-main' : isOnsenRoute ? 'main onsen-route-main' : 'main'}>
+        <main className={routePathname.startsWith('/content/') ? 'main content-route-main' : isOnsenRoute ? 'main onsen-route-main' : 'main'}>
           {children}
         </main>
-        <footer className="site-footer" aria-label="서비스 정보">
+        <footer className="site-footer" aria-label={locale === 'en' ? 'Service information' : '서비스 정보'}>
           <div>
             <span>© 2026 Bathtime</span>
           </div>
-          <nav aria-label="정책 링크">
-            <Link href="/legal/privacy">개인정보처리방침</Link>
-            <Link href="/legal/terms">이용약관</Link>
+          <nav aria-label={locale === 'en' ? 'Policy links' : '정책 링크'}>
+            <Link href="/legal/privacy">{locale === 'en' ? 'Privacy' : '개인정보처리방침'}</Link>
+            <Link href="/legal/terms">{locale === 'en' ? 'Terms' : '이용약관'}</Link>
           </nav>
         </footer>
       </div>
       {authGate ? (
         <div className="modal-backdrop" role="presentation">
           <section className="auth-gate-modal" role="alertdialog" aria-modal="true" aria-labelledby="auth-gate-title">
-            <button className="modal-icon-button" type="button" aria-label="닫기" onClick={() => setAuthGate(null)}>
+            <button className="modal-icon-button" type="button" aria-label={locale === 'en' ? 'Close' : '닫기'} onClick={() => setAuthGate(null)}>
               <X size={18} weight="bold" aria-hidden />
             </button>
             <div className="auth-gate-icon" aria-hidden="true">
@@ -330,11 +357,11 @@ export function Shell({
             </div>
             <div className="auth-gate-copy">
               <h2 id="auth-gate-title">{authGate.message}</h2>
-              <p>Google 계정으로 로그인한 뒤 이어서 사용할 수 있어요.</p>
+              <p>{locale === 'en' ? 'Log in with Google to continue.' : 'Google 계정으로 로그인한 뒤 이어서 사용할 수 있어요.'}</p>
             </div>
             <div className="modal-actions">
               <button className="button-secondary" type="button" onClick={() => setAuthGate(null)}>
-                취소
+                {locale === 'en' ? 'Cancel' : '취소'}
               </button>
               <button
                 className="button-primary"
@@ -345,7 +372,7 @@ export function Shell({
                   setAuthGate(null);
                 }}
               >
-                확인
+                {locale === 'en' ? 'Continue' : '확인'}
               </button>
             </div>
           </section>

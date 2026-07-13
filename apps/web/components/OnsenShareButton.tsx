@@ -2,13 +2,15 @@
 
 import { useState } from 'react';
 import { Check, ShareNetwork } from '@phosphor-icons/react';
+import { trackOnsenEvent } from '@web/lib/onsenAnalytics';
 
 type OnsenShareButtonProps = {
   title: string;
   summary: string;
+  slug: string;
 };
 
-export function OnsenShareButton({ title, summary }: OnsenShareButtonProps) {
+export function OnsenShareButton({ title, summary, slug }: OnsenShareButtonProps) {
   const [copied, setCopied] = useState(false);
   const label = copied ? '링크가 복사되었습니다' : '공유하기';
 
@@ -36,12 +38,15 @@ export function OnsenShareButton({ title, summary }: OnsenShareButtonProps) {
         try {
           if (navigator.share) {
             await navigator.share({ title, text: summary, url });
+            trackOnsenEvent('onsen_shared', { target_slug: slug, source_component: 'onsen_detail_actions', action_type: 'native_share' });
           } else {
             await copyCurrentUrl();
+            trackOnsenEvent('onsen_shared', { target_slug: slug, source_component: 'onsen_detail_actions', action_type: 'copy_link' });
           }
         } catch (error) {
           if ((error as Error).name !== 'AbortError') {
             await copyCurrentUrl();
+            trackOnsenEvent('onsen_shared', { target_slug: slug, source_component: 'onsen_detail_actions', action_type: 'copy_link' });
           }
         }
       }}

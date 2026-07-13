@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { BookmarkSimple } from '@phosphor-icons/react';
+import { trackOnsenEvent } from '@web/lib/onsenAnalytics';
 import { AuthRequiredError, isOnsenSaved, redirectToLogin, toggleSavedOnsen } from '@web/lib/userContent';
 
 type SaveState = 'checking' | 'idle' | 'saving';
@@ -46,6 +47,7 @@ export function OnsenSaveButton({ slug }: { slug: string }) {
         try {
           const nextSaved = await toggleSavedOnsen(slug);
           setSaved(nextSaved);
+          if (nextSaved) trackOnsenEvent('onsen_saved', { target_slug: slug, source_component: 'onsen_detail_actions' });
           window.dispatchEvent(new CustomEvent('bathtime:saved-content-changed'));
         } catch (error) {
           if (error instanceof AuthRequiredError) {

@@ -2,17 +2,18 @@
 
 import { ArrowDown, ArrowLeft, ArrowRight } from '@phosphor-icons/react';
 import { useRef, useState } from 'react';
+import type { BathtimeLocale } from '@web/lib/i18n';
 import styles from './OnsenLanding.module.css';
 
-const scenes = [
+const scenesKo = [
   {
     label: '일본 온천을 고르는 새로운 기준',
     title: <>이번 여행엔,<br />온천이 목적이어도 좋으니까.</>,
     description: '숙소를 먼저 정하지 않아도 됩니다. 오래 머물고 싶은 탕의 순간부터 골라보세요.',
     linkLabel: '어떤 순간을 원하세요?',
     href: '#moments',
-    image: '/images/about/bathtime-about-hero.jpg',
-    imageAlt: '김이 오르는 조용한 실내 온천탕',
+    image: '/images/onsen/discovery/hero-onsen-purpose.jpg',
+    imageAlt: '가을 숲을 마주한 조용한 노천탕',
     controlLabel: '온천이 목적',
     alignment: 'left',
     imagePosition: 'center',
@@ -23,7 +24,7 @@ const scenes = [
     description: '하루의 계획을 비워두고, 눈과 김이 겹치는 시간을 오래 바라보세요.',
     linkLabel: '눈과 숲이 있는 온천',
     href: '#scenic-moment',
-    image: '/images/onsen/discovery/snow-private-bath.jpg',
+    image: '/images/onsen/discovery/hero-snow-private.jpg',
     imageAlt: '눈 덮인 숲속의 프라이빗 노천탕',
     controlLabel: '눈 내리는 탕',
     alignment: 'right',
@@ -35,7 +36,7 @@ const scenes = [
     description: '젖은 숲과 따뜻한 물 사이에서, 여행의 속도가 자연스럽게 느려집니다.',
     linkLabel: '조용한 노천탕 보기',
     href: '#scenic-moment',
-    image: '/images/onsen/discovery/rain-forest-bath.jpg',
+    image: '/images/onsen/discovery/hero-rain-forest.jpg',
     imageAlt: '비 내리는 숲속의 따뜻한 노천탕',
     controlLabel: '비 오는 숲',
     alignment: 'left',
@@ -47,8 +48,8 @@ const scenes = [
     description: '한 곳의 탕을 오래 기억하게 되면, 그 마을 전체가 여행의 목적지가 됩니다.',
     linkLabel: '지역별 온천 보기',
     href: '#regions',
-    image: '/images/onsen/regions/kurokawa.jpg',
-    imageAlt: '숲과 오래된 숙소가 이어지는 구로카와 온천마을',
+    image: '/images/onsen/discovery/hero-onsen-town.jpg',
+    imageAlt: '숲과 오래된 숙소가 개울을 따라 이어지는 온천마을',
     controlLabel: '온천마을',
     alignment: 'right',
     imagePosition: 'center 48%',
@@ -59,17 +60,81 @@ const scenes = [
     description: '물이 어디서 시작되는지 알고 나면, 온천은 조금 다르게 보입니다.',
     linkLabel: '온천수 방식으로 찾기',
     href: '#water',
-    image: '/images/onsen/regions/noboribetsu.jpg',
-    imageAlt: '눈 덮인 계곡에서 수증기가 피어오르는 노보리베츠 원천 지대',
+    image: '/images/onsen/discovery/hero-geothermal-source.jpg',
+    imageAlt: '눈 덮인 화산 계곡에서 수증기가 피어오르는 원천 지대',
     controlLabel: '원천의 풍경',
     alignment: 'left',
     imagePosition: 'center',
   },
 ] as const;
 
-export function OnsenDiscoveryHero() {
+const scenesEn = [
+  {
+    label: 'A new way to choose onsen in Japan',
+    title: <>This trip,<br />let the onsen be the destination.</>,
+    description: 'You do not have to choose a hotel first. Start with the kind of bathing moment you want to stay in.',
+    linkLabel: 'What kind of moment do you want?',
+    href: '#moments',
+    image: '/images/onsen/discovery/hero-onsen-purpose.jpg',
+    imageAlt: 'A quiet open-air onsen facing an autumn forest',
+    controlLabel: 'Onsen as the destination',
+    alignment: 'left',
+    imagePosition: 'center',
+  },
+  {
+    label: 'A private bath in the snow',
+    title: <>While the snow falls,<br />it is enough to do nothing.</>,
+    description: 'Leave the day unplanned and stay with the moment where snow and steam meet.',
+    linkLabel: 'Find onsen with snow and forest views',
+    href: '#scenic-moment',
+    image: '/images/onsen/discovery/hero-snow-private.jpg',
+    imageAlt: 'A private open-air onsen in a snowy cedar forest',
+    controlLabel: 'Bathing in snowfall',
+    alignment: 'right',
+    imagePosition: 'center 68%',
+  },
+  {
+    label: 'Rain, forest, and warm water',
+    title: <>On a rainy day,<br />the bath becomes the journey.</>,
+    description: 'Between the wet forest and warm water, the pace of the trip naturally slows.',
+    linkLabel: 'Find quiet open-air baths',
+    href: '#scenic-moment',
+    image: '/images/onsen/discovery/hero-rain-forest.jpg',
+    imageAlt: 'A warm open-air onsen in a rain-soaked forest',
+    controlLabel: 'A rainy forest bath',
+    alignment: 'left',
+    imagePosition: 'center 74%',
+  },
+  {
+    label: 'A journey through an onsen town',
+    title: <>Choose the whole town<br />for a single onsen.</>,
+    description: 'When one bath stays with you, the town around it becomes part of the destination.',
+    linkLabel: 'Browse by onsen area',
+    href: '#regions',
+    image: '/images/onsen/discovery/hero-onsen-town.jpg',
+    imageAlt: 'Traditional ryokan lining a stream in a mountain onsen town',
+    controlLabel: 'An onsen town',
+    alignment: 'right',
+    imagePosition: 'center 48%',
+  },
+  {
+    label: 'Where the water begins',
+    title: <>Even the source of the water<br />can become the journey.</>,
+    description: 'Once you know where the water begins, the onsen starts to look different.',
+    linkLabel: 'Search by water system',
+    href: '#water',
+    image: '/images/onsen/discovery/hero-geothermal-source.jpg',
+    imageAlt: 'Steam rising from a snowy volcanic hot spring valley',
+    controlLabel: 'The geothermal source',
+    alignment: 'left',
+    imagePosition: 'center',
+  },
+] as const;
+
+export function OnsenDiscoveryHero({ locale = 'ko' }: { locale?: BathtimeLocale }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const pointerStart = useRef<number | null>(null);
+  const scenes = locale === 'en' ? scenesEn : scenesKo;
 
   const selectScene = (index: number) => {
     setActiveIndex((index + scenes.length) % scenes.length);
@@ -78,7 +143,7 @@ export function OnsenDiscoveryHero() {
   return (
     <section
       className={styles.heroCarousel}
-      aria-label={`${scenes[activeIndex].controlLabel} 온천 여행 장면`}
+      aria-label={locale === 'en' ? `${scenes[activeIndex].controlLabel} travel scene` : `${scenes[activeIndex].controlLabel} 온천 여행 장면`}
       tabIndex={0}
       onKeyDown={(event) => {
         if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
@@ -123,19 +188,19 @@ export function OnsenDiscoveryHero() {
         })}
       </div>
 
-      <button className={`${styles.heroArrow} ${styles.heroArrowPrevious}`} type="button" aria-label="이전 장면" onClick={() => selectScene(activeIndex - 1)}>
+      <button className={`${styles.heroArrow} ${styles.heroArrowPrevious}`} type="button" aria-label={locale === 'en' ? 'Previous scene' : '이전 장면'} onClick={() => selectScene(activeIndex - 1)}>
         <ArrowLeft size={20} aria-hidden="true" />
       </button>
-      <button className={`${styles.heroArrow} ${styles.heroArrowNext}`} type="button" aria-label="다음 장면" onClick={() => selectScene(activeIndex + 1)}>
+      <button className={`${styles.heroArrow} ${styles.heroArrowNext}`} type="button" aria-label={locale === 'en' ? 'Next scene' : '다음 장면'} onClick={() => selectScene(activeIndex + 1)}>
         <ArrowRight size={20} aria-hidden="true" />
       </button>
 
-      <nav className={styles.heroControls} aria-label="온천 여행 장면 선택">
+      <nav className={styles.heroControls} aria-label={locale === 'en' ? 'Choose an onsen travel scene' : '온천 여행 장면 선택'}>
         {scenes.map((scene, index) => (
           <button
             key={scene.controlLabel}
             type="button"
-            aria-label={`${scene.controlLabel} 장면`}
+            aria-label={locale === 'en' ? scene.controlLabel : `${scene.controlLabel} 장면`}
             title={scene.controlLabel}
             aria-pressed={index === activeIndex}
             onClick={() => selectScene(index)}

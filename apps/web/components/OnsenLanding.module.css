@@ -26,6 +26,18 @@
   touch-action: pan-y;
 }
 
+.heroCarousel::after {
+  position: absolute;
+  inset: auto -1px -1px;
+  z-index: 3;
+  height: 42px;
+  background: var(--v2-canvas);
+  content: '';
+  pointer-events: none;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 48' preserveAspectRatio='none'%3E%3Cpath fill='white' d='M0 15C180 9 286 21 430 28C610 37 775 39 941 26C1120 12 1285 7 1440 18V48H0Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 48' preserveAspectRatio='none'%3E%3Cpath fill='white' d='M0 15C180 9 286 21 430 28C610 37 775 39 941 26C1120 12 1285 7 1440 18V48H0Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+}
+
 .heroSlides {
   position: relative;
 }
@@ -139,7 +151,7 @@
 
 .heroControls {
   position: absolute;
-  inset: auto auto var(--bt-space-3) 50%;
+  inset: auto auto var(--bt-space-6) 50%;
   z-index: 4;
   display: flex;
   align-items: center;
@@ -344,7 +356,7 @@
 .storyInner {
   width: min(var(--v2-content), calc(100% - (var(--v2-gutter) * 2)));
   margin-inline: auto;
-  padding-block: var(--bt-space-20);
+  padding-block: var(--bt-space-24);
 }
 
 .storyHeading {
@@ -370,7 +382,8 @@
 
 .storyHeading strong {
   color: var(--v2-primary-active);
-  font-size: var(--v2-body-size);
+  font-size: var(--v2-small);
+  font-weight: 700;
   line-height: 1.5;
 }
 
@@ -389,23 +402,20 @@
 .cardGrid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--bt-space-4);
-  margin-top: var(--bt-space-10);
+  gap: var(--bt-space-6);
+  margin-top: var(--bt-space-12);
 }
 
 .momentCard {
   display: grid;
   grid-template-rows: auto 1fr;
   min-width: 0;
-  overflow: hidden;
-  border: 1px solid var(--v2-border);
-  border-radius: var(--bt-radius-md);
-  background: var(--v2-surface);
 }
 
 .momentCardMedia {
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
+  border-radius: var(--bt-radius-md);
   background: var(--v2-surface-soft);
 }
 
@@ -427,8 +437,8 @@
 .momentCardCopy {
   display: grid;
   align-content: start;
-  gap: var(--bt-space-2);
-  padding: var(--bt-space-4);
+  gap: var(--bt-space-1);
+  padding: var(--bt-space-4) 0 0;
 }
 
 .momentCardCopy > strong,
@@ -445,21 +455,9 @@
   font-weight: 600;
 }
 
-.momentCardSummary {
-  display: -webkit-box;
-  overflow: hidden;
-  color: var(--v2-body);
-  font-size: var(--v2-small);
-  line-height: 1.6;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-}
-
 .momentCardCopy > small {
-  margin-top: var(--bt-space-2);
-  border-top: 1px solid var(--v2-border);
+  margin-top: var(--bt-space-1);
   color: var(--v2-primary-active);
-  padding-top: var(--bt-space-3);
   font-size: var(--v2-meta);
   font-weight: 700;
 }
@@ -505,7 +503,6 @@
 }
 
 .coupleFeatureCopy .locationLine,
-.coupleFeatureCopy .momentCardSummary,
 .coupleFeatureCopy small {
   color: var(--v2-on-dark);
 }
@@ -922,9 +919,14 @@
   }
 
   .heroControls {
+    bottom: var(--bt-space-5);
     right: var(--bt-space-3);
     left: auto;
     transform: none;
+  }
+
+  .heroCarousel::after {
+    height: 26px;
   }
 
   .heroControls button {

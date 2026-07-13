@@ -13,6 +13,8 @@ import {
 } from '@phosphor-icons/react';
 import { type MouseEvent as ReactMouseEvent, type ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 import { SelectBox, type SelectBoxOption } from '@web/components/SelectBox';
+import type { BathtimeLocale } from '@web/lib/i18n';
+import { trackOnsenEvent } from '@web/lib/onsenAnalytics';
 import type { OnsenMapPoint } from '@web/lib/onsenMap';
 import styles from './results.module.css';
 
@@ -37,6 +39,20 @@ const compactSortOptions: SelectBoxOption<OnsenResultsSortValue>[] = [
   { value: 'name', label: '이름순' },
 ];
 
+const sortOptionsEn: SelectBoxOption<OnsenResultsSortValue>[] = [
+  { value: 'recommended', label: 'Bathtime recommended' },
+  { value: 'reviews', label: 'Most reviews read' },
+  { value: 'water', label: 'Water system first' },
+  { value: 'name', label: 'Name' },
+];
+
+const compactSortOptionsEn: SelectBoxOption<OnsenResultsSortValue>[] = [
+  { value: 'recommended', label: 'Best match' },
+  { value: 'reviews', label: 'Reviews' },
+  { value: 'water', label: 'Water' },
+  { value: 'name', label: 'Name' },
+];
+
 type OnsenResultsFilterActionProps = {
   active: boolean;
   children: ReactNode;
@@ -57,7 +73,14 @@ export function OnsenResultsFilterAction({
       type="button"
       className={className}
       aria-pressed={active}
-      onClick={() => router.push(href)}
+      onClick={() => {
+        trackOnsenEvent('onsen_filter_applied', {
+          source_component: 'onsen_results_filter',
+          action_type: active ? 'remove' : 'add',
+          filter_href: href,
+        });
+        router.push(href);
+      }}
     >
       {children}
     </button>
@@ -67,21 +90,27 @@ export function OnsenResultsFilterAction({
 type OnsenResultsSortProps = {
   value: OnsenResultsSortValue;
   compact?: boolean;
+  locale?: BathtimeLocale;
 };
 
-export function OnsenResultsSort({ value, compact = false }: OnsenResultsSortProps) {
+export function OnsenResultsSort({ value, compact = false, locale = 'ko' }: OnsenResultsSortProps) {
   const router = useRouter();
 
   return (
     <SelectBox
       className={compact ? styles.sortCompact : styles.sortControl}
       value={value}
-      options={compact ? compactSortOptions : sortOptions}
-      ariaLabel="결과 정렬"
-      label={compact ? undefined : '정렬'}
+      options={locale === 'en' ? (compact ? compactSortOptionsEn : sortOptionsEn) : (compact ? compactSortOptions : sortOptions)}
+      ariaLabel={locale === 'en' ? 'Sort results' : '결과 정렬'}
+      label={compact ? undefined : locale === 'en' ? 'Sort' : '정렬'}
       leadingIcon={compact ? <ArrowsDownUp size={16} weight="bold" aria-hidden /> : undefined}
       compact={compact}
       onChange={(nextSort) => {
+          trackOnsenEvent('onsen_filter_applied', {
+            source_component: 'onsen_results_sort',
+            action_type: 'sort',
+            filter_value: nextSort,
+          });
           const nextParams = new URLSearchParams(window.location.search);
           if (nextSort === 'recommended') nextParams.delete('sort');
           else nextParams.set('sort', nextSort);
@@ -104,6 +133,7 @@ type OnsenResultsWorkspaceProps = {
   sort: OnsenResultsSortValue;
   mapPoints: OnsenMapPoint[];
   visibleResultCount: number;
+  locale?: BathtimeLocale;
 };
 
 function getFocusableElements(container: HTMLElement) {
@@ -122,6 +152,7 @@ export function OnsenResultsWorkspace({
   sort,
   mapPoints,
   visibleResultCount,
+  locale = 'ko',
 }: OnsenResultsWorkspaceProps) {
   const router = useRouter();
   const [filterOpen, setFilterOpen] = useState(false);
@@ -224,7 +255,6 @@ export function OnsenResultsWorkspace({
   }, [isNarrow]);
 
   const handleResultLinkClick = useCallback((event: ReactMouseEvent<HTMLDivElement>) => {
-    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     if (!(event.target instanceof Element)) return;
 
     const link = event.target.closest<HTMLAnchorElement>('a[data-return-href]');
@@ -232,18 +262,35 @@ export function OnsenResultsWorkspace({
     const returnHref = link?.dataset.returnHref;
     if (!href || !returnHref) return;
 
+    if (link.dataset.onsenResultLink === 'true') {
+      trackOnsenEvent('onsen_result_click', {
+        entry_intent: link.dataset.entryIntent,
+        entity_type: link.dataset.entityType,
+        target_slug: link.dataset.targetSlug,
+        onsen_area: link.dataset.onsenArea,
+        source_component: 'onsen_results_card',
+        result_position: Number(link.dataset.resultPosition || 0),
+        decision_fact_coverage: Number(link.dataset.decisionFactCoverage || 0),
+        has_price: link.dataset.hasPrice === 'true',
+      });
+    }
+
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
     event.preventDefault();
-    router.push(`${href}?from=${encodeURIComponent(returnHref)}`);
+    const nextUrl = new URL(href, window.location.origin);
+    nextUrl.searchParams.set('from', returnHref);
+    router.push(`${nextUrl.pathname}${nextUrl.search}${nextUrl.hash}`);
   }, [router]);
 
   const mapVisible = isNarrow === null ? false : isNarrow ? mobileMapOpen : desktopMapOpen;
 
   return (
-    <section className={styles.workspace} aria-label="온천 검색 결과와 필터">
+    <section className={styles.workspace} aria-label={locale === 'en' ? 'Onsen results and filters' : '온천 검색 결과와 필터'}>
       <aside
         ref={filterPanelRef}
         className={`${styles.filterPanel}${filterOpen ? ` ${styles.filterPanelOpen}` : ''}`}
-        aria-label="검색 결과 필터"
+        aria-label={locale === 'en' ? 'Search result filters' : '검색 결과 필터'}
         aria-hidden={isNarrow === true && !filterOpen}
         role={isNarrow === true && filterOpen ? 'dialog' : undefined}
         aria-modal={isNarrow === true && filterOpen ? 'true' : undefined}
@@ -251,21 +298,21 @@ export function OnsenResultsWorkspace({
         <header className={styles.filterHead}>
           <div>
             <FunnelSimple size={18} weight="bold" aria-hidden />
-            <strong>필터</strong>
+            <strong>{locale === 'en' ? 'Filters' : '필터'}</strong>
           </div>
           {hasFilters ? (
             <Link className={styles.resetAction} href={resetHref} prefetch={false} rel="nofollow">
               <ArrowCounterClockwise size={15} weight="bold" aria-hidden />
-              초기화
+              {locale === 'en' ? 'Reset' : '초기화'}
             </Link>
           ) : (
-            <span className={styles.resetAction} aria-disabled="true">초기화</span>
+            <span className={styles.resetAction} aria-disabled="true">{locale === 'en' ? 'Reset' : '초기화'}</span>
           )}
           <button
             className={styles.filterClose}
             type="button"
-            aria-label="필터 닫기"
-            title="필터 닫기"
+            aria-label={locale === 'en' ? 'Close filters' : '필터 닫기'}
+            title={locale === 'en' ? 'Close filters' : '필터 닫기'}
             onClick={() => {
               setFilterOpen(false);
               window.setTimeout(() => filterTriggerRef.current?.focus(), 0);
@@ -277,7 +324,7 @@ export function OnsenResultsWorkspace({
         <div className={styles.filterScroll}>{filterBody}</div>
         <footer className={styles.filterFooter}>
           <button type="button" onClick={() => setFilterOpen(false)}>
-            {resultCount.toLocaleString('ko-KR')}곳 결과 보기
+            {locale === 'en' ? `Show ${resultCount.toLocaleString('en-US')} results` : `${resultCount.toLocaleString('ko-KR')}곳 결과 보기`}
           </button>
         </footer>
       </aside>
@@ -285,11 +332,10 @@ export function OnsenResultsWorkspace({
       <div className={`${styles.resultsColumn}${desktopMapOpen ? ` ${styles.mapIsOpen}` : ''}`}>
         <div className={styles.listControl}>
           <p>
-            <strong>{rangeStart === rangeEnd ? rangeStart : `${rangeStart}~${rangeEnd}`}</strong>
-            <span> / {resultCount.toLocaleString('ko-KR')}곳</span>
+            <strong>{rangeStart === rangeEnd ? rangeStart : `${rangeStart}${locale === 'en' ? '-' : '~'}${rangeEnd}`}</strong>
+            <span> / {resultCount.toLocaleString(locale === 'en' ? 'en-US' : 'ko-KR')}{locale === 'en' ? '' : '곳'}</span>
           </p>
           <div>
-            <span>숙소와 온천시설을 함께 표시합니다.</span>
             <button
               type="button"
               aria-controls="onsen-results-map-panel"
@@ -300,13 +346,13 @@ export function OnsenResultsWorkspace({
               }}
             >
               <MapTrifold size={17} weight="bold" aria-hidden />
-              {desktopMapOpen ? '지도 닫기' : '지도 보기'}
+              {desktopMapOpen ? (locale === 'en' ? 'Close map' : '지도 닫기') : (locale === 'en' ? 'Show map' : '지도 보기')}
             </button>
           </div>
         </div>
 
         <div className={styles.mobileToolbar}>
-          <span><strong>{resultCount.toLocaleString('ko-KR')}</strong>곳</span>
+          <span><strong>{resultCount.toLocaleString(locale === 'en' ? 'en-US' : 'ko-KR')}</strong>{locale === 'en' ? ' results' : '곳'}</span>
           <button
             ref={filterTriggerRef}
             type="button"
@@ -315,7 +361,7 @@ export function OnsenResultsWorkspace({
             onClick={() => setFilterOpen(true)}
           >
             <FunnelSimple size={16} weight="bold" aria-hidden />
-            필터
+            {locale === 'en' ? 'Filters' : '필터'}
           </button>
           <button
             ref={mapTriggerRef}
@@ -329,9 +375,9 @@ export function OnsenResultsWorkspace({
             }}
           >
             <MapTrifold size={16} weight="bold" aria-hidden />
-            지도
+            {locale === 'en' ? 'Map' : '지도'}
           </button>
-          <OnsenResultsSort value={sort} compact />
+          <OnsenResultsSort value={sort} compact locale={locale} />
         </div>
 
         <div className={styles.resultsBody}>
@@ -340,20 +386,20 @@ export function OnsenResultsWorkspace({
             ref={mapPanelRef}
             id="onsen-results-map-panel"
             className={`${styles.mapPanel}${desktopMapOpen ? ` ${styles.mapDesktopOpen}` : ''}${mobileMapOpen ? ` ${styles.mapMobileOpen}` : ''}`}
-            aria-label="검색 결과 지도"
+            aria-label={locale === 'en' ? 'Search result map' : '검색 결과 지도'}
             aria-hidden={!mapVisible}
             role={isNarrow === true && mobileMapOpen ? 'dialog' : undefined}
             aria-modal={isNarrow === true && mobileMapOpen ? 'true' : undefined}
           >
             <header className={styles.mapHead}>
               <div>
-                <span><MapTrifold size={16} weight="bold" aria-hidden />지도</span>
-                <strong>{visibleResultCount.toLocaleString('ko-KR')}곳 표시</strong>
+                <span><MapTrifold size={16} weight="bold" aria-hidden />{locale === 'en' ? 'Map' : '지도'}</span>
+                <strong>{locale === 'en' ? `${visibleResultCount.toLocaleString('en-US')} shown` : `${visibleResultCount.toLocaleString('ko-KR')}곳 표시`}</strong>
               </div>
               <button
                 type="button"
-                aria-label="지도 닫기"
-                title="지도 닫기"
+                aria-label={locale === 'en' ? 'Close map' : '지도 닫기'}
+                title={locale === 'en' ? 'Close map' : '지도 닫기'}
                 onClick={() => {
                   if (isNarrow === true) {
                     setMobileMapOpen(false);
@@ -367,11 +413,11 @@ export function OnsenResultsWorkspace({
               </button>
             </header>
             {mapVisible ? (
-              <OnsenResultsMap points={mapPoints} resizeSignal={mapResizeSignal} onSelectPoint={handleSelectPoint} />
+              <OnsenResultsMap points={mapPoints} resizeSignal={mapResizeSignal} onSelectPoint={handleSelectPoint} locale={locale} />
             ) : null}
             <p className={styles.mapNote}>
               <CursorClick size={15} weight="bold" aria-hidden />
-              온천지·권역 기준 위치입니다.
+              {locale === 'en' ? 'Locations are approximate, based on the onsen area.' : '온천지·권역 기준 위치입니다.'}
             </p>
           </aside>
         </div>

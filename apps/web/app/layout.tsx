@@ -64,7 +64,9 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const onsenSearchSuggestions = buildOnsenSearchSuggestions(await readOnsenCandidates());
+  const onsenCandidates = await readOnsenCandidates();
+  const onsenSearchSuggestions = buildOnsenSearchSuggestions(onsenCandidates, 'ko');
+  const onsenSearchSuggestionsEn = buildOnsenSearchSuggestions(onsenCandidates, 'en');
 
   return (
     <html lang="ko">
@@ -83,7 +85,7 @@ export default async function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd).replace(/</g, '\\u003c') }}
         />
         <GoogleAnalytics measurementId={gaMeasurementId} />
-        <Shell onsenSearchSuggestions={onsenSearchSuggestions}>{children}</Shell>
+        <Shell onsenSearchSuggestions={onsenSearchSuggestions} onsenSearchSuggestionsEn={onsenSearchSuggestionsEn}>{children}</Shell>
       </body>
     </html>
   );

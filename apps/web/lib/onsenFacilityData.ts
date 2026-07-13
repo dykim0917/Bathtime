@@ -1,5 +1,10 @@
 import type { OnsenCandidate, OnsenStatus } from './onsenCatalog';
 import {
+  decisionFactsFromFacilityProfile,
+  decisionFactsFromOfficialFilters,
+  type OnsenOfficialFilterFact,
+} from './onsenDecisionFacts';
+import {
   formatOnsenLocationDisplay,
   getDefaultOnsenLocation,
   getFilterLabel,
@@ -25,7 +30,9 @@ type FacilityRow = {
   facility_model: string;
   primary_archetype: string;
   cleanup_status: string;
+  lodging_available: boolean;
   official_url: string | null;
+  map_or_review_url: string | null;
   official_profile: unknown;
   official_source_urls: unknown;
   official_checked_at: string | null;
@@ -68,13 +75,8 @@ type FacilityReviewSignalRow = {
   evidence_summary: string | null;
 };
 
-type FacilityOfficialFilterFactRow = {
+type FacilityOfficialFilterFactRow = OnsenOfficialFilterFact & {
   facility_slug: string;
-  filter_code: string;
-  availability: 'confirmed' | 'conditional' | 'not_available';
-  filter_status: 'ready' | 'hold' | 'expired' | 'deprecated';
-  official_source_url: string;
-  official_source_checked_at: string;
 };
 
 const facilityTypeLabels: Record<string, string> = {
@@ -337,6 +339,39 @@ function mapFacilityCandidate(
     ...readyFilterFacts.map((fact) => fact.official_source_url),
     ...waterFacts.map((fact) => fact.official_source_url),
   ]).slice(0, 4).map((href, index) => ({ label: index === 0 ? '공식 사이트' : '공식 이용 안내', href }));
+  const decisionFacts = [
+    ...decisionFactsFromOfficialFilters(filterFacts),
+    ...decisionFactsFromFacilityProfile(row.official_profile),
+    {
+      code: 'bath_composition',
+      label: '목욕 구성',
+      value: primaryBath,
+      status: 'confirmed' as const,
+      detail: '공식 시설 소개에 포함된 욕장 범위를 기준으로 정리했습니다.',
+      sourceUrl: row.official_url ?? undefined,
+      checkedAt: row.official_checked_at ?? undefined,
+    },
+    ...(areas.length > 1
+      ? [{
+          code: 'signature_baths',
+          label: '대표 구성',
+          value: areas.map((area) => bathAreaLabels[area]).filter(Boolean).slice(0, 5).join(' · '),
+          status: 'confirmed' as const,
+          sourceUrl: row.official_url ?? undefined,
+          checkedAt: row.official_checked_at ?? undefined,
+        }]
+      : []),
+    ...(row.lodging_available
+      ? [{
+          code: 'lodging',
+          label: '숙박',
+          value: '숙박 가능',
+          status: 'confirmed' as const,
+          sourceUrl: row.official_url ?? undefined,
+          checkedAt: row.official_checked_at ?? undefined,
+        }]
+      : []),
+  ];
   const bathContexts = unique([
     'public_bath',
     officialFilterCodes.includes('private_bath') || officialFilterCodes.includes('family_bath') ? 'private_bath' : '',
@@ -468,6 +503,7 @@ function mapFacilityCandidate(
     ],
     officialLinks,
     officialFilterCodes,
+    decisionFacts,
     facilityDetails: {
       type: row.facility_type,
       typeLabel: facilityTypeLabels[row.facility_type] ?? '당일온천 시설',
@@ -475,6 +511,10 @@ function mapFacilityCandidate(
       archetype: row.primary_archetype,
       bathAreas: areas,
       cleanupStatus: row.cleanup_status,
+      lodgingAvailable: row.lodging_available,
+      mapUrl: row.map_or_review_url && /(?:google\.|maps\.|yahoo\.co\.jp\/v3\/place)/.test(row.map_or_review_url)
+        ? row.map_or_review_url
+        : undefined,
     },
     contexts: {
       travel: unique(['day_trip', row.facility_type === 'wellness_spa' ? 'city_bath' : '']) as NonNullable<OnsenCandidate['contexts']>['travel'],
@@ -513,7 +553,7 @@ export async function readActiveOnsenFacilityCandidates(config: { restUrl: strin
     const facilities = await fetchRows<FacilityRow>(
       config,
       'onsen_facilities',
-      'slug,name_ko,name_ja,country,region_group,prefecture,municipality,onsen_area,facility_type,facility_model,primary_archetype,cleanup_status,official_url,official_profile,official_source_urls,official_checked_at,summary,content_updated_at,updated_at',
+      'slug,name_ko,name_ja,country,region_group,prefecture,municipality,onsen_area,facility_type,facility_model,primary_archetype,cleanup_status,lodging_available,official_url,map_or_review_url,official_profile,official_source_urls,official_checked_at,summary,content_updated_at,updated_at',
       { status: 'eq.active', order: 'region_group.asc,prefecture.asc,name_ko.asc' }
     );
     if (facilities.length === 0) return [];
@@ -535,7 +575,7 @@ export async function readActiveOnsenFacilityCandidates(config: { restUrl: strin
       fetchRows<FacilityOfficialFilterFactRow>(
         config,
         'onsen_facility_official_filter_facts',
-        'facility_slug,filter_code,availability,filter_status,official_source_url,official_source_checked_at',
+        'facility_slug,filter_code,scope_key,scope_label_ko,availability,filter_value,filter_status,official_original_text,official_source_url,official_source_checked_at',
         { facility_slug: inFilter(slugs) }
       ),
     ]);

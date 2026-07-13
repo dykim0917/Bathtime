@@ -81,11 +81,25 @@ export type OnsenVerdict = {
 
 export type OnsenEntityType = 'accommodation' | 'facility';
 
+export type OnsenDecisionFactStatus = 'confirmed' | 'conditional' | 'needs_check';
+
+export type OnsenDecisionFact = {
+  code: string;
+  label: string;
+  value: string;
+  status: OnsenDecisionFactStatus;
+  detail?: string;
+  scope?: string;
+  sourceUrl?: string;
+  checkedAt?: string;
+};
+
 export type OnsenCandidate = {
   entityType?: OnsenEntityType;
   slug: string;
   name: string;
   jaName: string;
+  enName?: string;
   imageUrl?: string;
   imageAlt?: string;
   galleryImages?: { url: string; alt?: string }[];
@@ -127,6 +141,7 @@ export type OnsenCandidate = {
   sources: { label: string; direct: number; onsenRelated: number; note: string }[];
   officialLinks: { label: string; href: string }[];
   officialFilterCodes?: string[];
+  decisionFacts?: OnsenDecisionFact[];
   facilityDetails?: {
     type: string;
     typeLabel: string;
@@ -134,6 +149,8 @@ export type OnsenCandidate = {
     archetype: string;
     bathAreas: string[];
     cleanupStatus: string;
+    lodgingAvailable?: boolean;
+    mapUrl?: string;
   };
   verdict?: OnsenVerdict;
 };

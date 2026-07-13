@@ -2,6 +2,7 @@
 
 import { ArrowLeft, ArrowRight, ImagesSquare } from '@phosphor-icons/react';
 import { useState } from 'react';
+import type { BathtimeLocale } from '@web/lib/i18n';
 import styles from './page.module.css';
 
 export type OnsenDetailGalleryItem = {
@@ -13,9 +14,10 @@ export type OnsenDetailGalleryItem = {
 type OnsenDetailGalleryProps = {
   name: string;
   items: OnsenDetailGalleryItem[];
+  locale?: BathtimeLocale;
 };
 
-export function OnsenDetailGallery({ name, items }: OnsenDetailGalleryProps) {
+export function OnsenDetailGallery({ name, items, locale = 'ko' }: OnsenDetailGalleryProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const currentItem = items[currentIndex] ?? items[0];
   const hasMultipleItems = items.length > 1;
@@ -25,15 +27,15 @@ export function OnsenDetailGallery({ name, items }: OnsenDetailGalleryProps) {
   };
 
   return (
-    <section className={styles.gallery} aria-label={`${name} 사진 갤러리`}>
+    <section className={styles.gallery} aria-label={locale === 'en' ? `${name} photo gallery` : `${name} 사진 갤러리`}>
       <div className={styles.galleryMain}>
         <figure key={`${currentIndex}-${currentItem?.src ?? 'placeholder'}`} className={styles.galleryFigure}>
           {currentItem?.src ? (
-            <img className={styles.galleryImage} src={currentItem.src} alt={currentItem.alt ?? `${name} 사진 ${currentIndex + 1}`} />
+            <img className={styles.galleryImage} src={currentItem.src} alt={currentItem.alt ?? (locale === 'en' ? `${name} photo ${currentIndex + 1}` : `${name} 사진 ${currentIndex + 1}`)} />
           ) : (
             <div className={styles.galleryPlaceholder}>
               <ImagesSquare size={32} weight="bold" aria-hidden="true" />
-              <strong>사진 준비 중</strong>
+              <strong>{locale === 'en' ? 'Photo coming soon' : '사진 준비 중'}</strong>
             </div>
           )}
         </figure>
@@ -44,8 +46,8 @@ export function OnsenDetailGallery({ name, items }: OnsenDetailGalleryProps) {
               className={styles.galleryArrow}
               data-direction="previous"
               type="button"
-              aria-label="이전 사진"
-              title="이전 사진"
+              aria-label={locale === 'en' ? 'Previous photo' : '이전 사진'}
+              title={locale === 'en' ? 'Previous photo' : '이전 사진'}
               onClick={() => move(-1)}
             >
               <ArrowLeft size={18} weight="bold" aria-hidden="true" />
@@ -54,8 +56,8 @@ export function OnsenDetailGallery({ name, items }: OnsenDetailGalleryProps) {
               className={styles.galleryArrow}
               data-direction="next"
               type="button"
-              aria-label="다음 사진"
-              title="다음 사진"
+              aria-label={locale === 'en' ? 'Next photo' : '다음 사진'}
+              title={locale === 'en' ? 'Next photo' : '다음 사진'}
               onClick={() => move(1)}
             >
               <ArrowRight size={18} weight="bold" aria-hidden="true" />
@@ -69,13 +71,13 @@ export function OnsenDetailGallery({ name, items }: OnsenDetailGalleryProps) {
       </div>
 
       {hasMultipleItems ? (
-        <div className={styles.thumbnailRail} aria-label="사진 선택">
+        <div className={styles.thumbnailRail} aria-label={locale === 'en' ? 'Choose a photo' : '사진 선택'}>
           {items.map((item, index) => (
             <button
               key={`${item.src ?? 'placeholder'}-${index}`}
               className={styles.thumbnail}
               type="button"
-              aria-label={`${index + 1}번째 사진 보기`}
+              aria-label={locale === 'en' ? `Show photo ${index + 1}` : `${index + 1}번째 사진 보기`}
               aria-current={index === currentIndex ? 'true' : undefined}
               onClick={() => setCurrentIndex(index)}
             >

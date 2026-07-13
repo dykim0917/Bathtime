@@ -2,6 +2,7 @@ import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 
 import { onsenCandidates, type OnsenCandidate, type OnsenEditorialCardSummary, type OnsenFactStatus, type OnsenStatus, type OnsenVerdict, type OnsenVerdictItem, type OnsenWaterVerification } from './onsenCatalog';
+import { decisionFactsFromOfficialFilters, type OnsenOfficialFilterFact } from './onsenDecisionFacts';
 import { readActiveOnsenFacilityCandidates } from './onsenFacilityData';
 import {
   deriveOnsenContexts,
@@ -79,6 +80,10 @@ type OnsenVerdictRow = {
   items: unknown;
   fact_statuses: unknown;
   verified_at: string | null;
+};
+
+type OnsenAccommodationOfficialFilterFactRow = OnsenOfficialFilterFact & {
+  accommodation_slug: string;
 };
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -716,7 +721,11 @@ function sourceNoteFor(row: OnsenAccommodationRow, verdict?: OnsenVerdict) {
   return row.evidence_note ?? '공식 안내와 이용 조건을 바탕으로 정리했습니다.';
 }
 
-function mapOnsenAccommodation(row: OnsenAccommodationRow, verdict?: OnsenVerdict): OnsenCandidate {
+function mapOnsenAccommodation(
+  row: OnsenAccommodationRow,
+  verdict?: OnsenVerdict,
+  officialFilterFacts: OnsenAccommodationOfficialFilterFactRow[] = []
+): OnsenCandidate {
   const notes = Array.isArray(row.operation_notes) ? row.operation_notes : [];
   const counts = row.evidence_counts ?? {};
   const waterProfile = normalizeWaterProfile(counts);
@@ -729,12 +738,17 @@ function mapOnsenAccommodation(row: OnsenAccommodationRow, verdict?: OnsenVerdic
   const cautionCount = counts.cautionMentionCount ?? 0;
   const publicBath = publicBathFact(tags, row.primary_bath ?? '');
   const privateBath = privateBathFact(tags, row.primary_bath ?? '');
+  const readyFilterFacts = officialFilterFacts.filter((fact) => fact.filter_status === 'ready' && fact.availability !== 'not_available');
+  const officialLinks = [...new Set(readyFilterFacts.map((fact) => fact.official_source_url).filter(Boolean))]
+    .slice(0, 4)
+    .map((href, index) => ({ label: index === 0 ? '공식 사이트' : '공식 이용 안내', href }));
 
   const candidate: OnsenCandidate = {
     entityType: 'accommodation',
     slug: row.slug,
     name: row.display_name_ko?.trim() || row.name,
     jaName: row.name_ja?.trim() || row.ja_name || '',
+    enName: row.name_en?.trim() || undefined,
     area: row.area ?? row.region,
     region: row.region,
     location: mapLocation(row),
@@ -808,7 +822,9 @@ function mapOnsenAccommodation(row: OnsenAccommodationRow, verdict?: OnsenVerdic
         note: sourceNoteFor(row, verdict),
       },
     ],
-    officialLinks: [],
+    officialLinks,
+    officialFilterCodes: [...new Set(readyFilterFacts.filter((fact) => fact.availability === 'confirmed').map((fact) => fact.filter_code))],
+    decisionFacts: decisionFactsFromOfficialFilters(readyFilterFacts),
     verdict,
   };
 
@@ -823,6 +839,33 @@ function mapOnsenAccommodation(row: OnsenAccommodationRow, verdict?: OnsenVerdic
       deriveOnsenContexts(candidate)
     ),
   };
+}
+
+async function readAccommodationOfficialFilterFacts(
+  config: NonNullable<ReturnType<typeof readSupabaseServerConfig>>,
+  slugs: string[]
+) {
+  if (slugs.length === 0) return [];
+  const url = new URL(`${config.restUrl}/onsen_accommodation_official_filter_facts`);
+  url.searchParams.set(
+    'select',
+    'accommodation_slug,filter_code,scope_key,scope_label_ko,availability,filter_value,filter_status,official_original_text,official_source_url,official_source_checked_at'
+  );
+  url.searchParams.set('accommodation_slug', `in.(${slugs.map((slug) => `"${slug}"`).join(',')})`);
+
+  try {
+    const response = await fetch(url, {
+      headers: {
+        apikey: config.apiKey,
+        authorization: `Bearer ${config.apiKey}`,
+      },
+      next: { revalidate: 60, tags: ['onsen-accommodation-official-facts'] },
+    });
+    if (!response.ok) return [];
+    return await response.json() as OnsenAccommodationOfficialFilterFactRow[];
+  } catch {
+    return [];
+  }
 }
 
 async function readPublishedOnsenVerdicts(
@@ -888,12 +931,16 @@ export async function readOnsenCandidates(): Promise<OnsenCandidate[]> {
     if (rows.length === 0) {
       accommodations = onsenCandidates.map(enrichOnsenCandidate);
     } else {
-      const verdictsBySlug = await readPublishedOnsenVerdicts(
-        config,
-        rows.map((row) => row.slug),
-        'accommodation'
-      );
-      accommodations = rows.map((row) => mapOnsenAccommodation(row, verdictsBySlug.get(row.slug)));
+      const slugs = rows.map((row) => row.slug);
+      const [verdictsBySlug, officialFilterFacts] = await Promise.all([
+        readPublishedOnsenVerdicts(config, slugs, 'accommodation'),
+        readAccommodationOfficialFilterFacts(config, slugs),
+      ]);
+      accommodations = rows.map((row) => mapOnsenAccommodation(
+        row,
+        verdictsBySlug.get(row.slug),
+        officialFilterFacts.filter((fact) => fact.accommodation_slug === row.slug)
+      ));
     }
   } catch {
     accommodations = onsenCandidates.map(enrichOnsenCandidate);

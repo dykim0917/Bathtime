@@ -4,6 +4,7 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 
 import type { Map as MapLibreMap, Marker } from 'maplibre-gl';
 import { useEffect, useRef, useState } from 'react';
+import type { BathtimeLocale } from '@web/lib/i18n';
 import type { OnsenMapPoint } from '@web/lib/onsenMap';
 import styles from './results.module.css';
 
@@ -11,6 +12,7 @@ type OnsenResultsMapProps = {
   points: OnsenMapPoint[];
   resizeSignal: number;
   onSelectPoint: (targetId: string) => void;
+  locale?: BathtimeLocale;
 };
 
 const koreanFirstName = [
@@ -23,7 +25,15 @@ const koreanFirstName = [
   ['get', 'name:latin'],
 ];
 
-export function OnsenResultsMap({ points, resizeSignal, onSelectPoint }: OnsenResultsMapProps) {
+const englishFirstName = [
+  'coalesce',
+  ['get', 'name_en'],
+  ['get', 'name:en'],
+  ['get', 'name:latin'],
+  ['get', 'name'],
+];
+
+export function OnsenResultsMap({ points, resizeSignal, onSelectPoint, locale = 'ko' }: OnsenResultsMapProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<MapLibreMap | null>(null);
   const markersRef = useRef<Marker[]>([]);
@@ -63,14 +73,14 @@ export function OnsenResultsMap({ points, resizeSignal, onSelectPoint }: OnsenRe
           markerElement.className = styles.mapMarker;
           markerElement.textContent = String(point.count);
           markerElement.dataset.pointId = point.id;
-          markerElement.setAttribute('aria-label', `${point.label} ${point.count}곳`);
+          markerElement.setAttribute('aria-label', locale === 'en' ? `${point.label}, ${point.count} results` : `${point.label} ${point.count}곳`);
 
           const popupContent = document.createElement('div');
           const popupTitle = document.createElement('strong');
           const popupCount = document.createElement('span');
           popupContent.className = styles.mapPopup;
           popupTitle.textContent = point.label;
-          popupCount.textContent = `${point.count}곳`;
+          popupCount.textContent = locale === 'en' ? `${point.count} results` : `${point.count}곳`;
           popupContent.append(popupTitle, popupCount);
 
           const popup = new maplibregl.Popup({
@@ -96,7 +106,7 @@ export function OnsenResultsMap({ points, resizeSignal, onSelectPoint }: OnsenRe
             if (layer.type !== 'symbol') continue;
             const textField = layer.layout?.['text-field'];
             if (!textField || !JSON.stringify(textField).includes('name')) continue;
-            map.setLayoutProperty(layer.id, 'text-field', koreanFirstName);
+            map.setLayoutProperty(layer.id, 'text-field', locale === 'en' ? englishFirstName : koreanFirstName);
             localizedLayers += 1;
           }
           if (containerRef.current) containerRef.current.dataset.localizedLayers = String(localizedLayers);
@@ -127,7 +137,7 @@ export function OnsenResultsMap({ points, resizeSignal, onSelectPoint }: OnsenRe
       mapRef.current?.remove();
       mapRef.current = null;
     };
-  }, [onSelectPoint, points]);
+  }, [locale, onSelectPoint, points]);
 
   useEffect(() => {
     const timer = window.setTimeout(() => mapRef.current?.resize(), 300);
@@ -136,10 +146,10 @@ export function OnsenResultsMap({ points, resizeSignal, onSelectPoint }: OnsenRe
 
   return (
     <div className={styles.mapCanvasWrap} data-map-status={status}>
-      <div ref={containerRef} className={styles.mapCanvas} aria-label="검색 결과 온천지 지도" />
-      {status === 'loading' ? <span className={styles.mapStatus}>지도를 불러오는 중입니다.</span> : null}
-      {status === 'error' ? <span className={styles.mapStatus}>지도를 불러오지 못했습니다.</span> : null}
-      {status === 'ready' && points.length === 0 ? <span className={styles.mapStatus}>표시할 온천지가 없습니다.</span> : null}
+      <div ref={containerRef} className={styles.mapCanvas} aria-label={locale === 'en' ? 'Onsen result map' : '검색 결과 온천지 지도'} />
+      {status === 'loading' ? <span className={styles.mapStatus}>{locale === 'en' ? 'Loading map…' : '지도를 불러오는 중입니다.'}</span> : null}
+      {status === 'error' ? <span className={styles.mapStatus}>{locale === 'en' ? 'The map could not be loaded.' : '지도를 불러오지 못했습니다.'}</span> : null}
+      {status === 'ready' && points.length === 0 ? <span className={styles.mapStatus}>{locale === 'en' ? 'No onsen areas to show.' : '표시할 온천지가 없습니다.'}</span> : null}
     </div>
   );
 }
