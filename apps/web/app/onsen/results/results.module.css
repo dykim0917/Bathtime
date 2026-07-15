@@ -569,6 +569,22 @@
   white-space: nowrap;
 }
 
+.resultConditionState {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  gap: var(--bt-space-1);
+  color: var(--v2-primary-active);
+  font-size: var(--v2-meta);
+  font-weight: var(--bt-weight-semibold);
+  line-height: 1.4;
+}
+
+.resultConditionState[data-status='conditional'],
+.resultConditionState[data-status='needs_check'] {
+  color: var(--v2-muted);
+}
+
 .resultVerdict {
   display: -webkit-box;
   overflow: hidden;
@@ -641,6 +657,13 @@
   font-size: var(--v2-small);
   font-weight: var(--bt-weight-semibold);
   line-height: 1.45;
+}
+
+.resultFacts small {
+  color: var(--v2-muted);
+  font-size: 10px;
+  font-weight: var(--bt-weight-medium);
+  line-height: 1.4;
 }
 
 .resultFacts > svg {

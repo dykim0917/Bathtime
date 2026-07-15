@@ -1,4 +1,4 @@
 interface:
-  display_name: "Bathtime Onsen Facility Researcher"
-  short_description: "온천시설 후보·후기 신호를 시설형 기준으로 조사"
-  default_prompt: "Use $bathtime-onsen-facility-review-signal-researcher to discover or verify Japanese onsen facility candidates, classify their facility models, and produce Bathtime-ready candidate or review signals."
+  display_name: "Bathtime Onsen Facility Research Pipeline"
+  short_description: "온천시설 후보부터 P0·딥리서치 QA까지 조사"
+  default_prompt: "Use $bathtime-onsen-facility-review-signal-researcher to run a regional Japanese onsen facility pipeline from candidate discovery through review-ledger QA and P0 decisions."

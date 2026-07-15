@@ -12,11 +12,11 @@ export const onsenEntryIntentMeta: Record<OnsenEntryIntent, {
   resultDescription: string;
 }> = {
   stay_private: {
-    eyebrow: '둘이 함께 쓰는 온천',
-    title: '둘만 같은 탕에 들어가고 싶어요.',
-    description: '객실 안 온천탕과 대절탕을 나누고, 예약·선착순 같은 이용 방식까지 확인합니다.',
-    resultTitle: '둘이 함께 쓸 수 있는 온천',
-    resultDescription: '객실 내 프라이빗탕과 대절탕이 확인된 숙소부터 봅니다.',
+    eyebrow: '대절탕·가족탕',
+    title: '일행끼리 탕을 이용하고 싶어요.',
+    description: '대절탕과 가족탕, 객실 내 탕을 나누고 예약·선착순 같은 이용 방식까지 확인합니다.',
+    resultTitle: '대절탕·가족탕을 찾기 좋은 온천',
+    resultDescription: '대절탕·가족탕과 객실 내 탕이 확인된 숙소부터 봅니다.',
   },
   stay_bath_depth: {
     eyebrow: '대욕장이 여행의 이유',

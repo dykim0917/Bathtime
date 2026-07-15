@@ -126,7 +126,10 @@ export function getOnsenDecisionProfile(candidate: OnsenCandidate): OnsenDecisio
   const required = entityType === 'facility' ? facilityRequiredCodes : accommodationRequiredCodes;
   const presentCodes = new Set(facts.filter((fact) => fact.status !== 'needs_check').map((fact) => fact.code));
   if (primaryOfficialLink) presentCodes.add(entityType === 'facility' ? 'official_action' : 'booking_action');
-  const coverage = Math.round((required.filter((code) => presentCodes.has(code)).length / required.length) * 100);
+  const decisionAnswers = candidate.decisionAnswers ?? [];
+  const coverage = decisionAnswers.length > 0
+    ? Math.round((decisionAnswers.filter((answer) => answer.status !== 'needs_check').length / decisionAnswers.length) * 100)
+    : Math.round((required.filter((code) => presentCodes.has(code)).length / required.length) * 100);
 
   const experience = uniqueFactsByCode(facts.filter((fact) => experienceCodes.has(fact.code))).slice(0, 8);
   const usage = uniqueFactsByCode(facts.filter((fact) => usageCodes.has(fact.code))).slice(0, 6);

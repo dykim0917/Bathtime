@@ -61,6 +61,15 @@ Always write the final report in Korean unless the user asks otherwise.
    - Include a collection briefing before interpretation.
    - State the data-quality grade and what would be needed to upgrade confidence.
 
+7. **Write and gate the Korean card summary**
+   - Read `docs/03-content/onsen-card-summary-guide.md`.
+   - Produce `editorialCardSummary` with separate `official_basis` and `review_basis`.
+   - Lead with a place-specific official fact such as view, bath scale, detached-room structure, or bath location. Do not lead with verdict labels.
+   - Use `후기` in public copy. Do not expose the internal term `이용 경험`.
+   - Convert unfamiliar Japanese units such as `畳` to Korean-readable metric units while preserving the original and conversion basis in evidence.
+   - Use a definitive editorial conclusion after QA. Do not repeat `확인됩니다` in the card sentence.
+   - Before active publication, run the card-summary dry-run, apply, and targeted verdict quality gate documented in the guide. Missing or weak evidence stays draft.
+
 ## Recommended Source Tactics
 
 - Use browser/Aside for dynamic pages, Google hotel panels, logged-in or localized pages, screenshots, visible review counts, and UI-only review bodies.

@@ -1,12 +1,35 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 
+import { validateEditorialCardSummary } from './lib/onsen_card_summary_contract.mjs';
+
 const repoRoot = process.cwd();
-const runDate = '2026-07-10';
-const pipelineVersion = 'facility_verdict_v1';
+const runDate = process.argv.find((argument) => argument.startsWith('--run-date='))?.split('=')[1] ?? '2026-07-10';
+const pipelineVersion = 'facility_verdict_v2';
 const shouldApply = process.argv.includes('--apply');
+const requireCardSummary = shouldApply || process.argv.includes('--require-card-summary');
+const cardSummaryInput = process.argv
+  .find((argument) => argument.startsWith('--card-summary-input='))
+  ?.slice('--card-summary-input='.length) ?? '';
+const regionGroups = process.argv
+  .find((argument) => argument.startsWith('--region-groups='))
+  ?.split('=')[1]
+  .split(',')
+  .map((value) => value.trim())
+  .filter(Boolean) ?? [];
+const targetSlugs = process.argv
+  .find((argument) => argument.startsWith('--target-slugs='))
+  ?.split('=')[1]
+  .split(',')
+  .map((value) => value.trim())
+  .filter(Boolean) ?? [];
+const outputKey = process.argv
+  .find((argument) => argument.startsWith('--output-key='))
+  ?.split('=')[1]
+  .trim()
+  .replace(/[^a-z0-9_-]+/gi, '_') ?? '';
 const outputDir = path.join(repoRoot, 'research', 'onsen-db-seed');
-const outputBase = path.join(outputDir, `onsen_facility_verdict_pipeline_${runDate}`);
+const outputBase = path.join(outputDir, `onsen_facility_verdict_pipeline${outputKey ? `_${outputKey}` : ''}_${runDate}`);
 const paths = {
   json: `${outputBase}.json`,
   csv: `${outputBase}.csv`,
@@ -14,6 +37,20 @@ const paths = {
   sql: `${outputBase}.upsert.sql`,
   loadReport: `${outputBase}_load_report.md`,
 };
+
+function readCardSummarySeed() {
+  if (!cardSummaryInput) return new Map();
+  const inputPath = path.resolve(repoRoot, cardSummaryInput);
+  const payload = JSON.parse(readFileSync(inputPath, 'utf8'));
+  const records = Array.isArray(payload.records) ? payload.records : [];
+  const bySlug = new Map();
+  for (const record of records) {
+    if (!record?.slug || !record.editorialCardSummary) throw new Error(`Invalid facility card summary record in ${cardSummaryInput}.`);
+    if (bySlug.has(record.slug)) throw new Error(`Duplicate facility card summary slug: ${record.slug}`);
+    bySlug.set(record.slug, record.editorialCardSummary);
+  }
+  return bySlug;
+}
 
 const signalLabels = {
   water_texture: '물의 감촉',
@@ -187,7 +224,9 @@ function platformLabel(value) {
 }
 
 function directPlatforms(manifest) {
-  return unique((Array.isArray(manifest) ? manifest : []).map((item) => platformLabel(item?.platform_label ?? item?.platform ?? item?.source)));
+  return unique((Array.isArray(manifest) ? manifest : [])
+    .filter((item) => Number(item?.dayuse_direct_reviews ?? item?.facility_related_direct_reviews ?? item?.direct_full_reviews ?? 0) > 0)
+    .map((item) => platformLabel(item?.platform_label ?? item?.platform ?? item?.source)));
 }
 
 function latestBySlug(rows) {
@@ -289,10 +328,10 @@ function createVerdictItem(signal, order, denominator) {
   const count = Number(signal.source_count);
   const direction = signal.signal_direction;
   const directionText = direction === 'positive'
-    ? '긍정 방향으로 분류된 독립 이용 경험입니다.'
+    ? '긍정적으로 평가한 후기입니다.'
     : direction === 'mixed'
-      ? '장점과 이용 조건이 함께 담긴 혼합 방향입니다.'
-      : '불편이나 주의 조건으로 분류된 이용 경험입니다.';
+      ? '장점과 이용 조건이 함께 담긴 후기입니다.'
+      : '불편이나 주의할 점을 담은 후기입니다.';
   const headline = direction === 'positive'
     ? `${area}의 ${withTopic(label)} 이 시설의 선택 이유입니다.`
     : direction === 'mixed'
@@ -311,7 +350,7 @@ function createVerdictItem(signal, order, denominator) {
       direction_counts: directionCounts(direction, count),
       raw_mention_count: Number(signal.mention_count),
     },
-    body: `${area} 범위에서 직접 읽은 시설 이용 경험 ${denominator}건 중 ${label} 관련 독립 이용 경험 ${count}건을 ${signal.platform_count}개 플랫폼에서 확인했습니다. ${directionText}`,
+    body: `직접 읽은 시설 후기 ${denominator}건 중 ${area}의 ${withObject(label)} 다룬 후기 ${count}건이 ${signal.platform_count}개 플랫폼에 분산됩니다. ${directionText}`,
     verdict: conclusionFor(signal),
     chip_label: label,
     signal_key: signal.signal_type,
@@ -332,18 +371,19 @@ function headlineFor(facility, items, draftReason) {
 }
 
 function draftReasonFor(facility, evidence, platformCount) {
+  if (facility.official_profile?.operation_status === 'temporarily_closed_pending_reopening_notice') return 'temporarily_closed_reopening_unconfirmed';
   if (!evidence) return 'latest_review_evidence_missing';
   if (facility.cleanup_status === 'split_needed' || evidence.collection_readiness === 'scope_split') return 'dayuse_lodging_scope_split_required';
   if (evidence.collection_readiness === 'hold') return 'collection_hold';
   if (evidence.evidence_grade === 'D') return 'evidence_grade_d';
-  if (Number(evidence.facility_related_direct_reviews) < 50) return 'facility_direct_reviews_below_50';
+  if (Number(evidence.dayuse_only_direct_reviews ?? evidence.facility_related_direct_reviews) < 50) return 'facility_direct_reviews_below_50';
   if (platformCount < 2) return 'direct_body_platforms_below_2';
   return null;
 }
 
 function initialLevel(evidence, platformCount, draftReason) {
   if (draftReason) return 'draft';
-  if (Number(evidence.facility_related_direct_reviews) >= 300 && platformCount >= 3) return 'full';
+  if (Number(evidence.dayuse_only_direct_reviews ?? evidence.facility_related_direct_reviews) >= 300 && platformCount >= 3) return 'full';
   return 'lite';
 }
 
@@ -375,18 +415,18 @@ function createFactStatuses(facility, evidence, filterFacts, waterFacts, publish
     },
     {
       code: 'review_evidence',
-      label: '직접 이용 경험 근거',
+      label: '직접 후기 근거',
       status: published ? 'confirmed' : 'needs_check',
-      value: `${evidence?.facility_related_direct_reviews ?? 0}건 · ${evidence?.evidence_grade ?? 'D'}등급`,
+      value: `${evidence?.dayuse_only_direct_reviews ?? evidence?.facility_related_direct_reviews ?? 0}건 · ${evidence?.evidence_grade ?? 'D'}등급`,
       source: evidence?.source_file ?? 'onsen_facility_review_evidence',
     },
   ];
 }
 
-function createVerdict(facility, evidence, signals, filterFacts, waterFacts) {
+function createVerdict(facility, evidence, signals, filterFacts, waterFacts, editorialCardSummary) {
   const platforms = directPlatforms(evidence?.direct_review_manifest);
   const directPlatformCount = platforms.length;
-  const denominator = Number(evidence?.facility_related_direct_reviews ?? 0);
+  const denominator = Number(evidence?.dayuse_only_direct_reviews ?? evidence?.facility_related_direct_reviews ?? 0);
   let draftReason = draftReasonFor(facility, evidence, directPlatformCount);
   let level = initialLevel(evidence, directPlatformCount, draftReason);
   let selected = evidence ? selectSignals(signals, level === 'draft' ? 'lite' : level, denominator, directPlatformCount) : [];
@@ -430,6 +470,7 @@ function createVerdict(facility, evidence, signals, filterFacts, waterFacts) {
         review_used_for_method: false,
       },
       visible_review_count_used: false,
+      editorial_card_summary: editorialCardSummary ?? null,
       pipeline_version: pipelineVersion,
     },
     items,
@@ -446,13 +487,25 @@ function validateVerdicts(verdicts, evidenceBySlug) {
     const evidence = evidenceBySlug.get(verdict.target_slug);
     const denominator = verdict.briefing.experiences_read;
     if (verdict.target_type !== 'facility') errors.push(`${verdict.target_slug}: invalid target_type`);
-    if (denominator !== Number(evidence?.facility_related_direct_reviews ?? 0)) errors.push(`${verdict.target_slug}: direct denominator mismatch`);
+    if (denominator !== Number(evidence?.dayuse_only_direct_reviews ?? evidence?.facility_related_direct_reviews ?? 0)) errors.push(`${verdict.target_slug}: direct denominator mismatch`);
     if (verdict.briefing.visible_review_count_used !== false) errors.push(`${verdict.target_slug}: visible review count gate missing`);
     if (verdict.briefing.water_judgment.review_used_for_method !== false) errors.push(`${verdict.target_slug}: review leaked into method judgment`);
     if (verdict.status === 'published' && verdict.level === 'draft') errors.push(`${verdict.target_slug}: published draft`);
     if (verdict.status === 'published' && verdict.briefing.cleanup_status === 'split_needed') errors.push(`${verdict.target_slug}: scope split published`);
     if (verdict.level === 'full' && (denominator < 300 || verdict.briefing.platform_count < 3 || verdict.items.length < 3)) errors.push(`${verdict.target_slug}: full gate failed`);
     if (verdict.level === 'lite' && (denominator < 50 || verdict.briefing.platform_count < 2 || verdict.items.length !== 2)) errors.push(`${verdict.target_slug}: lite gate failed`);
+    const cardSummary = verdict.briefing.editorial_card_summary;
+    if (requireCardSummary && verdict.status === 'published' && cardSummary?.status !== 'published') {
+      errors.push(`${verdict.target_slug}: published 시설 판정에 published 카드 요약이 없습니다.`);
+    }
+    if (cardSummary) {
+      errors.push(...validateEditorialCardSummary(cardSummary, {
+        repoRoot,
+        slug: verdict.target_slug,
+        targetType: 'facility',
+        canonicalCounts: { directReviewCount: denominator },
+      }));
+    }
     for (const item of verdict.items) {
       const threshold = itemThreshold(verdict.level === 'full' ? 'full' : 'lite', denominator);
       if (item.counts.mentions > denominator) errors.push(`${verdict.target_slug}: mentions exceed denominator`);
@@ -471,7 +524,7 @@ function csvEscape(value) {
 }
 
 function writeCsv(filePath, rows) {
-  const columns = ['target_slug', 'name_ko', 'level', 'status', 'experiences_read', 'platform_count', 'item_count', 'evidence_grade', 'collection_readiness', 'cleanup_status', 'draft_reason', 'headline'];
+  const columns = ['target_slug', 'name_ko', 'level', 'status', 'experiences_read', 'platform_count', 'item_count', 'evidence_grade', 'collection_readiness', 'cleanup_status', 'draft_reason', 'card_summary_status', 'card_summary', 'headline'];
   const lines = [columns.join(','), ...rows.map((row) => columns.map((column) => csvEscape(row[column])).join(','))];
   writeFileSync(filePath, `${lines.join('\n')}\n`);
 }
@@ -523,6 +576,8 @@ function writeArtifacts(payload) {
     collection_readiness: verdict.briefing.collection_readiness,
     cleanup_status: verdict.briefing.cleanup_status,
     draft_reason: verdict.briefing.draft_reason ?? '',
+    card_summary_status: verdict.briefing.editorial_card_summary?.status ?? '',
+    card_summary: verdict.briefing.editorial_card_summary?.text ?? '',
     headline: verdict.headline,
   }));
   writeCsv(paths.csv, summaryRows);
@@ -531,21 +586,27 @@ function writeArtifacts(payload) {
     result[`${verdict.status}_${verdict.level}`] = (result[`${verdict.status}_${verdict.level}`] ?? 0) + 1;
     return result;
   }, {});
-  const report = `# 온천시설 판정 데이터 파이프라인\n\n- 생성일: ${runDate}\n- 파이프라인: \`${pipelineVersion}\`\n- 대상: active 온천시설 ${payload.verdicts.length}곳\n- 공개 full: ${counts.published_full ?? 0}곳\n- 공개 lite: ${counts.published_lite ?? 0}곳\n- 내부 draft: ${counts.draft_draft ?? 0}곳\n\n## 공개 게이트\n\n- full: 직접 읽은 시설 관련 이용 경험 300건 이상, 직접 본문 플랫폼 3개 이상, 채택 근거 3개 이상\n- lite: 직접 읽은 시설 관련 이용 경험 50건 이상, 직접 본문 플랫폼 2개 이상, 채택 근거 2개\n- 항목: full 10건 / lite 5건 이상이면서 분모의 2% 이상, 2플랫폼 이상\n- \`scope_split\`, D등급, 단일 플랫폼은 사용자에게 판정을 공개하지 않습니다.\n- 플랫폼 노출 후기 수는 분모와 항목 집계에 사용하지 않았습니다.\n- 물의 감촉·색 이용 경험은 온천수 방식 판정에 사용하지 않았습니다.\n\n## 시설별 결과\n\n${markdownTable(summaryRows, ['target_slug', 'name_ko', 'level', 'status', 'experiences_read', 'platform_count', 'item_count', 'draft_reason'])}\n\n## 후속 보강\n\n${summaryRows.filter((row) => row.status === 'draft').map((row) => `- \`${row.target_slug}\`: ${row.draft_reason}`).join('\n') || '- 없음'}\n`;
+  const report = `# 온천시설 판정 데이터 파이프라인\n\n- 생성일: ${runDate}\n- 파이프라인: \`${pipelineVersion}\`\n- 대상: active 온천시설 ${payload.verdicts.length}곳\n- 공개 full: ${counts.published_full ?? 0}곳\n- 공개 lite: ${counts.published_lite ?? 0}곳\n- 내부 draft: ${counts.draft_draft ?? 0}곳\n\n## 공개 게이트\n\n- full: 직접 읽은 당일입욕 후기 300건 이상, 직접 본문 플랫폼 3개 이상, 채택 근거 3개 이상\n- lite: 직접 읽은 당일입욕 후기 50건 이상, 직접 본문 플랫폼 2개 이상, 채택 근거 2개\n- 항목: full 10건 / lite 5건 이상이면서 분모의 2% 이상, 2플랫폼 이상\n- DB 적용 시 공식 사실과 후기 근거를 분리한 published 카드 요약이 반드시 필요합니다.\n- \`scope_split\`, D등급, 단일 플랫폼은 사용자에게 판정을 공개하지 않습니다.\n- 플랫폼 노출 후기 수는 분모와 항목 집계에 사용하지 않았습니다.\n- 물의 감촉·색 후기는 온천수 방식 판정에 사용하지 않았습니다.\n\n## 시설별 결과\n\n${markdownTable(summaryRows, ['target_slug', 'name_ko', 'level', 'status', 'experiences_read', 'platform_count', 'item_count', 'card_summary_status', 'draft_reason'])}\n\n## 후속 보강\n\n${summaryRows.filter((row) => row.status === 'draft').map((row) => `- \`${row.target_slug}\`: ${row.draft_reason}`).join('\n') || '- 없음'}\n`;
   writeFileSync(paths.report, report);
 }
 
 async function readSourceData(config) {
-  const facilities = await request(config, 'onsen_facilities', {
-    select: 'slug,name_ko,facility_type,facility_model,primary_archetype,cleanup_status,official_url,status',
+  const facilityFilters = {
+    select: 'slug,name_ko,facility_type,facility_model,primary_archetype,cleanup_status,official_url,official_profile,status,region_group',
     status: 'eq.active',
     order: 'slug.asc',
+  };
+  if (regionGroups.length > 0) facilityFilters.region_group = `in.(${regionGroups.join(',')})`;
+  if (targetSlugs.length > 0) facilityFilters.slug = `in.(${targetSlugs.map((slug) => `"${slug}"`).join(',')})`;
+  const facilities = await request(config, 'onsen_facilities', {
+    ...facilityFilters,
   });
+  if (facilities.length === 0) throw new Error(`No active facilities found${regionGroups.length > 0 ? ` for ${regionGroups.join(', ')}` : ''}.`);
   const slugs = facilities.map((row) => row.slug);
   const inSlugs = `in.(${slugs.map((slug) => `"${slug}"`).join(',')})`;
   const [evidenceRows, filterFacts, waterFacts] = await Promise.all([
     request(config, 'onsen_facility_review_evidence', {
-      select: 'id,facility_slug,collected_on,direct_review_manifest,facility_related_direct_reviews,direct_body_platform_count,evidence_grade,collection_readiness,source_file',
+      select: 'id,facility_slug,collected_on,direct_review_manifest,facility_related_direct_reviews,dayuse_only_direct_reviews,direct_body_platform_count,evidence_grade,collection_readiness,source_file',
       facility_slug: inSlugs,
       order: 'facility_slug.asc,collected_on.desc',
     }),
@@ -596,6 +657,7 @@ async function applyVerdicts(config, verdicts) {
 
 async function main() {
   const config = readConfig();
+  const cardSummaryBySlug = readCardSummarySeed();
   const { facilities, evidenceBySlug, filterFacts, waterFacts, signals } = await readSourceData(config);
   const signalsByEvidence = new Map();
   for (const signal of signals) {
@@ -610,14 +672,19 @@ async function main() {
       evidence,
       evidence ? signalsByEvidence.get(evidence.id) ?? [] : [],
       filterFacts.filter((fact) => fact.facility_slug === facility.slug),
-      waterFacts.filter((fact) => fact.facility_slug === facility.slug)
+      waterFacts.filter((fact) => fact.facility_slug === facility.slug),
+      cardSummaryBySlug.get(facility.slug)
     );
   });
+  const unknownSummarySlugs = [...cardSummaryBySlug.keys()].filter((slug) => !facilities.some((facility) => facility.slug === slug));
+  if (unknownSummarySlugs.length > 0) throw new Error(`Card summary target is not in this facility run: ${unknownSummarySlugs.join(', ')}`);
   validateVerdicts(verdicts, evidenceBySlug);
   const payload = {
     generated_at: runDate,
     pipeline_version: pipelineVersion,
-    count_policy: 'Visible review pools are excluded. experiences_read equals facility_related_direct_reviews. Item mentions use source_count, while raw mention_count is preserved separately.',
+    region_groups: regionGroups,
+    target_slugs: targetSlugs,
+    count_policy: 'Visible review pools are excluded. experiences_read equals dayuse_only_direct_reviews when available, with facility_related_direct_reviews used only for legacy evidence. Item mentions use source_count, while raw mention_count is preserved separately.',
     water_policy: 'Reviews may support texture and color signals but never water method classification.',
     facility_names: Object.fromEntries(facilities.map((row) => [row.slug, row.name_ko])),
     verdicts,

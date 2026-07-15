@@ -3545,10 +3545,10 @@ p {
 
 .onsen-search-box-autocomplete .onsen-search-popover {
   grid-template-columns: minmax(0, 1fr);
-  max-height: 260px;
+  max-height: 400px;
 }
 
-.onsen-search-box-autocomplete .onsen-popover-section:first-child {
+.onsen-search-box-autocomplete .onsen-autocomplete-section {
   border-bottom: 0;
   padding-bottom: 0;
 }
@@ -3592,10 +3592,57 @@ p {
   gap: var(--bt-space-3);
 }
 
-.onsen-popover-section:first-child {
+.onsen-use-mode-section {
   grid-column: 1 / -1;
   border-bottom: 1px solid var(--bt-color-border);
-  padding-bottom: var(--bt-space-3);
+  padding-bottom: var(--bt-space-4);
+}
+
+.onsen-use-mode-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--bt-space-2);
+}
+
+.onsen-use-mode-list a {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--bt-space-2);
+  min-height: 58px;
+  border: 1px solid var(--bt-color-border);
+  border-radius: var(--bt-radius-md);
+  color: var(--bt-color-primary-active);
+  padding: var(--bt-space-2) var(--bt-space-3);
+  transition:
+    border-color var(--bt-motion-base) var(--bt-ease-out),
+    background var(--bt-motion-base) var(--bt-ease-out);
+}
+
+.onsen-use-mode-list a:hover,
+.onsen-use-mode-list a:focus-visible {
+  border-color: var(--bt-color-border-strong);
+  background: var(--bt-surface-subtle);
+  outline: none;
+}
+
+.onsen-use-mode-list strong,
+.onsen-use-mode-list small {
+  display: block;
+}
+
+.onsen-use-mode-list strong {
+  color: var(--bt-color-ink);
+  font-size: var(--bt-text-small);
+  font-weight: var(--bt-weight-semibold);
+  line-height: var(--bt-leading-ui);
+}
+
+.onsen-use-mode-list small {
+  margin-top: 2px;
+  color: var(--bt-color-muted);
+  font-size: 11px;
+  line-height: var(--bt-leading-ui);
 }
 
 .onsen-popover-section-head {
@@ -9982,6 +10029,15 @@ p {
   .onsen-mobile-search-sheet .onsen-popover-section:first-child {
     border-bottom: 0;
     padding-bottom: 0;
+  }
+
+  .onsen-mobile-search-sheet .onsen-use-mode-section {
+    border-bottom: 1px solid var(--bt-color-border);
+    padding-bottom: var(--bt-space-5);
+  }
+
+  .onsen-mobile-search-sheet .onsen-use-mode-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .onsen-mobile-search-sheet .onsen-place-suggestion-list {

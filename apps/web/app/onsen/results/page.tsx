@@ -15,7 +15,7 @@ import {
 } from '@phosphor-icons/react/ssr';
 import { TermInfo, TermTooltip } from '@web/components/TermInfo';
 import { OnsenResultImpression, OnsenResultsAnalytics } from '@web/components/OnsenAnalytics';
-import { getOnsenEntityType, type OnsenCandidate, type OnsenEntityType } from '@web/lib/onsenCatalog';
+import { getOnsenEntityType, type OnsenCandidate, type OnsenDecisionFact, type OnsenEntityType } from '@web/lib/onsenCatalog';
 import { getOnsenCardSummary, normalizeOnsenPublicCopy } from '@web/lib/onsenCopy';
 import { readOnsenCandidates } from '@web/lib/onsenData';
 import { getOnsenDecisionProfile, type OnsenDecisionProfile } from '@web/lib/onsenDecision';
@@ -258,10 +258,23 @@ function getReviewVolume(candidate: OnsenCandidate) {
   return candidate.verdict?.briefing.experiencesRead ?? candidate.directReviews ?? 0;
 }
 
-function getResultDecisionFacts(profile: OnsenDecisionProfile, entityType: OnsenEntityType) {
-  const preferredCodes = entityType === 'facility'
+function getIntentDecisionCodes(entryIntent: OnsenEntryIntentValue, entityType: OnsenEntityType, bath: string[]) {
+  if (bath.includes('room_bath')) return ['room_bath', 'private_bath_reservation_method', 'bath_composition'];
+  if (entryIntent === 'stay_private') return ['room_bath', 'private_bath', 'family_bath', 'private_bath_reservation_method'];
+  if (entryIntent === 'stay_bath_depth') return ['public_bath', 'open_air_bath', 'bath_count', 'bath_composition'];
+  if (entryIntent === 'city_facility') return ['opening_hours', 'adult_price_yen', 'towel_policy', 'bath_count'];
+  return entityType === 'facility'
     ? ['adult_price_yen', 'opening_hours', 'bath_count', 'bath_composition']
     : ['room_bath', 'private_bath', 'public_bath', 'bath_composition'];
+}
+
+function getResultDecisionFacts(
+  profile: OnsenDecisionProfile,
+  entityType: OnsenEntityType,
+  entryIntent: OnsenEntryIntentValue,
+  bath: string[]
+) {
+  const preferredCodes = getIntentDecisionCodes(entryIntent, entityType, bath);
   const allFacts = [...profile.trip, ...profile.usage, ...profile.experience];
   const confirmedFacts = allFacts.filter((fact) => fact.status !== 'needs_check');
   const selected = [
@@ -270,6 +283,24 @@ function getResultDecisionFacts(profile: OnsenDecisionProfile, entityType: Onsen
   ]
     .filter((fact): fact is NonNullable<typeof fact> => Boolean(fact));
   return [...new Map(selected.map((fact) => [fact.code, fact])).values()].slice(0, 2);
+}
+
+function getSelectedConditionState(
+  profile: OnsenDecisionProfile,
+  entityType: OnsenEntityType,
+  entryIntent: OnsenEntryIntentValue,
+  bath: string[]
+) {
+  if (entryIntent === 'unknown' && bath.length === 0) return null;
+  const facts = [...profile.trip, ...profile.usage, ...profile.experience];
+  const evidence = getIntentDecisionCodes(entryIntent, entityType, bath)
+    .map((code) => facts.find((fact) => fact.code === code))
+    .find((fact): fact is OnsenDecisionFact => Boolean(fact));
+
+  if (!evidence) return { status: 'needs_check' as const, label: '운영 조건 확인 필요' };
+  if (evidence.status === 'confirmed') return { status: evidence.status, label: '선택 조건 확인' };
+  if (evidence.status === 'conditional') return { status: evidence.status, label: '조건부 이용' };
+  return { status: evidence.status, label: '공식 확인 필요' };
 }
 
 function FilterOption({
@@ -703,7 +734,8 @@ export default async function OnsenPage({
             const verdictStamp = formatVerdictStamp(candidate);
             const waterOperation = normalizeResultCardCopy(candidate.waterDecision.operation || candidate.waterDecision.springType);
             const decisionProfile = decisionProfiles.get(candidate.slug) ?? getOnsenDecisionProfile(candidate);
-            const resultDecisionFacts = getResultDecisionFacts(decisionProfile, candidateType);
+            const resultDecisionFacts = getResultDecisionFacts(decisionProfile, candidateType, entryIntent, bath);
+            const selectedConditionState = getSelectedConditionState(decisionProfile, candidateType, entryIntent, bath);
             const resultPosition = rangeStart + pageIndex;
 
             return (
@@ -769,6 +801,14 @@ export default async function OnsenPage({
                       ) : null}
                     </div>
                     {candidate.jaName ? <span className={styles.originalName}>{candidate.jaName}</span> : null}
+                    {selectedConditionState ? (
+                      <span className={styles.resultConditionState} data-status={selectedConditionState.status}>
+                        {selectedConditionState.status === 'confirmed'
+                          ? <CheckCircle size={14} weight="fill" aria-hidden />
+                          : <Warning size={14} weight="bold" aria-hidden />}
+                        {selectedConditionState.label}
+                      </span>
+                    ) : null}
                     <p className={styles.resultVerdict}>{normalizeOnsenPublicCopy(getOnsenCardSummary(candidate))}</p>
                     <div className={styles.resultEvidence}>
                       {verdictStamp ? (
@@ -797,9 +837,12 @@ export default async function OnsenPage({
                       label: '온천수',
                       value: waterOperation,
                     }]).map((fact) => (
-                      <div key={fact.code}>
+                      <div key={fact.code} data-status={'status' in fact ? fact.status : undefined}>
                         <dt>{fact.label}</dt>
                         <dd>{fact.value}</dd>
+                        {'status' in fact && fact.status !== 'confirmed' ? (
+                          <small>{fact.status === 'conditional' ? '조건 확인' : '공식 확인 필요'}</small>
+                        ) : null}
                       </div>
                     ))}
                     <ArrowRight size={18} weight="bold" aria-hidden />

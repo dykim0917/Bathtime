@@ -8,10 +8,11 @@ import { OnsenReviewSection } from '@web/components/OnsenReviewSection';
 import { OnsenSaveButton } from '@web/components/OnsenSaveButton';
 import { OnsenShareButton } from '@web/components/OnsenShareButton';
 import { TermInfo } from '@web/components/TermInfo';
-import { getOnsenEntityType, statusLabels, type OnsenCandidate } from '@web/lib/onsenCatalog';
+import { getOnsenEntityType, statusLabels, type OnsenCandidate, type OnsenDecisionFact } from '@web/lib/onsenCatalog';
 import { getOnsenCardSummary, normalizeOnsenFitCopy, normalizeOnsenPublicCopy, normalizeOnsenSourceLabel } from '@web/lib/onsenCopy';
 import { readOnsenCandidate } from '@web/lib/onsenData';
 import { getOnsenDecisionProfile } from '@web/lib/onsenDecision';
+import { getOnsenDecisionAnswerGroups } from '@web/lib/onsenDecisionAnswers';
 import { normalizeOnsenEntryIntent } from '@web/lib/onsenIntent';
 import { readOnsenReviewAggregate, readOnsenReviewCounts, readOnsenReviews } from '@web/lib/onsenReviews';
 import { OnsenDetailGallery, type OnsenDetailGalleryItem } from './OnsenDetailGallery';
@@ -123,10 +124,48 @@ function normalizeSearchParam(value: string | string[] | undefined) {
   return Array.isArray(value) ? value[0] ?? '' : value ?? '';
 }
 
-function decisionFactStatusLabel(status: 'confirmed' | 'conditional' | 'needs_check') {
+function decisionFactStatusLabel(
+  status: 'confirmed' | 'conditional' | 'needs_check',
+  applicability?: 'applicable' | 'not_applicable'
+) {
+  if (applicability === 'not_applicable') return '해당 없음';
   if (status === 'confirmed') return '확인됨';
-  if (status === 'conditional') return '조건부';
-  return '확인 중';
+  if (status === 'conditional') return '조건 확인';
+  return '공식 확인 필요';
+}
+
+function mergeDecisionFacts(primary: OnsenDecisionFact[], fallback: OnsenDecisionFact[], limit: number) {
+  const facts = [...primary, ...fallback];
+  return [...new Map(facts.map((fact) => [fact.code, fact])).values()].slice(0, limit);
+}
+
+function decisionFactApplicability(fact: OnsenDecisionFact) {
+  if (!('applicability' in fact)) return undefined;
+  return fact.applicability === 'applicable' || fact.applicability === 'not_applicable'
+    ? fact.applicability
+    : undefined;
+}
+
+function selectHeroDecisionFacts(
+  facts: OnsenDecisionFact[],
+  entryIntent: ReturnType<typeof normalizeOnsenEntryIntent>,
+  candidateType: ReturnType<typeof getOnsenEntityType>
+) {
+  const preferredCodes = entryIntent === 'stay_private'
+    ? ['together_private_eligibility', 'room_bath', 'private_bath', 'private_bath_booking_flow']
+    : entryIntent === 'stay_bath_depth'
+      ? ['bath_experience_richness', 'public_bath', 'open_air_bath', 'bath_count']
+      : entryIntent === 'city_facility'
+        ? ['day_use_operation', 'adult_price_yen', 'opening_hours', 'towel_policy']
+        : candidateType === 'facility'
+          ? ['adult_price_yen', 'opening_hours', 'bath_count', 'bath_composition']
+          : ['room_bath', 'private_bath', 'public_bath', 'bath_composition'];
+  const selected = [
+    ...preferredCodes.map((code) => facts.find((fact) => fact.code === code)),
+    ...facts.filter((fact) => fact.status !== 'needs_check'),
+    ...facts,
+  ].filter((fact): fact is OnsenDecisionFact => Boolean(fact));
+  return [...new Map(selected.map((fact) => [fact.code, fact])).values()].slice(0, 3);
 }
 
 function getSiteOrigin() {
@@ -255,16 +294,15 @@ export default async function OnsenDetailPage({ params, searchParams }: PageProp
   const onsenStructuredData = buildOnsenStructuredData(candidate, siteReviewCount);
   const mapSearchUrl = getMapSearchUrl(candidate);
   const decisionProfile = getOnsenDecisionProfile(candidate);
-  const heroDecisionFacts = (candidateType === 'facility'
-    ? [decisionProfile.price, ...decisionProfile.trip, ...decisionProfile.experience]
-    : [
-        ...decisionProfile.experience.filter((fact) => fact.status !== 'needs_check'),
-        ...decisionProfile.experience.filter((fact) => fact.status === 'needs_check'),
-        decisionProfile.price,
-      ])
-    .filter((fact): fact is NonNullable<typeof fact> => Boolean(fact))
-    .filter((fact, index, facts) => facts.findIndex((item) => item.code === fact.code) === index)
-    .slice(0, 2);
+  const decisionAnswerGroups = getOnsenDecisionAnswerGroups(candidate.decisionAnswers);
+  const experienceDecisionFacts = mergeDecisionFacts(decisionAnswerGroups.experience, decisionProfile.experience, 8);
+  const usageDecisionFacts = mergeDecisionFacts(decisionAnswerGroups.usage, decisionProfile.usage, 6);
+  const tripDecisionFacts = mergeDecisionFacts(decisionAnswerGroups.trip, decisionProfile.trip, 8);
+  const heroDecisionFacts = selectHeroDecisionFacts(
+    [...experienceDecisionFacts, ...usageDecisionFacts, ...tripDecisionFacts],
+    entryIntent,
+    candidateType
+  );
   const onsenArea = candidate.location?.onsenArea ?? candidate.region;
 
   return (
@@ -320,10 +358,15 @@ export default async function OnsenDetailPage({ params, searchParams }: PageProp
                 code: 'bath_composition',
                 label: '이용 구성',
                 value: normalizeOnsenPublicCopy(candidate.primaryBath),
+                status: 'needs_check' as const,
               }]).map((fact) => (
-                <div key={fact.code}>
+                <div key={fact.code} data-status={fact.status}>
                   <dt>{fact.label}</dt>
                   <dd>{fact.value}</dd>
+                  <small className={styles.heroFactMeta}>
+                    {decisionFactStatusLabel(fact.status)}
+                    {fact.checkedAt ? ` · ${formatVerificationDate(fact.checkedAt)} 확인` : ''}
+                  </small>
                 </div>
               ))}
             </dl>
@@ -389,11 +432,14 @@ export default async function OnsenDetailPage({ params, searchParams }: PageProp
                   <p>이름보다 실제로 이용할 수 있는 탕 구성을 먼저 봅니다.</p>
                 </header>
                 <dl className={styles.decisionFactList}>
-                  {decisionProfile.experience.slice(0, 6).map((fact) => (
+                  {experienceDecisionFacts.map((fact) => (
                     <div key={`${fact.code}-${fact.scope ?? ''}`} data-status={fact.status}>
                       <dt>{fact.label}</dt>
-                      <dd>{fact.value}</dd>
-                      <dd>{decisionFactStatusLabel(fact.status)}</dd>
+                      <dd>
+                        <span>{fact.value}</span>
+                        {fact.detail ? <small className={styles.decisionFactCheck}><strong>확인할 점</strong>{fact.detail}</small> : null}
+                      </dd>
+                      <dd>{decisionFactStatusLabel(fact.status, decisionFactApplicability(fact))}</dd>
                     </div>
                   ))}
                 </dl>
@@ -406,7 +452,7 @@ export default async function OnsenDetailPage({ params, searchParams }: PageProp
                   <p>예약, 현장 확인, 이용 시간처럼 도착한 뒤 필요한 행동을 순서대로 확인합니다.</p>
                 </header>
                 <div className={styles.usageFactList}>
-                  {decisionProfile.usage.slice(0, 5).map((fact, index) => (
+                  {usageDecisionFacts.map((fact, index) => (
                     <OnsenDecisionFactDetails
                       key={`${fact.code}-${fact.scope ?? ''}`}
                       className={styles.usageFact}
@@ -421,7 +467,7 @@ export default async function OnsenDetailPage({ params, searchParams }: PageProp
                         <span>{String(index + 1).padStart(2, '0')}</span>
                         <strong>{fact.label}</strong>
                         <b>{fact.value}</b>
-                        <small>{decisionFactStatusLabel(fact.status)}</small>
+                        <small>{decisionFactStatusLabel(fact.status, decisionFactApplicability(fact))}</small>
                       </summary>
                       <div>
                         <p>{fact.detail ?? '현재 확인된 범위만 표시합니다. 이용 조건은 예약 또는 방문 전에 다시 확인하세요.'}</p>
@@ -439,13 +485,16 @@ export default async function OnsenDetailPage({ params, searchParams }: PageProp
                   <h3 id="onsen-trip-title">여행 일정에 넣기</h3>
                   <p>요금과 시간, 접근, 숙박 가능 여부를 한곳에서 봅니다.</p>
                 </header>
-                {decisionProfile.trip.length > 0 ? (
+                {tripDecisionFacts.length > 0 ? (
                   <dl className={styles.decisionFactList}>
-                    {decisionProfile.trip.slice(0, 6).map((fact) => (
+                    {tripDecisionFacts.map((fact) => (
                       <div key={`${fact.code}-${fact.scope ?? ''}`} data-status={fact.status}>
                         <dt>{fact.label}</dt>
-                        <dd>{fact.value}</dd>
-                        <dd>{decisionFactStatusLabel(fact.status)}</dd>
+                        <dd>
+                          <span>{fact.value}</span>
+                          {fact.detail ? <small className={styles.decisionFactCheck}><strong>확인할 점</strong>{fact.detail}</small> : null}
+                        </dd>
+                        <dd>{decisionFactStatusLabel(fact.status, decisionFactApplicability(fact))}</dd>
                       </div>
                     ))}
                   </dl>

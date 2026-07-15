@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { ClockCounterClockwise, MagnifyingGlass, MapPin, X } from '@phosphor-icons/react';
+import { Buildings, ClockCounterClockwise, DoorOpen, MagnifyingGlass, MapPin, UsersThree, Waves, X } from '@phosphor-icons/react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { localizedPath, type BathtimeLocale } from '@web/lib/i18n';
 import type { OnsenSearchSuggestion } from '@web/lib/onsenSearch';
@@ -27,18 +27,33 @@ type Props = {
 
 const recentStorageKey = 'bathtime:onsen-recent-searches';
 
+const useModes = {
+  ko: [
+    { key: 'together', label: '대절탕·가족탕', description: '일행끼리 이용하는 전용탕', params: 'intent=stay_private' },
+    { key: 'in_room', label: '객실에서 바로', description: '객실 내 프라이빗탕', params: 'intent=stay_private&bath=room_bath' },
+    { key: 'day_use', label: '숙박 없이', description: '여행 중 들르는 당일온천', params: 'intent=city_facility&type=facility' },
+    { key: 'bath_first', label: '대욕장 중심', description: '탕 구성이 좋은 숙소', params: 'intent=stay_bath_depth' },
+  ],
+  en: [
+    { key: 'together', label: 'Private baths', description: 'Reservable and family baths', params: 'intent=stay_private' },
+    { key: 'in_room', label: 'Bath in your room', description: 'In-room private onsen', params: 'intent=stay_private&bath=room_bath' },
+    { key: 'day_use', label: 'Visit without a stay', description: 'Day-use onsen between plans', params: 'intent=city_facility&type=facility' },
+    { key: 'bath_first', label: 'Choose by the baths', description: 'Stays with standout public baths', params: 'intent=stay_bath_depth' },
+  ],
+} as const;
+
 const searchCopy = {
   ko: {
     open: '온천 검색 열기', search: '온천 검색', where: '어디로', headerPlaceholder: '온천지, 숙소·시설 이름',
     placeholder: '유후인, 도쿄, 구사쓰', queryLabel: '온천 검색어', suggestions: '온천 검색 제안', close: '검색 닫기',
     autocomplete: '자동완성', noMatch: '일치하는 후보가 아직 없습니다. 검색어로 결과를 볼 수 있어요.', recent: '최근 검색어',
-    recommended: '추천 지역', popular: '추천 검색어',
+    useMode: '어떻게 이용할까요?', recommended: '추천 지역', popular: '추천 검색어',
   },
   en: {
     open: 'Open onsen search', search: 'Search', where: 'Where', headerPlaceholder: 'Onsen town, stay, or facility',
     placeholder: 'Yufuin, Tokyo, Kusatsu', queryLabel: 'Search onsen', suggestions: 'Onsen search suggestions', close: 'Close search',
     autocomplete: 'Suggestions', noMatch: 'No exact match yet. You can still search with this phrase.', recent: 'Recent searches',
-    recommended: 'Recommended areas', popular: 'Popular searches',
+    useMode: 'How would you like to use the onsen?', recommended: 'Recommended areas', popular: 'Popular searches',
   },
 } as const;
 
@@ -190,6 +205,7 @@ export function OnsenSearchForm({ suggestions, recommendedPlaces, popularSearche
             recentSearches={recentSearches}
             mode={desktopPanelMode}
             locale={locale}
+            onNavigate={() => setOpen(false)}
             onPick={(label) => {
               writeRecentSearch(label);
               setRecentSearches(readRecentSearches());
@@ -235,6 +251,7 @@ export function OnsenSearchForm({ suggestions, recommendedPlaces, popularSearche
             recentSearches={recentSearches}
             mode="full"
             locale={locale}
+            onNavigate={closeMobile}
             onPick={(label) => {
               writeRecentSearch(label);
               setRecentSearches(readRecentSearches());
@@ -255,6 +272,7 @@ function SearchPanelContent({
   recentSearches,
   mode,
   locale,
+  onNavigate,
   onPick,
 }: {
   query: string;
@@ -264,6 +282,7 @@ function SearchPanelContent({
   recentSearches: string[];
   mode: 'full' | 'autocomplete';
   locale: BathtimeLocale;
+  onNavigate: () => void;
   onPick: (label: string) => void;
 }) {
   const copy = searchCopy[locale];
@@ -271,6 +290,36 @@ function SearchPanelContent({
 
   return (
     <div className="onsen-search-panel-content">
+      <section className="onsen-popover-section onsen-use-mode-section" aria-labelledby="onsen-use-mode-title">
+        <div className="onsen-popover-section-head">
+          <UsersThree size={18} weight="bold" aria-hidden="true" />
+          <strong id="onsen-use-mode-title">{copy.useMode}</strong>
+        </div>
+        <div className="onsen-use-mode-list">
+          {useModes[locale].map((item) => {
+            const params = new URLSearchParams(item.params);
+            if (query.trim()) params.set('query', query.trim());
+            const Icon = item.key === 'together'
+              ? UsersThree
+              : item.key === 'in_room'
+                ? DoorOpen
+                : item.key === 'day_use'
+                  ? Buildings
+                  : Waves;
+
+            return (
+              <Link key={item.key} href={`${resultsPath}?${params.toString()}`} onClick={onNavigate}>
+                <Icon size={20} weight="regular" aria-hidden="true" />
+                <span>
+                  <strong>{item.label}</strong>
+                  <small>{item.description}</small>
+                </span>
+              </Link>
+            );
+          })}
+        </div>
+      </section>
+
       {query.trim() ? (
         <section className="onsen-popover-section onsen-autocomplete-section" aria-labelledby="onsen-autocomplete-title">
           <div className="onsen-popover-section-head">

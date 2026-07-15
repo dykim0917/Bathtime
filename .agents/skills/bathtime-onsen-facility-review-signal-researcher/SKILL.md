@@ -1,6 +1,6 @@
 ---
 name: bathtime-onsen-facility-review-signal-researcher
-description: Research Japanese non-accommodation onsen facilities for Bathtime, including nationwide or regional candidate lists, day-use onsen complexes, municipal public baths, family/private bath facilities, sand baths, steam baths, footbaths, and spa-like onsen facilities. Use when asked to discover/tier onsen facility candidates or collect official facts and public review signals about facility bath experience, source-flow claims, water texture, bath variety, family/private bath use, sand/steam bath experience, crowding, queue/reservation confusion, amenities, payment, access, or tourist expectation gaps.
+description: Research Japanese non-accommodation onsen facilities for Bathtime, including end-to-end regional pipelines from candidate discovery, P0/P1/P2 tiering, official water-profile checks, Google/Nifty/Yahoo review-pool locking, subagent deep research, review-ledger QA, and P0 decisions. Also use for one-facility official facts and public review signals about facility bath experience, water texture, bath variety, family/private bath use, sand/steam experience, crowding, queue/reservation confusion, amenities, payment, access, or tourist expectation gaps.
 ---
 
 # Bathtime Onsen Facility Review Signal Researcher
@@ -15,6 +15,7 @@ Use this skill for both:
 
 - **Candidate research**: identify and tier non-accommodation onsen facilities before deep review collection.
 - **Deep review signal research**: read/tag public reviews and produce Bathtime-ready facility signals.
+- **Regional pipeline research**: run candidate discovery through review-pool lock, delegated deep research, ledger QA, and final P0/hold decisions.
 - **Facility model design**: compare facility types, refine signal fields, and decide whether a public onsen, family-bath center, sand bath, steam bath, footbath, or wellness complex deserves a different data model from accommodation onsen.
 
 Do not merge this with the accommodation research model. Facilities are judged by visit flow and product structure, not by room-bath inventory.
@@ -29,6 +30,7 @@ Do not merge this with the accommodation research model. Facilities are judged b
 - Treat a shared reservable `family_bath` or `private_bath` as different from an accommodation `room_bath`.
 - Prefer slow, stratified sampling over large shallow collection.
 - For deep research, target 300+ directly read reviews when feasible.
+- In regional pipeline mode, only a fully readable platform-review body with an individual ledger row is grade-eligible. Keep partial/truncated cards, snippets, Korean blog context, and activity posts in separate counters.
 - Use confident Korean when the sample supports it, but state sample limits plainly.
 - Make the product unit explicit. A facility row can represent a bathhouse, paid add-on, route/pass, footbath stop, sand/steam product, or area cluster; do not silently treat all of them as the same kind of onsen facility.
 - Flag candidate rows that should be split before deep review, such as a route pass covering multiple baths, a town-wide family-bath area, or a footbath listed as if it were a full bathing facility.
@@ -93,6 +95,8 @@ Never fill unknown facts from inference. Use `unclear`, `not_found`, or `needs_c
 2. **Choose research mode**
    - `candidate_mode`: collect identity, official/product facts, visible review pool, Korean demand signal, tier rationale, and gaps. Do not tag review signals deeply unless the user asks.
    - `deep_review_mode`: collect official facts, map review pools, read/tag reviews, and produce the full report.
+   - `regional_pipeline_mode`: run a whole region from scope ownership and candidate discovery through P0 decisions. Read `references/regional-facility-research-pipeline.md` before creating or changing artifacts.
+   - For a new regional run after the first QA cycle, also read `references/post-qa-collection-feedback.md` and apply its canonical-ledger, sensory-tagging, official-fact, and verdict-readiness checks.
    - For regional or nationwide facility candidate work, read `references/facility-candidate-research-playbook.md` before collecting.
    - If unclear, default to `deep_review_mode` for one named facility and `candidate_mode` for regional/nationwide lists.
 
@@ -129,11 +133,22 @@ Never fill unknown facts from inference. Use `unclear`, `not_found`, or `needs_c
    - State data quality grade and what would upgrade confidence.
    - Explain how the facility differs from accommodation-style onsen data.
 
+9. **Write and gate the facility card summary**
+   - Read `docs/03-content/onsen-card-summary-guide.md`.
+   - Produce `editorialCardSummary` with separate `official_basis` and `review_basis`.
+   - Lead with an official day-use reason such as open-air bath scale, view, bath composition, historical space, sand or steam method, sauna, or rest-space structure. Never lead with a facility type or verdict label.
+   - Connect the same feature to directly read facility reviews in the second sentence. Do not use visible review pools, snippets, AI summaries, or platform summaries as the direct denominator.
+   - Use `후기` in public copy and keep `이용 경험` inside research artifacts only.
+   - Convert unfamiliar Japanese units to Korean-readable metric units while preserving the original and conversion basis in evidence.
+   - Before applying a published facility verdict, pass the facility card-summary commands in the guide. Missing or weak evidence stays draft.
+
 ## Confidence Language
 
-- **A grade**: 300+ directly read reviews, 3+ platforms, stratified sampling. Say "강하게 반복된다".
-- **B grade**: 100-299 directly read reviews, 2+ platforms. Say "뚜렷하게 확인된다".
-- **C grade**: 50-99 directly read reviews. Say "초기 신호가 확인된다".
+In regional pipeline mode, the counts below mean grade-eligible full review bodies backed by individual ledger rows.
+
+- **A grade**: 300+ reviews, 3+ platforms, stratified sampling. Say "강하게 반복된다".
+- **B grade**: 100-299 reviews, 2+ platforms. Say "뚜렷하게 확인된다".
+- **C grade**: 50-99 reviews. Say "초기 신호가 확인된다".
 - **D grade**: under 50 reviews or snippet-heavy. Say "탐색 신호" or "모델 검증용 표본".
 - **Conflicting**: positive and negative signals both repeat. Say "평가가 갈린다" and explain by facility area, time, price, or visitor expectation.
 
@@ -153,5 +168,12 @@ Do not let platform-visible review count control the tone. A facility with 3,000
 ## References
 
 - `references/facility-candidate-research-playbook.md`: regional/nationwide facility candidate discovery, tiering, split/exclude rules, and QA.
+- `references/regional-facility-research-pipeline.md`: end-to-end regional orchestration, artifact contracts, subagent handoff, ledger QA, and P0 gates. Read for any multi-facility regional run.
 - `references/facility-tagging-guide.md`: facility taxonomy, signal types, count rules, confidence/status rules.
 - `references/facility-report-template.md`: Korean report structure and table templates.
+- `references/post-qa-collection-feedback.md`: lessons from the Kyushu and Kansai QA/DB load, including canonical ledger rules, sensory signal corrections, official-fact coverage, and verdict-readiness targets.
+
+## Pipeline Resources
+
+- Copy CSV headers from `assets/regional-pipeline/` instead of inventing new schemas.
+- Run `scripts/validate_regional_pipeline_artifacts.rb` against the final QA CSV before reporting completion.

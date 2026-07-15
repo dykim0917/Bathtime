@@ -1,12 +1,12 @@
 import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 
-import { onsenCandidates, type OnsenCandidate, type OnsenEditorialCardSummary, type OnsenFactStatus, type OnsenStatus, type OnsenVerdict, type OnsenVerdictItem, type OnsenWaterVerification } from './onsenCatalog';
+import { type OnsenCandidate, type OnsenEditorialCardSummary, type OnsenFactStatus, type OnsenStatus, type OnsenVerdict, type OnsenVerdictItem, type OnsenWaterVerification } from './onsenCatalog';
 import { decisionFactsFromOfficialFilters, type OnsenOfficialFilterFact } from './onsenDecisionFacts';
+import { attachOnsenDecisionAnswers, isPublicOnsenCandidate, readOnsenDecisionAnswers } from './onsenDecisionAnswers';
 import { readActiveOnsenFacilityCandidates } from './onsenFacilityData';
 import {
   deriveOnsenContexts,
-  enrichOnsenCandidate,
   getDefaultOnsenLocation,
   formatOnsenLocationDisplay,
   getOnsenAreaLabel,
@@ -905,7 +905,10 @@ async function readPublishedOnsenVerdicts(
 
 export async function readOnsenCandidates(): Promise<OnsenCandidate[]> {
   const config = readSupabaseServerConfig();
-  if (!config) return onsenCandidates.map(enrichOnsenCandidate);
+  if (!config) return [];
+
+  const decisionAnswersPromise = readOnsenDecisionAnswers(config);
+  const facilitiesPromise = readActiveOnsenFacilityCandidates(config);
 
   const url = new URL(`${config.restUrl}/onsen_accommodations`);
   url.searchParams.set(
@@ -929,7 +932,7 @@ export async function readOnsenCandidates(): Promise<OnsenCandidate[]> {
 
     const rows = (await response.json()) as OnsenAccommodationRow[];
     if (rows.length === 0) {
-      accommodations = onsenCandidates.map(enrichOnsenCandidate);
+      accommodations = [];
     } else {
       const slugs = rows.map((row) => row.slug);
       const [verdictsBySlug, officialFilterFacts] = await Promise.all([
@@ -943,10 +946,10 @@ export async function readOnsenCandidates(): Promise<OnsenCandidate[]> {
       ));
     }
   } catch {
-    accommodations = onsenCandidates.map(enrichOnsenCandidate);
+    accommodations = [];
   }
 
-  const facilities = await readActiveOnsenFacilityCandidates(config);
+  const facilities = await facilitiesPromise;
   const facilityVerdictsBySlug = await readPublishedOnsenVerdicts(
     config,
     facilities.map((facility) => facility.slug),
@@ -979,7 +982,11 @@ export async function readOnsenCandidates(): Promise<OnsenCandidate[]> {
       ),
     };
   });
-  return [...accommodations, ...facilitiesWithVerdicts];
+  const candidatesWithAnswers = attachOnsenDecisionAnswers(
+    [...accommodations, ...facilitiesWithVerdicts],
+    await decisionAnswersPromise
+  );
+  return candidatesWithAnswers.filter(isPublicOnsenCandidate);
 }
 
 export async function readOnsenCandidate(slug: string): Promise<OnsenCandidate | undefined> {

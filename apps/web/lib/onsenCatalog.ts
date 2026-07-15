@@ -94,6 +94,12 @@ export type OnsenDecisionFact = {
   checkedAt?: string;
 };
 
+export type OnsenDecisionAnswer = OnsenDecisionFact & {
+  applicability: 'applicable' | 'not_applicable';
+  journey: string;
+  targetReadiness: 'ready' | 'conditional' | 'hold';
+};
+
 export type OnsenCandidate = {
   entityType?: OnsenEntityType;
   slug: string;
@@ -142,6 +148,7 @@ export type OnsenCandidate = {
   officialLinks: { label: string; href: string }[];
   officialFilterCodes?: string[];
   decisionFacts?: OnsenDecisionFact[];
+  decisionAnswers?: OnsenDecisionAnswer[];
   facilityDetails?: {
     type: string;
     typeLabel: string;

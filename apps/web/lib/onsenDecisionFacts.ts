@@ -57,6 +57,13 @@ function formatYen(value: number) {
   return `${new Intl.NumberFormat('ko-KR').format(value)}엔`;
 }
 
+function formatOpeningHours(value: string) {
+  if (/^(?:24\s*hours?|24h|24hours_year_round)$/i.test(value)) return '24시간 운영';
+  const nextDay = value.match(/^(\d{1,2}:\d{2})-(\d{1,2}:\d{2})_next_day$/);
+  if (nextDay) return `${nextDay[1]}-익일 ${nextDay[2]}`;
+  return value.replace(/翌(?=\d{1,2}:\d{2})/g, '익일 ');
+}
+
 function statusFor(fact: OnsenOfficialFilterFact): OnsenDecisionFact['status'] {
   return fact.availability === 'conditional' ? 'conditional' : 'confirmed';
 }
@@ -80,7 +87,8 @@ function mapFilterFact(fact: OnsenOfficialFilterFact): OnsenDecisionFact[] {
     const reception = firstString(value, ['reception']);
     const explicitHours = firstString(value, ['hours', 'facility_hours'])
       ?? [firstString(value, ['opens_at']), firstString(value, ['closes_at'])].filter(Boolean).join('-');
-    const hours = explicitHours || (reception?.includes('-') ? reception : null);
+    const hoursValue = explicitHours || (reception?.includes('-') ? reception : null);
+    const hours = hoursValue ? formatOpeningHours(hoursValue) : null;
     const lastEntryCandidate = firstString(value, ['last_entry', 'last_admission', 'final_reception'])
       ?? (reception && !reception.includes('-') ? reception : null);
     const lastEntry = lastEntryCandidate && !/[-~〜–]/.test(lastEntryCandidate) ? lastEntryCandidate : null;

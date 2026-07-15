@@ -21,6 +21,8 @@
     "onsen:hokkaido:mvp:export": "node scripts/export_hokkaido_onsen_mvp_seed.mjs",
     "onsen:seed:izu-tohoku": "node scripts/build_izu_shizuoka_tohoku_reconciliation_seed.mjs",
     "onsen:verdict:check": "node scripts/check_onsen_verdict_quality.mjs",
+    "onsen:card-summary": "node scripts/build_onsen_card_summary_pipeline.mjs",
+    "onsen:facility-card-summary:audit": "node scripts/build_onsen_facility_card_summary_audit.mjs",
     "archive:spot:upsert": "node scripts/upsert_archive_content_from_spot_seed.mjs",
     "archive:item:upsert": "node scripts/upsert_archive_content_from_spot_seed.mjs",
     "content:api:smoke": "node scripts/smoke_content_snapshot_api.mjs",

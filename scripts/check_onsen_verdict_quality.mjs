@@ -1,6 +1,8 @@
 import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 
+import { validateEditorialCardSummary } from './lib/onsen_card_summary_contract.mjs';
+
 const bannedCopyPatterns = [
   /보는 편이 (맞|정확|자연스럽)습니다/,
   /확인하는 편이 (좋|안전|필요|낫)습니다/,
@@ -38,6 +40,22 @@ function readConfig() {
   }
 
   return { restUrl, apiKey };
+}
+
+function readArgs(argv) {
+  const targetArg = argv.find((value) => value.startsWith('--target-slugs='));
+  const targetTypeArg = argv.find((value) => value.startsWith('--target-type='));
+  const targetType = targetTypeArg?.slice('--target-type='.length);
+  if (targetType && targetType !== 'accommodation' && targetType !== 'facility') {
+    throw new Error('--target-type은 accommodation 또는 facility여야 합니다.');
+  }
+  return {
+    requireCardSummary: argv.includes('--require-card-summary'),
+    targetType,
+    targetSlugs: targetArg
+      ? targetArg.slice('--target-slugs='.length).split(',').map((value) => value.trim()).filter(Boolean)
+      : [],
+  };
 }
 
 function denominatorFor(item, briefing) {
@@ -97,10 +115,13 @@ function validateRow(row) {
 }
 
 async function main() {
+  const args = readArgs(process.argv.slice(2));
   const { restUrl, apiKey } = readConfig();
   const url = new URL(`${restUrl.replace(/\/+$/, '')}/onsen_verdicts`);
-  url.searchParams.set('select', 'target_slug,headline,briefing,items,status');
+  url.searchParams.set('select', 'target_type,target_slug,headline,briefing,items,status');
   url.searchParams.set('status', 'eq.published');
+  if (args.targetType) url.searchParams.set('target_type', `eq.${args.targetType}`);
+  if (args.targetSlugs.length) url.searchParams.set('target_slug', `in.(${args.targetSlugs.join(',')})`);
 
   const response = await fetch(url, {
     headers: {
@@ -116,12 +137,59 @@ async function main() {
   const rows = await response.json();
   const errors = rows.flatMap(validateRow);
 
+  let accommodations = [];
+  if (args.targetType !== 'facility') {
+    const accommodationUrl = new URL(`${restUrl.replace(/\/+$/, '')}/onsen_accommodations`);
+    accommodationUrl.searchParams.set('select', 'slug,status,evidence_counts');
+    accommodationUrl.searchParams.set('status', 'eq.active');
+    if (args.targetSlugs.length) accommodationUrl.searchParams.set('slug', `in.(${args.targetSlugs.join(',')})`);
+    const accommodationResponse = await fetch(accommodationUrl, {
+      headers: { apikey: apiKey, authorization: `Bearer ${apiKey}` },
+    });
+    if (!accommodationResponse.ok) {
+      throw new Error(`Failed to read onsen accommodations: ${accommodationResponse.status} ${await accommodationResponse.text()}`);
+    }
+    accommodations = await accommodationResponse.json();
+  }
+  const accommodationCardSummaryRows = accommodations.filter((row) => row.evidence_counts?.editorialCardSummary);
+
+  for (const row of accommodations) {
+    const summary = row.evidence_counts?.editorialCardSummary;
+    if (!summary) {
+      if (args.requireCardSummary) errors.push(`${row.slug}: published card summary가 없습니다.`);
+      continue;
+    }
+    errors.push(
+      ...validateEditorialCardSummary(summary, {
+        repoRoot: process.cwd(),
+        slug: row.slug,
+        canonicalCounts: row.evidence_counts,
+      })
+    );
+  }
+
+  const facilityRows = rows.filter((row) => row.target_type === 'facility');
+  const facilityCardSummaryRows = facilityRows.filter((row) => row.briefing?.editorial_card_summary);
+  for (const row of facilityRows) {
+    const summary = row.briefing?.editorial_card_summary;
+    if (!summary) {
+      if (args.requireCardSummary) errors.push(`${row.target_slug}: published 시설 카드 요약이 없습니다.`);
+      continue;
+    }
+    errors.push(...validateEditorialCardSummary(summary, {
+      repoRoot: process.cwd(),
+      slug: row.target_slug,
+      targetType: 'facility',
+      canonicalCounts: { directReviewCount: row.briefing?.experiences_read },
+    }));
+  }
+
   if (errors.length > 0) {
     console.error(errors.join('\n'));
     process.exit(1);
   }
 
-  console.log(`Onsen verdict quality check passed: ${rows.length} published rows.`);
+  console.log(`Onsen verdict quality check passed: ${rows.length} published verdicts, ${accommodationCardSummaryRows.length} accommodation card summaries, ${facilityCardSummaryRows.length} facility card summaries.`);
 }
 
 main().catch((error) => {
