@@ -79,3 +79,8 @@ research/onsen-review-signals/**
 !research/onsen-review-signals/
 !research/onsen-review-signals/**/
 !research/onsen-review-signals/**/review_signal_summary*.json
+
+# Generated onsen research working sets are loaded into the operating DB.
+# Keep their builders, migrations, and QA rules in Git instead.
+research/onsen-db-seed/
+research/onsen-deep-research/
