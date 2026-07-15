@@ -1,20 +1,20 @@
 import type { StaticImageData } from 'next/image';
-import coldReliefGuide from '@/assets/images/care/cold_relief_guide.png';
-import coldReliefHero from '@/assets/images/care/cold_relief_hero.png';
-import edemaReliefGuide from '@/assets/images/care/edema_relief_guide.png';
-import edemaReliefHero from '@/assets/images/care/edema_relief_hero.png';
-import hangoverReliefGuide from '@/assets/images/care/hangover_relief_guide.png';
-import hangoverReliefHero from '@/assets/images/care/hangover_relief_hero.png';
-import menstrualReliefGuide from '@/assets/images/care/menstrual_relief_guide.png';
-import menstrualReliefHero from '@/assets/images/care/menstrual_relief_hero.png';
-import moodLiftGuide from '@/assets/images/care/mood_lift_guide.png';
-import moodLiftHero from '@/assets/images/care/mood_lift_hero.png';
-import muscleReliefGuide from '@/assets/images/care/muscle_relief_guide.png';
-import muscleReliefHero from '@/assets/images/care/muscle_relief_hero.png';
-import sleepReadyGuide from '@/assets/images/care/sleep_ready_guide.png';
-import sleepReadyHero from '@/assets/images/care/sleep_ready_hero.png';
-import stressReliefGuide from '@/assets/images/care/stress_relief_guide.png';
-import stressReliefHero from '@/assets/images/care/stress_relief_hero.png';
+import coldReliefGuide from '@/assets/images/care/cold_relief_guide.jpg';
+import coldReliefHero from '@/assets/images/care/cold_relief_hero.jpg';
+import edemaReliefGuide from '@/assets/images/care/edema_relief_guide.jpg';
+import edemaReliefHero from '@/assets/images/care/edema_relief_hero.jpg';
+import hangoverReliefGuide from '@/assets/images/care/hangover_relief_guide.jpg';
+import hangoverReliefHero from '@/assets/images/care/hangover_relief_hero.jpg';
+import menstrualReliefGuide from '@/assets/images/care/menstrual_relief_guide.jpg';
+import menstrualReliefHero from '@/assets/images/care/menstrual_relief_hero.jpg';
+import moodLiftGuide from '@/assets/images/care/mood_lift_guide.jpg';
+import moodLiftHero from '@/assets/images/care/mood_lift_hero.jpg';
+import muscleReliefGuide from '@/assets/images/care/muscle_relief_guide.jpg';
+import muscleReliefHero from '@/assets/images/care/muscle_relief_hero.jpg';
+import sleepReadyGuide from '@/assets/images/care/sleep_ready_guide.jpg';
+import sleepReadyHero from '@/assets/images/care/sleep_ready_hero.jpg';
+import stressReliefGuide from '@/assets/images/care/stress_relief_guide.jpg';
+import stressReliefHero from '@/assets/images/care/stress_relief_hero.jpg';
 
 const careHeroImages: Record<string, StaticImageData> = {
   cold_relief: coldReliefHero,
