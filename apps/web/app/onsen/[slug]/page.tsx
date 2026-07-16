@@ -1,6 +1,36 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { ArrowSquareOut, LinkSimple, MapPin, MapTrifold, SealCheck, Sparkle, WarningCircle, Waves } from '@phosphor-icons/react/ssr';
+import {
+  Armchair,
+  ArrowSquareOut,
+  Bathtub,
+  Bed,
+  CalendarCheck,
+  Car,
+  CaretDown,
+  CheckCircle,
+  Clock,
+  Coins,
+  ForkKnife,
+  Info,
+  LinkSimple,
+  MapPin,
+  MapTrifold,
+  MoonStars,
+  PersonSimpleWalk,
+  SealCheck,
+  Shower,
+  Sparkle,
+  Storefront,
+  SwimmingPool,
+  Ticket,
+  Timer,
+  Towel,
+  Train,
+  UsersThree,
+  WarningCircle,
+  Waves,
+} from '@phosphor-icons/react/ssr';
 import { OnsenDecisionFactDetails, OnsenDetailAnalytics, OnsenTrackedExternalLink } from '@web/components/OnsenAnalytics';
 import { OnsenReviewForm } from '@web/components/OnsenReviewForm';
 import { OnsenReviewDrawer } from '@web/components/OnsenReviewDrawer';
@@ -134,6 +164,16 @@ function decisionFactStatusLabel(
   return '공식 확인 필요';
 }
 
+function decisionFactBoardStatusLabel(
+  status: 'confirmed' | 'conditional' | 'needs_check',
+  applicability?: 'applicable' | 'not_applicable'
+) {
+  if (applicability === 'not_applicable') return '해당 없음';
+  if (status === 'confirmed') return '확인';
+  if (status === 'conditional') return '조건부';
+  return '미확인';
+}
+
 function mergeDecisionFacts(primary: OnsenDecisionFact[], fallback: OnsenDecisionFact[], limit: number) {
   const facts = [...primary, ...fallback];
   return [...new Map(facts.map((fact) => [fact.code, fact])).values()].slice(0, limit);
@@ -166,6 +206,116 @@ function selectHeroDecisionFacts(
     ...facts,
   ].filter((fact): fact is OnsenDecisionFact => Boolean(fact));
   return [...new Map(selected.map((fact) => [fact.code, fact])).values()].slice(0, 3);
+}
+
+function DecisionFactIcon({ code, size = 24 }: { code: string; size?: number }) {
+  const props = { size, weight: 'regular' as const, 'aria-hidden': true as const };
+
+  if (code === 'room_bath') return <Bathtub {...props} />;
+  if (code === 'private_bath' || code === 'family_bath' || code === 'together_private_eligibility') return <UsersThree {...props} />;
+  if (code === 'bath_layout_scope') return <Bathtub {...props} />;
+  if (code === 'public_bath' || code === 'bath_composition' || code === 'bath_count' || code === 'signature_baths' || code === 'bath_experience_richness' || code === 'water_operation_method') return <Waves {...props} />;
+  if (code === 'open_air_bath') return <SwimmingPool {...props} />;
+  if (code === 'sauna' || code === 'stone_sauna') return <Shower {...props} />;
+  if (code === 'rest_area') return <Armchair {...props} />;
+  if (code.includes('reservation') || code.includes('booking') || code === 'vacancy_check_method') return <CalendarCheck {...props} />;
+  if (code.includes('time_limit') || code === 'private_bath_terms_limits') return <Timer {...props} />;
+  if (code === 'towel_policy') return <Towel {...props} />;
+  if (code === 'tattoo_allowed' || code === 'reentry_policy') return <Ticket {...props} />;
+  if (code === 'opening_hours' || code === 'last_entry_at' || code === 'closing_time') return <Clock {...props} />;
+  if (code.includes('price') || code.includes('surcharge')) return <Coins {...props} />;
+  if (code === 'station_walk_10m') return <PersonSimpleWalk {...props} />;
+  if (code === 'parking') return <Car {...props} />;
+  if (code === 'shuttle') return <Train {...props} />;
+  if (code === 'meal_service') return <ForkKnife {...props} />;
+  if (code === 'overnight_mode') return <MoonStars {...props} />;
+  if (code === 'lodging') return <Bed {...props} />;
+  if (code === 'day_use_operation') return <Storefront {...props} />;
+  return <Info {...props} />;
+}
+
+const compactBathTerms: [RegExp, string][] = [
+  [/노천/, '노천탕'],
+  [/대욕장/, '대욕장'],
+  [/가족탕/, '가족탕'],
+  [/대절탕/, '대절탕'],
+  [/객실탕|객실 내/, '객실탕'],
+  [/사우나/, '사우나'],
+  [/암반욕|암반탕/, '암반욕'],
+  [/족탕/, '족탕'],
+  [/모래찜질|모래찜/, '모래찜질'],
+  [/냉탕/, '냉탕'],
+  [/내탕/, '내탕'],
+  [/합탕/, '합탕'],
+  [/수영장|풀/, '풀'],
+];
+
+function compactBathComposition(value: string) {
+  const terms = compactBathTerms
+    .filter(([pattern]) => pattern.test(value))
+    .map(([, label]) => label);
+  return [...new Set(terms)].slice(0, 4).join(' · ');
+}
+
+function compactDecisionFactValue(fact: OnsenDecisionFact) {
+  const applicability = decisionFactApplicability(fact);
+  if (applicability === 'not_applicable') return '해당 없음';
+  if (fact.status === 'needs_check') return '정보 확인 중';
+
+  if (fact.code === 'together_private_eligibility') {
+    return fact.status === 'conditional' ? '동반 이용 조건 확인' : '동반 이용 가능';
+  }
+
+  if (fact.code === 'bath_layout_scope' || fact.code === 'bath_experience_richness') {
+    return compactBathComposition(fact.value) || (fact.status === 'conditional' ? '구성 조건 확인' : '구성 확인됨');
+  }
+
+  if (fact.code === 'water_operation_method') {
+    if (fact.status === 'conditional' && /보류|완결되지|확인\s*중|알\s*수\s*없|여부/.test(fact.value)) return '방식 확인 중';
+    if (fact.value.includes('순수직수') && !/순수직수.{0,12}(?:표시하지|아닙|해당하지)/.test(fact.value)) return '순수직수';
+    if (fact.value.includes('순환')) return '순환식';
+    if (fact.value.includes('직수')) return fact.value.includes('가수') ? '직수 · 가수 있음' : '직수';
+    return fact.status === 'conditional' ? '방식 조건 확인' : '방식 확인됨';
+  }
+
+  if (fact.code === 'private_bath_booking_flow' || fact.code === 'private_bath_reservation_method') {
+    if (/walk_in_when_vacant|first_come/.test(fact.value)) return '현장 이용';
+    if (/advance_reservation|reservation_required/.test(fact.value)) return '사전 예약';
+    if (/사전\s*예약을?\s*받지|빈\s*탕|현장|선착순/.test(fact.value)) return '현장 이용';
+    if (/웹/.test(fact.value)) return '웹 예약';
+    if (/객실탕/.test(fact.value) && /객실.*예약|객실 타입/.test(fact.value)) return '객실 예약 시 포함';
+    if (/사전\s*예약|완전예약|예약제|예약이?\s*필요/.test(fact.value)) return '사전 예약';
+    return '예약 방식 확인';
+  }
+
+  if (fact.code === 'private_bath_terms_limits') {
+    const free = /무료/.test(fact.value) ? '무료' : '';
+    const duration = fact.value.match(/\d+\s*(?:분|시간)/)?.[0] ?? '';
+    const fee = fact.value.match(/[0-9][0-9,]*\s*엔/)?.[0] ?? '';
+    const terms = [free, duration, fee].filter(Boolean);
+    return terms.join(' · ') || (fact.status === 'conditional' ? '이용 조건 확인' : '조건 확인됨');
+  }
+
+  if (fact.code === 'day_use_operation') {
+    if (/24시간/.test(fact.value)) return '24시간 운영';
+    const hours = fact.value.match(/\d{1,2}:\d{2}\s*[~〜\-–]\s*(?:익일\s*)?\d{1,2}:\d{2}/)?.[0] ?? '';
+    const price = fact.value.match(/[0-9][0-9,]*\s*엔/)?.[0] ?? '';
+    const terms = [hours, price].filter(Boolean);
+    return terms.join(' · ') || (fact.status === 'conditional' ? '운영 조건 확인' : '당일 이용 가능');
+  }
+
+  return fact.value.length <= 36 ? fact.value : (fact.status === 'conditional' ? '조건 확인' : '확인됨');
+}
+
+function dedupeDecisionFactsForDisplay(facts: OnsenDecisionFact[]) {
+  const seen = new Set<string>();
+  return facts.filter((fact) => {
+    const value = compactDecisionFactValue(fact);
+    const key = ['정보 확인 중', '조건 확인', '확인됨'].includes(value) ? `${fact.label}:${value}` : value;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
 }
 
 function getSiteOrigin() {
@@ -303,6 +453,11 @@ export default async function OnsenDetailPage({ params, searchParams }: PageProp
     entryIntent,
     candidateType
   );
+  const decisionFactGroups = [
+    { id: 'bath', label: '목욕 구성', facts: dedupeDecisionFactsForDisplay(experienceDecisionFacts) },
+    { id: 'usage', label: '이용 방법', facts: dedupeDecisionFactsForDisplay(usageDecisionFacts) },
+    { id: 'trip', label: '시간 · 비용 · 이동', facts: dedupeDecisionFactsForDisplay(tripDecisionFacts) },
+  ].filter((group) => group.facts.length > 0);
   const onsenArea = candidate.location?.onsenArea ?? candidate.region;
 
   return (
@@ -361,8 +516,9 @@ export default async function OnsenDetailPage({ params, searchParams }: PageProp
                 status: 'needs_check' as const,
               }]).map((fact) => (
                 <div key={fact.code} data-status={fact.status}>
+                  <span className={styles.heroFactIcon}><DecisionFactIcon code={fact.code} size={22} /></span>
                   <dt>{fact.label}</dt>
-                  <dd>{fact.value}</dd>
+                  <dd>{compactDecisionFactValue(fact)}</dd>
                   <small className={styles.heroFactMeta}>
                     {decisionFactStatusLabel(fact.status)}
                     {fact.checkedAt ? ` · ${formatVerificationDate(fact.checkedAt)} 확인` : ''}
@@ -420,92 +576,57 @@ export default async function OnsenDetailPage({ params, searchParams }: PageProp
         <main className={styles.mainColumn}>
           <section className={`${styles.section} ${styles.decisionSection}`} aria-labelledby="onsen-decision-title">
             <header className={styles.sectionHead}>
-              <span>여행에 필요한 정보부터</span>
-              <h2 id="onsen-decision-title">이 온천을 고르기 전에</h2>
+              <span>이용 정보</span>
+              <h2 id="onsen-decision-title">한눈에 보기</h2>
             </header>
 
-            <div className={styles.decisionBands}>
-              <section className={styles.decisionBand} aria-labelledby="onsen-experience-title">
-                <header>
-                  <span>01</span>
-                  <h3 id="onsen-experience-title">여기서 할 수 있는 목욕</h3>
-                  <p>이름보다 실제로 이용할 수 있는 탕 구성을 먼저 봅니다.</p>
-                </header>
-                <dl className={styles.decisionFactList}>
-                  {experienceDecisionFacts.map((fact) => (
-                    <div key={`${fact.code}-${fact.scope ?? ''}`} data-status={fact.status}>
-                      <dt>{fact.label}</dt>
-                      <dd>
-                        <span>{fact.value}</span>
-                        {fact.detail ? <small className={styles.decisionFactCheck}><strong>확인할 점</strong>{fact.detail}</small> : null}
-                      </dd>
-                      <dd>{decisionFactStatusLabel(fact.status, decisionFactApplicability(fact))}</dd>
-                    </div>
-                  ))}
-                </dl>
-              </section>
-
-              <section className={styles.decisionBand} aria-labelledby="onsen-usage-title">
-                <header>
-                  <span>02</span>
-                  <h3 id="onsen-usage-title">실제 이용 방법</h3>
-                  <p>예약, 현장 확인, 이용 시간처럼 도착한 뒤 필요한 행동을 순서대로 확인합니다.</p>
-                </header>
-                <div className={styles.usageFactList}>
-                  {usageDecisionFacts.map((fact, index) => (
-                    <OnsenDecisionFactDetails
-                      key={`${fact.code}-${fact.scope ?? ''}`}
-                      className={styles.usageFact}
-                      entryIntent={entryIntent}
-                      entityType={candidateType}
-                      targetSlug={candidate.slug}
-                      onsenArea={onsenArea}
-                      sourceComponent="onsen_detail_usage"
-                      factCode={fact.code}
-                    >
-                      <summary>
-                        <span>{String(index + 1).padStart(2, '0')}</span>
-                        <strong>{fact.label}</strong>
-                        <b>{fact.value}</b>
-                        <small>{decisionFactStatusLabel(fact.status, decisionFactApplicability(fact))}</small>
-                      </summary>
-                      <div>
-                        <p>{fact.detail ?? '현재 확인된 범위만 표시합니다. 이용 조건은 예약 또는 방문 전에 다시 확인하세요.'}</p>
-                        {fact.checkedAt ? <span>{formatVerificationDate(fact.checkedAt)} 확인</span> : null}
-                        {fact.sourceUrl ? <a href={fact.sourceUrl} target="_blank" rel="noreferrer"><LinkSimple size={14} weight="bold" aria-hidden="true" />공식 안내</a> : null}
-                      </div>
-                    </OnsenDecisionFactDetails>
-                  ))}
-                </div>
-              </section>
-
-              <section className={styles.decisionBand} aria-labelledby="onsen-trip-title">
-                <header>
-                  <span>03</span>
-                  <h3 id="onsen-trip-title">여행 일정에 넣기</h3>
-                  <p>요금과 시간, 접근, 숙박 가능 여부를 한곳에서 봅니다.</p>
-                </header>
-                {tripDecisionFacts.length > 0 ? (
-                  <dl className={styles.decisionFactList}>
-                    {tripDecisionFacts.map((fact) => (
-                      <div key={`${fact.code}-${fact.scope ?? ''}`} data-status={fact.status}>
-                        <dt>{fact.label}</dt>
-                        <dd>
-                          <span>{fact.value}</span>
-                          {fact.detail ? <small className={styles.decisionFactCheck}><strong>확인할 점</strong>{fact.detail}</small> : null}
-                        </dd>
-                        <dd>{decisionFactStatusLabel(fact.status, decisionFactApplicability(fact))}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                ) : (
-                  <p className={styles.decisionEmpty}>
-                    {candidateType === 'facility'
-                      ? '요금과 운영 시간의 공식 확인을 진행하고 있습니다.'
-                      : '현재는 목욕 구성과 후기만 제공합니다. 가격과 예약 가능 여부는 OTA에서 확인해 주세요.'}
-                  </p>
-                )}
-              </section>
+            <div className={styles.decisionBoard}>
+              {decisionFactGroups.map((group) => (
+                <section key={group.id} className={styles.decisionGroup} data-group={group.id} aria-labelledby={`onsen-${group.id}-title`}>
+                  <h3 id={`onsen-${group.id}-title`}>{group.label}</h3>
+                  <div className={styles.decisionFactGrid}>
+                    {group.facts.map((fact) => {
+                      const displayValue = compactDecisionFactValue(fact);
+                      return (
+                        <OnsenDecisionFactDetails
+                          key={`${fact.code}-${fact.scope ?? ''}`}
+                          className={styles.decisionFact}
+                          entryIntent={entryIntent}
+                          entityType={candidateType}
+                          targetSlug={candidate.slug}
+                          onsenArea={onsenArea}
+                          sourceComponent={`onsen_detail_${group.id}`}
+                          factCode={fact.code}
+                        >
+                          <summary data-status={fact.status}>
+                            <span className={styles.decisionFactIcon}><DecisionFactIcon code={fact.code} /></span>
+                            <span className={styles.decisionFactCopy}>
+                              <small>{fact.label}</small>
+                              <strong>{displayValue}</strong>
+                            </span>
+                            <span className={styles.decisionFactStatus}>
+                              {fact.status === 'confirmed'
+                                ? <CheckCircle size={14} weight="fill" aria-hidden="true" />
+                                : <WarningCircle size={14} weight="fill" aria-hidden="true" />}
+                              {decisionFactBoardStatusLabel(fact.status, decisionFactApplicability(fact))}
+                            </span>
+                            <CaretDown className={styles.decisionFactCaret} size={15} weight="bold" aria-hidden="true" />
+                          </summary>
+                          <div className={styles.decisionFactDetail}>
+                            {displayValue !== fact.value ? <p>{fact.value}</p> : null}
+                            {fact.detail ? <p>{fact.detail}</p> : null}
+                            <div>
+                              {fact.scope ? <span>적용: {fact.scope}</span> : null}
+                              {fact.checkedAt ? <span>{formatVerificationDate(fact.checkedAt)} 확인</span> : null}
+                              {fact.sourceUrl ? <a href={fact.sourceUrl} target="_blank" rel="noreferrer"><LinkSimple size={14} weight="bold" aria-hidden="true" />공식 안내</a> : null}
+                            </div>
+                          </div>
+                        </OnsenDecisionFactDetails>
+                      );
+                    })}
+                  </div>
+                </section>
+              ))}
             </div>
           </section>
 
