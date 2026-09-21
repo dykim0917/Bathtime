@@ -148,7 +148,7 @@ describe('CompletionScreen', () => {
     const screen = render(React.createElement(CompletionScreen));
 
     await waitFor(() =>
-      expect(screen.getByText('잘 쉬었습니다')).toBeTruthy()
+      expect(screen.getByText('오늘 몸에 맞게 마무리했어요')).toBeTruthy()
     );
 
     expect(screen.getByText('이번 달 기록')).toBeTruthy();
@@ -178,7 +178,7 @@ describe('CompletionScreen', () => {
     const screen = render(React.createElement(CompletionScreen));
 
     await waitFor(() =>
-      expect(screen.getByText('잘 쉬었습니다')).toBeTruthy()
+      expect(screen.getByText('오늘 몸에 맞게 마무리했어요')).toBeTruthy()
     );
 
     fireEvent.press(screen.getByText('아쉬웠어요'));

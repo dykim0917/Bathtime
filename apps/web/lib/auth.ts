@@ -13,7 +13,8 @@ export function getSupabaseClient(): SupabaseClient | null {
     client = createClient(url, anonKey, {
       auth: {
         autoRefreshToken: true,
-        detectSessionInUrl: true,
+        // AuthCallback exchanges the one-use PKCE code explicitly.
+        detectSessionInUrl: false,
         flowType: 'pkce',
         persistSession: true,
       },

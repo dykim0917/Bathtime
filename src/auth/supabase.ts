@@ -1,6 +1,7 @@
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Platform } from 'react-native';
+import { pocketNative } from '@/src/pocket/native';
 
 let client: SupabaseClient | null = null;
 
@@ -17,12 +18,30 @@ export function getSupabaseClient(): SupabaseClient | null {
   if (!config) return null;
 
   if (!client) {
+    const native = pocketNative;
+    if (native) void native.configure(config.url, config.anonKey).catch(() => undefined);
     client = createClient(config.url, config.anonKey, {
       auth: {
-        autoRefreshToken: true,
+        autoRefreshToken: !native,
         detectSessionInUrl: Platform.OS === 'web',
         persistSession: true,
-        storage: Platform.OS === 'web' ? undefined : AsyncStorage,
+        storage: Platform.OS === 'web' ? undefined : native ? {
+          async getItem(key: string) {
+            const current = await native.authGet(key);
+            if (current !== null) return current;
+            const legacy = await AsyncStorage.getItem(key);
+            if (legacy !== null) {
+              await native.authSet(key, legacy);
+              await AsyncStorage.removeItem(key);
+            }
+            return legacy;
+          },
+          async setItem(key: string, value: string) { await native.authSet(key, value); },
+          async removeItem(key: string) {
+            await native.authRemove(key);
+            await AsyncStorage.removeItem(key);
+          },
+        } : AsyncStorage,
         flowType: 'pkce',
       },
     });

@@ -187,7 +187,7 @@ export function ArchiveStructuredInfo({ content, compact = false }: { content: A
       {showGrid ? (
         <View style={styles.grid}>
           {rows.map((row) => {
-            const IconComponent = row.iconLabel ? null : ROW_ICONS[row.label] ?? ListChecks;
+            const IconComponent = ROW_ICONS[row.label] ?? ListChecks;
 
             return (
               <View style={styles.row} key={row.label}>

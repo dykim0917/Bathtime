@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <title>내 보관함 · 바스타임</title>
+  <link rel="stylesheet" crossorigin="anonymous" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="data.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="./" aria-label="바스타임 보관함"><svg class="brand-icon" viewBox="0 0 28 28" aria-hidden="true"><path d="M5 17c3-4 6 4 9 0s6 4 9 0M5 22c3-4 6 4 9 0s6 4 9 0M10 4c-4 4 4 5 0 9M18 4c-4 4 4 5 0 9"/></svg>bathtime</a><span class="sample-label">미리보기</span></header>
+  <main>
+    <div class="intro"><h1>보관함</h1></div>
+    <section aria-label="저장한 콘텐츠 검색">
+      <div class="searchbar"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg><input id="search" type="search" aria-label="보관함 검색" placeholder="장소나 특징을 검색해 보세요" autocomplete="off"></div>
+      <div class="filters"><div class="kinds" role="group" aria-label="장소 종류"><button type="button" data-kind="all" aria-pressed="true">전체 <span>3</span></button><button type="button" data-kind="온천" aria-pressed="false">온천 <span>1</span></button><button type="button" data-kind="사우나" aria-pressed="false">사우나 <span>2</span></button></div><select id="city" aria-label="지역"><option value="all">모든 지역</option><option>부산</option><option>도쿄</option><option>서울</option></select></div>
+    </section>
+    <section aria-labelledby="collection-title"><div class="section-heading"><h2 id="collection-title">저장한 장소 <span id="count">3</span></h2><button type="button" class="reset-filters" id="clear-filters" hidden>전체 보기</button></div><div id="cards" class="cards"></div><div id="empty" class="empty" hidden><span aria-hidden="true">♨</span><h3>검색 결과가 없어요</h3><p>다른 이름이나 지역으로 찾아보세요.</p><button id="reset" type="button">전체 장소 보기</button></div><p id="search-status" class="sr-only" role="status"></p></section>
+    <footer><p>바스타임 · 씻고 쉬는 아카이브</p><details class="preview-note"><summary>미리보기 안내</summary><p>실제 링크 3개를 직접 확인해 정리한 화면이에요.<br>자동 분석·서버 저장·APK 연동은 아직 적용하지 않았어요.</p></details></footer>
+  </main>
+  <dialog id="detail" aria-labelledby="detail-title"><div class="dialog-bar"><span>장소 상세</span><button class="close" type="button" aria-label="상세 닫기" autofocus>×</button></div><div id="detail-content"></div></dialog>
+</body>
+</html>

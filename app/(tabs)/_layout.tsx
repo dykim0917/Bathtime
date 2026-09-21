@@ -5,7 +5,6 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Circle, Path } from 'react-native-svg';
 import { useAuth } from '@/src/auth/AuthProvider';
 import { archiveColors, archiveRadius } from '@/src/theme/archiveTheme';
-import { luxuryFonts } from '@/src/theme/luxury';
 
 type TabIconName = 'home' | 'explore' | 'routine' | 'submit' | 'saved';
 
@@ -80,31 +79,31 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: archiveColors.primaryActive,
+        tabBarActiveTintColor: '#007F89',
         tabBarInactiveTintColor: archiveColors.muted,
         tabBarStyle: {
-          backgroundColor: archiveColors.surface,
+          backgroundColor: '#FFFFFF',
           borderTopColor: archiveColors.hairline,
           borderTopWidth: 1,
           height: 74 + bottomInset,
           paddingTop: 8,
           paddingBottom: 8 + bottomInset,
         },
-        tabBarLabelStyle: { fontSize: 11, fontWeight: '700', letterSpacing: 0, fontFamily: luxuryFonts.sans },
+        tabBarLabelStyle: { fontSize: 11, letterSpacing: 0, fontFamily: 'Pretendard-Medium' },
         tabBarItemStyle: { borderRadius: archiveRadius.md, marginHorizontal: 1 },
         tabBarBackground: () => null,
       }}
     >
-      <Tabs.Screen name="index" options={{ title: '지금', tabBarIcon: ({ color, focused }) => <TabBarIcon name="home" color={color} focused={focused} /> }} />
-      <Tabs.Screen name="explore" options={{ title: '탐색', tabBarIcon: ({ color, focused }) => <TabBarIcon name="explore" color={color} focused={focused} /> }} />
-      <Tabs.Screen name="routines" options={{ title: '의식', tabBarIcon: ({ color, focused }) => <TabBarIcon name="routine" color={color} focused={focused} /> }} />
+      <Tabs.Screen name="index" options={{ title: '보관함', tabBarIcon: ({ color, focused }) => <TabBarIcon name="home" color={color} focused={focused} /> }} />
+      <Tabs.Screen name="explore" options={{ href: null }} />
+      <Tabs.Screen name="routines" options={{ href: null }} />
       <Tabs.Screen
         name="submit"
-        options={{ title: '제보', tabBarIcon: ({ color, focused }) => <TabBarIcon name="submit" color={color} focused={focused} /> }}
+        options={{ href: null }}
       />
       <Tabs.Screen
         name="my"
-        options={{ title: '보관함', tabBarIcon: ({ color, focused }) => <TabBarIcon name="saved" color={color} focused={focused} /> }}
+        options={{ title: '이전 보관함', tabBarIcon: ({ color, focused }) => <TabBarIcon name="saved" color={color} focused={focused} /> }}
         listeners={protectedTabListeners('saved')}
       />
       <Tabs.Screen name="care" options={{ href: null }} />

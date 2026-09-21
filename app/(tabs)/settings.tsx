@@ -1,4 +1,5 @@
 import React from 'react';
+import Constants from 'expo-constants';
 import { Href, router } from 'expo-router';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { NativeScreen } from '@/src/components/native/NativeScreen';
@@ -15,7 +16,7 @@ export default function SettingsScreen() {
       </View>
       <View style={styles.card}>
         <Text style={styles.label}>버전</Text>
-        <Text style={styles.value}>1.0.0</Text>
+        <Text style={styles.value}>{Constants.expoConfig?.version ?? '1.1.0'}</Text>
       </View>
       <Pressable style={styles.linkCard} onPress={() => router.push('/legal/privacy' as Href)}>
         <View>

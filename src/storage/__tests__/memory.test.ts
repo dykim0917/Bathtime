@@ -68,9 +68,10 @@ describe('memory storage', () => {
     expect(history).toHaveLength(1);
   });
 
-  test('saveCompletionMemory is idempotent for same recommendation', async () => {
-    const first = await saveCompletionMemory(recommendation, null);
-    const second = await saveCompletionMemory(recommendation, null);
+  test('saveCompletionMemory is idempotent for the same completion', async () => {
+    const completedAt = '2026-02-25T12:10:00.000Z';
+    const first = await saveCompletionMemory(recommendation, null, { completedAt });
+    const second = await saveCompletionMemory(recommendation, null, { completedAt });
 
     expect(second.themePreferenceWeight).toBe(first.themePreferenceWeight);
     const history = await loadTripMemoryHistory();

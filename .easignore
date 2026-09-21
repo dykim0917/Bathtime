@@ -1,8 +1,11 @@
 # Dependencies and generated native folders
 node_modules/
 **/node_modules/
-ios/
-android/
+/ios/
+/android/
+modules/**/build/
+modules/**/.gradle/
+prototypes/
 
 # Local build outputs and downloaded artifacts
 dist/
@@ -57,3 +60,8 @@ assets/images/care/*_hero.png
 *.key
 *.mobileprovision
 .keys/
+credentials.json
+firebase-adminsdk*.json
+*firebase-adminsdk*.json
+fcm-service-account*.json
+*-service-account*.json

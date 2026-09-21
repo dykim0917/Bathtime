@@ -1,0 +1,4 @@
+interface:
+  display_name: "바스타임 콘텐츠 정리"
+  short_description: "목욕 콘텐츠 속 장소·제품과 팁을 추출하고 출처별로 통합해요"
+  default_prompt: "$bathtime-content-organizer로 저장한 콘텐츠의 목욕 관련 대상과 팁을 정리하고, 같은 장소의 기존 팁이 있으면 출처를 보존하며 묶어줘."

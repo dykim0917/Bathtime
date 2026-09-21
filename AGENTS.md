@@ -58,3 +58,12 @@ These guidelines are working if: fewer unnecessary changes in diffs, fewer rewri
 ## Preserve Local Skills
 
 Do not move or archive `im-not-ai/`. It contains the local `humanize-korean` Codex skill and its reference files, which are required by Bathtime item-note and content publishing workflows.
+
+## Archive Pivot Design Direction — User Decision, 2026-09-22
+
+For the bath-content saving/archive pivot, follow `docs/02-design/bathtime-pivot-design-direction.md`.
+- Design for mobile phones only. Desktop previews must show the same phone-width layout; do not add desktop grids, sidebars, or desktop-specific flows.
+- Visual references: 오늘의집 and 화해. Use a clean, refreshing white base, mint/cyan accents, Pretendard with its actual font files loaded, and clear photo-led cards.
+- UX writing reference: Toss. Use concise, familiar Korean and explicit action labels. Keep factual conditions and source dates clear.
+- The archive is place/product first, with saved source posts inside each item.
+- This user decision supersedes older warm paper/dark-teal/editorial styling for pivot work. Preserve legacy styling outside the pivot's scope unless asked to change it.

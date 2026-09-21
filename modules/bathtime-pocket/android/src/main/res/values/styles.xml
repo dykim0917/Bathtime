@@ -1,0 +1,9 @@
+<resources>
+  <style name="BathtimePocketShare" parent="android:style/Theme.Material.Light.Dialog.NoActionBar">
+    <item name="android:windowIsTranslucent">true</item>
+    <item name="android:windowBackground">@android:color/transparent</item>
+    <item name="android:backgroundDimAmount">0.08</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:colorAccent">#007F89</item>
+  </style>
+</resources>

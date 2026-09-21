@@ -79,3 +79,5 @@ research/onsen-review-signals/**
 !research/onsen-review-signals/
 !research/onsen-review-signals/**/
 !research/onsen-review-signals/**/review_signal_summary*.json
+.vercel
+.env*

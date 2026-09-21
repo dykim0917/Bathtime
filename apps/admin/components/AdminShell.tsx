@@ -4,6 +4,7 @@ import { getCurrentAdminEmail } from '../lib/auth/server';
 
 const navItems = [
   { href: '/', label: 'Dashboard' },
+  { href: '/pocket', label: '보관함 정리' },
   { href: '/content', label: 'Archive Content' },
   { href: '/onsen', label: 'Onsen Data' },
   { href: '/submissions', label: 'Submissions' },

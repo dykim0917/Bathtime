@@ -31,6 +31,9 @@ const AppTheme = {
 export default function RootLayout() {
   const [loaded, error] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+    'Pretendard-Regular': require('../assets/fonts/Pretendard-Regular.otf'),
+    'Pretendard-Medium': require('../assets/fonts/Pretendard-Medium.otf'),
+    'Pretendard-Bold': require('../assets/fonts/Pretendard-Bold.otf'),
     ...FontAwesome.font,
   });
 
@@ -39,7 +42,7 @@ export default function RootLayout() {
   useEffect(() => {
     if (Platform.OS !== 'android') return;
 
-    void NavigationBar.setBackgroundColorAsync(archiveColors.surface);
+    void NavigationBar.setBackgroundColorAsync('#FFFFFF');
     void NavigationBar.setBorderColorAsync(archiveColors.hairline);
     void NavigationBar.setButtonStyleAsync('dark');
     void NavigationBar.setPositionAsync('relative');
@@ -50,6 +53,7 @@ export default function RootLayout() {
   const stack = Platform.OS === 'web' ? (
     <Stack>
       <Stack.Screen name="index" options={{ headerShown: false }} />
+      <Stack.Screen name="pocket" options={{ headerShown: false }} />
       <Stack.Screen name="(web)" options={{ headerShown: false }} />
       <Stack.Screen name="explore" options={{ headerShown: false }} />
       <Stack.Screen name="submit" options={{ headerShown: false }} />
@@ -77,6 +81,7 @@ export default function RootLayout() {
       <Stack.Screen name="auth/login" options={{ headerShown: false }} />
       <Stack.Screen name="auth/callback" options={{ headerShown: false }} />
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack.Screen name="pocket" options={{ headerShown: false }} />
       <Stack.Screen name="content/[id]" options={{ headerShown: false }} />
       <Stack.Screen name="explore" options={{ headerShown: false }} />
       <Stack.Screen name="saved" options={{ headerShown: false }} />

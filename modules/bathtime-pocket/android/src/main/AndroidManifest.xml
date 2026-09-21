@@ -1,0 +1,15 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+  <uses-permission android:name="android.permission.INTERNET" />
+  <application>
+    <activity android:name="expo.modules.bathtimepocket.PocketShareActivity"
+      android:label="바스타임에 담기" android:exported="true"
+      android:excludeFromRecents="true" android:taskAffinity=""
+      android:theme="@style/BathtimePocketShare">
+      <intent-filter>
+        <action android:name="android.intent.action.SEND" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <data android:mimeType="text/plain" />
+      </intent-filter>
+    </activity>
+  </application>
+</manifest>
