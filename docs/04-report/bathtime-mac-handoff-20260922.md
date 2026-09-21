@@ -20,7 +20,8 @@ npm --prefix apps/web ci
 - 관리자 `https://admin.getbathtime.com/pocket` 배포 완료. 실제 관리자 로그인 후 화면 검증은 남아 있다. 배포 ID `dpl_B4dHwEGHoQxKbjXCfZyJ2P5n6J7q`.
 - 웹 개인정보 안내 및 로그인 중복 처리 수정 배포 완료. 최신 웹 배포 ID `dpl_6AieFJuTG25QnXypTSb9EkB2Hcmz`.
 - Android 1.1.0(21) 빌드는 성공했고 서명·패키지·bundletool 검증 통과. 사용하지 않는 오버레이/외부 저장소 권한을 발견해 차단한 **1.1.0(22)**가 최신 후보다.
-- 최신 EAS 빌드: `009eef17-8b34-4060-9d85-837dfeff123f`. 인계 작성 시 IN_PROGRESS. 먼저 상태를 새로 확인하고, 성공한 실제 AAB의 권한을 다시 검사한다.
+- 최신 EAS 빌드: `009eef17-8b34-4060-9d85-837dfeff123f`. **FINISHED 확인 및 실제 AAB 검증 완료.** bundletool validate, jarsigner 검증 통과. package `com.bathtimestudio.bathtime`, versionCode 22, versionName 1.1.0. 기존 Play 업로드 키 SHA256과 일치하며 SYSTEM_ALERT_WINDOW / READ_EXTERNAL_STORAGE / WRITE_EXTERNAL_STORAGE / RECORD_AUDIO 권한이 없다.
+- [최신 AAB 다운로드](https://expo.dev/artifacts/eas/7y23VQQ9diSOVCcpZuIE3F9wu4ZhG_7AVOwFtj0guFU.aab). 파일 SHA256: `9B77E1A3EFAA87FAEB823F083CAFDD877E123C1951E72A7DD582D03D5A29649B`. 바이너리는 Git에 넣지 않았다. 빌드 성공은 실기기 Google 로그인 성공이나 출시 완료를 의미하지 않는다.
 - EAS 프로젝트: `getbathtime/getbathtime`, ID `aad216ef-4f0f-46d4-884e-f4f5ab5c4b64`.
 - Play 정식 배포는 여전히 1.0.0(19). 새 AAB 업로드·심사·출시를 하지 않았다. 관리형 게시 사용 중이며 기존 Alpha 트랙 재개 미제출 변경 1건은 이번 출시와 별도로 보존했다.
 
