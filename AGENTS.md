@@ -62,7 +62,7 @@ Do not move or archive `im-not-ai/`. It contains the local `humanize-korean` Cod
 ## Archive Pivot Design Direction — User Decision, 2026-09-22
 
 For the bath-content saving/archive pivot, follow `docs/02-design/bathtime-pivot-design-direction.md`.
-- Design for mobile phones only. Desktop previews must show the same phone-width layout; do not add desktop grids, sidebars, or desktop-specific flows.
+- Design mobile-first and support tablets, including portrait and landscape (updated user decision, 2026-09-22). Adapt card layout and spacing to the available width without forcing tablets into a phone-width frame. Preserve the same core navigation and content hierarchy; do not add desktop-specific product flows.
 - Visual references: 오늘의집 and 화해. Use a clean, refreshing white base, mint/cyan accents, Pretendard with its actual font files loaded, and clear photo-led cards.
 - UX writing reference: Toss. Use concise, familiar Korean and explicit action labels. Keep factual conditions and source dates clear.
 - The archive is place/product first, with saved source posts inside each item.

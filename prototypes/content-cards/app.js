@@ -58,3 +58,8 @@ function resetFilters() { search.value = ''; city.value = 'all'; document.queryS
 document.querySelector('#reset').addEventListener('click', resetFilters);
 document.querySelector('#clear-filters').addEventListener('click', resetFilters);
 render();
+
+const discover = document.querySelector('#discover');
+document.querySelector('#discover-open').addEventListener('click', () => { discover.showModal(); discover.scrollTop = 0; document.body.classList.add('modal-open'); });
+document.querySelector('#discover-close').addEventListener('click', () => discover.close());
+discover.addEventListener('close', () => document.body.classList.remove('modal-open'));

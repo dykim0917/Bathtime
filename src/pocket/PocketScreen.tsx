@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { ActivityIndicator, Alert, AppState, Linking, Modal, Pressable, RefreshControl, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { ActivityIndicator, Alert, AppState, Linking, Modal, Pressable, RefreshControl, ScrollView, StyleSheet, Text, TextInput, useWindowDimensions, View } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { router } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -9,6 +9,7 @@ import { archiveCards, filterArchiveCards, type ArchiveCard } from './selectors'
 import { archiveCacheKey, localArchiveLinks, removeLocalArchiveLink, saveArchiveLink, syncArchiveLinks, type LocalArchiveLink } from './storage';
 import { normalizeArchiveLink } from './contracts';
 import { pocketNative } from './native';
+import { CreatorDiscovery } from './CreatorDiscovery';
 
 const statuses = { queued: '정리 대기', processing: '정리 중', ready: '정리 완료', unavailable: '링크 보관' };
 const fonts = { regular: 'Pretendard-Regular', medium: 'Pretendard-Medium', bold: 'Pretendard-Bold' };
@@ -18,6 +19,9 @@ export function PocketScreen() {
   const owner = user?.id ?? '';
   const currentOwner = useRef(owner); currentOwner.current = owner;
   const insets = useSafeAreaInsets();
+  const { width } = useWindowDimensions();
+  const columns = width >= 1000 ? 4 : width >= 700 ? 3 : 2;
+  const cardWidth = (Math.min(width, 1040) - 40 - (columns - 1) * 16) / columns;
   const [saves, setSaves] = useState<ArchiveSave[]>([]);
   const [loadedOwner, setLoadedOwner] = useState(owner);
   const [local, setLocal] = useState<LocalArchiveLink[]>([]);
@@ -131,7 +135,7 @@ export function PocketScreen() {
           <Text style={styles.meta}>{row.error || (owner ? '보관함에 보내는 중' : '로그인 후 정리를 시작해요')}</Text></Pressable>
         <Pressable accessibilityLabel="폰에 보관한 링크 삭제" style={styles.smallButton} onPress={() => void removeLocalArchiveLink(row.id).then(refresh)}><Text style={styles.meta}>삭제</Text></Pressable>
       </View>)}</View> : null}
-      <View style={styles.grid}>{filtered.map((card) => <Pressable key={card.id} style={styles.card} accessibilityRole="button" onPress={() => {
+      <View style={styles.grid}>{filtered.map((card) => <Pressable key={card.id} style={[styles.card, { width: cardWidth }]} accessibilityRole="button" onPress={() => {
         setSelectedId(card.id); void recordArchiveEvent('detail_opened', card.sources[0].source.id).catch(() => undefined);
       }}>
         <View style={[styles.cover, card.kind === 'product' && styles.productCover]}><Text style={styles.coverIcon}>{card.kind === 'place' ? '♨' : card.kind === 'product' ? '◌' : '↗'}</Text>
@@ -143,6 +147,7 @@ export function PocketScreen() {
         <Text style={styles.body}>{cards.length ? '다른 검색어나 분류로 찾아보세요.' : '릴스나 쇼츠에서 공유를 누르고\n바스타임에 담기를 선택해 주세요.'}</Text>
         <Pressable style={styles.smallButton} onPress={() => { if (cards.length) { setKind('all'); setQuery(''); } else setAdding(true); }}><Text style={styles.buttonText}>{cards.length ? '전체 보기' : '링크 붙여넣기'}</Text></Pressable>
       </View> : null}
+      <CreatorDiscovery />
       <View style={styles.footer}><Pressable style={styles.smallButton} onPress={() => router.push('/saved' as never)}><Text style={styles.meta}>이전 보관함</Text></Pressable>
         <Pressable style={styles.smallButton} onPress={() => router.push('/settings' as never)}><Text style={styles.meta}>설정 및 계정</Text></Pressable>
         <Pressable style={styles.smallButton} onPress={() => router.push('/legal/privacy' as never)}><Text style={styles.meta}>개인정보 처리방침</Text></Pressable>
@@ -155,7 +160,7 @@ export function PocketScreen() {
       <Pressable style={styles.smallButton} onPress={() => setAdding(false)}><Text style={styles.buttonText}>닫기</Text></Pressable>
       {message ? <Text style={styles.message}>{message}</Text> : null}
     </View></View></Modal>
-    <Modal visible={Boolean(selected)} animationType="slide" onRequestClose={() => setSelectedId(null)}>{selected ? <View style={[styles.page, { paddingTop: insets.top, paddingBottom: insets.bottom }]}>
+    <Modal visible={Boolean(selected)} animationType="slide" onRequestClose={() => setSelectedId(null)}>{selected ? <View style={[styles.page, { maxWidth: 680, paddingTop: insets.top, paddingBottom: insets.bottom }]}>
       <View style={styles.detailHeader}><Pressable style={styles.smallButton} accessibilityLabel="상세 닫기" onPress={() => setSelectedId(null)}><Text style={styles.buttonText}>← 보관함</Text></Pressable></View>
       <ScrollView contentContainerStyle={styles.content}><Text style={styles.meta}>{selected.location}</Text><Text style={styles.heading}>{selected.name}</Text><Text style={styles.body}>{selected.summary}</Text>
         <Text style={styles.section}>{selected.kind === 'product' ? '제품 정보' : '이용 정보'}</Text>
@@ -181,7 +186,7 @@ function matchesSource(row: LocalArchiveLink, save: ArchiveSave): boolean {
 }
 
 const styles = StyleSheet.create({
-  page: { flex: 1, width: '100%', maxWidth: 440, alignSelf: 'center', backgroundColor: '#FFFFFF' },
+  page: { flex: 1, width: '100%', maxWidth: 1040, alignSelf: 'center', backgroundColor: '#FFFFFF' },
   content: { padding: 20, gap: 18, paddingBottom: 32 },
   header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   brand: { color: '#007F89', fontSize: 11, fontFamily: fonts.bold, letterSpacing: 1.5, marginBottom: 8 },
@@ -191,9 +196,9 @@ const styles = StyleSheet.create({
   notice: { backgroundColor: '#F5F8FA', borderRadius: 16, padding: 16, gap: 12 },
   message: { color: '#007F89', fontSize: 13, lineHeight: 20, fontFamily: fonts.medium },
   search: { backgroundColor: '#F5F8FA', borderRadius: 12, minHeight: 48, paddingHorizontal: 16, color: '#20282D', fontFamily: fonts.regular, fontSize: 14 },
-  filters: { flexDirection: 'row', gap: 8 }, filter: { minHeight: 44, paddingHorizontal: 17, borderRadius: 22, justifyContent: 'center', backgroundColor: '#F5F8FA' },
+  filters: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 }, filter: { minHeight: 44, paddingHorizontal: 17, borderRadius: 22, justifyContent: 'center', backgroundColor: '#F5F8FA' },
   filterActive: { backgroundColor: '#E9FAFA' }, filterText: { color: '#63717A', fontFamily: fonts.medium, fontSize: 14 }, activeText: { color: '#007F89' },
-  grid: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', rowGap: 24 }, card: { width: '47.5%', gap: 7 },
+  grid: { flexDirection: 'row', flexWrap: 'wrap', gap: 16, rowGap: 24 }, card: { width: '47.5%', gap: 7 },
   cover: { aspectRatio: 1.15, backgroundColor: '#E9FAFA', borderRadius: 16, alignItems: 'center', justifyContent: 'center', gap: 7, marginBottom: 3 },
   productCover: { backgroundColor: '#F0F3FF' }, coverIcon: { fontSize: 44, color: '#007F89' }, coverLabel: { fontFamily: fonts.medium, color: '#007F89', fontSize: 12 },
   cardTitle: { fontFamily: fonts.bold, color: '#20282D', fontSize: 15, lineHeight: 22 }, meta: { fontFamily: fonts.regular, color: '#63717A', fontSize: 12, lineHeight: 18 },
@@ -202,7 +207,7 @@ const styles = StyleSheet.create({
   buttonText: { color: '#007F89', fontFamily: fonts.bold, fontSize: 14 }, empty: { paddingVertical: 34, alignItems: 'center', gap: 14 },
   footer: { flexDirection: 'row', flexWrap: 'wrap', gap: 12, borderTopWidth: 1, borderColor: '#E8EEF1', paddingTop: 12 },
   pendingRow: { flexDirection: 'row', alignItems: 'center', gap: 12 }, scrim: { flex: 1, backgroundColor: '#20282D66', justifyContent: 'flex-end', alignItems: 'center' },
-  sheet: { width: '100%', maxWidth: 440, padding: 24, backgroundColor: '#FFFFFF', borderTopLeftRadius: 24, borderTopRightRadius: 24, gap: 16 },
+  sheet: { width: '100%', maxWidth: 560, padding: 24, backgroundColor: '#FFFFFF', borderTopLeftRadius: 24, borderTopRightRadius: 24, gap: 16 },
   detailHeader: { paddingHorizontal: 14, alignItems: 'flex-start', borderBottomWidth: 1, borderColor: '#E8EEF1' },
   detailFooter: { padding: 16, borderTopWidth: 1, borderColor: '#E8EEF1' }, fact: { paddingVertical: 12, gap: 6, borderBottomWidth: 1, borderColor: '#E8EEF1' },
 });
